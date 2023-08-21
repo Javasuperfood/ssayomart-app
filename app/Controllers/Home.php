@@ -8,4 +8,12 @@ class Home extends BaseController
     {
         return view('welcome_message');
     }
+    // test role 
+    public function admin(): string
+    {
+        if (! auth()->user()->can('admin.access')) {
+            return 'You do not have permissions to access that page.';
+        }
+        return "admin";
+    }
 }
