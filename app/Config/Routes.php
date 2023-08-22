@@ -32,8 +32,10 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/admin', 'Home::admin', );
 service('auth')->routes($routes);
-
 $routes->resource('kategori');
+$routes->resource('produk');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
