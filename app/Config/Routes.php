@@ -33,6 +33,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/admin', 'Home::admin', );
 service('auth')->routes($routes);
 
+$routes->resource('kategori');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
