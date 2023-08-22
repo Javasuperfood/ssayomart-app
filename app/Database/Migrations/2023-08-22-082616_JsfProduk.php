@@ -3,14 +3,11 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
-use CodeIgniter\Database\Forge;
-use CodeIgniter\Database\Auth;
 
 class JsfProduk extends Migration
 {
     public function up()
     {
-        // $this->db->disableForeignKeyChecks();
         $this->forge->addField([
             'id_produk' => [
                 'type'           => 'INT',
@@ -25,7 +22,7 @@ class JsfProduk extends Migration
             ],
             'nama_produk' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '150',
+                'constraint' => '225',
             ],
             'harga_produk' => [
                 'type'          => 'varchar',
@@ -43,6 +40,10 @@ class JsfProduk extends Migration
                 'type'          => 'varchar',
                 'constraint'    => '255'
             ],
+            'slug' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '255',
+            ],
             'created_by' => [
                 'type'          => 'INT',
                 'constraint'    => 11,
@@ -51,18 +52,14 @@ class JsfProduk extends Migration
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ],'updated_at' => [
+            ], 'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ],
         ]);
         $this->forge->addKey('id_produk', true);
-        
-        $this->forge->createTable('jsf_produk');
         $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori');
-        
-        
-        // $this->db->enableForeignKeyChecks();
+        $this->forge->createTable('jsf_produk');
     }
 
     public function down()

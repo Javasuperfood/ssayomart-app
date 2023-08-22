@@ -19,6 +19,10 @@ class JsfKupon extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '150',
             ],
+            'code_kupon' => [
+                'type'          => 'char',
+                'constraint'    => '16'
+            ],
             'deskripsi_kupon' => [
                 'type'          => 'varchar',
                 'constraint'    => '200'
@@ -29,13 +33,13 @@ class JsfKupon extends Migration
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ],'updated_at' => [
+            ], 'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ],
         ]);
         $this->forge->addKey('id_kupon', true);
-        
+
         $this->forge->createTable('jsf_kupon');
     }
 
