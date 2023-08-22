@@ -13,8 +13,8 @@ class produk extends ResourceController
     public function index()
     {
         $model = new ProdukModel();
-        $data 
-        = $model->orderBy('id_produk', 'DESC')->findAll();
+        $data
+            = $model->orderBy('id_produk', 'DESC')->findAll();
         $response = [
             'status'   => 200,
             'error'    => null,
@@ -38,17 +38,24 @@ class produk extends ResourceController
             'gambar_produk'  => $this->request->getVar('gambar_produk'),
             'created_by'  => $this->request->getVar('created_by'),
         ];
-        $model->insert($data);
-        $response = [
-            'status'   => 201,
-            'error'    => null,
-            'messages' => [
-                'success' => 'Data produk berhasil ditambahkan.'
-            ],
-            'data' => $data
-        ];
-         
-        return $this->respondCreated($response, 201);
+        if ($model->insert($data)) {
+            $response = [
+                'status' => 201,
+                'error' => null,
+                'messages' => [
+                    'success' => 'Data berhasil disimpan.'
+                ],
+                'produk' => $data
+            ];
+            return $this->respondCreated($response);
+        } else {
+            $response = [
+                'status' => 400,
+                'error' => 'Validation Error',
+                'messages' => $model->errors()
+            ];
+            return $this->respond($response, 400);
+        }
     }
     // single produk
     public function show($id = null)
@@ -91,17 +98,25 @@ class produk extends ResourceController
         $model = new ProdukModel();
         $data = $model->where('id_produk', $id)->delete($id);
         if ($data) {
-            $model->delete($id);
-            $response = [
-                'status'   => 200,
-                'error'    => null,
-                'messages' => [
-                    'success' => 'Data produk berhasil dihapus.'
-                ]
-            ];
-            return $this->respondDeleted($response);
+            if ($model->delete($id)) {
+                $response = [
+                    'status' => 200,
+                    'error' => null,
+                    'messages' => [
+                        'success' => 'Produk berhasil dihapus.'
+                    ]
+                ];
+                return $this->respondDeleted($response);
+            } else {
+                $response = [
+                    'status' => 500,
+                    'error' => 'Delete Error',
+                    'messages' => 'Gagal menghapus Produk.'
+                ];
+                return $this->respond($response, 500);
+            }
         } else {
-            return $this->failNotFound('Data tidak ditemukan.');
+            return $this->failNotFound('Data Produk Tidak Ditemukan');
         }
     }
 }
