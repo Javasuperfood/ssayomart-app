@@ -35,6 +35,7 @@ service('auth')->routes($routes);
 $routes->resource('kategori');
 $routes->resource('subkategori');
 $routes->resource('produk');
+$routes->resource('distributor');
 $routes->resource('kupon');
 
 
