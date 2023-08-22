@@ -30,6 +30,10 @@ class JsfPembelian extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
+            'payment_link' => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255'
+            ],
             'qty_produk' => [
                 'type'          => 'INT',
                 'constraint'    => 11
@@ -45,16 +49,16 @@ class JsfPembelian extends Migration
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ],'updated_at' => [
+            ], 'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ],
         ]);
         $this->forge->addKey('id_pembelian', true);
-        $this->forge->createTable('jsf_pembelian');
         $this->forge->addForeignKey('id_user', 'users', 'id');
         $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
         $this->forge->addForeignKey('id_kupon', 'jsf_kupon', 'id_kupon');
+        $this->forge->createTable('jsf_pembelian');
     }
 
     public function down()

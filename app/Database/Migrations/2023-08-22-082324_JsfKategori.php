@@ -4,46 +4,51 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfDistributor extends Migration
+class JsfKategori extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_distributor' => [
+            'id_kategori' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_user' => [
+            'id_sub_kategori' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'deskripsi' => [
+            'nama_kategori' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '200',
+                'constraint' => '225',
             ],
-            'alamat_distributor' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => '150'
+            'deskripsi_kategori' => [
+                'type'          => 'varchar',
+                'constraint'    => '200'
+            ],
+            'slug' => [
+                'type'          => 'varchar',
+                'constraint'    => '225'
             ],
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ],'updated_at' => [
+            ], 'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ],           
+            ],
         ]);
-        $this->forge->addKey('id_distributor', true);
-        $this->forge->createTable('jsf_distributor');  
-        $this->forge->addForeignKey('id_user', 'users', 'id');
+        $this->forge->addKey('id_kategori', true);
+        $this->forge->addForeignKey('id_sub_kategori', 'jsf_sub_kategori', 'id_sub_kategori');
+        $this->forge->createTable('jsf_kategori');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf__distributor', 'id');
-        $this->forge->dropTable('jsf_distributor');
+        $this->forge->dropForeignKey('jsf_kategori', 'id_sub_kategori');
+
+        $this->forge->dropTable('jsf_kategori');
     }
 }
