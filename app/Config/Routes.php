@@ -37,6 +37,7 @@ $routes->resource('subkategori');
 $routes->resource('produk');
 $routes->resource('distributor');
 $routes->resource('kupon');
+$routes->resource('arsip');
 
 
 /*
