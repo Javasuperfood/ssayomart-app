@@ -30,14 +30,22 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/admin', 'Home::admin',);
+$routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
+    $routes->get('/', 'Home::dashboard');
+    $routes->get('admin', 'Home::admin');
+});
+
 service('auth')->routes($routes);
-$routes->resource('kategori');
-$routes->resource('subkategori');
-$routes->resource('produk');
-$routes->resource('distributor');
-$routes->resource('kupon');
-$routes->resource('arsip');
+
+$routes->group('api', static function ($routes) { //nanti tambahkan filter auth via Tooken
+    $routes->resource('kategori');
+    $routes->resource('subkategori');
+    $routes->resource('produk');
+    $routes->resource('distributor');
+    $routes->resource('kupon');
+    $routes->resource('arsip');
+});
+
 
 
 /*
