@@ -1,10 +1,10 @@
-<?= $this->extend('user/layout') ?>
+<?= $this->extend('user/home/layout') ?>
 <?= $this->section('page-content') ?>
 
 
-<?= $this->include('user/component/navbarTop') ?>
+<?= $this->include('user/home/component/navbarTop') ?>
 
-<?= $this->include('user/component/slider') ?>
+<?= $this->include('user/home/component/slider') ?>
 
 <!-- ITEM -->
 <div class="container pt-5">
