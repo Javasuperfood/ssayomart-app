@@ -6,7 +6,10 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        return view('user/index');
+        $data = [
+            'title' => 'Ssayomart'
+        ];
+        return view('user/index', $data);
     }
     // test role 
     public function dashboard(): string
