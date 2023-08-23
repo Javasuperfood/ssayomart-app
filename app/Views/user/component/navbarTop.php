@@ -1,0 +1,21 @@
+<!-- NAVBAR -->
+<div class="container">
+    <div class="row">
+        <nav class="navbar pt-4" style="background-color : #ec2614; padding-bottom : 80px; border-radius:0 0 3% 3%;">
+            <div class="container-fluid">
+                <div class="col-10">
+                    <form role="search">
+                        <div class="input-group">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Cari produk..." aria-label="search" aria-describedby="basic-addon1">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-1">
+                    <a href="" class="btn btn-light rounded-circle"><i class="bi bi-heart-fill" style="color: #ec2614"></i></a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- END OF NAVBAR -->
