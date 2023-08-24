@@ -60,16 +60,16 @@
         <div class="col">
             <h3>Pengaturan</h3>
             <ul class="list-group list-group-flush">
-                <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
+                <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-person-circle pe-2 text-secondary"></i> Detail Akun <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
-                <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
+                <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-heart pe-2 text-secondary"></i> Favorit <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
-                <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
+                <a href="<?= base_url(); ?>setting/pembayaran" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-credit-card-2-back pe-2 text-secondary"></i> Pembayarn <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
-                <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
+                <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-cursor pe-2 text-secondary"></i> Alamat tersimpan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
                 <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
