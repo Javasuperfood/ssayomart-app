@@ -30,8 +30,9 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/produk', 'Produk::produkShow'); 
+$routes->get('/produk', 'Produk::produkShow');
 $routes->get('/wishlist', 'Wishlist::wishlist');
+$routes->get('/cart', 'Cart::cart');
 $routes->get('/setting', 'Setting::setting');
 $routes->get('/history', 'HistoryTransaksi::history');
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {

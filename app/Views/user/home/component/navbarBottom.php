@@ -5,7 +5,7 @@
             <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4"></i></a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link link-light"><i class="bi bi-cart-fill fw-bold fs-2"></i></a>
+            <a href="<?= base_url(); ?>cart" class="nav-link link-light"><i class="bi bi-cart-fill fw-bold fs-2"></i></a>
         </li>
         <li class="nav-item">
             <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2"></i></a>
