@@ -11,7 +11,7 @@
             <a href="#" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2"></i></a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2"></i></a>
+            <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2"></i></a>
         </li>
     </ul>
 </nav>
