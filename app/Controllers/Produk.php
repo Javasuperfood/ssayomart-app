@@ -119,4 +119,14 @@ class produk extends ResourceController
             return $this->failNotFound('Data Produk Tidak Ditemukan');
         }
     }
+
+
+    public function produkShow()
+    {
+        $data = [
+            'title' => 'produk'
+
+        ];
+        return view('user/produk/index', $data);
+    }
 }
