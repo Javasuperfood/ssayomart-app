@@ -179,5 +179,4 @@
         </div>
     </div>
 </div>
-<!-- END -->
 <?= $this->endSection(); ?>

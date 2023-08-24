@@ -32,8 +32,17 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/produk', 'Produk::produkShow');
 $routes->get('/wishlist', 'Wishlist::wishlist');
+
 $routes->get('/cart', 'Cart::cart');
+
+// Setting route
 $routes->get('/setting', 'Setting::setting');
+$routes->get('/setting/detail-user', 'Setting::detailUser');
+$routes->get('/setting/pembayaran', 'Setting::pembayaran');
+$routes->get('/setting/alamat-list', 'Setting::alamatList');
+
+
+
 $routes->get('/history', 'HistoryTransaksi::history');
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
