@@ -6,7 +6,7 @@
             <a href="<?= base_url(); ?>setting#" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0">Alamat <i class="bi bi-chevron-down"></i> </a>
             <div class="row pb-4">
                 <div class="col-9">
-                    <h1 class="fw-bold py-3">Hey <?= $name; ?></h1>
+                    <h2 class="fw-bold py-3">Selamat datang, <?= $name; ?></h2>
                 </div>
                 <div class="col-3">
                     <img src="<?= base_url() ?>assets/img/logo.png" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;" alt="...">
@@ -39,7 +39,7 @@
     </div>
     <div class="row py-3">
         <div class="col">
-            <div class="alert alert-danger rounded-0" role="alert">
+            <div class="alert alert-danger rounded-0 border-0" role="alert">
                 <div class="row">
                     <div class="col text-secondary"><i class="bi bi-heart-pulse-fill text-danger"></i> Area anda belum terjangkau. Kirim saran untuk update slanjutnya.</div>
                     <div class="col-3 text-end"><a href="#" class="link-primary fw-bold link-underline link-underline-opacity-0">Kirim saran</a></div>
@@ -47,15 +47,15 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row pb-1">
         <div class="col">
-            <div class="card text-bg-primary mb-3">
+            <div class="card text-bg-light mb-3 shadow border-0 rounded">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3"><img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img"></div>
                         <div class="col">
-                            <h5 class="card-title">Dapatkan diskon Voucer diskon 15rb</h5>
-                            <p class="card-text">Baikan aplikasi ke temanmu</p>
+                            <h5 class="card-title">DISKON 30%!!!</h5>
+                            <p class="card-text">Untuk kamu pengguna baru</p>
                         </div>
                     </div>
 
@@ -79,12 +79,6 @@
                 <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-cursor pe-2 text-secondary"></i> Alamat tersimpan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
-                <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                    <i class="bi bi-lightbulb pe-2 text-secondary"></i> Kirim Saran <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                </a>
-                <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                    <i class="bi bi-file-text pe-2 text-secondary"></i> Syarat & Ketentuan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                </a>
             </ul>
 
         </div>
@@ -94,7 +88,7 @@
             <h3>Bantuan</h3>
             <ul class="list-group list-group-flush">
                 <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                    <i class="bi bi-question-circle pe-2 text-secondary"></i> FAQ<i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                    <i class="bi bi-question-circle pe-2 text-secondary"></i> Tentang Ssayomart <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
                 <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-headset pe-2 text-secondary"></i> Ssayomart Care <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>

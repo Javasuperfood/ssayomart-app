@@ -40,6 +40,7 @@ $routes->get('/setting', 'Setting::setting');
 $routes->get('/setting/detail-user', 'Setting::detailUser');
 $routes->get('/setting/pembayaran', 'Setting::pembayaran');
 $routes->get('/setting/alamat-list', 'Setting::alamatList');
+$routes->get('/setting/update-alamat', 'Setting::updatealamat');
 
 
 
