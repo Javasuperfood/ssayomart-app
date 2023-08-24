@@ -11,7 +11,7 @@
                 </form>
             </div>
             <div class="col-2">
-                <a href="" class="btn btn-light rounded-circle ms-3"><i class="bi bi-heart-fill" style="color: #ec2614"></i></a>
+                <a href="<?= base_url(); ?>wishlist" class="btn btn-light rounded-circle ms-3"><i class="bi bi-heart-fill" style="color: #ec2614"></i></a>
             </div>
         </div>
     </nav>

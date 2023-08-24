@@ -7,8 +7,8 @@ class Wishlist extends BaseController
     public function wishlist(): string
     {
         $data = [
-            'title' => 'Ssayomart'
+            'title' => 'Wishlist'
         ];
-        return view('user/wishlist/wishlist', $data);
+        return view('user/home/wishlist/wishlist', $data);
     }
 }
