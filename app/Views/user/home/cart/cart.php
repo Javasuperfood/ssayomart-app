@@ -19,8 +19,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Ottogi</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
@@ -30,8 +30,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Norigo</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Ottogi</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
@@ -54,8 +54,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Norigo</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
@@ -67,8 +67,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Ottogi</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
@@ -78,8 +78,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Norigo</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
@@ -91,8 +91,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Ottogi</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
@@ -102,8 +102,8 @@
                     <div class="card-body">
                         <p class="card-title">Rp. 100.000</p>
                         <p class="card-text text-secondary">Norigo</p>
-                        <a href="#" class="btn btn-light"><i class="bi bi-trash text-danger"></i></a>
-                        <a href="#" class="btn btn-light">Beli</a>
+                        <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
                 </div>
             </div>
