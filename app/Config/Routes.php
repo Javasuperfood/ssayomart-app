@@ -33,6 +33,8 @@ $routes->get('/', 'Home::index');
 $routes->get('/produk', 'Produk::produkShow');
 $routes->get('/wishlist', 'Wishlist::wishlist');
 
+$routes->get('/cart', 'Cart::cart');
+
 // Setting route
 $routes->get('/setting', 'Setting::setting');
 $routes->get('/setting/detail-user', 'Setting::detailUser');

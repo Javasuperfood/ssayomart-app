@@ -14,7 +14,10 @@ class Home extends BaseController
     // test role 
     public function dashboard(): string
     {
-        return "dashboard";
+        $data = [
+            'title' => 'Ssayomart'
+        ];
+        return view('dashboard/home', $data);
     }
     public function admin(): string
     {
