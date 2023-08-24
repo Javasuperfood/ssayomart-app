@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="row fixed-bottom p-3 px-4">
-        <button type="submit" class="btn btn-primary btn-lg fw-bold">Simpan</button>
+        <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Simpan</button>
     </div>
 </div>
 <?= $this->endSection(); ?>

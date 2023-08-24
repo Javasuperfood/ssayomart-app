@@ -36,4 +36,16 @@ class Setting extends BaseController
         ];
         return view('user/home/setting/alamatList', $data);
     }
+
+    public function updateAlamat(): string
+    {
+        $data = [
+            'title'     => 'Edit Alamat',
+            'nama'      => 'Javasuperfood',
+            'telp'      => '+62 123456789',
+            'alamat'    => 'Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139',
+            'catatan'   => 'Rumah saya ada anjing nya. Awas di gigit. Anjing saya rabies.'
+        ];
+        return view('user/home/setting/updatealamat', $data);
+    }
 }
