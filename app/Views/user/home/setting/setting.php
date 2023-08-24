@@ -4,7 +4,14 @@
     <div class="row">
         <div class="col">
             <a href="<?= base_url(); ?>setting#" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0">Alamat <i class="bi bi-chevron-down"></i> </a>
-            <h1 class="fw-bold py-4">Hey <?= $name; ?></h1>
+            <div class="row pb-4">
+                <div class="col-9">
+                    <h1 class="fw-bold py-3">Hey <?= $name; ?></h1>
+                </div>
+                <div class="col-3">
+                    <img src="<?= base_url() ?>assets/img/logo.png" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;" alt="...">
+                </div>
+            </div>
             <div class="card shadow">
                 <div class="card-body">
                     <div class="row">
@@ -67,7 +74,7 @@
                     <i class="bi bi-heart pe-2 text-secondary"></i> Favorit <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
                 <a href="<?= base_url(); ?>setting/pembayaran" class="list-group-item pb-3 fw-bold">
-                    <i class="bi bi-credit-card-2-back pe-2 text-secondary"></i> Pembayarn <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                    <i class="bi bi-credit-card-2-back pe-2 text-secondary"></i> Pembayaran <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
                 <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-cursor pe-2 text-secondary"></i> Alamat tersimpan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
