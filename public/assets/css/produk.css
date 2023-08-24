@@ -1,0 +1,96 @@
+.btn-custom-rounded {
+    border-radius: 25px;
+    height: 35px;
+    width: 300px;
+    margin-left: 10px;
+}
+
+.icon {
+    display: flex;
+    gap: 15px;
+    /* Jarak antara ikon-ikon */
+}
+
+.rating {
+    color: gold;
+}
+
+.swiper-slide img {
+    border-radius: 15px;
+    width: 1280px;
+    height: 680px;
+    margin-top: 35px;
+}
+
+.swiper-slide button {
+    padding-left: 10px;
+}
+
+.text-merah {
+    color: #81271f;
+}
+
+/* Customize card styles */
+
+
+/* Set swiper container size */
+.swiper-container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Center swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #333;
+}
+
+.card {
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .swiper-slide img {
+        border-radius: 25px;
+        width: 680px;
+        height: 425px;
+    }
+
+    .btn-custom-rounded {
+        border-radius: 50px;
+        height: 35px;
+        width: 150px;
+        margin-right: 3px;
+    }
+
+    .card {
+        margin-top: 2rem;
+        width: 12rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper-slide img {
+        border-radius: 25px;
+        width: 350px;
+        height: 200px;
+        margin-top: 35px;
+    }
+
+    .btn-custom-rounded {
+        border-radius: 10px;
+        height: 35px;
+        width: 95px;
+        margin-right: 1px;
+    }
+
+    .card {
+        margin-top: 2rem;
+        width: 12rem;
+
+    }
+
+    .swiper-slide-card {
+        margin-left: 10px;
+    }
+}
