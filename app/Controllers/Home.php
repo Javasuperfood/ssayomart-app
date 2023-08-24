@@ -11,15 +11,6 @@ class Home extends BaseController
         ];
         return view('user/home/index', $data);
     }
-    public function setting(): string
-    {
-        $data = [
-            'title' => 'setting',
-            'name' => 'Kiki',
-            'saldo' => 2000
-        ];
-        return view('user/home/setting', $data);
-    }
     // test role 
     public function dashboard(): string
     {
