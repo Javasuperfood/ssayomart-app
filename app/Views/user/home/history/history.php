@@ -2,7 +2,6 @@
 <?= $this->section('page-content') ?>
 <?= $this->include('user/home/component/navbarMain'); ?>
 <div class="container">
-
     <div class="row pt-3">
         <div class="col">
             <div class="card">
@@ -10,16 +9,15 @@
                     <div class="row">
                         <div class="col-3">
                             <img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img">
-                            <span class="text-secondary fw-bold">Total</span><br>
-                            <span class="fw-bold">Rp. 2000</span>
                         </div>
-                        <div class="col">
-                            <h5 class="card-title">Nama Produk</h5>
-                            <p class="card-text text-secondary">jumblah barang</p>
-                            <p class="text-end"> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
+                        <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                            <h5 class="card-title"><?= substr("Ottogi Mie Kering - 500gr", 0, 10); ?>...</h5>
+                            <p class="fw-bold text-secondary">Rp. 2000.</p>
+                        </div>
+                        <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                            <a href="#" class="btn btn-outline-danger">Beli Lagi</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -31,16 +29,15 @@
                     <div class="row">
                         <div class="col-3">
                             <img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img">
-                            <span class="text-secondary fw-bold">Total</span><br>
-                            <span class="fw-bold">Rp. 2000</span>
                         </div>
-                        <div class="col">
-                            <h5 class="card-title">Nama Produk</h5>
-                            <p class="card-text">jumblah barang</p>
-                            <p class="text-end"> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
+                        <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                            <h5 class="card-title"><?= substr("Ottogi Mie Kering - 500gr", 0, 10); ?>...</h5>
+                            <p class="fw-bold text-secondary">Rp. 2000.</p>
+                        </div>
+                        <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                            <a href="#" class="btn btn-outline-danger">Beli Lagi</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -52,19 +49,18 @@
                     <div class="row">
                         <div class="col-3">
                             <img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img">
-                            <span class="text-secondary fw-bold">Total</span><br>
-                            <span class="fw-bold">Rp. 2000</span>
                         </div>
-                        <div class="col">
-                            <h5 class="card-title">Nama Produk</h5>
-                            <p class="card-text">jumblah barang</p>
-                            <p class="text-end"> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
+                        <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                            <h5 class="card-title"><?= substr("Ottogi Mie Kering - 500gr", 0, 10); ?>...</h5>
+                            <p class="fw-bold text-secondary">Rp. 2000.</p>
+                        </div>
+                        <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                            <a href="#" class="btn btn-outline-danger">Beli Lagi</a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-
-    <?= $this->endSection(); ?>
+</div>
+<?= $this->endSection(); ?>
