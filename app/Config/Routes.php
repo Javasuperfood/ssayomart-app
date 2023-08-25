@@ -38,6 +38,7 @@ $routes->get('/history', 'HistoryTransaksi::history');
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
+    $routes->get('input', 'Input::input');
 });
 
 service('auth')->routes($routes);
