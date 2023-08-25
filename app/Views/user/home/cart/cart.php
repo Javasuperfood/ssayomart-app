@@ -29,14 +29,14 @@
         </div>
         <div class="col-6">
             <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk1.png" class="card-img-top" alt="...">
+                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Ottogi</p>
+                    <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -50,9 +50,9 @@
                     <p class="card-title">Rp. 100.000</p>
                     <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -63,14 +63,14 @@
     <div class="row text-center">
         <div class="col-6">
             <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk1.png" class="card-img-top" alt="...">
+                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Ottogi</p>
+                    <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -84,9 +84,9 @@
                     <p class="card-title">Rp. 100.000</p>
                     <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -97,14 +97,14 @@
     <div class="row text-center">
         <div class="col-6">
             <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk1.png" class="card-img-top" alt="...">
+                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Ottogi</p>
+                    <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -118,9 +118,9 @@
                     <p class="card-title">Rp. 100.000</p>
                     <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -131,14 +131,14 @@
     <div class="row text-center">
         <div class="col-6">
             <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk1.png" class="card-img-top" alt="...">
+                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Ottogi</p>
+                    <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -152,9 +152,9 @@
                     <p class="card-title">Rp. 100.000</p>
                     <p class="card-text text-secondary">Norigo</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-minus">-</button>
-                        <input type="text" class="form-control text-center" placeholder="" aria-describedby="button-addon-minus" disabled value="1">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon-plus">+</button>
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                     <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
                     <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
@@ -165,14 +165,27 @@
     <div class="row p-3 px-4">
         <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Checkout</a>
     </div>
-    <!-- <form role="search">
-        <div class="input-group my-3">
-            <span class="input-group-text" id="basic-addon1"><i class="bi bi-pencil-fill"></i></span>
-            <input type="text" class="form-control" placeholder="Tambah Catatan" aria-label="search" aria-describedby="basic-addon1">
-        </div>
-    </form> -->
     <div class="pb-5"></div>
 </div>
 <!-- END OF WISHLIST -->
+<script type="text/javascript">
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+    }
+
+    function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+        }
+    }
+</script>
 
 <?= $this->endSection(); ?>
