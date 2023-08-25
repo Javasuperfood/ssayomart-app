@@ -128,4 +128,12 @@ class produk extends ResourceController
         ];
         return view('user/produk/index', $data);
     }
+    public function produkShowSingle()
+    {
+        $data = [
+            'title' => 'Single'
+
+        ];
+        return view('user/produk/produk', $data);
+    }
 }

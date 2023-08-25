@@ -31,6 +31,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/produk', 'Produk::produkShow');
+$routes->get('/produk/single', 'Produk::produkShowSingle');
 $routes->get('/wishlist', 'Wishlist::wishlist');
 
 $routes->get('/cart', 'Cart::cart');
@@ -50,6 +51,7 @@ $routes->get('/history', 'HistoryTransaksi::history');
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
+    $routes->get('input', 'Input::input');
 });
 
 service('auth')->routes($routes);
