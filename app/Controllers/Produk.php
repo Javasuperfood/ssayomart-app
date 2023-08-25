@@ -124,9 +124,17 @@ class produk extends ResourceController
     public function produkShow()
     {
         $data = [
-            'title' => 'produk'
+            'title' => 'Produk'
 
         ];
         return view('user/produk/index', $data);
+    }
+    public function produkShowSingle()
+    {
+        $data = [
+            'title' => 'Single'
+
+        ];
+        return view('user/produk/produk', $data);
     }
 }
