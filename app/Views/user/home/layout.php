@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <?= $this->include('user/home/component/preloader') ?>
     <?= $this->renderSection('page-content') ?>
     <div class="pb-4"></div>
     <?= $this->include('user/home/component/navbarBottom') ?>
