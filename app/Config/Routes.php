@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/produk', 'Produk::produkShow');
 $routes->get('/produk/single', 'Produk::produkShowSingle');
+$routes->get('/produk/status', 'Status::status');
 $routes->get('/wishlist', 'Wishlist::wishlist');
 
 $routes->get('/cart', 'Cart::cart');
