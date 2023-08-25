@@ -10,3 +10,4 @@
         border-radius: 5%;
     }
 </style>
+<link rel="stylesheet" href="<?= base_url() ?>assets/sweetalert2/sweetalert2.min.css">
