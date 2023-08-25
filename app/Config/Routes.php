@@ -39,6 +39,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'Input::input');
+    $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
 });
 
 service('auth')->routes($routes);
