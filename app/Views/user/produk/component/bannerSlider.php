@@ -3,22 +3,22 @@
 
         <div class="swiper mySwiper ">
             <div class="swiper-wrapper">
-                <div class="swiper-slide text-center mt-5 ">
+                <div class="swiper-slide text-center mt-1 ">
                     <img src="<?= base_url() ?>assets/img/produk/banner3.jpg" />
                 </div>
-                <div class="swiper-slide text-center mt-5">
+                <div class="swiper-slide text-center mt-1">
                     <img src="<?= base_url() ?>assets/img/produk/banner2.jpg" />
                 </div>
-                <div class="swiper-slide text-center mt-5">
+                <div class="swiper-slide text-center mt-1">
                     <img src="<?= base_url() ?>assets/img/produk/banner4.jpg" />
                 </div>
-                <div class="swiper-slide text-center mt-5">
+                <div class="swiper-slide text-center mt-1">
                     <img src="<?= base_url() ?>assets/img/produk/p1.jpg" />
                 </div>
-                <div class="swiper-slide text-center mt-5">
+                <div class="swiper-slide text-center mt-1">
                     <img src="<?= base_url() ?>assets/img/produk/banner4.jpg" />
                 </div>
-                <div class="swiper-slide text-center mt-5">
+                <div class="swiper-slide text-center mt-1">
                     <img src="<?= base_url() ?>assets/img/produk/p1.jpg" />
                 </div>
             </div>

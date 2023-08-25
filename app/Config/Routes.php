@@ -31,6 +31,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/produk', 'Produk::produkShow');
+$routes->get('/produk/single', 'Produk::produkShowSingle');
 $routes->get('/wishlist', 'Wishlist::wishlist');
 
 $routes->get('/cart', 'Cart::cart');

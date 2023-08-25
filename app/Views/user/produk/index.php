@@ -3,10 +3,10 @@
 
 <!-- Navbar -->
 <?= $this->include('user/produk/component/navbar') ?>
-<!-- Banner Slider -->
-<?= $this->include('user/produk/component/bannerSlider') ?>
 <!-- Button -->
 <?= $this->include('user/produk/component/button') ?>
+<!-- Banner Slider -->
+<?= $this->include('user/produk/component/bannerSlider') ?>
 <!-- Banner -->
 <?= $this->include('user/produk/component/banner') ?>
 <!-- Card -->
