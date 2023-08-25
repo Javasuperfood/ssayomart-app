@@ -1,5 +1,5 @@
-<section class="mt-5" id="banner">
+<section class="mt-2" id="banner">
     <div class="container">
-        <img src="img/banner.jpg" alt="" class="w-100 rounded-3 gmb" />
+        <img src="img/banner.jpg" alt="Banner Promotion" />
     </div>
 </section>

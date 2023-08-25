@@ -2,7 +2,7 @@
     <div class="row mt-4">
         <h2>Produk terlaris</h2>
         <div class="col">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -101,7 +101,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -112,7 +112,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -123,7 +123,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -134,7 +134,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -145,7 +145,7 @@
             </div>
         </div>
         <div class="col ">
-            <div class="card" style="width: 10rem;">
+            <div class="card" style="width: auto;">
                 <img src="<?= base_url() ?>assets/img/produk/p5.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-text">Rp.250.000</h6>
@@ -155,7 +155,5 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>

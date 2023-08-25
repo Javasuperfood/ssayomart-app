@@ -1,27 +1,21 @@
 <section class="home" id="home">
     <div class="container">
-
-        <div class="swiper mySwiper ">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide text-center mt-5 ">
-                    <img src="<?= base_url() ?>assets/img/produk/banner3.jpg" />
-                </div>
-                <div class="swiper-slide text-center mt-5">
-                    <img src="<?= base_url() ?>assets/img/produk/banner2.jpg" />
-                </div>
-                <div class="swiper-slide text-center mt-5">
-                    <img src="<?= base_url() ?>assets/img/produk/banner4.jpg" />
-                </div>
-                <div class="swiper-slide text-center mt-5">
-                    <img src="<?= base_url() ?>assets/img/produk/p1.jpg" />
-                </div>
-                <div class="swiper-slide text-center mt-5">
-                    <img src="<?= base_url() ?>assets/img/produk/banner4.jpg" />
-                </div>
-                <div class="swiper-slide text-center mt-5">
-                    <img src="<?= base_url() ?>assets/img/produk/p1.jpg" />
+        <div class="row mt-5">
+            <div id="carouselExampleSlidesOnly" class="carousel slide swiper-slide" data-bs-ride="carousel" style="margin-top: -60px;">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="border-radius: 50%;">
+                        <img src="<?= base_url() ?>assets/img/banner.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?= base_url() ?>assets/img/banner2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="<?= base_url() ?>assets/img/banner3.jpg" class="d-block w-100" alt="...">
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
 </section>
 
 <!-- Swiper JS -->

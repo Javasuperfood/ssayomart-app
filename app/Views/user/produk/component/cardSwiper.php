@@ -1,7 +1,7 @@
 <div class="container" id="best">
     <div class="swiper testing mt-5">
         <h2> Produk Terbaik</h2>
-        <div class="swiper-wrapper col-lg-2">
+        <div class=" swiper-wrapper col-lg-2">
             <div class="swiper-slide-card" style="margin: 10px;">
                 <div class="card" style="width: 10rem;">
                     <img src="<?= base_url() ?>assets/img/produk/p5.png" style="height: auto; width: 150px;" class="card-img-top" alt="...">

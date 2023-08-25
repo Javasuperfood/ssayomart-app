@@ -1,7 +1,6 @@
 <?= $this->extend('user/home/layout') ?>
 <?= $this->section('page-content') ?>
 
-
 <?= $this->include('user/home/component/navbarTop') ?>
 
 <?= $this->include('user/home/component/slider') ?>
@@ -13,21 +12,27 @@
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
@@ -39,45 +44,29 @@
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <a href="<?= base_url() ?>produk">
+                            <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                        </a>
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row text-center">
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
@@ -87,45 +76,27 @@
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row text-center">
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
@@ -135,21 +106,27 @@
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
@@ -159,21 +136,87 @@
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
         <div class="col">
             <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                 <div class="card-body">
-                    <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col">
+            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                <div class="card-body">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                <div class="card-body">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                <div class="card-body">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center">
+        <div class="col">
+            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                <div class="card-body">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                <div class="card-body">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                <div class="card-body">
+                    <a href="<?= base_url() ?>produk">
+                        <img src="<?= base_url() ?>assets/img/kategori/Discount.jpg" width="60px" alt="" class="card-img-top">
+                    </a>
                 </div>
             </div>
         </div>
