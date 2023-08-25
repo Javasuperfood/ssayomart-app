@@ -35,7 +35,26 @@
         <span>Charts</span></a>
 </li>
 
-<!-- Nav Item - Tables -->
+<!-- Admin Produk Divider -->
+<hr class="sidebar-divider">
+
+<div class="sidebar-heading">
+    Admin Produk
+</div>
+
+<!-- Input Produk Admin Produk -->
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url(); ?>dashboard/input">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Input produk</span></a>
+</li>
+
+<!-- Kategori -->
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url(); ?>dashboard/kategori">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Kategori dan Sub Kategori</span></a>
+</li>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
