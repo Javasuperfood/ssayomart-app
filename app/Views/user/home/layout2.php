@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <?= $this->include('user/home/component/preloader') ?>
     <?= $this->include('user/home/component/navbarMain') ?>
     <?= $this->renderSection('page-content') ?>
     <!-- Bootstrap JS -->
