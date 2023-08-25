@@ -1,7 +1,6 @@
-<?= $this->extend('user/home/layout') ?>
+<?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
-<?= $this->include('user/home/component/navbarMain') ?>
 <!-- ITEM WISHLIST -->
 <div class="container pt-5">
     <div class="row">

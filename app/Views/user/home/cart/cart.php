@@ -1,9 +1,8 @@
-<?= $this->extend('user/home/layout') ?>
+<?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
-<?= $this->include('user/home/component/navbarMain') ?>
 <!-- ITEM WISHLIST -->
-<div class="container pt-5">
+<div class="container pt-1">
     <div class="row text-center">
         <div class="card shadow border-0">
             <div class="card-body">
