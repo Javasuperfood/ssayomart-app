@@ -1,42 +1,41 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
-<div class="container">
+<div class="container pt-3 pb-4">
     <div class="row row-cols-1 row-cols-sm-2 ">
         <div class="col ">
-            <div class="card text-center">
-
+            <div class="card text-center border-0 shadow-sm">
                 <div class="container">
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <h3>Status Pengiriman</h3>
-                            <div class="timeline ">
+                            <div class="timeline">
                                 <div class="timeline-item">
-                                    <div class="timeline-icon">1</div>
-                                    <div class="timeline-content">
-                                        <p>Pemesanan Diterima</p>
-                                        <span class="badge text-bg-success">25 Agustus 2023</span>
+                                    <div class="timeline-icon bg-danger"></div>
+                                    <div class="timeline-content bg-white">
+                                        <p><?= $keterangan['diterima']['pesan']; ?></p>
+                                        <span class="badge text-bg-warning"><?= $keterangan['diterima']['tanggal']; ?></span>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <div class="timeline-icon">2</div>
-                                    <div class="timeline-content">
-                                        <p>Persiapan Pengiriman</p>
-                                        <span class="badge text-bg-warning">25 Agustus 2023</span>
+                                    <div class="timeline-icon bg-danger"></div>
+                                    <div class="timeline-content bg-white">
+                                        <p><?= $keterangan['diproses']['pesan']; ?></p>
+                                        <span class="badge text-bg-warning"><?= $keterangan['diproses']['tanggal']; ?></span>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <div class="timeline-icon">3</div>
-                                    <div class="timeline-content">
-                                        <p>paket dikrim</p>
-                                        <span class="badge text-bg-warning">25 Agustus 2023</span>
+                                    <div class="timeline-icon bg-danger"></div>
+                                    <div class="timeline-content bg-white">
+                                        <p><?= $keterangan['dikirim']['pesan']; ?></p>
+                                        <span class="badge text-bg-primary"><?= $keterangan['dikirim']['tanggal']; ?></span>
                                     </div>
                                 </div>
                                 <div class="timeline-item">
-                                    <div class="timeline-icon">4</div>
-                                    <div class="timeline-content">
-                                        <p>Paket Diterima</p>
-                                        <span class="badge text-bg-primary">25 Agustus 2023</span>
+                                    <div class="timeline-icon bg-danger"></div>
+                                    <div class="timeline-content bg-white">
+                                        <p><?= $keterangan['terkirim']['pesan']; ?></p>
+                                        <span class="badge text-bg-success"><?= $keterangan['terkirim']['tanggal']; ?></span>
                                     </div>
                                 </div>
 
@@ -47,54 +46,54 @@
             </div>
         </div>
         <div class="col mt-3">
-            <div class="card px-3 py-2">
+            <div class="card border-0 shadow-sm">
                 <h2>Lokasi Tujuan</h2>
-                <h4>kantor</h4>
-                <p>Jl.in aja dulu kedepannya mikir entar Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat obcaecati omnis laudantium officiis provident. Error saepe amet repellat ex dignissimos!</p>
-                <h4>Detail Penerima</h4>
-                <p>Gilang +6200000000000</p>
+                <div class="mb-0 mx-0 my-0">
+                    <div class="card form-control form-control-md">
+                        <div class="row">
+                            <div class="col-1">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div class="col-11">
+                                <p href="#" class="card-text fw-bold">
+                                    <?= $label; ?>
+                                </p>
+                                <a href="#" class="card-text text-secondary link-underline link-underline-opacity-0"><?= substr($alamat, 0, 25); ?>...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col mt-3">
-            <div class="card px-3 py-2">
-                <h2>Pesanan kamu</h2>
-                <p>INA15165465465416546541654651453155 <i class="bi bi-clipboard"></i></p>
-                <table class="table table-sm ">
-                    <thead>
-                        <tr>
-                            <td scope="col">Metode Pembayaran</td>
-                            <td scope="col"> BCA Virtual Acount </td>
-                        </tr>
-                    </thead>
-                </table>
-                <h3>Pengiriman langsung</h3>
-
-                <table class="table table-sm ">
-                    <thead>
-                        <tr>
-                            <td scope="col">1 x</td>
-                            <td scope="col">Nori keju</td>
-                            <td scope="col"> Rp. 100.000 </td>
-                        </tr>
-                    </thead>
-                </table>
-                <table class="table table-sm ">
-                    <thead>
-                        <tr>
-                            <td scope="col">Sub total</td>
-
-                            <td scope="col"> Rp. 100.000 </td>
-                        </tr>
-                    </thead>
-                </table>
-                <table class=" table table-sm table-borderless">
-                    <thead>
-                        <tr>
-                            <td scope="col" class="fw-bold">Grand Total</td>
-                            <td scope="col" class="fw-bold"> Rp. 100.000 </td>
-                        </tr>
-                    </thead>
-                </table>
+            <div class="card border-0 shadow-sm">
+                <div class="card form-control form-control-md">
+                    <h2>Pesanan kamu</h2>
+                    <div class="row">
+                        <div class="col-10">
+                            <p><?= substr("INV15165465465416546541", 0, 20); ?>...</p>
+                        </div>
+                        <div class="col-2">
+                            <i class="bi bi-clipboard text-danger"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10">
+                            <p><?= substr("VA607088211328525", 0, 20); ?>...</p>
+                        </div>
+                        <div class="col-2">
+                            <i class="bi bi-files text-danger"></i>
+                        </div>
+                    </div>
+                    <table class="table table-sm ">
+                        <thead>
+                            <tr>
+                                <td scope="col">Metode Pembayaran</td>
+                                <td scope="col"> BCA Virtual Acount </td>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
 
@@ -116,7 +115,7 @@
         top: 0;
         bottom: 0;
         width: 3px;
-        background-color: #ccc;
+        background-color: #fbdb14;
         left: 50%;
         transform: translateX(-50%);
     }
