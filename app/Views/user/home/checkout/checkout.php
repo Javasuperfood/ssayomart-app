@@ -38,7 +38,7 @@
                             <img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img">
                         </div>
                         <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                            <h5 class="card-title">Nama Produk</h5>
+                            <h5 class="card-title"><?= substr("Ottogi Mie Kering - 500gr", 0, 10); ?>...</h5>
                             <p class="card-text text-secondary">jumlah barang
                             </p>
                         </div>
@@ -61,7 +61,7 @@
                             <img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img">
                         </div>
                         <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                            <h5 class="card-title">Nama Produk</h5>
+                            <h5 class="card-title"><?= substr("Ottogi Mie Kering - 500gr", 0, 10); ?>...</h5>
                             <p class="card-text text-secondary">jumlah barang
                             </p>
                         </div>
