@@ -98,5 +98,6 @@
             </div>
         </div>
     </div>
+    <a href="<?= base_url() ?>cart" class="btn btn-danger btn-lg rounded-circle bottom-0 end-0 mx-2 my-3 float-right position-fixed"><i class="bi bi-cart2"></i></a>
 </div>
 <?= $this->endSection(); ?>

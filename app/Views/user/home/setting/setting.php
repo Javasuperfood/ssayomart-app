@@ -6,13 +6,13 @@
             <a href="<?= base_url(); ?>setting#" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0">Alamat <i class="bi bi-chevron-down"></i> </a>
             <div class="row pb-4">
                 <div class="col-9">
-                    <h2 class="fw-bold py-3">Selamat datang, <?= $name; ?></h2>
+                    <h3 class="fw-bold py-3">Selamat datang, <?= $name; ?></h3>
                 </div>
                 <div class="col-3">
-                    <img src="<?= base_url() ?>assets/img/logo.png" class="img-thumbnail rounded-circle" style="width: 80px; height: 80px;" alt="...">
+                    <img src="<?= base_url() ?>assets/img/logo.png" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
                 </div>
             </div>
-            <div class="card shadow">
+            <div class="card shadow border-0">
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
@@ -102,6 +102,5 @@
             </ul>
         </div>
     </div>
-    <div class="pb-4"></div>
 </div>
 <?= $this->endSection(); ?>

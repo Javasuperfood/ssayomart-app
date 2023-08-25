@@ -35,13 +35,15 @@ $routes->get('/produk/single', 'Produk::produkShowSingle');
 $routes->get('/wishlist', 'Wishlist::wishlist');
 
 $routes->get('/cart', 'Cart::cart');
+$routes->get('/checkout', 'Checkout::checkout');
 
 // Setting route
 $routes->get('/setting', 'Setting::setting');
 $routes->get('/setting/detail-user', 'Setting::detailUser');
 $routes->get('/setting/pembayaran', 'Setting::pembayaran');
 $routes->get('/setting/alamat-list', 'Setting::alamatList');
-$routes->get('/setting/update-alamat', 'Setting::updatealamat');
+$routes->get('/setting/update-alamat', 'Setting::updateAlamat');
+$routes->get('/setting/create-alamat', 'Setting::createAlamat');
 
 
 

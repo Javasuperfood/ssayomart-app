@@ -125,7 +125,6 @@ class produk extends ResourceController
     {
         $data = [
             'title' => 'Produk'
-
         ];
         return view('user/produk/index', $data);
     }

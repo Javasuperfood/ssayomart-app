@@ -16,7 +16,7 @@
                         <div class="col">
                             <h5 class="card-title">Nama Produk</h5>
                             <p class="card-text text-secondary">jumblah barang</p>
-                            <p class="text-end"><a class="btn btn-danger" href="#">Ulasan</a> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
+                            <p class="text-end"> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
                         </div>
                     </div>
 
@@ -37,7 +37,7 @@
                         <div class="col">
                             <h5 class="card-title">Nama Produk</h5>
                             <p class="card-text">jumblah barang</p>
-                            <p class="text-end"><a class="btn btn-danger" href="#">Ulasan</a> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
+                            <p class="text-end"> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
                         </div>
                     </div>
 
@@ -58,7 +58,7 @@
                         <div class="col">
                             <h5 class="card-title">Nama Produk</h5>
                             <p class="card-text">jumblah barang</p>
-                            <p class="text-end"><a class="btn btn-danger" href="#">Ulasan</a> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
+                            <p class="text-end"> <a href="#" class="btn btn-outline-danger">Beli Lagi</a></p>
                         </div>
                     </div>
 
