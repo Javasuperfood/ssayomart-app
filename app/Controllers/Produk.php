@@ -124,14 +124,17 @@ class produk extends ResourceController
     public function produkShow()
     {
         $data = [
-            'title' => 'Produk'
+            'title' => 'Produk',
+            'nama_produk' => 'Nori',
+            'deskripsi_produk' => 'Nori adalah makanan khas korea dan jepang yang dikeringkan dan dioleh menjadi makanan yang sangat lezat dan cocok untuk menemani makan ataupun untuk menjadi camilan',
+            'harga_produk'  => 'Rp. 25.000'
         ];
         return view('user/produk/index', $data);
     }
     public function produkShowSingle()
     {
         $data = [
-            'title' => 'Single'
+            'title' => 'Detail Produk'
 
         ];
         return view('user/produk/produk', $data);

@@ -5,7 +5,7 @@
 <div class="container pt-5">
     <div class="row">
         <div class="col clearfix">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush shadow rounded">
                 <a href="<?= base_url() ?>setting/alamat-list" class="list-group-item pb-2">
                     <span class="fw-bold"><?= $label; ?></span>
                     <p class="card-text text-secondary"><?= substr($alamat, 0, 40); ?>...</p> <i class="bi bi-pencil-fill fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -31,7 +31,7 @@
 
     <div class="row pt-3">
         <div class="col">
-            <div class="card">
+            <div class="card border-0 shadow">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
@@ -54,7 +54,7 @@
 
     <div class="row pt-3">
         <div class="col">
-            <div class="card">
+            <div class="card border-0 shadow">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-3">
@@ -101,10 +101,11 @@
                 </tr>
             </tbody>
         </table>
+        <p class="text-secondary text-center"><a href="<?= base_url() ?>produk/status" class="link-underline link-underline-opacity-0 link-secondary">Detail Pesanan >></p></a>
     </div>
 
     <div class="row p-3 px-4">
-        <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Bayar</a>
+        <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff;">Bayar</a>
     </div>
 
 </div>

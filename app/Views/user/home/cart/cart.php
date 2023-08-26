@@ -27,12 +27,17 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row text-center">
         <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
+            <div class="card my-2 border-0 shadow" style="width: auto;">
+                <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                    <img src="<?= base_url() ?>assets/img/produk/p7.png" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
+                    <p class="card-title">Rp. 25.000</p>
+                    <p class="card-text text-secondary">Norigo Rasa Keju</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                         <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
@@ -44,11 +49,13 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
+            <div class="card my-2 border-0 shadow" style="width: auto;">
+                <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                    <img src="<?= base_url() ?>assets/img/produk/p7.png" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
+                    <p class="card-title">Rp. 25.000</p>
+                    <p class="card-text text-secondary">Norigo Rasa Keju</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                         <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
@@ -62,11 +69,13 @@
     </div>
     <div class="row text-center">
         <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
+            <div class="card my-2 border-0 shadow" style="width: auto;">
+                <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                    <img src="<?= base_url() ?>assets/img/produk/p7.png" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
+                    <p class="card-title">Rp. 25.000</p>
+                    <p class="card-text text-secondary">Norigo Rasa Keju</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                         <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
@@ -78,45 +87,13 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
+            <div class="card my-2 border-0 shadow" style="width: auto;">
+                <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                    <img src="<?= base_url() ?>assets/img/produk/p7.png" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
-                    <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
-                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
-                    </div>
-                    <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
-                    <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row text-center">
-        <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
-                    <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
-                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
-                    </div>
-                    <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
-                    <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
+                    <p class="card-title">Rp. 25.000</p>
+                    <p class="card-text text-secondary">Norigo Rasa Keju</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                         <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
@@ -130,11 +107,13 @@
     </div>
     <div class="row text-center">
         <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
+            <div class="card my-2 border-0 shadow" style="width: auto;">
+                <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                    <img src="<?= base_url() ?>assets/img/produk/p7.png" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
+                    <p class="card-title">Rp. 25.000</p>
+                    <p class="card-text text-secondary">Norigo Rasa Keju</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                         <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
@@ -146,11 +125,13 @@
             </div>
         </div>
         <div class="col-6">
-            <div class="card my-2" style="width: auto;">
-                <img src="<?= base_url() ?>assets/img/exampleproduk2.png" class="card-img-top" alt="...">
+            <div class="card my-2 border-0 shadow style=" width: auto;">
+                <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                    <img src="<?= base_url() ?>assets/img/produk/p7.png" class="card-img-top" alt="...">
+                </a>
                 <div class="card-body">
-                    <p class="card-title">Rp. 100.000</p>
-                    <p class="card-text text-secondary">Norigo</p>
+                    <p class="card-title">Rp. 25.000</p>
+                    <p class="card-text text-secondary">Norigo Rasa Keju</p>
                     <div class="input-group mb-3 d-flex justify-content-center">
                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                         <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
