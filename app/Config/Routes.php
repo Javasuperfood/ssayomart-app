@@ -33,22 +33,23 @@ $routes->get('/', 'Home::index');
 $routes->get('/produk', 'Produk::produkShow');
 $routes->get('/produk/single', 'Produk::produkShowSingle');
 $routes->get('/produk/status', 'Status::status');
-$routes->get('/wishlist', 'Wishlist::wishlist');
 
-$routes->get('/cart', 'Cart::cart');
-$routes->get('/checkout', 'Checkout::checkout');
+$routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
+    $routes->get('/wishlist', 'Wishlist::wishlist');
 
-// Setting route
-$routes->get('/setting', 'Setting::setting');
-$routes->get('/setting/detail-user', 'Setting::detailUser');
-$routes->get('/setting/pembayaran', 'Setting::pembayaran');
-$routes->get('/setting/alamat-list', 'Setting::alamatList');
-$routes->get('/setting/update-alamat', 'Setting::updateAlamat');
-$routes->get('/setting/create-alamat', 'Setting::createAlamat');
+    $routes->get('/cart', 'Cart::cart');
+    $routes->get('/checkout', 'Checkout::checkout');
 
+    // Setting route
+    $routes->get('/setting', 'Setting::setting');
+    $routes->get('/setting/detail-user', 'Setting::detailUser');
+    $routes->get('/setting/pembayaran', 'Setting::pembayaran');
+    $routes->get('/setting/alamat-list', 'Setting::alamatList');
+    $routes->get('/setting/update-alamat', 'Setting::updateAlamat');
+    $routes->get('/setting/create-alamat', 'Setting::createAlamat');
+    $routes->get('/history', 'HistoryTransaksi::history');
+});
 
-
-$routes->get('/history', 'HistoryTransaksi::history');
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
