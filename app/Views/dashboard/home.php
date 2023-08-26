@@ -172,5 +172,9 @@
 					</table>
 					</table>
 				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-				<?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
