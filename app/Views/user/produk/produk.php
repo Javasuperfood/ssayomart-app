@@ -12,23 +12,20 @@
             <p><del>Rp.100.000</del>
             <h1>Rp. 25.000</h1>
             <p><i class="fa-regular fa-heart"></i> Add to Wishlist</p>
-
             <div class="container">
                 <div class="row">
-                    <div class="col-2">
-                        <button class="btn btn-danger decrement">-</button>
-                    </div>
-                    <div class="col-8 text-center">
-                        <span class="count">0</span>
-                    </div>
-                    <div class="col-2">
-                        <button class="btn btn-success increment">+</button>
+                    <div class="input-group mb-3 d-flex justify-content-center">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                 </div>
             </div>
             <br>
-            <button type="button" class="btn btn-danger mt-4" style="background-color: #ec2614; color: #fff;"><i class="bi bi-basket2"></i></button>
-            <button type="button" class="btn btn-danger mt-4" style="background-color: #ec2614; color: #fff;">Beli Sekarang</button>
+            <div class="text-center">
+                <a href="#" class="btn btn-white text-danger border-danger mt-4"><i class="bi bi-basket2"></i></a>
+                <a href="<?= base_url() ?>checkout" class="btn btn-white text-danger border-danger mt-4">Beli Sekarang</a>
+            </div>
         </div>
 
         <div class="row mt-4">
@@ -61,5 +58,23 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+    }
 
+    function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+        }
+    }
+</script>
 <?= $this->endSection(); ?>

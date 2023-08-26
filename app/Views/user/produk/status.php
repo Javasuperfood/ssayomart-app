@@ -46,10 +46,10 @@
             </div>
         </div>
         <div class="col mt-3">
-            <div class="card border-0 shadow-sm">
+            <div class="card border-0">
                 <h2>Lokasi Tujuan</h2>
                 <div class="mb-0 mx-0 my-0">
-                    <div class="card form-control form-control-md">
+                    <div class="card form-control form-control-md border-0 shadow-sm">
                         <div class="row">
                             <div class="col-1">
                                 <i class="bi bi-geo-alt-fill"></i>
@@ -66,8 +66,8 @@
             </div>
         </div>
         <div class="col mt-3">
-            <div class="card border-0 shadow-sm">
-                <div class="card form-control form-control-md">
+            <div class="card border-0">
+                <div class="card form-control form-control-md border-0 shadow-sm">
                     <h2>Pesanan kamu</h2>
                     <div class="row">
                         <div class="col-10">
