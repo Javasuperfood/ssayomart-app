@@ -38,6 +38,10 @@
                         <input type="email" class="input-field" name="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>" value="<?= old('email', auth()->user()->email ?? null) ?>" required />
                     </div>
                     <button type="submit" class="sign-btn" id="btn-forget"><?= lang('Auth.send') ?></button>
+                    <div class="heading">
+                        <h6>Sudah punya akun?</h6>
+                        <a href="<?= base_url(); ?>login" class="toggle">Masuk</a>
+                    </div>
                 </div>
 
 
