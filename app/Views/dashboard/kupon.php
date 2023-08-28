@@ -69,7 +69,7 @@
                                 <th>Penggunaan/Batas</th>
                                 <th>Tanggal Kadaluarsa</th>
                                 <th>Kategori</th>
-                                <th>Aksi</th>
+                                <th style="width: 100px;">Aksi</th>
                             </tr>
                         </thead>
                         <tfoot>
