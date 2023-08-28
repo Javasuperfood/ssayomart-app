@@ -51,9 +51,16 @@
 
 <!-- Kategori -->
 <li class="nav-item">
-    <a class="nav-link" href="<?= base_url(); ?>dashboard/kategori">
+    <a class="nav-link" href="<?= base_url(); ?>dashboard/kategorisubkat">
         <i class="fas fa-fw fa-table"></i>
         <span>Kategori dan Sub Kategori</span></a>
+</li>
+
+<!-- Kategori -->
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url(); ?>dashboard/inputbaner">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Input Banner</span></a>
 </li>
 
 <!-- Divider -->

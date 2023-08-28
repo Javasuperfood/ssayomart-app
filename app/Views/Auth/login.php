@@ -54,13 +54,13 @@
 
                     <button type="submit" value="Masuk" class="sign-btn" id="btn-login"><?= lang('Auth.login') ?></button>
 
-                    <p class="text">
+                    <p class="text-center text-secondary">
                         <?php if (setting('Auth.allowMagicLinkLogins')) : ?>
                     <p class="text-center toggle">Lupa kata sandi ? <a href="<?= url_to('magic-link') ?>">Klik disini</a< /p>
+                            Lupa kata sandi ? <a class="toggle" href="<?= url_to('magic-link') ?>">Klik disini</a>
                         <?php endif ?>
-
-
                     </p>
+                    <p class="text-center"><a class="toggle" href="<?= base_url(); ?>">Lihat barang tanpa login</a></p>
                 </div>
             </form>
         </div>
