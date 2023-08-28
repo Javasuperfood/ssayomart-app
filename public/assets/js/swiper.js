@@ -50,10 +50,10 @@ var swiper = new Swiper(".mySwiper", {
       clickable: true,
     },
 
-    autoplay: {
-      delay: 1500,
-      disableOnInteraction: false,
-    },    
+    // autoplay: {
+    //   delay: 1500,
+    //   disableOnInteraction: false,
+    // },    
   });
 
   var swiper = new Swiper(".testing", {
