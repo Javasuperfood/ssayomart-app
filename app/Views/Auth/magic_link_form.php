@@ -31,7 +31,6 @@
                 <div class="heading">
                     <h2>Lupa Password</h2>
                 </div>
-
                 <div class="actual-form">
                     <div class="input-wrap">
 
