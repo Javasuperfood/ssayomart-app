@@ -67,6 +67,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->resource('distributor');
     $routes->resource('kupon');
     $routes->resource('arsip');
+    $routes->get('getcity', 'Setting::getCity');
 });
 
 
