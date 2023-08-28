@@ -8,31 +8,16 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider">
-
-<div class="sidebar-heading">
-    Administrator
-</div>
-
-<!-- Nav Item - Dashboard -->
-<li class="nav-item">
-    <a class="nav-link" href="index.html">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Dashboard</span></a>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider">
-
 <!-- Heading -->
 <div class="sidebar-heading">
-    Menu
+    Administrator
 </div>
 
 <!-- Nav Item - Charts -->
 <li class="nav-item">
     <a class="nav-link" href="<?= base_url(); ?>dashboard/component/home">
         <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
+        <span>Role</span></a>
 </li>
 
 <!-- Admin Produk Divider -->
@@ -46,7 +31,7 @@
 <li class="nav-item">
     <a class="nav-link" href="<?= base_url(); ?>dashboard/input">
         <i class="fas fa-fw fa-table"></i>
-        <span>Input produk</span></a>
+        <span>Produk</span></a>
 </li>
 
 <!-- Kategori -->
@@ -60,7 +45,7 @@
 <li class="nav-item">
     <a class="nav-link" href="<?= base_url(); ?>dashboard/inputbaner">
         <i class="fas fa-fw fa-table"></i>
-        <span>Input Banner</span></a>
+        <span>Banner</span></a>
 </li>
 
 <!-- Divider -->
