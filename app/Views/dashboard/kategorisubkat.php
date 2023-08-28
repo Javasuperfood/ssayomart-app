@@ -126,40 +126,80 @@
                     <h6 class="m-0 font-weight-bold text-primary">Produk list</h6>
                 </div>
                 <div class="card-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Gambar</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Slug</th>
-                                <th scope="col">Ketegori</th>
-                                <th scope="col">Sub-kategori</th>
-                                <th scope="col">Deskripsi</th>
-                                <th scope="col">Aksi</th>
+                    <!-- secarhbar -->
+                    <div class="container text-right">
+                        <div class="row row-cols-2">
+                            <div class="col"></div>
+                            <div class="col">
+                                <!-- searchbar -->
+                                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive mt-3">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Gambar</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Slug</th>
+                                    <th scope="col">Ketegori</th>
+                                    <th scope="col">Sub-kategori</th>
+                                    <th scope="col">Deskripsi</th>
+                                    <th scope="col">Aksi</th>
 
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td><img src="<?= base_url() ?>assets/img/bg3.jpg" alt="" width="50" height="50"></td>
-                                <td>contoh</td>
-                                <td>contoh</td>
-                                <td>contoh</td>
-                                <td>contoh</td>
-                                <td>contoh</td>
-                                <td>
-                                    <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-exclamation-triangle"></i>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td><img src="<?= base_url() ?>assets/img/bg3.jpg" alt="" width="50" height="50"></td>
+                                        <td>contoh</td>
+                                        <td>contoh</td>
+                                        <td>contoh</td>
+                                        <td>contoh</td>
+                                        <td>contoh</td>
+                                        <td>
+                                            <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                </tbody>
+                            </tfoot>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
                                     </a>
-                                </td>
-                        </tbody>
-                    </table>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
 
