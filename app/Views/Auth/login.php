@@ -56,7 +56,7 @@
 
                     <p class="text">
                         <?php if (setting('Auth.allowMagicLinkLogins')) : ?>
-                    <p class="text-center">Lupa kata sandi ? <a href="<?= url_to('magic-link') ?>">Klik disini</a< /p>
+                    <p class="text-center toggle">Lupa kata sandi ? <a href="<?= url_to('magic-link') ?>">Klik disini</a< /p>
                         <?php endif ?>
 
 
