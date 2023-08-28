@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\UsersModel;
+use App\Controllers\BaseController;
+
 class Setting extends BaseController
 {
 
@@ -14,11 +17,14 @@ class Setting extends BaseController
     }
     public function setting(): string
     {
+        $userModel = new UsersModel();
+        $user = $userModel->find(session()->get('id'));
         $data = [
             'title' => 'Setting',
-            'name' => 'NamaUser',
-            'saldo' => 2000
+            'user' => $user[0],
+            'saldo' => 2000000
         ];
+        // dd($data);
         return view('user/home/setting/setting', $data);
     }
     public function detailUser(): string
