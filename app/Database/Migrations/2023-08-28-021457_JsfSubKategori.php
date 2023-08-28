@@ -4,31 +4,34 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfKupon extends Migration
+class JsfSubKategori extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_kupon' => [
+            'id_sub_kategori' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'nama_kupon' => [
+            'id_kategori' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+            ],
+            'nama_kategori' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '150',
+                'constraint' => '225',
             ],
-            'code_kupon' => [
-                'type'          => 'char',
-                'constraint'    => '16'
+            'slug' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '255',
             ],
-            'deskripsi_kupon' => [
+
+            'deskripsi' => [
                 'type'          => 'varchar',
                 'constraint'    => '200'
-            ],
-            'masa_berlaku' => [
-                'type'          => 'datetime'
             ],
             'created_at' => [
                 'type'          => 'timestamp',
@@ -38,13 +41,15 @@ class JsfKupon extends Migration
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_kupon', true);
-
-        $this->forge->createTable('jsf_kupon');
+        $this->forge->addKey('id_sub_kategori', true);
+        $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori');
+        $this->forge->createTable('jsf_sub_kategori');
     }
 
     public function down()
     {
-        $this->forge->dropTable('jsf_kupon');
+        $this->forge->dropForeignKey('jsf_sub_kategori', 'id_kategori');
+
+        $this->forge->dropTable('jsf_sub_kategori');
     }
 }

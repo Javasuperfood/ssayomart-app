@@ -4,12 +4,12 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfArsip extends Migration
+class JsfCart extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_arsip' => [
+            'id_cart' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -20,15 +20,9 @@ class JsfArsip extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'id_produk' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-            ],
-            'id_pembelian' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
+            'total' => [
+                'type'       => 'INT',
+                'constraint' => 11,
             ],
             'created_at' => [
                 'type'          => 'timestamp',
@@ -38,19 +32,15 @@ class JsfArsip extends Migration
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_arsip', true);
+        $this->forge->addKey('id_cart', true);
         $this->forge->addForeignKey('id_user', 'users', 'id');
-        $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
-        $this->forge->addForeignKey('id_pembelian', 'jsf_pembelian', 'id_pembelian');
-        $this->forge->createTable('jsf_arsip');
+        $this->forge->createTable('jsf_cart');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_arsip', 'id');
-        $this->forge->dropForeignKey('jsf_arsip', 'id_produk');
-        $this->forge->dropForeignKey('jsf_arsip', 'id_pembelian');
+        $this->forge->dropForeignKey('jsf_users', 'id');
 
-        $this->forge->dropTable('jsf_arsip');
+        $this->forge->dropTable('jsf_cart');
     }
 }

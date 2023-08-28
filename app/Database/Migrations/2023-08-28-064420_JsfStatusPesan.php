@@ -4,28 +4,24 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfSubKategori extends Migration
+class JsfStatusPesan extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_sub_kategori' => [
+            'id_status_pesan' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'nama_sub_kategori' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '225',
+            'status' => [
+                'type'          => 'char',
+                'constraint'    => '20'
             ],
-            'deskripsi_sub_kategori' => [
+            'deskripsi' => [
                 'type'          => 'varchar',
-                'constraint'    => '200'
-            ],
-            'slug' => [
-                'type'          => 'varchar',
-                'constraint'    => '225'
+                'constraint'    => '255'
             ],
             'created_at' => [
                 'type'          => 'timestamp',
@@ -35,15 +31,13 @@ class JsfSubKategori extends Migration
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_sub_kategori', true);
+        $this->forge->addKey('id_status_pesan', true);
 
-        $this->forge->createTable('jsf_sub_kategori');
+        $this->forge->createTable('jsf_status_pesan');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_sub_kategori', 'id_kategori');
-
-        $this->forge->dropTable('jsf_sub_kategori');
+        $this->forge->dropTable('jsf_status_pesan');
     }
 }
