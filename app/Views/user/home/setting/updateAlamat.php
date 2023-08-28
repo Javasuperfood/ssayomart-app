@@ -4,6 +4,12 @@
 <form class="pt-3">
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
+            <input class="form-control" id="floatingInput">
+            <label for="floatingInput">Lable*</label>
+        </div>
+    </div>
+    <div class="mb-3 mx-3 my-3">
+        <div class="form-floating">
             <input type="disable" class="form-control" id="floatingInput" value="<?= $nama; ?>">
             <label for="floatingInput">Nama Penerima*</label>
         </div>
@@ -15,27 +21,46 @@
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
-        <div class="card form-control form-control-md">
-            <div class="row">
-                <div class="col-1">
-                    <i class="bi bi-geo-alt-fill"></i>
-                </div>
-                <div class="col-11">
-                    <a href="#" class="card-text text-secondary link-underline link-underline-opacity-0"><?= substr($alamat, 0, 35); ?>...</a>
-                </div>
-            </div>
+        <div class="form-floating">
+            <input class="form-control" id="floatingInput">
+            <label for="floatingInput">Nomor Telephone Penerima (optional)</label>
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input type="disable" class="form-control" id="floatingInput" value="<?= $alamat; ?>">
-            <label for="floatingInput">Detail Alamat*</label>
+            <select class="form-select" aria-label="Default select example" id="provinsi">
+                <option selected></option>
+                <?php foreach ($provinsi as $p) : ?>
+                    <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <label for="provinsi">Provinsi</label>
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input type="disable" class="form-control" id="floatingInput" value="<?= $catatan; ?>">
-            <label for="floatingInput">Catatan Pengiriman*</label>
+            <select class="form-select" aria-label="Default select example" id="kabupaten">
+                <option selected></option>
+            </select>
+            <label for="kabupaten">Kota</label>
+        </div>
+    </div>
+    <div class="mb-3 mx-3 my-3">
+        <div class="form-floating">
+            <input class="form-control" id="floatingInput">
+            <label for=" floatingInput">Kode Pos*</label>
+        </div>
+    </div>
+    <div class="mb-3 mx-3 my-3">
+        <div class="form-floating">
+            <input class="form-control" id="floatingInput">
+            <label for=" floatingInput">Detail Alamat*</label>
+        </div>
+    </div>
+    <div class="mb-3 mx-3 my-3">
+        <div class="form-floating">
+            <input class="form-control" id="floatingInput">
+            <label for=" floatingInput">Detail Alamat (optional)</label>
         </div>
     </div>
     <div class="row fixed-bottom p-3 px-4">

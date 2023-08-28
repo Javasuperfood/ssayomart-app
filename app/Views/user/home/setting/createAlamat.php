@@ -5,6 +5,12 @@
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
             <input class="form-control" id="floatingInput">
+            <label for="floatingInput">Lable*</label>
+        </div>
+    </div>
+    <div class="mb-3 mx-3 my-3">
+        <div class="form-floating">
+            <input class="form-control" id="floatingInput">
             <label for="floatingInput">Nama Penerima*</label>
         </div>
     </div>
@@ -14,42 +20,37 @@
             <label for="floatingInput">Nomor Handphone Penerima*</label>
         </div>
     </div>
-
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
             <input class="form-control" id="floatingInput">
-            <label for=" floatingInput">Provinsi*</label>
+            <label for="floatingInput">Nomor Telephone Penerima (optional)</label>
         </div>
     </div>
-
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control" id="floatingInput">
-            <label for=" floatingInput">Kabupaten/Kota*</label>
+            <select class="form-select" aria-label="Default select example" id="provinsi">
+                <option selected></option>
+                <?php foreach ($provinsi as $p) : ?>
+                    <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <label for="provinsi">Provinsi</label>
         </div>
     </div>
-
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control" id="floatingInput">
-            <label for=" floatingInput">Kecamatan*</label>
+            <select class="form-select" aria-label="Default select example" id="kabupaten">
+                <option selected></option>
+            </select>
+            <label for="kabupaten">Kota</label>
         </div>
     </div>
-
-    <div class="mb-3 mx-3 my-3">
-        <div class="form-floating">
-            <input class="form-control" id="floatingInput">
-            <label for=" floatingInput">Desa*</label>
-        </div>
-    </div>
-
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
             <input class="form-control" id="floatingInput">
             <label for=" floatingInput">Kode Pos*</label>
         </div>
     </div>
-
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
             <input class="form-control" id="floatingInput">
@@ -59,12 +60,14 @@
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
             <input class="form-control" id="floatingInput">
-            <label for="floatingInput">Catatan Pengiriman (optional)</label>
+            <label for=" floatingInput">Detail Alamat (optional)</label>
         </div>
     </div>
     <div class="row fixed-bottom p-3 px-4">
         <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Tambah</button>
     </div>
 </form>
-
+<div class="row py-5">
+    <div class="col"></div>
+</div>
 <?= $this->endSection(); ?>
