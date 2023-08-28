@@ -8,16 +8,16 @@
 
 <!-- Divider -->
 <hr class="sidebar-divider">
-<!-- Heading -->
+
 <div class="sidebar-heading">
     Administrator
 </div>
 
-<!-- Nav Item - Charts -->
+<!-- Nav Item - Dashboard -->
 <li class="nav-item">
     <a class="nav-link" href="<?= base_url(); ?>dashboard/component/home">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Role</span></a>
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
 </li>
 
 <!-- Admin Produk Divider -->
@@ -46,6 +46,13 @@
     <a class="nav-link" href="<?= base_url(); ?>dashboard/inputbaner">
         <i class="fas fa-fw fa-table"></i>
         <span>Banner</span></a>
+</li>
+
+<!-- kupon -->
+<li class="nav-item">
+    <a class="nav-link" href="<?= base_url(); ?>dashboard/kupon">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Kupon</span></a>
 </li>
 
 <!-- Divider -->

@@ -1,164 +1,118 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<!-- koding here -->
-<!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Tabel Produk</h1>
-<p class="mb-4">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
-    <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
-</p>
-<div class="container mt-4">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Tables Produk</h6>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary float-right mb-4" data-toggle="modal" data-target="#exampleModalCenter">
-                Tambah Data
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle">Tambah data</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- form isi data tambah -->
-                            <form>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput">Masukan Gambar Produk</label>
-                                    <input type="file" class="form-control" id="formGroupExampleInput" placeholder="Masukan Gambar">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput">Masukan Nama Produk</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukan Nama Produk">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput">Masukan Kategori</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Masukan Kategori">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Masukan Sub Kategori</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukan Sub Kategori">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Masukan Harga</label>
-                                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Masukan Harga">
-                                </div>
-                                <div class="form-group">
-                                    <label for="formGroupExampleInput2">Masukan Tanggal EXP</label>
-                                    <input type="date" class="form-control" id="formGroupExampleInput2" placeholder="Masukan Sub Kategori">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
+<!-- information -->
+<div class="container ml-2">
+    <div class="container">
+        <h1 class="h3 mb-2 text-gray-800">Tabel Produk</h1>
+        <p class="mb-4">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
+            <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
+        </p>
+    </div>
+    <!-- button tambah -->
+    <div class="container mt-3">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Tambah Produk
+        </button>
+        <!-- dialog modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- tabel -->
+    <div class="container mt-3">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="container text-right">
+                    <div class="row row-cols-2">
+                        <div class="col"></div>
+                        <div class="col">
+                            <!-- searchbar -->
+                            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="button">
+                                            <i class="fas fa-search fa-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive mt-3">
                     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
-                                <th scope="col">Gambar Produk</th>
-                                <th scope="col">Nama Produk</th>
-                                <th scope="col">Kategori</th>
-                                <th scope="col">Sub Kategori</th>
-                                <th scope="col">Harga</th>
-                                <th scope="col">Tanggal Kadaluarsa</th>
-                                <th scope="col">Aksi</th>
+                                <th>Gambar</th>
+                                <th>Nama Produk</th>
+                                <th>Tanggal EXP</th>
+                                <th>Kategori</th>
+                                <th>Subkategori</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td><img src="<?= base_url() ?>assets/img/bg3.jpg" alt="" width="50" height="50"></td>
-                                <td>Contoh1</td>
-                                <td>Kat.Contoh</td>
-                                <td>Kat.SubContoh</td>
-                                <td>Rp.1000</td>
-                                <td>12/12/2012</td>
-                                <td>
-                                    <!-- Edit -->
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Edit
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Edit disini</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ...
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td><img src="<?= base_url() ?>assets/img/bg3.jpg" alt="" width="50" height="50"></td>
-                                <td>Contoh1</td>
-                                <td>Kat.Contoh</td>
-                                <td>Kat.SubContoh</td>
-                                <td>Rp.1000</td>
-                                <td>12/12/2012</td>
-                                <td>
-                                    <!-- Edit -->
-                                    <button type="button" class="btn btn-warning btn-md" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Edit
-                                    </button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLongTitle">Edit disini</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    ...
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="button" class="btn btn-danger">Hapus</button>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tfoot>
+                            <tbody>
+                                <tr>
+                                    <td><img src="<?= base_url() ?>assets/img/produk/p7.png" class="img-fluid" alt="" width="50" height="50"></td>
+                                    <td>System Architect</td>
+                                    <td>Edinburgh</td>
+                                    <td>61</td>
+                                    <td>2011/04/25</td>
+                                    <td> <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </a>
+                                        <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </tfoot>
                     </table>
-                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-
             </div>
+        </div>
+
+    </div>
+</div>
 
 
 
-            <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
