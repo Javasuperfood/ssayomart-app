@@ -86,11 +86,11 @@
                     <!-- form -->
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nama Lengkap">
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Slug</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="slug">
                     </div>
                     <div class="mb-1">
                         <label for="exampleFormControlInput1" class="form-label">Induk Kategori</label>

@@ -3,14 +3,14 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-laugh-wink"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">Ssayomart</div>
+    <div class="sidebar-brand-text mx-3">Ssayomart Administrator</div>
 </a>
 
 <!-- Divider -->
 <hr class="sidebar-divider">
 
 <div class="sidebar-heading">
-    Administrator
+    Admin Super
 </div>
 
 <!-- Nav Item - Dashboard -->
@@ -38,7 +38,7 @@
 <li class="nav-item">
     <a class="nav-link" href="<?= base_url(); ?>dashboard/kategorisubkat">
         <i class="fas fa-fw fa-table"></i>
-        <span>Kategori dan Sub Kategori</span></a>
+        <span>Kategori & SubKategori</span></a>
 </li>
 
 <!-- Kategori -->
