@@ -20,40 +20,44 @@ class JsfProduk extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'nama_produk' => [
+            'nama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '225',
             ],
-            'harga_produk' => [
+            'slug' => [
                 'type'          => 'varchar',
-                'constraint'    => '100'
+                'constraint'    => '225'
             ],
-            'deskripsi_produk' => [
+            'sku' => [
                 'type'          => 'varchar',
-                'constraint'    => '200'
+                'constraint'    => '225'
             ],
-            'stock_produk' => [
+            'harga' => [
+                'type'          => 'varchar',
+                'constraint'    => '225'
+            ],
+            'id_inventory' => [
                 'type'          => 'INT',
                 'constraint'    => 11
             ],
-            'gambar_produk' => [
-                'type'          => 'varchar',
-                'constraint'    => '255'
-            ],
-            'slug' => [
+            'deskripsi' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
             ],
-            'created_by' => [
-                'type'          => 'INT',
-                'constraint'    => 11,
-                'null'          => true
+            'gambar' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '255',
             ],
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ], 'updated_at' => [
                 'type'          => 'timestamp',
+                'null'          => true
+            ],
+            'created_by' => [
+                'type'          => 'INT',
+                'constraint'    => 11,
                 'null'          => true
             ],
         ]);
