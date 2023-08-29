@@ -67,7 +67,7 @@ class JsfAlamatUser extends Migration
                 'constraint' => '225',
 
             ],
-            'telp' => [
+            'telp2' => [
                 'type'        => 'varchar',
                 'constraint' => '225',
                 'null'          => true

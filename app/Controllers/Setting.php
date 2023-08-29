@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\UsersModel;
+use App\Models\AlamatUserModel;
 use App\Controllers\BaseController;
+use App\Models\AuthIdentitesModel;
 
 class Setting extends BaseController
 {
@@ -27,11 +29,23 @@ class Setting extends BaseController
         // dd($data);
         return view('user/home/setting/setting', $data);
     }
-    public function detailUser(): string
+    public function detailUser($id): string
     {
+        $usersModel = new UsersModel();
+        $authIdentitesModel = new AuthIdentitesModel();
+        $query = $usersModel->select('users.username, users.fullname, users.telp, auth_identities.secret')
+            ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
+            ->where('users.id', $id)
+            ->get();
+
+        $du = $usersModel->find([$id]);
         $data = [
             'title' => 'Detail User',
+            'detail' => $usersModel,
+            'du' => $du[0],
+            'results' => $query->getResult()
         ];
+        // dd($data);
         return view('user/home/setting/detailUser', $data);
     }
     public function pembayaran(): string
@@ -43,30 +57,30 @@ class Setting extends BaseController
     }
     public function alamatList(): string
     {
+        $alamat_user_model = new AlamatUserModel();
+        $alamat_list = $alamat_user_model->findAll();
         $data = [
             'title' => 'Alamat',
-            'nama' => 'Javasuperfood',
-            'label'     => 'Kantor',
-            'alamat' => 'Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139'
+            'alamat_user_model' => $alamat_list
         ];
+        // dd($data);
         return view('user/home/setting/alamatList', $data);
     }
 
-    public function updateAlamat(): string
+    public function updateAlamat($id): string
     {
         $provinsi = $this->rajaongkir('province');
+        $alamat_user_model = new AlamatUserModel();
+        $au = $alamat_user_model->find([$id]);
         $data = [
-            'title'     => 'Edit Alamat',
-            'nama'      => 'Javasuperfood',
-            'telp'      => '+62 123456789',
-            'label'     => 'Kantor',
-            'alamat'    => 'Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139',
-            'catatan'   => 'Rumah saya ada anjing nya. Awas di gigit. Anjing saya rabies.',
+            'title' => 'Edit Alamat',
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
-
+            'au' => $au[0]
         ];
+        // dd($data);
         return view('user/home/setting/updateAlamat', $data);
     }
+
 
     public function createAlamat(): string
 
