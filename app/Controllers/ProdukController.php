@@ -44,12 +44,20 @@ class ProdukController extends BaseController
             'kategori' => $kategori->findAll(),
             'produk' => $getPeroduk,
             'subKategori' => $subResult,
-            'slug' => [
-                'slug1' => $slug1,
-                'slug2' => $slug2,
-            ]
+            'produkView' => 1
         ];
         // dd($result);
         return view('user/produk/index', $data);
+    }
+    public function produkShowSingle($slug)
+    {
+        $produk = new ProdukModel();
+        $single = $produk->getProduk($slug);
+        $data = [
+            'title' => $single['nama'],
+            'produk' => $single
+        ];
+        // dd($data);
+        return view('user/produk/produk', $data);
     }
 }
