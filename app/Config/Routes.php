@@ -42,11 +42,11 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
     // Setting route
     $routes->get('/setting', 'Setting::setting');
-    $routes->get('/setting/detail-user', 'Setting::detailUser');
+    $routes->get('/setting/detail-user/(:any)', 'Setting::detailUser/$1');
     $routes->get('/setting/pembayaran', 'Setting::pembayaran');
     $routes->get('/setting/alamat-list', 'Setting::alamatList');
-    $routes->get('/setting/update-alamat', 'Setting::updateAlamat');
     $routes->get('/setting/create-alamat', 'Setting::createAlamat');
+    $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
     $routes->get('/history', 'HistoryTransaksi::history');
 });
 
