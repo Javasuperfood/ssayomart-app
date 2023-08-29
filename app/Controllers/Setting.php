@@ -29,6 +29,7 @@ class Setting extends BaseController
         // dd($data);
         return view('user/home/setting/setting', $data);
     }
+    // USER DETAIL
     public function detailUser($id): string
     {
         $usersModel = new UsersModel();
@@ -48,6 +49,7 @@ class Setting extends BaseController
         // dd($data);
         return view('user/home/setting/detailUser', $data);
     }
+    // PEMBAYARAN
     public function pembayaran(): string
     {
         $data = [
@@ -55,6 +57,7 @@ class Setting extends BaseController
         ];
         return view('user/home/setting/pembayaran', $data);
     }
+    // CONTROLLER ALAMAT
     public function alamatList(): string
     {
         $alamat_user_model = new AlamatUserModel();
@@ -81,18 +84,60 @@ class Setting extends BaseController
         return view('user/home/setting/updateAlamat', $data);
     }
 
-
     public function createAlamat(): string
-
     {
+        session();
         $provinsi = $this->rajaongkir('province');
         $data = [
             'title'     => 'Tambah Alamat Baru',
-            'provinsi' => json_decode($provinsi)->rajaongkir->results,
+            'provinsi' => json_decode($provinsi)->rajaongkir->results
         ];
-        // dd();
         return view('user/home/setting/createAlamat', $data);
     }
+    public function saveAlamat()
+    {
+
+        $alamatModel = new AlamatUserModel();
+        $id = session()->get('user');
+
+        $data = [
+            'id_user' => $id['id'],
+            'label' => $this->request->getVar('label'),
+            'alamat_1' => $this->request->getVar('alamat_1'),
+            'alamat_2' => $this->request->getVar('alamat_2'),
+            'id_province' => $this->request->getVar('id_provinsi'),
+            'province' => $this->request->getVar('provinsi'),
+            'id_city' => $this->request->getVar('id_kabupaten'),
+            'city' => $this->request->getVar('kabupaten'),
+            'zip_code' => $this->request->getVar('zip_code'),
+            'telp' => $this->request->getVar('no_telp1'),
+            'telp2' => $this->request->getVar('no_telp2')
+        ];
+
+        // SWAL
+        if ($alamatModel->save($data)) {
+            session()->setFlashdata('success', 'Alamat berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Sukses',
+                'message' => 'Alamat berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('setting/create-alamat');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Kesalahan',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('setting/create-alamat')->withInput();
+        }
+    }
+
+    // FETCHING DATA API PROVINSI & KOTA
     public function getCity()
     {
         if ($this->request->isAJAX()) {
@@ -101,6 +146,8 @@ class Setting extends BaseController
             return $this->response->setJSON($data);
         }
     }
+
+    // GET DATA API RAJAONGKIR
     public function getCost()
     {
         if ($this->request->isAJAX()) {
