@@ -11,4 +11,6 @@ class Kategorisubkat extends BaseController
         ];
         return view('/dashboard/kategorisubkat', $data);
     }
+
+
 }

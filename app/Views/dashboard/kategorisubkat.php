@@ -76,7 +76,7 @@
     <div class="row">
 
         <!-- Left Panel -->
-        <div class="col-lg-6">
+        <div class="col-lg-6 mb-2">
 
             <div class="card position-relative">
                 <div class="card-header py-3">
@@ -84,37 +84,40 @@
                 </div>
                 <div class="card-body">
                     <!-- form -->
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Nama</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nama Lengkap">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Slug</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="slug">
-                    </div>
-                    <div class="mb-1">
-                        <label for="exampleFormControlInput1" class="form-label">Induk Kategori</label>
-                    </div>
-                    <div>
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Pilihan</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <p class="mb-0 small">Note: Tetapkan sebuah istilah induk untuk membuat sebuah hirarki. Istilah Jazz, contohnya, akan menjadi induk dari Bebop dan Big Band.</p>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <div class="small mb-1">Navbar Dropdown Example:</div>
-                    <p class="mb-0 small">Note: Umumnya deskripsi tidak tampil. Namun, beberapa tema dapat menampilkannya.</p>
-                    <div>
-                        <button type="button" class="btn btn-primary">Simpan</button>
-                    </div>
+                    <form action="/kategori/create">
+
+                        <div class="mb-3">
+                            <label for="kategori" class="form-label">Nama</label>
+                            <input type="text" class="form-control" id="kategori" placeholder="Nama Lengkap" name="kategori">
+                        </div>
+                        <div class="mb-3">
+                            <label for="slug" class="form-label">Slug</label>
+                            <input type="text" class="form-control" id="slug" placeholder="slug" name="slug">
+                        </div>
+                        <div class="mb-1">
+                            <label for="kategori" class="form-label">Induk Kategori</label>
+                        </div>
+                        <div>
+                            <select class="form-select mb-2" aria-label="Default select example">
+                                <option selected>Pilihan</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <p class="mb-0 small">Note: Tetapkan sebuah istilah induk untuk membuat sebuah hirarki. Istilah Jazz, contohnya, akan menjadi induk dari Bebop dan Big Band.</p>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="small mb-1">Navbar Dropdown Example:</div>
+                        <p class="mb-0 small">Note: Umumnya deskripsi tidak tampil. Namun, beberapa tema dapat menampilkannya.</p>
+                        <div>
+                            <button type="submit" class="btn btn-primary mt-3" id="ka">Simpan</button>
+                        </div>
                 </div>
             </div>
+            </form>
 
         </div>
 
