@@ -35,25 +35,25 @@ class Kategori extends Seeder
 
         $data2 = [
             [
-                'id_kategori' => 1,
+                'id_kategori' => 1, //nori
                 'nama_kategori' => 'NoriGo',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'norigo',
             ],
             [
-                'id_kategori' => 1,
+                'id_kategori' => 1, //nori
                 'nama_kategori' => 'Norigo Product',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'norigo-produk',
             ],
             [
-                'id_kategori' => 2,
+                'id_kategori' => 2, //maknan-beku
                 'nama_kategori' => 'Daging sapi',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'daging-sapi',
             ],
             [
-                'id_kategori' => 3,
+                'id_kategori' => 3, //Minuman
                 'nama_kategori' => 'Cola',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'cola',
