@@ -3,7 +3,7 @@
     <div class="row mt-2 row-cols-3">
         <?php foreach ($produk as $p) : ?>
             <div class=" col">
-                <a href="<?= base_url() ?>produk/single" class="link-underline link-underline-opacity-0">
+                <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                     <div class="card border-0 shadow" style="width: auto;">
                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['gambar']; ?>" class="card-img-top" alt="...">
                         <div class="fs-6" style="padding: 10px 10px 10px 10px;">
