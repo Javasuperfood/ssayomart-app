@@ -58,6 +58,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'Input::input');
+    $routes->get('edit', 'Edit::edit');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
@@ -73,6 +74,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->resource('kupon');
     $routes->resource('arsip');
     $routes->get('getcity', 'Setting::getCity');
+    $routes->resource('produk');
 });
 
 
