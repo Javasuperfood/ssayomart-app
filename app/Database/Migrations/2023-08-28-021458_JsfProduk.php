@@ -15,11 +15,6 @@ class JsfProduk extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_kategori' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-            ],
             'nama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '225',
@@ -30,15 +25,17 @@ class JsfProduk extends Migration
             ],
             'sku' => [
                 'type'          => 'varchar',
-                'constraint'    => '225'
+                'constraint'    => '225',
+                'null' => true
             ],
             'harga' => [
                 'type'          => 'varchar',
                 'constraint'    => '225'
             ],
-            'id_inventory' => [
+            'stok' => [
                 'type'          => 'INT',
-                'constraint'    => 11
+                'constraint'    => 12,
+                'default' => 0
             ],
             'deskripsi' => [
                 'type'          => 'VARCHAR',
@@ -47,6 +44,19 @@ class JsfProduk extends Migration
             'gambar' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
+                'default' => 'default.png'
+            ],
+            'id_kategori' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'null' => true
+            ],
+            'id_sub_kategori' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'null' => true
             ],
             'created_at' => [
                 'type'          => 'timestamp',
@@ -63,13 +73,14 @@ class JsfProduk extends Migration
         ]);
         $this->forge->addKey('id_produk', true);
         $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori');
+        $this->forge->addForeignKey('id_sub_kategori', 'jsf_sub_kategori', 'id_sub_kategori');
         $this->forge->createTable('jsf_produk');
     }
 
     public function down()
     {
         $this->forge->dropForeignKey('jsf_produk', 'id_kategori');
-
+        $this->forge->dropForeignKey('jsf_produk', 'id_sub_kategori');
         $this->forge->dropTable('jsf_produk');
     }
 }

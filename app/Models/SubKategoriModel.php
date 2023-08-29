@@ -14,10 +14,12 @@ class SubKategoriModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-    'id_kategori', 
-    'nama_sub_kategori', 
-    'deskripsi_sub_kategori'
-];
+        'id_kategori',
+        'nama_sub_kategori',
+        'deskripsi',
+        'slug',
+        'img'
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -29,8 +31,9 @@ class SubKategoriModel extends Model
     // Validation
     protected $validationRules      = [
         'id_kategori' => 'required',
-        'nama_sub_kategori' => 'required', 
-        'deskripsi_sub_kategori' => 'required', 
+        'nama_kategori' => 'required',
+        'deskripsi' => 'required',
+        'slug' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -46,4 +49,12 @@ class SubKategoriModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+    public function getSubKategori($slug = false)
+    {
+        if ($slug == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['slug' => $slug])->first();
+    }
 }

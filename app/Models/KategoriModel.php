@@ -14,10 +14,11 @@ class KategoriModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-    'id_sub_kategori', 
-    'nama_kategori', 
-    'deskripsi_kategori'
-];
+        'nama_kategori',
+        'deskripsi',
+        'slug',
+        'img'
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -28,9 +29,9 @@ class KategoriModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'id_sub_kategori' => 'required',
-        'nama_kategori' => 'required', 
-        'deskripsi_kategori' => 'required', 
+        'nama_kategori' => 'required',
+        'deskripsi' => 'required',
+        'slug' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -46,4 +47,13 @@ class KategoriModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getKategori($slug = false)
+    {
+        if ($slug == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['slug' => $slug])->first();
+    }
 }
