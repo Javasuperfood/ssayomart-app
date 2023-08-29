@@ -12,5 +12,4 @@
         border-radius: 5%;
     }
 </style>
-<script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.js"></script>
-<link rel="stylesheet" href="<?= base_url(); ?>assets/sweetalert2/sweetalert2.css">
+<script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
