@@ -4,9 +4,9 @@
 <!-- Navbar -->
 <?= $this->include('user/home/component/navbarMain') ?>
 <!-- Button Kategori -->
-<?= $this->include('user/produk/component/button') ?>
+<?= $this->include('user/produk/component/kategori') ?>
 <!-- Button Sub Kategori -->
-<?= $this->include('user/produk/component/buttonSubkategori') ?>
+<?= $this->include('user/produk/component/subkategori') ?>
 <!-- Banner Slider -->
 <?= $this->include('user/produk/component/bannerSlider') ?>
 <!-- Card -->

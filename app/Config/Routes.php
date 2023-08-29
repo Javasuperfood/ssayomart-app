@@ -29,8 +29,10 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
-$routes->get('/produk', 'Produk::produkShow');
+$routes->get('/', 'KategoriController::index');
+$routes->get('/produk', 'ProdukController::index');
+$routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
+$routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/single', 'Produk::produkShowSingle');
 $routes->get('/produk/status', 'Status::status');
 

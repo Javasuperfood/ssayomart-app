@@ -13,7 +13,16 @@ class ProdukModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_kategori', 'nama_produk', 'harga_produk', 'deskripsi_produk', 'stock_produk', 'gambar_produk', 'created_by'];
+    protected $allowedFields    = [
+        'nama',
+        'slug',
+        'sku',
+        'harga',
+        'stok',
+        'deskripsi',
+        'id_kategori',
+        'id_sub_kategori',
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -24,13 +33,14 @@ class ProdukModel extends Model
 
     // Validation
     protected $validationRules = [
+        'nama' => 'required',
+        'slug'    => 'required',
+        'sku'    => 'required',
+        'harga'    => 'required',
+        'stok'    => 'required',
+        'deskripsi'    => 'required',
         'id_kategori' => 'required',
-        'nama_produk' => 'required',
-        'harga_produk' => 'required',
-        'deskripsi_produk' => 'required',
-        'stock_produk' => 'required',
-        'gambar_produk' => 'required',
-        'created_by' => 'required',
+        'id_sub_kategori' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -46,4 +56,13 @@ class ProdukModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getProduk($slug = false)
+    {
+        if ($slug == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['slug' => $slug])->first();
+    }
 }
