@@ -15,19 +15,20 @@ class KategoriController extends BaseController
         if (auth()->loggedIn()) {
             // Do something.
             $init = $this->session->get('cart');
-            if (!$init)
+            if (!$init) {
                 $cart = new CartModel();
-            $result = $cart->where(['id_user' => user_id()])->first();
-            if (!$result) {
-                $dbCart = [
-                    'id_user' => user_id(),
-                    'total' => 0
-                ];
-                $cart->save($dbCart);
-                $setData = [
-                    'cart'  => true,
-                ];
-                $this->session->set($setData);
+                $result = $cart->where(['id_user' => user_id()])->first();
+                if (!$result) {
+                    $dbCart = [
+                        'id_user' => user_id(),
+                        'total' => 0
+                    ];
+                    $cart->save($dbCart);
+                    $setData = [
+                        'cart'  => true,
+                    ];
+                    $this->session->set($setData);
+                }
             }
         }
 
