@@ -15,18 +15,23 @@
                 <div class="row">
                     <div class="input-group mb-3 d-flex justify-content-center">
                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
-                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                        <input type="number" class="form-control text-center bg-white border-0" disabled value="1">
+                        <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                     </div>
                 </div>
             </div>
             <br>
             <div class="text-center">
-                <a href="#" class="btn btn-white text-danger border-danger mt-4"><i class="bi bi-basket2"></i></a>
-                <a href="<?= base_url() ?>checkout" class="btn btn-white text-danger border-danger mt-4">Beli Sekarang</a>
+                <form action="<?= base_url('produk/' . $produk['slug']) ?>" method="post">
+                    <?= csrf_field() ?>
+                    <input type="hidden" name="id_produk" value="<?= $produk['id_produk']; ?>">
+                    <input type="hidden" name="harga" value="<?= $produk['harga']; ?>">
+                    <input type="hidden" id="setQty" name="qty" value="1">
+                    <button type="submit" class="btn btn-white text-danger border-danger mt-4"><i class="bi bi-basket2"></i></button>
+                    <a href="<?= base_url() ?>checkout" class="btn btn-white text-danger border-danger mt-4">Beli Sekarang</a>
+                </form>
             </div>
         </div>
-
         <div class="row mt-4">
             <div class="col">
                 <h2> Deskripsi</h2>
@@ -42,6 +47,7 @@
         value = isNaN(value) ? 0 : value;
         value++;
         input.value = value;
+        document.getElementById('setQty').value = value;
     }
 
     function decreaseCount(a, b) {
@@ -51,7 +57,38 @@
             value = isNaN(value) ? 0 : value;
             value--;
             input.value = value;
+            document.getElementById('setQty').value = value;
+
         }
     }
+
+    // $(document).ready(function() {
+    //     $('.add-to-cart').click(function() {
+    //         var productId = $(this).data('product-id');
+
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '<?= base_url('api/add-to-cart') ?>', // Ganti dengan URL yang sesuai
+    //             data: {
+    //                 csrf_test_name: '<?= csrf_hash(); ?>',
+    //                 id_produk: productId
+    //             },
+    //             dataType: 'json',
+    //             headers: {
+    //                 'X-CSRF-TOKEN': '<?= csrf_hash(); ?>' // Ganti dengan nilai token CSRF yang benar
+    //             },
+    //             success: function(response) {
+    //                 if (response.status === 'success') {
+    //                     alert(response.message);
+    //                 } else {
+    //                     alert('Error: ' + response.message);
+    //                 }
+    //             },
+    //             error: function() {
+    //                 alert('An error occurred.');
+    //             }
+    //         });
+    //     });
+    // });
 </script>
 <?= $this->endSection(); ?>

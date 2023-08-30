@@ -33,7 +33,8 @@ $routes->get('/', 'KategoriController::index');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
-$routes->get('/produk/single', 'Produk::produkShowSingle');
+$routes->post('/produk/(:any)', 'CartController::addToCart/$1', ['filter' => 'group:user, admin, superadmin']); // Add to cart route Dingle Produk 
+
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/wishlist', 'Wishlist::wishlist');
