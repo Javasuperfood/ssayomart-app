@@ -29,9 +29,17 @@
 
 <!-- Input Produk Admin Produk -->
 <li class="nav-item">
-    <a class="nav-link" href="<?= base_url(); ?>dashboard/input">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Produk</span></a>
+    <a class="nav-link collapsed" href="<?= base_url(); ?>dashboard/kategorisubkat" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Produk Menu</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Menu Produk:</h6>
+            <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">Produk</a>
+            <a class="collapse-item" href="<?= base_url(); ?>dashboard/edit">Edit</a>
+        </div>
+    </div>
 </li>
 
 <!-- Kategori -->

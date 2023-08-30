@@ -104,7 +104,5 @@
     </div>
 </div>
 
-<script type="module">
-    Swal.fire('Any fool can use a computer')
-</script>
+
 <?= $this->endSection(); ?>

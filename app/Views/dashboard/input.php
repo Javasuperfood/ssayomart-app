@@ -11,29 +11,7 @@
     </div>
     <!-- button tambah -->
     <div class="container mt-3">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-            Tambah Produk
-        </button>
-        <!-- dialog modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <a class="btn btn-primary" href="<?= base_url(); ?>dashboard/edit">Tambah Produk</a>
     </div>
     <!-- tabel -->
     <div class="container mt-3">
@@ -69,24 +47,22 @@
                                 <th>Tanggal EXP</th>
                                 <th>Kategori</th>
                                 <th>Subkategori</th>
-                                <th>Aksi</th>
+                                <th>Deskripsi</th>
+                                <th>Harga</th>
+                                <th>SKU</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tbody>
                                 <tr>
                                     <td><img src="<?= base_url() ?>assets/img/produk/p7.png" class="img-fluid" alt="" width="50" height="50"></td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td> <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                            <i class="fas fa-exclamation-triangle"></i>
-                                        </a>
-                                        <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
+                                    <td>Norikin</td>
+                                    <td>25/26/27</td>
+                                    <td>Makanan Ringan</td>
+                                    <td>Makanan Korea</td>
+                                    <td>ini adalah makanan yang enak ges asin</td>
+                                    <td>Rp.12.0000,-</td>
+                                    <td>MRKNRI12KMRH</td>
                                 </tr>
                             </tbody>
                         </tfoot>

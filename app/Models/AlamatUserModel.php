@@ -35,7 +35,19 @@ class AlamatUserModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'id_user' => 'required',
+        'label' => 'required',
+        'alamat_1' => 'required',
+        'alamat_2' => 'required',
+        'id_province' => 'required',
+        'province' => 'required',
+        'id_city' => 'required',
+        'city' => 'required',
+        'zip_code' => 'required',
+        'telp' => 'required',
+        'telp2' => 'required'
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -54,8 +66,5 @@ class AlamatUserModel extends Model
     public function getAlamatUser()
     {
         return $this->findAll();
-    }
-    public function updateAlamatUser()
-    {
     }
 }
