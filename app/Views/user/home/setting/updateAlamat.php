@@ -1,7 +1,8 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
-<form class="pt-3">
+<form method="post" class="pt-3">
+    <?= csrf_field(); ?>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
             <input class="form-control floatingInput" id="label" value="<?= $au['label']; ?>">
@@ -59,7 +60,12 @@
         </div>
     </div>
     <div class="row fixed-bottom p-3 px-4">
-        <a href="<?= base_url() ?>" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Simpan</a>
+        <div class="col-6">
+            <a href="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Hapus Data</a>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Simpan Data</button>
+        </div>
     </div>
 </form>
 

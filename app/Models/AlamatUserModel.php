@@ -16,6 +16,7 @@ class AlamatUserModel extends Model
     protected $allowedFields    = [
         'id_user',
         'label',
+        'penerima',
         'alamat_1',
         'alamat_2',
         'id_province',
@@ -38,15 +39,14 @@ class AlamatUserModel extends Model
     protected $validationRules      = [
         'id_user' => 'required',
         'label' => 'required',
+        'penerima' => 'required',
         'alamat_1' => 'required',
-        'alamat_2' => 'required',
         'id_province' => 'required',
         'province' => 'required',
         'id_city' => 'required',
         'city' => 'required',
         'zip_code' => 'required',
         'telp' => 'required',
-        'telp2' => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
