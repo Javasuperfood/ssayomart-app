@@ -3,7 +3,7 @@
 
 <!-- information -->
 <div class="container ml-2">
-    <div class="container">
+    <div class="container mt-3">
         <h1 class="h3 mb-2 text-gray-800">Tabel Produk</h1>
         <p class="mb-4">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
             <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.

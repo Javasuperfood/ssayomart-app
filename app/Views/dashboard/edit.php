@@ -20,37 +20,36 @@
                 </div>
                 <div class="card-body">
                     <!-- form -->
-                    <form action="<?= site_url('produk') ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= route_to('produk.create') ?>" method="post">
                         <?= csrf_field(); ?>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Gambar</label>
-                            <input type="file" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Gambar">
+                            <label for="nama_produk" class="form-label">Nama Produk</label>
+                            <input type="text" class="form-control" id="nama_produk" name="nama" placeholder="Nama Produk" autofocus>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="tanggal_exp" class="form-label">Tanggal EXP</label>
+                            <input type="date" class="form-control" id="tanggal_exp" name="tanggal_exp" placeholder="EXP">
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="harga_produk" class="form-label">Harga Produk</label>
+                            <input type="price" class="form-control" id="harga_produk" name="harga" placeholder="Harga">
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="kategori_produk" class="form-label">Kategori</label>
+                            <input type="text" class="form-control" id="kategori_produk" name="kategori_produk" placeholder="Kategori">
+                        </div> -->
+                        <div class="mb-3">
+                            <label for="stock_produk" class="form-label">Stock Produk</label>
+                            <input type="price" class="form-control" id="stock_produk" name="stok" placeholder="Stock">
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput2" class="form-label">Nama Produk</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput2" placeholder="Nama Produk">
+                            <label for="deskripsi_produk" class="form-label">Deskripsi Produk</label>
+                            <textarea class="form-control" id="deskripsi_produk" name="dekripsi" placeholder="Deskripsi" rows="3"></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleFormControlInput3" class="form-label">Tanggal EXP</label>
-                            <input type="date" class="form-control" id="exampleFormControlInput3" placeholder="EXP">
+                            <label for="gambar_produk" class="form-label">Gambar</label>
+                            <input type="file" class="form-control" id="gambar_produk" name="gambar" placeholder="Masukan Gambar">
                         </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput4" class="form-label">Kategori</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput4" placeholder="Kategori">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput5" class="form-label">Sub-Kategori</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="Sub-kategori">
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput6" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput6" class="form-label">Harga</label>
-                            <input type="price" class="form-control" id="exampleFormControlInput6" placeholder="Harga">
-                        </div>
-
                         <div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
@@ -91,15 +90,14 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Nama Produk</th>
-                                    <th scope="col">Tanggal EXP</th>
-                                    <th scope="col">Ketegori</th>
-                                    <th scope="col">Sub-kategori</th>
+                                    <!-- <th scope="col">Tanggal EXP</th> -->
+                                    <!-- <th scope="col">Ketegori</th> -->
+                                    <th scope="col">Harga Produk</th>
+                                    <th scope="col">Stock Produk</th>
                                     <th scope="col">Deskripsi</th>
-                                    <th scope="col">Harga</th>
-                                    <th scope="col">SKU</th>
                                     <th style="width: 100px;">Aksi</th>
 
                                 </tr>
@@ -107,15 +105,14 @@
                             <tfoot>
                                 <tbody>
                                     <tr>
-                                        <th scope="row"><?= $item['id_produk'] ?></th>
-                                        <td><img src="<?= base_url() ?>assets/img/produk/<?= $item['gambar_produk'] ?>" class="img-fluid" alt="" width="50" height="50"></td>
-                                        <td><?= $item['nama_produk'] ?></td>
-                                        <td>25/26/27</td>
+                                        <th scope="row">1</th>
+                                        <td><img src="<?= base_url() ?>assets/img/produk/" class="img-fluid" alt="" width="50" height="50"></td>
+                                        <td>Nori</td>
+                                        <!-- <td>25/26/27</td> -->
                                         <td>Makanan Ringan</td>
-                                        <td>Makanan Korea</td>
                                         <td>ini adalah makanan yang enak ges asin</td>
                                         <td>Rp.12.0000,-</td>
-                                        <td>MRKNRI12KMRH</td>
+                                        <td>18</td>
                                         <td>
                                             <a href="#" class="btn btn-warning btn-circle btn-sm">
                                                 <i class="fas fa-pen"></i>
