@@ -18,4 +18,6 @@ class KategoriController extends BaseController
         // dd($data);
         return view('user/home/Kategori', $data);
     }
+
+   
 }

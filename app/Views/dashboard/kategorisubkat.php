@@ -84,11 +84,12 @@
                 </div>
                 <div class="card-body">
                     <!-- form -->
-                    <form action="/kategori/create">
-
+                    <form action="/dashboard/kategorisubkat/save" method="post" accept-charset="utf-8">
+                        <?= csrf_field(); ?>
+                        <?= csrf_field(); ?>
                         <div class="mb-3">
-                            <label for="kategori" class="form-label">Nama</label>
-                            <input type="text" class="form-control" id="kategori" placeholder="Nama Lengkap" name="kategori">
+                            <label for="kategori" class="form-label">Nama kategori</label>
+                            <input type="text" class="form-control" id="kategori" placeholder="Nama Lengkap" name="kategori" autofocus>
                         </div>
                         <div class="mb-3">
                             <label for="slug" class="form-label">Slug</label>
@@ -108,12 +109,12 @@
                         <p class="mb-0 small">Note: Tetapkan sebuah istilah induk untuk membuat sebuah hirarki. Istilah Jazz, contohnya, akan menjadi induk dari Bebop dan Big Band.</p>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"></textarea>
                         </div>
                         <div class="small mb-1">Navbar Dropdown Example:</div>
                         <p class="mb-0 small">Note: Umumnya deskripsi tidak tampil. Namun, beberapa tema dapat menampilkannya.</p>
                         <div>
-                            <button type="submit" class="btn btn-primary mt-3" id="ka">Simpan</button>
+                            <button type="submit" class="btn btn-primary mt-3">Simpan</button>
                         </div>
                 </div>
             </div>
@@ -169,8 +170,8 @@
                                     <tr>
                                         <th scope="row">1</th>
                                         <td><img src="<?= base_url() ?>assets/img/bg3.jpg" alt="" width="50" height="50"></td>
-                                        <td>contoh</td>
-                                        <td>contoh</td>
+                                        <td> contoh</td>
+                                        <td> contoh</td>
                                         <td>contoh</td>
                                         <td>contoh</td>
                                         <td>contoh</td>

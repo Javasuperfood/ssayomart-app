@@ -63,6 +63,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
+    $routes->post('/dashboard/kategorisubkat/save', 'Kategorisubkat::save');
+    $routes->get('/dashboard/kategorisubkat/view/', 'Kategorisubkat::view');
 });
 
 service('auth')->routes($routes);
