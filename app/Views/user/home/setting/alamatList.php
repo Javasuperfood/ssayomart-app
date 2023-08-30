@@ -18,5 +18,16 @@
     <?php endforeach; ?>
     <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle bottom-0 end-0 mx-2 my-3 float-right position-fixed"><i class="bi bi-plus"></i></a>
 </div>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
+</script>
 <?= $this->endSection(); ?>
