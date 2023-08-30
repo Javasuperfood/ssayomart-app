@@ -48,8 +48,8 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->get('/setting/alamat-list', 'Setting::alamatList');
     $routes->get('/setting/create-alamat', 'Setting::createAlamat');
     $routes->post('/setting/create-alamat/save-alamat', 'Setting::saveAlamat');
+    $routes->post('/setting/update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
     $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
-    // $routes->post('/setting/update-alamat/(:segment)', 'Setting::updateAlamat/$1');
     $routes->get('/setting/delete-alamat/(:segment)', 'Setting::deleteAlamat/$1');
     $routes->get('/history', 'HistoryTransaksi::history');
 
