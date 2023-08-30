@@ -57,6 +57,7 @@ class Setting extends BaseController
         ];
         return view('user/home/setting/pembayaran', $data);
     }
+
     // CONTROLLER ALAMAT
     public function alamatList(): string
     {
@@ -69,21 +70,6 @@ class Setting extends BaseController
         // dd($data);
         return view('user/home/setting/alamatList', $data);
     }
-
-    public function updateAlamat($id): string
-    {
-        $provinsi = $this->rajaongkir('province');
-        $alamat_user_model = new AlamatUserModel();
-        $au = $alamat_user_model->find([$id]);
-        $data = [
-            'title' => 'Edit Alamat',
-            'provinsi' => json_decode($provinsi)->rajaongkir->results,
-            'au' => $au[0]
-        ];
-        // dd($data);
-        return view('user/home/setting/updateAlamat', $data);
-    }
-
     public function createAlamat(): string
     {
         session();
@@ -94,15 +80,28 @@ class Setting extends BaseController
         ];
         return view('user/home/setting/createAlamat', $data);
     }
+    public function updateAlamat($id): string
+    {
+        $provinsi = $this->rajaongkir('province');
+        $alamatModel = new AlamatUserModel();
+        $au = $alamatModel->find([$id]);
+        $data = [
+            'title' => 'Edit Alamat',
+            'provinsi' => json_decode($provinsi)->rajaongkir->results,
+            'au' => $au[0]
+        ];
+        // dd($data);
+        return view('user/home/setting/updateAlamat', $data);
+    }
     public function saveAlamat()
     {
-
         $alamatModel = new AlamatUserModel();
         $id = session()->get('user');
 
         $data = [
             'id_user' => $id['id'],
             'label' => $this->request->getVar('label'),
+            'penerima' => $this->request->getVar('nama_penerima'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
             'id_province' => $this->request->getVar('id_provinsi'),
@@ -113,7 +112,6 @@ class Setting extends BaseController
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2')
         ];
-
         // SWAL
         if ($alamatModel->save($data)) {
             session()->setFlashdata('success', 'Alamat berhasil disimpan.');
@@ -133,6 +131,30 @@ class Setting extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
+            return redirect()->to('setting/create-alamat')->withInput();
+        }
+    }
+    public function deleteAlamat($id)
+    {
+        $alamatModel = new AlamatUserModel();
+
+        $deleted = $alamatModel->delete($id);
+
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Sukses',
+                'message' => 'Alamat berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting/create-alamat');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Kesalahan',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/create-alamat')->withInput();
         }
     }
