@@ -4,34 +4,28 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfSubKategori extends Migration
+class JsfKategori extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_sub_kategori' => [
+            'id_kategori' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_kategori' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-            ],
             'nama_kategori' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '225',
             ],
-            'slug' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => '255',
-            ],
-
             'deskripsi' => [
                 'type'          => 'varchar',
                 'constraint'    => '200'
+            ],
+            'slug' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '225'
             ],
             'img' => [
                 'type'          => 'VARCHAR',
@@ -41,20 +35,19 @@ class JsfSubKategori extends Migration
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ], 'updated_at' => [
+            ],
+            'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_sub_kategori', true);
-        $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori');
-        $this->forge->createTable('jsf_sub_kategori');
+        $this->forge->addKey('id_kategori', true);
+        $this->forge->createTable('jsf_kategori');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_sub_kategori', 'id_kategori');
 
-        $this->forge->dropTable('jsf_sub_kategori');
+        $this->forge->dropTable('jsf_kategori');
     }
 }
