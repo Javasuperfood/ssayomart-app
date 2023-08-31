@@ -13,7 +13,17 @@ class UsersModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'username',
+        'status',
+        'status_message',
+        'active',
+        'last_active',
+        'img',
+        'fullname',
+        'telp'
+
+    ];
 
     // Dates
     protected $useTimestamps = false;
@@ -23,7 +33,11 @@ class UsersModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'username'  => 'required|is_unique[users.username]',
+        'fullname'  => 'required',
+        'telp'      => 'required'
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
