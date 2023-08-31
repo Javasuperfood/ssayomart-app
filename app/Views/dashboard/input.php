@@ -6,7 +6,7 @@
     <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
 </p>
 
-<a class="btn btn-primary mb-3" href="<?= base_url(); ?>dashboard/edit">Tambah Produk</a>
+<a class="btn btn-primary mb-3" href="<?= base_url(); ?>dashboard/tambah-produk">Tambah Produk</a>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
