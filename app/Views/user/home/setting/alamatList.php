@@ -1,16 +1,6 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
-<nav class="navbar pt-3">
-    <div class="container-fluid">
-        <div class="col text-center position-relative">
-            <a href="<?= base_url(); ?>setting" class="
-                position-absolute top-50 start-0 translate-middle-y"><i class=" bi bi-chevron-left navbar-brand"></i></a>
-            <span class="navbar-brand"><?= $title; ?></span>
-        </div>
-    </div>
-</nav>
-
 <div class="container pt-3">
     <?php
     foreach ($alamat_user_model as $au) :

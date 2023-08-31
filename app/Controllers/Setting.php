@@ -20,7 +20,7 @@ class Setting extends BaseController
     public function setting(): string
     {
         $userModel = new UsersModel();
-        $user = $userModel->find(session()->get('id'));
+        $user = $userModel->where('id', user_id())->find();
         $data = [
             'title' => 'Setting',
             'user' => $user[0],
@@ -46,9 +46,41 @@ class Setting extends BaseController
             'du' => $du[0],
             'results' => $query->getResult()
         ];
-        // dd($data);
         return view('user/home/setting/detailUser', $data);
     }
+
+    public function updateDetailUser($id)
+    {
+        $usersModel = new UsersModel();
+
+        $du = $usersModel->find($id);
+
+        $data = [
+            'id' => $id,
+            'fullname' => $this->request->getVar('fullname'),
+            'username' => $this->request->getVar('username'),
+            'telp' => $this->request->getVar('telp'),
+        ];
+        // dd($data);
+        // SWAL
+        if ($usersModel->save($data)) {
+            return redirect()->to('setting')->with('success', 'Berhasil mengubah data user');
+        } else {
+            return redirect()->to('setting')->with('failed', 'Ada Kesalahan. Segera minta maaf');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     // PEMBAYARAN
     public function pembayaran(): string
     {
