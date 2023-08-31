@@ -19,7 +19,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="nama_produk" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="produk" placeholder="Nama Produk" autofocus>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" autofocus>
                     </div>
                     <!-- <div class="mb-3">
                             <label for="tanggal_exp" class="form-label">Tanggal EXP</label>
@@ -27,7 +27,7 @@
                         </div> -->
                     <div class="mb-3">
                         <label for="harga_produk" class="form-label">Harga Produk</label>
-                        <input type="price" class="form-control" id="harga_produk" name="harga" placeholder="Harga">
+                        <input type="price" class="form-control" id="harga_produk" name="harga_produk" placeholder="Harga">
                     </div>
                     <!-- <div class="mb-3">
                             <label for="kategori_produk" class="form-label">Kategori</label>
@@ -35,15 +35,15 @@
                         </div> -->
                     <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
-                        <input type="price" class="form-control" id="stock_produk" name="stock" placeholder="Stock">
+                        <input type="price" class="form-control" id="stock_produk" name="stock_produk" placeholder="Stock">
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi_produk" class="form-label">Deskripsi Produk</label>
-                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi" placeholder="Deskripsi" rows="3"></textarea>
+                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="gambar_produk" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" id="gambar_produk" name="gambar" placeholder="Masukan Gambar">
+                        <input type="file" class="form-control" id="gambar_produk" name="gambar_produk" placeholder="Masukan Gambar">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -54,7 +54,7 @@
     </div>
 
     <!-- Right Panel -->
-    <div class="col-lg-6 mt-3">
+    <div class="col-lg-6 mb-3">
 
         <div class="card position-relative">
             <div class="card-header py-3">
@@ -89,24 +89,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td><img src="<?= base_url() ?>assets/img/produk/" class="img-fluid" alt="" width="50" height="50"></td>
-                            <td>Nori</td>
-                            <!-- <td>25/26/27</td> -->
-                            <td>Rp.12.0000,-</td>
-                            <td>16</td>
-                            <td> Makanan Enak Bergizi</td>
-                            <td>
-                                <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <a href="#" class="btn btn-danger btn-circle btn-sm">
-                                    <i class="fas fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        <?php foreach ($produk_Model as $km) : ?>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                    <?php $imageUrl = base_url() . 'assets/img/produk/' . $km['img']; ?>
+                                    <img src="<?= $imageUrl ?>" class="img-fluid" alt="" width="50" height="50">
+                                </td>
+
+                                <td><?= $km['nama']; ?></td>
+                                <!-- <td>25/26/27</td> -->
+                                <td><?= $km['harga']; ?></td>
+                                <td><?= $km['stok']; ?></td>
+                                <td><?= $km['deskripsi']; ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                        <i class="fas fa-pen"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
                     </tbody>
+                <?php endforeach; ?>
                 </table>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-end">
@@ -132,5 +138,18 @@
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
+</script>
 
 <?= $this->endSection(); ?>
