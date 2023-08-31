@@ -9,8 +9,6 @@
 <?= $this->include('user/produk/component/subkategori') ?>
 <!-- Card -->
 <?= $this->include('user/produk/component/card') ?>
-<!-- Card Slider -->
-<?= $this->include('user/produk/component/cardSwiper') ?>
 
 
 
