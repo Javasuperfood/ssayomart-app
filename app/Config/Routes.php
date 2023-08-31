@@ -27,9 +27,12 @@ $routes->set404Override();
  * --------------------------------------------------------------------
  */
 
+
+
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'KategoriController::index');
+$routes->get('/produk/status', 'Status::status');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
@@ -41,7 +44,8 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
     $routes->get('/cart', 'CartController::cart');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
-    $routes->get('/checkout', 'Checkout::checkout');
+    $routes->get('/checkout/(:segment)', 'Checkout::checkout/$1');
+    $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
     // Setting route
     $routes->get('/setting', 'Setting::setting');

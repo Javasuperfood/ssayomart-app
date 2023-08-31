@@ -4,12 +4,12 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfDetailPesanan extends Migration
+class JsfCheckout extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_detail_pesanan' => [
+            'id_checkout' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -24,6 +24,7 @@ class JsfDetailPesanan extends Migration
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
+                'null'           => true,
             ],
             'id_status_pesan' => [
                 'type'           => 'INT',

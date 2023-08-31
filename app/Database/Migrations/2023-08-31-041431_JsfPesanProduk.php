@@ -15,7 +15,7 @@ class JsfPesanProduk extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_detail_pesanan' => [
+            'id_checkout' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
