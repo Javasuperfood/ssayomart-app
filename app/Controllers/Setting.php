@@ -192,16 +192,16 @@ class Setting extends BaseController
         if ($deleted) {
             $alert = [
                 'type' => 'success',
-                'title' => 'Sukses',
-                'message' => 'Alamat berhasil disimpan.'
+                'title' => 'Berhasil',
+                'message' => 'Data alamat berhasil di hapus.'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('setting/create-alamat');
+            return redirect()->to('setting/alamat-list');
         } else {
             $alert = [
                 'type' => 'error',
-                'title' => 'Kesalahan',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan data'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/create-alamat')->withInput();
