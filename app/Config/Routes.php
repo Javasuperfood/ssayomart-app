@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\Kategori;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -66,15 +68,15 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
-    $routes->get('input', 'Input::input');
-    $routes->get('edit', 'Input::edit');
+    $routes->get('input', 'AdminProduk::input');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
-    // CRUD route
-    $routes->post('produk/create-produk', 'Produk::create', ['as' => 'produk.create']);
+    // CRUD routes
+    $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
+    $routes->post('tambah-produk/save', 'AdminProduk::save');
 });
 
 service('auth')->routes($routes);

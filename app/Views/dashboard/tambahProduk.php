@@ -1,7 +1,6 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-
 <h1 class="h3 mb-1 text-gray-800">Manajement Produk</h1>
 <p class="mb-4">Anda dapt mengatur produk apa yang akan ditampilkan pada halaman user</p>
 
@@ -16,11 +15,11 @@
             </div>
             <div class="card-body">
                 <!-- code -->
-                <form action="<?= route_to('produk.create') ?>" method="post">
+                <form action="<?= base_url(); ?>dashboard/tambah-produk/save" method="post">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="nama_produk" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama" placeholder="Nama Produk" autofocus>
+                        <input type="text" class="form-control" id="nama_produk" name="produk" placeholder="Nama Produk" autofocus>
                     </div>
                     <!-- <div class="mb-3">
                             <label for="tanggal_exp" class="form-label">Tanggal EXP</label>
@@ -36,11 +35,11 @@
                         </div> -->
                     <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
-                        <input type="price" class="form-control" id="stock_produk" name="stok" placeholder="Stock">
+                        <input type="price" class="form-control" id="stock_produk" name="stock" placeholder="Stock">
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi_produk" class="form-label">Deskripsi Produk</label>
-                        <textarea class="form-control" id="deskripsi_produk" name="dekripsi" placeholder="Deskripsi" rows="3"></textarea>
+                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi" placeholder="Deskripsi" rows="3"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="gambar_produk" class="form-label">Gambar</label>

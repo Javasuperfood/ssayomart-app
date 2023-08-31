@@ -14,14 +14,15 @@ class ProdukModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nama',
+        'nama_produk',
         'slug',
-        'sku',
-        'harga',
-        'stok',
-        'deskripsi',
-        'id_kategori',
-        'id_sub_kategori',
+        // 'sku',
+        'harga_produk',
+        'stock_produk',
+        'deskripsi_produk',
+        // 'gambar_produk',
+        // 'id_kategori',
+        // 'id_sub_kategori',
     ];
 
     // Dates
@@ -29,18 +30,19 @@ class ProdukModel extends Model
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    // protected $deletedField  = 'deleted_at';
+    protected $deletedField  = 'deleted_at';
 
     // Validation
     protected $validationRules = [
-        'nama' => 'required',
+        'nama_produk' => 'required',
         'slug'    => 'required',
-        'sku'    => 'required',
-        'harga'    => 'required',
-        'stok'    => 'required',
-        'deskripsi'    => 'required',
-        'id_kategori' => 'required',
-        'id_sub_kategori' => 'required',
+        // 'sku'    => 'required',
+        'harga_produk'    => 'required',
+        'stock_produk'    => 'required',
+        'deskripsi_produk'    => 'required',
+        // 'gambar_produk'    => 'required',
+        // 'id_kategori' => 'required',
+        // 'id_sub_kategori' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
