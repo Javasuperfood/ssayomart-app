@@ -81,6 +81,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->resource('distributor');
     $routes->resource('kupon');
     $routes->resource('arsip');
+    $routes->post('add-to-cart', 'CartController::ajaxAdd');
     $routes->get('getcity', 'Setting::getCity');
 });
 
