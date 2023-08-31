@@ -4,7 +4,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['gambar']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
         </div>
         <div class="col-md-6 mt-4">
             <h2><?= $produk['nama']; ?></h2>

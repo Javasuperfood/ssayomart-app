@@ -35,7 +35,7 @@
             <div class="col">
                 <div class="card my-2 border-0 shadow" style="width: auto;">
                     <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['gambar']; ?>" class="card-img-top" alt="...">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
                         <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
