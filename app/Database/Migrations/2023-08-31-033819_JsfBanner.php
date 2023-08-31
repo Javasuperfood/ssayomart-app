@@ -20,8 +20,9 @@ class JsfBanner extends Migration
                 'constraint' => '225',
             ],
             'img' => [
-                'type'        => 'varchar',
-                'constraint' => '225',
+                'type'          => 'VARCHAR',
+                'constraint'    => '225',
+                'default'       => 'default.png'
             ],
             'created_at' => [
                 'type'        => 'timestamp',

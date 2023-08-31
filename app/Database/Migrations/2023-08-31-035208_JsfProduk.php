@@ -41,10 +41,10 @@ class JsfProduk extends Migration
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
             ],
-            'gambar' => [
+            'img' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
-                'default' => 'default.png'
+                'default'       => 'default.png'
             ],
             'id_kategori' => [
                 'type'           => 'INT',
