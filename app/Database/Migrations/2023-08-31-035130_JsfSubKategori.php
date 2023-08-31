@@ -36,7 +36,7 @@ class JsfSubKategori extends Migration
             'img' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '225',
-                'default' => 'default.png'
+                'default'       => 'default.png'
             ],
             'created_at' => [
                 'type'          => 'timestamp',

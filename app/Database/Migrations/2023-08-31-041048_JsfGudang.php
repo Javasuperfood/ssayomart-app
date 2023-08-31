@@ -4,43 +4,53 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfCart extends Migration
+class JsfGudang extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_cart' => [
+            'id_gudang' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_user' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
+            'id_produk' => [
+                'type'        => 'INT',
+                'constraint'  => 11,
+                'unsigned'    => true,
+
             ],
-            'total' => [
-                'type'       => 'INT',
-                'constraint' => 11,
+            'id_toko' => [
+                'type'        => 'INT',
+                'constraint'  => 11,
+                'unsigned'    => true,
+
+            ],
+            'stok' => [
+                'type'        => 'INT',
+                'constraint' => '12',
+                'default' => 0
             ],
             'created_at' => [
-                'type'          => 'timestamp',
-                'null'          => true
-            ], 'updated_at' => [
-                'type'          => 'timestamp',
-                'null'          => true
+                'type'        => 'timestamp',
+                'null'        => true,
+            ],
+            'update_at' => [
+                'type'   => 'timestamp',
+                'null'   => true
             ],
         ]);
-        $this->forge->addKey('id_cart', true);
-        $this->forge->addForeignKey('id_user', 'users', 'id');
-        $this->forge->createTable('jsf_cart');
+        $this->forge->addKey('id_gudang', true);
+        $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
+        $this->forge->addForeignKey('id_toko', 'jsf_toko', 'id_toko');
+        $this->forge->createTable('jsf_gudang');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_users', 'id');
-
-        $this->forge->dropTable('jsf_cart');
+        $this->forge->dropForeignKey('jsf_gudang', 'id_toko');
+        $this->forge->dropForeignKey('jsf_gudang', 'id_produk');
+        $this->forge->dropTable('jsf_gudang');
     }
 }
