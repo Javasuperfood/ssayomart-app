@@ -39,7 +39,7 @@ class JsfPesanProduk extends Migration
             ],
         ]);
         $this->forge->addKey('id_pesan_produk', true);
-        $this->forge->addForeignKey('id_detail_pesanan', 'jsf_detail_pesanan', 'id_detail_pesanan');
+        $this->forge->addForeignKey('id_checkout', 'jsf_checkout', 'id_checkout');
         $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
 
         $this->forge->createTable('jsf_pesan_produk');
@@ -47,7 +47,7 @@ class JsfPesanProduk extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_pesan_produk', 'id_detail_pesanan');
+        $this->forge->dropForeignKey('jsf_pesan_produk', 'id_checkout');
         $this->forge->dropForeignKey('jsf_pesan_produk', 'id_produk');
 
         $this->forge->dropTable('jsf_pesan_produk');

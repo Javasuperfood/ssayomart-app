@@ -47,26 +47,27 @@ class JsfCheckout extends Migration
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ], 'updated_at' => [
+            ],
+            'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_detail_pesanan', true);
+        $this->forge->addKey('id_checkout', true);
         $this->forge->addForeignKey('id_user', 'users', 'id');
         $this->forge->addForeignKey('id_kupon', 'jsf_kupon', 'id_kupon');
         $this->forge->addForeignKey('id_status_pesan', 'jsf_status_pesan', 'id_status_pesan');
         $this->forge->addForeignKey('id_status_kirim', 'jsf_status_kirim', 'id_status_kirim');
-        $this->forge->createTable('jsf_detail_pesanan');
+        $this->forge->createTable('jsf_checkout');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_detail_pesanan', 'id');
-        $this->forge->dropForeignKey('jsf_detail_pesanan', 'id_kupon');
-        $this->forge->dropForeignKey('jsf_detail_pesanan', 'id_status_pesan');
-        $this->forge->dropForeignKey('jsf_detail_pesanan', 'id_status_kirim');
+        $this->forge->dropForeignKey('jsf_checkout', 'id');
+        $this->forge->dropForeignKey('jsf_checkout', 'id_kupon');
+        $this->forge->dropForeignKey('jsf_checkout', 'id_status_pesan');
+        $this->forge->dropForeignKey('jsf_checkout', 'id_status_kirim');
 
-        $this->forge->dropTable('jsf_detail_pesanan');
+        $this->forge->dropTable('jsf_checkout');
     }
 }
