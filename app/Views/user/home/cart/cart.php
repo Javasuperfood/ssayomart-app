@@ -59,28 +59,10 @@
     </div>
     <div class="row p-3 px-4">
         <div class="col">
-            <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%;">Checkout</a>
+            <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold <?= (!$produk) ? 'd-none' : ''; ?>" style="background-color: #ec2614; color: #fff; width: 100%;">Checkout</a>
         </div>
     </div>
     <div class="pb-5"></div>
-    <?php if (session()->getFlashdata('success')) : ?>
-        <script type="module">
-            Swal.fire({
-                icon: 'success',
-                title: 'Terhapus',
-                text: ' <?= session()->getFlashdata('success') ?>',
-            })
-        </script>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata('failed')) : ?>
-        <script type="module">
-            Swal.fire({
-                icon: 'error',
-                title: 'Gagal',
-                text: ' <?= session()->getFlashdata('failed') ?>',
-            })
-        </script>
-    <?php endif; ?>
 
     <!-- END OF WISHLIST -->
     <script type="text/javascript">
