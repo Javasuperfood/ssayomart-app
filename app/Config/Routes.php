@@ -39,7 +39,8 @@ $routes->post('/produk/(:any)', 'CartController::addToCart/$1', ['filter' => 'gr
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/wishlist', 'Wishlist::wishlist');
 
-    $routes->get('/cart', 'Cart::cart');
+    $routes->get('/cart', 'CartController::cart');
+    $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
     $routes->get('/checkout', 'Checkout::checkout');
 
     // Setting route

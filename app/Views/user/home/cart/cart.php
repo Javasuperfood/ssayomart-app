@@ -17,7 +17,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <span class="fw-bold ps-2">Rp. 1.000.000</span>
+                                    <span class="fw-bold ps-2">Rp. <?= number_format($total, 0, ',', '.'); ?></span>
                                 </td>
                             </tr>
                         </table>
@@ -31,35 +31,56 @@
 
     <div class="row text-center row-cols-2">
 
-
-        <div class="col">
-            <div class="card my-2 border-0 shadow" style="width: auto;">
-                <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
-                    <img src="<?= base_url() ?>assets/img/produk/p7.png" class="card-img-top" alt="...">
-                </a>
-                <div class="card-body">
-                    <p class="card-title">Rp. 25.000</p>
-                    <p class="card-text text-secondary">Norigo Rasa Keju</p>
-                    <div class="input-group mb-3 d-flex justify-content-center">
-                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                        <input type="text" class="form-control text-center bg-white border-0" disabled value="1">
-                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+        <?php foreach ($produk as $p) : ?>
+            <div class="col">
+                <div class="card my-2 border-0 shadow" style="width: auto;">
+                    <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['gambar']; ?>" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
+                        <p class="card-text text-secondary"><?= $p['nama']; ?></p>
+                        <div class="input-group mb-3 d-flex justify-content-center">
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                            <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                        </div>
+                        <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
+                            <?= csrf_field(); ?>
+                            <button type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
+                        </form>
+                        <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                     </div>
-                    <a href="#" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></a>
-                    <a href="#" class="btn" style="background-color: #fbdb14;">Beli</a>
                 </div>
             </div>
-        </div>
-
+        <?php endforeach; ?>
 
 
     </div>
     <div class="row p-3 px-4">
         <div class="col">
-            <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Checkout</a>
+            <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%;">Checkout</a>
         </div>
     </div>
     <div class="pb-5"></div>
+    <?php if (session()->getFlashdata('success')) : ?>
+        <script type="module">
+            Swal.fire({
+                icon: 'success',
+                title: 'Terhapus',
+                text: ' <?= session()->getFlashdata('success') ?>',
+            })
+        </script>
+    <?php endif; ?>
+    <?php if (session()->getFlashdata('failed')) : ?>
+        <script type="module">
+            Swal.fire({
+                icon: 'error',
+                title: 'Gagal',
+                text: ' <?= session()->getFlashdata('failed') ?>',
+            })
+        </script>
+    <?php endif; ?>
 
     <!-- END OF WISHLIST -->
     <script type="text/javascript">
