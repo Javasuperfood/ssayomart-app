@@ -44,7 +44,7 @@
 
 <!-- Kategori -->
 <li class="nav-item">
-    <a class="nav-link" href="<?= base_url(); ?>dashboard/kategorisubkat">
+    <a class="nav-link" href="<?= base_url(); ?>dashboard/kategori">
         <i class="fas fa-fw fa-table"></i>
         <span>Kategori & SubKategori</span></a>
 </li>
