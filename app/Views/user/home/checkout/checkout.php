@@ -4,31 +4,43 @@
 <!-- ITEM WISHLIST -->
 <div class="container pt-5">
     <div class="row">
-        <div class="col clearfix">
-            <ul class="list-group list-group-flush shadow rounded">
-                <a href="<?= base_url() ?>select-alamat" class="list-group-item pb-2">
-                    <span class="fw-bold"><?= $label; ?></span>
-                    <p class="card-text text-secondary"><?= substr($alamat, 0, 40); ?>...</p> <i class="bi bi-pencil-fill fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                </a>
-            </ul>
+        <div class="col">
+            <div class="form-floating mb-2">
+                <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
+                    <?php foreach ($alamat_list as $au) : ?>
+                        <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
+                        </option>
+                    <?php endforeach ?>
+                </select>
+                <label for="floatingSelect" id="floatingLabel"><span id="perubahan"><?= $au['label']; ?></span></label>
+            </div>
         </div>
 
-
-        <form role="search">
-            <div class="input-group my-2">
-                <span class="input-group-text border-0 rounded-circle" id="basic-addon1"><i class="bi bi-pencil-fill"></i></span>
-                <input type="text" class="form-control border-0 rounded" placeholder="Tambah Catatan" aria-label="search" aria-describedby="basic-addon1">
-            </div>
-        </form>
-
-        <ul class="list-group list-group-flush">
-            <a href="<?= base_url(); ?>" class="list-group-item py-3 fw-bold">
-                <i class="bi bi-truck pe-2 text-secondary"></i> Pilih Pengiriman <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-            </a>
-            <a href="<?= base_url(); ?>" class="list-group-item py-3 fw-bold">
-                <i class="bi bi-patch-check-fill pe-2 text-secondary"></i> Makin Hemat Pakai Promo <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-            </a>
-        </ul>
+        <div class="form-floating mb-2">
+            <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
+                <?php foreach ($alamat_list as $au) : ?>
+                    <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
+                    </option>
+                <?php endforeach ?>
+            </select>
+            <label for="floatingSelect" id="floatingLabel">Pilih Pengiriman</span></label>
+        </div>
+        <div class="form-group">
+            <label for="service">Pilih Layanan</label>
+            <select class="form-control" id="service">
+                <option value="">Select Layanan</option>
+            </select>
+        </div>
+        <strong>Estimasi : <span id="estimasi"></span></strong>
+        <div class="form-floating mb-2">
+            <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
+                <?php foreach ($alamat_list as $au) : ?>
+                    <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
+                    </option>
+                <?php endforeach ?>
+            </select>
+            <label for="floatingSelect" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
+        </div>
 
         <div class="row pt-3">
             <div class="col">
@@ -90,7 +102,7 @@
                     </tr>
                     <tr>
                         <td>Total Ongkos Kirim</td>
-                        <td>Rp. 16.000</td>
+                        <td>Rp. <span id="ongkirText"></span></td>
                     </tr>
                     <tr>
                         <td>Biaya Jasa Aplikasi</td>
@@ -98,7 +110,7 @@
                     </tr>
                     <tr>
                         <td>Subtotal</td>
-                        <td>Rp. 117.000</td>
+                        <td>Rp. <span id="totalText"></span></td>
                     </tr>
                 </tbody>
             </table>
@@ -113,4 +125,15 @@
 <div class="pb-5"></div>
 <!-- END OF WISHLIST -->
 
+<script>
+    $('document').ready(function() {
+        $("#floatingSelect").on('change', function() {
+            var selectedOption = $(this).find("option:selected");
+            var label = selectedOption.attr('bebas');
+            $('#perubahan').text(label);
+            console.log(label);
+        });
+    });
+</script>
+<?= $this->include('user/home/component/rajaOngkir/chekout'); ?>
 <?= $this->endSection(); ?>

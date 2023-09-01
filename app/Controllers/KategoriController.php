@@ -7,6 +7,7 @@ use App\Models\KategoriModel;
 use App\Controllers\BaseController;
 use App\Models\BannerModel;
 use App\Models\CartModel;
+use App\Models\WishlistModel;
 
 class KategoriController extends BaseController
 {
@@ -14,11 +15,14 @@ class KategoriController extends BaseController
     {
         if (auth()->loggedIn()) {
             // Do something.
-            $init = $this->session->get('cart');
-            if (!$init) {
+            $init1 = $this->session->get('cart');
+            $init2 = $this->session->get('wishlist');
+            if (!$init1 || !$init2) {
                 $cart = new CartModel();
-                $result = $cart->where(['id_user' => user_id()])->first();
-                if (!$result) {
+                $result1 = $cart->where(['id_user' => user_id()])->first();
+                $wishlist = new WishlistModel();
+                $result2 = $wishlist->where(['id_user' => user_id()])->first();
+                if (!$result1) {
                     $dbCart = [
                         'id_user' => user_id(),
                         'total' => 0
@@ -26,6 +30,16 @@ class KategoriController extends BaseController
                     $cart->save($dbCart);
                     $setData = [
                         'cart'  => true,
+                    ];
+                    $this->session->set($setData);
+                }
+                if (!$result2) {
+                    $dbWishlist = [
+                        'id_user' => user_id(),
+                    ];
+                    $wishlist->save($dbWishlist);
+                    $setData = [
+                        'wishlist'  => true,
                     ];
                     $this->session->set($setData);
                 }

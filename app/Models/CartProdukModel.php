@@ -27,7 +27,11 @@ class CartProdukModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'id_cart'               => 'required',
+        'id_produk'               => 'required',
+        'qty'               => 'required',
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

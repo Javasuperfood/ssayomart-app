@@ -28,9 +28,9 @@
                     <div>
                         <select class="form-select mb-2" aria-label="Default select example" name="induk">
                             <option selected>Pilihan</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="1">bahan Makanan</option>
+                            <option value="2">Biji Wijen</option>
+                            <option value="3">Gula dan Garam</option>
                         </select>
                     </div>
                     <p class="mb-0 small">Note: Tetapkan sebuah istilah induk untuk membuat sebuah hirarki. Istilah Jazz, contohnya, akan menjadi induk dari Bebop dan Big Band.</p>
@@ -57,7 +57,7 @@
             </div>
             <div class="card-body">
                 <!-- code -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3">
+                <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3">
                     <form class="form-inline ml-auto">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -68,8 +68,8 @@
                             </div>
                         </div>
                     </form>
-                </nav>
-                <table class="table table-bordered text-center table-responsive" id="dataTable" width="100%" cellspacing="0">
+                </nav> -->
+                <table class="table table-bordered text-center table-responsive" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -84,7 +84,7 @@
                     <tbody>
                         <?php foreach ($kategori_model as $km) : ?>
                             <tr>
-                                <td>1</td>
+                                <td><?= $km['id_kategori']; ?></td>
 
                                 <td><?= $km['nama_kategori']; ?></td>
                                 <td>-</td>
@@ -94,7 +94,7 @@
                                 <td> <a href="#" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-exclamation-triangle"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                    <a href="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km['id_kategori']; ?>" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -102,7 +102,7 @@
                     </tbody>
                 <?php endforeach; ?>
                 </table>
-                <nav aria-label="Page navigation example">
+                <!-- <nav aria-label="Page navigation example">
                     <ul class="pagination justify-content-end">
                         <li class="page-item">
                             <a class="page-link" href="#" aria-label="Previous">
@@ -118,7 +118,7 @@
                             </a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
 
             </div>
         </div>
@@ -138,6 +138,12 @@
             });
         <?php endif; ?>
     });
+</script>
+
+
+
+<script>
+    new DataTable('#example');
 </script>
 
 

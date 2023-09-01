@@ -41,14 +41,18 @@ $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
-    $routes->get('/wishlist', 'Wishlist::wishlist');
+    $routes->get('/wishlist', 'WishlistController::index');
+    $routes->post('/wishlist/delete/(:num)', 'WishlistController::deleteProduk/$1');
 
     $routes->get('/cart', 'CartController::cart');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
-    $routes->get('/checkout/(:segment)', 'Checkout::checkout/$1');
+    // $routes->get('/checkout/(:segment)', 'Checkout::checkout/$1');
+    $routes->get('/checkout', 'Checkout::checkout');
+    // $routes->get('/checkout/(:segment)/(:segment)', 'Checkout::checkout/$1/$2');
     $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
     // Setting route
+    $routes->post('/setting/delete-alamat/(:segment)', 'Setting::deleteAlamat/$1');
     $routes->get('/setting', 'Setting::setting');
     $routes->get('/setting/detail-user/(:any)', 'Setting::detailUser/$1');
     $routes->post('/setting/detail-user/(:segment)', 'Setting::updateDetailUser/$1');
@@ -58,7 +62,6 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->post('/setting/create-alamat/save-alamat', 'Setting::saveAlamat');
     $routes->post('/setting/update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
     $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
-    $routes->get('/setting/delete-alamat/(:segment)', 'Setting::deleteAlamat/$1');
     $routes->get('/history', 'HistoryTransaksi::history');
 
     $routes->get('/produk/status', 'Status::status');
@@ -68,13 +71,20 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');
+
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
+
+    $routes->get('kategori', 'AdminKategoriController::index');
+
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
-    $routes->post('/dashboard/kategorisubkat/save', 'Kategorisubkat::save');
-    $routes->get('/dashboard/kategorisubkat/view/', 'Kategorisubkat::view');
+
+    //CRUD Admin kategori
+    $routes->post('kategori/create-kategori', 'AdminKategoriController::save');
+    $routes->get('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
+
 
 
     // CRUD routes
@@ -86,14 +96,16 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 service('auth')->routes($routes);
 
 $routes->group('api', static function ($routes) { //nanti tambahkan filter auth via Tooken
-    $routes->resource('kategori');
-    $routes->resource('subkategori');
-    $routes->resource('produk');
-    $routes->resource('distributor');
-    $routes->resource('kupon');
-    $routes->resource('arsip');
+    // $routes->resource('kategori');
+    // $routes->resource('subkategori');
+    // $routes->resource('produk');
+    // $routes->resource('distributor');
+    // $routes->resource('kupon');
+    // $routes->resource('arsip');
     $routes->post('add-to-cart', 'CartController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
+    $routes->post('add-to-wishlist', 'WishlistController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
     $routes->get('getcity', 'Setting::getCity');
+    $routes->get('getcost', 'Setting::getCost');
 });
 
 

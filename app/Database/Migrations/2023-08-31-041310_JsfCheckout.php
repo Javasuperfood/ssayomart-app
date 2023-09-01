@@ -44,6 +44,10 @@ class JsfCheckout extends Migration
                 'type'           => 'varchar',
                 'constraint'     => '225',
             ],
+            'total' => [
+                'type'           => 'varchar',
+                'constraint'     => '225',
+            ],
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
