@@ -9,7 +9,6 @@ use App\Models\AuthIdentitesModel;
 
 class Setting extends BaseController
 {
-
     private $url;
     private $apiKey;
     public function __construct()
@@ -69,18 +68,6 @@ class Setting extends BaseController
             return redirect()->to('setting')->with('failed', 'Ada Kesalahan. Segera minta maaf');
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
     // PEMBAYARAN
     public function pembayaran(): string
     {
@@ -94,7 +81,7 @@ class Setting extends BaseController
     public function alamatList(): string
     {
         $alamat_user_model = new AlamatUserModel();
-        $alamat_list = $alamat_user_model->findAll();
+        $alamat_list = $alamat_user_model->where('id_user', user_id())->findAll();
         $data = [
             'title' => 'Alamat',
             'alamat_user_model' => $alamat_list
