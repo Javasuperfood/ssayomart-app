@@ -25,7 +25,13 @@
             </select>
             <label for="floatingSelect" id="floatingLabel">Pilih Pengiriman</span></label>
         </div>
-
+        <div class="form-group">
+            <label for="service">Pilih Layanan</label>
+            <select class="form-control" id="service">
+                <option value="">Select Layanan</option>
+            </select>
+        </div>
+        <strong>Estimasi : <span id="estimasi"></span></strong>
         <div class="form-floating mb-2">
             <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
                 <?php foreach ($alamat_list as $au) : ?>
@@ -96,7 +102,7 @@
                     </tr>
                     <tr>
                         <td>Total Ongkos Kirim</td>
-                        <td>Rp. 16.000</td>
+                        <td>Rp. <span id="ongkirText"></span></td>
                     </tr>
                     <tr>
                         <td>Biaya Jasa Aplikasi</td>
@@ -104,7 +110,7 @@
                     </tr>
                     <tr>
                         <td>Subtotal</td>
-                        <td>Rp. 117.000</td>
+                        <td>Rp. <span id="totalText"></span></td>
                     </tr>
                 </tbody>
             </table>
@@ -129,5 +135,5 @@
         });
     });
 </script>
-
+<?= $this->include('user/home/component/rajaOngkir/chekout'); ?>
 <?= $this->endSection(); ?>

@@ -96,6 +96,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->post('add-to-cart', 'CartController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
     $routes->post('add-to-wishlist', 'WishlistController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
     $routes->get('getcity', 'Setting::getCity');
+    $routes->get('getcost', 'Setting::getCost');
 });
 
 
