@@ -41,4 +41,6 @@ class KategoriController extends BaseController
         ];
         return view('user/home/Kategori', $data);
     }
+
+   
 }
