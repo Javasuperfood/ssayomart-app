@@ -20,11 +20,6 @@ class JsfCheckout extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'id_alamat_users' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-            ],
             'id_kupon' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
@@ -65,7 +60,6 @@ class JsfCheckout extends Migration
         $this->forge->addKey('id_checkout', true);
         $this->forge->addForeignKey('id_user', 'users', 'id');
         $this->forge->addForeignKey('id_kupon', 'jsf_kupon', 'id_kupon');
-        $this->forge->addForeignKey('id_alamat_users', 'jsf_alamat_users', 'id_alamat_users');
         $this->forge->addForeignKey('id_status_pesan', 'jsf_status_pesan', 'id_status_pesan');
         $this->forge->addForeignKey('id_status_kirim', 'jsf_status_kirim', 'id_status_kirim');
         $this->forge->createTable('jsf_checkout');
@@ -75,7 +69,6 @@ class JsfCheckout extends Migration
     {
         $this->forge->dropForeignKey('jsf_checkout', 'id');
         $this->forge->dropForeignKey('jsf_checkout', 'id_kupon');
-        $this->forge->dropForeignKey('jsf_checkout', 'id_alamat_users');
         $this->forge->dropForeignKey('jsf_checkout', 'id_status_pesan');
         $this->forge->dropForeignKey('jsf_checkout', 'id_status_kirim');
 

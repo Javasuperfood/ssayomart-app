@@ -6,7 +6,7 @@
 <?= $this->include('user/home/component/slider') ?>
 
 <!-- ITEM -->
-<div class="container pt-5">
+<div class="container pt-3">
     <h2>Spesial di Ssayomart!</h2>
     <div class="row text-center">
         <div class="col">
@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-<div class="container py-5">
+<div class="container py-2">
     <h2>Semua Kategori</h2>
     <div class="row text-center row-cols-3">
         <?php foreach ($kategori as $k) : ?>

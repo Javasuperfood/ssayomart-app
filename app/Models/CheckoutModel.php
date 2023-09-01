@@ -57,12 +57,10 @@ class CheckoutModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getCheckout($id_alamat, $id_user)
+    public function getCheckout($id_user)
     {
         return $this->db->table('jsf_checkout')
             ->join('jsf_alamat_users', 'jsf_alamat_users.id_alamat_users = jsf_checkout.id_alamat_users')
-            // ->join('jsf_alamat_users', 'jsf_alamat_users.id_alamat_users = jsf_checkout.id_alamat_users')
-            ->where('jsf_alamat_users.id_alamat_users', $id_alamat)
             ->where('jsf_checkout.id_user', $id_user)
             ->get()->getResultArray();
     }
