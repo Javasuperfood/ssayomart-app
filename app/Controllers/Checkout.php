@@ -10,7 +10,7 @@ use App\Models\CheckoutModel;
 // ->get();
 class Checkout extends BaseController
 {
-    public function checkout($id_alamat, $id_user): string
+    public function checkout(): string
     {
         $checkoutModel = new CheckoutModel();
         $alamatModel = new AlamatUserModel();

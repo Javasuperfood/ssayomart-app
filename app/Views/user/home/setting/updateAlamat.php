@@ -72,10 +72,7 @@
         </div>
     </div>
     <div class="row fixed-bottom p-3 px-4">
-        <div class="col-6">
-            <a href="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Hapus Data</a>
-        </div>
-        <div class="col-6">
+        <div class="col">
             <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Simpan Data</button>
         </div>
     </div>

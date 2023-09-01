@@ -51,15 +51,27 @@ class Setting extends BaseController
     public function updateDetailUser($id)
     {
         $usersModel = new UsersModel();
-
-        $du = $usersModel->find($id);
+        $users = $usersModel->where('id', $id)->first();
 
         $data = [
             'id' => $id,
             'fullname' => $this->request->getVar('fullname'),
-            'username' => $this->request->getVar('username'),
             'telp' => $this->request->getVar('telp'),
         ];
+        if ($users['username'] == $this->request->getVar('username')) {
+            $data = [
+                'id' => $id,
+                'fullname' => $this->request->getVar('fullname'),
+                'telp' => $this->request->getVar('telp'),
+            ];
+        } else {
+            $data = [
+                'id' => $id,
+                'username' => $this->request->getVar('username'),
+                'fullname' => $this->request->getVar('fullname'),
+                'telp' => $this->request->getVar('telp'),
+            ];
+        }
         // dd($data);
         // SWAL
         if ($usersModel->save($data)) {
@@ -81,10 +93,11 @@ class Setting extends BaseController
     public function alamatList(): string
     {
         $alamat_user_model = new AlamatUserModel();
-        $alamat_list = $alamat_user_model->where('id_user', user_id())->findAll();
+        $alamat_list = $alamat_user_model->findAll();
         $data = [
             'title' => 'Alamat',
-            'alamat_user_model' => $alamat_list
+            'alamat_user_model' => $alamat_list,
+            'back'  => 'setting'
         ];
         // dd($data);
         return view('user/home/setting/alamatList', $data);
@@ -95,7 +108,7 @@ class Setting extends BaseController
         $provinsi = $this->rajaongkir('province');
         $data = [
             'title'     => 'Tambah Alamat Baru',
-            'provinsi' => json_decode($provinsi)->rajaongkir->results
+            'provinsi' => json_decode($provinsi)->rajaongkir->results,
         ];
         return view('user/home/setting/createAlamat', $data);
     }
@@ -152,7 +165,8 @@ class Setting extends BaseController
         $data = [
             'title' => 'Edit Alamat',
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
-            'au' => $au
+            'au' => $au,
+            'back'  => 'setting/alamat-list'
         ];
         // dd($data);
         return view('user/home/setting/updateAlamat', $data);
