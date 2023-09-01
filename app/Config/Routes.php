@@ -38,7 +38,6 @@ $routes->get('/produk/status', 'Status::status');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
-$routes->post('/produk/(:any)', 'CartController::addToCart/$1', ['filter' => 'group:user, admin, superadmin']); // Add to cart route Dingle Produk 
 
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
@@ -88,7 +87,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->resource('distributor');
     $routes->resource('kupon');
     $routes->resource('arsip');
-    $routes->post('add-to-cart', 'CartController::ajaxAdd');
+    $routes->post('add-to-cart', 'CartController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
     $routes->get('getcity', 'Setting::getCity');
 });
 

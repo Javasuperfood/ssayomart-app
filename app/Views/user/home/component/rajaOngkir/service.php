@@ -37,20 +37,4 @@
             });
         });
     });
-
-    // document.addEventListener('DOMContentLoaded', function() {
-
-    //     provinsiDropdown.addEventListener('change', function() {
-
-
-
-    //     });
-    // });
-
-    // document.addEventListener('DOMContentLoaded', function() {
-
-
-    //     kabupatenDropdown.addEventListener('change', function() {
-
-    //     });
 </script>
