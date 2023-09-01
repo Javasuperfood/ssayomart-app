@@ -7,7 +7,7 @@ use App\Models\AlamatUserModel;
 use App\Controllers\BaseController;
 use App\Models\AuthIdentitesModel;
 
-class Setting extends BaseController
+class SelectAlamat extends BaseController
 {
 
     private $url;
@@ -17,17 +17,17 @@ class Setting extends BaseController
         $this->url = getenv('API_URL_RO');
         $this->apiKey = getenv('API_KEY_RO');
     }
-    public function setting(): string
+    public function selectAlamat(): string
     {
         $userModel = new UsersModel();
-        $user = $userModel->where('id', user_id())->find();
+        $user = $userModel->find(session()->get('id'));
         $data = [
-            'title' => 'Setting',
+            'title' => 'Pilih Alamat',
             'user' => $user[0],
             'saldo' => 2000000
         ];
         // dd($data);
-        return view('user/home/setting/setting', $data);
+        return view('user/home/checkout/selectAlamat', $data);
     }
     // USER DETAIL
     public function detailUser($id): string
@@ -46,41 +46,9 @@ class Setting extends BaseController
             'du' => $du[0],
             'results' => $query->getResult()
         ];
+        // dd($data);
         return view('user/home/setting/detailUser', $data);
     }
-
-    public function updateDetailUser($id)
-    {
-        $usersModel = new UsersModel();
-
-        $du = $usersModel->find($id);
-
-        $data = [
-            'id' => $id,
-            'fullname' => $this->request->getVar('fullname'),
-            'username' => $this->request->getVar('username'),
-            'telp' => $this->request->getVar('telp'),
-        ];
-        // dd($data);
-        // SWAL
-        if ($usersModel->save($data)) {
-            return redirect()->to('setting')->with('success', 'Berhasil mengubah data user');
-        } else {
-            return redirect()->to('setting')->with('failed', 'Ada Kesalahan. Segera minta maaf');
-        }
-    }
-
-
-
-
-
-
-
-
-
-
-
-
     // PEMBAYARAN
     public function pembayaran(): string
     {

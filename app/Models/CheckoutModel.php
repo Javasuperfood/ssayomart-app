@@ -4,25 +4,23 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UsersModel extends Model
+class CheckoutModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
-    protected $primaryKey       = 'id';
+    protected $table            = 'jsf_detail_pesanan';
+    protected $primaryKey       = 'id_detail_pesanan';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'username',
-        'status',
-        'status_message',
-        'active',
-        'last_active',
-        'img',
-        'fullname',
-        'telp'
-
+        'id_user',
+        'id_alamat_users',
+        'id_kupon',
+        'id_payment',
+        'id_status_pesan',
+        'id_status_kirim',
+        'invoice'
     ];
 
     // Dates
@@ -34,9 +32,12 @@ class UsersModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'username'  => 'required|is_unique[users.username]',
-        'fullname'  => 'required',
-        'telp'      => 'required'
+        'id_user'               => 'required',
+        'id_alamat_users'       => 'required',
+        'id_payment'            => 'required',
+        'id_status_pesan'       => 'required',
+        'id_status_kirim'       => 'required',
+        'invoice'               => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

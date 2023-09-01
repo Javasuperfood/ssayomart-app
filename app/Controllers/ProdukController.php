@@ -44,7 +44,7 @@ class ProdukController extends BaseController
             'kategori' => $kategori->findAll(),
             'produk' => $getPeroduk,
             'subKategori' => $subResult,
-            'produkView' => 1
+            'back' => ''
         ];
         // dd($result);
         return view('user/produk/index', $data);

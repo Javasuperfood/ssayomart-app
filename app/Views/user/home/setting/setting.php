@@ -103,6 +103,22 @@
         </div>
     </div>
 </div>
-
-
+<?php if (session()->getFlashdata('success')) : ?>
+    <script type="module">
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: ' <?= session()->getFlashdata('success') ?>',
+        })
+    </script>
+<?php endif; ?>
+<?php if (session()->getFlashdata('failed')) : ?>
+    <script type="module">
+        Swal.fire({
+            icon: 'failed',
+            title: 'Error',
+            text: ' <?= session()->getFlashdata('failed') ?>',
+        })
+    </script>
+<?php endif; ?>
 <?= $this->endSection(); ?>

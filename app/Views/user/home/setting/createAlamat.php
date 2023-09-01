@@ -2,6 +2,7 @@
 <?= $this->section('page-content') ?>
 
 <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3">
+    <?= csrf_field(); ?>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
             <input class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" value="<?= old('label') ?>">
@@ -10,19 +11,19 @@
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" name="nama_penerima">
+            <input class="form-control floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" value="<?= old('nama_penerima') ?>">
             <label for="floatingInput">Nama Penerima*</label>
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" name="no_telp1">
+            <input class="form-control floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" value="<?= old('no_telp1') ?>">
             <label for="floatingInput">Nomor Handphone Penerima*</label>
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" name="no_telp2">
+            <input class="form-control floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>">
             <label for="floatingInput">Nomor Handphone Penerima (optional)</label>
         </div>
     </div>
@@ -46,28 +47,27 @@
             <label for="kabupaten">Kabupaten/Kota</label>
         </div>
     </div>
-    <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi">
-    <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten">
+    <input type="hidden" class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" id="inputProvinsi" name="provinsi">
+    <input type="hidden" class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" id="inputKabupaten" name="kabupaten">
 
     <div class=" mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" name="zip_code">
+            <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" value="<?= old('zip_code') ?>">
             <label for=" floatingInput">Kode Pos*</label>
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" name="alamat_1">
+            <input class="form-control floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" value="<?= old('alamat_1') ?>">
             <label for=" floatingInput">Detail Alamat*</label>
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" name="alamat_2">
+            <input class="form-control floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" value="<?= old('alamat_2') ?>">
             <label for=" floatingInput">Patokan Alamat (optional)</label>
         </div>
     </div>
-    <?= csrf_field() ?>
     <div class="row fixed-bottom p-3 px-4">
         <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Tambah</button>
     </div>

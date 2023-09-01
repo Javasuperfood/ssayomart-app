@@ -4,30 +4,25 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfDistributor extends Migration
+class JsfBanner extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_distributor' => [
+            'id_banner' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_user' => [
-                'type'        => 'INT',
-                'constraint' => 11,
-                'unsigned'       => true,
-
-            ],
-            'deskripsi' => [
-                'type'        => 'text',
+            'title' => [
+                'type'        => 'varchar',
                 'constraint' => '225',
             ],
-            'alamat' => [
-                'type'        => 'text',
-                'constraint' => '225',
+            'img' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => '225',
+                'default'       => 'default.png'
             ],
             'created_at' => [
                 'type'        => 'timestamp',
@@ -38,14 +33,13 @@ class JsfDistributor extends Migration
                 'null'   => true
             ],
         ]);
-        $this->forge->addKey('id_distributor', true);
-        $this->forge->addForeignKey('id_user', 'users', 'id');
-        $this->forge->createTable('jsf_distributor');
+        $this->forge->addKey('id_banner', true);
+        $this->forge->createTable('jsf_banner');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_users', 'id');
-        $this->forge->dropTable('jsf_distributor');
+
+        $this->forge->dropTable('jsf_banner');
     }
 }

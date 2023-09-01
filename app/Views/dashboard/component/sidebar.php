@@ -15,7 +15,7 @@
 
 <!-- Nav Item - Dashboard -->
 <li class="nav-item">
-    <a class="nav-link" href="<?= base_url(); ?>dashboard/component/home">
+    <a class="nav-link" href="<?= base_url(); ?>dashboard/home">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
 </li>
@@ -37,7 +37,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Menu Produk:</h6>
             <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">Produk</a>
-            <a class="collapse-item" href="<?= base_url(); ?>dashboard/edit">Edit</a>
+            <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambahProduk">Edit</a>
         </div>
     </div>
 </li>

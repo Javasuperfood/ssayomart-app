@@ -4,40 +4,29 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UsersModel extends Model
+class CartModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'users';
-    protected $primaryKey       = 'id';
+    protected $table            = 'jsf_cart';
+    protected $primaryKey       = 'id_cart';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'username',
-        'status',
-        'status_message',
-        'active',
-        'last_active',
-        'img',
-        'fullname',
-        'telp'
-
+        'id_user',
+        'total',
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [
-        'username'  => 'required|is_unique[users.username]',
-        'fullname'  => 'required',
-        'telp'      => 'required'
-    ];
+    protected $validationRules      = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

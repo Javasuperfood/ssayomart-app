@@ -16,3 +16,5 @@
 
 <!-- CSS External -->
 <link rel="stylesheet" href="<?= base_url() ?>assets/css/produk.css">
+<script src="<?= base_url() ?>assets/js/jquery/jquery.min.prod.js"></script>
+<script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
