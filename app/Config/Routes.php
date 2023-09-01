@@ -41,7 +41,8 @@ $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
-    $routes->get('/wishlist', 'Wishlist::wishlist');
+    $routes->get('/wishlist', 'WishlistController::index');
+    $routes->post('/wishlist/delete/(:num)', 'WishlistController::deleteProduk/$1');
 
     $routes->get('/cart', 'CartController::cart');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
@@ -84,13 +85,14 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 service('auth')->routes($routes);
 
 $routes->group('api', static function ($routes) { //nanti tambahkan filter auth via Tooken
-    $routes->resource('kategori');
-    $routes->resource('subkategori');
-    $routes->resource('produk');
-    $routes->resource('distributor');
-    $routes->resource('kupon');
-    $routes->resource('arsip');
+    // $routes->resource('kategori');
+    // $routes->resource('subkategori');
+    // $routes->resource('produk');
+    // $routes->resource('distributor');
+    // $routes->resource('kupon');
+    // $routes->resource('arsip');
     $routes->post('add-to-cart', 'CartController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
+    $routes->post('add-to-wishlist', 'WishlistController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
     $routes->get('getcity', 'Setting::getCity');
 });
 

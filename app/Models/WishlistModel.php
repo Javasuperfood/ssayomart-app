@@ -4,18 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CartModel extends Model
+class WishlistModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jsf_cart';
-    protected $primaryKey       = 'id_cart';
+    protected $table            = 'jsf_wishlist';
+    protected $primaryKey       = 'id_wishlist';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_user',
-        'total',
+        'id_user'
     ];
 
     // Dates

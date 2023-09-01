@@ -11,10 +11,8 @@
                         <p class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
                         <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                         <p class=" text-center">
-                            <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
-                            <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
-                            <input type="hidden" id="qty" name="qty" value="1">
-                            <button class="btn btn-white mt-2 add-to-cart-btn"> <i class="fas fa-shopping-cart text-danger"></i></button>
+
+                            <button class="btn btn-white mt-2 add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger"></i></button>
                         </p>
                     </div>
                 </div>
@@ -22,4 +20,5 @@
         <?php endforeach; ?>
     </div>
 </div>
+<input type="hidden" id="qty" name="qty" value="1">
 <?= $this->include('user/component/scriptAddToCart'); ?>

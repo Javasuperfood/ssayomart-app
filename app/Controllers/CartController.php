@@ -10,43 +10,6 @@ use PhpParser\Node\Expr\FuncCall;
 
 class CartController extends BaseController
 {
-    public function addToCart($slug)
-    {
-
-        $cartModel = new CartModel();
-        $cartProdModel = new CartProdukModel();
-        $qty = $this->request->getVar('qty');
-        $harga = $this->request->getVar('harga');
-        $id_produk = $this->request->getVar('id_produk');
-        $total = $harga * $qty;
-        $cekCart = $cartModel->where(['id_user' => user_id()])->first();
-        $cekCartProduk = $cartProdModel->where(['id_cart' => $cekCart['id_cart']])->where(['id_produk' => $id_produk])->first();
-
-        $dbCart = [
-            'id_cart' => $cekCart['id_cart'],
-            'id_user' => user_id(),
-            'total' => $total
-        ];
-        $cartModel->save($dbCart);
-        if (!$cekCartProduk) {
-            $dbCartProd = [
-                'id_cart' => $cekCart['id_cart'],
-                'id_produk' => $id_produk,
-                'qty' => $qty,
-            ];
-        } elseif ($cekCartProduk['id_cart'] == $cekCart['id_cart'] && $cekCartProduk['id_produk'] == $id_produk) {
-            $dbCartProd = [
-                'id_cart_produk' => $cekCartProduk['id_cart_produk'],
-                'id_cart' => $cekCart['id_cart'],
-                'id_produk' => $id_produk,
-                'qty' => $qty,
-            ];
-        }
-        $cartProdModel->save($dbCartProd);
-        $produk = new ProdukModel();
-        $single = $produk->getProduk($slug);
-        return redirect()->to(base_url() . 'produk/' . $single['slug'])->with('success', 'Berhasil menambhakan produk dalam cart.');
-    }
     public function cart(): string
     {
         $cartModel = new CartModel();
@@ -73,7 +36,8 @@ class CartController extends BaseController
         $data = [
             'title'     => 'Keranjang',
             'produk' => $cekCartProduk,
-            'total' => $totalAkhir
+            'total' => $totalAkhir,
+            'back' => ''
         ];
         return view('user/home/cart/cart', $data);
     }
@@ -116,8 +80,12 @@ class CartController extends BaseController
                 'qty' => $qty,
             ];
         }
-        $cartProdModel->save($dbCartProd);
-
+        if (!$cartProdModel->save($dbCartProd)) {
+            $response = [
+                'success' => false,
+                'message' => 'Gagal menambhakan produk dalam cart.'
+            ];
+        }
 
         $response = [
             'success' => true,
