@@ -11,11 +11,11 @@
 
         <div class="card position-relative">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Form input & submit</h6>
+                <h6 class="m-0 font-weight-medium">Form input & submit</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
-                <form action="<?= base_url(); ?>dashboard/tambah-produk/save" method="post">
+                <form action="<?= base_url(); ?>dashboard/tambah-produk/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="nama_produk" class="form-label">Nama Produk</label>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="gambar_produk" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" id="gambar_produk" name="gambar_produk" placeholder="Masukan Gambar">
+                        <input type="file" class="form-control" id="gambar_produk" name="gambar" placeholder="Masukan Gambar">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -58,11 +58,11 @@
 
         <div class="card position-relative">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Produk List</h6>
+                <h6 class="m-0 font-weight-medium">Produk List</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3">
+                <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3">
                     <form class="form-inline ml-auto">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -73,8 +73,8 @@
                             </div>
                         </div>
                     </form>
-                </nav>
-                <table class="table table-bordered text-center table-responsive" id="dataTable" width="100%" cellspacing="0">
+                </nav> -->
+                <table class="table table-bordered text-center table-responsive" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -91,12 +91,10 @@
                     <tbody>
                         <?php foreach ($produk_Model as $km) : ?>
                             <tr>
-                                <th scope="row">1</th>
+                                <td></td>
                                 <td>
-                                    <?php $imageUrl = base_url() . 'assets/img/produk/' . $km['img']; ?>
-                                    <img src="<?= $imageUrl ?>" class="img-fluid" alt="" width="50" height="50">
+                                    <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="50" height="50">
                                 </td>
-
                                 <td><?= $km['nama']; ?></td>
                                 <!-- <td>25/26/27</td> -->
                                 <td><?= $km['harga']; ?></td>
@@ -106,7 +104,7 @@
                                     <a href="#" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-pen"></i>
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
+                                    <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -114,30 +112,17 @@
                     </tbody>
                 <?php endforeach; ?>
                 </table>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
 
             </div>
         </div>
 
     </div>
 
+    <script>
+        new DataTable('#example');
+    </script>
 </div>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

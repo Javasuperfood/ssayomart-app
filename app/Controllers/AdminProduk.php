@@ -29,6 +29,15 @@ class AdminProduk extends BaseController
     // save
     public function save()
     {
+        // ambil gambar
+        $fotoProduk = $this->request->getFile('gambar');
+        if ($fotoProduk->getError() == 4) {
+            # code...
+            $namaProduk = 'default.png';
+        } else {
+            $namaProduk = $fotoProduk->getRandomName();
+            $fotoProduk->move('assets/img/produk/main/', $namaProduk);
+        }
 
         // dd($this->request->getVar());
         $produkModel = new ProdukModel();
@@ -39,7 +48,7 @@ class AdminProduk extends BaseController
             'harga' => $this->request->getVar('harga_produk'),
             'deskripsi' => $this->request->getVar('deskripsi_produk'),
             'stok' => $this->request->getVar('stock_produk'),
-            'img' => $this->request->getVar('gambar'),
+            'img' => $namaProduk,
         ];
         // swet alert
         if ($produkModel->save($data)) {
@@ -60,6 +69,31 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
+            return redirect()->to('dashboard/tambah-produk')->withInput();
+        }
+    }
+
+    // delete
+    public function deleteProduk($id)
+    {
+        $produkModel = new ProdukModel();
+        $deleted = $produkModel->delete($id);
+        // dd($id);
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Produk berhasil di hapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/tambah-produk');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan produk'
+            ];
+            session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/tambah-produk')->withInput();
         }
     }

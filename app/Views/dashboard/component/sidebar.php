@@ -37,7 +37,7 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Menu Produk:</h6>
             <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">Produk</a>
-            <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambahProduk">Edit</a>
+            <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambahProduk">Tambah Produk</a>
         </div>
     </div>
 </li>

@@ -68,6 +68,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');
+    $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
@@ -79,6 +80,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // CRUD routes
     $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
     $routes->post('tambah-produk/save', 'AdminProduk::save');
+    $routes->get('tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
 });
 
 service('auth')->routes($routes);
