@@ -68,12 +68,15 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');
-    $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
+    $routes->get('kategori', 'AdminKategoriController::index');
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
-    $routes->post('/dashboard/kategorisubkat/save', 'Kategorisubkat::save');
-    $routes->get('/dashboard/kategorisubkat/view/', 'Kategorisubkat::view');
+
+    //CRUD Admin kategori
+    $routes->post('kategori/create-kategori', 'AdminKategoriController::save');
+    $routes->get('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
+
 
 
     // CRUD routes
