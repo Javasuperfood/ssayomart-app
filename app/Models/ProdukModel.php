@@ -14,12 +14,12 @@ class ProdukModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nama_produk',
+        'nama',
         'slug',
         // 'sku',
-        'harga_produk',
-        'stock_produk',
-        'deskripsi_produk',
+        'harga',
+        'stok',
+        'deskripsi',
         // 'gambar_produk',
         // 'id_kategori',
         // 'id_sub_kategori',
@@ -34,12 +34,12 @@ class ProdukModel extends Model
 
     // Validation
     protected $validationRules = [
-        'nama_produk' => 'required',
+        'nama' => 'required',
         'slug'    => 'required',
         // 'sku'    => 'required',
-        'harga_produk'    => 'required',
-        'stock_produk'    => 'required',
-        'deskripsi_produk'    => 'required',
+        'harga'    => 'required',
+        'stok'    => 'required',
+        'deskripsi'    => 'required',
         // 'gambar_produk'    => 'required',
         // 'id_kategori' => 'required',
         // 'id_sub_kategori' => 'required',
