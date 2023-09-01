@@ -20,7 +20,7 @@ class ProdukModel extends Model
         'harga',
         'stok',
         'deskripsi',
-        // 'gambar_produk',
+        'img',
         // 'id_kategori',
         // 'id_sub_kategori',
     ];
@@ -40,7 +40,7 @@ class ProdukModel extends Model
         'harga'    => 'required',
         'stok'    => 'required',
         'deskripsi'    => 'required',
-        // 'gambar_produk'    => 'required',
+        'img'    => 'required',
         // 'id_kategori' => 'required',
         // 'id_sub_kategori' => 'required',
     ];
