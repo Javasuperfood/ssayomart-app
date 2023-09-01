@@ -89,7 +89,7 @@
                                 <td><?= $km['nama_kategori']; ?></td>
                                 <td>-</td>
                                 <td></td>
-                                <td>Makanan Korea</td>
+                                <td>Makanan jepang</td>
                                 <td><?= $km['deskripsi']; ?></td>
                                 <td> <a href="#" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-exclamation-triangle"></i>
