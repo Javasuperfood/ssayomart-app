@@ -15,13 +15,19 @@ class Status extends BaseController
         $statusModel = new StatusPesanModel();
 
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
-        $status_list = $statusModel->findAll();
+        $alamat = $alamatModel->where('id_user', user_id())->first();
+
+        $status = $statusModel->findAll();
+
 
         $data = [
             'title'                     => 'Status Pesanan',
-            'getalamat'                 => $alamat_list,
-            'getstatus'                 => $status_list,
+            'getalamat_list'            => $alamat_list,
+            'getalamat'                 => $alamat,
+            'getstatus'                 => $status,
+
         ];
+        // dd($alamat);
         return view('user/produk/status', $data);
     }
 }

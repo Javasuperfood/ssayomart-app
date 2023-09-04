@@ -26,24 +26,25 @@
                 <h2>Lokasi Tujuan</h2>
                 <div class="mb-0 mx-0 my-0">
                     <div class="card form-control form-control-md border-0 shadow-sm">
-                        <?php
-                        foreach ($getalamat as $al) :
-                        ?>
+                        <?php if ($getalamat) : ?>
                             <div class="row row-cols-1">
                                 <div class="col">
                                     <ul class="list-group list-group-flush">
                                         <span class="list-group-item pb-3 border-0">
-                                            <span class="fw-bold"><?= $al['label']; ?></span>
-                                            <p class="card-text text-secondary"><?= substr($al['alamat_1'], 0, 40); ?>...</p>
+                                            <span class="fw-bold"><?= $getalamat['label']; ?></span>
+                                            <p class="card-text text-secondary"><?= substr($getalamat['alamat_1'], 0, 40); ?>...</p>
                                         </span>
                                     </ul>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php else : ?>
+                            <p>Tidak ada alamat yang tersedia.</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col mt-3">
             <div class="card border-0">
                 <div class="card form-control form-control-md border-0 shadow-sm">
