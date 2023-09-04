@@ -6,38 +6,45 @@
     <div class="row">
         <div class="col">
             <div class="form-floating mb-2">
-                <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
-                    <?php foreach ($alamat_list as $au) : ?>
-                        <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
-                        </option>
+                <?php if (isset($error)) : ?>
+                    <div class="alert alert-danger">
+                        <?= $error ?>
+                    </div>
+                <?php endif; ?>
+
+                <select class="form-control border-0 shadow-sm" id="floatingSelect" name="alamat_list">
+                    <?php foreach ($alamat_list as $al) : ?>
+                        <option bebas="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary"><?= $al['alamat_1']; ?></option>
                     <?php endforeach ?>
                 </select>
-                <label for="floatingSelect" id="floatingLabel"><span id="perubahan"><?= $au['label']; ?></span></label>
+                <?php if (isset($al)) : ?>
+                    <label for="floatingSelect" id="floatingLabel"><span id="perubahan"><?= $al['label']; ?></span></label>
+                <?php endif; ?>
             </div>
         </div>
 
         <div class="form-floating mb-2">
-            <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
-                <?php foreach ($alamat_list as $au) : ?>
-                    <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
-                    </option>
-                <?php endforeach ?>
+            <select class="form-control border-0 shadow-sm" id="kurir" name="kurir">
+                <option selected>Pilih Kurir</option>
+                <option value="jne" class="card-text text-secondary">JNE</option>
+                <option value="tiki" class="card-text text-secondary">TIKI</option>
+                <option value="pos" class="card-text text-secondary">Pos Indonesia</option>
             </select>
-            <label for="floatingSelect" id="floatingLabel">Pilih Pengiriman</span></label>
+            <label for="kurir" id="floatingLabel">Pilih Kurir</label>
         </div>
-        <div class="form-group">
-            <label for="service">Pilih Layanan</label>
-            <select class="form-control" id="service">
-                <option value="">Select Layanan</option>
-            </select>
-        </div>
-        <strong>Estimasi : <span id="estimasi"></span></strong>
+
         <div class="form-floating mb-2">
-            <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
-                <?php foreach ($alamat_list as $au) : ?>
-                    <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
-                    </option>
-                <?php endforeach ?>
+            <select class="form-control border-0 shadow-sm" id="service" name="service">
+                <option value="" class="card-text text-secondary"></option>
+            </select>
+            <label for="service" id="serviceLabel">Pilih Layanan</label>
+            <strong>Estimasi : <span id="estimasi"></span></strong>
+        </div>
+
+        <div class="form-floating mb-2">
+            <select class="form-control border-0 shadow-sm" id="floatingSelect">
+                <option bebas="" value="" class="card-text text-secondary">
+                </option>
             </select>
             <label for="floatingSelect" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
         </div>
@@ -133,6 +140,20 @@
             $('#perubahan').text(label);
             console.log(label);
         });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        // Cek jika alamat kosong
+        <?php if (isset($error) && !empty($error)) : ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Alamat Kosong',
+                text: 'Anda harus mengisi alamat terlebih dahulu.',
+                showConfirmButton: true
+            });
+        <?php endif; ?>
     });
 </script>
 <?= $this->include('user/home/component/rajaOngkir/chekout'); ?>

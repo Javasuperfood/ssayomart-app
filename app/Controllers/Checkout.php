@@ -4,10 +4,7 @@ namespace App\Controllers;
 
 use App\Models\AlamatUserModel;
 use App\Models\CheckoutModel;
-//  $query = $usersModel->select('users.username, users.fullname, users.telp, auth_identities.secret')
-// ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
-// ->where('users.id', $id)
-// ->get();
+
 class Checkout extends BaseController
 {
     public function checkout(): string
@@ -23,6 +20,15 @@ class Checkout extends BaseController
 
         ];
         // dd($data);
+        if (empty($alamat_list)) {
+            $data['error'] = 'Tidak ada alamat yang tersedia. Silakan tambahkan alamat terlebih dahulu.';
+        } else {
+            $data = [
+                'title' => 'Checkout',
+                'alamat_list' => $alamat_list
+            ];
+        }
+
         return view('user/home/checkout/checkout', $data);
     }
 }
