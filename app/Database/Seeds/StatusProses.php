@@ -4,7 +4,7 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-class Status extends Seeder
+class StatusProses extends Seeder
 {
     public function run()
     {
