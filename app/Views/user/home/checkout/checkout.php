@@ -7,19 +7,19 @@
         <div class="col">
             <div class="form-floating mb-2">
                 <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
-                    <?php foreach ($alamat_list as $au) : ?>
-                        <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
+                    <?php foreach ($alamat_list as $al) : ?>
+                        <option bebas="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary"><?= $al['alamat_1']; ?>
                         </option>
                     <?php endforeach ?>
                 </select>
-                <label for="floatingSelect" id="floatingLabel"><span id="perubahan"><?= $au['label']; ?></span></label>
+                <label for="floatingSelect" id="floatingLabel"><span id="perubahan"><?= $al['label']; ?></span></label>
             </div>
         </div>
 
         <div class="form-floating mb-2">
             <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
-                <?php foreach ($alamat_list as $au) : ?>
-                    <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
+                <?php foreach ($alamat_list as $al) : ?>
+                    <option bebas="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary"><?= $al['alamat_1']; ?>
                     </option>
                 <?php endforeach ?>
             </select>
@@ -34,8 +34,8 @@
         <strong>Estimasi : <span id="estimasi"></span></strong>
         <div class="form-floating mb-2">
             <select class="form-control border-0 shadow-sm" id="floatingSelect" aria-label="Floating label select example">
-                <?php foreach ($alamat_list as $au) : ?>
-                    <option bebas="<?= $au['label']; ?>" value="<?= $au['id_alamat_users']; ?>" class="card-text text-secondary"><?= $au['alamat_1']; ?>
+                <?php foreach ($alamat_list as $al) : ?>
+                    <option bebas="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary"><?= $al['alamat_1']; ?>
                     </option>
                 <?php endforeach ?>
             </select>
