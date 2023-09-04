@@ -47,7 +47,8 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->get('/cart', 'CartController::cart');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
     // $routes->get('/checkout/(:segment)', 'Checkout::checkout/$1');
-    $routes->get('/checkout', 'Checkout::checkout');
+    $routes->get('/checkout/(:any)', 'Checkout::checkout/$1');
+    $routes->post('/checkout', 'Checkout::storeData');
     // $routes->get('/checkout/(:segment)/(:segment)', 'Checkout::checkout/$1/$2');
     $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
