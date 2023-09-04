@@ -19,7 +19,6 @@ class JsfAlamatUser extends Migration
                 'type'        => 'INT',
                 'constraint'  => 11,
                 'unsigned'    => true,
-
             ],
             'label' => [
                 'type'        => 'varchar',
