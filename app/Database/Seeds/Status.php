@@ -10,12 +10,20 @@ class Status extends Seeder
     {
         $data = [
             [
-                'status' => 'Menunggu Pembayaran',
-                'deskripsi'    => 'Menunggu Pembayaran',
+                'status'        => 'Menunggu Pembayaran',
+                'deskripsi'     => 'Proses tertunda karena pembeli belum melakukan transaksi',
             ],
             [
-                'status' => 'Sudah Dibayar',
-                'deskripsi'    => 'Sudah Dibayar',
+                'status'        => 'Paket Diproses',
+                'deskripsi'     => 'Paket sudah diproses oleh cabang terdekat',
+            ],
+            [
+                'status'        => 'Paket Dikirim',
+                'deskripsi'     => 'Paket sudah dalam proses pengiriman',
+            ],
+            [
+                'status'        => 'Paket Terkirim',
+                'deskripsi'     => 'Paket sudah diterima oleh pembeli',
             ],
         ];
 
