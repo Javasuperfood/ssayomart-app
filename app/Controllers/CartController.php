@@ -85,6 +85,7 @@ class CartController extends BaseController
                 'success' => false,
                 'message' => 'Gagal menambhakan produk dalam cart.'
             ];
+            return $this->response->setJSON($response);
         }
 
         $response = [

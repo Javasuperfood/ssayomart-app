@@ -1,13 +1,13 @@
 <script>
     $(document).ready(function() {
         $(".add-to-wishlist-btn").click(function() {
-            var id_produk = $("#id_produk").val();
+            var produk = $(this).attr('produk');
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('api/add-to-wishlist'); ?>",
                 dataType: "json",
                 data: {
-                    id_produk: id_produk,
+                    id_produk: produk,
                 },
                 success: function(response) {
                     if (response.success) {

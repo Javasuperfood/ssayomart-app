@@ -13,7 +13,7 @@
                     <h1>Rp. <?= number_format($produk['harga'], 2, ',', '.'); ?></h1>
                 </div>
                 <div class="col text-end">
-                    <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark"><i class="fa-regular fa-heart"></i> Add to Wishlist</a>
+                    <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>><i class=" fa-regular fa-heart"></i> Add to Wishlist</a>
                 </div>
             </div>
             <div class="container pt-3">

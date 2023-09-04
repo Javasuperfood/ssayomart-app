@@ -64,6 +64,7 @@ class WishlistController extends BaseController
                 'success' => false,
                 'message' => 'Gagal menambhakan produk dalam wishlist.'
             ];
+            return $this->response->setJSON($response);
         }
         $response = [
             'success' => true,
