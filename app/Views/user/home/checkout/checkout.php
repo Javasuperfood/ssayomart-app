@@ -3,15 +3,14 @@
 
 <!-- ITEM WISHLIST -->
 <div class="container pt-5">
-    <div class="row">
+    <?php if (!$alamat_list) : ?>
+        <div class="alert alert-danger">
+            Tidak ada alamat yang tersedia. Silakan tambahkan alamat terlebih dahulu. <a href="<?= base_url('setting/create-alamat'); ?>" class="link-dark fw-bold">Disini</a>
+        </div>
+    <?php endif ?>
+    <div class="row <?= (!$alamat_list) ? 'd-none' : ''; ?>">
         <div class="col">
             <div class="form-floating mb-2">
-                <?php if (isset($error)) : ?>
-                    <div class="alert alert-danger">
-                        <?= $error ?>
-                    </div>
-                <?php endif; ?>
-
                 <select class="form-control border-0 shadow-sm" id="floatingSelect" name="alamat_list">
                     <?php foreach ($alamat_list as $al) : ?>
                         <option bebas="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary"><?= $al['alamat_1']; ?></option>
@@ -48,52 +47,30 @@
             </select>
             <label for="floatingSelect" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
         </div>
-
-        <div class="row pt-3">
-            <div class="col">
-                <div class="card border-0 shadow">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img">
-                            </div>
-                            <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                <h5 class="card-title"><?= substr("Ottogi Mie Kering - 500gr", 0, 10); ?>...</h5>
-                                <p class="card-text text-secondary">jumlah barang
-                                </p>
-                            </div>
-                            <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                <h5 class="text-secondary fw-bold">Total</h5>
-                                <p class="fw-bold">Rp. 2000</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row pt-3">
-            <div class="col">
-                <div class="card border-0 shadow">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img">
-                            </div>
-                            <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                <h5 class="card-title"><?= substr("Ottogi Mie Kering - 500gr", 0, 10); ?>...</h5>
-                                <p class="card-text text-secondary">jumlah barang
-                                </p>
-                            </div>
-                            <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                <h5 class="text-secondary fw-bold">Total</h5>
-                                <p class="fw-bold">Rp. 2000</p>
+        <?php foreach ($produk as $p) : ?>
+            <div class="row pt-3">
+                <div class="col">
+                    <div class="card border-0 shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
+                                </div>
+                                <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                    <h5 class="card-title"><?= substr($p['nama'], 0, 10); ?>...</h5>
+                                    <p class="card-text text-secondary"><?= $p['qty']; ?>
+                                    </p>
+                                </div>
+                                <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                    <h5 class="text-secondary fw-bold">Total</h5>
+                                    <p class="fw-bold">Rp. <?= number_format($p['harga'], 2, ',', '.'); ?></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php endforeach ?>
         <div class="row py-3 px-3">
             <table class="table">
                 <thead>
@@ -105,19 +82,19 @@
                 <tbody>
                     <tr>
                         <td>Total Harga</td>
-                        <td>Rp. 100.000</td>
+                        <td>Rp. <?= number_format($total, 2, ',', '.'); ?></td>
                     </tr>
                     <tr>
                         <td>Total Ongkos Kirim</td>
-                        <td>Rp. <span id="ongkirText"></span></td>
+                        <td><span id="ongkirText"></span></td>
                     </tr>
                     <tr>
                         <td>Biaya Jasa Aplikasi</td>
-                        <td>Rp. 1.000</td>
+                        <td><span id="serviceApp"></span></td>
                     </tr>
                     <tr>
                         <td>Subtotal</td>
-                        <td>Rp. <span id="totalText"></span></td>
+                        <td><span id="totalText"></span></td>
                     </tr>
                 </tbody>
             </table>

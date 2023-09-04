@@ -1,6 +1,9 @@
 <script>
     const jumlah = 1;
-    const harga = 20000;
+    const jasaApp = 1000;
+    $('#serviceApp').html(formatRupiah(jasaApp));
+
+    const total = <?= $total; ?>;
 
     // Fungsi untuk mengisi layanan berdasarkan kurir yang dipilih
     function populateServices(kurir) {
@@ -41,11 +44,10 @@
         var estimasi = $('option:selected', this).attr('etd');
         ongkir = parseInt($(this).val());
         $("#ongkir").val(ongkir);
-        $("#ongkirText").html(ongkir);
+        $("#ongkirText").html(formatRupiah(ongkir));
         $("#estimasi").html(estimasi + " Hari");
-        var total = (jumlah * harga) + ongkir;
         $("#total").val(total);
-        $("#totalText").html(total);
+        $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
     });
 
     // Menghitung total saat mengubah jumlah
@@ -60,5 +62,15 @@
     var kurirTerpilih = $("#kurir").val();
     if (kurirTerpilih) {
         populateServices(kurirTerpilih);
+    }
+
+
+    function formatRupiah(angka) {
+        var formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 2
+        });
+        return formatter.format(angka);
     }
 </script>
