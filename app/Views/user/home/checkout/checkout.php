@@ -133,5 +133,5 @@
         <?php endif; ?>
     });
 </script>
-<?= $this->include('user/home/component/rajaOngkir/chekout'); ?>
+<?= $this->include('user/home/component/rajaOngkir/checkout'); ?>
 <?= $this->endSection(); ?>
