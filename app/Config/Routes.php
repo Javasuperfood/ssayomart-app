@@ -46,10 +46,8 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
     $routes->get('/cart', 'CartController::cart');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
-    // $routes->get('/checkout/(:segment)', 'Checkout::checkout/$1');
-    $routes->post('/checkout', 'Checkout::storeData');
-    $routes->get('/checkout/(:any)', 'Checkout::checkout/$1');
-    // $routes->get('/checkout/(:segment)/(:segment)', 'Checkout::checkout/$1/$2');
+    $routes->post('/checkout', 'CheckoutController::storeData');
+    $routes->get('/checkout/(:any)', 'CheckoutController::checkout/$1');
     $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
     // Setting route
@@ -63,7 +61,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->post('/setting/create-alamat/save-alamat', 'Setting::saveAlamat');
     $routes->post('update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
     $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
-    $routes->get('/history', 'HistoryTransaksi::history');
+    $routes->get('/history', 'HistoryTransaksiController::index');
 
     $routes->get('/produk/status', 'Status::status');
 });
@@ -76,7 +74,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
 
     $routes->get('kategori', 'AdminKategoriController::index');
-
 
 
 

@@ -4,20 +4,23 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
+use Faker\Factory;
+
 class Kategori extends Seeder
 {
     public function run()
     {
+        $faker = Factory::create();
         $data = [
             [
                 'id_kategori' => 1,
                 'nama_kategori' => 'NORI',
                 'deskripsi'    => 'Lorem',
-                'slug'    => 'nori',
+                'slug'    => 'nori'
             ],
             [
                 'id_kategori' => 2,
-                'nama_kategori' => 'RAMEN                ',
+                'nama_kategori' => 'RAMEN',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'ramen',
             ],
@@ -61,7 +64,7 @@ class Kategori extends Seeder
                 'id_kategori' => 9,
                 'nama_kategori' => 'MAKANAN INSTAN',
                 'deskripsi'    => 'Lorem',
-                'slug'    => 'mkanan-instan',
+                'slug'    => 'makanan-instan',
             ],
             [
                 'id_kategori' => 10,
@@ -98,8 +101,35 @@ class Kategori extends Seeder
                 'nama_kategori' => 'SUSU & OLAHAN',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'susu-dan-olahan',
+            ],
+            [
+                'id_kategori' => 16,
+                'nama_kategori' => 'SAUS',
+                'deskripsi'    => 'Lorem',
+                'slug'    => 'saus',
+            ],
+            [
+                'id_kategori' => 17,
+                'nama_kategori' => 'MAKANAN BEKU',
+                'deskripsi'    => 'Lorem',
+                'slug'    => 'makanan-beku',
             ]
         ];
+
+
+        $publicImagePath = 'assets/img/kategori/';
+        $imageNames = ['nori.png']; // Nama-nama gambar yang akan disalin ke direktori kategori.
+
+        foreach ($imageNames as $imageName) {
+            $imagePath = FCPATH . $publicImagePath . $imageName;
+            copy($imagePath, $imagePath); // Salin gambar dari direktori sumber ke direktori tujuan.
+        }
+
+        // Loop untuk mengisi kolom 'image_path' pada data kategori.
+        foreach ($data as &$kategori) {
+            $kategori['img'] = $publicImagePath . $kategori['slug'] . '.png'; // Sesuaikan dengan nama file gambar yang sesuai dengan slug atau id_kategori.
+            // Tambahkan kode untuk mengisi data lainnya jika diperlukan.
+        }
 
         $this->db->table('jsf_kategori')->insertBatch($data);
 

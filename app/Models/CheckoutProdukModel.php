@@ -20,7 +20,7 @@ class CheckoutProdukModel extends Model
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -42,4 +42,19 @@ class CheckoutProdukModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getHistoryTransaksi($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_checkout_produk')
+            ->select('*')
+            ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->where('jsf_checkout.id_user', $id)
+            ->orderBy('jsf_checkout_produk.created_at', 'DESC')
+            ->get();
+
+        $result = $query->getResult();
+        return $result;
+    }
 }
