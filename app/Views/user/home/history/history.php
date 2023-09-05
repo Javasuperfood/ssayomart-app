@@ -36,8 +36,9 @@
             </div>
         </div>
     <?php endforeach; ?>
+    <div class="row pb-5">
+        <div class="col"></div>
+    </div>
 </div>
-<div class="row pb-5">
-    <div class="col"></div>
-</div>
+
 <?= $this->endSection(); ?>
