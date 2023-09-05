@@ -14,6 +14,7 @@ class Kategori extends ResourceController
     {
         $model = new KategoriModel();
         $data['jsf_kategori'] = $model->orderBy('id_kategori', 'DESC')->findAll();
+        $data['img'] = $model->getGambarKategori('nori');
         // $response = [
         //     'status' => 200,
         //     'error' => null,
