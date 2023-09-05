@@ -26,6 +26,63 @@ class AdminProduk extends BaseController
         return view('dashboard/tambahProduk', $data);
     }
 
+    // view
+    public function updateProduk($id)
+    {
+        session();
+
+        $produkModel = new ProdukModel();
+
+        $km = $produkModel->find($id);
+        $data = [
+            'title' => 'Edit Produk',
+            'km' => $km,
+            'back'  => 'dashboard/tambah-produk'
+        ];
+        return view('dashboard/updateProduk', $data);
+    }
+    // action
+    public function editProduk($id)
+    {
+        $img = $this->request->getFile('gambar');
+        $nama = $this->request->getVar('nama_produk');
+        $harga = $this->request->getVar('harga_produk');
+        $deskripsi = $this->request->getVar('deskripsi_produk');
+        $stok = $this->request->getVar('stock_produk');
+        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
+        $produkModel = new ProdukModel();
+        $data = [
+            'slug' => $slug,
+            'nama_produk' => $nama,
+            'harga_produk' => $harga,
+            'deskripsi_produk' => $deskripsi,
+            'stok_produk' => $stok,
+            'gambar' => $img,
+        ];
+        // dd($data);
+
+        if ($produkModel->save($data)) {
+            session()->setFlashdata('success', 'Produk berhasil diubah.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Alamat berhasil diubah.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/tambah-produk');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/tambah-produk')->withInput();
+        }
+    }
+
     // save
     public function save()
     {
@@ -40,8 +97,9 @@ class AdminProduk extends BaseController
         }
 
         // dd($this->request->getVar());
+
         $produkModel = new ProdukModel();
-        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
+        $slug = url_title($this->request->getVar('nama'), '-', true);
         $data = [
             'slug' => $slug,
             'nama' => $this->request->getVar('nama_produk'),
