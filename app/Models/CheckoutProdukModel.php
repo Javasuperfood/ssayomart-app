@@ -42,4 +42,18 @@ class CheckoutProdukModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getHistoryTransaksi($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_checkout_produk')
+            ->select('*')
+            ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->where('jsf_checkout.id_user', $id)
+            ->get();
+
+        $result = $query->getResult();
+        return $result;
+    }
 }
