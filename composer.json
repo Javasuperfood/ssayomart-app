@@ -6,8 +6,9 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
-        "codeigniter4/framework": "^4.0",
-        "codeigniter4/shield": "^1.0@beta"
+        "codeigniter4/framework": "4.3.8",
+        "codeigniter4/shield": "^1.0@beta",
+        "midtrans/midtrans-php": "^2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",

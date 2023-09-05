@@ -4,12 +4,12 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfPesanProduk extends Migration
+class JsfCheckoutProduk extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_pesan_produk' => [
+            'id_checkout_produk' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
@@ -29,7 +29,10 @@ class JsfPesanProduk extends Migration
                 'type'           => 'INT',
                 'constraint'     => 11,
             ],
-
+            'harga' => [
+                'type'           => 'varchar',
+                'constraint'     => 225,
+            ],
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
@@ -38,18 +41,18 @@ class JsfPesanProduk extends Migration
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_pesan_produk', true);
+        $this->forge->addKey('id_checkout_produk', true);
         $this->forge->addForeignKey('id_checkout', 'jsf_checkout', 'id_checkout');
         $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
 
-        $this->forge->createTable('jsf_pesan_produk');
+        $this->forge->createTable('jsf_checkout_produk');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_pesan_produk', 'id_checkout');
-        $this->forge->dropForeignKey('jsf_pesan_produk', 'id_produk');
+        $this->forge->dropForeignKey('jsf_checkout_produk', 'id_checkout');
+        $this->forge->dropForeignKey('jsf_checkout_produk', 'id_produk');
 
-        $this->forge->dropTable('jsf_pesan_produk');
+        $this->forge->dropTable('jsf_checkout_produk');
     }
 }

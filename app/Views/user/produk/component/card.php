@@ -2,17 +2,17 @@
     <!-- <h2>Produk terlaris</h2> -->
     <div class="row mt-2 row-cols-3">
         <?php foreach ($produk as $p) : ?>
-            <div class="col">
-                <div class="card border-0 shadow" style="width: auto;">
+            <div class="col pt-3">
+                <div class="card border-0 shadow" style="width: auto; height: 100%;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                     </a>
-                    <div class="fs-6" style="padding: 10px 10px 10px 10px;">
+                    <div class="fs-3" style="padding: 0 10px 0 10px;">
                         <p class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
                         <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                         <p class=" text-center">
 
-                            <button class="btn btn-white mt-2 add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger"></i></button>
+                            <button class="btn btn-white add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger"></i></button>
                         </p>
                     </div>
                 </div>

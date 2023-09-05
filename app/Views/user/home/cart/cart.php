@@ -59,7 +59,10 @@
     </div>
     <div class="row p-3 px-4">
         <div class="col">
-            <a href="<?= base_url() ?>checkout" type="button" class="btn btn-lg fw-bold <?= (!$produk) ? 'd-none' : ''; ?>" style="background-color: #ec2614; color: #fff; width: 100%;">Checkout</a>
+            <form action="<?= base_url('checkout'); ?>" method="post" class="<?= (!$produk) ? 'd-none' : ''; ?>">
+                <?= csrf_field(); ?>
+                <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%;">Checkout</button>
+            </form>
         </div>
     </div>
     <div class="pb-5"></div>

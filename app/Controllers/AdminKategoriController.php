@@ -51,28 +51,6 @@ class AdminkategoriController extends BaseController
         };
     }
 
-    // Update ke database
-    public function update($id)
-    {
-        session();
-        $kategoriModel = new KategoriModel();
-        $data = [
-            'title' => 'Edit Kategori',
-        ];
-        return view('dashboard/kategori/upate', $data);
-    }
-
-    public function edit($id)
-    {
-        $kategoriModel = new KategoriModel();
-        $slug = url_title($this->request->getVar('kategori'), '-', true);
-        $data = [
-            'slug' => $slug,
-            'nama_kategori' => $this->request->getVar('kategori'),
-            'deskripsi' => $this->request->getVar('deskripsi'),
-        ];
-    }
-
 
     // Delete ke database
     public function deleteKategori($id)
@@ -98,4 +76,71 @@ class AdminkategoriController extends BaseController
             return redirect()->to('dashboard/kategori')->withInput();
         }
     }
+
+
+    // tampilan Form Edit Kategori
+    public function editKategori($id)
+    {
+        // Instansiasi model kategori
+        $kategoriModel = new KategoriModel();
+
+        // Ambil data kategori berdasarkan ID
+        $kategori = $kategoriModel->find($id);
+
+        if ($kategori === null) {
+            // Kategori tidak ditemukan, mungkin berikan pesan kesalahan atau arahkan kembali ke halaman lain
+            return redirect()->to(base_url('dashboard/kategori'))->with('error', 'Kategori tidak ditemukan.');
+        }
+
+        // Tampilkan formulir edit kategori
+        return view('dashboard/editKategori', ['kategori' => $kategori]);
+    }
+
+
+    public function updateKategori($id)
+    {
+        // Ambil data yang dikirimkan dari formulir edit
+
+        $nama_kategori = $this->request->getVar('kategori');
+        $deskripsi = $this->request->getVar('deskripsi');
+        $slug = url_title($nama_kategori, '-', true);
+        $data = [
+            'slug' => $slug,
+            'id_kategori' => $id,
+            'nama_kategori' => $nama_kategori,
+            'deskripsi' => $deskripsi,
+
+        ];
+
+        // Instansiasi model kategori
+        $kategoriModel = new KategoriModel();
+
+        // Update data kategori berdasarkan ID
+        if ($kategoriModel->save($data)) {
+            session()->setFlashdata('success', 'Data kategori Berhasil diupdate');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Data Kategori Berhasil diubah.'
+            ];
+            // Redirect ke halaman daftar kategori dengan pesan sukses
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/kategori');
+
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisiam form Update kategori.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/kategori/edit-kategori/' . $id)->withInput();
+        }
+    }
+
+
+
+
+    
 }

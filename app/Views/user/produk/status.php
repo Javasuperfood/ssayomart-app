@@ -2,44 +2,20 @@
 <?= $this->section('page-content') ?>
 
 <div class="container pt-3 pb-4">
-    <div class="row row-cols-1 row-cols-sm-2 ">
-        <div class="col ">
-            <div class="card text-center border-0 shadow-sm">
-                <div class="container">
-                    <div class="row mt-3">
-                        <div class="col-md-12">
-                            <h3>Status Pengiriman</h3>
-                            <div class="timeline">
+    <div class="row row-cols-1 row-cols-sm-2">
+        <div class="col">
+            <div class="container">
+                <div class="card border-0 shadow-sm">
+                    <div class="col-md-12">
+                        <div class="timeline text-center">
+                            <?php foreach ($getstatus as $gs) : ?>
                                 <div class="timeline-item">
-                                    <div class="timeline-icon bg-danger"></div>
                                     <div class="timeline-content bg-white">
-                                        <p><?= $keterangan['diterima']['pesan']; ?></p>
-                                        <span class="badge text-bg-warning"><?= $keterangan['diterima']['tanggal']; ?></span>
+                                        <div class="timeline-icon bg-warning"></div>
+                                        <p class="fw-bold badge text-bg-danger"><?= $gs['status']; ?></p>
                                     </div>
                                 </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-icon bg-danger"></div>
-                                    <div class="timeline-content bg-white">
-                                        <p><?= $keterangan['diproses']['pesan']; ?></p>
-                                        <span class="badge text-bg-warning"><?= $keterangan['diproses']['tanggal']; ?></span>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-icon bg-danger"></div>
-                                    <div class="timeline-content bg-white">
-                                        <p><?= $keterangan['dikirim']['pesan']; ?></p>
-                                        <span class="badge text-bg-primary"><?= $keterangan['dikirim']['tanggal']; ?></span>
-                                    </div>
-                                </div>
-                                <div class="timeline-item">
-                                    <div class="timeline-icon bg-danger"></div>
-                                    <div class="timeline-content bg-white">
-                                        <p><?= $keterangan['terkirim']['pesan']; ?></p>
-                                        <span class="badge text-bg-success"><?= $keterangan['terkirim']['tanggal']; ?></span>
-                                    </div>
-                                </div>
-
-                            </div>
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>
@@ -50,21 +26,25 @@
                 <h2>Lokasi Tujuan</h2>
                 <div class="mb-0 mx-0 my-0">
                     <div class="card form-control form-control-md border-0 shadow-sm">
-                        <div class="row">
-                            <div class="col-1">
-                                <i class="bi bi-geo-alt-fill"></i>
+                        <?php if ($getalamat) : ?>
+                            <div class="row row-cols-1">
+                                <div class="col">
+                                    <ul class="list-group list-group-flush">
+                                        <span class="list-group-item pb-3 border-0">
+                                            <span class="fw-bold"><?= $getalamat['label']; ?></span>
+                                            <p class="card-text text-secondary"><?= substr($getalamat['alamat_1'], 0, 40); ?>...</p>
+                                        </span>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="col-11">
-                                <p href="#" class="card-text fw-bold">
-                                    <?= $label; ?>
-                                </p>
-                                <a href="#" class="card-text text-secondary link-underline link-underline-opacity-0"><?= substr($alamat, 0, 25); ?>...</a>
-                            </div>
-                        </div>
+                        <?php else : ?>
+                            <p>Tidak ada alamat yang tersedia.</p>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="col mt-3">
             <div class="card border-0">
                 <div class="card form-control form-control-md border-0 shadow-sm">

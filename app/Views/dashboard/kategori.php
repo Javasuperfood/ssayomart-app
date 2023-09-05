@@ -19,7 +19,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="kategori" class="form-label">Nama</label>
-                        <input type="text" class="form-control" id="kategori" placeholder="Nama Lengkap" name="kategori">
+                        <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori" name="kategori">
                     </div>
 
                     <div class="mb-1">
@@ -43,9 +43,9 @@
                     <div>
                         <button type="submit" class="btn btn-primary mt-3" id="ka">Simpan</button>
                     </div>
+                </form>
             </div>
         </div>
-        </form>
     </div>
 
     <!-- Right Panel -->
@@ -91,8 +91,9 @@
                                 <td></td>
                                 <td>Makanan Korea</td>
                                 <td><?= $km['deskripsi']; ?></td>
-                                <td> <a href="#" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-exclamation-triangle"></i>
+                                <td style="width: 100px;">
+                                    <a href="<?= base_url("dashboard/kategori/edit-kategori/{$km['id_kategori']}"); ?>" class="btn btn-warning btn-circle btn-sm btn-inline">
+                                        <i class="fas fa-pen"></i>
                                     </a>
                                     <a href="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km['id_kategori']; ?>" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
