@@ -3,7 +3,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <a href="<?= base_url(); ?>setting#" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0">Alamat <i class="bi bi-chevron-down"></i> </a>
+            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
             <div class="row pb-4">
                 <div class="col-9">
                     <h3 class="fw-bold py-3">Selamat datang, <?= $user['username']; ?></h3>

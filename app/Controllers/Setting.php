@@ -19,11 +19,14 @@ class Setting extends BaseController
     public function setting(): string
     {
         $userModel = new UsersModel();
+        $alamatUserModel = new AlamatUserModel();
         $user = $userModel->where('id', user_id())->find();
+        $firstLable = $alamatUserModel->where('id_user', user_id())->first();
         $data = [
             'title' => 'Setting',
             'user' => $user[0],
-            'saldo' => 2000000
+            'saldo' => 2000000,
+            'alamat' => $firstLable
         ];
         // dd($data);
         return view('user/home/setting/setting', $data);
