@@ -8,7 +8,7 @@ use App\Models\CartProdukModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 
-class Checkout extends BaseController
+class CheckoutController extends BaseController
 {
     public function storeData()
     {
@@ -52,19 +52,26 @@ class Checkout extends BaseController
                 'harga' => $item['harga'],
             ];
             $checkoutProdukModel->insert($checkoutItemData);
-            // $cartProdModel->delete($item['id_cart_produk']); delete from cart
+            $cartProdModel->delete($item['id_cart_produk']); //delete from cart
         }
         return redirect()->to(base_url() . 'checkout/' . $chechkoutId);
     }
-    public function checkout($id): string
+    public function checkout($id)
     {
         $checkoutModel = new CheckoutModel();
+        $cekUser = $checkoutModel->where('id_checkout', $id)->first();
+
+        if ($cekUser['id_user'] != user_id()) {
+            return redirect()->to(base_url());
+        }
+
         $checkoutProdModel = new CheckoutProdukModel();
         $cekProduk = $checkoutProdModel
             ->select('*')
             ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
             ->where('id_checkout', $id)
             ->findAll();
+
 
         $totalAkhir = 0;
 

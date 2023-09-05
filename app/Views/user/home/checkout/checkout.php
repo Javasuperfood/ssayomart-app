@@ -16,9 +16,7 @@
                         <option bebas="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary"><?= $al['alamat_1']; ?></option>
                     <?php endforeach ?>
                 </select>
-                <?php if (isset($al)) : ?>
-                    <label for="floatingSelect" id="floatingLabel"><span id="perubahan"><?= $al['label']; ?></span></label>
-                <?php endif; ?>
+                <label for="floatingSelect" id="floatingLabel"><span id="perubahan"></span></label>
             </div>
         </div>
 
@@ -111,11 +109,13 @@
 
 <script>
     $('document').ready(function() {
+        var selectedOption = $(this).find("option:selected");
+        var label = selectedOption.attr('bebas');
+        $('#perubahan').text(label);
         $("#floatingSelect").on('change', function() {
             var selectedOption = $(this).find("option:selected");
             var label = selectedOption.attr('bebas');
             $('#perubahan').text(label);
-            console.log(label);
         });
     });
 </script>
