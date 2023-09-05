@@ -63,7 +63,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->post('/setting/create-alamat/save-alamat', 'Setting::saveAlamat');
     $routes->post('/setting/update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
     $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
-    $routes->get('/history', 'HistoryTransaksi::history');
+    $routes->get('/history', 'HistoryTransaksiController::index');
 
     $routes->get('/produk/status', 'Status::status');
 });
@@ -76,7 +76,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
 
-    
+
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
