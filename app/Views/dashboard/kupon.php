@@ -5,12 +5,12 @@
 <p class="mb-4">Silahkan inputkan kupon masukan apa yang sedang di promosikan maupun di diskon.</p>
 
 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Tambah Banner
+    Tambah Kupon
 </button>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Banner</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Kupon</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
