@@ -78,7 +78,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori', 'AdminKategoriController::index');
 
 
-    
+
 
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
@@ -94,12 +94,15 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
 
 
-    // CRUD routes
+    // CRUD routes produk
     $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
     $routes->post('tambah-produk/save', 'AdminProduk::save');
     $routes->get('tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
     $routes->post('tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
     $routes->get('tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
+
+    // Crud Kupon
+
 });
 
 service('auth')->routes($routes);

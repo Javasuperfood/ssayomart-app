@@ -35,15 +35,15 @@
                         </div> -->
                     <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
-                        <input type="price" class="form-control" id="stock_produk" name="stock_produk" placeholder="Stock">
+                        <input type="number" class="form-control" id="stock_produk" name="stock_produk" placeholder="Stock">
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi_produk" class="form-label">Deskripsi Produk</label>
-                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi" rows="3"></textarea>
+                        <label for="alamat">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" rows="3" placeholder="Deskripsi Produk Anda .."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="gambar_produk" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" id="gambar_produk" name="gambar" placeholder="Masukan Gambar">
+                        <input type="file" class="form-control" id="gambar_produk" name="gambar_produk" placeholder="Masukan Gambar">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
@@ -88,10 +88,11 @@
                             <th style="width: 100px;">Aksi</th>
                         </tr>
                     </thead>
+                    <?= $no = 1; ?>
                     <tbody>
                         <?php foreach ($produk_Model as $km) : ?>
                             <tr>
-                                <td></td>
+                                <td><?= $no++; ?></td>
                                 <td>
                                     <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="50" height="50">
                                 </td>
@@ -111,6 +112,7 @@
                             </tr>
                     </tbody>
                 <?php endforeach; ?>
+
                 </table>
 
             </div>

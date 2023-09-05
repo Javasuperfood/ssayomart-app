@@ -44,29 +44,36 @@ class AdminProduk extends BaseController
     // action
     public function editProduk($id)
     {
-        $img = $this->request->getFile('gambar');
-        $nama = $this->request->getVar('nama_produk');
-        $harga = $this->request->getVar('harga_produk');
-        $deskripsi = $this->request->getVar('deskripsi_produk');
-        $stok = $this->request->getVar('stock_produk');
-        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
+
         $produkModel = new ProdukModel();
+        $km = $produkModel->find($id);
+        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
+        $image = $this->request->getFile('gambar_produk');
         $data = [
             'slug' => $slug,
-            'nama_produk' => $nama,
-            'harga_produk' => $harga,
-            'deskripsi_produk' => $deskripsi,
-            'stok_produk' => $stok,
-            'gambar' => $img,
+            'id_produk' => $id,
+            'nama' => $this->request->getVar('nama_produk'),
+            'harga' => $this->request->getVar('harga_produk'),
+            'deskripsi' => $this->request->getVar('deskripsi_produk'),
+            'stok' => $this->request->getVar('stock_produk'),
         ];
         // dd($data);
+        if ($image->isValid() && !$image->hasMoved()) {
+            // Jika gambar diunggah dengan benar, pindahkan dan simpan ke basis data
+            $newName = $image->getRandomName();
+            $image->move(ROOTPATH . 'public/assets/img/produk/main', $newName);
+            $data['img'] = $newName;
+        } else {
+            // Jika tidak ada gambar yang diunggah atau ada masalah, tetapkan nama gambar yang ada
+            $data['img'] = $km['img'];
+        }
 
         if ($produkModel->save($data)) {
             session()->setFlashdata('success', 'Produk berhasil diubah.');
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Alamat berhasil diubah.'
+                'message' => 'Data Produk berhasil diubah.'
             ];
             session()->setFlashdata('alert', $alert);
 
@@ -79,7 +86,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-produk')->withInput();
+            return redirect()->to('dashboard/tambah-produk/update-produk/' . $id)->withInput();
         }
     }
 
@@ -87,7 +94,7 @@ class AdminProduk extends BaseController
     public function save()
     {
         // ambil gambar
-        $fotoProduk = $this->request->getFile('gambar');
+        $fotoProduk = $this->request->getFile('gambar_produk');
         if ($fotoProduk->getError() == 4) {
             # code...
             $namaProduk = 'default.png';
@@ -99,7 +106,7 @@ class AdminProduk extends BaseController
         // dd($this->request->getVar());
 
         $produkModel = new ProdukModel();
-        $slug = url_title($this->request->getVar('nama'), '-', true);
+        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
         $data = [
             'slug' => $slug,
             'nama' => $this->request->getVar('nama_produk'),
