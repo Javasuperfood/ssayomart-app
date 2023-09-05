@@ -60,7 +60,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->get('/setting/alamat-list', 'Setting::alamatList');
     $routes->get('/setting/create-alamat', 'Setting::createAlamat');
     $routes->post('/setting/create-alamat/save-alamat', 'Setting::saveAlamat');
-    $routes->post('/setting/update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
+    $routes->post('update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
     $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
     $routes->get('/history', 'HistoryTransaksi::history');
 
@@ -71,12 +71,9 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('/', 'Home::dashboard');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');
-
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
-
     $routes->get('kategori', 'AdminKategoriController::index');
-
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'Kuponproduk::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
@@ -91,6 +88,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
     $routes->post('tambah-produk/save', 'AdminProduk::save');
     $routes->get('tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
+    $routes->post('tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
+    $routes->get('tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
 });
 
 service('auth')->routes($routes);

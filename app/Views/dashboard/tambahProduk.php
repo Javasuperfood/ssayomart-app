@@ -101,7 +101,7 @@
                                 <td><?= $km['stok']; ?></td>
                                 <td><?= $km['deskripsi']; ?></td>
                                 <td>
-                                    <a href="#" class="btn btn-warning btn-circle btn-sm">
+                                    <a href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>" class="btn btn-warning btn-circle btn-sm">
                                         <i class="fas fa-pen"></i>
                                     </a>
                                     <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
