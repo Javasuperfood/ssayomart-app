@@ -32,6 +32,7 @@ class KategoriModel extends Model
         'nama_kategori' => 'required',
         'deskripsi' => 'required',
         'slug' => 'required',
+        'img' => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -55,5 +56,9 @@ class KategoriModel extends Model
         }
 
         return $this->where(['slug' => $slug])->first();
+    }
+    public function getGambarKategori($slug)
+    {
+        return $this->where(['slug' => $slug])->select('img')->first();
     }
 }
