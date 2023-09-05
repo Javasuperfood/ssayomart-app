@@ -43,9 +43,6 @@
     color: #333;
 }
 
-.card {
-    margin-top: 1rem;
-}
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .swiper-slide img {
@@ -59,10 +56,10 @@
         margin-right: 3px;
     }
 
-    .card {
+    /* .card {
         margin-top: 2rem;
         width: 12rem;
-    }
+    } */
 }
 
 @media (max-width: 480px) {
@@ -78,11 +75,11 @@
         margin-right: 1px;
     }
 
-    .card {
+    /* .card {
         margin-top: 2rem;
         width: 12rem;
 
-    }
+    } */
 
     .swiper-slide-card {
         margin-left: 10px;
