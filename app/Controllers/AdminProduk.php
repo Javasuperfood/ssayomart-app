@@ -61,7 +61,7 @@ class AdminProduk extends BaseController
         if ($image->isValid() && !$image->hasMoved()) {
             // Jika gambar diunggah dengan benar, pindahkan dan simpan ke basis data
             $newName = $image->getRandomName();
-            $image->move(ROOTPATH . 'public/assets/img/produk/main', $newName);
+            $image->move('assets/img/produk/main', $newName);
             $data['img'] = $newName;
         } else {
             // Jika tidak ada gambar yang diunggah atau ada masalah, tetapkan nama gambar yang ada

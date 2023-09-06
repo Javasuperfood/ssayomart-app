@@ -68,6 +68,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
+    $routes->get('pesanan', 'AdminPesananController::index');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
