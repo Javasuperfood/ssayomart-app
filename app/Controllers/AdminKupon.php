@@ -59,4 +59,30 @@ class AdminKupon extends BaseController
             return redirect()->to('dashboard/tambah-kupon')->withInput();
         }
     }
+
+    // delete
+    public function deleteKupon($id)
+    {
+
+        $kuponModel = new KuponModel();
+        $deleted = $kuponModel->delete($id);
+        // dd($id);
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Produk Berhasil di Hapus'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/kupon');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Opps.. Terdapat Kesalahan pada penghapusan kupon'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/kupon')->withInput();
+        }
+    }
 }
