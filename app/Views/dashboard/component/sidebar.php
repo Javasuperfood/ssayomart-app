@@ -4,10 +4,16 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-chart-line"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">Ssayomart <?= (auth()->user()->inGroup('superadmin')) ? 'Superadmin' : 'Admin' ?></div>
+    <div class="sidebar-brand-text mx-3">Ssayomart</div>
 </a>
 
 <!-- Divider -->
+<hr class="sidebar-divider">
+<div class="sidebar-heading">
+    Role
+    <?= (auth()->user()->inGroup('superadmin')) ? 'Superadmin' : 'Admin' ?>
+
+</div>
 <hr class="sidebar-divider">
 <?php if (auth()->user()->inGroup('superadmin')) : ?>
 
@@ -23,7 +29,6 @@
             <span>Dashboard</span></a>
     </li>
 <?php endif; ?>
-<hr class="sidebar-divider">
 <?php if (auth()->user()->inGroup('superadmin', 'admin')) : ?>
     <div class="sidebar-heading">
         Pesanan
