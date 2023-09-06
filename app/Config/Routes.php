@@ -72,13 +72,9 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('input', 'AdminProduk::input');
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
-
     $routes->get('kategori', 'AdminKategoriController::index');
-
-
-
     $routes->get('inputbaner', 'Inputbanner::inputbaner');
-    $routes->get('kupon', 'Kuponproduk::kupon');
+    $routes->get('kupon', 'AdminKupon::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
     //CRUD Admin kategori
@@ -99,7 +95,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
 
     // Crud Kupon
-
+    $routes->get('tambah-kupon', 'AdminKupon::tambahKupon');
+    $routes->post('kupon/save', 'AdminKupon::saveKupon');
 });
 
 service('auth')->routes($routes);

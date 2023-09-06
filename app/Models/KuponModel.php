@@ -14,10 +14,10 @@ class KuponModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'nama_kupon',
-        'code_kupon',
-        'deskripsi_kupon',
-        'masa_berlaku',
+        'nama',
+        'kode',
+        'deskripsi',
+        'is_active',
         // 'created_by'
     ];
 
@@ -30,10 +30,10 @@ class KuponModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'nama_kupon' => 'required',
-        'code_kupon' => 'required',
-        'deskripsi_kupon' => 'required',
-        'masa_berlaku' => 'required',
+        'nama' => 'required',
+        'kode' => 'required',
+        'deskripsi' => 'required',
+        'is_active' => 'required',
         // 'created_by' => 'required',
     ];
     protected $validationMessages   = [];
