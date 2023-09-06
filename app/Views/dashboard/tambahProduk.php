@@ -1,17 +1,19 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1 text-gray-800">Manajement Produk</h1>
-<p class="mb-4">Anda dapt mengatur produk apa yang akan ditampilkan pada halaman user</p>
+<h1 class="h3 mb-1">Management Produk</h1>
+<p class="mb-4">Anda dapat mengatur produk yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
+</p>
+<div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
+    <b>MOHON TELITI KETIKA MENGISI PRODUK UNTUK MENGHINDARI KESALAHAN YANG TIDAK DIINGINKAN!!</b>
+</div>
 
 <div class="row">
-
     <!-- Left Panel -->
-    <div class="col-lg-6">
-
-        <div class="card position-relative">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-medium">Form input & submit</h6>
+    <div class="col-lg-6 pb-5">
+        <div class="card position-relative border-0 shadow-sm">
+            <div class="card-header border-0 py-3">
+                <h6 class="m-0 font-weight-medium">Input Produk</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
@@ -46,7 +48,7 @@
                         <input type="file" class="form-control" id="gambar_produk" name="gambar_produk" placeholder="Masukan Gambar">
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -55,26 +57,12 @@
 
     <!-- Right Panel -->
     <div class="col-lg-6 mb-3">
-
-        <div class="card position-relative">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-medium">Produk List</h6>
+        <div class="card position-relative border-0 shadow-sm">
+            <div class="card-header border-0 py-3">
+                <h6 class="m-0 font-weight-medium">List Produk</h6>
             </div>
             <div class="card-body">
-                <!-- code -->
-                <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3">
-                    <form class="form-inline ml-auto">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </nav> -->
-                <table class="table table-bordered text-center table-responsive" id="example" width="100%" cellspacing="0">
+                <table class="table text-center table-responsive" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -84,7 +72,7 @@
                             <!-- <th scope="col">Ketegori</th> -->
                             <th scope="col">Harga Produk</th>
                             <th scope="col">Stock Produk</th>
-                            <th scope="col">Deskripsi</th>
+                            <!-- <th scope="col">Deskripsi</th> -->
                             <th style="width: 100px;">Aksi</th>
                         </tr>
                     </thead>
@@ -100,24 +88,27 @@
                                 <!-- <td>25/26/27</td> -->
                                 <td><?= $km['harga']; ?></td>
                                 <td><?= $km['stok']; ?></td>
-                                <td><?= $km['deskripsi']; ?></td>
+                                <!-- <td><?= $km['deskripsi']; ?></td> -->
                                 <td>
-                                    <a href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>" class="btn btn-warning btn-circle btn-sm">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                     </tbody>
                 <?php endforeach; ?>
-
                 </table>
-
             </div>
         </div>
-
     </div>
 
     <script>
