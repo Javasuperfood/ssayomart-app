@@ -1,12 +1,16 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1 text-gray-800">Manajement Produk</h1>
-<p class="mb-4">Anda dapt mengatur produk apa yang akan ditampilkan pada halaman user</p>
+<h1 class="h3 mb-1">Management Produk</h1>
+<p class="mb-4">Anda dapat mengatur produk yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
+</p>
+<div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
+    <b>MOHON TELITI KETIKA MENGISI PRODUK UNTUK MENGHINDARI KESALAHAN YANG TIDAK DIINGINKAN!!</b>
+</div>
 
 <div class="row">
-
     <!-- Left Panel -->
+
     <div class="col-lg-6">
 
         <div class="card position-relative">
@@ -21,18 +25,14 @@
                         <label for="nama_produk" class="form-label">Nama Produk</label>
                         <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" autofocus>
                     </div>
-                    <!-- <div class="mb-3">
-                            <label for="tanggal_exp" class="form-label">Tanggal EXP</label>
-                            <input type="date" class="form-control" id="tanggal_exp" name="tanggal_exp" placeholder="EXP">
-                        </div> -->
+                    <div class="mb-3">
+                        <label for="nama_produk" class="form-label">Stock Keeping Unit (SKU)</label>
+                        <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU Produk" autofocus>
+                    </div>
                     <div class="mb-3">
                         <label for="harga_produk" class="form-label">Harga Produk</label>
                         <input type="price" class="form-control" id="harga_produk" name="harga_produk" placeholder="Harga">
                     </div>
-                    <!-- <div class="mb-3">
-                            <label for="kategori_produk" class="form-label">Kategori</label>
-                            <input type="text" class="form-control" id="kategori_produk" name="kategori_produk" placeholder="Kategori">
-                        </div> -->
                     <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
                         <input type="number" class="form-control" id="stock_produk" name="stock_produk" placeholder="Stock">
@@ -46,7 +46,7 @@
                         <input type="file" class="form-control" id="gambar_produk" name="gambar_produk" placeholder="Masukan Gambar">
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -55,26 +55,12 @@
 
     <!-- Right Panel -->
     <div class="col-lg-6 mb-3">
-
-        <div class="card position-relative">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-medium">Produk List</h6>
+        <div class="card position-relative border-0 shadow-sm">
+            <div class="card-header border-0 py-3">
+                <h6 class="m-0 font-weight-medium">List Produk</h6>
             </div>
             <div class="card-body">
-                <!-- code -->
-                <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3">
-                    <form class="form-inline ml-auto">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </nav> -->
-                <table class="table table-bordered text-center table-responsive" id="example" width="100%" cellspacing="0">
+                <table class="table text-center table-responsive" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th scope="col">No</th>
@@ -84,7 +70,7 @@
                             <!-- <th scope="col">Ketegori</th> -->
                             <th scope="col">Harga Produk</th>
                             <th scope="col">Stock Produk</th>
-                            <th scope="col">Deskripsi</th>
+                            <!-- <th scope="col">Deskripsi</th> -->
                             <th style="width: 100px;">Aksi</th>
                         </tr>
                     </thead>
@@ -99,25 +85,28 @@
                                 <td><?= $km['nama']; ?></td>
                                 <!-- <td>25/26/27</td> -->
                                 <td><?= $km['harga']; ?></td>
-                                <td><?= $km['stok']; ?></td>
-                                <td><?= $km['deskripsi']; ?></td>
+                                <td>1</td>
+                                <!-- <td><?= $km['deskripsi']; ?></td> -->
                                 <td>
-                                    <a href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>" class="btn btn-warning btn-circle btn-sm">
-                                        <i class="fas fa-pen"></i>
-                                    </a>
-                                    <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>" class="btn btn-warning btn-circle btn-sm">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col">
+                                            <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                     </tbody>
                 <?php endforeach; ?>
-
                 </table>
-
             </div>
         </div>
-
     </div>
 
     <script>

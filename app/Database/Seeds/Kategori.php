@@ -118,7 +118,7 @@ class Kategori extends Seeder
 
 
         $publicImagePath = 'assets/img/kategori/';
-        $imageNames = ['nori.png']; // Nama-nama gambar yang akan disalin ke direktori kategori.
+        $imageNames = ['nori.jpg']; // Nama-nama gambar yang akan disalin ke direktori kategori.
 
         foreach ($imageNames as $imageName) {
             $imagePath = FCPATH . $publicImagePath . $imageName;
@@ -127,7 +127,7 @@ class Kategori extends Seeder
 
         // Loop untuk mengisi kolom 'image_path' pada data kategori.
         foreach ($data as &$kategori) {
-            $kategori['img'] = $publicImagePath . $kategori['slug'] . '.png'; // Sesuaikan dengan nama file gambar yang sesuai dengan slug atau id_kategori.
+            $kategori['img'] = $publicImagePath . $kategori['slug'] . '.jpg'; // Sesuaikan dengan nama file gambar yang sesuai dengan slug atau id_kategori.
             // Tambahkan kode untuk mengisi data lainnya jika diperlukan.
         }
 

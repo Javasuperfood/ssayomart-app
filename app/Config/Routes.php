@@ -48,6 +48,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
     $routes->post('/checkout', 'CheckoutController::storeData');
     $routes->get('/checkout/(:any)', 'CheckoutController::checkout/$1');
+    $routes->post('/checkout/(:any)/bayar', 'CheckoutController::bayar/$1');
     $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
     // Setting route
@@ -68,6 +69,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
+    $routes->get('pesanan', 'AdminPesananController::index');
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');

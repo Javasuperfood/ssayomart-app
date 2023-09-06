@@ -15,7 +15,6 @@ class Produk extends Seeder
                 'slug'    => 'nori-1',
                 'sku'    => 1,
                 'harga'    => 20000,
-                'stok'    => 100,
                 'deskripsi'    => $lorem,
                 'id_kategori' => 1,
                 'id_sub_kategori' => 1
@@ -25,7 +24,6 @@ class Produk extends Seeder
                 'slug'    => 'nori-2',
                 'sku'    => 1,
                 'harga'    => 20000,
-                'stok'    => 100,
                 'deskripsi'    => $lorem,
                 'id_kategori' => 1,
                 'id_sub_kategori' => 2
@@ -35,7 +33,6 @@ class Produk extends Seeder
                 'slug'    => 'daging-sapi',
                 'sku'    => 1,
                 'harga'    => 20000,
-                'stok'    => 100,
                 'deskripsi'    => $lorem,
                 'id_kategori' => 2,
                 'id_sub_kategori' => 3

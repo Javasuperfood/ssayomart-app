@@ -3,7 +3,7 @@
 
 <div class="card position-relative">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-medium">Form Edit Produkt</h6>
+        <h6 class="m-0 font-weight-medium">Edit Produk</h6>
     </div>
     <div class="card-body">
         <!-- code -->
@@ -20,7 +20,7 @@
             </div>
             <div class="mb-3">
                 <label for="stock_produk" class="form-label">Stock Produk</label>
-                <input type="number" class="form-control" id="stock_produk" name="stock_produk" value="<?= $km['stok'] ?>">
+                <input type="number" class="form-control" id="stock_produk" name="stock_produk" value="1">
             </div>
             <div class="mb-3">
                 <label for="deskripsi_produk" class="form-label">Deskripsi Produk</label>
@@ -29,6 +29,7 @@
             <div class="mb-3">
                 <label for="gambar_produk" class="form-label">Gambar</label>
                 <input type="file" class="form-control" id="gambar_produk" name="gambar_produk" value="<?= $km['img'] ?>">
+                <input type="text" name="imageLama" value="<?= $km['img']; ?>">
             </div>
 
             <div>

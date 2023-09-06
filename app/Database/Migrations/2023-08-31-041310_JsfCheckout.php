@@ -4,6 +4,8 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
+use function PHPSTORM_META\type;
+
 class JsfCheckout extends Migration
 {
     public function up()
@@ -39,6 +41,22 @@ class JsfCheckout extends Migration
             'invoice' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',
+            ],
+            'kirim' => [
+                'type' => 'text',
+                'null' => true
+            ],
+            'kurir' => [
+                'type' => 'text',
+                'null' => true
+            ],
+            'service' => [
+                'type' => 'text',
+                'null' => true
+            ],
+            'harga_service' => [
+                'type' => 'text',
+                'null' => true
             ],
             'catatan' => [
                 'type'           => 'varchar',
