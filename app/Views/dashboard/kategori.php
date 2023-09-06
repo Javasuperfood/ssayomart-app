@@ -1,5 +1,4 @@
 <?= $this->extend('dashboard/dashboard') ?>
-<?= $no = 1; ?>
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-1 text-gray-800">Kategori Produk</h1>
@@ -7,39 +6,90 @@
 
 <div class="row">
 
+    <!-- Left Panel -->
+    <div class="col-lg-6">
+
+        <div class="card position-relative">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Form submit</h6>
+            </div>
+            <div class="card-body">
+                <!-- code -->
+                <form action="<?= base_url(); ?>dashboard/kategori/create-kategori" method="post">
+                    <?= csrf_field(); ?>
+                    <div class="mb-3">
+                        <label for="kategori" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori" name="kategori">
+                    </div>
+
+                    <div class="mb-1">
+                        <label for="kategori" class="form-label">Induk Kategori</label>
+                    </div>
+                    <div>
+                        <select class="form-select mb-2" aria-label="Default select example" name="induk">
+                            <option selected>Pilihan</option>
+                            <option value="1">bahan Makanan</option>
+                            <option value="2">Biji Wijen</option>
+                            <option value="3">Gula dan Garam</option>
+                        </select>
+                    </div>
+                    <p class="mb-0 small">Note: Tetapkan sebuah istilah induk untuk membuat sebuah hirarki. Istilah Jazz, contohnya, akan menjadi induk dari Bebop dan Big Band.</p>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi"></textarea>
+                    </div>
+                    <div class="small mb-1">Navbar Dropdown Example:</div>
+                    <p class="mb-0 small">Note: Umumnya deskripsi tidak tampil. Namun, beberapa tema dapat menampilkannya.</p>
+                    <div>
+                        <button type="submit" class="btn btn-primary mt-3" id="ka">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Right Panel -->
-    <div class="col mb-3">
-        <a class="btn btn-primary mb-3" href="<?= base_url(); ?>dashboard/tambah-kategori">Tambah Kategori
-
-
-        </a>
+    <div class="col-lg-6 mb-3">
 
         <div class="card position-relative">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">List Produk Kategori</h6>
             </div>
             <div class="card-body">
-                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                <!-- code -->
+                <!-- <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3">
+                    <form class="form-inline ml-auto">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </nav> -->
+                <table class="table table-bordered text-center table-responsive" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Gambar</th>
                             <th>Nama</th>
                             <th>Slug</th>
+                            <th>kategori</th>
+                            <th>Subkategori</th>
                             <th>Deskripsi</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php foreach ($kategori_model as $km) : ?>
                             <tr>
-                                <td><?= $no++; ?></td>
-                                <td><img src="#" alt=""></td>
-                                <td><?= $km['nama_kategori']; ?></td>
-                                <td><?= $km['slug']; ?></td>
+                                <td><?= $km['id_kategori']; ?></td>
 
+                                <td><?= $km['nama_kategori']; ?></td>
+                                <td>-</td>
+                                <td></td>
+                                <td>Makanan Korea</td>
                                 <td><?= $km['deskripsi']; ?></td>
                                 <td style="width: 100px;">
                                     <a href="<?= base_url("dashboard/kategori/edit-kategori/{$km['id_kategori']}"); ?>" class="btn btn-warning btn-circle btn-sm btn-inline">
@@ -53,7 +103,23 @@
                     </tbody>
                 <?php endforeach; ?>
                 </table>
-
+                <!-- <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav> -->
 
             </div>
         </div>

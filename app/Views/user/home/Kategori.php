@@ -46,7 +46,7 @@
                 <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
                     <div class="card text-bg-light mb-3 bg-white border-0 shadow">
                         <div class="card-body">
-                            <img src="#" width="60px" alt="" class="card-img-top">
+                            <img src="<?= base_url($k['img']) ?>" width="60px" alt="" class="card-img-top">
                         </div>
                     </div>
                 </a>
