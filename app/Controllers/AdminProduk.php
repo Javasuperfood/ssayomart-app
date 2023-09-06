@@ -56,7 +56,8 @@ class AdminProduk extends BaseController
             $namaProdukImage = $this->request->getVar('imageLama');
         } else {
             $produk = $produkModel->find($id);
-            if ($produk['img'] != 'default.png' || $image->getError() == 4) {
+
+            if ($produk['img'] == 'default.png' || !file_exists($this->request->getVar('imageLama'))) {
                 $namaProdukImage = $image->getRandomName();
                 $image->move('assets/img/produk/main', $namaProdukImage);
             } else {
@@ -73,7 +74,7 @@ class AdminProduk extends BaseController
             'nama' => $this->request->getVar('nama_produk'),
             'harga' => $this->request->getVar('harga_produk'),
             'deskripsi' => $this->request->getVar('deskripsi_produk'),
-            'stok' => $this->request->getVar('stock_produk'),
+            // 'stok' => $this->request->getVar('stock_produk'),
         ];
 
 
@@ -119,7 +120,7 @@ class AdminProduk extends BaseController
             'sku' => $this->request->getVar('sku'),
             'harga' => $this->request->getVar('harga_produk'),
             'deskripsi' => $this->request->getVar('deskripsi_produk'),
-            'stok' => $this->request->getVar('stock_produk'),
+            // 'stok' => $this->request->getVar('stock_produk'),
             'img' => $namaProduk,
         ];
         // swet alert

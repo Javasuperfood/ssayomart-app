@@ -83,7 +83,7 @@
                                 <td><?= $km['nama']; ?></td>
                                 <!-- <td>25/26/27</td> -->
                                 <td><?= $km['harga']; ?></td>
-                                <td><?= $km['stok']; ?></td>
+                                <td>1</td>
                                 <!-- <td><?= $km['deskripsi']; ?></td> -->
                                 <td>
                                     <div class="row">
