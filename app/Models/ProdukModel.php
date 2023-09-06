@@ -16,9 +16,9 @@ class ProdukModel extends Model
     protected $allowedFields    = [
         'nama',
         'slug',
-        // 'sku',
+        'sku',
         'harga',
-        'stok',
+        // 'stok',
         'deskripsi',
         'img',
         // 'id_kategori',
@@ -26,7 +26,7 @@ class ProdukModel extends Model
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -36,9 +36,9 @@ class ProdukModel extends Model
     protected $validationRules = [
         'nama' => 'required',
         'slug'    => 'required',
-        // 'sku'    => 'required',
+        'sku'    => 'required',
         'harga'    => 'required',
-        'stok'    => 'required',
+        // 'stok'    => 'required',
         'deskripsi'    => 'required',
         // 'img'    => 'required',
         // 'id_kategori' => 'required',

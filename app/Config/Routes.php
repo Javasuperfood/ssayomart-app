@@ -92,7 +92,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // CRUD routes produk
     $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
     $routes->post('tambah-produk/save', 'AdminProduk::save');
-    $routes->get('tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
+    $routes->post('tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
     $routes->post('tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
     $routes->get('tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
 
