@@ -1,9 +1,9 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-    For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+<h1 class="h3 mb-2 text-gray-800">Manajemen Kupon</h1>
+<p class="mb-4">Anda dapat memberikan atau manambahkan kupon yang akan di tampilkan nantinya pada halaman user sebagai bentuk potongan harga atau diskon
+</p>
 
 <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/tambah-kupon">Tambah Produk</a>
 
@@ -12,7 +12,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold">Kupon List</h6>
     </div>
-    <div class="card-body text-center">
+    <div class="card-body text-center table-responsive">
         <table class=" table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
@@ -37,7 +37,7 @@
                             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                                 <div class="dropdown-header">MENU AKSI:</div>
                                 <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Delete</a>
+                                <a class="dropdown-item" href="<?= base_url() ?>dashboard/kupon/delete-kupon/<?= $km['id_kupon']; ?>">Delete</a>
                             </div>
                         </td>
                     </tr>

@@ -99,6 +99,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // Crud Kupon
     $routes->get('tambah-kupon', 'AdminKupon::tambahKupon');
     $routes->post('kupon/save', 'AdminKupon::saveKupon');
+    $routes->get('kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
 });
 
 service('auth')->routes($routes);
