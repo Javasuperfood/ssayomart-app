@@ -23,18 +23,14 @@
                         <label for="nama_produk" class="form-label">Nama Produk</label>
                         <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" autofocus>
                     </div>
-                    <!-- <div class="mb-3">
-                            <label for="tanggal_exp" class="form-label">Tanggal EXP</label>
-                            <input type="date" class="form-control" id="tanggal_exp" name="tanggal_exp" placeholder="EXP">
-                        </div> -->
+                    <div class="mb-3">
+                        <label for="nama_produk" class="form-label">Stock Keeping Unit (SKU)</label>
+                        <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU Produk" autofocus>
+                    </div>
                     <div class="mb-3">
                         <label for="harga_produk" class="form-label">Harga Produk</label>
                         <input type="price" class="form-control" id="harga_produk" name="harga_produk" placeholder="Harga">
                     </div>
-                    <!-- <div class="mb-3">
-                            <label for="kategori_produk" class="form-label">Kategori</label>
-                            <input type="text" class="form-control" id="kategori_produk" name="kategori_produk" placeholder="Kategori">
-                        </div> -->
                     <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
                         <input type="number" class="form-control" id="stock_produk" name="stock_produk" placeholder="Stock">

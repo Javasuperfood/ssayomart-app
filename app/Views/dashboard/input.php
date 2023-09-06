@@ -28,11 +28,9 @@
                         <th>No</th>
                         <th>Gambar</th>
                         <th>Nama Produk</th>
-                        <!-- <th>Tanggal EXP</th> -->
-                        <!-- <th>Ketegori</th> -->
+                        <th>SKU</th>
                         <th>Harga Produk</th>
                         <th>Stock Produk</th>
-                        <!-- <th>Deskripsi</th> -->
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -45,20 +43,29 @@
                                 <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="80" height="80">
                             </td>
                             <td><?= $km['nama']; ?></td>
+                            <td><?= $km['sku']; ?></td>
                             <!-- <td>25/26/27</td> -->
                             <td><?= $km['harga']; ?></td>
-                            <td><?= $km['stok']; ?></td>
-                            <!-- <td><?= $km['deskripsi']; ?></td> -->
-                            <td>
-                                <div class="row">
-                                    <div class="col">
-                                        <a href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>" class="btn btn-warning btn-circle btn-sm">
-                                            <i class="fas fa-pen"></i>
+                            <td>1</td>
+                            <td class="text-center">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </a>
+                                    <!-- Dropdown - User Information -->
+                                    <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="<?= base_url() ?>produk/<?= $km['slug']; ?>">
+                                            <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Lihat Produk
                                         </a>
-                                    </div>
-                                    <div class="col">
-                                        <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
-                                            <i class="fas fa-trash"></i>
+                                        <a class="dropdown-item" href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
+                                            <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Update
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>">
+                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                            <span class="text-danger">Delete</span>
                                         </a>
                                     </div>
                                 </div>
