@@ -7,10 +7,15 @@ use App\Models\ProdukModel;
 
 class AdminProduk extends BaseController
 {
+    protected $imageModel;
     public function input()
     {
+        $produkModel = new ProdukModel();
+        $produk_list = $produkModel->findAll();
+
         $data = [
-            'title' => 'Input'
+            'title' => 'Input',
+            'produk_Model' => $produk_list
         ];
         return view('dashboard/input', $data);
     }
@@ -44,11 +49,11 @@ class AdminProduk extends BaseController
     // action
     public function editProduk($id)
     {
-
         $produkModel = new ProdukModel();
         $km = $produkModel->find($id);
         $slug = url_title($this->request->getVar('nama_produk'), '-', true);
         $image = $this->request->getFile('gambar_produk');
+
         $data = [
             'slug' => $slug,
             'id_produk' => $id,
@@ -57,38 +62,48 @@ class AdminProduk extends BaseController
             'deskripsi' => $this->request->getVar('deskripsi_produk'),
             'stok' => $this->request->getVar('stock_produk'),
         ];
-        // dd($data);
-        if ($image->isValid() && !$image->hasMoved()) {
-            // Jika gambar diunggah dengan benar, pindahkan dan simpan ke basis data
-            $newName = $image->getRandomName();
-            $image->move('assets/img/produk/main', $newName);
-            $data['img'] = $newName;
+
+        if ($image->getError() == 4) {
+            // Tidak ada gambar baru yang diunggah, gunakan gambar lama
+            $namaProdukImage = $this->request->getVar('imageLama');
         } else {
-            // Jika tidak ada gambar yang diunggah atau ada masalah, tetapkan nama gambar yang ada
-            $data['img'] = $km['img'];
+            // Ada gambar baru yang diunggah, proses gambar baru
+            if ($km['img'] != 'default.png' || $image->getError() == 4) {
+                $namaProdukImage = $image->getRandomName();
+                $image->move('assets/img/produk/main', $namaProdukImage);
+
+                // Hapus gambar lama
+                if ($this->request->getVar('imageLama') != 'default.png') {
+                    unlink('assets/img/produk/main/' . $this->request->getVar('imageLama'));
+                }
+            }
         }
+        if (!empty($data)) {
+            // Gunakan variabel $produkModel yang telah diinisialisasi dengan benar
+            if ($km && $produkModel->save($data)) {
+                session()->setFlashdata('success', 'Produk berhasil diubah.');
+                $alert = [
+                    'type' => 'success',
+                    'title' => 'Berhasil',
+                    'message' => 'Data Produk berhasil diubah.'
+                ];
+                session()->setFlashdata('alert', $alert);
 
-        if ($produkModel->save($data)) {
-            session()->setFlashdata('success', 'Produk berhasil diubah.');
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Data Produk berhasil diubah.'
-            ];
-            session()->setFlashdata('alert', $alert);
+                return redirect()->to('dashboard/tambah-produk');
+            } else {
+                $alert = [
+                    'type' => 'error',
+                    'title' => 'Error',
+                    'message' => 'Terdapat kesalahan pada pengisian formulir'
+                ];
+                session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-produk');
-        } else {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
-            ];
-            session()->setFlashdata('alert', $alert);
-
-            return redirect()->to('dashboard/tambah-produk/update-produk/' . $id)->withInput();
+                return redirect()->to('dashboard/tambah-produk/update-produk/' . $id)->withInput();
+            }
         }
     }
+
+
 
     // save
     public function save()
