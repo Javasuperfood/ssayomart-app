@@ -10,10 +10,12 @@
 
 <div class="row">
     <!-- Left Panel -->
-    <div class="col-lg-6 pb-5">
-        <div class="card position-relative border-0 shadow-sm">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Input Produk</h6>
+
+    <div class="col-lg-6">
+
+        <div class="card position-relative">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-medium">Masukan Produk Baru</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
