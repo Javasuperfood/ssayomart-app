@@ -50,6 +50,14 @@ class JsfCheckout extends Migration
                 'type' => 'text',
                 'null' => true
             ],
+            'service' => [
+                'type' => 'text',
+                'null' => true
+            ],
+            'harga_service' => [
+                'type' => 'text',
+                'null' => true
+            ],
             'catatan' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',

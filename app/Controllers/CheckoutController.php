@@ -86,10 +86,15 @@ class CheckoutController extends BaseController
             'title' => 'Checkout',
             'alamat_list' => $alamat_list,
             'produk' => $cekProduk,
+            'id' => $id,
             'total' => $totalAkhir
         ];
         // dd($data);
 
         return view('user/home/checkout/checkout', $data);
+    }
+    public function bayar()
+    {
+        dd($this->request->getVar());
     }
 }

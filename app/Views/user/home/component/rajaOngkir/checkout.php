@@ -26,7 +26,8 @@
                     $("#service").append($('<option>', {
                         value: results[i]["cost"][0]["value"],
                         text: text,
-                        etd: results[i]["cost"][0]["etd"]
+                        etd: results[i]["cost"][0]["etd"],
+                        std: results[i]["service"]
                     }));
                 }
             },
@@ -37,6 +38,7 @@
     $("#kurir").on('change', function() {
         var kurir = $(this).val();
         populateServices(kurir);
+
     });
 
     // Menghitung estimasi dan total saat memilih layanan
@@ -47,6 +49,7 @@
         $("#ongkirText").html(formatRupiah(ongkir));
         $("#estimasi").html(estimasi + " Hari");
         $("#total").val(total);
+        $("#serviceText").val($("#service option:selected").text());
         $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
     });
 
