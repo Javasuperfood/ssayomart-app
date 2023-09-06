@@ -83,12 +83,11 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
     //CRUD Admin kategori
     $routes->get('kategori', 'AdminKategoriController::index');
-    $routes->post('kategori/create-kategori', 'AdminKategoriController::save');
+    $routes->get('tambah-kategori', 'AdminKategoriController::tambahKategori');
+    $routes->post('tambah-kategori/save', 'AdminKategoriController::saveKategori');
     $routes->get('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
     $routes->get('kategori/edit-kategori/(:segment)', 'AdminKategoriController::editKategori/$1');
     $routes->post('kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
-
-
 
 
     // CRUD routes produk

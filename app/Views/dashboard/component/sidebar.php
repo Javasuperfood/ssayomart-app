@@ -29,11 +29,11 @@
 
 <!-- Input Produk Admin Produk -->
 <li class="nav-item">
-    <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
         <i class="fas fa-fw fa-cog"></i>
         <span>Produk Menu</span>
     </a>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+    <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Menu Produk:</h6>
             <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">Produk</a>
@@ -42,12 +42,24 @@
     </div>
 </li>
 
-<!-- Kategori -->
+<!-- Input Admin Kategori -->
 <li class="nav-item">
-    <a class="nav-link" href="<?= base_url(); ?>dashboard/kategori">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
         <i class="fas fa-fw fa-table"></i>
-        <span>Kategori & SubKategori</span></a>
+        <span>Kategori menu</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Login Screens:</h6>
+            <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
+            <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambah-kategori">Tambah Kategori</a>
+        </div>
+    </div>
 </li>
+
+
+
+
 
 <!-- Kategori -->
 <li class="nav-item">
