@@ -28,23 +28,6 @@
     </div>
     <hr class="sidebar-divider">
 
-
-<div class="sidebar-heading">
-    Admin Produk
-</div>
-
-<!-- Input Produk Admin Produk -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTree" aria-expanded="true" aria-controls="collapseTree">
-        <i class="fas fa-fw fa-cog"></i>
-        <span>Produk Menu</span>
-    </a>
-    <div id="collapseTree" class="collapse" aria-labelledby="headingTree" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Menu Produk:</h6>
-            <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">Produk</a>
-            <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambahProduk">Tambah Produk</a>
-
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
             <i class="fas fa-fw fa-receipt"></i>
@@ -59,7 +42,6 @@
                 <h6 class="collapse-header">Lainya:</h6>
                 <a class="collapse-item" href="<?= base_url('dashboard/pesanan'); ?>">Pesanan dibatalkan</a>
             </div>
-
         </div>
     </li>
     <hr class="sidebar-divider">
@@ -67,33 +49,6 @@
     <div class="sidebar-heading">
         Produk
     </div>
-
-
-<!-- Input Admin Kategori -->
-<li class="nav-item">
-    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Kategori menu</span>
-    </a>
-    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
-            <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambah-kategori">Tambah Kategori</a>
-        </div>
-    </div>
-</li>
-
-
-
-
-
-<!-- Kategori -->
-<li class="nav-item">
-    <a class="nav-link" href="<?= base_url(); ?>dashboard/inputbaner">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Banner</span></a>
-</li>
 
     <!-- Input Produk Admin Produk -->
     <li class="nav-item">
@@ -116,7 +71,6 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Kategori & SubKategori</span></a>
     </li>
-
 
     <!-- Kategori -->
     <li class="nav-item">

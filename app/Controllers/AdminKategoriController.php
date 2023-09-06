@@ -6,7 +6,6 @@ use App\Models\KategoriModel;
 
 class AdminkategoriController extends BaseController
 {
-
     // tampilkan dasboard
     public function index()
     {
@@ -19,21 +18,8 @@ class AdminkategoriController extends BaseController
         ];
         return view('dashboard/kategori', $data);
     }
-
-    // Tampilan Input Kategori
-    public function tambahKategori()
-    {
-        $kategoriModel = new KategoriModel();
-        $kategori_list = $kategoriModel->findAll();
-
-        $data = [
-            'title' => 'Kategori',
-            'kategori_model' => $kategori_list
-        ];
-        return view('dashboard/tambahKategori', $data);
-    }
     // Save ke database
-    public function saveKategori()
+    public function save()
     {
         // dd($this->request->getVar());
         $kategoriModel = new KategoriModel();
@@ -43,7 +29,7 @@ class AdminkategoriController extends BaseController
             'nama_kategori' => $this->request->getVar('kategori'),
             'deskripsi' => $this->request->getVar('deskripsi'),
         ];
-        // dd($data);
+
         if ($kategoriModel->save($data)) {
             session()->setFlashdata('success', 'Data Kategori Berhasil disimpan');
             $alert = [
@@ -61,7 +47,7 @@ class AdminkategoriController extends BaseController
                 'message' => 'Terdapat kesalahan pada input kategori'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/kategori',)->withInput();
+            return redirect()->to('dashboard/kategori/create-kategori')->withInput();
         };
     }
 

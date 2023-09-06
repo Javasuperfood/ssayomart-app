@@ -32,7 +32,7 @@ class KategoriModel extends Model
         'nama_kategori' => 'required',
         'deskripsi' => 'required',
         'slug' => 'required',
-        // 'img' => 'required'
+        'img' => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
