@@ -16,7 +16,7 @@
                 <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>">
             </div>
 
-            <div class="mb-1">
+            <!-- <div class="mb-1">
                 <label for="kategori" class="form-label">Induk Kategori</label>
             </div>
             <div>
@@ -26,11 +26,17 @@
                     <option value="2">Biji Wijen</option>
                     <option value="3">Gula dan Garam</option>
                 </select>
+            </div> -->
+
+            <div class="mb-3">
+                <label for="kategori" class="form-label">Masukan Ganbar</label>
+                <input type="file" class="form-control" id="kategori" placeholder="Masukan nama kategori" name="gambar_kategori">
             </div>
-            <p class="mb-0 small">Note: Tetapkan sebuah istilah induk untuk membuat sebuah hirarki. Istilah Jazz, contohnya, akan menjadi induk dari Bebop dan Big Band.</p>
+
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="deskripsi" value="<?= $kategori['deskripsi'] ?>"></textarea>
+                <input style="height: 100px;" type="text" class="form-control" id="deskripsi" placeholder="Masukan keterangan" cols="30" rows="10" name="deskripsi" value="<?= $kategori['deskripsi'] ?>">
+
             </div>
             <div class="small mb-1">Navbar Dropdown Example:</div>
             <p class="mb-0 small">Note: Umumnya deskripsi tidak tampil. Namun, beberapa tema dapat menampilkannya.</p>
