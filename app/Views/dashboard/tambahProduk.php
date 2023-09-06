@@ -10,7 +10,7 @@
 
 <div class="row">
     <!-- Left Panel -->
-
+    <?= validation_list_errors() ?>
     <div class="col-lg-6">
 
         <div class="card position-relative">
@@ -33,17 +33,17 @@
                         <label for="harga_produk" class="form-label">Harga Produk</label>
                         <input type="price" class="form-control" id="harga_produk" name="harga_produk" placeholder="Harga">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
                         <input type="number" class="form-control" id="stock_produk" name="stock_produk" placeholder="Stock">
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <label for="alamat">Deskripsi</label>
                         <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" rows="3" placeholder="Deskripsi Produk Anda .."></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="gambar_produk" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" id="gambar_produk" name="gambar_produk" placeholder="Masukan Gambar">
+                        <label for="img" class="form-label">Gambar</label>
+                        <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-danger">Simpan</button>
@@ -87,17 +87,29 @@
                                 <td><?= $km['harga']; ?></td>
                                 <td>1</td>
                                 <!-- <td><?= $km['deskripsi']; ?></td> -->
-                                <td>
-                                    <div class="row">
-                                        <div class="col">
-                                            <a href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>" class="btn btn-warning btn-circle btn-sm">
-                                                <i class="fas fa-pen"></i>
+                                <td class="text-center">
+                                    <div class="nav-item dropdown no-arrow">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </a>
+                                        <!-- Dropdown - User Information -->
+                                        <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                            <a class="dropdown-item" href="<?= base_url() ?>produk/<?= $km['slug']; ?>">
+                                                <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Lihat Produk
                                             </a>
-                                        </div>
-                                        <div class="col">
-                                            <a href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" class="btn btn-danger btn-circle btn-sm">
-                                                <i class="fas fa-trash"></i>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
+                                                <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Update
                                             </a>
+                                            <div class="dropdown-divider"></div>
+                                            <form action="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" method="post">
+                                                <?= csrf_field() ?>
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                    <span class="text-danger">Delete</span>
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>

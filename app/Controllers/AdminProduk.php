@@ -106,16 +106,14 @@ class AdminProduk extends BaseController
     public function save()
     {
         // ambil gambar
-        $fotoProduk = $this->request->getFile('gambar_produk');
+        $produkModel = new ProdukModel();
+        $fotoProduk = $this->request->getFile('img');
         if ($fotoProduk->getError() == 4) {
-            # code...
             $namaProduk = 'default.png';
         } else {
             $namaProduk = $fotoProduk->getRandomName();
             $fotoProduk->move('assets/img/produk/main/', $namaProduk);
         }
-        // dd($this->request->getVar());
-        $produkModel = new ProdukModel();
         $slug = url_title($this->request->getVar('nama_produk'), '-', true);
         $data = [
             'slug' => $slug,
@@ -124,8 +122,9 @@ class AdminProduk extends BaseController
             'harga' => $this->request->getVar('harga_produk'),
             'deskripsi' => $this->request->getVar('deskripsi_produk'),
             // 'stok' => $this->request->getVar('stock_produk'),
-            'img' => $namaProduk,
+            'img' => $namaProduk
         ];
+
         // swet alert
         if ($produkModel->save($data)) {
             session()->setFlashdata('success', 'Prroduk berhasil disimpan.');
@@ -136,7 +135,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-produk');
+            return redirect()->to('dashboard/tambah-produk')->withInput();
         } else {
             $alert = [
                 'type' => 'error',
@@ -152,6 +151,14 @@ class AdminProduk extends BaseController
     public function deleteProduk($id)
     {
         $produkModel = new ProdukModel();
+        $produk = $produkModel->find($id);
+
+        if ($produk['img'] != 'default.png') {
+            $gambarLamaPath = 'assets/img/produk/main/' . $produk['img'];
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+        }
         $deleted = $produkModel->delete($id);
         // dd($id);
         if ($deleted) {
