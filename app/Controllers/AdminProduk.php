@@ -57,13 +57,16 @@ class AdminProduk extends BaseController
         } else {
             $produk = $produkModel->find($id);
 
-            if ($produk['img'] == 'default.png' || !file_exists($this->request->getVar('imageLama'))) {
+            if ($produk['img'] == 'default.png') {
                 $namaProdukImage = $image->getRandomName();
                 $image->move('assets/img/produk/main', $namaProdukImage);
             } else {
                 $namaProdukImage = $image->getRandomName();
                 $image->move('assets/img/produk/main', $namaProdukImage);
-                unlink('assets/img/produk/main/' . $this->request->getVar('imageLama'));
+                $gambarLamaPath = 'assets/img/produk/main/' . $this->request->getVar('imageLama');
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
             }
         }
         $slug = url_title($this->request->getVar('nama_produk'), '-', true);
