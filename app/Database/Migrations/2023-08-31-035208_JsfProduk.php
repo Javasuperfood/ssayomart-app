@@ -32,11 +32,6 @@ class JsfProduk extends Migration
                 'type'          => 'varchar',
                 'constraint'    => '225'
             ],
-            'stok' => [
-                'type'          => 'INT',
-                'constraint'    => 12,
-                'default' => 0
-            ],
             'deskripsi' => [
                 'type'          => 'VARCHAR',
                 'constraint'    => '255',
