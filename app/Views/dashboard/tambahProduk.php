@@ -23,15 +23,15 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="nama_produk" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" autofocus>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" required placeholder="Nama Produk" autofocus>
                     </div>
                     <div class="mb-3">
                         <label for="nama_produk" class="form-label">Stock Keeping Unit (SKU)</label>
-                        <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU Produk" autofocus>
+                        <input type="text" class="form-control" id="sku" name="sku" required placeholder="SKU Produk" autofocus>
                     </div>
                     <div class="mb-3">
                         <label for="harga_produk" class="form-label">Harga Produk</label>
-                        <input type="price" class="form-control" id="harga_produk" name="harga_produk" placeholder="Harga">
+                        <input type="price" class="form-control" id="harga_produk" required name="harga_produk" placeholder="Harga">
                     </div>
                     <!-- <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
@@ -39,11 +39,11 @@
                     </div> -->
                     <div class="mb-3">
                         <label for="alamat">Deskripsi</label>
-                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" rows="3" placeholder="Deskripsi Produk Anda .."></textarea>
+                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" required rows="3" placeholder="Deskripsi Produk Anda .."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar</label>
-                        <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar">
+                        <input type="file" value="upload" accept="image/*" class="form-control" id="img" name="img" required placeholder="Masukan Gambar">
                     </div>
                     <div>
                         <button type="submit" class="btn btn-danger">Simpan</button>

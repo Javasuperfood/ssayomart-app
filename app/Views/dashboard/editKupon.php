@@ -9,14 +9,14 @@
         <!-- code -->
         <form action="<?= base_url(); ?>dashboard/kupon/update-kupon/<?= $kp['id_kupon'] ?>" method="post">
             <?= csrf_field(); ?>
-            <input type="hidden" class="form-control" id="id_kupon" name="id_kupon" value="<?= $kp['id_kupon'] ?>">
+            <input type="hidden" class="form-control" id="id_kupon" name="id_kupon" required value="<?= $kp['id_kupon'] ?>">
             <div class="mb-3">
                 <label for="nama_kupon" class="form-label">Nama Kupon</label>
-                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" value="<?= $kp['nama'] ?>">
+                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" required value="<?= $kp['nama'] ?>">
             </div>
             <div class="mb-3">
                 <label for="kode_kupon" class="form-label">Kode</label>
-                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" value="<?= $kp['kode'] ?>">
+                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" required value="<?= $kp['kode'] ?>">
             </div>
             <div class="mb-3">
                 <label for="Deskripsi">Deskripsi</label>
@@ -24,7 +24,7 @@
             </div>
             <div class="mb-3">
                 <label for="masa_berlaku" class="form-label mr-3">Masa Berlaku</label>
-                <input type="date" id="masa_berlaku" name="masa_berlaku" value="<?= $kp['is_active'] ?>">
+                <input type="date" id="masa_berlaku" name="masa_berlaku" required value="<?= $kp['is_active'] ?>">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
