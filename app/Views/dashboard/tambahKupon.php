@@ -11,11 +11,11 @@
             <?= csrf_field(); ?>
             <div class="mb-3">
                 <label for="nama_kupon" class="form-label">Nama Kupon</label>
-                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" autofocus>
+                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" required aria-required="true" placeholder="Nama Kupon Anda" required="" autofocus>
             </div>
             <div class="mb-3">
                 <label for="kode_kupon" class="form-label">Kode</label>
-                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon">
+                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" required placeholder="Kode Kupon">
             </div>
             <div class="mb-3">
                 <label for="Deskripsi">Deskripsi</label>
@@ -23,7 +23,7 @@
             </div>
             <div class="mb-3">
                 <label for="masa_berlaku" class="form-label mr-3">Masa Berlaku</label>
-                <input type="date" id="masa_berlaku" name="masa_berlaku" placeholder="Masukan Masa Berlaku Kupon">
+                <input type="date" id="masa_berlaku" name="masa_berlaku" required placeholder="Masukan Masa Berlaku Kupon">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Simpan</button>
