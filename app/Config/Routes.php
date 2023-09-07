@@ -75,7 +75,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
     $routes->get('kategori', 'AdminKategoriController::index');
-    $routes->get('inputbaner', 'Inputbanner::inputbaner');
     $routes->get('kupon', 'AdminKupon::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
@@ -86,8 +85,13 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori/edit-kategori/(:segment)', 'AdminKategoriController::editKategori/$1');
     $routes->post('kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
 
-
-
+    //CRUD Admin Banner
+    $routes->get('banner/inputbanner', 'AdminInputBanner::inputbanner');
+    $routes->get('banner/tambah-banner', 'AdminInputBanner::tambahBanner');
+    $routes->post('banner/tambah-banner/save', 'AdminInputBanner::saveBanner');
+    $routes->post('banner/tambah-banner/delete/(:segment)', 'AdminInputBanner::deleteBanner/$1');
+    $routes->get('banner/tambah-banner/update/(:segment)', 'AdminInputBanner::updateBanner/$1');
+    $routes->post('banner/tambah-banner/edit/(:segment)', 'AdminInputBanner::editBanner/$1');
 
     // CRUD routes produk
     $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
