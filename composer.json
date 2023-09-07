@@ -31,7 +31,8 @@
         }
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses"
     },
     "support": {
         "forum": "https://forum.codeigniter.com/",

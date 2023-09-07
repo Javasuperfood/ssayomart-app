@@ -4,133 +4,132 @@ namespace App\Database\Seeds;
 
 use CodeIgniter\Database\Seeder;
 
-use Faker\Factory;
-
 class Kategori extends Seeder
 {
     public function run()
     {
-        $faker = Factory::create();
         $data = [
             [
                 'id_kategori' => 1,
                 'nama_kategori' => 'NORI',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'nori',
+                'img'    => 'nori.jpg',
             ],
             [
                 'id_kategori' => 2,
                 'nama_kategori' => 'RAMEN',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'ramen',
+                'img'    => 'ramen.jpg',
             ],
             [
                 'id_kategori' => 3,
                 'nama_kategori' => 'MAKANAN SAMPING',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'makanan-samping',
+                'img'    => 'makanan-samping.jpg',
             ],
             [
                 'id_kategori' => 4,
                 'nama_kategori' => 'SNACK',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'snack',
+                'img'    => 'snack.jpg',
             ],
             [
                 'id_kategori' => 5,
                 'nama_kategori' => 'SAYUR & BUAH',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'sayur-dan-buah',
+                'img'    => 'sayur-dan-buah.jpg',
             ],
             [
                 'id_kategori' => 6,
                 'nama_kategori' => 'SEAFOOD',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'seafood',
+                'img'    => 'seafood.jpg',
             ],
             [
                 'id_kategori' => 7,
                 'nama_kategori' => 'DAGING',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'daging',
+                'img'    => 'daging.jpg',
             ],
             [
                 'id_kategori' => 8,
                 'nama_kategori' => 'BERAS/KACANG',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'beras-or-kacang',
+                'img'    => 'beras-or-kacang.jpg',
             ],
             [
                 'id_kategori' => 9,
                 'nama_kategori' => 'MAKANAN INSTAN',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'makanan-instan',
+                'img'    => 'makanan-instan.jpg',
             ],
             [
                 'id_kategori' => 10,
                 'nama_kategori' => 'TELUR',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'telur',
+                'img'    => 'telur.jpg',
             ],
             [
                 'id_kategori' => 11,
                 'nama_kategori' => 'BAHAN MAKANAN',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'bahan-makanan',
+                'img'    => 'bahan-makanan.jpg',
             ],
             [
                 'id_kategori' => 12,
                 'nama_kategori' => 'MINYAK',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'minyak',
+                'img'    => 'minyak.jpg',
             ],
             [
                 'id_kategori' => 13,
                 'nama_kategori' => 'BUBUK CABE',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'bubuk-cabe',
+                'img'    => 'bubuk-cabe.jpg',
             ],
             [
                 'id_kategori' => 14,
                 'nama_kategori' => 'MINUMAN',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'minuman',
+                'img'    => 'minuman.jpg',
             ],
             [
                 'id_kategori' => 15,
                 'nama_kategori' => 'SUSU & OLAHAN',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'susu-dan-olahan',
+                'img'    => 'susu-dan-olahan.jpg',
             ],
             [
                 'id_kategori' => 16,
                 'nama_kategori' => 'SAUS',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'saus',
+                'img'    => 'saus.jpg',
             ],
             [
                 'id_kategori' => 17,
                 'nama_kategori' => 'MAKANAN BEKU',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'makanan-beku',
+                'img'    => 'makanan-beku.jpg',
             ]
         ];
 
-
-        $publicImagePath = 'assets/img/kategori/';
-        $imageNames = ['nori.jpg'];
-
-        foreach ($imageNames as $imageName) {
-            $imagePath = FCPATH . $publicImagePath . $imageName;
-            copy($imagePath, $imagePath);
-        }
-
-        // Menghilangkan root path dari kolom 'img' pada setiap data kategori
-        foreach ($data as &$kategori) {
-            $kategori['img'] = str_replace(FCPATH, '', $publicImagePath) . $kategori['slug'] . '.jpg';
-        }
-
-        $this->db->table('jsf_kategori')->insertBatch($data);
 
         $this->db->table('jsf_kategori')->insertBatch($data);
 
