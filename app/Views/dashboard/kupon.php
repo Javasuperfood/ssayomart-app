@@ -1,4 +1,5 @@
 <?= $this->extend('dashboard/dashboard') ?>
+<?= $no = 1; ?>
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-2 text-gray-800">Manajemen Kupon</h1>
@@ -25,19 +26,33 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($kupon_Model as $km) : ?>
+                <?php foreach ($kupon_Model as $kp) : ?>
                     <tr>
-                        <td><?= $km['nama']; ?></td>
-                        <td><?= $km['nama']; ?></td>
-                        <td><?= $km['kode']; ?></td>
-                        <td><?= $km['deskripsi']; ?></td>
-                        <td><?= $km['is_active']; ?></td>
-                        <td> <a class="dropdown-toggle btn-danger btn-circle btn-sm" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                <div class="dropdown-header">MENU AKSI:</div>
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="<?= base_url() ?>dashboard/kupon/delete-kupon/<?= $km['id_kupon']; ?>">Delete</a>
+                        <td><?= $no++; ?></td>
+                        <td><?= $kp['nama']; ?></td>
+                        <td><?= $kp['kode']; ?></td>
+                        <td><?= $kp['deskripsi']; ?></td>
+                        <td><?= $kp['is_active']; ?></td>
+                        <td class="text-center">
+                            <div class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item" href="<?= base_url(); ?>dashboard/kupon/edit-kupon/<?= $kp['id_kupon']; ?>">
+                                        <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Edit
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <form action="<?= base_url() ?>dashboard/kupon/delete-kupon/<?= $kp['id_kupon']; ?>">
+                                        <?= csrf_field() ?>
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                            <span class="text-danger">Delete</span>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </td>
                     </tr>
