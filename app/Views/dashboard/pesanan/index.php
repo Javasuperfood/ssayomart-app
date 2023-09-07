@@ -41,7 +41,7 @@
                             <td><?= $o->nama; ?></td>
                             <td><?= $o->qty; ?></td>
                             <td><?= $o->sku; ?></td>
-                            <td><?= substr('Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eligendi quos voluptas accusamus saepe, quo alias tempora dolores nam recusandae, aliquam dicta mollitia est exercitationem eveniet asperiores quibusdam. Quas, assumenda?', 0, 30); ?>...</td>
+                            <td><?= $o->kirim; ?></td>
                             <td>JNE</td>
                             <td><?= $o->pesan_status_text; ?></td>
                             <td class="text-right">
