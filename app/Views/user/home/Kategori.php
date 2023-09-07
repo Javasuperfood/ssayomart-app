@@ -1,8 +1,6 @@
 <?= $this->extend('user/home/layout') ?>
 <?= $this->section('page-content') ?>
-
 <?= $this->include('user/home/component/navbarTop') ?>
-
 <?= $this->include('user/home/component/slider') ?>
 
 <!-- ITEM -->
