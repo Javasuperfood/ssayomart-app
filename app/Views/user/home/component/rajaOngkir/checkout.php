@@ -1,7 +1,7 @@
 <script>
     const jumlah = 1;
     const jasaApp = 1000;
-    var destination = <?= $alamat_list[0]['id_city']; ?>;
+    var destination = <?= ($alamat_list) ? $alamat_list[0]['id_city'] : ''; ?>;
     var kurir = 'jne';
     $('#serviceApp').html(formatRupiah(jasaApp));
 

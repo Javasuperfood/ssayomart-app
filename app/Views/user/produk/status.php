@@ -8,14 +8,24 @@
                 <div class="card border-0 shadow-sm">
                     <div class="col-md-12">
                         <div class="timeline text-center">
-                            <?php foreach ($getstatus as $gs) : ?>
+                            <?php
+                            $count = 0;
+
+                            foreach ($getstatus as $gs) :
+                                if ($count >= $status->pesan_status) {
+                                    break;
+                                }
+                            ?>
                                 <div class="timeline-item">
                                     <div class="timeline-content bg-white">
                                         <div class="timeline-icon bg-warning"></div>
                                         <p class="fw-bold badge text-bg-danger"><?= $gs['status']; ?></p>
                                     </div>
                                 </div>
-                            <?php endforeach ?>
+                            <?php
+                                $count++;
+                            endforeach;
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -26,20 +36,17 @@
                 <h2>Lokasi Tujuan</h2>
                 <div class="mb-0 mx-0 my-0">
                     <div class="card form-control form-control-md border-0 shadow-sm">
-                        <?php if ($getalamat) : ?>
-                            <div class="row row-cols-1">
-                                <div class="col">
-                                    <ul class="list-group list-group-flush">
-                                        <span class="list-group-item pb-3 border-0">
-                                            <span class="fw-bold"><?= $getalamat['label']; ?></span>
-                                            <p class="card-text text-secondary"><?= substr($getalamat['alamat_1'], 0, 40); ?>...</p>
-                                        </span>
-                                    </ul>
-                                </div>
+
+                        <div class="row row-cols-1">
+                            <div class="col">
+                                <ul class="list-group list-group-flush">
+                                    <span class="list-group-item pb-3 border-0">
+                                        <span class="fw-bold"></span>
+                                        <p class="card-text text-secondary"><?= $status->kirim; ?></p>
+                                    </span>
+                                </ul>
                             </div>
-                        <?php else : ?>
-                            <p>Tidak ada alamat yang tersedia.</p>
-                        <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,7 +58,7 @@
                     <h2>Pesanan kamu</h2>
                     <div class="row">
                         <div class="col-10">
-                            <p><?= substr("INV15165465465416546541", 0, 20); ?>...</p>
+                            <p><?= substr($status->invoice, 0, 20); ?>...</p>
                         </div>
                         <div class="col-2">
                             <i class="bi bi-clipboard text-danger"></i>
