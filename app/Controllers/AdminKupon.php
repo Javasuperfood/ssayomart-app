@@ -105,7 +105,7 @@ class AdminKupon extends BaseController
         $kuponModel = new KuponModel();
         $kp = $kuponModel->find($id);
         $data = [
-            // 'id_kupon' => $id,
+            'id_kupon' => $id,
             'nama' => $this->request->getVar('nama_kupon'),
             'kode' => $this->request->getVar('kode_kupon'),
             'deskripsi' => $this->request->getVar('deskripsi_kupon'),
