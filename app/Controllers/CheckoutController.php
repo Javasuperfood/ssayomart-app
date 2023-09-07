@@ -64,7 +64,9 @@ class CheckoutController extends BaseController
         if ($cekUser['id_user'] != user_id()) {
             return redirect()->to(base_url());
         }
-
+        if ($cekUser['id_status_pesan'] != 1) {
+            return redirect()->to(base_url('status/' . $cekUser['invoice']));
+        }
         $checkoutProdModel = new CheckoutProdukModel();
         $cekProduk = $checkoutProdModel
             ->select('*')
@@ -97,6 +99,7 @@ class CheckoutController extends BaseController
     {
         $alamatUserModel = new AlamatUserModel();
         $checkoutModel = new CheckoutModel();
+        $inv = $checkoutModel->find($id);
         $id_alamat = $this->request->getVar('alamat_list');
         $alamat = $alamatUserModel->find($id_alamat);
         $kirim = 'Penerima :' . $alamat['penerima'] . '<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br>' . $alamat['zip_code'] . '<br>' . 'Telp : ' . $alamat['telp'];
@@ -113,7 +116,7 @@ class CheckoutController extends BaseController
         if (!$checkoutModel->save($data)) {
             return redirect()->to(base_url('checkout/' . $id))->with('failed', 'Tarnsaksi Gagal');
         }
-        return redirect()->to(base_url('produk/status'));
+        return redirect()->to(base_url('status/' . $inv['invoice']));
         // dd($data);
     }
 }
