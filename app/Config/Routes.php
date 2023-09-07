@@ -100,6 +100,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('tambah-kupon', 'AdminKupon::tambahKupon');
     $routes->post('kupon/save', 'AdminKupon::saveKupon');
     $routes->get('kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
+    $routes->get('kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
+    $routes->post('kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
 });
 
 service('auth')->routes($routes);

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\KuponModel;
+use App\Models\ProdukModel;
 
 class AdminKupon extends BaseController
 {
@@ -83,6 +84,53 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/kupon')->withInput();
+        }
+    }
+
+    // update
+    public function editKupon($id)
+    {
+        $kuponModel = new KuponModel();
+        $kp = $kuponModel->find($id);
+        $data = [
+            'title' => 'Edit Kupon',
+            'kp' => $kp,
+            'back' => 'dashboard/kupon'
+        ];
+        return view('dashboard/editKupon', $data);
+    }
+    // save update
+    public function updateKupon($id)
+    {
+        $kuponModel = new KuponModel();
+        $kp = $kuponModel->find($id);
+        $data = [
+            // 'id_kupon' => $id,
+            'nama' => $this->request->getVar('nama_kupon'),
+            'kode' => $this->request->getVar('kode_kupon'),
+            'deskripsi' => $this->request->getVar('deskripsi_kupon'),
+            'is_active' => $this->request->getVar('masa_berlaku'),
+        ];
+
+        if ($kuponModel->save($data)) {
+            session()->setFlashdata('success', 'Kupon berhasil diubah.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Data Kupon berhasil diubah.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/kupon');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/kupon/edit-kupon/' . $id)->withInput();
         }
     }
 }
