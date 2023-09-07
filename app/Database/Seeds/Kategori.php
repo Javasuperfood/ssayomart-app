@@ -16,7 +16,7 @@ class Kategori extends Seeder
                 'id_kategori' => 1,
                 'nama_kategori' => 'NORI',
                 'deskripsi'    => 'Lorem',
-                'slug'    => 'nori'
+                'slug'    => 'nori',
             ],
             [
                 'id_kategori' => 2,
@@ -118,18 +118,19 @@ class Kategori extends Seeder
 
 
         $publicImagePath = 'assets/img/kategori/';
-        $imageNames = ['nori.jpg']; // Nama-nama gambar yang akan disalin ke direktori kategori.
+        $imageNames = ['nori.jpg'];
 
         foreach ($imageNames as $imageName) {
             $imagePath = FCPATH . $publicImagePath . $imageName;
-            copy($imagePath, $imagePath); // Salin gambar dari direktori sumber ke direktori tujuan.
+            copy($imagePath, $imagePath);
         }
 
-        // Loop untuk mengisi kolom 'image_path' pada data kategori.
+        // Menghilangkan root path dari kolom 'img' pada setiap data kategori
         foreach ($data as &$kategori) {
-            $kategori['img'] = $publicImagePath . $kategori['slug'] . '.jpg'; // Sesuaikan dengan nama file gambar yang sesuai dengan slug atau id_kategori.
-            // Tambahkan kode untuk mengisi data lainnya jika diperlukan.
+            $kategori['img'] = str_replace(FCPATH, '', $publicImagePath) . $kategori['slug'] . '.jpg';
         }
+
+        $this->db->table('jsf_kategori')->insertBatch($data);
 
         $this->db->table('jsf_kategori')->insertBatch($data);
 
