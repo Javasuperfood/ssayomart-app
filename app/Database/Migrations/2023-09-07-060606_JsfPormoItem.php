@@ -44,15 +44,15 @@ class JsfPormoItem extends Migration
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_promo_produk', true);
+        $this->forge->addKey('id_promo_item', true);
         $this->forge->addForeignKey('id_promo', 'jsf_promo', 'id_promo');
-        $this->forge->createTable('jsf_promo_produk');
+        $this->forge->createTable('jsf_promo_item');
     }
 
     public function down()
     {
         $this->forge->dropForeignKey('jsf_promo', 'id_promo');
 
-        $this->forge->dropTable('jsf_promo_produk');
+        $this->forge->dropTable('jsf_promo_item');
     }
 }
