@@ -13,12 +13,12 @@
         <div class="row <?= (!$alamat_list) ? 'd-none' : ''; ?>">
             <div class="col">
                 <div class="form-floating mb-2">
-                    <select class="form-control border-0 shadow-sm" id="floatingSelect" name="alamat_list">
+                    <select class="form-control border-0 shadow-sm" id="alamat_list" name="alamat_list">
                         <?php foreach ($alamat_list as $al) : ?>
-                            <option penerima="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary"><?= $al['alamat_1']; ?></option>
+                            <option penerima="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary" city="<?= $al['id_city']; ?>"><?= $al['alamat_1']; ?></option>
                         <?php endforeach ?>
                     </select>
-                    <label for="floatingSelect" id="floatingLabel"><span id="perubahan"></span></label>
+                    <label for="alamat_list" id="alamat_list"><span id="perubahan"></span></label>
                 </div>
             </div>
 
@@ -101,6 +101,7 @@
                 </table>
                 <p class="text-secondary text-center"><a href="<?= base_url() ?>produk/status" class="link-underline link-underline-opacity-0 link-secondary">Detail Pesanan >></p></a>
             </div>
+            <input type="hidden" name="total" id="field_subtotal">
 
             <div class="row p-3 px-4">
                 <button type="submit" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
@@ -116,9 +117,9 @@
         var selectedOption = $(this).find("option:selected");
         var label = selectedOption.attr('penerima');
         $('#perubahan').text(label);
-        $("#floatingSelect").on('change', function() {
-            var selectedOption = $(this).find("option:selected");
-            var label = selectedOption.attr('penerima');
+        $("#alamat_list").on('change', function() {
+            selectedOption = $(this).find("option:selected");
+            label = selectedOption.attr('penerima');
             $('#perubahan').text(label);
         });
     });
