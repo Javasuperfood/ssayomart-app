@@ -18,9 +18,33 @@ class AdminkategoriController extends BaseController
         ];
         return view('dashboard/kategori', $data);
     }
-    // Save ke database
-    public function save()
+
+    // Tampilan Input Kategori
+    public function tambahKategori()
     {
+        $kategoriModel = new KategoriModel();
+        $kategori_list = $kategoriModel->findAll();
+
+        $data = [
+            'title' => 'Kategori',
+            'kategori_model' => $kategori_list
+        ];
+        return view('dashboard/tambahKategori', $data);
+    }
+
+    // Save ke database
+    public function saveKategori()
+    {
+        // ambil gambar
+        $fotoKategori = $this->request->getFile('gambar_kategori');
+        if ($fotoKategori->getError() == 4) {
+            # code...
+            $nama_kategori = 'default.png';
+        } else {
+            $nama_kategori = $fotoKategori->getRandomName();
+            $fotoKategori->move('assets/img/kategori/', $nama_kategori);
+        }
+  
         // dd($this->request->getVar());
         $kategoriModel = new KategoriModel();
         $slug = url_title($this->request->getVar('kategori'), '-', true);
@@ -28,8 +52,9 @@ class AdminkategoriController extends BaseController
             'slug' => $slug,
             'nama_kategori' => $this->request->getVar('kategori'),
             'deskripsi' => $this->request->getVar('deskripsi'),
+            'img' => $nama_kategori,
         ];
-
+        // dd($data);
         if ($kategoriModel->save($data)) {
             session()->setFlashdata('success', 'Data Kategori Berhasil disimpan');
             $alert = [
@@ -47,7 +72,7 @@ class AdminkategoriController extends BaseController
                 'message' => 'Terdapat kesalahan pada input kategori'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/kategori/create-kategori')->withInput();
+            return redirect()->to('dashboard/kategori',)->withInput();
         };
     }
 
@@ -96,51 +121,127 @@ class AdminkategoriController extends BaseController
         return view('dashboard/editKategori', ['kategori' => $kategori]);
     }
 
-
     public function updateKategori($id)
     {
-        // Ambil data yang dikirimkan dari formulir edit
+        // Instansiasi model kategori
+        $kategoriModel = new KategoriModel();
+        $image = $this->request->getFile('gambar_kategori');
 
-        $nama_kategori = $this->request->getVar('kategori');
-        $deskripsi = $this->request->getVar('deskripsi');
-        $slug = url_title($nama_kategori, '-', true);
+        if ($image->getError() == 4) {
+            $namaKategoriImage = $this->request->getVar('imageLama');
+        } else {
+            $kategori = $kategoriModel->find($id);
+
+            if ($kategori['img'] == 'default.png') {
+                $namaKategoriImage = $image->getRandomName();
+                $image->move('assets/img/kategori', $namaKategoriImage);
+            } else {
+                $namaKategoriImage = $image->getRandomName();
+                $image->move('assets/img/kategori', $namaKategoriImage);
+                $gambarLamaPath = 'assets/img/kategori' . $this->request->getVar('imageLama');
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+        }
+        $slug = url_title($this->request->getVar('kategori'), '-', true);
         $data = [
             'slug' => $slug,
             'id_kategori' => $id,
-            'nama_kategori' => $nama_kategori,
-            'deskripsi' => $deskripsi,
-
+            'img' => $namaKategoriImage,
+            'nama_kategori' => $this->request->getVar('kategori'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            
         ];
-
-        // Instansiasi model kategori
-        $kategoriModel = new KategoriModel();
-
-        // Update data kategori berdasarkan ID
+        // dd($id);
         if ($kategoriModel->save($data)) {
-            session()->setFlashdata('success', 'Data kategori Berhasil diupdate');
+            session()->setFlashdata('success', 'Kategori beerhasil diubah');
             $alert = [
                 'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Data Kategori Berhasil diubah.'
-            ];
-            // Redirect ke halaman daftar kategori dengan pesan sukses
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/kategori');
+                'title' => 'berhasil',
+                'message' => 'Data Kategori Bwrhasil diubah.'
 
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/kategori');
         } else {
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisiam form Update kategori.'
+                'message' => 'Terdapat Kesalahan pada pengisian data kategori.'
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kategori/edit-kategori/' . $id)->withInput();
+            return redirect()->to('dashboard/kategori')->withInput();
+    
         }
     }
 
 
 
 
-    
+
+
+
+    // public function updateKategori($id)
+    // {
+    //     // Instansiasi model kategori
+    //     $kategoriModel = new KategoriModel();
+    //     $image = $this->request->getFile('gambar_kategori');
+
+
+    //     if ($image->getError() != 4) {
+    //         // Jika tidak ada gambar yang diunggah, gunakan gambar lama
+    //         $namaKategoriImage = $this->request->getVar('imageLama');
+    //     } else {
+    //         //ada gambar baru yang diunggah, proses gambar baru
+    //         if ($kategori['img'] != 'default.png' || $image->getError() == 4) {
+    //             $namaKategoriImage = $image->getRandomName();
+    //             $image->move('assets/img/kategori', $namaKategoriImage);
+
+    //             //Hapus gambar Lama
+    //             if ($this->request->getVar('imageLama') != 'default.png') {
+    //                 unlink('assets/img/kategori' . $this->request->getVar('imageLama'));
+    //             }
+    //         }
+    //     }
+    //     $slug = url_title($this->request->getVar('kategori'), '-', true);
+    //     $data = [
+    //         'slug' => $slug,
+    //         'id_kategori' => $id,
+    // 'nama_kategori' => $this->request->getVar('nama_kategori'),
+    // 'deskripsi' => $this->request->getVar('deskripsi'),
+
+    //     ];
+
+    //     // Jika ada gambar baru yang diunggah, proses gambar baru
+    //     if (!empty($data)) {
+    //         //Gunakan variabel $kategoriModel yang telah diinisialisasi dengan benar
+    //         if ($km && $kategoriModel->save($data)) {
+    //             session()->setFlashdata('success', 'Kategori Berhasil diubah.');
+    //             $alert = [
+    //                 'type' => 'success',
+    //                 'title' => 'Berhasil',
+    //                 'message' => 'Data Kategori berhsil diubah.'
+    //             ];
+    //             session()->setFlashdata('alert', $alert);
+
+    //             return redirect()->to('dashboard/kategori');
+    //         } else {
+    //             $alert = [
+    //                 'type' => 'error',
+    //                 'title' => 'Error',
+    //                 'message' => 'Terdapat kesalahan pada pengisian data kategori'
+    //             ];
+    //             session()->setFlashdata('alert', $alert);
+    //             return redirect()->to('dashboard/kategori');
+    //         }
+    //     }
+    // }
+
+
+
+
+
 }
