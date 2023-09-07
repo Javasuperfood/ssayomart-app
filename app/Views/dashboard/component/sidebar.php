@@ -34,7 +34,22 @@
         Pesanan
     </div>
     <hr class="sidebar-divider">
-
+    <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#pesanan" aria-expanded="false" aria-controls="pesanan">
+            <i class="fas fa-fw fa-receipt"></i>
+            <span>Pesanan</span>
+        </a>
+        <div id="pesanan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu Pesanan:</h6>
+                <a class="collapse-item" href="<?= base_url('dashboard/pesanan'); ?>">Pesanan</a>
+                <a class="collapse-item" href="<?= base_url('dashboard/pesanan'); ?>">Pesanan Diproses</a>
+                <div class="collapse-divider"></div>
+                <h6 class="collapse-header">Lainya:</h6>
+                <a class="collapse-item" href="<?= base_url('dashboard/pesanan'); ?>">Pesanan dibatalkan</a>
+            </div>
+        </div>
+    </li>
 
     <hr class="sidebar-divider">
 
