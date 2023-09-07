@@ -1,19 +1,21 @@
 <script>
     const jumlah = 1;
     const jasaApp = 1000;
+    var destination = <?= $alamat_list[0]['id_city']; ?>;
+    var kurir = 'jne';
     $('#serviceApp').html(formatRupiah(jasaApp));
 
     const total = <?= $total; ?>;
 
     // Fungsi untuk mengisi layanan berdasarkan kurir yang dipilih
     function populateServices(kurir) {
-        $("#service").empty();
+        $("#service, #ongkir, #ongkirText, #estimasi, #total, #totalText, #serviceText, #field_subtotal").empty().val('');
         $.ajax({
             url: "<?= base_url('api/getcost') ?>",
             type: 'GET',
             data: {
                 'origin': '455', // lokasi awal
-                'destination': '445', // lokasi user
+                'destination': destination, // lokasi user
                 'weight': 1000, // berat barangt
                 'courier': kurir // kurir yang dipilih
             },
@@ -30,15 +32,31 @@
                         std: results[i]["service"]
                     }));
                 }
+                $("#serviceText").val(results[0]["description"] + "(" + results[0]["service"] + ")");
+                var estimasi = results[0]["cost"][0]["etd"];
+                ongkir = parseInt(results[0]["cost"][0]["value"]);
+                $("#ongkir").val(ongkir);
+                $("#ongkirText").html(formatRupiah(ongkir));
+                $("#estimasi").html(estimasi + " Hari");
+                $("#total").val(total);
+                $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
+                $("#field_subtotal").val(ongkir + total + jasaApp);
             },
         });
     }
 
+    $("#alamat_list").on('change', function() {
+        $("#kurir").prop('selectedIndex', 0)
+        selectedOption = $('option:selected', this).attr('penerima');
+        $('#perubahan').text(selectedOption);
+        destination = $('option:selected', this).attr('city');
+        populateServices(destination);
+
+    });
     // Memanggil fungsi populateServices saat memilih kurir
     $("#kurir").on('change', function() {
-        var kurir = $(this).val();
+        kurir = $("#kurir").val();
         populateServices(kurir);
-
     });
 
     // Menghitung estimasi dan total saat memilih layanan
@@ -66,7 +84,6 @@
     if (kurirTerpilih) {
         populateServices(kurirTerpilih);
     }
-
 
     function formatRupiah(angka) {
         var formatter = new Intl.NumberFormat('id-ID', {

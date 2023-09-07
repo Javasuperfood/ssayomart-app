@@ -93,8 +93,27 @@ class CheckoutController extends BaseController
 
         return view('user/home/checkout/checkout', $data);
     }
-    public function bayar()
+    public function bayar($id)
     {
-        dd($this->request->getVar());
+        $alamatUserModel = new AlamatUserModel();
+        $checkoutModel = new CheckoutModel();
+        $id_alamat = $this->request->getVar('alamat_list');
+        $alamat = $alamatUserModel->find($id_alamat);
+        $kirim = 'Penerima :' . $alamat['penerima'] . '<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br>' . $alamat['zip_code'] . '<br>' . 'Telp : ' . $alamat['telp'];
+        $data = [
+            'id_checkout' => $id,
+            'id_status_pesan' => 2,
+            'total' => $this->request->getVar('total'),
+            'service' => $this->request->getVar('serviceText'),
+            'harga_service' => $this->request->getVar('service'),
+            'kurir' => strtoupper($this->request->getVar('kurir')),
+            'kirim' => $kirim
+        ];
+
+        if (!$checkoutModel->save($data)) {
+            return redirect()->to(base_url('checkout/' . $id))->with('failed', 'Tarnsaksi Gagal');
+        }
+        return redirect()->to(base_url('produk/status'));
+        // dd($data);
     }
 }

@@ -16,10 +16,13 @@ class CheckoutModel extends Model
     protected $allowedFields    = [
         'id_user',
         'id_kupon',
-        'id_alamat_users',
-        // 'id_payment',
         'id_status_pesan',
         'id_status_kirim',
+        'kirim',
+        'kurir',
+        'service',
+        'harga_service',
+        'catatan',
         'total',
         'invoice'
     ];
@@ -39,7 +42,7 @@ class CheckoutModel extends Model
         // 'id_status_pesan'       => 'required',
         // 'id_status_kirim'       => 'required',
         // 'id_payment'            => 'required',
-        'total'                 => 'required',
+        // 'total'                 => 'required',
         'invoice'               => 'required'
     ];
     protected $validationMessages   = [];
