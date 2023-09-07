@@ -66,7 +66,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Produk:</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">Produk</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">List Produk</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambahProduk">Tambah Produk</a>
             </div>
         </div>
@@ -79,11 +79,19 @@
             <span>Kategori & SubKategori</span></a>
     </li>
 
-    <!-- Kategori -->
+    <!-- Banner -->
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard/inputbaner">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Banner</span></a>
+        <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Banner Menu</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu Banner:</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/inputbanner">List Banner</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambahBanner">Tambah Banner</a>
+            </div>
+        </div>
     </li>
 
     <!-- kupon -->

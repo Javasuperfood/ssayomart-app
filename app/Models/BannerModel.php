@@ -25,14 +25,14 @@ class BannerModel extends Model
     // Validation
     protected $validationRules      = [
         'title' => 'required|min_length[2]|max_length[50]',
-        'img' => 'max_size[img_profile,3124]|is_image[img_profile]|mime_in[img_profile,image/jpg,image/jpeg,image/png]'
+        // 'img' => 'max_size[img_profile,3124]|is_image[img_profile]|mime_in[img_profile,image/jpg,image/jpeg,image/png]'
     ];
     protected $validationMessages   = [
-        'img' => [
-            'max_size' => 'Image size is too large',
-            'is_image' => 'What you select is not an image',
-            'mime_in' => 'What you select is not an image'
-        ]
+        // 'img' => [
+        //     'max_size' => 'Image size is too large',
+        //     'is_image' => 'What you select is not an image',
+        //     'mime_in' => 'What you select is not an image'
+        // ]
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

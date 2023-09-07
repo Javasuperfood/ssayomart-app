@@ -28,7 +28,7 @@ class JsfBanner extends Migration
                 'type'        => 'timestamp',
                 'null'        => true,
             ],
-            'update_at' => [
+            'updated_at' => [
                 'type'   => 'timestamp',
                 'null'   => true
             ],
