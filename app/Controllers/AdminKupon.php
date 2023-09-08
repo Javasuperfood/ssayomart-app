@@ -15,7 +15,7 @@ class AdminKupon extends BaseController
             'title' => 'kupon',
             'kupon_Model' => $kupon_list
         ];
-        return view('dashboard/kupon', $data);
+        return view('dashboard/kupon/kupon', $data);
     }
 
     public function tambahKupon()
@@ -24,7 +24,7 @@ class AdminKupon extends BaseController
         $data = [
             'title' => 'tambahKupon',
         ];
-        return view('dashboard/tambahKupon', $data);
+        return view('dashboard/kupon/tambahKupon', $data);
     }
 
     //menyimpan ke database
@@ -48,7 +48,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kupon');
+            return redirect()->to('dashboard/kupon/kupon');
         } else {
             $alert = [
                 'type' => 'error',
@@ -57,7 +57,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-kupon')->withInput();
+            return redirect()->to('dashboard/kupon/tambah-kupon')->withInput();
         }
     }
 
