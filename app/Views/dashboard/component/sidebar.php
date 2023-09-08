@@ -66,8 +66,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Produk:</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">List Produk</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambahProduk">Tambah Produk</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/produk">List Produk</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a>
             </div>
         </div>
     </li>

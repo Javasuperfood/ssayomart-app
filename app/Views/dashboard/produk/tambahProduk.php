@@ -19,31 +19,36 @@
             </div>
             <div class="card-body">
                 <!-- code -->
-                <form action="<?= base_url(); ?>dashboard/tambah-produk/save" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url(); ?>dashboard/produk/tambah-produk/save" method="post" enctype="multipart/form-data" onsubmit="return validasiTambahProduk()">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="nama_produk" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" required placeholder="Nama Produk" autofocus>
+                        <input type="text" class="form-control" id="nama_produk" name="nama_produk" placeholder="Nama Produk" value="<?= old('nama_produk') ?>" autofocus>
+                        <span id="produkError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="nama_produk" class="form-label">Stock Keeping Unit (SKU)</label>
-                        <input type="text" class="form-control" id="sku" name="sku" required placeholder="SKU Produk" autofocus>
+                        <label for="sku" class="form-label">Stock Keeping Unit (SKU)</label>
+                        <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU Produk" value="<?= old('sku') ?>" autofocus>
+                        <span id="skuError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="harga_produk" class="form-label">Harga Produk</label>
-                        <input type="price" class="form-control" id="harga_produk" required name="harga_produk" placeholder="Harga">
+                        <input type="price" class="form-control" id="harga_produk" name="harga_produk" value="<?= old('harga_produk') ?>" placeholder="Harga">
+                        <span id="hargaError" class="text-danger"></span>
                     </div>
                     <!-- <div class="mb-3">
                         <label for="stock_produk" class="form-label">Stock Produk</label>
                         <input type="number" class="form-control" id="stock_produk" name="stock_produk" placeholder="Stock">
                     </div> -->
                     <div class="mb-3">
-                        <label for="alamat">Deskripsi</label>
-                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" required rows="3" placeholder="Deskripsi Produk Anda .."></textarea>
+                        <label for="deskripsi_produk">Deskripsi</label>
+                        <textarea class="form-control" id="deskripsi_produk" name="deskripsi_produk" placeholder="Deskripsi Produk Anda ..." value="<?= old('deskripsi_produk') ?>"></textarea>
+                        <span id="deskripsiError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar</label>
-                        <input type="file" value="upload" accept="image/*" class="form-control" id="img" name="img" required placeholder="Masukan Gambar">
+                        <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar">
+                        <span id="imgError" class="text-danger"></span>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-danger">Simpan</button>
@@ -98,16 +103,16 @@
                                                 <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Lihat Produk
                                             </a>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
                                                 <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                Update
+                                                Edit Produk
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <form action="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" method="post">
+                                            <form action="<?= base_url() ?>dashboard/produk/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" method="post">
                                                 <?= csrf_field() ?>
                                                 <button type="submit" class="dropdown-item">
                                                     <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                    <span class="text-danger">Delete</span>
+                                                    <span class="text-danger">Hapus Produk</span>
                                                 </button>
                                             </form>
                                         </div>
@@ -138,6 +143,70 @@
             });
         <?php endif; ?>
     });
+
+    //Validasi Form
+    function validasiTambahProduk() {
+        var isValid = true;
+
+        var namaProdukField = document.getElementById('nama_produk');
+        var skuField = document.getElementById('sku');
+        var hargaField = document.getElementById('harga_produk');
+        var imgField = document.getElementById('img');
+        var deskripsiField = document.getElementById('deskripsi_produk');
+
+        var namaProdukError = document.getElementById('produkError');
+        var skuError = document.getElementById('skuError');
+        var hargaError = document.getElementById('hargaError');
+        var imgError = document.getElementById('imgError');
+        var deskripsiError = document.getElementById('deskripsiError');
+
+        namaProdukError.textContent = '';
+        skuError.textContent = '';
+        hargaError.textContent = '';
+        imgError.textContent = '';
+        deskripsiError.textContent = '';
+
+        if (namaProdukField.value.trim() === '') {
+            namaProdukField.classList.add('invalid-field');
+            namaProdukError.textContent = 'Nama Produk harus diisi';
+            isValid = false;
+        } else {
+            namaProdukField.classList.remove('invalid-field');
+        }
+
+        if (skuField.value.trim() === '') {
+            skuField.classList.add('invalid-field');
+            skuError.textContent = 'SKU harus diisi';
+            isValid = false;
+        } else {
+            skuField.classList.remove('invalid-field');
+        }
+
+        if (hargaField.value.trim() === '') {
+            hargaField.classList.add('invalid-field');
+            hargaError.textContent = 'Harga Produk harus diisi';
+            isValid = false;
+        } else {
+            hargaField.classList.remove('invalid-field');
+        }
+
+        if (imgField.value.trim() === '') {
+            imgField.classList.add('invalid-field');
+            imgError.textContent = 'Gambar Produk harus diisi';
+            isValid = false;
+        } else {
+            imgField.classList.remove('invalid-field');
+        }
+
+        if (deskripsiField.value.trim() === '') {
+            deskripsiField.classList.add('invalid-field');
+            deskripsiError.textContent = 'Deskripsi Produk harus diisi';
+            isValid = false;
+        } else {
+            deskripsiField.classList.remove('invalid-field');
+        }
+        return isValid;
+    }
 </script>
 
 <?= $this->endSection(); ?>

@@ -94,11 +94,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('banner/tambah-banner/edit/(:segment)', 'AdminInputBanner::editBanner/$1');
 
     // CRUD routes produk
-    $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
-    $routes->post('tambah-produk/save', 'AdminProduk::save');
-    $routes->post('tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
-    $routes->post('tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
-    $routes->get('tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
+    $routes->get('produk/produk', 'AdminProduk::produk');
+    $routes->get('produk/tambah-produk', 'AdminProduk::tambahProduk');
+    $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
+    $routes->post('produk/tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
+    $routes->post('produk/tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
+    $routes->get('produk/tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
 
     // Crud Kupon
     $routes->get('tambah-kupon', 'AdminKupon::tambahKupon');
