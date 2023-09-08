@@ -6,34 +6,20 @@
 <!-- ITEM -->
 <div class="container py-3">
     <h2>Spesial di Ssayomart!</h2>
-    <div class="row text-center">
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <a href="<?= base_url() ?>produk">
-                        <img src="<?= base_url() ?>assets/img/logo.png" width="60px" alt="" class="card-img-top">
-                    </a>
+    <div class="row text-center row-cols-3">
+        <?php foreach ($promo as $p) : ?>
+            <div class="col">
+                <div class="swiper-slide">
+                    <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                        <div class="card-body">
+                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="<?= $p['title']; ?>" class="card-img-top">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <a href="<?= base_url() ?>produk">
-                        <img src="<?= base_url() ?>assets/img/logo.png" width="60px" alt="" class="card-img-top">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card text-bg-light mb-3 bg-white border-0 shadow">
-                <div class="card-body">
-                    <a href="<?= base_url() ?>produk">
-                        <img src="<?= base_url() ?>assets/img/logo.png" width=" 60px" alt="" class="card-img-top">
-                    </a>
-                </div>
-            </div>
-        </div>
+        <?php endforeach ?>
     </div>
 </div>
 <div class="container py-2">
@@ -56,4 +42,5 @@
         <div class="col"></div>
     </div>
 </div>
+
 <?= $this->endSection(); ?>
