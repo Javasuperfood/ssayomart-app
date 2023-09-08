@@ -51,7 +51,6 @@ class JsfPormoItem extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_promo', 'id_promo');
 
         $this->forge->dropTable('jsf_promo_item');
     }

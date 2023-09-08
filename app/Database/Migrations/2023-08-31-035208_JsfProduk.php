@@ -15,6 +15,18 @@ class JsfProduk extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'id_kategori' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'null' => true
+            ],
+            'id_sub_kategori' => [
+                'type'           => 'INT',
+                'constraint'     => 11,
+                'unsigned'       => true,
+                'null' => true
+            ],
             'nama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '225',
@@ -41,17 +53,10 @@ class JsfProduk extends Migration
                 'constraint'    => '255',
                 'default'       => 'default.png'
             ],
-            'id_kategori' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'null' => true
-            ],
-            'id_sub_kategori' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'null' => true
+            'is_active' => [
+                'type' => 'int',
+                'constraint' => 2,
+                'default' => 1
             ],
             'created_at' => [
                 'type'          => 'timestamp',
@@ -74,8 +79,6 @@ class JsfProduk extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_produk', 'id_kategori');
-        $this->forge->dropForeignKey('jsf_produk', 'id_sub_kategori');
         $this->forge->dropTable('jsf_produk');
     }
 }

@@ -23,7 +23,6 @@ class JsfPormo extends Migration
                 'type'          => 'varchar',
                 'constraint'    => '225'
             ],
-
             'start_date' => [
                 'type' => 'timestamp',
             ],
