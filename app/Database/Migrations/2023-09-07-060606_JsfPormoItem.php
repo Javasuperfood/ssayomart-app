@@ -4,8 +4,6 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-use function PHPSTORM_META\type;
-
 class JsfPormoItem extends Migration
 {
     public function up()
@@ -25,6 +23,7 @@ class JsfPormoItem extends Migration
             'id_produk' => [
                 'type'       => 'INT',
                 'constraint' => 11,
+                'unsigned'       => true,
             ],
             'discount' => [
                 'type' => 'DECIMAL',
@@ -45,6 +44,7 @@ class JsfPormoItem extends Migration
             ],
         ]);
         $this->forge->addKey('id_promo_item', true);
+        // $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
         $this->forge->addForeignKey('id_promo', 'jsf_promo', 'id_promo');
         $this->forge->createTable('jsf_promo_item');
     }
