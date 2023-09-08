@@ -16,12 +16,19 @@ class AlterUser extends Migration
                 'null' => true,
                 'after' => 'username'
             ],
+            'img' => [
+                'type' => 'varchar',
+                'constraint' => '225',
+                'null' => true,
+                'after' => 'fullname'
+            ],
             'telp' => [
                 'type' => 'varchar',
                 'constraint' => '13',
                 'null' => true,
-                'after' => 'fullname'
-            ]
+                'after' => 'img'
+            ],
+
         ];
         $this->forge->addColumn('users', $fields);
     }
