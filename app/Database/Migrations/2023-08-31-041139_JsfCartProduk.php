@@ -43,8 +43,6 @@ class JsfCartProduk extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_cart', 'id_cart');
-
         $this->forge->dropTable('jsf_cart_produk');
     }
 }

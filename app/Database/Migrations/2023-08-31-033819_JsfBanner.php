@@ -39,7 +39,6 @@ class JsfBanner extends Migration
 
     public function down()
     {
-
         $this->forge->dropTable('jsf_banner');
     }
 }

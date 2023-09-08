@@ -50,9 +50,6 @@ class JsfCheckoutProduk extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_checkout_produk', 'id_checkout');
-        $this->forge->dropForeignKey('jsf_checkout_produk', 'id_produk');
-
         $this->forge->dropTable('jsf_checkout_produk');
     }
 }
