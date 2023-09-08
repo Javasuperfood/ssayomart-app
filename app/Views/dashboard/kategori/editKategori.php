@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form method="POST" name="formkategori" enctype="multipart/form-data" action="<?= base_url(); ?>dashboard/kategori/edit-kategori/update/<?= $kategori['id_kategori'] ?>" onsubmit="return validateForm()">
+        <form method="POST" name="formkategori" enctype="multipart/form-data" action="<?= base_url(); ?>dashboard/kategori/edit-kategori/update/<?= $kategori['id_kategori'] ?>" onsubmit="return validasiUpdateKategori()">
             <?= csrf_field(); ?>
 
             <div class="mb-3">
@@ -36,7 +36,7 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-danger mt-3" id="ka">Simpan</button>
+                <button type="submit" class="btn btn-danger mt-3">Simpan</button>
             </div>
         </form>
     </div>
@@ -56,7 +56,7 @@
     });
 
     //Validasi Form
-    function validateForm() {
+    function validasiUpdateKategori() {
         var isValid = true;
 
         var namaKategoriField = document.getElementById('kategori');
