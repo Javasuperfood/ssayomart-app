@@ -1,7 +1,13 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1 text-gray-800">Kategori Produk</h1>
+<h2> Setting Kategori</h2>
+<hr />
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="<?= base_url(); ?>dashboard/kategori">List Kategori</a></li>
+    <li class="breadcrumb-item active">Tambah Kategori</li>
+</ul>
 <p class="mb-4">Kategori produk untuk toko Anda dapat diatur di sini. Untuk mengganti urutan kategori di ujung depan, Anda dapat seret-lepas untuk mengurutkannya. Untuk melihat kategori lainnya klik tautan "Opsi Layar" pada bagian atas halaman.</p>
 
 <div class="row">

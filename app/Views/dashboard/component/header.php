@@ -18,8 +18,3 @@
 <link href="<?= base_url(); ?>assets/sb-admin2/vendor-sb/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
-
-
-<!-- pagination and search -->
-
-<!-- datatables -->
