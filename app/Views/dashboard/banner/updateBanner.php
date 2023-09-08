@@ -1,8 +1,8 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<div class="card position-relative">
-    <div class="card-header py-3">
+<div class="card border-0 shadow-sm position-relative">
+    <div class="card-header border-0 py-3">
         <h6 class="m-0 font-weight-medium">Edit Banner</h6>
     </div>
     <div class="card-body">
@@ -22,7 +22,7 @@
                 <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-danger">Simpan</button>
             </div>
         </form>
     </div>

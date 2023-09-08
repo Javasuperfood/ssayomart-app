@@ -10,8 +10,8 @@
     <div class="col mb-3">
         <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori
         </a>
-        <div class="card position-relative">
-            <div class="card-header py-3">
+        <div class="card border-0 shadow-sm position-relative">
+            <div class="card-header border-0 py-3">
                 <h6 class="m-0 font-weight-bold text-danger">List Produk Kategori</h6>
             </div>
             <div class="card-body">

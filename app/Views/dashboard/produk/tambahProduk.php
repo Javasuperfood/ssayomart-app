@@ -12,9 +12,8 @@
     <!-- Left Panel -->
     <?= validation_list_errors() ?>
     <div class="col-lg-6">
-
-        <div class="card position-relative">
-            <div class="card-header py-3">
+        <div class="card border-0 shadow-sm position-relative">
+            <div class="card-header border-0 py-3">
                 <h6 class="m-0 font-weight-medium">Masukan Produk Baru</h6>
             </div>
             <div class="card-body">

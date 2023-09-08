@@ -6,12 +6,11 @@
 <div class="row">
     <!-- Left Panel -->
     <div class="col">
-        <div class="card position-relative">
-            <div class="card-header py-3">
+        <div class="card border-0 shadow-sm position-relative">
+            <div class="card-header border-0 py-3">
                 <h6 class="m-0 font-weight-bold text-danger">Tambah Kategori</h6>
             </div>
             <div class="card-body">
-                <!-- code -->
                 <form action="<?= base_url(); ?>dashboard/kategori/tambah-kategori/save" method="post" enctype="multipart/form-data" onsubmit="return validasiTambahKategori()">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
