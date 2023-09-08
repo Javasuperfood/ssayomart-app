@@ -78,12 +78,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
     //CRUD Admin kategori
-    $routes->get('kategori', 'AdminKategoriController::index');
-    $routes->get('tambah-kategori', 'AdminKategoriController::tambahKategori');
-    $routes->post('tambah-kategori/save', 'AdminKategoriController::saveKategori');
-    $routes->get('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
+    $routes->get('kategori/kategori', 'AdminKategoriController::index');
+    $routes->get('kategori/tambah-kategori', 'AdminKategoriController::tambahKategori');
+    $routes->post('kategori/tambah-kategori/save', 'AdminKategoriController::saveKategori');
+    $routes->post('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
+    $routes->post('kategori/edit-kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
     $routes->get('kategori/edit-kategori/(:segment)', 'AdminKategoriController::editKategori/$1');
-    $routes->post('kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
 
     //CRUD Admin Banner
     $routes->get('banner/inputbanner', 'AdminInputBanner::inputbanner');

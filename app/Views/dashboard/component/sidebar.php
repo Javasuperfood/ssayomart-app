@@ -82,8 +82,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kategori List:</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambah-kategori">Tambah Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/kategori">List Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
             </div>
         </div>
     </li>
@@ -98,7 +98,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Banner:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/inputbanner">List Banner</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambahBanner">Tambah Banner</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a>
             </div>
         </div>
     </li>
