@@ -12,7 +12,7 @@
             </div>
             <div class="card-body">
                 <!-- code -->
-                <form action="<?= base_url(); ?>dashboard/kategori/tambah-kategori/save" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <form action="<?= base_url(); ?>dashboard/kategori/tambah-kategori/save" method="post" enctype="multipart/form-data" onsubmit="return validasiTambahKategori()">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="kategori" class="form-label">Nama Kategori</label>
@@ -56,21 +56,18 @@
     });
 
     //Validasi Form
-    function validateForm() {
+    function validasiTambahKategori() {
         var isValid = true;
 
         var namaKategoriField = document.getElementById('kategori');
-        var slugField = document.getElementById('slug');
         var imgField = document.getElementById('img');
         var deskripsiField = document.getElementById('deskripsi');
 
         var namaKategoriError = document.getElementById('kategoriError');
-        var slugError = document.getElementById('slugError');
         var imgError = document.getElementById('imgError');
         var deskripsiError = document.getElementById('deskripsiError');
 
         namaKategoriError.textContent = '';
-        slugError.textContent = '';
         imgError.textContent = '';
         deskripsiError.textContent = '';
 

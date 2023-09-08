@@ -6,15 +6,10 @@
 <p class="mb-4">Kategori produk untuk toko Anda dapat diatur di sini. Untuk mengganti urutan kategori di ujung depan, Anda dapat seret-lepas untuk mengurutkannya. Untuk melihat kategori lainnya klik tautan "Opsi Layar" pada bagian atas halaman.</p>
 
 <div class="row">
-
-
     <!-- Right Panel -->
     <div class="col mb-3">
         <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori
-
-
         </a>
-
         <div class="card position-relative">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-danger">List Produk Kategori</h6>
