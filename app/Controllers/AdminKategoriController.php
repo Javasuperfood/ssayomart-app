@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\KategoriModel;
+use App\Models\SubKategoriModel;
 
 class AdminkategoriController extends BaseController
 {
@@ -10,7 +11,8 @@ class AdminkategoriController extends BaseController
     public function index()
     {
         $kategoriModel = new KategoriModel();
-        $kategori_list = $kategoriModel->findAll();
+        $subKategoriModel = new SubKategoriModel();
+        $kategori_list = $subKategoriModel->joinTable();
 
         $data = [
             'title' => 'Kategori',
@@ -37,22 +39,49 @@ class AdminkategoriController extends BaseController
     {
         // ambil gambar
         $kategoriModel = new KategoriModel();
+        $subKategoriModel = new SubKategoriModel();
         $fotoKategori = $this->request->getFile('img');
+
         if ($fotoKategori->getError() == 4) {
             $namaKategori = 'default.jpg';
         } else {
             $namaKategori = $fotoKategori->getRandomName();
             $fotoKategori->move('assets/img/kategori/', $namaKategori);
         }
+
         $slug = url_title($this->request->getVar('kategori'), '-', true);
+        $parentKategoriId = $this->request->getVar('parent_kategori_id');
+
         $data = [
             'nama_kategori' => $this->request->getVar('kategori'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaKategori,
-            'slug' => $slug
+            'slug' => $slug,
+            'id_kategori' => $parentKategoriId,
         ];
         // dd($data);
+        if ($parentKategoriId != "") {
+            if ($subKategoriModel->save($data)) {
+                session()->setFlashdata('success', 'Kategori berhasil disimpan.');
+                $alert = [
+                    'type' => 'success',
+                    'title' => 'Berhasil',
+                    'message' => 'Kategori berhasil disimpan.'
+                ];
+                session()->setFlashdata('alert', $alert);
 
+                return redirect()->to('dashboard/kategori/tambah-kategori')->withInput();
+            } else {
+                $alert = [
+                    'type' => 'error',
+                    'title' => 'Error',
+                    'message' => 'Terdapat kesalahan pada pengisian formulir'
+                ];
+                session()->setFlashdata('alert', $alert);
+
+                return redirect()->to('dashboard/kategori/tambah-kategori')->withInput();
+            }
+        }
         // swet alert
         if ($kategoriModel->save($data)) {
             session()->setFlashdata('success', 'Kategori berhasil disimpan.');

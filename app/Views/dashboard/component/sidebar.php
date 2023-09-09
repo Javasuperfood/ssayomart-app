@@ -86,7 +86,6 @@
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
                 <h6 class="collapse-header">Sub Kategori :</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/subkategori/subkategori">List Sub Kategori</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/subkategori/tambah-sub-kategori">Tambah Sub Kategori</a>
             </div>
         </div>
     </li>

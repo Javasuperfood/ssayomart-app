@@ -25,6 +25,13 @@
                         </div>
                         <input type="text" class="form-control" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= old('slug') ?>">
                     </div>
+                    <label for="parent_kategori_id">Kategori Induk</label>
+                    <select class="form-control" id="parent_kategori_id" name="parent_kategori_id">
+                        <option value="">Pilih Kategori Induk (kosong untuk kategori utama)</option>
+                        <?php foreach ($kategori_model as $km) : ?>
+                            <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <div class="mb-3">
                         <label for="img" class="form-label">Masukan Gambar</label>
                         <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar">
@@ -63,7 +70,6 @@
         var deskripsiField = document.getElementById('deskripsi');
 
         var namaKategoriError = document.getElementById('kategoriError');
-        var imgError = document.getElementById('imgError');
         var deskripsiError = document.getElementById('deskripsiError');
 
         namaKategoriError.textContent = '';
@@ -76,14 +82,6 @@
             isValid = false;
         } else {
             namaKategoriField.classList.remove('invalid-field');
-        }
-
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
         }
 
         if (deskripsiField.value.trim() === '') {

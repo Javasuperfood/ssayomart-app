@@ -99,8 +99,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/tambah-produk', 'AdminProduk::tambahProduk');
     $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
     $routes->post('produk/tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
-    $routes->post('produk/tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
     $routes->get('produk/tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
+    $routes->post('produk/tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
 
     // Crud Kupon
     $routes->get('kupon/tambah-kupon', 'AdminKupon::tambahKupon');
