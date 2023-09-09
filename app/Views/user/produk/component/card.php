@@ -2,17 +2,17 @@
     <!-- <h2>Produk terlaris</h2> -->
     <div class="row mt-2 row-cols-3">
         <?php foreach ($produk as $p) : ?>
-            <div class="col pt-3">
+            <div class="col-6 col-md-4 col-lg-2 pt-3">
                 <div class="card border-0 shadow" style="width: auto; height: 100%;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
                     </a>
-                    <div class="fs-3" style="padding: 0 10px 0 10px;">
-                        <p class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
+                    <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
+                        <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
                         <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                         <p class=" text-center">
 
-                            <button class="btn btn-white add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger"></i></button>
+                            <button class="btn btn-white add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></button>
                         </p>
                     </div>
                 </div>
