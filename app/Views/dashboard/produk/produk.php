@@ -63,10 +63,13 @@
                                             Update
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= base_url() ?>dashboard/produk/tambah-produk/delete-produk/<?= $km['id_produk']; ?>">
-                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                            <span class="text-danger">Delete</span>
-                                        </a>
+                                        <form action="<?= base_url() ?>dashboard/produk/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" method="post">
+                                            <?= csrf_field() ?>
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                <span class="text-danger">Hapus Produk</span>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>

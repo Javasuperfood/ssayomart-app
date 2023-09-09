@@ -9,25 +9,25 @@
         <!-- code -->
         <form action="<?= base_url(); ?>dashboard/produk/tambah-produk/edit-produk/<?= $km['id_produk']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateProduk()">
             <?= csrf_field(); ?>
-            <input type="hidden" class="form-control" id="id_produk" name="id_produk" value="<?= $km['id_produk'] ?>">
+            <input type="text" class="form-control" id="id_produk" name="id_produk" value="<?= $km['id_produk'] ?>">
             <div class="mb-3">
-                <label for="nama_produk" class="form-label">Nama Produk</label>
-                <input type="text" class="form-control" id="nama_produk" name="nama_produk" value="<?= $km['nama'] ?>">
+                <label for="nama" class="form-label">Nama Produk</label>
+                <input type="text" class="form-control" id="nama" name="nama" value="<?= $km['nama'] ?>">
                 <span id="produkError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="sku" class="form-label">SKU Produk</label>
-                <input type="number" class="form-control" id="sku" name="sku" value="1">
+                <input type="number" class="form-control" id="sku" name="sku" value="<?= $km['sku'] ?>">
                 <span id="skuError" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="harga_produk" class="form-label">Harga Produk</label>
-                <input type="price" class="form-control" id="harga_produk" name="harga_produk" value="<?= $km['harga'] ?>">
+                <label for="harga" class="form-label">Harga Produk</label>
+                <input type="price" class="form-control" id="harga" name="harga" value="<?= $km['harga'] ?>">
                 <span id="hargaError" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="deskripsi_produk" class="form-label">Deskripsi Produk</label>
-                <input type="text" style="height: 100px;" class="form-control" id="deskripsi_produk" name="deskripsi_produk" value="<?= $km['deskripsi'] ?>">
+                <label for="deskripsi" class="form-label">Deskripsi Produk</label>
+                <input type="text" style="height: 100px;" class="form-control" id="deskripsi" name="deskripsi" value="<?= $km['deskripsi'] ?>">
                 <span id="deskripsiError" class="text-danger"></span>
             </div>
             <div class="mb-3">
@@ -49,11 +49,11 @@
     function validasiUpdateProduk() {
         var isValid = true;
 
-        var namaProdukField = document.getElementById('nama_produk');
+        var namaProdukField = document.getElementById('nama');
         var skuField = document.getElementById('sku');
-        var hargaField = document.getElementById('harga_produk');
+        var hargaField = document.getElementById('harga');
         var imgField = document.getElementById('img');
-        var deskripsiField = document.getElementById('deskripsi_produk');
+        var deskripsiField = document.getElementById('deskripsi');
 
         var namaProdukError = document.getElementById('produkError');
         var skuError = document.getElementById('skuError');

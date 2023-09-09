@@ -6,7 +6,6 @@
 <p class="mb-4">Kategori produk untuk toko Anda dapat diatur di sini. Untuk mengganti urutan kategori di ujung depan, Anda dapat seret-lepas untuk mengurutkannya. Untuk melihat kategori lainnya klik tautan "Opsi Layar" pada bagian atas halaman.</p>
 
 <div class="row">
-    <!-- Right Panel -->
     <div class="col mb-3">
         <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori
         </a>
@@ -32,11 +31,11 @@
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td>
-                                    <img src="<?= base_url('assets/img/kategori/' . $km['img']); ?>" class="img-fluid" alt="" width="50" height="50">
+                                    <img src="<?= base_url('assets/img/kategori/' . $km->img); ?>" class="img-fluid" alt="" width="50" height="50">
                                 </td>
-                                <td><?= $km['nama_kategori']; ?></td>
-                                <td><?= $km['slug']; ?></td>
-                                <td><?= $km['deskripsi']; ?></td>
+                                <td><?= $km->nama_kategori; ?></td>
+                                <td><?= $km->slug; ?></td>
+                                <td><?= $km->deskripsi; ?></td>
                                 <td>
                                     <div class="position-relative top-50 start-50 translate-middle">
                                         <div class="nav-item dropdown no-arrow">
@@ -44,12 +43,12 @@
                                                 <i class="bi bi-three-dots-vertical"></i>
                                             </a>
                                             <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                                <a class="dropdown-item" href="<?= base_url("dashboard/kategori/edit-kategori/{$km['id_kategori']}"); ?>">
+                                                <a class="dropdown-item" href="<?= base_url("dashboard/kategori/edit-kategori/{$km->id_kategori}"); ?>">
                                                     <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Update
                                                 </a>
                                                 <div class="dropdown-divider"></div>
-                                                <form action="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km['id_kategori']; ?>" method="post">
+                                                <form action="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km->id_kategori; ?>" method="post">
                                                     <?= csrf_field() ?>
                                                     <button type="submit" class="dropdown-item">
                                                         <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
@@ -61,8 +60,20 @@
                                     </div>
                                 </td>
                             </tr>
+                            <?php if ($km->nama_kategori == 'RAMEN') : ?>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Sub Kategori</td>
+                                    <td><?= $km->nama_sub_kategori; ?></td>
+                                    <td><?= $km->deskripsi; ?></td>
+                                    <td>
+                                        <!-- Tambahkan aksi untuk subkategori jika diperlukan -->
+                                    </td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
                     </tbody>
-                <?php endforeach; ?>
                 </table>
             </div>
         </div>
