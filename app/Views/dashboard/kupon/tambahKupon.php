@@ -3,28 +3,27 @@
 
 <div class="card position-relative">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-medium">Masukan Perubahan</h6>
+        <h6 class="m-0 font-weight-medium">Masukan Kupon Baru</h6>
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/kupon/update-kupon/<?= $kp['id_kupon'] ?>" method="post">
+        <form action="<?= base_url(); ?>dashboard/kupon/save" method="post">
             <?= csrf_field(); ?>
-            <input type="hidden" class="form-control" id="id_kupon" name="id_kupon" required value="<?= $kp['id_kupon'] ?>">
             <div class="mb-3">
                 <label for="nama_kupon" class="form-label">Nama Kupon</label>
-                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" required value="<?= $kp['nama'] ?>">
+                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" required aria-required="true" placeholder="Nama Kupon Anda" required="" autofocus>
             </div>
             <div class="mb-3">
                 <label for="kode_kupon" class="form-label">Kode</label>
-                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" required value="<?= $kp['kode'] ?>">
+                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" required placeholder="Kode Kupon">
             </div>
             <div class="mb-3">
                 <label for="Deskripsi">Deskripsi</label>
-                <input type="text" style="height: 100px;" class="form-control" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" value="<?= $kp['deskripsi'] ?>"></textarea>
+                <textarea class="form-control" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...."></textarea>
             </div>
             <div class="mb-3">
                 <label for="masa_berlaku" class="form-label mr-3">Masa Berlaku</label>
-                <input type="date" id="masa_berlaku" name="masa_berlaku" required value="<?= $kp['is_active'] ?>">
+                <input type="date" id="masa_berlaku" name="masa_berlaku" required placeholder="Masukan Masa Berlaku Kupon">
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Simpan</button>

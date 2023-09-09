@@ -17,4 +17,10 @@
 <!-- Custom styles for this page -->
 <link href="<?= base_url(); ?>assets/sb-admin2/vendor-sb/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+<style>
+    .invalid-field {
+        border: 1px solid red;
+    }
+</style>
+
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>

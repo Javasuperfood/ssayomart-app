@@ -49,8 +49,6 @@ class JsfGudang extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_gudang', 'id_toko');
-        $this->forge->dropForeignKey('jsf_gudang', 'id_produk');
         $this->forge->dropTable('jsf_gudang');
     }
 }

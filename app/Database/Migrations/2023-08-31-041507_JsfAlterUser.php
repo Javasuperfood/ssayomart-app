@@ -8,14 +8,33 @@ class AlterUser extends Migration
 {
     public function up()
     {
-        $this->forge->addColumn('users', [
-            'fullname VARCHAR(200)',
-            'telp VARCHAR(16)'
-        ]);
+
+        $fields = [
+            'fullname' => [
+                'type' => 'varchar',
+                'constraint' => '225',
+                'null' => true,
+                'after' => 'username'
+            ],
+            'img' => [
+                'type' => 'varchar',
+                'constraint' => '225',
+                'null' => true,
+                'after' => 'fullname'
+            ],
+            'telp' => [
+                'type' => 'varchar',
+                'constraint' => '13',
+                'null' => true,
+                'after' => 'img'
+            ],
+
+        ];
+        $this->forge->addColumn('users', $fields);
     }
 
     public function down()
     {
-        $this->forge->dropColumn('users', 'fullname', 'telp');
+        $this->forge->dropColumn('users', ['fullname', 'telp']);
     }
 }

@@ -11,7 +11,7 @@
 <p class="mb-3">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
 </p>
 
-<a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/tambah-produk">Tambah Produk</a>
+<a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a>
 
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header border-0 py-3">
@@ -55,12 +55,12 @@
                                             <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Lihat Produk
                                         </a>
-                                        <a class="dropdown-item" href="<?= base_url(); ?>dashboard/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
+                                        <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
                                             <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Update
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="<?= base_url() ?>dashboard/tambah-produk/delete-produk/<?= $km['id_produk']; ?>">
+                                        <a class="dropdown-item" href="<?= base_url() ?>dashboard/produk/tambah-produk/delete-produk/<?= $km['id_produk']; ?>">
                                             <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                             <span class="text-danger">Delete</span>
                                         </a>

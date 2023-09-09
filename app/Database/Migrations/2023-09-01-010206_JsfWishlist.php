@@ -36,8 +36,6 @@ class JsfWishlist extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_users', 'id');
-
         $this->forge->dropTable('jsf_wishlist');
     }
 }

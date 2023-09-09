@@ -27,7 +27,8 @@ class JsfWishlistProduk extends Migration
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ], 'updated_at' => [
+            ],
+            'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ],
@@ -39,8 +40,6 @@ class JsfWishlistProduk extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_wishlist', 'id_wishlist');
-
         $this->forge->dropTable('jsf_wishlist_produk');
     }
 }

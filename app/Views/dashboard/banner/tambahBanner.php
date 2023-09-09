@@ -18,22 +18,22 @@
     <!-- Left Panel -->
     <?= validation_list_errors() ?>
     <div class="col-lg-6">
-
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
                 <h6 class="m-0 font-weight-medium">Masukan Foto Banner Baru</h6>
             </div>
             <div class="card-body">
-                <!-- code -->
-                <form action="<?= base_url(); ?>dashboard/banner/tambah-banner/save" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url(); ?>dashboard/banner/tambah-banner/save" method="post" enctype="multipart/form-data" onsubmit="return validasiTambahBanner()">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="banner">Judul Banner</label>
                         <input type="text" class="form-control" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
+                        <span id="bannerError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Banner</label>
                         <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>">
+                        <span id="imgError" class="text-danger"></span>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-danger">Simpan</button>
@@ -104,7 +104,6 @@
     </script>
 </div>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         <?php if (session()->has('alert')) : ?>
@@ -116,6 +115,38 @@
             });
         <?php endif; ?>
     });
+
+    //Validasi Form
+    function validasiTambahBanner() {
+        var isValid = true;
+
+        var namaBannerField = document.getElementById('title');
+        var imgField = document.getElementById('img');
+
+        var namaBannerError = document.getElementById('bannerError');
+        var imgError = document.getElementById('imgError');
+
+        namaBannerError.textContent = '';
+        imgError.textContent = '';
+
+        if (namaBannerField.value.trim() === '') {
+            namaBannerField.classList.add('invalid-field');
+            namaBannerError.textContent = 'Judul banner harus diisi';
+            isValid = false;
+        } else {
+            namaBannerField.classList.remove('invalid-field');
+        }
+
+        if (imgField.value.trim() === '') {
+            imgField.classList.add('invalid-field');
+            imgError.textContent = 'Gambar banner harus diisi';
+            isValid = false;
+        } else {
+            imgField.classList.remove('invalid-field');
+        }
+
+        return isValid;
+    }
 </script>
 
 <?= $this->endSection(); ?>

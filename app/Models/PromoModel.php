@@ -4,21 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class KategoriModel extends Model
+class PromoModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jsf_kategori';
-    protected $primaryKey       = 'id_kategori';
+    protected $table            = 'jsf_promo';
+    protected $primaryKey       = 'id_promo';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [
-        'nama_kategori',
-        'deskripsi',
-        'slug',
-        'img'
-    ];
+    protected $allowedFields    = [];
 
     // Dates
     protected $useTimestamps = true;
@@ -28,12 +23,7 @@ class KategoriModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [
-        'nama_kategori' => 'required',
-        'deskripsi' => 'required',
-        'slug' => 'required',
-        'img' => 'required'
-    ];
+    protected $validationRules      = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -49,16 +39,9 @@ class KategoriModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getKategori($slug = false)
+    public function getPromo($now)
     {
-        if ($slug == false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['slug' => $slug])->first();
-    }
-    public function getGambarKategori($slug)
-    {
-        return $this->where(['slug' => $slug])->select('img')->first();
+        return $this->where("'$now' BETWEEN start_at AND end_at")
+            ->findAll();
     }
 }
