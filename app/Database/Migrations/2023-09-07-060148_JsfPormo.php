@@ -32,7 +32,7 @@ class JsfPormo extends Migration
                 'type' => 'timestamp',
             ],
             'end_at' => [
-                'type' => 'timestamp',
+                'type' => 'DATETIME',
             ],
             'deskripsi' => [
                 'type' => 'text',
