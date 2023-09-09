@@ -66,8 +66,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Produk:</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/input">List Produk</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambahProduk">Tambah Produk</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/produk">List Produk</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a>
             </div>
         </div>
     </li>
@@ -81,9 +81,12 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Kategori List:</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/tambah-kategori">Tambah Kategori</a>
+                <h6 class="collapse-header">Kategori :</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/kategori">List Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
+                <h6 class="collapse-header">Sub Kategori :</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/subkategori/subkategori">List Sub Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/subkategori/tambah-sub-kategori">Tambah Sub Kategori</a>
             </div>
         </div>
     </li>
@@ -98,7 +101,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Banner:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/inputbanner">List Banner</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambahBanner">Tambah Banner</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a>
             </div>
         </div>
     </li>

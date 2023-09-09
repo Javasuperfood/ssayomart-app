@@ -32,7 +32,7 @@
     },
     "scripts": {
         "test": "phpunit",
-        "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses"
+        "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon"
     },
     "support": {
         "forum": "https://forum.codeigniter.com/",

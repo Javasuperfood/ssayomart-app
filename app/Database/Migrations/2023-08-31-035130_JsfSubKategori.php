@@ -54,8 +54,6 @@ class JsfSubKategori extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_sub_kategori', 'id_kategori');
-
         $this->forge->dropTable('jsf_sub_kategori');
     }
 }

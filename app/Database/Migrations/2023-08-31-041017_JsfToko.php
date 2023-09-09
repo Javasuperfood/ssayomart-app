@@ -82,7 +82,6 @@ class JsfToko extends Migration
 
     public function down()
     {
-        $this->forge->dropForeignKey('jsf_toko', 'id_user');
         $this->forge->dropTable('jsf_toko');
     }
 }

@@ -1,9 +1,16 @@
 <?= $this->extend('dashboard/dashboard') ?>
+<?= $no = 1; ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Setting Banner</h1>
-
-
+<h2>List Banner</h2>
+<hr />
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">List Banner</li>
+    <li class="breadcrumb-item"><a href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a></li>
+</ul>
+<p class="mb-3">Anda dapat mengatur banner yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
+</p>
 <a href="<?= base_url() ?>dashboard/banner/tambah-banner" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Tambah Banner
 </a>
@@ -23,7 +30,6 @@
                         <th>Aksi</th>
                     </tr>
                 </thead>
-                <?= $no = 1; ?>
                 <tbody>
                     <?php foreach ($banner_list as $bl) : ?>
                         <tr>

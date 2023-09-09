@@ -7,6 +7,7 @@ use App\Models\KategoriModel;
 use App\Controllers\BaseController;
 use App\Models\BannerModel;
 use App\Models\CartModel;
+use App\Models\PromoModel;
 use App\Models\WishlistModel;
 
 class KategoriController extends BaseController
@@ -45,16 +46,17 @@ class KategoriController extends BaseController
                 }
             }
         }
-
-        $kategori = new KategoriModel();
-        $banner = new BannerModel();
+        $now = date('Y-m-d H:i:s');
+        $promoModel = new PromoModel();
+        $kategoriModel = new KategoriModel();
+        $bannerModel = new BannerModel();
         $data = [
             'title' => 'Ssayomart',
-            'kategori' => $kategori->findAll(),
-            'banner' => $banner->find()
+            'promo' => $promoModel->getPromo($now),
+            'kategori' => $kategoriModel->findAll(),
+            'banner' => $bannerModel->find()
         ];
+        // dd($data);
         return view('user/home/Kategori', $data);
     }
-
-   
 }

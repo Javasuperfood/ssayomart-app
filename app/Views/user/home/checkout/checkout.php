@@ -24,7 +24,7 @@
 
             <div class="form-floating mb-2">
                 <select class="form-control border-0 shadow-sm" id="kurir" name="kurir">
-                    <option selected>Pilih Kurir</option>
+                    <option value="" selected>Pilih Kurir</option>
                     <option value="jne" class="card-text text-secondary">JNE</option>
                     <option value="tiki" class="card-text text-secondary">TIKI</option>
                     <option value="pos" class="card-text text-secondary">Pos Indonesia</option>
@@ -39,15 +39,22 @@
                 <label for="service" id="serviceLabel">Pilih Layanan</label>
                 <strong>Estimasi : <span id="estimasi"></span></strong>
             </div>
-            <input type="text" name="serviceText" id="serviceText">
-
-            <div class="form-floating mb-2">
-                <select class="form-control border-0 shadow-sm" id="floatingSelect">
-                    <option kupon="" value="" class="card-text text-secondary">
-                    </option>
-                </select>
-                <label for="floatingSelect" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
-            </div>
+            <input type="hidden" name="serviceText" id="serviceText">
+            <?php if ($kupon) : ?>
+                <div class="form-floating mb-2">
+                    <select class="form-control border-0 shadow-sm" id="kupon" name="kupon">
+                        <option selected value="" class="card-text text-secondary">
+                            Pilih Kupon
+                        </option>
+                        <?php foreach ($kupon as $k) : ?>
+                            <?php if ($total >= $k['total_buy']) : ?>
+                                <option value="<?= $k['kode']; ?>">Diskon <?= ($k['discount'] * 100) . '%'; ?> : Minimal Beli Rp. <?= number_format($k['total_buy'], 0, ',', '.'); ?> </option>
+                            <?php endif ?>
+                        <?php endforeach ?>
+                    </select>
+                    <label for="kupon" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
+                </div>
+            <?php endif ?>
             <?php foreach ($produk as $p) : ?>
                 <div class="row pt-3">
                     <div class="col">
@@ -104,7 +111,7 @@
             <input type="hidden" name="total" id="field_subtotal">
 
             <div class="row p-3 px-4">
-                <button type="submit" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
+                <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
             </div>
         </div>
     </form>

@@ -2,13 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\KategoriModel;
 use App\Models\ProdukModel;
 
 
 class AdminProduk extends BaseController
 {
     protected $imageModel;
-    public function input()
+    public function produk()
     {
         $produkModel = new ProdukModel();
         $produk_list = $produkModel->findAll();
@@ -17,7 +18,7 @@ class AdminProduk extends BaseController
             'title' => 'Input',
             'produk_Model' => $produk_list
         ];
-        return view('dashboard/input', $data);
+        return view('dashboard/produk/produk', $data);
     }
 
     public function tambahProduk()
@@ -28,7 +29,7 @@ class AdminProduk extends BaseController
             'title' => 'produk',
             'produk_Model' => $produk_list
         ];
-        return view('dashboard/tambahProduk', $data);
+        return view('dashboard/produk/tambahProduk', $data);
     }
 
     // view
@@ -44,25 +45,25 @@ class AdminProduk extends BaseController
             'km' => $km,
             'back'  => 'dashboard/tambah-produk'
         ];
-        return view('dashboard/updateProduk', $data);
+        return view('dashboard/produk/updateProduk', $data);
     }
     // action
     public function editProduk($id)
     {
         $produkModel = new ProdukModel();
-        $image = $this->request->getFile('gambar_produk');
+        $image = $this->request->getFile('img');
 
         if ($image->getError() == 4) {
-            $namaProdukImage = $this->request->getVar('imageLama');
+            $namaProdukModel = $this->request->getVar('imageLama');
         } else {
             $produk = $produkModel->find($id);
 
-            if ($produk['img'] == 'default.png') {
-                $namaProdukImage = $image->getRandomName();
-                $image->move('assets/img/produk/main', $namaProdukImage);
+            if ($produk['img'] == 'default.jpg') {
+                $namaProdukModel = $image->getRandomName();
+                $image->move('assets/img/produk/main', $namaProdukModel);
             } else {
-                $namaProdukImage = $image->getRandomName();
-                $image->move('assets/img/produk/main', $namaProdukImage);
+                $namaProdukModel = $image->getRandomName();
+                $image->move('assets/img/produk/main', $namaProdukModel);
                 $gambarLamaPath = 'assets/img/produk/main/' . $this->request->getVar('imageLama');
                 if (file_exists($gambarLamaPath)) {
                     unlink($gambarLamaPath);
@@ -71,26 +72,25 @@ class AdminProduk extends BaseController
         }
         $slug = url_title($this->request->getVar('nama_produk'), '-', true);
         $data = [
-            'slug' => $slug,
             'id_produk' => $id,
-            'img' => $namaProdukImage,
+            'img' => $namaProdukModel,
+            'slug' => $slug,
             'nama' => $this->request->getVar('nama_produk'),
+            'sku' => $this->request->getVar('sku'),
             'harga' => $this->request->getVar('harga_produk'),
             'deskripsi' => $this->request->getVar('deskripsi_produk'),
-            // 'stok' => $this->request->getVar('stock_produk'),
         ];
 
-
         if ($produkModel->save($data)) {
-            session()->setFlashdata('success', 'Produk berhasil diubah.');
+            session()->setFlashdata('success', 'Gambar produk berhasil diubah.');
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Data Produk berhasil diubah.'
+                'message' => 'Gambar produk berhasil diubah.'
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-produk');
+            return redirect()->to('dashboard/produk/tambah-produk');
         } else {
             $alert = [
                 'type' => 'error',
@@ -99,9 +99,10 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-produk/update-produk/' . $id)->withInput();
+            return redirect()->to('dashboard/produk/tambah-produk/update/' . $id)->withInput();
         }
     }
+
     // save
     public function save()
     {
@@ -135,7 +136,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-produk')->withInput();
+            return redirect()->to('dashboard/produk/tambah-produk')->withInput();
         } else {
             $alert = [
                 'type' => 'error',
@@ -144,7 +145,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/tambah-produk')->withInput();
+            return redirect()->to('dashboard/produk/tambah-produk')->withInput();
         }
     }
     // delete
@@ -168,7 +169,7 @@ class AdminProduk extends BaseController
                 'message' => 'Produk berhasil di hapus.'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/tambah-produk');
+            return redirect()->to('dashboard/produk/tambah-produk');
         } else {
             $alert = [
                 'type' => 'error',
@@ -176,7 +177,7 @@ class AdminProduk extends BaseController
                 'message' => 'Terdapat kesalahan pada penghapusan produk'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/tambah-produk')->withInput();
+            return redirect()->to('dashboard/produk/tambah-produk')->withInput();
         }
     }
 }

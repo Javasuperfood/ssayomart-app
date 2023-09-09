@@ -23,12 +23,20 @@ class JsfPormo extends Migration
                 'type'          => 'varchar',
                 'constraint'    => '225'
             ],
-
-            'start_date' => [
+            'img' => [
+                'type'          => 'varchar',
+                'constraint'    => '225',
+                'default' => 'default.png'
+            ],
+            'start_at' => [
                 'type' => 'timestamp',
             ],
-            'end_date' => [
+            'end_at' => [
                 'type' => 'timestamp',
+            ],
+            'deskripsi' => [
+                'type' => 'text',
+                'null' => true
             ],
             'created_at' => [
                 'type'          => 'timestamp',

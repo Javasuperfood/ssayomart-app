@@ -31,17 +31,43 @@
                 </div>
             </div>
         </div>
+        <?php foreach ($produk as $p) : ?>
+            <div class="row pt-3">
+                <div class="col">
+                    <div class="card border-0 shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
+                                </div>
+                                <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                    <h5 class="card-title"><?= substr($p->nama, 0, 10); ?>...</h5>
+                                    <p class="card-text text-secondary"><?= $p->qty; ?>
+                                    </p>
+                                </div>
+                                <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                    <h5 class="text-secondary fw-bold">Total</h5>
+                                    <p class="fw-bold">Rp. <?= number_format($p->harga, 2, ',', '.'); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
         <div class="col mt-3">
             <div class="card border-0">
                 <h2>Lokasi Tujuan</h2>
                 <div class="mb-0 mx-0 my-0">
                     <div class="card form-control form-control-md border-0 shadow-sm">
-
                         <div class="row row-cols-1">
                             <div class="col">
                                 <ul class="list-group list-group-flush">
                                     <span class="list-group-item pb-3 border-0">
-                                        <span class="fw-bold"></span>
+                                        <span class="fw-bold"><?= $status->kurir; ?>
+                                        </span>
+                                        <p class="text-secondary"><?= $status->service; ?>
+                                        </p>
                                         <p class="card-text text-secondary"><?= $status->kirim; ?></p>
                                     </span>
                                 </ul>
@@ -72,14 +98,52 @@
                             <i class="bi bi-files text-danger"></i>
                         </div>
                     </div>
-                    <table class="table table-sm ">
-                        <thead>
-                            <tr>
-                                <td scope="col">Metode Pembayaran</td>
-                                <td scope="col"> BCA Virtual Acount </td>
-                            </tr>
-                        </thead>
-                    </table>
+                    <div class="row">
+                        <div class="col">
+                            <table class="table table-sm ">
+                                <thead>
+                                    <tr>
+                                        <td scope="col">Metode Pembayaran</td>
+                                        <td scope="col"> BCA Virtual Acount </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row py-3 px-3">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Ringkasan Belanja</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Total Harga</td>
+                                    <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Total Ongkos Kirim</td>
+                                    <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Biaya Jasa Aplikasi</td>
+                                    <td>Rp. <?= number_format('5000', 2, ',', '.'); ?></td>
+                                </tr>
+                                <?php if ($status->kupon) : ?>
+                                    <tr>
+                                        <td>Diskon</td>
+                                        <td><?= ($status->discount * 100) . "%"; ?></td>
+                                    </tr>
+                                <?php endif; ?>
+                                <tr>
+                                    <td>Subtotal</td>
+                                    <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

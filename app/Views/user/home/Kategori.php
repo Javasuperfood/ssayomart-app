@@ -5,7 +5,7 @@
 
 
 <!-- ITEM -->
-<div class="container py-3">
+<div class="container py-3 d-none d-lg-block">
     <h2>Spesial di Ssayomart</h2>
     <div class="row text-center py-3">
         <div class="col-4 col-md-4 col-lg-2">
@@ -118,11 +118,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
         <ul class="list-unstyled d-none d-lg-block mb-4">
             <li class="d-inline d-sm-inline mx-2"><button type="button" class="btn btn-danger rounded-pill">NORI</button></li>
             <li class="d-inline d-sm-inline mx-2"><button type="button" class="btn btn-danger rounded-pill">RAMEN</button></li>
@@ -133,23 +128,28 @@
             <li class="d-inline d-sm-inline mx-2"><button type="button" class="btn btn-danger rounded-pill">DAGING</button></li>
             <li class="d-inline d-sm-inline mx-2"><button type="button" class="btn btn-danger rounded-pill">BERAS/ KACANG</button></li>
             <li class="d-inline d-sm-inline mx-2"><button type="button" class="btn btn-danger rounded-pill">MAKANAN INSTANT</button></li>
-
-
         </ul>
-
-
-
-
-
-
-
-
     </div>
 </div>
 
-
-
-
+<div class="container py-3 d-md-none d-lg-none d-xl-none">
+    <h2>Spesial di Ssayomart!</h2>
+    <div class="row text-center row-cols-3">
+        <?php foreach ($promo as $p) : ?>
+            <div class="col">
+                <div class="swiper-slide">
+                    <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                        <div class="card-body">
+                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="<?= $p['title']; ?>" class="card-img-top">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>
 
 
 <div class="container py-2">
@@ -172,4 +172,5 @@
         <div class="col"></div>
     </div>
 </div>
+
 <?= $this->endSection(); ?>

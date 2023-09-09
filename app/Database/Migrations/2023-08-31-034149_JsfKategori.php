@@ -47,7 +47,6 @@ class JsfKategori extends Migration
 
     public function down()
     {
-
         $this->forge->dropTable('jsf_kategori');
     }
 }

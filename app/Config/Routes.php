@@ -16,7 +16,8 @@ $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
-$routes->set404Override(fn () => view('404', ['title' => '404']));
+// $routes->set404Override(fn () => view('404', ['title' => '404']));
+$routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -78,12 +79,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
     //CRUD Admin kategori
-    $routes->get('kategori', 'AdminKategoriController::index');
-    $routes->get('tambah-kategori', 'AdminKategoriController::tambahKategori');
-    $routes->post('tambah-kategori/save', 'AdminKategoriController::saveKategori');
-    $routes->get('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
+    $routes->get('kategori/kategori', 'AdminKategoriController::index');
+    $routes->get('kategori/tambah-kategori', 'AdminKategoriController::tambahKategori');
+    $routes->post('kategori/tambah-kategori/save', 'AdminKategoriController::saveKategori');
+    $routes->post('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
+    $routes->post('kategori/edit-kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
     $routes->get('kategori/edit-kategori/(:segment)', 'AdminKategoriController::editKategori/$1');
-    $routes->post('kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
 
     //CRUD Admin Banner
     $routes->get('banner/inputbanner', 'AdminInputBanner::inputbanner');
@@ -94,18 +95,19 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('banner/tambah-banner/edit/(:segment)', 'AdminInputBanner::editBanner/$1');
 
     // CRUD routes produk
-    $routes->get('tambah-produk', 'AdminProduk::tambahProduk');
-    $routes->post('tambah-produk/save', 'AdminProduk::save');
-    $routes->post('tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
-    $routes->post('tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
-    $routes->get('tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
+    $routes->get('produk/produk', 'AdminProduk::produk');
+    $routes->get('produk/tambah-produk', 'AdminProduk::tambahProduk');
+    $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
+    $routes->post('produk/tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
+    $routes->post('produk/tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
+    $routes->get('produk/tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
 
     // Crud Kupon
-    $routes->get('tambah-kupon', 'AdminKupon::tambahKupon');
-    $routes->post('kupon/save', 'AdminKupon::saveKupon');
-    $routes->get('kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
-    $routes->get('kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
-    $routes->post('kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
+    $routes->get('kupon/tambah-kupon', 'AdminKupon::tambahKupon');
+    $routes->post('kupon/kupon/save', 'AdminKupon::saveKupon');
+    $routes->get('kupon/kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
+    $routes->get('kupon/kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
+    $routes->post('kupon/kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
 });
 
 service('auth')->routes($routes);
