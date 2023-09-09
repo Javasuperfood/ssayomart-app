@@ -68,4 +68,17 @@ class UsersModel extends Model
         $result = $query->getResult();
         return $result;
     }
+    public function getTransaksi($slug)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_checkout_produk')
+            ->select('jsf_checkout_produk.*, jsf_checkout.*, jsf_produk.*')
+            ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->where('invoice', $slug)
+            ->get();
+
+        $result = $query->getResult();
+        return $result;
+    }
 }

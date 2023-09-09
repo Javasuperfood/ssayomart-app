@@ -23,7 +23,10 @@ class CheckoutModel extends Model
         'service',
         'harga_service',
         'catatan',
-        'total',
+        'kupon',
+        'discount',
+        'total_1',
+        'total_2',
         'invoice'
     ];
 
@@ -39,10 +42,12 @@ class CheckoutModel extends Model
         'id_user'               => 'required',
         // 'id_kupon'              => 'required',
         // 'id_alamat_users'       => 'required',
-        // 'id_status_pesan'       => 'required',
-        // 'id_status_kirim'       => 'required',
+        'id_status_pesan'       => 'required',
+        'id_status_kirim'       => 'required',
         // 'id_payment'            => 'required',
         // 'total'                 => 'required',
+        // 'kirim' => 'required',
+        // 'kurir' => 'required',
         'invoice'               => 'required'
     ];
     protected $validationMessages   = [];

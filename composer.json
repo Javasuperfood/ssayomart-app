@@ -32,8 +32,7 @@
     },
     "scripts": {
         "test": "phpunit",
-        "ms2": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo",
-        "ms3": "php spark migrate:rollback && php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo"
+        "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon"
     },
     "support": {
         "forum": "https://forum.codeigniter.com/",

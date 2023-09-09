@@ -7,6 +7,7 @@ use App\Models\CartModel;
 use App\Models\CartProdukModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
+use App\Models\KuponModel;
 
 class CheckoutController extends BaseController
 {
@@ -40,7 +41,8 @@ class CheckoutController extends BaseController
             'id_status_kirim' => 1,
             'invoice' => 'INV-' . date('Ymd') . '-' . mt_rand(100000, 999999),
             'catatan' => 'dear user',
-            'total' => $totalAkhir,
+            'total_1' => $totalAkhir,
+            'total_2' => $totalAkhir,
         ];
         $chechkoutId = $checkoutModel->insert($dbStore);
 
@@ -59,6 +61,9 @@ class CheckoutController extends BaseController
     public function checkout($id)
     {
         $checkoutModel = new CheckoutModel();
+        $alamatModel = new AlamatUserModel();
+        $kuponModel = new KuponModel();
+
         $cekUser = $checkoutModel->where('id_checkout', $id)->first();
 
         if ($cekUser['id_user'] != user_id()) {
@@ -81,15 +86,18 @@ class CheckoutController extends BaseController
             $rowTotal = $produk['qty'] * $produk['harga'];
             $totalAkhir += $rowTotal;
         }
-        $alamatModel = new AlamatUserModel();
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
+
+        $kuponList = $kuponModel->findAll();
+
 
         $data = [
             'title' => 'Checkout',
             'alamat_list' => $alamat_list,
             'produk' => $cekProduk,
             'id' => $id,
-            'total' => $totalAkhir
+            'total' => $totalAkhir,
+            'kupon' => $kuponList
         ];
         // dd($data);
 
@@ -97,22 +105,47 @@ class CheckoutController extends BaseController
     }
     public function bayar($id)
     {
+        $kode = $this->request->getVar('kupon');
+        $total_1 = $this->request->getVar('total');
+        $total_2 = $total_1;
+        $kupon = [
+            'discount' => '',
+            'kupon' => ''
+        ];
+        if ($kode != '') {
+            $kuponModel = new KuponModel();
+            $cekKupon = $kuponModel->getKupon($kode);
+            $total_2 = floatval($total_1);
+            $discount = floatval($cekKupon['discount']);
+            $total_2 = $total_2 - ($total_2 * $discount);
+            $kupon = [
+                'discount' => $cekKupon['discount'],
+                'kupon' => $cekKupon['kode']
+            ];
+        }
+
         $alamatUserModel = new AlamatUserModel();
         $checkoutModel = new CheckoutModel();
+
         $inv = $checkoutModel->find($id);
         $id_alamat = $this->request->getVar('alamat_list');
         $alamat = $alamatUserModel->find($id_alamat);
-        $kirim = 'Penerima :' . $alamat['penerima'] . '<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br>' . $alamat['zip_code'] . '<br>' . 'Telp : ' . $alamat['telp'];
+        $kirim = 'Penerima : ' . $alamat['penerima'] . '<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br>' . $alamat['zip_code'] . '<br>' . 'Telp : ' . $alamat['telp'];
+
+
         $data = [
             'id_checkout' => $id,
             'id_status_pesan' => 2,
-            'total' => $this->request->getVar('total'),
+            'total_1' => $total_1,
+            'total_2' => $total_2,
             'service' => $this->request->getVar('serviceText'),
             'harga_service' => $this->request->getVar('service'),
             'kurir' => strtoupper($this->request->getVar('kurir')),
-            'kirim' => $kirim
+            'kirim' => $kirim,
+            'discount' => $kupon['discount'],
+            'kupon' => $kupon['kupon'],
         ];
-
+        // return dd($data);
         if (!$checkoutModel->save($data)) {
             return redirect()->to(base_url('checkout/' . $id))->with('failed', 'Tarnsaksi Gagal');
         }
