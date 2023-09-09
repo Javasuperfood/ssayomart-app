@@ -7,26 +7,39 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/kupon/kupon/update-kupon/<?= $kp['id_kupon'] ?>" method="post">
+        <form action="<?= base_url(); ?>dashboard/kupon/kupon/update-kupon/<?= $kp['id_kupon'] ?>" method="post" class="was-validated">
             <?= csrf_field(); ?>
             <input type="hidden" class="form-control" id="id_kupon" name="id_kupon" required value="<?= $kp['id_kupon'] ?>">
             <div class="mb-3">
-                <label for="nama_kupon" class="form-label">Nama Kupon</label>
-                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" required value="<?= $kp['nama'] ?>">
+                <label for="validationCustom07" class="form-label">Nama Kupon</label>
+                <input type="text" class="form-control" id="validationCustom07" name="nama_kupon" required value="<?= $kp['nama'] ?>" required>
+                <div class="invalid-feedback">Isi semua form input!</div>
             </div>
             <div class="mb-3">
-                <label for="kode_kupon" class="form-label">Kode</label>
-                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" required value="<?= $kp['kode'] ?>">
+                <label for="validationCustom08" class="form-label">Kode</label>
+                <input type="text" class="form-control" id="validationCustom08" name="kode_kupon" required value="<?= $kp['kode'] ?>" required>
+                <div class="invalid-feedback">Isi semua form input!</div>
             </div>
             <div class="mb-3">
-                <label for="Deskripsi">Deskripsi</label>
-                <input type="text" style="height: 100px;" class="form-control" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" value="<?= $kp['deskripsi'] ?>"></textarea>
+                <label for="validationCustom09">Deskripsi</label>
+                <input type="text" style="height: 100px;" class="form-control" id="validationCustom09" name="deskripsi_kupon" rows="3" value="<?= $kp['deskripsi'] ?>" required></textarea>
+                <div class="invalid-feedback">Isi semua form input!</div>
             </div>
             <div class="mb-3">
-                <label for="masa_berlaku" class="form-label mr-3">Masa Berlaku</label>
-                <input type="date" id="masa_berlaku" name="masa_berlaku" required value="<?= $kp['is_active'] ?>">
+                <label for="validationCustom10" class="form-label">Diskon</label>
+                <input type="text" class="form-control" id="validationCustom010" name="discount" required value="<?= $kp['discount'] ?>" required>
+                <div class="invalid-feedback">Isi semua form input!</div>
             </div>
-            <div>
+            <div class="mb-3">
+                <label for="validationCustom11" class="form-label">Total Pembelian</label>
+                <input type="text" class="form-control" id="validationCustom11" name="total_buy" required value="<?= $kp['total_buy'] ?>" required>
+                <div class="invalid-feedback">Isi semua form input!</div>
+            </div>
+            <div class="mb-3">
+                <label for="validationCustom12" class="form-label mr-3">Masa Berlaku</label>
+                <input type="date" id="validationCustom12" name="masa_berlaku" value="<?= $kp['is_active'] ?>" required>
+            </div>
+            <div class="mb-3">
                 <button type="submit" class="btn btn-danger">Simpan</button>
             </div>
         </form>
