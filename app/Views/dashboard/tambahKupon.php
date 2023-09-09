@@ -20,22 +20,22 @@
             <div class="mb-3">
                 <label for="validationCustom01" class="form-label">Nama Kupon</label>
                 <input type="text" class="form-control" id="validationCustom01" name="nama_kupon" placeholder="Nama Kupon Anda" required>
-                <div class="invalid-feedback">Jangan lupa diisi Bang Messi WAJIB</div>
+                <div class="invalid-feedback">Lengkapi semua form yang kosong!</div>
             </div>
             <div class="mb-3">
                 <label for="validationCustom02" class="form-label">Kode<span class="required">*</span></label>
                 <input type="text" class="form-control" id="validationCustom02" name="kode_kupon" placeholder="Kode Kupon" required>
-                <div class="invalid-feedback">Jangan lupa diisi Bang Messi WAJIB</div>
+                <div class="invalid-feedback">Lengkapi semua form yang kosong!</div>
             </div>
             <div class="mb-3">
                 <label for="validationCustom03">Deskripsi<span class="required">*</span></label>
                 <textarea class="form-control" id="validationCustom03" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." required></textarea>
-                <div class="invalid-feedback">Jangan lupa diisi Bang Messi WAJIB</div>
+                <div class="invalid-feedback">Lengkapi semua form yang kosong!</div>
             </div>
             <div class="mb-3">
                 <label for="validationCustom04" class="form-label mr-2">Masa Berlaku<span class="required">*</span></label>
                 <input type="date" id="validationCustom04" name="masa_berlaku" placeholder="Masukan Masa Berlaku Kupon" required>
-                <div class="invalid-feedback">Jangan lupa diisi Bang Messi WAJIB</div>
+                <div class="invalid-feedback">Lengkapi semua form yang kosong!</div>
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Simpan</button>
