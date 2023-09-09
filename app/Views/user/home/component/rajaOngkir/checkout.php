@@ -4,6 +4,7 @@
     var destination = <?= ($alamat_list) ? $alamat_list[0]['id_city'] : ''; ?>;
     var kurir = 'jne';
     $('#serviceApp').html(formatRupiah(jasaApp));
+    $('.btn-bayar').hide();
 
     const total = <?= $total; ?>;
 
@@ -41,6 +42,7 @@
                 $("#total").val(total);
                 $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
                 $("#field_subtotal").val(ongkir + total + jasaApp);
+                $('.btn-bayar').show();
             },
         });
     }
@@ -69,6 +71,7 @@
         $("#total").val(total);
         $("#serviceText").val($("#service option:selected").text());
         $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
+        $('.btn-bayar').show();
     });
 
     // Menghitung total saat mengubah jumlah

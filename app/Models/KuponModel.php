@@ -17,12 +17,14 @@ class KuponModel extends Model
         'nama',
         'kode',
         'deskripsi',
+        'discount',
+        'total_buy',
         'is_active',
-        // 'created_by'
+        'created_by'
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -33,6 +35,8 @@ class KuponModel extends Model
         'nama' => 'required',
         'kode' => 'required',
         'deskripsi' => 'required',
+        'discount' => 'required',
+        'total_buy' => 'required',
         'is_active' => 'required',
         // 'created_by' => 'required',
     ];
@@ -50,4 +54,11 @@ class KuponModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getKupon($kode)
+    {
+        if ($kode != '') {
+            return $this->where(['kode' => $kode])->first();
+        }
+    }
 }
