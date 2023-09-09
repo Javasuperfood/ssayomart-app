@@ -20,13 +20,13 @@
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" id="telp" name="no_telp1" value="<?= $au['telp']; ?>">
+            <input class="form-control floatingInput" id="telp" name="no_telp1" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
             <label for="floatingInput">Nomor Handphone Penerima*</label>
         </div>
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" id="telp" name="no_telp2" value="<?= $au['telp']; ?>">
+            <input class="form-control floatingInput" id="telp" name="no_telp2" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
             <label for="floatingInput">Nomor Handphone Penerima (Optional)</label>
         </div>
     </div>
@@ -51,7 +51,7 @@
     </div>
     <div class="mb-3 mx-3 my-3">
         <div class="form-floating">
-            <input class="form-control floatingInput" id="zip_code" name="zip_code" value="<?= $au['zip_code']; ?>">
+            <input class="form-control floatingInput" id="zip_code" name="zip_code" value="<?= $au['zip_code']; ?>" onkeypress="return isNumber(event);">
             <label for=" floatingInput">Kode Pos*</label>
         </div>
     </div>
