@@ -22,11 +22,6 @@ class JsfCheckout extends Migration
                 'constraint'     => 11,
                 'unsigned'       => true,
             ],
-            'kupon' => [
-                'type'           => 'varchar',
-                'constraint'     => '225',
-                'null'           => true,
-            ],
             'id_status_pesan' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
@@ -60,8 +55,28 @@ class JsfCheckout extends Migration
             'catatan' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',
+                'null' => true
             ],
-            'total' => [
+            'kupon' => [
+                'type'           => 'varchar',
+                'constraint'     => '225',
+                'null'           => true,
+            ],
+            'discount' => [
+                'type'           => 'varchar',
+                'constraint'     => '225',
+                'null'           => true,
+            ],
+            'kupon' => [
+                'type'           => 'varchar',
+                'constraint'     => '225',
+                'null'           => true,
+            ],
+            'total_1' => [
+                'type'           => 'varchar',
+                'constraint'     => '225',
+            ],
+            'total_2' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',
             ],

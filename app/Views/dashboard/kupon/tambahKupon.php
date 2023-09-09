@@ -1,13 +1,13 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<div class="card border-0 shadow-sm position-relative">
-    <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-bold text-danger">Masukan Kupon Baru</h6>
+<div class="card position-relative">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-medium">Masukan Kupon Baru</h6>
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/kupon/kupon/save" method="post">
+        <form action="<?= base_url(); ?>dashboard/kupon/save" method="post">
             <?= csrf_field(); ?>
             <div class="mb-3">
                 <label for="nama_kupon" class="form-label">Nama Kupon</label>
@@ -26,7 +26,7 @@
                 <input type="date" id="masa_berlaku" name="masa_berlaku" required placeholder="Masukan Masa Berlaku Kupon">
             </div>
             <div>
-                <button type="submit" class="btn btn-danger">Simpan</button>
+                <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
         </form>
     </div>

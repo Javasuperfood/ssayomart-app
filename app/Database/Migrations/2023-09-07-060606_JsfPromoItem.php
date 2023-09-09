@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class JsfPormoItem extends Migration
+class JsfPromoItem extends Migration
 {
     public function up()
     {

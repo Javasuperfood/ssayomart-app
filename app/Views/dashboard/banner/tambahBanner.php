@@ -1,7 +1,13 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1">Management Banner</h1>
+<h2>Management Banner</h2>
+<hr />
+<ul class="breadcrumb">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="<?= base_url(); ?>dashboard/banner/inputbanner">List Banner</a></li>
+    <li class="breadcrumb-item active">Tambah Banner</li>
+</ul>
 <p class="mb-4">Anda dapat mengatur banner yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">

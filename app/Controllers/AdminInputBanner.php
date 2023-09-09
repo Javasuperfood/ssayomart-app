@@ -25,7 +25,7 @@ class AdminInputBanner extends BaseController
             'title' => 'Setting Banner',
             'banner_list' => $bannerList
         ];
-        return view('/dashboard/banner/tambahBanner', $data);
+        return view('dashboard/banner/tambahBanner', $data);
     }
 
     public function saveBanner()
