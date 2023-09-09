@@ -6,7 +6,7 @@
 <p class="mb-4">Anda dapat memberikan atau manambahkan kupon yang akan di tampilkan nantinya pada halaman user sebagai bentuk potongan harga atau diskon
 </p>
 
-<a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon">Buat Kupon</a>
+<a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/tambah-kupon">Tambah Produk</a>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
