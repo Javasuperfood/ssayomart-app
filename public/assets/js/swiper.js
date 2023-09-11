@@ -1,6 +1,19 @@
 
 
 
+
+var swiper = new Swiper(".mySweety", {
+    slidesPerView: 6,
+    
+    loop: true,
+    pagination: {
+
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+
 var swiper = new Swiper(".mySwiper", {
   slidesPerView: 3,
   centeredSlides: false,
@@ -15,6 +28,7 @@ var swiper = new Swiper(".mySwiper", {
     // Tampilan iPad (lebar >= 768px)
     1280: {
       slidesPerView: 6, // 3 card per tampilan
+
     },
     // Tampilan iPad (lebar >= 768px)
     768: {
@@ -47,6 +61,12 @@ var swiper = new Swiper(".mySwiper", {
     //   disableOnInteraction: false,
     // },    
   });
+ 
+
+ var slider = new Slider(".mySweety", {
+    slidesPerView: 6,
+    
+    loop: true,
 
   var swiper = new Swiper(".buttonSwiper", {
     slidesPerView: 4,
@@ -72,16 +92,29 @@ var swiper = new Swiper(".mySwiper", {
         slidesPerView: 3, // 2 card per tampilan
       },
     },
+    
+    breakpoints: {
+      // // Tampilan iPad (lebar >= 768px)
+      // 1280: {
+      //   slidesPerView: 6, // 3 card per tampilan
+      // },
+      // Tampilan iPad (lebar >= 768px)
+      768: {
+        slidesPerView: 4, // 3 card per tampilan
+      },
+      // Tampilan Mobile (lebar < 768px)
+      375: {
+        slidesPerView: 3, // 2 card per tampilan
+      },
+    },
+
+
 
     autoplay: {
       delay: 1500,
       disableOnInteraction: false,
     },    
   });
-  
-  
-
-
 
 
   
