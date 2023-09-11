@@ -10,11 +10,12 @@ class AdminKupon extends BaseController
     public function kupon()
     {
         $kuponModel = new KuponModel();
-        $kupon_list = $kuponModel->findAll();
+        $kupon_list = $kuponModel->getAllKupon();
         $data = [
             'title' => 'kupon',
             'kupon_Model' => $kupon_list
         ];
+        // dd($data);
         return view('dashboard/kupon/kupon', $data);
     }
 
@@ -39,6 +40,7 @@ class AdminKupon extends BaseController
             'discount' => $this->request->getVar('discount'),
             'total_buy' => $this->request->getvar('total_buy'),
             'is_active' => $this->request->getVar('masa_berlaku'),
+            'created_by' => user_id()
         ];
 
         if ($kuponModel->save($data)) {
@@ -59,7 +61,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kupon')->withInput();
+            return redirect()->to('dashboard/kupon/tambah-kupon')->withInput();
         }
     }
 
@@ -134,7 +136,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kupon/edit-kupon/' . $id)->withInput();
+            return redirect()->to('dashboard/kupon/kupon/edit-kupon/' . $id)->withInput();
         }
     }
 }

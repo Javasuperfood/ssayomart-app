@@ -18,14 +18,14 @@
             </div>
             <div class="mb-3 mx-3 my-3">
                 <div class="form-floating">
-                    <input class="form-control floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" value="<?= old('no_telp1') ?>">
-                    <label for="floatingInput">Nomor Handphone Penerima*</label>
+                    <input class="form-control floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
+                    <label for=" floatingInput">Nomor Handphone Penerima*</label>
                 </div>
             </div>
             <div class="mb-3 mx-3 my-3">
                 <div class="form-floating">
-                    <input class="form-control floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>">
-                    <label for="floatingInput">Nomor Handphone Penerima (optional)</label>
+                    <input class="form-control floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
+                    <label for=" floatingInput">Nomor Handphone Penerima (optional)</label>
                 </div>
             </div>
             <div class="mb-3 mx-3 my-3">
@@ -53,7 +53,7 @@
 
             <div class=" mb-3 mx-3 my-3">
                 <div class="form-floating">
-                    <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" value="<?= old('zip_code') ?>">
+                    <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
                     <label for=" floatingInput">Kode Pos*</label>
                 </div>
             </div>

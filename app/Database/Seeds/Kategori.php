@@ -130,7 +130,6 @@ class Kategori extends Seeder
             ]
         ];
 
-
         $this->db->table('jsf_kategori')->insertBatch($data);
 
         $data2 = [

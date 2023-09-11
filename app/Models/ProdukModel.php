@@ -35,16 +35,23 @@ class ProdukModel extends Model
     // Validation
     protected $validationRules = [
         'nama' => 'required',
-        'slug'    => 'required',
+        // 'slug'    => 'required',
         'sku'    => 'required',
         'harga'    => 'required',
         // 'stok'    => 'required',
         'deskripsi'    => 'required',
-        // 'img'    => 'required',
+        'img'    => 'required',
         // 'id_kategori' => 'required',
         // 'id_sub_kategori' => 'required',
     ];
-    protected $validationMessages   = [];
+    protected $validationMessages   = [
+        'sku' => [
+            'errors' => [
+                'is_unique' => '{field} SKU sudah terdaftar.',
+                'required' => '{field} buku harus diisi.',
+            ]
+        ]
+    ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

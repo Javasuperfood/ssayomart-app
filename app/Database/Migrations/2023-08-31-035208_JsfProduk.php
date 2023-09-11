@@ -72,8 +72,9 @@ class JsfProduk extends Migration
             ],
         ]);
         $this->forge->addKey('id_produk', true);
-        $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori');
-        $this->forge->addForeignKey('id_sub_kategori', 'jsf_sub_kategori', 'id_sub_kategori');
+        $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori', true, 'CASCADE');
+        $this->forge->addForeignKey('id_sub_kategori', 'jsf_sub_kategori', 'id_sub_kategori', true, 'CASCADE');
+
         $this->forge->createTable('jsf_produk');
     }
 

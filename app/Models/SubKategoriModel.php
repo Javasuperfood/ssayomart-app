@@ -15,14 +15,14 @@ class SubKategoriModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'id_kategori',
-        'nama_sub_kategori',
+        'nama_kategori',
         'deskripsi',
         'slug',
         'img'
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -33,7 +33,7 @@ class SubKategoriModel extends Model
         'id_kategori' => 'required',
         'nama_kategori' => 'required',
         'deskripsi' => 'required',
-        'slug' => 'required',
+        'slug' => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -56,5 +56,33 @@ class SubKategoriModel extends Model
         }
 
         return $this->where(['slug' => $slug])->first();
+    }
+
+    public function joinTable()
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_kategori')
+            ->select(
+                'jsf_kategori.*, 
+            jsf_sub_kategori.id_kategori AS id_kategori_sub,
+            jsf_sub_kategori.id_sub_kategori AS id_sub_kategori,
+            jsf_sub_kategori.nama_kategori AS nama_sub_kategori,
+            jsf_sub_kategori.img AS img_sub_kategori,
+            jsf_sub_kategori.slug AS slug_sub_kategori'
+            )
+            ->join('jsf_sub_kategori', 'jsf_sub_kategori.id_kategori = jsf_kategori.id_kategori', 'left')
+            ->get();
+
+        $result = $query->getResult();
+        return $result;
+    }
+
+    public function delSubKategori($id)
+    {
+        $produkModel = new ProdukModel();
+        $builder = $produkModel->builder();
+        $builder->where('id_sub_kategori', $id);
+        $builder->update(['id_sub_kategori' => null]);
+        return  $this->delete($id);
     }
 }

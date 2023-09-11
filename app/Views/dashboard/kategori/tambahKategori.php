@@ -8,23 +8,30 @@
     <div class="col">
         <div class="card border-0 shadow-sm position-relative">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Tambah Kategori</h6>
+                <h6 class="m-0 font-weight-bold text-danger">Tambah Kategori & Sub Kategori</h6>
             </div>
             <div class="card-body">
                 <form action="<?= base_url(); ?>dashboard/kategori/tambah-kategori/save" method="post" enctype="multipart/form-data" onsubmit="return validasiTambahKategori()">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
-                        <label for="kategori" class="form-label">Nama Kategori</label>
-                        <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= old('kategori') ?>">
+                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori</label>
+                        <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
                         <span id="kategoriError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="slug" class="form-label">Slug</label>
                         <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
-                            <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Nama Kategori.</b>
+                            <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Nama Kategori atau Sub Kategori.</b>
                         </div>
                         <input type="text" class="form-control" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= old('slug') ?>">
                     </div>
+                    <label for="parent_kategori_id">Kategori Induk</label>
+                    <select class="form-control" id="parent_kategori_id" name="parent_kategori_id">
+                        <option value="">Pilih Kategori Induk (kosongkan jika untuk kategori utama)</option>
+                        <?php foreach ($kategori_model as $km) : ?>
+                            <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                     <div class="mb-3">
                         <label for="img" class="form-label">Masukan Gambar</label>
                         <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar">
@@ -63,7 +70,6 @@
         var deskripsiField = document.getElementById('deskripsi');
 
         var namaKategoriError = document.getElementById('kategoriError');
-        var imgError = document.getElementById('imgError');
         var deskripsiError = document.getElementById('deskripsiError');
 
         namaKategoriError.textContent = '';
@@ -76,14 +82,6 @@
             isValid = false;
         } else {
             namaKategoriField.classList.remove('invalid-field');
-        }
-
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
         }
 
         if (deskripsiField.value.trim() === '') {

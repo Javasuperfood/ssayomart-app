@@ -41,7 +41,7 @@ class PromoModel extends Model
 
     public function getPromo($now)
     {
-        return $this->where("'$now' BETWEEN start_at AND end_at")
+        return $this->where("'$now' >= start_at AND '$now' <= end_at")
             ->findAll();
     }
 }

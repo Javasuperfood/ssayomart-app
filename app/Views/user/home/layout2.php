@@ -4,6 +4,11 @@
 <head>
     <?= $this->include('user/home/component/header') ?>
     <script src="<?= base_url() ?>assets/js/jquery/jquery.min.prod.js"></script>
+
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <!-- Panggil file CSS dari folder public/assets -->
     <link rel="stylesheet" href="<?= base_url('assets/css/produk.css') ?>">
 </head>
 
@@ -17,6 +22,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/js/swiper.js"></script>
+    <script src="<?= base_url('assets/js/script.js'); ?>"></script>
 </body>
 
 </html>

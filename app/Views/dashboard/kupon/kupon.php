@@ -25,6 +25,7 @@
                         <th>Diskon</th>
                         <th>Total Pembelian</th>
                         <th>Masa Berlaku</th>
+                        <th>Dibuat Oleh</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -38,6 +39,7 @@
                             <td><?= $kp['discount']; ?></td>
                             <td><?= 'Rp ' . number_format($kp['total_buy'], 0, ',', '.'); ?></td>
                             <td><?= date("d-m-Y", strtotime($kp['is_active'])); ?></td>
+                            <td><?= $kp['username']; ?></td>
                             <td class="text-center">
                                 <div class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
