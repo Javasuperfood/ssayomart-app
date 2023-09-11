@@ -33,7 +33,7 @@ class SubKategoriModel extends Model
         'id_kategori' => 'required',
         'nama_kategori' => 'required',
         'deskripsi' => 'required',
-        'slug' => 'required',
+        'slug' => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -62,7 +62,17 @@ class SubKategoriModel extends Model
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_sub_kategori')
-            ->select('jsf_kategori.*, jsf_sub_kategori.*,  jsf_kategori.nama_kategori AS nama_kategori, jsf_sub_kategori.nama_kategori AS nama_sub_kategori')
+            ->select(
+                'jsf_kategori.*, jsf_sub_kategori.*,
+                jsf_kategori.id_kategori AS id_kategori, 
+                jsf_sub_kategori.id_sub_kategori AS id_sub_kategori,
+                jsf_kategori.nama_kategori AS nama_kategori, 
+                jsf_sub_kategori.nama_kategori AS nama_sub_kategori,
+                jsf_kategori.img as img_kategori,
+                jsf_sub_kategori.img as img_sub_kategori,
+                jsf_kategori.slug as slug_kategori,
+                jsf_sub_kategori.slug as slug_sub_kategori'
+            )
             ->join('jsf_kategori', 'jsf_sub_kategori.id_kategori = jsf_kategori.id_kategori')
             ->get();
 
