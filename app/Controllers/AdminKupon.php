@@ -36,6 +36,8 @@ class AdminKupon extends BaseController
             'nama' => $this->request->getVar('nama_kupon'),
             'kode' => $this->request->getVar('kode_kupon'),
             'deskripsi' => $this->request->getVar('deskripsi_kupon'),
+            'discount' => $this->request->getVar('discount'),
+            'total_buy' => $this->request->getvar('total_buy'),
             'is_active' => $this->request->getVar('masa_berlaku'),
         ];
 
@@ -48,7 +50,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kupon/kupon');
+            return redirect()->to('dashboard/kupon');
         } else {
             $alert = [
                 'type' => 'error',
@@ -57,7 +59,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kupon/tambah-kupon')->withInput();
+            return redirect()->to('dashboard/kupon')->withInput();
         }
     }
 
@@ -97,7 +99,7 @@ class AdminKupon extends BaseController
             'kp' => $kp,
             'back' => 'dashboard/kupon'
         ];
-        return view('dashboard/editKupon', $data);
+        return view('dashboard/kupon/editKupon', $data);
     }
     // save update
     public function updateKupon($id)
@@ -109,6 +111,8 @@ class AdminKupon extends BaseController
             'nama' => $this->request->getVar('nama_kupon'),
             'kode' => $this->request->getVar('kode_kupon'),
             'deskripsi' => $this->request->getVar('deskripsi_kupon'),
+            'discount' => $this->request->getVar('discount'),
+            'total_buy' => $this->request->getvar('total_buy'),
             'is_active' => $this->request->getVar('masa_berlaku'),
         ];
 
