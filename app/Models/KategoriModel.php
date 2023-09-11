@@ -61,4 +61,17 @@ class KategoriModel extends Model
     {
         return $this->where(['slug' => $slug])->select('img')->first();
     }
+
+    public function delKategori($id)
+    {
+        $subKategoriModel = new SubKategoriModel();
+        $produkModel = new ProdukModel();
+        $builder = $produkModel->builder();
+        $builder->where('id_kategori', $id);
+        $builder->update(['id_kategori' => null]);
+        $builder = $subKategoriModel->builder();
+        $builder->where('id_kategori', $id);
+        $builder->update(['id_kategori' => null]);
+        return $this->delete($id);
+    }
 }

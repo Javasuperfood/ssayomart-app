@@ -21,25 +21,27 @@ class AdminkategoriController extends BaseController
             $id_sub_kategori = $km->id_sub_kategori;
             $namaKategori = $km->nama_kategori;
             $namaSubKategori = $km->nama_sub_kategori;
-            $imgKategori = $km->img_kategori;
+            $imgKategori = $km->img;
             $imgSubKategori = $km->img_sub_kategori;
-            $slugKategori = $km->slug_kategori;
+            $slugKategori = $km->slug;
             $slugSubKategori = $km->slug_sub_kategori;
             // Jika nama_kategori belum ada dalam array, tambahkan sebagai elemen array baru
             if (!isset($kategoriGroups[$namaKategori])) {
                 $kategoriGroups[$namaKategori] = [
                     'id_kategori' => $id_kategori,
-                    'id_sub_kategori' => $id_sub_kategori,
                     'nama_kategori' => $namaKategori,
                     'img_kategori' => $imgKategori,
-                    'img_sub_kategori' => $imgSubKategori,
-                    'sub_kategori' => [],
                     'slug_kategori' => $slugKategori,
-                    'slug_sub_kategori' => $slugSubKategori,
+                    'sub_kategori' => [],
                 ];
             }
             // Tambahkan sub_kategori ke dalam array sub_kategori di bawah nama_kategori yang sesuai
-            $kategoriGroups[$namaKategori]['sub_kategori'][] = $namaSubKategori;
+            $kategoriGroups[$namaKategori]['sub_kategori'][] = [
+                'id_sub_kategori' => $id_sub_kategori,
+                'nama_sub_kategori' => $namaSubKategori,
+                'slug_sub_kategori' => $slugSubKategori,
+                'img_sub_kategori' => $imgSubKategori,
+            ];
         }
 
         $data = [
@@ -47,7 +49,7 @@ class AdminkategoriController extends BaseController
             'kategori_list' => $kategoriGroups
         ];
 
-        // dd($data);
+        // dd($data['kategori_list']);
         return view('dashboard/kategori/kategori', $data);
     }
 
@@ -214,8 +216,8 @@ class AdminkategoriController extends BaseController
                 unlink($gambarLamaPath);
             }
         }
-        $deleted = $kategoriModel->delete($id);
-        // dd($id);
+
+        $deleted = $kategoriModel->delKategori($id);
         if ($deleted) {
             $alert = [
                 'type' => 'success',
@@ -327,27 +329,8 @@ class AdminkategoriController extends BaseController
     public function deleteSubKategori($id)
     {
         $subKategoriModel = new SubKategoriModel();
-        $produkModel = new ProdukModel();
-        $subKategoriModel->find($id);
+        $deleted = $subKategoriModel->delSubKategori($id);
 
-        $relatedProduct = $produkModel->where('id_sub_kategori', $id)->findAll();
-
-        if (!empty($relatedProduct)) {
-            foreach ($relatedProduct as $produk) {
-                $produk['id_sub_kategori'] = null;
-                $produkModel->save($produk);
-            }
-        }
-
-        // if ($subKategori['img'] != 'default.png') {
-        //     $gambarLamaPath = 'assets/img/subkategori/' . $subKategori['img'];
-        //     if (file_exists($gambarLamaPath)) {
-        //         unlink($gambarLamaPath);
-        //     }
-        // }
-
-        $deleted = $subKategoriModel->delete($id);
-        // dd($id);
         if ($deleted) {
             $alert = [
                 'type' => 'success',

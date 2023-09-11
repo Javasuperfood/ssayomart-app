@@ -58,41 +58,43 @@
                                     </div>
                                 </td>
                             </tr>
-                            <?php foreach ($km['sub_kategori'] as $subkategori) : ?>
-                                <tr>
-                                    <td>
-                                        <img src="<?= base_url('assets/img/kategori/' . $km['img_sub_kategori']); ?>" class="img-fluid" alt="" width="50" height="50">
-                                    </td>
-                                    <td>
-                                        <div class="text-secondary">
-                                            <li><?= $subkategori ?></li>
-                                        </div>
-                                    </td>
-                                    <td><?= $km['slug_sub_kategori']; ?></td>
-                                    <td>
-                                        <div class="position-relative top-50 start-50 translate-middle">
-                                            <div class="nav-item dropdown no-arrow">
-                                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                </a>
-                                                <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                                    <a class="dropdown-item" href="<?= base_url("dashboard/kategori/edit-sub-kategori/{$km['id_sub_kategori']}"); ?>">
-                                                        <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                        Update
+                            <?php foreach ($km['sub_kategori'] as $ks) : ?>
+                                <?php if ($ks['id_sub_kategori']) : ?>
+                                    <tr>
+                                        <td>
+                                            <p></p>
+                                        </td>
+                                        <td>
+                                            <div class="text-secondary">
+                                                <li><?= $ks['nama_sub_kategori'] ?></li>
+                                            </div>
+                                        </td>
+                                        <td><?= $ks['slug_sub_kategori']; ?></td>
+                                        <td>
+                                            <div class="position-relative top-50 start-50 translate-middle">
+                                                <div class="nav-item dropdown no-arrow">
+                                                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        <i class="bi bi-three-dots-vertical"></i>
                                                     </a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <form action="<?= base_url() ?>dashboard/kategori/delete-sub-kategori/<?= $km['id_sub_kategori']; ?>" method="post">
-                                                        <?= csrf_field() ?>
-                                                        <button type="submit" class="dropdown-item">
-                                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                            <span class="text-danger">Delete</span>
-                                                        </button>
-                                                    </form>
+                                                    <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                                        <a class="dropdown-item" href="<?= base_url("dashboard/kategori/edit-sub-kategori/{$ks['id_sub_kategori']}"); ?>">
+                                                            <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                            Update
+                                                        </a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <form action="<?= base_url() ?>dashboard/kategori/delete-sub-kategori/<?= $ks['id_sub_kategori']; ?>" method="post">
+                                                            <?= csrf_field() ?>
+                                                            <button type="submit" class="dropdown-item">
+                                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                                <span class="text-danger">Delete</span>
+                                                            </button>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
+                                <?php endif ?>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
                     </tbody>
