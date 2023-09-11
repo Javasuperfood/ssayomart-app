@@ -82,10 +82,8 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Kategori :</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/kategori">List Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
-                <h6 class="collapse-header">Sub Kategori :</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/subkategori/subkategori">List Sub Kategori</a>
             </div>
         </div>
     </li>
