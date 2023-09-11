@@ -33,6 +33,30 @@ class Promo extends Seeder
                 'end_at' => '2023-09-20',
                 'deskripsi' => 'lorem'
             ],
+            [
+                'id_promo' => 4,
+                'title' => 'Promo siang hari',
+                'slug' =>  'promo-siang-hari',
+                'start_at' => '2023-09-07',
+                'end_at' => '2023-09-20',
+                'deskripsi' => 'lorem'
+            ],
+            [
+                'id_promo' => 5,
+                'title' => 'Promo siang hari',
+                'slug' =>  'promo-siang-hari',
+                'start_at' => '2023-09-07',
+                'end_at' => '2023-09-20',
+                'deskripsi' => 'lorem'
+            ],
+            [
+                'id_promo' => 6,
+                'title' => 'Promo siang hari',
+                'slug' =>  'promo-siang-hari',
+                'start_at' => '2023-09-07',
+                'end_at' => '2023-09-20',
+                'deskripsi' => 'lorem'
+            ],
         ];
 
         $this->db->table('jsf_promo')->insertBatch($data);
