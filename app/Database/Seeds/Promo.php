@@ -40,19 +40,19 @@ class Promo extends Seeder
             [
                 'id_promo' => 1,
                 'id_produk' => 1,
-                'discount' => 1,
+                'discount' => 0.1,
                 'min' => 1,
             ],
             [
                 'id_promo' => 1,
                 'id_produk' => 2,
-                'discount' => 1,
+                'discount' => 0.1,
                 'min' => 1,
             ],
             [
                 'id_promo' => 1,
                 'id_produk' => 1,
-                'discount' => 1,
+                'discount' => 0.1,
                 'min' => 1,
             ],
         ];
