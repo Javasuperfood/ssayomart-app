@@ -59,7 +59,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kupon')->withInput();
+            return redirect()->to('dashboard/kupon/tambah-kupon')->withInput();
         }
     }
 
@@ -134,7 +134,7 @@ class AdminKupon extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kupon/edit-kupon/' . $id)->withInput();
+            return redirect()->to('dashboard/kupon/kupon/edit-kupon/' . $id)->withInput();
         }
     }
 }

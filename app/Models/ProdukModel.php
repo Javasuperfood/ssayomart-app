@@ -36,13 +36,7 @@ class ProdukModel extends Model
     protected $validationRules = [
         'nama' => 'required',
         // 'slug'    => 'required',
-        'sku'    => [
-            'rules' => 'is_unique[jsf_produk.sku]|required',
-            'errors' => [
-                'is_unique' => '{field} SKU sudah terdaftar.',
-                'required' => '{field} buku harus diisi.',
-            ]
-        ],
+        'sku'    => 'required',
         'harga'    => 'required',
         // 'stok'    => 'required',
         'deskripsi'    => 'required',

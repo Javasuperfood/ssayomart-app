@@ -20,7 +20,7 @@ class KuponModel extends Model
         'discount',
         'total_buy',
         'is_active',
-        // 'created_by'
+        'created_by'
     ];
 
     // Dates

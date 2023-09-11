@@ -102,10 +102,8 @@ class AdminProduk extends BaseController
     // save
     public function save()
     {
-        $validation = \Config\Services::validation();
         // ambil gambar
         $produkModel = new ProdukModel();
-        $validation->setRules($produkModel->getValidationRules());
         $fotoProduk = $this->request->getFile('img');
         if ($fotoProduk->getError() == 4) {
             $namaProduk = 'default.png';
@@ -113,20 +111,19 @@ class AdminProduk extends BaseController
             $namaProduk = $fotoProduk->getRandomName();
             $fotoProduk->move('assets/img/produk/main/', $namaProduk);
         }
-        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
+        $slug = url_title($this->request->getVar('nama'), '-', true);
         $data = [
             'slug' => $slug,
-            'nama' => $this->request->getVar('nama_produk'),
+            'nama' => $this->request->getVar('nama'),
             'sku' => $this->request->getVar('sku'),
-            'harga' => $this->request->getVar('harga_produk'),
-            'deskripsi' => $this->request->getVar('deskripsi_produk'),
+            'harga' => $this->request->getVar('harga'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
             // 'stok' => $this->request->getVar('stock_produk'),
             'img' => $namaProduk
         ];
 
         // swet alert
-        if ($validation->run($data)) {
-            $produkModel->save($data);
+        if ($produkModel->save($data)) {
             session()->setFlashdata('success', 'Prroduk berhasil disimpan.');
             $alert = [
                 'type' => 'success',
@@ -143,7 +140,6 @@ class AdminProduk extends BaseController
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
             ];
             session()->setFlashdata('alert', $alert);
-            $validation->getErrors();
             return redirect()->to('dashboard/produk/tambah-produk')->withInput();
         }
     }
