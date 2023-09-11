@@ -61,22 +61,28 @@ class SubKategoriModel extends Model
     public function joinTable()
     {
         $db = \Config\Database::connect();
-        $query = $db->table('jsf_sub_kategori')
+        $query = $db->table('jsf_kategori')
             ->select(
-                'jsf_kategori.*, jsf_sub_kategori.*,
-                jsf_kategori.id_kategori AS id_kategori, 
-                jsf_sub_kategori.id_sub_kategori AS id_sub_kategori,
-                jsf_kategori.nama_kategori AS nama_kategori, 
-                jsf_sub_kategori.nama_kategori AS nama_sub_kategori,
-                jsf_kategori.img as img_kategori,
-                jsf_sub_kategori.img as img_sub_kategori,
-                jsf_kategori.slug as slug_kategori,
-                jsf_sub_kategori.slug as slug_sub_kategori'
+                'jsf_kategori.*, 
+            jsf_sub_kategori.id_kategori AS id_kategori_sub,
+            jsf_sub_kategori.id_sub_kategori AS id_sub_kategori,
+            jsf_sub_kategori.nama_kategori AS nama_sub_kategori,
+            jsf_sub_kategori.img AS img_sub_kategori,
+            jsf_sub_kategori.slug AS slug_sub_kategori'
             )
-            ->join('jsf_kategori', 'jsf_sub_kategori.id_kategori = jsf_kategori.id_kategori')
+            ->join('jsf_sub_kategori', 'jsf_sub_kategori.id_kategori = jsf_kategori.id_kategori', 'left')
             ->get();
 
         $result = $query->getResult();
         return $result;
+    }
+
+    public function delSubKategori($id)
+    {
+        $produkModel = new ProdukModel();
+        $builder = $produkModel->builder();
+        $builder->where('id_sub_kategori', $id);
+        $builder->update(['id_sub_kategori' => null]);
+        return  $this->delete($id);
     }
 }

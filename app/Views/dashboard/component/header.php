@@ -21,6 +21,32 @@
     .invalid-field {
         border: 1px solid red;
     }
+
+    .page-item.active .page-link {
+        z-index: 3;
+        color: #fff;
+        background-color: #ec261f;
+        border-color: #ec261f;
+    }
+
+    .page-link {
+        position: relative;
+        display: block;
+        padding: .5rem .75rem;
+        margin-left: -1px;
+        line-height: 1.25;
+        color: #ec261f;
+        background-color: #fff;
+        border: 1px solid #dddfeb
+    }
+
+    .page-link:hover {
+        z-index: 2;
+        color: #ec261f;
+        text-decoration: none;
+        background-color: #eaecf4;
+        border-color: #dddfeb
+    }
 </style>
 
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
