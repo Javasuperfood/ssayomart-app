@@ -1,24 +1,35 @@
-<div class="container" id="product">
-    <!-- <h2>Produk terlaris</h2> -->
-    <div class="row mt-2 row-cols-3">
-        <?php foreach ($produk as $p) : ?>
-            <div class="col-6 col-md-4 col-lg-2 pt-3">
-                <div class="card border-0 shadow" style="width: auto; height: 100%;">
-                    <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
-                    </a>
-                    <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                        <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
-                        <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-                        <p class=" text-center">
+<?php if ($produk) : ?>
+    <div class="container" id="product">
+        <!-- <h2>Produk terlaris</h2> -->
+        <div class="row mt-2 row-cols-3">
+            <?php foreach ($produk as $p) : ?>
+                <div class="col-6 col-md-4 col-lg-2 pt-3">
+                    <div class="card border-0 shadow" style="width: auto; height: 100%;">
+                        <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
+                        </a>
+                        <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
+                            <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
+                            <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
+                            <p class=" text-center">
 
-                            <button class="btn btn-white add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></button>
-                        </p>
+                                <button class="btn btn-white add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></button>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
-<input type="hidden" id="qty" name="qty" value="1">
-<?= $this->include('user/component/scriptAddToCart'); ?>
+    <input type="hidden" id="qty" name="qty" value="1">
+    <?= $this->include('user/component/scriptAddToCart'); ?>
+<?php else : ?>
+    <div class="px-5 my-5 align-middle">
+        <div class="card text-center rounded-0 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Tidak Ada produk ditemukan</h5>
+                <a href="/" class="btn btn-danger rounded-0">Kembali</a>
+            </div>
+        </div>
+    </div>
+<?php endif ?>
