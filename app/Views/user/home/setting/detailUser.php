@@ -14,7 +14,7 @@
                 <input type="text" class="form-control form-control-lg" id="fullname" name="fullname" placeholder="Nama Lengkap Anda" value="<?= $du['fullname']; ?>">
             </div>
             <div class=" col-sm-6">
-                <input type="text" class="form-control form-control-lg" id="telp" name="telp" placeholder="Nomor Telp Anda" value="<?= $du['telp']; ?>">
+                <input type="text" class="form-control form-control-lg" id="telp" name="telp" placeholder="Nomor Telp Anda" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
             </div>
 
             <div class="col-12">

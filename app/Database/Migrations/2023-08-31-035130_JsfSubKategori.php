@@ -19,6 +19,7 @@ class JsfSubKategori extends Migration
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
+                'null' => true
             ],
             'nama_kategori' => [
                 'type'       => 'VARCHAR',
@@ -48,7 +49,7 @@ class JsfSubKategori extends Migration
             ],
         ]);
         $this->forge->addKey('id_sub_kategori', true);
-        $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori');
+        $this->forge->addForeignKey('id_kategori', 'jsf_kategori', 'id_kategori', true, 'CASCADE');
         $this->forge->createTable('jsf_sub_kategori');
     }
 

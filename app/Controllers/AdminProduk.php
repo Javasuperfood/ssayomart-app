@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\KategoriModel;
 use App\Models\ProdukModel;
-
 
 class AdminProduk extends BaseController
 {
@@ -54,39 +52,37 @@ class AdminProduk extends BaseController
         $image = $this->request->getFile('img');
 
         if ($image->getError() == 4) {
-            $namaProdukModel = $this->request->getVar('imageLama');
+            $namaProdukImage = $this->request->getVar('imageLama');
         } else {
             $produk = $produkModel->find($id);
 
-            if ($produk['img'] == 'default.jpg') {
-                $namaProdukModel = $image->getRandomName();
-                $image->move('assets/img/produk/main', $namaProdukModel);
+            if ($produk['img'] == 'default.png') {
+                $namaProdukImage = $image->getRandomName();
+                $image->move('assets/img/produk/main', $namaProdukImage);
             } else {
-                $namaProdukModel = $image->getRandomName();
-                $image->move('assets/img/produk/main', $namaProdukModel);
+                $namaProdukImage = $image->getRandomName();
+                $image->move('assets/img/produk/main', $namaProdukImage);
                 $gambarLamaPath = 'assets/img/produk/main/' . $this->request->getVar('imageLama');
                 if (file_exists($gambarLamaPath)) {
                     unlink($gambarLamaPath);
                 }
             }
         }
-        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
         $data = [
             'id_produk' => $id,
-            'img' => $namaProdukModel,
-            'slug' => $slug,
-            'nama' => $this->request->getVar('nama_produk'),
+            'nama' => $this->request->getVar('nama'),
             'sku' => $this->request->getVar('sku'),
-            'harga' => $this->request->getVar('harga_produk'),
-            'deskripsi' => $this->request->getVar('deskripsi_produk'),
+            'harga' => $this->request->getVar('harga'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'img' => $namaProdukImage
         ];
-
+        // dd($data);
         if ($produkModel->save($data)) {
-            session()->setFlashdata('success', 'Gambar produk berhasil diubah.');
+            session()->setFlashdata('success', 'Produk berhasil diubah.');
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Gambar produk berhasil diubah.'
+                'message' => 'Produk berhasil diubah.'
             ];
             session()->setFlashdata('alert', $alert);
 
@@ -99,7 +95,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/produk/tambah-produk/update/' . $id)->withInput();
+            return redirect()->to('dashboard/produk/tambah-produk/update-produk/' . $id)->withInput();
         }
     }
 
@@ -115,13 +111,13 @@ class AdminProduk extends BaseController
             $namaProduk = $fotoProduk->getRandomName();
             $fotoProduk->move('assets/img/produk/main/', $namaProduk);
         }
-        $slug = url_title($this->request->getVar('nama_produk'), '-', true);
+        $slug = url_title($this->request->getVar('nama'), '-', true);
         $data = [
             'slug' => $slug,
-            'nama' => $this->request->getVar('nama_produk'),
+            'nama' => $this->request->getVar('nama'),
             'sku' => $this->request->getVar('sku'),
-            'harga' => $this->request->getVar('harga_produk'),
-            'deskripsi' => $this->request->getVar('deskripsi_produk'),
+            'harga' => $this->request->getVar('harga'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
             // 'stok' => $this->request->getVar('stock_produk'),
             'img' => $namaProduk
         ];
@@ -144,7 +140,6 @@ class AdminProduk extends BaseController
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
             ];
             session()->setFlashdata('alert', $alert);
-
             return redirect()->to('dashboard/produk/tambah-produk')->withInput();
         }
     }

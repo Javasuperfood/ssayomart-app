@@ -38,7 +38,7 @@ class KuponModel extends Model
         'discount' => 'required',
         'total_buy' => 'required',
         'is_active' => 'required',
-        // 'created_by' => 'required',
+        'created_by' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -60,5 +60,19 @@ class KuponModel extends Model
         if ($kode != '') {
             return $this->where(['kode' => $kode])->first();
         }
+    }
+
+    public function getAllKupon()
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_kupon')
+            ->select(
+                'jsf_kupon.*, users.*'
+            )
+            ->join('users', 'users.id = jsf_kupon.created_by')
+            ->get();
+
+        $result = $query->getResultArray();
+        return $result;
     }
 }

@@ -39,6 +39,7 @@ $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 
+$routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/wishlist', 'WishlistController::index');
@@ -79,12 +80,16 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
     //CRUD Admin kategori
-    $routes->get('kategori/kategori', 'AdminKategoriController::index');
+    $routes->get('kategori', 'AdminKategoriController::index');
     $routes->get('kategori/tambah-kategori', 'AdminKategoriController::tambahKategori');
     $routes->post('kategori/tambah-kategori/save', 'AdminKategoriController::saveKategori');
     $routes->post('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
     $routes->post('kategori/edit-kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
     $routes->get('kategori/edit-kategori/(:segment)', 'AdminKategoriController::editKategori/$1');
+    // Admin Sub Kategori
+    $routes->post('kategori/delete-sub-kategori/(:segment)', 'AdminKategoriController::deleteSubKategori/$1');
+    $routes->post('kategori/edit-sub-kategori/update-sub-kategori/(:segment)', 'AdminKategoriController::updateSubKategori/$1');
+    $routes->get('kategori/edit-sub-kategori/(:segment)', 'AdminKategoriController::editSubKategori/$1');
 
     //CRUD Admin Banner
     $routes->get('banner/inputbanner', 'AdminInputBanner::inputbanner');
@@ -99,12 +104,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/tambah-produk', 'AdminProduk::tambahProduk');
     $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
     $routes->post('produk/tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
-    $routes->post('produk/tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
     $routes->get('produk/tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
+    $routes->post('produk/tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
 
     // Crud Kupon
     $routes->get('kupon/tambah-kupon', 'AdminKupon::tambahKupon');
-    $routes->post('kupon/kupon/save', 'AdminKupon::saveKupon');
+    $routes->post('kupon/tambah-kupon/save', 'AdminKupon::saveKupon');
     $routes->get('kupon/kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
     $routes->get('kupon/kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
     $routes->post('kupon/kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
