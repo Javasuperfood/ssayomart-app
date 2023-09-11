@@ -36,7 +36,7 @@
         </div>
         <div class="row mt-4">
             <div class="col">
-                <h2> Deskripsi</h2>
+                <h2> Deskripsi </h2>
                 <p class="text-potong"><?= $produk['deskripsi']; ?></p>
             </div>
         </div>
