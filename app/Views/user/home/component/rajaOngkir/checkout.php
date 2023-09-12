@@ -6,7 +6,20 @@
     $('#serviceApp').html(formatRupiah(jasaApp));
     $('.btn-bayar').hide();
 
-    const total = <?= $total; ?>;
+    var total = <?= $total; ?>; // Inisialisasi total dengan harga total awal
+
+    // Hitung harga total dengan diskon berdasarkan kupon yang dipilih
+    $("#kupon").on('change', function() {
+        var selectedCoupon = $(this).val();
+        <?php foreach ($kupon as $k) : ?>
+            if (selectedCoupon === "<?= $k['kode']; ?>") {
+                total = total - (total * <?= $k['discount']; ?>);
+            }
+        <?php endforeach; ?>
+
+        // Perbarui tampilan harga total
+        $("#totalText").text("-" + formatRupiah(ongkir + total + jasaApp));
+    });
 
     // Fungsi untuk mengisi layanan berdasarkan kurir yang dipilih
     function populateServices(kurir) {
@@ -40,6 +53,7 @@
                 $("#ongkirText").html(formatRupiah(ongkir));
                 $("#estimasi").html(estimasi + " Hari");
                 $("#total").val(total);
+                $("#diskon").val(diskon);
                 $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
                 $("#field_subtotal").val(ongkir + total + jasaApp);
                 $('.btn-bayar').show();
@@ -92,8 +106,30 @@
         var formatter = new Intl.NumberFormat('id-ID', {
             style: 'currency',
             currency: 'IDR',
-            minimumFractionDigits: 2
+            minimumFractionDigits: 0
         });
         return formatter.format(angka);
     }
+
+    function updateDiscount() {
+        var selectedCoupon = $("#kupon").val();
+        var totalHarga = <?= $total; ?>;
+        var diskon = 0;
+
+        <?php foreach ($kupon as $k) : ?>
+            if (selectedCoupon === "<?= $k['kode']; ?>") {
+                diskon = totalHarga * <?= $k['discount']; ?>;
+            }
+        <?php endforeach; ?>
+
+        $("#diskon").text("-" + formatRupiah(diskon));
+        totalHarga -= diskon;
+        $("#totalText").text(formatRupiah(ongkir + totalHarga + jasaApp));
+    }
+
+    $(document).ready(function() {
+        $("#kupon").on('change', function() {
+            updateDiscount();
+        });
+    });
 </script>

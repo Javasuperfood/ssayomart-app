@@ -6,43 +6,21 @@
             <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
             <div class="row pb-4">
                 <div class="col-9">
-                    <h3 class="fw-bold py-3">Selamat datang, <?= $user['username']; ?></h3>
+                    <h3 class="fw-bold py-3 fs-5">Selamat datang, <?= $user['username']; ?></h3>
                 </div>
                 <div class="col-3">
                     <img src="<?= base_url() ?>assets/img/logo.png" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
-                </div>
-            </div>
-            <div class="card shadow border-0">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col">
-                            <table>
-                                <tr>
-                                    <td rowspan="2"><i class="bi bi-cash-stack fs-4 fw-bold text-success"></i></td>
-                                    <td>
-                                        <span class="text-secondary ps-2">Saldo Anda</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="fw-bold ps-2">Rp. <?= number_format($saldo, 2, ',', '.'); ?></span>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row py-3">
         <div class="col">
-            <div class="alert alert-danger rounded-0 border-0" role="alert">
+            <div class="alert alert-danger rounded border-0" role="alert">
                 <div class="row">
-                    <div class="col text-secondary"><i class="bi bi-heart-pulse-fill text-danger"></i> Area anda belum terjangkau. Kirim saran untuk update slanjutnya.</div>
-                    <div class="col-3 text-end"><a href="#" class="link-primary fw-bold link-underline link-underline-opacity-0">Kirim saran</a></div>
+                    <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i></div>
+                    <div class="col-9 text-secondary fs-6">Mohon maaf area anda belum terjangkau oleh pelayanan kami.</div>
+                    <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0">Kirim saran</a></div>
                 </div>
             </div>
         </div>
@@ -52,9 +30,9 @@
             <div class="card text-bg-light mb-3 shadow border-0 rounded">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-3"><img src="<?= base_url(); ?>assets/img/logo.png" alt="" class="card-img"></div>
+                        <div class="col-3"><img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img"></div>
                         <div class="col">
-                            <h5 class="card-title">DISKON 30%!!!</h5>
+                            <h5 class="card-title">TERSEDIA KUPON DISKON!!</h5>
                             <p class="card-text">Untuk kamu pengguna baru</p>
                         </div>
                     </div>

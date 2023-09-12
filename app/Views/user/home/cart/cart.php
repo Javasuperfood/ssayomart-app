@@ -4,7 +4,7 @@
 <!-- ITEM WISHLIST -->
 <div class="container pt-1">
     <div class="row text-center">
-        <div class="card shadow border-0">
+        <div class="card shadow-sm border-0">
             <div class="card-body">
                 <div class="row">
                     <div class="col">
