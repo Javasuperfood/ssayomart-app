@@ -57,22 +57,20 @@
             <?php endif ?>
             <?php foreach ($produk as $p) : ?>
                 <div class="row pt-3">
-                    <div class="col">
-                        <div class="card border-0 shadow">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
-                                    </div>
-                                    <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                        <h5 class="card-title"><?= substr($p['nama'], 0, 10); ?>...</h5>
-                                        <p class="card-text text-secondary"><?= $p['qty']; ?>
-                                        </p>
-                                    </div>
-                                    <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                        <h5 class="text-secondary fw-bold">Total</h5>
-                                        <p class="fw-bold">Rp. <?= number_format($p['harga'], 2, ',', '.'); ?></p>
-                                    </div>
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
+                                </div>
+                                <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                    <h5 class="card-title fs-6"><?= substr($p['nama'], 0, 10); ?>...</h5>
+                                    <p class="card-text text-secondary fs-6"><?= $p['qty']; ?> pcs
+                                    </p>
+                                </div>
+                                <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                    <h5 class="text-secondary fs-6">Total</h5>
+                                    <p class="fw-bold fs-6">Rp. <?= number_format(($p['harga'] * $p['qty']), 0, ',', '.'); ?></p>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +78,7 @@
                 </div>
             <?php endforeach ?>
             <div class="row py-3 px-3">
-                <table class="table">
+                <table class="table fs-6 lh-1">
                     <thead>
                         <tr>
                             <th scope="col">Ringkasan Belanja</th>
@@ -90,7 +88,11 @@
                     <tbody>
                         <tr>
                             <td>Total Harga</td>
-                            <td>Rp. <?= number_format($total, 2, ',', '.'); ?></td>
+                            <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
+                        </tr>
+                        <tr>
+                            <td>Potongan Harga (Kupon)</td>
+                            <t"><span id="diskon"></span></td>
                         </tr>
                         <tr>
                             <td>Total Ongkos Kirim</td>
@@ -102,14 +104,12 @@
                         </tr>
                         <tr>
                             <td>Subtotal</td>
-                            <td><span id="totalText"></span></td>
+                            <td class="fw-bold"><span id="totalText"></span></td>
                         </tr>
                     </tbody>
                 </table>
-                <p class="text-secondary text-center"><a href="<?= base_url() ?>produk/status" class="link-underline link-underline-opacity-0 link-secondary">Detail Pesanan >></p></a>
             </div>
             <input type="hidden" name="total" id="field_subtotal">
-
             <div class="row p-3 px-4">
                 <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
             </div>

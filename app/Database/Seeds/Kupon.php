@@ -10,7 +10,7 @@ class Kupon extends Seeder
     {
         $data = [
             [
-                'nama' => 'DISKON HARI RAYA 200%',
+                'nama' => 'DISKON HARI RAYA 50%',
                 'kode' => 'S4Y0M4RT',
                 'deskripsi' => 'lorem',
                 'discount' => 0.2,
@@ -20,7 +20,7 @@ class Kupon extends Seeder
                 'created_by' => 1
             ],
             [
-                'nama' => 'DISKON NATAL -100%',
+                'nama' => 'DISKON NATAL 20%',
                 'kode' => 'S4Y0M4RTN4t4L',
                 'deskripsi' => 'lorem',
                 'discount' => 0.2,
