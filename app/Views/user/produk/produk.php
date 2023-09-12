@@ -12,7 +12,7 @@
             <h2><?= $produk['nama']; ?></h2>
             <div class="row">
                 <div class="col">
-                    <h1>Rp. <?= number_format($produk['harga'], 2, ',', '.'); ?></h1>
+                    <h1>Rp. <?= number_format($produk['harga'], 0, ',', '.'); ?></h1>
                 </div>
                 <div class="col text-end">
                     <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>><i class=" fa-regular fa-heart"></i> Add to Wishlist</a>

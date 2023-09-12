@@ -34,20 +34,20 @@
         <?php foreach ($produk as $p) : ?>
             <div class="row pt-3">
                 <div class="col">
-                    <div class="card border-0 shadow">
+                    <div class="card border-0 shadow-sm">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
                                     <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
                                 </div>
                                 <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                    <h5 class="card-title"><?= substr($p->nama, 0, 10); ?>...</h5>
-                                    <p class="card-text text-secondary"><?= $p->qty; ?>
+                                    <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?>...</h5>
+                                    <p class="card-text text-secondary fs-6"><?= $p->qty; ?>
                                     </p>
                                 </div>
                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                    <h5 class="text-secondary fw-bold">Total</h5>
-                                    <p class="fw-bold">Rp. <?= number_format($p->harga, 2, ',', '.'); ?></p>
+                                    <h5 class="text-secondary fs-6">Total</h5>
+                                    <p class="fw-bold fs-6">Rp. <?= number_format($p->harga, 0, ',', '.'); ?></p>
                                 </div>
                             </div>
                         </div>
