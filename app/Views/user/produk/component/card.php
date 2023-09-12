@@ -25,10 +25,10 @@
     <?= $this->include('user/component/scriptAddToCart'); ?>
 <?php else : ?>
     <div class="px-5 my-5 align-middle">
-        <div class="card text-center rounded-0 shadow">
+        <div class="card border-0 text-center rounded shadow">
             <div class="card-body">
-                <h5 class="card-title">Tidak Ada produk ditemukan</h5>
-                <a href="/" class="btn btn-danger rounded-0">Kembali</a>
+                <h5 class="card-title">Produk belum tersedia</h5>
+                <a href="/" class="btn btn-danger border-0 rounded">Kembali</a>
             </div>
         </div>
     </div>

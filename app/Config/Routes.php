@@ -64,6 +64,8 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->post('update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
     $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
     $routes->get('/history', 'HistoryTransaksiController::index');
+    $routes->get('/kupon', 'Kupon::kupon');
+
 
     $routes->get('/status/(:any)', 'UserStatusController::status/$1');
 });
