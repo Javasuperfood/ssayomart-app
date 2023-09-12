@@ -24,7 +24,7 @@
 <div class="container mb-5 d-none d-md-block">
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <img src="<?= base_url() ?>assets/img/logopanjang.png" width="150" height="50" alt="" class="image-fluid">
+            <img src="<?= base_url() ?>assets/img/logopanjang.png" width="150" height="50" alt="Logo Ssayomart" class="image-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -33,20 +33,17 @@
                     <li class="nav-item ">
                         <a class="nav-link" aria-current="page" href="<?= base_url() ?>">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Produk</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Kategori</a>
-                    </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link
-                        dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Download APK </a>
+                        dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kategori</a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a href="#" class="dropdown-item">Feature 1</a></li>
                             <li><a href="#" class="dropdown-item">Feature 2</a></li>
                             <li><a href="#" class="dropdown-item">Feature 3</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" aria-current="page" href="https://download.ssayomart.com">Download Aplikasi Ssayomart</a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -57,18 +54,18 @@
                     <!-- Icons -->
                     <li class="nav-item me-3 me-lg-0">
                         <a class="nav-link" href="#">
-                            <i class="bi bi-cart-fill"></i>
+                            <i class="bi bi-cart-fill fs-4 text-danger"></i>
                         </a>
                     </li>
                     <li class="nav-item me-3 me-lg-0">
                         <a class="nav-link" href="#">
-                            <i class="bi bi-bag-heart-fill"></i>
+                            <i class="bi bi-heart-fill fs-4 text-danger"></i>
                         </a>
                     </li>
                     <!-- Icon dropdown -->
                     <li class="nav-item me-3 me-lg-0 dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle"></i>
+                            <i class="bi bi-person-circle fs-4 text-danger"></i>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>
