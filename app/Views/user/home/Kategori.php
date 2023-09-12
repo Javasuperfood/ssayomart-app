@@ -11,7 +11,7 @@
     <div class="row text-center py-3">
         <?php foreach ($promo as $p) : ?>
             <div class="col-4 col-md-4 col-lg-2">
-                <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
                     <div class="card-body">
                         <a href="<?= base_url() ?>produk">
                             <img src="<?= base_url() ?>assets/img/logo.png" width="60px" alt="" class="card-img-top">
@@ -34,7 +34,7 @@
                     <div class="swiper-wrapper d-flex">
                         <?php foreach ($promo as $p) : ?>
                             <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                                <div class="card text-bg-light mb-3 bg-white border-0  shadow-sm">
+                                <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
                                     <div class="card-body">
                                         <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
                                             <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="<?= $p['title']; ?>" class="card-img-top">
@@ -160,7 +160,7 @@
                 <div class="swiper mySwiper">
                     <div class="swiper-wrapper d-flex">
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -175,7 +175,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -189,22 +189,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
-
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -219,7 +204,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -234,7 +219,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -249,7 +234,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -264,7 +249,7 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -279,7 +264,22 @@
                             </div>
                         </div>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
+                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <h4>Rp. 25.000</h4>
+                                    </div>
+                                    <p>Jahe Bubuk</p>
+                                    <p class="text-center">
+
+                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                            <div class="card border-0 shadow-sm">
                                 <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                                 <div class="card-body">
                                     <div class="card-title">
@@ -307,7 +307,7 @@
         <?php foreach ($kategori as $k) : ?>
             <div class="col-4 col-md-4 col-lg-2">
                 <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                    <div class="card text-bg-light mb-3 bg-white border-0 shadow">
+                    <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
                         <div class="card-body">
                             <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" width="60px" alt="" class="card-img-top">
                         </div>
@@ -315,7 +315,6 @@
                 </a>
             </div>
         <?php endforeach; ?>
-
     </div>
     <div class="row pb-5">
         <div class="col"></div>
