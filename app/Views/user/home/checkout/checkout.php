@@ -92,7 +92,7 @@
                         </tr>
                         <tr>
                             <td>Potongan Harga (Kupon)</td>
-                            <t"><span id="diskon"></span></td>
+                            <td><span id="diskon"></span></td>
                         </tr>
                         <tr>
                             <td>Total Ongkos Kirim</td>
