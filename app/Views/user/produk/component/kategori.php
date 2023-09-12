@@ -6,7 +6,7 @@
                     <div class="swiper-wrapper">
                         <?php foreach ($kategori as $k) : ?>
                             <div class="swiper-slide mx-5">
-                                <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded " style="width: auto;">
+                                <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded " style="width: 200px;">
                                     <?= $k['nama_kategori']; ?>
                                 </a>
                             </div>
