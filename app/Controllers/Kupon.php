@@ -10,6 +10,17 @@ class Kupon extends ResourceController
 {
     use ResponseTrait;
 
+    public function kupon()
+    {
+        $kupon_model = new KuponModel();
+        $kupon_list = $kupon_model->findAll();
+        $data = [
+            'title' => 'Kupon Promosi Ssayomart',
+            'kupon_model' => $kupon_list,
+        ];
+        return view('user/home/kupon/kupon', $data);
+    }
+
     public function index()
     {
         $model = new KuponModel();

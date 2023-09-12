@@ -72,13 +72,10 @@
         </div>
     </div>
     <div class="row fixed-bottom p-3 px-4">
-        <div class="col">
+        <div class="col-12 d-flex justify-content-center">
             <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Simpan Data</button>
         </div>
     </div>
 </form>
-<div class="row py-5">
-    <div class="col"></div>
-</div>
 
 <?= $this->endSection(); ?>

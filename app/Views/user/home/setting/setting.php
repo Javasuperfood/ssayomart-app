@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i></div>
                     <div class="col-9 text-secondary fs-6">Mohon maaf area anda belum terjangkau oleh pelayanan kami.</div>
-                    <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0">Kirim saran</a></div>
+                    <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0 text-dark">Kirim saran</a></div>
                 </div>
             </div>
         </div>
@@ -29,14 +29,15 @@
         <div class="col">
             <div class="card text-bg-light mb-3 shadow border-0 rounded">
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-3"><img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img"></div>
-                        <div class="col">
-                            <h5 class="card-title">TERSEDIA KUPON DISKON!!</h5>
-                            <p class="card-text">Untuk kamu pengguna baru</p>
+                    <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
+                        <div class="row">
+                            <div class="col-3"><img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img"></div>
+                            <div class="col">
+                                <h5 class="card-title text-dark">TERSEDIA KUPON DISKON!!</h5>
+                                <p class="card-text text-secondary">Untuk kamu pengguna baru</p>
+                            </div>
                         </div>
-                    </div>
-
+                    </a>
                 </div>
             </div>
         </div>
@@ -50,9 +51,6 @@
                 </a>
                 <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-heart pe-2 text-secondary"></i> Favorit <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                </a>
-                <a href="<?= base_url(); ?>setting/pembayaran" class="list-group-item pb-3 fw-bold">
-                    <i class="bi bi-credit-card-2-back pe-2 text-secondary"></i> Pembayaran <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                 </a>
                 <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                     <i class="bi bi-cursor pe-2 text-secondary"></i> Alamat tersimpan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
