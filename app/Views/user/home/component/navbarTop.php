@@ -19,21 +19,22 @@
     </div>
 </div>
 <!-- END OF NAVBAR -->
+
 <!-- navbar Website -->
 <div class="container mb-5 d-none d-md-block">
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
         <div class="container-fluid">
-            <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="" class="image-fluid">
+            <img src="<?= base_url() ?>assets/img/logopanjang.png" width="150" height="50" alt="" class="image-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item ">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="<?= base_url() ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Product</a>
+                        <a class="nav-link" href="#">Produk</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Kategori</a>
