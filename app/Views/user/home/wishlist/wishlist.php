@@ -15,7 +15,7 @@
                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
-                        <p class="card-title">Rp. <?= number_format($p['harga'], 2, ',', '.'); ?></p>
+                        <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
                         <p class="card-text text-secondary"><?= $p['nama']; ?></p>
                         <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
                         <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
