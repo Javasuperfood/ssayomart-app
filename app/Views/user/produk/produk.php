@@ -250,7 +250,7 @@
         <div class="row mt-3">
             <h2 class="text-merah"> Product Terbaru </h2>
             <div class="col-6 col-md-4 col-lg-2 mb-3">
-                <div class="card">
+                <div class="card border-0 shadow-sm">
                     <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
                     <div class="card-body">
                         <div class="card-title">
