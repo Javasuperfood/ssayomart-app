@@ -93,6 +93,9 @@
 
 
 
+
+
+
     <!-- swiper card tampilan web -->
     <div class="d-none d-lg-block">
         <div class="row mt-3">
@@ -315,6 +318,7 @@
         });
     });
 </script>
+
 <?= $this->include('user/component/scriptAddToCart'); ?>
 <?= $this->include('user/component/scriptAddToWishlist'); ?>
 <?= $this->endSection(); ?>
