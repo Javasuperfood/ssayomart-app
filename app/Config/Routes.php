@@ -67,7 +67,8 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->get('/kupon', 'Kupon::kupon');
 
 
-    $routes->get('/status/(:any)', 'UserStatusController::status/$1');
+    $routes->get('/status', 'UserStatusController::status');
+    $routes->get('/bayar/(:any)', 'CheckoutController::bayarINV/$1');
 });
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {

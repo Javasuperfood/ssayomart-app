@@ -7,14 +7,17 @@ use App\Models\UsersModel;
 
 class UserStatusController extends BaseController
 {
-    public function status($slug)
+    public function status()
     {
         $statusModel = new StatusPesanModel();
         $userModel = new UsersModel();
-        $userSatus = $userModel->getStatus($slug);
+        $order_id = $this->request->getGet('order_id');
+        $status_code = $this->request->getGet('status_code');
+        $transaction_status = $this->request->getGet('transaction_status');
+        $userSatus = $userModel->getStatus($order_id);
 
         $status = $statusModel->findAll();
-        $cekProduk = $userModel->getTransaksi($slug);
+        $cekProduk = $userModel->getTransaksi($order_id);
 
 
         $data = [
