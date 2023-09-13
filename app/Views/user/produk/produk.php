@@ -321,4 +321,5 @@
 
 <?= $this->include('user/component/scriptAddToCart'); ?>
 <?= $this->include('user/component/scriptAddToWishlist'); ?>
+<?= $this->include('user/home/component/navbarBottom') ?>
 <?= $this->endSection(); ?>

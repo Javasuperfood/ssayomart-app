@@ -9,7 +9,10 @@
 <?= $this->include('user/produk/component/subkategori') ?>
 <!-- Card -->
 <?= $this->include('user/produk/component/card') ?>
-
+<!-- fotter -->
+<div id="navbarBottom" style="position: fixed; bottom: 0; width: 100%;">
+    <?= $this->include('user/home/component/navbarBottom') ?>
+</div>
 
 
 
