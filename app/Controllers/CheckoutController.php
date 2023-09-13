@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\KategoriModel;
 use App\Models\AlamatUserModel;
 use App\Models\CartModel;
 use App\Models\CartProdukModel;
@@ -60,7 +61,7 @@ class CheckoutController extends BaseController
     }
     public function checkout($id)
     {
-
+        $kategori = new KategoriModel();
         $checkoutModel = new CheckoutModel();
         $alamatModel = new AlamatUserModel();
         $kuponModel = new KuponModel();
@@ -100,7 +101,8 @@ class CheckoutController extends BaseController
             'produk' => $cekProduk,
             'id' => $id,
             'total' => $totalAkhir,
-            'kupon' => $kuponList
+            'kupon' => $kuponList,
+            'kategori' => $kategori->findAll()
         ];
         // dd($data);
 

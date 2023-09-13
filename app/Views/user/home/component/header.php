@@ -11,3 +11,8 @@
     }
 </style>
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
+
+<!-- Link ke Popper.js (sesuaikan versi jika diperlukan) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.1/umd/popper.min.js"></script>
+<!-- Link ke jQuery (diperlukan untuk Bootstrap) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

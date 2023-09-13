@@ -5,12 +5,14 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\WishlistModel;
 use App\Models\WishlistProdukModel;
+use App\Models\KategoriModel;
 
 class WishlistController extends BaseController
 {
     public function index(): string
     {
         $wishlistModel = new WishlistModel();
+        $kategori = new KategoriModel();
 
         $wishlistProdModel = new WishlistProdukModel();
         $cekWishlist = $wishlistModel->where(['id_user' => user_id()])->first();
@@ -24,6 +26,7 @@ class WishlistController extends BaseController
         $data = [
             'title'     => 'Wishlist',
             'produk' => $cekWishlistProduk,
+            'kategori' => $kategori->findAll(),
             'back' => ''
         ];
         return view('user/home/wishlist/wishlist', $data);

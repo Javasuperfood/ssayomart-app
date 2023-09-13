@@ -1,7 +1,5 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
-
-
 <!-- ITEM WISHLIST -->
 <div class="container pt-1  d-md-none">
     <div class="row text-center">
@@ -29,9 +27,7 @@
             </div>
         </div>
     </div>
-
     <div class="row text-center row-cols-2">
-
         <?php foreach ($produk as $p) : ?>
             <div class="col">
                 <div class="card my-2 border-0 shadow" style="width: auto;">
@@ -55,8 +51,6 @@
                 </div>
             </div>
         <?php endforeach; ?>
-
-
     </div>
     <div class="row p-3 px-4">
         <div class="col">

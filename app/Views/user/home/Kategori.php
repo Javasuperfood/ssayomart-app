@@ -3,8 +3,6 @@
 <?= $this->include('user/home/component/navbarTop') ?>
 <?= $this->include('user/home/component/slider') ?>
 
-
-
 <!-- ITEM -->
 <div class="container py-3 d-none d-lg-block d-md-block">
     <h2>Spesial di Ssayomart</h2>
@@ -315,9 +313,6 @@
                 </a>
             </div>
         <?php endforeach; ?>
-    </div>
-    <div class="row pb-5">
-        <div class="col"></div>
     </div>
 </div>
 

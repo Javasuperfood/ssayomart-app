@@ -10,7 +10,7 @@
             <div class="col">
                 <div class="swiper button-swiper">
                     <div class="swiper-wrapper">
-                        <?php foreach ($kategori as $k) : ?>
+                        <?php foreach ($kategori_promo as $k) : ?>
                             <div class="swiper-slide">
                                 <a href="<?= base_url('promo/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded">
                                     <?= $k['title']; ?>
