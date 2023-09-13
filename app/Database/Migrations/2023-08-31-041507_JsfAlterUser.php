@@ -20,7 +20,8 @@ class AlterUser extends Migration
                 'type' => 'varchar',
                 'constraint' => '225',
                 'null' => true,
-                'after' => 'fullname'
+                'after' => 'fullname',
+                'default' => 'default.png'
             ],
             'telp' => [
                 'type' => 'varchar',
