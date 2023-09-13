@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\KuponModel;
+use App\Models\KategoriModel;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
+
 
 class Kupon extends ResourceController
 {
@@ -12,11 +14,14 @@ class Kupon extends ResourceController
 
     public function kupon()
     {
+        $kategori = new KategoriModel();
         $kupon_model = new KuponModel();
         $kupon_list = $kupon_model->findAll();
         $data = [
             'title' => 'Kupon Promosi Ssayomart',
             'kupon_model' => $kupon_list,
+            'kategori' => $kategori->findAll(),
+
         ];
         return view('user/home/kupon/kupon', $data);
     }

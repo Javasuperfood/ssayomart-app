@@ -6,6 +6,7 @@ use App\Models\UsersModel;
 use App\Models\AlamatUserModel;
 use App\Controllers\BaseController;
 use App\Models\AuthIdentitesModel;
+use App\Models\KategoriModel;
 
 class Setting extends BaseController
 {
@@ -34,6 +35,7 @@ class Setting extends BaseController
     // USER DETAIL
     public function detailUser($id): string
     {
+        $kategori = new KategoriModel();
         $usersModel = new UsersModel();
         $authIdentitesModel = new AuthIdentitesModel();
         $query = $usersModel->select('users.username, users.fullname, users.telp, auth_identities.secret')
@@ -46,6 +48,7 @@ class Setting extends BaseController
             'title' => 'Detail User',
             'detail' => $usersModel,
             'du' => $du[0],
+            'kategori' => $kategori->findAll(),
             'results' => $query->getResult()
         ];
         return view('user/home/setting/detailUser', $data);
@@ -96,10 +99,12 @@ class Setting extends BaseController
     public function alamatList(): string
     {
         $alamat_user_model = new AlamatUserModel();
+        $kategori = new KategoriModel();
         $alamat_list = $alamat_user_model->where('id_user', user_id())->findAll();
         $data = [
             'title' => 'Alamat',
             'alamat_user_model' => $alamat_list,
+            'kategori' => $kategori->findAll(),
             'back'  => 'setting'
         ];
         // dd($data);
@@ -108,10 +113,12 @@ class Setting extends BaseController
     public function createAlamat(): string
     {
         session();
+        $kategori = new KategoriModel();
         $provinsi = $this->rajaongkir('province');
         $data = [
             'title'     => 'Tambah Alamat Baru',
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
+            'kategori' => $kategori->findAll(),
         ];
         return view('user/home/setting/createAlamat', $data);
     }
