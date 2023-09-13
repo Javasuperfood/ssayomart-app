@@ -16,7 +16,8 @@ class HistoryTransaksiController extends BaseController
         $data = [
             'title' => 'History',
             'name' => 'Kiki',
-            'transaksi' =>  $cekTransaksi
+            'transaksi' =>  $cekTransaksi,
+            'back' => ''
         ];
         // dd($data);
         return view('user/home/history/history', $data);

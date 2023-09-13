@@ -108,6 +108,7 @@ class CheckoutController extends BaseController
     }
     public function bayar($id)
     {
+        // dd($this->request->getVar());
         $midtransConfig = config('Midtrans');
 
         // Set the Midtrans API credentials
@@ -120,36 +121,59 @@ class CheckoutController extends BaseController
         // Set 3DS transaction for credit card to true
         MidtransConfig::$is3ds = $midtransConfig->is3ds;
 
-        $kode = $this->request->getVar('kupon');
-        $total_1 = $this->request->getVar('total');
-        $total_2 = $total_1;
-        $kupon = [
-            'discount' => '',
-            'kupon' => ''
-        ];
-        if ($kode != '') {
-            $kuponModel = new KuponModel();
-            $cekKupon = $kuponModel->getKupon($kode);
-            $total_2 = floatval($total_1);
-            $discount = floatval($cekKupon['discount']);
-            $total_2 = $total_2 - ($total_2 * $discount);
-            $kupon = [
-                'discount' => $cekKupon['discount'],
-                'kupon' => $cekKupon['kode']
-            ];
-        }
         $checkoutProdModel = new CheckoutProdukModel();
         $checkoutModel = new CheckoutModel();
         $checkout = $checkoutModel->where('id_checkout', $id)->first();
+
         $cekProduk = $checkoutProdModel
             ->select('jsf_produk.id_produk as id, jsf_produk.harga as price, jsf_checkout_produk.qty as quantity, jsf_produk.nama as name')
             ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
             ->where('id_checkout', $id)
             ->findAll();
 
-        // Set your Merchant Server Key
 
+        $biayaAplikasi = 1000;
+        $service = $this->request->getVar('service');
+        $servicetext = $this->request->getVar('serviceText');
+        $kode = $this->request->getVar('kupon');
+        $total_1 = $checkout['total_1'];
+        $total_2 = $total_1;
+        $kupon = [
+            'discount' => '',
+            'kupon' => ''
+        ];
 
+        if ($kode != '') {
+            $kuponModel = new KuponModel();
+            $cekKupon = $kuponModel->getKupon($kode);
+            $total_2 = floatval($total_1);
+            $discount = floatval($cekKupon['discount']);
+            $total_2 = $total_2 - ($total_2 * $discount);
+            $getDiscount = floatval($total_1) - $total_2;
+            $total_2 = $service + $total_2 + $biayaAplikasi;
+            $kupon = [
+                'discount' => $cekKupon['discount'],
+                'kupon' => $cekKupon['kode']
+            ];
+            $cekProduk[] = [
+                'id' => 'Diskon',
+                'price' => -$getDiscount,
+                'quantity' => 1,
+                'name' => 'Diskon',
+            ];
+        }
+        $cekProduk[] = [
+            'id' => 'Service',
+            'price' => $service,
+            'quantity' => 1,
+            'name' => $servicetext,
+        ];
+        $cekProduk[] = [
+            'id' => 'Biaya Apliaksi',
+            'price' => $biayaAplikasi,
+            'quantity' => 1,
+            'name' => 'Biaya Admin',
+        ];
         $alamatUserModel = new AlamatUserModel();
         $checkoutModel = new CheckoutModel();
 
@@ -159,38 +183,44 @@ class CheckoutController extends BaseController
         $kirim = 'Penerima : ' . $alamat['penerima'] . '<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br>' . $alamat['zip_code'] . '<br>' . 'Telp : ' . $alamat['telp'];
 
 
+
         $params = [
             'transaction_details' => [
                 'order_id' => $checkout['invoice'],
                 'gross_amount' => $total_2,
             ],
-            'customer_details' => [
-                'first_name' => 'budi',
-                'last_name' => 'pratama',
-                'email' => 'budi.pra@example.com',
-                'phone' => '08111222333',
+            "payment_amounts" => [
+                [
+                    "amount" =>  $total_2,
+                ]
             ],
-            "item_details" => $cekProduk,
+            'customer_details' => [
+                'first_name' => $alamat['penerima'],
+                'last_name' => '',
+                'email' => 'budi.pra@example.com',
+                'phone' => $alamat['telp'],
+            ],
             "billing_address" => [
-                "first_name" => "Budi",
-                "last_name" => "Susanto",
+                "first_name" => $alamat['penerima'],
+                "last_name" => "",
                 "email" => "budisusanto@example.com",
                 "phone" => $alamat['telp'],
-                "address" =>  $kirim,
+                "address" =>  $alamat['alamat_1'],
                 "city" => $alamat['city'],
                 "postal_code" => $alamat['zip_code'],
                 "country_code" => "IDN"
             ],
             "shipping_address" => [
-                "first_name" => "Budi",
-                "last_name" => "Susanto",
+                "first_name" => $alamat['penerima'],
+                "last_name" => "",
                 "email" => "budisusanto@example.com",
                 "phone" => $alamat['telp'],
-                "address" =>  $kirim,
+                "address" =>   $alamat['alamat_1'],
                 "city" => $alamat['city'],
                 "postal_code" => $alamat['zip_code'],
                 "country_code" => "IDN"
-            ]
+            ],
+            "item_details" => $cekProduk,
         ];
         // dd($params);
         $snapToken = \Midtrans\Snap::getSnapToken($params);
@@ -199,8 +229,8 @@ class CheckoutController extends BaseController
             'id_checkout' => $id,
             'total_1' => $total_1,
             'total_2' => $total_2,
-            'service' => $this->request->getVar('serviceText'),
-            'harga_service' => $this->request->getVar('service'),
+            'service' => $service,
+            'harga_service' => $servicetext,
             'kurir' => strtoupper($this->request->getVar('kurir')),
             'kirim' => $kirim,
             'city' => $alamat['city'],
