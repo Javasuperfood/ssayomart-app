@@ -30,7 +30,7 @@
     <div class="row text-center row-cols-2">
         <?php foreach ($produk as $p) : ?>
             <div class="col">
-                <div class="card my-2 border-0 shadow" style="width: auto;">
+                <div class="card my-2 border-0 shadow-sm" style="width: auto;">
                     <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                     </a>
@@ -71,7 +71,7 @@
                 <!-- left side div -->
                 <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5">
                     <?php foreach ($produk as $p) : ?>
-                        <div class="card border-0 shadow-sm bg-white p-5">
+                        <div class="card border-0 shadow-sm bg-white p-5 mb-5">
                             <div class="row">
                                 <!-- cart images div -->
                                 <div class="col-md-5 col-11 mx-auto d-flex justify-content-center align-items-center product_img rounded-circle" style="background-color: #fff7c4;">
@@ -81,38 +81,31 @@
                                 <div class="col-md-7 col-11 mx-auto px-4 mt-2">
                                     <div class="row">
                                         <!-- product name  -->
-                                        <div class="col-6 card-title">
+                                        <div class="col-8 card-title">
                                             <h4 class="mb-4 product_name"><?= substr($p['nama'], 0, 40); ?> ...</h4>
                                             <p class="mb-2"><?= substr($p['deskripsi'], 0, 80); ?>...</p>
                                         </div>
                                         <!-- quantity inc dec -->
-                                        <div class="col-6">
-                                            <ul class="pagination justify-content-end set_quantity">
-                                                <div class="input-group">
-                                                    <button class="btn btn-outline-danger" type="button" onclick="decreaseNumber('textbox','itemval')">
-                                                        <i class="bi bi-dash"></i>
-                                                    </button>
-                                                    <input type="text" name="" class="form-control text-center bg-white border-0" value="0" id="textbox">
-                                                    <button class="btn btn-outline-danger" type="button" onclick="increaseNumber('textbox','itemval')">
-                                                        <i class="bi bi-plus"></i>
-                                                    </button>
-                                                </div>
-                                                </li>
-                                            </ul>
+                                        <div class="col-4">
+                                            <div class="input-group mb-3 d-flex justify-content-center">
+                                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                                <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
+                                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- //remover move and price -->
                                     <div class="row">
-                                        <div class="col-8 d-flex justify-content-between remove_wish">
-                                            <div class="col-8 d-flex justify-content-end price_money">
+                                        <div class="col-8 d-flex justify-content-between">
+                                            <div class="col-8 d-flex justify-content-end">
                                                 <h5>Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h5>
                                             </div>
                                         </div>
                                     </div>
                                     <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>
-                                        <div class="d-flex justify-content-end">
-                                            <button type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
+                                        <div class="d-flex position-absolute bottom-0 end-0 py-4 px-4">
+                                            <button type=" submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
                                         </div>
                                     </form>
                                 </div>
@@ -124,10 +117,12 @@
                 <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
                     <div class="right_side p-3 shadow-sm bg-white">
                         <h4 class="mb-5">Total Pembayaran Produk</h4>
-                        <div class="price_indiv d-flex justify-content-between">
-                            <p>Harga Barang</p>
-                            <p>Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></span></p>
-                        </div>
+                        <?php foreach ($produk as $p) : ?>
+                            <div class="d-flex justify-content-between">
+                                <p><?= $p['nama']; ?></p>
+                                <p>Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></span></p>
+                            </div>
+                        <?php endforeach; ?>
                         <hr />
                         <div class="total-amt d-flex justify-content-between font-weight-bold">
                             <p>Total Harga</p>
@@ -144,63 +139,6 @@
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript -->
-    <!-- Popper.js first, then Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        var product_total_amt = document.getElementById('product_total_amt');
-        var shipping_charge = document.getElementById('shipping_charge');
-        var total_cart_amt = document.getElementById('total_cart_amt');
-        var discountCode = document.getElementById('discount_code1');
-        const decreaseNumber = (incdec, itemprice) => {
-            var itemval = document.getElementById(incdec);
-            var itemprice = document.getElementById(itemprice);
-            console.log(itemprice.innerHTML);
-            // console.log(itemval.value);
-            if (itemval.value <= 0) {
-                itemval.value = 0;
-                alert('Negative quantity not allowed');
-            } else {
-                itemval.value = parseInt(itemval.value) - 1;
-                itemval.style.background = '#fff';
-                itemval.style.color = '#000';
-                itemprice.innerHTML = parseInt(itemprice.innerHTML) - 15;
-                product_total_amt.innerHTML = parseInt(product_total_amt.innerHTML) - 15;
-                total_cart_amt.innerHTML = parseInt(product_total_amt.innerHTML) + parseInt(shipping_charge.innerHTML);
-            }
-        }
-        const increaseNumber = (incdec, itemprice) => {
-            var itemval = document.getElementById(incdec);
-            var itemprice = document.getElementById(itemprice);
-            // console.log(itemval.value);
-            if (itemval.value >= 1000) {
-                itemval.value = 1000;
-                alert('max 1000 allowed');
-                itemval.style.background = 'red';
-                itemval.style.color = '#fff';
-            } else {
-                itemval.value = parseInt(itemval.value) + 1;
-                itemprice.innerHTML = parseInt(itemprice.innerHTML) + 15;
-                product_total_amt.innerHTML = parseInt(product_total_amt.innerHTML) + 15;
-                total_cart_amt.innerHTML = parseInt(product_total_amt.innerHTML) + parseInt(shipping_charge.innerHTML);
-            }
-        }
-
-        const discount_code = () => {
-            let totalamtcurr = parseInt(total_cart_amt.innerHTML);
-            let error_trw = document.getElementById('error_trw');
-            if (discountCode.value === 'Kunyuk') {
-                let newtotalamt = totalamtcurr - 15;
-                total_cart_amt.innerHTML = newtotalamt;
-                error_trw.innerHTML = "Hurray! code is valid";
-            } else {
-                error_trw.innerHTML = "Try Again! Valid code is thapa";
-            }
-        }
-    </script>
-
 </div>
 <!-- end -->
 <script type="text/javascript">
