@@ -5,12 +5,14 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ProdukModel;
 use App\Models\PromoItemModel;
+use App\Models\KategoriModel;
 use App\Models\PromoModel;
 
 class UserPromoController extends BaseController
 {
     public function index($slug)
     {
+        $kategori = new KategoriModel();
         $promoItemModel = new PromoItemModel();
         $promoModel = new PromoModel();
         $now = date('Y-m-d H:i:s');
@@ -42,7 +44,8 @@ class UserPromoController extends BaseController
         $data = [
             'title' => $title,
             'produk' => $promoItem,
-            'kategori' => $promo,
+            'kategori_promo' => $promo,
+            'kategori' => $kategori->findAll(),
             'back' => ''
         ];
 

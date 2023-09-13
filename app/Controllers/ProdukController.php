@@ -51,10 +51,12 @@ class ProdukController extends BaseController
     }
     public function produkShowSingle($slug)
     {
+        $kategori = new KategoriModel();
         $produk = new ProdukModel();
         $single = $produk->getProduk($slug);
         $data = [
             'title' => $single['nama'],
+            'kategori' => $kategori->findAll(),
             'produk' => $single
         ];
         // dd($data);

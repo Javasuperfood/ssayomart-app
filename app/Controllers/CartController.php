@@ -7,13 +7,14 @@ use App\Models\CartModel;
 use App\Models\CartProdukModel;
 use App\Models\ProdukModel;
 use PhpParser\Node\Expr\FuncCall;
+use App\Models\KategoriModel;
 
 class CartController extends BaseController
 {
     public function cart(): string
     {
         $cartModel = new CartModel();
-
+        $kategori = new KategoriModel();
         $cartProdModel = new CartProdukModel();
         $cekCart = $cartModel->where(['id_user' => user_id()])->first();
 
@@ -37,6 +38,7 @@ class CartController extends BaseController
             'title'     => 'Keranjang',
             'produk' => $cekCartProduk,
             'total' => $totalAkhir,
+            'kategori' => $kategori->findAll(),
             'back' => ''
         ];
         return view('user/home/cart/cart', $data);

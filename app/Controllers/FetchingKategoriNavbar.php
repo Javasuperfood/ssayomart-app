@@ -20,7 +20,6 @@ class FetchingKategoriNavbar extends BaseController
         $kategoriModel = new KategoriModel();
 
         $data['kategori'] = $kategoriModel->findAll();
-        dd($data);
 
         return view('user/home/component/navbarMain', $data);
     }
