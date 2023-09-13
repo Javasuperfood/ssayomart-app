@@ -83,6 +83,7 @@
         $("#ongkirText").html(formatRupiah(ongkir));
         $("#estimasi").html(estimasi + " Hari");
         $("#total").val(total);
+        $("#field_subtotal").val(ongkir + total + jasaApp);
         $("#serviceText").val($("#service option:selected").text());
         $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
         $('.btn-bayar').show();
@@ -125,6 +126,7 @@
         $("#diskon").text("-" + formatRupiah(diskon));
         totalHarga -= diskon;
         $("#totalText").text(formatRupiah(ongkir + totalHarga + jasaApp));
+        $("#field_subtotal").val(ongkir + total + jasaApp);
     }
 
     $(document).ready(function() {

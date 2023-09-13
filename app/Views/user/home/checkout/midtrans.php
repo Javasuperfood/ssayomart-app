@@ -1,9 +1,7 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- @TODO: replace SET_YOUR_CLIENT_KEY_HERE with your client key -->
 <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?= $key; ?>"></script>
-<!-- Note: replace with src="https://app.midtrans.com/snap/snap.js" for Production environment -->
 </head>
 
 <div class="row p-3 px-4 fixed-bottom">
@@ -15,7 +13,32 @@
             onSuccess: function(result) {
                 /* You may add your own implementation here */
                 alert("payment success!");
+                console.log('--------------------------------')
                 console.log(result);
+                console.log('--------------------------------')
+                var qty = $("#qty").val();
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('bayar/' . $item['snap_token']); ?>",
+                    dataType: "json",
+                    data: {
+                        result: result
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Pembayaran berhasil',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                text: response.message,
+                            })
+                        }
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
             },
             onPending: function(result) {
                 /* You may add your own implementation here */
