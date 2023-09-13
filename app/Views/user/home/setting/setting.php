@@ -1,5 +1,6 @@
 <?= $this->extend('user/home/layout') ?>
 <?= $this->section('page-content') ?>
+<?= $this->include('user/home/component/navbarMain') ?>
 <!-- Tampilan mobile & ipad -->
 <div class="container d-md-blok d-lg-none d-xl-none">
     <div class="row">
@@ -83,21 +84,20 @@
 <!-- end mobile&ipad -->
 
 <!-- Tampilan Desktop -->
-<section style="background-color: #eee;">
+<section>
     <div class="container py-5 d-none d-lg-block">
         <div class="row">
             <div class="col-lg-4">
-                <div class="card mb-4">
+                <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body text-center" style="height: 325px;">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid mb-3" style="width: 150px;">
                         <h3 class="fw-bold  fs-5">Selamat datang, <?= $user['username']; ?></h3>
                         <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
                     </div>
                 </div>
-
             </div>
             <div class="col-lg-8">
-                <div class="card mb-4">
+                <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -130,11 +130,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class=" row">
                     <div class="col-md-6">
-                        <div class="card mb-4 mb-md-0">
+                        <div class="card border-0 shadow-sm mb-4 mb-md-0">
                             <div class="card-body">
-                                <h3 class="mb-4 text-bold">Pengaturan
+                                <h3>Pengaturan
                                 </h3>
                                 <ul class="list-group list-group-flush">
                                     <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
@@ -146,16 +146,21 @@
                                     <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                                         <i class="bi bi-cursor pe-2 text-secondary"></i> Alamat tersimpan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                     </a>
+                                    <a href="<?= base_url(); ?>logout" class="list-group-item pb-3 fw-bold">
+                                        <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> Logout <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                    </a>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card mb-4 mb-md-0">
+                        <div class="card border-0 shadow-sm mb-4 mb-md-0">
                             <div class="card-body">
-
                                 <h3>Bantuan</h3>
                                 <ul class="list-group list-group-flush">
+                                    <a href="<?= base_url(); ?>history" class="list-group-item pb-3 fw-bold">
+                                        <i class="bi bi-clock-history pe-2 text-secondary"></i> Riwayat Pembelian <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                    </a>
                                     <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                                         <i class="bi bi-question-circle pe-2 text-secondary"></i> Tentang Ssayomart <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                     </a>
@@ -165,11 +170,7 @@
                                     <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                                         <i class="bi bi-lock pe-2 text-secondary"></i> Kebijakan Privasi <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                     </a>
-                                    <a href="<?= base_url(); ?>logout" class="list-group-item pb-3 fw-bold">
-                                        <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> Logout <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                    </a>
                                 </ul>
-
                             </div>
                         </div>
                     </div>

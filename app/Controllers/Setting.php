@@ -20,6 +20,7 @@ class Setting extends BaseController
     public function setting(): string
     {
         $userModel = new UsersModel();
+        $kategori = new KategoriModel();
         $alamatUserModel = new AlamatUserModel();
         $user = $userModel->where('id', user_id())->find();
         $firstLable = $alamatUserModel->where('id_user', user_id())->first();
@@ -27,6 +28,7 @@ class Setting extends BaseController
             'title' => 'Setting',
             'user' => $user[0],
             'saldo' => 2000000,
+            'kategori' => $kategori->findAll(),
             'alamat' => $firstLable
         ];
         // dd($data);
