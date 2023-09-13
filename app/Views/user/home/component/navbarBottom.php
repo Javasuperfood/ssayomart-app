@@ -27,9 +27,7 @@
             <div class="row">
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">
-                        PT ANEKA DASUIB JAYA
-                    </h6>
+                    <img src="<?= base_url() ?>assets/img/logopanjang.png" alt="Logo Ssayomart" height="80" width="250">
                     <p>
                         Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139
                     </p>
@@ -40,54 +38,54 @@
 
                 <!-- Grid column -->
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Menu</h6>
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Other</h6>
                     <p>
-                        <a class="text-white">HOME</a>
+                        <a href="<?= base_url() ?>" class="text-white link-offset-2 link-underline link-underline-opacity-0">Home</a>
                     </p>
                     <p>
-                        <a class="text-white">Kategori</a>
+                        <a href="https://download.ssayomart.com" class="text-white link-offset-2 link-underline link-underline-opacity-0">Download APK</a>
                     </p>
                     <p>
-                        <a class="text-white">Download APK</a>
+                        <a href="<?= base_url() ?>cart" class="text-white link-offset-2 link-underline link-underline-opacity-0">Cart</a>
+                    </p>
+                    <p>
+                        <a href="<?= base_url() ?>wishlist" class="text-white link-offset-2 link-underline link-underline-opacity-0">Wishlist</a>
+                    </p>
+                    <p>
+                        <a href="<?= base_url() ?>kupon" class="text-white link-offset-2 link-underline link-underline-opacity-0">Kupon Promosi</a>
                     </p>
                 </div>
                 <!-- Grid column -->
-
                 <hr class="w-100 clearfix d-md-none" />
 
                 <!-- Grid column -->
                 <hr class="w-100 clearfix d-md-none" />
 
                 <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
-                    <p><i class="bi bi-house-door"></i>Jalan</p>
-                    <p><i class="bi bi-envelope"></i>mail</p>
-                    <p><i class="bi bi-telephone"></i>telepon</p>
-                    <p><i class="bi bi-printer"></i>fax</p>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Setting</h6>
+                    <p>
+                        <a href="<?= base_url() ?>" class="text-white link-offset-2 link-underline link-underline-opacity-0">Setting Akun</a>
+                    </p>
+                    <p>
+                        <a href="<?= base_url() ?>setting/alamat-list" class="text-white link-offset-2 link-underline link-underline-opacity-0">Alamat Tersimpan</a>
+                    </p>
                 </div>
                 <!-- Grid column -->
 
                 <!-- Grid column -->
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
-
                     <!-- Facebook -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i class="bi bi-facebook"></i></a>
-
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#" role="button"><i class="bi bi-facebook"></i></a>
                     <!-- Twitter -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i class="bi bi-twitter"></i></a>
-
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#" role="button"><i class="bi bi-twitter"></i></a>
                     <!-- Google -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #000000" href="#!" role="button"><i class="bi bi-tiktok"></i></a>
-
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #000000" href="#" role="button"><i class="bi bi-tiktok"></i></a>
                     <!-- Instagram -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i class="bi bi-instagram"></i></a>
-
-                    <!-- Linkedin -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i class="bi bi-envelope-at"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#" role="button"><i class="bi bi-instagram"></i></a>
                     <!-- Github -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color:  #008000" href="#!" role="button"><i class="bi bi-whatsapp"></i></a>
+                    <a class="btn btn-primary btn-floating m-1" style="background-color:  #008000" href="#" role="button"><i class="bi bi-whatsapp"></i></a>
                 </div>
             </div>
             <!--Grid row-->
