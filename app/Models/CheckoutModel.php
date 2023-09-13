@@ -27,7 +27,11 @@ class CheckoutModel extends Model
         'discount',
         'total_1',
         'total_2',
-        'invoice'
+        'invoice',
+        'zip_code',
+        'telp',
+        'snap_token',
+        'city'
     ];
 
     // Dates

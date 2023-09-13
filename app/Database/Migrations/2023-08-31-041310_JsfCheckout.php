@@ -40,6 +40,21 @@ class JsfCheckout extends Migration
                 'type' => 'text',
                 'null' => true
             ],
+            'city' => [
+                'type' => 'varchar',
+                'constraint' => '225',
+                'null' => true
+            ],
+            'zip_code' => [
+                'type' => 'varchar',
+                'constraint' => '20',
+                'null' => true
+            ],
+            'telp' => [
+                'type' => 'varchar',
+                'constraint' => '20',
+                'null' => true
+            ],
             'kurir' => [
                 'type' => 'text',
                 'null' => true
@@ -52,22 +67,12 @@ class JsfCheckout extends Migration
                 'type' => 'text',
                 'null' => true
             ],
-            'catatan' => [
-                'type'           => 'varchar',
-                'constraint'     => '225',
-                'null' => true
-            ],
             'kupon' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',
                 'null'           => true,
             ],
             'discount' => [
-                'type'           => 'varchar',
-                'constraint'     => '225',
-                'null'           => true,
-            ],
-            'kupon' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',
                 'null'           => true,
@@ -79,6 +84,11 @@ class JsfCheckout extends Migration
             'total_2' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',
+            ],
+            'snap_token' => [
+                'type'           => 'varchar',
+                'constraint'     => '225',
+                'null'           => true,
             ],
             'created_at' => [
                 'type'          => 'timestamp',
