@@ -116,6 +116,11 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kupon/kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
     $routes->get('kupon/kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
     $routes->post('kupon/kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
+
+
+    $routes->get('marketplace', 'AdminMarketplaceController::index');
+    $routes->get('marketplace/create', 'AdminMarketplaceController::create');
+    $routes->post('marketplace/create', 'AdminMarketplaceController::store');
 });
 
 service('auth')->routes($routes);

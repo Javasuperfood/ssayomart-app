@@ -110,6 +110,13 @@
             <span>Kupon</span></a>
     </li>
 
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/marketplace">
+            <i class="bi bi-shop"></i>
+            <span>Market</span></a>
+    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 <?php endif; ?>
