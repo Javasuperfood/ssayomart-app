@@ -1,7 +1,6 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
-<!-- ITEM WISHLIST -->
 <div class="container pt-5">
     <form action="<?= base_url('checkout/' . $id . '/bayar'); ?>" method="post">
         <?= csrf_field(); ?>
@@ -109,7 +108,6 @@
                     </tbody>
                 </table>
             </div>
-            <input type="hidden" name="total" id="field_subtotal">
             <div class="row p-3 px-4">
                 <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
             </div>
@@ -117,7 +115,6 @@
     </form>
 </div>
 <div class="pb-5"></div>
-<!-- END OF WISHLIST -->
 
 <script>
     $('document').ready(function() {

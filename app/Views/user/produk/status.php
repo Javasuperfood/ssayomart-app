@@ -66,7 +66,8 @@
                                     <span class="list-group-item pb-3 border-0">
                                         <span class="fw-bold"><?= $status->kurir; ?>
                                         </span>
-                                        <p class="text-secondary"><?= $status->service; ?>
+                                        <p class="text-secondary">
+                                            Rp. <?= number_format($status->service, 2, ',', '.'); ?>
                                         </p>
                                         <p class="card-text text-secondary"><?= $status->kirim; ?></p>
                                     </span>
@@ -84,27 +85,29 @@
                     <h2>Pesanan kamu</h2>
                     <div class="row">
                         <div class="col-10">
-                            <p><?= substr($status->invoice, 0, 20); ?>...</p>
+                            <p><?= $status->invoice; ?></p>
                         </div>
                         <div class="col-2">
                             <i class="bi bi-clipboard text-danger"></i>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-10">
-                            <p><?= substr("VA607088211328525", 0, 20); ?>...</p>
+                    <?php if (isset($paymentStatus->va_numbers[0])) : ?>
+                        <div class="row">
+                            <div class="col-10">
+                                <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
+                            </div>
+                            <div class="col-2">
+                                <i class="bi bi-files text-danger"></i>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <i class="bi bi-files text-danger"></i>
-                        </div>
-                    </div>
+                    <?php endif ?>
                     <div class="row">
                         <div class="col">
                             <table class="table table-sm ">
                                 <thead>
                                     <tr>
                                         <td scope="col">Metode Pembayaran</td>
-                                        <td scope="col"> BCA Virtual Acount </td>
+                                        <td scope="col"> <?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?> </td>
                                     </tr>
                                 </thead>
                             </table>
@@ -123,20 +126,20 @@
                                     <td>Total Harga</td>
                                     <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
                                 </tr>
-                                <tr>
-                                    <td>Total Ongkos Kirim</td>
-                                    <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Biaya Jasa Aplikasi</td>
-                                    <td>Rp. <?= number_format('5000', 2, ',', '.'); ?></td>
-                                </tr>
                                 <?php if ($status->kupon) : ?>
                                     <tr>
                                         <td>Diskon</td>
-                                        <td><?= ($status->discount * 100) . "%"; ?></td>
+                                        <td>-RP. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
                                     </tr>
                                 <?php endif; ?>
+                                <tr>
+                                    <td>Total Ongkos Kirim</td>
+                                    <td>Rp. <?= number_format($status->service, 2, ',', '.'); ?></td>
+                                </tr>
+                                <tr>
+                                    <td>Biaya Jasa Aplikasi</td>
+                                    <td>Rp. <?= number_format($jasa, 2, ',', '.'); ?></td>
+                                </tr>
                                 <tr>
                                     <td>Subtotal</td>
                                     <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>

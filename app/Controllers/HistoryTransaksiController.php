@@ -17,6 +17,7 @@ class HistoryTransaksiController extends BaseController
             'title' => 'History',
             'name' => 'Kiki',
             'transaksi' =>  $cekTransaksi,
+            'back' => '',
             'kategori' => $kategori->findAll(),
         ];
         // dd($data);
