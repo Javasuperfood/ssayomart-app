@@ -1,0 +1,7 @@
+
+@font-face {
+    font-family: 'Inter';
+    src: url('<?= base_url(); ?>assets/font/inter.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
