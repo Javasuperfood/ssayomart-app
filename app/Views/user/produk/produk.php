@@ -84,196 +84,187 @@
 
     <!-- Deskripsi read more tampilan web  -->
     <div class="d-none d-lg-block">
-        <p id="content" class="collapse col-6">Lorem, ipsum dolor sit amet consectetur adipisicing elit. In ducimus illum odio optio aliquam quos, debitis rem assumenda nisi deleniti ipsam suscipit ullam vero architecto vitae alias eaque et officiis.</p>
-        <a href="#" id="read-more-btn" class="btn btn-link" style="text-decoration: none;">Read More</a>
+        <p class="col-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scel<span id="dots">...</span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
 
-    </div>
-    <!-- Deskripsi read more tampilan web  -->
-
+        <button class="btn btn-danger" onclick="myFunction()" id="myBtn">Read more</button>
+        <!-- Deskripsi read more tampilan web  -->
 
 
+        <!-- swiper card tampilan web -->
+        <div class="d-none d-lg-block">
+            <div class="row mt-3">
+                <h2 class="text-merah"> Product Terkait </h2>
+                <div class="col">
+                    <div class="swiper mySwiper">
+                        <div class="swiper-wrapper d-flex">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-
-
-
-    <!-- swiper card tampilan web -->
-    <div class="d-none d-lg-block">
-        <div class="row mt-3">
-            <h2 class="text-merah"> Product Terkait </h2>
-            <div class="col">
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper d-flex">
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
                                     </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
-
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
                                     </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4>Rp. 25.000</h4>
-                                    </div>
-                                    <p>Jahe Bubuk</p>
-                                    <p class="text-center">
+                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h4>Rp. 25.000</h4>
+                                        </div>
+                                        <p>Jahe Bubuk</p>
+                                        <p class="text-center">
 
-                                        <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                                    </p>
+                                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <!-- swiper card tampilan web-->
-    <!-- 6 card tampilan web -->
-    <div class="d-none d-lg-block">
-        <div class="row mt-3">
-            <h2 class="text-merah"> Product Terbaru </h2>
-            <div class="col-6 col-md-4 col-lg-2 mb-3">
-                <div class="card border-0 shadow-sm">
-                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h4>Rp. 25.000</h4>
+        </div>
+        <!-- swiper card tampilan web-->
+
+        <!-- 6 card tampilan web -->
+        <div class="d-none d-lg-block">
+            <div class="row mt-3">
+                <h2 class="text-merah"> Product Terbaru </h2>
+                <div class="col-6 col-md-4 col-lg-2 mb-3">
+                    <div class="card border-0 shadow-sm">
+                        <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h4>Rp. 25.000</h4>
+                            </div>
+                            <p>Jahe Bubuk</p>
+                            <p class="text-center">
+                                <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
+                            </p>
                         </div>
-                        <p>Jahe Bubuk</p>
-                        <p class="text-center">
-                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                        </p>
+                        <!-- Tombol Navigasi -->
                     </div>
-                    <!-- Tombol Navigasi -->
                 </div>
             </div>
+
         </div>
+        <!-- 6 card tampilan web-->
 
     </div>
-    <!-- 6 card tampilan web-->
-
-
-
-
-
-
 </div>
 
 
@@ -306,17 +297,24 @@
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
 <script>
-    $(document).ready(function() {
-        $("#read-more-btn").click(function() {
-            $("#content").toggleClass("collapse");
-            if ($("#content").hasClass("collapse")) {
-                $("#read-more-btn").text("Read More");
-            } else {
-                $("#read-more-btn").text("Read Less");
-            }
-        });
-    });
+    function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    }
 </script>
 
 <?= $this->include('user/component/scriptAddToCart'); ?>
