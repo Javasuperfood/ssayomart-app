@@ -39,8 +39,7 @@ class Setting extends BaseController
     {
         $kategori = new KategoriModel();
         $usersModel = new UsersModel();
-        $authIdentitesModel = new AuthIdentitesModel();
-        $query = $usersModel->select('users.username, users.fullname, users.telp, auth_identities.secret')
+        $query = $usersModel->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret')
             ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
             ->where('users.id', $id)
             ->get();
@@ -48,7 +47,6 @@ class Setting extends BaseController
         $du = $usersModel->find([$id]);
         $data = [
             'title' => 'Detail User',
-            'detail' => $usersModel,
             'du' => $du[0],
             'kategori' => $kategori->findAll(),
             'results' => $query->getResult()
@@ -59,33 +57,53 @@ class Setting extends BaseController
     public function updateDetailUser($id)
     {
         $usersModel = new UsersModel();
-        $users = $usersModel->where('id', $id)->first();
+        $image = $this->request->getFile('img');
 
+        if ($image->getError() == 4) {
+            $namaUsersImage = $this->request->getVar('imageLama');
+        } else {
+            $userfoto = $usersModel->find($id);
+
+            if ($userfoto['img'] != 'default.png') {
+                // Path ke foto lama
+                $gambarLamaPath = 'assets/img/fotouser/' . $userfoto['img'];
+
+                if (file_exists($gambarLamaPath) && is_file($gambarLamaPath)) {
+                    // Hapus foto lama
+                    unlink($gambarLamaPath);
+                }
+            }
+
+            $namaUsersImage = $image->getRandomName();
+            $image->move('assets/img/fotouser', $namaUsersImage);
+        }
         $data = [
             'id' => $id,
+            'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'telp' => $this->request->getVar('telp'),
+            'img' => $namaUsersImage
         ];
-        if ($users['username'] == $this->request->getVar('username')) {
-            $data = [
-                'id' => $id,
-                'fullname' => $this->request->getVar('fullname'),
-                'telp' => $this->request->getVar('telp'),
-            ];
-        } else {
-            $data = [
-                'id' => $id,
-                'username' => $this->request->getVar('username'),
-                'fullname' => $this->request->getVar('fullname'),
-                'telp' => $this->request->getVar('telp'),
-            ];
-        }
         // dd($data);
-        // SWAL
         if ($usersModel->save($data)) {
-            return redirect()->to('setting')->with('success', 'Berhasil mengubah data user');
+            session()->setFlashdata('success', 'Data pengguna berhasil di perbaharui.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Data pengguna berhasil di perbaharui.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('setting');
         } else {
-            return redirect()->to('setting')->with('failed', 'Ada Kesalahan. Segera minta maaf');
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('setting/detail-user/' . $id)->withInput();
         }
     }
     // PEMBAYARAN

@@ -11,7 +11,9 @@
                     <h3 class="fw-bold py-3 fs-5">Selamat datang, <?= $user['username']; ?></h3>
                 </div>
                 <div class="col-3">
-                    <img src="<?= base_url() ?>assets/img/users/<?= $user['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
+                    <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>">
+                        <img src="<?= base_url() ?>assets/img/fotouser/<?= $user['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
+                    </a>
                 </div>
             </div>
         </div>
@@ -90,7 +92,7 @@
             <div class="col-lg-4">
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body text-center" style="height: 325px;">
-                        <img src="<?= base_url() ?>assets/img/users/<?= $user['img'] ?>" alt="avatar" class="rounded-circle img-fluid mb-3" style="width: 150px;">
+                        <img src="<?= base_url() ?>assets/img/fotouser/<?= $user['img'] ?>" alt="avatar" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
                         <h3 class="fw-bold  fs-5">Selamat datang, <?= $user['username']; ?></h3>
                         <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
                     </div>
