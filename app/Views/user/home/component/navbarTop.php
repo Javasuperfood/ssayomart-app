@@ -4,10 +4,10 @@
         <nav class="navbar pt-4" style="background-color : #ec2614; padding-bottom : 80px; border-radius:0 0 3% 3%;">
             <div class="container-fluid mx-3">
                 <div class="col-10">
-                    <form role="search">
+                    <form role="search" action="<?= base_url('search'); ?>" method="get">
                         <div class="input-group">
-                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Cari produk..." aria-label="search" aria-describedby="basic-addon1">
+                            <button type="submit" class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
+                            <input type="text" name="produk" class="form-control" placeholder="Cari produk..." aria-label="search" aria-describedby="basic-addon1">
                         </div>
                     </form>
                 </div>
