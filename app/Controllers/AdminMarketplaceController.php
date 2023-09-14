@@ -27,6 +27,7 @@ class AdminMarketplaceController extends BaseController
     }
     public function create()
     {
+        session();
         $tokoModel = new TokoModel();
         $toko = $tokoModel->where('id_user', user_id())->first();
         if ($toko) {
@@ -49,19 +50,21 @@ class AdminMarketplaceController extends BaseController
         $data = [
             'id_user' => user_id(),
             'deskripsi' => $this->request->getVar('deskripsi'),
-            'alamat_1' => $this->request->getVar('alamat'),
+            'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('detail-alamat'),
             'province' => $this->request->getVar('provinsi'),
             'id_province' => $this->request->getVar('id_provinsi'),
             'city' => $this->request->getVar('kabupaten'),
             'id_city' => $this->request->getVar('id_kabupaten'),
-            'zip_code' => $this->request->getVar('zip-code'),
+            'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('telp'),
             'telp2' => $this->request->getVar('telp2'),
         ];
-        if ($tokoModel->save($data)) {
-            return redirect()->to(base_url('dashboard/marketplace'))->with('success', 'Market has been created');
+        if (!$this->validate($tokoModel->getValidationRules())) {
+            return redirect()->to(base_url('dashboard/marketplace/create'))->withInput();
         }
+        $tokoModel->save($data);
+        return redirect()->to(base_url('dashboard/marketplace'))->with('success', 'Market has been created');
     }
 
     // FETCHING DATA API PROVINSI & KOTA
