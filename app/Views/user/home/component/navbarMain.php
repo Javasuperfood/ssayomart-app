@@ -55,7 +55,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </li>
                         </ul>
                         <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
-                            <input class="form-control me-2 border-0" name="produk" type=" search" placeholder="Cari sesuatu disini..." aria-label="Search">
+                            <input class="form-control me-2 border-0" name="produk" value="<?= $_GET['produk']; ?>" type="search" placeholder="Cari sesuatu disini..." aria-label="Search">
                             <button class="btn btn-outline-light text-white" type="submit">Search</button>
                         </form>
                         <ul class="navbar-nav d-flex flex-row mx-3">
