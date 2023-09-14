@@ -58,18 +58,19 @@ class Setting extends BaseController
     {
         $usersModel = new UsersModel();
         $image = $this->request->getFile('img');
+        $namaUsersImage = $this->request->getVar('imageLama'); // Ini adalah nama gambar lama secara default
 
+        // Periksa apakah ada gambar yang diunggah
         if ($image->getError() == 4) {
-            $namaUsersImage = $this->request->getVar('imageLama');
-        } else {
+            // Jika tidak ada gambar yang diunggah, gunakan nama gambar lama
             $userfoto = $usersModel->find($id);
-
-            if ($userfoto['img'] != 'default.png') {
-                // Path ke foto lama
-                $gambarLamaPath = 'assets/img/fotouser/' . $userfoto['img'];
+            $namaUsersImage = $userfoto['img'];
+        } else {
+            // Hapus gambar lama jika ada gambar yang baru diunggah
+            if ($namaUsersImage != 'default.png') {
+                $gambarLamaPath = 'assets/img/fotouser/' . $namaUsersImage;
 
                 if (file_exists($gambarLamaPath) && is_file($gambarLamaPath)) {
-                    // Hapus foto lama
                     unlink($gambarLamaPath);
                 }
             }
@@ -77,6 +78,7 @@ class Setting extends BaseController
             $namaUsersImage = $image->getRandomName();
             $image->move('assets/img/fotouser', $namaUsersImage);
         }
+
         $data = [
             'id' => $id,
             'username' => $this->request->getVar('username'),
@@ -84,13 +86,13 @@ class Setting extends BaseController
             'telp' => $this->request->getVar('telp'),
             'img' => $namaUsersImage
         ];
-        // dd($data);
+
         if ($usersModel->save($data)) {
-            session()->setFlashdata('success', 'Data pengguna berhasil di perbaharui.');
+            session()->setFlashdata('success', 'Data pengguna berhasil diperbarui.');
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Data pengguna berhasil di perbaharui.'
+                'message' => 'Data pengguna berhasil diperbarui.'
             ];
             session()->setFlashdata('alert', $alert);
 
@@ -99,7 +101,7 @@ class Setting extends BaseController
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
+                'message' => 'Terdapat kesalahan pada pengisian formulir.'
             ];
             session()->setFlashdata('alert', $alert);
 

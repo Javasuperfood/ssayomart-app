@@ -35,8 +35,7 @@ class UsersModel extends Model
     protected $validationRules      = [
         'username'  => 'required',
         'fullname'  => 'required',
-        'telp'      => 'required',
-        'img'       => 'required'
+        'telp'      => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
