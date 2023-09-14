@@ -12,7 +12,7 @@
                 <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
                     <div class="card-body">
                         <a href="<?= base_url() ?>produk">
-                            <img src="<?= base_url() ?>assets/img/logo.png" width="60px" alt="" class="card-img-top">
+                            <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="" class="card-img-top">
                         </a>
                     </div>
                 </div>

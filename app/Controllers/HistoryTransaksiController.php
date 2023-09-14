@@ -20,7 +20,7 @@ class HistoryTransaksiController extends BaseController
             'back' => '',
             'kategori' => $kategori->findAll(),
         ];
-        // dd($data);
+        // dd($data); 
         return view('user/home/history/history', $data);
     }
 }

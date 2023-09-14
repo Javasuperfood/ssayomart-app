@@ -29,6 +29,7 @@ class WishlistController extends BaseController
             'kategori' => $kategori->findAll(),
             'back' => ''
         ];
+        // dd($data);
         return view('user/home/wishlist/wishlist', $data);
     }
     public function deleteProduk($id)

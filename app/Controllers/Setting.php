@@ -189,6 +189,7 @@ class Setting extends BaseController
         session();
         $provinsi = $this->rajaongkir('province');
         $alamatModel = new AlamatUserModel();
+        $kategori = new KategoriModel();
 
         $au = $alamatModel->find($id);
 
@@ -196,7 +197,8 @@ class Setting extends BaseController
             'title' => 'Edit Alamat',
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
             'au' => $au,
-            'back'  => 'setting/alamat-list'
+            'back'  => 'setting/alamat-list',
+            'kategori' => $kategori->findAll()
         ];
         // dd($data);
         return view('user/home/setting/updateAlamat', $data);

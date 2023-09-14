@@ -46,13 +46,13 @@
                 <div class="col">
                     <ul class="list-group list-group-flush">
                         <div class="position-relative">
-                            <div class="card">
-                                <div class="card-header">
-                                    List Alamat
+                            <div class="card border-0 shadow-sm mb-3">
+                                <div class="card-header border-0">
+                                    <span class="fw-bold"><?= $au['label']; ?></span>
                                 </div>
                                 <div class="card-body">
                                     <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="list-group-item pb-3 border-0">
-                                        <span class="fw-bold"><?= $au['label']; ?></span>
+
                                         <p class="card-text text-secondary"><?= substr($au['alamat_1'], 0, 40); ?>...</p>
                                     </a>
                                     <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
