@@ -35,11 +35,6 @@
         </div>
 
         <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
-        <div class="text-center">
-            <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg">
-                <i class="bi bi-plus">Tambahkan Alamat</i>
-            </a>
-        </div>
     <?php else : ?>
         <?php foreach ($alamat_user_model as $au) : ?>
             <div class="row row-cols-1">
@@ -68,6 +63,11 @@
                     </ul>
                 </div>
             </div>
+</div>
+<div class="text-center ">
+    <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg">
+        <i class="bi bi-plus">Tambahkan Alamat</i>
+    </a>
 </div>
 
 </div>
