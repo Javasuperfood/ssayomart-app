@@ -62,4 +62,19 @@ class ProdukController extends BaseController
         // dd($data);
         return view('user/produk/produk', $data);
     }
+    public function search()
+    {
+        $keyword = $this->request->getVar('produk');
+
+        $kategori = new KategoriModel();
+        $produk = new ProdukModel();
+        $getProduk = $produk->like('nama', $keyword)->findAll();
+        $data = [
+            'title' => 'Hasil Pencarian',
+            'produk' => $getProduk,
+            'kategori' => $kategori->findAll(),
+            'back' => ''
+        ];
+        return view('user/produk/search', $data);
+    }
 }
