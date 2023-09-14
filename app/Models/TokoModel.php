@@ -25,7 +25,44 @@ class TokoModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'deskripsi' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Deskripsi market harus diisi.',
+            ]
+        ],
+        'alamat_1' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Alamat market harus diisi.',
+            ]
+        ],
+        'provinsi' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'provinsi market harus diisi.',
+            ]
+        ],
+        'kabupaten' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Kabupaten market harus diisi.',
+            ]
+        ],
+        'zip_code' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Kode Pos market harus diisi.',
+            ]
+        ],
+        'telp' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Telephone market harus diisi.',
+            ]
+        ],
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
