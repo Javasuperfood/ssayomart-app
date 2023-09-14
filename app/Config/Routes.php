@@ -69,6 +69,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
     $routes->get('/status', 'UserStatusController::status');
     $routes->get('/bayar/(:any)', 'CheckoutController::bayarINV/$1');
+    $routes->post('/bayar/token', 'CheckoutController::ajaxBayar/$1');
 });
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {

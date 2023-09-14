@@ -11,18 +11,14 @@
     function lpSanp() {
         window.snap.pay('<?= $item['snap_token']; ?>', {
             onSuccess: function(result) {
-                /* You may add your own implementation here */
-                alert("payment success!");
-                console.log('--------------------------------')
-                console.log(result);
-                console.log('--------------------------------')
-                var qty = $("#qty").val();
                 $.ajax({
                     type: "POST",
-                    url: "<?= base_url('bayar/' . $item['snap_token']); ?>",
+                    url: "<?= base_url('bayar/token'); ?>",
                     dataType: "json",
                     data: {
-                        result: result
+                        csrf_test_name: '<?= csrf_hash(); ?>',
+                        token: '<?= $item['snap_token']; ?>',
+                        result: result,
                     },
                     success: function(response) {
                         if (response.success) {
@@ -59,6 +55,7 @@
 
     window.addEventListener('load', function() {
         lpSanp();
+
     });
     var payButton = document.getElementById('pay-button');
     payButton.addEventListener('click', function() {

@@ -22,7 +22,6 @@ class UsersModel extends Model
         'img',
         'fullname',
         'telp'
-
     ];
 
     // Dates
@@ -66,7 +65,7 @@ class UsersModel extends Model
             ->where('invoice', $slug)
             ->get();
 
-        $result = $query->getResult();
+        $result = $query->getResult()[0];
         return $result;
     }
     public function getTransaksi($slug)
@@ -80,6 +79,18 @@ class UsersModel extends Model
             ->get();
 
         $result = $query->getResult();
+        return $result;
+    }
+
+    public function getEmail($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('auth_identities')
+            ->select('secret')
+            ->where('user_id', $id)
+            ->get();
+
+        $result = $query->getResultArray()[0]['secret'];
         return $result;
     }
 }
