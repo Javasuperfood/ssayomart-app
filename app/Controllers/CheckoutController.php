@@ -9,6 +9,7 @@ use App\Models\CartProdukModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\KuponModel;
+use App\Models\UsersModel;
 use Midtrans\Config as MidtransConfig;
 
 class CheckoutController extends BaseController
@@ -122,9 +123,11 @@ class CheckoutController extends BaseController
         MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
         // Set 3DS transaction for credit card to true
         MidtransConfig::$is3ds = $midtransConfig->is3ds;
-
-        $checkoutProdModel = new CheckoutProdukModel();
+        $alamatUserModel = new AlamatUserModel();
         $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $userModel = new UsersModel();
+        $email = $userModel->getEmail(user_id());
         $checkout = $checkoutModel->where('id_checkout', $id)->first();
 
         $cekProduk = $checkoutProdModel
@@ -139,7 +142,7 @@ class CheckoutController extends BaseController
         $servicetext = $this->request->getVar('serviceText');
         $kode = $this->request->getVar('kupon');
         $total_1 = $checkout['total_1'];
-        $total_2 = $total_1;
+        $total_2 = $total_1 + $service + $biayaAplikasi;
         $kupon = [
             'discount' => '',
             'kupon' => ''
@@ -176,8 +179,6 @@ class CheckoutController extends BaseController
             'quantity' => 1,
             'name' => 'Biaya Admin',
         ];
-        $alamatUserModel = new AlamatUserModel();
-        $checkoutModel = new CheckoutModel();
 
         $inv = $checkoutModel->find($id);
         $id_alamat = $this->request->getVar('alamat_list');
@@ -191,36 +192,31 @@ class CheckoutController extends BaseController
                 'order_id' => $checkout['invoice'],
                 'gross_amount' => $total_2,
             ],
-            "payment_amounts" => [
-                [
-                    "amount" =>  $total_2,
-                ]
-            ],
             'customer_details' => [
                 'first_name' => $alamat['penerima'],
                 'last_name' => '',
-                'email' => 'budi.pra@example.com',
+                'email' => $email,
                 'phone' => $alamat['telp'],
-            ],
-            "billing_address" => [
-                "first_name" => $alamat['penerima'],
-                "last_name" => "",
-                "email" => "budisusanto@example.com",
-                "phone" => $alamat['telp'],
-                "address" =>  $alamat['alamat_1'],
-                "city" => $alamat['city'],
-                "postal_code" => $alamat['zip_code'],
-                "country_code" => "IDN"
-            ],
-            "shipping_address" => [
-                "first_name" => $alamat['penerima'],
-                "last_name" => "",
-                "email" => "budisusanto@example.com",
-                "phone" => $alamat['telp'],
-                "address" =>   $alamat['alamat_1'],
-                "city" => $alamat['city'],
-                "postal_code" => $alamat['zip_code'],
-                "country_code" => "IDN"
+                "billing_address" => [
+                    "first_name" => $alamat['penerima'],
+                    "last_name" => "",
+                    "email" => $email,
+                    "phone" => $alamat['telp'],
+                    "address" => $alamat['alamat_1'],
+                    "city" => $alamat['city'],
+                    "postal_code" => $alamat['zip_code'],
+                    "country_code" => "IDN"
+                ],
+                "shipping_address" => [
+                    "first_name" => $alamat['penerima'],
+                    "last_name" => "",
+                    "email" => "budisusanto@example.com",
+                    "phone" => $alamat['telp'],
+                    "address" => $alamat['alamat_1'],
+                    "city" => $alamat['city'],
+                    "postal_code" => $alamat['zip_code'],
+                    "country_code" => "IDN"
+                ],
             ],
             "item_details" => $cekProduk,
         ];
@@ -266,6 +262,36 @@ class CheckoutController extends BaseController
     }
     public function ajaxBayar()
     {
-        //
+        $checkoutModel = new CheckoutModel();
+
+        $result = $this->request->getVar();
+        $token = $result['token'];
+        $status_code = $result['result']['status_code'];
+        $status_message = $result['result']['status_message'];
+        $transaction_id = $result['result']['transaction_id'];
+        $order_id = $result['result']['order_id'];
+        $gross_amount = $result['result']['gross_amount'];
+        $payment_type = $result['result']['payment_type'];
+        $transaction_time = $result['result']['transaction_time'];
+        $transaction_status = $result['result']['transaction_status'];
+        $fraud_status = $result['result']['fraud_status'];
+        $checkout = $checkoutModel->where('snap_token', $token)->first();
+        $data = [
+            'id_checkout' => $checkout['id_checkout'],
+            'id_status_pesan' => 2,
+        ];
+        if (!$checkoutModel->save($data)) {
+            $response = [
+                'success' => false,
+                'message' => 'Gagal Update data. Hubungi',
+            ];
+            return $this->response->setJSON($response);
+        }
+        $response = [
+            'success' => true,
+            'message' => 'Transaksi Berhasil. ',
+            'result' => $token
+        ];
+        return $this->response->setJSON($response);
     }
 }
