@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-12">
                         <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" value="<?= $du['img'] ?>">
-                        <input type="text" disabled name="imageLama" value="<?= $du['img']; ?>">
+                        <input type="hidden" disabled name="imageLama" value="<?= $du['img']; ?>">
                     </div>
                     <div class="py-3 px-3">
                         <div class="col text-center">
