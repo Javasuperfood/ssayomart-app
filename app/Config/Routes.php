@@ -46,6 +46,10 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->get('/wishlist', 'WishlistController::index');
     $routes->post('/wishlist/delete/(:num)', 'WishlistController::deleteProduk/$1');
 
+
+    $routes->get('/buy/(:segment)', 'BuyController::index/$1');
+    $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
+
     $routes->get('/cart', 'CartController::cart');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
     $routes->post('/checkout', 'CheckoutController::storeData');
