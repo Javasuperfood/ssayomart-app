@@ -63,11 +63,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
                                     <i class="bi bi-cart-fill fs-4 text-white"></i>
+                                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
                                 </a>
                             </li>
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>wishlist">
                                     <i class="bi bi-heart-fill fs-4 text-white"></i>
+                                    <span class="badge rounded-pill badge-notification bg-danger">1</span>
                                 </a>
                             </li>
                             <li class="nav-item me-3 me-lg-0 dropdown">
