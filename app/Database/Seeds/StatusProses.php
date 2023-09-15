@@ -25,6 +25,10 @@ class StatusProses extends Seeder
                 'status'        => 'Paket Terkirim',
                 'deskripsi'     => 'Paket sudah diterima oleh pembeli',
             ],
+            [
+                'status'        => 'Pembayaran Gagal',
+                'deskripsi'     => 'Transaksi pemabayaran gagal',
+            ],
         ];
 
         $this->db->table('jsf_status_pesan')->insertBatch($data);

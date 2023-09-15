@@ -78,84 +78,144 @@
                 </div>
             </div>
         </div>
-
-        <div class="col mt-3">
-            <div class="card border-0">
-                <div class="card form-control form-control-md border-0 shadow-sm">
-                    <h2>Pesanan kamu</h2>
-                    <div class="row">
-                        <div class="col-10">
-                            <p><?= $status->invoice; ?></p>
-                        </div>
-                        <div class="col-2">
-                            <i class="bi bi-clipboard text-danger"></i>
-                        </div>
-                    </div>
-                    <?php if (isset($paymentStatus->va_numbers[0])) : ?>
+        <?php if ($status->id_status_pesan != 1) : ?>
+            <div class="col mt-3">
+                <div class="card border-0">
+                    <div class="card form-control form-control-md border-0 shadow-sm">
+                        <h2>Pesanan kamu</h2>
                         <div class="row">
                             <div class="col-10">
-                                <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
+                                <p><?= $status->invoice; ?></p>
                             </div>
                             <div class="col-2">
-                                <i class="bi bi-files text-danger"></i>
+                                <i class="bi bi-clipboard text-danger"></i>
                             </div>
                         </div>
-                    <?php endif ?>
-                    <div class="row">
-                        <div class="col">
-                            <table class="table table-sm ">
+                        <?php if (isset($paymentStatus->va_numbers[0])) : ?>
+                            <div class="row">
+                                <div class="col-10">
+                                    <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <i class="bi bi-files text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-sm ">
+                                        <thead>
+                                            <tr>
+                                                <td scope="col">Metode Pembayaran</td>
+                                                <td scope="col"> <?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?> </td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        <?php endif ?>
+                        <div class="row py-3 px-3">
+                            <table class="table">
                                 <thead>
                                     <tr>
-                                        <td scope="col">Metode Pembayaran</td>
-                                        <td scope="col"> <?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?> </td>
+                                        <th scope="col">Ringkasan Belanja</th>
+                                        <th scope="col"></th>
                                     </tr>
                                 </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Total Harga</td>
+                                        <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
+                                    </tr>
+                                    <?php if ($status->kupon) : ?>
+                                        <tr>
+                                            <td>Diskon</td>
+                                            <td>-RP. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <tr>
+                                        <td>Total Ongkos Kirim</td>
+                                        <td>Rp. <?= number_format($status->service, 2, ',', '.'); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Biaya Jasa Aplikasi</td>
+                                        <td>Rp. <?= number_format($jasa, 2, ',', '.'); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="row py-3 px-3">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Ringkasan Belanja</th>
-                                    <th scope="col"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Total Harga</td>
-                                    <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
-                                </tr>
-                                <?php if ($status->kupon) : ?>
-                                    <tr>
-                                        <td>Diskon</td>
-                                        <td>-RP. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
-                                    </tr>
-                                <?php endif; ?>
-                                <tr>
-                                    <td>Total Ongkos Kirim</td>
-                                    <td>Rp. <?= number_format($status->service, 2, ',', '.'); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Biaya Jasa Aplikasi</td>
-                                    <td>Rp. <?= number_format($jasa, 2, ',', '.'); ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Subtotal</td>
-                                    <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
-        </div>
-
+        <?php endif ?>
     </div>
 </div>
+<div class="row">
+    <div class="col"></div>
+</div>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?= $key; ?>"></script>
+</head>
+<?php   // =====================    PRNTING  =================================
+if ($status->id_status_pesan == 1) : ?>
+    <div class="row p-3 px-4 fixed-bottom">
+        <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+    </div>
+    <script type="text/javascript">
+        function lpSanp() {
+            window.snap.pay('<?= $status->snap_token; ?>', {
+                onSuccess: function(result) {
+                    $.ajax({
+                        type: "POST",
+                        url: "<?= base_url('payment/token'); ?>",
+                        dataType: "json",
+                        data: {
+                            csrf_test_name: '<?= csrf_hash(); ?>',
+                            token: '<?= $status->snap_token; ?>',
+                            result: result,
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Pembayaran berhasil',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    text: response.message,
+                                })
+                            }
+                        },
+                        error: function(error) {
+                            console.error("Error:", error);
+                        }
+                    });
+                },
+                onPending: function(result) {
+                    /* You may add your own implementation here */
+                    alert("wating your payment!");
+                    console.log(result);
+                },
+                onError: function(result) {
+                    /* You may add your own implementation here */
+                    alert("payment failed!");
+                    console.log(result);
+                },
+                onClose: function() {
+                    /* You may add your own implementation here */
+                    alert('you closed the popup without finishing the payment');
+                }
+            })
+        }
 
-
-
+        var payButton = document.getElementById('pay-button');
+        payButton.addEventListener('click', function() {
+            lpSanp();
+        });
+    </script>
+<?php endif ?>
 <style>
     /* Gaya tambahan kustom bisa ditambahkan di sini */
     .timeline {
