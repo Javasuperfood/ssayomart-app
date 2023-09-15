@@ -10,7 +10,7 @@ class AdminProduk extends BaseController
     protected $imageModel;
     public function produk($id)
     {
-        $alertprodukModel = new ProdukModel();
+        $produkModel = new ProdukModel();
         $kategoriModel = new KategoriModel();
 
         // Ambil semua produk
