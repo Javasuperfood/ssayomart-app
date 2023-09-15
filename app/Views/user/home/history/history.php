@@ -20,13 +20,15 @@
                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                     <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">Transaksi Tertunda</a>
                                 </div>
-                            <?php endif ?>
-                            <?php if ($t->id_status_pesan == 2) : ?>
+                            <?php elseif ($t->id_status_pesan == 2) : ?>
                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                    <a href="<?= base_url('status/' . $t->invoice); ?>" class="btn btn-outline-warning">Dalam Proses</a>
+                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-warning">Dalam Proses</a>
                                 </div>
-                            <?php endif ?>
-                            <?php if ($t->id_status_pesan == 3) : ?>
+                            <?php elseif ($t->id_status_pesan == 3) : ?>
+                                <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-warning">Sedang dikirim</a>
+                                </div>
+                            <?php else : ?>
                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                     <a href="#" class="btn btn-outline-success">Beli Lagi</a>
                                 </div>

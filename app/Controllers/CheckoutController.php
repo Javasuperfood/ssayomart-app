@@ -73,10 +73,10 @@ class CheckoutController extends BaseController
             return redirect()->to(base_url());
         }
         if ($cekUser['snap_token'] != null) {
-            return redirect()->to(base_url('bayar/' . $cekUser['invoice']));
+            return redirect()->to(base_url('payment/' . $cekUser['invoice']));
         }
         if ($cekUser['id_status_pesan'] != 1) {
-            return redirect()->to(base_url('status/' . $cekUser['invoice']));
+            return redirect()->to(base_url('payment?order_id=' . $cekUser['invoice']));
         }
         $checkoutProdModel = new CheckoutProdukModel();
         $cekProduk = $checkoutProdModel
@@ -242,56 +242,7 @@ class CheckoutController extends BaseController
         if (!$checkoutModel->save($data)) {
             return redirect()->to(base_url('checkout/' . $id))->with('failed', 'Tarnsaksi Gagal');
         }
-        return redirect()->to(base_url('bayar/' . $inv['invoice']));
+        return redirect()->to(base_url('payment/' . $inv['invoice']));
         // dd($data);
-    }
-    public function bayarINV($inv)
-    {
-        $midtransConfig = config('Midtrans');
-        $clientKey =  $midtransConfig->clientKey;
-        $checkoutModel = new CheckoutModel();
-        $cek = $checkoutModel->where('invoice', $inv)->first();
-        $data = [
-            'title' => 'Bayar',
-            'item' => $cek,
-            'key' => $clientKey,
-            'back' => 'history'
-        ];
-        // dd($data);
-        return view('user/home/checkout/midtrans', $data);
-    }
-    public function ajaxBayar()
-    {
-        $checkoutModel = new CheckoutModel();
-
-        $result = $this->request->getVar();
-        $token = $result['token'];
-        $status_code = $result['result']['status_code'];
-        $status_message = $result['result']['status_message'];
-        $transaction_id = $result['result']['transaction_id'];
-        $order_id = $result['result']['order_id'];
-        $gross_amount = $result['result']['gross_amount'];
-        $payment_type = $result['result']['payment_type'];
-        $transaction_time = $result['result']['transaction_time'];
-        $transaction_status = $result['result']['transaction_status'];
-        $fraud_status = $result['result']['fraud_status'];
-        $checkout = $checkoutModel->where('snap_token', $token)->first();
-        $data = [
-            'id_checkout' => $checkout['id_checkout'],
-            'id_status_pesan' => 2,
-        ];
-        if (!$checkoutModel->save($data)) {
-            $response = [
-                'success' => false,
-                'message' => 'Gagal Update data. Hubungi',
-            ];
-            return $this->response->setJSON($response);
-        }
-        $response = [
-            'success' => true,
-            'message' => 'Transaksi Berhasil. ',
-            'result' => $token
-        ];
-        return $this->response->setJSON($response);
     }
 }
