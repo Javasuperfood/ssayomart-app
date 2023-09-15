@@ -14,6 +14,7 @@ class ProdukModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'id_kategori',
         'nama',
         'slug',
         'sku',
@@ -21,7 +22,6 @@ class ProdukModel extends Model
         // 'stok',
         'deskripsi',
         'img',
-        // 'id_kategori',
         // 'id_sub_kategori',
     ];
 
@@ -73,5 +73,24 @@ class ProdukModel extends Model
         }
 
         return $this->where(['slug' => $slug])->first();
+    }
+
+    public function getSubKategoriByKategori($kategoriId)
+    {
+        return $this->db->table('jsf_subkategori')
+            ->where('id_kategori', $kategoriId)
+            ->get()
+            ->getResultArray();
+    }
+    public function getNamaKategori($produkId)
+    {
+        // Query untuk mengambil nama kategori berdasarkan ID produk
+        return $this->db->table('jsf_produk')
+            ->join('jsf_subkategori', 'jsf_subkategori.id_sub_kategori = jsf_produk.id_sub_kategori')
+            ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_subkategori.id_kategori')
+            ->where('jsf_produk.id_produk', $produkId)
+            ->select('jsf_kategori.nama_kategori')
+            ->get()
+            ->getRowArray();
     }
 }
