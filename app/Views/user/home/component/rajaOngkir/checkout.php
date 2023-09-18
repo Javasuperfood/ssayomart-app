@@ -35,7 +35,7 @@
             },
             dataType: 'json',
             success: function(data) {
-                console.log(data);
+                // console.log(data);
                 var results = data["rajaongkir"]["results"][0]["costs"];
                 for (var i = 0; i < results.length; i++) {
                     var text = results[i]["description"] + "(" + results[i]["service"] + ")";

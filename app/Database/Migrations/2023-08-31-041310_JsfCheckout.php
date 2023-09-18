@@ -67,6 +67,10 @@ class JsfCheckout extends Migration
                 'type' => 'text',
                 'null' => true
             ],
+            'resi' => [
+                'type' => 'text',
+                'null' => true
+            ],
             'kupon' => [
                 'type'           => 'varchar',
                 'constraint'     => '225',
