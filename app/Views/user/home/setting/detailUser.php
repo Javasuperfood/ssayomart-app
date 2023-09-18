@@ -57,7 +57,7 @@
 <div class="container py-5 d-none d-md-block shadow-sm">
     <div class="row">
         <div class="col-lg-4">
-            <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
                 <div class="card">
                     <div class="card-body text-center">
                         <p class="fs-5 text-secondary">Hai! Terlihat keren, <?= $du['username']; ?></p>
@@ -75,6 +75,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="username" name="username" placeholder="Username Anda" value="<?= $du['username']; ?>">
+                            <span id="usernameError" class="text-danger"></span>
                         </div>
                     </div>
                     <hr>
@@ -84,6 +85,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="fullname" name="fullname" placeholder="Nama Lengkap Anda" value="<?= $du['fullname']; ?>">
+                            <span id="fullnameError" class="text-danger"></span>
                         </div>
                     </div>
                     <hr>
@@ -93,6 +95,7 @@
                         </div>
                         <div class="col-sm-9">
                             <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="telp" name="telp" placeholder="Nomor Telp Anda" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
+                            <span id="telpError" class="text-danger"></span>
                         </div>
                     </div>
                     <hr>
