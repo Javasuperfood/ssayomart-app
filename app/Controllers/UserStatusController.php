@@ -33,24 +33,37 @@ class UserStatusController extends BaseController
 
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
-        $paymentStatus = \Midtrans\Transaction::status($order_id);
-        $ts = $paymentStatus->transaction_status;
-        if ($ts == "settlement" && $userSatus->id_status_pesan == '1') {
-            $checkoutModel->save([
-                'id_checkout' => $userSatus->id_checkout,
-                'id_status_pesan' => 2
-            ]);
-        }
+
         $data = [
             'title'                     => 'Status Pesanan',
             'getstatus'                 => $status,
             'status' => $userSatus,
-            'paymentStatus' => $paymentStatus,
             'produk' => $cekProduk,
             'jasa' => 1000,
+            'key' => $midtransConfig->clientKey,
             'back' => 'history'
 
         ];
+        // ==================================================================
+        if ($userSatus->id_status_pesan != '1') {
+            try {
+                /**
+                 * @var object $paymentStatus
+                 */
+                $paymentStatus = \Midtrans\Transaction::status($order_id);
+                if ($paymentStatus->transaction_status == "settlement" && $userSatus->id_status_pesan == '1') {
+                    $checkoutModel->save([
+                        'id_checkout' => $userSatus->id_checkout,
+                        'id_status_pesan' => 2
+                    ]);
+                }
+                $data['paymentStatus'] = $paymentStatus;
+            } catch (\Exception $e) {
+                // echo "An error occurred: " . $e->getMessage();
+            }
+        }
+        // ===============================================================
+
         // dd($data);
         return view('user/produk/status', $data);
     }

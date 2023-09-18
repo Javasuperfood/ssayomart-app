@@ -63,11 +63,11 @@
                     </ul>
                 </div>
             </div>
-</div>
-<div class="text-center ">
-    <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg">
-        <i class="bi bi-plus">Tambahkan Alamat</i>
-    </a>
+            <div class="text-center ">
+                <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg">
+                    <i class="bi bi-plus">Tambahkan Alamat</i>
+                </a>
+            </div>
 </div>
 
 </div>

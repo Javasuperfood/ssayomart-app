@@ -31,9 +31,11 @@
             </div>
             <br>
             <div class="text-center">
-                <input type="hidden" id="qty" name="qty" value="1">
-                <button class="btn btn-white text-danger border-danger mt-4 add-to-cart-btn" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>"><i class=" bi bi-basket2"></i></button>
-                <a href="<?= base_url() ?>checkout" class="btn btn-white text-danger border-danger mt-4 ">Beli Sekarang</a>
+                <button class="btn btn-white text-danger border-danger mt-4 add-to-cart-btn d-inline" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>"><i class=" bi bi-basket2"></i></button>
+                <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
+                    <input type="hidden" id="qty" name="qty" value="1">
+                    <button type="submit" class="btn btn-white text-danger border-danger mt-4">Beli Sekarang</button>
+                </form>
             </div>
         </div>
         <!-- Akhir view mobile -->
