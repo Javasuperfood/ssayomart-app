@@ -1,6 +1,8 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
-<div class="container pt-3">
+
+<!-- mobile -->
+<div class="container pt-3 d-md-none">
     <div class="row justify-content-center">
         <div class="card border-0 shadow-sm-sm py-4 rounded-2">
             <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
@@ -47,6 +49,86 @@
         </div>
     </div>
 </div>
+
+<!-- end Mobile -->
+
+<!-- dekstop -->
+
+<div class="container py-5 d-none d-md-block shadow-sm">
+    <div class="row">
+        <div class="col-lg-4">
+            <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <p class="fs-5 text-secondary">Hai! Terlihat keren, <?= $du['username']; ?></p>
+                        <img src="<?= base_url() ?>assets/img/fotouser/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
+                    </div>
+                </div>
+        </div>
+        <?= csrf_field() ?>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Username</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="username" name="username" placeholder="Username Anda" value="<?= $du['username']; ?>">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Full Name</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="fullname" name="fullname" placeholder="Nama Lengkap Anda" value="<?= $du['fullname']; ?>">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Phone</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="telp" name="telp" placeholder="Nomor Telp Anda" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Email</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="email" class="form-control form-control-lg bg-white border-0 shadow-sm" id="email" name="email" placeholder="Email Anda" value="<?= $results[0]->secret; ?>" disabled>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Masukan Profile</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" value="<?= $du['img'] ?>">
+                            <input type="hidden" disabled name="imageLama" value="<?= $du['img']; ?>">
+                        </div>
+                    </div>
+                    <div class="py-3 px-3">
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end Desktop -->
+
 <script>
     // validasi form
     function validasiDetailUser() {
