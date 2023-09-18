@@ -23,3 +23,22 @@ var swiper = new Swiper(".buttonSwiper", {
     },
 
 });
+
+
+// tombol Scroll Up
+var scrollUpButton = document.getElementById("scrollUpButton");
+
+// Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
+window.addEventListener("scroll", function() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        scrollUpButton.style.display = "block";
+    } else {
+        scrollUpButton.style.display = "none";
+    }
+});
+
+// Gulir kembali ke atas saat tombol Scroll Up diklik
+scrollUpButton.addEventListener("click", function() {
+    document.body.scrollTop = 0; // Untuk browser Safari
+    document.documentElement.scrollTop = 0; // Untuk browser lainnya
+});
