@@ -111,6 +111,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // CRUD routes produk
     $routes->get('produk/produk', 'AdminProduk::produk');
     $routes->get('produk/tambah-produk', 'AdminProduk::tambahProduk');
+    $routes->get('produk/tambah-variasi', 'AdminProduk::tambahVariasi');
+    $routes->post('produk/tambah-variasi/save-variasi', 'AdminProduk::saveVariasi');
     $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
     $routes->post('produk/tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
     $routes->get('produk/tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
