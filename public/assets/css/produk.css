@@ -95,10 +95,8 @@
 }
 .card-side {
     width: 25rem;
-
-
-
 }
+
 
 @media (min-width:1024px) and (max-width:1512px) {
     .card-side {
@@ -145,5 +143,11 @@
 
     .swiper-slide-card {
         margin-left: 10px;
+    }
+}
+@media (min-width:1512px) and (max-width:1910px) {
+    .card-side {
+        width: 15rem;
+
     }
 }
