@@ -93,6 +93,19 @@
     cursor: pointer;
     z-index: 99;
 }
+.card-side {
+    width: 25rem;
+
+
+
+}
+
+@media (min-width:1024px) and (max-width:1512px) {
+    .card-side {
+        width: 15rem;
+
+    }
+}
 @media (min-width: 768px) and (max-width: 1024px) {
     .swiper-slide img {
         border-radius: 25px;
