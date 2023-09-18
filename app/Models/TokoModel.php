@@ -14,7 +14,17 @@ class TokoModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_user', 'deskripsi', 'alamat_1', 'alamat_2', 'id_province', 'province', 'id_city', 'city', 'zip_code', 'telp', 'telp2'
+        'id_user',
+        'deskripsi',
+        'alamat_1',
+        'alamat_2',
+        'id_province',
+        'province',
+        'id_city',
+        'city',
+        'zip_code',
+        'telp',
+        'telp2'
     ];
 
     // Dates
@@ -38,18 +48,18 @@ class TokoModel extends Model
                 'required' => 'Alamat market harus diisi.',
             ]
         ],
-        'provinsi' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'provinsi market harus diisi.',
-            ]
-        ],
-        'kabupaten' => [
-            'rules' => 'required',
-            'errors' => [
-                'required' => 'Kabupaten market harus diisi.',
-            ]
-        ],
+        // 'provinsi' => [
+        //     'rules' => 'required',
+        //     'errors' => [
+        //         'required' => 'provinsi market harus diisi.',
+        //     ]
+        // ],
+        // 'kabupaten' => [
+        //     'rules' => 'required',
+        //     'errors' => [
+        //         'required' => 'Kabupaten market harus diisi.',
+        //     ]
+        // ],
         'zip_code' => [
             'rules' => 'required',
             'errors' => [

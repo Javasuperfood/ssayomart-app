@@ -16,6 +16,10 @@
     .carousel-item img {
         border-radius: 5%;
     }
+
+    .invalid-field {
+        border: 1px solid red;
+    }
 </style>
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
 
