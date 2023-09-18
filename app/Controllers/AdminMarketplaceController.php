@@ -23,8 +23,10 @@ class AdminMarketplaceController extends BaseController
             'toko' => $toko
         ];
         // dd($data);
-        return view('dashboard/markertplace/index', $data);
+        return view('dashboard/marketplace/index', $data);
     }
+
+    // Save
     public function create()
     {
         session();
@@ -39,14 +41,13 @@ class AdminMarketplaceController extends BaseController
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
         ];
         // dd($data);
-        return view('dashboard/markertplace/create', $data);
+        return view('dashboard/marketplace/create', $data);
     }
 
     public function store()
     {
         // dd($this->request->getVar());
         $tokoModel = new TokoModel();
-
         $data = [
             'id_user' => user_id(),
             'deskripsi' => $this->request->getVar('deskripsi'),
@@ -60,11 +61,83 @@ class AdminMarketplaceController extends BaseController
             'telp' => $this->request->getVar('telp'),
             'telp2' => $this->request->getVar('telp2'),
         ];
-        if (!$this->validate($tokoModel->getValidationRules())) {
-            return redirect()->to(base_url('dashboard/marketplace/create'))->withInput();
+        // dd($data);
+        if ($tokoModel->save($data)) {
+            session()->setFlashdata('success', 'Berhasil menambahkan keterangan toko');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Berhasil menambahkan keterangan toko'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/marketplace');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada input kupon'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/marketplace/create')->withInput();
         }
-        $tokoModel->save($data);
-        return redirect()->to(base_url('dashboard/marketplace'))->with('success', 'Market has been created');
+    }
+
+    // Update
+    public function edit($id)
+    {
+        $tokoModel = new TokoModel();
+
+        $toko = $tokoModel->find($id);
+        $provinsi = $this->rajaongkir('province');
+        $data = [
+            'title' => 'Edit Toko',
+            'toko' => $toko,
+            'provinsi' => json_decode($provinsi)->rajaongkir->results,
+            'back' => 'dashboard/marketplace'
+        ];
+        return view('dashboard/marketplace/edit', $data);
+    }
+
+    public function update($id)
+    {
+        $tokoModel = new TokoModel();
+        $tokoModel->find($id);
+        $data = [
+            'id_toko' => $id,
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'alamat_1' => $this->request->getVar('alamat_1'),
+            'alamat_2' => $this->request->getVar('detail-alamat'),
+            'province' => $this->request->getVar('provinsi'),
+            'id_province' => $this->request->getVar('id_provinsi'),
+            'city' => $this->request->getVar('kabupaten'),
+            'id_city' => $this->request->getVar('id_kabupaten'),
+            'zip_code' => $this->request->getVar('zip_code'),
+            'telp' => $this->request->getVar('telp'),
+            'telp2' => $this->request->getVar('telp2')
+        ];
+
+        if ($tokoModel->save($data)) {
+            session()->setFlashdata('success', 'Data toko cabang berhasil diubah.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Data Toko cabang berhasil diubah.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/marketplace');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/marketplace/marketplace/edit/' . $id)->withInput();
+        }
     }
 
     // FETCHING DATA API PROVINSI & KOTA

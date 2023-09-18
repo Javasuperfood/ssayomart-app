@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ProdukModel;
 use App\Models\KategoriModel;
+use App\Models\SubKategoriModel;
 
 class AdminProduk extends BaseController
 {
@@ -31,13 +32,56 @@ class AdminProduk extends BaseController
     {
         $produkModel = new ProdukModel();
         $kategoriModel = new KategoriModel();
+        $subKategoriModel = new SubKategoriModel();
         $produk_list = $produkModel->findAll();
         $kategori_list = $kategoriModel->findAll();
+        $sub_kategori_list = $subKategoriModel->findAll();
+        // $sub = [];
+        // foreach ($kategori_list as $k) {
+        //     foreach ($sub_kategori_list as $s) {
+        //         if ($k['id_kategori'] == $s['id_sub_kategori']) {
+        //             if (!isset($sub[$k['id_kategori']])) {
+        //                 $sub[$k['id_kategori']] = $s['nama_kategori'];
+        //             } else {
+        //                 $sub[$k['id_kategori']] .= ', ' . $s['nama_kategori'];
+        //             }
+        //         }
+        //     }
+        // }
+        // $output = array();
+        // foreach ($sub as $id_kategori => $sub_kategori) {
+        //     $output[] = "$id_kategori: [$sub_kategori]";
+        // }
+        // foreach ($output as $line) {
+        //     echo $line . "\n";
+        // }
+        // $output = array();
+
+        // // Mengelompokkan subkategori berdasarkan kategori
+        // foreach ($kategori_list as $id_kategori => $nama_kategori) {
+        //     $subkategori_kategori = array();
+        //     foreach ($sub_kategori_list as $id_sub_kategori => $nama_sub_kategori) {
+        //         $id_kategori_sub = $id_sub_kategori + 1; // Karena indeks array dimulai dari 0
+        //         if ($id_kategori_sub == $id_kategori) {
+        //             $subkategori_kategori[] = $nama_sub_kategori;
+        //         }
+        //     }
+        //     if (!empty($subkategori_kategori)) {
+        //         $output[] = "$id_kategori: " . json_encode($subkategori_kategori);
+        //     }
+        // }
+
+        // // Menampilkan output
+        // foreach ($output as $line) {
+        //     echo $line . "\n";
+        // }
         $data = [
             'title' => 'produk',
             'produk_Model' => $produk_list,
-            'kategori_model' => $kategori_list
+            'kategori' => $kategori_list,
+            'subKategori' => $sub_kategori_list,
         ];
+        // dd($data);
         return view('dashboard/produk/tambahProduk', $data);
     }
     // save

@@ -41,11 +41,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="parent_kategori_id">Kategori Induk</label>
-                        <select class="form-control" id="parent_kategori_id" name="parent_kategori_id">
+                        <select class="form-control" id="kategori" name="parent_kategori_id">
                             <option value="">Pilih Kategori</option>
-                            <?php foreach ($kategori_model as $km) : ?>
+                            <?php foreach ($kategori as $km) : ?>
                                 <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
                             <?php endforeach; ?>
+                        </select>
+                        <span id="kategoriError" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="parent_kategori_id">Sub Kategori</label>
+                        <select class="form-control" id="sub_kategori" name="sub_kategori">
+                            <option value="">Pilih Kategori</option>
                         </select>
                         <span id="kategoriError" class="text-danger"></span>
                     </div>
@@ -97,9 +104,9 @@
                                 <td>
                                     <?php
                                     $kategoriNama = '';
-                                    foreach ($kategori_model as $kategori) {
-                                        if ($kategori['id_kategori'] == $km['id_kategori']) {
-                                            $kategoriNama = $kategori['nama_kategori'];
+                                    foreach ($kategori as $k) {
+                                        if ($k['id_kategori'] == $km['id_kategori']) {
+                                            $kategoriNama = $k['nama_kategori'];
                                             break;
                                         }
                                     }
@@ -145,6 +152,29 @@
     </script> -->
 </div>
 
+<script>
+    var subcategories = <?= json_encode($subKategori); ?>;
+
+    function updateSubcategories() {
+        var selectedCategory = $("#kategori").val();
+        var subcategorySelect = $("#sub_kategori");
+        subcategorySelect.empty();
+        subcategories.forEach(function(subcategory) {
+            if (subcategory.id_kategori == selectedCategory) {
+                subcategorySelect.append($('<option>', {
+                    value: subcategory.id_sub_kategori,
+                    text: subcategory.nama_kategori
+                }));
+            }
+        });
+    }
+
+    // Panggil fungsi updateSubcategories saat perubahan terjadi pada pilihan kategori
+    $("#kategori").change(updateSubcategories);
+
+    // Panggil updateSubcategories() saat halaman dimuat untuk menampilkan subkategori awal
+    $(document).ready(updateSubcategories);
+</script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

@@ -4,7 +4,7 @@
 <h1 class="h3 mb-2 text-gray-800">Marketplace</h1>
 <!-- DataTales Example -->
 <?php if ($toko) : ?>
-    <div class="card shadow mb-4">
+    <div class="card border-0 shadow-sm mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-danger">Detail Market</h6>
             <div class="dropdown no-arrow">
@@ -12,15 +12,14 @@
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
-                    <a class="dropdown-item" href="#"><i class="bi bi-pencil-square"></i> Edit Detail</a>
+                    <a class="dropdown-item" href="<?= base_url() ?>dashboard/marketplace/edit/<?= $toko['id_toko'] ?>"><i class="bi bi-pencil-square"></i> Edit Detail</a>
                 </div>
             </div>
         </div>
         <div class="card-body">
-
             <div class="row">
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-danger shadow h-100 py-2">
+                    <div class="card border-left-danger border-0 shadow-sm h-100 py-2">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
@@ -38,7 +37,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="card shadow mb-4">
+                    <div class="card border-0 shadow-sm mb-4">
                         <!-- Card Header - Accordion -->
                         <a href="#deskripsi" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="deskripsi">
                             <h6 class="m-0 font-weight-bold text-danger">Deskripsi</h6>
@@ -54,7 +53,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="card shadow mb-4">
+                    <div class="card border-0 shadow-sm mb-4">
                         <!-- Card Header - Accordion -->
                         <a href="#alamat" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="alamat">
                             <h6 class="m-0 font-weight-bold text-danger">Alamat</h6>
@@ -85,7 +84,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="card shadow mb-4">
+                    <div class="card border-0 shadow-sm mb-4">
                         <!-- Card Header - Accordion -->
                         <a href="#user" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="user">
                             <h6 class="m-0 font-weight-bold text-danger">Informasi User</h6>
