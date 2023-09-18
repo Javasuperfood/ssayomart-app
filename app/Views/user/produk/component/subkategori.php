@@ -29,7 +29,7 @@
                     <div class="swiper-wrapper">
                         <?php foreach ($subKategori as $s) : ?>
                             <div class="swiper-slide mx-3">
-                                <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="btn btn-outline-danger border-1 btn-custom-rounded " style="width: 200px;">
+                                <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="btn btn-outline-danger border-0 btn-custom-rounded " style="width: 200px;">
                                     <?= $s['nama_kategori']; ?>
                                 </a>
                             </div>

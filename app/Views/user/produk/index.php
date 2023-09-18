@@ -5,11 +5,11 @@
 <?= $this->include('user/home/component/navbarMain') ?>
 
 <!-- tampilan Desktop -->
-<div class="container-fluid d-none d-md-block ">
-    <div class="mt-5">
+<div class="container-fluid d-none d-lg-block">
+    <div class=" mt-5">
         <div class="row ">
-            <div class="col-1 ">
-                <div class="card border-0 shadow-sm " style="width: 18rem; top: 50px; position: fixed;">
+            <div class="col-2">
+                <div class="card-side border-0 shadow-sm " style=" top: 50px; position: fixed;">
                     <div class=" card-body">
                         <h3 class="mt-5">Kategori</h3>
                         <hr style="border-color: red; border-width: 3px;">
@@ -36,13 +36,13 @@
                     </div>
 
                     <div class=" card-body">
-                        <h3 class="mt-1">Promo spesial</h3>
+                        <h3 class="mt-2">Promo spesial</h3>
                         <hr style="border-color: red; border-width: 3px;">
                         <img src="#" alt="Banner Promo ">
                     </div>
                 </div>
             </div>
-            <div class="col-11">
+            <div class="col-10">
                 <!-- search inputan Desktop -->
                 <div class="container col-12 d-none d-md-block">
                     <input type="search" class="form-control" id="search-input" placeholder="Cari produk disini">
@@ -102,7 +102,7 @@
 </div>
 
 <!-- tampilan Mobile dan Ipad -->
-<div class="container d-md-none d-lg-none mb-4">
+<div class="container  d-lg-none mb-4">
     <!-- Button Kategori -->
     <?= $this->include('user/produk/component/kategori') ?>
     <!-- Button Sub Kategori -->
