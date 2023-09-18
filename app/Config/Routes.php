@@ -125,8 +125,10 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
 
     $routes->get('marketplace', 'AdminMarketplaceController::index');
-    $routes->get('marketplace/create', 'AdminMarketplaceController::create');
     $routes->post('marketplace/store', 'AdminMarketplaceController::store');
+    $routes->get('marketplace/create', 'AdminMarketplaceController::create');
+    $routes->post('marketplace/update/(:segment)', 'AdminMarketplaceController::update/$1');
+    $routes->get('marketplace/edit/(:segment)', 'AdminMarketplaceController::edit/$1');
 });
 
 service('auth')->routes($routes);
