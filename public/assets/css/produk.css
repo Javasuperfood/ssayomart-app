@@ -151,9 +151,9 @@
 
     }
 }
-@media (min-width:992px) and (max-width:1340px) {
+@media (min-width:1024px) and (max-width:1340px) {
     .card-side {
-        width: 15rem;
+        width: 12rem;
 
     }
 }
