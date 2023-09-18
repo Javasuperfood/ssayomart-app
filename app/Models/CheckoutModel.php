@@ -22,6 +22,7 @@ class CheckoutModel extends Model
         'kurir',
         'service',
         'harga_service',
+        'resi',
         'catatan',
         'kupon',
         'discount',

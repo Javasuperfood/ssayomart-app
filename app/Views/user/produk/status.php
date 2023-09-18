@@ -67,7 +67,7 @@
                                         <span class="fw-bold"><?= $status->kurir; ?>
                                         </span>
                                         <p class="text-secondary">
-                                            Rp. <?= number_format($status->service, 2, ',', '.'); ?>
+                                            Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?>
                                         </p>
                                         <p class="card-text text-secondary"><?= $status->kirim; ?></p>
                                     </span>
@@ -134,7 +134,7 @@
                                     <?php endif; ?>
                                     <tr>
                                         <td>Total Ongkos Kirim</td>
-                                        <td>Rp. <?= number_format($status->service, 2, ',', '.'); ?></td>
+                                        <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
                                     </tr>
                                     <tr>
                                         <td>Biaya Jasa Aplikasi</td>

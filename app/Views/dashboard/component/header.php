@@ -14,8 +14,6 @@
 <!-- Custom styles for this template -->
 <link href="<?= base_url(); ?>assets/sb-admin2/css/sb-admin-2.min.css" rel="stylesheet">
 
-<!-- Custom styles for this page -->
-<link href="<?= base_url(); ?>assets/sb-admin2/vendor-sb/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 <style>
     .invalid-field {

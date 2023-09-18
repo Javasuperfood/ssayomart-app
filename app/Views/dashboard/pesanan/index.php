@@ -12,6 +12,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>INV</th>
                         <th>Produk</th>
                         <th>Qty</th>
@@ -24,6 +25,7 @@
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>No</th>
                         <th>INV</th>
                         <th>Produk</th>
                         <th>Qty</th>
@@ -37,13 +39,14 @@
                 <tbody>
                     <?php foreach ($order as $o) : ?>
                         <tr>
-                            <td><?= $o->invoice; ?></td>
-                            <td><?= $o->nama; ?></td>
-                            <td><?= $o->qty; ?></td>
-                            <td><?= $o->sku; ?></td>
-                            <td><?= $o->kirim; ?></td>
-                            <td>JNE</td>
-                            <td><?= $o->pesan_status_text; ?></td>
+                            <th><?= $iterasi++; ?></th>
+                            <td><?= $o['invoice']; ?></td>
+                            <td><?= $o['nama']; ?></td>
+                            <td><?= $o['qty']; ?></td>
+                            <td><?= $o['sku']; ?></td>
+                            <td><?= $o['kirim']; ?></td>
+                            <td><?= $o['service']; ?></td>
+                            <td><?= $o['pesan_status_text']; ?></td>
                             <td class="text-right">
                                 <div class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,9 +54,9 @@
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="<?= base_url('dashboard/pesanan/' . $o['invoice']); ?>">
                                             <i class="bi bi-box-seam-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            Proses
+                                            Detail
                                         </a>
                                         <a class="dropdown-item" href="#">
                                             <i class="bi bi-pencil-fill fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -72,6 +75,7 @@
                 </tbody>
             </table>
         </div>
+        <?= $pager->links('order', 'pagerS'); ?>
     </div>
 </div>
 <?= $this->endSection(); ?>
