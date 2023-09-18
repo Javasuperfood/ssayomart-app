@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ProdukModel;
+use App\Models\VariasiProdukModel;
 use App\Models\KategoriModel;
 use App\Models\SubKategoriModel;
 
@@ -27,6 +28,64 @@ class AdminProduk extends BaseController
             'kategori_model' => $kategori_list,
         ];
     }
+
+    //Variasi Produk
+    public function tambahVariasi()
+    {
+        $produkModel = new ProdukModel();
+        $kategoriModel = new KategoriModel();
+        $subKategoriModel = new SubKategoriModel();
+        $variasiModel = new VariasiProdukModel();
+
+        $vm = $variasiModel->findAll();
+
+        $produk_list = $produkModel->findAll();
+        $kategori_list = $kategoriModel->findAll();
+        $sub_kategori_list = $subKategoriModel->findAll();
+
+        $data = [
+            'title' => 'produk',
+            'produk_Model' => $produk_list,
+            'kategori' => $kategori_list,
+            'subKategori' => $sub_kategori_list,
+            'variasi_model' => $vm
+        ];
+        // dd($data);
+        return view('dashboard/produk/tambahVariasi', $data);
+    }
+    // save
+    public function saveVariasi()
+    {
+        // ambil gambar
+        $variasiModel = new VariasiProdukModel();
+
+        $data = [
+            'value' => $this->request->getVar('value'),
+            'harga' => $this->request->getVar('harga'),
+        ];
+
+        // swet alert
+        if ($variasiModel->save($data)) {
+            session()->setFlashdata('success', 'Variasi produk berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Variasi Produk berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/produk/tambah-variasi')->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/produk/tambah-variasi')->withInput();
+        }
+    }
+
 
     public function tambahProduk()
     {
@@ -84,7 +143,7 @@ class AdminProduk extends BaseController
         // dd($data);
         return view('dashboard/produk/tambahProduk', $data);
     }
-    // save
+    // save produk
     public function save()
     {
         // ambil gambar
@@ -131,8 +190,7 @@ class AdminProduk extends BaseController
             return redirect()->to('dashboard/produk/tambah-produk')->withInput();
         }
     }
-
-    // view
+    // Update Produk
     public function updateProduk($id)
     {
         session();
@@ -147,7 +205,6 @@ class AdminProduk extends BaseController
         ];
         return view('dashboard/produk/updateProduk', $data);
     }
-    // action
     public function editProduk($id)
     {
         $produkModel = new ProdukModel();
