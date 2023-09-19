@@ -16,34 +16,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?= csrf_field(); ?>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" value="<?= old('label') ?>">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" value="<?= old('label') ?>">
                             <label for="floatingInput">Label*</label>
                             <span id="labelError" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
                             <label for="floatingInput">Nama Penerima*</label>
                             <span id="namaPenerimaError" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
                             <label for=" floatingInput">Nomor Handphone Penerima*</label>
                             <span id="nomerPenerimaError" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
                             <label for=" floatingInput">Nomor Handphone Penerima (optional)</label>
                         </div>
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <select class="form-select" aria-label="Default select example" id="provinsi" name="id_provinsi">
+                            <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
                                 <option selected></option>
                                 <?php foreach ($provinsi as $p) : ?>
                                     <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
@@ -56,7 +56,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <select class="form-select" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
+                            <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
                                 <option selected></option>
                             </select>
                             <label for="kabupaten">Kabupaten/Kota</label>
@@ -68,21 +68,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <div class=" mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
                             <label for=" floatingInput">Kode Pos*</label>
                             <span id="kodePosError" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
                             <label for=" floatingInput">Detail Alamat*</label>
                             <span id="detailError" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
                             <label for=" floatingInput">Patokan Alamat (optional)</label>
                             <span id="patokanError" class="text-danger"></span>
                         </div>
@@ -100,81 +100,83 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- dekstop -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container d-none d-md-block">
-            <figure class="text-center ">
-                <blockquote class="blockquote">
-                    <p> Masukan Alamat Pengiriman</p>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    Masukan Alamat Anda <cite title="Source Title">atau Tambah Alamat</cite>
-                </figcaption>
-            </figure>
-            <!-- form -->
-            <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3 row g-3 mt-4" onsubmit="return validasiTambahAlamat()">
-                <?= csrf_field(); ?>
-                <div class="col-md-6">
-                    <label for="floatingInput">Label<span style="color: red">*</span></label>
-                    <input class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" value="<?= old('label') ?>">
-                    <span id="labelError" class="text-danger"></span>
-                </div>
-                <div class="col-md-6">
-                    <label for="floatingInput">Nama Penerima<span style="color: red">*</span></label>
-                    <input class="form-control floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
-                    <span id="namaPenerimaError" class="text-danger"></span>
-                </div>
-                <div class="col-md-6">
-                    <label for=" floatingInput">Nomor Handphone Penerima<span style="color: red">*</span></label>
-                    <input class="form-control floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
-                    <span id="nomerPenerimaError" class="text-danger"></span>
-                </div>
-                <div class="col-md-6">
-                    <label for=" floatingInput">Nomor Handphone Penerima<span style="color: red">(Opsional)</span></label>
-                    <input class="form-control floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
-                </div>
-                <!-- dropdown -->
-                <div class="col-12">
-                    <div class="form-floating">
-                        <select class="form-select" aria-label="Default select example" id="provinsi" name="id_provinsi">
-                            <option selected></option>
-                            <?php foreach ($provinsi as $p) : ?>
-                                <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <label for="provinsi">Provinsi<span style="color: red">*</span></label>
-                        <span id="provinsiError" class="text-danger"></span>
+            <div class="card px-3 py-3 border-0 shadow">
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <p>Alamat Pengiriman</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        Masukan Alamat Anda <cite title="Source Title">atau Tambah Alamat</cite>
+                    </figcaption>
+                </figure>
+                <!-- form -->
+                <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3 row g-3 mt-4 mx-3 my-3" onsubmit="return validasiTambahAlamat()">
+                    <?= csrf_field(); ?>
+                    <div class="col-md-6">
+                        <label for="floatingInput">Label<span style="color: red">*</span></label>
+                        <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" value="<?= old('label') ?>">
+                        <span id="labelError" class="text-danger"></span>
                     </div>
-                </div>
+                    <div class="col-md-6">
+                        <label for="floatingInput">Nama Penerima<span style="color: red">*</span></label>
+                        <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
+                        <span id="namaPenerimaError" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for=" floatingInput">Nomor Handphone Penerima<span style="color: red">*</span></label>
+                        <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
+                        <span id="nomerPenerimaError" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for=" floatingInput">Nomor Handphone Penerima<span style="color: red">(Opsional)</span></label>
+                        <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
+                    </div>
+                    <!-- dropdown -->
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
+                                <option selected></option>
+                                <?php foreach ($provinsi as $p) : ?>
+                                    <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <label for="provinsi">Provinsi<span style="color: red">*</span></label>
+                            <span id="provinsiError" class="text-danger"></span>
+                        </div>
+                    </div>
 
-                <div class="col-12">
-                    <div class="form-floating">
-                        <select class="form-select" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
-                            <option selected></option>
-                        </select>
-                        <label for="kabupaten">Kabupaten/Kota<span style="color: red">*</span></label>
-                        <span id="kabupatenError" class="text-danger"></span>
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
+                                <option selected></option>
+                            </select>
+                            <label for="kabupaten">Kabupaten/Kota<span style="color: red">*</span></label>
+                            <span id="kabupatenError" class="text-danger"></span>
+                        </div>
                     </div>
-                </div>
-                <input type="hidden" class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" id="inputProvinsi" name="provinsi">
-                <input type="hidden" class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" id="inputKabupaten" name="kabupaten">
-                <!-- end dropdown -->
-                <div class="col-md-6">
-                    <label for=" floatingInput">Detail Alamat<span style="color: red">*</span></label>
-                    <input class="form-control floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
-                    <span id="detailError" class="text-danger"></span>
-                </div>
-                <div class="col-md-6">
-                    <label for=" floatingInput">Patokan Alamat<span style="color: red">*</span></label>
-                    <input class="form-control floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
-                    <span id="patokanError" class="text-danger"></span>
-                </div>
-                <div class="col-md-6">
-                    <label for=" floatingInput">Kode POS<span style="color: red">*</span></label>
-                    <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
-                    <span id="kodePosError" class="text-danger"></span>
-                </div>
-                <div class="col-12 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;">Tambah</button>
-                </div>
-            </form>
+                    <input type="hidden" class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" id="inputProvinsi" name="provinsi">
+                    <input type="hidden" class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" id="inputKabupaten" name="kabupaten">
+                    <!-- end dropdown -->
+                    <div class="col-md-6">
+                        <label for=" floatingInput">Detail Alamat<span style="color: red">*</span></label>
+                        <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
+                        <span id="detailError" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for=" floatingInput">Patokan Alamat<span style="color: red">*</span></label>
+                        <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
+                        <span id="patokanError" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for=" floatingInput">Kode POS<span style="color: red">*</span></label>
+                        <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
+                        <span id="kodePosError" class="text-danger"></span>
+                    </div>
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 <?php endif; ?>

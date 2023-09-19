@@ -137,54 +137,55 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <p class="lead">Selamat datang di halaman pembayaran kami. Di sini Anda dapat menyelesaikan proses pembayaran untuk pesanan Anda dengan mudah dan aman. Kami menyediakan berbagai pilihan pembayaran yang nyaman sehingga Anda dapat memilih yang sesuai dengan preferensi Anda.</p>
             </div>
             <hr>
-            <div class="row">
-                <div class="col-md-4 order-md-2 mb-4">
-                    <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <!-- Right Panel -->
-                        <span class="badge badge-secondary badge-pill">3</span>
-                    </h4>
-                    <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between lh-condensed border-0 shadow-sm">
-                            <table class="table fs-6 lh-1 shadow-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Ringkasan Belanja</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Total Harga</td>
-                                        <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Potongan Harga (Kupon)</td>
-                                        <td><span id="diskon"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total Ongkos Kirim</td>
-                                        <td><span id="ongkirText"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Biaya Jasa Aplikasi</td>
-                                        <td><span id="serviceApp"></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Subtotal</td>
-                                        <td class="fw-bold"><span id="totalText"></span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </li>
-                    </ul>
-                    <div class="d-grid gap-2">
-                        <button type="submit" class="btn btn-danger btn-block">Bayar</button>
+            <form action="<?= base_url('checkout/' . $id . '/bayar'); ?>" method="post">
+                <div class="row">
+                    <div class="col-md-4 order-md-2 mb-4">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <!-- Right Panel -->
+                            <span class="badge badge-secondary badge-pill">3</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item d-flex justify-content-between lh-condensed border-0 shadow-sm">
+                                <table class="table fs-6 lh-1 shadow-sm">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Ringkasan Belanja</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Total Harga</td>
+                                            <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Potongan Harga (Kupon)</td>
+                                            <td><span id="diskon"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Ongkos Kirim</td>
+                                            <td><span id="ongkirText"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Biaya Jasa Aplikasi</td>
+                                            <td><span id="serviceApp"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Subtotal</td>
+                                            <td class="fw-bold"><span id="totalText"></span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
+                        </div>
                     </div>
-                </div>
-                <!-- Left Panel -->
-                <div class="col-md-8 order-md-1">
-                    <h4 class="mb-3">Pemesanan</h4>
-                    <form action="<?= base_url('checkout/' . $id . '/bayar'); ?>" method="post">
+                    <!-- Left Panel -->
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="mb-3">Pemesanan</h4>
+
                         <?= csrf_field(); ?>
 
                         <?php if (!$alamat_list) : ?>
@@ -218,6 +219,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <select class="form-select border-0 shadow-sm" id="service" name="service">
                                     <option value="" class="card-text text-secondary"></option>
                                 </select>
+                                <input type="hidden" name="serviceText" id="serviceText">
                                 <strong>Estimasi : <span id="estimasi"></span></strong>
                             </div>
 
@@ -256,12 +258,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                             <?php endforeach ?>
-
                         </div>
-                    </form>
+                    </div>
                 </div>
-
-            </div>
+            </form>
         </div>
     </div>
 <?php endif; ?>
