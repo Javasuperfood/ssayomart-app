@@ -38,7 +38,7 @@
                     <div class=" card-body">
                         <h3 class="mt-2">Promo spesial</h3>
                         <hr style="border-color: red; border-width: 3px;">
-                        <img src="#" alt="Banner Promo ">
+                        <img src="#" alt="Banner Promo " class="mb-4">
                     </div>
                 </div>
             </div>
