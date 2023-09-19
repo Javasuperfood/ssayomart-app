@@ -3,9 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\ProdukModel;
-use App\Models\VariasiProdukModel;
+use App\Models\VariasiModel;
 use App\Models\KategoriModel;
 use App\Models\SubKategoriModel;
+use App\Controllers\BaseController;
+use App\Models\VariasiItemModel;
 
 class AdminProduk extends BaseController
 {
@@ -29,116 +31,27 @@ class AdminProduk extends BaseController
         ];
     }
 
-    //Variasi Produk
-    public function tambahVariasi()
-    {
-        $produkModel = new ProdukModel();
-        $kategoriModel = new KategoriModel();
-        $subKategoriModel = new SubKategoriModel();
-        $variasiModel = new VariasiProdukModel();
-
-        $vm = $variasiModel->findAll();
-
-        $produk_list = $produkModel->findAll();
-        $kategori_list = $kategoriModel->findAll();
-        $sub_kategori_list = $subKategoriModel->findAll();
-
-        $data = [
-            'title' => 'produk',
-            'produk_Model' => $produk_list,
-            'kategori' => $kategori_list,
-            'subKategori' => $sub_kategori_list,
-            'variasi_model' => $vm
-        ];
-        // dd($data);
-        return view('dashboard/produk/tambahVariasi', $data);
-    }
-    // save
-    public function saveVariasi()
-    {
-        // ambil gambar
-        $variasiModel = new VariasiProdukModel();
-
-        $data = [
-            'value' => $this->request->getVar('value'),
-            'harga' => $this->request->getVar('harga'),
-        ];
-
-        // swet alert
-        if ($variasiModel->save($data)) {
-            session()->setFlashdata('success', 'Variasi produk berhasil disimpan.');
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Variasi Produk berhasil disimpan.'
-            ];
-            session()->setFlashdata('alert', $alert);
-
-            return redirect()->to('dashboard/produk/tambah-variasi')->withInput();
-        } else {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/produk/tambah-variasi')->withInput();
-        }
-    }
-
 
     public function tambahProduk()
     {
         $produkModel = new ProdukModel();
         $kategoriModel = new KategoriModel();
         $subKategoriModel = new SubKategoriModel();
+        $variasiModel = new VariasiModel();
+        $variasiItemModel = new VariasiItemModel();
+        $variasList = $variasiModel->findAll();
+        $variasiItemList = $variasiItemModel->getVariasiItem();
         $produk_list = $produkModel->findAll();
         $kategori_list = $kategoriModel->findAll();
         $sub_kategori_list = $subKategoriModel->findAll();
-        // $sub = [];
-        // foreach ($kategori_list as $k) {
-        //     foreach ($sub_kategori_list as $s) {
-        //         if ($k['id_kategori'] == $s['id_sub_kategori']) {
-        //             if (!isset($sub[$k['id_kategori']])) {
-        //                 $sub[$k['id_kategori']] = $s['nama_kategori'];
-        //             } else {
-        //                 $sub[$k['id_kategori']] .= ', ' . $s['nama_kategori'];
-        //             }
-        //         }
-        //     }
-        // }
-        // $output = array();
-        // foreach ($sub as $id_kategori => $sub_kategori) {
-        //     $output[] = "$id_kategori: [$sub_kategori]";
-        // }
-        // foreach ($output as $line) {
-        //     echo $line . "\n";
-        // }
-        // $output = array();
 
-        // // Mengelompokkan subkategori berdasarkan kategori
-        // foreach ($kategori_list as $id_kategori => $nama_kategori) {
-        //     $subkategori_kategori = array();
-        //     foreach ($sub_kategori_list as $id_sub_kategori => $nama_sub_kategori) {
-        //         $id_kategori_sub = $id_sub_kategori + 1; // Karena indeks array dimulai dari 0
-        //         if ($id_kategori_sub == $id_kategori) {
-        //             $subkategori_kategori[] = $nama_sub_kategori;
-        //         }
-        //     }
-        //     if (!empty($subkategori_kategori)) {
-        //         $output[] = "$id_kategori: " . json_encode($subkategori_kategori);
-        //     }
-        // }
-
-        // // Menampilkan output
-        // foreach ($output as $line) {
-        //     echo $line . "\n";
-        // }
         $data = [
             'title' => 'produk',
             'produk_Model' => $produk_list,
             'kategori' => $kategori_list,
             'subKategori' => $sub_kategori_list,
+            'variasi' => $variasList,
+            'variasiItem' => $variasiItemList
         ];
         // dd($data);
         return view('dashboard/produk/tambahProduk', $data);
@@ -147,8 +60,9 @@ class AdminProduk extends BaseController
     public function save()
     {
         // ambil gambar
-        $kategoriModel = new KategoriModel();
+        // dd($this->request->getVar());
         $produkModel = new ProdukModel();
+        $variasItemiModel = new VariasiItemModel();
         $fotoProduk = $this->request->getFile('img');
         if ($fotoProduk->getError() == 4) {
             $namaProduk = 'default.png';
@@ -157,7 +71,6 @@ class AdminProduk extends BaseController
             $fotoProduk->move('assets/img/produk/main/', $namaProduk);
         }
         $slug = url_title($this->request->getVar('nama'), '-', true);
-        $idKategori = $this->request->getVar('parent_kategori_id'); // Ambil ID kategori dari input select
 
         $data = [
             'slug' => $slug,
@@ -166,11 +79,22 @@ class AdminProduk extends BaseController
             'harga' => $this->request->getVar('harga'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaProduk,
-            'id_kategori' => $idKategori, // Tambahkan ID kategori ke dalam data produk.
+            'id_kategori' => $this->request->getVar('parent_kategori_id'),
+            'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
+        $produk = $produkModel->insert($data);
+        $data2 = [
+            'id_variasi' => $this->request->getVar('selectVariant'),
+            'id_produk' => $produk,
+            'value_item' => $this->request->getVar('valueItem'),
+            'harga_item' => $this->request->getVar('harga'),
+            'berat' => $this->request->getVar('berat'),
+
+        ];
+        $varian = $variasItemiModel->insert($data2);
 
         // swet alert
-        if ($produkModel->save($data)) {
+        if ($produk && $varian) {
             session()->setFlashdata('success', 'Produk berhasil disimpan.');
             $alert = [
                 'type' => 'success',

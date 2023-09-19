@@ -4,22 +4,21 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class VariasiProdukModel extends Model
+class VariasiModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jsf_variasi_produk';
-    protected $primaryKey       = 'id_variasi_produk';
+    protected $table            = 'jsf_variasi';
+    protected $primaryKey       = 'id_variasi';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'value',
-        'harga'
+        'nama_varian'
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -27,8 +26,8 @@ class VariasiProdukModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'value' => 'required',
-        'harga' => 'required'
+        // 'value' => 'required',
+        // 'harga' => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

@@ -10,7 +10,7 @@
 
 <div class="row">
     <!-- Left Panel -->
-    <div class="col-lg-6">
+    <div class="col-md-6">
         <div class="card border-0 shadow-sm position-relative">
             <div class="card-header border-0 py-3">
                 <h6 class="m-0 font-weight-medium">Masukan Produk Baru</h6>
@@ -26,13 +26,8 @@
                     </div>
                     <div class="mb-3">
                         <label for="sku" class="form-label">Stock Keeping Unit (SKU)</label>
-                        <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>">
+                        <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
                         <span id="skuError" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="harga" class="form-label">Harga Produk</label>
-                        <input type="price" class="form-control" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>">
-                        <span id="hargaError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi">Deskripsi Produk</label>
@@ -61,16 +56,42 @@
                         <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar Produk">
                         <span id="imgError" class="text-danger"></span>
                     </div>
-                    <div>
-                        <button type="submit" class="btn btn-danger">Simpan</button>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="selectVariant">Pilih Variant</label>
+                                <select class="form-control" name="selectVariant" id="selectVariant">
+                                    <option selected>Pilih</option>
+                                    <?php foreach ($variasi as $v) : ?>
+                                        <option value="<?= $v['id_variasi']; ?>"><?= $v['nama_varian']; ?></option>
+                                    <?php endforeach ?>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="valueVariant">Value Variant</label>
+                                <input type="text" id="valueItem" name="valueItem" class="form-control" placeholder="Value Varian">
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="mb-3">
+                        <label for="berat" class="form-label">Berat Produk (*Satuan Gram)</label>
+                        <input type="price" class="form-control" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                        <span id="beratError" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="harga" class="form-label">Harga Produk</label>
+                        <input type="price" class="form-control" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>">
+                        <span id="hargaError" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Simpan</button>
                 </form>
             </div>
         </div>
     </div>
 
     <!-- Right Panel -->
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
                 <h6 class="m-0 font-weight-medium">List Produk</h6>
@@ -86,6 +107,7 @@
                             <!-- <th scope="col">Ketegori</th> -->
                             <th scope="col">Harga Produk</th>
                             <th scope="col">Kategori Produk</th>
+                            <th scope="col">Variant</th>
                             <!-- <th scope="col">Deskripsi</th> -->
                             <th style="width: 100px;">Aksi</th>
                         </tr>
@@ -104,14 +126,40 @@
                                 <td>
                                     <?php
                                     $kategoriNama = '';
+                                    $subKategoriNama = '';
                                     foreach ($kategori as $k) {
                                         if ($k['id_kategori'] == $km['id_kategori']) {
                                             $kategoriNama = $k['nama_kategori'];
+                                            if ($km['id_sub_kategori'] != null) {
+                                                foreach ($subKategori as $s) {
+                                                    if ($s['id_sub_kategori'] == $km['id_sub_kategori']) {
+                                                        $subKategoriNama = $s['nama_kategori'];
+                                                        break;
+                                                    }
+                                                }
+                                            }
                                             break;
                                         }
                                     }
-                                    echo $kategoriNama !== '' ? $kategoriNama : 'Kategori Tidak Ditemukan';
+                                    echo ($kategoriNama !== '') ? $kategoriNama . '<br>(' . $subKategoriNama . ')' : 'Kategori Tidak Ditemukan';
                                     ?>
+                                </td>
+                                <td>
+
+                                    <?php
+                                    $previousVarian = null;
+                                    foreach ($variasiItem as $vi) : ?>
+                                        <?php
+                                        $i = 0;
+                                        if ($km['id_produk'] == $vi['id_produk']) {
+                                            if ($previousVarian !== $vi['nama_varian']) {
+                                                echo $vi['nama_varian'] . ' : ';
+                                                $previousVarian = $vi['nama_varian'];
+                                            }
+                                            echo '|' . $vi['value_item'] . '|';
+                                        }
+                                        ?>
+                                    <?php endforeach ?>
                                 </td>
                                 <td class="text-center">
                                     <div class="nav-item dropdown no-arrow">
@@ -123,6 +171,10 @@
                                             <a class="dropdown-item" href="<?= base_url() ?>produk/<?= $km['slug']; ?>">
                                                 <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Lihat Produk
+                                            </a>
+                                            <a class="dropdown-item" href="<?= base_url() ?>dashboard/produk/detail-varian/<?= $km['slug']; ?>">
+                                                <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Detail Varian
                                             </a>
                                             <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
                                                 <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -146,10 +198,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <script>
-        new DataTable('#example');
-    </script> -->
 </div>
 
 <script>
