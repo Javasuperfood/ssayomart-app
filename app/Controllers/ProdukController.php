@@ -22,6 +22,7 @@ class ProdukController extends BaseController
         ];
         return view('user/produk/index', $data);
     }
+
     public function getProduk($slug1, $slug2)
     {
         $kategori = new KategoriModel();
@@ -42,6 +43,7 @@ class ProdukController extends BaseController
         $data = [
             'title' => $katSub['nama_kategori'],
             'kategori' => $kategori->findAll(),
+            'kategori_single' => $kategori->findAll(),
             'produk' => $getProduk,
             'subKategori' => $subResult,
             'back' => ''
@@ -49,6 +51,7 @@ class ProdukController extends BaseController
         // dd($data);
         return view('user/produk/index', $data);
     }
+
     public function produkShowSingle($slug)
     {
         $kategori = new KategoriModel();
