@@ -33,20 +33,20 @@ class ProdukController extends BaseController
         $subSlug = $subKategori->getSubKategori($slug2);
         $produk = new ProdukModel();
         if (!$slug2) {
-            $getPeroduk = $produk->where('id_kategori', $katSub['id_kategori'])->findAll();
+            $getProduk = $produk->where('id_kategori', $katSub['id_kategori'])->findAll();
         }
         if ($slug1 && $slug2) {
-            $getPeroduk = $produk->where('id_kategori', $katSub['id_kategori'])->where('id_sub_kategori', $subSlug['id_sub_kategori'])->findAll();
+            $getProduk = $produk->where('id_kategori', $katSub['id_kategori'])->where('id_sub_kategori', $subSlug['id_sub_kategori'])->findAll();
         }
 
         $data = [
             'title' => $katSub['nama_kategori'],
             'kategori' => $kategori->findAll(),
-            'produk' => $getPeroduk,
+            'produk' => $getProduk,
             'subKategori' => $subResult,
             'back' => ''
         ];
-        // dd($result);
+        // dd($data);
         return view('user/produk/index', $data);
     }
     public function produkShowSingle($slug)

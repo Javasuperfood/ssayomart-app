@@ -291,16 +291,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="track">
                                 <?php
                                 $count = 0;
-
                                 foreach ($getstatus as $gs) :
                                     if ($count >= $status->pesan_status) {
                                         break;
                                     }
                                 ?>
                                     <div class="step active"> <span class="icon"><i class="bi bi-credit-card"></i> </span> <span class="text"><?= $gs['status']; ?></span> </div>
-                                    <div class="step"> <span class="icon"> <i class="bi bi-person-check"></i></span> <span class="text"> Diserahkan kepada Kurir</span> </div>
-                                    <div class="step"> <span class="icon"><i class="bi bi-truck"></i></span> <span class="text"> Dalam Pengiriman </span> </div>
-                                    <div class="step"> <span class="icon"><i class="bi bi-check-circle"></i> </span> <span class="text">Barang sampai kepada pemilik</span> </div>
+
                                 <?php
                                     $count++;
                                 endforeach;
