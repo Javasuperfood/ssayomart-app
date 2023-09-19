@@ -40,7 +40,13 @@ class Produk extends Seeder
         // ];
 
         // $this->db->table('jsf_produk')->insertBatch($data);
-
+        $variasi = [
+            [
+                'id_variasi' => 1,
+                'nama_varian' => 'Rasa',
+            ],
+        ];
+        $this->db->table('jsf_variasi')->insertBatch($variasi);
         $harga = [
             '1' => 10000,
             '2' => 15000,
@@ -51,7 +57,17 @@ class Produk extends Seeder
             '7' => 50000,
             '8' => 100000,
         ];
-        for ($i = 1; $i <= 5; $i++) {
+        $rasa = [
+            '1' => 'Sapi',
+            '2' => 'Balado',
+            '3' => 'Cabai',
+        ];
+        $berat = [
+            '1' => '1000',
+            '2' => '1500',
+            '3' => '2000',
+        ];
+        for ($i = 1; $i <= 20; $i++) {
             $idK = mt_rand(1, 17);
             $idS = null;
             if ($idK == 2) {
@@ -73,10 +89,12 @@ class Produk extends Seeder
                 $idS = mt_rand(15, 18);
             }
             $faker = \Faker\Factory::create();
-            $nama = $faker->sentence(mt_rand(1, 2));
+            // $nama = $faker->sentence(mt_rand(1, 2));
+            // $slug = url_title($nama, '-', true);
+
             $data = [
-                'nama' => $nama,
-                'slug'    => url_title($nama, '-', true),
+                'nama' => 'Produk ' . $i,
+                'slug'    => url_title('Produk ' . $i, '-', true),
                 'sku'    => $faker->numberBetween(1000000, 9000000),
                 'harga'    => $harga[mt_rand(1, 8)],
                 'deskripsi'    => $faker->paragraph(2),
@@ -84,6 +102,24 @@ class Produk extends Seeder
                 'id_sub_kategori' => $idS
             ];
             $this->db->table('jsf_produk')->insert($data);
+
+
+            $id_variasi = 1;
+            for ($j = 1; $j <= 2; $j++) {
+                if ($id_variasi == 1) {
+                    $val = $rasa[mt_rand(1, 3)];
+                }
+                if ($id_variasi == 2) {
+                    $val = $berat[mt_rand(1, 3)];
+                }
+                $dataItem = [
+                    'id_variasi' => $id_variasi,
+                    'id_produk' => $i,
+                    'value_item' => $val,
+                    'harga_item' => $harga[mt_rand(1, 8)],
+                ];
+                $this->db->table('jsf_variasi_item')->insert($dataItem);
+            }
         }
     }
 }
