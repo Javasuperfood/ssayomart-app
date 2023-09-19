@@ -4,7 +4,7 @@
         <div class="row mt-2 row-cols-3">
             <?php foreach ($produk as $p) : ?>
                 <div class="col-6 col-md-4 col-lg-2 pt-3">
-                    <div class="card border-0 shadow" style="width: auto; height: 100%;">
+                    <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
                         </a>
