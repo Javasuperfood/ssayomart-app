@@ -160,6 +160,7 @@
 @media (min-width:1920px) and (max-width:2000px) {
     .card-side {
         width: 18rem;
+        height: 18rem;
 
     }
 
