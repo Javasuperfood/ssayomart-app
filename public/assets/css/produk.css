@@ -93,6 +93,17 @@
     cursor: pointer;
     z-index: 99;
 }
+.card-side {
+    width: 25rem;
+}
+
+
+@media (min-width:1024px) and (max-width:1512px) {
+    .card-side {
+        width: 15rem;
+
+    }
+}
 @media (min-width: 768px) and (max-width: 1024px) {
     .swiper-slide img {
         border-radius: 25px;
@@ -133,4 +144,25 @@
     .swiper-slide-card {
         margin-left: 10px;
     }
+}
+@media (min-width:1512px) and (max-width:1910px) {
+    .card-side {
+        width: 15rem;
+
+    }
+}
+@media (min-width:1024px) and (max-width:1340px) {
+    .card-side {
+        width: 12rem;
+
+    }
+}
+@media (min-width:1920px) and (max-width:2000px) {
+    .card-side {
+        width: 18rem;
+        height: 18rem;
+
+    }
+
+
 }

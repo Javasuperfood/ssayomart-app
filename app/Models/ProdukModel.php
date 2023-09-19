@@ -66,13 +66,13 @@ class ProdukModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getProduk($slug = false)
+    public function getProduk($slug1 = false)
     {
-        if ($slug == false) {
+        if ($slug1 == false) {
             return $this->findAll();
         }
 
-        return $this->where(['slug' => $slug])->first();
+        return $this->where(['slug' => $slug1])->first();
     }
 
     public function getSubKategoriByKategori($kategoriId)

@@ -57,6 +57,7 @@ class Produk extends Seeder
             '7' => 50000,
             '8' => 100000,
         ];
+
         $rasa = [
             '1' => 'Sapi',
             '2' => 'Balado',
