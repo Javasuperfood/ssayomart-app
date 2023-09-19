@@ -34,14 +34,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- tampilan Desktop -->
     <div id="desktopContent" style="margin-top: 100px;">
         <div class="container-fluid d-none d-lg-block">
-            <div class="mt-5">
+            <div class="mb-5">
                 <div class="row">
                     <div class="col-2">
                         <div class="card-side border-0" style="top: 50px; position: sticky">
                             <div class="card-body">
                                 <h3 class="mt-5">Kategori</h3>
                                 <hr style="border-color: red; border-width: 3px;">
-                                <ul class="list-group list-group-flush">
+                                <ul class="list-group">
                                     <?php foreach ($kategori as $k) : ?>
                                         <?php
                                         // Check if the current category has subcategories
@@ -51,7 +51,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         ?>
                                         <?php if ($hasSubcategories) : ?>
                                             <!-- If category has subcategories, display a dropdown -->
-                                            <li class="list-group-item pb-3 fw-bold">
+                                            <li class="list-group-item pb-1 list-group-flush" style="font-size: 12px; padding: 4px;">
                                                 <a href="#" class="link-offset-2 link-underline link-underline-opacity-0 link-dark" data-bs-toggle="collapse" data-bs-target="#subcategories<?= $k['slug']; ?>">
                                                     <?= $k['nama_kategori']; ?>
                                                     <i class="bi bi-chevron-down fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -70,7 +70,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </li>
                                         <?php else : ?>
                                             <!-- If category doesn't have subcategories, display a regular link -->
-                                            <li>
+                                            <li class="list-group-item pb-1 list-group-flush" style="font-size: 12px; padding: 4px;">
                                                 <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="link-offset-2 link-underline link-underline-opacity-0 link-dark list-group-item pb-3 fw-bold">
                                                     <?= $k['nama_kategori']; ?>
                                                     <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -79,6 +79,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </ul>
+                            </div>
+
+                            <div class="card-body">
+                                <h3 class="mt-5">Promo Special</h3>
+                                <hr style="border-color: red; border-width: 3px;">
                             </div>
                         </div>
                     </div>

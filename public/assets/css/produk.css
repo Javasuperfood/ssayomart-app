@@ -94,7 +94,7 @@
     z-index: 99;
 }
 .card-side {
-    width: 25rem;
+    width: 18rem;
 }
 
 
@@ -145,7 +145,7 @@
         margin-left: 10px;
     }
 }
-@media (min-width:1512px) and (max-width:1910px) {
+/* @media (min-width:1512px) and (max-width:1910px) {
     .card-side {
         width: 15rem;
 
@@ -160,9 +160,10 @@
 @media (min-width:1920px) and (max-width:2000px) {
     .card-side {
         width: 18rem;
-        height: 18rem;
+        
 
     }
 
 
 }
+*/
