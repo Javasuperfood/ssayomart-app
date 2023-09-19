@@ -24,11 +24,11 @@
     <input type="hidden" id="qty" name="qty" value="1">
     <?= $this->include('user/component/scriptAddToCart'); ?>
 <?php else : ?>
-    <div class="px-5 my-5 align-middle">
-        <div class="card border-0 text-center rounded shadow">
+    <div class="container px-5 my-5 align-middle">
+        <div class="card border-0 text-center rounded shadow-sm">
             <div class="card-body">
                 <h5 class="card-title">Produk belum tersedia</h5>
-                <a href="/" class="btn btn-danger border-0 rounded">Kembali</a>
+                <a href="/" class="btn btn-danger border-0 rounded ">Kembali</a>
             </div>
         </div>
     </div>
