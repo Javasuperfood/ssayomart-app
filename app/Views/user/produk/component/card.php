@@ -12,7 +12,7 @@
                             <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                             <p class=" text-center">
-                                <button class="btn btn-white add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></button>
+                                <a href="<?= base_url('produk/' . $p['slug']); ?>?varian=show" class="btn btn-white"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></a>
                             </p>
                         </div>
                     </div>
@@ -20,8 +20,6 @@
             <?php endforeach; ?>
         </div>
     </div>
-    <input type="hidden" id="qty" name="qty" value="1">
-    <?= $this->include('user/component/scriptAddToCart'); ?>
 <?php else : ?>
     <div class="container px-5 my-5 align-middle">
         <div class="card border-0 text-center rounded shadow-sm">

@@ -94,6 +94,17 @@ class ProdukModel extends Model
             ->getRowArray();
     }
 
+    public function getProdukWithVarianBySlug($slug, $id_varian)
+    {
+        return $this->db->table('jsf_produk')
+            ->select('*')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_produk.id_produk', 'INNER')
+            ->where('slug', $slug)
+            ->where('id_variasi_item', $id_varian)
+            ->get()
+            ->getResultArray()[0];
+    }
+
     public function getRandomProducts()
     {
         $produkModel = new ProdukModel();

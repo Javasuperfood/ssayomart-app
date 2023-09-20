@@ -51,11 +51,6 @@ class Produk extends Seeder
             '1' => 10000,
             '2' => 15000,
             '3' => 20000,
-            '4' => 25000,
-            '5' => 30000,
-            '6' => 40000,
-            '7' => 50000,
-            '8' => 100000,
         ];
 
         $rasa = [
@@ -68,7 +63,7 @@ class Produk extends Seeder
             '2' => '1500',
             '3' => '2000',
         ];
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 50; $i++) {
             $idK = mt_rand(1, 17);
             $idS = null;
             if ($idK == 2) {
@@ -97,7 +92,7 @@ class Produk extends Seeder
                 'nama' => 'Produk ' . $i,
                 'slug'    => url_title('Produk ' . $i, '-', true),
                 'sku'    => $faker->numberBetween(1000000, 9000000),
-                'harga'    => $harga[mt_rand(1, 8)],
+                'harga'    => $harga[mt_rand(1, 3)],
                 'deskripsi'    => $faker->paragraph(2),
                 'id_kategori' => $idK,
                 'id_sub_kategori' => $idS
@@ -117,7 +112,8 @@ class Produk extends Seeder
                     'id_variasi' => $id_variasi,
                     'id_produk' => $i,
                     'value_item' => $val,
-                    'harga_item' => $harga[mt_rand(1, 8)],
+                    'berat' => 500,
+                    'harga_item' => $harga[mt_rand(1, 3)],
                 ];
                 $this->db->table('jsf_variasi_item')->insert($dataItem);
             }

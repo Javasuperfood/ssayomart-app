@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\KategoriModel;
 use App\Models\SubKategoriModel;
 use App\Models\ProdukModel;
-
+use App\Models\VariasiItemModel;
 
 class ProdukController extends BaseController
 {
@@ -56,13 +56,16 @@ class ProdukController extends BaseController
     {
         $kategori = new KategoriModel();
         $produk = new ProdukModel();
+        $varianModel = new VariasiItemModel();
         $single = $produk->getProduk($slug);
-
+        $varianItem = $varianModel->getByIdProduk($single['id_produk']);
         $randomProducts = $produk->getRandomProducts();
+
         $data = [
             'title' => $single['nama'],
             'kategori' => $kategori->findAll(),
             'produk' => $single,
+            'varian' => $varianItem
             'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
         ];
         // dd($data);

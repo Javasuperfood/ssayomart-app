@@ -37,6 +37,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
+
+        </div>
+    </div>
+
             <div class="row text-center row-cols-2">
                 <?php foreach ($produk as $p) : ?>
                     <div class="col">
@@ -57,6 +61,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <button type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
                                 </form>
                             </div>
+
                         </div>
                     </div>
                 <?php endforeach; ?>

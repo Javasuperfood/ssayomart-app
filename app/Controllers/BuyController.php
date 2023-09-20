@@ -21,11 +21,12 @@ class BuyController extends BaseController
         $alamatModel = new AlamatUserModel();
         $kuponModel = new KuponModel();
         $produkModel = new ProdukModel();
-        $produk = $produkModel->getProduk($slug);
+        $id_varian = $this->request->getVar('varian');
         $qty = $this->request->getVar('qty');
-        $totalAkhir = $produk['harga'] * $qty;
+        $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
+        // dd($produk);
+        $totalAkhir = $produk['harga_item'] * $qty;
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
-
         $kuponList = $kuponModel->findAll();
 
         $data = [
@@ -33,6 +34,7 @@ class BuyController extends BaseController
             'alamat_list' => $alamat_list,
             'produk' => $produk,
             'qty' => $qty,
+            'varian' => $id_varian,
             'total' => $totalAkhir,
             'kupon' => $kuponList,
             'kategori' => $kategori->findAll()
@@ -62,9 +64,10 @@ class BuyController extends BaseController
 
 
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
+        $id_varian = $this->request->getVar('varian');
 
         $email = $userModel->getEmail(user_id());
-        $produk = $produkModel->getProduk($slug);
+        $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
         $id_alamat = $this->request->getVar('alamat_list');
 
         $alamat = $alamatUserModel->find($id_alamat);
@@ -82,9 +85,9 @@ class BuyController extends BaseController
         ];
         $cekProduk[] = [
             'id' => $produk['id_produk'],
-            'price' => $produk['harga'],
+            'price' => $produk['harga_item'],
             'quantity' => $qty,
-            'name' => $produk['nama'],
+            'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
         ];
         if ($kode != '') {
             $kuponModel = new KuponModel();

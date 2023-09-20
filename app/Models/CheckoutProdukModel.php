@@ -16,6 +16,7 @@ class CheckoutProdukModel extends Model
     protected $allowedFields    = [
         'id_checkout',
         'id_produk',
+        'id_variasi_item',
         'qty'
     ];
 
