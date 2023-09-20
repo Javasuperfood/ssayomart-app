@@ -23,11 +23,5 @@
         </div>
     </div>
 </section>
-<!-- Card -->
 <?= $this->include('user/produk/component/card') ?>
-
-
-
-
-<!-- END -->
 <?= $this->endSection(); ?>
