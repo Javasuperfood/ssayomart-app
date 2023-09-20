@@ -57,10 +57,13 @@ class ProdukController extends BaseController
         $kategori = new KategoriModel();
         $produk = new ProdukModel();
         $single = $produk->getProduk($slug);
+
+        $randomProducts = $produk->getRandomProducts();
         $data = [
             'title' => $single['nama'],
             'kategori' => $kategori->findAll(),
-            'produk' => $single
+            'produk' => $single,
+            'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
         ];
         // dd($data);
         return view('user/produk/produk', $data);

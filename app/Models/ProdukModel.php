@@ -93,4 +93,11 @@ class ProdukModel extends Model
             ->get()
             ->getRowArray();
     }
+
+    public function getRandomProducts()
+    {
+        $produkModel = new ProdukModel();
+        $products = $produkModel->orderBy('RAND()')->findAll(10); // Ganti 10 dengan jumlah produk yang ingin Anda tampilkan.
+        return $products;
+    }
 }

@@ -18,7 +18,7 @@
 <!-- end tampilan mobile -->
 
 <!-- tampilan Desktop -->
-<div class="container-fluid d-none d-lg-block">
+<div class="container d-none d-lg-block">
     <!-- Button Kategori -->
     <?= $this->include('user/produk/component/kategori') ?>
     <!-- button Scroll Up -->

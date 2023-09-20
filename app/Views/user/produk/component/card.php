@@ -12,7 +12,6 @@
                             <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                             <p class=" text-center">
-
                                 <button class="btn btn-white add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></button>
                             </p>
                         </div>

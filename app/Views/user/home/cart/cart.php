@@ -79,15 +79,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container-fluid mb-5 d-none d-md-block">
             <div class="row">
-                <div class="col-12 mb-3 text-center"> <!-- Tambahkan class text-center untuk memposisikan breadcrumb di tengah -->
+                <div class="col-12 d-flex justify-content-center">
                     <nav aria-label="breadcrumb" class="rounded-3 p-2">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <h2 class="mb-0 text-danger"><i class="bi bi-cart-fill"></i> Checkout</h2>
+                                <h2 class="mb-0 text-danger"><i class="bi bi-cart-fill"></i> <?= $title; ?></h2>
+                                <hr class="text-danger">
                             </li>
                         </ol>
                     </nav>
                 </div>
+
                 <div class="col-md-10 col-11 mx-auto">
                     <div class="row mt-5 gx-3">
                         <!-- left side div -->
