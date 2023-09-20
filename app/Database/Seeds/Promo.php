@@ -11,51 +11,84 @@ class Promo extends Seeder
         $data = [
             [
                 'id_promo' => 1,
-                'title' => 'Diskon Minguan',
-                'slug' =>  'diskon-mingguan',
+                'title' => 'Diskon',
+                'slug' =>  'diskon',
                 'start_at' => '2023-09-07',
                 'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem'
+                'deskripsi' => 'lorem',
+                'img' => 'promo-1.png'
             ],
             [
                 'id_promo' => 2,
-                'title' => 'Diskon Harian',
-                'slug' =>  'diskon-harian',
+                'title' => 'Flash Sale',
+                'slug' =>  'flash-sale',
                 'start_at' => '2023-09-07',
                 'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem'
+                'deskripsi' => 'lorem',
+                'img' => 'promo-2.png'
             ],
             [
                 'id_promo' => 3,
-                'title' => 'Promo siang hari',
-                'slug' =>  'promo-siang-hari',
+                'title' => 'Produk Terbaru',
+                'slug' =>  'produk-terbaru',
                 'start_at' => '2023-09-07',
                 'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem'
+                'deskripsi' => 'lorem',
+                'img' => 'promo-3.jpg'
             ],
             [
                 'id_promo' => 4,
-                'title' => 'Promo siang hari',
-                'slug' =>  'promo-siang-hari',
+                'title' => 'Bundling',
+                'slug' =>  'bundling',
                 'start_at' => '2023-09-07',
                 'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem'
+                'deskripsi' => 'lorem',
+                'img' => 'promo-4.jpg'
             ],
             [
                 'id_promo' => 5,
-                'title' => 'Promo siang hari',
-                'slug' =>  'promo-siang-hari',
+                'title' => 'Bundling',
+                'slug' =>  'bundling',
                 'start_at' => '2023-09-07',
                 'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem'
+                'deskripsi' => 'lorem',
+                'img' => 'promo-4.jpg'
             ],
             [
                 'id_promo' => 6,
-                'title' => 'Promo siang hari',
-                'slug' =>  'promo-siang-hari',
+                'title' => 'Bundling',
+                'slug' =>  'bundling',
                 'start_at' => '2023-09-07',
                 'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem'
+                'deskripsi' => 'lorem',
+                'img' => 'promo-4.jpg'
+            ],
+            [
+                'id_promo' => 7,
+                'title' => 'Bundling',
+                'slug' =>  'bundling',
+                'start_at' => '2023-09-07',
+                'end_at' => '2023-12-20',
+                'deskripsi' => 'lorem',
+                'img' => 'promo-4.jpg'
+            ],
+            [
+                'id_promo' => 8,
+                'title' => 'Bundling',
+                'slug' =>  'bundling',
+                'start_at' => '2023-09-07',
+                'end_at' => '2023-12-20',
+                'deskripsi' => 'lorem',
+                'img' => 'promo-4.jpg'
+            ],
+            [
+                'id_promo' => 9,
+                'title' => 'Bundling',
+                'slug' =>  'bundling',
+                'start_at' => '2023-09-07',
+                'end_at' => '2023-12-20',
+                'deskripsi' => 'lorem',
+                'img' => 'promo-4.jpg'
             ],
         ];
 

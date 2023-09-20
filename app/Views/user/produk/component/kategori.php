@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container-fluid d-none d-lg-block">
             <div class="mb-5">
                 <div class="row">
-                    <div class="col-2">
+                    <div class="col-3">
                         <div class="card-side" style="top: 50px; position: sticky">
                             <div class="card-body border-0">
                                 <h3 class="mt-5">Kategori</h3>
@@ -86,7 +86,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <hr style="border-color: red; border-width: 3px;">
                         </div> -->
                     </div>
-                    <div class="col-10">
+                    <div class="col-9">
                         <?= $this->include('user/produk/component/card') ?>
                     </div>
                 </div>

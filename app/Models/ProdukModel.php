@@ -93,6 +93,7 @@ class ProdukModel extends Model
             ->get()
             ->getRowArray();
     }
+
     public function getProdukWithVarianBySlug($slug, $id_varian)
     {
         return $this->db->table('jsf_produk')
@@ -102,5 +103,12 @@ class ProdukModel extends Model
             ->where('id_variasi_item', $id_varian)
             ->get()
             ->getResultArray()[0];
+    }
+
+    public function getRandomProducts()
+    {
+        $produkModel = new ProdukModel();
+        $products = $produkModel->orderBy('RAND()')->findAll(10); // Ganti 10 dengan jumlah produk yang ingin Anda tampilkan.
+        return $products;
     }
 }

@@ -108,7 +108,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Biaya Jasa Aplikasi</td>
+                                    <td>Biaya Pelayanan</td>
                                     <td><span id="serviceApp"></span></td>
                                 </tr>
                                 <tr>
@@ -134,7 +134,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="text-center">
                 <h2>Checkout</h2>
-                <p class="lead">Selamat datang di halaman pembayaran kami. Di sini Anda dapat menyelesaikan proses pembayaran untuk pesanan Anda dengan mudah dan aman. Kami menyediakan berbagai pilihan pembayaran yang nyaman sehingga Anda dapat memilih yang sesuai dengan preferensi Anda.</p>
             </div>
             <hr>
             <form action="<?= base_url('checkout/' . $id . '/bayar'); ?>" method="post">
@@ -167,7 +166,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <td><span id="ongkirText"></span></td>
                                         </tr>
                                         <tr>
-                                            <td>Biaya Jasa Aplikasi</td>
+                                            <td>Biaya Pelayanan</td>
                                             <td><span id="serviceApp"></span></td>
                                         </tr>
                                         <tr>

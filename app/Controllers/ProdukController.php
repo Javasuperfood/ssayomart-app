@@ -59,12 +59,14 @@ class ProdukController extends BaseController
         $varianModel = new VariasiItemModel();
         $single = $produk->getProduk($slug);
         $varianItem = $varianModel->getByIdProduk($single['id_produk']);
+        $randomProducts = $produk->getRandomProducts();
 
         $data = [
             'title' => $single['nama'],
             'kategori' => $kategori->findAll(),
             'produk' => $single,
             'varian' => $varianItem
+            'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
         ];
         // dd($data);
         return view('user/produk/produk', $data);
