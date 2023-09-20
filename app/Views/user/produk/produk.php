@@ -39,8 +39,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-basket2"></i></button>
-                        <button type="submit" class="btn btn-white text-danger border-danger mt-4" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
+                        <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
+                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
                     </div>
                 </div>
                 <div class="row mt-4 mb-5">
@@ -48,77 +48,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <h2 class="text-merah"> Deskripsi </h2>
                         <p class="text-potong"><?= $produk['deskripsi']; ?></p>
                         <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
-                    </div>
-                </div>
-            </div>
-            <!-- Modal cart -->
-            <div class="modal fade" id="modalVarian" tabindex="-1" aria-labelledby="modalVarianLabel" aria-hidden="true">
-                <div class="modal-dialog" style="top: calc(100% - 300px);">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modalVarianLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row row-cols-3">
-                                <?php foreach ($varian as $key => $v) : ?>
-                                    <div class="col" key="<?= $key; ?>">
-                                        <div class="card" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?= $v['value_item']; ?></h5>
-                                                <p class="card-text"><?= $v['harga_item']; ?></p>
-                                                <div class="form-check">
-                                                    <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="readioVarian<?= $v['id_variasi_item']; ?>">
-                                                    <label class="form-check-label" for="readioVarian<?= $v['id_variasi_item']; ?>">
-                                                        Pilih
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">Add To Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Modal Buy Button -->
-            <div class="modal fade" id="modalVarianBuy" tabindex="-1" aria-labelledby="modalVarianBuyLabel" aria-hidden="true">
-                <div class="modal-dialog" style="top: calc(100% - 300px);">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli Langsung</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
-                            <div class="modal-body">
-                                <div class="row row-cols-3">
-                                    <?php foreach ($varian as $key => $v) : ?>
-                                        <div class="col" key="<?= $key; ?>">
-                                            <div class="card" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
-                                                <div class="card-body">
-                                                    <h5 class="card-title"><?= $v['value_item']; ?></h5>
-                                                    <p class="card-text"><?= $v['harga_item']; ?></p>
-                                                    <div class="form-check">
-                                                        <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="readioVarian<?= $v['id_variasi_item']; ?>">
-                                                        <label class="form-check-label" for="readioVarian<?= $v['id_variasi_item']; ?>">
-                                                            Pilih
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach ?>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="hidden" id="qty" name="qty" value="1">
-                                <button type="submit" class="btn btn-white text-danger border-danger mt-4">Beli Sekarang</button>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -165,17 +94,45 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-white text-danger border-danger mt-4 add-to-cart-btn d-inline" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>"><i class=" bi bi-cart-fill"></i></button>
-                        <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
-                            <input type="hidden" id="qty" name="qty" value="1">
-                            <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</button>
-                        </form>
+                        <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
+                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
                     </div>
                     <div class="row my-4">
                         <div class="col-lg-6">
                             <h4 class="text-merah"> Deskripsi </h4>
                             <p class="text-potong"><?= $produk['deskripsi']; ?></p>
                             <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container d-none d-lg-block">
+                <div class="d-none d-lg-block">
+                    <div class="row mt-3">
+                        <div class="col">
+                            <h2 class="mb-4">Produk Lainnya</h2>
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper d-flex">
+                                    <?php foreach ($randomProducts as $p) : ?>
+                                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
+                                            <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
+                                                <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
+                                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
+                                                </a>
+                                                <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
+                                                    <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
+                                                    <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
+                                                    <p class=" text-center">
+                                                        <a href="<?= base_url('produk/' . $p['slug']); ?>?varian=show" class="btn text-danger"> <i class="bi bi-cart-fill fs-4"></i></a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <input type="hidden" id="qty" name="qty" value="1">
+                                    <?= $this->include('user/component/scriptAddToCart'); ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -187,6 +144,78 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 <!-- end Desktop -->
+
+<!-- Modal cart -->
+<div class="modal fade" id="modalVarian" tabindex="-1" aria-labelledby="modalVarianLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: calc(100% - 300px);">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalVarianLabel">Varian Produk</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row row-cols-3">
+                    <?php foreach ($varian as $key => $v) : ?>
+                        <div class="col" key="<?= $key; ?>">
+                            <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $v['value_item']; ?></h5>
+                                    <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
+                                    <div class="form-check">
+                                        <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="readioVarian<?= $v['id_variasi_item']; ?>">
+                                        <label class="form-check-label" for="readioVarian<?= $v['id_variasi_item']; ?>">
+                                            Pilih
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">Tambah Keranjang</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Buy Button -->
+<div class="modal fade" id="modalVarianBuy" tabindex="-1" aria-labelledby="modalVarianBuyLabel" aria-hidden="true">
+    <div class="modal-dialog" style="top: calc(100% - 300px);">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli Langsung</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
+                <div class="modal-body">
+                    <div class="row row-cols-3">
+                        <?php foreach ($varian as $key => $v) : ?>
+                            <div class="col" key="<?= $key; ?>">
+                                <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $v['value_item']; ?></h5>
+                                        <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
+                                        <div class="form-check">
+                                            <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="readioVarian<?= $v['id_variasi_item']; ?>">
+                                            <label class="form-check-label" for="readioVarian<?= $v['id_variasi_item']; ?>">
+                                                Pilih
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="qty" name="qty" value="1">
+                    <button type="submit" class="btn btn-danger mt-4">Beli Sekarang</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?php
 if ($isMobile) {
@@ -202,62 +231,6 @@ if ($isMobile) {
 }
 ?>
 <!-- akhir view desktop -->
-
-<div class="container d-none d-lg-block">
-    <!-- produk terkait section tampilan web -->
-    <div class="d-none d-lg-block">
-        <div class="row mt-3">
-            <div class="col">
-                <h2 class="mb-4">Produk Lainnya</h2>
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper d-flex">
-                        <?php foreach ($randomProducts as $p) : ?>
-                            <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
-                                <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
-                                    <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
-                                    </a>
-                                    <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                                        <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
-                                        <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-                                        <p class=" text-center">
-                                            <button class="btn add-to-cart-btn" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"> <i class="bi bi-cart-fill text-danger fs-5"></i></button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                        <input type="hidden" id="qty" name="qty" value="1">
-                        <?= $this->include('user/component/scriptAddToCart'); ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- produk terkait section tampilan web-->
-
-    <!-- produk terbaru section tampilan web -->
-    <!-- <div class="d-none d-lg-block">
-        <div class="row mt-3">
-            <h2 class="text-merah"> Produk Terbaru </h2>
-            <div class="col-6 col-md-4 col-lg-2 mb-3">
-                <div class="card border-0 shadow-sm">
-                    <img src="<?= base_url(); ?>assets/img/produk/main/default.png">
-                    <div class="card-body">
-                        <div class="card-title">
-                            <h4>Rp. 25.000</h4>
-                        </div>
-                        <p>Jahe Bubuk</p>
-                        <p class="text-center">
-                            <a href="#" class="btn btn-danger "> <i class="bi bi-basket"></i></a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-</div>
-<!-- produk terbaru section tampilan web-->
 
 <script type="text/javascript">
     function increaseCount(a, b) {
