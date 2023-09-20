@@ -14,7 +14,7 @@ class Promo extends Seeder
                 'title' => 'Diskon Minguan',
                 'slug' =>  'diskon-mingguan',
                 'start_at' => '2023-09-07',
-                'end_at' => '2023-09-20',
+                'end_at' => '2023-12-20',
                 'deskripsi' => 'lorem'
             ],
             [
@@ -22,7 +22,7 @@ class Promo extends Seeder
                 'title' => 'Diskon Harian',
                 'slug' =>  'diskon-harian',
                 'start_at' => '2023-09-07',
-                'end_at' => '2023-09-20',
+                'end_at' => '2023-12-20',
                 'deskripsi' => 'lorem'
             ],
             [
@@ -30,7 +30,7 @@ class Promo extends Seeder
                 'title' => 'Promo siang hari',
                 'slug' =>  'promo-siang-hari',
                 'start_at' => '2023-09-07',
-                'end_at' => '2023-09-20',
+                'end_at' => '2023-12-20',
                 'deskripsi' => 'lorem'
             ],
             [
@@ -38,7 +38,7 @@ class Promo extends Seeder
                 'title' => 'Promo siang hari',
                 'slug' =>  'promo-siang-hari',
                 'start_at' => '2023-09-07',
-                'end_at' => '2023-09-20',
+                'end_at' => '2023-12-20',
                 'deskripsi' => 'lorem'
             ],
             [
@@ -46,7 +46,7 @@ class Promo extends Seeder
                 'title' => 'Promo siang hari',
                 'slug' =>  'promo-siang-hari',
                 'start_at' => '2023-09-07',
-                'end_at' => '2023-09-20',
+                'end_at' => '2023-12-20',
                 'deskripsi' => 'lorem'
             ],
             [
@@ -54,7 +54,7 @@ class Promo extends Seeder
                 'title' => 'Promo siang hari',
                 'slug' =>  'promo-siang-hari',
                 'start_at' => '2023-09-07',
-                'end_at' => '2023-09-20',
+                'end_at' => '2023-12-20',
                 'deskripsi' => 'lorem'
             ],
         ];
