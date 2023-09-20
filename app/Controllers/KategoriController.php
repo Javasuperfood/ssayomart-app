@@ -14,7 +14,33 @@ class KategoriController extends BaseController
 {
     public function index()
     {
-
+        if (auth()->loggedIn()) {
+            $cart = new CartModel();
+            $result1 = $cart->where(['id_user' => user_id()])->first();
+            $wishlist = new WishlistModel();
+            $result2 = $wishlist->where(['id_user' => user_id()])->first();
+            if (!$result1) {
+                $dbCart = [
+                    'id_user' => user_id(),
+                    'total' => 0
+                ];
+                $cart->save($dbCart);
+                $setData = [
+                    'cart'  => true,
+                ];
+                $this->session->set($setData);
+            }
+            if (!$result2) {
+                $dbWishlist = [
+                    'id_user' => user_id(),
+                ];
+                $wishlist->save($dbWishlist);
+                $setData = [
+                    'wishlist'  => true,
+                ];
+                $this->session->set($setData);
+            }
+        }
         $now = date('Y-m-d H:i:s');
         $promoModel = new PromoModel();
         $kategoriModel = new KategoriModel();
