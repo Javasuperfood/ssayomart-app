@@ -20,17 +20,17 @@ class CheckoutController extends BaseController
 
         $cartProdModel = new CartProdukModel();
         $cekCart = $cartModel->where(['id_user' => user_id()])->first();
-
         $cekCartProduk = $cartProdModel
-            ->select('*')
+            ->select('*, jsf_variasi_item.harga_item')
             ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'inner')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'inner')
             ->where('id_cart', $cekCart['id_cart'])
             ->findAll();
 
         $totalAkhir = 0;
 
         foreach ($cekCartProduk as $produk) {
-            $rowTotal = $produk['qty'] * $produk['harga'];
+            $rowTotal = $produk['qty'] * $produk['harga_item'];
             $totalAkhir += $rowTotal;
         }
 
@@ -46,14 +46,16 @@ class CheckoutController extends BaseController
             'total_1' => $totalAkhir,
             'total_2' => $totalAkhir,
         ];
+        // dd($cekCartProduk);
         $chechkoutId = $checkoutModel->insert($dbStore);
 
         foreach ($cekCartProduk as $item) {
             $checkoutItemData = [
                 'id_checkout' => $chechkoutId,
                 'id_produk' => $item['id_produk'],
+                'id_variasi_item' => $item['id_variasi_item'],
                 'qty' => $item['qty'],
-                'harga' => $item['harga'],
+                'harga' => $item['harga_item'],
             ];
             $checkoutProdukModel->insert($checkoutItemData);
             $cartProdModel->delete($item['id_cart_produk']); //delete from cart
@@ -82,6 +84,7 @@ class CheckoutController extends BaseController
         $cekProduk = $checkoutProdModel
             ->select('*')
             ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
             ->where('id_checkout', $id)
             ->findAll();
 
@@ -89,7 +92,7 @@ class CheckoutController extends BaseController
         $totalAkhir = 0;
 
         foreach ($cekProduk as $produk) {
-            $rowTotal = $produk['qty'] * $produk['harga'];
+            $rowTotal = $produk['qty'] * $produk['harga_item'];
             $totalAkhir += $rowTotal;
         }
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
@@ -130,12 +133,20 @@ class CheckoutController extends BaseController
         $checkout = $checkoutModel->where('id_checkout', $id)->first();
 
         $cekProduk = $checkoutProdModel
-            ->select('jsf_produk.id_produk as id, jsf_produk.harga as price, jsf_checkout_produk.qty as quantity, jsf_produk.nama as name')
+            ->select('jsf_produk.id_produk as id, jsf_variasi_item.harga_item as price, jsf_checkout_produk.qty as quantity, jsf_produk.nama as name, jsf_variasi_item.value_item')
             ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
             ->where('id_checkout', $id)
             ->findAll();
 
-
+        foreach ($cekProduk as $key => $c) {
+            $cekProduk[$key] = [
+                'id' => $c['id'],
+                'price' => $c['price'],
+                'quantity' => $c['quantity'],
+                'name' => $c['name'] . '(' . $c['value_item'] . ')',
+            ];
+        }
         $biayaAplikasi = 1000;
         $service = $this->request->getVar('service');
         $servicetext = $this->request->getVar('serviceText');

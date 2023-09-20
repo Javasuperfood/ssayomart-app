@@ -31,12 +31,12 @@
         <?php foreach ($produk as $p) : ?>
             <div class="col">
                 <div class="card my-2 border-0 shadow-sm" style="width: auto;">
-                    <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                    <a href="<?= base_url('produk/' . $p['slug']) ?>" class="link-underline link-underline-opacity-0">
                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
-                        <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
-                        <p class="card-text text-secondary"><?= $p['nama']; ?></p>
+                        <p class="card-title">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                        <p class="card-text text-secondary"><?= $p['nama']; ?>(<?= $p['value_item']; ?>)</p>
                         <div class="input-group mb-3 d-flex justify-content-center">
                             <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                             <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">

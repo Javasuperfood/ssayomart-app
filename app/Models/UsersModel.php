@@ -71,9 +71,10 @@ class UsersModel extends Model
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_checkout_produk')
-            ->select('jsf_checkout_produk.*, jsf_checkout.*, jsf_produk.*')
+            ->select('jsf_checkout_produk.*, jsf_checkout.*, jsf_produk.*, jsf_variasi_item.*')
             ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item')
             ->where('invoice', $slug)
             ->get();
 

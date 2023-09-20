@@ -1,16 +1,22 @@
 <script>
+    function selectVarian(id) {
+        $(`#readioVarian${id}`).prop('checked', true);
+    }
     $(document).ready(function() {
+        <?php if (isset($_GET['varian'])) : ?>
+            $("#modalVarian").modal("show");
+        <?php endif ?>
         $(".add-to-cart-btn").click(function() {
             var produk = $(this).attr('produk');
-            var harga = $(this).attr('harga');
             var qty = $("#qty").val();
+            var varian = $('input[name="varian"]:checked').val();
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('api/add-to-cart'); ?>",
                 dataType: "json",
                 data: {
                     id_produk: produk,
-                    harga: harga,
+                    id_varian: varian,
                     qty: qty
                 },
                 success: function(response) {

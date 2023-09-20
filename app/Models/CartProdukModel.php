@@ -16,6 +16,7 @@ class CartProdukModel extends Model
     protected $allowedFields    = [
         'id_cart',
         'id_produk',
+        'id_variasi_item',
         'qty'
     ];
 
@@ -30,6 +31,7 @@ class CartProdukModel extends Model
     protected $validationRules      = [
         'id_cart'               => 'required',
         'id_produk'               => 'required',
+        'id_variasi_item'               => 'required',
         'qty'               => 'required',
     ];
     protected $validationMessages   = [];
