@@ -1,75 +1,113 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
+<?php
+// Mendeteksi User-Agent
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+// Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
+$isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
+?>
+
 <!-- mobile -->
-<div class="container pt-5 d-md-none">
-    <div class="row text-center">
-        <?php foreach ($produk as $p) : ?>
-            <div class="col-6">
-                <div class="card my-2">
-                    <form action="<?= base_url(); ?>wishlist/delete/<?= $p['id_wishlist_produk']; ?>" method="post" class="position-relative">
-                        <?= csrf_field(); ?>
-                        <button class="position-absolute top-0 end-0  pe-1" type="submit"><i class="bi bi-x-circle fs-3"></i></button>
-                    </form>
-                    <a href="<?= base_url('produk/' . $p['slug']); ?>">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
-                    </a>
-                    <div class="card-body">
-                        <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
-                        <p class="card-text text-secondary"><?= $p['nama']; ?></p>
-                        <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
-                        <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
-                        <input type="hidden" id="qty" name="qty" value="1">
-                        <button class="btn btn-light add-to-cart-btn" style="background-color: #ec2614; color:#fff;"><i class=" bi bi-cart2"></i></button>
-                        <a href="#" class="btn btn-light" style="background-color: #ec2614; color:#fff;">Beli</a>
+<?php if ($isMobile) : ?>
+    <div id="mobileContent">
+        <div class="container pt-5 d-md-none">
+            <div class="row text-center">
+                <?php foreach ($produk as $p) : ?>
+                    <div class="col-6">
+                        <div class="card border-0 shadow-sm my-2">
+                            <form action="<?= base_url(); ?>wishlist/delete/<?= $p['id_wishlist_produk']; ?>" method="post" class="position-relative">
+                                <?= csrf_field(); ?>
+                                <button class="position-absolute top-0 end-0 pe-1 btn border-0" type="submit"><i class="bi bi-x-circle-fill fs-3 text-danger"></i></button>
+                            </form>
+                            <a href="<?= base_url('produk/' . $p['slug']); ?>">
+                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
+                            </a>
+                            <div class="card-body">
+                                <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
+                                <p class="card-text text-secondary"><?= $p['nama']; ?></p>
+                                <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
+                                <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
+                                <input type="hidden" id="qty" name="qty" value="1">
+                                <div>
+                                    <button class="btn btn-white text-danger border-danger mt-4 add-to-cart-btn d-inline" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"><i class=" bi bi-cart-fill"></i></button>
+                                    <form action="<?= base_url('buy/' . $p['slug']); ?>" method="get" class="d-inline">
+                                        <?= csrf_field(); ?>
+                                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                <?php endforeach ?>
             </div>
-        <?php endforeach ?>
-    </div>
-    <a href="<?= base_url() ?>cart" class="btn btn-danger btn-lg rounded-circle bottom-0 end-0 mx-2 my-3 float-right position-fixed"><i class="bi bi-cart2"></i></a>
-</div>
-<!-- end mobile -->
-<!-- desktop -->
-<div class="container d-none d-md-block">
-    <div class="row">
-        <div class="col">
-            <nav aria-label="breadcrumb" class="rounded-3 p-2 mb-">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item">
-                        <h2 class="mb-0 text-danger"><i class="bi bi-heart-fill"></i> Wishlist</h2>
-                    </li>
-                </ol>
-            </nav>
+            <a href="<?= base_url() ?>cart" class="btn btn-danger btn-lg rounded-circle bottom-0 end-0 mx-2 my-3 float-right position-fixed"><i class="bi bi-cart2"></i></a>
         </div>
     </div>
-    <div class="row mt-4">
-        <?php foreach ($produk as $p) : ?>
-            <div class="col-6 col-md-4 col-lg-2">
-                <div class="card border-0 shadow-sm mb-5">
-                    <form action="<?= base_url(); ?>wishlist/delete/<?= $p['id_wishlist_produk']; ?>" method="post" class="position-relative">
-                        <?= csrf_field(); ?>
-                        <button class="position-absolute top-0 end-0 pe-1 btn border-0" type="submit"><i class="bi bi-x-circle fs-3"></i></button>
-                    </form>
-                    <a href="<?= base_url('produk/' . $p['slug']); ?>">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
-                    </a>
-                    <div class=" card-body text-center">
-                        <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
-                        <p class="card-text text-secondary"><?= $p['nama']; ?></p>
-                        <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
-                        <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
-                        <input type="hidden" id="qty" name="qty" value="1">
-                        <a href="<?= base_url() ?>cart" class="btn btn-danger btn-md ">
-                            <i class="bi bi-cart2"></i>
-                        </a>
-                        <a href="#" class="btn btn-light" style="background-color: #ec2614; color:#fff;">Beli</a>
-                    </div>
+<?php else : ?>
+    <!-- end mobile -->
+
+    <!-- desktop -->
+    <div id="desktopContent" style="margin-top:100px;">
+        <div class="container d-none d-md-block">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="breadcrumb" class="rounded-3 p-2 mb-">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <h2 class="mb-0 text-danger"><i class="bi bi-heart-fill"></i> Wishlist</h2>
+                            </li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
-        <?php endforeach ?>
+            <div class="row mt-4">
+                <?php foreach ($produk as $p) : ?>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="card border-0 shadow-sm mb-5">
+                            <form action="<?= base_url(); ?>wishlist/delete/<?= $p['id_wishlist_produk']; ?>" method="post" class="position-relative">
+                                <?= csrf_field(); ?>
+                                <button class="position-absolute top-0 end-0 pe-1 btn border-0" type="submit"><i class="bi bi-x-circle-fill text-danger fs-3"></i></button>
+                            </form>
+                            <a href="<?= base_url('produk/' . $p['slug']); ?>">
+                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
+                            </a>
+                            <div class=" card-body text-center">
+                                <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
+                                <p class="card-text text-secondary"><?= $p['nama']; ?></p>
+                                <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
+                                <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
+                                <input type="hidden" id="qty" name="qty" value="1">
+                                <div>
+                                    <button class="btn btn-white text-danger border-danger mt-4 add-to-cart-btn d-inline" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"><i class=" bi bi-cart-fill"></i></button>
+                                    <form action="<?= base_url('buy/' . $p['slug']); ?>" method="get" class="d-inline">
+                                        <?= csrf_field(); ?>
+                                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
+        </div>
     </div>
-</div>
+<?php endif; ?>
+<!-- end Desktop -->
+
+<?php
+if ($isMobile) {
+
+    echo '<div id="mobileContent">';
+
+    echo '</div>';
+} else {
+
+    echo '<div id="desktopContent">';
+
+    echo '</div>';
+}
+?>
 <!-- end desktop -->
 <?= $this->include('user/component/scriptAddToCart'); ?>
 <?= $this->endSection(); ?>

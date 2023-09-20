@@ -1,105 +1,182 @@
-<!-- NAVBAR BOTTOM -->
-<nav class="navbar navbar-expand d-md-blok d-lg-none d-xl-none fixed-bottom" style="height: 55px; background-color:#ec2614">
-    <ul class="navbar-nav nav-justified w-100">
-        <li class="nav-item">
-            <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4"></i></a>
-        </li>
-        <li class="nav-item">
-            <a href="<?= base_url(); ?>cart" class="nav-link link-light"><i class="bi bi-cart-fill fw-bold fs-2"></i></a>
-        </li>
-        <li class="nav-item">
-            <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2"></i></a>
-        </li>
-        <li class="nav-item">
-            <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2"></i></a>
-        </li>
-    </ul>
-</nav>
+<?php
+// Mendeteksi User-Agent
+$userAgent = $_SERVER['HTTP_USER_AGENT'];
+// Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
+$isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
+?>
 
-<!-- Footer Desktop -->
-<div class="row-fluid">
-    <!-- Footer -->
-    <footer class="text-center text-lg-start text-white d-none d-lg-block" style="background-color: #ce2614">
-        <!-- Grid container -->
-        <div class="container p-4 pb-0">
-            <!-- Section: Links -->
-            <!--Grid row-->
-            <div class="row">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <img src="<?= base_url() ?>assets/img/logopanjang.png" alt="Logo Ssayomart" height="80" width="250">
-                    <p>
-                        Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139
-                    </p>
-                </div>
-                <!-- Grid column -->
+<!-- Footer Mobile -->
+<?php if ($isMobile) : ?>
+    <div id="mobileContent">
+        <nav class="navbar navbar-expand d-md-blok d-lg-none d-xl-none fixed-bottom" style="height: 55px; background-color:#ec2614">
+            <ul class="navbar-nav nav-justified w-100">
+                <li class="nav-item">
+                    <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url(); ?>cart" class="nav-link link-light"><i class="bi bi-cart-fill fw-bold fs-2"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+<?php else : ?>
 
-                <hr class="w-100 clearfix d-md-none" />
+    <!-- Footer Desktop -->
+    <div id="desktopContent">
+        <footer id="footer" class="footer" style="background-color: #ce2614">
+            <div class="container">
+                <div class="row gy-3">
+                    <div class="col-lg-3 col-md-6 d-flex">
+                        <i class="bi bi-geo-alt-fill icon"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>
+                                Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165<br>
+                                RT.001/RW.009, Panunggangan Barat,
+                                Kec. Cibodas, Kota Tangerang, Banten - 15139
+                            </p>
+                        </div>
 
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Other</h6>
-                    <p>
-                        <a href="<?= base_url() ?>" class="text-white link-offset-2 link-underline link-underline-opacity-0">Home</a>
-                    </p>
-                    <p>
-                        <a href="https://download.ssayomart.com" class="text-white link-offset-2 link-underline link-underline-opacity-0">Download APK</a>
-                    </p>
-                    <p>
-                        <a href="<?= base_url() ?>cart" class="text-white link-offset-2 link-underline link-underline-opacity-0">Cart</a>
-                    </p>
-                    <p>
-                        <a href="<?= base_url() ?>wishlist" class="text-white link-offset-2 link-underline link-underline-opacity-0">Wishlist</a>
-                    </p>
-                    <p>
-                        <a href="<?= base_url() ?>kupon" class="text-white link-offset-2 link-underline link-underline-opacity-0">Kupon Promosi</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
-                <hr class="w-100 clearfix d-md-none" />
+                    </div>
 
-                <!-- Grid column -->
-                <hr class="w-100 clearfix d-md-none" />
+                    <div class="col-lg-3 col-md-6 footer-links d-flex">
+                        <i class="bi bi-telephone-fill icon"></i>
+                        <div>
+                            <h4>Hubungi Kami</h4>
+                            <p>
+                                <strong>Phone:</strong> +62 1234 5678 89<br>
+                                <strong>Email:</strong> ssayomart@gmail.com<br>
+                            </p>
+                        </div>
+                    </div>
 
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Setting</h6>
-                    <p>
-                        <a href="<?= base_url() ?>" class="text-white link-offset-2 link-underline link-underline-opacity-0">Setting Akun</a>
-                    </p>
-                    <p>
-                        <a href="<?= base_url() ?>setting/alamat-list" class="text-white link-offset-2 link-underline link-underline-opacity-0">Alamat Tersimpan</a>
-                    </p>
-                </div>
-                <!-- Grid column -->
+                    <div class="col-lg-3 col-md-6 footer-links d-flex">
+                        <i class="bi bi-headset icon"></i>
+                        <div>
+                            <h4>Layanan Pelanggan</h4>
+                            <p>
+                                Senin-Sabtu: 08.00 - 23.00<br>
+                                Minggu: Tutup
+                            </p>
+                        </div>
+                    </div>
 
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-                    <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
-                    <!-- Facebook -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#" role="button"><i class="bi bi-facebook"></i></a>
-                    <!-- Twitter -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#" role="button"><i class="bi bi-twitter"></i></a>
-                    <!-- Google -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #000000" href="#" role="button"><i class="bi bi-tiktok"></i></a>
-                    <!-- Instagram -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#" role="button"><i class="bi bi-instagram"></i></a>
-                    <!-- Github -->
-                    <a class="btn btn-primary btn-floating m-1" style="background-color:  #008000" href="#" role="button"><i class="bi bi-whatsapp"></i></a>
+                    <div class="col-lg-3 col-md-6 footer-links">
+                        <h4>Ikuti Kami</h4>
+                        <div class="social-links d-flex">
+                            <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="tiktok"><i class="bi bi-tiktok"></i></a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            <!--Grid row-->
+            <div class="container">
+                <div class="copyright">
+                    2023 &copy; Copyright <strong><span>Ssayomart Supermarket</span></strong>. All Rights Reserved
+                </div>
+            </div>
+        </footer>
+        <style>
+            .footer {
+                font-size: 14px;
+                background-color: #1f1f24;
+                padding: 50px 0;
+                color: rgba(255, 255, 255, 0.7);
+            }
 
-            <!-- Section: Links -->
-        </div>
-        <!-- Grid container -->
+            .footer .icon {
+                margin-right: 15px;
+                font-size: 24px;
+                line-height: 0;
+            }
 
-        <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            Copyright © 2023 Java Super Food • SsayoMart Supermarket • All Rights Reserved
-        </div>
-        <!-- Copyright -->
-    </footer>
-    <!-- Footer -->
-</div>
-<!-- End of .container -->
+            .footer h4 {
+                font-size: 16px;
+                font-weight: bold;
+                position: relative;
+                padding-bottom: 5px;
+                color: #fff;
+            }
+
+            .footer .footer-links {
+                margin-bottom: 30px;
+            }
+
+            .footer .footer-links ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .footer .footer-links ul li {
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+            }
+
+            .footer .footer-links ul li:first-child {
+                padding-top: 0;
+            }
+
+            .footer .footer-links ul a {
+                color: #fff;
+                transition: 0.3s;
+                display: inline-block;
+                line-height: 1;
+            }
+
+            .footer .footer-links ul a:hover {
+                color: #fff;
+            }
+
+            .footer .social-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                font-size: 16px;
+                color: #fff;
+                margin-right: 10px;
+                transition: 0.3s;
+            }
+
+            .footer .social-links a:hover {
+                color: #fff;
+                border-color: #fff;
+            }
+
+            .footer .copyright {
+                text-align: center;
+                padding-top: 30px;
+                border-top: 1px solid #fff;
+            }
+        </style>
+    </div>
+    <!-- End Footer Desktop -->
+<?php endif; ?>
+
+<?php
+if ($isMobile) {
+
+    echo '<div id="mobileContent">';
+
+    echo '</div>';
+} else {
+
+    echo '<div id="desktopContent">';
+
+    echo '</div>';
+}
+?>

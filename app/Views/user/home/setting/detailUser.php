@@ -14,7 +14,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container pt-3 d-md-none">
             <div class="row justify-content-center">
-                <div class="card border-0 shadow-sm-sm py-4 rounded-2">
+                <div class="card border-0 shadow-sm py-4 rounded-2">
                     <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
                         <div class="row g-3 px-3">
                             <div class="card border-0 shadow-sm py-4 mb-2 rounded-5 ">
@@ -66,11 +66,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- dekstop -->
     <div id="desktopContent" style="margin-top:100px;">
-        <div class="container py-5 d-none d-md-block shadow-sm">
+        <div class="container py-5 px-5 d-none d-md-block">
+            <h3 class="text-center text-secondary pb-2"><?= $title; ?></h3>
             <div class="row">
                 <div class="col-lg-4">
                     <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
-                        <div class="card border-0 shadow-sm">
+                        <div class="card border-0 shadow rounded-3">
                             <div class="card-body text-center">
                                 <p class="fs-5 text-secondary">Hai! Terlihat keren, <?= $du['username']; ?></p>
                                 <img src="<?= base_url() ?>assets/img/fotouser/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
@@ -79,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <?= csrf_field() ?>
                 <div class="col-lg-8">
-                    <div class="card border-0 shadow-sm">
+                    <div class="card border-0 shadow rounded-3">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">
@@ -122,7 +123,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <hr class="border-0">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Masukan Profile</p>
+                                    <p class="mb-0">Foto Profile</p>
                                 </div>
                                 <div class="col-sm-9">
                                     <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" value="<?= $du['img'] ?>">
