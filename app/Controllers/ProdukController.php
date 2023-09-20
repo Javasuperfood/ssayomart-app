@@ -65,7 +65,7 @@ class ProdukController extends BaseController
             'title' => $single['nama'],
             'kategori' => $kategori->findAll(),
             'produk' => $single,
-            'varian' => $varianItem
+            'varian' => $varianItem,
             'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
         ];
         // dd($data);

@@ -11,7 +11,7 @@
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink" style="">
+                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="<?= base_url() ?>dashboard/marketplace/edit/<?= $toko['id_toko'] ?>"><i class="bi bi-pencil-square"></i> Edit Detail</a>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                             <h6 class="m-0 font-weight-bold text-danger">Deskripsi</h6>
                         </a>
                         <!-- Card Content - Collapse -->
-                        <div class="collapse" id="deskripsi" style="">
+                        <div class="collapse" id="deskripsi">
                             <div class="card-body">
                                 <?= $toko['deskripsi']; ?>
                             </div>
@@ -90,7 +90,7 @@
                             <h6 class="m-0 font-weight-bold text-danger">Informasi User</h6>
                         </a>
                         <!-- Card Content - Collapse -->
-                        <div class="collapse" id="user" style="">
+                        <div class="collapse" id="user">
                             <div class="card-body">
                                 <!-- // -->
                             </div>
