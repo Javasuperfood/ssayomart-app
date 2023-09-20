@@ -75,10 +75,12 @@
             </div>
         </div>
         <!-- akhir view desktop -->
-        <div class="row mt-4">
+        <div class="row mt-4 mb-5">
             <div class="col-lg-6">
                 <h2 class="text-merah"> Deskripsi </h2>
                 <p class="text-potong"><?= $produk['deskripsi']; ?></p>
+                <p class="col">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas vitae scel<span id="dots">...</span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+                <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button>
             </div>
         </div>
     </div>
