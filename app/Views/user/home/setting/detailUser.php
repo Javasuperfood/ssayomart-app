@@ -21,7 +21,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="row g-3 px-3">
                                     <div class="text-center">
                                         <p class="fs-5 text-secondary">Hai! Terlihat keren, <?= $du['username']; ?></p>
-                                        <img src="<?= base_url() ?>assets/img/fotouser/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
+                                        <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
                                     </div>
                                 </div>
                             </div>
@@ -46,8 +46,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input type="email" class="form-control form-control-lg bg-white border-0 shadow-sm" id="email" name="email" placeholder="Email Anda" value="<?= $results[0]->secret; ?>" disabled>
                             </div>
                             <div class="col-12">
-                                <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" value="<?= $du['img'] ?>">
-                                <input type="hidden" disabled name="imageLama" value="<?= $du['img']; ?>">
+                                <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
+                            </div>
+                            <div class="col-12">
+                                <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
                             </div>
                             <div class="py-3 px-3">
                                 <div class="col text-center">
@@ -83,7 +85,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="card border-0 shadow rounded-3">
                             <div class="card-body text-center">
                                 <p class="fs-5 text-secondary">Hai! Terlihat keren, <?= $du['username']; ?></p>
-                                <img src="<?= base_url() ?>assets/img/fotouser/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
+                                <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
                             </div>
                         </div>
                 </div>
@@ -135,8 +137,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <p class="mb-0">Foto Profile</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" value="<?= $du['img'] ?>">
-                                    <input type="hidden" disabled name="imageLama" value="<?= $du['img']; ?>">
+                                    <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>"> <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
                                 </div>
                             </div>
                             <div class="py-3 px-3">

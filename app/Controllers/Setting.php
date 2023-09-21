@@ -27,7 +27,6 @@ class Setting extends BaseController
         $data = [
             'title' => 'Setting',
             'user' => $user[0],
-            'saldo' => 2000000,
             'kategori' => $kategori->findAll(),
             'alamat' => $firstLable
         ];
@@ -58,35 +57,31 @@ class Setting extends BaseController
     {
         $usersModel = new UsersModel();
         $image = $this->request->getFile('img');
-        $namaUsersImage = $this->request->getVar('imageLama'); // Ini adalah nama gambar lama secara default
 
-        // Periksa apakah ada gambar yang diunggah
         if ($image->getError() == 4) {
-            // Jika tidak ada gambar yang diunggah, gunakan nama gambar lama
-            $userfoto = $usersModel->find($id);
-            $namaUsersImage = $userfoto['img'];
+            $namaUserImage = $this->request->getVar('imageLama');
         } else {
-            // Hapus gambar lama jika ada gambar yang baru diunggah
-            if ($namaUsersImage != 'default.png') {
-                $gambarLamaPath = 'assets/img/fotouser/' . $namaUsersImage;
+            $produk = $usersModel->find($id);
 
-                if (file_exists($gambarLamaPath) && is_file($gambarLamaPath)) {
+            if ($produk['img'] == 'default.png') {
+                $namaUserImage = $image->getRandomName();
+                $image->move('assets/img/pic', $namaUserImage);
+            } else {
+                $namaUserImage = $image->getRandomName();
+                $image->move('assets/img/pic', $namaUserImage);
+                $gambarLamaPath = 'assets/img/pic/' . $this->request->getVar('imageLama');
+                if (file_exists($gambarLamaPath)) {
                     unlink($gambarLamaPath);
                 }
             }
-
-            $namaUsersImage = $image->getRandomName();
-            $image->move('assets/img/fotouser', $namaUsersImage);
         }
-
         $data = [
             'id' => $id,
             'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'telp' => $this->request->getVar('telp'),
-            'img' => $namaUsersImage
+            'img' => $namaUserImage
         ];
-
         if ($usersModel->save($data)) {
             session()->setFlashdata('success', 'Data pengguna berhasil diperbarui.');
             $alert = [
@@ -108,6 +103,7 @@ class Setting extends BaseController
             return redirect()->to('setting/detail-user/' . $id)->withInput();
         }
     }
+
     // PEMBAYARAN
     public function pembayaran(): string
     {
