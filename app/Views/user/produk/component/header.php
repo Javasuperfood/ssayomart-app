@@ -20,6 +20,10 @@
     body {
         font-family: 'Inter', sans-serif;
     }
+
+    .invalid-field {
+        border: 1px solid red;
+    }
 </style>
 
 <!-- CSS External -->
