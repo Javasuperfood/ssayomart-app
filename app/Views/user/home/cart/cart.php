@@ -41,41 +41,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-            <div class="row text-center row-cols-2">
-                <?php foreach ($produk as $p) : ?>
-                    <div class="col">
-                        <div class="card my-2 border-0 shadow-sm" style="width: auto;">
-                            <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
-                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
-                            </a>
-                            <div class="card-body">
-                                <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
-                                <p class="card-text text-secondary"><?= $p['nama']; ?></p>
-                                <div class="input-group mb-3 d-flex justify-content-center">
-                                    <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                                    <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
-                                    <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
-                                </div>
-                                <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
-                                    <?= csrf_field(); ?>
-                                    <button type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
-                                </form>
-                            </div>
-
+    <div class="row text-center row-cols-2">
+        <?php foreach ($produk as $p) : ?>
+            <div class="col">
+                <div class="card my-2 border-0 shadow-sm" style="width: auto;">
+                    <a href="<?= base_url() ?>/produk/single" class="link-underline link-underline-opacity-0">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
+                    </a>
+                    <div class="card-body">
+                        <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
+                        <p class="card-text text-secondary"><?= $p['nama']; ?></p>
+                        <div class="input-group mb-3 d-flex justify-content-center">
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                            <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                         </div>
+                        <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
+                            <?= csrf_field(); ?>
+                            <button type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
+                        </form>
                     </div>
-                <?php endforeach; ?>
-            </div>
-            <div class="row p-3 px-4">
-                <div class="col">
-                    <form action="<?= base_url('checkout'); ?>" method="post" class="<?= (!$produk) ? 'd-none' : ''; ?>">
-                        <?= csrf_field(); ?>
-                        <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%;">Checkout</button>
-                    </form>
+
                 </div>
             </div>
-            <div class="pb-5"></div>
+        <?php endforeach; ?>
+    </div>
+    <div class="row p-3 px-4">
+        <div class="col">
+            <form action="<?= base_url('checkout'); ?>" method="post" class="<?= (!$produk) ? 'd-none' : ''; ?>">
+                <?= csrf_field(); ?>
+                <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%;">Checkout</button>
+            </form>
         </div>
+    </div>
+    <div class="pb-5"></div>
+    </div>
     </div>
 <?php else : ?>
     <!-- End Mobile View -->
@@ -88,13 +88,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <nav aria-label="breadcrumb" class="rounded-3 p-2">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <h2 class="mb-0 text-danger"><i class="bi bi-cart-fill"></i> <?= $title; ?></h2>
+                                <h2 class="mb-0"><?= $title; ?></h2>
                                 <hr class="text-danger">
                             </li>
                         </ol>
                     </nav>
                 </div>
-
                 <div class="col-md-10 col-11 mx-auto">
                     <div class="row mt-5 gx-3">
                         <!-- left side div -->

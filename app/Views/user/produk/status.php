@@ -279,8 +279,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- TAMPILAN DESKTOP -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container py-5 justify-content-center d-none d-md-block">
-            <div class="text-center">
-                <h2>Detail Pesanan</h2>
+            <div class="col-12 d-flex justify-content-center">
+                <nav aria-label="breadcrumb" class="rounded-3 p-2">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <h2 class="mb-0"><?= $title; ?></h2>
+                            <hr class="text-danger">
+                        </li>
+                    </ol>
+                </nav>
             </div>
             <div class="row">
                 <div class="col-lg-12">

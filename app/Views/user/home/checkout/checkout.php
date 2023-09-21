@@ -132,10 +132,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- dekstop -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container">
-            <div class="text-center">
-                <h2>Checkout</h2>
+            <div class="col-12 d-flex justify-content-center">
+                <nav aria-label="breadcrumb" class="rounded-3 p-2">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <h2 class="mb-0"><?= $title; ?></h2>
+                            <hr class="text-danger">
+                        </li>
+                    </ol>
+                </nav>
             </div>
-            <hr>
             <form action="<?= base_url('checkout/' . $id . '/bayar'); ?>" method="post">
                 <div class="row">
                     <div class="col-md-4 order-md-2 mb-4">
@@ -244,13 +250,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <div class="col-3">
                                                     <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
                                                 </div>
-                                                <div class="col-5">
-                                                    <h6 class="card-title"><?= substr($p['nama'], 0, 10); ?>...</h6>
+                                                <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                                    <h5><?= substr($p['nama'], 0, 10); ?>...</h5>
                                                     <p class="card-text text-secondary"><?= $p['qty']; ?> pcs</p>
                                                 </div>
-                                                <div class="col-4 text-end">
-                                                    <h6 class="text-secondary">Total</h6>
-                                                    <p class="fw-bold">Rp. <?= number_format(($p['harga'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                                    <h5>Total Harga</h5>
+                                                    <p class="fw-bold">Rp. <?= number_format($total, 0, ',', '.'); ?></p>
                                                 </div>
                                             </div>
                                         </div>

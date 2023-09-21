@@ -58,7 +58,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
             <?php else : ?>
-                <h3 class="text-center text-secondary pb-2"><?= $title; ?></h3>
+                <div class="col-12 d-flex justify-content-center">
+                    <nav aria-label="breadcrumb" class="rounded-3 p-2">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <h2 class="mb-0"><?= $title; ?> List</h2>
+                                <hr class="text-danger">
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
                 <?php foreach ($alamat_user_model as $au) : ?>
                     <div class="row row-cols-1">
                         <div class="col">

@@ -35,7 +35,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- view Desktop -->
     <div id="desktopContent" style="margin-top: 100px;">
         <div class="container py-5">
-            <h3 class="text-center text-secondary pb-2"><?= $title; ?></h3>
+            <div class="col-12 d-flex justify-content-center">
+                <nav aria-label="breadcrumb" class="rounded-3 p-2">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <h2 class="mb-0"><?= $title; ?></h2>
+                            <hr class="text-danger">
+                        </li>
+                    </ol>
+                </nav>
+            </div>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <?php foreach ($kupon_model as $km) : ?>
                     <div class="col pb-3">
