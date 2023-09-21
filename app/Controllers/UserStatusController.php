@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\CheckoutModel;
 use App\Models\StatusPesanModel;
 use App\Models\UsersModel;
+use App\Models\KategoriModel;
 use Midtrans\Config as MidtransConfig;
 
 
@@ -26,6 +27,7 @@ class UserStatusController extends BaseController
         $statusModel = new StatusPesanModel();
         $userModel = new UsersModel();
         $checkoutModel = new CheckoutModel();
+        $kategori = new KategoriModel();
         $order_id = $this->request->getGet('order_id');
         $status_code = $this->request->getGet('status_code');
         $transaction_status = $this->request->getGet('transaction_status');
@@ -41,6 +43,7 @@ class UserStatusController extends BaseController
             'produk' => $cekProduk,
             'jasa' => 1000,
             'key' => $midtransConfig->clientKey,
+            'kategori' => $kategori->findAll(),
             'back' => 'history'
 
         ];
