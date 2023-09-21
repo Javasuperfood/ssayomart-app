@@ -166,8 +166,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <h5 class="card-title"><?= $v['value_item']; ?></h5>
                                     <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                     <div class="form-check">
-                                        <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="readioVarian<?= $v['id_variasi_item']; ?>">
-                                        <label class="form-check-label" for="readioVarian<?= $v['id_variasi_item']; ?>">
+                                        <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $v['id_variasi_item']; ?>">
+                                        <label class="form-check-label" for="radioVarian<?= $v['id_variasi_item']; ?>">
                                             Pilih
                                         </label>
                                     </div>
@@ -201,8 +201,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <h5 class="card-title"><?= $v['value_item']; ?></h5>
                                         <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                         <div class="form-check">
-                                            <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="readioVarian<?= $v['id_variasi_item']; ?>">
-                                            <label class="form-check-label" for="readioVarian<?= $v['id_variasi_item']; ?>">
+                                            <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarianBuy<?= $v['id_variasi_item']; ?>">
+                                            <label class="form-check-label" for="radioVarianBuy<?= $v['id_variasi_item']; ?>">
                                                 Pilih
                                             </label>
                                         </div>

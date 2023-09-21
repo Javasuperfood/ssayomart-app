@@ -35,6 +35,7 @@ class PaymentController extends BaseController
 
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
+        // dd($cekProduk);
         $data = [
             'title'                     => 'Status Pesanan',
             'getstatus'                 => $status,

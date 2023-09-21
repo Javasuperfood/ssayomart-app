@@ -17,7 +17,8 @@ class CheckoutProdukModel extends Model
         'id_checkout',
         'id_produk',
         'id_variasi_item',
-        'qty'
+        'qty',
+        'harga'
     ];
 
     // Dates

@@ -44,6 +44,7 @@
 
                     <div class="input-wrap">
                         <input type="password" class="input-field" name="password" inputmode="text" placeholder="kata sandi" autocomplete="current-password" required />
+                        <i class="bi bi-eye" id="togglePassword"></i>
                     </div>
                     <?php if (setting('Auth.sessionConfig')['allowRemembering']) : ?>
                         <div class="input-wrap">

@@ -1,6 +1,7 @@
 <script>
     function selectVarian(id) {
-        $(`#readioVarian${id}`).prop('checked', true);
+        $(`#radioVarian${id}`).prop('checked', true);
+        $(`#radioVarianBuy${id}`).prop('checked', true);
     }
     $(document).ready(function() {
         <?php if (isset($_GET['varian'])) : ?>

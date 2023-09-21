@@ -181,6 +181,7 @@ class BuyController extends BaseController
         $checkoutProdukData = [
             'id_checkout' => $chechkoutId,
             'id_produk' => $produk['id_produk'],
+            'id_variasi_item' => $id_varian,
             'qty' => $qty,
             'harga' => $produk['harga'],
         ];
