@@ -234,30 +234,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </select>
                                 </div>
                             <?php endif ?>
-                            <?php foreach ($produk as $p) : ?>
-                                <div class="col-md-12 mt-3">
-                                    <div class="card border-0 shadow-sm">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-3">
-                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="" class="card-img">
-                                                </div>
-                                                <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                                    <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?>...</h5>
-                                                    <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
-                                                    </p>
-                                                    <input type="hidden" name="qty" value="<?= $qty; ?>">
-                                                    <input type="hidden" name="varian" value="<?= $varian; ?>">
-                                                </div>
-                                                <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <h5 class="text-secondary fs-6">Total</h5>
-                                                    <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
-                                                </div>
+
+                            <div class="col-md-12 mt-3">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="Foto Produk" class="card-img">
+                                            </div>
+                                            <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                                <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?>...</h5>
+                                                <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
+                                                </p>
+                                                <input type="hidden" name="qty" value="<?= $qty; ?>">
+                                                <input type="hidden" name="varian" value="<?= $varian; ?>">
+                                            </div>
+                                            <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                                <h5 class="text-secondary fs-6">Total</h5>
+                                                <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <?php endforeach ?>
+                            </div>
+
                         </div>
                     </div>
                 </div>

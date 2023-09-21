@@ -17,8 +17,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light">
                         <i class="bi bi-cart-fill fw-bold fs-2 position-relative">
                             <?php if (session()->get('countCart') > 0) : ?>
-                                <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle text-white"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                <i class="bi bi-chat position-absolute top-0 start-100 translate-middle text-white"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle text-warning fw-bold" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                             <?php endif ?>
                         </i>
                     </a>
