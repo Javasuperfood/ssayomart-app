@@ -328,9 +328,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-md-6">
                             <div class="card border-0 shadow-sm mb-4 mb-md-0">
                                 <div class="card-body">
-                                    <?php foreach ($produk as $p) : ?>
-                                        <div class="row pt-3">
-                                            <div class="col">
+                                    <div class="row pt-3">
+                                        <div class="col">
+                                            <?php foreach ($produk as $p) : ?>
                                                 <div class="card border-0 shadow-sm">
                                                     <div class="card-body">
                                                         <div class="row">
@@ -348,12 +348,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="row p-3 px-4">
-                                                    <button id="pay-button" class="btn btn-lg d-none d-md-block" style="background-color: #ec2614; color: #fff;">Metode Pembayaran</button>
-                                                </div>
+                                            <?php endforeach; ?>
+                                            <div class="row p-3 px-4">
+                                                <button id="pay-button" class="btn btn-lg d-none d-md-block" style="background-color: #ec2614; color: #fff;">Metode Pembayaran</button>
                                             </div>
                                         </div>
-                                    <?php endforeach; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
