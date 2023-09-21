@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\KategoriModel;
 use App\Models\BannerModel;
 use App\Models\CartModel;
+use App\Models\CartProdukModel;
 use App\Models\PromoModel;
 use App\Models\WishlistModel;
 use App\Models\ProdukModel;
@@ -41,6 +42,7 @@ class KategoriController extends BaseController
                 ];
                 $this->session->set($setData);
             }
+            $this->session->set(['countCart' => $this->countCart()]);
         }
         // ================================================
 

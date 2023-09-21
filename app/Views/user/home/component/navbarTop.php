@@ -69,8 +69,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <!-- Icons -->
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
-                                    <i class="bi bi-cart-fill fs-4 text-white"></i>
-                                    <!-- <span class="badge rounded-pill badge-notification bg-danger">1</span> -->
+                                    <i class="bi bi-cart-fill fs-4 text-white position-relative">
+                                        <?php if (session()->get('countCart') > 0) : ?>
+                                            <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle text-white"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                        <?php endif ?>
+                                    </i>
                                 </a>
                             </li>
                             <li class="nav-item me-3 me-lg-0">
@@ -79,25 +83,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <!-- <span class="badge rounded-pill badge-notification bg-danger">1</span> -->
                                 </a>
                             </li>
-                            <li class="nav-item me-3 me-lg-0 dropdown">
-                                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle fs-4 text-white"></i>
-                                </a>
-                                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
-                                    <li>
-                                        <a class="dropdown-item" href="<?= base_url(); ?>setting">Setting</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="<?= base_url(); ?>setting/alamat-list">Alamat</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="<?= base_url(); ?>logout">Logout</a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <?php if (auth()->loggedIn()) : ?>
+                                <li class="nav-item me-3 me-lg-0 dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-person-circle fs-4 text-white"></i>
+                                    </a>
+                                    <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                        <li>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>setting">Setting</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>setting/alamat-list">Alamat</a>
+                                        </li>
+                                        <li>
+                                            <hr class="dropdown-divider" />
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>logout">Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            <?php else : ?>
+                                <li class="nav-item me-3 me-lg-0">
+                                    <a class="nav-link" href="<?= base_url() ?>login">
+                                        <i class="bi bi-box-arrow-in-right fs-4 text-white"> Login</i>
+                                    </a>
+                                </li>
+                            <?php endif ?>
                         </ul>
                     </div>
                 </div>

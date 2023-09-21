@@ -5,10 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CartModel;
 use App\Models\CartProdukModel;
-use App\Models\ProdukModel;
-use PhpParser\Node\Expr\FuncCall;
 use App\Models\KategoriModel;
-use App\Models\VariasiItemModel;
 
 class CartController extends BaseController
 {
@@ -50,6 +47,7 @@ class CartController extends BaseController
         if (!$cartProdModel->delete($id)) {
             return redirect()->to(base_url() . 'cart')->with('failed', 'Gagal menghapus produk.');
         }
+        $this->session->set(['countCart' => $this->countCart()]);
         return redirect()->to(base_url() . 'cart')->with('success', 'Berhasil Mengapus produk dalam cart.');
     }
     public function ajaxAdd()
@@ -98,6 +96,7 @@ class CartController extends BaseController
             ];
             return $this->response->setJSON($response);
         }
+        $this->session->set(['countCart' => $this->countCart()]);
 
         $response = [
             'success' => true,
