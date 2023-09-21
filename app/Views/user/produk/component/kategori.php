@@ -9,16 +9,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="mt-2">
-            <div class="container d-md-none d-lg-none">
+            <div class="container d-md-blok d-lg-none">
                 <div class="row text-center">
                     <div class="col">
-                        <div class="swiper btn-sub">
+                        <div class="swiper btn-sub text-center">
                             <div class="swiper-wrapper">
                                 <?php foreach ($kategori as $k) : ?>
-                                    <div class="swiper-slide mx-5">
-                                        <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded " style="width: 200px;">
-                                            <?= $k['nama_kategori']; ?>
-                                        </a>
+                                    <div class="swiper-slide mb-2">
+                                        <div class="card border-0 shadow-sm">
+                                            <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="  text-decoration-none" style="font-size:10px; color:#000;">
+                                                <?= $k['nama_kategori']; ?>
+                                            </a>
+                                        </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>

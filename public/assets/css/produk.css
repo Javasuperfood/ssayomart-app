@@ -99,30 +99,14 @@
         border-radius: 25px;
     }
 
-    .btn-custom-rounded {
-        border-radius: 50px;
-        height: 35px;
-        width: 150px;
-        margin-right: 3px;
-    }
 
-    /* .card {
-        margin-top: 2rem;
-        width: 12rem;
-    } */
+
 }
 
 @media (max-width: 480px) {
     .swiper-slide img {
         border-radius: 10px;
         
-    }
-
-    .btn-custom-rounded {
-        border-radius: 10px;
-        height: 35px;
-        width: 95px;
-        margin-right: 1px;
     }
 
     /* .card {

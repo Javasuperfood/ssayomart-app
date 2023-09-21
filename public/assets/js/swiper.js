@@ -42,14 +42,8 @@ var swiper = new Swiper(".mySwiper", {
   });
 
   var swiper = new Swiper(".btn-sub", {
-    slidesPerView: 4,
-    centeredSlides: false,
-    spaceBetween: 30,
-    grabCursor: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
+
+    spaceBetween: 10,
     breakpoints: {
       // Tampilan iPad (lebar >= 768px)
       1280: {

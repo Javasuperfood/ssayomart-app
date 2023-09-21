@@ -1,5 +1,5 @@
 var swiper = new Swiper(".buttonSwiper", {
-    slidesPerView: 4,
+    slidesPerView: 3,
     centeredSlides: true,
     spaceBetween: 5,
     grabCursor: true,
@@ -42,3 +42,5 @@ scrollUpButton.addEventListener("click", function() {
     document.body.scrollTop = 0; // Untuk browser Safari
     document.documentElement.scrollTop = 0; // Untuk browser lainnya
 });
+
+
