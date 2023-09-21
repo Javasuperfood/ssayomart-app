@@ -281,12 +281,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container py-5 justify-content-center d-none d-md-block">
             <div class="text-center">
                 <h2>Detail Pesanan</h2>
-                <p class="lead">Selamat datang di halaman pembayaran kami. Di sini Anda dapat menyelesaikan proses pembayaran untuk pesanan Anda dengan mudah dan aman. Kami menyediakan berbagai pilihan pembayaran yang nyaman sehingga Anda dapat memilih yang sesuai dengan preferensi Anda.</p>
             </div>
-
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="card mb-4">
+                    <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body">
                             <div class="track">
                                 <?php
@@ -307,34 +305,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
-                                <div class="card-body">
-                                    <div class="card border-0">
-                                        <h2>Lokasi Tujuan</h2>
-                                        <div class="mb-0 mx-0 my-0">
-                                            <div class="card form-control form-control-md border-0 shadow-sm">
-                                                <div class="row row-cols-1">
-                                                    <div class="col">
-                                                        <ul class="list-group list-group-flush">
-                                                            <span class="list-group-item pb-3 border-0">
-                                                                <span class="fw-bold"><?= $status->kurir; ?>
-                                                                </span>
-                                                                <p class="text-secondary">
-                                                                    Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?>
-                                                                </p>
-                                                                <p class="card-text text-secondary"><?= $status->kirim; ?></p>
-                                                            </span>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="card border-0 shadow-sm mb-4 mb-md-0">
+                                <div class="card-body form-control form-control-md border-0">
+                                    <p class="fs-4">Lokasi Tujuan</p>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item pb-3 border-0">
+                                            <span class="fw-bold"><?= $status->kurir; ?></span>
+                                            <p class="text-secondary">Rp. <?= number_format($status->harga_service, 0, ',', '.'); ?></p>
+                                            <p class="card-text text-secondary"><?= $status->kirim; ?></p>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="card mb-4 mb-md-0">
+                            <div class="card border-0 shadow-sm mb-4 mb-md-0">
                                 <div class="card-body">
                                     <?php foreach ($produk as $p) : ?>
                                         <div class="row pt-3">
@@ -347,8 +332,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                             <div class="col-5 position-absolute top-50 start-50 translate-middle">
                                                                 <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?>...</h5>
-                                                                <p class="card-text text-secondary fs-6"><?= $p->qty; ?>
-                                                                </p>
+                                                                <p class="card-text text-secondary fs-6"><?= $p->qty; ?></p>
                                                             </div>
                                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                                 <h5 class="text-secondary fs-6">Total</h5>
@@ -358,14 +342,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                 </div>
                                                 <div class="row p-3 px-4">
-                                                    <button id="pay-button" class="btn btn-lg  d-none d-md-block" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+                                                    <button id="pay-button" class="btn btn-lg d-none d-md-block" style="background-color: #ec2614; color: #fff;">Metode Pembayaran</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <?php if ($status->id_status_pesan != 1) : ?>
