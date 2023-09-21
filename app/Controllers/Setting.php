@@ -60,8 +60,13 @@ class Setting extends BaseController
 
         // Validasi untuk unggah gambar
         $aturanValidasi = [
-            'img' => 'uploaded[img]|mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]'
+            'img' => 'mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]' // Hapus 'uploaded' dari validasi
         ];
+
+        // Jika ada file gambar yang diunggah, lakukan validasi
+        if (!$image->getError() == 4) {
+            $aturanValidasi['img'] .= '|uploaded[img]';
+        }
 
         if (!$this->validate($aturanValidasi)) {
             $alert = [
@@ -73,10 +78,10 @@ class Setting extends BaseController
             return redirect()->to('setting/detail-user/' . $id)->withInput();
         }
 
-        // Jika validasi berhasil, lanjutkan upload gambar
-        if ($image->getError() == 4) {
-            $namaUserImage = $this->request->getVar('imageLama');
-        } else {
+        // Jika validasi berhasil atau tidak ada gambar yang diunggah, lanjutkan pembaruan data
+        $namaUserImage = $this->request->getVar('imageLama'); // Tetapkan nama gambar lama sebagai nilai awal
+
+        if ($image->getError() != 4) { // Jika ada file gambar yang diunggah, proses unggahan gambar
             $produk = $usersModel->find($id);
 
             if ($produk['img'] == 'default.png') {
@@ -121,6 +126,7 @@ class Setting extends BaseController
             return redirect()->to('setting/detail-user/' . $id)->withInput();
         }
     }
+
 
 
     // PEMBAYARAN
