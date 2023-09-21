@@ -42,9 +42,9 @@
                         <input type="email" class="input-field" name="email" inputmode="email" autocomplete="email" placeholder="email" value="<?= old('email') ?>" required />
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="input-wrap position-relative">
                         <input type="password" class="input-field" name="password" inputmode="text" placeholder="kata sandi" autocomplete="current-password" required />
-                        <i class="bi bi-eye" id="togglePassword"></i>
+                        <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
                     </div>
                     <?php if (setting('Auth.sessionConfig')['allowRemembering']) : ?>
                         <div class="input-wrap">

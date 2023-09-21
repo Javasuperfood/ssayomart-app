@@ -40,11 +40,13 @@
                         <input type="email" class="input-field" name="email" inputmode="email" autocomplete="email" placeholder="email" value="<?= old('email') ?>" required />
                     </div>
 
-                    <div class="input-wrap">
+                    <div class="input-wrap position-relative">
                         <input type="password" class="input-field" name="password" inputmode="text" placeholder="kata sandi" autocomplete="new-password" required />
+                        <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
                     </div>
-                    <div class="input-wrap">
+                    <div class="input-wrap position-relative">
                         <input type="password" class="input-field" name="password_confirm" inputmode="text" placeholder="komfirmasi kata sandi" autocomplete="new-password" required />
+                        <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword2"></i>
                     </div>
 
                     <button type="submit" value="Daftar" class="sign-btn" id="btn-register">Daftar</button>
