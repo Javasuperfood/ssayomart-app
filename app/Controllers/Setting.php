@@ -58,6 +58,22 @@ class Setting extends BaseController
         $usersModel = new UsersModel();
         $image = $this->request->getFile('img');
 
+        // Validasi untuk unggah gambar
+        $aturanValidasi = [
+            'img' => 'uploaded[img]|mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]'
+        ];
+
+        if (!$this->validate($aturanValidasi)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => $this->validator->listErrors()
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting/detail-user/' . $id)->withInput();
+        }
+
+        // Jika validasi berhasil, lanjutkan upload gambar
         if ($image->getError() == 4) {
             $namaUserImage = $this->request->getVar('imageLama');
         } else {
@@ -75,6 +91,7 @@ class Setting extends BaseController
                 }
             }
         }
+
         $data = [
             'id' => $id,
             'username' => $this->request->getVar('username'),
@@ -82,6 +99,7 @@ class Setting extends BaseController
             'telp' => $this->request->getVar('telp'),
             'img' => $namaUserImage
         ];
+
         if ($usersModel->save($data)) {
             session()->setFlashdata('success', 'Data pengguna berhasil diperbarui.');
             $alert = [
@@ -103,6 +121,7 @@ class Setting extends BaseController
             return redirect()->to('setting/detail-user/' . $id)->withInput();
         }
     }
+
 
     // PEMBAYARAN
     public function pembayaran(): string
