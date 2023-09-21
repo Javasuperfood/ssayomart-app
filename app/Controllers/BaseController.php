@@ -57,4 +57,22 @@ abstract class BaseController extends Controller
         session();
         $this->session = \Config\Services::session();
     }
+    protected function countCart()
+    {
+        $cartModel = new \App\Models\CartModel(); // Adjust the namespace and class name accordingly
+        $cartProdModel = new \App\Models\CartProdukModel(); // Adjust the namespace and class name accordingly
+
+        $cekCart = $cartModel->where(['id_user' => user_id()])->first();
+
+        if ($cekCart) {
+            $cekCartProduk = $cartProdModel
+                ->select('id_cart_produk')
+                ->where('id_cart', $cekCart['id_cart'])
+                ->findAll();
+
+            return count($cekCartProduk);
+        }
+
+        return null; // Return null if the cart doesn't exist
+    }
 }
