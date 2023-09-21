@@ -11,6 +11,7 @@
 <style>
     body {
         font-family: 'Inter', sans-serif;
+        background-color: #f8f9fa;
     }
 
     .carousel-item img {

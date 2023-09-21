@@ -16,6 +16,15 @@
 
 
 <style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .carousel-item img {
+        border-radius: 5%;
+    }
+
     .invalid-field {
         border: 1px solid red;
     }

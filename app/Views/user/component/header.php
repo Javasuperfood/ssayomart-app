@@ -9,8 +9,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <style>
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9fa;
+    }
+
     .carousel-item img {
         border-radius: 5%;
+    }
+
+    .invalid-field {
+        border: 1px solid red;
     }
 </style>
 <script src="<?= base_url(); ?>assets/sweetalert2/sweetalert2.all.min.js"></script>
