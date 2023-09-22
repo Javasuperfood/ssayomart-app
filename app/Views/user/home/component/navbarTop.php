@@ -106,7 +106,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php else : ?>
                                 <li class="nav-item me-3 me-lg-0">
                                     <a class="nav-link" href="<?= base_url() ?>login">
-                                        <i class="bi bi-box-arrow-in-right fs-4 text-white"> Login</i>
+                                        <i class="bi bi-person-fill-lock fs-4 text-white "></i>
                                     </a>
                                 </li>
                             <?php endif ?>

@@ -111,7 +111,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('banner/tambah-banner/edit/(:segment)', 'AdminInputBanner::editBanner/$1');
 
     // CRUD routes produk
-    $routes->get('produk/produk', 'AdminProduk::produk');
+    $routes->get('produk/produk/', 'AdminProduk::produk');
     $routes->get('produk/detail-varian/(:segment)', 'AdminVariasiController::detail/$1');
     $routes->get('produk/detail-varian/(:segment)/tambah-variasi', 'AdminVariasiController::addVarianItem/$1');
     $routes->post('produk/detail-varian/tambah-variasi-item', 'AdminVariasiController::saveVarianItem');

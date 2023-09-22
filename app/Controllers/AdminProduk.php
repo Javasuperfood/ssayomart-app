@@ -12,7 +12,7 @@ use App\Models\VariasiItemModel;
 class AdminProduk extends BaseController
 {
     protected $imageModel;
-    public function produk($id)
+    public function produk()
     {
         $produkModel = new ProdukModel();
         $kategoriModel = new KategoriModel();
@@ -29,6 +29,7 @@ class AdminProduk extends BaseController
             'produk_Model' => $produk_list,
             'kategori_model' => $kategori_list,
         ];
+        return view('dashboard/produk/produk', $data);
     }
 
 
