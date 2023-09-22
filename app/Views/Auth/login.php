@@ -3,12 +3,12 @@
 <?= $this->section('title') ?><?= lang('Auth.login') ?> <?= $this->endSection() ?>
 
 <?= $this->section('main') ?>
-<div class="box">
+<div class="box shadow-sm">
     <div class="inner-box">
         <div class="forms-wrap">
             <form action="<?= url_to('login') ?>" method="post">
                 <?= csrf_field() ?>
-                <div class="logo">
+                <div class="logo d-md-none d-lg-none">
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />
                 </div>
                 <?php if (session('error') !== null) : ?>
@@ -39,11 +39,11 @@
 
                 <div class="actual-form">
                     <div class="input-wrap">
-                        <input type="email" class="input-field" name="email" inputmode="email" autocomplete="email" placeholder="email" value="<?= old('email') ?>" required />
+                        <input type="email" class="input-field shadow-sm border-0" name="email" inputmode="email" autocomplete="email" placeholder="email" value="<?= old('email') ?>" required />
                     </div>
 
                     <div class="input-wrap position-relative">
-                        <input type="password" class="input-field" name="password" inputmode="text" placeholder="kata sandi" autocomplete="current-password" required />
+                        <input type="password" class="input-field shadow-sm border-0" name="password" inputmode="text" placeholder="kata sandi" autocomplete="current-password" required />
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
                     </div>
                     <?php if (setting('Auth.sessionConfig')['allowRemembering']) : ?>
