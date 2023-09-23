@@ -119,6 +119,12 @@
         margin-left: 10px;
     }
 }
+@media screen and (max-width: 280px) {
+    .col-samsung-fold {
+        width: 25% !important;
+        display: flex;
+    }
+}
 /* @media (min-width:1512px) and (max-width:1910px) {
     .card-side {
         width: 15rem;

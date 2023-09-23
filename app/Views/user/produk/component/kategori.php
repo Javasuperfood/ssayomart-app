@@ -9,22 +9,40 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="mt-2">
-            <div class="container d-md-blok d-lg-none">
+            <div class="container d-md-block d-lg-none">
                 <div class="row text-center">
-                    <div class="col">
-                        <div class="swiper btn-sub text-center">
-                            <div class="swiper-wrapper">
-                                <?php foreach ($kategori as $k) : ?>
-                                    <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase" style="height: 25px; width:auto;">
-                                            <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="text-decoration-none" style="font-size:10px; color:#000;">
-                                                <?= $k['nama_kategori']; ?>
-                                            </a>
+                    <!-- Tombol Navigasi Kiri dan Kanan -->
+                    <div class="col position-relative my-3">
+                        <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left"></i></button>
+                        </div>
+                        <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- Button Kategori -->
+                        <div class="col">
+                            <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($kategori as $k) : ?>
+                                        <div class="swiper-slide mb-2">
+                                            <div class="card border-0 shadow-sm text-uppercase mx-auto" style="height: 25px;">
+                                                <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                                    <?= $k['nama_kategori']; ?>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                         </div>
+
+
+
+
+
                     </div>
                 </div>
             </div>
