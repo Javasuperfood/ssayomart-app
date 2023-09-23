@@ -2,12 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
+
+use CodeIgniter\RESTful\ResourceController;
+use CodeIgniter\API\ResponseTrait;
 use App\Models\ProdukModel;
 use App\Models\VariasiItemModel;
 use App\Models\VariasiModel;
 
-class AdminVariasiController extends BaseController
+class AdminVariasiController extends ResourceController
 {
     public function index()
     {
@@ -24,7 +26,7 @@ class AdminVariasiController extends BaseController
         // dd($data);
         return view('dashboard/produk/tambahVariasi', $data);
     }
-    // save
+    // Save
     public function saveVariasi()
     {
         // ambil gambar
@@ -33,7 +35,6 @@ class AdminVariasiController extends BaseController
         $data = [
             'nama_varian' => $this->request->getVar('nama_varian'),
         ];
-
         // swet alert
         if ($variasiModel->save($data)) {
             session()->setFlashdata('success', 'Variasi produk berhasil disimpan.');
@@ -53,6 +54,77 @@ class AdminVariasiController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/produk/tambah-variasi')->withInput();
+        }
+    }
+    // Delete
+    public function deleteVariasi($id)
+    {
+        $variasiModel = new VariasiModel();
+        $variasi = $variasiModel->find($id);
+
+        $deleted = $variasiModel->delete($id);
+        // dd($id);
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Variasi berhasil dihapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/produk/tambah-variasi');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan variasi'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/produk/tambah-variasi')->withInput();
+        }
+    }
+    // Update Produk
+    public function updateVariasi($id)
+    {
+        session();
+
+        $variasiModel = new VariasiModel();
+
+        $v = $variasiModel->find($id);
+        $data = [
+            'title' => 'Edit Produk',
+            'v' => $v,
+            'back'  => 'dashboard'
+        ];
+        return view('dashboard/produk/updateVariasi', $data);
+    }
+    public function editVariasi($id)
+    {
+        $variasiModel = new VariasiModel();
+
+        $data = [
+            'id_variasi' => $id,
+            'nama_varian' => $this->request->getVar('nama_varian'),
+        ];
+        // dd($data);
+        if ($variasiModel->save($data)) {
+            session()->setFlashdata('success', 'Variasi berhasil diubah.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Variasi berhasil diubah.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/produk/tambah-variasi');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/produk/tambah-variasi/update-variasi/' . $id)->withInput();
         }
     }
 

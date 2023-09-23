@@ -15,9 +15,9 @@
                 <form action="<?= base_url(); ?>dashboard/produk/tambah-variasi/save" onsubmit="return validasiVariasi()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
-                        <label for="value" class="form-label">Nama Variasi</label>
+                        <label for="value" class="form-label text-dark">Nama Variasi <span class="text-danger">(Cth : Gramasi, Rasa, dan lain-lain)</span></label>
                         <input type="text" class="form-control border-0 shadow-sm" id="value" name="nama_varian" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
-                        <span id="produkError" class="text-danger"></span>
+                        <span id="variasiError" class="text-danger"></span>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-danger">Simpan</button>
@@ -34,12 +34,12 @@
                 <h6 class="m-0 font-weight-medium">List Variasi Produk</h6>
             </div>
             <div class="card-body">
-                <table class="table text-center table-responsive" id="example" width="100%" cellspacing="0">
+                <table class="table text-center">
                     <thead>
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Variasi Produk</th>
-                            <th style="width: 100px;">Aksi</th>
+                            <th class="col-1">No</th>
+                            <th class="col">Variasi Produk</th>
+                            <th class="col" style="width: 100px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,7 +48,28 @@
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $v['nama_varian']; ?></td>
-                                <td><i class="bi bi-three-dots-vertical"></i></td>
+                                <td class="text-center">
+                                    <div class="nav-item dropdown no-arrow">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </a>
+                                        <!-- Dropdown - User Information -->
+                                        <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/tambah-variasi/update-variasi/<?= $v['id_variasi']; ?>">
+                                                <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Update
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <form action="<?= base_url() ?>dashboard/produk/tambah-variasi/delete-variasi/<?= $v['id_variasi']; ?>" method="post">
+                                                <?= csrf_field() ?>
+                                                <button type="submit" class="dropdown-item">
+                                                    <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                    <span class="text-danger">Hapus Variasi</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -78,29 +99,18 @@
     function validasiVariasi() {
         var isValid = true;
 
-        var namaProdukField = document.getElementById('nama');
-        var hargaField = document.getElementById('harga');
+        var variasiField = document.getElementById('value');
 
-        var namaProdukError = document.getElementById('produkError');
-        var hargaError = document.getElementById('hargaError');
+        var variasiError = document.getElementById('variasiError');
 
-        namaProdukError.textContent = '';
-        hargaError.textContent = '';
+        variasiError.textContent = '';
 
-        if (namaProdukField.value.trim() === '') {
-            namaProdukField.classList.add('invalid-field');
-            namaProdukError.textContent = 'Nama variasi harus diisi';
+        if (variasiField.value.trim() === '') {
+            variasiField.classList.add('invalid-field');
+            variasiError.textContent = 'Nama variasi harus diisi';
             isValid = false;
         } else {
-            namaProdukField.classList.remove('invalid-field');
-        }
-
-        if (hargaField.value.trim() === '') {
-            hargaField.classList.add('invalid-field');
-            hargaError.textContent = 'Harga Variasi Produk harus diisi';
-            isValid = false;
-        } else {
-            hargaField.classList.remove('invalid-field');
+            variasiField.classList.remove('invalid-field');
         }
 
         return isValid;

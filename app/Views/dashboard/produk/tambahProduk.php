@@ -18,22 +18,22 @@
             <?= csrf_field(); ?>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Produk</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= old('nama') ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= old('nama') ?>">
                 <span id="produkError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="sku" class="form-label">Stock Keeping Unit (SKU)</label>
-                <input type="text" class="form-control" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
+                <input type="text" class="form-control border-0 shadow-sm" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
                 <span id="skuError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="deskripsi">Deskripsi Produk</label>
-                <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi Produk Anda .." value="<?= old('deskripsi') ?>"></textarea>
+                <textarea class="form-control border-0 shadow-sm" id="deskripsi" name="deskripsi" placeholder="Deskripsi Produk Anda .." value="<?= old('deskripsi') ?>"></textarea>
                 <span id="deskripsiError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="parent_kategori_id">Kategori Induk</label>
-                <select class="form-control" id="kategori" name="parent_kategori_id">
+                <select class="form-control border-0 shadow-sm" id="kategori" name="parent_kategori_id">
                     <option value="">Pilih Kategori</option>
                     <?php foreach ($kategori as $km) : ?>
                         <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
@@ -43,21 +43,21 @@
             </div>
             <div class="mb-3">
                 <label for="parent_kategori_id">Sub Kategori</label>
-                <select class="form-control" id="sub_kategori" name="sub_kategori">
+                <select class="form-control border-0 shadow-sm" id="sub_kategori" name="sub_kategori">
                     <option value="">Pilih Kategori</option>
                 </select>
                 <span id="kategoriError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Gambar/Foto Produk</label>
-                <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar Produk">
+                <input type="file" style="border: none;" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar Produk">
                 <span id="imgError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="selectVariant">Pilih Variant</label>
-                        <select class="form-control" name="selectVariant" id="selectVariant">
+                        <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
                             <option selected>Pilih</option>
                             <?php foreach ($variasi as $v) : ?>
                                 <option value="<?= $v['id_variasi']; ?>"><?= $v['nama_varian']; ?></option>
@@ -66,19 +66,19 @@
                     </div>
                     <div class="col-md-6">
                         <label for="valueVariant">Value Variant</label>
-                        <input type="text" id="valueItem" name="valueItem" class="form-control" placeholder="Value Varian">
+                        <input type="text" id="valueItem" name="valueItem" class="form-control border-0 shadow-sm" placeholder="Value Varian">
                     </div>
                 </div>
             </div>
 
             <div class="mb-3">
                 <label for="berat" class="form-label">Berat Produk (*Satuan Gram)</label>
-                <input type="price" class="form-control" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                <input type="price" class="form-control border-0 shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
                 <span id="beratError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga Produk</label>
-                <input type="price" class="form-control" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>">
+                <input type="price" class="form-control border-0 shadow-sm" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>">
                 <span id="hargaError" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-danger">Simpan</button>
