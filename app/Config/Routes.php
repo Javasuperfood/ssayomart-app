@@ -116,9 +116,15 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/detail-varian/(:segment)/tambah-variasi', 'AdminVariasiController::addVarianItem/$1');
     $routes->post('produk/detail-varian/tambah-variasi-item', 'AdminVariasiController::saveVarianItem');
     $routes->post('produk/detail-varian/delete-varian/(:segment)', 'AdminVariasiController::deleteVarianItem/$1');
+
     $routes->get('produk/tambah-produk', 'AdminProduk::tambahProduk');
+
     $routes->get('produk/tambah-variasi', 'AdminVariasiController::tambahVariasi');
     $routes->post('produk/tambah-variasi/save', 'AdminVariasiController::saveVariasi');
+    $routes->post('produk/tambah-variasi/delete-variasi/(:segment)', 'AdminVariasiController::deleteVariasi/$1');
+    $routes->get('produk/tambah-variasi/update-variasi/(:segment)', 'AdminVariasiController::updateVariasi/$1');
+    $routes->post('produk/tambah-variasi/edit-variasi/(:segment)', 'AdminVariasiController::editVariasi/$1');
+
     $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
     $routes->post('produk/tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
     $routes->get('produk/tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');

@@ -3,10 +3,10 @@
 
 <h2>Produk</h2>
 <hr />
-<ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active">List Produk</li>
-    <li class="breadcrumb-item"><a href="<?= base_url(); ?>dashboard/tambah-produk">Tambah Produk</a></li>
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="#">Home</a></li>
+    <li class="breadcrumb-item text-danger active">List Produk</li>
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/tambah-produk">Tambah Produk</a></li>
 </ul>
 <p class="mb-3">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
 </p>
@@ -28,6 +28,7 @@
                         <th>SKU</th>
                         <th>Harga Produk</th>
                         <!-- <th>Stock Produk</th> -->
+                        <th>Varian</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -37,13 +38,49 @@
                         <tr>
                             <td><?= $no++; ?></td>
                             <td>
-                                <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="80" height="80">
+                                <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="50" height="50">
                             </td>
                             <td><?= $km['nama']; ?></td>
-                            <td><?= $km['sku']; ?></td>
-                            <!-- <td>25/26/27</td> -->
                             <td><?= $km['harga']; ?></td>
-                            <!-- <td>1</td> -->
+                            <td style="display: none;">1</td>
+                            <td>
+                                <?php
+                                $kategoriNama = '';
+                                $subKategoriNama = '';
+                                foreach ($kategori_model as $k) {
+                                    if ($k['id_kategori'] == $km['id_kategori']) {
+                                        $kategoriNama = $k['nama_kategori'];
+                                        if ($km['id_sub_kategori'] != null) {
+                                            foreach ($subKategori as $s) {
+                                                if ($s['id_sub_kategori'] == $km['id_sub_kategori']) {
+                                                    $subKategoriNama = $s['nama_kategori'];
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        break;
+                                    }
+                                }
+                                echo ($kategoriNama !== '') ? $kategoriNama . '<br>(' . $subKategoriNama . ')' : 'Kategori Tidak Ditemukan';
+                                ?>
+                            </td>
+                            <td>
+
+                                <?php
+                                $previousVarian = null;
+                                foreach ($variasiItem as $vi) : ?>
+                                    <?php
+                                    $i = 0;
+                                    if ($km['id_produk'] == $vi['id_produk']) {
+                                        if ($previousVarian !== $vi['nama_varian']) {
+                                            echo $vi['nama_varian'] . ' : ';
+                                            $previousVarian = $vi['nama_varian'];
+                                        }
+                                        echo '|' . $vi['value_item'] . '|';
+                                    }
+                                    ?>
+                                <?php endforeach ?>
+                            </td>
                             <td class="text-center">
                                 <div class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,6 +92,10 @@
                                             <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Lihat Produk
                                         </a>
+                                        <a class="dropdown-item" href="<?= base_url() ?>dashboard/produk/detail-varian/<?= $km['slug']; ?>">
+                                            <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Detail Varian
+                                        </a>
                                         <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk/update-produk/<?= $km['id_produk']; ?>">
                                             <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Update
@@ -64,15 +105,15 @@
                                             <?= csrf_field() ?>
                                             <button type="submit" class="dropdown-item">
                                                 <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                <span class="text-danger">Hapus Produk</span>
+                                                <span class="text-danger">Delete</span>
                                             </button>
                                         </form>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
                 </tbody>
+            <?php endforeach; ?>
             </table>
         </div>
     </div>

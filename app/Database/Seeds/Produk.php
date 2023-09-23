@@ -63,7 +63,7 @@ class Produk extends Seeder
             '2' => '1500',
             '3' => '2000',
         ];
-        for ($i = 1; $i <= 1000; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             $idK = mt_rand(1, 17);
             $idS = null;
             if ($idK == 2) {

@@ -16,18 +16,22 @@ class AdminProduk extends BaseController
     {
         $produkModel = new ProdukModel();
         $kategoriModel = new KategoriModel();
-
-        // Ambil semua produk
+        $subKategoriModel = new SubKategoriModel();
+        $variasiModel = new VariasiModel();
+        $variasiItemModel = new VariasiItemModel();
+        $variasList = $variasiModel->findAll();
+        $variasiItemList = $variasiItemModel->getVariasiItem();
+        $sub_kategori_list = $subKategoriModel->findAll();
         $produk_list = $produkModel->findAll();
-
-        // Ambil semua kategori (sesuaikan dengan model dan metode yang sesuai)
         $kategori_list = $kategoriModel->findAll();
 
-        // Kirim data produk dan kategori ke tampilan
         $data = [
             'title' => 'Daftar Produk',
             'produk_Model' => $produk_list,
             'kategori_model' => $kategori_list,
+            'subKategori' => $sub_kategori_list,
+            'variasi' => $variasList,
+            'variasiItem' => $variasiItemList
         ];
         return view('dashboard/produk/produk', $data);
     }
