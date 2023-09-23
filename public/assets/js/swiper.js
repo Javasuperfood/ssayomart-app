@@ -27,7 +27,7 @@ var swiper = new Swiper(".mySwiper", {
   });
 
   var swiper = new Swiper(".btn-sub", {
-
+    slidesPerView: 'auto',
     spaceBetween: 10,
     breakpoints: {
       // Tampilan iPad (lebar >= 768px)
@@ -42,10 +42,14 @@ var swiper = new Swiper(".mySwiper", {
       375: {
         slidesPerView: 3, // 2 card per tampilan
       },
+      280: {
+        slidesPerView: 2, // tampilan galaxo fold
+      },
     },
-    
-    
-
+    navigation: {
+      nextEl: '.button-next',
+      prevEl: '.button-prev',
+  },
   });
  
 
@@ -54,5 +58,10 @@ var swiper = new Swiper(".mySwiper", {
     
     loop: true,
  });
+
+
+
+
+ 
 
   

@@ -8,11 +8,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container d-md-block d-lg-none">
-            <div class="row text-center">
-                <div class="col-2 col-md-1">
+            <div class="row text-center flex-nowrap">
+                <div class="col-2 col-md-1 my-1 col-samsung-fold">
                     <div class="card mb-2 border-0 shadow-sm rounded-circle">
                         <!-- button modal -->
-                        <button type="button" class="btn d-flex align-items-center justify-content-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn d-flex align-items-center justify-content-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="bi bi-list-check" style="margin-top: 2px;"></i>
                         </button>
                         <!-- modal -->
@@ -37,16 +37,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-10">
-                    <div class="swiper buttonSwiper">
+                    <div class="swiper buttonSwiper d-flex flex-wrap">
                         <div class="swiper-wrapper">
                             <?php foreach ($subKategori as $s) : ?>
                                 <div class="swiper-slide my-3">
                                     <div class="card border-0 shadow-sm text-uppercase" style="height: 25px; width:auto;">
-                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none" style="font-size:10px; color:#000;">
+                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none" style="font-size:10px; color:#000;">
                                             <?= $s['nama_kategori']; ?>
                                         </a>
                                     </div>
@@ -57,6 +56,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
+
     </div>
 <?php else : ?>
 

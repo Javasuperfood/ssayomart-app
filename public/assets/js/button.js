@@ -14,11 +14,14 @@ var swiper = new Swiper(".buttonSwiper", {
       },
       // Tampilan iPad (lebar >= 768px)
       768: {
-        slidesPerView: 4, // 3 card per tampilan
+        slidesPerView: 4, // 4 card per tampilan
       },
       // Tampilan Mobile (lebar < 768px)
       375: {
         slidesPerView: 3, // 2 card per tampilan
+      },
+      280: {
+        slidesPerView: 2, // Samsung galaxy fold
       },
     },
 
