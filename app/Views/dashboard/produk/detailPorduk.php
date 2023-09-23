@@ -187,7 +187,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="selectVariant">Nama Variant</label>
-                                                <input type="text" disabled id="selectVariant" name="variant" class="form-control border-0 shadow-sm" value="<?= $varian[0]['nama_varian']; ?>">
+                                                <input type="text" disabled id="selectVariant" name="variant" class="form-control bg-white border-0 shadow-sm" value="<?= $varian[0]['nama_varian']; ?>">
                                                 <input type="hidden" id="selectVariant" name="id_variant" class="form-control" value="<?= $varian[0]['id_variasi']; ?>">
                                             </div>
                                             <div class="col-md-6">
@@ -218,7 +218,7 @@
                                     </div>
                                 <?php endif ?>
                                 <div class="mb-3">
-                                    <label for="berat" class="form-label">Berat Produk (*Satuan Gram)</label>
+                                    <label for="berat" class="form-label">Berat Produk <span class="text-danger fs-6">(* Harus Dalam Satuan Gram)</span></label>
                                     <input type="price" class="form-control border-0 shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
                                     <span id="beratError" class="text-danger"></span>
                                 </div>

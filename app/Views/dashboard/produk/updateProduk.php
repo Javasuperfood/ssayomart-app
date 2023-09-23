@@ -9,30 +9,30 @@
         <!-- code -->
         <form action="<?= base_url(); ?>dashboard/produk/tambah-produk/edit-produk/<?= $km['id_produk']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateProduk()">
             <?= csrf_field(); ?>
-            <input type="text" class="form-control" id="id_produk" name="id_produk" value="<?= $km['id_produk'] ?>">
+            <input type="text" class="form-control border-0 shadow-sm" id="id_produk" name="id_produk" value="<?= $km['id_produk'] ?>">
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Produk</label>
-                <input type="text" class="form-control" id="nama" name="nama" value="<?= $km['nama'] ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="nama" name="nama" value="<?= $km['nama'] ?>">
                 <span id="produkError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="sku" class="form-label">SKU Produk</label>
-                <input type="number" class="form-control" id="sku" name="sku" value="<?= $km['sku'] ?>">
+                <input type="number" class="form-control border-0 shadow-sm" id="sku" name="sku" value="<?= $km['sku'] ?>">
                 <span id="skuError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga Produk</label>
-                <input type="price" class="form-control" id="harga" name="harga" value="<?= $km['harga'] ?>">
+                <input type="price" class="form-control border-0 shadow-sm" id="harga" name="harga" value="<?= $km['harga'] ?>">
                 <span id="hargaError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi Produk</label>
-                <input type="text" style="height: 100px;" class="form-control" id="deskripsi" name="deskripsi" value="<?= $km['deskripsi'] ?>">
+                <input type="text" style="height: 100px;" class="form-control border-0 shadow-sm" id="deskripsi" name="deskripsi" value="<?= $km['deskripsi'] ?>">
                 <span id="deskripsiError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Gambar</label>
-                <input type="file" class="form-control" id="img" name="img" value="<?= $km['img'] ?>">
+                <input type="file" style="border: none;" class="form-control border-0 shadow-sm" id="img" name="img" value="<?= $km['img'] ?>">
                 <span id="imgError" class="text-danger"></span>
                 <input type="hidden" name="imageLama" value="<?= $km['img']; ?>">
             </div>
