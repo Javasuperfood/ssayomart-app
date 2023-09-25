@@ -42,11 +42,11 @@
         <div id="pesanan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu Pesanan:</h6>
-                <a class="collapse-item" href="<?= base_url('dashboard/pesanan'); ?>">Pesanan</a>
-                <a class="collapse-item" href="<?= base_url('dashboard/pesanan'); ?>">Pesanan Diproses</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Lainya:</h6>
-                <a class="collapse-item" href="<?= base_url('dashboard/pesanan'); ?>">Pesanan dibatalkan</a>
+                <a class="collapse-item" href="<?= base_url('dashboard/order'); ?>">Semua Pesanan</a>
+                <a class="collapse-item" href="<?= base_url('dashboard/order/awaiting-payment'); ?>">Pesanan menunggu pembayaran</a>
+                <a class="collapse-item" href="<?= base_url('dashboard/order/in-proccess'); ?>">Pesanan dalam proses</a>
+                <a class="collapse-item" href="<?= base_url('dashboard/order/being-delivered'); ?>">Pesanan dalam Perjalanan</a>
+                <a class="collapse-item" href="<?= base_url('dashboard/order/delivered'); ?>">Pesanan terkirim</a>
             </div>
         </div>
     </li>
