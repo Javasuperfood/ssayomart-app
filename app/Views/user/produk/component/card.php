@@ -1,7 +1,7 @@
 <?php if ($produk) : ?>
     <div class="container" id="product">
         <!-- <h2>Produk terlaris</h2> -->
-        <div class="row mt-2 row-cols-3">
+        <div class="row mt-3 row-cols-3">
             <?php foreach ($produk as $p) : ?>
                 <div class="col-6 col-md-4 col-lg-2 pt-3">
                     <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">

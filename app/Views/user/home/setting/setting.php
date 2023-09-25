@@ -80,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-question-circle pe-2 text-secondary"></i> Tentang Ssayomart <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                        <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/about" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-headset pe-2 text-secondary"></i> Ssayomart Care <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">

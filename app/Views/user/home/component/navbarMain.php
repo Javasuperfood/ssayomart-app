@@ -54,9 +54,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <a class="nav-link text-white" aria-current="page" href="https://download.ssayomart.com">Download Aplikasi Ssayomart</a>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2 border-0" type="search" placeholder="Cari sesuatu disini..." aria-label="Search">
-                            <button class="btn btn-outline-light text-white" type="submit">Search</button>
+                        <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
+                            <input type="text" name="produk" class="form-control" placeholder="Cari produk..." aria-label="search" aria-describedby="basic-addon1">
+                            <button type="submit" class="btn btn-outline-light text-white mx-2" id="basic-addon1"><i class="bi bi-search"></i></button>
                         </form>
                         <ul class="navbar-nav d-flex flex-row mx-3">
                             <!-- Icons -->
