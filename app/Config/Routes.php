@@ -79,8 +79,18 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
-    $routes->get('pesanan', 'AdminPesananController::index');
-    $routes->get('pesanan/(:segment)', 'AdminPesananController::detail/$1');
+    $routes->group('order/', static function ($routes) {
+        $routes->get('/', 'AdminPesananController::index');
+        $routes->get('awaiting-payment', 'AdminPesananController::awaitingPayment');
+        $routes->get('in-proccess', 'AdminPesananController::inProccess');
+        $routes->post('in-proccess/update-status/(:segment)', 'AdminPesananController::updateStatus/$1');
+        $routes->get('in-proccess/print-all', 'AdminPesananController::printAllOrder');
+        $routes->get('print-order/(:segment)', 'AdminPesananController::printOrder/$1');
+        $routes->get('being-delivered/', 'AdminPesananController::beingDelivered');
+        $routes->get('delivered/', 'AdminPesananController::delivered');
+        $routes->get('(:segment)', 'AdminPesananController::detail/$1');
+    });
+
 
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');

@@ -193,8 +193,7 @@ class CheckoutController extends BaseController
         $inv = $checkoutModel->find($id);
         $id_alamat = $this->request->getVar('alamat_list');
         $alamat = $alamatUserModel->find($id_alamat);
-        $kirim = 'Penerima : ' . $alamat['penerima'] . '<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br>' . $alamat['zip_code'] . '<br>' . 'Telp : ' . $alamat['telp'];
-
+        $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
 
 
         $params = [

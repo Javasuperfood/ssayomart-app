@@ -73,7 +73,7 @@
                             <tr>
                                 <td>Diskon</td>
                                 <td>:</td>
-                                <td><?= ($order['discount'] * 100); ?>%</td>
+                                <td><?= ($order['discount'] != '') ? ($order['discount'] * 100) . '%' : ''; ?></td>
                             </tr>
                             <tr>
                                 <td>Jumlah</td>
@@ -87,11 +87,19 @@
             <div class="col">
                 <div class="card" style="height: 100%;">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-danger">Update Resi</h6>
+                        <h6 class="m-0 font-weight-bold text-danger">Update Detail</h6>
                     </div>
                     <div class="card-body">
                         <?php if ($order['id_status_pesan'] != 1) : ?>
                             <form action="<?= base_url('dashboard/pesanan/update/' . $order['id_checkout']); ?>" method="post">
+                                <div class="form-group">
+                                    <label for="status">Status</label>
+                                    <select class="form-control" id="status" name="status">
+                                        <?php foreach ($statusPesan as $s) : ?>
+                                            <option value="<?= $s['id_status_pesan']; ?>" <?= ($s['id_status_pesan'] == $order['id_status_pesan']) ? 'selected' : ''; ?>><?= $s['status']; ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
                                 <textarea class="form-control" placeholder="Nomor Resi" name="deskripsi" id="floatingTextarea2" style="height: 100px"><?= old('deskripsi'); ?></textarea>
                                 <div class="pt-4" align="center">
                                     <button type="submit" class="btn btn-outline-danger">Update</button>
