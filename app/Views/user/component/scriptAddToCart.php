@@ -4,8 +4,11 @@
         $(`#radioVarianBuy${id}`).prop('checked', true);
     }
     $(document).ready(function() {
-        <?php if (isset($_GET['varian'])) : ?>
+        <?php if (isset($_GET['add-to-cart'])) : ?>
             $("#modalVarian").modal("show");
+        <?php endif ?>
+        <?php if (isset($_GET['buy'])) : ?>
+            $("#modalVarianBuy").modal("show");
         <?php endif ?>
         $(".add-to-cart-btn").click(function() {
             var produk = $(this).attr('produk');

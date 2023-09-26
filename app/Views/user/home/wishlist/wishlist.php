@@ -30,11 +30,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <div>
-                                    <button class="btn btn-white text-danger border-danger mt-4 add-to-cart-btn d-inline" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"><i class=" bi bi-cart-fill"></i></button>
-                                    <form action="<?= base_url('buy/' . $p['slug']); ?>" method="get" class="d-inline">
-                                        <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</button>
-                                    </form>
+                                    <a href="<?= base_url('produk/' . $p['slug'] . '?add-to-cart=show'); ?>" class="btn btn-white text-danger border-danger mt-4"><i class=" bi bi-cart-fill"></i></a>
+                                    <a href="<?= base_url('produk/' . $p['slug'] . '?buy=show'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</a>
                                 </div>
                             </div>
                         </div>
@@ -79,11 +76,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <div>
-                                    <button class="btn btn-white text-danger border-danger mt-4 add-to-cart-btn d-inline" produk="<?= $p['id_produk']; ?>" harga="<?= $p['harga']; ?>"><i class=" bi bi-cart-fill"></i></button>
-                                    <form action="<?= base_url('buy/' . $p['slug']); ?>" method="get" class="d-inline">
-                                        <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</button>
-                                    </form>
+                                    <a href="<?= base_url('produk/' . $p['slug'] . '?add-to-cart=show'); ?>" class="btn btn-white text-danger border-danger mt-4"><i class=" bi bi-cart-fill"></i></a>
+                                    <a href="<?= base_url('produk/' . $p['slug'] . '?buy=show'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</a>
                                 </div>
                             </div>
                         </div>
@@ -95,19 +89,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php endif; ?>
 <!-- end Desktop -->
 
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
 <!-- end desktop -->
 <?= $this->include('user/component/scriptAddToCart'); ?>
 <?= $this->endSection(); ?>
