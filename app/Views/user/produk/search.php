@@ -7,8 +7,9 @@
 <br>
 <!-- Card -->
 <?= $this->include('user/produk/component/card') ?>
+
 <!-- fotter -->
-<div class="mt-5" id="navbarBottom" style="position: relative; bottom: 0; width: 100%;">
+<div class="footer-search" id="navbarBottom" style="position: relative; bottom: 0; width: 100%;">
     <?= $this->include('user/home/component/navbarBottom') ?>
 </div>
 

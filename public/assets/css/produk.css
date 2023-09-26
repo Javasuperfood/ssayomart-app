@@ -101,6 +101,10 @@
     /* Efek shadow merah saat focus */
 
 }
+
+.footer-search {
+    margin-top: 8%;
+}
 @media (min-width: 768px) and (max-width: 1024px) {
     .swiper-slide img {
         border-radius: 25px;
