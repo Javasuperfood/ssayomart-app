@@ -94,6 +94,13 @@
     z-index: 99;
 }
 
+.form-control:focus {
+    border-color: #ffffff;
+    /* Warna garis tepi merah saat focus */
+    box-shadow: none;
+    /* Efek shadow merah saat focus */
+
+}
 @media (min-width: 768px) and (max-width: 1024px) {
     .swiper-slide img {
         border-radius: 25px;
