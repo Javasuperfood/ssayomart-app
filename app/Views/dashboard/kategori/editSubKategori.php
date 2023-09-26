@@ -12,18 +12,18 @@
 
             <div class="mb-3">
                 <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori</label>
-                <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $subkategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
+                <input type="text" class="form-control border-0 shadow-sm" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $subkategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
                 <span id="kategoriError" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
-                <input type="text" class="form-control" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $subkategori['slug'] ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $subkategori['slug'] ?>">
                 <span id="slugError" class="text-danger"></span>
             </div>
 
             <label for="parent_kategori_id">Kategori Induk</label>
-            <select class="form-control" id="parent_kategori_id" name="parent_kategori_id">
+            <select class="form-control border-0 shadow-sm" id="parent_kategori_id" name="parent_kategori_id">
                 <option value="">Pilih Kategori Induk (biarkan jika tidak diubah)</option>
                 <?php foreach ($kategori_model as $km) : ?>
                     <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
@@ -32,13 +32,13 @@
 
             <div class="mb-3">
                 <label for="img" class="form-label">Masukan Gambar</label>
-                <input type="file" class="form-control" id="img" name="img" value="<?= $subkategori['img'] ?>">
+                <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" value="<?= $subkategori['img'] ?>">
                 <input type="hidden" name="imageLama" value="<?= $subkategori['img']; ?>">
             </div>
 
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi" name="deskripsi"><?= $subkategori['deskripsi'] ?></textarea>
+                <textarea class="form-control border-0 shadow-sm" id="deskripsi" name="deskripsi"><?= $subkategori['deskripsi'] ?></textarea>
                 <span id="deskripsiError" class="text-danger"></span>
             </div>
 

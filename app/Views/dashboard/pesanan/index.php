@@ -1,8 +1,8 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
+<div class="card shadow-sm border-0 mb-4">
+    <div class="card-header border-0 py-3">
         <h6 class="m-0 font-weight-bold text-danger">List Pesanan</h6>
     </div>
     <div class="card-body">
@@ -14,31 +14,27 @@
             </div>
         </div>
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-border-bottom-0" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>No</th>
-                        <th>INV</th>
-                        <th>Produk</th>
-                        <th>Qty</th>
-                        <th>SKU</th>
-                        <th>Penerima</th>
-                        <th>Kurir</th>
-                        <th>Status</th>
-                        <th class="text-right"><i class="bi bi-three-dots-vertical"></i></th>
+                        <th class="text-center">No</th>
+                        <th class="text-center">INV</th>
+                        <th class="text-center">Produk</th>
+                        <th class="text-center">Penerima</th>
+                        <th class="text-center">Kurir</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>No</th>
-                        <th>INV</th>
-                        <th>Produk</th>
-                        <th>Qty</th>
-                        <th>SKU</th>
-                        <th>Penerima</th>
-                        <th>Kurir</th>
-                        <th>Status</th>
-                        <th class="text-right"><i class="bi bi-three-dots-vertical"></i></th>
+                        <th class="text-center">No</th>
+                        <th class="text-center">INV</th>
+                        <th class="text-center">Produk</th>
+                        <th class="text-center">Penerima</th>
+                        <th class="text-center">Kurir</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -49,16 +45,14 @@
                             <tr>
                                 <th><?= $iterasi++; ?></th>
                                 <td><a class="link-dark" href="<?= base_url('dashboard/order/' . $o['invoice']); ?>"><?= $o['invoice']; ?></a></td>
-                                <td colspan="3">
-                                    <?php foreach ($order as $p) : ?>
-                                        <?php if ($o['id_checkout'] == $p['id_checkout']) : ?>
-                                            <ul class="list-group list-group-horizontal">
-                                                <li class="list-group-item"><a href="<?= base_url('produk/' . $p['slug']); ?>"><?= $p['nama']; ?></a></li>
-                                                <li class="list-group-item"><?= $p['qty']; ?></li>
-                                                <li class="list-group-item"><?= $p['sku']; ?></li>
-                                            </ul>
-                                        <?php endif ?>
-                                    <?php endforeach ?>
+                                <td class="my-0">
+                                    <ul class="list-group">
+                                        <?php foreach ($order as $p) : ?>
+                                            <?php if ($o['id_checkout'] == $p['id_checkout']) : ?>
+                                                <li class="list-group-item border-0"><a class="link-dark" href="<?= base_url('produk/' . $p['slug']); ?>"><?= $p['nama']; ?></a><br> (<b>Qty</b>: <?= $p['qty']; ?>, <b>SKU</b>: <?= $p['sku']; ?>)</li>
+                                            <?php endif ?>
+                                        <?php endforeach ?>
+                                    </ul>
                                 </td>
                                 <td><?= $o['kirim']; ?></td>
                                 <td><?= $o['service']; ?></td>
@@ -129,6 +123,7 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+
         </div>
         <?= $pager->links('order', 'pagerS'); ?>
     </div>
