@@ -105,7 +105,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
                                                 <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                                                 <p class=" text-center">
-                                                    <a href="<?= base_url('produk/' . $p['slug']); ?>?varian=show" class="btn text-danger "> <i class="bi bi-cart-fill fs-4"></i></a>
+                                                    <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn text-danger "> <i class="bi bi-cart-fill fs-4"></i></a>
                                                 </p>
                                             </div>
                                         </div>
