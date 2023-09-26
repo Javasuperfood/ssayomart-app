@@ -10,6 +10,8 @@ use App\Models\KategoriModel;
 use App\Models\KuponModel;
 use App\Models\ProdukModel;
 use App\Models\UsersModel;
+use App\Models\WishlistModel;
+use App\Models\WishlistProdukModel;
 use Midtrans\Config as MidtransConfig;
 
 
@@ -51,6 +53,8 @@ class BuyController extends BaseController
         $midtransConfig = config('Midtrans');
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
+        $wishlistModel = new WishlistModel();
+        $wishlistProdModel = new WishlistProdukModel();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -68,6 +72,9 @@ class BuyController extends BaseController
 
         $email = $userModel->getEmail(user_id());
         $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
+
+        $wishlist = $wishlistModel->where('id_user', user_id())->first();
+        $wishlistItem = $wishlistProdModel->where('id_wishlist', $wishlist['id_wishlist'])->where('id_produk', $produk['id_produk'])->first();
         $id_alamat = $this->request->getVar('alamat_list');
 
         $alamat = $alamatUserModel->find($id_alamat);
@@ -187,7 +194,9 @@ class BuyController extends BaseController
             'harga' => $produk['harga'],
         ];
         $checkoutProdukModel->insert($checkoutProdukData);
-
+        if ($wishlistItem) {
+            $wishlistProdModel->delete($wishlistItem['id_wishlist_produk']);
+        }
         return redirect()->to(base_url('payment/' . $inv));
     }
 }
