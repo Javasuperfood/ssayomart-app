@@ -16,7 +16,7 @@ class AdminPesananController extends BaseController
     public function index()
     {
         $checkoutProdModel = new CheckoutProdukModel();
-
+        $statusPesanModel = new StatusPesanModel();
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
         $perPage = 10;
@@ -25,7 +25,8 @@ class AdminPesananController extends BaseController
         $data = [
             'order' => $allOrder,
             'pager' => $checkoutProdModel->pager,
-            'iterasi' => ($currentPage - 1) * $perPage + 1
+            'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'statusPesan' => $statusPesanModel->findAll()
         ];
         // dd($data);
         return view('dashboard/pesanan/index', $data);
@@ -60,7 +61,7 @@ class AdminPesananController extends BaseController
         $checkoutProdModel->paginate($perPage, 'order');
         $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($perPage, $currentPage, 2);
         $data = [
-            'pages' => 'in-progress',
+            'pages' => 'in-proccess',
             'order' => $allOrder,
             'pager' => $checkoutProdModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
@@ -101,7 +102,7 @@ class AdminPesananController extends BaseController
         $checkoutProdModel->paginate($perPage, 'order');
         $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($perPage, $currentPage, 4);
         $data = [
-            'pages' => 'being-delivered',
+            'pages' => 'delivered',
             'order' => $allOrder,
             'pager' => $checkoutProdModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
@@ -132,11 +133,12 @@ class AdminPesananController extends BaseController
         $page = $this->request->getVar('page');
         $checkoutModel = new CheckoutModel();
 
+        $url = base_url() . 'dashboard/order/';
         if (!$checkoutModel->save(['id_checkout' => $id, 'id_status_pesan' => $this->request->getVar('status')])) {
+            return 'gagal update';
             return redirect()->to(base_url('dashboard/order/in-proccess'))->withInput();
         }
-        $goBack = base_url() . 'dashboard/order/in-proccess';
-        return redirect()->to(($page != 1) ? $goBack : $goBack . '?page_order=' . $page);
+        return redirect()->to($url . $page);
     }
 
     // =============================================== Print Data  =================================================

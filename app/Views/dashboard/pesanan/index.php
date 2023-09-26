@@ -9,7 +9,7 @@
         <div class="row mb-3 header">
             <div class="col text-end">
                 <?php if (isset($pages) && $pages == 'in-progress') : ?>
-                    <a href="<?= base_url('dashboard/order/in-proccess/print-all'); ?>" class="btn btn-outline-danger"><i class="bi bi-printer"></i> Print All</a>
+                    <a href="<?= base_url('dashboard/order/in-proccess/print-all'); ?>" class="btn btn-outline-danger <?= (count($order) == 0) ? 'd-none' : ''; ?>"><i class="bi bi-printer"></i> Print All</a>
                 <?php endif ?>
             </div>
         </div>
@@ -42,6 +42,13 @@
                     </tr>
                 </tfoot>
                 <tbody>
+                    <?php if (count($order) == 0) : ?>
+                        <tr>
+                            <td colspan="9" class="text-center">
+                                <p class="fw-bold fs-3">No Data Here <br>( ╥﹏╥) ノシ</p>
+                            </td>
+                        </tr>
+                    <?php endif ?>
                     <?php
                     $idCheckout = null;
                     foreach ($order as $o) : ?>
@@ -104,7 +111,7 @@
                                             </div>
                                             <form action="<?= base_url('dashboard/order/in-proccess/update-status/' . $o['id_checkout']); ?>" method="post">
                                                 <?= csrf_field(); ?>
-                                                <input type="hidden" name="page" value="<?= (isset($_GET['page_order']) != null) ? $_GET['page_order'] : '1'; ?>">
+                                                <input type="hidden" name="page" value="<?= (isset($pages)) ? $pages : '' . '?page_order=' ?><?= (isset($_GET['page_order']) != null) ? $_GET['page_order'] : '1'; ?>">
                                                 <div class="modal-body">
                                                     <div class="form-group">
                                                         <label for="status">Status</label>
