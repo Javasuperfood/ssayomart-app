@@ -41,6 +41,7 @@ class CartController extends BaseController
             'kategori' => $kategori->findAll(),
             'back' => ''
         ];
+        // dd($data);
         return view('user/home/cart/cart', $data);
     }
     public function deleteProduk($id)
