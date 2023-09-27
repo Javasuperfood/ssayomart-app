@@ -59,8 +59,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     </div>
 <?php else : ?>
-
-    <!-- tampilan mobile & ipad -->
+    <!-- Akhir tampilan mobile & ipad -->
 
     <!-- tampilan Destop -->
     <div id="desktopContent" style="margin-top:100px;">

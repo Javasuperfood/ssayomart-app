@@ -1,3 +1,4 @@
+// Slider Button SubKategori
 var swiper = new Swiper(".buttonSwiper", {
     slidesPerView: 3,
     centeredSlides: true,
@@ -7,10 +8,11 @@ var swiper = new Swiper(".buttonSwiper", {
       el: ".swiper-pagination",
       clickable: true,
     },
+    initialSlide: 1, // Posisi slide center lur pada awalnya
     breakpoints: {
       // Tampilan iPad (lebar >= 768px)
       1280: {
-        slidesPerView: 6, // 3 card per tampilan
+        slidesPerView: 6, // 6 card per tampilan
       },
       // Tampilan iPad (lebar >= 768px)
       768: {
@@ -18,7 +20,7 @@ var swiper = new Swiper(".buttonSwiper", {
       },
       // Tampilan Mobile (lebar < 768px)
       375: {
-        slidesPerView: 3, // 2 card per tampilan
+        slidesPerView: 3, // 3 card per tampilan
       },
       280: {
         slidesPerView: 2, // Samsung galaxy fold
@@ -40,7 +42,7 @@ window.addEventListener("scroll", function() {
     }
 });
 
-// Gulir kembali ke atas saat tombol Scroll Up diklik
+// Scroll kembali ke atas saat tombol Scroll Up diklik
 scrollUpButton.addEventListener("click", function() {
     document.body.scrollTop = 0; // Untuk browser Safari
     document.documentElement.scrollTop = 0; // Untuk browser lainnya
