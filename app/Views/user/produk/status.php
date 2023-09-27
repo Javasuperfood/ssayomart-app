@@ -97,7 +97,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p><?= $status->invoice; ?></p>
                                     </div>
                                     <div class="col-2">
-                                        <i class="bi bi-clipboard text-danger"></i>
+                                        <i class="bi bi-clipboard text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
                                     </div>
                                 </div>
                                 <?php if (isset($paymentStatus->va_numbers[0])) : ?>
@@ -106,7 +106,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
                                         </div>
                                         <div class="col-2">
-                                            <i class="bi bi-files text-danger"></i>
+                                            <i class="bi bi-files text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -375,7 +375,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <p>Invoice: <?= $status->invoice; ?></p>
                                                 </div>
                                                 <div class="col-2 text-end">
-                                                    <i class="bi bi-clipboard text-danger"></i>
+                                                    <i class="bi bi-clipboard text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
                                                 </div>
                                             </div>
                                             <?php if (isset($paymentStatus->va_numbers[0])) : ?>
@@ -384,7 +384,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
                                                     </div>
                                                     <div class="col-2 text-end">
-                                                        <i class="bi bi-files text-danger"></i>
+                                                        <i class="bi bi-files text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -564,18 +564,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </style>
 <?php endif; ?>
 
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
 
 <?= $this->endSection(); ?>

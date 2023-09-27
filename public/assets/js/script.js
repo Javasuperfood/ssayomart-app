@@ -16,3 +16,8 @@ function isNumber(e) {
   
     return false;
 }
+
+function copyBtn(text) {
+  var copyText = text;
+  navigator.clipboard.writeText(copyText);
+}
