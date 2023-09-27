@@ -4,9 +4,8 @@
 <h2>Produk</h2>
 <hr />
 <ul class="breadcrumb bg-light">
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="#">Home</a></li>
     <li class="breadcrumb-item text-danger active">List Produk</li>
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/tambah-produk">Tambah Produk</a></li>
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a></li>
 </ul>
 <p class="mb-3">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
 </p>
@@ -25,10 +24,10 @@
                         <th>No</th>
                         <th>Gambar</th>
                         <th>Nama Produk</th>
-                        <th>SKU</th>
                         <th>Harga Produk</th>
+                        <th>Kategori/Subkategori</th>
                         <!-- <th>Stock Produk</th> -->
-                        <th>Varian</th>
+                        <th>Varian Produk</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -41,7 +40,7 @@
                                 <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="50" height="50">
                             </td>
                             <td><?= $km['nama']; ?></td>
-                            <td><?= $km['harga']; ?></td>
+                            <td>Rp. <?= number_format($km['harga'], 0, ',', '.'); ?></td>
                             <td style="display: none;">1</td>
                             <td>
                                 <?php

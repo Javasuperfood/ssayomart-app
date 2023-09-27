@@ -4,10 +4,9 @@
 
 <h2>List Banner</h2>
 <hr />
-<ul class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item active">List Banner</li>
-    <li class="breadcrumb-item"><a href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a></li>
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item active text-danger">List Banner</li>
+    <li class="breadcrumb-item"><a class="link-secondary" href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a></li>
 </ul>
 <p class="mb-3">Anda dapat mengatur banner yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>

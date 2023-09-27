@@ -102,7 +102,7 @@ class AdminkategoriController extends BaseController
                 ];
                 session()->setFlashdata('alert', $alert);
 
-                return redirect()->to('dashboard/kategori/tambah-kategori')->withInput();
+                return redirect()->to('dashboard/kategori')->withInput();
             } else {
                 $alert = [
                     'type' => 'error',
@@ -191,7 +191,7 @@ class AdminkategoriController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kategori/kategori');
+            return redirect()->to('dashboard/kategori');
         } else {
             $alert = [
                 'type' => 'error',

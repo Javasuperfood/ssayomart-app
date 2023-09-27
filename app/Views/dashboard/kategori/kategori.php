@@ -3,8 +3,10 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-1 text-gray-800">Kategori Produk</h1>
-<p class="mb-4">Kategori produk untuk toko Anda dapat diatur di sini. Untuk mengganti urutan kategori di ujung depan, Anda dapat seret-lepas untuk mengurutkannya. Untuk melihat kategori lainnya klik tautan "Opsi Layar" pada bagian atas halaman.</p>
-
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item text-danger active">List Kategori</li>
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a></li>
+</ul>
 <div class="row">
     <div class="col mb-3">
         <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
