@@ -18,6 +18,13 @@ function isNumber(e) {
 }
 
 function copyBtn(text) {
-  var copyText = text;
-  navigator.clipboard.writeText(copyText);
+  if(navigator.clipboard.writeText(text)){
+    Swal.fire({
+      icon: 'success',
+      title: 'Copy',
+      html: `${text}<br/>has been copied to the clipboard`,
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
 }
