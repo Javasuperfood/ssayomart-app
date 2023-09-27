@@ -26,7 +26,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="fw-bold ps-2">Rp. <?= number_format($total, 0, ',', '.'); ?></span>
+                                            <span class="fw-bold ps-2" id="textTotal">Rp. <?= number_format($total, 0, ',', '.'); ?></span>
+                                            <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
                                         </td>
                                     </tr>
                                 </table>
@@ -49,12 +50,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
-                        <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
-                        <p class="card-text text-secondary"><?= $p['nama']; ?></p>
+                        <p class="card-title">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                        <p class="card-text text-secondary"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
                         <div class="input-group mb-3 d-flex justify-content-center">
-                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
                             <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
-                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
                         </div>
                         <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
                             <?= csrf_field(); ?>
@@ -110,15 +111,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="row">
                                                 <!-- product name  -->
                                                 <div class="col-8 card-title">
-                                                    <h4 class="mb-4 product_name"><?= substr($p['nama'], 0, 40); ?> ...</h4>
+                                                    <h4 class="mb-4 product_name"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?><?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '...' : ''; ?></h4>
                                                     <p class="mb-2"><?= substr($p['deskripsi'], 0, 80); ?>...</p>
                                                 </div>
                                                 <!-- quantity inc dec -->
                                                 <div class="col-4">
                                                     <div class="input-group mb-3 d-flex justify-content-center">
-                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
                                                         <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
-                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -126,7 +127,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="row">
                                                 <div class="col-8 d-flex justify-content-between">
                                                     <div class="col-8 d-flex justify-content-end">
-                                                        <h5>Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h5>
+                                                        <h5>Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,13 +149,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($produk as $p) : ?>
                                     <div class="d-flex justify-content-between">
                                         <p><?= $p['nama']; ?></p>
-                                        <p>Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></span></p>
+                                        <p id="textQty<?= $p['id_produk']; ?>"><?= $p['qty']; ?></p>
+                                        <p id="textHargaItem<?= $p['id_produk']; ?>">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                     </div>
                                 <?php endforeach; ?>
                                 <hr />
-                                <div class="total-amt d-flex justify-content-between font-weight-bold">
+                                <div class="total-amt d-flex justify-content-between fw-bold">
                                     <p>Total Harga</p>
-                                    <p>Rp. <?= number_format($total, 0, ',', '.'); ?></span></p>
+                                    <p id="textTotal">Rp. <?= number_format($total, 0, ',', '.'); ?></p>
+                                    <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
                                 </div>
                                 <form action="<?= base_url('checkout'); ?>" method="post" class="<?= (!$produk); ?>">
                                     <?= csrf_field(); ?>
@@ -171,37 +174,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 <!-- end Desktop -->
-
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
 <script type="text/javascript">
-    function increaseCount(a, b) {
+    function increaseCount(a, b, harga, p) {
+        var total_awal = parseInt($("#totalField").val(), 10);
         var input = b.previousElementSibling;
         var value = parseInt(input.value, 10);
         value = isNaN(value) ? 0 : value;
         value++;
         input.value = value;
+        var total = total_awal + harga;
+        $("#totalField").val(total);
+        $("#textTotal").text(formatRupiah(total));
+
+        <?php if (!$isMobile) : ?>
+            $("#textQty" + p).text(value)
+            $("#textHargaItem" + p).text(formatRupiah((harga * value)))
+        <?php endif ?>
     }
 
-    function decreaseCount(a, b) {
+    function decreaseCount(a, b, harga, p) {
+        var total_awal = parseInt($("#totalField").val(), 10);
         var input = b.nextElementSibling;
         var value = parseInt(input.value, 10);
         if (value > 1) {
             value = isNaN(value) ? 0 : value;
             value--;
             input.value = value;
+            var total = total_awal - harga;
+            $("#totalField").val(total);
+            $("#textTotal").text(formatRupiah(total));
+            <?php if (!$isMobile) : ?>
+                $("#textQty" + p).text(value)
+                $("#textHargaItem" + p).text(formatRupiah((harga * value)))
+            <?php endif ?>
         }
+    }
+
+    function formatRupiah(angka) {
+        var formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        });
+        return formatter.format(angka);
     }
 </script>
 
