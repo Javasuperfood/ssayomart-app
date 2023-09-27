@@ -102,8 +102,30 @@
 
 }
 
+.form-control-main:focus {
+    border-color: #ffffff;
+    /* Warna garis tepi merah saat focus */
+    box-shadow: none;
+    /* Efek shadow merah saat focus */
+    border: none;
+    /* Menghapus border default */
+    outline: none;
+
+}
+
+.form-control-main {
+
+    box-shadow: none;
+    /* Efek shadow merah saat focus */
+    border-radius: 5px;
+    /* Menentukan sudut tumpul */
+    border: none;
+    /* Menghapus border default */
+    width: 250px;
+
+}
 .footer-search {
-    margin-top: 16%;
+    margin-top: 22%;
 }
 @media (min-width: 768px) and (max-width: 1024px) {
     .swiper-slide img {
