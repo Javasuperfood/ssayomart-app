@@ -5,7 +5,7 @@
 <!-- DataTales Example -->
 <?php if ($toko) : ?>
     <div class="card border-0 shadow-sm mb-4">
-        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <div class="card-header border-0 py-3 d-flex flex-row align-items-center justify-content-between">
             <h6 class="m-0 font-weight-bold text-danger">Detail Market</h6>
             <div class="dropdown no-arrow">
                 <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +39,7 @@
                 <div class="col">
                     <div class="card border-0 shadow-sm mb-4">
                         <!-- Card Header - Accordion -->
-                        <a href="#deskripsi" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="deskripsi">
+                        <a href="#deskripsi" class="d-block card-header border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="deskripsi">
                             <h6 class="m-0 font-weight-bold text-danger">Deskripsi</h6>
                         </a>
                         <!-- Card Content - Collapse -->
@@ -55,7 +55,7 @@
                 <div class="col">
                     <div class="card border-0 shadow-sm mb-4">
                         <!-- Card Header - Accordion -->
-                        <a href="#alamat" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="alamat">
+                        <a href="#alamat" class="d-block card-header border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="alamat">
                             <h6 class="m-0 font-weight-bold text-danger">Alamat</h6>
                         </a>
                         <!-- Card Content - Collapse -->
@@ -77,22 +77,6 @@
                                     <p>Detail alamat :</p>
                                     <p><?= $toko['alamat_2']; ?></p>
                                 <?php endif ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card border-0 shadow-sm mb-4">
-                        <!-- Card Header - Accordion -->
-                        <a href="#user" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="user">
-                            <h6 class="m-0 font-weight-bold text-danger">Informasi User</h6>
-                        </a>
-                        <!-- Card Content - Collapse -->
-                        <div class="collapse" id="user">
-                            <div class="card-body">
-                                <!-- // -->
                             </div>
                         </div>
                     </div>

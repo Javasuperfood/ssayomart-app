@@ -3,8 +3,10 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-2 text-gray-800">Manajemen Kupon</h1>
-<p class="mb-4">Anda dapat memberikan atau manambahkan kupon yang akan di tampilkan nantinya pada halaman user sebagai bentuk potongan harga atau diskon
-</p>
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item text-danger active">List Kupon</li>
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kupon/tambah-produk">Tambah Kupon</a></li>
+</ul>
 
 <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon">Tambah kupon</a>
 
@@ -15,7 +17,7 @@
     </div>
     <div class="card-body ">
         <div class="table-responsive">
-            <table class=" table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+            <table class=" table table-borderless text-center" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>No</th>

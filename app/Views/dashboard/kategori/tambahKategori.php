@@ -33,6 +33,9 @@
                         <?php endforeach; ?>
                     </select>
                     <div class="mb-3">
+                        <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
+                            <b>Dimensi foto harus berbentuk persegi! (Cth: 256px x 256px atau 512px x 512px)</b>
+                        </div>
                         <label for="img" class="form-label">Masukan Gambar</label>
                         <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar">
                         <span id="imgError" class="text-danger"></span>
