@@ -12,25 +12,25 @@
 
             <div class="mb-3">
                 <label for="kategori" class="form-label">Nama Kategori</label>
-                <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
+                <input type="text" class="form-control border-0 shadow-sm" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
                 <span id="kategoriError" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
-                <input type="text" class="form-control" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $kategori['slug'] ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $kategori['slug'] ?>">
                 <span id="slugError" class="text-danger"></span>
             </div>
 
             <div class="mb-3">
                 <label for="img" class="form-label">Masukan Gambar</label>
-                <input type="file" class="form-control" id="img" name="img" value="<?= $kategori['img'] ?>">
+                <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" value="<?= $kategori['img'] ?>">
                 <input type="hidden" name="imageLama" value="<?= $kategori['img']; ?>">
             </div>
 
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi" name="deskripsi"><?= $kategori['deskripsi'] ?></textarea>
+                <textarea class="form-control border-0 shadow-sm" id="deskripsi" name="deskripsi"><?= $kategori['deskripsi'] ?></textarea>
                 <span id="deskripsiError" class="text-danger"></span>
             </div>
 

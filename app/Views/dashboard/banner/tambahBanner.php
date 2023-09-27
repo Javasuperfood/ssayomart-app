@@ -27,12 +27,12 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="banner">Judul Banner</label>
-                        <input type="text" class="form-control" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
+                        <input type="text" class="form-control border-0 shadow-sm" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
                         <span id="bannerError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Banner</label>
-                        <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>">
+                        <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>">
                         <span id="imgError" class="text-danger"></span>
                     </div>
                     <div>

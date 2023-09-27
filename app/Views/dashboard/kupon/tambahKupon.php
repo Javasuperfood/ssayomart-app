@@ -3,7 +3,7 @@
 
 <div class="card border-0 shadow-sm position-relative">
     <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-medium">Masukan Kupon Baru</h6>
+        <h6 class="m-0 font-weight-medium text-danger">Masukan Kupon Baru</h6>
     </div>
     <div class="card-body">
         <!-- code -->
@@ -11,32 +11,32 @@
             <?= csrf_field(); ?>
             <div class="mb-3">
                 <label for="nama_kupon" class="form-label">Nama Kupon</label>
-                <input type="text" class="form-control" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= old('nama_kupon') ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= old('nama_kupon') ?>">
                 <span id="kuponError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="kode_kupon" class="form-label">Kode</label>
-                <input type="text" class="form-control" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon" value="<?= old('kode_kupon') ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon" value="<?= old('kode_kupon') ?>">
                 <span id="kodeError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="deskripsi_kupon">Deskripsi</label>
-                <textarea class="form-control" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." value="<?= old('deskripsi_kupon') ?>"></textarea>
+                <textarea class="form-control border-0 shadow-sm" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." value="<?= old('deskripsi_kupon') ?>"></textarea>
                 <span id="deskripsiError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="discount" class="form-label">Diskon</label>
-                <input type="text" class="form-control" id="discount" name="discount" placeholder="Diskon" value="<?= old('discount') ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Diskon" value="<?= old('discount') ?>">
                 <span id="discountError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="total_buy" class="form-label">Total Pembelian</label>
-                <input type="text" class="form-control" id="total_buy" name="total_buy" placeholder="total pembelian" value="<?= old('total_buy') ?>">
+                <input type="text" class="form-control border-0 shadow-sm" id="total_buy" name="total_buy" placeholder="total pembelian" value="<?= old('total_buy') ?>">
                 <span id="totalError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="masa_berlaku" class="form-label mr-3">Masa Berlaku</label>
-                <input type="date" id="masa_berlaku" name="masa_berlaku" placeholder="Masukan Masa Berlaku Kupon" value="<?= old('masa_berlaku') ?>">
+                <input type="date" id="masa_berlaku" class="form-control border-0 shadow-sm" name="masa_berlaku" placeholder="Masukan Masa Berlaku Kupon" value="<?= old('masa_berlaku') ?>">
                 <span id="masaBerlakuError" class="text-danger"></span>
             </div>
             <div class="mb-3">

@@ -15,7 +15,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori</label>
-                        <input type="text" class="form-control" id="kategori" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" id="kategori" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
                         <span id="kategoriError" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
@@ -23,10 +23,10 @@
                         <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
                             <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Nama Kategori atau Sub Kategori.</b>
                         </div>
-                        <input type="text" class="form-control" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= old('slug') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= old('slug') ?>">
                     </div>
                     <label for="parent_kategori_id">Kategori Induk</label>
-                    <select class="form-control" id="parent_kategori_id" name="parent_kategori_id">
+                    <select class="form-control border-0 shadow-sm" id="parent_kategori_id" name="parent_kategori_id">
                         <option value="">Pilih Kategori Induk (kosongkan jika untuk kategori utama)</option>
                         <?php foreach ($kategori_model as $km) : ?>
                             <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
@@ -34,13 +34,13 @@
                     </select>
                     <div class="mb-3">
                         <label for="img" class="form-label">Masukan Gambar</label>
-                        <input type="file" class="form-control" id="img" name="img" placeholder="Masukan Gambar">
+                        <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar">
                         <span id="imgError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                        <textarea type="text" class="form-control" id="deskripsi" rows="3" name="deskripsi" value="<?= old('deskripsi') ?>"></textarea>
+                        <textarea type="text" class="form-control border-0 shadow-sm" id="deskripsi" rows="3" name="deskripsi" value="<?= old('deskripsi') ?>"></textarea>
                         <span id="deskripsiError" class="text-danger"></span>
                     </div>
                     <button type="submit" class="btn btn-danger mt-3">Simpan</button>
