@@ -47,8 +47,8 @@
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
                     </div>
                     <?php if (setting('Auth.sessionConfig')['allowRemembering']) : ?>
-                        <div class="input-wrap">
-                            <input type="checkbox" name="remember" class="form-check-input" <?php if (old('remember')) : ?> checked<?php endif ?>>
+                        <div class="input-wrap d-none">
+                            <input type="checkbox" name="remember" class="form-check-input" <?= (old('remember')) ? 'checked' : 'checked' ?>>
                             <?= lang('Auth.rememberMe') ?>
                         </div>
                     <?php endif; ?>
