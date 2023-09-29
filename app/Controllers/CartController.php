@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CartModel;
 use App\Models\CartProdukModel;
+use App\Models\CheckoutProdukModel;
 use App\Models\KategoriModel;
 use App\Models\WishlistModel;
 use App\Models\WishlistProdukModel;
@@ -112,6 +113,27 @@ class CartController extends BaseController
             'message' => 'Berhasil menambhakan produk dalam cart.'
         ];
 
+        return $this->response->setJSON($response);
+    }
+
+    public function ajaxChangeQty()
+    {
+        $cartProdModel = new CartProdukModel();
+
+        $idCP = $this->request->getVar('idCartProduk');
+        $qty = $this->request->getVar('qty');
+
+        if (!$cartProdModel->save(['id_cart_produk' => $idCP, 'qty' => $qty])) {
+            $response = [
+                'success' => false,
+                'message' => 'Gagal update produk dalam cart.'
+            ];
+            return $this->response->setJSON($response);
+        }
+        $response = [
+            'success' => true,
+            'message' => 'Update Qty berhasil'
+        ];
         return $this->response->setJSON($response);
     }
 }
