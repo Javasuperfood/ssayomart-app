@@ -53,9 +53,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <p class="card-title">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                         <p class="card-text text-secondary"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
                         <div class="input-group mb-3 d-flex justify-content-center">
-                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
                             <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
-                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
                         </div>
                         <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
                             <?= csrf_field(); ?>
@@ -175,7 +175,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php endif; ?>
 <!-- end Desktop -->
 <script type="text/javascript">
-    function increaseCount(a, b, harga, p) {
+    function increaseCount(cp, a, b, harga, p) {
         var total_awal = parseInt($("#totalField").val(), 10);
         var input = b.previousElementSibling;
         var value = parseInt(input.value, 10);
@@ -190,9 +190,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             $("#textQty" + p).text(value)
             $("#textHargaItem" + p).text(formatRupiah((harga * value)))
         <?php endif ?>
+
+        changeQty(cp, value);
     }
 
-    function decreaseCount(a, b, harga, p) {
+    function decreaseCount(cp, a, b, harga, p) {
         var total_awal = parseInt($("#totalField").val(), 10);
         var input = b.nextElementSibling;
         var value = parseInt(input.value, 10);
@@ -207,6 +209,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 $("#textQty" + p).text(value)
                 $("#textHargaItem" + p).text(formatRupiah((harga * value)))
             <?php endif ?>
+
+            changeQty(cp, value);
         }
     }
 
@@ -217,6 +221,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             minimumFractionDigits: 0
         });
         return formatter.format(angka);
+    }
+
+    function changeQty(id, qty) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('api/change-cart-qty'); ?>",
+            dataType: "json",
+            data: {
+                idCartProduk: id,
+                qty: qty
+            },
+            success: function(response) {
+                if (response.success) {
+                    // console.log(response.message)
+                } else {
+                    console.log(response.message)
+                }
+            },
+            error: function(error) {
+                console.error("Error:", error);
+                <?php if (!auth()->loggedIn()) : ?>
+                    location.href = '<?= base_url(); ?>login'
+                <?php endif ?>
+            }
+        });
     }
 </script>
 
