@@ -117,9 +117,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <!-- quantity inc dec -->
                                                 <div class="col-4">
                                                     <div class="input-group mb-3 d-flex justify-content-center">
-                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
+                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
                                                         <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
-                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
+                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -236,11 +236,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 if (response.success) {
                     // console.log(response.message)
                 } else {
-                    console.log(response.message)
+                    // console.log(response.message)
                 }
             },
             error: function(error) {
-                console.error("Error:", error);
+                // console.error("Error:", error);
                 <?php if (!auth()->loggedIn()) : ?>
                     location.href = '<?= base_url(); ?>login'
                 <?php endif ?>
