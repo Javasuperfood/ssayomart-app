@@ -20,9 +20,9 @@
     <?= $this->include('user/home/component/rajaOngkir/service') ?>
     <script src="<?= base_url() ?>assets/js/jquery/jquery.min.js"></script>
     <script src="<?= base_url() ?>assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= base_url('assets/js/script-un-en.js'); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/js/swiper.js"></script>
-    <script src="<?= base_url('assets/js/script.js'); ?>"></script>
 </body>
 
 </html>
