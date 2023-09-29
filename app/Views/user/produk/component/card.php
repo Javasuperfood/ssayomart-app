@@ -9,7 +9,13 @@
                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
                         </a>
                         <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                            <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
+                            <h1 class="text-secondary" style="font-size: 15px;">
+                                <?php if ($p['harga_min'] == $p['harga_max']) : ?>
+                                    Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
+                                <?php else : ?>
+                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
+                                <?php endif ?>
+                            </h1>
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                             <p class=" text-center">
                                 <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-white"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></a>

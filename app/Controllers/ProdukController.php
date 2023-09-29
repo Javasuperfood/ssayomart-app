@@ -32,12 +32,12 @@ class ProdukController extends BaseController
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_sub_kategori.id_kategori', 'inner')
             ->where('jsf_sub_kategori.id_kategori', $katSub['id_kategori'])->findAll();
         $subSlug = $subKategori->getSubKategori($slug2);
-        $produk = new ProdukModel();
+        $produkModel = new ProdukModel();
         if (!$slug2) {
-            $getProduk = $produk->where('id_kategori', $katSub['id_kategori'])->findAll();
+            $getProduk = $produkModel->getProductWithRange($katSub['id_kategori']);
         }
         if ($slug1 && $slug2) {
-            $getProduk = $produk->where('id_kategori', $katSub['id_kategori'])->where('id_sub_kategori', $subSlug['id_sub_kategori'])->findAll();
+            $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori']);
         }
 
         $data = [
