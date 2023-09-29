@@ -30,14 +30,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp1')) ? 'is-invalid' : '' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event)">
                             <label for=" floatingInput">Nomor Handphone Penerima*</label>
                             <span id="nomerPenerimaError" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('no_telp2')) ? 'is-invalid' : '' ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
                             <label for=" floatingInput">Nomor Handphone Penerima (optional)</label>
                         </div>
                     </div>
@@ -68,7 +68,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <div class=" mb-3 mx-3 my-3">
                         <div class="form-floating">
-                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
+                            <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event)">
                             <label for=" floatingInput">Kode Pos*</label>
                             <span id="kodePosError" class="text-danger"></span>
                         </div>
