@@ -72,7 +72,9 @@ class ProdukModel extends Model
             return $this->findAll();
         }
 
-        return $this->where(['slug' => $slug1])->first();
+        return $this->select('jsf_produk.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+            ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->where(['slug' => $slug1])->first();
     }
 
     public function getSubKategoriByKategori($kategoriId)
@@ -107,8 +109,26 @@ class ProdukModel extends Model
 
     public function getRandomProducts()
     {
-        $produkModel = new ProdukModel();
-        $products = $produkModel->orderBy('RAND()')->findAll(10);
+        $products = $this->select('jsf_produk.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+            ->groupBy('jsf_produk.id_produk, jsf_produk.nama')
+            ->orderBy('RAND()')->findAll(10);
         return $products;
+    }
+
+    public function getProductWithRange($k = false, $sk = false)
+    {
+        $getProduk = $this->db->table('jsf_produk p')
+            ->select('p.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
+            ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
+            ->groupBy('p.id_produk, p.nama');
+        if ($k != false) {
+            $getProduk->where('id_kategori', $k);
+            if ($sk != false) {
+                $getProduk->where('id_sub_kategori', $sk);
+            }
+        }
+
+        return $getProduk->get()->getResultArray();
     }
 }

@@ -21,7 +21,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <h2><?= $produk['nama']; ?></h2>
                     <div class="row">
                         <div class="col">
-                            <h1>Rp. <?= number_format($produk['harga'], 0, ',', '.'); ?></h1>
+                            <p class="text-secondary fs-4">
+                                <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
+                                    Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
+                                <?php else : ?>
+                                    <?= substr('Rp. ' . number_format($produk['harga_min'], 0, ',', '.') . '-' . number_format($produk['harga_max'], 0, ',', '.'), 0, 15); ?>...
+                                <?php endif ?>
+                            </p>
                         </div>
                         <div class="col text-end">
                             <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>">
@@ -147,7 +153,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <p class="fw-bold fs-3"><?= $produk['nama']; ?></p>
                     <div class="row">
                         <div class="col">
-                            <p class="text-secondary fs-4">Rp. <?= number_format($produk['harga'], 0, ',', '.'); ?></p>
+                            <p class="text-secondary fs-4">
+                                <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
+                                    Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
+                                <?php else : ?>
+                                    <?= 'Rp. ' . number_format($produk['harga_min'], 0, ',', '.') . '-' . number_format($produk['harga_max'], 0, ',', '.'); ?>
+                                <?php endif ?>
+                            </p>
                         </div>
                         <div class="text mt-2">
                             <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>">
