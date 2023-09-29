@@ -84,6 +84,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->get('awaiting-payment', 'AdminPesananController::awaitingPayment');
         $routes->get('in-proccess', 'AdminPesananController::inProccess');
         $routes->post('in-proccess/update-status/(:segment)', 'AdminPesananController::updateStatus/$1');
+        $routes->post('in-proccess/update-resi/(:segment)', 'AdminPesananController::updateStatusResi/$1');
         $routes->get('in-proccess/print-all', 'AdminPesananController::printAllOrder');
         $routes->get('print-order/(:segment)', 'AdminPesananController::printOrder/$1');
         $routes->get('being-delivered/', 'AdminPesananController::beingDelivered');

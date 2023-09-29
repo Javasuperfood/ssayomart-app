@@ -138,12 +138,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php endif ?>
                                         <?php if ($t->id_status_pesan == 2) : ?>
                                             <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('status/' . $t->invoice); ?>" class="btn btn-outline-warning">Dalam Proses</a>
+                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-warning">Dalam Proses</a>
                                             </div>
                                         <?php endif ?>
                                         <?php if ($t->id_status_pesan == 3) : ?>
                                             <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="#" class="btn btn-outline-success">Detail</a>
+                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">Detail</a>
                                             </div>
                                         <?php endif ?>
                                     </div>

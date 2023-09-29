@@ -140,6 +140,22 @@ class AdminPesananController extends BaseController
         }
         return redirect()->to($url . $page);
     }
+    // =============================================== Store Data Resi =================================================
+    public function updateStatusResi($id)
+    {
+        $page = $this->request->getVar('page');
+        $checkoutModel = new CheckoutModel();
+
+        $url = base_url() . 'dashboard/order/';
+        if (!$checkoutModel->save([
+            'id_checkout' => $id, 'id_status_pesan' => $this->request->getVar('status'),
+            'resi' => $this->request->getVar('resi'),
+        ])) {
+            return 'gagal update';
+            return redirect()->to(base_url('dashboard/order/in-proccess'))->withInput();
+        }
+        return redirect()->to($url . $page);
+    }
 
     // =============================================== Print Data  =================================================
 
