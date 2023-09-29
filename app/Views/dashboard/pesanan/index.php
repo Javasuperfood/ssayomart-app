@@ -41,7 +41,12 @@
                     <?php if (count($order) == 0) : ?>
                         <tr>
                             <td colspan="9" class="text-center">
-                                <p class="fw-bold fs-3">No Data Here <br>( ╥﹏╥) ノシ</p>
+                                <div class="alert alert-danger rounded border-0" role="alert">
+                                    <div class="row">
+                                        <div class="col-1"><i class="bi bi-exclamation-triangle-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i></div>
+                                        <div class="col-9 fs-4">Data pesanan tidak tersedia!</div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php endif ?>
