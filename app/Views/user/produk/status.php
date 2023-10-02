@@ -167,7 +167,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col"></div>
         </div>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?= $key; ?>"></script>
+        <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
         </head>
         <?php   // =====================    PRNTING  =================================
         if ($status->id_status_pesan == 1) : ?>
@@ -445,7 +445,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="col"></div>
     </div>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="<?= $key; ?>"></script>
+    <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
     </head>
     <?php   // =====================    PRNTING  =================================
     if ($status->id_status_pesan == 1) : ?>
