@@ -15,10 +15,7 @@ class ProdukController extends BaseController
         $kategori = new KategoriModel();
         $data = [
             'title' => 'Ssayomart',
-            'kategori' => $kategori->findAll(),
-            'nama_produk' => 'Nori',
-            'deskripsi_produk' => 'Nori adalah makanan khas korea dan jepang yang dikeringkan dan dioleh menjadi makanan yang sangat lezat dan cocok untuk menemani makan ataupun untuk menjadi camilan',
-            'harga_produk'  => 'Rp. 25.000'
+            'kategori' => $kategori->findAll()
         ];
         return view('user/produk/index', $data);
     }
@@ -33,23 +30,37 @@ class ProdukController extends BaseController
             ->where('jsf_sub_kategori.id_kategori', $katSub['id_kategori'])->findAll();
         $subSlug = $subKategori->getSubKategori($slug2);
         $produkModel = new ProdukModel();
-        if (!$slug2) {
-            $getProduk = $produkModel->getProductWithRange($katSub['id_kategori']);
-        }
-        if ($slug1 && $slug2) {
-            $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori']);
-        }
+        if ($this->request->isAJAX()) {
+            $page = $this->request->getVar('page') ? $this->request->getVar('page') : 1;
+            if (!$slug2) {
+                $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], false, false, $page);
+            }
+            if ($slug1 && $slug2) {
+                $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori'], false);
+            }
 
-        $data = [
-            'title' => $katSub['nama_kategori'],
-            'kategori' => $kategori->findAll(),
-            'kategori_single' => $kategori->findAll(),
-            'produk' => $getProduk,
-            'subKategori' => $subResult,
-            'back' => ''
-        ];
-        // dd($data);
-        return view('user/produk/index', $data);
+            // Kirim data dalam format JSON
+            return $this->response->setJSON($getProduk);
+        } else {
+
+            if (!$slug2) {
+                $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], false, false);
+            }
+            if ($slug1 && $slug2) {
+                $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori'], false);
+            }
+
+            $data = [
+                'title' => $katSub['nama_kategori'],
+                'kategori' => $kategori->findAll(),
+                'kategori_single' => $kategori->findAll(),
+                'produk' => $getProduk,
+                'subKategori' => $subResult,
+                'back' => ''
+            ];
+            // dd($data);
+            return view('user/produk/index', $data);
+        }
     }
 
     public function produkShowSingle($slug)
@@ -71,19 +82,33 @@ class ProdukController extends BaseController
         // dd($data);
         return view('user/produk/produk', $data);
     }
+
     public function search()
     {
-        $keyword = $this->request->getVar('produk');
+        if ($this->request->isAJAX()) {
+            $page = $this->request->getVar('page') ? $this->request->getVar('page') : 1;
+            $keyword = $this->request->getVar('produk');
 
-        $kategori = new KategoriModel();
-        $produkModel = new ProdukModel();
-        $getProduk = $produkModel->getProductWithRange(false, false, $keyword);
-        $data = [
-            'title' => 'Hasil Pencarian',
-            'produk' => $getProduk,
-            'kategori' => $kategori->findAll(),
-            'back' => ''
-        ];
-        return view('user/produk/search', $data);
+            $produkModel = new ProdukModel();
+            $getProduk = $produkModel->getProductWithRange(false, false, $keyword, $page);
+
+            // Kirim data dalam format JSON
+            return $this->response->setJSON($getProduk);
+        } else {
+            $keyword = $this->request->getVar('produk');
+
+            $kategori = new KategoriModel();
+            $produkModel = new ProdukModel();
+            $getProduk = $produkModel->getProductWithRange(false, false, $keyword);
+
+            $data = [
+                'title' => 'Hasil Pencarian',
+                'produk' => $getProduk,
+                'kategori' => $kategori->findAll(),
+                'back' => ''
+            ];
+
+            return view('user/produk/search', $data);
+        }
     }
 }

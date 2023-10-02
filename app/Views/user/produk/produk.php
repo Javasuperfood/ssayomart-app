@@ -306,20 +306,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <?php endif; ?>
     <!-- end Desktop -->
 
-    <?php
-    if ($isMobile) {
-
-        echo '<div id="mobileContent">';
-
-        echo '</div>';
-    } else {
-
-        echo '<div id="desktopContent">';
-
-        echo '</div>';
-    }
-    ?>
-
     <!-- akhir view desktop -->
 
     <script type="text/javascript">

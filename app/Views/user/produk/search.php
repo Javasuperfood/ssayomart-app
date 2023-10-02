@@ -8,7 +8,7 @@
 <!-- Card -->
 <?= $this->include('user/produk/component/card') ?>
 <br><br>
-
+<?= $this->include('user/home/component/pagination'); ?>
 <!-- fotter -->
 <div class="footer-search" id="navbarBottom" style="position: relative; bottom: 0; width: 100%;">
     <?= $this->include('user/home/component/navbarBottom') ?>

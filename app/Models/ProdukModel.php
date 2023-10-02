@@ -116,8 +116,9 @@ class ProdukModel extends Model
         return $products;
     }
 
-    public function getProductWithRange($k = false, $sk = false, $keyword = false)
+    public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 5)
     {
+        $offset = ($page - 1) * $limit; // Menghitung offset berdasarkan halaman
         $getProduk = $this->db->table('jsf_produk p')
             ->select('p.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
             ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
@@ -128,9 +129,10 @@ class ProdukModel extends Model
                 $getProduk->where('id_sub_kategori', $sk);
             }
         }
-        if ($keyword != false) {
-            $getProduk->like('nama', $keyword);
+        if ($search != false) {
+            $getProduk->like('nama', $search);
         }
+        $getProduk->limit($limit, $offset);
         return $getProduk->get()->getResultArray();
     }
 }
