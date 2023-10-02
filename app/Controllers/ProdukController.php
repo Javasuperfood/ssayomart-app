@@ -76,8 +76,8 @@ class ProdukController extends BaseController
         $keyword = $this->request->getVar('produk');
 
         $kategori = new KategoriModel();
-        $produk = new ProdukModel();
-        $getProduk = $produk->like('nama', $keyword)->findAll();
+        $produkModel = new ProdukModel();
+        $getProduk = $produkModel->getProductWithRange(false, false, $keyword);
         $data = [
             'title' => 'Hasil Pencarian',
             'produk' => $getProduk,
