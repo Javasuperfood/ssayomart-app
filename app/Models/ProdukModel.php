@@ -116,7 +116,7 @@ class ProdukModel extends Model
         return $products;
     }
 
-    public function getProductWithRange($k = false, $sk = false)
+    public function getProductWithRange($k = false, $sk = false, $keyword = false)
     {
         $getProduk = $this->db->table('jsf_produk p')
             ->select('p.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
@@ -128,7 +128,9 @@ class ProdukModel extends Model
                 $getProduk->where('id_sub_kategori', $sk);
             }
         }
-
+        if ($keyword != false) {
+            $getProduk->like('nama', $keyword);
+        }
         return $getProduk->get()->getResultArray();
     }
 }
