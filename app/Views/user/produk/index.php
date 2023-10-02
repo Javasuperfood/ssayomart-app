@@ -25,6 +25,6 @@
     <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>
 </div>
 <!-- end tampilan Desktop -->
-
+<?= $this->include('user/home/component/pagination'); ?>
 <!-- END -->
 <?= $this->endSection(); ?>
