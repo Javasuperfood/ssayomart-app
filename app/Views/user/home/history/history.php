@@ -3,6 +3,9 @@
 
 <?php
 // Mendeteksi User-Agent
+
+use PhpParser\Node\Stmt\Break_;
+
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
 // Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
@@ -37,15 +40,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="row">
                                         <?php if ($t->id_status_pesan == 1) : ?>
                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">Transaksi Tertunda</a>
+                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
+                                                    <?php foreach ($status as $s) : ?>
+                                                        <?php if ($s->order_id == $t->invoice) : ?>
+                                                            <?= ($s->transaction_status == 'settlement') ? '(process)' : 'Detail (' . $s->transaction_status . ')' ?> <?php break ?>
+                                                        <?php else : ?>
+                                                            Bayar (waiting) <?php break ?>
+                                                        <?php endif ?>
+                                                    <?php endforeach ?>
+                                                </a>
                                             </div>
-                                        <?php elseif ($t->id_status_pesan == 2) : ?>
+                                        <?php elseif ($t->id_status_pesan > 1 && $t->id_status_pesan <= 4) : ?>
                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-warning">Dalam Proses</a>
+                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
+                                                    Detail
+                                                    <?php foreach ($status as $s) : ?>
+                                                        <?php if ($s->order_id == $t->invoice) : ?>
+                                                            <?= ($s->transaction_status == 'settlement') ? '(process)' : '(' . $s->transaction_status . ')' ?>
+                                                        <?php endif ?>
+                                                    <?php endforeach ?>
+                                                </a>
                                             </div>
-                                        <?php elseif ($t->id_status_pesan == 3) : ?>
+                                        <?php elseif ($t->id_status_pesan == 5) : ?>
                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-warning">Sedang dikirim</a>
+                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
+                                                    Gagal
+                                                    <?php foreach ($status as $s) : ?>
+                                                        <?php if ($s->order_id == $t->invoice) : ?>
+                                                            (<?= $s->transaction_status; ?>)
+                                                        <?php endif ?>
+                                                    <?php endforeach ?>
+                                                </a>
                                             </div>
                                         <?php else : ?>
                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
@@ -57,6 +82,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
+
                 <?php endif ?>
                 <?php if ($t->id_checkout == $idTransaksi) : ?>
                     <script>
@@ -133,15 +159,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                         <?php if ($t->id_status_pesan == 1) : ?>
                                             <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">Transaksi Tertunda</a>
+                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">
+                                                    <?php foreach ($status as $s) : ?>
+                                                        <?php if ($s->order_id == $t->invoice) : ?>
+                                                            <?= ($s->transaction_status == 'settlement') ? '(process)' : 'Detail (' . $s->transaction_status . ')' ?> <?php break ?>
+                                                        <?php else : ?>
+                                                            Bayar (waiting) <?php break ?>
+                                                        <?php endif ?>
+                                                    <?php endforeach ?>
+                                                </a>
                                             </div>
-                                        <?php endif ?>
-                                        <?php if ($t->id_status_pesan == 2) : ?>
+                                        <?php elseif ($t->id_status_pesan > 1 && $t->id_status_pesan <= 4) : ?>
                                             <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-warning">Dalam Proses</a>
+                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">
+                                                    Detail
+                                                    <?php foreach ($status as $s) : ?>
+                                                        <?php if ($s->order_id == $t->invoice) : ?>
+                                                            <?= ($s->transaction_status == 'settlement') ? '(process)' : '(' . $s->transaction_status . ')' ?>
+                                                        <?php endif ?>
+                                                    <?php endforeach ?>
+                                                </a>
                                             </div>
-                                        <?php endif ?>
-                                        <?php if ($t->id_status_pesan == 3) : ?>
+                                        <?php elseif ($t->id_status_pesan == 5) : ?>
+                                            <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
+                                                <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
+                                                    Gagal
+                                                    <?php foreach ($status as $s) : ?>
+                                                        <?php if ($s->order_id == $t->invoice) : ?>
+                                                            (<?= $s->transaction_status; ?>)
+                                                        <?php endif ?>
+                                                    <?php endforeach ?>
+                                                </a>
+                                            </div>
+                                        <?php else : ?>
                                             <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
                                                 <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">Detail</a>
                                             </div>

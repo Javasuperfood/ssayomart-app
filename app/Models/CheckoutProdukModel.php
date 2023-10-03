@@ -49,7 +49,7 @@ class CheckoutProdukModel extends Model
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_checkout_produk')
-            ->select('*')
+            ->select('*, jsf_checkout.updated_at AS last_update')
             ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->where('jsf_checkout.id_user', $id)

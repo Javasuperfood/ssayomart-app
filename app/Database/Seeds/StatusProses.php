@@ -26,7 +26,7 @@ class StatusProses extends Seeder
                 'deskripsi'     => 'Paket sudah diterima oleh pembeli',
             ],
             [
-                'status'        => 'Pembayaran Gagal',
+                'status'        => 'Gagal',
                 'deskripsi'     => 'Transaksi pemabayaran gagal',
             ],
         ];
