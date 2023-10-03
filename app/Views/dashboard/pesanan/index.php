@@ -1,6 +1,8 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
+<h1 class="h3 mb-2 text-gray-800">Pesanan Pelanggan</h1>
+<hr>
 <div class="card shadow-sm border-0 mb-4">
     <div class="card-header border-0 py-3">
         <h6 class="m-0 font-weight-bold text-danger">List Pesanan</h6>

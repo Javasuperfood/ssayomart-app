@@ -148,12 +148,19 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kupon/kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
     $routes->post('kupon/kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
 
-
+    // CRUD Marketplace
     $routes->get('marketplace', 'AdminMarketplaceController::index');
     $routes->post('marketplace/store', 'AdminMarketplaceController::store');
     $routes->get('marketplace/create', 'AdminMarketplaceController::create');
     $routes->post('marketplace/update/(:segment)', 'AdminMarketplaceController::update/$1');
     $routes->get('marketplace/edit/(:segment)', 'AdminMarketplaceController::edit/$1');
+
+    // CRUD Promo
+    $routes->get('promo/tambah-promo', 'AdminPromoController::tambahPromo');
+    $routes->post('promo/tambah-promo/save', 'AdminPromoController::savePromo');
+    $routes->post('promo/tambah-promo/delete-promo/(:segment)', 'AdminPromoController::deletePromo/$1');
+    $routes->get('promo/update-promo/(:segment)', 'AdminPromoController::updatePromo/$1');
+    $routes->post('promo/tambah-promo/edit-promo/(:segment)', 'AdminPromoController::editPromo/$1');
 });
 
 service('auth')->routes($routes);

@@ -74,7 +74,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
                                         <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
                                             <div class="card-body">
-                                                <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                                <a href="<?= base_url('promo/' . $p['slug']) ?>">
                                                     <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="<?= $p['title']; ?>" class="card-img-top">
                                                 </a>
                                             </div>

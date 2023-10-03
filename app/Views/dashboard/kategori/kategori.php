@@ -2,7 +2,7 @@
 <?= $no = 1; ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1 text-gray-800">Kategori Produk</h1>
+<h1 class="h3 mb-2 text-gray-800">Kategori Produk</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item text-danger active">List Kategori</li>
     <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a></li>
