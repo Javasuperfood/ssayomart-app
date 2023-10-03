@@ -6,27 +6,48 @@
 </div>
 <!-- DataTales Example -->
 <div class="card border-0 mb-4">
-    <!-- contoh -->
-    <div class="container py-5">
-        <div class="row">
-            <div class="card-header bg-white border-0 py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Pesanan Produk</h6>
-            </div>
-            <?php foreach ($orders as $o) : ?>
-                <div class="col-lg-4">
-                    <div class="card mb-4 border-left-danger">
-                        <div class="card-body text-center">
-                            <img src="<?= base_url('assets/img/produk/main/' . $o['img']); ?>" class="img-fluid rounded-start" alt="avatar" style="width: 150px;">
-                            <div class="justify-content-center mt-4">
-                                <h5 class="card-title"><?= $o['nama']; ?></h5>
-                                <p class="card-text">Qty: <span class="font-weight-bold"><?= $o['qty']; ?></span></p>
+    <a href="#produk" class="d-block card-header bg-white shadow-sm  border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="produk">
+        <h6 class="m-0 font-weight-bold text-danger">Pesanan Produk</h6>
+    </a>
+    <div class="collapse show" id="produk">
+        <div class="card-body bg-light">
+            <div class="row row-cols-2 row-cols-md-4">
+                <?php foreach ($orders as $o) : ?>
+                    <div class="col text-dark mb-3">
+                        <div class="card shadow-sm border-0 mb-3" style="height: 100%;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="<?= base_url('assets/img/produk/main/' . $o['img']); ?>" class="img-fluid rounded-start" alt="...">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $o['nama']; ?></h5>
+                                        <table>
+                                            <tr>
+                                                <td>Qty</td>
+                                                <td>:</td>
+                                                <td class="font-weight-bold"><?= $o['qty']; ?></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    <?php endforeach ?>
                     </div>
-
-                    <div class="card-body p-0">
-                        <h6 class="m-0 font-weight-bold text-danger mb-3">Detail Pesanan Produk</h6>
+                <?php endforeach ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card border-0 mb-4">
+    <a href="#detail" class="d-block card-header bg-white shadow-sm  border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="detail">
+        <h6 class="m-0 font-weight-bold text-danger">Detail Pesanan Produk</h6>
+    </a>
+    <div class="collapse show" id="detail">
+        <div class="card-body bg-light">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col">
+                    <div class="row row-cols-1 row-cols-md-2">
                         <?php $i = 1; ?>
                         <?php foreach ($orders as $o) : ?>
                             <div class="card border-0 border-left-danger mb-4 px-2 pt-2 shadow-sm">
@@ -50,48 +71,51 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-
-                    <div class="card-body p-0">
-                        <h6 class="m-0 font-weight-bold text-danger mb-3">Total Transaksi</h6>
-                        <table class="table table-borderless border-left-danger shadow-sm">
-                            <tr>
-                                <td>Potongan Harga (Diskon)</td>
-                                <td>:</td>
-                                <td><?= ($order['discount'] != '') ? ($order['discount'] * 100) . '%' : ''; ?></td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>:</td>
-                                <td class="fw-bold">Rp. <?= number_format($order['total_2'], 0, ',', '.'); ?></td>
-                            </tr>
-                        </table>
+                    <div class="row">
+                        <div class="card border-0 border-left-danger px-2 pt-2 shadow-sm">
+                            <div class="col font-weight-bold">
+                                <p class="fw-bold fs-5">TOTAL TRANSAKSI</p>
+                            </div>
+                            <div class="col">
+                                <table class="table table-borderless">
+                                    <tr>
+                                        <td>Potongan Harga (Diskon)</td>
+                                        <td>:</td>
+                                        <td><?= ($order['discount'] != '') ? ($order['discount'] * 100) . '%' : ''; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td>:</td>
+                                        <td class="fw-bold">Rp. <?= number_format($order['total_2'], 0, ',', '.'); ?></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="card mb-4 border-left-danger shadow-2">
-                        <div class="card-header bg-white border-0 py-3">
+
+                <div class="col">
+                    <div class="card border-0" style="height: 100%;">
+                        <div class="d-block card-header bg-white shadow-sm border-0 py-3">
                             <h6 class="m-0 font-weight-bold text-danger">Keterangan Transaksi User</h6>
                         </div>
                         <div class="card-body bg-light">
                             <?php if ($order['id_status_pesan'] != 1) : ?>
                                 <form action="<?= base_url('dashboard/order/in-proccess/update-resi/' . $o['id_checkout']); ?>" onsubmit="return validasiUpdateResi()" method="post" enctype="multipart/form-data">
                                     <?= csrf_field(); ?>
-                                    <div class="form-group">
-                                        <label for="status" class="text-danger fw-bold">Status</label>
-                                        <select class="form-control border-0" id="status" name="status">
+                                    <div class="form-group text-center">
+                                        <label for="status"><span class="text-danger fw-bold">Status</span></label>
+                                        <select class="form-control border-0 shadow-sm" id="status" name="status">
                                             <?php foreach ($statusPesan as $s) : ?>
                                                 <option value="<?= $s['id_status_pesan']; ?>" <?= ($s['id_status_pesan'] == $order['id_status_pesan']) ? 'selected' : ''; ?>><?= $s['status']; ?></option>
                                             <?php endforeach ?>
                                         </select>
                                         <span id="statusError" class="text-danger"></span>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="resi" class="text-danger fw-bold">Nomor Resi</label>
-                                        <textarea class="form-control border-0 " placeholder="Nomor Resi" name="resi" id="resi" style="height: 100px"><?= old('resi'); ?></textarea>
-                                        <span id="resiError" class="text-danger"></span>
-                                    </div>
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-danger">Update</button>
+                                    <textarea class="form-control border-0 shadow-sm" placeholder="Nomor Resi" name="resi" id="deskripsi" style="height: 100px"><?= old('deskripsi'); ?></textarea>
+                                    <span id="deskripsiError" class="text-danger"></span>
+                                    <div class="pt-4" align="center">
+                                        <button type="submit" class="btn btn-outline-danger">Update</button>
                                     </div>
                                 </form>
                             <?php else : ?>
@@ -105,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
         </div>
     </div>
 </div>
