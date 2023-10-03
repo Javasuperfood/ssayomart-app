@@ -15,7 +15,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <section class="mt-1" id="unggul">
             <div class="container pt-2">
-                <h2>Spesial di Ssayomart!</h2>
+                <div class="card bg-warning border-0 text-center font-family-poppins">
+                    <div class="card-warning">
+                        <h2 class="card-title text-white fw-medium">SPESIAL DI SSAYOMART</h2>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="swiper mySwiper">
@@ -38,7 +42,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </section>
         <div class="container py-2">
-            <h2>Semua Kategori</h2>
+            <div class="card bg-success border-0 text-center font-family-poppins">
+                <div class="card-warning">
+                    <h2 class="card-title text-white fw-medium">SEMUA KATEGORI</h2>
+                </div>
+            </div>
             <div class="row text-center row-cols-3">
                 <?php foreach ($kategori as $k) : ?>
                     <div class="col-4 col-md-4 col-lg-2">
@@ -65,7 +73,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="desktopContent" style="margin-top:50px;">
         <section id="unggul">
             <div class="container">
-                <h2>Spesial di Ssayomart!</h2>
+                <div class="card bg-warning border-0 text-center text-bold mb-3 font-family-poppins">
+                    <div class="card-warning">
+                        <h2 class="card-title text-white fw-bold">SPESIAL DI SSAYOMART</h2>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col">
                         <div class="swiper mySwiper">
@@ -92,7 +104,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container py-3 d-none d-lg-block">
                 <div class="row">
                     <div class="col">
-                        <h2 class="mb-4">Produk Unggul</h2>
+                        <div class="card bg-success border-0 text-bold mb-3 font-family-poppins">
+                            <div class="card-warning">
+                                <h2 class="card-title text-center text-white fw-bold">SEMUA KATEGORI</h2>
+                            </div>
+                        </div>
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($randomProducts as $p) : ?>
@@ -159,5 +175,15 @@ if ($isMobile) {
     echo '</div>';
 }
 ?>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+
+
+<style>
+    .font-family-poppins {
+        font-family: 'Poppins', sans-serif;
+    }
+</style>
+
 
 <?= $this->endSection(); ?>
