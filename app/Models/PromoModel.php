@@ -14,7 +14,12 @@ class PromoModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'img'
+        'title',
+        'slug',
+        'img',
+        'start_at',
+        'end_at',
+        'deskripsi'
     ];
 
     // Dates
@@ -25,7 +30,13 @@ class PromoModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'title'      => 'required',
+        'slug'       => 'required',
+        'img'        => 'required',
+        'start_at'   => 'required',
+        'end_at'     => 'required',
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
