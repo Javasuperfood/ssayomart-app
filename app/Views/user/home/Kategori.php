@@ -47,13 +47,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <span class="card-title text-white fw-medium fs-3">SEMUA KATEGORI</h2>
                 </div>
             </div>
-            <div class="row text-center row-cols-3">
+            <div class="row text-center row-cols-3 mt-3">
                 <?php foreach ($kategori as $k) : ?>
                     <div class="col-4 col-md-4 col-lg-2">
                         <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
                             <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
-                                <div class="card-body">
-                                    <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" width="60px" alt="" class="card-img-top">
+                                <div class="card-body px-0 py-0 mx-0 my-0">
+                                    <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
                                 </div>
                             </div>
                         </a>
@@ -62,7 +62,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row">
                 <div class="col pb-5">
-
                 </div>
             </div>
         </div>
@@ -147,7 +146,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
                                     <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
                                         <div class="card-body">
-                                            <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" width="60px" alt="" class="card-img-top">
+                                            <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="" class="py-0 px-0 mx-0 my-0 card-img-top">
                                         </div>
                                     </div>
                                 </a>
@@ -182,6 +181,12 @@ if ($isMobile) {
 <style>
     .font-family-poppins {
         font-family: 'Poppins', sans-serif;
+    }
+
+    .sizing {
+        width: 200px;
+        height: 200px;
+
     }
 </style>
 
