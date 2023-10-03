@@ -8,7 +8,7 @@
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm position-relative">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Tambah Promosi</h6>
+                <h6 class="m-0 font-weight-medium">Buat Promo</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
@@ -49,7 +49,7 @@
                         <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
                             <b>Dimensi foto harus berbentuk persegi! (Cth: 256px x 256px atau 512px x 512px)</b>
                         </div>
-                        <label for="img" class="form-label text-secondary">Masukan Gambar/Foto Kategori</label>
+                        <label for="img" class="form-label text-secondary">Masukan Gambar/Foto/Icon Promo</label>
                         <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar Promosi">
                         <span id="imgError" class="text-danger"></span>
                     </div>
@@ -65,7 +65,7 @@
     <div class="col-lg-6 mb-3">
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">List Variasi Produk</h6>
+                <h6 class="m-0 font-weight-medium">List Promosi Ssayomart</h6>
             </div>
             <div class="card-body">
                 <table class="table text-center">
