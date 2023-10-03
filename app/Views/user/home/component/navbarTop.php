@@ -111,6 +111,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </li>
                             <?php endif ?>
                         </ul>
+                        <!-- bahasa -->
+                        <nav class="navbar navbar-expand-lg navbar-danger">
+                            <div class="container-fluid">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <button class="btn btn-transparent text-white dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon">
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-white">
+                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Bahasa Indonesia</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> 한국어</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('japang')"><img src="<?= base_url() ?>assets/img/bahasa/japang.png" width="30px" alt="" class="flag-icon"> 日本語</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- end -->
                     </div>
                 </div>
             </nav>
@@ -133,3 +157,11 @@ if ($isMobile) {
 }
 ?>
 <!-- end Nav Desk -->
+
+<script>
+    function changeFlag(flagName) {
+        const flagImage = document.querySelector(".flag-icon");
+        const newFlagSrc = `<?= base_url() ?>assets/img/bahasa/${flagName}.png`;
+        flagImage.setAttribute("src", newFlagSrc);
+    }
+</script>
