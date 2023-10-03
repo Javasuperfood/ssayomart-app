@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <nav class="navbar pt-4" style="background-color : #ec2614; padding-bottom : 80px; border-radius:0 0 3% 3%;">
                     <div class="container-fluid mx-3">
-                        <div class="col-10">
+                        <div class="col-8">
                             <form role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group">
                                     <button type="submit" class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></button>
@@ -21,7 +21,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </form>
                         </div>
                         <div class="col-2">
-                            <a href="<?= base_url(); ?>wishlist" class="btn btn-light rounded-circle ms-3"><i class="bi bi-heart-fill" style="color: #ec2614"></i></a>
+                            <a href="<?= base_url(); ?>wishlist" class="btn btn-light rounded-circle ms-3 fs-6 btn-wishlist">
+                                <i class="bi bi-heart-fill heart-icon" style="color: #ec2614"></i>
+                            </a>
+                        </div>
+
+                        <div class="col-2">
+                            <!-- bahasa -->
+                            <div class="dropdown">
+                                <button class="btn btn-transparent text-white dropdown-toggle fs-6 d-lg-none border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="40px" alt="" class="flag-icon">
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-white" aria-labelledby="languageDropdown">
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('japang')"><img src="<?= base_url() ?>assets/img/bahasa/japang.png" width="30px" alt="" class="flag-icon"></a>
+                                </div>
+                            </div>
+                            <!-- end -->
                         </div>
                     </div>
                 </nav>
@@ -121,7 +139,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <ul class="navbar-nav">
                                         <li class="nav-item dropdown">
                                             <button class="btn btn-transparent text-white dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon">
+                                                <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="25px" alt="" class="flag-icon">
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-white">
                                                 <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Bahasa Indonesia</a></li>
@@ -166,5 +184,71 @@ if ($isMobile) {
     }
 </script>
 
-<!-- end Nav Desk -->
 
+<style>
+    /* CSS untuk mengatur panel dropdown */
+    .dropdown-menu {
+        padding: 0;
+        /* Menghapus padding bawaan */
+        min-width: auto;
+        /* Menghapus lebar minimum */
+
+    }
+
+    /* CSS untuk mengatur tampilan mobile */
+    @media (max-width: 992px) {
+        .dropdown-menu {
+            right: 0;
+            /* Mengatur posisi menu ke kanan */
+            left: auto;
+            top: 100%;
+            /* Menempatkan menu di bawah ikon */
+            border: none;
+            /* Menghapus border */
+            box-shadow: none;
+            /* Menghapus shadow */
+            position: absolute;
+        }
+    }
+
+    @media (max-width: 280px) {
+        .input-group {
+            right: 20px;
+            width: 165px;
+        }
+
+
+
+        /* Mengurangi ukuran dan margin pada ikon bahasa */
+        .flag-icon {
+            width: 25px;
+            /* Atur ukuran ikon bahasa sesuai kebutuhan Anda */
+            margin-right: 5px;
+            /* Sesuaikan margin kanan sesuai kebutuhan Anda */
+        }
+
+        .btn-wishlist {
+
+            padding: 3px;
+            /* Atur padding tombol sesuai kebutuhan Anda */
+            width: 25px;
+            /* Atur lebar tombol sesuai kebutuhan Anda */
+            height: 25px;
+            /* Atur tinggi tombol sesuai kebutuhan Anda */
+            text-align: center;
+            /* Tengahkan teks di dalam tombol */
+        }
+
+        /* Untuk mengurangkan ukuran ikon hati (wishlist) */
+        .heart-icon {
+            font-size: 16px;
+            /* Atur ukuran ikon sesuai kebutuhan Anda */
+        }
+
+    }
+</style>
+
+
+
+
+<!-- end Nav Desk -->
