@@ -19,7 +19,7 @@
             <div class="mb-3">
                 <label for="slug" class="form-label text-secondary">Slug</label>
                 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
-                    <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Nama Kategori atau Sub Kategori.</b>
+                    <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Judul Promo.</b>
                 </div>
                 <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $promo['slug']; ?>">
             </div>
