@@ -4,17 +4,18 @@
 <div class="card border-0 text-center bg-light mb-4 px-2 py-2">
     <h1 class="h3 mb-2 text-danger">Detail Pesanan - <?= $inv; ?></h1>
 </div>
-<!-- DataTales Example -->
-<div class="card border-0 mb-4">
-    <a href="#produk" class="d-block card-header bg-white shadow-sm  border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="produk">
+
+<!-- Pesanan Produk -->
+<div class="card border-0 mb-4 shadow-sm">
+    <a href="#produk" class="d-block card-header bg-white border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="produk">
         <h6 class="m-0 font-weight-bold text-danger">Pesanan Produk</h6>
     </a>
     <div class="collapse show" id="produk">
-        <div class="card-body bg-light">
+        <div class="card-body">
             <div class="row row-cols-2 row-cols-md-4">
                 <?php foreach ($orders as $o) : ?>
-                    <div class="col text-dark mb-3">
-                        <div class="card shadow-sm border-0 mb-3" style="height: 100%;">
+                    <div class="col mb-3">
+                        <div class="card">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="<?= base_url('assets/img/produk/main/' . $o['img']); ?>" class="img-fluid rounded-start" alt="...">
@@ -22,7 +23,7 @@
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $o['nama']; ?></h5>
-                                        <table>
+                                        <table class="table table-borderless">
                                             <tr>
                                                 <td>Qty</td>
                                                 <td>:</td>
@@ -39,18 +40,20 @@
         </div>
     </div>
 </div>
-<div class="card border-0 mb-4">
-    <a href="#detail" class="d-block card-header bg-white shadow-sm  border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="detail">
+
+<!-- Detail Pesanan Produk -->
+<div class="card border-0 mb-4 shadow-sm">
+    <a href="#detail" class="d-block card-header bg-white border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="detail">
         <h6 class="m-0 font-weight-bold text-danger">Detail Pesanan Produk</h6>
     </a>
     <div class="collapse show" id="detail">
-        <div class="card-body bg-light">
+        <div class="card-body">
             <div class="row row-cols-1 row-cols-md-2">
                 <div class="col">
                     <div class="row row-cols-1 row-cols-md-2">
                         <?php $i = 1; ?>
                         <?php foreach ($orders as $o) : ?>
-                            <div class="card border-0 border-left-danger mb-4 px-2 pt-2 shadow-sm">
+                            <div class="card border-1 border-left-danger mb-4">
                                 <div class="col font-weight-bold" style="color: #000;">
                                     <?= $i++; ?>. <?= $o['nama']; ?>
                                 </div>
@@ -71,8 +74,9 @@
                             </div>
                         <?php endforeach ?>
                     </div>
-                    <div class="row">
-                        <div class="card border-0 border-left-danger px-2 pt-2 shadow-sm">
+                    <!-- ssecction -->
+                    <div class="row row row-cols-1 row-cols-md-2">
+                        <div class="card border-1 border-left-danger px-2 pt-2">
                             <div class="col font-weight-bold">
                                 <p class="fw-bold fs-5">TOTAL TRANSAKSI</p>
                             </div>
@@ -95,27 +99,27 @@
                 </div>
 
                 <div class="col">
-                    <div class="card border-0" style="height: 100%;">
-                        <div class="d-block card-header bg-white shadow-sm border-0 py-3">
-                            <h6 class="m-0 font-weight-bold text-danger">Keterangan Transaksi User</h6>
-                        </div>
-                        <div class="card-body bg-light">
+                    <div class="card border-1" style="height: 100%;">
+                        <div class="card-body">
+                            <div class="card-header bg-white border-1 py-3">
+                                <h6 class="m-0 font-weight-bold text-danger">Keterangan Transaksi User</h6>
+                            </div>
                             <?php if ($order['id_status_pesan'] != 1) : ?>
                                 <form action="<?= base_url('dashboard/order/in-proccess/update-resi/' . $o['id_checkout']); ?>" onsubmit="return validasiUpdateResi()" method="post" enctype="multipart/form-data">
                                     <?= csrf_field(); ?>
                                     <div class="form-group text-center">
-                                        <label for="status"><span class="text-danger fw-bold">Status</span></label>
-                                        <select class="form-control border-0 shadow-sm" id="status" name="status">
+                                        <label for="status" class="text-danger fw-bold">Status</label>
+                                        <select class="form-control border-1" id="status" name="status">
                                             <?php foreach ($statusPesan as $s) : ?>
                                                 <option value="<?= $s['id_status_pesan']; ?>" <?= ($s['id_status_pesan'] == $order['id_status_pesan']) ? 'selected' : ''; ?>><?= $s['status']; ?></option>
                                             <?php endforeach ?>
                                         </select>
                                         <span id="statusError" class="text-danger"></span>
                                     </div>
-                                    <textarea class="form-control border-0 shadow-sm" placeholder="Nomor Resi" name="resi" id="deskripsi" style="height: 100px"><?= old('deskripsi'); ?></textarea>
+                                    <textarea class="form-control border-1" placeholder="Nomor Resi" name="resi" id="deskripsi" style="height: 100px"><?= old('deskripsi'); ?></textarea>
                                     <span id="deskripsiError" class="text-danger"></span>
                                     <div class="pt-4" align="center">
-                                        <button type="submit" class="btn btn-outline-danger">Update</button>
+                                        <button type="submit" class="btn btn-danger">Update</button>
                                     </div>
                                 </form>
                             <?php else : ?>
@@ -133,7 +137,8 @@
         </div>
     </div>
 </div>
-<!-- end -->
+
+
 
 <script>
     //Validasi Form
