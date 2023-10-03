@@ -17,7 +17,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container pt-2">
                 <div class="card bg-warning border-0 text-center font-family-poppins">
                     <div class="card-warning">
-                        <h2 class="card-title text-white fw-medium">SPESIAL DI SSAYOMART</h2>
+                        <span class="card-title text-white fw-medium fs-3">SPESIAL DI SSAYOMART</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -44,7 +44,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container py-2">
             <div class="card bg-success border-0 text-center font-family-poppins">
                 <div class="card-warning">
-                    <h2 class="card-title text-white fw-medium">SEMUA KATEGORI</h2>
+                    <span class="card-title text-white fw-medium fs-3">SEMUA KATEGORI</h2>
                 </div>
             </div>
             <div class="row text-center row-cols-3">
@@ -73,9 +73,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="desktopContent" style="margin-top:50px;">
         <section id="unggul">
             <div class="container">
-                <div class="card bg-warning border-0 text-center text-bold mb-3 font-family-poppins">
+                <div class="card bg-warning border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
                     <div class="card-warning">
-                        <h2 class="card-title text-white fw-bold">SPESIAL DI SSAYOMART</h2>
+                        <span class="card-title text-white fw-bold fs-2">SPESIAL DI SSAYOMART</span>
                     </div>
                 </div>
                 <div class="row">
@@ -104,11 +104,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container py-3 d-none d-lg-block">
                 <div class="row">
                     <div class="col">
-                        <div class="card bg-success border-0 text-bold mb-3 font-family-poppins">
-                            <div class="card-warning">
-                                <h2 class="card-title text-center text-white fw-bold">SEMUA KATEGORI</h2>
-                            </div>
-                        </div>
+
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($randomProducts as $p) : ?>
@@ -140,7 +136,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
                 <div class="container py-3">
-                    <h2>Semua Kategori</h2>
+                    <div class="card bg-success border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
+                        <div class="card-success">
+                            <span class="card-title text-white fw-bold fs-2">SEMUA KATEGORI</span>
+                        </div>
+                    </div>
                     <div class="row text-center row-cols-3 py-3">
                         <?php foreach ($kategori as $k) : ?>
                             <div class="col-4 col-md-4 col-lg-2">
