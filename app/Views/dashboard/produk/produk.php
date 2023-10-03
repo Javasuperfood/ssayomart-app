@@ -1,8 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h2>Produk</h2>
-<hr />
+<h1 class="h3 mb-2 text-gray-800">Produk</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item text-danger active">List Produk</li>
     <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a></li>
