@@ -41,7 +41,7 @@
         </a>
         <div id="pesanan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu Pesanan:</h6>
+                <h6 class="collapse-header text-danger">Menu Pesanan:</h6>
                 <a class="collapse-item" href="<?= base_url('dashboard/order'); ?>">Semua Pesanan</a>
                 <a class="collapse-item" href="<?= base_url('dashboard/order/awaiting-payment'); ?>">Pesanan menunggu pembayaran</a>
                 <a class="collapse-item" href="<?= base_url('dashboard/order/in-proccess'); ?>">Pesanan dalam proses</a>
@@ -65,11 +65,14 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu Produk:</h6>
+                <h6 class="collapse-header text-danger">Menu Produk:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/produk">List Produk</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-variasi">Tambah Variasi</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo">Tambah Promo Produk</a>
+                <!-- Section Promo -->
+                <h6 class="collapse-header text-danger">Menu Promosi:</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo">Buat Promosi</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item">Tambah Promosi Produk</a>
             </div>
         </div>
     </li>
@@ -83,7 +86,7 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Kategori :</h6>
+                <h6 class="collapse-header text-danger">Kategori :</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
             </div>
@@ -98,7 +101,7 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Menu Banner:</h6>
+                <h6 class="collapse-header text-danger">Menu Banner:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/inputbanner">List Banner</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a>
             </div>

@@ -164,4 +164,18 @@ class AdminPromoController extends BaseController
             return redirect()->to('dashboard/promo/tambah-promo/update/' . $id)->withInput();
         }
     }
+
+    // =============================================================================
+    //                              PROMO ITEM CONTROLLER
+    // =============================================================================
+    public function tambahPromoItem()
+    {
+        $promoModel = new PromoModel();
+        $promoList = $promoModel->findAll();
+        $data = [
+            'promo' => $promoList
+        ];
+        // dd($data);
+        return view('dashboard/promo/tambahPromoItem', $data);
+    }
 }
