@@ -148,8 +148,14 @@
 # API KEY
 #--------------------------------------------------------------------
 
-API_URL_RO = 'https://api.rajaongkir.com/starter/'
-API_KEY_RO = 'd0e0e6bf9054e2b652b6a6cfc50c4351'
+# API_URL_RO = 'url endpoint'
+# API_KEY_RO = 'apikey RO'
 
 
+#--------------------------------------------------------------------
+# Midtrans Config
+#--------------------------------------------------------------------
+
+# MIDTRANS_MODE = 'production' || 'development'
+# MIDTRANS_MODE = 'development'
 

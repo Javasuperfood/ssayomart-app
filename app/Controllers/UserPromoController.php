@@ -48,7 +48,7 @@ class UserPromoController extends BaseController
             'kategori' => $kategori->findAll(),
             'back' => ''
         ];
-
+        // dd($data);
         return view('user/promo/promo', $data);
     }
 }
