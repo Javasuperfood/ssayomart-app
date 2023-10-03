@@ -2,15 +2,14 @@
 <?= $no = 1; ?>
 <?= $this->section('page-content') ?>
 
-<h2>List Banner</h2>
-<hr />
+<h1 class="h3 mb-2 text-gray-800">List Banner</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item active text-danger">List Banner</li>
     <li class="breadcrumb-item"><a class="link-secondary" href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a></li>
 </ul>
 <p class="mb-3">Anda dapat mengatur banner yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>
-<a href="<?= base_url() ?>dashboard/banner/tambah-banner" class="btn btn-danger mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<a href="<?= base_url(); ?>dashboard/banner/tambah-banner" class="btn btn-danger mb-3">
     Tambah Banner
 </a>
 

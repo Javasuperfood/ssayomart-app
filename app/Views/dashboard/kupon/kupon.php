@@ -5,7 +5,7 @@
 <h1 class="h3 mb-2 text-gray-800">Manajemen Kupon</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item text-danger active">List Kupon</li>
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kupon/tambah-produk">Tambah Kupon</a></li>
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon">Tambah Kupon</a></li>
 </ul>
 
 <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon">Tambah kupon</a>
