@@ -1,25 +1,10 @@
 <script>
     const jumlah = 1;
-    const jasaApp = 1000;
     var destination = <?= ($alamat_list) ? $alamat_list[0]['id_city'] : ''; ?>;
     var kurir = 'jne';
-    $('#serviceApp').html(formatRupiah(jasaApp));
     $('.btn-bayar').hide();
 
     var total = <?= $total; ?>; // Inisialisasi total dengan harga total awal
-
-    // Hitung harga total dengan diskon berdasarkan kupon yang dipilih
-    $("#kupon").on('change', function() {
-        var selectedCoupon = $(this).val();
-        <?php foreach ($kupon as $k) : ?>
-            if (selectedCoupon === "<?= $k['kode']; ?>") {
-                total = total - (total * <?= $k['discount']; ?>);
-            }
-        <?php endforeach; ?>
-
-        // Perbarui tampilan harga total
-        $("#totalText").text("-" + formatRupiah(ongkir + total + jasaApp));
-    });
 
     // Fungsi untuk mengisi layanan berdasarkan kurir yang dipilih
     function populateServices(kurir) {
@@ -54,9 +39,10 @@
                 $("#estimasi").html(estimasi + " Hari");
                 $("#total").val(total);
                 $("#diskon").val(diskon);
-                $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
-                $("#field_subtotal").val(ongkir + total + jasaApp);
+                $("#totalText").html(formatRupiah(ongkir + total));
+                $("#field_subtotal").val(ongkir + total);
                 $('.btn-bayar').show();
+                updateDiscount();
             },
         });
     }
@@ -83,19 +69,13 @@
         $("#ongkirText").html(formatRupiah(ongkir));
         $("#estimasi").html(estimasi + " Hari");
         $("#total").val(total);
-        $("#field_subtotal").val(ongkir + total + jasaApp);
+        $("#field_subtotal").val(ongkir + total);
         $("#serviceText").val($("#service option:selected").text());
-        $("#totalText").html(formatRupiah(ongkir + total + jasaApp));
+        $("#totalText").html(formatRupiah(ongkir + total));
         $('.btn-bayar').show();
+        updateDiscount();
     });
 
-    // Menghitung total saat mengubah jumlah
-    $("#jumlah").on('change', function() {
-        $("#total").empty();
-        jumlah = $("#jumlah").val();
-        var total = (jumlah * harga) + ongkir;
-        $("#total").val(total);
-    });
 
     // Memanggil populateServices saat halaman dimuat pertama kali (jika kurir sudah dipilih sebelumnya)
     var kurirTerpilih = $("#kurir").val();
@@ -125,8 +105,8 @@
 
         $("#diskon").text("-" + formatRupiah(diskon));
         totalHarga -= diskon;
-        $("#totalText").text(formatRupiah(ongkir + totalHarga + jasaApp));
-        $("#field_subtotal").val(ongkir + total + jasaApp);
+        $("#totalText").text(formatRupiah(ongkir + totalHarga));
+        $("#field_subtotal").val(ongkir + total);
     }
 
     $(document).ready(function() {
