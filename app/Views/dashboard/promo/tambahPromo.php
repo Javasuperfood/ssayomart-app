@@ -72,8 +72,10 @@
                     <thead>
                         <tr>
                             <th class="col-1">No</th>
-                            <th class="col">Judul Promosi</th>
-                            <th class="col" style="width: 100px;">Aksi</th>
+                            <th class="col-4">Judul Promosi</th>
+                            <th class="col-3">Waktu Mulai</th>
+                            <th class="col-3">Waktu Berakhir</th>
+                            <th class="col-1">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,6 +84,8 @@
                             <tr>
                                 <td><?= $i++; ?></td>
                                 <td><?= $p['title']; ?></td>
+                                <td><?= strftime('%d %B %Y %H:%M', strtotime($p['start_at'])); ?></td>
+                                <td><?= strftime('%d %B %Y %H:%M', strtotime($p['end_at'])); ?></td>
                                 <td class="text-center">
                                     <div class="nav-item dropdown no-arrow">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
