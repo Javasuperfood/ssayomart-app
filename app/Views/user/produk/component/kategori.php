@@ -28,8 +28,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="swiper-wrapper">
                                     <?php foreach ($kategori as $k) : ?>
                                         <div class="swiper-slide mb-2">
-                                            <div class="card border-0 shadow-sm text-uppercase mx-auto" style="height: 25px;">
-                                                <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                                <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
                                                     <?= $k['nama_kategori']; ?>
                                                 </a>
                                             </div>
