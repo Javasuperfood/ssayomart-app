@@ -66,7 +66,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php elseif ($t->id_status_pesan == 5) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                     <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
-                                                        Gagal
+                                                        Detail (gagal)
                                                     </a>
                                                 </div>
                                             <?php else : ?>
@@ -182,6 +182,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
                                                     <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
                                                         Detail (selesai)
+                                                    </a>
+                                                </div>
+                                            <?php elseif ($t->id_status_pesan == 5) : ?>
+                                                <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
+                                                        Detail (gagal)
                                                     </a>
                                                 </div>
                                             <?php else : ?>
