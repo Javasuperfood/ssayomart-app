@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PromoModel;
+use App\Models\PromoItemModel;
+use App\Models\ProdukModel;
 
 class AdminPromoController extends BaseController
 {
@@ -171,11 +173,78 @@ class AdminPromoController extends BaseController
     public function tambahPromoItem()
     {
         $promoModel = new PromoModel();
+        $produkModel = new ProdukModel();
+        $promoItemModel = new PromoItemModel();
+
         $promoList = $promoModel->findAll();
+        $produkList = $produkModel->findAll(); // Mengambil daftar produk
+        $ongoingPromoItems = $promoItemModel->getOngoingPromoItems();
+
         $data = [
-            'promo' => $promoList
+            'promo' => $promoList,
+            'produk' => $produkList, // Mengirim daftar produk ke View
+            'ongoingPromoItems' => $ongoingPromoItems
         ];
         // dd($data);
         return view('dashboard/promo/tambahPromoItem', $data);
+    }
+
+    public function savePromoItem()
+    {
+        $promoItemModel = new PromoItemModel();
+
+        $data = [
+            'id_promo' => $this->request->getVar('promo'),
+            'id_produk' => $this->request->getVar('produk_id'),
+            'discount' => $this->request->getVar('discount'),
+            'min' => $this->request->getVar('min')
+        ];
+        // dd($data);
+
+        if ($promoItemModel->save($data)) {
+            session()->setFlashdata('success', 'Promosi produk berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Promosi produk berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/promo/tambah-promo-item')->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo-item')->withInput();
+        }
+    }
+
+    public function deletePromoItem($id)
+    {
+        $promoItemModel = new PromoItemModel();
+        $promoItemModel->find($id);
+
+        $deleted = $promoItemModel->delete($id);
+        // dd($id);
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Promo item produk berhasil di hapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo-item');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan data'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo-item')->withInput();
+        }
     }
 }

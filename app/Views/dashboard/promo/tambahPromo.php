@@ -1,8 +1,8 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1">Promosi Ssayomart</h1>
-
+<h1 class="h3 mb-2 text-gray-800">Promosi Ssayomart</h1>
+<a href="<?= base_url() ?>dashboard/promo/tambah-promo-item" class="btn btn-outline-danger">Tambahkan Promo Produk</a>
 <div class="row">
     <!-- Left Panel -->
     <div class="col-lg-6">
@@ -25,7 +25,7 @@
                         <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
                             <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Judul Promo.</b>
                         </div>
-                        <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= old('slug') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukkan Slug... (Boleh Kosong)" name="slug" value="<?= old('slug') ?>">
                     </div>
 
                     <div class="mb-3">
@@ -42,7 +42,7 @@
 
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label text-secondary">Deskripsi Promo (Optional)</label>
-                        <input type="textarea" class="form-control border-0 shadow-sm" name="deskripsi" id="deskripsi" style="height: 100px;" value="<?= old('deskripsi') ?>">
+                        <input type="textarea" class="form-control border-0 shadow-sm" placeholder="Masukkan Deskripsi Promo Anda..." name="deskripsi" id="deskripsi" style="height: 100px;" value="<?= old('deskripsi') ?>">
                     </div>
 
                     <div class="mb-3">
