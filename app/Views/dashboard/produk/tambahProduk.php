@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1">Management Produk</h1>
+<h1 class="h3 mb-2 text-gray-800">Manajemen Produk</h1>
 <p class="mb-4">Anda dapat mengatur produk yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">

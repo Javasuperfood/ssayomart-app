@@ -144,7 +144,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // Crud Kupon
     $routes->get('kupon/tambah-kupon', 'AdminKupon::tambahKupon');
     $routes->post('kupon/tambah-kupon/save', 'AdminKupon::saveKupon');
-    $routes->get('kupon/kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
+    $routes->post('kupon/kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
     $routes->get('kupon/kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
     $routes->post('kupon/kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
 
@@ -163,6 +163,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('promo/tambah-promo/edit-promo/(:segment)', 'AdminPromoController::editPromo/$1');
     // Promo Item
     $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
+    $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');
+    $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
 });
 
 service('auth')->routes($routes);

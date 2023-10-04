@@ -13,7 +13,12 @@ class PromoItemModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = [
+        'id_promo',
+        'id_produk',
+        'discount',
+        'min',
+    ];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,7 +28,12 @@ class PromoItemModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'id_promo' => 'required',
+        'id_produk' => 'required',
+        'discount' => 'required',
+        'min' => 'required'
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -54,5 +64,20 @@ class PromoItemModel extends Model
 
         $result = $query->getResultArray();
         return $result;
+    }
+
+    public function getOngoingPromoItems()
+    {
+        $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
+
+        $query = $this->table('jsf_promo_item')
+            ->select('jsf_promo_item.*, jsf_promo.title as promo_title, jsf_produk.nama as produk_nama')
+            ->join('jsf_promo', 'jsf_promo_item.id_promo = jsf_promo.id_promo')
+            ->join('jsf_produk', 'jsf_promo_item.id_produk = jsf_produk.id_produk')
+            ->where('jsf_promo.start_at <=', $currentDate)
+            ->where('jsf_promo.end_at >=', $currentDate)
+            ->get();
+
+        return $query->getResultArray();
     }
 }

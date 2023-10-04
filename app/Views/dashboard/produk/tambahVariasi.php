@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1">Variasi Produk</h1>
+<h1 class="h3 mb-2 text-gray-800">Variasi Produk</h1>
 
 <div class="row">
     <!-- Left Panel -->
