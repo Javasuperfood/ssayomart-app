@@ -53,11 +53,7 @@ var swiper = new Swiper(".mySwiper", {
   });
  
 
- var slider = new Slider(".mySweety", {
-    slidesPerView: 6,
-    
-    loop: true,
- });
+
 
 
 
