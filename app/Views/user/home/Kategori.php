@@ -26,10 +26,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($promo as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                                        <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
-                                            <div class="card-body">
+                                        <div class="text-bg-light mb-3 bg-white border-0">
+                                            <div class="px-1 py-1 mx-1 my-1">
                                                 <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                                    <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="<?= $p['title']; ?>" class="card-img-top">
+                                                    <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
                                                 </a>
                                             </div>
                                         </div>
@@ -41,7 +41,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </section>
-        <div class="container py-2">
+        <div class="container py-1">
             <div class="card bg-success border-0 text-center font-family-poppins">
                 <div class="card-warning">
                     <span class="card-title text-white fw-medium fs-3">SEMUA KATEGORI</h2>
@@ -51,8 +51,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?php foreach ($kategori as $k) : ?>
                     <div class="col-4 col-md-4 col-lg-2">
                         <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                            <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
-                                <div class="card-body px-0 py-0 mx-0 my-0">
+                            <div class="text-bg-light mb-3 bg-white border-0">
+                                <div class="px-0 py-0 mx-0 my-0">
                                     <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
                                 </div>
                             </div>
