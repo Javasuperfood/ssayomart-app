@@ -236,6 +236,6 @@ class Kategori extends Seeder
             ],
         ];
 
-        $this->db->table('jsf_sub_kategori')->insertBatch($data2);
+        // $this->db->table('jsf_sub_kategori')->insertBatch($data2);
     }
 }

@@ -64,7 +64,7 @@ class Produk extends Seeder
             '3' => '2000',
         ];
         for ($i = 1; $i <= 100; $i++) {
-            $idK = mt_rand(1, 17);
+            $idK = mt_rand(1, 16);
             $idS = null;
             if ($idK == 2) {
                 $idS = mt_rand(1, 3);
@@ -95,7 +95,8 @@ class Produk extends Seeder
                 'harga'    => $harga[mt_rand(1, 3)],
                 'deskripsi'    => $faker->paragraph(2),
                 'id_kategori' => $idK,
-                'id_sub_kategori' => $idS
+                // 'id_sub_kategori' => $idS
+                'id_sub_kategori' => null
             ];
             $this->db->table('jsf_produk')->insert($data);
 
