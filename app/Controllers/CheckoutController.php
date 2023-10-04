@@ -75,10 +75,13 @@ class CheckoutController extends BaseController
             return redirect()->to(base_url());
         }
         if ($cekUser['snap_token'] != null) {
+            if ($cekUser['id_status_pesan'] == 1) {
+                return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+            }
             return redirect()->to(base_url('payment/' . $cekUser['invoice']));
         }
         if ($cekUser['id_status_pesan'] != 1) {
-            return redirect()->to(base_url('payment?order_id=' . $cekUser['invoice']));
+            return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
         }
         $checkoutProdModel = new CheckoutProdukModel();
         $cekProduk = $checkoutProdModel
@@ -147,12 +150,12 @@ class CheckoutController extends BaseController
                 'name' => $c['name'] . '(' . $c['value_item'] . ')',
             ];
         }
-        $biayaAplikasi = 1000;
+
         $service = $this->request->getVar('service');
         $servicetext = $this->request->getVar('serviceText');
         $kode = $this->request->getVar('kupon');
         $total_1 = $checkout['total_1'];
-        $total_2 = $total_1 + $service + $biayaAplikasi;
+        $total_2 = $total_1 + $service;
         $kupon = [
             'discount' => '',
             'kupon' => ''
@@ -165,7 +168,7 @@ class CheckoutController extends BaseController
             $discount = floatval($cekKupon['discount']);
             $total_2 = $total_2 - ($total_2 * $discount);
             $getDiscount = floatval($total_1) - $total_2;
-            $total_2 = $service + $total_2 + $biayaAplikasi;
+            $total_2 = $service + $total_2;
             $kupon = [
                 'discount' => $cekKupon['discount'],
                 'kupon' => $cekKupon['kode']
@@ -182,12 +185,6 @@ class CheckoutController extends BaseController
             'price' => $service,
             'quantity' => 1,
             'name' => $servicetext,
-        ];
-        $cekProduk[] = [
-            'id' => 'Biaya Apliaksi',
-            'price' => $biayaAplikasi,
-            'quantity' => 1,
-            'name' => 'Biaya Admin',
         ];
 
         $inv = $checkoutModel->find($id);

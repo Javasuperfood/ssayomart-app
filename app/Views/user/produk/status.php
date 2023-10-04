@@ -101,79 +101,74 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-                <?php if ($status->id_status_pesan != 1 && $status->id_status_pesan < 5) : ?>
-                    <div class="col mt-3">
-                        <div class="card border-0">
-                            <div class="card form-control form-control-md border-0 shadow-sm">
-                                <h2>Pesanan kamu</h2>
+
+                <div class="col mt-3">
+                    <div class="card border-0">
+                        <div class="card form-control form-control-md border-0 shadow-sm">
+                            <h2>Pesanan kamu</h2>
+                            <div class="row">
+                                <div class="col-10">
+                                    <p><?= $status->invoice; ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
+                                </div>
+                            </div>
+                            <?php if (isset($paymentStatus->va_numbers[0])) : ?>
                                 <div class="row">
                                     <div class="col-10">
-                                        <p><?= $status->invoice; ?></p>
+                                        <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
                                     </div>
                                     <div class="col-2">
-                                        <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
+                                        <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
                                     </div>
                                 </div>
-                                <?php if (isset($paymentStatus->va_numbers[0])) : ?>
-                                    <div class="row">
-                                        <div class="col-10">
-                                            <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
-                                        </div>
-                                        <div class="col-2">
-                                            <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table table-sm ">
-                                                <thead>
-                                                    <tr>
-                                                        <td scope="col">Metode Pembayaran</td>
-                                                        <td scope="col"> <?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?> </td>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
-                                <?php endif ?>
-                                <div class="row py-3 px-3">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">Ringkasan Belanja</th>
-                                                <th scope="col"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Total Harga</td>
-                                                <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
-                                            </tr>
-                                            <?php if ($status->kupon) : ?>
+                                <div class="row">
+                                    <div class="col">
+                                        <table class="table table-sm ">
+                                            <thead>
                                                 <tr>
-                                                    <td>Diskon</td>
-                                                    <td>-RP. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
+                                                    <td scope="col">Metode Pembayaran</td>
+                                                    <td scope="col"> <?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?> </td>
                                                 </tr>
-                                            <?php endif; ?>
-                                            <tr>
-                                                <td>Total Ongkos Kirim</td>
-                                                <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Biaya Jasa Aplikasi</td>
-                                                <td>Rp. <?= number_format($jasa, 2, ',', '.'); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Subtotal</td>
-                                                <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                        </table>
+                                    </div>
                                 </div>
+                            <?php endif ?>
+                            <div class="row py-3 px-3">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Ringkasan Belanja</th>
+                                            <th scope="col"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Total Harga</td>
+                                            <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
+                                        </tr>
+                                        <?php if ($status->kupon) : ?>
+                                            <tr>
+                                                <td>Diskon</td>
+                                                <td>-RP. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
+                                            </tr>
+                                        <?php endif; ?>
+                                        <tr>
+                                            <td>Total Ongkos Kirim</td>
+                                            <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Subtotal</td>
+                                            <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                <?php endif ?>
+                </div>
             </div>
         </div>
 
@@ -370,7 +365,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 </div>
                                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                                     <h5 class="text-secondary fs-6">Total</h5>
-                                                                    <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga * $p->qty), 0, ',', '.'); ?></p>
+                                                                    <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -386,89 +381,82 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                             </div>
-                        <?php endif ?>
-
                         </div>
+                    <?php endif ?>
 
 
-                        <?php if ($status->id_status_pesan != 1 && $status->pesan_status < 5) : ?>
-                            <div class="row">
-                                <div class="col-md-12 mx-auto mt-5">
-                                    <div class="card border-0 shadow-sm">
-                                        <div class="card-body">
-                                            <div class="text-center mb-3 mt-3">
-                                                <img src="<?= base_url() ?>assets/img/logopanjang.png" alt="" class="card-img-top" style="width: 100px; height: 30px; margin: 0 auto;">
+                    <div class="row">
+                        <div class="col-md-12 mx-auto mt-5">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="text-center mb-3 mt-3">
+                                        <img src="<?= base_url() ?>assets/img/logopanjang.png" alt="" class="card-img-top" style="width: 100px; height: 30px; margin: 0 auto;">
+                                    </div>
+                                    <h2 class="text-center mb-4">Pesanan kamu</h2>
+                                    <div class="row mb-3">
+                                        <div class="col-10">
+                                            <p>Invoice: <?= $status->invoice; ?></p>
+                                        </div>
+                                        <div class="col-2 text-end">
+                                            <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
+                                        </div>
+                                    </div>
+                                    <?php if (isset($paymentStatus->va_numbers[0])) : ?>
+                                        <div class="row mb-3">
+                                            <div class="col-10">
+                                                <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
                                             </div>
-                                            <h2 class="text-center mb-4">Pesanan kamu</h2>
-                                            <div class="row mb-3">
-                                                <div class="col-10">
-                                                    <p>Invoice: <?= $status->invoice; ?></p>
-                                                </div>
-                                                <div class="col-2 text-end">
-                                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
-                                                </div>
+                                            <div class="col-2 text-end">
+                                                <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
                                             </div>
-                                            <?php if (isset($paymentStatus->va_numbers[0])) : ?>
-                                                <div class="row mb-3">
-                                                    <div class="col-10">
-                                                        <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
-                                                    </div>
-                                                    <div class="col-2 text-end">
-                                                        <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <table class="table table-sm">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">Metode Pembayaran</th>
-                                                                    <th scope="col"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?></th>
-                                                                </tr>
-                                                            </thead>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            <?php endif; ?>
-                                            <div class="row mt-4">
-                                                <div class="col">
-                                                    <h5 class="mb-3">Ringkasan Belanja</h5>
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>Total Harga :</td>
-                                                                <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
-                                                            </tr>
-                                                            <?php if ($status->kupon) : ?>
-                                                                <tr>
-                                                                    <td>Diskon :</td>
-                                                                    <td>-Rp. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
-                                                                </tr>
-                                                            <?php endif; ?>
-                                                            <tr>
-                                                                <td>Total Ongkos Kirim :</td>
-                                                                <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Biaya Pelayanan :</td>
-                                                                <td>Rp. <?= number_format($jasa, 2, ',', '.'); ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Subtotal :</td>
-                                                                <td>
-                                                                    <span class="fw-bold">Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></span>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <table class="table table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Metode Pembayaran</th>
+                                                            <th scope="col"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?></th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
                                             </div>
+                                        </div>
+                                    <?php endif; ?>
+                                    <div class="row mt-4">
+                                        <div class="col">
+                                            <h5 class="mb-3">Ringkasan Belanja</h5>
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Total Harga :</td>
+                                                        <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
+                                                    </tr>
+                                                    <?php if ($status->kupon) : ?>
+                                                        <tr>
+                                                            <td>Diskon :</td>
+                                                            <td>-Rp. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
+                                                        </tr>
+                                                    <?php endif; ?>
+                                                    <tr>
+                                                        <td>Total Ongkos Kirim :</td>
+                                                        <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Subtotal :</td>
+                                                        <td>
+                                                            <span class="fw-bold">Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></span>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
                 </div>
-            <?php endif; ?>
             </div>
         </div>
         <div class="row">

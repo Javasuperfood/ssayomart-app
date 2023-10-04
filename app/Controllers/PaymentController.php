@@ -41,14 +41,13 @@ class PaymentController extends BaseController
             'getstatus'                 => $status,
             'status' => $userSatus,
             'produk' => $cekProduk,
-            'jasa' => 1000,
             'key' => $midtransConfig->clientKey,
             'urlMidtrans' => $midtransConfig->urlMidtrans,
             'back' => 'history',
             'kategori' => $kategori->findAll()
 
         ];
-
+        // dd($data);
         // ==================================================================
         try {
             /**
@@ -60,11 +59,26 @@ class PaymentController extends BaseController
                     'id_checkout' => $userSatus->id_checkout,
                     'id_status_pesan' => 2
                 ]);
+            } else {
+                $checkoutModel->save([
+                    'id_checkout' => $userSatus->id_checkout,
+                    'id_status_pesan' => 5
+                ]);
             }
             $data['paymentStatus'] = $paymentStatus;
+
             return redirect()->to(base_url('status?order_id=' . $order_id));
         } catch (\Exception $e) {
             // echo "An error occurred: " . $e->getMessage();
+            $currentTimestamp = time(); // Get the current timestamp
+            $twentyFourHoursAgo = $currentTimestamp - (24 * 60 * 60);
+            $lastUpdateTimestamp = strtotime($userSatus->last_update);
+            if ($lastUpdateTimestamp <= $twentyFourHoursAgo && $userSatus->id_status_pesan == '1') {
+                $checkoutModel->save([
+                    'id_checkout' => $userSatus->id_checkout,
+                    'id_status_pesan' => 5
+                ]);
+            }
         }
         // ===============================================================
         // dd($data);
