@@ -113,8 +113,14 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'peralatan-dapur',
                 'img'    => 'ssayo assets-07.png',
+            ],
+            [
+                'id_kategori' => 16,
+                'nama_kategori' => 'Nori',
+                'deskripsi'    => 'Lorem',
+                'slug'    => 'nori',
+                'img'    => '(DESIGN)-ICON-CATEGORY.png',
             ]
-
         ];
 
         $this->db->table('jsf_kategori')->insertBatch($data);
