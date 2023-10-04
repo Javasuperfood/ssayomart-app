@@ -11,28 +11,28 @@ class Kategori extends Seeder
         $data = [
             [
                 'id_kategori' => 1,
-                'nama_kategori' => 'Kimchi dan Makanan Pendamping',
+                'nama_kategori' => 'Kimchi & Makanan Pendamping',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'kimchi-dan-makanan-pendamping',
                 'img'    => 'Icon Kategori-01.png',
             ],
             [
                 'id_kategori' => 2,
-                'nama_kategori' => 'Buah dan Sayur',
+                'nama_kategori' => 'Buah & Sayur',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'buah-dan-sayur',
                 'img'    => 'Icon Kategori-02.png',
             ],
             [
                 'id_kategori' => 3,
-                'nama_kategori' => 'Saus dan Bubuk Cabai',
+                'nama_kategori' => 'Saus & Bubuk Cabai',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'saus-dan-bubuk-cabai',
                 'img'    => 'Icon Kategori-03.png',
             ],
             [
                 'id_kategori' => 4,
-                'nama_kategori' => 'Daging dan Telur',
+                'nama_kategori' => 'Daging & Telur',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'daging-dan-telur',
                 'img'    => 'Icon Kategori-04.png',
@@ -46,7 +46,7 @@ class Kategori extends Seeder
             ],
             [
                 'id_kategori' => 6,
-                'nama_kategori' => 'Beras dan kacang',
+                'nama_kategori' => 'Beras & kacang',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'beras-dan-kacang',
                 'img'    => 'Icon Kategori-06.png',
@@ -74,7 +74,7 @@ class Kategori extends Seeder
             ],
             [
                 'id_kategori' => 10,
-                'nama_kategori' => 'Susu dan Olahan',
+                'nama_kategori' => 'Susu & Olahan',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'susu-dan-olahan',
                 'img'    => 'ssayo assets-02.png',
@@ -88,14 +88,14 @@ class Kategori extends Seeder
             ],
             [
                 'id_kategori' => 12,
-                'nama_kategori' => 'Minuman Kopi dan Teh',
+                'nama_kategori' => 'Minuman Kopi & Teh',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'minuman-kopi-dan-teh',
                 'img'    => 'ssayo assets-04.png',
             ],
             [
                 'id_kategori' => 13,
-                'nama_kategori' => 'Dumpling dan Makanan Beku',
+                'nama_kategori' => 'Dumpling & Makanan Beku',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'dumpling-dan-makanan-beku',
                 'img'    => 'ssayo assets-05.png',
@@ -114,7 +114,7 @@ class Kategori extends Seeder
                 'slug'    => 'peralatan-dapur',
                 'img'    => 'ssayo assets-07.png',
             ]
-            
+
         ];
 
         $this->db->table('jsf_kategori')->insertBatch($data);
