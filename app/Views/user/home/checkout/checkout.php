@@ -108,10 +108,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Biaya Pelayanan</td>
-                                    <td><span id="serviceApp"></span></td>
-                                </tr>
-                                <tr>
                                     <td>Subtotal</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
@@ -170,10 +166,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <tr>
                                             <td>Total Ongkos Kirim</td>
                                             <td><span id="ongkirText"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Biaya Pelayanan</td>
-                                            <td><span id="serviceApp"></span></td>
                                         </tr>
                                         <tr>
                                             <td>Subtotal</td>

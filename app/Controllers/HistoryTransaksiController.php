@@ -37,19 +37,27 @@ class HistoryTransaksiController extends BaseController
         ];
         foreach ($cekTransaksi as $t) {
             try {
-                /**
-                 * @var object $paymentStatus
-                 */
-                $paymentStatus = \Midtrans\Transaction::status("$t->invoice");
-                if ($paymentStatus->order_id == $t->invoice) {
-                    if ($paymentStatus->transaction_status == "expire" && $t->id_status_pesan == '1') {
-                        $checkoutModel->save([
-                            'id_checkout' => $t->id_checkout,
-                            'id_status_pesan' => 5
-                        ]);
-                    }
-                }
-                $data['status'][$t->invoice] = $paymentStatus;
+                // /**
+                //  * @var object $paymentStatus
+                //  */
+                // $paymentStatus = \Midtrans\Transaction::status("$t->invoice");
+                // if ($paymentStatus->order_id == $t->invoice) {
+                //     if ($paymentStatus->transaction_status == "expire" && $t->id_status_pesan == '1') {
+                //         $checkoutModel->save([
+                //             'id_checkout' => $t->id_checkout,
+                //             'id_status_pesan' => 5
+                //         ]);
+                //     }
+                //     if ($paymentStatus->transaction_status == "settlement" && $t->id_status_pesan == '1') {
+                //         $checkoutModel->save([
+                //             'id_checkout' => $t->id_checkout,
+                //             'id_status_pesan' => 2
+                //         ]);
+                //     }
+                // }
+                // $data['status'][$t->invoice] = $paymentStatus;
+                $data['status'][$t->invoice] = new \stdClass();
+                $data['status'][$t->invoice]->order_id = null;
             } catch (\Exception $e) {
                 // echo "An error occurred: " . $e->getMessage();
                 $currentTimestamp = time(); // Get the current timestamp
@@ -61,6 +69,8 @@ class HistoryTransaksiController extends BaseController
                         'id_status_pesan' => 5
                     ]);
                 }
+                $data['status'][$t->invoice] = new \stdClass();
+                $data['status'][$t->invoice]->order_id = null;
             }
         }
         // dd($data);
