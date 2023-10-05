@@ -65,7 +65,7 @@
                         </button>
 
                         <button type="button" class="btn btn-warning btn-floating mx-1">
-                            <i class="fab fa-twitter text-white"></i>
+                            <i class="bi bi-twitter text-white"></i>
                         </button>
 
                         <button type="button" class="btn btn-warning btn-floating mx-1">

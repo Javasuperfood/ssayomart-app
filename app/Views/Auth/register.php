@@ -34,15 +34,15 @@
                 <div class="text-center mb-4">
                     <p class="small">Daftar atau masuk menggunakan:</p>
                     <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
-                        <i class="fab fa-facebook-f fa-xs text-white"></i>
+                        <i class="bi bi-facebook fa-xs text-white"></i>
                     </button>
 
                     <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
-                        <i class="fab fa-google fa-xs text-white"></i>
+                        <i class="bi bi-google fa-xs text-white"></i>
                     </button>
 
                     <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
-                        <i class="fab fa-twitter fa-xs text-white"></i>
+                        <i class="bi bi-twitter fa-xs text-white"></i>
                     </button>
 
                 </div>
