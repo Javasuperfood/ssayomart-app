@@ -55,6 +55,25 @@
 
                     <button type="submit" value="Masuk" class="sign-btn" id="btn-login"><?= lang('Auth.login') ?></button>
 
+                    <div class="divider align-items-center mb-3">
+                        <p class="text-center fw-medium mb-0">atau</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center my-3">
+                        <button type="button" class="btn btn-warning btn-circle mx-1">
+                            <i class="bi bi-google text-white"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-warning btn-floating mx-1">
+                            <i class="fab fa-twitter text-white"></i>
+                        </button>
+
+                        <button type="button" class="btn btn-warning btn-floating mx-1">
+                            <i class="bi bi-facebook text-white"></i>
+                        </button>
+                    </div>
+
+
                     <p class="text-center text-secondary">
                         <?php if (setting('Auth.allowMagicLinkLogins')) : ?>
                             Lupa kata sandi ? <a class="toggle" href="<?= url_to('magic-link') ?>">Klik disini</a>
@@ -89,4 +108,11 @@
         </div>
     </div>
 </div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css">
+<!-- Tambahkan link ke FontAwesome CSS jika belum ada -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- Include script Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <?= $this->endSection() ?>
