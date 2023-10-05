@@ -33,18 +33,15 @@
 
                 <div class="text-center mb-4">
                     <p class="small">Daftar atau masuk menggunakan:</p>
-                    <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
-                        <i class="bi bi-facebook fa-xs text-white"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
-                        <i class="bi bi-google fa-xs text-white"></i>
-                    </button>
-
-                    <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
-                        <i class="bi bi-twitter fa-xs text-white"></i>
-                    </button>
-
+                    <a href="<?= base_url('oauth/glogin'); ?>" class="btn btn-warning btn-circle mx-1">
+                        <i class="bi bi-google text-white"></i>
+                    </a>
+                    <!-- <a href="#" class="btn btn-warning btn-floating mx-1">
+                        <i class="bi bi-twitter text-white"></i>
+                    </a>
+                    <a href="#" class="btn btn-warning btn-floating mx-1">
+                        <i class="bi bi-facebook text-white"></i>
+                    </a> -->
                 </div>
 
 
