@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "339a553f326dbdbf520bf8f643887a4e",
+    "content-hash": "23cf6291dfb9c181478676a3f4900bf1",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -137,16 +137,16 @@
         },
         {
             "name": "codeigniter4/shield",
-            "version": "v1.0.0-beta.6",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/shield.git",
-                "reference": "b5fbc784e8ab6ee8e9de103e62b15f8248c05a9f"
+                "reference": "d693af3d795cb4d424d31b569910b7770a5a7bff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/b5fbc784e8ab6ee8e9de103e62b15f8248c05a9f",
-                "reference": "b5fbc784e8ab6ee8e9de103e62b15f8248c05a9f",
+                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/d693af3d795cb4d424d31b569910b7770a5a7bff",
+                "reference": "d693af3d795cb4d424d31b569910b7770a5a7bff",
                 "shasum": ""
             },
             "require": {
@@ -157,21 +157,25 @@
                 "codeigniter4/authentication-implementation": "1.0"
             },
             "require-dev": {
+                "codeigniter/phpstan-codeigniter": "^1.3",
                 "codeigniter4/devkit": "^1.0",
-                "codeigniter4/framework": "^4.2.7",
+                "codeigniter4/framework": "^4.3.5",
                 "firebase/php-jwt": "^6.4",
                 "mikey179/vfsstream": "^1.6.7",
-                "mockery/mockery": "^1.0"
+                "mockery/mockery": "^1.0",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-strict-rules": "^1.5",
+                "rector/rector": "0.18.4"
             },
             "suggest": {
                 "ext-curl": "Required to use the password validation rule via PwnedValidator class.",
                 "ext-openssl": "Required to use the JWT Authenticator."
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "files": [
-                    "src/Helpers/auth_helper.php",
-                    "src/Helpers/email_helper.php"
+                    "src/Helpers/auth_helper.php"
                 ],
                 "psr-4": {
                     "CodeIgniter\\Shield\\": "src"
@@ -200,13 +204,78 @@
                 "codeigniter4"
             ],
             "support": {
-                "docs": "https://github.com/codeigniter4/shield/blob/develop/docs/index.md",
+                "docs": "https://codeigniter4.github.io/shield/",
                 "forum": "https://github.com/codeigniter4/shield/discussions",
                 "issues": "https://github.com/codeigniter4/shield/issues",
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/shield"
             },
-            "time": "2023-04-26T08:31:55+00:00"
+            "time": "2023-10-04T11:14:26+00:00"
+        },
+        {
+            "name": "datamweb/shield-oauth",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/datamweb/shield-oauth.git",
+                "reference": "12c1252ac7e790b6b945e1a4bac81f732fe76bb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/datamweb/shield-oauth/zipball/12c1252ac7e790b6b945e1a4bac81f732fe76bb9",
+                "reference": "12c1252ac7e790b6b945e1a4bac81f732fe76bb9",
+                "shasum": ""
+            },
+            "require": {
+                "codeigniter4/shield": "dev-develop",
+                "ext-curl": "*",
+                "php": "^7.4.3 || ^8.0 || ^8.1 || ^8.2"
+            },
+            "require-dev": {
+                "codeigniter4/devkit": "^1.0",
+                "codeigniter4/framework": "^4.2.7",
+                "codeigniter4/shield": "dev-develop",
+                "rector/rector": "0.18.4"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Datamweb\\ShieldOAuth\\": "src"
+                },
+                "exclude-from-classmap": [
+                    "**/Database/Migrations/**"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pooya Parsa Dadashi",
+                    "email": "pooya_parsa_dadashi@yahoo.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OAuth for CodeIgniter Shield",
+            "homepage": "https://github.com/datamweb/shield-oauth",
+            "keywords": [
+                "Authentication",
+                "authorization",
+                "codeigniter4",
+                "githubOauth",
+                "googleoauth",
+                "oauth",
+                "shield"
+            ],
+            "support": {
+                "docs": "https://www.shield-oauth.codeigniter4.ir",
+                "forum": "https://github.com/datamweb/shield-oauth/discussions",
+                "issues": "https://github.com/datamweb/shield-oauth/issues",
+                "source": "https://github.com/datamweb/shield-oauth"
+            },
+            "time": "2023-09-26T12:00:07+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -2424,7 +2493,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "codeigniter4/shield": 10
+        "codeigniter4/shield": 20,
+        "datamweb/shield-oauth": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

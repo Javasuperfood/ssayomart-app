@@ -60,17 +60,15 @@
                     </div>
 
                     <div class="d-flex justify-content-center align-items-center my-3">
-                        <button type="button" class="btn btn-warning btn-circle mx-1">
+                        <a href="<?= base_url('oauth/glogin'); ?>" class="btn btn-warning btn-circle mx-1">
                             <i class="bi bi-google text-white"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-warning btn-floating mx-1">
+                        </a>
+                        <!-- <a href="#" class="btn btn-warning btn-floating mx-1">
                             <i class="bi bi-twitter text-white"></i>
-                        </button>
-
-                        <button type="button" class="btn btn-warning btn-floating mx-1">
+                        </a>
+                        <a href="#" class="btn btn-warning btn-floating mx-1">
                             <i class="bi bi-facebook text-white"></i>
-                        </button>
+                        </a> -->
                     </div>
 
 
