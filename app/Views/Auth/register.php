@@ -25,11 +25,28 @@
                         <?php endif ?>
                     </div>
                 <?php endif ?>
-                <div class="heading">
+                <div class="heading mb-3">
                     <h2>Daftar</h2>
                     <h6>Sudah punya akun?</h6>
                     <a href="<?= base_url(); ?>login" class="toggle">Masuk</a>
                 </div>
+
+                <div class="text-center mb-4">
+                    <p class="small">Daftar atau masuk menggunakan:</p>
+                    <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
+                        <i class="bi bi-facebook fa-xs text-white"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
+                        <i class="bi bi-google fa-xs text-white"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-warning btn-floating btn-sm mx-1">
+                        <i class="bi bi-twitter fa-xs text-white"></i>
+                    </button>
+
+                </div>
+
 
                 <div class="actual-form">
                     <div class="input-wrap">
@@ -51,7 +68,7 @@
 
                     <button type="submit" value="Daftar" class="sign-btn" id="btn-register">Daftar</button>
 
-                    <p class="text">
+                    <p class="text mb-4">
                         Dengan mendaftarkan diri, berarti anda menyetujui
                         <a href="#">Peraturan Pelayanan</a> dan
                         <a href="#">Kebijakan</a>
@@ -84,5 +101,8 @@
         </div>
     </div>
 </div>
+
+
+
 
 <?= $this->endSection() ?>
