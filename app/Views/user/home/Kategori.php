@@ -41,6 +41,45 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </section>
+        <!-- rekomendasi -->
+        <div class="container">
+            <div class="card bg-danger border-0 text-center font-family-poppins">
+                <div class="card-danger">
+                    <span class="card-title text-white fw-medium fs-3">REKOMENDASI</h2>
+                </div>
+            </div>
+        </div>
+        <!-- end rekomendasi -->
+
+        <!-- card rekomendasi -->
+        <div class="container mt-2">
+            <div class="row">
+                <div class="col-md-2 col-sm-6 col-6 mb-2">
+                    <div class="card border-0 shadow-sm">
+                        <img src="<?= base_url() ?>assets/img/produk\main/p5.png" class="card-img-top img-fluid" alt="">
+                        <div class="card-body">
+                            <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet.</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-sm-6 col-6 mb-2">
+                    <div class="card border-0 shadow-sm">
+                        <img src="<?= base_url() ?>assets/img/produk\main/p5.png" class="card-img-top img-fluid" alt=""></a>
+                        <div class="card-body">
+                            <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet.</p>
+                            <div class="d-flex justify-content-center">
+                                <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end rekomendasi -->
         <div class="container py-1">
             <div class="card bg-success border-0 text-center font-family-poppins">
                 <div class="card-warning">
