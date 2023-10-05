@@ -11,7 +11,7 @@ var swiper = new Swiper(".mySwiper", {
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
     1280: {
-      slidesPerView: 6, // 3 card per tampilan
+      slidesPerView: 5, // 3 card per tampilan
 
     },
     // Tampilan iPad (lebar >= 768px)
