@@ -4,7 +4,7 @@
         <div class="row mt-3 row-cols-3" id="product-container">
 
             <?php foreach ($produk as $p) : ?>
-                <div class="col-6 col-md-4 col-lg-2 pt-3">
+                <div class="col-6 col-md-4 col-lg-3 pt-3">
                     <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
@@ -18,9 +18,32 @@
                                 <?php endif ?>
                             </h1>
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-                            <p class=" text-center">
-                                <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-white"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></a>
+
+
+                            <div class="container pt-3">
+                                <div class="row justify-items-center">
+                                    <div class="col">
+                                        <div class="horizontal-counter">
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount()"><i class="bi bi-dash"></i></button>
+                                            <input type="text" id="counter" class="form-control form-control-sm border-0" value="0" readonly>
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount()"><i class="bi bi-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <p class="text-center custom-button " style="display: flex; justify-content: center;">
+                                <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-danger mt-4">
+                                    <i class="fas fa-shopping-cart text-white fa-lg"></i>
+                                </a>
+                                <button type="submit" class="btn btn-danger   mx-1 mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">
+                                    Beli
+                                </button>
                             </p>
+
+
                         </div>
                     </div>
                 </div>
@@ -38,3 +61,42 @@
         </div>
     </div>
 <?php endif ?>
+
+<style>
+    .horizontal-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .horizontal-counter .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 12px;
+    }
+
+    .horizontal-counter input {
+        width: 40px;
+        text-align: center;
+    }
+
+
+
+    /* Media query for Samsung Galaxy Fold */
+    @media (max-width: 280px) {
+        .horizontal-counter .btn {
+            padding: 0.15rem 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .horizontal-counter input {
+            width: 30px;
+            text-align: center;
+        }
+
+        .custom-button .btn {
+            padding: 0.15rem 0.3rem;
+            font-size: 0.9rem;
+
+        }
+    }
+</style>
