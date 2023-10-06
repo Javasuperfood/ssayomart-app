@@ -33,10 +33,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="40px" alt="" class="flag-icon">
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-white" aria-labelledby="languageDropdown">
-                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"></a>
-                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"></a>
-                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"></a>
-                                    <a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('japang')"><img src="<?= base_url() ?>assets/img/bahasa/japang.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a href="<?= site_url('lang/id'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a href="<?= site_url('lang/en'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"></a>
                                 </div>
                             </div>
                             <!-- end -->
@@ -63,11 +62,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item ">
-                                <a class="nav-link text-white" aria-current="page" href="<?= base_url() ?>">Home</a>
+                                <a class="nav-link text-white" aria-current="page" href="<?= base_url() ?>"><?= lang('Text.beranda'); ?></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Kategori
+                                    <?= lang('Text.kategori') ?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <?php foreach ($kategori as $k) : ?>
@@ -76,11 +75,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </ul>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-white" aria-current="page" href="https://download.ssayomart.com">Download Aplikasi Ssayomart</a>
+                                <a class="nav-link text-white" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download') ?></a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
-                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control" placeholder="Cari produk..." aria-label="search" aria-describedby="basic-addon1">
+                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                             <button type="submit" class="btn btn-outline-light text-white mx-2" id="basic-addon1"><i class="bi bi-search"></i></button>
                         </form>
                         <ul class="navbar-nav d-flex flex-row mx-3">
@@ -108,16 +107,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>setting">Setting</a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>setting"><?= lang('Text.setting') ?></a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>setting/alamat-list">Alamat</a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>setting/alamat-list"><?= lang('Text.alamat_tersimpan') ?></a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider" />
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>logout">Logout</a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>logout"><?= lang('Text.logout') ?></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -139,13 +138,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <ul class="navbar-nav">
                                         <li class="nav-item dropdown">
                                             <button class="btn btn-transparent text-white dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="25px" alt="" class="flag-icon">
+                                                <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon">
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-white">
-                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Bahasa Indonesia</a></li>
-                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> 한국어</a></li>
-                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a></li>
-                                                <li><a class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('japang')"><img src="<?= base_url() ?>assets/img/bahasa/japang.png" width="30px" alt="" class="flag-icon"> 日本語</a></li>
+                                                <a href="<?= site_url('lang/id'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Indonesia</a>
+                                                <a href="<?= site_url('lang/en'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a>
+                                                <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> Korea</a>
                                             </ul>
                                         </li>
                                     </ul>
@@ -174,8 +172,6 @@ if ($isMobile) {
     echo '</div>';
 }
 ?>
-<!-- end Nav Desk -->
-
 <script>
     function changeFlag(flagName) {
         const flagImage = document.querySelector(".flag-icon");
@@ -183,8 +179,7 @@ if ($isMobile) {
         flagImage.setAttribute("src", newFlagSrc);
     }
 </script>
-
-
+<!-- end Nav Desk -->
 <style>
     /* CSS untuk mengatur panel dropdown */
     .dropdown-menu {

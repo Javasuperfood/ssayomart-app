@@ -18,7 +18,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
                     <div class="row pb-4">
                         <div class="col-9">
-                            <h3 class="fw-bold py-3 fs-5">Selamat datang, <?= $user['username']; ?></h3>
+                            <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
                         </div>
                         <div class="col-3">
                             <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>">
@@ -33,8 +33,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="alert alert-danger rounded border-0" role="alert">
                         <div class="row">
                             <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i></div>
-                            <div class="col-9 text-secondary fs-6">Mohon maaf area anda belum terjangkau oleh pelayanan kami.</div>
-                            <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0 text-dark">Kirim saran</a></div>
+                            <div class="col-9 text-secondary fs-6"><?= lang('Text.alert') ?></div>
+                            <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0 text-dark"><?= lang('Text.alert_btn') ?></a></div>
                         </div>
                     </div>
                 </div>
@@ -47,8 +47,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="row">
                                     <div class="col-3"><img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img"></div>
                                     <div class="col">
-                                        <h5 class="card-title text-dark">TERSEDIA KUPON DISKON!!</h5>
-                                        <p class="card-text text-secondary">Untuk kamu pengguna baru</p>
+                                        <h5 class="card-title text-dark"><?= lang('Text.judul_kupon') ?></h5>
+                                        <p class="card-text text-secondary"><?= lang('Text.isi_kupon') ?></p>
                                     </div>
                                 </div>
                             </a>
@@ -61,13 +61,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <h3>Pengaturan</h3>
                     <ul class="list-group list-group-flush">
                         <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-person-circle pe-2 text-secondary"></i> Detail Akun <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-heart pe-2 text-secondary"></i> Favorit <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-cursor pe-2 text-secondary"></i> Alamat tersimpan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?>n <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                     </ul>
 
@@ -78,16 +78,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <h3>Bantuan</h3>
                     <ul class="list-group list-group-flush">
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-question-circle pe-2 text-secondary"></i> Tentang Ssayomart <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>setting/about" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-headset pe-2 text-secondary"></i> Ssayomart Care <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-headset pe-2 text-secondary"></i> <?= lang('Text.ssayomart_care') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-lock pe-2 text-secondary"></i> Kebijakan Privasi <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>logout" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> Logout <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> <?= lang('Text.logout') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                     </ul>
                 </div>
@@ -105,7 +105,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body text-center" style="height: 325px;">
                             <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" alt="profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
-                            <h3 class="fw-bold  fs-5">Selamat datang, <?= $user['username']; ?></h3>
+                            <h3 class="fw-bold  fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
                             <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
                         </div>
                     </div>
@@ -118,8 +118,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="alert alert-danger rounded border-0" role="alert">
                                         <div class="row">
                                             <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i></div>
-                                            <div class="col-9 text-secondary fs-6">Mohon maaf area anda belum terjangkau oleh pelayanan kami.</div>
-                                            <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0 text-dark">Kirim saran</a></div>
+                                            <div class="col-9 text-secondary fs-6"><?= lang('Text.alert') ?></div>
+                                            <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0 text-dark"><?= lang('Text.alert_btn') ?></a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -132,8 +132,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="row">
                                                         <div class="col-3"><img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img"></div>
                                                         <div class="col">
-                                                            <h5 class="card-title text-dark">TERSEDIA KUPON DISKON!!</h5>
-                                                            <p class="card-text text-secondary">Untuk kamu pengguna baru</p>
+                                                            <h5 class="card-title text-dark"><?= lang('Text.judul_kupon') ?></h5>
+                                                            <p class="card-text text-secondary"><?= lang('Text.isi_kupon') ?></p>
                                                         </div>
                                                     </div>
                                                 </a>
@@ -152,16 +152,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </h3>
                                     <ul class="list-group list-group-flush">
                                         <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-person-circle pe-2 text-secondary"></i> Detail Akun <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-heart pe-2 text-secondary"></i> Favorit <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-cursor pe-2 text-secondary"></i> Alamat tersimpan <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <a href="<?= base_url(); ?>logout" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> Logout <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> <?= lang('Text.logout') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                     </ul>
                                 </div>
@@ -173,16 +173,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <h3>Bantuan</h3>
                                     <ul class="list-group list-group-flush">
                                         <a href="<?= base_url(); ?>history" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-clock-history pe-2 text-secondary"></i> Riwayat Pembelian <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-clock-history pe-2 text-secondary"></i> <?= lang('Text.riwayat') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-question-circle pe-2 text-secondary"></i> Tentang Ssayomart <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-headset pe-2 text-secondary"></i> Ssayomart Care <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-headset pe-2 text-secondary"></i> <?= lang('Text.ssayomart_care') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-lock pe-2 text-secondary"></i> Kebijakan Privasi <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                            <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                     </ul>
                                 </div>

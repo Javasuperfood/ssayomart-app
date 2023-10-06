@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['form', 'date'];
+    protected $helpers = ['form', 'date', 'url'];
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -56,6 +56,8 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
         session();
         $this->session = \Config\Services::session();
+        $language = \Config\Services::language();
+        $language->setLocale($this->session->lang);
     }
     protected function countCart()
     {

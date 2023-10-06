@@ -42,7 +42,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-lg-3 col-md-6 d-flex">
                         <i class="bi bi-geo-alt-fill icon"></i>
                         <div>
-                            <h4>Alamat</h4>
+                            <h4><?= lang("Text.alamat") ?></h4>
                             <p>
                                 Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165<br>
                                 RT.001/RW.009, Panunggangan Barat,
@@ -55,7 +55,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
                         <i class="bi bi-telephone-fill icon"></i>
                         <div>
-                            <h4>Hubungi Kami</h4>
+                            <h4><?= lang("Text.kontak") ?></h4>
                             <p>
                                 <strong>Phone:</strong> +62 1234 5678 89<br>
                                 <strong>Email:</strong> ssayomart@gmail.com<br>
@@ -66,21 +66,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
                         <i class="bi bi-headset icon"></i>
                         <div>
-                            <h4>Layanan Pelanggan</h4>
+                            <h4><?= lang("Text.layanan") ?></h4>
                             <p>
-                                Senin-Sabtu: 08.00 - 23.00<br>
-                                Minggu: Tutup
+                                <?= lang('Text.jadwal_pelayanan') ?><br>
+                                <?= lang('Text.jadwal_pelayanan_2') ?>
                             </p>
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 footer-links">
-                        <h4>Ikuti Kami</h4>
-                        <div class="social-links d-flex">
-                            <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
-                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                            <a href="#" class="tiktok"><i class="bi bi-tiktok"></i></a>
+                    <div class="col-lg-3 col-md-6 footer-links d-flex">
+                        <i class="bi bi-bookmark-fill icon"></i>
+                        <div>
+                            <h4><?= lang("Text.follow") ?></h4>
+                            <div class="social-links d-flex">
+                                <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="#" class="tiktok"><i class="bi bi-tiktok"></i></a>
+                            </div>
                         </div>
                     </div>
 
