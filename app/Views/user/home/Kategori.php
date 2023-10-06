@@ -17,7 +17,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container pt-2">
                 <div class="card bg-warning border-0 text-center font-family-poppins">
                     <div class="card-warning">
-                        <span class="card-title text-white fw-medium fs-3">SPESIAL DI SSAYOMART</h2>
+                        <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2>
                     </div>
                 </div>
                 <div class="row">
@@ -130,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container py-1">
             <div class="card bg-success border-0 text-center font-family-poppins">
                 <div class="card-warning">
-                    <span class="card-title text-white fw-medium fs-3">SEMUA KATEGORI</h2>
+                    <span class="card-title text-white fw-medium fs-3 text-capitalize"><?= lang("Text.kategori") ?></h2>
                 </div>
             </div>
             <div class="row text-center row-cols-3 mt-3">
@@ -160,7 +160,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card bg-warning border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
                     <div class="card-warning">
-                        <span class="card-title text-white fw-bold fs-2">SPESIAL DI SSAYOMART</span>
+                        <span class="card-title text-white fw-bold fs-2"><?= lang("Text.spesial") ?></span>
                     </div>
                 </div>
                 <div class="row">
@@ -325,7 +325,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container py-3">
                     <div class="card bg-success border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
                         <div class="card-success">
-                            <span class="card-title text-white fw-bold fs-2">SEMUA KATEGORI</span>
+                            <span class="card-title text-white fw-bold fs-2 text-capitalize"><?= lang("Text.kategori") ?></span>
                         </div>
                     </div>
                     <div class="row text-center row-cols-3 py-3">

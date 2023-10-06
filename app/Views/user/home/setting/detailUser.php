@@ -73,7 +73,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <h2 class="mb-0"><?= $title; ?></h2>
+                            <h2 class="mb-0"><?= lang('Text.title') ?></h2>
                             <hr class="text-danger">
                         </li>
                     </ol>
@@ -85,7 +85,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-lg-4">
                         <div class="card border-0 shadow rounded-3">
                             <div class="card-body text-center">
-                                <p class="fs-5 text-secondary">Hai! Terlihat keren, <?= $du['username']; ?></p>
+                                <p class="fs-5 text-secondary"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
                             </div>
                         </div>
@@ -95,46 +95,46 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Username</p>
+                                        <p class="mb-0"><?= lang('Text.username') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="username" name="username" placeholder="Username Anda" value="<?= $du['username']; ?>">
+                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>">
                                         <span id="usernameError" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <hr class="border-0">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Full Name</p>
+                                        <p class="mb-0"><?= lang('Text.nama_lengkap') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="fullname" name="fullname" placeholder="Nama Lengkap Anda" value="<?= $du['fullname']; ?>">
+                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>">
                                         <span id="fullnameError" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <hr class="border-0">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Phone</p>
+                                        <p class="mb-0"><?= lang('Text.telp') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="telp" name="telp" placeholder="Nomor Telp Anda" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
+                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
                                         <span id="telpError" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <hr class="border-0">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Email</p>
+                                        <p class="mb-0"><?= lang('Text.email') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control form-control-lg bg-white border-0 shadow-sm" id="email" name="email" placeholder="Email Anda" value="<?= $results[0]->secret; ?>" disabled>
+                                        <input type="email" class="form-control form-control-lg bg-white border-0 shadow-sm" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" disabled>
                                     </div>
                                 </div>
                                 <hr class="border-0">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0">Foto Profile</p>
+                                        <p class="mb-0"><?= lang('Text.profil') ?></p>
                                     </div>
                                     <div class="col-sm-9">
                                         <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>"> <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
@@ -142,7 +142,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                                 <div class="py-3 px-3">
                                     <div class="col text-center">
-                                        <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Simpan</button>
+                                        <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@ if ($isMobile) {
 
         if (usernameField.value.trim() === '') {
             usernameField.classList.add('invalid-field');
-            usernameError.textContent = 'Username harus diisi';
+            usernameError.textContent = '<?= lang('Text.username') ?> <?= lang('Text.validasi') ?>';
             isValid = false;
         } else {
             usernameField.classList.remove('invalid-field');
@@ -198,7 +198,7 @@ if ($isMobile) {
 
         if (fullnameField.value.trim() === '') {
             fullnameField.classList.add('invalid-field');
-            fullnameError.textContent = 'Nama lengkap harus diisi';
+            fullnameError.textContent = '<?= lang('Text.nama_lengkap') ?> <?= lang('Text.validasi') ?>';
             isValid = false;
         } else {
             fullnameField.classList.remove('invalid-field');
@@ -206,7 +206,7 @@ if ($isMobile) {
 
         if (telpField.value.trim() === '') {
             telpField.classList.add('invalid-field');
-            telpError.textContent = 'Nomor telpon harus diisi';
+            telpError.textContent = '<?= lang('Text.telp') ?> <?= lang('Text.validasi') ?>';
             isValid = false;
         } else {
             telpField
