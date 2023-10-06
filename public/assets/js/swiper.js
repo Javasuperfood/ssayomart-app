@@ -26,6 +26,51 @@ var swiper = new Swiper(".mySwiper", {
 
   });
 
+  var swiper = new Swiper(".mySwung", {
+    slidesPerView: 2,
+    centeredSlides: false,
+    spaceBetween: 10,
+    grabCursor: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  
+    breakpoints: {
+      // Tampilan iPad (lebar >= 768px)
+      1280: {
+        slidesPerView: 2, // 3 card per tampilan
+  
+      },
+      // Tampilan iPad (lebar >= 768px)
+      768: {
+        slidesPerView: 1, // 3 card per tampilan
+      },
+      
+    },
+  
+    });
+
+  var swiper = new Swiper(".mySweety", {
+    slidesPerView: 1,
+    centeredSlides: false,
+    spaceBetween: 10,
+    grabCursor: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  
+    breakpoints: {
+
+      375: {
+        slidesPerView: 1, // 2 card per tampilan
+      },
+    },
+  
+    });
+
+
   var swiper = new Swiper(".btn-sub", {
     slidesPerView: 'auto',
     spaceBetween: 10,
@@ -51,6 +96,8 @@ var swiper = new Swiper(".mySwiper", {
       prevEl: '.button-prev',
   },
   });
+
+
  
 
 
