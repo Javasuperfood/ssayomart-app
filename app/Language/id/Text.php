@@ -14,6 +14,7 @@ return [
     'cari_produk' => 'Cari Produk...',
     'jadwal_pelayanan' => 'Senin-Sabtu',
     'jadwal_pelayanan_2' => 'Minggu : Tutup',
+    'rekomendasi' => 'Rekomendasi Kami',
 
     // SETTING PAGE
     'setting' => 'Sunting',

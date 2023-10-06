@@ -45,7 +45,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="card bg-danger border-0 text-center font-family-poppins">
                 <div class="card-danger">
-                    <span class="card-title text-white fw-medium fs-3">REKOMENDASI</h2>
+                    <span class="card-title text-white fw-medium fs-3"><?= lang('Text.rekomendasi') ?></h2>
                 </div>
             </div>
         </div>
@@ -224,7 +224,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container py-3">
                     <div class="card bg-danger border-0 text-center font-family-poppins">
                         <div class="card-danger">
-                            <span class="card-title text-white fw-bold fs-2">REKOMENDASI</h2>
+                            <span class="card-title text-white fw-bold fs-2"><?= lang('Text.rekomendasi') ?></h2>
                         </div>
                     </div>
                 </div>

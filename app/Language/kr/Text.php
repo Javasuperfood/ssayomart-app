@@ -15,6 +15,7 @@ return [
     'cari_produk' => '여기서 제품을 찾아보세요...',
     'jadwal_pelayanan' => '월요일~토요일',
     'jadwal_pelayanan_2' => '일요일 : 휴무',
+    'rekomendasi' => '우리의 추천',
 
     // SETTING PAGE
     'setting' => '환경',
