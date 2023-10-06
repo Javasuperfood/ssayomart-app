@@ -51,28 +51,75 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- end rekomendasi -->
 
-        <!-- card rekomendasi -->
-        <div class="container mt-2">
-            <div class="row">
-                <div class="col-md-2 col-sm-6 col-6 mb-2">
-                    <div class="card border-0 shadow-sm">
-                        <img src="<?= base_url() ?>assets/img/produk\main/p5.png" class="card-img-top img-fluid" alt="">
-                        <div class="card-body">
-                            <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet.</p>
-                            <div class="d-flex justify-content-center">
-                                <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+        <!-- card rekomendasi swiper -->
+        <div class="container mb-3 mt-3">
+            <div class="swiper mySweety">
+                <div class="swiper-wrapper d-flex">
+                    <div class="swiper-slide">
+                        <div class="card border-0 shadow-sm mx-1">
+                            <div class="row g-0">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="card-body">
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos </p>
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-2 col-sm-6 col-6 mb-2">
-                    <div class="card border-0 shadow-sm">
-                        <img src="<?= base_url() ?>assets/img/produk\main/p5.png" class="card-img-top img-fluid" alt=""></a>
-                        <div class="card-body">
-                            <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet.</p>
-                            <div class="d-flex justify-content-center">
-                                <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                    <div class="swiper-slide">
+                        <div class="card border-0 shadow-sm mx-1">
+                            <div class="row g-0">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" class="card-img-top img-fluid" alt="">
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="card-body">
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam temporibus cumque error doloribus unde mollitia in </p>
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card border-0 shadow-sm mx-1">
+                            <div class="row g-0">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" class="card-img-top img-fluid" alt="">
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="card-body">
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit eos culpa facere quibusdam earum eius qui ad quae, </p>
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card border-0 shadow-sm mx-1">
+                            <div class="row g-0">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <img src="<?= base_url() ?>assets/img/promo/promo-4.jpg" class="card-img-top img-fluid" alt="">
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="card-body">
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit dolor sit rerum quis! Minus reiciendis iste doloribus </p>
+                                        <div class="d-flex justify-content-center">
+                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -142,7 +189,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container py-3 d-none d-lg-block">
                 <div class="row">
                     <div class="col">
-
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($randomProducts as $p) : ?>
@@ -173,6 +219,109 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
+
+                <!-- rekomendasi -->
+                <div class="container py-3">
+                    <div class="card bg-danger border-0 text-center font-family-poppins">
+                        <div class="card-danger">
+                            <span class="card-title text-white fw-bold fs-2">REKOMENDASI</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- end rekomendasi -->
+                <!-- card rekomendasi -->
+                <div class="container mb-3 mt-3">
+                    <div class="row">
+                        <div class="swiper mySwung">
+                            <div class="swiper-wrapper d-flex">
+                                <div class="swiper-slide">
+                                    <div class="card shadow-sm border-0" style="border-radius: 15px;">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex text-black">
+                                                <div class="flex-shrink-0">
+                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
+                                                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #f5f5f5;">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
+                                                    </div>
+                                                    <div class="d-flex pt-1">
+                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="card shadow-sm border-0" style="border-radius: 15px;">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex text-black">
+                                                <div class="flex-shrink-0">
+                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
+                                                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #f5f5f5;">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
+                                                    </div>
+                                                    <div class="d-flex pt-1">
+                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="card shadow-sm border-0" style="border-radius: 15px;">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex text-black">
+                                                <div class="flex-shrink-0">
+                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
+                                                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #f5f5f5;">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
+                                                    </div>
+                                                    <div class="d-flex pt-1">
+                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-slide">
+                                    <div class="card shadow-sm border-0" style="border-radius: 15px;">
+                                        <div class="card-body p-4">
+                                            <div class="d-flex text-black">
+                                                <div class="flex-shrink-0">
+                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                                </div>
+                                                <div class="flex-grow-1 ms-3">
+                                                    <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
+                                                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #f5f5f5;">
+                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
+                                                    </div>
+                                                    <div class="d-flex pt-1">
+                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end -->
                 <div class="container py-3">
                     <div class="card bg-success border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
                         <div class="card-success">
@@ -228,6 +377,7 @@ if ($isMobile) {
 
     }
 </style>
+
 
 
 <?= $this->endSection(); ?>
