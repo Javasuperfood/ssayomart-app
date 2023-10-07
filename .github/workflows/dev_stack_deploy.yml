@@ -13,16 +13,16 @@ jobs:
       - name: Deploy Using ssh
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          host: ${{ secrets.DEV_SSH_HOST }}
+          username: ${{ secrets.DEV_SSH_USERNAME }}
+          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
           key_path: ${{ secrets.DEV_SSH_PATH }}
           port: ${{ secrets.SSH_PORT }}
           script: |
             eval $(ssh-agent)
             ssh-add ${{ secrets.DEV_SSH_PATH }}
-            ${{ secrets.DEV_CD }}
+            cd ${{ secrets.DEV_PATH }}
             git pull
             git status
-            cp -rf ~/master/devStack/ssayomart-app/public/assets/* ~/public_html/public-dev.ssayomart.com/assets/
+            cp -rf ~/${{ secrets.DEV_PATH }}/public/assets/* ~/public_html/public-dev.ssayomart.com/assets/
             ssh-agent -k
