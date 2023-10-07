@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  Deploy:
+  Deploy-DevStack:
     runs-on: ubuntu-latest
 
     steps:
