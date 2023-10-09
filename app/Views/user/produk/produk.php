@@ -206,7 +206,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
                                             <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                                                 <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
+                                                    </div>
                                                 </a>
                                                 <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
                                                     <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
