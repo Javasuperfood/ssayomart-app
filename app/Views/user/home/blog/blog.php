@@ -17,7 +17,7 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="<?= base_url('/'); ?>">
                 <img src="<?= base_url() ?>assets/img/logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
             </a>
         </div>
