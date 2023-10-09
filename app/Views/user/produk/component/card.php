@@ -100,5 +100,10 @@
             font-size: 0.9rem;
 
         }
+
+        img.card-img-top {
+            width: 100px !important;
+            height: 100px !important;
+        }
     }
 </style>
