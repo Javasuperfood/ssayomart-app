@@ -6,9 +6,11 @@
 </p>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
     <b>MOHON TELITI KETIKA MENGISI PRODUK UNTUK MENGHINDARI KESALAHAN YANG TIDAK DIINGINKAN!!</b>
+    <h4>HARAP TELITI MASUKAN FOTO PRODUK DENGAN UKURAN <strong>500 X 500</strong> PIXEL ATAU DIMENSI, WAJIB!!</h4>
+    <b>DILARANG KERAS MEMASUKAN FOTO PRODUK LEBIH DARI UKURAN TERSEBUT!!</b>
 </div>
 
-<div class="card border-0 shadow-sm position-relative">
+<div class="card border-0 shadow-sm position-relative mb-4">
     <div class="card-header border-0 py-3">
         <h6 class="m-0 font-weight-medium">Masukan Produk Baru</h6>
     </div>
