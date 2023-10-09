@@ -94,7 +94,7 @@
     <!-- Page level plugins -->
 
     <!-- Page level custom scripts -->
-    <script src="<?= base_url('assets/js/script.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/script-un-en.js'); ?>"></script>
 
 
 </body>

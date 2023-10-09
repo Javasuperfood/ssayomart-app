@@ -28,14 +28,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                         <div class="col-2">
                             <!-- bahasa -->
+                            <?php
+                            $lang = session()->get('lang');
+                            $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
+                            ?>
                             <div class="dropdown">
                                 <button class="btn btn-transparent text-white dropdown-toggle fs-6 d-lg-none border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="40px" alt="" class="flag-icon">
+                                    <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="40px" alt="" class="flag-icon">
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-white" aria-labelledby="languageDropdown">
-                                    <a href="<?= site_url('lang/id'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"></a>
-                                    <a href="<?= site_url('lang/en'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"></a>
-                                    <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a href="<?= site_url('lang/id'); ?>" class="dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a href="<?= site_url('lang/en'); ?>" class="dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"></a>
+                                    <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"></a>
                                 </div>
                             </div>
                             <!-- end -->
@@ -137,13 +141,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                                     <ul class="navbar-nav">
                                         <li class="nav-item dropdown">
+                                            <?php
+                                            $lang = session()->get('lang');
+                                            $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
+                                            ?>
                                             <button class="btn btn-transparent text-white dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon">
+                                                <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="30px" alt="" class="flag-icon">
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-white">
-                                                <a href="<?= site_url('lang/id'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Indonesia</a>
-                                                <a href="<?= site_url('lang/en'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a>
-                                                <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> Korea</a>
+                                                <a href="<?= site_url('lang/id'); ?>" class="dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Indonesia</a>
+                                                <a href="<?= site_url('lang/en'); ?>" class="dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a>
+                                                <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> Korea</a>
                                             </ul>
                                         </li>
                                     </ul>
@@ -159,26 +167,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php endif; ?>
 
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
-<script>
-    function changeFlag(flagName) {
-        const flagImage = document.querySelector(".flag-icon");
-        const newFlagSrc = `<?= base_url() ?>assets/img/bahasa/${flagName}.png`;
-        flagImage.setAttribute("src", newFlagSrc);
-    }
-</script>
 <!-- end Nav Desk -->
 <style>
     /* CSS untuk mengatur panel dropdown */
