@@ -228,19 +228,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                                     <p class="text-center custom-button " style="display: flex; justify-content: center;">
                                                         <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-danger mt-4">
-                                                            <i class="bi bi-cart-check"></i>
+                                                            <i class="bi bi-cart-plus"></i>
                                                         </a>
                                                         <button type="submit" class="btn btn-danger   mx-1 mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">
                                                             Beli
                                                         </button>
                                                     </p>
-
-
-
-
-
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -334,6 +327,45 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- end Desktop -->
 
     <!-- akhir view desktop -->
+
+    <style>
+        .horizontal-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .horizontal-counter .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 12px;
+        }
+
+        .horizontal-counter input {
+            width: 40px;
+            text-align: center;
+        }
+
+
+
+        /* Media query for Samsung Galaxy Fold */
+        @media (max-width: 280px) {
+            .horizontal-counter .btn {
+                padding: 0.15rem 0.3rem;
+                font-size: 0.9rem;
+            }
+
+            .horizontal-counter input {
+                width: 30px;
+                text-align: center;
+            }
+
+            .custom-button .btn {
+                padding: 0.15rem 0.3rem;
+                font-size: 0.9rem;
+
+            }
+        }
+    </style>
 
     <script type="text/javascript">
         function increaseCount(a, b) {
