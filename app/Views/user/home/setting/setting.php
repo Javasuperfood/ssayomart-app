@@ -15,7 +15,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-md-blok d-lg-none d-xl-none">
             <div class="row">
                 <div class="col">
-                    <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
+                    <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? lang('Text.btn_tambah') : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
                     <div class="row pb-4">
                         <div class="col-9">
                             <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
@@ -58,7 +58,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row row-cols-1">
                 <div class="col">
-                    <h3>Pengaturan</h3>
+                    <h3><?= lang('Text.setting') ?></h3>
                     <ul class="list-group list-group-flush">
                         <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -75,12 +75,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row row-cols-1 pb-5">
                 <div class="col">
-                    <h3>Bantuan</h3>
+                    <h3><?= lang('Text.bantuan') ?></h3>
                     <ul class="list-group list-group-flush">
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                        <a href="<?= base_url(); ?>setting/about" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-headset pe-2 text-secondary"></i> <?= lang('Text.ssayomart_care') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
@@ -106,7 +106,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="card-body text-center" style="height: 325px;">
                             <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" alt="profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
                             <h3 class="fw-bold  fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
-                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? 'Tambahkan Alamat' : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
+                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? lang('Text.btn_tambah') : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-md-6">
                             <div class="card border-0 shadow-sm mb-4 mb-md-0">
                                 <div class="card-body">
-                                    <h3>Pengaturan
+                                    <h3><?= lang('Text.setting') ?>
                                     </h3>
                                     <ul class="list-group list-group-flush">
                                         <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
@@ -170,7 +170,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-md-6">
                             <div class="card border-0 shadow-sm mb-4 mb-md-0">
                                 <div class="card-body">
-                                    <h3>Bantuan</h3>
+                                    <h3><?= lang('Text.bantuan') ?></h3>
                                     <ul class="list-group list-group-flush">
                                         <a href="<?= base_url(); ?>history" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-clock-history pe-2 text-secondary"></i> <?= lang('Text.riwayat') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>

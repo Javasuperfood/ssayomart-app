@@ -25,7 +25,7 @@ class Setting extends BaseController
         $user = $userModel->where('id', user_id())->find();
         $firstLable = $alamatUserModel->where('id_user', user_id())->first();
         $data = [
-            'title' => 'Setting',
+            'title' => lang('Text.setting'),
             'user' => $user[0],
             'kategori' => $kategori->findAll(),
             'alamat' => $firstLable
@@ -45,7 +45,7 @@ class Setting extends BaseController
 
         $du = $usersModel->find([$id]);
         $data = [
-            'title' => 'Detail User',
+            'title' => lang('Text.title'),
             'du' => $du[0],
             'kategori' => $kategori->findAll(),
             'results' => $query->getResult()
@@ -145,7 +145,7 @@ class Setting extends BaseController
         $kategori = new KategoriModel();
         $alamat_list = $alamat_user_model->where('id_user', user_id())->findAll();
         $data = [
-            'title' => 'Alamat',
+            'title' => lang('Text.title_alamat'),
             'alamat_user_model' => $alamat_list,
             'kategori' => $kategori->findAll(),
             'back'  => 'setting'
@@ -159,7 +159,7 @@ class Setting extends BaseController
         $kategori = new KategoriModel();
         $provinsi = $this->rajaongkir('province');
         $data = [
-            'title'     => 'Tambah Alamat Baru',
+            'title'     => lang('Text.btn_tambah'),
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
             'kategori' => $kategori->findAll(),
         ];

@@ -106,7 +106,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php endif ?>
                         </ul>
                         <!-- bahasa -->
-                        <nav class="navbar navbar-expand-lg navbar-danger">
+                        <!-- <nav class="navbar navbar-expand-lg navbar-danger">
                             <div class="container-fluid">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -126,7 +126,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </ul>
                                 </div>
                             </div>
-                        </nav>
+                        </nav> -->
                         <!-- end -->
                     </div>
                 </div>

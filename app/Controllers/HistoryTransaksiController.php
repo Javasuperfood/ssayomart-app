@@ -30,7 +30,7 @@ class HistoryTransaksiController extends BaseController
         $cekTransaksi = $checkoutProdModel->getHistoryTransaksi(user_id());
 
         $data = [
-            'title' => 'History',
+            'title' => lang('Text.title_history'),
             'transaksi' =>  $cekTransaksi,
             'back' => '',
             'kategori' => $kategori->findAll(),

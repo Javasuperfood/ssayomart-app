@@ -36,7 +36,7 @@ class CartController extends BaseController
             // echo "Row Total: $rowTotal<br>";
         }
         $data = [
-            'title'     => 'Keranjang',
+            'title'     => lang('Text.title_cart'),
             'produk' => $cekCartProduk,
             'total' => $totalAkhir,
             'kategori' => $kategori->findAll(),
