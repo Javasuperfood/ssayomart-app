@@ -108,6 +108,21 @@
         </div>
     </li>
 
+    <!-- blog -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog" aria-expanded="true" aria-controls="collapseBlog">
+            <i class="bi bi-window-stack"></i>
+            <span>Blog-site Page</span>
+        </a>
+        <div id="collapseBlog" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header text-danger">Menu Blog :</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/blog/blog">Blog Konten</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/blog/tambah-konten">Tambah konten</a>
+            </div>
+        </div>
+    </li>
+
     <!-- kupon -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard/kupon">
@@ -122,6 +137,8 @@
             <i class="bi bi-shop"></i>
             <span>Market</span></a>
     </li>
+
+
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 <?php endif; ?>
