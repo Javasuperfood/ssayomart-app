@@ -206,8 +206,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php endif ?>
                                                 </h1>
                                                 <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-
-
                                                 <div class="container pt-3">
                                                     <div class="row justify-items-center">
                                                         <div class="col">
@@ -416,9 +414,6 @@ if ($isMobile) {
         width: 40px;
         text-align: center;
     }
-
-
-
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
         .horizontal-counter .btn {

@@ -234,8 +234,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             Beli
                                                         </button>
                                                     </p>
-
-
                                                 </div>
                                             </div>
                                         </div>
@@ -408,6 +406,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     }
 </script> -->
+
+    <style>
+        .horizontal-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .horizontal-counter .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 12px;
+        }
+
+        .horizontal-counter input {
+            width: 40px;
+            text-align: center;
+        }
+    </style>
 
     <?= $this->include('user/component/scriptAddToCart'); ?>
     <?= $this->include('user/component/scriptAddToWishlist'); ?>
