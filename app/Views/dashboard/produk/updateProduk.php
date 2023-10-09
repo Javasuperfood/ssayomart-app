@@ -91,14 +91,6 @@
             hargaField.classList.remove('invalid-field');
         }
 
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar Produk harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
-        }
-
         if (deskripsiField.value.trim() === '') {
             deskripsiField.classList.add('invalid-field');
             deskripsiError.textContent = 'Deskripsi Produk harus diisi';

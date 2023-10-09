@@ -22,16 +22,20 @@ class AdminProduk extends BaseController
         $variasList = $variasiModel->findAll();
         $variasiItemList = $variasiItemModel->getVariasiItem();
         $sub_kategori_list = $subKategoriModel->findAll();
-        $produk_list = $produkModel->findAll();
         $kategori_list = $kategoriModel->findAll();
 
+        $currentPage = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
+        $perPage = 10;
+        $produk_list = $produkModel->paginate($perPage, 'produk');
         $data = [
             'title' => 'Daftar Produk',
             'produk_Model' => $produk_list,
             'kategori_model' => $kategori_list,
             'subKategori' => $sub_kategori_list,
             'variasi' => $variasList,
-            'variasiItem' => $variasiItemList
+            'variasiItem' => $variasiItemList,
+            'pager' => $produkModel->pager,
+            'iterasi' => ($currentPage - 1) * $perPage + 1,
         ];
         return view('dashboard/produk/produk', $data);
     }
@@ -76,7 +80,10 @@ class AdminProduk extends BaseController
             $fotoProduk->move('assets/img/produk/main/', $namaProduk);
         }
         $slug = url_title($this->request->getVar('nama'), '-', true);
-
+        $cekSlug = $produkModel->where('slug', $slug)->first();
+        if ($cekSlug != null) {
+            $slug = $slug . '-' . time();
+        }
         $data = [
             'slug' => $slug,
             'nama' => $this->request->getVar('nama'),
@@ -108,7 +115,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/produk/tambah-produk')->withInput();
+            return redirect()->to('dashboard/produk');
         } else {
             $alert = [
                 'type' => 'error',
@@ -143,7 +150,6 @@ class AdminProduk extends BaseController
             $namaProdukImage = $this->request->getVar('imageLama');
         } else {
             $produk = $produkModel->find($id);
-
             if ($produk['img'] == 'default.png') {
                 $namaProdukImage = $image->getRandomName();
                 $image->move('assets/img/produk/main', $namaProdukImage);
@@ -156,6 +162,7 @@ class AdminProduk extends BaseController
                 }
             }
         }
+
         $data = [
             'id_produk' => $id,
             'nama' => $this->request->getVar('nama'),
@@ -174,7 +181,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/produk/tambah-produk');
+            return redirect()->to('dashboard/produk');
         } else {
             $alert = [
                 'type' => 'error',
@@ -199,6 +206,7 @@ class AdminProduk extends BaseController
                 unlink($gambarLamaPath);
             }
         }
+        $produkModel->save(['id_produk' => $id, 'slug' => $produk['slug'] . '-deleted-' . time()]);
         $deleted = $produkModel->delete($id);
         // dd($id);
         if ($deleted) {
@@ -208,7 +216,7 @@ class AdminProduk extends BaseController
                 'message' => 'Produk berhasil di hapus.'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/produk/tambah-produk');
+            return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('pager'));
         } else {
             $alert = [
                 'type' => 'error',
@@ -216,7 +224,35 @@ class AdminProduk extends BaseController
                 'message' => 'Terdapat kesalahan pada penghapusan produk'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/produk/tambah-produk')->withInput();
+            return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('pager'))->withInput();
+        }
+    }
+
+    //delete batch
+    public function deleteBatch()
+    {
+        $produkModel = new ProdukModel();
+        $item = $this->request->getVar('produk_id');
+        foreach ($item as $id) {
+            $produk = $produkModel->find($id);
+
+            if ($produk['img'] != 'default.png') {
+                $gambarLamaPath = 'assets/img/produk/main/' . $produk['img'];
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+            $produkModel->save(['id_produk' => $id, 'slug' => $produk['slug'] . '-deleted-' . time()]);
+            $deleted = $produkModel->delete($id);
+        }
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Produk berhasil di hapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('pager'));
         }
     }
 }
