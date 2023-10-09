@@ -106,7 +106,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php endif ?>
                         </ul>
                         <!-- bahasa -->
-                        <!-- <nav class="navbar navbar-expand-lg navbar-danger">
+                        <nav class="navbar navbar-expand-lg navbar-danger">
                             <div class="container-fluid">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -114,19 +114,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                                     <ul class="navbar-nav">
                                         <li class="nav-item dropdown">
+                                            <?php
+                                            $lang = session()->get('lang');
+                                            $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
+                                            ?>
                                             <button class="btn btn-transparent text-white dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon">
+                                                <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="30px" alt="" class="flag-icon">
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-white">
-                                                <a href="<?= base_url('lang/id'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('indonesia', event)"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Indonesia</a>
-                                                <a href="<?= base_url('lang/en'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('inggris', event)"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a>
-                                                <a href="<?= base_url('lang/kr'); ?>" class="dropdown-item" href="javascript:void(0);" onclick="changeFlag('korea', event)"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> Korea</a>
+                                                <a href="<?= site_url('lang/id'); ?>" class="dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>" href="javascript:void(0);" onclick="changeFlag('indonesia')"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Indonesia</a>
+                                                <a href="<?= site_url('lang/en'); ?>" class="dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>" href="javascript:void(0);" onclick="changeFlag('inggris')"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a>
+                                                <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>" href="javascript:void(0);" onclick="changeFlag('korea')"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> Korea</a>
                                             </ul>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                        </nav> -->
+                        </nav>
                         <!-- end -->
                     </div>
                 </div>
@@ -135,33 +139,4 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
 <!-- navbar Website -->
-<script>
-    function changeFlag(language, event) {
-        // Lakukan apa yang perlu Anda lakukan di sini, misalnya perubahan bahasa.
-        // ...
-
-        // Mencegah tautan dari mengarahkan ke halaman baru.
-        event.preventDefault();
-    }
-
-
-    function changeFlag(flagName) {
-        const flagImage = document.querySelector(".flag-icon");
-        const newFlagSrc = `<?= base_url() ?>assets/img/bahasa/${flagName}.png`;
-        flagImage.setAttribute("src", newFlagSrc);
-    }
-</script>
