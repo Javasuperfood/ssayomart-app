@@ -30,9 +30,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                     <div class="card-footer bg-white d-flex justify-content-between">
                                         <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
-                                            <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0">Ubah</a>
+                                            <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0"><?= lang('Text.btn_ubah') ?></a>
                                             <?= csrf_field(); ?>
-                                            <button type="submit" class="btn border-0 text-danger m-0">Hapus</button>
+                                            <button type="submit" class="btn border-0 text-danger m-0"><?= lang('Text.btn_hapus') ?></button>
                                         </form>
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php if (empty($alamat_user_model)) : ?>
                 <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
                 <div class="alert alert-warning" role="alert">
-                    Anda belum memiliki alamat.
+                    <?= lang('Text.alert_alamat') ?>
                 </div>
 
                 <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
@@ -62,7 +62,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <nav aria-label="breadcrumb" class="rounded-3 p-2">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <h2 class="mb-0"><?= $title; ?> List</h2>
+                                <h2 class="mb-0"><?= lang('Text.title_alamat') ?></h2>
                                 <hr class="text-danger">
                             </li>
                         </ol>
@@ -84,9 +84,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                         <div class="card-footer bg-white d-flex justify-content-between">
                                             <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
-                                                <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0">Ubah</a>
+                                                <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0"><?= lang('Text.btn_ubah') ?></a>
                                                 <?= csrf_field(); ?>
-                                                <button type="submit" class="btn border-0 text-danger m-0">Hapus</button>
+                                                <button type="submit" class="btn border-0 text-danger m-0"><?= lang('Text.btn_hapus') ?></button>
                                             </form>
                                         </div>
                                     </div>
@@ -99,7 +99,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row p-4 px-4">
                 <div class="col-12 d-flex justify-content-center">
                     <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg">
-                        <i class="bi bi-plus fw-bold">Tambahkan Alamat</i>
+                        <i class="bi bi-plus fw-bold"><?= lang('Text.btn_tambah') ?></i>
                     </a>
                 </div>
             </div>

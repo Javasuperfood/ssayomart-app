@@ -42,31 +42,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php if ($t->id_status_pesan == 1) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                     <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">
-                                                        Transaksi tertunda
+                                                        <?= lang('Text.transaksi_1') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 2) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">
-                                                        Detail (diproses)
+                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-warning">
+                                                        <?= lang('Text.transaksi_2') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 3) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
-                                                        Detail (dikirm)
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">
+                                                        <?= lang('Text.transaksi_3') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 4) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
-                                                        Detail (selesai)
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">
+                                                        <?= lang('Text.transaksi_4') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 5) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                     <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
-                                                        Detail (gagal)
+                                                        <?= lang('Text.transaksi_5') ?>
                                                     </a>
                                                 </div>
                                             <?php else : ?>
@@ -76,7 +76,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php endif ?>
                                         <?php else : ?>
                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger"> Lanjutkan Pemeblian</a>
+                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-primary"> <?= lang('Text.transaksi_6') ?></a>
                                             </div>
                                         <?php endif ?>
                                     </div>
@@ -130,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <h2><i class="bi bi-clock-history"></i> History</h2>
+                                <h2><i class="bi bi-clock-history"></i> <?= lang('Text.title_history') ?></h2>
                             </li>
                         </ol>
                     </nav>
@@ -163,31 +163,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php if ($t->id_status_pesan == 1) : ?>
                                                 <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
                                                     <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">
-                                                        Transaksi tertunda
+                                                        <?= lang('Text.transaksi_1') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 2) : ?>
                                                 <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">
-                                                        Detail (diproses)
+                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-warning">
+                                                        <?= lang('Text.transaksi_2') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 3) : ?>
                                                 <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
-                                                        Detail (dikirm)
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">
+                                                        <?= lang('Text.transaksi_3') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 4) : ?>
                                                 <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
-                                                        Detail (selesai)
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">
+                                                        <?= lang('Text.transaksi_4') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 5) : ?>
                                                 <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
                                                     <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
-                                                        Detail (gagal)
+                                                        <?= lang('Text.transaksi_5') ?>
                                                     </a>
                                                 </div>
                                             <?php else : ?>
@@ -197,7 +197,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php endif ?>
                                         <?php else : ?>
                                             <div class="col-2 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger"> Lanjutkan Pemeblian</a>
+                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-primary"> <?= lang('Text.transaksi_6') ?></a>
                                             </div>
                                         <?php endif; ?>
                                     </div>

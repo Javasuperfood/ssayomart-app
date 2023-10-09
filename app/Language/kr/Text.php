@@ -43,5 +43,37 @@ return [
     'email' => '이메일',
     'profil' => '프로필 사진',
     'btn_simpan' => '구하다',
-    'validasi' => '채워져야 한다'
+    'validasi' => '채워져야 한다',
+
+    // DETAIL ALAMAT
+    'btn_ubah' => '변화',
+    'btn_hapus' => '삭제',
+    'btn_tambah' => '새 주소 추가',
+    'alert_alamat' => '주소를 입력하지 않으셨습니다.',
+    // FORM TAMBAH ALAMAT
+    'title_alamat' => '배송 주소',
+    'subtitle_alamat' => '주소를 입력하세요',
+    'label_alamat' => '주소 라벨',
+    'no_telp_alamat' => '수신자 휴대폰 번호',
+    'nama_penerima' => '수신자 이름',
+    'provinsi' => '주',
+    'kab_kota' => '리젠시/시',
+    'detail_alamat' => '주소 세부정보',
+    'patokan_alamat' => '주소 표시',
+    'zipcode' => '우편 번호',
+    'optional' => '(선택 과목)',
+
+    // KERANJANG
+    'title_cart' => '쇼핑 카트',
+    'total_cart' => '총 결제금액',
+    'btn_checkout' => '점검',
+
+    // HISTORY
+    'title_history' => '거래 내역',
+    'transaksi_1' => '보류 중인 거래',
+    'transaksi_2' => '세부정보(처리 중)',
+    'transaksi_3' => '세부정보(전송됨)',
+    'transaksi_4' => '세부사항(완료)',
+    'transaksi_5' => '세부정보(실패)',
+    'transaksi_6' => '쇼핑을 계속',
 ];
