@@ -136,4 +136,8 @@ class ProdukModel extends Model
         $getProduk->limit($limit, $offset);
         return $getProduk->get()->getResultArray();
     }
+    public function adminProdukSearch($keyword)
+    {
+        return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', $keyword)->orLike('sku', $keyword);
+    }
 }

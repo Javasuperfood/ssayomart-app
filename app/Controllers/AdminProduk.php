@@ -23,10 +23,18 @@ class AdminProduk extends BaseController
         $variasiItemList = $variasiItemModel->getVariasiItem();
         $sub_kategori_list = $subKategoriModel->findAll();
         $kategori_list = $kategoriModel->findAll();
+        $perPage = 10;
 
         $currentPage = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
-        $perPage = 10;
-        $produk_list = $produkModel->paginate($perPage, 'produk');
+
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $produk = $produkModel->adminProdukSearch($keyword);
+        } else {
+            $produk = $produkModel;
+        }
+        $produk_list = $produk->paginate($perPage, 'produk');
+
         $data = [
             'title' => 'Daftar Produk',
             'produk_Model' => $produk_list,
