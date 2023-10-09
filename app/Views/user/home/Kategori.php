@@ -65,7 +65,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="card-body">
                                         <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos </p>
                                         <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="card-body">
                                         <p class="small" style="font-size: 12px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam temporibus cumque error doloribus unde mollitia in </p>
                                         <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="card-body">
                                         <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit eos culpa facere quibusdam earum eius qui ad quae, </p>
                                         <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="card-body">
                                         <p class="small" style="font-size: 12px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit dolor sit rerum quis! Minus reiciendis iste doloribus </p>
                                         <div class="d-flex justify-content-center">
-                                            <a href="#" class="btn btn-danger btn-sm">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
                                         <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3" alt="...">
+                                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
                                             </a>
                                             <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
                                                 <h1 class="text-secondary" style="font-size: 15px;">
@@ -206,9 +206,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php endif ?>
                                                 </h1>
                                                 <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-                                                <p class=" text-center">
-                                                    <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn text-danger "> <i class="bi bi-cart-fill fs-4"></i></a>
+
+
+                                                <div class="container pt-3">
+                                                    <div class="row justify-items-center">
+                                                        <div class="col">
+                                                            <div class="horizontal-counter">
+                                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount()"><i class="bi bi-dash"></i></button>
+                                                                <input type="text" id="counter" class="form-control form-control-sm border-0" value="0" readonly>
+                                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount()"><i class="bi bi-plus"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <p class="text-center custom-button " style="display: flex; justify-content: center;">
+                                                    <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-danger mt-4">
+                                                        <i class="bi bi-cart-plus"></i>
+                                                    </a>
+                                                    <button type="submit" class="btn btn-danger   mx-1 mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">
+                                                        Beli
+                                                    </button>
                                                 </p>
+
                                             </div>
                                         </div>
                                     </div>
@@ -220,7 +242,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
 
-                <!-- rekomendasi -->
+                <!-- rekomendasi title -->
                 <div class="container py-3">
                     <div class="card bg-danger border-0 text-center font-family-poppins">
                         <div class="card-danger">
@@ -228,7 +250,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-                <!-- end rekomendasi -->
+                <!-- end rekomendasi title-->
                 <!-- card rekomendasi -->
                 <div class="container mb-3 mt-3">
                     <div class="row">
@@ -247,7 +269,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
                                                     </div>
                                                     <div class="d-flex pt-1">
-                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,7 +290,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
                                                     </div>
                                                     <div class="d-flex pt-1">
-                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -289,7 +311,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
                                                     </div>
                                                     <div class="d-flex pt-1">
-                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -310,7 +332,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
                                                     </div>
                                                     <div class="d-flex pt-1">
-                                                        <a href="#" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle-fill"></i></a>
+                                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -321,7 +343,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-                <!-- end -->
+                <!-- end card rekomendasi-->
                 <div class="container py-3">
                     <div class="card bg-success border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
                         <div class="card-success">
@@ -346,6 +368,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </section>
         <!-- swipper card  tampilan web-->
     </div>
+
+
 <?php endif; ?>
 <!-- End Desktop View -->
 
@@ -376,7 +400,45 @@ if ($isMobile) {
         height: 200px;
 
     }
+
+    .horizontal-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .horizontal-counter .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 12px;
+    }
+
+    .horizontal-counter input {
+        width: 40px;
+        text-align: center;
+    }
+
+
+
+    /* Media query for Samsung Galaxy Fold */
+    @media (max-width: 280px) {
+        .horizontal-counter .btn {
+            padding: 0.15rem 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .horizontal-counter input {
+            width: 30px;
+            text-align: center;
+        }
+
+        .custom-button .btn {
+            padding: 0.15rem 0.3rem;
+            font-size: 0.9rem;
+
+        }
+    }
 </style>
+
 
 
 
