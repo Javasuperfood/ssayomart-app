@@ -15,20 +15,17 @@ class Banner extends Seeder
             ],
             [
                 'title' => 'Banner 2',
-                'img'    => 'banner-2.jpg',
+                'img'    => 'banner-2.png',
             ],
             [
                 'title' => 'Banner 3',
-                'img'    => 'banner-3.jpg',
+                'img'    => 'banner-3.png',
             ],
             [
                 'title' => 'Banner 4',
-                'img'    => 'banner-4.jpg',
-            ],
-            [
-                'title' => 'Banner 5',
-                'img'    => 'banner-5.jpg',
+                'img'    => 'banner-4.png',
             ]
+
         ];
 
         $this->db->table('jsf_banner')->insertBatch($data);
