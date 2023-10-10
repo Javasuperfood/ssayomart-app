@@ -64,7 +64,7 @@ var swiper = new Swiper(".mySwiper", {
     breakpoints: {
 
       375: {
-        slidesPerView: 1, // 2 card per tampilan
+        slidesPerView: 2, // 2 card per tampilan
       },
     },
   

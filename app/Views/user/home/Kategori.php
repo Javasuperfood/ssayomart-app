@@ -20,13 +20,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row my-1">
                     <div class="col">
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($promo as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                                        <div class="text-bg-light mb-3 bg-white border-0">
+                                        <div class="text-bg-light mb-1 bg-white border-0">
                                             <div class="px-1 py-1 mx-1 my-1">
                                                 <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
                                                     <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
@@ -52,81 +52,74 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- end rekomendasi -->
 
         <!-- card rekomendasi swiper -->
-        <div class="container">
+        <div class="container my-2">
             <div class="swiper mySweety">
                 <div class="swiper-wrapper d-flex">
                     <div class="swiper-slide">
                         <div class="card border-0 shadow-sm mx-1">
-                            <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-6">
-                                    <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
-                                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="position-relative">
+                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
+                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
+                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="swiper-slide">
                         <div class="card border-0 shadow-sm mx-1">
-                            <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" class="card-img-top img-fluid" alt="">
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-6">
-                                    <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
-                                        </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="position-relative">
+                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
+                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
+                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                     <div class="swiper-slide">
                         <div class="card border-0 shadow-sm mx-1">
-                            <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" class="card-img-top img-fluid" alt="">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="position-relative">
+                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
+                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
+                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
+                                        </a>
+
+                                    </div>
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-6">
-                                    <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
-                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card border-0 shadow-sm mx-1">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="position-relative">
+                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
+                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
+                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
+                                        </a>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="swiper-slide">
-                        <div class="card border-0 shadow-sm mx-1">
-                            <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/promo/promo-4.jpg" class="card-img-top img-fluid" alt="">
-                                </div>
-                                <div class="col-md-6 col-sm-6 col-6">
-                                    <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
-                                        <div class="d-flex justify-content-center">
-                                            <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
+
+
 
                 </div>
             </div>
@@ -421,6 +414,8 @@ if ($isMobile) {
         width: 40px;
         text-align: center;
     }
+
+
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
