@@ -92,7 +92,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="container mb-3">
                             <div class="row justify-content-center mt-4">
                                 <div class="text-center"> <!-- Tambahkan class text-center untuk membuatnya berada di tengah horizontal -->
-                                    <p class="mb-3 fw-bold">Ikuti Kami :</p>
+                                    <p class="mb-3 fw-bold"><?= lang('Text.ikuti_kami') ?> :</p>
                                     <div class="social-links d-flex justify-content-center">
                                         <a href="#" class="youtube btn btn-danger mx-2 rounded-circle"><i class="bi bi-youtube"></i></a>
                                         <a href="#" class="facebook btn btn-danger mx-2 rounded-circle"><i class="bi bi-facebook"></i></a>
