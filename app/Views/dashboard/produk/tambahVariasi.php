@@ -15,7 +15,7 @@
                 <form action="<?= base_url(); ?>dashboard/produk/tambah-variasi/save" onsubmit="return validasiVariasi()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
-                        <label for="value" class="form-label text-dark">Nama Variasi <span class="text-danger">(Cth : Gramasi, Rasa, dan lain-lain)</span></label>
+                        <label for="value" class="form-label text-dark">Nama Variasi <span class="text-danger">(contoh : Rasa, dan lain-lain)</span></label>
                         <input type="text" class="form-control border-0 shadow-sm" id="value" name="nama_varian" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
                         <span id="variasiError" class="text-danger"></span>
                     </div>
