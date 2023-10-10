@@ -91,7 +91,7 @@ class Kategori extends Seeder
                 'nama_kategori' => 'Minyak',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'minyak',
-                'img'    => 'ICON CATEGORY-12.png',
+                'img'    => 'ICON-CATEGORY-12.png',
             ],
             [
                 'id_kategori' => 13,
