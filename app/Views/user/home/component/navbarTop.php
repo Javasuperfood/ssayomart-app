@@ -112,7 +112,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                                         <?php if (auth()->user()->inGroup('superadmin', 'admin')) : ?>
                                             <li>
-                                                <a class="dropdown-item" href="<?= base_url(); ?>/dashboard"><?= lang('Text.dashboard') ?></a>
+                                                <a class="dropdown-item" href="<?= base_url(); ?>dashboard"><?= lang('Text.dashboard') ?></a>
                                             </li>
                                         <?php endif; ?>
                                         <li>
