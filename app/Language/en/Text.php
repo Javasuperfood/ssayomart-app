@@ -15,6 +15,7 @@ return [
     'jadwal_pelayanan' => 'Monday-Saturday',
     'jadwal_pelayanan_2' => 'Sunday : Closed',
     'rekomendasi' => 'Our Recommendation',
+    'dashboard' => 'Dashboard',
 
     // SETTING PAGE
     'setting' => 'Setting',
@@ -32,6 +33,7 @@ return [
     'isi_kupon' => 'For New Ssayomart Users',
     'alert' => 'Sorry, your area is not yet covered by our services.',
     'alert_btn' => 'Send Message',
+    'ikuti_kami' => 'Follow Us',
 
     // DETAIL USER
     'title' => 'User Detail',

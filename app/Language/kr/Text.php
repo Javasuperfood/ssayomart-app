@@ -16,6 +16,7 @@ return [
     'jadwal_pelayanan' => '월요일~토요일',
     'jadwal_pelayanan_2' => '일요일 : 휴무',
     'rekomendasi' => '우리의 추천',
+    'dashboard' => '계기반',
 
     // SETTING PAGE
     'setting' => '환경',
@@ -33,6 +34,7 @@ return [
     'isi_kupon' => '싸요마트 신규유저를 위한',
     'alert' => '죄송합니다. 귀하의 지역은 아직 당사 서비스를 이용할 수 없습니다.',
     'alert_btn' => '문자 보내',
+    'ikuti_kami' => '이쿠티 카미',
 
     // DETAIL USER
     'title' => '사용자 세부정보',

@@ -80,7 +80,7 @@
             </div>
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga Produk</label>
-                <input type="price" class="form-control border-0 shadow-sm" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>">
+                <input type="price" class="form-control border-0 shadow-sm" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
                 <span id="hargaError" class="text-danger"></span>
             </div>
             <button type="submit" class="btn btn-danger">Simpan</button>

@@ -138,6 +138,6 @@ class ProdukModel extends Model
     }
     public function adminProdukSearch($keyword)
     {
-        return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', $keyword)->orLike('sku', $keyword);
+        return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', $keyword);
     }
 }

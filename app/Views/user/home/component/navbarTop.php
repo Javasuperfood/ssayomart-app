@@ -110,6 +110,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <i class="bi bi-person-circle fs-4 text-white"></i>
                                     </a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                        <?php if (auth()->user()->inGroup('superadmin', 'admin')) : ?>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= base_url(); ?>dashboard"><?= lang('Text.dashboard') ?></a>
+                                            </li>
+                                        <?php endif; ?>
                                         <li>
                                             <a class="dropdown-item" href="<?= base_url(); ?>setting"><?= lang('Text.setting') ?></a>
                                         </li>
@@ -122,6 +127,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <li>
                                             <a class="dropdown-item" href="<?= base_url(); ?>logout"><?= lang('Text.logout') ?></a>
                                         </li>
+
+
+
                                     </ul>
                                 </li>
                             <?php else : ?>
