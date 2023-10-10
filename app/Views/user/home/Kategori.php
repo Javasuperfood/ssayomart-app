@@ -52,18 +52,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- end rekomendasi -->
 
         <!-- card rekomendasi swiper -->
-        <div class="container mb-3 mt-3">
+        <div class="container">
             <div class="swiper mySweety">
                 <div class="swiper-wrapper d-flex">
                     <div class="swiper-slide">
                         <div class="card border-0 shadow-sm mx-1">
                             <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6">
+                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
                                     <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-6">
                                     <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos </p>
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
                                         <div class="d-flex justify-content-center">
                                             <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
@@ -72,15 +72,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
+
                     <div class="swiper-slide">
                         <div class="card border-0 shadow-sm mx-1">
                             <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6">
+                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
                                     <img src="<?= base_url() ?>assets/img/promo/promo-2.png" class="card-img-top img-fluid" alt="">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-6">
                                     <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam temporibus cumque error doloribus unde mollitia in </p>
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
                                         <div class="d-flex justify-content-center">
                                             <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
@@ -88,16 +89,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
+
                     </div>
+
                     <div class="swiper-slide">
                         <div class="card border-0 shadow-sm mx-1">
                             <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6">
+                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
                                     <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" class="card-img-top img-fluid" alt="">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-6">
                                     <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit eos culpa facere quibusdam earum eius qui ad quae, </p>
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
                                         <div class="d-flex justify-content-center">
                                             <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
@@ -106,15 +109,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
+
                     <div class="swiper-slide">
                         <div class="card border-0 shadow-sm mx-1">
                             <div class="row g-0">
-                                <div class="col-md-6 col-sm-6 col-6">
+                                <div class="col-md-6 col-sm-6 col-6 d-flex align-items-center">
                                     <img src="<?= base_url() ?>assets/img/promo/promo-4.jpg" class="card-img-top img-fluid" alt="">
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-6">
                                     <div class="card-body">
-                                        <p class="small" style="font-size: 12px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit dolor sit rerum quis! Minus reiciendis iste doloribus </p>
+                                        <p class="small" style="font-size: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores illo natus mollitia labore adipisci dignissimos</p>
                                         <div class="d-flex justify-content-center">
                                             <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
                                         </div>
@@ -123,6 +127,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
