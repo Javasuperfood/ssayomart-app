@@ -18,7 +18,12 @@
         </a>
     </div>
     <div class="col text-end">
-
+        <form action="<?= base_url('dashboard/produk'); ?>" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="search (nama produk)" aria-label="search" name="search" aria-describedby="search">
+                <button class="btn btn-outline-danger" type="submit" id="search">Search</button>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -27,14 +32,6 @@
         <h6 class="m-0 font-weight-bold text-danger">List Produk</h6>
     </div>
     <div class="card-body ">
-        <div class="row">
-            <div class="col">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="search" name="search" placeholder="">
-                    <label for="search">Search (nama, sku)</label>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col">
                 <div class="table-responsive">
