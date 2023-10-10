@@ -15,6 +15,7 @@ return [
     'jadwal_pelayanan' => 'Senin-Sabtu',
     'jadwal_pelayanan_2' => 'Minggu : Tutup',
     'rekomendasi' => 'Rekomendasi Kami',
+    'dashboard' => 'Administrator',
 
     // SETTING PAGE
     'setting' => 'Sunting',
@@ -32,6 +33,7 @@ return [
     'isi_kupon' => 'Untuk pengguna baru Ssayomart',
     'alert' => 'Mohon maaf area anda belum terjangkau oleh pelayanan kami.',
     'alert_btn' => 'Kirim Pesan',
+    'ikuti_kami' => 'Ikuti Kami',
 
     // DETAIL USER
     'title' => 'Detail Pengguna',

@@ -122,6 +122,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <li>
                                             <a class="dropdown-item" href="<?= base_url(); ?>logout"><?= lang('Text.logout') ?></a>
                                         </li>
+                                        <?php if (auth()->user()->inGroup('superadmin', 'admin')) : ?>
+                                            <li>
+                                                <a class="dropdown-item" href="<?= base_url(); ?>/dashboard"><?= lang('Text.dashboard') ?></a>
+                                            </li>
+                                        <?php endif; ?>
+
+
                                     </ul>
                                 </li>
                             <?php else : ?>
