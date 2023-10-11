@@ -4,12 +4,14 @@
 
 <h1 class="h3 mb-2 text-gray-800">Kategori Produk</h1>
 <ul class="breadcrumb bg-light">
-    <li class="breadcrumb-item text-danger active">List Kategori</li>
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a></li>
+    <li class="breadcrumb-item text-danger active">Dashboard</li>
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">Kategori</a></li>
 </ul>
 <div class="row">
     <div class="col mb-3">
         <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
+        </a>
+        <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah urutan kategori
         </a>
         <div class="card border-0 shadow-sm position-relative">
             <div class="card-header border-0 py-3">

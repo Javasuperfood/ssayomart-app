@@ -17,7 +17,8 @@ class KategoriModel extends Model
         'nama_kategori',
         'deskripsi',
         'slug',
-        'img'
+        'img',
+        'short'
     ];
 
     // Dates
