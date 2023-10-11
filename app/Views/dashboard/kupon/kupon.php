@@ -8,7 +8,7 @@
     <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon">Tambah Kupon</a></li>
 </ul>
 
-<a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon">Tambah kupon</a>
+<a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon"><i class="bi bi-plus-circle-fill"></i> Tambah kupon</a>
 
 <!-- DataTales Example -->
 <div class="card border-0 shadow-sm mb-4">

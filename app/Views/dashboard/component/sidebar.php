@@ -112,8 +112,8 @@
     <!-- blog -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog" aria-expanded="true" aria-controls="collapseBlog">
-            <i class="bi bi-window-stack"></i>
-            <span>Blog-site Page</span>
+            <i class="bi bi-newspaper"></i>
+            <span>Konten Menu</span>
         </a>
         <div id="collapseBlog" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

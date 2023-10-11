@@ -7,6 +7,8 @@
     <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/blog/tambah-konten">Buat Artikel/Blog</a></li>
 </ul>
 <p class="mb-4">Anda dapat mengatur konten artikel/blog informasi, produk, resep, dan media yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.</p>
+<a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/blog/tambah-konten"><i class="bi bi-plus-circle-fill"></i> Tambah Konten</a>
+
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header border-0 py-3">
         <h6 class="m-0 font-weight-bold text-danger">Konten Blog Site</h6>
@@ -59,6 +61,7 @@
                                         <div class="dropdown-divider"></div>
                                         <form action="<?= base_url() ?>dashboard/blog/delete-konten/<?= $bm['id_blog'] ?>" method="post">
                                             <?= csrf_field() ?>
+                                            <input type="hidden" name="pager" value="<?= (isset($_GET['page_konten']) ? $_GET['page_konten'] : '1'); ?>">
                                             <button type="submit" class="dropdown-item">
                                                 <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                                 <span class="text-danger">Delete</span>
