@@ -136,6 +136,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('produk/detail-varian/delete-varian/(:segment)', 'AdminVariasiController::deleteVarianItem/$1');
 
     $routes->get('produk/tambah-produk', 'AdminProduk::tambahProduk');
+    $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
 
     $routes->get('produk/tambah-variasi', 'AdminVariasiController::tambahVariasi');
     $routes->post('produk/tambah-variasi/save', 'AdminVariasiController::saveVariasi');
@@ -143,10 +144,9 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/tambah-variasi/update-variasi/(:segment)', 'AdminVariasiController::updateVariasi/$1');
     $routes->post('produk/tambah-variasi/edit-variasi/(:segment)', 'AdminVariasiController::editVariasi/$1');
 
-    $routes->post('produk/tambah-produk/save', 'AdminProduk::save');
     $routes->post('produk/tambah-produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
-    $routes->get('produk/tambah-produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
-    $routes->post('produk/tambah-produk/edit-produk/(:segment)', 'AdminProduk::editProduk/$1');
+    $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
+    $routes->post('produk/update-produk/save', 'AdminProduk::saveUpdateProduk');
 
     // Crud Kupon
     $routes->get('kupon/tambah-kupon', 'AdminKupon::tambahKupon');

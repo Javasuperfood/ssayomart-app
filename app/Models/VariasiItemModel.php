@@ -25,11 +25,34 @@ class VariasiItemModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [
-        'id_produk' => 'required',
-        'value_item' => 'required',
-        'harga_item' => 'required|numeric',
-        'berat' => 'required|numeric'
+    protected $validationRules = [
+        'id_variasi' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Variasi wajib diisi.',
+                'numeric' => 'Variasi wajib dipilih.',
+            ],
+        ],
+        'value_item' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Tampilan Varian wajib diisi.',
+            ],
+        ],
+        'harga_item' => [
+            'rules'  => 'required|numeric',
+            'errors' => [
+                'required' => 'Harga wajib diisi.',
+                'numeric' => 'Harga wajib diisi dengan nomor.',
+            ],
+        ],
+        'berat' => [
+            'rules'  => 'required|numeric',
+            'errors' => [
+                'required' => 'Gramasi wajib diisi.',
+                'numeric' => 'Gramasi wajib diisi dengan nomor.',
+            ],
+        ],
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

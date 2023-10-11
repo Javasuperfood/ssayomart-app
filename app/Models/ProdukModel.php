@@ -35,18 +35,35 @@ class ProdukModel extends Model
 
     // Validation
     protected $validationRules = [
-        'nama' => 'required',
-        'slug'    => 'required|is_unique[jsf_produk.slug]',
-        'sku'    => 'required',
-        'deskripsi'    => 'required',
+        'nama' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama produk wajib diisi.',
+            ],
+        ],
+        'sku'    => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'SKU wajib diisi.',
+            ],
+        ],
+        'deskripsi'    => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Deskripsi wajib diisi.',
+            ],
+        ],
     ];
     protected $validationMessages   = [
+        'nama' => [
+            'required' => 'Nama produk wajib diisi.',
+        ],
         'sku' => [
-            'errors' => [
-                'is_unique' => '{field} SKU sudah terdaftar.',
-                'required' => '{field} buku harus diisi.',
-            ]
-        ]
+            'required' => 'SKU wajib diisi.',
+        ],
+        'deskripsi' => [
+            'required' => 'Deskripsi wajib diisi.',
+        ],
     ];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

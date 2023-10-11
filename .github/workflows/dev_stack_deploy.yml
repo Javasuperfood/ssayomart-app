@@ -22,6 +22,7 @@ jobs:
             eval $(ssh-agent)
             ssh-add ${{ secrets.DEV_SSH_PATH }}
             cd ${{ secrets.DEV_PATH }}
+            git checkout -- composer.lock
             git pull
             git status
             cp -rf ~/${{ secrets.DEV_PATH }}/public/assets/* ~/public_html/public-dev.ssayomart.com/assets/

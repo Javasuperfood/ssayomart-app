@@ -42,7 +42,7 @@ abstract class BaseController extends Controller
      * The creation of dynamic property is deprecated in PHP 8.2.
      */
     // protected $session;
-    protected $session;
+    protected $session, $validation;
     /**
      * @return void
      */
@@ -56,6 +56,7 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
         session();
         $this->session = \Config\Services::session();
+        $this->validation = \Config\Services::validation();
         $language = \Config\Services::language();
         $language->setLocale($this->session->lang);
     }

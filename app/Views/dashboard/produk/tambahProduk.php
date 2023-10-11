@@ -16,22 +16,22 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/produk/tambah-produk/save" onsubmit="return validasiTambahProduk()" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>dashboard/produk/tambah-produk/save" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Produk</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= old('nama') ?>">
-                <span id="produkError" class="text-danger"></span>
+                <input type="text" class="form-control shadow-sm <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-0'; ?>" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= old('nama') ?>">
+                <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
             </div>
             <div class="mb-3">
                 <label for="sku" class="form-label">Stock Keeping Unit (SKU)</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
-                <span id="skuError" class="text-danger"></span>
+                <input type="text" class="form-control shadow-sm <?= (validation_show_error('sku')) ? 'is-invalid' : 'border-0'; ?>" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
+                <div class="invalid-feedback"><?= validation_show_error('sku'); ?></div>
             </div>
             <div class="mb-3">
                 <label for="deskripsi">Deskripsi Produk</label>
-                <textarea class="form-control border-0 shadow-sm" id="deskripsi" name="deskripsi" placeholder="Deskripsi Produk Anda .." value="<?= old('deskripsi') ?>"></textarea>
-                <span id="deskripsiError" class="text-danger"></span>
+                <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="deskripsi" name="deskripsi" placeholder="Deskripsi Produk Anda .." value="<?= old('deskripsi') ?>"></textarea>
+                <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
             <div class="mb-3">
                 <label for="parent_kategori_id">Kategori Induk</label>
@@ -52,36 +52,36 @@
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Gambar/Foto Produk</label>
-                <input type="file" style="border: none;" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar Produk">
-                <span id="imgError" class="text-danger"></span>
+                <input type="file" accept="image/*" style="border: none;" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar Produk">
             </div>
             <div class="mb-3">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="selectVariant">Pilih Variant</label>
                         <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
-                            <option selected>Pilih</option>
+                            <option value="">Pilih</option>
                             <?php foreach ($variasi as $v) : ?>
-                                <option value="<?= $v['id_variasi']; ?>"><?= $v['nama_varian']; ?></option>
+                                <option value="<?= $v['id_variasi']; ?>" <?= (old('selectVariant') == $v['id_variasi']) ? 'selected' : ''; ?>><?= $v['nama_varian']; ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="valueVariant">Value Variant (e.g : ayam, sapi or 500 Garm 1Kg)</label>
-                        <input type="text" id="valueItem" name="valueItem" class="form-control border-0 shadow-sm" placeholder="Value Varian">
+                        <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
+                        <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian">
+                        <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                     </div>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label for="berat" class="form-label">Berat Produk (* Harus Dalam Satuan Gram e.g : 1kg = 1000)</label>
-                <input type="price" class="form-control border-0 shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
-                <span id="beratError" class="text-danger"></span>
+                <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
+                <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
             </div>
             <div class="mb-3">
                 <label for="harga" class="form-label">Harga Produk</label>
-                <input type="price" class="form-control border-0 shadow-sm" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
-                <span id="hargaError" class="text-danger"></span>
+                <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
+                <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
             </div>
             <button type="submit" class="btn btn-danger">Simpan</button>
         </form>
@@ -125,79 +125,6 @@
     });
 
     //Validasi Form
-    function validasiTambahProduk() {
-        var isValid = true;
-
-        var namaProdukField = document.getElementById('nama');
-        var skuField = document.getElementById('sku');
-        var hargaField = document.getElementById('harga');
-        var imgField = document.getElementById('img');
-        var deskripsiField = document.getElementById('deskripsi');
-        var kategoriField = document.getElementById('parent_kategori_id');
-
-        var namaProdukError = document.getElementById('produkError');
-        var skuError = document.getElementById('skuError');
-        var hargaError = document.getElementById('hargaError');
-        var imgError = document.getElementById('imgError');
-        var deskripsiError = document.getElementById('deskripsiError');
-        var kategoriError = document.getElementById('kategoriError');
-
-        namaProdukError.textContent = '';
-        skuError.textContent = '';
-        hargaError.textContent = '';
-        imgError.textContent = '';
-        deskripsiError.textContent = '';
-        kategoriError.textContent = '';
-
-        if (namaProdukField.value.trim() === '') {
-            namaProdukField.classList.add('invalid-field');
-            namaProdukError.textContent = 'Nama Produk harus diisi';
-            isValid = false;
-        } else {
-            namaProdukField.classList.remove('invalid-field');
-        }
-
-        if (skuField.value.trim() === '') {
-            skuField.classList.add('invalid-field');
-            skuError.textContent = 'SKU harus diisi';
-            isValid = false;
-        } else {
-            skuField.classList.remove('invalid-field');
-        }
-
-        if (hargaField.value.trim() === '') {
-            hargaField.classList.add('invalid-field');
-            hargaError.textContent = 'Harga Produk harus diisi';
-            isValid = false;
-        } else {
-            hargaField.classList.remove('invalid-field');
-        }
-
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar Produk harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
-        }
-
-        if (deskripsiField.value.trim() === '') {
-            deskripsiField.classList.add('invalid-field');
-            deskripsiError.textContent = 'Deskripsi Produk harus diisi';
-            isValid = false;
-        } else {
-            deskripsiField.classList.remove('invalid-field');
-        }
-
-        if (kategoriField.value.trim() === '') {
-            kategoriField.classList.add('invalid-field');
-            kategoriError.textContent = 'Kategori Produk harus diisi';
-            isValid = false;
-        } else {
-            kategoriField.classList.remove('invalid-field');
-        }
-        return isValid;
-    }
 </script>
 
 <?= $this->endSection(); ?>

@@ -60,14 +60,14 @@ class AdminProduk extends BaseController
         $produk_list = $produkModel->findAll();
         $kategori_list = $kategoriModel->findAll();
         $sub_kategori_list = $subKategoriModel->findAll();
-
         $data = [
             'title' => 'produk',
             'produk_Model' => $produk_list,
             'kategori' => $kategori_list,
             'subKategori' => $sub_kategori_list,
             'variasi' => $variasList,
-            'variasiItem' => $variasiItemList
+            'variasiItem' => $variasiItemList,
+            'vali' => $produkModel->errors()
         ];
         // dd($data);
         return view('dashboard/produk/tambahProduk', $data);
@@ -75,8 +75,6 @@ class AdminProduk extends BaseController
     // save produk
     public function save()
     {
-        // ambil gambar
-        // dd($this->request->getVar());
         $produkModel = new ProdukModel();
         $variasItemiModel = new VariasiItemModel();
         $fotoProduk = $this->request->getFile('img');
@@ -100,15 +98,55 @@ class AdminProduk extends BaseController
             'id_kategori' => $this->request->getVar('parent_kategori_id'),
             'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
-        $produk = $produkModel->insert($data);
+        $id_varian = $this->request->getVar('selectVariant');
+        if ($id_varian != '') {
+            $id_varian = $id_varian;
+        } else {
+            $id_varian = null;
+        }
         $data2 = [
-            'id_variasi' => $this->request->getVar('selectVariant'),
+            'id_variasi' => $id_varian,
+            'value_item' => $this->request->getVar('valueItem'),
+            'harga_item' => $this->request->getVar('harga'),
+            'berat' => $this->request->getVar('berat'),
+        ];
+
+        $ruleData = [
+            'nama' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Nama produk wajib diisi.',
+                ],
+            ],
+            'sku'    => [
+                'rules'  => 'required|is_unique[jsf_produk.sku]',
+                'errors' => [
+                    'required' => 'SKU wajib diisi.',
+                    'is_unique' => 'SKU wajib unik, tidak boleh sama dengan peroduk yang sudah dimasukan.'
+                ],
+            ],
+            'deskripsi'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Deskripsi wajib diisi.',
+                ],
+            ]
+        ];
+        if (!$this->validateData($data, $ruleData) || !$this->validateData($data2, $variasItemiModel->validationRules)) {
+            return redirect()->to('dashboard/produk/tambah-produk')->withInput();
+        }
+
+
+        $produk = $produkModel->insert($data);
+        // if validate success replace data2
+        $data2 = [
+            'id_variasi' => $id_varian,
             'id_produk' => $produk,
             'value_item' => $this->request->getVar('valueItem'),
             'harga_item' => $this->request->getVar('harga'),
             'berat' => $this->request->getVar('berat'),
-
         ];
+
         $varian = $variasItemiModel->insert($data2);
 
         // swet alert
@@ -139,18 +177,23 @@ class AdminProduk extends BaseController
 
         $produkModel = new ProdukModel();
 
-        $km = $produkModel->find($id);
+        $produk = $produkModel->find($id);
         $data = [
             'title' => 'Edit Produk',
-            'km' => $km,
+            'p' => $produk,
         ];
+        // dd($data);
         return view('dashboard/produk/updateProduk', $data);
     }
-    public function editProduk($id)
+    public function saveUpdateProduk()
     {
+        // dd($this->request->getVar());
+        $id = $this->request->getVar('id_produk');
         $produkModel = new ProdukModel();
         $image = $this->request->getFile('img');
-
+        if (!$this->validate($produkModel->validationRules)) {
+            return redirect()->to('dashboard/produk/update-produk/' . $id)->withInput();
+        }
         if ($image->getError() == 4) {
             $namaProdukImage = $this->request->getVar('imageLama');
         } else {
@@ -169,15 +212,14 @@ class AdminProduk extends BaseController
         }
 
         $data = [
-            'id_produk' => $id,
+            'slug' => $this->request->getVar('slug'),
             'nama' => $this->request->getVar('nama'),
             'sku' => $this->request->getVar('sku'),
-            'harga' => $this->request->getVar('harga'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaProdukImage
         ];
         // dd($data);
-        if ($produkModel->save($data)) {
+        if ($produkModel->update($id, $data)) {
             session()->setFlashdata('success', 'Produk berhasil diubah.');
             $alert = [
                 'type' => 'success',
@@ -195,7 +237,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/produk/tambah-produk/update-produk/' . $id)->withInput();
+            return redirect()->to('dashboard/produk/update-produk/' . $id)->withInput();
         }
     }
 
