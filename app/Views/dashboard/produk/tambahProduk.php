@@ -67,14 +67,14 @@
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="valueVariant">Value Variant</label>
+                        <label for="valueVariant">Value Variant (e.g : ayam, sapi or 500 Garm 1Kg)</label>
                         <input type="text" id="valueItem" name="valueItem" class="form-control border-0 shadow-sm" placeholder="Value Varian">
                     </div>
                 </div>
             </div>
 
             <div class="mb-3">
-                <label for="berat" class="form-label">Berat Produk (*Satuan Gram)</label>
+                <label for="berat" class="form-label">Berat Produk (* Harus Dalam Satuan Gram e.g : 1kg = 1000)</label>
                 <input type="price" class="form-control border-0 shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
                 <span id="beratError" class="text-danger"></span>
             </div>

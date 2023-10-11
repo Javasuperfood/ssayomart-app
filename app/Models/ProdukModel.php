@@ -18,11 +18,12 @@ class ProdukModel extends Model
         'nama',
         'slug',
         'sku',
-        'harga',
         // 'stok',
         'deskripsi',
         'img',
+        'is_active',
         // 'id_sub_kategori',
+        'created_by'
     ];
 
     // Dates
@@ -37,12 +38,7 @@ class ProdukModel extends Model
         'nama' => 'required',
         'slug'    => 'required|is_unique[jsf_produk.slug]',
         'sku'    => 'required',
-        'harga'    => 'required',
-        // 'stok'    => 'required',
         'deskripsi'    => 'required',
-        'img'    => 'required',
-        // 'id_kategori' => 'required',
-        // 'id_sub_kategori' => 'required',
     ];
     protected $validationMessages   = [
         'sku' => [

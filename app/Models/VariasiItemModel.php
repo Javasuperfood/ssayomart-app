@@ -25,7 +25,12 @@ class VariasiItemModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules      = [
+        'id_produk' => 'required',
+        'value_item' => 'required',
+        'harga_item' => 'required|numeric',
+        'berat' => 'required|numeric'
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;

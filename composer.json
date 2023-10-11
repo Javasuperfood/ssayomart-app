@@ -38,7 +38,8 @@
     "scripts": {
         "test": "phpunit",
         "alamat": "php spark db:seed Alamat",
-        "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon"
+        "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon",
+        "ms2": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon"
     },
     "support": {
         "forum": "https://forum.codeigniter.com/",

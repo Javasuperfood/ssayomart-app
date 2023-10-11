@@ -21,11 +21,6 @@
                 <span id="skuError" class="text-danger"></span>
             </div>
             <div class="mb-3">
-                <label for="harga" class="form-label">Harga Produk</label>
-                <input type="price" class="form-control border-0 shadow-sm" id="harga" name="harga" value="<?= $km['harga'] ?>">
-                <span id="hargaError" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi Produk</label>
                 <input type="text" style="height: 100px;" class="form-control border-0 shadow-sm" id="deskripsi" name="deskripsi" value="<?= $km['deskripsi'] ?>">
                 <span id="deskripsiError" class="text-danger"></span>

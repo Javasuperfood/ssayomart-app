@@ -30,7 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </p>
                         </div>
                         <div class="col text-end">
-                            <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>">
+                            <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>">
                                 <i class="bi bi-heart-fill text-danger">
                                     <span class="text-secondary">Add to Wishlist</span>
                                 </i>
@@ -162,7 +162,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </p>
                         </div>
                         <div class="text mt-2">
-                            <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>" harga="<?= $produk['harga']; ?>">
+                            <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>">
                                 <i class="bi bi-heart-fill text-danger">
                                     <span class="text-secondary">Add to Wishlist</span>
                                 </i>
@@ -211,7 +211,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                 </a>
                                                 <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                                                    <h1 class="text-secondary" style="font-size: 15px;">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></h1>
+                                                    <h1 class="text-secondary" style="font-size: 15px;">
+                                                        <?php if ($p['harga_min'] == $p['harga_max']) : ?>
+                                                            Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
+                                                        <?php else : ?>
+                                                            <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
+                                                        <?php endif ?></h1>
                                                     <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
 
                                                     <div class="container pt-3">
