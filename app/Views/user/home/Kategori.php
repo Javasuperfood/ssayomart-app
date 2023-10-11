@@ -42,7 +42,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </section>
         <!-- rekomendasi -->
-        <div class="container">
+        <div class="container mb-1">
             <div class="card bg-danger border-0 text-center font-family-poppins">
                 <div class="card-danger">
                     <span class="card-title text-white fw-medium fs-3"><?= lang('Text.rekomendasi') ?></h2>
@@ -52,7 +52,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- end rekomendasi -->
 
         <!-- card rekomendasi swiper -->
-        <div class="container my-2">
+        <div class="container my-0">
             <div class="swiper mySweety">
                 <div class="swiper-wrapper d-flex">
                     <div class="swiper-slide">
@@ -60,11 +60,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="row">
                                 <div class="col">
                                     <div class="position-relative">
-                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
-                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
-                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
+                                        <img src="<?= base_url() ?>assets/img/recomend/TOKPOKKI.png" class="card-img-top img-fluid" alt="">
+                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
+                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
                                         </a>
-
                                     </div>
                                 </div>
                             </div>
@@ -75,11 +74,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="row">
                                 <div class="col">
                                     <div class="position-relative">
-                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
-                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
-                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
+                                        <img src="<?= base_url() ?>assets/img/recomend/RAMEN.png" class="card-img-top img-fluid" alt="">
+                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
+                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
                                         </a>
-
                                     </div>
                                 </div>
                             </div>
@@ -90,36 +88,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="row">
                                 <div class="col">
                                     <div class="position-relative">
-                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
-                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
-                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
+                                        <img src="<?= base_url() ?>assets/img/recomend/BULGOGI.png" class="card-img-top img-fluid" alt="">
+                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
+                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
                                         </a>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper-slide">
-                        <div class="card border-0 shadow-sm mx-1">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="position-relative">
-                                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="card-img-top img-fluid" alt="">
-                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="width: 150px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 15px;">
-                                            <span>Read More <i class="bi bi-arrow-right-circle fs-6"></i></span>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
 
                 </div>
             </div>
@@ -259,7 +236,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card-body p-4">
                                             <div class="d-flex text-black">
                                                 <div class="flex-shrink-0">
-                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                                    <img src="<?= base_url() ?>assets/img/recomend/BULGOGI.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
@@ -280,7 +257,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card-body p-4">
                                             <div class="d-flex text-black">
                                                 <div class="flex-shrink-0">
-                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                                    <img src="<?= base_url() ?>assets/img/recomend/RAMEN.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
@@ -301,7 +278,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card-body p-4">
                                             <div class="d-flex text-black">
                                                 <div class="flex-shrink-0">
-                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
+                                                    <img src="<?= base_url() ?>assets/img/recomend/TOKPOKKI.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
                                                 </div>
                                                 <div class="flex-grow-1 ms-3">
                                                     <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
@@ -317,26 +294,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
 
-                                <div class="swiper-slide">
-                                    <div class="card shadow-sm border-0" style="border-radius: 15px;">
-                                        <div class="card-body p-4">
-                                            <div class="d-flex text-black">
-                                                <div class="flex-shrink-0">
-                                                    <img src="<?= base_url() ?>assets/img/promo/promo-2.png" alt="Generic placeholder image" class="img-fluid" style="width: 180px; border-radius: 10px;">
-                                                </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                    <p class="mb-2 pb-1 fw-bold" style="color: #2b2a2a;">Lorem, ipsum.</p>
-                                                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2" style="background-color: #f5f5f5;">
-                                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid aut sapiente, quibusdam voluptate illo eligendi.
-                                                    </div>
-                                                    <div class="d-flex pt-1">
-                                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger fw-medium flex-grow-1">Read More <i class="bi bi-arrow-right-circle"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
