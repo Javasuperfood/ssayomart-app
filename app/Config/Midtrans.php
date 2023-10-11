@@ -15,13 +15,13 @@ class Midtrans
         $isP = getenv('MIDTRANS_MODE');
         if ($isP == 'production') {
             $this->isProduction = true;
-            $this->serverKey = 'Mid-server-PWlTJkfcIaFvU0ORyDf6iotw';
-            $this->clientKey = 'Mid-client-dP788ilpmad0y5Ym';
+            $this->serverKey = 'Mid-server-aLZoDj1cUy1D4vxBdOwA3E9e';
+            $this->clientKey = 'Mid-client-5aUc7KzYPl1l8Lpj';
             $this->urlMidtrans = 'https://app.midtrans.com/snap/snap.js';
         } elseif ($isP == 'development') {
             $this->isProduction = false;
-            $this->serverKey = 'SB-Mid-server-2sJrXZNs7zTkBie18S3xSGbZ';
-            $this->clientKey = 'SB-Mid-client-20YGLThZQ_ouzWxx';
+            $this->serverKey = 'SB-Mid-server-9ya8fzSZH6K-HJyvn5kmuG-8';
+            $this->clientKey = 'SB-Mid-client-T_uUJ6ot5ry3BrGh';
             $this->urlMidtrans = 'https://app.sandbox.midtrans.com/snap/snap.js';
         }
     }
