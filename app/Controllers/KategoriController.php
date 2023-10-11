@@ -57,7 +57,7 @@ class KategoriController extends BaseController
         $data = [
             'title' => 'Ssayomart',
             'promo' => $promoModel->getPromo($now),
-            'kategori' => $kategoriModel->findAll(),
+            'kategori' => $kategoriModel->orderBy('short', SORT_ASC)->findAll(),
             'banner' => $bannerModel->find(),
             'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
         ];

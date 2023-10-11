@@ -349,4 +349,34 @@ class AdminkategoriController extends BaseController
             return redirect()->to('dashboard/kategori')->withInput();
         }
     }
+    // =================================================================================================================
+    // CONTROLLER SUB KATEGORI
+    // =================================================================================================================
+    public function editKategoriShort()
+    {
+        $kategoriModel = new KategoriModel();
+
+        return view('dashboard/kategori/editShortKategori', ['kategori' => $kategoriModel->orderBy('short', SORT_ASC)->findAll()]);
+    }
+    public function saveKategoriShort()
+    {
+        $kategoriModel = new KategoriModel();
+        $item = $this->request->getVar('id_kategori');
+        $j = 1;
+        // dd($item);
+        foreach ($item as $i) {
+            $kategoriModel->save([
+                'id_kategori' => $i,
+                'short' => $j++
+            ]);
+        }
+
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Urutan Kategori berhasil di ubah.'
+        ];
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to('dashboard/kategori/shorting');
+    }
 }
