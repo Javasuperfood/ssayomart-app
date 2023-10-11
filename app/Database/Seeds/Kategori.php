@@ -127,55 +127,55 @@ class Kategori extends Seeder
 
         $data2 = [
             [
-                'id_kategori' => 2,
+                'id_kategori' => 8,
                 'nama_kategori' => 'MIE KOREA',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'mie-korea',
             ],
             [
-                'id_kategori' => 2,
+                'id_kategori' => 8,
                 'nama_kategori' => 'MIE INDONESIA',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'mie-indonesia',
             ],
             [
-                'id_kategori' => 2,
+                'id_kategori' => 8,
                 'nama_kategori' => 'MIE JEPANG',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'mie-jepang',
             ],
             [
-                'id_kategori' => 3,
+                'id_kategori' => 1,
                 'nama_kategori' => 'ACAR',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'acar',
             ],
             [
-                'id_kategori' => 3,
+                'id_kategori' => 1,
                 'nama_kategori' => 'KIMCHI',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'kimci',
             ],
             [
-                'id_kategori' => 4,
+                'id_kategori' => 2,
                 'nama_kategori' => 'NORI',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'nori',
             ],
             [
-                'id_kategori' => 4,
+                'id_kategori' => 2,
                 'nama_kategori' => 'SNACK KOREA',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'snack-korea',
             ],
             [
-                'id_kategori' => 5,
+                'id_kategori' => 3,
                 'nama_kategori' => 'SAYUR SEGAR',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'sayuran-segar',
             ],
             [
-                'id_kategori' => 5,
+                'id_kategori' => 3,
                 'nama_kategori' => 'SAYUR BEKU',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'sayuran-beku',
@@ -211,31 +211,31 @@ class Kategori extends Seeder
                 'slug'    => 'cumi',
             ],
             [
-                'id_kategori' => 7,
+                'id_kategori' => 5,
                 'nama_kategori' => 'SAPI',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'sapi',
             ],
             [
-                'id_kategori' => 7,
+                'id_kategori' => 5,
                 'nama_kategori' => 'AYAM',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'ayam',
             ],
             [
-                'id_kategori' => 7,
+                'id_kategori' => 5,
                 'nama_kategori' => 'BEBEK',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'bebek',
             ],
             [
-                'id_kategori' => 7,
+                'id_kategori' => 5,
                 'nama_kategori' => 'BABI',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'babi',
             ],
         ];
 
-        // $this->db->table('jsf_sub_kategori')->insertBatch($data2);
+        $this->db->table('jsf_sub_kategori')->insertBatch($data2);
     }
 }
