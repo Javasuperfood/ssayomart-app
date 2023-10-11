@@ -56,44 +56,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="swiper mySweety">
                 <div class="swiper-wrapper d-flex">
                     <div class="swiper-slide">
-                        <div class="card border-0 shadow-sm mx-1">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="position-relative">
-                                        <img src="<?= base_url() ?>assets/img/recomend/TOKPOKKI.png" class="card-img-top img-fluid" alt="">
-                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
-                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="position-relative">
+                                <img src="<?= base_url() ?>assets/img/recomend/TOKPOKKI.png" class="card-img-top img-fluid" alt="">
+                                <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
+                                    <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card border-0 shadow-sm mx-1">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="position-relative">
-                                        <img src="<?= base_url() ?>assets/img/recomend/RAMEN.png" class="card-img-top img-fluid" alt="">
-                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
-                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
+                        <div class="card border-0 shadow-sm ">
+                            <div class="position-relative">
+                                <img src="<?= base_url() ?>assets/img/recomend/RAMEN.png" class="card-img-top img-fluid" alt="">
+                                <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
+                                    <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="card border-0 shadow-sm mx-1">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="position-relative">
-                                        <img src="<?= base_url() ?>assets/img/recomend/BULGOGI.png" class="card-img-top img-fluid" alt="">
-                                        <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
-                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
+                        <div class="card border-0 shadow-sm">
+                            <div class="position-relative">
+                                <img src="<?= base_url() ?>assets/img/recomend/BULGOGI.png" class="card-img-top img-fluid" alt="">
+                                <a href="<?= base_url('blog'); ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 35px; width: 100px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
+                                    <span class="d-flex align-items-center" style="white-space: nowrap;"> Read More <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -102,6 +90,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <!-- end rekomendasi -->
+
+        <!-- All Kategori -->
         <div class="container py-1">
             <div class="card bg-success border-0 text-center font-family-poppins">
                 <div class="card-warning">
@@ -126,6 +116,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
+        <!-- All Kategori -->
     </div>
     <!-- End Mobile View -->
 <?php else : ?>
