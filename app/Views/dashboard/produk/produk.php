@@ -48,15 +48,13 @@
                                 </th>
                                 <th>Gambar</th>
                                 <th>Nama Produk</th>
-                                <th>Harga Produk</th>
                                 <th>Kategori/Subkategori</th>
-                                <!-- <th>Stock Produk</th> -->
                                 <th>Varian Produk</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($produk_Model as $km) : ?>
+                            <?php foreach ($produk as $km) : ?>
                                 <tr>
                                     <td>
                                         <div class="form-check">
@@ -70,12 +68,11 @@
                                         <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="50" height="50">
                                     </td>
                                     <td><?= $km['nama']; ?></td>
-                                    <td>Rp. <?= number_format($km['harga'], 0, ',', '.'); ?></td>
                                     <td>
                                         <?php
                                         $kategoriNama = '';
                                         $subKategoriNama = '';
-                                        foreach ($kategori_model as $k) {
+                                        foreach ($kategori as $k) {
                                             if ($k['id_kategori'] == $km['id_kategori']) {
                                                 $kategoriNama = $k['nama_kategori'];
                                                 if ($km['id_sub_kategori'] != null) {

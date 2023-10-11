@@ -92,7 +92,7 @@ class Produk extends Seeder
                 'nama' => 'Produk ' . $i,
                 'slug'    => url_title('Produk ' . $i, '-', true),
                 'sku'    => $faker->numberBetween(1000000, 9000000),
-                'harga'    => $harga[mt_rand(1, 3)],
+                // 'harga'    => $harga[mt_rand(1, 3)],
                 'deskripsi'    => $faker->paragraph(2),
                 'id_kategori' => $idK,
                 // 'id_sub_kategori' => $idS

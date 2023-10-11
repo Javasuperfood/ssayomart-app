@@ -34,11 +34,10 @@ class AdminProduk extends BaseController
             $produk = $produkModel;
         }
         $produk_list = $produk->paginate($perPage, 'produk');
-
         $data = [
             'title' => 'Daftar Produk',
-            'produk_Model' => $produk_list,
-            'kategori_model' => $kategori_list,
+            'produk' => $produk_list,
+            'kategori' => $kategori_list,
             'subKategori' => $sub_kategori_list,
             'variasi' => $variasList,
             'variasiItem' => $variasiItemList,
@@ -96,7 +95,6 @@ class AdminProduk extends BaseController
             'slug' => $slug,
             'nama' => $this->request->getVar('nama'),
             'sku' => $this->request->getVar('sku'),
-            'harga' => $this->request->getVar('harga'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaProduk,
             'id_kategori' => $this->request->getVar('parent_kategori_id'),
@@ -145,7 +143,6 @@ class AdminProduk extends BaseController
         $data = [
             'title' => 'Edit Produk',
             'km' => $km,
-            'back'  => 'dashboard/tambah-produk'
         ];
         return view('dashboard/produk/updateProduk', $data);
     }

@@ -60,7 +60,7 @@
     <!-- Input Produk Admin Produk -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="bi bi-box2-fill"></i>
             <span>Produk Menu</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -89,6 +89,7 @@
                 <h6 class="collapse-header text-danger">Kategori :</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah Urutan Kategori</a>
             </div>
         </div>
     </li>

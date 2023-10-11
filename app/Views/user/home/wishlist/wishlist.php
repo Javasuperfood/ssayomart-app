@@ -24,11 +24,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                             </a>
                             <div class="card-body">
-                                <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
-                                <p class="card-text text-secondary"><?= $p['nama']; ?></p>
-                                <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
-                                <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
-                                <input type="hidden" id="qty" name="qty" value="1">
+                                <p class="card-title">Rp. {harga}
                                 <div>
                                     <a href="<?= base_url('produk/' . $p['slug'] . '?add-to-cart=show'); ?>" class="btn btn-white text-danger border-danger mt-4"><i class=" bi bi-cart-fill"></i></a>
                                     <a href="<?= base_url('produk/' . $p['slug'] . '?buy=show'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</a>
@@ -70,11 +66,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                             </a>
                             <div class=" card-body text-center">
-                                <p class="card-title">Rp. <?= number_format($p['harga'], 0, ',', '.'); ?></p>
-                                <p class="card-text text-secondary"><?= $p['nama']; ?></p>
-                                <input type="hidden" name="id_produk" id="id_produk" value="<?= $p['id_produk']; ?>">
-                                <input type="hidden" name="harga" id="harga" value="<?= $p['harga']; ?>">
-                                <input type="hidden" id="qty" name="qty" value="1">
+                                <p class="card-title">Rp. {harga}
                                 <div>
                                     <a href="<?= base_url('produk/' . $p['slug'] . '?add-to-cart=show'); ?>" class="btn btn-white text-danger border-danger mt-4"><i class=" bi bi-cart-fill"></i></a>
                                     <a href="<?= base_url('produk/' . $p['slug'] . '?buy=show'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli</a>

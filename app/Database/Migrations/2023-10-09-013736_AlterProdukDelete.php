@@ -13,6 +13,11 @@ class AlterProdukDelete extends Migration
                 'type'          => 'timestamp',
                 'null'          => true,
                 'after' => 'updated_at'
+            ],
+            'updated_by' => [
+                'type'          => 'timestamp',
+                'null'          => true,
+                'after' => 'created_by'
             ]
 
         ];
