@@ -157,13 +157,13 @@ class Kategori extends Seeder
                 'slug'    => 'kimci',
             ],
             [
-                'id_kategori' => 2,
+                'id_kategori' => 9,
                 'nama_kategori' => 'NORI',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'nori',
             ],
             [
-                'id_kategori' => 2,
+                'id_kategori' => 9,
                 'nama_kategori' => 'SNACK KOREA',
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'snack-korea',
