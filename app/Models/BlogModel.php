@@ -7,8 +7,8 @@ use CodeIgniter\Model;
 class BlogModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'blogs';
-    protected $primaryKey       = 'id';
+    protected $table            = 'jsf_blog';
+    protected $primaryKey       = 'id_blog';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
@@ -16,10 +16,9 @@ class BlogModel extends Model
     protected $allowedFields    = [
         'judul_blog',
         'tanggal_dibuat',
+        'isi_blog',
         'img_thumbnail',
-        'img_1',
-        'img_2',
-        'img_3',
+        'created_by',
         'slug',
         'created_at',
         'updated_at'
@@ -37,7 +36,7 @@ class BlogModel extends Model
         'judul_blog'        => 'required',
         'tanggal_dibuat'    => 'required',
         'img_thumbnail'     => 'required',
-        'img_1'             => 'required',
+        'created_by'        => 'required',
         'slug'              => 'required'
     ];
     protected $validationMessages   = [];
@@ -54,4 +53,18 @@ class BlogModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getAllBlog()
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_blog')
+            ->select(
+                'jsf_blog.*, users.*'
+            )
+            ->join('users', 'users.id = jsf_blog.created_by')
+            ->get();
+
+        $result = $query->getResultArray();
+        return $result;
+    }
 }

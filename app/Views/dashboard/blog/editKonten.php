@@ -6,7 +6,7 @@
     }
 </style>
 
-<h1 class="h3 mb-1 text-gray-800">Tambah Konten Artikel/Blog</h1>
+<h1 class="h3 mb-1 text-gray-800">Edit Artikel/Blog</h1>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
     <b>MOHON TELITI KETIKA MENGISI KONTEN UNTUK MENGHINDARI KESALAHAN YANG TIDAK DIINGINKAN!!</b>
 </div>
@@ -14,60 +14,30 @@
     <div class="col">
         <div class="card border-0 shadow-sm position-relative">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Masukan Konten</h6>
+                <h6 class="m-0 font-weight-bold text-danger">Edit Artikel/Blog Anda</h6>
             </div>
             <div class="card-body">
-                <form action="<?= base_url(); ?>dashboard/blog/tambah-konten/save-konten" method="post" enctype="multipart/form-data" onsubmit="return validasiKonten()">
+                <form action="<?= base_url(); ?>dashboard/blog/tambah-konten/edit-konten/<?= $bm['id_blog'] ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiKonten()">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="judul_blog">Judul Blog/Konten <span class="text-danger fs-5">*</span></label>
-                        <input type="text" class="form-control shadow-sm border-0" id="judul_blog" placeholder="Masukan Judul Blog/Artikel..." name="judul_blog" value="<?= old('judul_blog') ?>">
+                        <input type="text" class="form-control shadow-sm border-0" id="judul_blog" placeholder="Masukan Judul Blog/Artikel..." name="judul_blog" value="<?= $bm['judul_blog']; ?>">
                         <span id="judulError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <label for="img_thumbnail" class="form-label">Gambar Thumbnail <span class="text-danger fs-5">*</span></label>
-                        <input type="file" class="form-control shadow-sm border-0" id="img_thumbnail" name="img_thumbnail" accept="image/*" value="<?= old('img_thumbnail') ?>">
+                        <input type="file" class="form-control shadow-sm border-0" id="img_thumbnail" name="img_thumbnail" accept="image/*" value="<?= $bm['img_thumbnail']; ?>">
+                        <input type="hidden" name="imageLama" value="<?= $bm['img_thumbnail']; ?>">
                         <span id="imgError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <label for="isi_blog" class="form-label">Isi Blog/Artikel <span class="text-danger fs-5">*</span></label>
-                        <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" placeholder="Masukan Isi Konten Artikel/Blog Anda Disini..." name="isi_blog" value="<?= old('isi_blog') ?>"></textarea>
+                        <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" placeholder="Masukan Isi Konten Artikel/Blog Anda Disini..." name="isi_blog" value="<?= $bm['isi_blog']; ?>"></textarea>
                         <!-- <span id="kontenError" class="text-danger"></span> -->
                     </div>
-
-                    <!-- <div class="row">
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label for="blog1" class="form-label">Gambar Blo/Artikel 1 <span class="text-danger fs-5">*</span></label>
-                                <input type="file" class="form-control shadow-sm border-0" id="img_1" name="img_1">
-                            </div>
-                        </div>
-
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label for="blog2" class="form-label">Gambar Blog 2 <span class="text-danger fs-5">*</span></label>
-                                <input type="file" class="form-control shadow-sm border-0" id="img_2" name="img_2">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label for="blog3" class="form-label">Gambar Blog 3 <span class="text-danger">(Optional)</span></label>
-                                <input type="file" class="form-control shadow-sm border-0" id="img_3" name="img_3">
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="mb-3">
-                                <label for="blog3" class="form-label">Gambar Blog 4 <span class="text-danger">(Optional)</span></label>
-                                <input type="file" class="form-control shadow-sm border-0" id="img_4" name="img_4">
-                            </div>
-                        </div>
-                    </div> -->
-                    <button type="submit" class="btn btn-danger mt-3 text-center">Simpan</button>
+                    <button type="submit" class="btn btn-danger mt-3 text-center">Edit</button>
                 </form>
             </div>
         </div>

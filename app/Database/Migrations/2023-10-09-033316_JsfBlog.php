@@ -28,26 +28,18 @@ class JsfBlog extends Migration
                 'constraint'    => '255',
                 'default'       => 'default.png'
             ],
-            'img_1' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => '255',
-                'default'       => 'default.png'
-            ],
-            'img_2' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => '255',
-                'default'       => 'default.png',
-                'null'          => true
-            ],
-            'img_3' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => '255',
-                'default'       => 'default.png',
-                'null'          => true
-            ],
             'slug' => [
                 'type'          => 'varchar',
                 'constraint'    => '225'
+            ],
+
+            'created_by' => [
+                'type'          => 'INT',
+                'constraint'    => 11,
+                'null'          => true
+            ],
+            'isi_blog' => [
+                'type'          => 'LONGTEXT'
             ],
             'created_at' => [
                 'type'          => 'timestamp',

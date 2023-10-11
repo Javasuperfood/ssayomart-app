@@ -102,8 +102,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori', 'AdminKategoriController::index');
     $routes->get('kupon', 'AdminKupon::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
-    $routes->get('blog/blog', 'AdminBlog::blog');
-    $routes->get('blog/tambah-konten', 'AdminBlog::tambahKonten');
+
 
     //CRUD Admin kategori
     $routes->get('kategori', 'AdminKategoriController::index');
@@ -170,6 +169,14 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
     $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');
     $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
+
+    // CRUD KONTEN/BLOG/ARTIKEL
+    $routes->get('blog/blog', 'AdminBlog::blog');
+    $routes->get('blog/tambah-konten', 'AdminBlog::tambahKonten');
+    $routes->post('blog/tambah-konten/save-konten', 'AdminBlog::saveKonten');
+    $routes->get('blog/update-konten/(:segment)', 'AdminBlog::updateKonten/$1');
+    $routes->post('blog/tambah-konten/edit-konten/(:segment)', 'AdminBlog::editKonten/$1');
+    $routes->post('blog/delete-konten/(:segment)', 'AdminBlog::deleteKonten/$1');
 });
 
 service('auth')->routes($routes);
