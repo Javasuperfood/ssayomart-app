@@ -11,24 +11,23 @@
 
 <div class="row">
     <!-- Left Panel -->
-    <?= validation_list_errors() ?>
     <div class="col-lg-6">
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
                 <h6 class="m-0 font-weight-medium">Masukan Foto Banner Baru</h6>
             </div>
             <div class="card-body">
-                <form action="<?= base_url(); ?>dashboard/banner/tambah-banner/save" method="post" enctype="multipart/form-data" onsubmit="return validasiTambahBanner()">
+                <form action="<?= base_url(); ?>dashboard/banner/tambah-banner/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="banner">Judul Banner</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
-                        <span id="bannerError" class="text-danger"></span>
+                        <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
+                        <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Banner</label>
-                        <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>">
-                        <span id="imgError" class="text-danger"></span>
+                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>">
+                        <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-danger">Simpan</button>
@@ -71,20 +70,44 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/tambah-banner/update/<?= $bl['id_banner']; ?>">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-banner/<?= $bl['id_banner']; ?>">
                                                 <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Update
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
-                                                <?= csrf_field() ?>
-                                                <button type="submit" class="dropdown-item">
-                                                    <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                    <span class="text-danger">Delete</span>
-                                                </button>
-                                            </form>
+                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_banner']; ?>">
+                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                <span class="text-danger">Delete</span>
+                                            </a>
                                         </div>
                                     </div>
+                                    <!-- ================= START MODAL DELETE SINGLE PRODUK ================== -->
+                                    <div class="modal fade" id="deleteBanner<?= $bl['id_banner']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteBanner<?= $bl['id_banner']; ?>" aria-hidden="true">
+                                        <div class="modal-dialog text-start text-secondary" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteBanner<?= $bl['id_banner']; ?>">Delete <?= $bl['title']; ?> ?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                    <br><br>
+                                                    Pilih Delete untuk Menghapus Produk <?= $bl['title']; ?>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
+                                                        <?= csrf_field() ?>
+                                                        <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
+                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ================= END MODAL DELETE SINGLE PRODUK ================== -->
                                 </td>
                             </tr>
                     </tbody>
@@ -110,38 +133,6 @@
             });
         <?php endif; ?>
     });
-
-    //Validasi Form
-    function validasiTambahBanner() {
-        var isValid = true;
-
-        var namaBannerField = document.getElementById('title');
-        var imgField = document.getElementById('img');
-
-        var namaBannerError = document.getElementById('bannerError');
-        var imgError = document.getElementById('imgError');
-
-        namaBannerError.textContent = '';
-        imgError.textContent = '';
-
-        if (namaBannerField.value.trim() === '') {
-            namaBannerField.classList.add('invalid-field');
-            namaBannerError.textContent = 'Judul banner harus diisi';
-            isValid = false;
-        } else {
-            namaBannerField.classList.remove('invalid-field');
-        }
-
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar banner harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
-        }
-
-        return isValid;
-    }
 </script>
 
 <?= $this->endSection(); ?>

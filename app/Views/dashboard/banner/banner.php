@@ -39,28 +39,52 @@
                                 <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
                             </td>
                             <td>
-                                <div class="position-relative top-50 start-50 translate-middle">
+                                <div class="text-center">
                                     <div class="nav-item dropdown no-arrow">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/tambah-banner/update/<?= $bl['id_banner']; ?>">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-banner/<?= $bl['id_banner']; ?>">
                                                 <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Update
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
-                                                <?= csrf_field() ?>
-                                                <button type="submit" class="dropdown-item">
-                                                    <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                    <span class="text-danger">Delete</span>
-                                                </button>
-                                            </form>
+                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_banner']; ?>">
+                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                <span class="text-danger">Delete</span>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- ================= START MODAL DELETE SINGLE PRODUK ================== -->
+                                <div class="modal fade" id="deleteBanner<?= $bl['id_banner']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteBanner<?= $bl['id_banner']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog text-start text-secondary" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteBanner<?= $bl['id_banner']; ?>">Delete <?= $bl['title']; ?> ?</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                <br><br>
+                                                Pilih Delete untuk Menghapus Produk <?= $bl['title']; ?>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
+                                                    <?= csrf_field() ?>
+                                                    <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
+                                                    <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ================= END MODAL DELETE SINGLE PRODUK ================== -->
                             </td>
                         </tr>
                     <?php endforeach ?>
