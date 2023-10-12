@@ -14,6 +14,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.css">
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
+
     <title>Ssayomart Blog Page</title>
 </head>
 
@@ -33,19 +34,16 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <!-- Konten Kolom Pertama -->
-                <div data-aos="fade-right">
-                    <div class="img-container">
-                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                        <div class="img-overlay"></div>
-                    </div>
+                <div class="img-container">
+                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                    <div class="img-overlay"></div>
                 </div>
+
             </div>
             <div class="col-12 col-md-6 text-end">
                 <!-- Konten Kolom Kedua -->
-                <div data-aos="fade-left">
-                    <h3>Masakan Rekomendasi</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-                </div>
+                <h3>Masakan Rekomendasi</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
             </div>
         </div>
@@ -55,22 +53,20 @@
         <div class="row">
             <div class="col-12 col-md-6 ">
                 <!-- Konten Kolom Kedua -->
-                <div data-aos="fade-right">
-                    <h3>Masakan Rekomendasi</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-                </div>
 
+                <h3>Masakan Rekomendasi</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
             </div>
             <div class="col-12 col-md-6">
                 <!-- Konten Kolom Pertama -->
-                <div data-aos="fade-left">
-                    <div class="img-container">
-                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                        <div class="img-overlay"></div>
-                    </div>
-                </div>
 
+                <div class="img-container">
+                    <!-- Ganti gambar dengan video YouTube -->
+                    <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+                    <!-- Ganti "VIDEO_ID" dengan ID video YouTube yang sesuai -->
+                    <div class="img-overlay"></div>
+                </div>
 
             </div>
 
@@ -136,7 +132,7 @@
                                     <span class="full-description mx-3">
                                         Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
                                     </span>
-                                    <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More </a>
+                                    <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
                                 </p>
                             </div>
                         </div>
@@ -147,7 +143,7 @@
                                 <p class="text-secondary mt-2 mx-3">
                                     Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
                                     <span class="full-description mx-3">
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa, earum. Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
+                                        Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
                                     </span>
                                     <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
                                 </p>
@@ -244,12 +240,10 @@
 
                     <!-- Kolom Bawah Kiri -->
                     <div class="col-md-6">
-                        <div data-aos="fade-left">
-                            <div class="mb-4">
-                                <div class="img-container">
-                                    <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                    <div class="img-overlay"></div>
-                                </div>
+                        <div class="mb-4">
+                            <div class="img-container">
+                                <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                                <div class="img-overlay"></div>
                             </div>
                         </div>
                     </div>
@@ -304,6 +298,26 @@
         .img-container:hover .img-overlay {
             opacity: 1;
             /* Ketika dihover, tampilkan latar belakang gelap */
+        }
+
+        @media (max-width: 280px) {
+            .img-container iframe {
+                width: 100%;
+                /* Mengisi lebar container */
+                height: 0;
+                padding-bottom: 56.25%;
+                /* Mengatur rasio aspek video (16:9) */
+            }
+        }
+
+        /* Untuk layar dengan lebar 768px atau lebih (tampilan desktop) */
+        @media (min-width: 769px) {
+            .img-container iframe {
+                width: 650px;
+                /* Lebar video untuk desktop */
+                height: 350px;
+                /* Tinggi video untuk desktop */
+            }
         }
     </style>
 
