@@ -10,6 +10,8 @@ use App\Models\CartProdukModel;
 use App\Models\PromoModel;
 use App\Models\WishlistModel;
 use App\Models\ProdukModel;
+use App\Models\UsersModel;
+use App\Models\BlogModel;
 
 class KategoriController extends BaseController
 {
@@ -51,6 +53,9 @@ class KategoriController extends BaseController
         $kategoriModel = new KategoriModel();
         $bannerModel = new BannerModel();
         $produkModel = new ProdukModel();
+        $blogModel = new BlogModel();
+        $userModel = new UsersModel();
+        $blog_detail = $blogModel->getAllBlog();
 
         $randomProducts = $produkModel->getRandomProducts();
 
@@ -60,6 +65,7 @@ class KategoriController extends BaseController
             'kategori' => $kategoriModel->orderBy('short', SORT_ASC)->findAll(),
             'banner' => $bannerModel->find(),
             'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
+            'blog_detail' => $blog_detail,
         ];
         // dd($data);
         return view('user/home/Kategori', $data);

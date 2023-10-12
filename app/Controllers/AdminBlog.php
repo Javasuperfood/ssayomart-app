@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Controllers\BaseController;
 use App\Models\BlogModel;
 use App\Models\UsersModel;
 
@@ -188,9 +189,9 @@ class AdminBlog extends BaseController
     public function detailKonten($id)
     {
         $blogModel = new BlogModel();
-        $userModel = new UsersModel(); // Tambahkan ini
-        $blog_detail = $blogModel->getBlogDetail($id); // Buat method getBlogDetail di BlogModel
-        $user_info = $userModel->getUserInfo($blog_detail['created_by']); // Buat method getUserInfo di UsersModel
+        $userModel = new UsersModel();
+        $blog_detail = $blogModel->getBlogDetail($id);
+        $user_info = $userModel->getUserInfo($blog_detail['created_by']);
         $data = [
             'title' => 'Detail Konten',
             'blog_detail' => $blog_detail,

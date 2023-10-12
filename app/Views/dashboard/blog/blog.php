@@ -36,7 +36,7 @@
                             <td><?= strftime('%d %B %Y %H:%M', strtotime($bm['tanggal_dibuat'])); ?></td>
                             <td><?= $bm['username']; ?></td>
                             <td>
-                                <img src="<?= base_url('assets/img/blog/' . $bm['img_thumbnail']); ?>" class="img-fluid" alt="" width="100" height="100">
+                                <img src="<?= base_url('assets/img/blog/' . $bm['img_thumbnail']); ?>" class="img-fluid rounded-3" alt="" width="100px" height="100px">
                             </td>
                             <td><?= $bm['slug']; ?></td>
                             <td class="text-center">
