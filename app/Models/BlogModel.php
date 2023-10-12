@@ -67,4 +67,20 @@ class BlogModel extends Model
         $result = $query->getResultArray();
         return $result;
     }
+
+    // Di BlogModel
+    public function getBlogDetail($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_blog')
+            ->select(
+                'jsf_blog.*, users.username, users.fullname, users.img' // Ambil username dan fullname
+            )
+            ->join('users', 'users.id = jsf_blog.created_by')
+            ->where('jsf_blog.id_blog', $id)
+            ->get();
+
+        $result = $query->getRowArray();
+        return $result;
+    }
 }
