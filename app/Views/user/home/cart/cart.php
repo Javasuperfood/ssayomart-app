@@ -68,129 +68,101 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Mobile View -->
 
     <!-- Desktop View -->
-    <div id="desktopContent" style="margin-top:100px;">
-        <div class="container-fluid mb-5 d-none d-md-block">
-            <div class="row">
-                <div class="col-12 d-flex justify-content-center">
-                    <nav aria-label="breadcrumb" class="rounded-3 p-2">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <h2 class="mb-0"><?= lang('Text.title_cart') ?></h2>
-                                <hr class="text-danger">
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-md-10 col-11 mx-auto">
-                    <div class="row mt-5 gx-3">
-                        <!-- left side div -->
-                        <div class="col-md-12 col-lg-8 col-11 mx-auto main_cart mb-lg-0 mb-5">
-                            <?php foreach ($produk as $p) : ?>
-                                <div class="card border-0 shadow-sm bg-white p-5 mb-5">
-                                    <div class="row">
-                                        <!-- cart images div -->
-                                        <div class="col-md-5 col-11 mx-auto d-flex justify-content-center align-items-center product_img">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
-                                        </div>
-                                        <!-- cart product details -->
-                                        <div class="col-md-7 col-11 mx-auto px-4 mt-2">
-                                            <div class="row">
-                                                <!-- product name  -->
-                                                <div class="col-8 card-title">
-                                                    <h4 class="mb-4 product_name"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?><?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '...' : ''; ?></h4>
-                                                    <p class="mb-2"><?= substr($p['deskripsi'], 0, 80); ?>...</p>
-                                                </div>
-                                                <!-- quantity inc dec -->
-                                                <div class="col-4">
-                                                    <div class="input-group mb-3 d-flex justify-content-center">
-                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
-                                                        <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
-                                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- //remover move and price -->
-                                            <div class="row">
-                                                <div class="col-8 d-flex justify-content-between">
-                                                    <div class="col-8 d-flex justify-content-end">
-                                                        <h5>Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
-                                                <?= csrf_field(); ?>
-                                                <div class="d-flex position-absolute bottom-0 end-0 py-4 px-4">
-                                                    <button type=" submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <!-- right side div -->
-                        <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
-                            <div class="right_side p-3 shadow-sm bg-white">
-                                <h4 class="mb-5"><?= lang('Text.title_cart') ?></h4>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <div class="card">
+                    <div class="card-body p-4">
+
+                        <div class="row">
+
+                            <div class="col-lg-7">
+                                <h5 class="mb-3"><?= lang('Text.title_cart') ?></h5>
+                                <hr>
+
                                 <?php foreach ($produk as $p) : ?>
-                                    <div class="d-flex justify-content-between">
-                                        <p><?= $p['nama']; ?></p>
-                                        <p id="textQty<?= $p['id_produk']; ?>"><?= $p['qty']; ?></p>
-                                        <p id="textHargaItem<?= $p['id_produk']; ?>">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                    <div class="card mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex flex-column">
+                                                <div class="d-flex flex-row align-items-center justify-content-between">
+                                                    <div class="d-flex align-items-center">
+                                                        <div>
+                                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" alt="Shopping item" class="img-fluid rounded-3" style="width: 65px;">
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h4 class="product_name">
+                                                                <?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>
+                                                                <?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '...' : ''; ?>
+                                                            </h4>
+                                                            <p class="mb-0"><?= substr($p['deskripsi'], 0, 80); ?>...</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <div class="d-flex align-items-center me-4">
+                                                            <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
+                                                            <input type="text" class="form-control text-small text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
+                                                            <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
+                                                        </div>
+                                                        <div class=" text-center me-5">
+                                                            <h5 class="mb-0" style="font-size: 15px;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
+                                                        </div>
+
+                                                        <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
+                                                            <?= csrf_field(); ?>
+                                                            <button type="submit" class="btn btn-danger rounded-circle"><i class="bi bi-trash"></i></button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
+
                                 <?php endforeach; ?>
-                                <hr />
-                                <div class="total-amt d-flex justify-content-between fw-bold">
-                                    <p><?= lang('Text.total_cart') ?></p>
-                                    <p id="textTotal">Rp. <?= number_format($total, 0, ',', '.'); ?></p>
-                                    <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
-                                </div>
-                                <form action="<?= base_url('checkout'); ?>" method="post" class="<?= (!$produk); ?>">
-                                    <?= csrf_field(); ?>
-                                    <div class="d-flex justify-content-center">
-                                        <button class="btn btn-danger text-uppercase"><?= lang('Text.btn_checkout') ?></button>
+                            </div>
+                            <!-- right side div -->
+                            <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+                                <div class="right_side p-3 border bg-white">
+                                    <h4 class="mb-5"><?= lang('Text.title_cart') ?></h4>
+                                    <?php foreach ($produk as $p) : ?>
+                                        <div class="d-flex justify-content-between">
+                                            <p><?= $p['nama']; ?></p>
+                                            <p id="textQty<?= $p['id_produk']; ?>"><?= $p['qty']; ?></p>
+                                            <p id="textHargaItem<?= $p['id_produk']; ?>">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <hr />
+                                    <div class="total-amt d-flex justify-content-between fw-bold">
+                                        <p><?= lang('Text.total_cart') ?></p>
+                                        <p id="textTotal">Rp. <?= number_format($total, 0, ',', '.'); ?></p>
+                                        <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
                                     </div>
-                                </form>
+                                    <form action="<?= base_url('checkout'); ?>" method="post" class="<?= (!$produk); ?>">
+                                        <?= csrf_field(); ?>
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btn btn-danger text-uppercase"><?= lang('Text.btn_checkout') ?></button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<?php endif; ?>
-<!-- end Desktop -->
-<script type="text/javascript">
-    function increaseCount(cp, a, b, harga, p) {
-        var total_awal = parseInt($("#totalField").val(), 10);
-        var input = b.previousElementSibling;
-        var value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        input.value = value;
-        var total = total_awal + harga;
-        $("#totalField").val(total);
-        $("#textTotal").text(formatRupiah(total));
-
-        <?php if (!$isMobile) : ?>
-            $("#textQty" + p).text(value)
-            $("#textHargaItem" + p).text(formatRupiah((harga * value)))
-        <?php endif ?>
-
-        changeQty(cp, value);
-    }
-
-    function decreaseCount(cp, a, b, harga, p) {
-        var total_awal = parseInt($("#totalField").val(), 10);
-        var input = b.nextElementSibling;
-        var value = parseInt(input.value, 10);
-        if (value > 1) {
+    <?php endif; ?>
+    <!-- end Desktop -->
+    <script type="text/javascript">
+        function increaseCount(cp, a, b, harga, p) {
+            var total_awal = parseInt($("#totalField").val(), 10);
+            var input = b.previousElementSibling;
+            var value = parseInt(input.value, 10);
             value = isNaN(value) ? 0 : value;
-            value--;
+            value++;
             input.value = value;
-            var total = total_awal - harga;
+            var total = total_awal + harga;
             $("#totalField").val(total);
             $("#textTotal").text(formatRupiah(total));
+
             <?php if (!$isMobile) : ?>
                 $("#textQty" + p).text(value)
                 $("#textHargaItem" + p).text(formatRupiah((harga * value)))
@@ -198,41 +170,60 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             changeQty(cp, value);
         }
-    }
 
-    function formatRupiah(angka) {
-        var formatter = new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0
-        });
-        return formatter.format(angka);
-    }
-
-    function changeQty(id, qty) {
-        $.ajax({
-            type: "POST",
-            url: "<?= base_url('api/change-cart-qty'); ?>",
-            dataType: "json",
-            data: {
-                idCartProduk: id,
-                qty: qty
-            },
-            success: function(response) {
-                if (response.success) {
-                    // console.log(response.message)
-                } else {
-                    // console.log(response.message)
-                }
-            },
-            error: function(error) {
-                // console.error("Error:", error);
-                <?php if (!auth()->loggedIn()) : ?>
-                    location.href = '<?= base_url(); ?>login'
+        function decreaseCount(cp, a, b, harga, p) {
+            var total_awal = parseInt($("#totalField").val(), 10);
+            var input = b.nextElementSibling;
+            var value = parseInt(input.value, 10);
+            if (value > 1) {
+                value = isNaN(value) ? 0 : value;
+                value--;
+                input.value = value;
+                var total = total_awal - harga;
+                $("#totalField").val(total);
+                $("#textTotal").text(formatRupiah(total));
+                <?php if (!$isMobile) : ?>
+                    $("#textQty" + p).text(value)
+                    $("#textHargaItem" + p).text(formatRupiah((harga * value)))
                 <?php endif ?>
-            }
-        });
-    }
-</script>
 
-<?= $this->endSection(); ?>
+                changeQty(cp, value);
+            }
+        }
+
+        function formatRupiah(angka) {
+            var formatter = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            });
+            return formatter.format(angka);
+        }
+
+        function changeQty(id, qty) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('api/change-cart-qty'); ?>",
+                dataType: "json",
+                data: {
+                    idCartProduk: id,
+                    qty: qty
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // console.log(response.message)
+                    } else {
+                        // console.log(response.message)
+                    }
+                },
+                error: function(error) {
+                    // console.error("Error:", error);
+                    <?php if (!auth()->loggedIn()) : ?>
+                        location.href = '<?= base_url(); ?>login'
+                    <?php endif ?>
+                }
+            });
+        }
+    </script>
+
+    <?= $this->endSection(); ?>
