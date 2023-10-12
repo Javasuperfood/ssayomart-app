@@ -119,12 +119,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori/edit-sub-kategori/(:segment)', 'AdminKategoriController::editSubKategori/$1');
 
     //CRUD Admin Banner
-    $routes->get('banner/inputbanner', 'AdminInputBanner::inputbanner');
-    $routes->get('banner/tambah-banner', 'AdminInputBanner::tambahBanner');
-    $routes->post('banner/tambah-banner/save', 'AdminInputBanner::saveBanner');
-    $routes->post('banner/tambah-banner/delete/(:segment)', 'AdminInputBanner::deleteBanner/$1');
-    $routes->get('banner/tambah-banner/update/(:segment)', 'AdminInputBanner::updateBanner/$1');
-    $routes->post('banner/tambah-banner/edit/(:segment)', 'AdminInputBanner::editBanner/$1');
+    $routes->get('banner/', 'AdminBannerController::index');
+    $routes->get('banner/tambah-banner', 'AdminBannerController::tambahBanner');
+    $routes->post('banner/tambah-banner/save', 'AdminBannerController::saveBanner');
+    $routes->post('banner/tambah-banner/delete/(:segment)', 'AdminBannerController::deleteBanner/$1');
+    $routes->get('banner/update-banner/(:segment)', 'AdminBannerController::updateBanner/$1');
+    $routes->post('banner/update-banner/save', 'AdminBannerController::updateBannerSave');
 
     // CRUD routes produk
     $routes->get('produk/', 'AdminProduk::produk');

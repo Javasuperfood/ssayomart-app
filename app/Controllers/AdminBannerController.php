@@ -4,9 +4,9 @@ namespace App\Controllers;
 
 use App\Models\BannerModel;
 
-class AdminInputBanner extends BaseController
+class AdminBannerController extends BaseController
 {
-    public function inputbanner(): string
+    public function index(): string
     {
         $bannerModel = new BannerModel();
         $bannerList = $bannerModel->findAll();
@@ -14,7 +14,7 @@ class AdminInputBanner extends BaseController
             'title' => 'Setting Banner',
             'banner_list' => $bannerList
         ];
-        return view('/dashboard/banner/inputbanner', $data);
+        return view('/dashboard/banner/banner', $data);
     }
 
     public function tambahBanner(): string
@@ -32,13 +32,38 @@ class AdminInputBanner extends BaseController
     {
         // ambil gambar
         $bannerModel = new BannerModel();
+
+
         $fotoBanner = $this->request->getFile('img');
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'img' => $fotoBanner
+        ];
+        //validate data
+        if (!$this->validateData($data, $bannerModel->validationRules) && !$this->validateData($data, [
+            'img' => [
+                'rules' => 'uploaded[img]',
+                'errors' => [
+                    'uploaded' => 'Gambar banner wajib diunggah.'
+                ]
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/tambah-banner')->withInput();
+        }
         if ($fotoBanner->getError() == 4) {
             $namaBanner = 'default.jpg';
         } else {
             $namaBanner = $fotoBanner->getRandomName();
             $fotoBanner->move('assets/img/banner/', $namaBanner);
         }
+
+        //repalce data
         $data = [
             'title' => $this->request->getVar('title'),
             'img' => $namaBanner
@@ -102,8 +127,6 @@ class AdminInputBanner extends BaseController
     // view
     public function updateBanner($id)
     {
-        session();
-
         $bannerModel = new BannerModel();
 
         $bl = $bannerModel->find($id);
@@ -115,10 +138,28 @@ class AdminInputBanner extends BaseController
         return view('dashboard/banner/updateBanner', $data);
     }
     // action
-    public function editBanner($id)
+    public function updateBannerSave()
     {
         $bannerModel = new BannerModel();
+        $id = $this->request->getVar('id_banner');
         $image = $this->request->getFile('img');
+        $data = [
+            'id_banner' => $id,
+            'img' => $image,
+            'title' => $this->request->getVar('title'),
+        ];
+        //validate data
+
+        if (!$this->validateData($data, $bannerModel->validationRules)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/update-banner/' . $id)->withInput();
+        }
+
 
         if ($image->getError() == 4) {
             $namaBannerImage = $this->request->getVar('imageLama');
@@ -137,6 +178,8 @@ class AdminInputBanner extends BaseController
                 }
             }
         }
+
+        // repalce data 
         $data = [
             'id_banner' => $id,
             'img' => $namaBannerImage,

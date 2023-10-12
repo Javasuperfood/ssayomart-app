@@ -24,16 +24,23 @@ class BannerModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'title' => 'required|min_length[2]|max_length[50]',
-        // 'img' => 'max_size[img_profile,3124]|is_image[img_profile]|mime_in[img_profile,image/jpg,image/jpeg,image/png]'
+        'title' => [
+            'rules' => 'required|min_length[8]|max_length[50]',
+            'errors' => [
+                'required' => 'Judul banner wajib diisi.',
+                'min_length' => 'Judul banner minimal 8 karakter.',
+                'max_length' => 'Judul banner maksimal 50 karakter.',
+            ],
+        ],
+        'img' => [
+            'rules' => 'max_size[img,3124]|mime_in[img,image/jpg,image/jpeg,image/png]',
+            'errors' => [
+                'max_size' => 'Ukuran gambar terlalu besar.',
+                'mime_in' => 'Format gambar tidak sesuai. iamge/jpg/jpeg/png',
+            ]
+        ]
     ];
-    protected $validationMessages   = [
-        // 'img' => [
-        //     'max_size' => 'Image size is too large',
-        //     'is_image' => 'What you select is not an image',
-        //     'mime_in' => 'What you select is not an image'
-        // ]
-    ];
+    protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

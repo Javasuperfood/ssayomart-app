@@ -7,19 +7,20 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/banner/tambah-banner/edit/<?= $bl['id_banner']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateBanner()">
+        <form action="<?= base_url(); ?>dashboard/banner/update-banner/save" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateBanner()">
             <?= csrf_field(); ?>
-            <input type="hidden" class="form-control border-0 shadow-sm" id="id_produk" name="id_produk" value="<?= $bl['id_banner'] ?>">
+            <input type="hidden" class="form-control border-0 shadow-sm" id="id_produk" name="id_banner" value="<?= $bl['id_banner'] ?>">
             <div class="mb-3">
                 <label for="title" class="form-label">Nama Produk</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="title" name="title" value="<?= $bl['title'] ?>">
-                <span id="bannerError" class="text-danger"></span>
+                <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" value="<?= $bl['title'] ?>">
+                <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Gambar Banner</label>
-                <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" value="<?= $bl['img'] ?>">
+                <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= $bl['img'] ?>">
                 <span id="imgError" class="text-danger"></span>
                 <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
+                <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
             </div>
             <div>
                 <button type="submit" class="btn btn-danger">Simpan</button>
