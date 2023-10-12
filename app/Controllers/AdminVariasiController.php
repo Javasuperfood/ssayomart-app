@@ -3,13 +3,12 @@
 namespace App\Controllers;
 
 
-use CodeIgniter\RESTful\ResourceController;
-use CodeIgniter\API\ResponseTrait;
+use App\Controllers\BaseController;
 use App\Models\ProdukModel;
 use App\Models\VariasiItemModel;
 use App\Models\VariasiModel;
 
-class AdminVariasiController extends ResourceController
+class AdminVariasiController extends BaseController
 {
     public function index()
     {
@@ -130,6 +129,7 @@ class AdminVariasiController extends ResourceController
 
     public function detail($slug)
     {
+        session();
         $produkModel = new ProdukModel();
         $variasiModel = new VariasiModel();
         $variasiItemModel = new VariasiItemModel();
@@ -148,17 +148,52 @@ class AdminVariasiController extends ResourceController
 
     public function saveVarianItem()
     {
+        // dd($this->request->getVar());
         $variasiItemModel = new VariasiItemModel();
-        $data = [
-            'id_variasi' => $this->request->getVar('id_variant') || $this->request->getVar('selectVariant'),
-            'id_produk' => $this->request->getVar('id_produk'),
-            'value_item' => $this->request->getVar('valueItem'),
-            'harga_item' => $this->request->getVar('harga'),
-            'berat' => $this->request->getVar('berat'),
-        ];
-        if (!$variasiItemModel->save($data)) {
-            return "Gagal";
+        if ($this->request->getVar('selectVariant') == '') {
+            $data = [
+                'id_variasi' => null,
+                'id_produk' => $this->request->getVar('id_produk'),
+                'value_item' => $this->request->getVar('valueItem'),
+                'harga_item' => $this->request->getVar('harga'),
+                'berat' => $this->request->getVar('berat'),
+            ];
+        } else {
+            $data = [
+                'id_variasi' => $this->request->getVar('selectVariant'),
+                'id_produk' => $this->request->getVar('id_produk'),
+                'value_item' => $this->request->getVar('valueItem'),
+                'harga_item' => $this->request->getVar('harga'),
+                'berat' => $this->request->getVar('berat'),
+            ];
         }
+        //validate
+        if (!$this->validateData($data, $variasiItemModel->validationRules) || !$this->validateData($data, [
+            'id_variasi' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Variasi wajib dipilih.',
+                    'numeric' => 'Variasi wajib dipilih.',
+                ],
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            session()->setFlashdata('gagal', true);
+            return redirect()->to(base_url('dashboard/produk/detail-varian/' . $this->request->getVar('slug')))->withInput();
+        }
+
+        $variasiItemModel->save($data);
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Berhasi Menambahkan Varian'
+        ];
+        session()->setFlashdata('alert', $alert);
         return redirect()->to(base_url('dashboard/produk/detail-varian/' . $this->request->getVar('slug')));
     }
 
@@ -169,5 +204,34 @@ class AdminVariasiController extends ResourceController
             return 'Gagal';
         }
         return redirect()->to(base_url('dashboard/produk/detail-varian/' . $this->request->getVar('slug')));
+    }
+
+    public function updateVarianItem()
+    {
+        $variasiItemModel = new VariasiItemModel();
+        $data = [
+            'id_variasi_item' => $this->request->getVar('id_vi'),
+            'value_item' => $this->request->getVar('valueItem'),
+            'harga_item' => $this->request->getVar('harga'),
+            'berat' => $this->request->getVar('berat'),
+        ];
+        //validation
+        if ($variasiItemModel->save($data)) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Berhasi Menupdate Varian'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to(base_url('dashboard/produk/detail-varian/' . $this->request->getVar('slug')));
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => 'Gagal Menupdate Varian'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to(base_url('dashboard/produk/detail-varian/' . $this->request->getVar('slug')))->withInput();
+        }
     }
 }

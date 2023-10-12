@@ -26,13 +26,6 @@ class VariasiItemModel extends Model
 
     // Validation
     protected $validationRules = [
-        'id_variasi' => [
-            'rules'  => 'required',
-            'errors' => [
-                'required' => 'Variasi wajib diisi.',
-                'numeric' => 'Variasi wajib dipilih.',
-            ],
-        ],
         'value_item' => [
             'rules'  => 'required',
             'errors' => [

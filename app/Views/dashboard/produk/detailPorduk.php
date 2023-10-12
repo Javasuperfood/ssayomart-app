@@ -149,21 +149,40 @@
                                                     </a>
                                                     <!-- Dropdown - User Information -->
                                                     <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                                        <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk/update-produk/1">
+                                                        <button class="dropdown-item" onclick="btnUpdate(<?= $v['id_variasi_item']; ?>, '<?= $v['nama_varian']; ?>', '<?= $v['value_item']; ?>', <?= $v['berat']; ?>, <?= $v['harga_item']; ?>)">
                                                             <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                             Update
-                                                        </a>
+                                                        </button>
                                                         <div class="dropdown-divider"></div>
-                                                        <form action="<?= base_url('dashboard/produk/detail-varian/delete-varian/' . $v['id_variasi_item']); ?>" method="post">
-                                                            <?= csrf_field(); ?>
-                                                            <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
-                                                            <button type="submit" class="dropdown-item">
-                                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                                <span class="text-danger">Delete</span>
-                                                            </button>
-                                                        </form>
+                                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteProduk<?= $v['id_variasi_item']; ?>">
+                                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                            <span class="text-danger">Delete</span>
+                                                        </a>
                                                     </div>
                                                 </div>
+                                                <!-- ================= START MODAL DELETE SINGLE Variasi item ================== -->
+                                                <div class="modal fade" id="deleteProduk<?= $v['id_variasi_item']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteProduk<?= $v['id_variasi_item']; ?>" aria-hidden="true">
+                                                    <div class="modal-dialog text-start text-secondary" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteProduk<?= $v['id_variasi_item']; ?>">Delete <?= $v['nama_varian']; ?> <?= $v['value_item']; ?>?</h5>
+                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">Pilih Delete untuk Menghapus Produk <?= $v['nama_varian']; ?> <?= $v['value_item']; ?></div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                <form action="<?= base_url() ?>dashboard/produk/detail-varian/delete-varian/<?= $v['id_variasi_item']; ?>" method="post">
+                                                                    <?= csrf_field() ?>
+                                                                    <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
+                                                                    <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- ================= END MODAL DELETE SINGLE Variasi item ================== -->
                                             </td>
                                         </tr>
                                     <?php endforeach ?>
@@ -173,7 +192,7 @@
                     </div>
                     <div class="row" id="rowTambah" style="display: none;">
                         <div class="col">
-                            <form action="<?= base_url('dashboard/produk/detail-varian/tambah-variasi-item'); ?>" onsubmit="return validasiVariasiItem()" method="post" enctype="multipart/form-data">
+                            <form action="<?= base_url('dashboard/produk/detail-varian/tambah-variasi-item'); ?>" method="post" enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="id_produk" value="<?= $produk['id_produk']; ?>">
                                 <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
@@ -187,13 +206,19 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="selectVariant">Nama Variant</label>
-                                                <input type="text" disabled id="selectVariant" name="variant" class="form-control bg-white border-0 shadow-sm" value="<?= $varian[0]['nama_varian']; ?>">
-                                                <input type="hidden" id="selectVariant" name="id_variant" class="form-control" value="<?= $varian[0]['id_variasi']; ?>">
+                                                <label for="selectVariant">Pilih Variant</label>
+                                                <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
+                                                    <?php foreach ($variasi as $v) : ?>
+                                                        <?php if (($varian[0]['id_variasi'] == $v['id_variasi'])) : ?>
+                                                            <option value="<?= $v['id_variasi']; ?>" <?= ($varian[0]['id_variasi'] == $v['id_variasi']) ? 'selected' : '' ?>><?= $v['nama_varian']; ?></option>
+                                                        <?php endif; ?>
+                                                    <?php endforeach ?>
+                                                </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="valueVariant">Value Variant</label>
-                                                <input type="text" id="valueItem" name="valueItem" class="form-control border-0 shadow-sm" placeholder="Value Varian">
-                                                <span id="valueItemError" class="text-danger"></span>
+                                                <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
+                                                <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian">
+                                                <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                                             </div>
                                         </div>
                                     </div>
@@ -203,33 +228,78 @@
                                             <div class="col-md-6">
                                                 <label for="selectVariant">Pilih Variant</label>
                                                 <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
-                                                    <option selected>Pilih</option>
+                                                    <option value="" selected>Pilih</option>
                                                     <?php foreach ($variasi as $v) : ?>
                                                         <option value="<?= $v['id_variasi']; ?>"><?= $v['nama_varian']; ?></option>
                                                     <?php endforeach ?>
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="valueVariant">Value Variant (e.g : ayam, sapi or 500 Garm 1Kg)</label>
-                                                <input type="text" id="valueItem" name="valueItem" class="form-control border-0 shadow-sm" placeholder="Value Varian">
-                                                <span id="valueItemError" class="text-danger"></span>
+                                                <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
+                                                <input type="text" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian">
+                                                <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                                             </div>
                                         </div>
                                     </div>
                                 <?php endif ?>
                                 <div class="mb-3">
-                                    <label for="berat" class="form-label">Berat Produk <span class="text-danger fs-6">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
-                                    <input type="price" class="form-control border-0 shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
-                                    <span id="beratError" class="text-danger"></span>
+                                    <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
+                                    <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0' ?> shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                                    <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga Produk</label>
-                                    <input type="price" class="form-control border-0 shadow-sm" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
-                                    <span id="hargaError" class="text-danger"></span>
+                                    <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm " id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
+                                    <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
                                 </div>
                                 <button type="submit" class="btn btn-danger">Simpan</button><a role="button" id="btnBatal" class="btn btn-warning mx-2">Batal</a>
                             </form>
                         </div>
+                    </div>
+                    <div class="row" id="rowUpdate" style="display: none;">
+                        <?php if ($varian) : ?>
+                            <form action="<?= base_url('dashboard/produk/detail-varian/update-variasi-item'); ?>" method="post" enctype="multipart/form-data">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="id_produk" value="<?= $produk['id_produk']; ?>">
+                                <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
+                                <input type="hidden" name="id_vi" id="updateID">
+                                <div class="mb-3">
+                                    <label for="harga" class="form-label">Stok</label>
+                                    <input type="price" class="form-control border-0 shadow-sm" id="stock" name="harga" placeholder="Stok" value="" onkeypress="return isNumber(event);">
+
+                                </div>
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="selectVariant">Pilih Variant</label>
+                                            <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
+                                                <?php foreach ($variasi as $v) : ?>
+                                                    <?php if (($varian[0]['id_variasi'] == $v['id_variasi'])) : ?>
+                                                        <option value="<?= $v['id_variasi']; ?>" <?= ($varian[0]['id_variasi'] == $v['id_variasi']) ? 'selected' : '' ?>><?= $v['nama_varian']; ?></option>
+                                                    <?php endif; ?>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
+                                            <input type="text" id="updateVI" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian" value="<?= old('valueItem') ?>">
+                                            <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
+                                    <input type="price" id="updateBerat" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0' ?> shadow-sm" id="berat" <?= old('berat') ?> name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                                    <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="harga" class="form-label">Harga Produk</label>
+                                    <input type="price" id="updateHarga" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm " <?= old('harga') ?> id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
+                                    <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Simpan</button><a role="button" id="btnBatalUpdate" class="btn btn-warning mx-2">Batal</a>
+                            </form>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -248,60 +318,43 @@
             $("#rowVarian").show();
             $("#rowTambah").hide();
         });
+
     });
+
+    function btnUpdate(id, nama, vi, berat, harga) {
+        $("#btnTambah").hide();
+        $("#rowVarian").hide();
+        $("#rowUpdate").show();
+        $("#updateVI").val(vi);
+        $("#updateBerat").val(berat);
+        $("#updateHarga").val(harga);
+        $("#updateID").val(id);
+    };
+    $("#btnBatalUpdate").click(function() {
+        $("#btnTambah").show();
+        $("#rowVarian").show();
+        $("#rowUpdate").hide();
+        $("#updateVI").empty();
+        $("#updateBerat").empty();
+        $("#updateHarga").empty();
+        $("#updateID").empty();
+    });
+
+
     $("#rowVarian").hide
-
-    // Validasi
-    function validasiVariasiItem() {
-        var isValid = true;
-
-        var stockField = document.getElementById('stock');
-        var valueItemField = document.getElementById('valueItem');
-        var beratField = document.getElementById('berat');
-        var hargaField = document.getElementById('harga');
-
-        var stockError = document.getElementById('stockError');
-        var valueItemError = document.getElementById('valueItemError');
-        var beratError = document.getElementById('beratError');
-        var hargaError = document.getElementById('hargaError');
-
-        stockError.textContent = '';
-        valueItemError.textContent = '';
-        beratError.textContent = '';
-        hargaError.textContent = '';
-
-        if (stockField.value.trim() === '') {
-            stockField.classList.add('invalid-field');
-            stockError.textContent = 'Stock produk variasi harus diisi';
-            isValid = false;
-        } else {
-            stockField.classList.remove('invalid-field');
-        }
-
-        if (valueItemField.value.trim() === '') {
-            valueItemField.classList.add('invalid-field');
-            valueItemError.textContent = 'Jenis varian harus diisi';
-            isValid = false;
-        } else {
-            valueItemField.classList.remove('invalid-field');
-        }
-
-        if (beratField.value.trim() === '') {
-            beratField.classList.add('invalid-field');
-            beratError.textContent = 'Berat produk harus diisi';
-            isValid = false;
-        } else {
-            beratField.classList.remove('invalid-field');
-        }
-
-        if (hargaField.value.trim() === '') {
-            hargaField.classList.add('invalid-field');
-            hargaError.textContent = 'Harga produk harus diisi';
-            isValid = false;
-        } else {
-            hargaField.classList.remove('invalid-field');
-        }
-        return isValid;
-    }
+    //get flash data
+    <?php if (session()->getFlashdata('gagal')) : ?>
+        $("#btnTambah").hide();
+        $("#rowVarian").hide();
+        $("#rowTambah").show();
+    <?php endif ?>
+    <?php if (session()->has('alert')) : ?>
+        var alertData = <?= json_encode(session('alert')) ?>;
+        Swal.fire({
+            icon: alertData.type,
+            title: alertData.title,
+            text: alertData.message
+        });
+    <?php endif; ?>
 </script>
 <?= $this->endSection(); ?>
