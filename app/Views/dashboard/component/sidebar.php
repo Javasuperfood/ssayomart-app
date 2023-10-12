@@ -139,6 +139,23 @@
             <span>Market</span></a>
     </li>
 
+    <!-- profil admin -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProfile" aria-expanded="true" aria-controls="collapseProfile">
+            <i class="bi bi-person-circle"></i>
+            <span>Profil</span>
+        </a>
+        <div id="collapseProfile" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header text-danger">Menu Profile :</h6>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/profil/profilAdmin">Profil Admin</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/profil/editProfil">Edit Profil</a>
+            </div>
+        </div>
+    </li>
+
+
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

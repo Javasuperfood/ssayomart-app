@@ -102,6 +102,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori', 'AdminKategoriController::index');
     $routes->get('kupon', 'AdminKupon::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
+    $routes->get('profil/profilAdmin', 'AdminProfil::profilAdmin');
+    $routes->get('profil/editProfil', 'AdminProfil::editProfil');
 
 
     //CRUD Admin kategori

@@ -43,7 +43,7 @@
                     <i class="fas fa-share fa-sm fa-fw mr-2 text-gray-400"></i>
                     Pergi ke Aplikasi
                 </a>
-                <a class="dropdown-item" href="<?= base_url(); ?>setting/profile-admin/<?= auth()->user()->id; ?>">
+                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/profil/profilAdmin/<?= auth()->user()->id; ?>">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profil
                 </a>
