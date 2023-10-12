@@ -147,7 +147,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
     $routes->post('produk/update-produk/save', 'AdminProduk::saveUpdateProduk');
 
-    // Crud Kupon
+    // CRUD Kupon
     $routes->get('kupon/tambah-kupon', 'AdminKupon::tambahKupon');
     $routes->post('kupon/tambah-kupon/save', 'AdminKupon::saveKupon');
     $routes->post('kupon/kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
@@ -179,6 +179,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('blog/update-konten/(:segment)', 'AdminBlog::updateKonten/$1');
     $routes->post('blog/tambah-konten/edit-konten/(:segment)', 'AdminBlog::editKonten/$1');
     $routes->post('blog/delete-konten/(:segment)', 'AdminBlog::deleteKonten/$1');
+    // DETAIL KONTEN/BLOG/ARTIKEL
+    $routes->get('blog/detail-konten/(:segment)', 'AdminBlog::detailKonten/$1');
 });
 
 service('auth')->routes($routes);

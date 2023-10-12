@@ -6,6 +6,9 @@ use App\Models\BlogModel;
 
 class AdminBlog extends BaseController
 {
+    // ===================================================================
+    // ------------------------ KONTEN LIST ------------------------------
+    // ===================================================================
     public function blog()
     {
         $blogModel = new BlogModel();
@@ -17,7 +20,13 @@ class AdminBlog extends BaseController
         // dd($data);
         return view('dashboard/blog/blog', $data);
     }
+    // ===================================================================
+    // ------------------------ END KONTEN LIST --------------------------
+    // ===================================================================
 
+    // ===================================================================
+    // ------------------------ CREATE KONTEN ----------------------------
+    // ===================================================================
     public function tambahKonten()
     {
         return view('dashboard/blog/tambahKonten');
@@ -68,8 +77,13 @@ class AdminBlog extends BaseController
             return redirect()->to('dashboard/blog/tambah-konten')->withInput();
         }
     }
+    // ===================================================================
+    // ------------------------ END CREATE KONTEN ------------------------
+    // ===================================================================
 
-    // view update
+    // ===================================================================
+    // ------------------------ UPDATE KONTEN ----------------------------
+    // ===================================================================
     public function updateKonten($id)
     {
         $blogModel = new BlogModel();
@@ -137,7 +151,13 @@ class AdminBlog extends BaseController
             return redirect()->to('dashboard/blog/update-konten/' . $id)->withInput();
         }
     }
-    // Delete
+    // ===================================================================
+    // ------------------------ END UPDATE KONTEN ------------------------
+    // ===================================================================
+
+    // ===================================================================
+    // ------------------------ DELETE KONTEN ----------------------------
+    // ===================================================================
     public function deleteKonten($id)
     {
         $blogModel = new BlogModel();
@@ -168,5 +188,23 @@ class AdminBlog extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/blog/blog')->withInput();
         }
+    }
+    // ===================================================================
+    // ------------------------ END DELETE KONTEN ------------------------
+    // ===================================================================
+
+    // ===================================================================
+    // ------------------------ VIEW DETAIL KONTEN -----------------------
+    // ===================================================================
+    public function detailKonten($id)
+    {
+        $blogModel = new BlogModel();
+        $blog_list = $blogModel->getAllBlog();
+        $data = [
+            'title' => 'Detail Konten',
+            'blog_model' => $blog_list
+        ];
+        // dd($data);
+        return view('dashboard/blog/detailKonten', $data);
     }
 }
