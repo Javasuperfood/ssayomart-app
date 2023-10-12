@@ -12,8 +12,8 @@
 
             <div class="mb-3">
                 <label for="kategori" class="form-label">Nama Kategori</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
-                <span id="kategoriError" class="text-danger"></span>
+                <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
+                <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
             </div>
 
             <div class="mb-3">
@@ -24,14 +24,15 @@
 
             <div class="mb-3">
                 <label for="img" class="form-label">Masukan Gambar</label>
-                <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" value="<?= $kategori['img'] ?>">
+                <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= $kategori['img'] ?>">
                 <input type="hidden" name="imageLama" value="<?= $kategori['img']; ?>">
+                <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
             </div>
 
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                <textarea class="form-control border-0 shadow-sm" id="deskripsi" name="deskripsi"><?= $kategori['deskripsi'] ?></textarea>
-                <span id="deskripsiError" class="text-danger"></span>
+                <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="deskripsi" name="deskripsi"><?= $kategori['deskripsi'] ?></textarea>
+                <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
 
             <div>

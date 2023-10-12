@@ -115,7 +115,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori/edit-kategori/(:segment)', 'AdminKategoriController::editKategori/$1');
     // Admin Sub Kategori
     $routes->post('kategori/delete-sub-kategori/(:segment)', 'AdminKategoriController::deleteSubKategori/$1');
-    $routes->post('kategori/edit-sub-kategori/update-sub-kategori/(:segment)', 'AdminKategoriController::updateSubKategori/$1');
+    $routes->post('kategori/edit-sub-kategori/update', 'AdminKategoriController::updateSubKategori');
     $routes->get('kategori/edit-sub-kategori/(:segment)', 'AdminKategoriController::editSubKategori/$1');
 
     //CRUD Admin Banner

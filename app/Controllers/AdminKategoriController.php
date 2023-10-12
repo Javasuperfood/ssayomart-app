@@ -57,11 +57,11 @@ class AdminkategoriController extends BaseController
     public function tambahKategori()
     {
         $kategoriModel = new KategoriModel();
-        $kategori_list = $kategoriModel->findAll();
+        $kategori = $kategoriModel->findAll();
 
         $data = [
             'title' => 'Kategori',
-            'kategori_model' => $kategori_list
+            'kategori' => $kategori
         ];
         return view('dashboard/kategori/tambahKategori', $data);
     }
@@ -72,6 +72,20 @@ class AdminkategoriController extends BaseController
         // ambil gambar
         $kategoriModel = new KategoriModel();
         $subKategoriModel = new SubKategoriModel();
+        $slug = url_title($this->request->getVar('kategori'), '-', true);
+        $parentKategoriId = $this->request->getVar('parent_kategori_id');
+        $data = [
+            'nama_kategori' => $this->request->getVar('kategori'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'img' => $this->request->getFile('img'),
+            'slug' => $slug,
+            'id_kategori' => $parentKategoriId,
+        ];
+        //validate
+        if (!$this->validateData($data, $kategoriModel->validationRules)) {
+            return redirect()->to('dashboard/kategori/tambah-kategori')->withInput();
+        }
+
         $fotoKategori = $this->request->getFile('img');
 
         if ($fotoKategori->getError() == 4) {
@@ -81,9 +95,7 @@ class AdminkategoriController extends BaseController
             $fotoKategori->move('assets/img/kategori/', $namaKategori);
         }
 
-        $slug = url_title($this->request->getVar('kategori'), '-', true);
-        $parentKategoriId = $this->request->getVar('parent_kategori_id');
-
+        //replace data value
         $data = [
             'nama_kategori' => $this->request->getVar('kategori'),
             'deskripsi' => $this->request->getVar('deskripsi'),
@@ -91,7 +103,7 @@ class AdminkategoriController extends BaseController
             'slug' => $slug,
             'id_kategori' => $parentKategoriId,
         ];
-        // dd($data);
+        // Save sub kategori 
         if ($parentKategoriId != "") {
             if ($subKategoriModel->save($data)) {
                 session()->setFlashdata('success', 'Kategori berhasil disimpan.');
@@ -114,7 +126,7 @@ class AdminkategoriController extends BaseController
                 return redirect()->to('dashboard/kategori/tambah-kategori')->withInput();
             }
         }
-        // swet alert
+        // Save perent kategori
         if ($kategoriModel->save($data)) {
             session()->setFlashdata('success', 'Kategori berhasil disimpan.');
             $alert = [
@@ -154,7 +166,20 @@ class AdminkategoriController extends BaseController
     public function updateKategori($id)
     {
         $kategoriModel = new KategoriModel();
+        $slug = url_title($this->request->getVar('kategori'), '-', true);
         $image = $this->request->getFile('img');
+        $data = [
+            'id_kategori' => $id,
+            'nama_kategori' => $this->request->getVar('kategori'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'slug' => $slug,
+            'img' => $image
+        ];
+        // validate data
+        if ($this->validateData($data, $kategoriModel->validationRules)) {
+            return redirect()->to(base_url('dashboard/kategori/edit-kategori/' . $id))->withInput();
+        }
+
 
         if ($image->getError() == 4) {
             $namaKategoriImage = $this->request->getVar('imageLama');
@@ -173,7 +198,7 @@ class AdminkategoriController extends BaseController
                 }
             }
         }
-        $slug = url_title($this->request->getVar('kategori'), '-', true);
+
         $data = [
             'id_kategori' => $id,
             'nama_kategori' => $this->request->getVar('kategori'),
@@ -239,9 +264,9 @@ class AdminkategoriController extends BaseController
 
 
 
-    // =================================================================================================================
+    // ===========================================================================
     // CONTROLLER SUB KATEGORI
-    // =================================================================================================================
+    // ===========================================================================
 
 
 
@@ -268,12 +293,25 @@ class AdminkategoriController extends BaseController
     }
 
     // Update Sub Kategori
-    public function updateSubKategori($id)
+    public function updateSubKategori()
     {
-        $kategoriModel = new KategoriModel();
         $subKategoriModel = new SubKategoriModel();
-        $kategori_list = $kategoriModel->findAll();
+        $id = $this->request->getVar('id_sub_kategori');
         $image = $this->request->getFile('img');
+
+        $parentKategoriId = $this->request->getVar('parent_kategori_id');
+        $data = [
+            'id_kategori' => $parentKategoriId,
+            'id_sub_kategori' => $id,
+            'nama_kategori' => $this->request->getVar('kategori'),
+            'deskripsi' => $this->request->getVar('deskripsi'),
+            'img' => $image
+        ];
+
+        //validate data
+        if (!$this->validateData($data, $subKategoriModel->validationRules)) {
+            return redirect()->to(base_url('dashboard/kategori/edit-sub-kategori/' . $id))->withInput();
+        }
 
         if ($image->getError() == 4) {
             $namaSubKategoriImage = $this->request->getVar('imageLama');
@@ -293,9 +331,8 @@ class AdminkategoriController extends BaseController
             }
         }
         $slug = url_title($this->request->getVar('sub_kategori'), '-', true);
-        $parentKategoriId = $this->request->getVar('parent_kategori_id');
+        // Replace Data
         $data = [
-            'kategori_model' => $kategori_list,
             'id_kategori' => $parentKategoriId,
             'id_sub_kategori' => $id,
             'nama_kategori' => $this->request->getVar('kategori'),

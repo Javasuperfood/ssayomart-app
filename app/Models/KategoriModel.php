@@ -30,10 +30,26 @@ class KategoriModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'nama_kategori' => 'required',
-        'deskripsi' => 'required',
-        'slug' => 'required',
-        'img' => 'required'
+        'nama_kategori' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama kategori wajib diisi.',
+            ],
+        ],
+        'deskripsi' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Deskripsi kategori wajib diisi.',
+            ],
+        ],
+        'img' => [
+            'rules' => 'max_size[img,1024]|mime_in[img,image/jpg,image/jpeg,image/png]',
+            'errors' => [
+                'max_size' => 'Ukuran gambar terlalu besar',
+                'is_image' => 'Yang anda pilih bukan gambar',
+                'mime_in' => 'Yang anda pilih bukan gambar'
+            ]
+        ]
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

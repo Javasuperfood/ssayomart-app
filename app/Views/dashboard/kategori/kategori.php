@@ -39,7 +39,7 @@
                                 <td><?= $km['slug_kategori'] ?></td>
 
                                 <td>
-                                    <div class="position-relative top-50 start-50 translate-middle">
+                                    <div class="text-center">
                                         <div class="nav-item dropdown no-arrow">
                                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
@@ -50,16 +50,35 @@
                                                     Update
                                                 </a>
                                                 <div class="dropdown-divider"></div>
-                                                <form action="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km['id_kategori']; ?>" method="post">
-                                                    <?= csrf_field() ?>
-                                                    <button type="submit" class="dropdown-item">
-                                                        <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                        <span class="text-danger">Delete</span>
-                                                    </button>
-                                                </form>
+                                                <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteKategori<?= $km['id_kategori']; ?>">
+                                                    <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                    <span class="text-danger">Delete</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- ================= START MODAL DELETE SINGLE Perent Kategori ================== -->
+                                    <div class="modal fade" id="deleteKategori<?= $km['id_kategori']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteKategori<?= $km['id_kategori']; ?>" aria-hidden="true">
+                                        <div class="modal-dialog text-start text-secondary" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteKategori<?= $km['id_kategori']; ?>">Delete <?= $km['nama_kategori']; ?> ?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">Pilih Delete untuk menghapus kategori <?= $km['nama_kategori']; ?></div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <form action="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km['id_kategori']; ?>" method="post">
+                                                        <?= csrf_field() ?>
+                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ================= END MODAL DELETE SINGLE Perent Kategori ================== -->
                                 </td>
                             </tr>
                             <?php foreach ($km['sub_kategori'] as $ks) : ?>
@@ -75,7 +94,7 @@
                                         </td>
                                         <td><?= $ks['slug_sub_kategori']; ?></td>
                                         <td>
-                                            <div class="position-relative top-50 start-50 translate-middle">
+                                            <div class="text-center">
                                                 <div class="nav-item dropdown no-arrow">
                                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="bi bi-three-dots-vertical"></i>
@@ -86,16 +105,35 @@
                                                             Update
                                                         </a>
                                                         <div class="dropdown-divider"></div>
-                                                        <form action="<?= base_url() ?>dashboard/kategori/delete-sub-kategori/<?= $ks['id_sub_kategori']; ?>" method="post">
-                                                            <?= csrf_field() ?>
-                                                            <button type="submit" class="dropdown-item">
-                                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                                <span class="text-danger">Delete</span>
-                                                            </button>
-                                                        </form>
+                                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteSubKategori<?= $ks['id_sub_kategori']; ?>">
+                                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                            <span class="text-danger">Delete</span>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <!-- ================= START MODAL DELETE SINGLE Sub Kategori ================== -->
+                                            <div class="modal fade" id="deleteSubKategori<?= $ks['id_sub_kategori']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteSubKategori<?= $ks['id_sub_kategori']; ?>" aria-hidden="true">
+                                                <div class="modal-dialog text-start text-secondary" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="deleteSubKategori<?= $ks['id_sub_kategori']; ?>">Delete <?= $ks['nama_sub_kategori']; ?> ?</h5>
+                                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">Pilih Delete untuk menghapus Sub kategori <?= $ks['nama_sub_kategori']; ?></div>
+                                                        <div class="modal-footer">
+                                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                            <form action="<?= base_url() ?>dashboard/produk/tambah-produk/delete-produk/<?= $ks['id_sub_kategori']; ?>" method="post">
+                                                                <?= csrf_field() ?>
+                                                                <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- ================= END MODAL DELETE SINGLE Sub Kategori ================== -->
                                         </td>
                                     </tr>
                                 <?php endif ?>

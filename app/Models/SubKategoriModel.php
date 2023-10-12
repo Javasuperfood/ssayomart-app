@@ -18,7 +18,7 @@ class SubKategoriModel extends Model
         'nama_kategori',
         'deskripsi',
         'slug',
-        'img'
+        'img',
     ];
 
     // Dates
@@ -31,9 +31,26 @@ class SubKategoriModel extends Model
     // Validation
     protected $validationRules      = [
         'id_kategori' => 'required',
-        'nama_kategori' => 'required',
-        'deskripsi' => 'required',
-        'slug' => 'required'
+        'nama_kategori' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama kategori wajib diisi.',
+            ],
+        ],
+        'deskripsi' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Deskripsi kategori wajib diisi.',
+            ],
+        ],
+        'img' => [
+            'rules' => 'max_size[img,1024]|mime_in[img,image/jpg,image/jpeg,image/png]',
+            'errors' => [
+                'max_size' => 'Ukuran gambar terlalu besar',
+                'is_image' => 'Yang anda pilih bukan gambar',
+                'mime_in' => 'Yang anda pilih bukan gambar'
+            ]
+        ]
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
