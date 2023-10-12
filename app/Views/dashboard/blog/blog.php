@@ -50,8 +50,8 @@
                                             <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Lihat Konten
                                         </a>
-                                        <a class="dropdown-item" href="">
-                                            <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        <a class="dropdown-item" href="<?= base_url('dashboard/blog/detail-konten/' . $bm['id_blog']); ?>">
+                                            <i class="bi bi-box-seam-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Detail Konten
                                         </a>
                                         <a class="dropdown-item" href="<?= base_url() ?>dashboard/blog/update-konten/<?= $bm['id_blog'] ?>">
