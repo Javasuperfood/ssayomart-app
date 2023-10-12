@@ -67,7 +67,9 @@
                             </div>
                         </div>
                     </div> -->
-                    <button type="submit" class="btn btn-danger mt-3 text-center">Simpan</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger mt-3 text-center">Simpan</button>
+                    </div>
                 </form>
             </div>
         </div>

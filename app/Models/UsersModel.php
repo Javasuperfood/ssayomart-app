@@ -93,4 +93,16 @@ class UsersModel extends Model
         $result = $query->getResultArray()[0]['secret'];
         return $result;
     }
+
+    public function getUserInfo($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('users')
+            ->select('username, fullname', 'img')
+            ->where('id', $id)
+            ->get();
+
+        $result = $query->getRowArray();
+        return $result;
+    }
 }
