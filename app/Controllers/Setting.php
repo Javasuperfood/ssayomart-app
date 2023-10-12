@@ -374,4 +374,16 @@ class Setting extends BaseController
         curl_close($curl);
         return $response;
     }
+
+    // sayocare
+    public function sayoCare()
+    {
+        $kategori = new KategoriModel();
+        $data = [
+            'title' => 'Sayomart Care',
+            'kategori' => $kategori->findAll()
+
+        ];
+        return view('user/home/setting/sayoCare', $data);
+    }
 }
