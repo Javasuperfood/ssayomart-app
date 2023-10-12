@@ -37,7 +37,9 @@
                         <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" placeholder="Masukan Isi Konten Artikel/Blog Anda Disini..." name="isi_blog" value="<?= $bm['isi_blog']; ?>"></textarea>
                         <!-- <span id="kontenError" class="text-danger"></span> -->
                     </div>
-                    <button type="submit" class="btn btn-danger mt-3 text-center">Edit</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger mt-3 text-center">Edit</button>
+                    </div>
                 </form>
             </div>
         </div>

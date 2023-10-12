@@ -1,11 +1,11 @@
 <!-- Sidebar - Brand -->
 
-<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-    <div class="sidebar-brand-icon rotate-n-15">
-        <i class="fas fa-chart-line"></i>
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+    <div class="sidebar-brand-icon">
+        <img class="logo" id="logo-icon" src="<?= base_url() ?>assets/img/logo.png" alt="Logo Ssayomart" width="50px" height="50px">
     </div>
-    <div class="sidebar-brand-text mx-3">Ssayomart</div>
 </a>
+
 
 <!-- Divider -->
 <hr class="sidebar-divider">
