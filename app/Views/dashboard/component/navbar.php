@@ -39,6 +39,10 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="<?= base_url(); ?>">
+                    <i class="fas fa-share fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Pergi ke Aplikasi
+                </a>
                 <a class="dropdown-item" href="<?= base_url(); ?>setting/profile-admin/<?= auth()->user()->id; ?>">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profil

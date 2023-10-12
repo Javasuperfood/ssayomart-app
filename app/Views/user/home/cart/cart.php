@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Mobile View -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-1 d-md-none">
+        <div class="container pt-1">
             <div class="row">
                 <div class="card shadow-sm border-0">
                     <div class="card-body">
@@ -68,66 +68,78 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Mobile View -->
 
     <!-- Desktop View -->
-    <div class="container py-5 h-100">
+    <div class="container h-100" style="padding-top : 120px;">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <div class="card">
+                <div class="card border-0 shadow rounded-4">
                     <div class="card-body p-4">
-
                         <div class="row">
-
                             <div class="col-lg-7">
-                                <h5 class="mb-3"><?= lang('Text.title_cart') ?></h5>
-                                <hr>
-
+                                <h4 class="mb-3 text-center"><?= lang('Text.title_cart') ?></h4>
+                                <hr class="text-danger">
                                 <?php foreach ($produk as $p) : ?>
-                                    <div class="card mb-3">
+                                    <div class="card border-0 shadow-sm rounded-3 mb-3">
                                         <div class="card-body">
-                                            <div class="d-flex flex-column">
-                                                <div class="d-flex flex-row align-items-center justify-content-between">
-                                                    <div class="d-flex align-items-center">
-                                                        <div>
-                                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" alt="Shopping item" class="img-fluid rounded-3" style="width: 65px;">
+                                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                                <div class="d-flex align-items-center">
+                                                    <div class="row">
+                                                        <div class="col-3">
+                                                            <div>
+                                                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" alt="Shopping item" class="img-fluid rounded-3" style="width: 100px;">
+                                                            </div>
                                                         </div>
-                                                        <div class="ms-3">
-                                                            <h4 class="product_name">
-                                                                <?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>
-                                                                <?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '...' : ''; ?>
-                                                            </h4>
-                                                            <p class="mb-0"><?= substr($p['deskripsi'], 0, 80); ?>...</p>
+                                                        <div class="col-9">
+                                                            <div class="ms-3">
+                                                                <h4 class="product_name">
+                                                                    <?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>
+                                                                    <?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '...' : ''; ?>
+                                                                </h4>
+                                                                <p class="mb-0"><?= substr($p['deskripsi'], 0, 80); ?>...</p>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex flex-row align-items-center">
-                                                        <div class="d-flex align-items-center me-4">
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between" style="padding-left: 15px;">
+                                                    <div class="d-flex flex-column">
+                                                        <div class="text-center me-5 pb-2" style="margin-top: 10px;">
+                                                            <h5 class="mb-0" style="font-size: 20px;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
+                                                        </div>
+                                                        <div class="d-flex align-items-center me-5">
                                                             <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
-                                                            <input type="text" class="form-control text-small text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
+                                                            <input type="text" class="form-control text-small text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="width: 55px;">
                                                             <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
                                                         </div>
-                                                        <div class=" text-center me-5">
-                                                            <h5 class="mb-0" style="font-size: 15px;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
-                                                        </div>
-
-                                                        <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
-                                                            <?= csrf_field(); ?>
-                                                            <button type="submit" class="btn btn-danger rounded-circle"><i class="bi bi-trash"></i></button>
-                                                        </form>
                                                     </div>
+                                                    <form action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline mx-0 my-0" style="position: absolute; right: 0; bottom:0;">
+                                                        <?= csrf_field(); ?>
+                                                        <button type="submit" class="btn rounded-circle"><i class="bi bi-trash text-danger"></i></button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 <?php endforeach; ?>
                             </div>
                             <!-- right side div -->
                             <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
-                                <div class="right_side p-3 border bg-white">
-                                    <h4 class="mb-5"><?= lang('Text.title_cart') ?></h4>
+                                <div class="right_side p-3 borde-0 shadow-sm rounded-3 bg-white">
+                                    <h5 class="mb-5 text-center"><?= lang('Text.title_cart') ?></h5>
                                     <?php foreach ($produk as $p) : ?>
                                         <div class="d-flex justify-content-between">
-                                            <p><?= $p['nama']; ?></p>
-                                            <p id="textQty<?= $p['id_produk']; ?>"><?= $p['qty']; ?></p>
-                                            <p id="textHargaItem<?= $p['id_produk']; ?>">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                            <table class="table table-borderless text-center">
+                                                <tr>
+                                                    <td>
+                                                        <p><?= $p['nama']; ?></p>
+                                                    </td>
+                                                    <td>
+                                                        <p id="textQty<?= $p['id_produk']; ?>"><?= $p['qty']; ?></p>
+                                                    </td>
+                                                    <td>
+                                                        <p id="textHargaItem<?= $p['id_produk']; ?>">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+
                                         </div>
                                     <?php endforeach; ?>
                                     <hr />
