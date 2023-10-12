@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<?= $this->extend('user/home/layout2') ?>
+<?= $this->section('page-content') ?>
 
 <head>
     <!-- Required meta tags -->
@@ -12,18 +12,12 @@
 
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.css">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
     <title>Ssayomart Blog Page</title>
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="<?= base_url('/'); ?>">
-                <img src="<?= base_url() ?>assets/img/logo.png" alt="" width="50" height="50" class="d-inline-block align-text-top">
-            </a>
-        </div>
-    </nav>
-
     <div class="container-fluid p-0 position-relative">
         <div class="img-container">
             <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
@@ -39,18 +33,19 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <!-- Konten Kolom Pertama -->
-
-                <div class="img-container">
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                    <div class="img-overlay"></div>
+                <div data-aos="fade-right">
+                    <div class="img-container">
+                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                        <div class="img-overlay"></div>
+                    </div>
                 </div>
-
             </div>
             <div class="col-12 col-md-6 text-end">
                 <!-- Konten Kolom Kedua -->
-
-                <h3>Masakan Rekomendasi</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+                <div data-aos="fade-left">
+                    <h3>Masakan Rekomendasi</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+                </div>
 
             </div>
         </div>
@@ -60,18 +55,22 @@
         <div class="row">
             <div class="col-12 col-md-6 ">
                 <!-- Konten Kolom Kedua -->
+                <div data-aos="fade-right">
+                    <h3>Masakan Rekomendasi</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+                </div>
 
-                <h3>Masakan Rekomendasi</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
             </div>
             <div class="col-12 col-md-6">
                 <!-- Konten Kolom Pertama -->
-
-                <div class="img-container">
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                    <div class="img-overlay"></div>
+                <div data-aos="fade-left">
+                    <div class="img-container">
+                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                        <div class="img-overlay"></div>
+                    </div>
                 </div>
+
 
             </div>
 
@@ -79,7 +78,7 @@
     </div>
 
     <div class="container mt-3 d-none d-md-block">
-        <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-primary">Ssayomart</span></h2>
+        <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
             <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
                 <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
@@ -99,7 +98,7 @@
     <!-- galery photos Mobile -->
     <div class="container d-md-none">
         <section class="galeri" id="galeri">
-            <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-primary">Ssayomart</span></h2>
+            <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
             <div class="swiper telkom mt-3">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -125,7 +124,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h2 class="fw-bold text-dark mt-4">Tips & Trik Cooking <span class="text-primary">Ssayomart</span></h2>
+                <h2 class="fw-bold text-dark mt-4">Tips & Trik Cooking <span class="text-danger">Ssayomart</span></h2>
                 <div class="swiper card-swiper mt-3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
@@ -135,10 +134,9 @@
                                 <p class="text-secondary mt-2 mx-3">
                                     Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
                                     <span class="full-description mx-3">
-                                        Saus Gochujang ini dapat diaplikasikan pada berbagai oalahan makanan seperti
-                                        Bibimbap
+                                        Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
                                     </span>
-                                    <a href="#" class="btn btn-expand-description text-primary mt-2" style="text-align: center;">Lihat Selengkapnya</a>
+                                    <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More </a>
                                 </p>
                             </div>
                         </div>
@@ -149,10 +147,9 @@
                                 <p class="text-secondary mt-2 mx-3">
                                     Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
                                     <span class="full-description mx-3">
-                                        Saus Gochujang ini dapat diaplikasikan pada berbagai oalahan makanan seperti
-                                        Bibimbap
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa, earum. Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
                                     </span>
-                                    <a href="#" class="btn btn-expand-description text-primary mt-2" style="text-align: center;">Lihat Selengkapnya</a>
+                                    <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
                                 </p>
                             </div>
                         </div>
@@ -163,10 +160,9 @@
                                 <p class="text-secondary mt-2 mx-3">
                                     Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
                                     <span class="full-description mx-3">
-                                        Saus Gochujang ini dapat diaplikasikan pada berbagai oalahan makanan seperti
-                                        Bibimbap
+                                        Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
                                     </span>
-                                    <a href="#" class="btn btn-expand-description text-primary mt-2" style="text-align: center;">Lihat Selengkapnya</a>
+                                    <a href="#" class=" rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
                                 </p>
                             </div>
                         </div>
@@ -177,41 +173,13 @@
                                 <p class="text-secondary mt-2 mx-3">
                                     Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
                                     <span class="full-description mx-3">
-                                        Saus Gochujang ini dapat diaplikasikan pada berbagai oalahan makanan seperti
-                                        Bibimbap
+                                        Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
                                     </span>
-                                    <a href="#" class="btn btn-expand-description text-primary mt-2" style="text-align: center;">Lihat Selengkapnya</a>
+                                    <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
                                 </p>
                             </div>
                         </div>
-                        <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                <p class="text-secondary mt-2 mx-3">
-                                    Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                    <span class="full-description mx-3">
-                                        Saus Gochujang ini dapat diaplikasikan pada berbagai oalahan makanan seperti
-                                        Bibimbap
-                                    </span>
-                                    <a href="#" class="btn btn-expand-description text-primary mt-2" style="text-align: center;">Lihat Selengkapnya</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 ">
-                            <div class="card border-0 shadow-sm">
-                                <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                <p class="text-secondary mt-2 mx-3">
-                                    Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                    <span class="full-description mx-3">
-                                        Saus Gochujang ini dapat diaplikasikan pada berbagai oalahan makanan seperti
-                                        Bibimbap
-                                    </span>
-                                    <a href="#" class="btn btn-expand-description text-primary mt-2" style="text-align: center;">Lihat Selengkapnya</a>
-                                </p>
-                            </div>
-                        </div>
+
 
 
                     </div>
@@ -226,8 +194,11 @@
         <div class="row">
             <!-- Kolom Kiri -->
             <div class="col-md-3">
-                <div class="mb-4">
-                    <span class="font-weight-bold display-4">Tips memasak Ala Korean Food Dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong></span>
+                <div data-aos="fade-right">
+
+                    <div class="mb-4">
+                        <span class="font-weight-bold display-4">Tips memasak Ala Korean Food Dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong></span>
+                    </div>
                 </div>
             </div>
 
@@ -236,40 +207,49 @@
                 <div class="row">
                     <!-- Kolom Atas Kanan -->
                     <div class="col-md-6">
-                        <div class="mb-4">
-                            <div class="img-container">
-                                <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                <div class="img-overlay"></div>
+                        <div data-aos="fade-left">
+                            <div class="mb-4">
+                                <div class="img-container">
+                                    <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                                    <div class="img-overlay"></div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- Kolom Atas Kiri -->
                     <div class="col-md-6">
-                        <div class="mb-4">
-                            <div class="img-container">
-                                <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                <div class="img-overlay"></div>
+                        <div data-aos="fade-left">
+                            <div class="mb-4">
+                                <div class="img-container">
+                                    <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                                    <div class="img-overlay"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kolom Bawah Kanan -->
                     <div class="col-md-6">
-                        <div class="mb-4">
-                            <div class="img-container">
-                                <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                <div class="img-overlay"></div>
+                        <div data-aos="fade-left">
+                            <div class="mb-4">
+                                <div class="img-container">
+                                    <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                                    <div class="img-overlay"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Kolom Bawah Kiri -->
                     <div class="col-md-6">
-                        <div class="mb-4">
-                            <div class="img-container">
-                                <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                <div class="img-overlay"></div>
+                        <div data-aos="fade-left">
+                            <div class="mb-4">
+                                <div class="img-container">
+                                    <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                                    <div class="img-overlay"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -280,14 +260,13 @@
     <!-- Akhir sistem grid Destop -->
 
 
-
-
-
-
-
-
-
     <style>
+        .full-description {
+            height: 4em;
+            /* Atur tinggi elemen "full-description" sesuai keinginan Anda (setara dengan sekitar 4 baris) */
+            overflow: hidden;
+        }
+
         /* Gaya untuk efek zoom in */
         .zoom-in {
             transition: transform 0.2s ease-in-out;
@@ -330,6 +309,7 @@
 
 
     <script>
+        AOS.init();
         var swiper = new Swiper('.swiper-container', {
             slidesPerView: 1,
             spaceBetween: 10, // Jarak antara slide
@@ -388,7 +368,7 @@
                 },
                 // Tampilan Mobile (lebar < 768px)
                 375: {
-                    slidesPerView: 2, // 2 card per tampilan
+                    slidesPerView: 1, // 2 card per tampilan
                 },
                 280: {
                     slidesPerView: 1, // 2 card per tampilan
@@ -402,6 +382,30 @@
 
 
         });
+
+        function tampilkanSelengkapnya(button) {
+            var fullDescription = button.parentElement.querySelector('.full-description');
+            var readMoreButton = button;
+
+            if (fullDescription.style.display === 'none' || fullDescription.style.display === '') {
+                fullDescription.style.display = 'inline';
+                readMoreButton.textContent = 'Read Less';
+            } else {
+                fullDescription.style.display = 'none';
+                readMoreButton.textContent = 'Read More';
+            }
+        }
+
+        // Mencari semua tombol "Read More" pada halaman
+        var readMoreButtons = document.querySelectorAll('.btn.btn-danger');
+
+        // Menambahkan event listener untuk setiap tombol
+        for (var i = 0; i < readMoreButtons.length; i++) {
+            readMoreButtons[i].addEventListener('click', function(event) {
+                event.preventDefault(); // Mencegah pergeseran ke atas
+                tampilkanSelengkapnya(this);
+            });
+        }
     </script>
 
 </body>
@@ -409,5 +413,5 @@
 
 
 
-
-</html>
+<!-- END -->
+<?= $this->endSection(); ?>

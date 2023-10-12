@@ -3,12 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\KategoriModel;
 
 class Blog extends BaseController
 {
     public function index()
     {
-        // Load view blog.php
-        return view('user/home/blog/blog');
+        $kategori = new KategoriModel();
+
+        $data = [
+            'title' => 'Artikel',
+            'kategori' => $kategori->findAll()
+        ];
+        return view('user/home/blog/blog', $data);
     }
 }
