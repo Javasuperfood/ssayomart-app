@@ -4,7 +4,7 @@
 <h1 class="h3 mb-2 text-gray-800">Manajemen Konten Artikel/Blog Ssayomart</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item text-danger active">List Artikel/Blog</li>
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/blog/tambah-konten">Buat Artikel/Blog</a></li>
+    <li class="breadcrumb-item text-secondary"></li>
 </ul>
 <p class="mb-4">Anda dapat mengatur konten artikel/blog informasi, produk, resep, dan media yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.</p>
 <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/blog/tambah-konten"><i class="bi bi-plus-circle-fill"></i> Tambah Konten</a>
@@ -46,16 +46,16 @@
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="">
+                                        <a class="dropdown-item" href="<?= base_url() ?>blog/<?= $bm['id_blog']; ?>" target="__blank">
                                             <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Lihat Konten
                                         </a>
                                         <a class="dropdown-item" href="<?= base_url('dashboard/blog/detail-konten/' . $bm['id_blog']); ?>">
-                                            <i class="bi bi-box-seam-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            <i class="bi bi-search fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Detail Konten
                                         </a>
                                         <a class="dropdown-item" href="<?= base_url() ?>dashboard/blog/update-konten/<?= $bm['id_blog'] ?>">
-                                            <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            <i class="bi bi-gear-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Edit Konten
                                         </a>
                                         <div class="dropdown-divider"></div>

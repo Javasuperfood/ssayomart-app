@@ -10,6 +10,12 @@
     }
 </style>
 
+<h1 class="h3 mb-2 text-gray-800">Detail Artikel/Blog</h1>
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/blog/blog">List Artikel/Blog</a></li>
+    <li class="breadcrumb-item text-danger active"><a class="text-danger" href="#">Detail Artikel/Blog</a></li>
+</ul>
+
 <div class="card border-0 shadow-sm">
     <div class="card-header border-0 py-3">
         <h5 class=" mb-0">Pembuat Konten</h5>
