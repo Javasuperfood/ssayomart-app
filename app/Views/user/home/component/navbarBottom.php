@@ -8,26 +8,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Footer Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <nav class="navbar navbar-expand d-md-blok d-lg-none d-xl-none fixed-bottom" style="margin-top: 6%; height: 55px; background-color:#ec2614">
+        <nav class="navbar navbar-expand d-md-blok d-lg-none d-xl-none fixed-bottom" style="margin-top: 6%; height: 55px; background-color:#fff">
             <ul class="navbar-nav nav-justified w-100">
                 <li class="nav-item">
-                    <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4"></i></a>
+                    <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4 text-danger"></i></a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light">
-                        <i class="bi bi-cart-fill fw-bold fs-2 position-relative">
+                        <i class="bi bi-cart-fill fw-bold fs-2 position-relative text-danger">
                             <?php if (session()->get('countCart') > 0) : ?>
-                                <i class="bi bi-chat position-absolute top-0 start-100 translate-middle text-white"></i>
+                                <i class="bi bi-chat position-absolute top-0 start-100 translate-middle text-danger"></i>
                                 <span class="position-absolute top-0 start-100 translate-middle text-warning fw-bold" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                             <?php endif ?>
                         </i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2"></i></a>
+                    <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2"></i></a>
+                    <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
             </ul>
         </nav>

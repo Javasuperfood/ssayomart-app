@@ -10,18 +10,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container d-md-none">
             <div class="row">
-                <nav class="navbar pt-4" style="background-color : #ec2614; padding-bottom : 80px; border-radius:0 0 3% 3%;">
+                <nav class="navbar pt-4 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
                     <div class="container-fluid mx-3">
                         <div class="col-8">
                             <form class="border-0" role="search" action="<?= base_url('search'); ?>" method="get">
-                                <div class="input-group">
-                                    <button type="submit" class="input-group-text border-0 bg-white" id="basic-addon1"><i class="bi bi-search"></i></button>
-                                    <input type="text" name="produk" class="form-control border-0" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text border-0 rounded-3 bg-white shadow-sm"><i class="bi bi-search"></span></i>
+                                    <input type="text" name="produk" class="form-control border-0 shadow-sm rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                                 </div>
                             </form>
                         </div>
                         <div class="col-2">
-                            <a href="<?= base_url(); ?>wishlist" class="btn btn-light rounded-circle ms-3 fs-6 btn-wishlist">
+                            <a href="<?= base_url(); ?>wishlist" class="btn btn-outline-danger rounded-circle ms-3 fs-6 btn-wishlist">
                                 <i class="bi bi-heart-fill heart-icon" style="color: #ec2614"></i>
                             </a>
                         </div>
