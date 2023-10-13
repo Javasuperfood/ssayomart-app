@@ -1,7 +1,11 @@
 <?= $this->extend(config('Auth')->views['layout']) ?>
 
 <?= $this->section('title') ?><?= lang('Auth.register') ?> <?= $this->endSection() ?>
-
+<?php
+$error = false;
+if (session('errors')) {
+    $error = session('errors');
+} ?>
 <?= $this->section('main') ?>
 <div class="box shadow-sm border-0" style="height: 800px;">
     <div class="inner-box">
@@ -11,20 +15,6 @@
                 <div class="logo d-md-none d-lg-none">
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />
                 </div>
-                <?php if (session('error') !== null) : ?>
-                    <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
-                <?php elseif (session('errors') !== null) : ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php if (is_array(session('errors'))) : ?>
-                            <?php foreach (session('errors') as $error) : ?>
-                                <?= $error ?>
-                                <br>
-                            <?php endforeach ?>
-                        <?php else : ?>
-                            <?= session('errors') ?>
-                        <?php endif ?>
-                    </div>
-                <?php endif ?>
                 <div class="heading mb-3">
                     <h2>Daftar</h2>
                     <h6>Sudah punya akun?</h6>
@@ -47,22 +37,23 @@
 
 
                 <div class="actual-form">
-                    <span class="small text-danger">Masukin aja disini</span>
+                    <span class="small text-danger"><?= ($error) ? $error['username'] : ''; ?></span>
                     <div class="input-wrap">
                         <input type="username" class="input-field shadow-sm border-0" name="username" inputmode="text" autocomplete="username" placeholder="  username" value="<?= old('username') ?>" required />
                     </div>
 
-                    <span class="small text-danger">Masukin aja disini</span>
+                    <span class="small text-danger"><?= ($error) ? $error['email'] : ''; ?></span>
                     <div class="input-wrap">
                         <input type="email" class="input-field shadow-sm border-0" name="email" inputmode="email" autocomplete="email" placeholder="  email" value="<?= old('email') ?>" required />
                     </div>
 
-                    <span class="small text-danger">Masukin aja disini</span>
+                    <span class="small text-danger"><?= ($error) ? $error['password'] : ''; ?></span>
                     <div class="input-wrap position-relative">
                         <input type="password" class="input-field shadow-sm border-0" name="password" inputmode="text" placeholder="  kata sandi" autocomplete="new-password" required />
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
                     </div>
-                    <span class="small text-danger">Masukin aja disini</span>
+                    <span class="small text-danger"><?= ($error) ? $error['password_confirm'] : ''; ?>
+                    </span>
                     <div class="input-wrap position-relative">
                         <input type="password" class="input-field shadow-sm border-0" name="password_confirm" inputmode="text" placeholder="  komfirmasi kata sandi" autocomplete="new-password" required />
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword2"></i>
