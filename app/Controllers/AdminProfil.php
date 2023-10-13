@@ -111,7 +111,7 @@ class AdminProfil extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/profil/edit-admin/' . $id)->withInput();
+            return redirect()->to('dashboard/profil/profile-admin/' . $id)->withInput();
         }
     }
 }
