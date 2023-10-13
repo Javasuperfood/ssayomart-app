@@ -1,5 +1,5 @@
 var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 3,
+  slidesPerView: 0,
   centeredSlides: false,
   spaceBetween: 10,
   grabCursor: true,
@@ -20,6 +20,9 @@ var swiper = new Swiper(".mySwiper", {
     },
     // Tampilan Mobile (lebar < 768px)
     375: {
+      slidesPerView: 2, // 2 card per tampilan
+    },
+    280: {
       slidesPerView: 2, // 2 card per tampilan
     },
   },
