@@ -29,24 +29,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="input-group has-validation">
                                     <span class="input-group-text bg-white border-0 shadow-sm-sm bg-light">@</span>
-                                    <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>">
-                                    <span id="usernameError" class="text-danger"></span>
+                                    <input type="text" class="form-control form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>">
+                                    <div class="invalid-feedback"><?= validation_show_error('username'); ?></div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>">
-                                <span id="fullnameError" class="text-danger"></span>
+                                <input type="text" class="form-control form-control-lg <?= (validation_show_error('fullname')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>">
+                                <div class="invalid-feedback"><?= validation_show_error('fullname'); ?></div>
                             </div>
                             <div class=" col-12">
-                                <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event)" oninput="validateInput(this);">
-                                <span id=" telpError" class="text-danger"></span>
+                                <input type="text" class="form-control form-control-lg <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event)" oninput="validateInput(this);">
+                                <div class="invalid-feedback"><?= validation_show_error('telp'); ?></div>
                             </div>
 
                             <div class="col-12">
                                 <input type="email" class="form-control form-control-lg bg-white border-0 shadow-sm" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" disabled>
                             </div>
                             <div class="col-12">
-                                <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
+                                <input type="file" style="border: none;" class="form-control form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
+                                <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                             </div>
                             <div class="col-12">
                                 <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
@@ -79,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </ol>
                 </nav>
             </div>
-            <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
+            <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-lg-4">
@@ -98,8 +99,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.username') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>">
-                                        <span id="usernameError" class="text-danger"></span>
+                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>">
+                                        <div class="invalid-feedback"><?= validation_show_error('username'); ?></div>
                                     </div>
                                 </div>
                                 <hr class="border-0">
@@ -108,8 +109,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.nama_lengkap') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>">
-                                        <span id="fullnameError" class="text-danger"></span>
+                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('fullname')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>">
+                                        <div class="invalid-feedback"><?= validation_show_error('fullname'); ?></div>
                                     </div>
                                 </div>
                                 <hr class="border-0">
@@ -118,8 +119,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.telp') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
-                                        <span id="telpError" class="text-danger"></span>
+                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
+                                        <div class="invalid-feedback"><?= validation_show_error('telp'); ?></div>
                                     </div>
                                 </div>
                                 <hr class="border-0">
@@ -137,8 +138,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.profil') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
+                                        <input type="file" class="form-control form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
                                         <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
+                                        <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                                     </div>
                                 </div>
                                 <div class="py-3 px-3">
@@ -156,65 +158,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php endif; ?>
 
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
-
 <!-- end Desktop -->
-
-<script>
-    // validasi form
-    function validasiDetailUser() {
-        var isValid = true;
-
-        var usernameField = document.getElementById('username');
-        var fullnameField = document.getElementById('fullname');
-        var telpField = document.getElementById('telp');
-
-        var usernameError = document.getElementById('usernameError');
-        var fullnameError = document.getElementById('fullnameError');
-        var telpError = document.getElementById('telpError');
-
-        usernameError.textContent = '';
-        fullnameError.textContent = '';
-        telpError.textContent = '';
-
-        if (usernameField.value.trim() === '') {
-            usernameField.classList.add('invalid-field');
-            usernameError.textContent = '<?= lang('Text.username') ?> <?= lang('Text.validasi') ?>';
-            isValid = false;
-        } else {
-            usernameField.classList.remove('invalid-field');
-        }
-
-        if (fullnameField.value.trim() === '') {
-            fullnameField.classList.add('invalid-field');
-            fullnameError.textContent = '<?= lang('Text.nama_lengkap') ?> <?= lang('Text.validasi') ?>';
-            isValid = false;
-        } else {
-            fullnameField.classList.remove('invalid-field');
-        }
-
-        if (telpField.value.trim() === '') {
-            telpField.classList.add('invalid-field');
-            telpError.textContent = '<?= lang('Text.telp') ?> <?= lang('Text.validasi') ?>';
-            isValid = false;
-        } else {
-            telpField
-                .classList.remove('invalid-field');
-        }
-        return isValid;
-    }
-</script>
 
 <?= $this->endSection(); ?>

@@ -18,27 +18,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <div class="mb-3 mx-3 my-3">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="label" name="label" value="<?= $au['label']; ?>">
+                        <input class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="label" name="label" value="<?= $au['label']; ?>">
                         <label for="floatingInput">Label*</label>
+                        <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
                     </div>
                 </div>
 
                 <div class="mb-3 mx-3 my-3">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="penerima" name="penerima" value="<?= $au['penerima']; ?>">
+                        <input class="form-control floatingInput <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="penerima" name="penerima" value="<?= $au['penerima']; ?>">
                         <label for="floatingInput">Nama Penerima*</label>
+                        <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
                     </div>
                 </div>
                 <div class="mb-3 mx-3 my-3">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="telp" name="no_telp1" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
+                        <input class="form-control floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp1" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
                         <label for="floatingInput">Nomor Handphone Penerima*</label>
+                        <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
                     </div>
                 </div>
                 <div class="mb-3 mx-3 my-3">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="telp" name="no_telp2" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
+                        <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp2" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
                         <label for="floatingInput">Nomor Handphone Penerima (Optional)</label>
+                        <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                     </div>
                 </div>
                 <div class="mb-3 mx-3 my-3">
@@ -62,18 +66,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <div class="mb-3 mx-3 my-3">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="zip_code" name="zip_code" value="<?= $au['zip_code']; ?>" onkeypress="return isNumber(event);">
+                        <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="zip_code" name="zip_code" value="<?= $au['zip_code']; ?>" onkeypress="return isNumber(event);">
                         <label for=" floatingInput">Kode Pos*</label>
+                        <div class="invalid-feedback"><?= validation_show_error('zip_code') ?></div>
                     </div>
                 </div>
 
-                <input type="hidden" class="form-control floatingInput <?= (validation_show_error('provinsi')) ? 'is-invalid' : '' ?>" id="inputProvinsi" name="provinsi" value="<?= $au['province']; ?>">
-                <input type="hidden" class="form-control floatingInput <?= (validation_show_error('kabupaten')) ? 'is-invalid' : '' ?>" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>">
+                <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi" value="<?= $au['province']; ?>">
+                <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>">
 
                 <div class="mb-3 mx-3 my-3">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="alamat_1" name="alamat_1" value="<?= $au['alamat_1']; ?>">
+                        <input class="form-control floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0';; ?> shadow-sm" id="alamat_1" name="alamat_1" value="<?= $au['alamat_1']; ?>">
                         <label for=" floatingInput">Detail Alamat*</label>
+                        <div class="invalid-feedback"><?= validation_show_error('alamat_1') ?></div>
                     </div>
                 </div>
                 <div class="mb-3 mx-3 my-3">
@@ -111,27 +117,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="label" name="label" value="<?= $au['label']; ?>">
+                        <input class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="label" name="label" value="<?= $au['label']; ?>">
                         <label for="floatingInput">Label<span style="color: red">*</span></label>
+                        <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="penerima" name="penerima" value="<?= $au['penerima']; ?>">
+                        <input class="form-control floatingInput <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="penerima" name="penerima" value="<?= $au['penerima']; ?>">
                         <label for="floatingInput">Nama Penerima<span style="color: red">*</span></label>
+                        <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="telp" name="no_telp1" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
+                        <input class="form-control floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp1" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
                         <label for="floatingInput">Nomor Handphone Penerima<span style="color: red">*</span></label>
+                        <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="telp" name="no_telp2" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
+                        <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp2" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
                         <label for="floatingInput">Nomor Handphone Penerima (Optional)</label>
+                        <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -155,8 +165,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="zip_code" name="zip_code" value="<?= $au['zip_code']; ?>" onkeypress="return isNumber(event);">
+                        <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="zip_code" name="zip_code" value="<?= $au['zip_code']; ?>" onkeypress="return isNumber(event);">
                         <label for=" floatingInput">Kode Pos<span style="color: red">*</span></label>
+                        <div class="invalid-feedback"><?= validation_show_error('zip_code') ?></div>
                     </div>
                 </div>
 
@@ -165,8 +176,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="alamat_1" name="alamat_1" value="<?= $au['alamat_1']; ?>">
+                        <input class="form-control floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="alamat_1" name="alamat_1" value="<?= $au['alamat_1']; ?>">
                         <label for=" floatingInput">Detail Alamat<span style="color: red">*</span></label>
+                        <div class="invalid-feedback"><?= validation_show_error('alamat_1') ?></div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -186,19 +198,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php endif; ?>
 <!-- end Desktop -->
 
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
-<!-- dekstop -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                html: alertData.message
+            });
+        <?php endif; ?>
+    });
+</script>
 
 <?= $this->endSection(); ?>

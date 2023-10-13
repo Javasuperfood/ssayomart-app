@@ -58,17 +58,44 @@ class Setting extends BaseController
         $usersModel = new UsersModel();
         $image = $this->request->getFile('img');
 
-        // Validasi untuk unggah gambar
-        $aturanValidasi = [
-            'img' => 'mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]' // Hapus 'uploaded' dari validasi
+        //data yang di ambil dari form
+        $data = [
+            'id' => $id,
+            'username' => $this->request->getVar('username'),
+            'fullname' => $this->request->getVar('fullname'),
+            'telp' => $this->request->getVar('telp'),
+            'img' => $image
         ];
 
-        // Jika ada file gambar yang diunggah, lakukan validasi
-        if (!$image->getError() == 4) {
-            $aturanValidasi['img'] .= '|uploaded[img]';
-        }
-
-        if (!$this->validate($aturanValidasi)) {
+        if (!$this->validateData($data, [
+            'username' => [
+                'rules' => 'required|is_unique[users.username]',
+                'errors' => [
+                    'required' => 'Username harus diisi.',
+                    'is_unique' => 'Username sudah digunakan.'
+                ]
+            ],
+            'fullname' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama lengkap harus diisi.'
+                ]
+            ],
+            'telp' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Nomor telepon harus diisi.',
+                    'numeric' => 'Nomor telepon harus berupa angka.'
+                ]
+            ],
+            'img' => [
+                'rules' => 'mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]',
+                'errors' => [
+                    'mime_in' => 'Format gambar tidak sesuai.',
+                    'max_size' => 'Ukuran gambar terlalu besar.'
+                ]
+            ]
+        ])) {
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
@@ -97,6 +124,7 @@ class Setting extends BaseController
             }
         }
 
+        //repalce data
         $data = [
             'id' => $id,
             'username' => $this->request->getVar('username'),
@@ -185,6 +213,67 @@ class Setting extends BaseController
             'telp2' => $this->request->getVar('no_telp2')
         ];
         // SWAL
+        //validation
+        if (!$this->validateData($data, [
+            'label' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Label harus diisi.'
+                ]
+            ],
+            'penerima' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama penerima harus diisi.'
+                ]
+            ],
+            'alamat_1' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Alamat harus diisi.'
+                ]
+            ],
+            'id_province' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Provinsi harus dipilih.'
+                ]
+            ],
+            'id_city' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kabupaten harus dipilih.'
+                ]
+            ],
+            'zip_code' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Kode POS harus diisi.',
+                    'numeric' => 'Kode POS harus berupa angka.'
+                ]
+            ],
+            'telp' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Nomor telepon harus diisi.',
+                    'numeric' => 'Nomor telepon harus berupa angka.'
+                ]
+            ],
+            'telp2' => [
+                'rules' => 'numeric',
+                'errors' => [
+                    'numeric' => 'Nomor telepon harus berupa angka.'
+                ]
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => $this->validator->listErrors()
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting/create-alamat')->withInput();
+        }
         if ($alamatModel->save($data)) {
             session()->setFlashdata('success', 'Alamat berhasil disimpan.');
             $alert = [
@@ -230,8 +319,6 @@ class Setting extends BaseController
     {
         $alamatModel = new AlamatUserModel();
 
-        $au = $alamatModel->find($id);
-
         $data = [
             'id_alamat_users' => $id,
             'id_user' => $this->request->getVar('id_user'),
@@ -247,6 +334,69 @@ class Setting extends BaseController
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2')
         ];
+
+        //validation data
+        if (!$this->validateData($data, [
+            'label' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Label harus diisi.'
+                ]
+            ],
+            'penerima' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama penerima harus diisi.'
+                ]
+            ],
+            'alamat_1' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Alamat harus diisi.'
+                ]
+            ],
+            'id_province' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Provinsi harus dipilih.'
+                ]
+            ],
+            'id_city' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kabupaten harus dipilih.'
+                ]
+            ],
+            'zip_code' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Kode POS harus diisi.',
+                    'numeric' => 'Kode POS harus berupa angka.'
+                ]
+            ],
+            'telp' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Nomor telepon harus diisi.',
+                    'numeric' => 'Nomor telepon harus berupa angka.'
+                ]
+            ],
+            'telp2' => [
+                'rules' => 'numeric',
+                'errors' => [
+                    'numeric' => 'Nomor telepon harus berupa angka.'
+                ]
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => $this->validator->listErrors()
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting/update-alamat/' . $id)->withInput();
+        }
+
         // dd($data);
         // SWAL
         if ($alamatModel->save($data)) {
