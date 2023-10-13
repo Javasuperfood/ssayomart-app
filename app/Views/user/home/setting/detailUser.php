@@ -137,7 +137,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.profil') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>"> <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
+                                        <input type="file" style="border: none;" class="form-control form-control-lg border-0 shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
+                                        <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
                                     </div>
                                 </div>
                                 <div class="py-3 px-3">

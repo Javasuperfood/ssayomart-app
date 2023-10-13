@@ -2,65 +2,60 @@
 <?= $this->section('page-content') ?>
 
 <section class="edit mb-4 mb-md-4">
-    <form>
+    <form action="<?= base_url() ?>dashboard/profil/edit-admin/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiProfilAdmin()">
+        <?= csrf_field() ?>
         <div class="row mb-3">
             <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto Profil</label>
-            <div class="col-md-8 col-lg-9">
-                <img src="<?= base_url() ?>assets/img/pic/1697074369_78d8729f7a629917714f.jpeg" alt="Profile" style="max-width: 100px; max-height: 100px;">
-                <div class="pt-2">
-                    <a href="#" class="btn btn-warning btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                    <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+            <div class="col-md-1 col-lg-1">
+                <div class="card text-center border-0 bg-light">
+                    <img src="<?= base_url() ?>assets/img/pic/<?= $um['img']; ?>" alt="Foto Profil Admin" class="rounded-circle" style="max-width: 150px; max-height: 150px;">
+                    <div class="pt-2">
+                        <label for="img" class="btn btn-danger btn-sm border-0">
+                            <i class="bi bi-upload">
+                            </i>
+                        </label>
+                        <input type="file" id="img" style="display: none;" name="img" accept="image/*" value="<?= $um['img']; ?>" />
+                        <input type="hidden" name="imageLama" value="<?= $um['img']; ?>">
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="row mb-3">
-            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Status</label>
+            <label for="role" class="col-md-4 col-lg-3 col-form-label">Role Akun</label>
             <div class="col-md-8 col-lg-8">
-                <input name="fullName" type="text" class="form-control" id="fullName" value="Admin" disabled>
+                <input name="role" type="text" class="form-control border-0 shadow-sm bg-white" id="role" name="role" value="Admin" disabled>
             </div>
         </div>
 
-
         <div class="row mb-3">
-            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
+            <label for="fullname" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
             <div class="col-md-8 col-lg-8">
-                <input name="fullName" type="text" class="form-control" id="fullName" value="Adib Sugender">
+                <input name="fullname" type="text" class="form-control border-0 shadow-sm" id="fullname" nama="fullname" value="<?= $um['fullname']; ?>" placeholder="Nama Lengkap Anda...">
+                <span id="fullnameError" class="text-danger"></span>
             </div>
         </div>
 
         <div class="row mb-3">
             <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
             <div class="col-md-8 col-lg-8">
-                <input name="username" type="text" class="form-control" id="username" value="@adib6969">
+                <input name="username" type="text" class="form-control border-0 shadow-sm" id="username" name="username" value="<?= $um['username']; ?>" placeholder="Username Anda...">
+                <span id="usernameError" class="text-danger"></span>
             </div>
         </div>
 
         <div class="row mb-3">
             <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
             <div class="col-md-8 col-lg-8">
-                <input name="Email" type="text" class="form-control" id="Email" value="Adibimoet@gmail.com">
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <label for="Country" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
-            <div class="col-md-8 col-lg-8">
-                <input name="country" type="text" class="form-control" id="Country" value="Kota Tangeramng, banten indonesia">
+                <input name="Email" type="text" class="form-control border-0 shadow-sm bg-white" disabled id="email" name="email" value="<?= $results[0]->secret; ?>">
             </div>
         </div>
 
         <div class="row mb-3">
             <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
             <div class="col-md-8 col-lg-8">
-                <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <label for="about" class="col-md-4 col-lg-3 col-form-label">Tentang</label>
-            <div class="col-md-8 col-lg-8">
-                <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                <input type="text" class="form-control shadow-sm border-0" id="telp" name="telp" value="<?= $um['telp']; ?>" placeholder="Nomor Telpon Anda...">
+                <span id="telpError" class="text-danger"></span>
             </div>
         </div>
 
@@ -69,5 +64,61 @@
         </div>
     </form>
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
+
+    // validasi form
+    function validasiProfilAdmin() {
+        var isValid = true;
+
+        var usernameField = document.getElementById('username');
+        var fullnameField = document.getElementById('fullname');
+        var telpField = document.getElementById('telp');
+
+        var usernameError = document.getElementById('usernameError');
+        var fullnameError = document.getElementById('fullnameError');
+        var telpError = document.getElementById('telpError');
+
+        usernameError.textContent = '';
+        fullnameError.textContent = '';
+        telpError.textContent = '';
+
+        if (usernameField.value.trim() === '') {
+            usernameField.classList.add('invalid-field');
+            usernameError.textContent = '<?= lang('Text.username') ?> <?= lang('Text.validasi') ?>';
+            isValid = false;
+        } else {
+            usernameField.classList.remove('invalid-field');
+        }
+
+        if (fullnameField.value.trim() === '') {
+            fullnameField.classList.add('invalid-field');
+            fullnameError.textContent = '<?= lang('Text.nama_lengkap') ?> <?= lang('Text.validasi') ?>';
+            isValid = false;
+        } else {
+            fullnameField.classList.remove('invalid-field');
+        }
+
+        if (telpField.value.trim() === '') {
+            telpField.classList.add('invalid-field');
+            telpError.textContent = '<?= lang('Text.telp') ?> <?= lang('Text.validasi') ?>';
+            isValid = false;
+        } else {
+            telpField
+                .classList.remove('invalid-field');
+        }
+        return isValid;
+    }
+</script>
 
 <?= $this->endSection(); ?>

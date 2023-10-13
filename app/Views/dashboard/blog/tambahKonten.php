@@ -5,8 +5,11 @@
         display: none;
     }
 </style>
-
 <h1 class="h3 mb-1 text-gray-800">Tambah Konten Artikel/Blog</h1>
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/blog/blog">List Artikel/Blog</a></li>
+    <li class="breadcrumb-item text-danger active"><a class="text-danger" href="#">Tambah Artikel/Blog</a></li>
+</ul>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
     <b>MOHON TELITI KETIKA MENGISI KONTEN UNTUK MENGHINDARI KESALAHAN YANG TIDAK DIINGINKAN!!</b>
 </div>

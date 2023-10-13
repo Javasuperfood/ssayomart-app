@@ -111,17 +111,9 @@
 
     <!-- blog -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBlog" aria-expanded="true" aria-controls="collapseBlog">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/blog/blog">
             <i class="bi bi-newspaper"></i>
-            <span>Konten Menu</span>
-        </a>
-        <div id="collapseBlog" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header text-danger">Menu Blog :</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/blog/blog">Blog Konten</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/blog/tambah-konten">Tambah konten</a>
-            </div>
-        </div>
+            <span>Konten Menu</span></a>
     </li>
 
     <!-- kupon -->
