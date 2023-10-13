@@ -17,7 +17,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container pt-1 mb-2">
                 <div class="card py-2" style=" background-color: #d7eff8; border: none; text-align: center; font-family: 'Poppins' ;">
                     <div class="card-warning mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART.png" alt="Deskripsi Gambar" class="card-img-top" style="width: 350px;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART.png" alt="Deskripsi Gambar" class="card-img-top" style="width: 350px; height: auto;">
                         <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                     </div>
                     <div class="container mt-2">
@@ -42,7 +42,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container mb-1">
             <div class="card py-2" style=" background-color: #fce0e4; border: none; text-align: center; font-family: 'Poppins' ; ">
                 <div class="card-warning mt-3">
-                    <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK.png" alt="Deskripsi Gambar" class="card-img-top mb-2" style="width: 350px;">
+                    <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK.png" alt="Deskripsi Gambar" class="card-img-top img-fluid" style="width: 350px;">
                     <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                 </div>
                 <div class="container mt-2">
@@ -317,6 +317,12 @@ if ($isMobile) {
         }
 
 
+    }
+
+    @media screen and (max-width: 280px) {
+        img.card-img-top {
+            max-width: 100%;
+        }
     }
 </style>
 

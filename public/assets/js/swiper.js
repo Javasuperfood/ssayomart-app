@@ -44,7 +44,7 @@ var swiper = new Swiper(".mySwiper", {
       },
       // Tampilan iPad (lebar >= 768px)
       768: {
-        slidesPerView: 1, // 3 card per tampilan
+        slidesPerView: 3, // 3 card per tampilan
       },
       
     },
@@ -65,6 +65,13 @@ var swiper = new Swiper(".mySwiper", {
 
       375: {
         slidesPerView: 2, // 2 card per tampilan
+      },
+
+      768: {
+        slidesPerView: 4, // 3 card per tampilan
+      },
+      280: {
+        slidesPerView: 2, // tampilan galaxo fold
       },
     },
   
