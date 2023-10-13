@@ -29,7 +29,7 @@ class BuyController extends BaseController
         // dd($produk);
         $totalAkhir = $produk['harga_item'] * $qty;
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
-        $kuponList = $kuponModel->findAll();
+        $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
 
         $data = [
             'title' => 'Buy ' . $produk['nama'],

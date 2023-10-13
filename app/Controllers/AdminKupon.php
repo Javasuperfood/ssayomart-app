@@ -33,16 +33,36 @@ class AdminKupon extends BaseController
     {
         // dd($this->request->getVar());
         $kuponModel = new KuponModel();
+        if ($this->request->getVar('is_active') == 1) {
+            $is_active = 1;
+        } else {
+            $is_active = 0;
+        }
+        if ($this->request->getVar('discount') == '') {
+            $discount = null;
+        } else {
+            $discount = $this->request->getVar('discount');
+        }
+        if ($this->request->getVar('available_kupon') <= 0) {
+            $available_kupon = 0;
+        } else {
+            $available_kupon = $this->request->getVar('available_kupon');
+        }
         $data = [
             'nama' => $this->request->getVar('nama_kupon'),
             'kode' => $this->request->getVar('kode_kupon'),
             'deskripsi' => $this->request->getVar('deskripsi_kupon'),
-            'discount' => $this->request->getVar('discount'),
+            'discount' => $discount,
             'total_buy' => $this->request->getvar('total_buy'),
-            'is_active' => $this->request->getVar('masa_berlaku'),
+            'available_kupon' => $available_kupon,
+            'is_active' => $is_active,
             'created_by' => user_id()
         ];
-
+        // dd($data);
+        //validate data
+        if (!$this->validateData($data, $kuponModel->validationRules)) {
+            return redirect()->to('dashboard/kupon/tambah-kupon')->withInput();
+        }
         if ($kuponModel->save($data)) {
             session()->setFlashdata('success', 'Berhasil menambahkan kupon');
             $alert = [
@@ -104,20 +124,40 @@ class AdminKupon extends BaseController
         return view('dashboard/kupon/editKupon', $data);
     }
     // save update
-    public function updateKupon($id)
+    public function updateKupon()
     {
         $kuponModel = new KuponModel();
-        $kp = $kuponModel->find($id);
+        $id = $this->request->getVar('id_kupon');
+        if ($this->request->getVar('is_active') == 1) {
+            $is_active = 1;
+        } else {
+            $is_active = 0;
+        }
+        if ($this->request->getVar('discount') == '') {
+            $discount = null;
+        } else {
+            $discount = $this->request->getVar('discount');
+        }
+        if ($this->request->getVar('available_kupon') <= 0) {
+            $available_kupon = 0;
+        } else {
+            $available_kupon = $this->request->getVar('available_kupon');
+        }
         $data = [
             'id_kupon' => $id,
             'nama' => $this->request->getVar('nama_kupon'),
             'kode' => $this->request->getVar('kode_kupon'),
             'deskripsi' => $this->request->getVar('deskripsi_kupon'),
-            'discount' => $this->request->getVar('discount'),
+            'discount' => $discount,
             'total_buy' => $this->request->getvar('total_buy'),
-            'is_active' => $this->request->getVar('masa_berlaku'),
+            'available_kupon' => $available_kupon,
+            'is_active' => $is_active,
+            'created_by' => user_id()
         ];
+        if (!$this->validateData($data, $kuponModel->validationRules)) {
 
+            return redirect()->to('dashboard/kupon/edit-kupon/' . $id)->withInput();
+        }
         if ($kuponModel->save($data)) {
             session()->setFlashdata('success', 'Kupon berhasil diubah.');
             $alert = [

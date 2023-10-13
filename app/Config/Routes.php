@@ -100,7 +100,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('tambahProduk', 'AdminProduk::tambahProduk');
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
     $routes->get('kategori', 'AdminKategoriController::index');
-    $routes->get('kupon', 'AdminKupon::kupon');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
 
@@ -148,12 +147,15 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
     $routes->post('produk/update-produk/save', 'AdminProduk::saveUpdateProduk');
 
-    // CRUD Kupon
-    $routes->get('kupon/tambah-kupon', 'AdminKupon::tambahKupon');
-    $routes->post('kupon/tambah-kupon/save', 'AdminKupon::saveKupon');
-    $routes->post('kupon/kupon/delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
-    $routes->get('kupon/kupon/edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
-    $routes->post('kupon/kupon/update-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
+    //Route Admin Dashboard Kupon
+    $routes->group('kupon/', static function ($routes) {
+        $routes->get('/', 'AdminKupon::kupon');
+        $routes->get('tambah-kupon', 'AdminKupon::tambahKupon');
+        $routes->post('tambah-kupon/save', 'AdminKupon::saveKupon');
+        $routes->post('delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
+        $routes->get('edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
+        $routes->post('edit-kupon/save', 'AdminKupon::updateKupon');
+    });
 
     // CRUD Marketplace
     $routes->get('marketplace', 'AdminMarketplaceController::index');

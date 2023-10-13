@@ -7,37 +7,56 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/kupon/tambah-kupon/save" method="post" onsubmit="return validasiTambahKupon()">
+        <form action="<?= base_url(); ?>dashboard/kupon/tambah-kupon/save" method="post">
             <?= csrf_field(); ?>
             <div class="mb-3">
-                <label for="nama_kupon" class="form-label text-secondary">Nama Kupon</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= old('nama_kupon') ?>">
-                <span id="kuponError" class="text-danger"></span>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" name="is_active" id="isActive" <?= (old('is_active') == 1) ? 'checked' : ''; ?>>
+                    <label class="form-check-label" for="isActive">
+                        Aktifkan Kupon
+                    </label>
+                </div>
             </div>
             <div class="mb-3">
-                <label for="kode_kupon" class="form-label text-secondary">Kode</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon" value="<?= old('kode_kupon') ?>">
-                <span id="kodeError" class="text-danger"></span>
+                <label for="nama_kupon" class="form-label">Nama Kupon</label>
+                <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= old('nama_kupon') ?>">
+                <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
+            </div>
+            <label for="kode_kupon" class="form-label">Kode</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control <?= (validation_show_error('kode')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon" value="<?= old('kode_kupon') ?>" aria-describedby="generateKode">
+                <button class="btn btn-outline-danger shadow-sm" id="generateKode" type="button">Generate Kode</button>
+            </div>
+            <div class="invalid-feedback"><?= validation_show_error('kode'); ?></div>
+            <div class="mb-3">
+                <label for="deskripsi_kupon" class="form-label">Deskripsi</label>
+                <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." value=""><?= old('deskripsi_kupon') ?></textarea>
+                <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Discount</label>
+                <select class="form-select <?= (validation_show_error('discount')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="discount" id="">
+                    <option value="" selected>Pilih discount</option>
+                    <?php for ($i = 5; $i <= 100; $i += 5) : ?>
+                        <option value="<?= $i / 100; ?>" <?= (old('discount') == $i / 100) ? 'selected' : ''; ?>><?= $i; ?>%</option>
+                    <?php endfor; ?>
+                </select>
+                <div class="invalid-feedback"><?= validation_show_error('discount'); ?></div>
             </div>
             <div class="mb-3">
-                <label for="deskripsi_kupon" class="form-label text-secondary">Deskripsi</label>
-                <textarea class="form-control border-0 shadow-sm" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." value="<?= old('deskripsi_kupon') ?>"></textarea>
-                <span id="deskripsiError" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label for="discount" class="form-label text-secondary">Diskon</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Diskon" value="<?= old('discount') ?>">
-                <span id="discountError" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label for="total_buy" class="form-label text-secondary">Total Pembelian</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="total_buy" name="total_buy" placeholder="total pembelian" value="<?= old('total_buy') ?>">
-                <span id="totalError" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label for="masa_berlaku" class="form-label mr-3 text-secondary">Masa Berlaku</label>
-                <input type="date" id="masa_berlaku" class="form-control border-0 shadow-sm" name="masa_berlaku" placeholder="Masukan Masa Berlaku Kupon" value="<?= old('masa_berlaku') ?>">
-                <span id="masaBerlakuError" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="total_buy" class="form-label">Total minimal pembelian</label>
+                        <input type="text" class="form-control <?= (validation_show_error('total_buy')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="total_buy" name="total_buy" placeholder="total pembelian" value="<?= old('total_buy') ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        <div class="invalid-feedback"><?= validation_show_error('total_buy'); ?></div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="" class="form-label">Mkasimal digunakan</label>
+                        <input type="number" class="form-control <?= (validation_show_error('available_kupon')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="available_kupon" value="<?= (old('available_kupon')) ? old('available_kupon') : 1; ?>" id="" placeholder="Mkasimal digunakan">
+                        <div class="invalid-feedback"><?= validation_show_error('available_kupon'); ?></div>
+                    </div>
+                </div>
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-danger">Simpan</button>
@@ -58,80 +77,10 @@
         <?php endif; ?>
     });
 
-    //Validasi Form
-    function validasiTambahKupon() {
-        var isValid = true;
-
-        var kuponField = document.getElementById('nama_kupon');
-        var kodeField = document.getElementById('kode_kupon');
-        var deskripsiField = document.getElementById('deskripsi_kupon');
-        var discountField = document.getElementById('discount');
-        var totalField = document.getElementById('total_buy');
-        var masaBerlakuField = document.getElementById('masa_berlaku');
-
-        var kuponError = document.getElementById('kuponError');
-        var kodeError = document.getElementById('kodeError');
-        var deskripsiError = document.getElementById('deskripsiError');
-        var discountError = document.getElementById('discountError');
-        var totalError = document.getElementById('totalError');
-        var masaBerlakuError = document.getElementById('masaBerlakuError');
-
-        kuponError.textContent = '';
-        kodeError.textContent = '';
-        deskripsiError.textContent = '';
-        discountError.textContent = '';
-        totalError.textContent = '';
-        masaBerlakuError.textContent = '';
-
-        if (kuponField.value.trim() === '') {
-            kuponField.classList.add('invalid-field');
-            kuponError.textContent = 'Kupon harus diisi';
-            isValid = false;
-        } else {
-            kuponField.classList.remove('invalid-field');
-        }
-
-        if (kodeField.value.trim() === '') {
-            kodeField.classList.add('invalid-field');
-            kodeError.textContent = 'Kode kupon harus diisi';
-            isValid = false;
-        } else {
-            kodeField.classList.remove('invalid-field');
-        }
-
-        if (deskripsiField.value.trim() === '') {
-            deskripsiField.classList.add('invalid-field');
-            deskripsiError.textContent = 'Deskripsi kupon harus diisi';
-            isValid = false;
-        } else {
-            deskripsiField.classList.remove('invalid-field');
-        }
-
-        if (discountField.value.trim() === '') {
-            discountField.classList.add('invalid-field');
-            discountError.textContent = 'Kolom diskon harus diisi';
-            isValid = false;
-        } else {
-            discountField.classList.remove('invalid-field');
-        }
-
-        if (totalField.value.trim() === '') {
-            totalField.classList.add('invalid-field');
-            totalError.textContent = 'Total harus diisi';
-            isValid = false;
-        } else {
-            totalField.classList.remove('invalid-field');
-        }
-
-        if (masaBerlakuField.value.trim() === '') {
-            masaBerlakuField.classList.add('invalid-field');
-            masaBerlakuError.textContent = 'Masa belaku kupon harus diisi';
-            isValid = false;
-        } else {
-            masaBerlakuField.classList.remove('invalid-field');
-        }
-        return isValid;
-    }
+    $("#generateKode").click(function() {
+        let randomString = Math.random().toString(36).substring(2, 8);
+        $("#kode_kupon").val(randomString);
+    })
 </script>
 
 <?= $this->endSection(); ?>

@@ -49,12 +49,12 @@
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="<?= base_url(); ?>dashboard/kupon/kupon/edit-kupon/<?= $kp['id_kupon']; ?>">
+                                        <a class="dropdown-item" href="<?= base_url(); ?>dashboard/kupon/edit-kupon/<?= $kp['id_kupon']; ?>">
                                             <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Edit
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <form action="<?= base_url() ?>dashboard/kupon/kupon/delete-kupon/<?= $kp['id_kupon']; ?>">
+                                        <form action="<?= base_url() ?>dashboard/kupon/delete-kupon/<?= $kp['id_kupon']; ?>" method="post">
                                             <?= csrf_field() ?>
                                             <button type="submit" class="dropdown-item">
                                                 <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>

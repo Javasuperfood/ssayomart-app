@@ -32,13 +32,44 @@ class KuponModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'nama' => 'required',
-        'kode' => 'required',
-        'deskripsi' => 'required',
-        'discount' => 'required',
-        'total_buy' => 'required',
-        'is_active' => 'required',
-        'created_by' => 'required',
+        'nama' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Nama kupon harus diisi',
+            ]
+        ],
+        'kode' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Kode kupon harus diisi',
+            ]
+        ],
+        'deskripsi' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Deskripsi kupon harus diisi',
+            ]
+        ],
+        'discount' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Diskon kupon harus dipilih',
+            ]
+        ],
+        'total_buy' => [
+            'rules' => 'required|numeric',
+            'errors' => [
+                'required' => 'Total Berbelanja kupon harus diisi',
+                'numeric' => 'Total Berbelanja kupon harus berupa angka',
+            ]
+        ],
+        'is_active' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Aktif kupon harus diisi',
+            ]
+        ],
+        'created_by' => 'required'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
