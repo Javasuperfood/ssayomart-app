@@ -90,7 +90,7 @@
                                     <div class="row mb-3">
                                         <label for="role" class="col-md-4 col-lg-3 col-form-label">Role Akun</label>
                                         <div class="col-md-8 col-lg-8">
-                                            <input name="role" type="text" class="form-control border-0 shadow-sm bg-white" id="role" name="role" value="Admin" disabled>
+                                            <input name="role" type="text" class="form-control border-0 shadow-sm bg-light" id="role" name="role" value="Admin" disabled>
                                         </div>
                                     </div>
 
@@ -113,7 +113,7 @@
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-8">
-                                            <input name="Email" type="text" class="form-control border-0 shadow-sm bg-white" disabled id="email" name="email" value="<?= $results[0]->secret; ?>">
+                                            <input name="Email" type="text" class="form-control border-0 shadow-sm bg-light" disabled id="email" name="email" value="<?= $results[0]->secret; ?>">
                                         </div>
                                     </div>
 
