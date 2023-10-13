@@ -1,84 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title><?= lang('Errors.pageNotFound') ?></title>
-
     <style>
-        div.logo {
-            height: 200px;
-            width: 155px;
-            display: inline-block;
-            opacity: 0.08;
-            position: absolute;
-            top: 2rem;
-            left: 50%;
-            margin-left: -73px;
-        }
-        body {
-            height: 100%;
-            background: #fafafa;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            color: #777;
-            font-weight: 300;
-        }
-        h1 {
-            font-weight: lighter;
-            letter-spacing: normal;
-            font-size: 3rem;
-            margin-top: 0;
-            margin-bottom: 0;
-            color: #222;
-        }
-        .wrap {
-            max-width: 1024px;
-            margin: 5rem auto;
-            padding: 2rem;
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css");
+        @import url("https://fonts.googleapis.com/css?family=Arvo");
+
+        .page_404 {
+            padding: 40px 0;
             background: #fff;
-            text-align: center;
-            border: 1px solid #efefef;
-            border-radius: 0.5rem;
-            position: relative;
+            font-family: 'Arvo', serif;
         }
-        pre {
-            white-space: normal;
-            margin-top: 1.5rem;
+
+        .page_404 img {
+            width: 100%;
         }
-        code {
-            background: #fafafa;
-            border: 1px solid #efefef;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            display: block;
+
+        .four_zero_four_bg {
+            background-image: url(<?= base_url('assets/gif/404.gif'); ?>);
+            height: 400px;
+            background-position: center;
         }
-        p {
-            margin-top: 1.5rem;
+
+        .four_zero_four_bg h1 {
+            font-size: 80px;
         }
-        .footer {
-            margin-top: 2rem;
-            border-top: 1px solid #efefef;
-            padding: 1em 2em 0 2em;
-            font-size: 85%;
-            color: #999;
+
+        .four_zero_four_bg h3 {
+            font-size: 80px;
         }
-        a:active,
-        a:link,
-        a:visited {
-            color: #dd4814;
+
+        .link_404 {
+            color: #fff !important;
+            padding: 10px 20px;
+            background: #ec2614;
+            margin: 20px 0;
+            display: inline-block;
+        }
+
+        .contant_box_404 {
+            margin-top: -50px;
         }
     </style>
 </head>
-<body>
-    <div class="wrap">
-        <h1>404</h1>
 
-        <p>
-            <?php if (ENVIRONMENT !== 'production') : ?>
-                <?= nl2br(esc($message)) ?>
-            <?php else : ?>
-                <?= lang('Errors.sorryCannotFind') ?>
-            <?php endif ?>
-        </p>
-    </div>
+<body>
+    <section class="page_404">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-10 col-sm-offset-1 text-center">
+                        <div class="four_zero_four_bg">
+                            <h1 class="text-center">404</h1>
+                        </div>
+                        <div class="contant_box_404">
+                            <h3 class="h2">Look like you're lost</h3>
+                            <p style="font-size: large;">
+                                <?php if (ENVIRONMENT !== 'production') : ?>
+                                    <?= nl2br(esc($message)) ?>
+                                <?php else : ?>
+                                    <?= lang('Errors.sorryCannotFind') ?>
+                                    <br />
+                                    <a href="#" role="button" onclick="history.back()" class="link_404">Go Back</a>
+                                    <a href="<?= base_url(); ?>" class="link_404">Go to Home</a>
+                                <?php endif ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
