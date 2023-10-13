@@ -13,10 +13,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <nav class="navbar pt-4 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
                     <div class="container-fluid mx-3">
                         <div class="col-8">
-                            <form class="border-0" role="search" action="<?= base_url('search'); ?>" method="get">
+                            <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text border-0 rounded-3 bg-white shadow-sm"><i class="bi bi-search"></span></i>
-                                    <input type="text" name="produk" class="form-control border-0 shadow-sm rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                                    <span class="input-group-text border-0 rounded-3 bg-danger shadow-sm"><i class="text-white bi bi-search"></span></i>
+                                    <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                                 </div>
                             </form>
                         </div>
