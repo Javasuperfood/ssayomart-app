@@ -13,14 +13,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <section class="mt-1" id="unggul">
-            <div class="container pt-1 mb-2">
-                <div class="card py-2" style=" background-color: #d7eff8; border: none; text-align: center; font-family: 'Poppins' ;">
+        <section class="mt-0" id="unggul">
+            <div class="container pt-0 mb-3">
+                <div class="card mt-3 rounded-3" style=" background-color: #d7eff8; border: none; text-align: center; font-family: 'Poppins' ;">
                     <div class="card-warning mt-3">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 350px;">
                         <!-- <span class=" card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                     </div>
-                    <div class="container mt-2">
+                    <div class="container my-3">
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($promo as $p) : ?>
@@ -39,21 +39,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </section>
         <!-- rekomendasi -->
-        <div class="container mb-1">
-            <div class="card py-2" style=" background-color: #fce0e4; border: none; text-align: center; font-family: 'Poppins' ; ">
+        <div class="container mb-3">
+            <div class="card py-0 rounded-3" style=" background-color: #fce0e4; border: none; text-align: center;">
                 <div class="card-warning mt-3">
                     <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image" style="width: 350px;">
                     <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                 </div>
-                <div class="container mt-2">
+                <div class="container my-3">
                     <div class="swiper mySweety">
                         <div class="swiper-wrapper d-flex">
                             <?php foreach ($blog_detail as $bd) : ?>
                                 <div class="swiper-slide">
                                     <div class="card border-0 shadow-sm">
                                         <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Thumbnail Artikel" style="height: 150px; width: 180px;">
-                                        <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 7px; padding: 0 3px;">
-                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Selengkapnya <i class="bi bi-arrow-right-circle fs-6" style="margin-left: 4px;"></i></span>
+                                        <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
+                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Selengkapnya <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
                                         </a>
                                     </div>
                                 </div>
@@ -66,8 +66,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- end rekomendasi -->
 
         <!-- All Kategori -->
-        <div class="container py-1">
-            <div class="card bg-success border-0 text-center font-family-poppins">
+        <div class="container">
+            <div class="card border-0 text-center font-family-poppins" style="background-color: #C1E1C1;">
                 <div class="card-warning">
                     <span class="card-title text-white fw-medium fs-3 text-capitalize"><?= lang("Text.kategori") ?></h2>
                 </div>
