@@ -102,8 +102,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategorisubkat', 'Kategorisubkat::kategorisubkat');
     $routes->get('kategori', 'AdminKategoriController::index');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
-    $routes->get('profil/profilAdmin', 'AdminProfil::profilAdmin');
-    $routes->get('profil/editProfil', 'AdminProfil::editProfil');
+
 
 
     //CRUD Admin kategori
@@ -187,6 +186,11 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('blog/delete-konten/(:segment)', 'AdminBlog::deleteKonten/$1');
     // DETAIL KONTEN/BLOG/ARTIKEL
     $routes->get('blog/detail-konten/(:segment)', 'AdminBlog::detailKonten/$1');
+
+    // PROFILE ADMIN
+    $routes->get('profil/profile-admin/(:segment)', 'AdminProfil::profilAdmin/$1');
+    $routes->get('profil/edit-admin/(:any)', 'AdminProfil::editProfil/$1');
+    $routes->post('profil/edit-admin/(:segment)', 'AdminProfil::saveProfil/$1');
 });
 
 service('auth')->routes($routes);

@@ -39,15 +39,15 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="<?= base_url(); ?>">
+                <a class="dropdown-item" href="<?= base_url(); ?>" target="__blank">
                     <i class="fas fa-share fa-sm fa-fw mr-2 text-gray-400"></i>
                     Pergi ke Aplikasi
                 </a>
-                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/profil/profilAdmin/<?= auth()->user()->id; ?>">
+                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/profil/profile-admin/<?= auth()->user()->id; ?>">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profil
                 </a>
-                <a class="dropdown-item" href="<?= base_url(); ?>setting/detail-admin/<?= auth()->user()->id; ?>">
+                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/profil/edit-admin/<?= auth()->user()->id; ?>">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Sunting
                 </a>

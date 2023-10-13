@@ -5,8 +5,11 @@
         display: none;
     }
 </style>
-
-<h1 class="h3 mb-1 text-gray-800">Edit Artikel/Blog</h1>
+<h1 class="h3 mb-2 text-gray-800">Suting Artikel/Blog</h1>
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/blog/blog">List Artikel/Blog</a></li>
+    <li class="breadcrumb-item text-danger active"><a class="text-danger" href="#">Sunting Artikel/Blog</a></li>
+</ul>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
     <b>MOHON TELITI KETIKA MENGISI KONTEN UNTUK MENGHINDARI KESALAHAN YANG TIDAK DIINGINKAN!!</b>
 </div>
@@ -26,17 +29,18 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="isi_blog" class="form-label">Isi Blog/Artikel <span class="text-danger fs-5">*</span></label>
+                        <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" placeholder="Masukan Isi Konten Artikel/Blog Anda Disini..." name="isi_blog" value="<?= $bm['isi_blog']; ?>"></textarea>
+                        <!-- <span id="kontenError" class="text-danger"></span> -->
+                    </div>
+
+                    <div class="mb-3">
                         <label for="img_thumbnail" class="form-label">Gambar Thumbnail <span class="text-danger fs-5">*</span></label>
                         <input type="file" class="form-control shadow-sm border-0" id="img_thumbnail" name="img_thumbnail" accept="image/*" value="<?= $bm['img_thumbnail']; ?>">
                         <input type="hidden" name="imageLama" value="<?= $bm['img_thumbnail']; ?>">
                         <span id="imgError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="isi_blog" class="form-label">Isi Blog/Artikel <span class="text-danger fs-5">*</span></label>
-                        <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" placeholder="Masukan Isi Konten Artikel/Blog Anda Disini..." name="isi_blog" value="<?= $bm['isi_blog']; ?>"></textarea>
-                        <!-- <span id="kontenError" class="text-danger"></span> -->
-                    </div>
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-danger mt-3 text-center">Edit</button>
                     </div>
