@@ -1,7 +1,8 @@
 <?= $this->extend(config('Auth')->views['layout']) ?>
 
 <?= $this->section('title') ?><?= lang('Auth.login') ?> <?= $this->endSection() ?>
-
+<?php
+$error = session('error'); ?>
 <?= $this->section('main') ?>
 <div class="box shadow-sm">
     <div class="inner-box">
@@ -11,20 +12,6 @@
                 <div class="logo d-md-none d-lg-none">
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />
                 </div>
-                <?php if (session('error') !== null) : ?>
-                    <div class="alert alert-danger" role="alert"><?= session('error') ?></div>
-                <?php elseif (session('errors') !== null) : ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php if (is_array(session('errors'))) : ?>
-                            <?php foreach (session('errors') as $error) : ?>
-                                <?= $error ?>
-                                <br>
-                            <?php endforeach ?>
-                        <?php else : ?>
-                            <?= session('errors') ?>
-                        <?php endif ?>
-                    </div>
-                <?php endif ?>
 
                 <?php if (session('message') !== null) : ?>
                     <div class="alert alert-success" role="alert"><?= session('message') ?></div>
@@ -38,13 +25,10 @@
                 </div>
 
                 <div class="actual-form">
-                    <span class="small text-danger">Masukin aja disini</span>
+                    <span class="small text-danger"><?= $error; ?></span>
                     <div class="input-wrap">
                         <input type="email" class="input-field shadow-sm border-0" name="email" inputmode="email" autocomplete="email" placeholder="   email" value="<?= old('email') ?>" required />
                     </div>
-                    <span class="small text-danger">Masukin aja disini</span>
-
-
                     <div class="input-wrap position-relative">
                         <input type="password" class="input-field shadow-sm border-0" name="password" inputmode="text" placeholder="   kata sandi" autocomplete="current-password" required />
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
