@@ -20,7 +20,7 @@ var swiper = new Swiper(".mySwiper", {
     },
     // Tampilan Mobile (lebar < 768px)
     375: {
-      slidesPerView: 3, // 2 card per tampilan
+      slidesPerView: 2, // 2 card per tampilan
     },
   },
 

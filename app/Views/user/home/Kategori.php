@@ -14,24 +14,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <section class="mt-1" id="unggul">
-            <div class="container pt-2">
-                <div class="card bg-warning border-0 text-center font-family-poppins">
-                    <div class="card-warning">
-                        <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2>
+            <div class="container pt-1 mb-2">
+                <div class="card py-2" style=" background-color: #d7eff8; border: none; text-align: center; font-family: 'Poppins' ;">
+                    <div class="card-warning mt-3">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART.png" alt="Deskripsi Gambar" class="card-img-top" style="width: 350px;">
+                        <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                     </div>
-                </div>
-                <div class="row my-1">
-                    <div class="col">
+                    <div class="container mt-2">
                         <div class="swiper mySwiper">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($promo as $p) : ?>
-                                    <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                                        <div class="text-bg-light mb-1 bg-white border-0">
-                                            <div class="px-1 py-1 mx-1 my-1">
-                                                <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                                    <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
-                                                </a>
-                                            </div>
+                                    <div class="swiper-slide">
+                                        <div class="card  shadow-sm">
+                                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                            </a>
                                         </div>
                                     </div>
                                 <?php endforeach ?>
@@ -43,30 +40,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </section>
         <!-- rekomendasi -->
         <div class="container mb-1">
-            <div class="card bg-danger border-0 text-center font-family-poppins">
-                <div class="card-danger">
-                    <span class="card-title text-white fw-medium fs-3"><?= lang('Text.rekomendasi') ?></h2>
+            <div class="card py-2" style=" background-color: #fce0e4; border: none; text-align: center; font-family: 'Poppins' ; ">
+                <div class="card-warning mt-3">
+                    <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK.png" alt="Deskripsi Gambar" class="card-img-top mb-2" style="width: 350px;">
+                    <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                 </div>
-            </div>
-        </div>
-        <!-- end rekomendasi -->
-
-        <!-- card rekomendasi swiper -->
-        <div class="container my-0">
-            <div class="swiper mySweety">
-                <div class="swiper-wrapper d-flex">
-                    <?php foreach ($blog_detail as $bd) : ?>
-                        <div class="swiper-slide">
-                            <div class="card border-0 shadow-sm">
-                                <div class="position-relative">
-                                    <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Thumbnail Artikel" style="height:145px; width:189px;">
-                                    <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger position-absolute d-flex justify-content-center align-items-center" style="height: 30px; width: 120px; left: 50%; transform: translateX(-50%); bottom: 10px; font-size: 10px;">
-                                        <span class="d-flex align-items-center" style="white-space: nowrap;"> Selengkapnya <i class="bi bi-arrow-right-circle fs-5" style="margin-left: 5px;"></i></span>
-                                    </a>
+                <div class="container mt-2">
+                    <div class="swiper mySweety">
+                        <div class="swiper-wrapper d-flex">
+                            <?php foreach ($blog_detail as $bd) : ?>
+                                <div class="swiper-slide">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Thumbnail Artikel" style="height: 150px; width: 180px;">
+                                        <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 7px; padding: 0 3px;">
+                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> Selengkapnya <i class="bi bi-arrow-right-circle fs-6" style="margin-left: 4px;"></i></span>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
