@@ -27,6 +27,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?= base_url(); ?>wishlist" class="nav-link link-light"> <i class="bi bi-heart-fill fw-bold fs-2 text-danger"></i></a>
+                </li>
+                <li class="nav-item">
                     <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
             </ul>

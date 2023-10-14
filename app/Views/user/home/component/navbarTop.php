@@ -11,19 +11,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-md-none">
             <div class="row">
                 <nav class="navbar pt-2 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
-                    <div class="container-fluid mx-3">
-                        <div class="col-8">
+                    <div class="container-fluid mx-1">
+                        <div class="col-10">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text border-0 rounded-3 bg-danger shadow-sm"><i class="text-white bi bi-search"></span></i>
+                                    <span class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></span></i>
                                     <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                                 </div>
                             </form>
-                        </div>
-                        <div class="col-2">
-                            <a href="<?= base_url(); ?>wishlist" class="btn btn-outline-danger rounded-circle ms-3 fs-6 btn-wishlist">
-                                <i class="bi bi-heart-fill heart-icon" style="color: #ec2614"></i>
-                            </a>
                         </div>
 
                         <div class="col-2">
@@ -33,7 +28,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
                             ?>
                             <div class="dropdown">
-                                <button class="btn btn-transparent text-white dropdown-toggle fs-6 d-lg-none border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-transparent text-danger dropdown-toggle fs-6 d-lg-none border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="40px" alt="" class="flag-icon">
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-white" aria-labelledby="languageDropdown">
