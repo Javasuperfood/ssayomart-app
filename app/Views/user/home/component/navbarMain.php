@@ -13,11 +13,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php if (isset($back)) : ?>
                         <span onclick="location.href='<?= base_url(); ?><?= $back; ?>'" class="
                 position-absolute top-50 start-0 translate-middle-y"><i class=" bi bi-chevron-left navbar-brand"></i></span>
-                        <span class="navbar-brand"><?= $title; ?></span>
+                        <span class="navbar-brand" style="font-size: 18px;"><?= $title; ?></span>
                     <?php elseif (!isset($back)) : ?>
                         <span onclick="history.back()" class="
                 position-absolute top-50 start-0 translate-middle-y"><i class=" bi bi-chevron-left navbar-brand"></i></span>
-                        <span class="navbar-brand"><?= $title; ?></span>
+                        <span class="navbar-brand" style="font-size: 18px;"><?= $title; ?></span>
                     <?php endif ?>
                 </div>
             </div>

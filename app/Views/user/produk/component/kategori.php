@@ -10,8 +10,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="mt-2">
             <div class="container d-md-block d-lg-none">
-                <div class="row text-center">
-                    <!-- Tombol Navigasi Kiri dan Kanan -->
+                <!-- <div class="row text-center">
+                    
                     <div class="col position-relative my-3">
                         <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
                             <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left"></i></button>
@@ -22,7 +22,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </button>
                         </div>
 
-                        <!-- Button Kategori -->
+                        
                         <div class="col">
                             <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
                                 <div class="swiper-wrapper">
@@ -44,7 +44,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
