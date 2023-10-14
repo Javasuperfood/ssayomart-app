@@ -10,20 +10,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container d-md-none">
             <div class="row">
-                <nav class="navbar pt-4 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
-                    <div class="container-fluid mx-3">
-                        <div class="col-8">
+                <nav class="navbar pt-2 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
+                    <div class="container-fluid mx-1">
+                        <div class="col-10">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text border-0 rounded-3 bg-danger shadow-sm"><i class="text-white bi bi-search"></span></i>
+                                    <span class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></span></i>
                                     <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                                 </div>
                             </form>
-                        </div>
-                        <div class="col-2">
-                            <a href="<?= base_url(); ?>wishlist" class="btn btn-outline-danger rounded-circle ms-3 fs-6 btn-wishlist">
-                                <i class="bi bi-heart-fill heart-icon" style="color: #ec2614"></i>
-                            </a>
                         </div>
 
                         <div class="col-2">
@@ -33,7 +28,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
                             ?>
                             <div class="dropdown">
-                                <button class="btn btn-transparent text-white dropdown-toggle fs-6 d-lg-none border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-transparent text-danger dropdown-toggle fs-6 d-lg-none border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="40px" alt="" class="flag-icon">
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-white" aria-labelledby="languageDropdown">
@@ -55,7 +50,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- navbar Website -->
     <div id="desktopContent">
         <div class="container mb-5 d-none d-md-block">
-            <nav class="navbar navbar-expand fixed-top" style="background-color: #ffff;">
+            <nav class="navbar navbar-expand fixed-top shadow-sm" style="background-color: #ffff;">
                 <div class="container">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="Logo Ssayomart" class="image-fluid">
@@ -83,31 +78,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </li>
                         </ul>
                         <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
-                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
-                            <button type="submit" class="btn btn-outline-light text-white mx-2" id="basic-addon1"><i class="bi bi-search"></i></button>
+                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control border-danger" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                            <button type="submit" class="btn btn-danger text-white mx-2" id="basic-addon1"><i class="bi bi-search text-white"></i></button>
                         </form>
                         <ul class="navbar-nav d-flex flex-row mx-3">
                             <!-- Icons -->
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
-                                    <i class="bi bi-cart-fill fs-4 text-white position-relative">
+                                    <i class="bi bi-cart-fill fs-4 text-danger position-relative">
                                         <?php if (session()->get('countCart') > 0) : ?>
-                                            <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle text-white"></i>
-                                            <span class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                            <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle text-danger"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle text-white" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                                         <?php endif ?>
                                     </i>
                                 </a>
                             </li>
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>wishlist">
-                                    <i class="bi bi-heart-fill fs-4 text-white"></i>
+                                    <i class="bi bi-heart-fill fs-4 text-danger"></i>
                                     <!-- <span class="badge rounded-pill badge-notification bg-danger">1</span> -->
                                 </a>
                             </li>
                             <?php if (auth()->loggedIn()) : ?>
                                 <li class="nav-item me-3 me-lg-0 dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-circle fs-4 text-white"></i>
+                                        <i class="bi bi-person-circle fs-4 text-danger"></i>
                                     </a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                                         <?php if (auth()->user()->inGroup('superadmin', 'admin')) : ?>
@@ -135,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php else : ?>
                                 <li class="nav-item me-3 me-lg-0">
                                     <a class="nav-link" href="<?= base_url() ?>login">
-                                        <i class="bi bi-person-fill-lock fs-4 text-danger "></i>
+                                        <i class="bi bi-person-fill-lock fs-4 text-danger"></i>
                                     </a>
                                 </li>
                             <?php endif ?>
@@ -153,7 +148,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             $lang = session()->get('lang');
                                             $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
                                             ?>
-                                            <button class="btn btn-transparent text-white dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-transparent text-danger dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="30px" alt="" class="flag-icon">
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-white">
