@@ -55,10 +55,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- navbar Website -->
     <div id="desktopContent">
         <div class="container mb-5 d-none d-md-block">
-            <nav class="navbar navbar-expand fixed-top" style="background-color: #ec2614;">
+            <nav class="navbar navbar-expand fixed-top" style="background-color: #ffff;">
                 <div class="container">
                     <a href="<?= base_url() ?>">
-                        <img src="<?= base_url() ?>assets/img/logopanjang.png" width="170" height="50" alt="Logo Ssayomart" class="image-fluid">
+                        <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="Logo Ssayomart" class="image-fluid">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -66,10 +66,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item ">
-                                <a class="nav-link text-white" aria-current="page" href="<?= base_url() ?>"><?= lang('Text.beranda'); ?></a>
+                                <a class="nav-link " aria-current="page" href="<?= base_url() ?>"><?= lang('Text.beranda'); ?></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?= lang('Text.kategori') ?>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -79,7 +79,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </ul>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-white" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download') ?></a>
+                                <a class="nav-link" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download') ?></a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
