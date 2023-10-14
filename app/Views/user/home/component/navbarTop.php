@@ -10,7 +10,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container d-md-none">
             <div class="row">
-                <nav class="navbar pt-4 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
+                <nav class="navbar pt-2 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
                     <div class="container-fluid mx-3">
                         <div class="col-8">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
