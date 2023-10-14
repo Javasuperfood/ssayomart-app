@@ -27,7 +27,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- navbar Website -->
     <div id="desktopContent">
         <div class="container mb-5 d-none d-md-block">
-            <nav class="navbar navbar-expand fixed-top" style="background-color: #ec2614;">
+            <nav class="navbar navbar-expand fixed-top shadow-sm" style="background-color: #ffff;">
                 <div class="container">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>assets/img/logopanjang.png" width="170" height="50" alt="Logo Ssayomart" class="image-fluid">
@@ -38,10 +38,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item ">
-                                <a class="nav-link text-white" aria-current="page" href="<?= base_url() ?>"><?= lang('Text.beranda'); ?></a>
+                                <a class="nav-link text-secondary" aria-current="page" href="<?= base_url() ?>"><?= lang('Text.beranda'); ?></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link text-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <?= lang('Text.kategori'); ?>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -51,35 +51,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </ul>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-white" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download'); ?></a>
+                                <a class="nav-link text-secondary" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download'); ?></a>
                             </li>
                         </ul>
                         <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
-                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control-main" placeholder="<?= lang('Text.cari_produk'); ?>" aria-label="search" aria-describedby="basic-addon1">
-                            <button type="submit" class="btn btn-outline-light text-white mx-2" id="basic-addon1"><i class="bi bi-search"></i></button>
+                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control-main danger" placeholder="<?= lang('Text.cari_produk'); ?>" aria-label="search" aria-describedby="basic-addon1">
+                            <button type="submit" class="btn btn-danger text-white mx-2" id="basic-addon1"><i class="bi bi-search text-white"></i></button>
                         </form>
                         <ul class="navbar-nav d-flex flex-row mx-3">
                             <!-- Icons -->
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
-                                    <i class="bi bi-cart-fill fs-4 text-white position-relative">
+                                    <i class="bi bi-cart-fill fs-4 text-danger position-relative">
                                         <?php if (session()->get('countCart') > 0) : ?>
-                                            <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle text-white"></i>
-                                            <span class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                            <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle border-danger"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle text-white" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                                         <?php endif ?>
                                     </i>
                                 </a>
                             </li>
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>wishlist">
-                                    <i class="bi bi-heart-fill fs-4 text-white"></i>
+                                    <i class="bi bi-heart-fill fs-4 text-danger"></i>
                                     <!-- <span class="badge rounded-pill badge-notification bg-danger">1</span> -->
                                 </a>
                             </li>
                             <?php if (auth()->loggedIn()) : ?>
                                 <li class="nav-item me-3 me-lg-0 dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-person-circle fs-4 text-white"></i>
+                                        <i class="bi bi-person-circle fs-4 text-danger"></i>
                                     </a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                                         <?php if (auth()->user()->inGroup('superadmin', 'admin')) : ?>
@@ -104,7 +104,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php else : ?>
                                 <li class="nav-item me-3 me-lg-0">
                                     <a class="nav-link" href="<?= base_url() ?>login">
-                                        <i class="bi bi-person-fill-lock fs-4 text-white"></i>
+                                        <i class="bi bi-person-fill-lock fs-4 text-danger"></i>
 
                                     </a>
                                 </li>
@@ -123,7 +123,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             $lang = session()->get('lang');
                                             $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
                                             ?>
-                                            <button class="btn btn-transparent text-white dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn btn-transparent text-danger dropdown-toggle fs-6" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="30px" alt="" class="flag-icon">
                                             </button>
                                             <ul class="dropdown-menu dropdown-menu-white">

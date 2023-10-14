@@ -25,7 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($promo as $p) : ?>
                                     <div class="swiper-slide">
-                                        <div class="card  shadow-sm">
+                                        <div class="shadow-sm">
                                             <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
                                                 <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
                                             </a>
@@ -50,7 +50,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper-wrapper d-flex">
                             <?php foreach ($blog_detail as $bd) : ?>
                                 <div class="swiper-slide">
-                                    <div class="card border-0 shadow-sm">
+                                    <div class="shadow-sm">
                                         <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Thumbnail Artikel" style="height: 150px; width: 180px;">
                                         <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
                                             <span class="d-flex align-items-center" style="white-space: nowrap;"> Selengkapnya <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
