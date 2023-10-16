@@ -192,8 +192,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- akhir galeri photos -->
 
         <!-- Slider card  -->
-        <div class="container mb-3">
-            <div class="row">
+        <div class="container mb-5">
+            <div class="row mb-2">
                 <div class="col">
                     <h3 class="fw-bold text-dark mb-4">Saran Masak Lainnya <span class="text-danger">Ssayomart</span></h3>
                     <div class="swiper card-swiper mt-3">
@@ -201,7 +201,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($randomBlogs as $randomBlog) : ?>
                                 <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
                                     <div class="card border-0 shadow-sm">
-                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya">
+                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:360px;">
                                         <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
                                         <p class="text-secondary mt-2 mx-3">
                                             Selengkapnya untuk melihat artikel...
@@ -214,8 +214,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
+            <div class="row mb-5">
+                <div class="col"></div>
+            </div>
         </div>
-        <!-- Akhir Slider Card -->
     </div>
 <?php else : ?>
     <!-- Desktop View -->
@@ -228,7 +230,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <h1>Artikel dan Blog Ssayomart</h1>
             </div>
         </div>
-        <!-- Artikel Inputan Administrator -->
+
         <div class="container mt-3">
             <div class="row">
                 <!-- Left Panel -->
@@ -252,30 +254,40 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-4 px-5 position-sticky top-0">
                     <img src="<?= base_url() ?>assets/img/blog/banner-blog.jpeg" class="img-fluid text-center rounded-3" alt="Promotion" style="height:576px; width:325px;">
 
-                    <div class="row">
-                        <div class="col-md-6 mt-2">
-                            <span class="fw-bold fs-4">Test Judul</span>
-                            <hr class="mt-0">
-                        </div>
+                    <div class="row mt-3">
+                        <span class="fw-bold fs-3">Produk <span class="text-danger">Ssayomart</span></span>
+                        <hr class="mt-0">
                     </div>
 
-                    <div class="card border-0 mt-3">
-                        <div class="d-flex text-black">
-                            <div class="flex-shrink-0">
-                                <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" height="100px" width="100px" class="img-fluid rounded-3">
-                            </div>
-                            <div class="flex-grow-1 ms-3">
-                                <p class="p-0 m-0 fw-bold fs-5 text-dark">Babi Lorem, ipsum dolor sit amet </p>
-                                <div class="d-flex justify-content-start rounded-3 m-0">
-                                    <p class="text-secondary m-0">Lorem ipsum dolor sit amet.</p>
+                    <?php $count = 0; ?>
+                    <?php foreach ($randomProducts as $randomProduct) : ?>
+                        <?php if ($count < 5) : ?>
+                            <div class="card border-0 mt-3">
+                                <div class="d-flex text-black">
+                                    <div class="flex-shrink-0">
+                                        <a href="<?= base_url() ?>produk/<?= $randomProduct['slug']; ?>">
+                                            <img src="<?= base_url() . 'assets/img/produk/main/' . $randomProduct['img']; ?>" alt="Produk Lainnya" height="100px" width="100px" class="img-fluid rounded-3">
+                                        </a>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <a href="<?= base_url() ?>produk/<?= $randomProduct['slug']; ?>" class="p-0 m-0 fw-bold fs-5 text-danger link-offset-2 link-underline link-underline-opacity-0"><?= $randomProduct['nama']; ?></a>
+                                        <div class="d-flex justify-content-start rounded-3 m-0">
+                                            <!-- <p class="text-secondary m-0"></p> -->
+                                            <?php if ($randomProduct['harga_min'] == $randomProduct['harga_max']) : ?>
+                                                Rp. <?= number_format($randomProduct['harga_min'], 0, ',', '.'); ?>
+                                            <?php else : ?>
+                                                <?= substr('Rp. ' . number_format($randomProduct['harga_min'], 0, ',', '.') . '-' . number_format($randomProduct['harga_max'], 0, ',', '.'), 0, 13); ?>...
+                                            <?php endif ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
+                            <hr>
+                            <?php $count++; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
-
 
             <!-- GALERI RESEP LAINNYA -->
 
@@ -298,7 +310,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <!-- Slider card  -->
 
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col">
                     <h2 class="fw-bold text-dark">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper card-swiper mt-3">
@@ -323,8 +335,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <!-- Akhir Slider Card -->
 
             <!-- Sistem Grid Desktop -->
-
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-3">
                     <div data-aos="fade-right">
                         <div class="mb-4">
@@ -353,13 +364,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php $count++; ?>
                             <?php endif; ?>
                         <?php endforeach; ?>
-
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
     </div>
 <?php endif; ?>
 <!-- End Desktop View -->

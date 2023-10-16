@@ -277,6 +277,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
 
+
 <?php endif; ?>
 <!-- End Desktop View -->
 
