@@ -252,42 +252,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-4 px-5 position-sticky top-0">
                     <img src="<?= base_url() ?>assets/img/blog/banner-blog.jpeg" class="img-fluid text-center rounded-3" alt="Promotion" style="height:576px; width:325px;">
 
-                    <div class="class">
-                        <div class="col-md-6">
-                            <span class="fw-bold fs-4">Test Judul</span>
-                        </div>
-                    </div>
-
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-3 border-0">
-                                <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold fs-5">Saus Bulgogi</h5>
-                                    <p class="card-text fs-6">Deskripsi produk Saus Bulgogi.</p>
-                                    <a href="#" class="btn btn-danger rounded-3">Belanja <i class="bi bi-cart-fill"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="card mb-3 border-0">
-                                <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold fs-5">Saus Bulgogi</h5>
-                                    <p class="card-text fs-6">Deskripsi produk Saus Bulgogi.</p>
-                                    <a href="#" class="btn btn-danger rounded-3">Belanja <i class="bi bi-cart-fill"></i></a>
-                                </div>
-                            </div>
+                        <div class="col-md-6 mt-2">
+                            <span class="fw-bold fs-4">Test Judul</span>
+                            <hr class="mt-0">
                         </div>
                     </div>
 
-                </div>
-            </div>
-        </div>
+                    <div class="card border-0 mt-3">
+                        <div class="d-flex text-black">
+                            <div class="flex-shrink-0">
+                                <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" height="100px" width="100px" class="img-fluid rounded-3">
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <p class="p-0 m-0 fw-bold fs-5 text-dark">Babi Lorem, ipsum dolor sit amet </p>
+                                <div class="d-flex justify-content-start rounded-3 m-0">
+                                    <p class="text-secondary m-0">Lorem ipsum dolor sit amet.</p>
+                                </div>
+                            </div>
+                        </div>
 
-        <!-- GALERI RESEP LAINNYA -->
-        <!-- <div class=" container mt-3 d-none d-md-block">
+                    </div>
+                </div>
+
+                <!-- GALERI RESEP LAINNYA -->
+                <!-- <div class=" container mt-3 d-none d-md-block">
             <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                 <div class="col mb-4 zoom-in">
@@ -305,160 +294,160 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div> -->
 
-        <!-- Slider card  -->
-        <div class="container mb-3">
-            <div class="row">
-                <div class="col">
-                    <h2 class="fw-bold text-dark">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></h2>
-                    <div class="swiper card-swiper mt-3">
-                        <div class="swiper-wrapper">
-                            <?php foreach ($randomBlogs as $randomBlog) : ?>
-                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                    <div class="card border-0 shadow-sm">
-                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:300px;">
-                                        <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
-                                        <p class="text-secondary mt-2 mx-3">
-                                            Selengkapnya untuk melihat artikel...
-                                        </p>
-                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Akhir Slider Card -->
-
-        <!-- Sistem Grid Desktop -->
-        <div class="container d-none d-md-block mt-3 mb-3">
-            <div class="row">
-                <div class="col-md-3">
-                    <div data-aos="fade-right">
-                        <div class="mb-4">
-                            <span class="font-weight-bold display-4">Tips memasak ala Korea dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong> dari <span class="text-danger"><strong>Ssayomart</strong>.</span></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-9">
+                <!-- Slider card  -->
+                <div class="container mb-3">
                     <div class="row">
-                        <?php $count = 0; ?>
-                        <?php foreach ($randomBlogs as $randomBlog) : ?>
-                            <?php if ($count < 4) : ?>
-                                <div class="col-md-6">
-                                    <div data-aos="fade-left">
-                                        <div class="mb-4">
-                                            <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>">
-                                                <div class="img-container rounded-5">
-                                                    <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" alt="Artikel Lainny" class="img-fluid" style="height:462px; width:462px;">
-                                                    <div class="img-overlay"></div>
-                                                </div>
-                                            </a>
+                        <div class="col">
+                            <h2 class="fw-bold text-dark">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></h2>
+                            <div class="swiper card-swiper mt-3">
+                                <div class="swiper-wrapper">
+                                    <?php foreach ($randomBlogs as $randomBlog) : ?>
+                                        <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                            <div class="card border-0 shadow-sm">
+                                                <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:300px;">
+                                                <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
+                                                <p class="text-secondary mt-2 mx-3">
+                                                    Selengkapnya untuk melihat artikel...
+                                                </p>
+                                                <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php endforeach; ?>
                                 </div>
-                                <?php $count++; ?>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Akhir Slider Card -->
 
+                <!-- Sistem Grid Desktop -->
+                <div class="container d-none d-md-block mt-3 mb-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div data-aos="fade-right">
+                                <div class="mb-4">
+                                    <span class="font-weight-bold display-4">Tips memasak ala Korea dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong> dari <span class="text-danger"><strong>Ssayomart</strong>.</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="row">
+                                <?php $count = 0; ?>
+                                <?php foreach ($randomBlogs as $randomBlog) : ?>
+                                    <?php if ($count < 4) : ?>
+                                        <div class="col-md-6">
+                                            <div data-aos="fade-left">
+                                                <div class="mb-4">
+                                                    <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>">
+                                                        <div class="img-container rounded-5">
+                                                            <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" alt="Artikel Lainny" class="img-fluid" style="height:462px; width:462px;">
+                                                            <div class="img-overlay"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php $count++; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-<?php endif; ?>
-<!-- End Desktop View -->
+        <?php endif; ?>
+        <!-- End Desktop View -->
 
 
-<?php
-if ($isMobile) {
+        <?php
+        if ($isMobile) {
 
-    echo '<div id="mobileContent">';
+            echo '<div id="mobileContent">';
 
-    echo '</div>';
-} else {
+            echo '</div>';
+        } else {
 
-    echo '<div id="desktopContent">';
+            echo '<div id="desktopContent">';
 
-    echo '</div>';
-}
-?>
+            echo '</div>';
+        }
+        ?>
 
-<script>
-    AOS.init();
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 10, // Jarak antara slide
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-
-        breakpoints: {
-            768: {
-                slidesPerView: 2, // Menampilkan dua slide di tampilan tablet
-            },
-
-            415: {
+        <script>
+            AOS.init();
+            var swiper = new Swiper('.swiper-container', {
                 slidesPerView: 1,
-            }
+                spaceBetween: 10, // Jarak antara slide
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
 
-        },
-    });
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2, // Menampilkan dua slide di tampilan tablet
+                    },
+
+                    415: {
+                        slidesPerView: 1,
+                    }
+
+                },
+            });
 
 
-    var swiper = new Swiper(".telkom", {
-        effect: "coverflow",
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: "auto",
-        coverflowEffect: {
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-        },
-    });
+            var swiper = new Swiper(".telkom", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                coverflowEffect: {
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                },
+            });
 
-    var mySwiper = new Swiper('.card-swiper', {
-        // Konfigurasi Swiper di sini
-        slidesPerView: 4, // Jumlah slide yang ditampilkan sekaligus
-        spaceBetween: 30, // Jarak antara slide
-        navigation: {
-            nextEl: '.swiper-button-next', // Tombol navigasi berikutnya
-            prevEl: '.swiper-button-prev' // Tombol navigasi sebelumnya
-        },
-        breakpoints: {
-            // Tampilan iPad (lebar >= 768px)
-            1280: {
-                slidesPerView: 4, // 3 card per tampilan
-            },
-            // Tampilan iPad (lebar >= 768px)
-            768: {
-                slidesPerView: 3, // 3 card per tampilan
-            },
-            // Tampilan Mobile (lebar < 768px)
-            375: {
-                slidesPerView: 1, // 2 card per tampilan
-            },
-            280: {
-                slidesPerView: 1, // 2 card per tampilan
-            },
-        },
+            var mySwiper = new Swiper('.card-swiper', {
+                // Konfigurasi Swiper di sini
+                slidesPerView: 4, // Jumlah slide yang ditampilkan sekaligus
+                spaceBetween: 30, // Jarak antara slide
+                navigation: {
+                    nextEl: '.swiper-button-next', // Tombol navigasi berikutnya
+                    prevEl: '.swiper-button-prev' // Tombol navigasi sebelumnya
+                },
+                breakpoints: {
+                    // Tampilan iPad (lebar >= 768px)
+                    1280: {
+                        slidesPerView: 4, // 3 card per tampilan
+                    },
+                    // Tampilan iPad (lebar >= 768px)
+                    768: {
+                        slidesPerView: 3, // 3 card per tampilan
+                    },
+                    // Tampilan Mobile (lebar < 768px)
+                    375: {
+                        slidesPerView: 1, // 2 card per tampilan
+                    },
+                    280: {
+                        slidesPerView: 1, // 2 card per tampilan
+                    },
+                },
 
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
+                autoplay: {
+                    delay: 3000,
+                    disableOnInteraction: false,
+                },
 
-    });
-</script>
+            });
+        </script>
 
-<?= $this->include('user/home/component/navbarBottom') ?>
-<?= $this->endSection(); ?>
+        <?= $this->include('user/home/component/navbarBottom') ?>
+        <?= $this->endSection(); ?>
