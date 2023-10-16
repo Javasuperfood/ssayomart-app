@@ -37,22 +37,22 @@ if (session('errors')) {
 
 
                 <div class="actual-form">
-                    <span class="small text-danger"><?= ($error) ? $error['username'] : ''; ?></span>
+                    <span class="small text-danger"><?= (isset($error['username'])) ? $error['username'] : ''; ?></span>
                     <div class="input-wrap">
                         <input type="username" class="input-field shadow-sm border-0" name="username" inputmode="text" autocomplete="username" placeholder="  username" value="<?= old('username') ?>" required />
                     </div>
 
-                    <span class="small text-danger"><?= ($error) ? $error['email'] : ''; ?></span>
+                    <span class="small text-danger"><?= (isset($error['email'])) ? $error['email'] : ''; ?></span>
                     <div class="input-wrap">
                         <input type="email" class="input-field shadow-sm border-0" name="email" inputmode="email" autocomplete="email" placeholder="  email" value="<?= old('email') ?>" required />
                     </div>
 
-                    <span class="small text-danger"><?= ($error) ? $error['password'] : ''; ?></span>
+                    <span class="small text-danger"><?= (isset($error['password'])) ? $error['password'] : ''; ?></span>
                     <div class="input-wrap position-relative">
                         <input type="password" class="input-field shadow-sm border-0" name="password" inputmode="text" placeholder="  kata sandi" autocomplete="new-password" required />
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
                     </div>
-                    <span class="small text-danger"><?= ($error) ? $error['password_confirm'] : ''; ?>
+                    <span class="small text-danger"><?= (isset($error['password_confirm'])) ? $error['password_confirm'] : ''; ?>
                     </span>
                     <div class="input-wrap position-relative">
                         <input type="password" class="input-field shadow-sm border-0" name="password_confirm" inputmode="text" placeholder="  komfirmasi kata sandi" autocomplete="new-password" required />
