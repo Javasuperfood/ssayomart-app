@@ -64,7 +64,7 @@ class KategoriController extends BaseController
             'promo' => $promoModel->getPromo($now),
             'kategori' => $kategoriModel->orderBy('short', SORT_ASC)->findAll(),
             'banner' => $bannerModel->find(),
-            'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
+            'randomProducts' => $randomProducts,
             'blog_detail' => $blog_detail,
         ];
         // dd($data);

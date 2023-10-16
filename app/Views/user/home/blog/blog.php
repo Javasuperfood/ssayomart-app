@@ -1,16 +1,12 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
-
 <?php
 // Mendeteksi User-Agent
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
 // Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
-
-
-<!-- Swiper CSS -->
 
 <head>
     <!-- Required meta tags -->
@@ -41,8 +37,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .img-container {
             position: relative;
-
-
             background-repeat: no-repeat;
         }
 
@@ -71,9 +65,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .custom-hr {
             height: 10px;
-            /* Ubah tinggi garis sesuai keinginan Anda */
             background-color: #ec2614;
-            /* Ubah kode warna sesuai keinginan Anda */
             border: none;
         }
 
@@ -145,7 +137,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container-fluid p-0 position-relative">
             <div class="img-container">
-                <img src="<?= base_url() ?>assets/img/kfood.jpg" class="img-fluid ">
+                <img src="<?= base_url() ?>assets/img/kfood.jpg" class="img-fluid rounded-bottom-3">
                 <div class="img-overlay"></div>
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2">
@@ -176,7 +168,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- End Assets Inputan Administrasi -->
 
         <!-- galery photos Mobile -->
-        <div class="container d-md-none">
+        <!-- <div class="container d-md-none">
             <section class="galeri" id="galeri">
                 <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
                 <div class="swiper telkom mt-3">
@@ -196,68 +188,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </section>
-        </div>
+        </div> -->
         <!-- akhir galeri photos -->
 
         <!-- Slider card  -->
-        <div class="container">
+        <div class="container mb-3">
             <div class="row">
                 <div class="col">
-                    <h2 class="fw-bold text-dark mt-4">Tips & Trik Cooking <span class="text-danger">Ssayomart</span></h2>
+                    <h3 class="fw-bold text-dark mt-4">Saran Masak Lainnya <span class="text-danger">Ssayomart</span></h3>
                     <div class="swiper card-swiper mt-3">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
+                            <?php foreach ($randomBlogs as $randomBlog) : ?>
+                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya">
+                                        <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
+                                        <p class="text-secondary mt-2 mx-3">
+                                            Selengkapnya untuk melihat artikel...
+                                        </p>
+                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class=" rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -267,11 +219,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- Desktop View -->
-    <div id="desktopContent" style="margin-top:50px;">
+    <div id="desktopContent">
         <div class="container-fluid p-0 position-relative">
             <div class="img-container">
-                <img src="<?= base_url() ?>assets/img/kfood.jpg" class="img-fluid ">
-
+                <img src="<?= base_url() ?>assets/img/kfood.jpg" class="img-fluid rounded-bottom-5">
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2">
                 <h1>Artikel dan Blog Ssayomart</h1>
@@ -280,100 +231,75 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Artikel Inputan Administrator -->
         <div class="container mt-3">
             <div class="row">
-                <h1 class="text-center">
-                    <?= $blog_detail['judul_blog']; ?>
-                </h1>
-                <hr class="custom-hr mb-0">
-                <hr class="custom-hr mb-0">
-                <div class="d-flex justify-content-between mb-3">
-                    <span class="text-secondary">Author : <?= $blog_detail['username']; ?></span>
-                    <span class="text-secondary">Tanggal Publish : <?= strftime('%d %B %Y %H:%M', strtotime($blog_detail['tanggal_dibuat'])); ?></span>
+                <!-- Left Panel -->
+                <div class="col-8">
+                    <h1 class="text-center">
+                        <?= $blog_detail['judul_blog']; ?>
+                    </h1>
+                    <hr class="custom-hr mb-0 fw-bold">
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="text-secondary">Author : <?= $blog_detail['username']; ?></span>
+                        <span class="text-secondary">Tanggal Publish : <?= strftime('%d %B %Y %H:%M', strtotime($blog_detail['tanggal_dibuat'])); ?></span>
+                    </div>
+                    <div class="text-center mb-3">
+                        <img src="<?= base_url() ?>assets/img/blog/<?= $blog_detail['img_thumbnail']; ?>" class="rounded-circle img-fluid">
+                        <p class="mb-0 text-secondary">- Foto ini memiliki Copyright dari Ssayomart -</p>
+                    </div>
+                    <?= str_replace('<img', '<img class="img-fluid rounded-4 img-zoom"', html_entity_decode($blog_detail['isi_blog'])); ?>
                 </div>
-                <div class="text-center mb-3">
-                    <img src="<?= base_url() ?>assets/img/blog/<?= $blog_detail['img_thumbnail']; ?>" class="rounded-circle img-fluid">
-                    <p class="mb-0 text-secondary">- Foto ini memiliki Copyright dari Ssayomart -</p>
+
+                <!-- Right Panel -->
+                <div class="col-4 px-5 position-sticky top-0">
+                    <img src="<?= base_url() ?>assets/img/blog/banner-blog.jpeg" class="img-fluid text-center rounded-3" alt="Promotion" style="height:576px; width:325px;">
+
+                    <span class="fw-bold fs-4">Test Judul</span>
+                    <hr class="mt-0">
+                    <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" height="100px" width="100px" class="img-fluid rounded-3">
+                    <p class="fw-bold fs-5">Saus Bulgogi</p>
+                    <p class="fs-6">Saus Bulgogi</p>
+                    <a href="#" class="btn btn-danger rounded-3">Belanja <i class="bi bi-cart-fill"></i></a>
                 </div>
-                <?= str_replace('<img', '<img class="img-fluid rounded-4 img-zoom"', html_entity_decode($blog_detail['isi_blog'])); ?>
             </div>
         </div>
-        <!-- Artikel Inputan Administrator -->
 
-        <div class=" container mt-3 d-none d-md-block">
+        <!-- GALERI RESEP LAINNYA -->
+        <!-- <div class=" container mt-3 d-none d-md-block">
             <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                <div class="col mb-4 zoom-in">
+                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                <div class="col mb-4 zoom-in">
+                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                <div class="col mb-4 zoom-in">
+                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                <div class="col mb-4 zoom-in">
+                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
             </div>
-        </div>
+        </div> -->
+
         <!-- Slider card  -->
-        <div class="container">
+        <div class="container mb-3">
             <div class="row">
                 <div class="col">
-                    <h2 class="fw-bold text-dark mt-4">Tips & Trik Cooking <span class="text-danger">Ssayomart</span></h2>
+                    <h2 class="fw-bold text-dark">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper card-swiper mt-3">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
+                            <?php foreach ($randomBlogs as $randomBlog) : ?>
+                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:300px;">
+                                        <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
+                                        <p class="text-secondary mt-2 mx-3">
+                                            Selengkapnya untuk melihat artikel...
+                                        </p>
+                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class=" rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -382,67 +308,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Akhir Slider Card -->
 
         <!-- Sistem Grid Desktop -->
-        <div class="container d-none d-md-block mt-3">
+        <div class="container d-none d-md-block mt-3 mb-3">
             <div class="row">
-                <!-- Kolom Kiri -->
                 <div class="col-md-3">
                     <div data-aos="fade-right">
-
                         <div class="mb-4">
-                            <span class="font-weight-bold display-4">Tips memasak Ala Korean Food Dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong></span>
+                            <span class="font-weight-bold display-4">Tips memasak ala Korea dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong> dari <span class="text-danger"><strong>Ssayomart</strong>.</span></span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Kolom Kanan -->
                 <div class="col-md-9">
                     <div class="row">
-                        <!-- Kolom Atas Kanan -->
-                        <div class="col-md-6">
-                            <div data-aos="fade-left">
-                                <div class="mb-4">
-                                    <div class="img-container">
-                                        <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                        <div class="img-overlay"></div>
+                        <?php $count = 0; ?>
+                        <?php foreach ($randomBlogs as $randomBlog) : ?>
+                            <?php if ($count < 4) : ?>
+                                <div class="col-md-6">
+                                    <div data-aos="fade-left">
+                                        <div class="mb-4">
+                                            <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>">
+                                                <div class="img-container rounded-5">
+                                                    <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" alt="Artikel Lainny" class="img-fluid" style="height:462px; width:462px;">
+                                                    <div class="img-overlay"></div>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <?php $count++; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
 
-                        </div>
-
-                        <!-- Kolom Atas Kiri -->
-                        <div class="col-md-6">
-                            <div data-aos="fade-left">
-                                <div class="mb-4">
-                                    <div class="img-container">
-                                        <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                        <div class="img-overlay"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Kolom Bawah Kanan -->
-                        <div class="col-md-6">
-                            <div data-aos="fade-left">
-                                <div class="mb-4">
-                                    <div class="img-container">
-                                        <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                        <div class="img-overlay"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Kolom Bawah Kiri -->
-                        <div class="col-md-6">
-                            <div class="mb-4">
-                                <div class="img-container">
-                                    <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                    <div class="img-overlay"></div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -514,7 +410,6 @@ if ($isMobile) {
             nextEl: '.swiper-button-next', // Tombol navigasi berikutnya
             prevEl: '.swiper-button-prev' // Tombol navigasi sebelumnya
         },
-
         breakpoints: {
             // Tampilan iPad (lebar >= 768px)
             1280: {
@@ -533,37 +428,13 @@ if ($isMobile) {
             },
         },
 
-        // autoplay: {
-        //   delay: 1500,
-        //   disableOnInteraction: false,
-        // },
-
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
 
     });
-
-    function tampilkanSelengkapnya(button) {
-        var fullDescription = button.parentElement.querySelector('.full-description');
-        var readMoreButton = button;
-
-        if (fullDescription.style.display === 'none' || fullDescription.style.display === '') {
-            fullDescription.style.display = 'inline';
-            readMoreButton.textContent = 'Read Less';
-        } else {
-            fullDescription.style.display = 'none';
-            readMoreButton.textContent = 'Read More';
-        }
-    }
-
-    // Mencari semua tombol "Read More" pada halaman
-    var readMoreButtons = document.querySelectorAll('.btn.btn-danger');
-
-    // Menambahkan event listener untuk setiap tombol
-    for (var i = 0; i < readMoreButtons.length; i++) {
-        readMoreButtons[i].addEventListener('click', function(event) {
-            event.preventDefault(); // Mencegah pergeseran ke atas
-            tampilkanSelengkapnya(this);
-        });
-    }
 </script>
 
+<?= $this->include('user/home/component/navbarBottom') ?>
 <?= $this->endSection(); ?>

@@ -14,6 +14,14 @@ class Blog extends BaseController
         $kategori = new KategoriModel();
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
+
+        // Ambil semua data artikel dari database
+        $allBlogs = $blogModel->getAllBlog();
+
+        // Acak urutan artikel
+        shuffle($allBlogs);
+
+        // Ambil artikel detail yang dipilih
         $blog_detail = $blogModel->getBlogDetail($id);
         $user_info = $userModel->getUserInfo($blog_detail['created_by']);
 
@@ -21,8 +29,10 @@ class Blog extends BaseController
             'title' => 'Artikel',
             'kategori' => $kategori->findAll(),
             'blog_detail' => $blog_detail,
-            'user_info' => $user_info // Tambahkan data user_info
+            'user_info' => $user_info,
+            'randomBlogs' => $allBlogs // Tambahkan data artikel yang diacak
         ];
+
         return view('user/home/blog/blog', $data);
     }
 }
