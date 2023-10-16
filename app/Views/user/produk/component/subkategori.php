@@ -71,11 +71,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <!-- Button Kategori -->
                     <div class="col">
                         <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
-                            <div class="swiper-wrapper">
+                            <div class="swiper-wrapper " style="height:40px">
                                 <?php foreach ($subKategori as $s) : ?>
                                     <div class="swiper-slide my-1">
                                         <div class="card border-0 shadow-sm text-uppercase" style="height: 25px; width:auto;">
-                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $s['slugS']; ?>" style="font-size:10px; color:black;">
                                                 <?= $s['nama_kategori']; ?>
                                             </a>
                                         </div>
@@ -84,9 +84,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-
-
-
 
 
                 </div>
@@ -135,3 +132,37 @@ if ($isMobile) {
 ?>
 
 <!-- tampilan Destop -->
+
+<style>
+    .custom-button {
+        background-color: white;
+        color: black;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .custom-button.active {
+        background-color: #dc3545 !important;
+        color: white !important;
+    }
+</style>
+
+
+<script>
+    const customButtons = document.querySelectorAll('.custom-button');
+
+    customButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const slug = event.currentTarget.dataset.slug;
+            // Simpan status tombol aktif di localStorage
+            localStorage.setItem('activeButtonSlug', slug);
+        });
+    });
+
+    // Cek jika ada tombol yang aktif disimpan di localStorage
+    const activeButtonSlug = localStorage.getItem('activeButtonSlug');
+    if (activeButtonSlug) {
+        // Tambahkan kelas 'active' ke tombol yang sesuai dengan localStorage
+        const activeButton = document.querySelector(`[data-slug="${activeButtonSlug}"]`);
+        activeButton.classList.add('active');
+    }
+</script>
