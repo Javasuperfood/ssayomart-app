@@ -16,13 +16,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="class" style="position: relative; top: -15px;">
             <section class="mt-0" id="unggul">
                 <div class="container pt-0 mb-3">
-                    <div class="card mt-3 rounded-3" style=" background-color: #d7eff8; border: none; text-align: center; font-family: 'Poppins' ;">
+                    <div class="card mt-3 rounded-3" style="background-color: #d7eff8; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
                         <div class="card-warning mt-3">
-                            <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 350px;">
-                            <!-- <span class=" card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
+                            <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-conten-between" style="width: 340px;">
                         </div>
                         <div class="container my-3">
-                            <div class="swiper mySwiper">
+                            <div class="swiper mySwiper" style="position: relative;">
                                 <div class="swiper-wrapper d-flex">
                                     <?php foreach ($promo as $p) : ?>
                                         <div class="swiper-slide">
@@ -34,6 +33,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     <?php endforeach ?>
                                 </div>
+
+                                <!-- Previous button centered within the image -->
+                                <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                        <i class="bi bi-arrow-left"></i>
+                                    </button>
+                                </div>
+
+                                <!-- Next button centered within the image -->
+                                <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                        <i class="bi bi-arrow-right"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -43,7 +56,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container mb-3">
                 <div class="card py-0 rounded-3" style=" background-color: #fce0e4; border: none; text-align: center;">
                     <div class="card-warning mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image" style="width: 350px;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 335px;">
                         <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                     </div>
                     <div class="container my-3">
@@ -59,6 +72,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
+                            </div>
+                            <!-- Previous button centered within the image -->
+                            <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                    <i class="bi bi-arrow-left"></i>
+                                </button>
+                            </div>
+
+                            <!-- Next button centered within the image -->
+                            <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                    <i class="bi bi-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>

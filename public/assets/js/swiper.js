@@ -26,6 +26,10 @@ var swiper = new Swiper(".mySwiper", {
       slidesPerView: 2, // 2 card per tampilan
     },
   },
+  navigation: {
+    nextEl: '.button-next',
+    prevEl: '.button-prev',
+},
 
   });
 
@@ -77,6 +81,10 @@ var swiper = new Swiper(".mySwiper", {
         slidesPerView: 2, // tampilan galaxo fold
       },
     },
+  navigation: {
+    nextEl: '.button-next',
+    prevEl: '.button-prev',
+},
   
     });
 
