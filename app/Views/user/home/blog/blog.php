@@ -252,12 +252,36 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-4 px-5 position-sticky top-0">
                     <img src="<?= base_url() ?>assets/img/blog/banner-blog.jpeg" class="img-fluid text-center rounded-3" alt="Promotion" style="height:576px; width:325px;">
 
-                    <span class="fw-bold fs-4">Test Judul</span>
-                    <hr class="mt-0">
-                    <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" height="100px" width="100px" class="img-fluid rounded-3">
-                    <p class="fw-bold fs-5">Saus Bulgogi</p>
-                    <p class="fs-6">Saus Bulgogi</p>
-                    <a href="#" class="btn btn-danger rounded-3">Belanja <i class="bi bi-cart-fill"></i></a>
+                    <div class="class">
+                        <div class="col-md-6">
+                            <span class="fw-bold fs-4">Test Judul</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3 border-0">
+                                <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold fs-5">Saus Bulgogi</h5>
+                                    <p class="card-text fs-6">Deskripsi produk Saus Bulgogi.</p>
+                                    <a href="#" class="btn btn-danger rounded-3">Belanja <i class="bi bi-cart-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="card mb-3 border-0">
+                                <img src="<?= base_url() ?>assets/img/blog/blog-1.png" alt="Produk Lainnya" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title fw-bold fs-5">Saus Bulgogi</h5>
+                                    <p class="card-text fs-6">Deskripsi produk Saus Bulgogi.</p>
+                                    <a href="#" class="btn btn-danger rounded-3">Belanja <i class="bi bi-cart-fill"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
