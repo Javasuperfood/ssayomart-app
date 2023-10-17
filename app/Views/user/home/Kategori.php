@@ -10,6 +10,9 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
+<!-- Font Noto Sans Korean -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap">
+
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -54,7 +57,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </section>
             <!-- rekomendasi -->
             <div class="container mb-3">
-                <div class="card py-0 rounded-3" style=" background-color: #fce0e4; border: none; text-align: center;">
+                <div class="card py-0 rounded-3" style="background-color: #fce0e4; border: none; text-align: center;">
                     <div class="card-warning mt-3">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 335px;">
                         <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
@@ -96,7 +99,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #C1E1C1;">
                     <div class="card-warning">
-                        <span class="card-title text-white fw-medium fs-3 text-capitalize"><?= lang("Text.kategori") ?></h2>
+                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong>카테고리 / KATEGORI</strong></h2>
                     </div>
                 </div>
                 <div class="row text-center row-cols-3 mt-3">
@@ -126,9 +129,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="desktopContent" style="margin-top:50px;">
         <section id="unggul">
             <div class="container">
-                <div class="card bg-warning border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
+                <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">
                     <div class="card-warning">
-                        <span class="card-title text-white fw-bold fs-2"><?= lang("Text.spesial") ?></span>
+                        <span class="card-title text-dark fw-bold fs-2">금주 행사상품 / PROMOSI</span>
                     </div>
                 </div>
                 <div class="row">
@@ -212,9 +215,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <!-- rekomendasi title -->
                 <div class="container py-3">
-                    <div class="card bg-danger border-0 text-center font-family-poppins">
+                    <div class="card border-0 text-center font-family-poppins" style="background-color: #fce0e4;">
                         <div class="card-danger">
-                            <span class="card-title text-white fw-bold fs-2"><?= lang('Text.rekomendasi') ?></h2>
+                            <span class="card-title text-dark fw-bold fs-2">오늘 이 요리 어때요? / SARAN MASAK</h2>
                         </div>
                     </div>
                 </div>
@@ -252,9 +255,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <!-- end card rekomendasi-->
                 <div class="container py-3">
-                    <div class="card bg-success border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center">
+                    <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #C1E1C1;">
                         <div class="card-success">
-                            <span class="card-title text-white fw-bold fs-2 text-capitalize"><?= lang("Text.kategori") ?></span>
+                            <span class="card-title text-dark fw-bold fs-2 text-capitalize">카테고리 / KATEGORI</span>
                         </div>
                     </div>
                     <div class="row text-center row-cols-3 py-3">

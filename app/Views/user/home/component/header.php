@@ -8,6 +8,7 @@
 <!-- Font Inter -->
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/inter.css">
 
+
 <style>
     body {
         font-family: 'Inter', sans-serif;
