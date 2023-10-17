@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\KategoriModel;
 use App\Models\BlogModel;
 use App\Models\UsersModel;
+use App\Models\ProdukModel;
 
 class Blog extends BaseController
 {
@@ -14,6 +15,7 @@ class Blog extends BaseController
         $kategori = new KategoriModel();
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
+        $produkModel = new ProdukModel();
 
         // Ambil semua data artikel dari database
         $allBlogs = $blogModel->getAllBlog();
@@ -25,12 +27,16 @@ class Blog extends BaseController
         $blog_detail = $blogModel->getBlogDetail($id);
         $user_info = $userModel->getUserInfo($blog_detail['created_by']);
 
+        //Ambil data produk random untuk di looping
+        $randomProducts = $produkModel->getRandomProducts();
+
         $data = [
             'title' => 'Artikel',
             'kategori' => $kategori->findAll(),
             'blog_detail' => $blog_detail,
             'user_info' => $user_info,
-            'randomBlogs' => $allBlogs // Tambahkan data artikel yang diacak
+            'randomProducts' => $randomProducts,
+            'randomBlogs' => $allBlogs
         ];
 
         return view('user/home/blog/blog', $data);
