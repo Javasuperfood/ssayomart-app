@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <nav class="navbar pt-2 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
                     <div class="container-fluid mx-1">
-                        <div class="col-9">
+                        <div class="col-9 ">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></span></i>
@@ -21,7 +21,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </form>
                         </div>
 
-                        <div class="col-">
+                        <div class="col-3">
                             <!-- bahasa -->
                             <?php
                             $lang = session()->get('lang');
@@ -199,8 +199,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     @media (max-width: 280px) {
         .input-group {
-            right: 10px;
-            width: 230px;
+            right: 5px;
+            width: 200px;
         }
 
 
@@ -209,7 +209,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         .flag-icon {
             width: 25px;
             /* Atur ukuran ikon bahasa sesuai kebutuhan Anda */
-            margin-right: 5px;
+            margin-right: 2px;
             /* Sesuaikan margin kanan sesuai kebutuhan Anda */
         }
 

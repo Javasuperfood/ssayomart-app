@@ -308,32 +308,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div> -->
 
 
-            <!-- Slider card  -->
-
-            <div class="row mb-4">
-                <div class="col">
-                    <h2 class="fw-bold text-dark">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></h2>
-                    <div class="swiper card-swiper mt-3">
-                        <div class="swiper-wrapper">
-                            <?php foreach ($randomBlogs as $randomBlog) : ?>
-                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                    <div class="card border-0 shadow-sm">
-                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:300px;">
-                                        <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
-                                        <p class="text-secondary mt-2 mx-3">
-                                            Selengkapnya untuk melihat artikel...
-                                        </p>
-                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Akhir Slider Card -->
-
             <!-- Sistem Grid Desktop -->
             <div class="row justify-content-center">
                 <div class="col-md-3">
@@ -367,6 +341,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
+
+            <!-- Slider card  -->
+            <div class="row mb-4">
+                <div class="col">
+                    <h2 class="fw-bold text-dark">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></h2>
+                    <div class="swiper card-swiper mt-3">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($randomBlogs as $randomBlog) : ?>
+                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:300px;">
+                                        <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
+                                        <p class="text-secondary mt-2 mx-3">
+                                            Selengkapnya untuk melihat artikel...
+                                        </p>
+                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Akhir Slider Card -->
+
+
         </div>
     </div>
 <?php endif; ?>
