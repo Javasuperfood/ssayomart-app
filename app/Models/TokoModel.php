@@ -24,7 +24,9 @@ class TokoModel extends Model
         'city',
         'zip_code',
         'telp',
-        'telp2'
+        'telp2',
+        'latitude',
+        'longitude',
     ];
 
     // Dates
@@ -39,39 +41,60 @@ class TokoModel extends Model
         'deskripsi' => [
             'rules' => 'required',
             'errors' => [
-                'required' => 'Deskripsi market harus diisi.',
+                'required' => 'Deskripsi harus diisi',
             ]
         ],
         'alamat_1' => [
             'rules' => 'required',
             'errors' => [
-                'required' => 'Alamat market harus diisi.',
+                'required' => 'Alamat harus diisi',
             ]
         ],
-        // 'provinsi' => [
-        //     'rules' => 'required',
-        //     'errors' => [
-        //         'required' => 'provinsi market harus diisi.',
-        //     ]
-        // ],
-        // 'kabupaten' => [
-        //     'rules' => 'required',
-        //     'errors' => [
-        //         'required' => 'Kabupaten market harus diisi.',
-        //     ]
-        // ],
-        'zip_code' => [
+        'id_province' => [
             'rules' => 'required',
             'errors' => [
-                'required' => 'Kode Pos market harus diisi.',
+                'required' => 'Provinsi harus dipilih',
+            ]
+        ],
+        'id_city' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Kabupaten harus dipilih',
+            ]
+        ],
+        'zip_code' => [
+            'rules' => 'required|numeric',
+            'errors' => [
+                'required' => 'Kode pos harus diisi',
+                'numeric' => 'Kode pos harus berupa angka',
             ]
         ],
         'telp' => [
-            'rules' => 'required',
+            'rules' => 'required|numeric',
             'errors' => [
-                'required' => 'Telephone market harus diisi.',
+                'required' => 'Nomor telepon harus diisi',
+                'numeric' => 'Nomor telepon harus berupa angka',
             ]
         ],
+        'telp2' => [
+            'rules' => 'numeric',
+            'errors' => [
+                'numeric' => 'Nomor telepon harus berupa angka',
+            ]
+        ],
+        'latitude' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Lokasi harus diisi',
+            ]
+        ],
+        'longitude' => [
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Lokasi harus diisi',
+            ]
+        ],
+
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
