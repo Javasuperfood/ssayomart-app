@@ -161,20 +161,40 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-    <?php endif; ?>
-    <!-- end Desktop -->
-    <script type="text/javascript">
-        function increaseCount(cp, a, b, harga, p) {
-            var total_awal = parseInt($("#totalField").val(), 10);
-            var input = b.previousElementSibling;
-            var value = parseInt(input.value, 10);
+    </div>
+<?php endif; ?>
+<!-- end Desktop -->
+<script type="text/javascript">
+    function increaseCount(cp, a, b, harga, p) {
+        var total_awal = parseInt($("#totalField").val(), 10);
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+        var total = total_awal + harga;
+        $("#totalField").val(total);
+        $("#textTotal").text(formatRupiah(total));
+
+        <?php if (!$isMobile) : ?>
+            $("#textQty" + p).text(value)
+            $("#textHargaItem" + p).text(formatRupiah((harga * value)))
+        <?php endif ?>
+
+        changeQty(cp, value);
+    }
+
+    function decreaseCount(cp, a, b, harga, p) {
+        var total_awal = parseInt($("#totalField").val(), 10);
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
             value = isNaN(value) ? 0 : value;
-            value++;
+            value--;
             input.value = value;
-            var total = total_awal + harga;
+            var total = total_awal - harga;
             $("#totalField").val(total);
             $("#textTotal").text(formatRupiah(total));
-
             <?php if (!$isMobile) : ?>
                 $("#textQty" + p).text(value)
                 $("#textHargaItem" + p).text(formatRupiah((harga * value)))
@@ -182,60 +202,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             changeQty(cp, value);
         }
+    }
 
-        function decreaseCount(cp, a, b, harga, p) {
-            var total_awal = parseInt($("#totalField").val(), 10);
-            var input = b.nextElementSibling;
-            var value = parseInt(input.value, 10);
-            if (value > 1) {
-                value = isNaN(value) ? 0 : value;
-                value--;
-                input.value = value;
-                var total = total_awal - harga;
-                $("#totalField").val(total);
-                $("#textTotal").text(formatRupiah(total));
-                <?php if (!$isMobile) : ?>
-                    $("#textQty" + p).text(value)
-                    $("#textHargaItem" + p).text(formatRupiah((harga * value)))
-                <?php endif ?>
+    function formatRupiah(angka) {
+        var formatter = new Intl.NumberFormat('id-ID', {
+            style: 'currency',
+            currency: 'IDR',
+            minimumFractionDigits: 0
+        });
+        return formatter.format(angka);
+    }
 
-                changeQty(cp, value);
-            }
-        }
-
-        function formatRupiah(angka) {
-            var formatter = new Intl.NumberFormat('id-ID', {
-                style: 'currency',
-                currency: 'IDR',
-                minimumFractionDigits: 0
-            });
-            return formatter.format(angka);
-        }
-
-        function changeQty(id, qty) {
-            $.ajax({
-                type: "POST",
-                url: "<?= base_url('api/change-cart-qty'); ?>",
-                dataType: "json",
-                data: {
-                    idCartProduk: id,
-                    qty: qty
-                },
-                success: function(response) {
-                    if (response.success) {
-                        // console.log(response.message)
-                    } else {
-                        // console.log(response.message)
-                    }
-                },
-                error: function(error) {
-                    // console.error("Error:", error);
-                    <?php if (!auth()->loggedIn()) : ?>
-                        location.href = '<?= base_url(); ?>login'
-                    <?php endif ?>
+    function changeQty(id, qty) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('api/change-cart-qty'); ?>",
+            dataType: "json",
+            data: {
+                idCartProduk: id,
+                qty: qty
+            },
+            success: function(response) {
+                if (response.success) {
+                    // console.log(response.message)
+                } else {
+                    // console.log(response.message)
                 }
-            });
-        }
-    </script>
+            },
+            error: function(error) {
+                // console.error("Error:", error);
+                <?php if (!auth()->loggedIn()) : ?>
+                    location.href = '<?= base_url(); ?>login'
+                <?php endif ?>
+            }
+        });
+    }
+</script>
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
