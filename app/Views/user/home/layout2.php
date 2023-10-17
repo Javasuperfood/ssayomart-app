@@ -15,7 +15,15 @@
 <body>
     <?= $this->include('user/home/component/preloader') ?>
     <?= $this->include('user/home/component/navbarMain') ?>
+
+
+
+
     <?= $this->renderSection('page-content') ?>
+    <div class="pb-5 mt-5"></div>
+    <br><br>
+
+    <?= $this->include('user/home/component/navbarBottom') ?>
     <!-- Bootstrap JS -->
     <?= $this->include('user/home/component/rajaOngkir/service') ?>
     <script src="<?= base_url() ?>assets/js/jquery/jquery.min.js"></script>

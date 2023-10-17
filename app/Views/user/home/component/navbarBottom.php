@@ -193,3 +193,62 @@ if ($isMobile) {
     echo '</div>';
 }
 ?>
+
+<style>
+    /* Style untuk saat hover */
+    .nav-item a:hover {
+        background-color: #0000;
+        /* Ganti warna latar belakang saat dihover */
+        color: #333;
+        /* Ganti warna teks saat dihover */
+        transition: transform 0.2s;
+        /* Efek transisi zoom in */
+    }
+
+    /* Ikon dalam tautan saat dihover */
+    .nav-item a:hover i {
+        transform: scale(1.1);
+        /* Efek zoom in saat dihover */
+    }
+
+    /* Style untuk saat diklik */
+    .nav-item.active a {
+        color: #000;
+        /* Ganti warna teks saat diklik */
+    }
+
+    /* Ikon dalam tautan saat diklik */
+    .nav-item.active a i {
+        color: #ffc107 !important;
+        /* Ganti warna ikon saat tautan diklik */
+    }
+</style>
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var navLinks = document.querySelectorAll(".nav-link");
+
+        // Mengecek URL saat halaman dimuat ulang
+        var currentURL = window.location.href;
+        navLinks.forEach(function(link) {
+            if (currentURL === link.href) {
+                link.parentElement.classList.add("active");
+            }
+        });
+
+        navLinks.forEach(function(link) {
+            link.addEventListener("click", function() {
+                // Menghapus class "active" dari semua elemen dengan class "nav-item"
+                navLinks.forEach(function(navLink) {
+                    navLink.parentElement.classList.remove("active");
+                });
+                // Menambahkan class "active" ke elemen yang sedang diklik
+                link.parentElement.classList.add("active");
+            });
+        });
+    });
+</script>
