@@ -44,7 +44,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-12 col-md-6">
                     <!-- Konten Kolom Pertama -->
                     <div class="img-container">
-                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid rounded-4">
                         <div class="img-overlay"></div>
                     </div>
 
@@ -111,63 +111,57 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="fw-bold text-dark mt-4">Tips & Trik Cooking <span class="text-danger">Ssayomart</span></h2>
+                    <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper card-swiper mt-3">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
                                 <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class=" rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
 
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
 
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -302,63 +296,57 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h2 class="fw-bold text-dark mt-4">Tips & Trik Cooking <span class="text-danger">Ssayomart</span></h2>
+                    <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper card-swiper mt-3">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
                                 <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class=" rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid" alt="product">
-                                    <h5 class="menu-title text-dark mt-3 mx-3">Saus gochujang</h5>
-                                    <p class="text-secondary mt-2 mx-3">
-                                        Saus Gochujang khas Korea memiliki aroma dan rasa pedas yang unik.
-                                        <span class="full-description mx-3">
-                                            Saus Gochujang ini dapat diaplikasikan pada berbagai olahan makanan seperti Bibimbap
-                                        </span>
-                                        <a href="#" class="rounded-5 btn btn-danger mt-2" style="text-align: center;" onclick="tampilkanSelengkapnya()">Read More</a>
-                                    </p>
-                                </div>
-                            </div>
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
 
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
 
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                <div class="card border-0 shadow-sm">
+                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+
+                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+
+                                    <p class="text-secondary text-center mt-2 mx-3">
+                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                    </p>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -375,7 +363,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div data-aos="fade-right">
 
                         <div class="mb-4">
-                            <span class="font-weight-bold display-4">Tips memasak Ala Korean Food Dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong></span>
+                            <span class="font-weight-bold display-4">Berbagai <strong>Penghargaan</strong> dan <strong>Pencapaian</strong> yang diperoleh dari tahun 2015 smapai saat ini</span>
                         </div>
                     </div>
                 </div>
