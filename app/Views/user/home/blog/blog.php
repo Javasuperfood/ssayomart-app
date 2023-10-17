@@ -252,7 +252,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <!-- Right Panel -->
                 <div class="col-4 px-5 position-sticky top-0">
-                    <img src="<?= base_url() ?>assets/img/blog/banner-blog.jpeg" class="img-fluid text-center rounded-3" alt="Promotion" style="height:576px; width:325px;">
+                    <img src="<?= base_url() ?>assets/img/blog/banner-blog.jpg" class="img-fluid text-center rounded-3" alt="Promotion" style="height:576px; width:325px;">
 
                     <div class="row mt-3">
                         <span class="fw-bold fs-3">Produk <span class="text-danger">Ssayomart</span></span>
