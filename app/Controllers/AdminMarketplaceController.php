@@ -48,19 +48,36 @@ class AdminMarketplaceController extends BaseController
     {
         // dd($this->request->getVar());
         $tokoModel = new TokoModel();
+
+        $id_province = ($this->request->getVar('id_provinsi') == '') ? null : $this->request->getVar('id_provinsi');
+        $id_city = ($this->request->getVar('id_kabupaten') == '') ? null : $this->request->getVar('id_kabupaten');
+
         $data = [
             'id_user' => user_id(),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('detail-alamat'),
             'province' => $this->request->getVar('provinsi'),
-            'id_province' => $this->request->getVar('id_provinsi'),
+            'id_province' => $id_province,
             'city' => $this->request->getVar('kabupaten'),
-            'id_city' => $this->request->getVar('id_kabupaten'),
+            'id_city' => $id_city,
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('telp'),
             'telp2' => $this->request->getVar('telp2'),
+            'latitude' => $this->request->getVar('latitude'),
+            'longitude' => $this->request->getVar('longitude'),
         ];
+        // dd($data);
+        if (!$this->validateData($data, $tokoModel->validationRules)) {
+            session()->setFlashdata('success', 'Berhasil menambahkan keterangan toko');
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada input kupon'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/marketplace');
+        }
         // dd($data);
         if ($tokoModel->save($data)) {
             session()->setFlashdata('success', 'Berhasil menambahkan keterangan toko');
@@ -90,34 +107,51 @@ class AdminMarketplaceController extends BaseController
         $tokoModel = new TokoModel();
 
         $toko = $tokoModel->find($id);
+        if ($toko['id_user'] != user_id()) {
+            return redirect()->to(base_url('dashboard/marketplace'));
+        }
         $provinsi = $this->rajaongkir('province');
         $data = [
             'title' => 'Edit Toko',
-            'toko' => $toko,
+            't' => $toko,
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
             'back' => 'dashboard/marketplace'
         ];
         return view('dashboard/marketplace/edit', $data);
     }
 
-    public function update($id)
+    public function update()
     {
         $tokoModel = new TokoModel();
-        $tokoModel->find($id);
+        $id_province = ($this->request->getVar('id_provinsi') == '') ? null : $this->request->getVar('id_provinsi');
+        $id_city = ($this->request->getVar('id_kabupaten') == '') ? null : $this->request->getVar('id_kabupaten');
+        $id = $this->request->getVar('id_toko');
         $data = [
             'id_toko' => $id,
+            'id_user' => user_id(),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('detail-alamat'),
             'province' => $this->request->getVar('provinsi'),
-            'id_province' => $this->request->getVar('id_provinsi'),
+            'id_province' => $id_province,
             'city' => $this->request->getVar('kabupaten'),
-            'id_city' => $this->request->getVar('id_kabupaten'),
+            'id_city' => $id_city,
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('telp'),
-            'telp2' => $this->request->getVar('telp2')
+            'telp2' => $this->request->getVar('telp2'),
+            'latitude' => $this->request->getVar('latitude'),
+            'longitude' => $this->request->getVar('longitude'),
         ];
-
+        if (!$this->validateData($data, $tokoModel->validationRules)) {
+            session()->setFlashdata('success', 'Berhasil menambahkan keterangan toko');
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada input kupon'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/marketplace/edit/' . $id)->withInput();
+        }
         if ($tokoModel->save($data)) {
             session()->setFlashdata('success', 'Data toko cabang berhasil diubah.');
             $alert = [
