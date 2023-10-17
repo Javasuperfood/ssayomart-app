@@ -34,7 +34,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 <?php endforeach ?>
             </div>
-            <a href="<?= base_url() ?>cart" class="btn btn-danger btn-lg rounded-circle top-0 end-0 mx-2 my-3 float-right position-fixed"><i class="bi bi-cart2"></i></a>
+            <a href="<?= base_url() ?>cart" class="btn btn-danger btn-lg rounded-circle bottom-90 end-0 mx-2 my-3 float-right position-fixed"><i class="bi bi-cart2"></i></a>
         </div>
     </div>
 <?php else : ?>

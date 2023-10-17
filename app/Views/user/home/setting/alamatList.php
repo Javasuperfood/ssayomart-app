@@ -41,7 +41,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endforeach; ?>
+
             <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle top-0 end-0 mx-4 my-5 float-right position-fixed"><i class="bi bi-plus"></i></a>
+
         </div>
     </div>
 <?php else : ?>
