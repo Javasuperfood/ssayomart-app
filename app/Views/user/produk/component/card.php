@@ -23,9 +23,9 @@
                                 <div class="row justify-items-center">
                                     <div class="col">
                                         <div class="horizontal-counter">
-                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                            <input type="number" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
-                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                            <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -52,6 +52,30 @@
             <?php endforeach; ?>
         </div>
     </div>
+    <script type="text/javascript">
+        function increaseCount(b, id) {
+            var input = b.previousElementSibling;
+            var value = parseInt(input.value, 10);
+            value = isNaN(value) ? 0 : value;
+            value++;
+            input.value = value;
+            $('#Cqty' + id).val(value);
+            $('#Bqty' + id).val(value);
+        }
+
+        function decreaseCount(b, id) {
+            var input = b.nextElementSibling;
+            var value = parseInt(input.value, 10);
+            if (value > 1) {
+                value = isNaN(value) ? 0 : value;
+                value--;
+                input.value = value;
+                $('#Cqty' + id).val(value);
+                $('#Bqty' + id).val(value);
+
+            }
+        }
+    </script>
 <?php else : ?>
     <div class="container px-5 my-5 align-middle">
         <div class="card border-0 text-center rounded shadow-sm">
@@ -106,27 +130,3 @@
         }
     }
 </style>
-<script type="text/javascript">
-    function increaseCount(a, b, id) {
-        var input = b.previousElementSibling;
-        var value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        input.value = value;
-        $('#Cqty' + id).val(value);
-        $('#Bqty' + id).val(value);
-    }
-
-    function decreaseCount(a, b, id) {
-        var input = b.nextElementSibling;
-        var value = parseInt(input.value, 10);
-        if (value > 1) {
-            value = isNaN(value) ? 0 : value;
-            value--;
-            input.value = value;
-            $('#Cqty' + id).val(value);
-            $('#Bqty' + id).val(value);
-
-        }
-    }
-</script>
