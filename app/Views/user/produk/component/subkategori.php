@@ -91,6 +91,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
     </div>
+
+    <script>
+        const customButtons = document.querySelectorAll('.custom-button');
+
+        customButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const slug = event.currentTarget.dataset.slug;
+                // Simpan status tombol aktif di localStorage
+                localStorage.setItem('activeButtonSlug', slug);
+            });
+        });
+
+        // Cek jika ada tombol yang aktif disimpan di localStorage
+        const activeButtonSlug = localStorage.getItem('activeButtonSlug');
+        if (activeButtonSlug) {
+            // Tambahkan kelas 'active' ke tombol yang sesuai dengan localStorage
+            const activeButton = document.querySelector(`[data-slug="${activeButtonSlug}"]`);
+            activeButton.classList.add('active');
+        }
+    </script>
 <?php else : ?>
     <!-- Akhir tampilan mobile & ipad -->
 
@@ -145,24 +165,3 @@ if ($isMobile) {
         color: white !important;
     }
 </style>
-
-
-<script>
-    const customButtons = document.querySelectorAll('.custom-button');
-
-    customButtons.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const slug = event.currentTarget.dataset.slug;
-            // Simpan status tombol aktif di localStorage
-            localStorage.setItem('activeButtonSlug', slug);
-        });
-    });
-
-    // Cek jika ada tombol yang aktif disimpan di localStorage
-    const activeButtonSlug = localStorage.getItem('activeButtonSlug');
-    if (activeButtonSlug) {
-        // Tambahkan kelas 'active' ke tombol yang sesuai dengan localStorage
-        const activeButton = document.querySelector(`[data-slug="${activeButtonSlug}"]`);
-        activeButton.classList.add('active');
-    }
-</script>
