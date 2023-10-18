@@ -70,7 +70,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="shadow-sm">
                                             <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Thumbnail Artikel" style="height: 150px; width: 180px;">
                                             <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
-                                                <span class="d-flex align-items-center" style="white-space: nowrap;"> Selengkapnya <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
+                                                <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
                                             </a>
                                         </div>
                                     </div>
@@ -241,7 +241,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <p class="text-secondary">Selengkapnya untuk konten artikel/blog...</p>
                                                         </div>
                                                         <div class="d-flex pt-0">
-                                                            <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger fw-medium flex-grow-1">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
+                                                            <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger fw-medium flex-grow-1">View More <i class="bi bi-arrow-right-circle"></i></a>
                                                         </div>
                                                     </div>
                                                 </div>

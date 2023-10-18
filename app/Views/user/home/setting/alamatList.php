@@ -41,10 +41,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endforeach; ?>
-
-            <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle top-0 end-0 mx-4 my-5 float-right position-fixed"><i class="bi bi-plus"></i></a>
-
+            <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-plus"></i></a>
         </div>
+        <style>
+            .position-fixed {
+                position: fixed;
+                bottom: 70px;
+                /* Atur jarak dari bawah sesuai kebutuhan */
+                right: 10px;
+                /* Atur jarak dari kanan sesuai kebutuhan */
+            }
+        </style>
     </div>
 <?php else : ?>
     <!-- End View Mobile -->

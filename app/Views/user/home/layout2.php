@@ -21,9 +21,10 @@
 
     <?= $this->renderSection('page-content') ?>
     <div class="pb-5 mt-5"></div>
-    <br><br>
 
-    <?= $this->include('user/home/component/navbarBottom') ?>
+    <div class="footer-search" id="navbarBottom" style="position: relative; bottom: 0; width: 100%;">
+        <?= $this->include('user/home/component/navbarBottom') ?>
+    </div>
     <!-- Bootstrap JS -->
     <?= $this->include('user/home/component/rajaOngkir/service') ?>
     <script src="<?= base_url() ?>assets/js/jquery/jquery.min.js"></script>
