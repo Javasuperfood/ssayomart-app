@@ -16,7 +16,7 @@ var swiper = new Swiper(".mySwiper", {
     },
     // Tampilan iPad (lebar >= 768px)
     768: {
-      slidesPerView: 4, // 3 card per tampilan
+      slidesPerView: 3, // 3 card per tampilan
     },
     // Tampilan Mobile (lebar < 768px)
     375: {
