@@ -461,5 +461,4 @@ if ($isMobile) {
     });
 </script>
 
-<?= $this->include('user/home/component/navbarBottom') ?>
 <?= $this->endSection(); ?>
