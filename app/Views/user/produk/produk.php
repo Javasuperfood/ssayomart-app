@@ -374,21 +374,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-    <?php endif; ?>
-    <!-- end Desktop -->
+    </div>
+<?php endif; ?>
+<!-- end Desktop -->
 
-    <!-- akhir view desktop -->
+<!-- akhir view desktop -->
 
-    <style>
-        .horizontal-counter {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+<style>
+    .horizontal-counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .horizontal-counter .btn {
+    .horizontal-counter .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 12px;
+    }
+
+    .horizontal-counter input {
+        width: 40px;
+        text-align: center;
+    }
+
+    /* Media query for Samsung Galaxy Fold */
+    @media (max-width: 280px) {
+        .horizontal-counter.btn {
             padding: 0.25rem 0.5rem;
             font-size: 12px;
+            margin: 0 5px;
         }
 
         .horizontal-counter input {
@@ -396,88 +410,75 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             text-align: center;
         }
 
-        /* Media query for Samsung Galaxy Fold */
-        @media (max-width: 280px) {
-            .horizontal-counter.btn {
-                padding: 0.25rem 0.5rem;
-                font-size: 12px;
-                margin: 0 5px;
-            }
-
-            .horizontal-counter input {
-                width: 40px;
-                text-align: center;
-            }
-
-            .custom-button .btn {
-                padding: 0.25rem 0.5rem;
-                font-size: 12px;
-            }
-
-            .input-group .btn {
-                padding: 0.15rem 0.3rem;
-                font-size: 0.9rem;
-            }
-
-            .input-group .btn {
-                width: 30px;
-                /* Lebar tombol */
-                height: 30px;
-                /* Tinggi tombol */
-                padding: 0;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 1rem;
-                /* Sesuaikan ukuran ikon jika diperlukan */
-                border: 1px solid #ce2614;
-                /* Tambahkan garis pemisah antara tombol */
-                background-color: #fff;
-                /* Warna latar belakang tombol */
-
-            }
-
-            /* Style untuk input number */
-            .input-group input {
-
-                width: 50px;
-                text-align: center;
-                display: flex;
-                border: 1px solid #ce2614;
-                /* Tambahkan garis pemisah untuk input number */
-                height: 30px;
-                padding: 0;
-                font-size: 1.2rem;
-                /* Sesuaikan ukuran teks jika diperlukan */
-            }
+        .custom-button .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 12px;
         }
-    </style>
 
-    <script type="text/javascript">
-        function increaseCount(a, b) {
-            var input = b.previousElementSibling;
-            var value = parseInt(input.value, 10);
+        .input-group .btn {
+            padding: 0.15rem 0.3rem;
+            font-size: 0.9rem;
+        }
+
+        .input-group .btn {
+            width: 30px;
+            /* Lebar tombol */
+            height: 30px;
+            /* Tinggi tombol */
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            /* Sesuaikan ukuran ikon jika diperlukan */
+            border: 1px solid #ce2614;
+            /* Tambahkan garis pemisah antara tombol */
+            background-color: #fff;
+            /* Warna latar belakang tombol */
+
+        }
+
+        /* Style untuk input number */
+        .input-group input {
+
+            width: 50px;
+            text-align: center;
+            display: flex;
+            border: 1px solid #ce2614;
+            /* Tambahkan garis pemisah untuk input number */
+            height: 30px;
+            padding: 0;
+            font-size: 1.2rem;
+            /* Sesuaikan ukuran teks jika diperlukan */
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+        document.getElementById('qty').value = value;
+    }
+
+    function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
             value = isNaN(value) ? 0 : value;
-            value++;
+            value--;
             input.value = value;
             document.getElementById('qty').value = value;
+
         }
+    }
+</script>
 
-        function decreaseCount(a, b) {
-            var input = b.nextElementSibling;
-            var value = parseInt(input.value, 10);
-            if (value > 1) {
-                value = isNaN(value) ? 0 : value;
-                value--;
-                input.value = value;
-                document.getElementById('qty').value = value;
+<?= $this->include('user/component/scriptAddToCart'); ?>
+<?= $this->include('user/component/scriptAddToWishlist'); ?>
 
-            }
-        }
-    </script>
-
-    <?= $this->include('user/component/scriptAddToCart'); ?>
-    <?= $this->include('user/component/scriptAddToWishlist'); ?>
-
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
