@@ -42,7 +42,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col px-3">
                                 <div class="input-group mb-3 d-flex justify-content-center">
                                     <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                                    <input type="number" class="form-control text-center bg-white border-0" disabled value="1">
+                                    <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
                                     <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                                 </div>
                             </div>
@@ -218,7 +218,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                                         <?php endif ?></h1>
                                                     <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-
                                                     <div class="container pt-3">
                                                         <div class="row justify-items-center">
                                                             <div class="col">
@@ -230,9 +229,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
                                                     <p class="text-center custom-button " style="display: flex; justify-content: center;">
                                                         <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-danger mt-4">
                                                             <i class="bi bi-cart-plus"></i>
@@ -352,8 +348,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             text-align: center;
         }
 
-
-
         /* Media query for Samsung Galaxy Fold */
         @media (max-width: 280px) {
             .horizontal-counter.btn {
@@ -434,41 +428,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         }
     </script>
-    <!-- <script>
-    function myFunction() {
-        var dots = document.getElementById("dots");
-        var moreText = document.getElementById("more");
-        var btnText = document.getElementById("myBtn");
-
-        if (dots.style.display === "none") {
-            dots.style.display = "inline";
-            btnText.innerHTML = "Read more";
-            moreText.style.display = "none";
-        } else {
-            dots.style.display = "none";
-            btnText.innerHTML = "Read less";
-            moreText.style.display = "inline";
-        }
-    }
-</script> -->
-
-    <style>
-        .horizontal-counter {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .horizontal-counter .btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 12px;
-        }
-
-        .horizontal-counter input {
-            width: 40px;
-            text-align: center;
-        }
-    </style>
 
     <?= $this->include('user/component/scriptAddToCart'); ?>
     <?= $this->include('user/component/scriptAddToWishlist'); ?>

@@ -15,7 +15,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-9 ">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></span></i>
+                                    <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
                                     <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                                 </div>
                             </form>

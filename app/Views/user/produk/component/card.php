@@ -21,31 +21,33 @@
                             </h1>
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
 
-
                             <div class="container pt-3">
                                 <div class="row justify-items-center">
                                     <div class="col">
                                         <div class="horizontal-counter">
-                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount()"><i class="bi bi-dash"></i></button>
-                                            <input type="text" id="counter" class="form-control form-control-sm border-0" value="0" readonly>
-                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount()"><i class="bi bi-plus"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                            <input type="number" id="counter" class="form-control form-control-sm border-0" value="1" readonly>
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <p class="text-center custom-button " style="display: flex; justify-content: center;">
-                                <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-danger mt-4">
-                                    <i class="fas fa-shopping-cart text-white fa-lg"></i>
-                                </a>
-                                <button type="submit" class="btn btn-danger   mx-1 mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">
-                                    Beli
-                                </button>
-                            </p>
-
-
+                            <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                    <input type="hidden" name="add-to-cart" value="show">
+                                    <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                    <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
+                                        <i class="fas fa-shopping-cart text-white fa-lg"></i>
+                                    </button>
+                                </form>
+                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                    <input type="hidden" name="buy" value="show">
+                                    <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                    <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
+                                        Beli
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -107,3 +109,27 @@
         }
     }
 </style>
+<script type="text/javascript">
+    function increaseCount(a, b, id) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+        $('#Cqty' + id).val(value);
+        $('#Bqty' + id).val(value);
+    }
+
+    function decreaseCount(a, b, id) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+            $('#Cqty' + id).val(value);
+            $('#Bqty' + id).val(value);
+
+        }
+    }
+</script>

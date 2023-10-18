@@ -6,9 +6,13 @@
     $(document).ready(function() {
         <?php if (isset($_GET['add-to-cart'])) : ?>
             $("#modalVarian").modal("show");
+            $("#counterProduct").val(<?= (isset($_GET['qty'])) ? $_GET['qty'] : 1; ?>)
+            $("#qty").val(<?= (isset($_GET['qty'])) ? $_GET['qty'] : 1; ?>)
         <?php endif ?>
         <?php if (isset($_GET['buy'])) : ?>
             $("#modalVarianBuy").modal("show");
+            $("#counterProduct").val(<?= (isset($_GET['qty'])) ? $_GET['qty'] : 1; ?>)
+            $("#qty").val(<?= (isset($_GET['qty'])) ? $_GET['qty'] : 1; ?>)
         <?php endif ?>
         $(".add-to-cart-btn").click(function() {
             var produk = $(this).attr('produk');
