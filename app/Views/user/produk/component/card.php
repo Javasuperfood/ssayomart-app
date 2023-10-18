@@ -2,7 +2,6 @@
     <div class="container" id="product">
         <!-- <h2>Produk terlaris</h2> -->
         <div class="row mt-3 row-cols-3" id="product-container">
-
             <?php foreach ($produk as $p) : ?>
                 <div class="col-6 col-md-4 col-lg-3 pt-3">
                     <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
@@ -20,13 +19,12 @@
                                 <?php endif ?>
                             </h1>
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-
                             <div class="container pt-3">
                                 <div class="row justify-items-center">
                                     <div class="col">
                                         <div class="horizontal-counter">
                                             <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                            <input type="number" id="counter" class="form-control form-control-sm border-0" value="1" readonly>
+                                            <input type="number" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
                                             <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                         </div>
                                     </div>
@@ -52,7 +50,6 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-
         </div>
     </div>
 <?php else : ?>
