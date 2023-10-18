@@ -247,6 +247,12 @@ class Kategori extends Seeder
                 'slug'    => '김-NORI',
             ],
             [
+                'id_kategori' => 2,
+                'nama_kategori' => '김밥 김 / KIMBAB KIM',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '김밥 김-KIMBAB KIM',
+            ],
+            [
                 'id_kategori' => 10,
                 'nama_kategori' => '빵 / ROTI',
                 'deskripsi'    => 'Lorem',

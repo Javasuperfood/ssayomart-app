@@ -129,6 +129,13 @@ $error = session('error'); ?>
     .button:hover {
         transform: scale(1.02);
     }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        .button {
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+        }
 </style>
 
 <?= $this->endSection() ?>
