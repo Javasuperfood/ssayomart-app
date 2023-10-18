@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-5 d-md-none">
+        <div class="container pt-5 ">
             <div class="row text-center">
                 <?php foreach ($produk as $p) : ?>
                     <div class="col-6">
