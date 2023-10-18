@@ -175,7 +175,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
                                     <i class="bi bi-dash"></i>
                                 </button>
-                                <input type="number" class="form-control text-center bg-white border-0" disabled value="1">
+                                <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
                                 <button class="btn btn-outline-danger mr-4 rounded-circle" type="button" onClick="increaseCount(event, this)">
                                     <i class="bi bi-plus"></i>
                                 </button>
@@ -241,7 +241,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     <?php endforeach; ?>
-                                    <input type="hidden" id="qty" name="qty" value="1">
                                     <?= $this->include('user/component/scriptAddToCart'); ?>
                                 </div>
                             </div>
