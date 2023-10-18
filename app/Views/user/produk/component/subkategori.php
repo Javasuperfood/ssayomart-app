@@ -74,8 +74,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="swiper-wrapper " style="height:40px">
                                 <?php foreach ($subKategori as $s) : ?>
                                     <div class="swiper-slide my-1">
-                                        <div class="card border-0 shadow-sm text-uppercase" style="height: 25px; width:auto;">
-                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $s['slugS']; ?>" style="font-size:10px; color:black;">
+                                        <div class="card border-0 shadow-sm text-uppercase" style="width: auto;">
+                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $s['slugS']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
                                                 <?= $s['nama_kategori']; ?>
                                             </a>
                                         </div>
