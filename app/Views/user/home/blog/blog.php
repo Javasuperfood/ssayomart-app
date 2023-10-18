@@ -201,7 +201,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($randomBlogs as $randomBlog) : ?>
                                 <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
                                     <div class="card border-0 shadow-sm">
-                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:360px;">
+                                        <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="max-width: 100%;">
                                         <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
                                         <p class="text-secondary mt-2 mx-3">
                                             Selengkapnya untuk melihat artikel...
