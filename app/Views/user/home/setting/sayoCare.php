@@ -58,29 +58,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
 
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-12 col-md-6 ">
-                    <!-- Konten Kolom Kedua -->
 
-                    <h3>Dokumentasi SSayomart Live</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-
-                </div>
-                <div class="col-12 col-md-6">
-                    <!-- Konten Kolom Pertama -->
-
-                    <div class="img-container">
-                        <!-- Ganti gambar dengan video YouTube -->
-                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-                        <!-- Ganti "VIDEO_ID" dengan ID video YouTube yang sesuai -->
-                        <div class="img-overlay"></div>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
 
         <!-- galery photos Mobile -->
         <div class="container d-md-none">
@@ -172,15 +150,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- form dan maps -->
         <div class="container mb-5">
+            <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About As <span class="text-danger">Ssayomart</span></h2>
             <div class="row">
-                <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About As <span class="text-danger">Ssayomart</span></h2>
                 <!-- Kolom 1: Peta -->
-                <div class="col-md-6">
-                    <iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63461.253843224215!2d106.58139326405951!3d-6.220359270402854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f96aaaaaaa9d%3A0x61260dece4fe3535!2sJAVA%20SUPER%20FOOD%20(PT%20ANEKA%20DASUIB%20JAYA)!5e0!3m2!1sen!2sid!4v1697420053341!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="col-md-6 col-lg-6">
+                    <iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63461.253843224215!2d106.58139326405951!3d-6.220359270402854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f96aaaaaaa9d%3A0x61260dece4fe3535!2sJAVA%20SUPER%20FOOD%20(PT%20ANEKA%20DASUIB%20JAYA)!5e0!3m2!1sen!2sid!4v1697420053341!5m2!1sen!2sid" width="320" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <!-- Kolom 2: Formulir Inputan -->
-                <div class="col-md-6 mt-2">
+                <div class="col-md-6 col-lg-6 mt-2">
                     <form>
                         <div class="form-group">
                             <label for="name">Name:</label>
@@ -469,6 +447,9 @@ if ($isMobile) {
     echo '</div>';
 }
 ?>
+
+
+
 
 
 
