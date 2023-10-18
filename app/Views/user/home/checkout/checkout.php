@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-5 d-md-none">
+        <div class="container pt-5">
             <form action="<?= base_url('checkout/' . $id . '/bayar'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <?php if (!$alamat_list) : ?>

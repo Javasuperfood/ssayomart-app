@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- cupon view Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-2 d-md-none">
+        <div class="container pt-2">
             <?php foreach ($kupon_model as $km) : ?>
                 <div class="col pb-3">
                     <div class="card border-0 shadow-sm bg-white">

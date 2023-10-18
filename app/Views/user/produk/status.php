@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
 
-        <div class="container pt-3 pb-4 d-md-none">
+        <div class="container pt-3 pb-4">
             <div class="row row-cols-1 row-cols-sm-2">
                 <div class="col">
                     <div class="container">
@@ -178,8 +178,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php   // =====================    PRNTING  =================================
         if ($status->id_status_pesan == 1) : ?>
             <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
-            <div class="row p-3 px-4 fixed-bottom">
-                <button id="pay-button" class="btn btn-lg fw-bold d-md-none" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+            <div class="row p-3 px-4 mb-4 py-5 fixed-bottom">
+                <button id="pay-button" class="btn btn-lg fw-bold " style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
             </div>
             <script type="text/javascript">
                 function lpSanp() {
