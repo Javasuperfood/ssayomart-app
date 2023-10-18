@@ -8,7 +8,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container d-md-none">
+        <div class="container">
             <div class="row">
                 <nav class="navbar pt-2 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
                     <div class="container-fluid mx-1">

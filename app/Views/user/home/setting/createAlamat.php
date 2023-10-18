@@ -10,7 +10,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobiler -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container d-md-none">
+        <div class="container">
             <div class="row">
                 <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3">
                     <?= csrf_field(); ?>

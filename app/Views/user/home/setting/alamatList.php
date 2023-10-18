@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- view Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-3 d-md-none">
+        <div class="container pt-3">
             <?php
             foreach ($alamat_user_model as $au) :
             ?>

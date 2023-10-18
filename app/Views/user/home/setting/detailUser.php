@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-3 d-md-none">
+        <div class="container pt-3">
             <div class="row justify-content-center">
                 <div class="card border-0 shadow-sm py-4 rounded-2">
                     <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
