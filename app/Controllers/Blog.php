@@ -31,7 +31,7 @@ class Blog extends BaseController
         $randomProducts = $produkModel->getRandomProducts();
 
         $data = [
-            'title' => 'Artikel',
+            'title' => '오늘 이 요리 어때요? / SARAN MASAK',
             'kategori' => $kategori->findAll(),
             'blog_detail' => $blog_detail,
             'user_info' => $user_info,
