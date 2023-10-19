@@ -12,164 +12,164 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
 
         <div class="container pt-3 pb-4">
-            <div class="row row-cols-1 row-cols-sm-2">
-                <div class="col">
-                    <div class="container">
-                        <div class="card border-0 shadow-sm">
-                            <div class="col-md-12">
-                                <div class="timeline text-center">
-                                    <?php
-                                    $count = 0;
-                                    if ($status->pesan_status == 5) {
-                                        $count = 4;
+
+            <div class="col">
+                <div class="container">
+                    <div class="card border-0 shadow-sm">
+                        <div class="col-md-12">
+                            <div class="timeline text-center">
+                                <?php
+                                $count = 0;
+                                if ($status->pesan_status == 5) {
+                                    $count = 4;
+                                }
+
+                                foreach ($getstatus as $gs) :
+                                    if ($count >= $status->pesan_status) {
+                                        break;
                                     }
-
-                                    foreach ($getstatus as $gs) :
-                                        if ($count >= $status->pesan_status) {
-                                            break;
-                                        }
-                                    ?>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content bg-white">
-                                                <div class="timeline-icon bg-warning"></div>
-                                                <p class="fw-bold badge text-bg-danger"><?= $gs['status']; ?></p>
-                                            </div>
-                                        </div>
-                                    <?php
-                                        $count++;
-                                    endforeach;
-                                    ?>
-                                    <?php if ($status->pesan_status == 5) : ?>
-                                        <div class="timeline-item">
-                                            <div class="timeline-content bg-white">
-                                                <div class="timeline-icon bg-warning"></div>
-                                                <p class="fw-bold badge text-bg-danger"><?= $getstatus[4]['status']; ?></p>
-                                            </div>
-                                        </div>
-                                    <?php endif ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php foreach ($produk as $p) : ?>
-                    <div class="row pt-3">
-                        <div class="col">
-                            <a href="<?= base_url('produk/' . $p->slug); ?>">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
-                                            </div>
-                                            <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                                <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?>...</h5>
-                                                <p class="card-text text-secondary fs-6"><?= $p->qty; ?> <?= $p->value_item; ?>
-                                                </p>
-                                            </div>
-                                            <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                <h5 class="text-secondary fs-6">Total</h5>
-                                                <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
-                                            </div>
+                                ?>
+                                    <div class="timeline-item">
+                                        <div class="timeline-content bg-white">
+                                            <div class="timeline-icon bg-warning"></div>
+                                            <p class="fw-bold badge text-bg-danger"><?= $gs['status']; ?></p>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                <?php endforeach ?>
-                <div class="col mt-3">
-                    <div class="card border-0">
-                        <h2>Lokasi Tujuan</h2>
-                        <div class="mb-0 mx-0 my-0">
-                            <div class="card form-control form-control-md border-0 shadow-sm">
-                                <div class="row row-cols-1">
-                                    <div class="col">
-                                        <ul class="list-group list-group-flush">
-                                            <span class="list-group-item pb-3 border-0">
-                                                <span class="fw-bold"><?= $status->kurir; ?>
-                                                </span>
-                                                <p class="text-secondary">
-                                                    Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?>
-                                                </p>
-                                                <p class="card-text text-secondary"><?= $status->kirim; ?></p>
-                                            </span>
-                                        </ul>
+                                <?php
+                                    $count++;
+                                endforeach;
+                                ?>
+                                <?php if ($status->pesan_status == 5) : ?>
+                                    <div class="timeline-item">
+                                        <div class="timeline-content bg-white">
+                                            <div class="timeline-icon bg-warning"></div>
+                                            <p class="fw-bold badge text-bg-danger"><?= $getstatus[4]['status']; ?></p>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col mt-3">
-                    <div class="card border-0">
-                        <div class="card form-control form-control-md border-0 shadow-sm">
-                            <h2>Pesanan kamu</h2>
-                            <div class="row">
-                                <div class="col-10">
-                                    <p><?= $status->invoice; ?></p>
-                                </div>
-                                <div class="col-2">
-                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
-                                </div>
-                            </div>
-                            <?php if (isset($paymentStatus->va_numbers[0])) : ?>
-                                <div class="row">
-                                    <div class="col-10">
-                                        <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
-                                    </div>
-                                    <div class="col-2">
-                                        <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <table class="table table-sm ">
-                                            <thead>
-                                                <tr>
-                                                    <td scope="col">Metode Pembayaran</td>
-                                                    <td scope="col"> <?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?> </td>
-                                                </tr>
-                                            </thead>
-                                        </table>
-                                    </div>
-                                </div>
-                            <?php endif ?>
-                            <div class="row py-3 px-3">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Ringkasan Belanja</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Total Harga</td>
-                                            <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
-                                        </tr>
-                                        <?php if ($status->kupon) : ?>
-                                            <tr>
-                                                <td>Diskon</td>
-                                                <td>-RP. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
-                                            </tr>
-                                        <?php endif; ?>
-                                        <tr>
-                                            <td>Total Ongkos Kirim</td>
-                                            <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Subtotal</td>
-                                            <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php foreach ($produk as $p) : ?>
+                <div class="row pt-3">
+                    <div class="col">
+                        <a href="<?= base_url('produk/' . $p->slug); ?>">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
+                                        </div>
+                                        <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                            <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?>...</h5>
+                                            <p class="card-text text-secondary fs-6"><?= $p->qty; ?> <?= $p->value_item; ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                            <h5 class="text-secondary fs-6">Total</h5>
+                                            <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach ?>
+            <div class="col mt-3">
+                <div class="card border-0">
+                    <h2>Lokasi Tujuan</h2>
+                    <div class="mb-0 mx-0 my-0">
+                        <div class="card form-control form-control-md border-0 shadow-sm">
+                            <div class="row row-cols-1">
+                                <div class="col">
+                                    <ul class="list-group list-group-flush">
+                                        <span class="list-group-item pb-3 border-0">
+                                            <span class="fw-bold"><?= $status->kurir; ?>
+                                            </span>
+                                            <p class="text-secondary">
+                                                Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?>
+                                            </p>
+                                            <p class="card-text text-secondary"><?= $status->kirim; ?></p>
+                                        </span>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col mt-3">
+                <div class="card border-0">
+                    <div class="card form-control form-control-md border-0 shadow-sm">
+                        <h2>Pesanan kamu</h2>
+                        <div class="row">
+                            <div class="col-10">
+                                <p><?= $status->invoice; ?></p>
+                            </div>
+                            <div class="col-2">
+                                <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
+                            </div>
+                        </div>
+                        <?php if (isset($paymentStatus->va_numbers[0])) : ?>
+                            <div class="row">
+                                <div class="col-10">
+                                    <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <table class="table table-sm ">
+                                        <thead>
+                                            <tr>
+                                                <td scope="col">Metode Pembayaran</td>
+                                                <td scope="col"> <?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?> </td>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        <?php endif ?>
+                        <div class="row py-3 px-3">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Ringkasan Belanja</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Total Harga</td>
+                                        <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
+                                    </tr>
+                                    <?php if ($status->kupon) : ?>
+                                        <tr>
+                                            <td>Diskon</td>
+                                            <td>-RP. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <tr>
+                                        <td>Total Ongkos Kirim</td>
+                                        <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Subtotal</td>
+                                        <td>Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="row">
@@ -285,7 +285,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- TAMPILAN DESKTOP -->
     <div id="desktopContent" style="margin-top:100px;">
-        <div class="container py-5 justify-content-center d-none d-md-block">
+        <div class="container py-5 justify-content-center d-none d-sm-block">
             <div class="col-12 d-flex justify-content-center">
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">
                     <ol class="breadcrumb mb-0">
@@ -574,7 +574,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 margin-top: 7px;
             }
         </style>
-    <?php endif; ?>
+    </div>
+<?php endif; ?>
 
 
-    <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
