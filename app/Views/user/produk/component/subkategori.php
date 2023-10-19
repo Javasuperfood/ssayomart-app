@@ -75,7 +75,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($subKategori as $s) : ?>
                                     <div class="swiper-slide my-1">
                                         <div class="card border-0 shadow-sm text-uppercase" style="width: auto;">
-                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $s['slugS']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
+                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none custom-button btn <?= ($s['slugS'] == $sk) ? 'active' : ''; ?>" data-slug="<?= $s['slugS']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
                                                 <?= $s['nama_kategori']; ?>
                                             </a>
                                         </div>
@@ -84,33 +84,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
-
     </div>
 
     <script>
-        const customButtons = document.querySelectorAll('.custom-button');
+        document.addEventListener("DOMContentLoaded", function() {
+            const customButtons = document.querySelectorAll('.custom-button');
+            const defaultButtonSlug = "slug-default"; // Ganti dengan slug tombol default
 
-        customButtons.forEach(button => {
-            button.addEventListener('click', (event) => {
-                const slug = event.currentTarget.dataset.slug;
-                // Simpan status tombol aktif di localStorage
-                localStorage.setItem('activeButtonSlug', slug);
+            customButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const slug = event.currentTarget.dataset.slug;
+                    // Simpan status tombol aktif di localStorage
+                    localStorage.setItem('activeButtonSlug', slug);
+                });
             });
-        });
 
-        // Cek jika ada tombol yang aktif disimpan di localStorage
-        const activeButtonSlug = localStorage.getItem('activeButtonSlug');
-        if (activeButtonSlug) {
-            // Tambahkan kelas 'active' ke tombol yang sesuai dengan localStorage
-            const activeButton = document.querySelector(`[data-slug="${activeButtonSlug}"]`);
-            activeButton.classList.add('active');
-        }
+            // Cek jika ada tombol yang aktif disimpan di localStorage
+            const activeButtonSlug = localStorage.getItem('activeButtonSlug');
+            if (activeButtonSlug) {
+                // Tambahkan kelas 'active' ke tombol yang sesuai dengan localStorage
+                const activeButton = document.querySelector(`[data-slug="${activeButtonSlug}"]`);
+                activeButton.classList.add('active');
+            } else {
+                // Jika tidak ada tombol yang aktif di localStorage, tambahkan kelas 'active' ke tombol default saat halaman dimuat
+                const defaultButton = document.querySelector(`[data-slug="${defaultButtonSlug}"]`);
+                defaultButton.classList.add('active');
+            }
+        });
     </script>
+
+
 <?php else : ?>
     <!-- Akhir tampilan mobile & ipad -->
 
