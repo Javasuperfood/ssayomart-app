@@ -134,6 +134,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+
 <?php endif; ?>
 
 
