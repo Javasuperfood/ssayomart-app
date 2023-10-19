@@ -147,7 +147,7 @@
                                                     <div class="modal-body">Pilih Delete untuk Menghapus Produk <?= $km['nama']; ?></div>
                                                     <div class="modal-footer">
                                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                        <form action="<?= base_url() ?>dashboard/produk/tambah-produk/delete-produk/<?= $km['id_produk']; ?>" method="post">
+                                                        <form action="<?= base_url() ?>dashboard/produk/delete-produk/<?= $km['id_produk']; ?>" method="post">
                                                             <?= csrf_field() ?>
                                                             <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
                                                             <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
@@ -197,6 +197,18 @@
 <!-- ================= End Modal deleted chacked ===================== -->
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
+
+
     var checkAll = document.getElementById('checkAll');
     var checkboxes = document.getElementsByName('check_id[]');
     checkAll.addEventListener('change', function() {
