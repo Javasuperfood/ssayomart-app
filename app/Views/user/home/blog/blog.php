@@ -163,6 +163,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <p class="mb-0 text-secondary">- Foto ini memiliki Copyright dari Ssayomart -</p>
                 </div>
                 <?= str_replace('<img', '<img class="img-fluid rounded-4 img-zoom"', html_entity_decode($blog_detail['isi_blog'])); ?>
+                <div class="embed-responsive text-center mb-3">
+                    <?= $videoEmbedCode; ?>
+                </div>
             </div>
         </div>
         <!-- End Assets Inputan Administrasi -->
@@ -248,6 +251,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <p class="mb-0 text-secondary">- Foto ini memiliki Copyright dari Ssayomart -</p>
                     </div>
                     <?= str_replace('<img', '<img class="img-fluid rounded-4 img-zoom"', html_entity_decode($blog_detail['isi_blog'])); ?>
+
+                    <div class="embed-responsive text-center mb-3">
+                        <?= $videoEmbedCode; ?>
+                    </div>
                 </div>
 
                 <!-- Right Panel -->

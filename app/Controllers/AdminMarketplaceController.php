@@ -76,7 +76,7 @@ class AdminMarketplaceController extends BaseController
                 'message' => 'Terdapat kesalahan pada input kupon'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/marketplace');
+            return redirect()->to('dashboard/marketplace/create')->withInput();
         }
         // dd($data);
         if ($tokoModel->save($data)) {

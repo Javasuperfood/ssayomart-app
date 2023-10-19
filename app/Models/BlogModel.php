@@ -20,6 +20,7 @@ class BlogModel extends Model
         'img_thumbnail',
         'created_by',
         'slug',
+        'link_video',
         'created_at',
         'updated_at'
     ];
