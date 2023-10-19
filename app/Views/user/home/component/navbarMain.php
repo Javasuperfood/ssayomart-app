@@ -54,8 +54,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <a class="nav-link text-secondary" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download'); ?></a>
                             </li>
                         </ul>
-                        <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
-                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control border-danger" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                        <form class="d-flex" onsubmit="searchValidate()" role="search" action="<?= base_url('search'); ?>" method="get">
+                            <input id="search" value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control border-danger" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                             <button type="submit" class="btn btn-danger text-white mx-2" id="basic-addon1"><i class="bi bi-search text-white"></i></button>
                         </form>
                         <ul class="navbar-nav d-flex flex-row mx-3">

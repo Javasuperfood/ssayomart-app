@@ -55,7 +55,10 @@
     <script type="text/javascript">
         function increaseCount(b, id) {
             var input = b.previousElementSibling;
+            console.log(input);
             var value = parseInt(input.value, 10);
+
+            console.log(value);
             value = isNaN(value) ? 0 : value;
             value++;
             input.value = value;
@@ -80,7 +83,7 @@
     <div class="container px-5 my-5 align-middle">
         <div class="card border-0 text-center rounded shadow-sm">
             <div class="card-body">
-                <h5 class="card-title">Produk belum tersedia</h5>
+                <h5 class="card-title">Produk tidak ditemukan atau belum tersedia</h5>
                 <a href="/" class="btn btn-danger border-0 rounded ">Kembali</a>
             </div>
         </div>
