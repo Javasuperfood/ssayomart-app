@@ -29,6 +29,18 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="link_video">Masukkan Link Video <span class="text-danger fs-5">*</span></label>
+                        <input type="url" class="form-control shadow-sm border-0" id="link_video" placeholder="Masukkan Link Video..." name="link_video" value="<?= old('link_video') ?>">
+                        <span id="linkError" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="link_video">Video Preview</label>
+                        <div id="videoPreview" class="rounded-3"></div>
+                    </div>
+
+
+                    <div class="mb-3">
                         <label for="isi_blog" class="form-label">Isi Blog/Artikel <span class="text-danger fs-5">*</span></label>
                         <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" placeholder="Masukan Isi Konten Artikel/Blog Anda Disini..." name="isi_blog" value="<?= $bm['isi_blog']; ?>"></textarea>
                         <!-- <span id="kontenError" class="text-danger"></span> -->
@@ -49,6 +61,41 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const linkVideoInput = document.getElementById('link_video');
+        const videoPreview = document.getElementById('videoPreview');
+
+        linkVideoInput.addEventListener('input', function() {
+            const videoUrl = linkVideoInput.value;
+            const videoId = extractVideoId(videoUrl);
+            const iframeCode = generateIframeCode(videoId);
+
+            videoPreview.innerHTML = iframeCode;
+        });
+
+        function extractVideoId(url) {
+            // Lakukan ekstraksi ID video dari URL YouTube
+            // Misalnya, dari "https://www.youtube.com/watch?v=VIDEO_ID" menjadi "VIDEO_ID"
+            // Anda dapat menggunakan ekspresi reguler atau manipulasi string untuk ini
+            // Contoh sederhana (asumsi URL selalu dalam format yang sama):
+            const match = url.match(/(\?|&)v=([^&#]+)/);
+            if (match) {
+                return match[2];
+            } else {
+                // Return default ID jika tidak ditemukan
+                return 'DEFAULT_VIDEO_ID';
+            }
+        }
+
+        function generateIframeCode(videoId) {
+            // Menghasilkan kode iframe untuk menyisipkan video YouTube
+            return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+        }
+    });
+</script>
 
 <!-- TINY MCE -->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>

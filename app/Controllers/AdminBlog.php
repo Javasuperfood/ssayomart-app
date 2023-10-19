@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\BlogModel;
 use App\Models\UsersModel;
 
+use App\Helpers\YoutubeHelper;
+
 class AdminBlog extends BaseController
 {
     // ===================================================================
@@ -49,6 +51,7 @@ class AdminBlog extends BaseController
             'isi_blog' => $this->request->getVar('isi_blog'),
             'tanggal_dibuat' => date('Y-m-d H:i:s'),
             'slug' => $slug,
+            'link_video' => $this->request->getVar('link_video'),
             'img_thumbnail' => $namaBlog,
             'created_by' => user_id()
         ];
@@ -115,7 +118,6 @@ class AdminBlog extends BaseController
             }
         }
         $slug = url_title($this->request->getVar('judul_blog'), '-', true);
-
         $data = [
             'id_blog' => $id,
             'judul_blog' => $this->request->getVar('judul_blog'),
@@ -123,7 +125,8 @@ class AdminBlog extends BaseController
             'tanggal_dibuat' => date('Y-m-d H:i:s'),
             'img_thumbnail' => $namaKontenImage,
             'updated_by' => user_id(),
-            'slug' => $slug
+            'slug' => $slug,
+            'link_video' => $this->request->getVar('link_video')
         ];
 
         if ($blogModel->save($data)) {
@@ -188,14 +191,22 @@ class AdminBlog extends BaseController
     // ===================================================================
     public function detailKonten($id)
     {
+        // Memuat helper YouTube
+        helper('youtube');
+
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
         $blog_detail = $blogModel->getBlogDetail($id);
         $user_info = $userModel->getUserInfo($blog_detail['created_by']);
+
+        // Menggunakan fungsi dari helper untuk menanamkan video
+        $videoEmbedCode = YoutubeHelper::embedYouTubeVideo($blog_detail['link_video']);
+
         $data = [
             'title' => 'Detail Konten',
             'blog_detail' => $blog_detail,
-            'user_info' => $user_info // Tambahkan data user_info
+            'user_info' => $user_info,
+            'videoEmbedCode' => $videoEmbedCode
         ];
 
         return view('dashboard/blog/detailKonten', $data);

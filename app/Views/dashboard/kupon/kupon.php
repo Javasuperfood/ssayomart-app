@@ -13,7 +13,7 @@
 <!-- DataTales Example -->
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-bold">Kupon List</h6>
+        <h6 class="m-0 font-weight-bold">List Kupon</h6>
     </div>
     <div class="card-body ">
         <div class="table-responsive">

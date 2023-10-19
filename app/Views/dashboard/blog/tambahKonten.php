@@ -29,6 +29,17 @@
                     </div>
 
                     <div class="mb-3">
+                        <label for="link_video">Masukkan Link Video <span class="text-danger fs-5">*</span></label>
+                        <input type="url" class="form-control shadow-sm border-0" id="link_video" placeholder="Masukkan Link Video..." name="link_video" value="<?= old('link_video') ?>">
+                        <span id="linkError" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="link_video">Video Preview</label>
+                        <div id="videoPreview" class="rounded-3"></div>
+                    </div>
+
+                    <div class="mb-3">
                         <label for="img_thumbnail" class="form-label">Gambar Thumbnail <span class="text-danger fs-5">*</span></label>
                         <input type="file" class="form-control shadow-sm border-0" id="img_thumbnail" name="img_thumbnail" accept="image/*" value="<?= old('img_thumbnail') ?>">
                         <span id="imgError" class="text-danger"></span>
@@ -71,13 +82,48 @@
                         </div>
                     </div> -->
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-danger mt-3 text-center">Simpan</button>
+                        <button type="submit" class="btn btn-danger mt-3 text-center">Tambah Artikel</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+<!-- VIDEO YOUTUBE -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const linkVideoInput = document.getElementById('link_video');
+        const videoPreview = document.getElementById('videoPreview');
+
+        linkVideoInput.addEventListener('input', function() {
+            const videoUrl = linkVideoInput.value;
+            const videoId = extractVideoId(videoUrl);
+            const iframeCode = generateIframeCode(videoId);
+
+            videoPreview.innerHTML = iframeCode;
+        });
+
+        function extractVideoId(url) {
+            // Lakukan ekstraksi ID video dari URL YouTube
+            // Misalnya, dari "https://www.youtube.com/watch?v=VIDEO_ID" menjadi "VIDEO_ID"
+            // Anda dapat menggunakan ekspresi reguler atau manipulasi string untuk ini
+            // Contoh sederhana (asumsi URL selalu dalam format yang sama):
+            const match = url.match(/(\?|&)v=([^&#]+)/);
+            if (match) {
+                return match[2];
+            } else {
+                // Return default ID jika tidak ditemukan
+                return 'DEFAULT_VIDEO_ID';
+            }
+        }
+
+        function generateIframeCode(videoId) {
+            // Menghasilkan kode iframe untuk menyisipkan video YouTube
+            return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+        }
+    });
+</script>
 
 <!-- TINY MCE -->
 <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
@@ -139,14 +185,17 @@
         var isValid = true;
 
         var judulField = document.getElementById('judul_blog');
+        var linkField = document.getElementById('link_video');
         var imgField = document.getElementById('img_thumbnail');
         var kontenField = document.getElementById('isi_blog');
 
         var judulError = document.getElementById('judulError');
+        var linkError = document.getElementById('linkError');
         var imgError = document.getElementById('imgError');
         // var kontenError = document.getElementById('kontenError');
 
         judulError.textContent = '';
+        linkError.textContent = '';
         imgError.textContent = '';
         // kontenError.textContent = '';
 
@@ -156,6 +205,14 @@
             isValid = false;
         } else {
             judulField.classList.remove('invalid-field');
+        }
+
+        if (linkField.value.trim() === '') {
+            linkField.classList.add('invalid-field');
+            linkError.textContent = 'Link Video tidak boleh kosong';
+            isValid = false;
+        } else {
+            linkField.classList.remove('invalid-field');
         }
 
         if (imgField.value.trim() === '') {

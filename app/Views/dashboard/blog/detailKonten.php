@@ -16,8 +16,8 @@
     <li class="breadcrumb-item text-danger active"><a class="text-danger" href="#">Detail Artikel/Blog</a></li>
 </ul>
 
-<div class="card border-0 shadow-sm">
-    <div class="card-header border-0 py-3">
+<div class="card border-0 shadow-sm border-left-danger mb-4">
+    <div class="card-header border-0 py-3 bg-white">
         <h5 class=" mb-0">Pembuat Konten</h5>
     </div>
     <div class="row">
@@ -28,13 +28,13 @@
             <div class="col-6">
                 <div class="mx-0 my-0 mb-0">
                     <div class="form-floating">
-                        <input class="form-control border-0 floatingInput text-dark bg-white" value="<?= $blog_detail['fullname']; ?>" disabled>
+                        <input class="form-control border-0 floatingInput text-dark bg-white fw-bold" value="<?= $blog_detail['fullname']; ?>" disabled>
                         <label for="fullname">Nama Lengkap Author</label>
                     </div>
                 </div>
                 <div class="mx-0 my-0 mb-0">
                     <div class="form-floating">
-                        <input class="form-control border-0 floatingInput text-dark bg-white" value="@<?= $blog_detail['username']; ?>" disabled>
+                        <input class="form-control border-0 floatingInput text-dark bg-white fw-bold" value="@<?= $blog_detail['username']; ?>" disabled>
                         <label for="username">Username Author</label>
                     </div>
                 </div>
@@ -48,6 +48,18 @@
         </div>
     </div>
 </div>
+
+<div class="card border-0 shadow-sm border-left-danger">
+    <div class="card-header border-0 py-3 bg-white">
+        <h5 class="mb-0">Video</h5>
+    </div>
+    <div class="row">
+        <div class="card-body d-flex justify-content-center">
+            <?= $videoEmbedCode; ?>
+        </div>
+    </div>
+</div>
+
 
 <div class="row d-flex justify-content-center my-4">
     <div class="col-md-8">
@@ -77,19 +89,19 @@
                         <div class="row">
                             <div class="mx-0 my-0 mb-3">
                                 <div class="form-floating">
-                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white" value="<?= $blog_detail['judul_blog']; ?>" disabled>
+                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white border-left-danger" value="<?= $blog_detail['judul_blog']; ?>" disabled>
                                     <label for="judul_blog">Judul Artikel/Blog</label>
                                 </div>
                             </div>
                             <div class="mx-0 my-0 mb-3">
                                 <div class="form-floating">
-                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white" value="<?= strftime('%d %B %Y %H:%M', strtotime($blog_detail['tanggal_dibuat'])); ?>" disabled>
+                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white border-left-danger" value="<?= strftime('%d %B %Y %H:%M', strtotime($blog_detail['tanggal_dibuat'])); ?>" disabled>
                                     <label for="tanggal_dibuat">Dipublikasikan</label>
                                 </div>
                             </div>
                             <div class="mx-0 my-0 mb-3">
                                 <div class="form-floating">
-                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white" value="<?= $blog_detail['slug']; ?>" disabled>
+                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white border-left-danger" value="<?= $blog_detail['slug']; ?>" disabled>
                                     <label for="slug">Slug</label>
                                 </div>
                             </div>

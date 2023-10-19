@@ -8,10 +8,15 @@ use App\Models\BlogModel;
 use App\Models\UsersModel;
 use App\Models\ProdukModel;
 
+use App\Helpers\YoutubeHelper;
+
 class Blog extends BaseController
 {
     public function index($id)
     {
+        // Memuat helper YouTube
+        helper('youtube');
+
         $kategori = new KategoriModel();
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
@@ -19,9 +24,14 @@ class Blog extends BaseController
 
         // Ambil semua data artikel dari database
         $allBlogs = $blogModel->getAllBlog();
+        $blog_detail = $blogModel->getBlogDetail($id);
 
         // Acak urutan artikel
         shuffle($allBlogs);
+
+        // Menggunakan fungsi dari helper untuk menanamkan video
+        $videoEmbedCode = YoutubeHelper::embedYouTubeVideo($blog_detail['link_video']);
+
 
         // Ambil artikel detail yang dipilih
         $blog_detail = $blogModel->getBlogDetail($id);
@@ -36,7 +46,8 @@ class Blog extends BaseController
             'blog_detail' => $blog_detail,
             'user_info' => $user_info,
             'randomProducts' => $randomProducts,
-            'randomBlogs' => $allBlogs
+            'randomBlogs' => $allBlogs,
+            'videoEmbedCode' => $videoEmbedCode
         ];
 
         return view('user/home/blog/blog', $data);
