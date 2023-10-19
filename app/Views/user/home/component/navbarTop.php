@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <nav class="navbar px-md-1 py-md-1 mx-md-1 rounded-bottom-3" style="background-color : #fff; padding-bottom : 80px;">
                     <div class="container-fluid mx-1">
-                        <div class="col-10 col-md-10">
+                        <div class="col-9 col-md-10">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
                                     <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
@@ -21,7 +21,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </form>
                         </div>
 
-                        <div class="col-2 col-md-2">
+                        <div class="col-3 col-md-2">
                             <!-- bahasa -->
                             <?php
                             $lang = session()->get('lang');
