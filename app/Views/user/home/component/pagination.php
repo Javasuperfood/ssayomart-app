@@ -31,7 +31,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="col">
                                     <div class="horizontal-counter">
                                         <span class="btn btn-sm btn-outline-secondary"><i class="bi bi-dash"></i></span>
-                                        <input type="number" id="counter" class="form-control form-control-sm border-0 text-center text-secondary" value="0" readonly>
+                                        <input type="text" id="counter" class="form-control form-control-sm border-0 text-center text-secondary" value="0" readonly>
                                         <span class="btn btn-sm btn-outline-secondary" type="button"><i class="bi bi-plus"></i></span>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="col">
                                         <div class="horizontal-counter">
                                             <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(event, this, ${p.id_produk})"><i class="bi bi-dash"></i></button>
-                                            <input type="number" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
+                                            <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
                                             <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(event, this, ${p.id_produk})"><i class="bi bi-plus"></i></button>
                                         </div>
                                     </div>

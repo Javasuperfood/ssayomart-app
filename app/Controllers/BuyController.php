@@ -42,7 +42,7 @@ class BuyController extends BaseController
             'kategori' => $kategori->findAll()
         ];
         // dd($data);
-        return view('user/produk/buyProduk', $data);
+        return view('user/home/checkout/buyProduk', $data);
     }
     public function storeData($slug)
     {
@@ -76,16 +76,14 @@ class BuyController extends BaseController
         $wishlist = $wishlistModel->where('id_user', user_id())->first();
         $wishlistItem = $wishlistProdModel->where('id_wishlist', $wishlist['id_wishlist'])->where('id_produk', $produk['id_produk'])->first();
         $id_alamat = $this->request->getVar('alamat_list');
-
         $alamat = $alamatUserModel->find($id_alamat);
-        $biayaAplikasi = 1000;
         $service = $this->request->getVar('service');
         $servicetext = $this->request->getVar('serviceText');
         $kode = $this->request->getVar('kupon');
         $qty =  intval($this->request->getVar('qty'));
 
-        $total_1 = floatval($produk['harga']) * $qty;
-        $total_2 = $total_1 + $service + $biayaAplikasi;
+        $total_1 = floatval($produk['harga_item']) * $qty;
+        $total_2 = $total_1 + $service;
         $kupon = [
             'discount' => '',
             'kupon' => ''
@@ -103,7 +101,7 @@ class BuyController extends BaseController
             $discount = floatval($cekKupon['discount']);
             $total_2 = $total_2 - ($total_2 * $discount);
             $getDiscount = floatval($total_1) - $total_2;
-            $total_2 = $service + $total_2 + $biayaAplikasi;
+            $total_2 = $service + $total_2;
             $kupon = [
                 'discount' => $cekKupon['discount'],
                 'kupon' => $cekKupon['kode']
@@ -120,12 +118,6 @@ class BuyController extends BaseController
             'price' => $service,
             'quantity' => 1,
             'name' => $servicetext,
-        ];
-        $cekProduk[] = [
-            'id' => 'Biaya Apliaksi',
-            'price' => $biayaAplikasi,
-            'quantity' => 1,
-            'name' => 'Biaya Admin',
         ];
         $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
 
@@ -191,7 +183,7 @@ class BuyController extends BaseController
             'id_produk' => $produk['id_produk'],
             'id_variasi_item' => $id_varian,
             'qty' => $qty,
-            'harga' => $produk['harga'],
+            'harga' => $produk['harga_item'],
         ];
         $checkoutProdukModel->insert($checkoutProdukData);
         if ($wishlistItem) {
