@@ -55,9 +55,7 @@ class Blog extends Seeder
                     <li><span style="font-size: 12pt;">Setelah daging berubah warna, masukkan bawang bombay dan wortel. </span></li>
                     <li><span style="font-size: 12pt;">Masak hingga matang.</span></li>
                     <li><span style="font-size: 12pt;">Angkat, taruh di piring saji.Taburi resep bulgogi dengan daun bawang dan wijen.</span></li>
-                    </ul>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>'
+                    </ul>'
             ],
             [
                 'id_blog'           => 2,
@@ -101,6 +99,7 @@ class Blog extends Seeder
                 <li><span style="color: #323232; font-family: Montserrat, sans-serif; font-size: 12pt;">Siram kuah, beri topping daging suwir, wortel iris, rumput laut, telur rebus, dan bakso ikan.</span></li>
                 </ul>'
             ],
+
             [
                 'id_blog'           => 3,
                 'judul_blog'        => 'Toppoki',

@@ -60,7 +60,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="card py-0 rounded-3" style="background-color: #fce0e4; border: none; text-align: center;">
                     <div class="card-warning mt-3">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 335px;">
-                        <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                     </div>
                     <div class="container my-3">
                         <div class="swiper mySweety">
