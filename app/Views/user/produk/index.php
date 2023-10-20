@@ -18,11 +18,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Button Sub Kategori -->
         <?= $this->include('user/produk/component/subkategori') ?>
         <!-- Card -->
-        <?= $this->include('user/produk/component/card') ?>
+        <div class="mb-5 pb-5">
+            <?= $this->include('user/produk/component/card') ?>
+        </div>
         <!-- button Scroll Up -->
         <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+        <!-- Navbar Bottom -->
+        <?= $this->include('user/home/component/navbarBottom') ?>
+
+
+
     </div>
     <!-- end tampilan mobile -->
+
 <?php else : ?>
     <!-- tampilan Desktop -->
     <div class="container">
