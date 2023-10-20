@@ -66,23 +66,53 @@ class Produk extends Seeder
         for ($i = 1; $i <= 100; $i++) {
             $idK = mt_rand(1, 16);
             $idS = null;
+            if ($idK == 1) {
+                $idS = mt_rand(1, 2);
+            }
             if ($idK == 2) {
-                $idS = mt_rand(1, 3);
+                $idS = mt_rand(3, 4);
             }
             if ($idK == 3) {
-                $idS = mt_rand(4, 5);
+                $idS = mt_rand(5, 6);
             }
             if ($idK == 4) {
-                $idS = mt_rand(6, 7);
+                $idS = mt_rand(7, 9);
             }
             if ($idK == 5) {
-                $idS = mt_rand(8, 10);
+                $idS = mt_rand(10, 13);
             }
             if ($idK == 6) {
-                $idS = mt_rand(11, 14);
+                $idS = mt_rand(14, 16);
             }
             if ($idK == 7) {
-                $idS = mt_rand(15, 18);
+                $idS = mt_rand(17, 19);
+            }
+            if ($idK == 8) {
+                $idS = mt_rand(20, 21);
+            }
+            if ($idK == 9) {
+                $idS = mt_rand(22, 24);
+            }
+            if ($idK == 10) {
+                $idS = mt_rand(25, 26);
+            }
+            if ($idK == 11) {
+                $idS = mt_rand(27, 29);
+            }
+            if ($idK == 12) {
+                $idS = mt_rand(30, 32);
+            }
+            if ($idK == 13) {
+                $idS = mt_rand(33, 35);
+            }
+            if ($idK == 14) {
+                $idS = mt_rand(36, 37);
+            }
+            if ($idK == 15) {
+                $idS = mt_rand(38, 40);
+            }
+            if ($idK == 16) {
+                $idS = mt_rand(41, 43);
             }
             $faker = \Faker\Factory::create();
             // $nama = $faker->sentence(mt_rand(1, 2));
@@ -95,8 +125,8 @@ class Produk extends Seeder
                 // 'harga'    => $harga[mt_rand(1, 3)],
                 'deskripsi'    => $faker->paragraph(2),
                 'id_kategori' => $idK,
-                // 'id_sub_kategori' => $idS
-                'id_sub_kategori' => null
+                'id_sub_kategori' => $idS
+                // 'id_sub_kategori' => null
             ];
             $this->db->table('jsf_produk')->insert($data);
 
