@@ -69,7 +69,7 @@ class Setting extends BaseController
 
         if (!$this->validateData($data, [
             'username' => [
-                'rules' => 'required|is_unique[users.username]',
+                'rules' => 'required|is_unique[users.username,users.id, ' . $id . ']',
                 'errors' => [
                     'required' => 'Username harus diisi.',
                     'is_unique' => 'Username sudah digunakan.'
