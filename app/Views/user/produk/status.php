@@ -12,7 +12,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
 
         <div class="container pt-3 pb-4">
-
             <div class="col">
                 <div class="container">
                     <div class="card border-0 shadow-sm">
@@ -178,9 +177,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php   // =====================    PRNTING  =================================
         if ($status->id_status_pesan == 1) : ?>
             <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
-            <div class="row p-3 px-4 mb-4 py-5 fixed-bottom">
-                <button id="pay-button" class="btn btn-lg fw-bold " style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+            <div class="row p-3 px-4 mx-5 py-3 position-absolute" style="left: 0; right: 0;">
+                <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                    <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+                </div>
             </div>
+
             <script type="text/javascript">
                 function lpSanp() {
                     window.snap.pay('<?= $status->snap_token; ?>', {
@@ -346,7 +348,77 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </div>
                                 </div>
+                                <!-- pesanan kamu -->
+                                <div class="card border-0 mb-4 mb-md-0">
+                                    <div class="card-body">
+                                        <div class="text-center mb-3 mt-3">
+                                            <img src="<?= base_url() ?>assets/img/logopanjang.png" alt="" class="card-img-top" style="width: 100px; height: 30px; margin: 0 auto;">
+                                        </div>
+                                        <h2 class="text-center mb-4">Pesanan kamu</h2>
+                                        <div class="row mb-3">
+                                            <div class="col-10">
+                                                <p>Invoice: <?= $status->invoice; ?></p>
+                                            </div>
+                                            <div class="col-2 text-end">
+                                                <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
+                                            </div>
+                                        </div>
+                                        <?php if (isset($paymentStatus->va_numbers[0])) : ?>
+                                            <div class="row mb-3">
+                                                <div class="col-10">
+                                                    <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
+                                                </div>
+                                                <div class="col-2 text-end">
+                                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Metode Pembayaran</th>
+                                                                <th scope="col"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?></th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                        <div class="row mt-4">
+                                            <div class="col">
+                                                <h5 class="mb-3">Ringkasan Belanja</h5>
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Total Harga :</td>
+                                                            <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
+                                                        </tr>
+                                                        <?php if ($status->kupon) : ?>
+                                                            <tr>
+                                                                <td>Diskon :</td>
+                                                                <td>-Rp. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
+                                                            </tr>
+                                                        <?php endif; ?>
+                                                        <tr>
+                                                            <td>Total Ongkos Kirim :</td>
+                                                            <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Subtotal :</td>
+                                                            <td>
+                                                                <span class="fw-bold">Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end -->
                             </div>
+
                             <div class="col-md-6">
                                 <div class="card border-0 mb-4 mb-md-0">
                                     <div class="card-body">
@@ -383,79 +455,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endif ?>
-
-
-                    <div class="row">
-                        <div class="col-md-12 mx-auto mt-5">
-                            <div class="card border-0 shadow-sm">
-                                <div class="card-body">
-                                    <div class="text-center mb-3 mt-3">
-                                        <img src="<?= base_url() ?>assets/img/logopanjang.png" alt="" class="card-img-top" style="width: 100px; height: 30px; margin: 0 auto;">
-                                    </div>
-                                    <h2 class="text-center mb-4">Pesanan kamu</h2>
-                                    <div class="row mb-3">
-                                        <div class="col-10">
-                                            <p>Invoice: <?= $status->invoice; ?></p>
-                                        </div>
-                                        <div class="col-2 text-end">
-                                            <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
-                                        </div>
-                                    </div>
-                                    <?php if (isset($paymentStatus->va_numbers[0])) : ?>
-                                        <div class="row mb-3">
-                                            <div class="col-10">
-                                                <p><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <table class="table table-sm">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">Metode Pembayaran</th>
-                                                            <th scope="col"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?></th>
-                                                        </tr>
-                                                    </thead>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                    <div class="row mt-4">
-                                        <div class="col">
-                                            <h5 class="mb-3">Ringkasan Belanja</h5>
-                                            <table class="table">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>Total Harga :</td>
-                                                        <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
-                                                    </tr>
-                                                    <?php if ($status->kupon) : ?>
-                                                        <tr>
-                                                            <td>Diskon :</td>
-                                                            <td>-Rp. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
-                                                        </tr>
-                                                    <?php endif; ?>
-                                                    <tr>
-                                                        <td>Total Ongkos Kirim :</td>
-                                                        <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Subtotal :</td>
-                                                        <td>
-                                                            <span class="fw-bold">Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></span>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
