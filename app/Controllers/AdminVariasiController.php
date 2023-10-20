@@ -34,6 +34,23 @@ class AdminVariasiController extends BaseController
         $data = [
             'nama_varian' => $this->request->getVar('nama_varian'),
         ];
+
+        if (!$this->validateData($data, $variasiModel->validationRules) || !$this->validateData($data, [
+            'nama_varian' => [
+                'rules' => 'is_unique[jsf_variasi.nama_varian]',
+                'errors' => [
+                    'is_unique' => 'Nama varian sudah ada dalam database.',
+                ]
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to(base_url('dashboard/produk/tambah-variasi'))->withInput();
+        }
         // swet alert
         if ($variasiModel->save($data)) {
             session()->setFlashdata('success', 'Variasi produk berhasil disimpan.');
@@ -104,7 +121,15 @@ class AdminVariasiController extends BaseController
             'id_variasi' => $id,
             'nama_varian' => $this->request->getVar('nama_varian'),
         ];
-        // dd($data);
+        if (!$this->validateData($data, $variasiModel->validationRules)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/produk/tambah-variasi/update-variasi/' . $id)->withInput();
+        }
         if ($variasiModel->save($data)) {
             session()->setFlashdata('success', 'Variasi berhasil diubah.');
             $alert = [

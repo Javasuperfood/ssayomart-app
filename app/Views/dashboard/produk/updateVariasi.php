@@ -7,13 +7,13 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/produk/tambah-variasi/edit-variasi/<?= $v['id_variasi']; ?>" onsubmit="return validasiVariasi()" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>dashboard/produk/tambah-variasi/edit-variasi/<?= $v['id_variasi']; ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <input type="hidden" class="form-control" id="id_variasi" name="id_variasi" value="<?= $v['id_variasi'] ?>">
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Variasi</label>
-                <input type="text" class="form-control border-0 shadow-sm" id="nama_varian" name="nama_varian" value="<?= $v['nama_varian'] ?>">
-                <span id="variasiError" class="text-danger"></span>
+                <input type="text" class="form-control <?= (validation_show_error('nama_varian')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="nama_varian" name="nama_varian" value="<?= $v['nama_varian'] ?>">
+                <div class="invalid-feedback"><?= validation_show_error('nama_varian'); ?></div>
             </div>
             <div>
                 <button type="submit" class="btn btn-danger">Simpan</button>
@@ -21,28 +21,5 @@
         </form>
     </div>
 </div>
-
-<script>
-    // Validasi
-    function validasiVariasi() {
-        var isValid = true;
-
-        var variasiField = document.getElementById('nama_varian');
-
-        var variasiError = document.getElementById('variasiError');
-
-        variasiError.textContent = '';
-
-        if (variasiField.value.trim() === '') {
-            variasiField.classList.add('invalid-field');
-            variasiError.textContent = 'Nama variasi harus diisi';
-            isValid = false;
-        } else {
-            variasiField.classList.remove('invalid-field');
-        }
-
-        return isValid;
-    }
-</script>
 
 <?= $this->endSection(); ?>

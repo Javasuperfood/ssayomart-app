@@ -27,9 +27,9 @@ class VariasiModel extends Model
     // Validation
     protected $validationRules      = [
         'nama_varian' => [
-            'rules' => 'required|is_unique[jsf_variasi.nama_varian]',
+            'rules' => 'required',
             'errors' => [
-                'is_unique' => 'Nama varian sudah ada dalam database.'
+                'required' => 'Nama Variasi harus diisi',
             ]
         ]
     ];
