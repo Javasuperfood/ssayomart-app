@@ -144,6 +144,78 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <h1>Artikel dan Blog Ssayomart</h1>
             </div>
         </div>
+
+        <!-- link video Youtube -->
+        <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+        </div>
+        <!-- Link Video Youtube -->
+
+        <!-- Carousel wrapper -->
+        <div id="carouselVideoExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <!-- Inner -->
+            <div class="carousel-inner">
+                <!-- Single item -->
+                <div class="carousel-item active">
+                    <video class="img-fluid" autoplay loop muted>
+                        <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>
+                            Nulla vitae elit libero, a pharetra augue mollis interdum.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Single item -->
+                <div class="carousel-item">
+                    <video class="img-fluid" autoplay loop muted>
+                        <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Single item -->
+                <div class="carousel-item">
+                    <video class="img-fluid" autoplay loop muted>
+                        <source src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Third slide label</h5>
+                        <p>
+                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Inner -->
+
+
+        </div>
+        <!-- Carousel wrapper -->
+
+
+
+
+
+
+
+
+
+
         <!-- Assets Inputan Administrasi -->
         <div class="container mt-3">
             <div class="row">
@@ -233,6 +305,71 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <h1>Artikel dan Blog Ssayomart</h1>
             </div>
         </div>
+        <!-- Link Video Youtube -->
+        <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+        </div>
+        <!-- Link Video Youtube -->
+
+        <!-- Carousel wrapper -->
+        <div id="carouselVideoExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+
+            <!-- Inner -->
+            <div class="carousel-inner">
+                <!-- Single item -->
+                <div class="carousel-item active">
+                    <video class="img-fluid" autoplay loop muted>
+                        <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>First slide label</h5>
+                        <p>
+                            Nulla vitae elit libero, a pharetra augue mollis interdum.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Single item -->
+                <div class="carousel-item">
+                    <video class="img-fluid" autoplay loop muted>
+                        <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
+                    </video>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Second slide label</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Single item -->
+                <div class="carousel-item">
+                    <video class="img-fluid" autoplay loop muted>
+                        <source src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4" type="video/mp4" />
+                    </video>
+                    <div class="caption">
+                        <h5>Third slide label</h5>
+                        <p>
+                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Inner -->
+
+
+        </div>
+        <!-- Carousel wrapper -->
+
+
+
+
 
         <div class="container mt-3">
             <div class="row">

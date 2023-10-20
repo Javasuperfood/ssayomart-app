@@ -93,12 +93,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </i>
                                 </a>
                             </li>
-                            <li class="nav-item me-3 me-lg-0">
-                                <a class="nav-link" href="<?= base_url() ?>wishlist">
-                                    <i class="bi bi-heart-fill fs-4 text-danger"></i>
-                                    <!-- <span class="badge rounded-pill badge-notification bg-danger">1</span> -->
-                                </a>
-                            </li>
+
                             <?php if (auth()->loggedIn()) : ?>
                                 <li class="nav-item me-3 me-lg-0 dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
