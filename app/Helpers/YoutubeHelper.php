@@ -9,7 +9,7 @@ class YoutubeHelper
         $videoId = self::getYouTubeVideoId($url);
 
         if ($videoId) {
-            return "<iframe src=\"https://www.youtube.com/embed/{$videoId}\" frameborder=\"0\" height=\"350px\" width=\"100%\"></iframe>";
+            return "<iframe src=\"https://www.youtube.com/embed/{$videoId}\" frameborder=\"0\" allowfullscreen></iframe>";
         }
 
         return '';
