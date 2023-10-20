@@ -135,34 +135,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container-fluid p-0 position-relative">
+        <!-- <div class="container-fluid p-0 position-relative">
             <div class="img-container">
-                <img src="<?= base_url() ?>assets/img/kfood.jpg" class="img-fluid rounded-bottom-3">
+                <img src="addbaseurl/assets/img/kfood.jpg" class="img-fluid rounded-bottom-3">
                 <div class="img-overlay"></div>
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2">
                 <h1>Artikel dan Blog Ssayomart</h1>
             </div>
-        </div>
+        </div> -->
 
         <!-- link video Youtube -->
-        <div class="ratio ratio-16x9">
-            <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+        <div class="ratio ratio-16x9 text-center">
+            <?= $videoEmbedCode; ?>
         </div>
         <!-- Link Video Youtube -->
 
         <!-- Carousel wrapper -->
-        <div id="carouselVideoExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-            <!-- Indicators -->
-            <div class="carousel-indicators">
-                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-
-            <!-- Inner -->
+        <!-- <div id="carouselVideoExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
             <div class="carousel-inner">
-                <!-- Single item -->
                 <div class="carousel-item active">
                     <video class="img-fluid" autoplay loop muted>
                         <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
@@ -174,47 +165,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </p>
                     </div>
                 </div>
-
-                <!-- Single item -->
-                <div class="carousel-item">
-                    <video class="img-fluid" autoplay loop muted>
-                        <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
-                    </video>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Single item -->
-                <div class="carousel-item">
-                    <video class="img-fluid" autoplay loop muted>
-                        <source src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4" type="video/mp4" />
-                    </video>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </div>
-                </div>
             </div>
-            <!-- Inner -->
-
-
-        </div>
-        <!-- Carousel wrapper -->
-
-
-
-
-
-
-
-
-
+        </div> -->
 
         <!-- Assets Inputan Administrasi -->
         <div class="container mt-3">
@@ -235,9 +187,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <p class="mb-0 text-secondary">- Foto ini memiliki Copyright dari Ssayomart -</p>
                 </div>
                 <?= str_replace('<img', '<img class="img-fluid rounded-4 img-zoom"', html_entity_decode($blog_detail['isi_blog'])); ?>
-                <div class="embed-responsive text-center mb-3">
-                    <?= $videoEmbedCode; ?>
-                </div>
             </div>
         </div>
         <!-- End Assets Inputan Administrasi -->
@@ -297,32 +246,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent">
-        <div class="container-fluid p-0 position-relative">
+        <!-- <div class="container-fluid p-0 position-relative">
             <div class="img-container">
                 <img src="<?= base_url() ?>assets/img/kfood.jpg" class="img-fluid rounded-bottom-5">
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2">
                 <h1>Artikel dan Blog Ssayomart</h1>
             </div>
-        </div>
+        </div> -->
         <!-- Link Video Youtube -->
         <div class="ratio ratio-16x9">
-            <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+            <?= $videoEmbedCode; ?>
         </div>
         <!-- Link Video Youtube -->
 
         <!-- Carousel wrapper -->
-        <div id="carouselVideoExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-            <!-- Indicators -->
-            <div class="carousel-indicators">
-                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-mdb-target="#carouselVideoExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-
-            <!-- Inner -->
+        <!-- <div id="carouselVideoExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
             <div class="carousel-inner">
-                <!-- Single item -->
                 <div class="carousel-item active">
                     <video class="img-fluid" autoplay loop muted>
                         <source src="https://mdbcdn.b-cdn.net/img/video/Tropical.mp4" type="video/mp4" />
@@ -334,42 +274,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </p>
                     </div>
                 </div>
-
-                <!-- Single item -->
-                <div class="carousel-item">
-                    <video class="img-fluid" autoplay loop muted>
-                        <source src="https://mdbcdn.b-cdn.net/img/video/forest.mp4" type="video/mp4" />
-                    </video>
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Single item -->
-                <div class="carousel-item">
-                    <video class="img-fluid" autoplay loop muted>
-                        <source src="https://mdbcdn.b-cdn.net/img/video/Agua-natural.mp4" type="video/mp4" />
-                    </video>
-                    <div class="caption">
-                        <h5>Third slide label</h5>
-                        <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-                        </p>
-                    </div>
-                </div>
             </div>
-            <!-- Inner -->
-
-
-        </div>
-        <!-- Carousel wrapper -->
-
-
-
-
+        </div> -->
 
         <div class="container mt-3">
             <div class="row">
@@ -388,10 +294,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <p class="mb-0 text-secondary">- Foto ini memiliki Copyright dari Ssayomart -</p>
                     </div>
                     <?= str_replace('<img', '<img class="img-fluid rounded-4 img-zoom"', html_entity_decode($blog_detail['isi_blog'])); ?>
-
-                    <div class="embed-responsive text-center mb-3">
-                        <?= $videoEmbedCode; ?>
-                    </div>
                 </div>
 
                 <!-- Right Panel -->
