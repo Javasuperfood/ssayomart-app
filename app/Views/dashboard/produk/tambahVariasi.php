@@ -12,12 +12,12 @@
             </div>
             <div class="card-body">
                 <!-- code -->
-                <form action="<?= base_url(); ?>dashboard/produk/tambah-variasi/save" onsubmit="return validasiVariasi()" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url(); ?>dashboard/produk/tambah-variasi/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="value" class="form-label text-dark">Nama Variasi <span class="text-danger">(contoh : Rasa, dan lain-lain)</span></label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="value" name="nama_varian" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
-                        <span id="variasiError" class="text-danger"></span>
+                        <input type="text" class="form-control <?= (validation_show_error('nama_varian')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="value" name="nama_varian" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
+                        <div class="invalid-feedback"><?= validation_show_error('nama_varian'); ?></div>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-danger">Simpan</button>
@@ -77,10 +77,6 @@
             </div>
         </div>
     </div>
-
-    <!-- <script>
-        new DataTable('#example');
-    </script> -->
 </div>
 
 <script>
@@ -94,27 +90,6 @@
             });
         <?php endif; ?>
     });
-
-    //Validasi Form
-    function validasiVariasi() {
-        var isValid = true;
-
-        var variasiField = document.getElementById('value');
-
-        var variasiError = document.getElementById('variasiError');
-
-        variasiError.textContent = '';
-
-        if (variasiField.value.trim() === '') {
-            variasiField.classList.add('invalid-field');
-            variasiError.textContent = 'Nama variasi harus diisi';
-            isValid = false;
-        } else {
-            variasiField.classList.remove('invalid-field');
-        }
-
-        return isValid;
-    }
 </script>
 
 <?= $this->endSection(); ?>
