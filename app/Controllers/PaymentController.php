@@ -59,12 +59,32 @@ class PaymentController extends BaseController
                     'id_checkout' => $userSatus->id_checkout,
                     'id_status_pesan' => 2
                 ]);
-            } else {
+            } else if ($paymentStatus->transaction_status == 'pending') {
+                // TODO set payment status in merchant's database to 'Pending'
+                $checkoutModel->save([
+                    'id_checkout' => $userSatus->id_checkout,
+                    'id_status_pesan' => 1
+                ]);
+            } else if ($paymentStatus->transaction_status == 'deny') {
+                // TODO set payment status in merchant's database to 'Denied'
+                $checkoutModel->save([
+                    'id_checkout' => $userSatus->id_checkout,
+                    'id_status_pesan' => 5
+                ]);
+            } else if ($paymentStatus->transaction_status == 'expire') {
+                // TODO set payment status in merchant's database to 'expire'
+                $checkoutModel->save([
+                    'id_checkout' => $userSatus->id_checkout,
+                    'id_status_pesan' => 5
+                ]);
+            } else if ($paymentStatus->transaction_status == 'cancel') {
+                // TODO set payment status in merchant's database to 'Denied'
                 $checkoutModel->save([
                     'id_checkout' => $userSatus->id_checkout,
                     'id_status_pesan' => 5
                 ]);
             }
+
             $data['paymentStatus'] = $paymentStatus;
 
             return redirect()->to(base_url('status?order_id=' . $order_id));

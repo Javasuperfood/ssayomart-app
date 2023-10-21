@@ -19,33 +19,35 @@
                                 <?php endif ?>
                             </h1>
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-                            <div class="container pt-3">
-                                <div class="row justify-items-center">
-                                    <div class="col">
-                                        <div class="horizontal-counter">
-                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                            <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
-                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                            <?php if ($p['deleted_at'] == null) : ?>
+                                <div class="container pt-3">
+                                    <div class="row justify-items-center">
+                                        <div class="col">
+                                            <div class="horizontal-counter">
+                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                                <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
+                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
-                                    <input type="hidden" name="add-to-cart" value="show">
-                                    <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                    <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
-                                        <i class="fas fa-shopping-cart text-white fa-lg"></i>
-                                    </button>
-                                </form>
-                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
-                                    <input type="hidden" name="buy" value="show">
-                                    <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                    <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
-                                        Beli
-                                    </button>
-                                </form>
-                            </div>
+                                <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                        <input type="hidden" name="add-to-cart" value="show">
+                                        <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                        <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
+                                            <i class="fas fa-shopping-cart text-white fa-lg"></i>
+                                        </button>
+                                    </form>
+                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                        <input type="hidden" name="buy" value="show">
+                                        <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                        <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
+                                            Beli
+                                        </button>
+                                    </form>
+                                </div>
+                            <?php endif ?>
                         </div>
                     </div>
                 </div>
@@ -57,8 +59,6 @@
             var input = b.previousElementSibling;
             console.log(input);
             var value = parseInt(input.value, 10);
-
-            console.log(value);
             value = isNaN(value) ? 0 : value;
             value++;
             input.value = value;

@@ -52,11 +52,16 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->get('/buy/(:segment)', 'BuyController::index/$1');
     $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
 
-    $routes->get('/cart', 'CartController::cart');
+    // $routes->get('/cart', 'CartController::cart');
+    $routes->get('/cart', 'CartController::cart2');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
+
     $routes->post('/checkout', 'CheckoutController::storeData');
     $routes->get('/checkout/(:any)', 'CheckoutController::checkout/$1');
     $routes->post('/checkout/(:any)/bayar', 'CheckoutController::bayar/$1');
+    $routes->get('/checkout-cart', 'CheckoutController::checkoutCart');
+    $routes->post('/checkout-cart/bayar', 'CheckoutController::checkoutCartBayar');
+
     $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
     // Setting route

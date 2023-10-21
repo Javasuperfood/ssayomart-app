@@ -9,6 +9,7 @@ use App\Models\CartProdukModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\KuponModel;
+use App\Models\ProdukModel;
 use App\Models\UsersModel;
 use Midtrans\Config as MidtransConfig;
 
@@ -111,7 +112,7 @@ class CheckoutController extends BaseController
             'kupon' => $kuponList,
             'kategori' => $kategori->findAll()
         ];
-        // dd($data);
+        dd($data);
 
         return view('user/home/checkout/checkout', $data);
     }
@@ -250,5 +251,204 @@ class CheckoutController extends BaseController
         }
         return redirect()->to(base_url('payment/' . $inv['invoice']));
         // dd($data);
+    }
+
+    public function checkoutCart()
+    {
+        $kuponModel = new KuponModel();
+        $alamatModel = new AlamatUserModel();
+        $kategoriModel = new KategoriModel();
+        $cartProdukModel = new CartProdukModel();
+        $checkedId = $this->request->getVar('check');
+        if (!$checkedId) {
+            return redirect()->to(base_url('cart2'));
+        }
+
+        $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
+
+        $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
+
+        $data = [
+            'title' => 'Checkout',
+            'alamat_list' => $alamat_list,
+            'kupon' => $kuponList,
+            'kategori' => $kategoriModel->findAll()
+        ];
+
+        foreach ($checkedId as $key => $id) {
+            $data['produk'][$key] = $cartProdukModel->select('*, jsf_variasi_item.harga_item')
+                ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'inner')
+                ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'inner')
+                ->find($id);
+            $data['cart_id'][$key] = $id;
+        }
+        $totalAkhir = 0;
+
+        foreach ($data['produk'] as $produk) {
+            $rowTotal = $produk['qty'] * $produk['harga_item'];
+            $totalAkhir += $rowTotal;
+        }
+        $data['total'] = $totalAkhir;
+        // dd($data);
+        return view('user/home/checkout/checkout2', $data);
+    }
+
+    public function checkoutCartBayar()
+    {
+        $checkedId = $this->request->getVar('produkCart');
+        if (!$checkedId) {
+            return redirect()->to(base_url('cart2'));
+        }
+
+        $midtransConfig = config('Midtrans');
+
+        // Set the Midtrans API credentials
+        MidtransConfig::$serverKey = $midtransConfig->serverKey;
+        MidtransConfig::$clientKey = $midtransConfig->clientKey;
+        MidtransConfig::$isProduction = $midtransConfig->isProduction;
+        MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
+        MidtransConfig::$is3ds = $midtransConfig->is3ds;
+
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdukModel = new CheckoutProdukModel();
+        $cartProdukModel = new CartProdukModel();
+        $alamatUserModel = new AlamatUserModel();
+        $userModel = new UsersModel();
+
+        $email = $userModel->getEmail(user_id());
+        $serviceText = $this->request->getVar('serviceText');
+        $service = $this->request->getVar('service');
+        $kode = $this->request->getVar('kupon');
+        $alamatId = $this->request->getVar('alamat_list');
+        $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
+
+        $alamat = $alamatUserModel->find($alamatId);
+        $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
+
+        foreach ($checkedId as $key => $id) {
+            $data['produk'][$key] = $cartProdukModel->select('*, jsf_variasi_item.harga_item')
+                ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'inner')
+                ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'inner')
+                ->find($id);
+            $data['cart_id'][$key] = $id;
+        }
+        $totalAkhir = 0;
+        foreach ($data['produk'] as $key => $produk) {
+            $rowTotal = $produk['qty'] * $produk['harga_item'];
+            $totalAkhir += $rowTotal;
+
+            $cekProduk[$key] = [
+                'id' => $produk['id_produk'],
+                'price' => $produk['harga_item'],
+                'quantity' => $produk['qty'],
+                'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
+            ];
+        }
+        $data['total'] = $totalAkhir;
+
+        $kupon = [
+            'discount' => '',
+            'kupon' => ''
+        ];
+
+
+        $total_2 = floatval($data['total']);
+        $total_2 = $service + $total_2;
+
+        if ($kode != '') {
+            $kuponModel = new KuponModel();
+            $cekKupon = $kuponModel->getKupon($kode);
+            $total_2 = floatval($data['total']);
+            $discount = floatval($cekKupon['discount']);
+            $total_2 = $total_2 - ($total_2 * $discount);
+            $getDiscount = floatval($data['total']) - $total_2;
+            $total_2 = $service + $total_2;
+            $kupon = [
+                'discount' => $cekKupon['discount'],
+                'kupon' => $cekKupon['kode']
+            ];
+            $cekProduk[] = [
+                'id' => 'Diskon',
+                'price' => -$getDiscount,
+                'quantity' => 1,
+                'name' => 'Diskon',
+            ];
+        }
+        $cekProduk[] = [
+            'id' => 'Service',
+            'price' => $service,
+            'quantity' => 1,
+            'name' => $serviceText,
+        ];
+        $params = [
+            'transaction_details' => [
+                'order_id' => $inv,
+                'gross_amount' => $total_2,
+            ],
+            'customer_details' => [
+                'first_name' => $alamat['penerima'],
+                'last_name' => '',
+                'email' => $email,
+                'phone' => $alamat['telp'],
+                "billing_address" => [
+                    "first_name" => $alamat['penerima'],
+                    "last_name" => "",
+                    "email" => $email,
+                    "phone" => $alamat['telp'],
+                    "address" => $alamat['alamat_1'],
+                    "city" => $alamat['city'],
+                    "postal_code" => $alamat['zip_code'],
+                    "country_code" => "IDN"
+                ],
+                "shipping_address" => [
+                    "first_name" => $alamat['penerima'],
+                    "last_name" => "",
+                    "email" => $email,
+                    "phone" => $alamat['telp'],
+                    "address" => $alamat['alamat_1'],
+                    "city" => $alamat['city'],
+                    "postal_code" => $alamat['zip_code'],
+                    "country_code" => "IDN"
+                ],
+            ],
+            "item_details" => $cekProduk,
+        ];
+        // dd($params);
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $dbStore = [
+            'id_user' => user_id(),
+            'kupon' => '',
+            'id_status_pesan' => 1,
+            'id_status_kirim' => 1,
+            'invoice' => $inv,
+            'total_1' => $totalAkhir,
+            'total_2' => $total_2,
+            'service' => $serviceText,
+            'harga_service' => $service,
+            'kurir' => strtoupper($this->request->getVar('kurir')),
+            'kirim' => $kirim,
+            'city' => $alamat['city'],
+            'zip_code' => $alamat['zip_code'],
+            'telp' => $alamat['telp'],
+            'discount' => $kupon['discount'],
+            'kupon' => $kupon['kupon'],
+            'snap_token' => $snapToken
+        ];
+        // dd($dbStore);
+        $chechkoutId = $checkoutModel->insert($dbStore);
+
+        foreach ($data['produk'] as $item) {
+            $checkoutItemData = [
+                'id_checkout' => $chechkoutId,
+                'id_produk' => $item['id_produk'],
+                'id_variasi_item' => $item['id_variasi_item'],
+                'qty' => $item['qty'],
+                'harga' => $item['harga_item'],
+            ];
+            $checkoutProdukModel->insert($checkoutItemData);
+            $cartProdukModel->delete($item['id_cart_produk']); //delete from cart
+        }
+
+        return redirect()->to(base_url('payment/' . $inv));
     }
 }
