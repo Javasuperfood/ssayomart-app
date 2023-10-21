@@ -79,4 +79,6 @@ return [
     'transaksi_5' => '세부정보(실패) / Detail (Gagal)',
     'transaksi_6' => '쇼핑을 계속 / Lanjutkan Belanja',
 
+    // ARTIKEL
+    'saran_masak' => '싸요마트의 다른 요리 제안 / Saran Masak Lainnya di Ssayomart.'
 ];

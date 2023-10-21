@@ -78,4 +78,7 @@ return [
     'transaksi_4' => 'Detail (Completed)',
     'transaksi_5' => 'Detail (Failed)',
     'transaksi_6' => 'Continue Shopping',
+
+    // ARTIKEL
+    'saran_masak' => 'Other Cooking Suggestions at Ssayomart.'
 ];
