@@ -219,7 +219,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container mb-5">
             <div class="row mb-2">
                 <div class="col">
-                    <h3 class="fw-bold text-dark mb-4">Saran Masak Lainnya <span class="text-danger">Ssayomart</span></h3>
+                    <span class="fw-bold text-dark mb-4 fs-5 text-center">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></span>
                     <div class="swiper card-swiper mt-3">
                         <div class="swiper-wrapper">
                             <?php foreach ($randomBlogs as $randomBlog) : ?>
