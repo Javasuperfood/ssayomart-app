@@ -16,7 +16,7 @@ return [
     'jadwal_pelayanan_2' => '일요일 : 휴무 / Minggu : Tutup',
     'saran_masak' => '오늘 이 요리 어때요? / SARAN MASAK',
     'dashboard' => '계기반 / Administrator',
-    'selengkapnya' => '더 완벽해 / Selengkapnya...',
+    'selengkapnya' => '더 완벽해 / Selengkapnya',
 
     // SETTING PAGE
     'setting' => '환경 / Sunting',

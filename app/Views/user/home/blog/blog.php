@@ -216,21 +216,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- akhir galeri photos -->
 
         <!-- Slider card  -->
-        <div class="container mb-5">
-            <div class="row mb-2">
+        <div class="container mb-0">
+            <div class="row mb-0">
                 <div class="col">
-                    <span class="fw-bold text-dark mb-4 fs-5 text-center">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></span>
-                    <div class="swiper card-swiper mt-3">
+                    <p class="fw-bold text-dark my-4 fs-4 text-center">Saran Masak Lainnya di <span class="text-danger">Ssayomart</span></p>
+                    <div class="swiper card-swiper">
                         <div class="swiper-wrapper">
                             <?php foreach ($randomBlogs as $randomBlog) : ?>
-                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                <div class="swiper-slide col-md-6 mb-md-2 mb-3">
                                     <div class="card border-0 shadow-sm">
                                         <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="max-width: 100%;">
                                         <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
                                         <p class="text-secondary mt-2 mx-3">
                                             Selengkapnya untuk melihat artikel...
                                         </p>
-                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
+                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3"><?= lang('Text.selengkapnya') ?> <i class="bi bi-arrow-right-circle"></i></a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -238,10 +238,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <div class="row mb-5">
-                <div class="col"></div>
-            </div>
         </div>
+
+
     </div>
 <?php else : ?>
     <!-- Desktop View -->
