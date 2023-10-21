@@ -12,7 +12,7 @@ use App\Models\WishlistProdukModel;
 
 class CartController extends BaseController
 {
-    public function cart(): string
+    public function cart()
     {
         $cartModel = new CartModel();
         $kategori = new KategoriModel();
@@ -135,5 +135,38 @@ class CartController extends BaseController
             'message' => 'Update Qty berhasil'
         ];
         return $this->response->setJSON($response);
+    }
+    public function cart2()
+    {
+        $cartModel = new CartModel();
+        $kategori = new KategoriModel();
+        $cartProdModel = new CartProdukModel();
+        $cekCart = $cartModel->where(['id_user' => user_id()])->first();
+
+        $cekCartProduk = $cartProdModel
+            ->select('*')
+            ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'inner')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'inner')
+            ->where('id_cart', $cekCart['id_cart'])
+            ->findAll();
+
+        // Inisialisasi variabel untuk menyimpan total akhir
+        $totalAkhir = 0;
+        // Menghitung total dan menyimpannya dalam variabel
+        foreach ($cekCartProduk as $produk) {
+            $rowTotal = $produk['qty'] * $produk['harga_item'];
+            $totalAkhir += $rowTotal;
+            // Jika ingin menampilkan row total untuk masing-masing produk
+            // echo "Row Total: $rowTotal<br>";
+        }
+        $data = [
+            'title'     => lang('Text.title_cart'),
+            'produk' => $cekCartProduk,
+            'total' => $totalAkhir,
+            'kategori' => $kategori->findAll(),
+            'back' => ''
+        ];
+        // dd($data);
+        return view('user/home/cart/cart2', $data);
     }
 }
