@@ -12,7 +12,11 @@
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <p class="text-secondary" style="font-size: 16px; margin: 0;"><?= substr($p['nama'], 0, 20); ?></p>
-                            <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                            <p class="text-secondary" style="font-size: 12px; margin: 0;">
+                                <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
+                            </p>
+
+                            <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
@@ -45,6 +49,7 @@
                                     <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
                                         Beli
                                     </button>
+                                    <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                 </form>
                             </div>
                         </div>

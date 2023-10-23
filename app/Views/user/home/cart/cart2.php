@@ -35,22 +35,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col">
                             <div class="card my-2 border-0 shadow-sm" style="width: auto;">
                                 <a href=" <?= base_url() ?>/produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="..." style="width: 150px; height: 150px;">
                                 </a>
                                 <div class="card-body">
-                                    <p class="card-text text-secondary"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
-                                    <p class="card-title text-danger fs-3">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
-                                    <div class="input-group mb-3 d-flex justify-content-center">
-                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
-                                        <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
-                                        <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
+                                    <p class="card-text text-secondary" style="margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
+                                    <p class="card-title text-danger" style="margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                    <div class="input-group mb-1 d-flex justify-content-center">
+                                        <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
+                                        <input type="text" class="form-control form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 30px;">
+                                        <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
                                     </div>
 
                                     <form id="formDelete" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <button form="formDelete" type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
                                     </form>
-                                    <div class="form-check form-check-lg position-absolute top-50 end-0 translate-middle-y" style="font-size: 25px;">
+                                    <div class="form-check form-check-lg position-absolute top-0 end-0" style="font-size: 25px;">
                                         <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                     </div>
                                 </div>
