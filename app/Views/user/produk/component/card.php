@@ -7,17 +7,47 @@
                     <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
                             </div>
                         </a>
-                        <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                            <h1 class="text-secondary" style="font-size: 15px;">
+                        <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+                            <p class="text-secondary" style="font-size: 15px; margin: 0;"><?= substr($p['nama'], 0, 15); ?>...</p>
+                            <h1 class="text-danger mt-1" style="font-size: 13px; margin: 0;">
                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
                                     <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                 <?php endif ?>
                             </h1>
+
+                            <div class="container mt-2">
+                                <div class="row justify-items-center">
+                                    <div class="col">
+                                        <div class="horizontal-counter">
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                            <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
+                                            <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                    <input type="hidden" name="add-to-cart" value="show">
+                                    <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                    <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                        <i class="fas fa-shopping-cart text-white fa-lg"></i>
+                                    </button>
+                                </form>
+                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                    <input type="hidden" name="buy" value="show">
+                                    <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                    <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                        Beli
+                                    </button>
+                                </form>
+                            </div>
+
                             <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                             <?php if ($p['deleted_at'] == null) : ?>
                                 <div class="container pt-3">
@@ -48,6 +78,7 @@
                                     </form>
                                 </div>
                             <?php endif ?>
+
                         </div>
                     </div>
                 </div>
