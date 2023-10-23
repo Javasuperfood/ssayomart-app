@@ -38,8 +38,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                                 </a>
                                 <div class="card-body">
-                                    <p class="card-title">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                     <p class="card-text text-secondary"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
+                                    <p class="card-title text-danger fs-3">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                     <div class="input-group mb-3 d-flex justify-content-center">
                                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
                                         <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
@@ -237,6 +237,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Sesuaikan ukuran teks jika diperlukan */
             }
         }
+    }
 </style>
 
 <script type="text/javascript">
