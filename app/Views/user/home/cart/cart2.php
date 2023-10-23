@@ -161,11 +161,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <style>
     .form-check-input:focus {
         border-color: #ec2614;
+        outline: 0;
+        box-shadow: 0 0 0 0;
     }
 
     .form-check-input:checked {
         background-color: #ec2614;
         border-color: #ec2614
+    }
+
+    .form-check-input[type=radio] {
+        border-radius: 50%
+    }
+
+    .form-check-input:active {
+        filter: brightness(90%)
     }
 
     .form-check-input[type=checkbox]:indeterminate {
