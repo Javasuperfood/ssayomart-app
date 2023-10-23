@@ -159,61 +159,74 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- end Desktop -->
 
 <style>
-    @media (max-width: 280px) {
-        .horizontal-counter.btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 12px;
-            margin: 0 5px;
-        }
-
-        .horizontal-counter input {
-            width: 40px;
-            text-align: center;
-        }
-
-        .custom-button .btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 12px;
-        }
-
-        .input-group .btn {
-            padding: 0.15rem 0.3rem;
-            font-size: 0.9rem;
-        }
-
-        .input-group .btn {
-            width: 30px;
-            /* Lebar tombol */
-            height: 30px;
-            /* Tinggi tombol */
-            padding: 0;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1rem;
-            /* Sesuaikan ukuran ikon jika diperlukan */
-            border: 1px solid #ce2614;
-            /* Tambahkan garis pemisah antara tombol */
-            background-color: #fff;
-            /* Warna latar belakang tombol */
-
-        }
-
-        /* Style untuk input number */
-        .input-group input {
-
-            width: 50px;
-            text-align: center;
-            display: flex;
-            border: 1px solid #ce2614;
-            /* Tambahkan garis pemisah untuk input number */
-            height: 30px;
-            padding: 0;
-            font-size: 1.2rem;
-            /* Sesuaikan ukuran teks jika diperlukan */
-        }
+    .form-check-input:focus {
+        border-color: #ec2614;
     }
+
+    .form-check-input:checked {
+        background-color: #ec2614;
+        border-color: #ec2614
+    }
+
+    .form-check-input[type=checkbox]:indeterminate {
+        background-color: #ec2614;
+        border-color: #ec2614;
+
+        @media (max-width: 280px) {
+            .horizontal-counter.btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 12px;
+                margin: 0 5px;
+            }
+
+            .horizontal-counter input {
+                width: 40px;
+                text-align: center;
+            }
+
+            .custom-button .btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 12px;
+            }
+
+            .input-group .btn {
+                padding: 0.15rem 0.3rem;
+                font-size: 0.9rem;
+            }
+
+            .input-group .btn {
+                width: 30px;
+                /* Lebar tombol */
+                height: 30px;
+                /* Tinggi tombol */
+                padding: 0;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1rem;
+                /* Sesuaikan ukuran ikon jika diperlukan */
+                border: 1px solid #ce2614;
+                /* Tambahkan garis pemisah antara tombol */
+                background-color: #fff;
+                /* Warna latar belakang tombol */
+
+            }
+
+            /* Style untuk input number */
+            .input-group input {
+
+                width: 50px;
+                text-align: center;
+                display: flex;
+                border: 1px solid #ce2614;
+                /* Tambahkan garis pemisah untuk input number */
+                height: 30px;
+                padding: 0;
+                font-size: 1.2rem;
+                /* Sesuaikan ukuran teks jika diperlukan */
+            }
+        }
 </style>
 
 <script type="text/javascript">
