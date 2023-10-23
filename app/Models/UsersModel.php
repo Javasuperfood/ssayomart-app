@@ -21,7 +21,8 @@ class UsersModel extends Model
         'last_active',
         'img',
         'fullname',
-        'telp'
+        'telp',
+        'market_selected'
     ];
 
     // Dates

@@ -7,6 +7,7 @@ use App\Models\AlamatUserModel;
 use App\Controllers\BaseController;
 use App\Models\AuthIdentitesModel;
 use App\Models\KategoriModel;
+use App\Models\TokoModel;
 
 class Setting extends BaseController
 {
@@ -22,13 +23,24 @@ class Setting extends BaseController
         $userModel = new UsersModel();
         $kategori = new KategoriModel();
         $alamatUserModel = new AlamatUserModel();
-        $user = $userModel->where('id', user_id())->find();
+        $marketModel = new TokoModel();
+        $user = $userModel->where('id', user_id())->first();
         $firstLable = $alamatUserModel->where('id_user', user_id())->first();
+
+        $marketSelected = null;
+        if ($user['market_selected']) {
+            $marketSelected = 'Ssayomart ' . $marketModel->find($user['market_selected'])['zip_code'];
+        } else {
+            $marketSelected = 'Pilih Lokasi Market';
+        }
         $data = [
             'title' => lang('Text.setting'),
-            'user' => $user[0],
+            'user' => $user,
             'kategori' => $kategori->findAll(),
-            'alamat' => $firstLable
+            'alamat' => $firstLable,
+            'market' => $marketModel->findAll(),
+            'marketSelected' => $marketSelected,
+            'back'  => '/'
         ];
         // dd($data);
         return view('user/home/setting/setting', $data);
@@ -444,6 +456,33 @@ class Setting extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/create-alamat')->withInput();
         }
+    }
+
+    public function storeDataMarket()
+    {
+        $userModel = new UsersModel();
+        $market = $this->request->getPost('market');
+
+        if ($userModel->save([
+            'id' => user_id(),
+            'market_selected' => $market
+        ])) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'berhasil',
+                'message' => 'Berhasi memilih lokasi cabang market'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting');
+        }
+
+        // GAGAl
+        $alert = [
+            'type' => 'error',
+            'title' => 'Error',
+            'message' => 'Terdapat kesalahan pada penghapusan data'
+        ];
+        session()->setFlashdata('alert', $alert);
     }
 
     // FETCHING DATA API PROVINSI & KOTA
