@@ -39,7 +39,8 @@ class Setting extends BaseController
             'kategori' => $kategori->findAll(),
             'alamat' => $firstLable,
             'market' => $marketModel->findAll(),
-            'marketSelected' => $marketSelected
+            'marketSelected' => $marketSelected,
+            'back'  => '/'
         ];
         // dd($data);
         return view('user/home/setting/setting', $data);
