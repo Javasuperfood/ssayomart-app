@@ -60,7 +60,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="card py-0 rounded-3" style="background-color: #fce0e4; border: none; text-align: center;">
                     <div class="card-warning mt-3">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 335px;">
-                        <!-- <span class="card-title text-white fw-medium fs-3"><?= lang("Text.spesial") ?></h2> -->
                     </div>
                     <div class="container my-3">
                         <div class="swiper mySweety">
@@ -99,7 +98,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #C1E1C1;">
                     <div class="card-warning">
-                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong>카테고리 / KATEGORI</strong></h2>
+                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
                     </div>
                 </div>
                 <div class="row text-center row-cols-3 mt-3">
@@ -131,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">
                     <div class="card-warning">
-                        <span class="card-title text-dark fw-bold fs-2">금주 행사상품 / PROMOSI</span>
+                        <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.spesial') ?></span>
                     </div>
                 </div>
                 <div class="row">
@@ -243,7 +242,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container py-3">
                     <div class="card border-0 text-center font-family-poppins" style="background-color: #fce0e4;">
                         <div class="card-danger">
-                            <span class="card-title text-dark fw-bold fs-2">오늘 이 요리 어때요? / SARAN MASAK</h2>
+                            <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.saran_masak') ?></h2>
                         </div>
                     </div>
                 </div>
@@ -264,7 +263,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="flex-grow-1 ms-3">
                                                         <p class="mb-2 pb-1 fw-bold fs-5 text-dark"><?= substr($bd['judul_blog'], 0, 40); ?>...</p>
                                                         <div class="d-flex justify-content-start rounded-3 p-2 mb-0">
-                                                            <p class="text-secondary">Selengkapnya untuk konten artikel/blog...</p>
+                                                            <p class="text-secondary"><?= lang('Text/deskripsi_artikel') ?></p>
                                                         </div>
                                                         <div class="d-flex pt-0">
                                                             <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger fw-medium flex-grow-1">View More <i class="bi bi-arrow-right-circle"></i></a>
@@ -283,7 +282,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container py-3">
                     <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #C1E1C1;">
                         <div class="card-success">
-                            <span class="card-title text-dark fw-bold fs-2 text-capitalize">카테고리 / KATEGORI</span>
+                            <span class="card-title text-dark fw-bold fs-2 text-capitalize"><?= lang('Text.kategori') ?></span>
                         </div>
                     </div>
                     <div class="row text-center row-cols-3 py-3">

@@ -53,10 +53,8 @@
     <div class="card-header border-0 py-3 bg-white">
         <h5 class="mb-0">Video</h5>
     </div>
-    <div class="row">
-        <div class="card-body d-flex justify-content-center">
-            <?= $videoEmbedCode; ?>
-        </div>
+    <div class="ratio ratio-21x9">
+        <?= $videoEmbedCode; ?>
     </div>
 </div>
 

@@ -73,7 +73,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             <?php if (auth()->loggedIn()) : ?>
                                 <li class="nav-item me-3 me-lg-0 dropdown">
-                                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="bi bi-person-circle fs-4 text-danger"></i>
                                     </a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
@@ -124,7 +124,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <ul class="dropdown-menu dropdown-menu-white">
                                                 <a href="<?= site_url('lang/id'); ?>" class="dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"> Indonesia</a>
                                                 <a href="<?= site_url('lang/en'); ?>" class="dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> English</a>
-                                                <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"> Korea</a>
+
                                             </ul>
                                         </li>
                                     </ul>

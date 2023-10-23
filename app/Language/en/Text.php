@@ -14,8 +14,9 @@ return [
     'cari_produk' => 'Search Product Here...',
     'jadwal_pelayanan' => 'Monday-Saturday',
     'jadwal_pelayanan_2' => 'Sunday : Closed',
-    'rekomendasi' => 'Our Recommendation',
+    'saran_masak' => 'Our Recommendation',
     'dashboard' => 'Dashboard',
+    'selengkapnya' => 'More...',
 
     // SETTING PAGE
     'setting' => 'Setting',
@@ -77,4 +78,7 @@ return [
     'transaksi_4' => 'Detail (Completed)',
     'transaksi_5' => 'Detail (Failed)',
     'transaksi_6' => 'Continue Shopping',
+
+    // ARTIKEL
+    'saran_masak' => 'Other Cooking Suggestions at Ssayomart.'
 ];

@@ -30,7 +30,7 @@
 
                     <div class="mb-3">
                         <label for="link_video">Masukkan Link Video <span class="text-danger fs-5">*</span></label>
-                        <input type="url" class="form-control shadow-sm border-0" id="link_video" placeholder="Masukkan Link Video..." name="link_video" value="<?= old('link_video') ?>">
+                        <input type="url" class="form-control shadow-sm border-0" id="link_video" placeholder="Masukkan Link Video..." name="link_video" value="<?= $bm['link_video']; ?>">
                         <span id="linkError" class="text-danger"></span>
                     </div>
 
@@ -159,13 +159,16 @@
         var judulField = document.getElementById('judul_blog');
         var imgField = document.getElementById('img_thumbnail');
         var kontenField = document.getElementById('isi_blog');
+        var linkField = document.getElementById('link_video');
 
         var judulError = document.getElementById('judulError');
         var imgError = document.getElementById('imgError');
+        var linkError = document.getElementById('linkError');
         // var kontenError = document.getElementById('kontenError');
 
         judulError.textContent = '';
         imgError.textContent = '';
+        linkError.textContent = '';
         // kontenError.textContent = '';
 
         if (judulField.value.trim() === '') {
@@ -182,6 +185,14 @@
             isValid = false;
         } else {
             imgField.classList.remove('invalid-field');
+        }
+
+        if (linkField.value.trim() === '') {
+            linkField.classList.add('invalid-field');
+            linkError.textContent = 'Link video youtube tidak boleh kosong';
+            isValid = false;
+        } else {
+            linkField.classList.remove('invalid-field');
         }
 
         // if (kontenField.value.trim() === '') {
