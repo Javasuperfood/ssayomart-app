@@ -34,9 +34,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php foreach ($produk as $p) : ?>
                         <div class="col">
                             <div class="card my-2 border-0 shadow-sm" style="width: auto;">
-                                <div class="form-check">
-                                    <input onchange="selectCheck(this)" class="form-check-input" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
-                                </div>
                                 <a href=" <?= base_url() ?>/produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="...">
                                 </a>
@@ -48,10 +45,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <input type="text" class="form-control text-center bg-white border-0" disabled value="<?= $p['qty']; ?>">
                                         <button class="btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
                                     </div>
+
                                     <form id="formDelete" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <button form="formDelete" type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
                                     </form>
+                                    <div class="form-check form-check-lg position-absolute top-50 end-0 translate-middle-y" style="font-size: 25px;">
+                                        <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -85,10 +86,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card border-0 shadow-sm rounded-3 mb-3">
                                             <div class="card-body">
                                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                                    <div class="form-check">
-                                                        <input onchange="selectCheck(this)" class="form-check-input" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                                    <div class="form-check" style="font-size: 20px;">
+                                                        <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                                     </div>
-                                                    <div class="d-flex align-items-center">
+                                                    <div class="d-flex">
                                                         <div class="row">
                                                             <div class="col-3">
                                                                 <div>

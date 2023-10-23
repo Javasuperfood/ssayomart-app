@@ -68,7 +68,7 @@ return [
     // KERANJANG
     'title_cart' => '쇼핑 카트 / Keranjang Belanja',
     'total_cart' => '총 결제금액 / Total Belanja',
-    'btn_checkout' => 'B점검 / AYAR',
+    'btn_checkout' => 'B점검 / BAYAR',
 
     // HISTORY
     'title_history' => '거래 내역 / Riwayat Transaksi',
