@@ -15,7 +15,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-md-blok d-lg-none d-xl-none">
             <div class="row">
                 <div class="col">
-                    <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? lang('Text.btn_tambah') : $alamat['label']; ?> <i class="bi bi-chevron-down"></i> </a>
+                    <div class="row row-cols-1">
+                        <div class="col">
+                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= (!$alamat) ? lang('Text.btn_tambah') : $alamat['label']; ?> <i class="bi bi-chevron-down"></i></a>
+                        </div>
+                        <div class="col pt-3">
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
+                        </div>
+                    </div>
+
                     <div class="row pb-4">
                         <div class="col-9">
                             <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
@@ -86,7 +94,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                        <a href="<?= base_url(); ?>logout" class="list-group-item pb-3 fw-bold">
+                        <a role="button" data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> <?= lang('Text.logout') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <div class="container mb-3">
@@ -209,19 +217,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php endif; ?>
 <!-- end Desktop -->
 
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
+<!-- Modal setting  -->
+<?= $this->include('user/component/modalSetting'); ?>
 
 <?php if (session()->getFlashdata('success')) : ?>
     <script type="module">

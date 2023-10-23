@@ -65,18 +65,27 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
     // Setting route
-    $routes->post('/setting/delete-alamat/(:segment)', 'Setting::deleteAlamat/$1');
-    $routes->get('/setting', 'Setting::setting');
-    $routes->get('/setting/detail-user/(:any)', 'Setting::detailUser/$1');
-    $routes->post('/setting/detail-user/(:segment)', 'Setting::updateDetailUser/$1');
-    $routes->get('/setting/pembayaran', 'Setting::pembayaran');
-    $routes->get('/setting/alamat-list', 'Setting::alamatList');
-    $routes->get('/setting/create-alamat', 'Setting::createAlamat');
-    $routes->post('/setting/create-alamat/save-alamat', 'Setting::saveAlamat');
-    $routes->post('setting/update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
-    $routes->get('/setting/update-alamat/(:any)', 'Setting::updateAlamat/$1');
+    $routes->group('setting/', static function ($routes) {
+        // Get
+        $routes->get('/', 'Setting::setting');
+        $routes->get('detail-user/(:any)', 'Setting::detailUser/$1');
+        $routes->get('pembayaran', 'Setting::pembayaran');
+        $routes->get('alamat-list', 'Setting::alamatList');
+        $routes->get('create-alamat', 'Setting::createAlamat');
+        $routes->get('update-alamat/(:any)', 'Setting::updateAlamat/$1');
+        $routes->get('sayoCare', 'Setting::sayoCare');
+
+        // Post
+        $routes->post('detail-user/(:segment)', 'Setting::updateDetailUser/$1');
+        $routes->post('delete-alamat/(:segment)', 'Setting::deleteAlamat/$1');
+        $routes->post('create-alamat/save-alamat', 'Setting::saveAlamat');
+        $routes->post('update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');
+        $routes->post('update-market', 'Setting::storeDataMarket');
+    });
+
     $routes->get('/history', 'HistoryTransaksiController::index');
-    $routes->get('/setting/sayoCare', 'Setting::sayoCare');
+
+
     $routes->get('/kupon', 'Kupon::kupon');
 
 
