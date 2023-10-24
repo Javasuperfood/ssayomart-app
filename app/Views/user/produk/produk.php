@@ -80,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                                 </p>
 
-                                                <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
+                                                <h1 class="text-danger fs-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
                                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                     <?php else : ?>
@@ -92,9 +92,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="row justify-items-center">
                                                         <div class="col">
                                                             <div class="horizontal-counter">
-                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                                                <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" disabled>
-                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                                                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                                                <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
+                                                                <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -291,10 +291,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="container pt-3">
                                                         <div class="row justify-items-center">
                                                             <div class="col">
-                                                                <div class="horizontal-counter">
-                                                                    <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount()"><i class="bi bi-dash"></i></button>
-                                                                    <input type="text" id="counter" class="form-control form-control-sm border-0" value="0" readonly>
-                                                                    <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount()"><i class="bi bi-plus"></i></button>
+                                                                <div class="input-group mb-3 d-flex justify-content-center">
+                                                                    <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                                                    <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
+                                                                    <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>
