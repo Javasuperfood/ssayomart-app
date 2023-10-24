@@ -53,6 +53,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <p class="text-potong"><?= $produk['deskripsi']; ?></p>
                         <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                     </div>
+
+                    <div class="badge-container d-flex">
+                        <span class="badge text-bg-danger rounded-5">Kategori</span>
+                        <span class="badge text-bg-danger mx-2 rounded-5">Sub Kategori</span>
+                        <span class="badge text-bg-danger rounded-5">Varian</span>
+                    </div>
                 </div>
 
                 <div class="row mt-3">
@@ -68,33 +74,48 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
                                                 </div>
                                             </a>
-                                            <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                                                <h1 class="text-secondary" style="font-size: 15px;">
+                                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+                                                <p class="text-secondary text-center" style="font-size: 16px; margin: 0;"><?= substr($p['nama'], 0, 20); ?></p>
+                                                <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
+                                                    <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
+                                                </p>
+
+                                                <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
                                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                     <?php else : ?>
                                                         <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
-                                                    <?php endif ?></h1>
-                                                <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
-                                                <div class="container pt-3">
+                                                    <?php endif ?>
+                                                </h1>
+
+                                                <div class="container mt-2">
                                                     <div class="row justify-items-center">
                                                         <div class="col">
                                                             <div class="horizontal-counter">
-                                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount()"><i class="bi bi-dash"></i></button>
-                                                                <input type="text" id="counter" class="form-control form-control-sm border-0" value="0" readonly>
-                                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount()"><i class="bi bi-plus"></i></button>
+                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                                                <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" disabled>
+                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <p class="text-center custom-button " style="display: flex; justify-content: center;">
-                                                    <a href="<?= base_url('produk/' . $p['slug']); ?>?add-to-cart=show" class="btn btn-danger mt-4">
-                                                        <i class="bi bi-cart-plus"></i>
-                                                    </a>
-                                                    <button type="submit" class="btn btn-danger   mx-1 mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">
-                                                        Beli
-                                                    </button>
-                                                </p>
+                                                <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                                        <input type="hidden" name="add-to-cart" value="show">
+                                                        <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                                            <i class="bi bi-basket"></i>
+                                                        </button>
+                                                    </form>
+                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                                        <input type="hidden" name="buy" value="show">
+                                                        <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                                            Beli
+                                                        </button>
+                                                        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -234,6 +255,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <h4 class="text-merah"> Deskripsi </h4>
                             <p class="text-potong"><?= $produk['deskripsi']; ?></p>
                             <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
+                        </div>
+
+                        <div class="badge-container d-flex ">
+                            <span class="badge text-bg-danger rounded-5">Kategori</span>
+                            <span class="badge text-bg-danger mx-2 rounded-5">Sub Kategori</span>
+                            <span class="badge text-bg-danger rounded-5">Varian</span>
                         </div>
                     </div>
                 </div>
@@ -387,6 +414,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         width: 40px;
         text-align: center;
     }
+
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
