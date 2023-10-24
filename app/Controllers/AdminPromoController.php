@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\PromoModel;
 use App\Models\PromoItemModel;
 use App\Models\ProdukModel;
+use App\Models\VariasiItemModel;
 
 class AdminPromoController extends BaseController
 {
@@ -175,14 +176,17 @@ class AdminPromoController extends BaseController
         $promoModel = new PromoModel();
         $produkModel = new ProdukModel();
         $promoItemModel = new PromoItemModel();
+        $variasiItemModel = new VariasiItemModel();
 
         $promoList = $promoModel->findAll();
+        $variasiList = $variasiItemModel->findAll();
         $produkList = $produkModel->findAll(); // Mengambil daftar produk
         $ongoingPromoItems = $promoItemModel->getOngoingPromoItems();
 
         $data = [
             'promo' => $promoList,
             'produk' => $produkList, // Mengirim daftar produk ke View
+            'variasi' => $variasiList,
             'ongoingPromoItems' => $ongoingPromoItems
         ];
         // dd($data);
