@@ -21,6 +21,12 @@ class AdminToko extends Migration
                 'unsigned'    => true,
 
             ],
+            'id_toko' => [
+                'type'        => 'INT',
+                'constraint'  => 11,
+                'unsigned'    => true,
+
+            ],
             'created_by' => [
                 'type'        => 'timestamp',
                 'null'        => false,
@@ -42,12 +48,14 @@ class AdminToko extends Migration
         ]);
         $this->forge->addKey('id_admin_toko', true);
         $this->forge->addForeignKey('id_user', 'users', 'id');
+        $this->forge->addForeignKey('id_toko', 'jsf_toko', 'id_toko');
         $this->forge->createTable('jsf_admin_toko');
     }
 
     public function down()
     {
         $this->forge->dropForeignKey('jsf_admin_toko', 'jsf_admin_toko_id_user_foreign');
+        $this->forge->dropForeignKey('jsf_admin_toko', 'jsf_admin_toko_id_toko_foreign');
         $this->forge->dropTable('jsf_admin_toko');
     }
 }
