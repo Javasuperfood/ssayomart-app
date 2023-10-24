@@ -32,7 +32,9 @@
                                 <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>)">
                                     <div class="card">
                                         <div class="card-body">
-                                            <input id="market<?= $m['id_toko'];; ?>" class="form-check-input" type="radio" name="market" value="<?= $m['id_toko']; ?>" <?= ($user['market_selected'] == $m['id_toko']) ? 'checked' : ''; ?>>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($user['market_selected'] == $m['id_toko']) ? 'checked' : ''; ?>>
+                                            </div>
                                             <p class="fw-bold">Ssayomart <?= $m['zip_code']; ?> <i class="fw-bold text-danger" id="marketSelected<?= $m['id_toko']; ?>"> <?= ($user['market_selected'] == $m['id_toko']) ? 'Selected' : ''; ?></i></p>
                                             <p><?= $m['alamat_1']; ?></p>
                                             <p><?= $m['telp']; ?></p>

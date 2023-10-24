@@ -45,8 +45,9 @@ class BuyController extends BaseController
             'kategori' => $kategori->findAll(),
             'market_list' => $tokoModel->findAll(),
             'marketSelected' => $userModel->find(user_id())['market_selected'],
+            'addressSelected' => $userModel->find(user_id())['address_selected'],
             'market' => $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'],
-            'beratTotal' => $beratTotal
+            'beratTotal' => $beratTotal,
         ];
         // dd($data);
         return view('user/home/checkout/buyProduk', $data);

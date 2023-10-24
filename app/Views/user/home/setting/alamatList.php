@@ -28,20 +28,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="text-secondary"><?= $au['province'] ?> - <?= $au['city'] ?></p>
                                         <p class="text-secondary"><?= substr($au['alamat_1'], 0, 40); ?>...</p>
                                     </div>
-                                    <div class="card-footer bg-white d-flex justify-content-between">
-                                        <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
-                                            <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0"><?= lang('Text.btn_ubah') ?></a>
-                                            <?= csrf_field(); ?>
-                                            <button type="submit" class="btn border-0 text-danger m-0"><?= lang('Text.btn_hapus') ?></button>
-                                        </form>
+                                    <div class="card-footer bg-white">
+                                        <div class="row row-cols-3">
+                                            <div class="col">
+                                                <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0"><?= lang('Text.btn_ubah') ?></a>
+                                            </div>
+                                            <div class="col">
+                                                <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $au['id_alamat_users']; ?>" class="btn border-0 text-danger m-0"><?= lang('Text.btn_hapus') ?></button>
+                                            </div>
+                                            <div class="col d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </ul>
                     </div>
                 </div>
+                <div class="modal fade p-4 py-md-5" tabindex="-1" role="dialog" id="modalDelete<?= $au['id_alamat_users']; ?>" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content rounded-3 shadow">
+                            <div class="modal-body p-4 text-center">
+                                <h6 class="mb-0">Anda yakin untuk mengahpus <?= $au['label']; ?> ?</h6>
+                            </div>
+                            <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
+                                <div class="modal-footer flex-nowrap p-0">
+                                    <?= csrf_field(); ?>
+                                    <button type="submit" class="btn btn-lg btn-link btn-danger fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong><?= lang('Text.btn_hapus') ?></strong></button>
+                                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             <?php endforeach; ?>
-            <a href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-plus"></i></a>
+            <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-plus"></i></a>
+            <form action="<?= base_url('setting/select-alamat'); ?>" method="post">
+                <?= csrf_field(); ?>
+                <input type="hidden" name="alamat" id="alamatField">
+                <button type="submit" id="selectAddress" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-check"></i></button>
+            </form>
         </div>
         <style>
             .position-fixed {
@@ -53,6 +82,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         </style>
     </div>
+    <script>
+        $('#selectAddress').hide();
+
+        function selectAddress(i) {
+            $('#address' + i).prop('checked', true);
+            $('#alamatField').val(i);
+            $('#createAddress').hide();
+            $('#selectAddress').show();
+        }
+    </script>
 <?php else : ?>
     <!-- End View Mobile -->
 

@@ -18,26 +18,33 @@ class Setting extends BaseController
         $this->url = getenv('API_URL_RO');
         $this->apiKey = getenv('API_KEY_RO');
     }
-    public function setting(): string
+    public function setting()
     {
         $userModel = new UsersModel();
         $kategori = new KategoriModel();
         $alamatUserModel = new AlamatUserModel();
         $marketModel = new TokoModel();
         $user = $userModel->where('id', user_id())->first();
-        $firstLable = $alamatUserModel->where('id_user', user_id())->first();
 
         $marketSelected = null;
         if ($user['market_selected']) {
-            $marketSelected = 'Ssayomart ' . $marketModel->find($user['market_selected'])['city'];
+            $getCity = isset($marketModel->find($user['market_selected'])['city']);
+            $marketSelected =  ($getCity) ? 'Ssayomart ' . $marketModel->find($user['market_selected'])['city'] : 'Pilih Lokasi Market';
         } else {
             $marketSelected = 'Pilih Lokasi Market';
+        }
+        $addressSelected = null;
+        if ($user['market_selected']) {
+            $getLabel = isset($alamatUserModel->find($user['address_selected'])['city']);
+            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Lokasi Pengataran';
+        } else {
+            $addressSelected = 'Pilih Lokasi Pengataran';
         }
         $data = [
             'title' => lang('Text.setting'),
             'user' => $user,
             'kategori' => $kategori->findAll(),
-            'alamat' => $firstLable,
+            'alamat' => $addressSelected,
             'market' => $marketModel->findAll(),
             'marketSelected' => $marketSelected,
             'back'  => '/'
@@ -183,11 +190,14 @@ class Setting extends BaseController
     {
         $alamat_user_model = new AlamatUserModel();
         $kategori = new KategoriModel();
+        $userModel = new UsersModel();
         $alamat_list = $alamat_user_model->where('id_user', user_id())->findAll();
+        $user = $userModel->where('id', user_id())->first();
         $data = [
             'title' => lang('Text.title_alamat'),
             'alamat_user_model' => $alamat_list,
             'kategori' => $kategori->findAll(),
+            'user' => $user,
             'back'  => 'setting'
         ];
         // dd($data);
@@ -464,6 +474,32 @@ class Setting extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/create-alamat')->withInput();
         }
+    }
+
+    public function storeDataAlamat()
+    {
+        $userModel = new UsersModel();
+        $alamatId = $this->request->getVar('alamat');
+
+        if ($userModel->save([
+            'id' => user_id(),
+            'address_selected' => $alamatId
+        ])) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'berhasil',
+                'message' => 'Berhasi memilih alamat'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting');
+        }
+        $alert = [
+            'type' => 'error',
+            'title' => 'Error',
+            'message' => 'Terdapat kesalahan pada pemilihan alamat'
+        ];
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to('setting');
     }
 
     public function storeDataMarket()
