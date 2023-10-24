@@ -27,18 +27,90 @@
                 <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
             <div class="mb-3">
+                <label for="parent_kategori_id">Kategori Induk</label>
+                <select class="form-control border-0 shadow-sm" id="kategori" name="parent_kategori_id">
+                    <option value="">Pilih Kategori</option>
+                    <?php foreach ($kategori as $km) : ?>
+                        <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <span id="kategoriError" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label for="parent_kategori_id">Sub Kategori</label>
+                <select class="form-control border-0 shadow-sm" id="sub_kategori" name="sub_kategori">
+                    <option value="">Pilih Kategori</option>
+                </select>
+                <span id="kategoriError" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
                 <label for="img" class="form-label">Gambar</label>
                 <input type="file" accept="image/*" style="border: none;" class="form-control border-0 shadow-sm" id="img" name="img">
                 <span id="imgError" class="text-danger"></span>
                 <input type="hidden" name="imageLama" value="<?= $p['img']; ?>">
             </div>
-
-            <div>
+            <div class="text-center">
                 <button type="submit" class="btn btn-danger">Simpan</button>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    var subcategories = <?= json_encode($subKategori); ?>;
+    var selectedCategory = <?= json_encode($p['id_kategori']); ?>; // Ambil id_kategori dari data produk
+
+    function updateSubcategories() {
+        var subcategorySelect = $("#sub_kategori");
+        subcategorySelect.empty();
+        subcategories.forEach(function(subcategory) {
+            if (subcategory.id_kategori == selectedCategory) {
+                subcategorySelect.append($('<option>', {
+                    value: subcategory.id_sub_kategori,
+                    text: subcategory.nama_kategori
+                }));
+            }
+        });
+    }
+
+    // Panggil fungsi updateSubcategories saat perubahan terjadi pada pilihan kategori
+    $("#kategori").change(updateSubcategories);
+
+    // Panggil updateSubcategories() saat halaman dimuat untuk menampilkan subkategori awal
+    $(document).ready(function() {
+        // Atur nilai awal dropdown kategori
+        $("#kategori").val(selectedCategory);
+
+        // Panggil updateSubcategories untuk mengisi dropdown subkategori
+        updateSubcategories();
+    });
+</script>
+
+
+<script>
+    var subcategories = <?= json_encode($subKategori); ?>;
+
+    function updateSubcategories() {
+        var selectedCategory = $("#kategori").val();
+        var subcategorySelect = $("#sub_kategori");
+        subcategorySelect.empty();
+        subcategories.forEach(function(subcategory) {
+            if (subcategory.id_kategori == selectedCategory) {
+                subcategorySelect.append($('<option>', {
+                    value: subcategory.id_sub_kategori,
+                    text: subcategory.nama_kategori
+                }));
+            }
+        });
+    }
+
+    // Panggil fungsi updateSubcategories saat perubahan terjadi pada pilihan kategori
+    $("#kategori").change(updateSubcategories);
+
+    // Panggil updateSubcategories() saat halaman dimuat untuk menampilkan subkategori awal
+    $(document).ready(updateSubcategories);
+</script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         <?php if (session()->has('alert')) : ?>

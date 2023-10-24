@@ -55,13 +55,13 @@ class AdminProduk extends BaseController
         $subKategoriModel = new SubKategoriModel();
         $variasiModel = new VariasiModel();
         $variasiItemModel = new VariasiItemModel();
+
         $variasList = $variasiModel->findAll();
         $variasiItemList = $variasiItemModel->getVariasiItem();
         $produk_list = $produkModel->findAll();
         $kategori_list = $kategoriModel->findAll();
         $sub_kategori_list = $subKategoriModel->findAll();
         $data = [
-            'title' => 'produk',
             'produk_Model' => $produk_list,
             'kategori' => $kategori_list,
             'subKategori' => $sub_kategori_list,
@@ -177,10 +177,25 @@ class AdminProduk extends BaseController
 
         $produkModel = new ProdukModel();
 
+        $kategoriModel = new KategoriModel();
+        $subKategoriModel = new SubKategoriModel();
+        $variasiModel = new VariasiModel();
+        $variasiItemModel = new VariasiItemModel();
+
+        $variasList = $variasiModel->findAll();
+        $variasiItemList = $variasiItemModel->getByIdProduk($id);
+        $kategori_list = $kategoriModel->findAll();
+        $sub_kategori_list = $subKategoriModel->findAll();
         $produk = $produkModel->find($id);
+
         $data = [
             'title' => 'Edit Produk',
             'p' => $produk,
+            'kategori' => $kategori_list,
+            'subKategori' => $sub_kategori_list,
+            'variasi' => $variasList,
+            'variasiItem' => $variasiItemList[0],
+            'vali' => $produkModel->errors(),
         ];
         // dd($data);
         return view('dashboard/produk/updateProduk', $data);
@@ -210,15 +225,22 @@ class AdminProduk extends BaseController
                 }
             }
         }
-
+        $slug = url_title($this->request->getVar('nama'), '-', true);
+        $cekSlug = $produkModel->where('slug', $slug)->first();
+        if ($cekSlug != null) {
+            $slug = $slug . '-' . time();
+        }
         $data = [
-            'slug' => $this->request->getVar('slug'),
+            'slug' => $slug,
             'nama' => $this->request->getVar('nama'),
             'sku' => $this->request->getVar('sku'),
             'deskripsi' => $this->request->getVar('deskripsi'),
-            'img' => $namaProdukImage
+            'img' => $namaProdukImage,
+            'id_kategori' => $this->request->getVar('parent_kategori_id'),
+            'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
-        // dd($data);
+
+        // Pembaruan data produk
         if ($produkModel->update($id, $data)) {
             session()->setFlashdata('success', 'Produk berhasil diubah.');
             $alert = [
