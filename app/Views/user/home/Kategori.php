@@ -175,7 +175,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                                 </p>
 
-                                                <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
+                                                <h1 class="text-danger fs-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
                                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                     <?php else : ?>
