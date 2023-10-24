@@ -106,4 +106,13 @@ class UsersModel extends Model
         $result = $query->getRowArray();
         return $result;
     }
+
+    public function getUserWithRole()
+    {
+        $query = $this->select('users.id, users.username, auth_groups_users.group')
+            ->join('auth_groups_users', 'users.id = auth_groups_users.user_id')
+            ->where('auth_groups_users.group', 'admin')
+            ->get();
+        return $query->getResultArray();
+    }
 }

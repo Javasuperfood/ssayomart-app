@@ -28,8 +28,8 @@ class AdminToko extends Migration
 
             ],
             'created_by' => [
-                'type'        => 'timestamp',
-                'null'        => false,
+                'type'           => 'INT',
+                'constraint'     => 11,
             ],
             'updated_by' => [
                 'type'           => 'INT',
@@ -37,8 +37,8 @@ class AdminToko extends Migration
                 'null'   => false
             ],
             'created_at' => [
-                'type'           => 'INT',
-                'constraint'     => 11,
+                'type'        => 'timestamp',
+                'null'        => false,
                 'null'        => true,
             ],
             'updated_at' => [

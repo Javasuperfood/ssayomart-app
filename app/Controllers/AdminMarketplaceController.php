@@ -15,15 +15,24 @@ class AdminMarketplaceController extends BaseController
         $this->url = getenv('API_URL_RO');
         $this->apiKey = getenv('API_KEY_RO');
     }
+
     public function index()
     {
         $tokoModel = new TokoModel();
-        $toko = $tokoModel->first();
+
+        return view('dashboard/marketplace/index', [
+            'toko' => $tokoModel->findAll()
+        ]);
+    }
+    public function market($id)
+    {
+        $tokoModel = new TokoModel();
+        $toko = $tokoModel->find($id);
         $data = [
             'toko' => $toko
         ];
         // dd($data);
-        return view('dashboard/marketplace/index', $data);
+        return view('dashboard/marketplace/market', $data);
     }
 
     // Save
