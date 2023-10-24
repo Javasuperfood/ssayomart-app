@@ -28,25 +28,23 @@
             </div>
             <div class="mb-3">
                 <label for="parent_kategori_id">Kategori Induk</label>
-                <select class="form-control border-0 shadow-sm" id="kategori" name="parent_kategori_id">
+                <select class="form-control border-0 shadow-sm <?= (validation_show_error('kategori')) ? 'is-invalid' : 'border-0'; ?>" id="kategori" name="parent_kategori_id">
                     <option value="">Pilih Kategori</option>
                     <?php foreach ($kategori as $km) : ?>
                         <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
                     <?php endforeach; ?>
                 </select>
-                <span id="kategoriError" class="text-danger"></span>
+                <div class="invalid-feedback"><?= validation_show_error('kategori'); ?></div>
             </div>
             <div class="mb-3">
                 <label for="parent_kategori_id">Sub Kategori</label>
                 <select class="form-control border-0 shadow-sm" id="sub_kategori" name="sub_kategori">
                     <option value="">Pilih Kategori</option>
                 </select>
-                <span id="kategoriError" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Gambar</label>
                 <input type="file" accept="image/*" style="border: none;" class="form-control border-0 shadow-sm" id="img" name="img">
-                <span id="imgError" class="text-danger"></span>
                 <input type="hidden" name="imageLama" value="<?= $p['img']; ?>">
             </div>
             <div class="text-center">

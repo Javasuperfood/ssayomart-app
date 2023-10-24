@@ -122,7 +122,7 @@ class AdminProduk extends BaseController
                 'rules'  => 'required|is_unique[jsf_produk.sku]',
                 'errors' => [
                     'required' => 'SKU wajib diisi.',
-                    'is_unique' => 'SKU wajib unik, tidak boleh sama dengan peroduk yang sudah dimasukan.'
+                    'is_unique' => 'SKU wajib unik, tidak boleh sama dengan produk yang sudah dimasukan.'
                 ],
             ],
             'deskripsi'    => [
@@ -170,6 +170,7 @@ class AdminProduk extends BaseController
             return redirect()->to('dashboard/produk/tambah-produk')->withInput();
         }
     }
+
     // Update Produk
     public function updateProduk($id)
     {
@@ -239,6 +240,31 @@ class AdminProduk extends BaseController
             'id_kategori' => $this->request->getVar('parent_kategori_id'),
             'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
+
+
+        $ruleData = [
+            'nama' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Nama produk wajib diisi.',
+                ],
+            ],
+            'deskripsi'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Deskripsi wajib diisi.',
+                ],
+            ],
+            'kategori'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Kategori wajib diisi.',
+                ],
+            ],
+        ];
+        if (!$this->validateData($data, $ruleData)) {
+            return redirect()->to('dashboard/produk/update-produk/' . $id)->withInput();
+        }
 
         // Pembaruan data produk
         if ($produkModel->update($id, $data)) {
