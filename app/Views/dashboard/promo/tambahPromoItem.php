@@ -50,26 +50,34 @@
                                                 <div class="card border-0">
                                                     <div class="row g-0">
                                                         <div class="card-body border-0 shadow-sm">
-                                                            <label>
-                                                                <div class="row">
-                                                                    <div class="col-1">
-                                                                        <input type="radio" id="produkRadio<?= $item['id_produk']; ?>" name="produk_id" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>">
-                                                                    </div>
-                                                                    <div class="col-3">
-                                                                        <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid">
-                                                                    </div>
-                                                                    <div class="col-8">
-                                                                        <p class="fs-4"><?= $item['nama']; ?></p>
-                                                                        <p class="fs-5">Rp. <?= number_format($item['harga'], 0, ',', '.'); ?></p>
-                                                                    </div>
+                                                            <div class="row">
+
+
+                                                                <div class="col-1">
+
+                                                                    <input type="radio" id="produkRadio<?= $item['id_produk']; ?>" name="produk_id" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0">
+
                                                                 </div>
-                                                            </label>
+
+                                                                <div class="col-3">
+                                                                    <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid">
+                                                                </div>
+                                                                <div class="col-8">
+                                                                    <p class="fs-4"><?= $item['nama']; ?></p>
+                                                                    <?php foreach ($variasi as $v) : ?>
+                                                                        <?php if ($v['id_variasi_item'] == $item['id_produk']) : ?>
+                                                                            <p class="fs-5">Harga: Rp. <?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
+                                                                        <?php endif; ?>
+                                                                    <?php endforeach; ?>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         <?php endforeach; ?>
                                     </div>
+
                                     <!-- Pesan "Produk tidak tersedia" -->
                                     <div id="noProductAlert" class="alert alert-danger rounded border-0" style="display: none;">
                                         <div class="row">
@@ -168,7 +176,6 @@
     </div>
 
 </div>
-
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
