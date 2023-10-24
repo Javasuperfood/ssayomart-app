@@ -98,6 +98,7 @@ class AdminProduk extends BaseController
             'id_kategori' => $this->request->getVar('parent_kategori_id'),
             'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
+        // dd($data);
         $id_varian = $this->request->getVar('selectVariant');
         if ($id_varian != '') {
             $id_varian = $id_varian;
@@ -240,8 +241,7 @@ class AdminProduk extends BaseController
             'id_kategori' => $this->request->getVar('parent_kategori_id'),
             'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
-
-
+        // dd($data);
         $ruleData = [
             'nama' => [
                 'rules'  => 'required',
@@ -254,13 +254,7 @@ class AdminProduk extends BaseController
                 'errors' => [
                     'required' => 'Deskripsi wajib diisi.',
                 ],
-            ],
-            'kategori'    => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Kategori wajib diisi.',
-                ],
-            ],
+            ]
         ];
         if (!$this->validateData($data, $ruleData)) {
             return redirect()->to('dashboard/produk/update-produk/' . $id)->withInput();
@@ -301,7 +295,12 @@ class AdminProduk extends BaseController
                 unlink($gambarLamaPath);
             }
         }
-        $produkModel->save(['id_produk' => $id, 'slug' => $produk['slug'] . '-deleted-' . time()]);
+        $produkModel->save([
+            'id_produk' => $id,
+            'slug' => $produk['slug'] . '-deleted-' . time(),
+            'sku' => $produk['sku'] . '-deleted-' . time(),
+        ]);
+
         $deleted = $produkModel->delete($id);
         // dd($id);
         if ($deleted) {

@@ -22,7 +22,7 @@ class ProdukModel extends Model
         'deskripsi',
         'img',
         'is_active',
-        // 'id_sub_kategori',
+        'id_sub_kategori',
         'created_by'
     ];
 
