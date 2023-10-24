@@ -23,7 +23,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                     <p class=" text-secondary" style="font-size: 16px; margin: 0;"><span class="placeholder col-7"></span></p>
-                        <h1 class="text-secondary fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                        <h1 class="text-secondary fs-bold mt-1" style="font-size: 12px; margin: 0;">
                             <span class="placeholder col-6"></span>
                         </h1>
                         <div class="container mt-2">
@@ -44,6 +44,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span type="submit" class="btn btn-secondary mx-1 mt-2 fw-bold">
                                 Beli
                             </span>
+                            <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                         </div>
                     </div>
                 </div>
@@ -75,11 +76,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-3" alt="..." style="width: 150px; height: 150px;">
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <p class=" text-secondary" style="font-size: 16px;"><?= substr('${p.nama}', 0, 20); ?>...</p>
-                            <p class=" text-secondary" style="font-size: 12px;">
+                            <p class=" text-secondary" style="font-size: 16px; margin: 0;"><?= substr('${p.nama}', 0, 20); ?>...</p>
+                            <p class=" text-secondary" style="font-size: 12px; margin: 0;">
                                 <del>Rp. ${formatRupiah(p.harga_min)}</del>
                             </p>
-                                <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
                                    ${hargaText}
                                 </h1>
                                 <p class=" text-center">
@@ -97,10 +98,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <p class=" text-secondary" style="font-size: 16px; margin: 0;"><?= substr('${p.nama}', 0, 15); ?>...</p>
-                        <p class=" text-secondary" style="font-size: 12px;">
+                        <p class=" text-secondary" style="font-size: 12px; margin: 0;">
                             <del>Rp. ${formatRupiah(p.harga_min)}</del>
                         </p>
-                            <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                            <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
                             ${hargaText}
                             </h1>
                             <div class="container pt-2">
@@ -128,6 +129,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
                                         Beli
                                     </button>
+                                    <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                 </form>
                             </div>
                         </div>
