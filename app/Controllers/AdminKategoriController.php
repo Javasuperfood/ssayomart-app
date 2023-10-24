@@ -66,6 +66,18 @@ class AdminkategoriController extends BaseController
         return view('dashboard/kategori/tambahKategori', $data);
     }
 
+    public function tambahKategori2()
+    {
+        $kategoriModel = new KategoriModel();
+        $kategori = $kategoriModel->findAll();
+
+        $data = [
+            'title' => 'Kategori',
+            'kategori' => $kategori
+        ];
+        return view('dashboard/kategori/tambahKategori2', $data);
+    }
+
     // Save ke database
     public function saveKategori()
     {
