@@ -1,21 +1,27 @@
 <script>
     const jumlah = 1;
-    var destination = <?= ($alamat_list) ? $alamat_list[0]['id_city'] : ''; ?>;
-    var kurir = 'jne';
+    var origin = $('option:selected', $("#market")).attr('city');
+    var destination = $('option:selected', $("#alamat_list")).attr('city');
+    var kurir = $('option:selected', $("#kurir")).val();
     $('.btn-bayar').hide();
+    $(window).on('load', function() {
+        populateServices(kurir, origin, destination)
+    })
+    selectedOption = $('option:selected', $('#alamat_list')).attr('penerima');
+    $('#perubahan').text(selectedOption);
 
     var total = <?= $total; ?>; // Inisialisasi total dengan harga total awal
 
     // Fungsi untuk mengisi layanan berdasarkan kurir yang dipilih
-    function populateServices(kurir) {
+    function populateServices(kurir, origin, destination) {
         $("#service, #ongkir, #ongkirText, #estimasi, #total, #totalText, #serviceText, #field_subtotal").empty().val('');
         $.ajax({
             url: "<?= base_url('api/getcost') ?>",
             type: 'GET',
             data: {
-                'origin': '455', // lokasi awal
+                'origin': origin, // lokasi awal
                 'destination': destination, // lokasi user
-                'weight': 1000, // berat barangt
+                'weight': <?= $beratTotal; ?>, // berat barang
                 'courier': kurir // kurir yang dipilih
             },
             dataType: 'json',
@@ -48,17 +54,31 @@
     }
 
     $("#alamat_list").on('change', function() {
-        $("#kurir").prop('selectedIndex', 0)
+        $('.btn-bayar').hide();
         selectedOption = $('option:selected', this).attr('penerima');
         $('#perubahan').text(selectedOption);
+        origin = $('option:selected', $('#market')).attr('city');
+        kurir = $('option:selected', $("#kurir")).val();
         destination = $('option:selected', this).attr('city');
-        populateServices(destination);
+        populateServices(kurir, origin, destination);
 
     });
+
+    $('#market').on('change', function() {
+        $('.btn-bayar').hide();
+        origin = $('option:selected', this).attr('city');
+        kurir = $('option:selected', $("#kurir")).val();
+        destination = $('option:selected', $("#alamat_list")).attr('city');
+        populateServices(kurir, origin, destination);
+    });
+
     // Memanggil fungsi populateServices saat memilih kurir
     $("#kurir").on('change', function() {
+        $('.btn-bayar').hide();
         kurir = $("#kurir").val();
-        populateServices(kurir);
+        origin = $('option:selected', $("#market")).attr('city');
+        destination = $('option:selected', $("#alamat_list")).attr('city');
+        populateServices(kurir, origin, destination);
     });
 
     // Menghitung estimasi dan total saat memilih layanan
@@ -75,13 +95,6 @@
         $('.btn-bayar').show();
         updateDiscount();
     });
-
-
-    // Memanggil populateServices saat halaman dimuat pertama kali (jika kurir sudah dipilih sebelumnya)
-    var kurirTerpilih = $("#kurir").val();
-    if (kurirTerpilih) {
-        populateServices(kurirTerpilih);
-    }
 
     function formatRupiah(angka) {
         var formatter = new Intl.NumberFormat('id-ID', {
