@@ -89,6 +89,7 @@
                 <h6 class="collapse-header text-danger">Kategori :</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori2">Tambah Kategori update</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah Urutan Kategori</a>
             </div>
         </div>

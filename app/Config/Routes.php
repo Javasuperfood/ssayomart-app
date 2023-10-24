@@ -124,6 +124,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori/shorting', 'AdminKategoriController::editKategoriShort');
     $routes->post('kategori/shorting/save', 'AdminKategoriController::saveKategoriShort');
     $routes->get('kategori/tambah-kategori', 'AdminKategoriController::tambahKategori');
+    $routes->get('kategori/tambah-kategori2', 'AdminKategoriController::tambahKategori2');
     $routes->post('kategori/tambah-kategori/save', 'AdminKategoriController::saveKategori');
     $routes->post('kategori/delete-kategori/(:segment)', 'AdminKategoriController::deleteKategori/$1');
     $routes->post('kategori/edit-kategori/update/(:segment)', 'AdminKategoriController::updateKategori/$1');
