@@ -281,13 +281,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                 </a>
                                                 <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                                                    <h1 class="text-secondary" style="font-size: 15px;">
+                                                    <p class=" text-secondary text-center" style="font-size: 16px; margin: 0;"><?= substr($p['nama'], 0, 15); ?>...</p>
+                                                    <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
+                                                        <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
+                                                    </p>
+                                                    <h1 class="text-danger fw-bold text-center" style="font-size: 18px; margin: 0;">
                                                         <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                             Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                         <?php else : ?>
                                                             <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                                         <?php endif ?></h1>
-                                                    <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
                                                     <div class="container pt-3">
                                                         <div class="row justify-items-center">
                                                             <div class="col">
@@ -306,6 +309,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <button type="submit" class="btn btn-danger   mx-1 mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">
                                                             Beli
                                                         </button>
+                                                        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                                     </p>
                                                 </div>
                                             </div>
