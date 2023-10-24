@@ -14,7 +14,11 @@ class VariasiItemModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_variasi', 'id_produk', 'value_item', 'harga_item', 'berat'
+        'id_variasi',
+        'id_produk',
+        'value_item',
+        'harga_item',
+        'berat'
     ];
 
     // Dates
