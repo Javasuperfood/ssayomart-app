@@ -29,7 +29,7 @@ class Setting extends BaseController
 
         $marketSelected = null;
         if ($user['market_selected']) {
-            $marketSelected = 'Ssayomart ' . $marketModel->find($user['market_selected'])['zip_code'];
+            $marketSelected = 'Ssayomart ' . $marketModel->find($user['market_selected'])['city'];
         } else {
             $marketSelected = 'Pilih Lokasi Market';
         }
@@ -208,10 +208,9 @@ class Setting extends BaseController
     public function saveAlamat()
     {
         $alamatModel = new AlamatUserModel();
-        $id = session()->get('user');
 
         $data = [
-            'id_user' => $id['id'],
+            'id_user' => user_id(),
             'label' => $this->request->getVar('label'),
             'penerima' => $this->request->getVar('nama_penerima'),
             'alamat_1' => $this->request->getVar('alamat_1'),
@@ -225,6 +224,16 @@ class Setting extends BaseController
             'telp2' => $this->request->getVar('no_telp2')
         ];
         // SWAL
+        if ($data['telp2'] == null) {
+            $ruleTelp2 = [];
+        } else {
+            $ruleTelp2 = [
+                'rules' => 'numeric',
+                'errors' => [
+                    'numeric' => 'Nomor telepon harus berupa angka.'
+                ]
+            ];
+        }
         //validation
         if (!$this->validateData($data, [
             'label' => [
@@ -271,12 +280,7 @@ class Setting extends BaseController
                     'numeric' => 'Nomor telepon harus berupa angka.'
                 ]
             ],
-            'telp2' => [
-                'rules' => 'numeric',
-                'errors' => [
-                    'numeric' => 'Nomor telepon harus berupa angka.'
-                ]
-            ]
+            'telp2' => $ruleTelp2
         ])) {
             $alert = [
                 'type' => 'error',
@@ -346,7 +350,16 @@ class Setting extends BaseController
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2')
         ];
-
+        if ($data['telp2'] == null) {
+            $ruleTelp2 = [];
+        } else {
+            $ruleTelp2 = [
+                'rules' => 'numeric',
+                'errors' => [
+                    'numeric' => 'Nomor telepon harus berupa angka.'
+                ]
+            ];
+        }
         //validation data
         if (!$this->validateData($data, [
             'label' => [
@@ -393,12 +406,7 @@ class Setting extends BaseController
                     'numeric' => 'Nomor telepon harus berupa angka.'
                 ]
             ],
-            'telp2' => [
-                'rules' => 'numeric',
-                'errors' => [
-                    'numeric' => 'Nomor telepon harus berupa angka.'
-                ]
-            ]
+            'telp2' => $ruleTelp2
         ])) {
             $alert = [
                 'type' => 'error',

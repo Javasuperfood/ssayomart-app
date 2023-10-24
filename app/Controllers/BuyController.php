@@ -9,6 +9,7 @@ use App\Models\CheckoutProdukModel;
 use App\Models\KategoriModel;
 use App\Models\KuponModel;
 use App\Models\ProdukModel;
+use App\Models\TokoModel;
 use App\Models\UsersModel;
 use App\Models\WishlistModel;
 use App\Models\WishlistProdukModel;
@@ -23,6 +24,8 @@ class BuyController extends BaseController
         $alamatModel = new AlamatUserModel();
         $kuponModel = new KuponModel();
         $produkModel = new ProdukModel();
+        $tokoModel = new TokoModel();
+        $userModel = new UsersModel();
         $id_varian = $this->request->getVar('varian');
         $qty = $this->request->getVar('qty');
         $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
@@ -30,7 +33,7 @@ class BuyController extends BaseController
         $totalAkhir = $produk['harga_item'] * $qty;
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
         $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
-
+        $beratTotal = $produk['berat'] * $qty;
         $data = [
             'title' => 'Buy ' . $produk['nama'],
             'alamat_list' => $alamat_list,
@@ -39,7 +42,11 @@ class BuyController extends BaseController
             'varian' => $id_varian,
             'total' => $totalAkhir,
             'kupon' => $kuponList,
-            'kategori' => $kategori->findAll()
+            'kategori' => $kategori->findAll(),
+            'market_list' => $tokoModel->findAll(),
+            'marketSelected' => $userModel->find(user_id())['market_selected'],
+            'market' => $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'],
+            'beratTotal' => $beratTotal
         ];
         // dd($data);
         return view('user/home/checkout/buyProduk', $data);
@@ -160,6 +167,7 @@ class BuyController extends BaseController
 
         $dbStore = [
             'id_user' => user_id(),
+            'id_toko' => $this->request->getVar('market'),
             'id_status_pesan' => 1,
             'id_status_kirim' => 1,
             'invoice' => $inv,

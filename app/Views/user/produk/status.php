@@ -177,7 +177,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php   // =====================    PRNTING  =================================
         if ($status->id_status_pesan == 1) : ?>
             <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
-            <div class="row p-3 px-4 mx-5 py-3 position-absolute" style="left: 0; right: 0;">
+            <div class="row p-3 py-3 position-absolute" style="left: 0; right: 0;">
                 <div class="d-flex align-items-center justify-content-center w-100 h-100">
                     <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
                 </div>

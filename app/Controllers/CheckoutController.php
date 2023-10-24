@@ -10,6 +10,7 @@ use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\KuponModel;
 use App\Models\ProdukModel;
+use App\Models\TokoModel;
 use App\Models\UsersModel;
 use Midtrans\Config as MidtransConfig;
 
@@ -259,6 +260,8 @@ class CheckoutController extends BaseController
         $alamatModel = new AlamatUserModel();
         $kategoriModel = new KategoriModel();
         $cartProdukModel = new CartProdukModel();
+        $userModel = new UsersModel();
+        $tokoModel = new TokoModel();
         $checkedId = $this->request->getVar('check');
         if (!$checkedId) {
             return redirect()->to(base_url('cart2'));
@@ -272,7 +275,10 @@ class CheckoutController extends BaseController
             'title' => 'Checkout',
             'alamat_list' => $alamat_list,
             'kupon' => $kuponList,
-            'kategori' => $kategoriModel->findAll()
+            'kategori' => $kategoriModel->findAll(),
+            'market_list' => $tokoModel->findAll(),
+            'marketSelected' => $userModel->find(user_id())['market_selected'],
+            'market' => $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'],
         ];
 
         foreach ($checkedId as $key => $id) {
@@ -283,12 +289,15 @@ class CheckoutController extends BaseController
             $data['cart_id'][$key] = $id;
         }
         $totalAkhir = 0;
-
+        $beratTotal = 0;
         foreach ($data['produk'] as $produk) {
             $rowTotal = $produk['qty'] * $produk['harga_item'];
             $totalAkhir += $rowTotal;
+            $rowBerat = $produk['berat'] * $produk['qty'];
+            $beratTotal += $rowBerat;
         }
         $data['total'] = $totalAkhir;
+        $data['beratTotal'] = $beratTotal;
         // dd($data);
         return view('user/home/checkout/checkout2', $data);
     }
@@ -333,10 +342,12 @@ class CheckoutController extends BaseController
             $data['cart_id'][$key] = $id;
         }
         $totalAkhir = 0;
+        $beratTotal = 0;
         foreach ($data['produk'] as $key => $produk) {
             $rowTotal = $produk['qty'] * $produk['harga_item'];
             $totalAkhir += $rowTotal;
-
+            $rowBerat = $produk['qty'] * $produk['berat'];
+            $beratTotal += $rowBerat;
             $cekProduk[$key] = [
                 'id' => $produk['id_produk'],
                 'price' => $produk['harga_item'],
@@ -345,6 +356,7 @@ class CheckoutController extends BaseController
             ];
         }
         $data['total'] = $totalAkhir;
+        $data['beratTotal'] = $totalAkhir;
 
         $kupon = [
             'discount' => '',
@@ -417,6 +429,7 @@ class CheckoutController extends BaseController
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         $dbStore = [
             'id_user' => user_id(),
+            'id_toko' => $this->request->getVar('market'),
             'kupon' => '',
             'id_status_pesan' => 1,
             'id_status_kirim' => 1,

@@ -15,6 +15,7 @@ class CheckoutModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'id_user',
+        'id_toko',
         'id_kupon',
         'id_status_pesan',
         'id_status_kirim',
@@ -45,6 +46,7 @@ class CheckoutModel extends Model
     // Validation
     protected $validationRules      = [
         'id_user'               => 'required',
+        'id_toko'               => 'required',
         // 'id_kupon'              => 'required',
         // 'id_alamat_users'       => 'required',
         'id_status_pesan'       => 'required',
