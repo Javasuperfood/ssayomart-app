@@ -18,7 +18,7 @@ class AdminMarketplaceController extends BaseController
     public function index()
     {
         $tokoModel = new TokoModel();
-        $toko = $tokoModel->where('id_user', user_id())->first();
+        $toko = $tokoModel->first();
         $data = [
             'toko' => $toko
         ];
