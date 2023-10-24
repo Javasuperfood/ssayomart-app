@@ -22,7 +22,8 @@ class UsersModel extends Model
         'img',
         'fullname',
         'telp',
-        'market_selected'
+        'market_selected',
+        'address_selected'
     ];
 
     // Dates

@@ -76,6 +76,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
         $routes->get('sayoCare', 'Setting::sayoCare');
 
         // Post
+        $routes->post('select-alamat', 'Setting::storeDataAlamat');
         $routes->post('detail-user/(:segment)', 'Setting::updateDetailUser/$1');
         $routes->post('delete-alamat/(:segment)', 'Setting::deleteAlamat/$1');
         $routes->post('create-alamat/save-alamat', 'Setting::saveAlamat');

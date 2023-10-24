@@ -34,7 +34,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="form-floating mb-2">
                             <select class="form-control border-0 shadow-sm" id="alamat_list" name="alamat_list">
                                 <?php foreach ($alamat_list as $al) : ?>
-                                    <option penerima="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary" city="<?= $al['id_city']; ?>"><?= $al['alamat_1']; ?></option>
+                                    <option penerima="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary" city="<?= $al['id_city']; ?>" <?= ($addressSelected == $al['id_alamat_users']) ? 'selected' : ''; ?>><?= $al['label'] . ' - ' . $al['alamat_1']; ?></option>
                                 <?php endforeach ?>
                             </select>
                             <label for="alamat_list" id="alamat_list"><span id="perubahan"></span></label>

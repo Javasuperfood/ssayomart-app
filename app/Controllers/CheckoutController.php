@@ -278,6 +278,7 @@ class CheckoutController extends BaseController
             'kategori' => $kategoriModel->findAll(),
             'market_list' => $tokoModel->findAll(),
             'marketSelected' => $userModel->find(user_id())['market_selected'],
+            'addressSelected' => $userModel->find(user_id())['address_selected'],
             'market' => $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'],
         ];
 

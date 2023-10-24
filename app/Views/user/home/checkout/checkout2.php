@@ -22,53 +22,67 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         Tidak ada alamat yang tersedia. Silakan tambahkan alamat terlebih dahulu. <a href="<?= base_url('setting/alamat-list'); ?>" class="link-dark fw-bold">Disini</a>
                     </div>
                 <?php endif ?>
-                <div class="row <?= (!$alamat_list) ? 'd-none' : ''; ?>">
+                <div class="row row-cols-1 <?= (!$alamat_list) ? 'd-none' : ''; ?>">
+                    <div class="col">
+                        <div class="form-floating mb-2">
+                            <select class="form-control border-0 shadow-sm" id="market" name="market">
+                                <?php foreach ($market_list as $m) : ?>
+                                    <option value="<?= $m['id_toko']; ?>" city="<?= $m['id_city']; ?>" <?= ($m['id_toko'] == $marketSelected) ? 'selected' : ''; ?>>Ssayomart - <?= $m['city']; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            <label for="market" id="market">Lokasi Market</label>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="form-floating mb-2">
                             <select class="form-control border-0 shadow-sm" id="alamat_list" name="alamat_list">
                                 <?php foreach ($alamat_list as $al) : ?>
-                                    <option penerima="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary" city="<?= $al['id_city']; ?>"><?= $al['alamat_1']; ?></option>
+                                    <option penerima="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary" city="<?= $al['id_city']; ?>" <?= ($addressSelected == $al['id_alamat_users']) ? 'selected' : ''; ?>><?= $al['label'] . ' - ' . $al['alamat_1']; ?></option>
                                 <?php endforeach ?>
                             </select>
                             <label for="alamat_list" id="alamat_list"><span id="perubahan"></span></label>
                         </div>
                     </div>
-
-                    <div class="form-floating mb-2">
-                        <select class="form-control border-0 shadow-sm" id="kurir" name="kurir">
-                            <option value="" selected>Pilih Kurir</option>
-                            <option value="jne" class="card-text text-secondary">JNE</option>
-                            <option value="tiki" class="card-text text-secondary">TIKI</option>
-                            <option value="pos" class="card-text text-secondary">Pos Indonesia</option>
-                        </select>
-                        <label for="kurir" id="floatingLabel">Pilih Kurir</label>
+                    <div class="col">
+                        <div class="form-floating mb-2">
+                            <select class="form-control border-0 shadow-sm" id="kurir" name="kurir">
+                                <option value="jne" class="card-text text-secondary">JNE</option>
+                                <option value="tiki" class="card-text text-secondary">TIKI</option>
+                                <option value="pos" class="card-text text-secondary">Pos Indonesia</option>
+                            </select>
+                            <label for="kurir" id="floatingLabel">Pilih Kurir</label>
+                        </div>
                     </div>
 
-                    <div class="form-floating mb-2">
-                        <select class="form-control border-0 shadow-sm" id="service" name="service">
-                            <option value="" class="card-text text-secondary"></option>
-                        </select>
-                        <label for="service" id="serviceLabel">Pilih Layanan</label>
-                        <strong>Estimasi : <span id="estimasi"></span></strong>
+                    <div class="col">
+                        <div class="form-floating mb-2">
+                            <select class="form-control border-0 shadow-sm" id="service" name="service">
+                                <option value="" class="card-text text-secondary"></option>
+                            </select>
+                            <label for="service" id="serviceLabel">Pilih Layanan</label>
+                            <strong>Estimasi : <span id="estimasi"></span></strong>
+                        </div>
                     </div>
                     <input type="hidden" name="serviceText" id="serviceText">
                     <?php if ($kupon) : ?>
-                        <div class="form-floating mb-2">
-                            <select class="form-control border-0 shadow-sm" id="kupon" name="kupon">
-                                <option selected value="" class="card-text text-secondary">
-                                    Pilih Kupon
-                                </option>
-                                <?php foreach ($kupon as $k) : ?>
-                                    <?php if ($total >= $k['total_buy']) : ?>
-                                        <option value="<?= $k['kode']; ?>">Diskon <?= ($k['discount'] * 100) . '%'; ?> : Minimal Beli Rp. <?= number_format($k['total_buy'], 0, ',', '.'); ?> </option>
-                                    <?php endif ?>
-                                <?php endforeach ?>
-                            </select>
-                            <label for="kupon" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
+                        <div class="col">
+                            <div class="form-floating mb-2">
+                                <select class="form-control border-0 shadow-sm" id="kupon" name="kupon">
+                                    <option selected value="" class="card-text text-secondary">
+                                        Pilih Kupon
+                                    </option>
+                                    <?php foreach ($kupon as $k) : ?>
+                                        <?php if ($total >= $k['total_buy']) : ?>
+                                            <option value="<?= $k['kode']; ?>">Diskon <?= ($k['discount'] * 100) . '%'; ?> : Minimal Beli Rp. <?= number_format($k['total_buy'], 0, ',', '.'); ?> </option>
+                                        <?php endif ?>
+                                    <?php endforeach ?>
+                                </select>
+                                <label for="kupon" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
+                            </div>
                         </div>
                     <?php endif ?>
                     <?php foreach ($produk as $p) : ?>
-                        <div class="row pt-3">
+                        <div class="col pt-3">
                             <div class="card border-0 shadow-sm">
                                 <div class="card-body">
                                     <div class="row">
@@ -89,7 +103,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endforeach ?>
-                    <div class="row py-3 px-3">
+                    <div class="col py-3 px-3">
                         <table class="table fs-6 lh-1">
                             <thead>
                                 <tr>
@@ -117,7 +131,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </tbody>
                         </table>
                     </div>
-                    <div class="row p-3 px-4">
+                    <div class="col p-3 px-4">
                         <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
                     </div>
                 </div>
