@@ -17,7 +17,7 @@
     <!-- Modal -->
 
     <div class="modal fade" id="selectMarket" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-md-down modal-dialog-scrollable">
+        <div class="modal-dialog modal-fullscreen-md-down">
             <div class="modal-content">
                 <form action="<?= base_url(); ?>setting/update-market" method="post">
                     <?= csrf_field(); ?>
@@ -42,7 +42,7 @@
                             <?php endforeach; ?>
                         </div>
 
-                        <div class="modal-footer">
+                        <div class="modal-footer fixed-bottom">
                             <button type="button" class="btn btn-secondary" <?= (!$user['market_selected']) ? '' : 'data-bs-dismiss="modal"' ?>>Close</button>
                             <button type="submit" class="btn btn-danger"><?= (!$user['market_selected']) ? 'Simpan' : 'Update'; ?> Lokasi Market</button>
                         </div>

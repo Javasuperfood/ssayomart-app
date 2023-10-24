@@ -11,7 +11,6 @@ class Market extends Seeder
         $data = [
             [
                 'id_toko' => 1,
-                'id_user' => 1,
                 'deskripsi' => 'Market Utama',
                 'alamat_1' => 'Karawaci office park Blok I No.20, Lippo Karawaci Desa/Kelurahan Panunggangan Barat, Kec. Cibodas Kota Tangerang , Provisi Banten Kode Pos. 15139',
                 'id_province' => 3,
@@ -25,7 +24,6 @@ class Market extends Seeder
             ],
             [
                 'id_toko' => 2,
-                'id_user' => 2,
                 'deskripsi' => 'Market Cabang JKT',
                 'alamat_1' => 'Alamat Cabang JKT',
                 'id_province' => 6,
