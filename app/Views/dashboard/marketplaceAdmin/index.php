@@ -1,35 +1,40 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Management Banner</h1>
-<hr />
-<p class="mb-4">Anda dapat mengatur banner yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
-</p>
-<div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
-    <b>Note : perhatikan ukuran dan resolusi banner sebelum upload ke Aplikasi Ssayomart Supermarket</b>
-</div>
-
 <div class="row">
     <!-- Left Panel -->
     <div class="col-lg-6">
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Masukan Foto Banner Baru</h6>
+                <h6 class="m-0 font-weight-medium">Masukan Masukan Admin</h6>
             </div>
             <div class="card-body">
-                <form action="<?= base_url(); ?>dashboard/banner/tambah-banner/save" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url('dashboard/admin-market/save'); ?>" method="post">
                     <?= csrf_field(); ?>
-                    <div class="mb-3">
-                        <label for="banner">Judul Banner</label>
-                        <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
-                        <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="banner">Market</label>
+                            <select class="form-select shadow-sm <?= (validation_show_error('id_toko')) ? 'is-invalid' : 'border-0'; ?>" aria-label="Default select example" name="market">
+                                <option value="" selected>Pilih Market</option>
+                                <?php foreach ($market as $m) : ?>
+                                    <option value="<?= $m['id_toko']; ?>" <?= (old('market') == $m['id_toko']) ? 'selected' : ''; ?>>Ssayomart <?= $m['city']; ?> - <?= $m['zip_code']; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            <div class="invalid-feedback"><?= validation_show_error('id_toko'); ?></div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="banner">Admin</label>
+                            <select class="form-select shadow-sm <?= (validation_show_error('id_user')) ? 'is-invalid' : 'border-0'; ?>" aria-label="Default select example" name="admin">
+                                <option value="" selected>Pilih Admin</option>
+                                <?php foreach ($users as $u) : ?>
+                                    <option value="<?= $u['id']; ?>" <?= (old('admin') == $u['id']) ? 'selected' : ''; ?>><?= $u['username']; ?></option>
+                                <?php endforeach ?>
+                            </select>
+                            <div class="invalid-feedback"><?= validation_show_error('id_user'); ?></div>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="img" class="form-label">Gambar Banner</label>
-                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>">
-                        <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
-                    </div>
-                    <div>
+
+                    <div class="pt-3">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
@@ -41,27 +46,38 @@
     <div class="col-lg-6 mb-3">
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">List Banner</h6>
+                <h6 class="m-0 font-weight-medium">List Admin</h6>
             </div>
             <div class="card-body">
                 <table class="table text-center" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                        <tr>
-                            <th>Judul Banner</th>
-                            <th>Gambar Banner</th>
+                            <th>No</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Market(Cabang)</th>
                             <th>Aksi</th>
-                        </tr>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($banner_list as $bl) : ?>
+
+                        <?php
+                        $i = 0;
+                        foreach ($users as $u) : ?>
                             <tr>
+                                <td><?= ++$i; ?></td>
                                 <td>
-                                    <?= $bl['title']; ?>
+                                    <?= $u['username']; ?>
                                 </td>
                                 <td>
-                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                    <?= $u['group']; ?>
+                                </td>
+                                <td>
+                                    <?php foreach ($marketAdmin as $m) : ?>
+                                        <?php if ($m['id_user'] == $u['id']) : ?>
+                                            <?= $m['city'] . ' - ' . $m['zip_code']; ?><br>
+                                        <?php endif; ?>
+                                    <?php endforeach ?>
                                 </td>
                                 <td class="text-center">
                                     <div class="nav-item dropdown no-arrow">
@@ -70,35 +86,34 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-banner/<?= $bl['id_banner']; ?>">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-banner/">
                                                 <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Update
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_banner']; ?>">
+                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner">
                                                 <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                                 <span class="text-danger">Delete</span>
                                             </a>
                                         </div>
                                     </div>
                                     <!-- ================= START MODAL DELETE SINGLE PRODUK ================== -->
-                                    <div class="modal fade" id="deleteBanner<?= $bl['id_banner']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteBanner<?= $bl['id_banner']; ?>" aria-hidden="true">
+                                    <div class="modal fade" id="deleteBanner" tabindex="-1" role="dialog" aria-labelledby="deleteBanner" aria-hidden="true">
                                         <div class="modal-dialog text-start text-secondary" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteBanner<?= $bl['id_banner']; ?>">Delete <?= $bl['title']; ?> ?</h5>
+                                                    <h5 class="modal-title" id="deleteBanner">Delete ?</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body text-center">
-                                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
                                                     <br><br>
-                                                    Pilih Delete untuk Menghapus Produk <?= $bl['title']; ?>
+                                                    Pilih Delete untuk Menghapus Produk
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                    <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
+                                                    <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/" method="post">
                                                         <?= csrf_field() ?>
                                                         <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
                                                         <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
@@ -116,10 +131,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        new DataTable('#example');
-    </script>
 </div>
 
 <script>
