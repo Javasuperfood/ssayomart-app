@@ -170,21 +170,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             </a>
                                             <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                                                <h1 class="text-secondary" style="font-size: 15px;">
+                                                <p class="text-secondary text-center" style="font-size: 16px; margin: 0;"><?= substr($p['nama'], 0, 20); ?></p>
+                                                <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
+                                                    <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
+                                                </p>
+
+                                                <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
                                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                     <?php else : ?>
                                                         <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                                     <?php endif ?>
                                                 </h1>
-                                                <p class=" text-secondary" style="font-size: 14px;"><?= substr($p['nama'], 0, 15); ?>...</p>
+
                                                 <div class="container pt-3">
                                                     <div class="row justify-items-center">
                                                         <div class="col">
                                                             <div class="horizontal-counter">
-                                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="decreaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
                                                                 <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
-                                                                <button class="btn btn-sm btn-outline-danger" type="button" onclick="increaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -203,6 +208,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
                                                             Beli
                                                         </button>
+                                                        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                                     </form>
                                                 </div>
                                             </div>
