@@ -76,6 +76,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <p class=" text-secondary" style="font-size: 16px;"><?= substr('${p.nama}', 0, 20); ?>...</p>
+                            <p class=" text-secondary" style="font-size: 12px;">
+                                <del>Rp. ${formatRupiah(p.harga_min)}</del>
+                            </p>
                                 <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
                                    ${hargaText}
                                 </h1>
@@ -94,6 +97,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <p class=" text-secondary" style="font-size: 16px; margin: 0;"><?= substr('${p.nama}', 0, 15); ?>...</p>
+                        <p class=" text-secondary" style="font-size: 12px;">
+                            <del>Rp. ${formatRupiah(p.harga_min)}</del>
+                        </p>
                             <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
                             ${hargaText}
                             </h1>

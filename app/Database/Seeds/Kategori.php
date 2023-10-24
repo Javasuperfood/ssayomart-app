@@ -121,6 +121,13 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'peralatan-dapur',
                 'img'    => 'ICON CATEGORY-16.png',
+            ],
+            [
+                'id_kategori' => 17,
+                'nama_kategori' => 'Sup',
+                'deskripsi'    => 'Lorem',
+                'slug'    => 'Sup',
+                'img'    => 'ICON CATEGORY-17.png',
             ]
         ];
 
