@@ -61,7 +61,7 @@ class ProdukController extends BaseController
                 'produk' => $getProduk,
                 'subKategori' => $subResult,
                 'sk' => $slug2,
-                'back' => ''
+                'back' => '/' . '#ktr'
             ];
             // dd($data);
             return view('user/produk/index', $data);
