@@ -37,7 +37,8 @@
                             <b>Dimensi foto harus berbentuk persegi! (Cth: 256px x 256px atau 512px x 512px)</b>
                         </div>
                         <label for="img" class="form-label">Masukan Gambar</label>
-                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" placeholder="Masukan Gambar">
+                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" placeholder="Masukan Gambar" accept="image/*">
+
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
 
@@ -47,8 +48,8 @@
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
                     </div>
                     <button type="submit" class="btn btn-danger mt-3">Simpan</button>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>

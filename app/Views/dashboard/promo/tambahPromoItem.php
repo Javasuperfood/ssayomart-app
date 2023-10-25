@@ -51,14 +51,9 @@
                                                     <div class="row g-0">
                                                         <div class="card-body border-0 shadow-sm">
                                                             <div class="row">
-
-
                                                                 <div class="col-1">
-
                                                                     <input type="radio" id="produkRadio<?= $item['id_produk']; ?>" name="produk_id" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0">
-
                                                                 </div>
-
                                                                 <div class="col-3">
                                                                     <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid">
                                                                 </div>

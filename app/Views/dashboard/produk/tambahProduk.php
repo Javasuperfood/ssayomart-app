@@ -121,8 +121,6 @@
             });
         <?php endif; ?>
     });
-
-    //Validasi Form
 </script>
 
 <?= $this->endSection(); ?>

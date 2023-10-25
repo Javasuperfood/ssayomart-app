@@ -125,7 +125,7 @@
                                                         <div class="modal-body">Pilih Delete untuk menghapus Sub kategori <?= $ks['nama_sub_kategori']; ?></div>
                                                         <div class="modal-footer">
                                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                            <form action="<?= base_url() ?>dashboard/produk/tambah-produk/delete-produk/<?= $ks['id_sub_kategori']; ?>" method="post">
+                                                            <form action="<?= base_url() ?>dashboard/kategori/delete-sub-kategori/<?= $ks['id_sub_kategori']; ?>" method="post">
                                                                 <?= csrf_field() ?>
                                                                 <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                             </form>
