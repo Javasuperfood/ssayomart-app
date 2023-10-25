@@ -34,6 +34,11 @@ class BuyController extends BaseController
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
         $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
         $beratTotal = $produk['berat'] * $qty;
+        // if ($userModel->find(user_id())['market_selected']) {
+        //     $market =  $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'];
+        // } else {
+        //     $market =  $tokoModel->first()['id_city'];
+        // }
         $data = [
             'title' => 'Buy ' . $produk['nama'],
             'alamat_list' => $alamat_list,
@@ -46,7 +51,7 @@ class BuyController extends BaseController
             'market_list' => $tokoModel->findAll(),
             'marketSelected' => $userModel->find(user_id())['market_selected'],
             'addressSelected' => $userModel->find(user_id())['address_selected'],
-            'market' => $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'],
+            // 'market' => $market,
             'beratTotal' => $beratTotal,
         ];
         // dd($data);
