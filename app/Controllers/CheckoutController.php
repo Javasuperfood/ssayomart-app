@@ -270,7 +270,11 @@ class CheckoutController extends BaseController
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
 
         $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
-
+        // if ($userModel->find(user_id())['market_selected']) {
+        //     $market =  $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'];
+        // } else {
+        //     $market =  $tokoModel->first()['id_city'];
+        // }
         $data = [
             'title' => 'Checkout',
             'alamat_list' => $alamat_list,
@@ -279,7 +283,7 @@ class CheckoutController extends BaseController
             'market_list' => $tokoModel->findAll(),
             'marketSelected' => $userModel->find(user_id())['market_selected'],
             'addressSelected' => $userModel->find(user_id())['address_selected'],
-            'market' => $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'],
+            // 'market' => $market,
         ];
 
         foreach ($checkedId as $key => $id) {
