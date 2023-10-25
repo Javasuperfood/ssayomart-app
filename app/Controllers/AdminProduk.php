@@ -29,9 +29,9 @@ class AdminProduk extends BaseController
 
         $keyword = $this->request->getVar('search');
         if ($keyword) {
-            $produk = $produkModel->adminProdukSearch($keyword);
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->adminProdukSearch($keyword);
         } else {
-            $produk = $produkModel;
+            $produk = $produkModel->orderBy('id_produk', 'DESC');
         }
         $produk_list = $produk->paginate($perPage, 'produk');
         $data = [
