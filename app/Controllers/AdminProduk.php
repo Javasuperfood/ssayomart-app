@@ -176,7 +176,6 @@ class AdminProduk extends BaseController
     public function updateProduk($id)
     {
         session();
-
         $produkModel = new ProdukModel();
 
         $kategoriModel = new KategoriModel();
@@ -198,6 +197,7 @@ class AdminProduk extends BaseController
             'variasi' => $variasList,
             'variasiItem' => $variasiItemList[0],
             'vali' => $produkModel->errors(),
+
         ];
         // dd($data);
         return view('dashboard/produk/updateProduk', $data);
@@ -270,7 +270,7 @@ class AdminProduk extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/produk');
+            return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('page'));
         } else {
             $alert = [
                 'type' => 'error',

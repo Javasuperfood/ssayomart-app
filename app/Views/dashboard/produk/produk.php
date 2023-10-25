@@ -121,7 +121,7 @@
                                                     <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Detail Varian
                                                 </a>
-                                                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/update-produk/<?= $km['id_produk']; ?>">
+                                                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/produk/update-produk/<?= $km['id_produk']; ?>/?page=<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
                                                     <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Update
                                                 </a>
