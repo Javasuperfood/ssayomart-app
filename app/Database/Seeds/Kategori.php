@@ -16,6 +16,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'kimchi-dan-makanan-pendamping',
                 'img'    => 'ICON CATEGORY-01.png',
+                'short' => 1,
             ],
             [
                 'id_kategori' => 2,
@@ -23,6 +24,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'nori',
                 'img'    => 'ICON CATEGORY-02.png',
+                'short' => 2,
             ],
             [
                 'id_kategori' => 3,
@@ -30,6 +32,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'buah-dan-sayur',
                 'img'    => 'ICON CATEGORY-03.png',
+                'short' => 3,
             ],
             [
                 'id_kategori' => 4,
@@ -37,6 +40,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'saus-dan-bubuk-cabai',
                 'img'    => 'ICON CATEGORY-04.png',
+                'short' => 4,
             ],
             [
                 'id_kategori' => 5,
@@ -44,6 +48,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'daging-dan-telur',
                 'img'    => 'ICON CATEGORY-05.png',
+                'short' => 5,
             ],
             [
                 'id_kategori' => 6,
@@ -51,6 +56,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'makanan-laut',
                 'img'    => 'ICON CATEGORY-06.png',
+                'short' => 6,
             ],
             [
                 'id_kategori' => 7,
@@ -58,6 +64,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'beras-dan-kacang',
                 'img'    => 'ICON CATEGORY-07.png',
+                'short' => 7,
             ],
             [
                 'id_kategori' => 8,
@@ -65,6 +72,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'ramen',
                 'img'    => 'ICON CATEGORY-08.png',
+                'short' => 8,
             ],
             [
                 'id_kategori' => 9,
@@ -72,6 +80,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'snack',
                 'img'    => 'ICON CATEGORY-09.png',
+                'short' => 9,
             ],
             [
                 'id_kategori' => 10,
@@ -79,6 +88,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'roti',
                 'img'    => 'ICON CATEGORY-10.png',
+                'short' => 10,
             ],
             [
                 'id_kategori' => 11,
@@ -86,6 +96,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'susu-dan-olahan',
                 'img'    => 'ICON CATEGORY-11.png',
+                'short' => 12,
             ],
             [
                 'id_kategori' => 12,
@@ -93,6 +104,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'minyak',
                 'img'    => 'ICON CATEGORY-12.png',
+                'short' => 13,
             ],
             [
                 'id_kategori' => 13,
@@ -100,6 +112,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'minuman-kopi-dan-teh',
                 'img'    => 'ICON CATEGORY-13.png',
+                'short' => 14,
             ],
             [
                 'id_kategori' => 14,
@@ -107,6 +120,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'dumpling-dan-makanan-beku',
                 'img'    => 'ICON CATEGORY-14.png',
+                'short' => 15,
             ],
             [
                 'id_kategori' => 15,
@@ -114,6 +128,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'Kosmetik',
                 'img'    => 'ICON CATEGORY-15.png',
+                'short' => 16,
             ],
             [
                 'id_kategori' => 16,
@@ -121,6 +136,7 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'peralatan-dapur',
                 'img'    => 'ICON CATEGORY-16.png',
+                'short' => 17,
             ],
             [
                 'id_kategori' => 17,
@@ -128,6 +144,15 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => 'Sup',
                 'img'    => 'ICON CATEGORY-17.png',
+                'short' => 18,
+            ],
+            [
+                'id_kategori' => 18,
+                'nama_kategori' => 'Nasi Instant & Bubur',
+                'deskripsi'    => 'Lorem',
+                'slug'    => 'Nasi-Instant-dan-Bubur',
+                'img'    => 'ICON CATEGORY-18.png',
+                'short' => 11,
             ]
         ];
 
