@@ -54,42 +54,42 @@ class Promo extends Seeder
                 'deskripsi' => 'lorem',
                 'img' => 'promo-4.jpg'
             ],
-            [
-                'id_promo' => 4,
-                'title' => 'Bundling',
-                'slug' =>  'bundling',
-                'start_at' => '2023-09-07',
-                'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem',
-                'img' => 'promo-4.jpg'
-            ],
-            [
-                'id_promo' => 5,
-                'title' => 'Bundling',
-                'slug' =>  'bundling',
-                'start_at' => '2023-09-07',
-                'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem',
-                'img' => 'promo-4.jpg'
-            ],
-            [
-                'id_promo' => 6,
-                'title' => 'Bundling',
-                'slug' =>  'bundling',
-                'start_at' => '2023-09-07',
-                'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem',
-                'img' => 'promo-4.jpg'
-            ],
-            [
-                'id_promo' => 7,
-                'title' => 'Bundling',
-                'slug' =>  'bundling',
-                'start_at' => '2023-09-07',
-                'end_at' => '2023-12-20',
-                'deskripsi' => 'lorem',
-                'img' => 'promo-4.jpg'
-            ],
+            // [
+            //     'id_promo' => 4,
+            //     'title' => 'Bundling',
+            //     'slug' =>  'bundling',
+            //     'start_at' => '2023-09-07',
+            //     'end_at' => '2023-12-20',
+            //     'deskripsi' => 'lorem',
+            //     'img' => 'promo-4.jpg'
+            // ],
+            // [
+            //     'id_promo' => 5,
+            //     'title' => 'Bundling',
+            //     'slug' =>  'bundling',
+            //     'start_at' => '2023-09-07',
+            //     'end_at' => '2023-12-20',
+            //     'deskripsi' => 'lorem',
+            //     'img' => 'promo-4.jpg'
+            // ],
+            // [
+            //     'id_promo' => 6,
+            //     'title' => 'Bundling',
+            //     'slug' =>  'bundling',
+            //     'start_at' => '2023-09-07',
+            //     'end_at' => '2023-12-20',
+            //     'deskripsi' => 'lorem',
+            //     'img' => 'promo-4.jpg'
+            // ],
+            // [
+            //     'id_promo' => 7,
+            //     'title' => 'Bundling',
+            //     'slug' =>  'bundling',
+            //     'start_at' => '2023-09-07',
+            //     'end_at' => '2023-12-20',
+            //     'deskripsi' => 'lorem',
+            //     'img' => 'promo-4.jpg'
+            // ],
         ];
 
         $this->db->table('jsf_promo')->insertBatch($data);
