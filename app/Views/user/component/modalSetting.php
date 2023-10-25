@@ -35,7 +35,7 @@
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($user['market_selected'] == $m['id_toko']) ? 'checked' : ''; ?>>
                                         </div>
-                                        <p class="fw-bold">Ssayomart <?= $m['zip_code']; ?> <i class="fw-bold text-danger" id="marketSelected<?= $m['id_toko']; ?>"> <?= ($user['market_selected'] == $m['id_toko']) ? 'Selected' : ''; ?></i></p>
+                                        <p class="fw-bold">Ssayomart <?= $m['lable']; ?> <i class="fw-bold text-danger" id="marketSelected<?= $m['id_toko']; ?>"> <?= ($user['market_selected'] == $m['id_toko']) ? 'Selected' : ''; ?></i></p>
                                         <p><?= $m['alamat_1']; ?></p>
                                         <p><?= $m['telp']; ?></p>
                                     </div>

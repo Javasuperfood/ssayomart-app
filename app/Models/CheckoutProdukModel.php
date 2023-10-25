@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use PhpParser\Node\Identifier;
 
 class CheckoutProdukModel extends Model
 {
@@ -59,28 +60,35 @@ class CheckoutProdukModel extends Model
         $result = $query->getResult();
         return $result;
     }
-    public function getAllTransaksi($perPage, $currentPage)
+    public function getAllTransaksi($toko = null, $perPage, $currentPage)
     {
         $db = \Config\Database::connect();
-
         $query = $db->table('jsf_checkout_produk')
             ->select('jsf_checkout_produk.*, jsf_checkout.*, jsf_checkout.id_status_pesan AS pesan_status, jsf_checkout.id_status_kirim AS kirim_status, jsf_produk.*, jsf_status_pesan.status AS pesan_status_text, jsf_status_kirim.status AS kirim_status_text')
             ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->join('jsf_status_pesan', 'jsf_checkout.id_status_pesan = jsf_status_pesan.id_status_pesan')
             ->join('jsf_status_kirim', 'jsf_checkout.id_status_kirim = jsf_status_kirim.id_status_kirim')
-            ->orderBy('jsf_checkout_produk.created_at', 'DESC')
-            ->get();
+            ->orderBy('jsf_checkout_produk.created_at', 'DESC');
+        if ($toko != null) {
+            foreach ($toko as $key => $t) {
+                if ($key == 0) {
+                    $query->Like('id_toko', $t['id_toko']);
+                } else {
+                    $query->orLike('id_toko', $t['id_toko']);
+                }
+            }
+        }
 
-        $result = $query->getResultArray();
-
+        $result = $query->get()->getResultArray();
+        // dd($result);
         // Apply pagination manually
         $start = ($currentPage - 1) * $perPage;
         $paginatedResults = array_slice($result, $start, $perPage);
 
         return $paginatedResults;
     }
-    public function getAllTransaksiWithStatus($perPage, $currentPage, $status)
+    public function getAllTransaksiWithStatus($toko = null, $perPage, $currentPage, $status)
     {
         $db = \Config\Database::connect();
 
@@ -91,10 +99,18 @@ class CheckoutProdukModel extends Model
             ->join('jsf_status_pesan', 'jsf_checkout.id_status_pesan = jsf_status_pesan.id_status_pesan')
             ->join('jsf_status_kirim', 'jsf_checkout.id_status_kirim = jsf_status_kirim.id_status_kirim')
             ->where('jsf_checkout.id_status_pesan', $status)
-            ->orderBy('jsf_checkout_produk.created_at', 'DESC')
-            ->get();
+            ->orderBy('jsf_checkout_produk.created_at', 'DESC');
+        if ($toko != null) {
+            foreach ($toko as $key => $t) {
+                if ($key == 0) {
+                    $query->Like('id_toko', $t['id_toko']);
+                } else {
+                    $query->orLike('id_toko', $t['id_toko']);
+                }
+            }
+        }
 
-        $result = $query->getResultArray();
+        $result = $query->get()->getResultArray();
 
         // Apply pagination manually
         $start = ($currentPage - 1) * $perPage;
@@ -102,7 +118,7 @@ class CheckoutProdukModel extends Model
 
         return $paginatedResults;
     }
-    public function getAllPrint()
+    public function getAllPrint($toko = null)
     {
         $db = \Config\Database::connect();
 
@@ -112,10 +128,18 @@ class CheckoutProdukModel extends Model
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
             ->where('jsf_checkout.id_status_pesan', '2')
-            ->orderBy('jsf_checkout_produk.created_at', 'DESC')
-            ->get();
+            ->orderBy('jsf_checkout_produk.created_at', 'DESC');
+        if ($toko != null) {
+            foreach ($toko as $key => $t) {
+                if ($key == 0) {
+                    $query->Like('id_toko', $t['id_toko']);
+                } else {
+                    $query->orLike('id_toko', $t['id_toko']);
+                }
+            }
+        };
 
-        $result = $query->getResultArray();
+        $result = $query->get()->getResultArray();
 
         return  $result;
     }

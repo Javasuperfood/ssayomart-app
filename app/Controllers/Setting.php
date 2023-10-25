@@ -29,7 +29,7 @@ class Setting extends BaseController
         $marketSelected = null;
         if ($user['market_selected']) {
             $getCity = isset($marketModel->find($user['market_selected'])['city']);
-            $marketSelected =  ($getCity) ? 'Ssayomart ' . $marketModel->find($user['market_selected'])['city'] : 'Pilih Lokasi Market';
+            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : 'Pilih Lokasi Market';
         } else {
             $marketSelected = 'Pilih Lokasi Market';
         }
