@@ -89,32 +89,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const customButtons = document.querySelectorAll('.custom-button');
-            const defaultButtonSlug = "slug-default"; // Ganti dengan slug tombol default
 
-            customButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const slug = event.currentTarget.dataset.slug;
-                    // Simpan status tombol aktif di localStorage
-                    localStorage.setItem('activeButtonSlug', slug);
-                });
-            });
-
-            // Cek jika ada tombol yang aktif disimpan di localStorage
-            const activeButtonSlug = localStorage.getItem('activeButtonSlug');
-            if (activeButtonSlug) {
-                // Tambahkan kelas 'active' ke tombol yang sesuai dengan localStorage
-                const activeButton = document.querySelector(`[data-slug="${activeButtonSlug}"]`);
-                activeButton.classList.add('active');
-            } else {
-                // Jika tidak ada tombol yang aktif di localStorage, tambahkan kelas 'active' ke tombol default saat halaman dimuat
-                const defaultButton = document.querySelector(`[data-slug="${defaultButtonSlug}"]`);
-                defaultButton.classList.add('active');
-            }
-        });
-    </script>
 
 
 <?php else : ?>
