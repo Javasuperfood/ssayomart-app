@@ -472,6 +472,55 @@ class Kategori extends Seeder
                 'deskripsi'    => 'Lorem',
                 'slug'    => '뚝배기-TUKBAEGI',
             ],
+            [
+                'id_kategori' => 18,
+                'id_sub_kategori' => 44,
+                'nama_kategori' => '즉석밥 / NASI INSTAN',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '즉석밥-NASI INSTAN',
+            ],
+            [
+                'id_kategori' => 18,
+                'id_sub_kategori' => 45,
+                'nama_kategori' => '죽 / BUBUR',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '죽-BUBUR',
+            ],
+            [
+                'id_kategori' => 8,
+                'id_sub_kategori' => 46,
+                'nama_kategori' => '국수 / NOODLE',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '국수-NOODLE',
+            ],
+            [
+                'id_kategori' => 17,
+                'id_sub_kategori' => 47,
+                'nama_kategori' => '액상 / SUP',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '액상-SUP',
+            ],
+            [
+                'id_kategori' => 17,
+                'id_sub_kategori' => 48,
+                'nama_kategori' => '분말 / BUBUK',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '분말-BUBUK',
+            ],
+            [
+                'id_kategori' => 17,
+                'id_sub_kategori' => 49,
+                'nama_kategori' => '재료 / BAHAN',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '재료-BAHAN',
+            ],
+            [
+                'id_kategori' => 10,
+                'id_sub_kategori' => 50,
+                'nama_kategori' => '믹스 / MIX',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '믹스-MIX',
+            ]
         ];
 
         $this->db->table('jsf_sub_kategori')->insertBatch($data2);
