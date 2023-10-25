@@ -97,8 +97,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <!-- All Kategori -->
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #C1E1C1;">
-                    <div class="card-warning">
+                    <div id="ktr" class="card-warning">
                         <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
+                        </span>
                     </div>
                 </div>
                 <div class="row text-center row-cols-3 mt-3">
@@ -170,7 +171,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             </a>
                                             <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
-                                                <p class="text-secondary text-center" style="font-size: 16px; margin: 0;"><?= substr($p['nama'], 0, 15); ?></p>
+                                                <p class="text-secondary text-center" style="font-size: 16px; margin: 0;"><?= substr($p['nama'], 0, 15); ?>...</p>
                                                 <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
                                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                                 </p>
