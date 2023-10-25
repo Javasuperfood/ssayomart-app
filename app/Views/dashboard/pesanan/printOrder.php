@@ -119,7 +119,7 @@
 </tr>
 <tr style="height: 97.9688px;">
 <td style="width: 48.6578%; height: 97.9688px;"><?= $checkout['kirim']; ?></td>
-<td style="width: 48.6578%; height: 97.9688px;"><strong>Nama</strong> : JAVA SUPER FOOD<br /><strong>Alamat</strong> :<br />Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139<br /><strong>Telp</strong> : (021) 55733457</td>
+<td style="width: 48.6578%; height: 97.9688px;"><strong>Nama</strong> : Ssayomart <?= $toko['lable'] ?><br /><strong>Alamat</strong> :<br /><?= $toko['alamat_1']; ?><br /><strong>Telp</strong> : <?= $toko['telp']; ?></td>
 </tr>
 </tbody>
 </table>
@@ -144,8 +144,8 @@
 <tbody>
 <tr style="height: 39.1875px; text-align: center;">
 <th style="height: 39.1875px;"><?= $checkout['invoice']; ?></th>
-<td style="height: 39.1875px;"><?= $paymentStatus->settlement_time; ?></td>
-<td style="height: 39.1875px;"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?><br><?php if (isset($paymentStatus->va_numbers[0])) : ?><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?><?php endif ?></td>
+<td style="height: 39.1875px;"><?= (isset($paymentStatus->settlement_time)) ? $paymentStatus->settlement_time : 'error'; ?></td>
+<td style="height: 39.1875px;"><?= ucwords(str_replace("_", " ", (isset($paymentStatus->payment_type)) ? $paymentStatus->payment_type : 'error')); ?><br><?php if (isset($paymentStatus->va_numbers[0])) : ?><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?><?php endif ?></td>
 <td style="height: 39.1875px;"><?= $checkout['kurir']; ?><br><?= $checkout['service']; ?></td>
 </tr>
 </tbody>
@@ -172,7 +172,7 @@ foreach ($produk as $p) : ?>
 <tr style="height: 19.5938px;">
 <th style="height: 19.5938px;" scope="row"><?= $i++; ?></th>
 <td style="height: 19.5938px;"><?= $p['nama']; ?></td>
-<td style="height: 19.5938px;"><?= $p['value_item']; ?>(<?= $p['berat']; ?>)</td>
+<td style="height: 19.5938px;"><?= $p['value_item']; ?> (<?= $p['berat']; ?>garm)</td>
 <td style="height: 19.5938px; text-align: right;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></td>
 <td style="height: 19.5938px; text-align: right;"><?= $p['qty']; ?></td>
 <td class="text-end" style="height: 19.5938px; text-align: right;">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></td>
@@ -180,15 +180,11 @@ foreach ($produk as $p) : ?>
 <?php endforeach ?>
 <tr style="height: 19.5938px;">
 <td class="text-end fw-bold" style="text-align: right; height: 19.5938px;" colspan="5"><strong>Total Harga</strong></td>
-<td class="text-end" style="height: 19.5938px; text-align: right;">Rp. Rp. <?= number_format($checkout['total_1'], 0, ',', '.'); ?></td>
+<td class="text-end" style="height: 19.5938px; text-align: right;"> Rp. <?= number_format($checkout['total_1'], 0, ',', '.'); ?></td>
 </tr>
 <tr style="height: 19.5938px; text-align: right;">
 <td class="text-end fw-bold" style="height: 19.5938px;" colspan="5"><strong>Total Ongkos Kirim</strong></td>
 <td class="text-end" style="height: 19.5938px;">Rp. <?= number_format($checkout['harga_service'], 0, ',', '.'); ?></td>
-</tr>
-<tr style="height: 19.5938px; text-align: right;">
-<td class="text-end fw-bold" style="height: 19.5938px;" colspan="5"><strong>Biaya layanan</strong></td>
-<td class="text-end" style="height: 19.5938px;">Rp. <?= number_format($layanan, 0, ',', '.'); ?></td>
 </tr>
 <tr style="height: 19.5938px; text-align: right;">
 <td class="text-end fw-bold" style="height: 19.5938px;" colspan="5"><strong>Subtotal</strong></td>

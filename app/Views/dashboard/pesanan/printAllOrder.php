@@ -124,7 +124,7 @@ foreach ($checkout as $key => $c) : ?>
 </tr>
 <tr style="height: 97.9688px;">
 <td style="width: 48.6578%; height: 97.9688px;"><?= $c['kirim']; ?></td>
-<td style="width: 48.6578%; height: 97.9688px;"><strong>Nama</strong> : JAVA SUPER FOOD<br /><strong>Alamat</strong> :<br />Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139<br /><strong>Telp</strong> : (021) 55733457</td>
+<td style="width: 48.6578%; height: 97.9688px;"><strong>Nama</strong> : Ssayomart <?= $toko['lable'] ?><br /><strong>Alamat</strong> :<br /><?= $toko['alamat_1']; ?><br /><strong>Telp</strong> : <?= $toko['telp']; ?></td>
 </tr>
 </tbody>
 </table>

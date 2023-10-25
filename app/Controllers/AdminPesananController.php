@@ -214,7 +214,11 @@ class AdminPesananController extends BaseController
         MidtransConfig::$is3ds = $midtransConfig->is3ds;
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
-        $allOrder = $checkoutProdModel->getAllPrint();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
+
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
+        $allOrder = $checkoutProdModel->getAllPrint($toko);
         $data = [
             'layanan' => 1000,
             'checkout' => $allOrder,
@@ -230,6 +234,8 @@ class AdminPesananController extends BaseController
                 // echo "An error occurred: " . $e->getMessage();
             }
         }
+
+        $data['toko'] = $tokoModel->find($toko[0]['id_toko']);
 
 
         // dd($data);
@@ -252,9 +258,12 @@ class AdminPesananController extends BaseController
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesanModel = new StatusPesanModel();
+        $tokoModel = new TokoModel();
         $checkout =  $checkoutModel->find($id);
+
+        $toko = $tokoModel->find($checkout['id_toko']);
         $data = [
-            'layanan' => 1000,
+            'toko' => $toko,
             'checkout' => $checkout,
             'produk' => $checkoutProdModel->getProdukByIdCheckout($id),
         ];

@@ -118,7 +118,7 @@ class CheckoutProdukModel extends Model
 
         return $paginatedResults;
     }
-    public function getAllPrint()
+    public function getAllPrint($toko = null)
     {
         $db = \Config\Database::connect();
 
@@ -128,10 +128,18 @@ class CheckoutProdukModel extends Model
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
             ->where('jsf_checkout.id_status_pesan', '2')
-            ->orderBy('jsf_checkout_produk.created_at', 'DESC')
-            ->get();
+            ->orderBy('jsf_checkout_produk.created_at', 'DESC');
+        if ($toko != null) {
+            foreach ($toko as $key => $t) {
+                if ($key == 0) {
+                    $query->Like('id_toko', $t['id_toko']);
+                } else {
+                    $query->orLike('id_toko', $t['id_toko']);
+                }
+            }
+        };
 
-        $result = $query->getResultArray();
+        $result = $query->get()->getResultArray();
 
         return  $result;
     }

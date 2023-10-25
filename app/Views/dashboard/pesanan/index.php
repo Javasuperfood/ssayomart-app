@@ -20,7 +20,7 @@
         <div class="card-body">
             <div class="row mb-3 header">
                 <div class="col text-end">
-                    <?php if (isset($pages) && $pages == 'in-progress') : ?>
+                    <?php if (isset($pages) && $pages == 'in-proccess') : ?>
                         <a href="<?= base_url('dashboard/order/in-proccess/print-all'); ?>" class="btn btn-outline-danger <?= (count($order) == 0) ? 'd-none' : ''; ?>"><i class="bi bi-printer"></i> Print All</a>
                     <?php endif ?>
                 </div>
@@ -102,10 +102,6 @@
                                                     <i class="bi bi-box-seam-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Detail
                                                 </a>
-                                                <a class="dropdown-item" href="#">
-                                                    <i class="bi bi-pencil-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                    Update
-                                                </a>
                                             </div>
                                         </div>
                                     </td>
@@ -152,36 +148,37 @@
             <?= $pager->links('order', 'pagerS'); ?>
         </div>
     </div>
-<?php endif ?>
+<?php else : ?>
 
-<div class="row">
-    <div class="col">
-        <p class="text-center fw-bold text-danger">
-            Anda adalah admin namun belum terdaftar pada market/cabang mana pun hubungi super admin ID Admin anda adalah :
-        </p>
-        <div class="row">
-            <div class="col d-flex justify-content-center">
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-danger border-0 shadow-sm h-100 py-2">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                        ID Admin</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <?= user_id(); ?>
+    <div class="row">
+        <div class="col">
+            <p class="text-center fw-bold text-danger">
+                Anda adalah admin namun belum terdaftar pada market/cabang mana pun hubungi super admin ID Admin anda adalah :
+            </p>
+            <div class="row">
+                <div class="col d-flex justify-content-center">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-danger border-0 shadow-sm h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                            ID Admin</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?= user_id(); ?>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="bi bi-geo-alt-fill fa-2x text-gray-300"></i>
+                                    <div class="col-auto">
+                                        <i class="bi bi-geo-alt-fill fa-2x text-gray-300"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
+<?php endif; ?>
 <?= $this->endSection(); ?>
