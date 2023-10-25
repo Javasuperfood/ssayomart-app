@@ -9,6 +9,7 @@
         <!-- code -->
         <form action="<?= base_url(); ?>dashboard/produk/update-produk/save" method="POST" enctype="multipart/form-data">
             <?= csrf_field(); ?>
+            <input type="hidden" name="page" value="<?= (isset($_GET['page']) ? $_GET['page'] : '1'); ?>">
             <input type="hidden" name="slug" value="<?= $p['slug'] ?>">
             <input type="text" class="form-control border-0 shadow-sm d-none" name="id_produk" value="<?= $p['id_produk'] ?>">
             <div class="mb-3">
