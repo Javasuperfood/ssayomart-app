@@ -137,7 +137,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="row">
                     <div class="col">
                         <div class="swiper mySwiper">
-                            <div class="swiper-wrapper d-flex">
+                            <div class="swiper-wrapper d-flex justify-content-center align-items-center">
                                 <?php foreach ($promo as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
                                         <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
