@@ -3,9 +3,12 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AdminTokoModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\StatusPesanModel;
+use App\Models\TokoModel;
+use App\Models\UsersModel;
 use Midtrans\Config as MidtransConfig;
 use TCPDF;
 
@@ -17,17 +20,29 @@ class AdminPesananController extends BaseController
     {
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesanModel = new StatusPesanModel();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
+
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
+
+
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
         $perPage = 10;
         $checkoutProdModel->paginate($perPage, 'order');
-        $allOrder = $checkoutProdModel->getAllTransaksi($perPage, $currentPage);
+        $allOrder = $checkoutProdModel->getAllTransaksi($toko, $perPage, $currentPage);
         $data = [
+            'pages' => 'order',
             'order' => $allOrder,
             'pager' => $checkoutProdModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
-            'statusPesan' => $statusPesanModel->findAll()
+            'statusPesan' => $statusPesanModel->findAll(),
         ];
+
+        foreach ($toko as $key => $t) {
+            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
+        }
+
         // dd($data);
         return view('dashboard/pesanan/index', $data);
     }
@@ -35,17 +50,24 @@ class AdminPesananController extends BaseController
     public function awaitingPayment()
     {
         $checkoutProdModel = new CheckoutProdukModel();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
 
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
         $perPage = 10;
         $checkoutProdModel->paginate($perPage, 'order');
-        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($perPage, $currentPage, 1);
+        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($toko, $perPage, $currentPage, 1);
         $data = [
+            'pages' => 'awaiting-payment',
             'order' => $allOrder,
             'pager' => $checkoutProdModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1
         ];
+        foreach ($toko as $key => $t) {
+            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
+        }
         // dd($data);
         return view('dashboard/pesanan/index', $data);
     }
@@ -54,12 +76,15 @@ class AdminPesananController extends BaseController
     {
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesanModel = new StatusPesanModel();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
 
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
         $perPage = 10;
         $checkoutProdModel->paginate($perPage, 'order');
-        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($perPage, $currentPage, 2);
+        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($toko, $perPage, $currentPage, 2);
         $data = [
             'pages' => 'in-proccess',
             'order' => $allOrder,
@@ -67,6 +92,9 @@ class AdminPesananController extends BaseController
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll()
         ];
+        foreach ($toko as $key => $t) {
+            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
+        }
         // dd($data);
         return view('dashboard/pesanan/index', $data);
     }
@@ -75,12 +103,15 @@ class AdminPesananController extends BaseController
     {
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesanModel = new StatusPesanModel();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
 
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
         $perPage = 10;
         $checkoutProdModel->paginate($perPage, 'order');
-        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($perPage, $currentPage, 3);
+        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($toko, $perPage, $currentPage, 3);
         $data = [
             'pages' => 'being-delivered',
             'order' => $allOrder,
@@ -88,6 +119,9 @@ class AdminPesananController extends BaseController
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll()
         ];
+        foreach ($toko as $key => $t) {
+            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
+        }
         // dd($data);
         return view('dashboard/pesanan/index', $data);
     }
@@ -95,12 +129,15 @@ class AdminPesananController extends BaseController
     {
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesanModel = new StatusPesanModel();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
 
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
         $perPage = 10;
         $checkoutProdModel->paginate($perPage, 'order');
-        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($perPage, $currentPage, 4);
+        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($toko, $perPage, $currentPage, 4);
         $data = [
             'pages' => 'delivered',
             'order' => $allOrder,
@@ -108,6 +145,9 @@ class AdminPesananController extends BaseController
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll()
         ];
+        foreach ($toko as $key => $t) {
+            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
+        }
         // dd($data);
         return view('dashboard/pesanan/index', $data);
     }
