@@ -56,42 +56,44 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </section>
             <!-- rekomendasi -->
-            <div class="container mb-3">
-                <div class="card py-0 rounded-3" style="background-color: #fce0e4; border: none; text-align: center;">
-                    <div class="card-warning mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 335px;">
-                    </div>
-                    <div class="container my-3">
-                        <div class="swiper mySweety">
-                            <div class="swiper-wrapper d-flex">
-                                <?php foreach ($blog_detail as $bd) : ?>
-                                    <div class="swiper-slide">
-                                        <div class="shadow-sm">
-                                            <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Thumbnail Artikel" style="height: 180px; width: 180px;">
-                                            <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
-                                                <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
-                                            </a>
+            <section class="mt-0" id="rekomendasi">
+                <div class="container pt-0 mb-3">
+                    <div class="card mt-3 rounded-3" style="background-color: #fce0e4; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
+                        <div class="card-warning mt-3">
+                            <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 340px;">
+                        </div>
+                        <div class="container my-3">
+                            <div class="swiper mySweety" style="position: relative;">
+                                <div class="swiper-wrapper d-flex">
+                                    <?php foreach ($blog_detail as $bd) : ?>
+                                        <div class="swiper-slide">
+                                            <div class="shadow-sm">
+                                                <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top" alt="Thumbnail Artikel">
+                                                <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
+                                                    <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                            <!-- Previous button centered within the image -->
-                            <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                    <i class="bi bi-arrow-left"></i>
-                                </button>
-                            </div>
+                                    <?php endforeach; ?>
+                                </div>
+                                <!-- Previous button centered within the image -->
+                                <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                        <i class="bi bi-arrow-left"></i>
+                                    </button>
+                                </div>
 
-                            <!-- Next button centered within the image -->
-                            <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                    <i class="bi bi-arrow-right"></i>
-                                </button>
+                                <!-- Next button centered within the image -->
+                                <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                        <i class="bi bi-arrow-right"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
             <!-- end rekomendasi -->
 
             <!-- All Kategori -->
@@ -170,7 +172,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
                                                 </div>
                                             </a>
-                                            <div class="fs-3 mt-3" style="padding: 0 10px 0 10px;">
+                                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                                 <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
                                                     <p class=" text-secondary fw-bold " style=" font-size: 14px; margin: 0;"><?= substr($p['nama'], 0, 50); ?>...</p>
                                                 </div>
@@ -186,7 +188,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php endif ?>
                                                 </h1>
 
-                                                <div class="container pt-3">
+                                                <div class="container mt-2">
                                                     <div class="row justify-items-center">
                                                         <div class="col">
                                                             <div class="horizontal-counter">
@@ -201,14 +203,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <form action="<?= base_url('produk/' . $p['slug']); ?>">
                                                         <input type="hidden" name="add-to-cart" value="show">
                                                         <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
+                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
                                                             <i class="bi bi-cart-plus text-white fa-lg"></i>
                                                         </button>
                                                     </form>
                                                     <form action="<?= base_url('produk/' . $p['slug']); ?>">
                                                         <input type="hidden" name="buy" value="show">
                                                         <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-4 fw-bold">
+                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
                                                             Beli
                                                         </button>
                                                         <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
