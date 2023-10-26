@@ -165,6 +165,11 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
     $routes->post('produk/update-produk/save', 'AdminProduk::saveUpdateProduk');
 
+    // Kategori Produk Batch
+    $routes->get('produk/produk-batch', 'AdminKategoriBatch::produkBatch');
+    $routes->post('produk/produk-batch/save', 'AdminKategoriBatch::save');
+
+
     //Route Admin Dashboard Kupon
     $routes->group('kupon/', static function ($routes) {
         $routes->get('/', 'AdminKupon::kupon');
