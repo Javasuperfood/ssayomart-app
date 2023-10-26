@@ -59,7 +59,7 @@ var swiper = new Swiper(".mySwiper", {
     });
 
   var swiper = new Swiper(".mySweety", {
-    slidesPerView: 1,
+    slidesPerView: 0,
     centeredSlides: false,
     spaceBetween: 10,
     grabCursor: true,
@@ -75,7 +75,7 @@ var swiper = new Swiper(".mySwiper", {
       },
 
       768: {
-        slidesPerView: 4, // 3 card per tampilan
+        slidesPerView: 3, // 3 card per tampilan
       },
       280: {
         slidesPerView: 2, // tampilan galaxo fold
