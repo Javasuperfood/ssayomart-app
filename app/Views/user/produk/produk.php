@@ -43,8 +43,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <div class="text-center">
-                        <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
-                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
+                        <?php if ($varianItem > 1) : ?>
+                            <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
+
+                            <button class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
+                        <?php elseif ($varianItem == 1) : ?>
+                            <input type="hidden" id="qty" name="qty" value="1">
+                            <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
+                            <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>"><i class="bi bi-cart-fill"></i></button>
+
+                            <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</a>
+                        <?php endif ?>
                     </div>
                 </div>
                 <div class="row mt-4 mb-5">
@@ -122,7 +131,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
-                                <input type="hidden" id="qty" name="qty" value="1">
                                 <?= $this->include('user/component/scriptAddToCart'); ?>
                             </div>
                         </div>
@@ -130,16 +138,53 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
 
-
-            <!-- Modal Varian Buy -->
-            <div class="modal fade" id="modalVarianBuy" tabindex="-1" aria-labelledby="modalVarianBuyLabel" aria-hidden="true">
-                <div class="modal-dialog" style="top: calc(100% - 300px);">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli Langsung</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <?php if ($varianItem > 1) : ?>
+                <!-- Modal Varian Buy -->
+                <div class="modal fade" id="modalVarianBuy" tabindex="-1" aria-labelledby="modalVarianBuyLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="top: calc(100% - 300px);">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli Langsung</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
+                                <div class="modal-body">
+                                    <div class="row row-cols-3">
+                                        <?php foreach ($varian as $key => $v) : ?>
+                                            <div class="col" key="<?= $key; ?>">
+                                                <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title"><?= $v['value_item']; ?></h5>
+                                                        <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
+                                                        <div class="form-check">
+                                                            <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarianBuy<?= $v['id_variasi_item']; ?>">
+                                                            <label class="form-check-label" for="radioVarianBuy<?= $v['id_variasi_item']; ?>">
+                                                                Pilih
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endforeach ?>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="hidden" id="qty" name="qty" value="1">
+                                    <button type="submit" class="btn btn-danger mt-4">Beli Sekarang</button>
+                                </div>
+                            </form>
                         </div>
-                        <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
+                    </div>
+                </div>
+
+                <!-- Modal Varian Cart Mobile  -->
+                <div class="modal fade" id="modalVarian" tabindex="-1" aria-labelledby="modalVarianLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="top: calc(100% - 300px);">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalVarianLabel">Varian Produk</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
                             <div class="modal-body">
                                 <div class="row row-cols-3">
                                     <?php foreach ($varian as $key => $v) : ?>
@@ -149,8 +194,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <h5 class="card-title"><?= $v['value_item']; ?></h5>
                                                     <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                                     <div class="form-check">
-                                                        <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarianBuy<?= $v['id_variasi_item']; ?>">
-                                                        <label class="form-check-label" for="radioVarianBuy<?= $v['id_variasi_item']; ?>">
+                                                        <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $v['id_variasi_item']; ?>">
+                                                        <label class="form-check-label" for="radioVarian<?= $v['id_variasi_item']; ?>">
                                                             Pilih
                                                         </label>
                                                     </div>
@@ -161,48 +206,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <input type="hidden" id="qty" name="qty" value="1">
-                                <button type="submit" class="btn btn-danger mt-4">Beli Sekarang</button>
+                                <button type="button" class="btn btn-danger add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">Tambah Keranjang</button>
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Modal Varian Cart Mobile  -->
-            <div class="modal fade" id="modalVarian" tabindex="-1" aria-labelledby="modalVarianLabel" aria-hidden="true">
-                <div class="modal-dialog" style="top: calc(100% - 300px);">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modalVarianLabel">Varian Produk</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row row-cols-3">
-                                <?php foreach ($varian as $key => $v) : ?>
-                                    <div class="col" key="<?= $key; ?>">
-                                        <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
-                                            <div class="card-body">
-                                                <h5 class="card-title"><?= $v['value_item']; ?></h5>
-                                                <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
-                                                <div class="form-check">
-                                                    <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $v['id_variasi_item']; ?>">
-                                                    <label class="form-check-label" for="radioVarian<?= $v['id_variasi_item']; ?>">
-                                                        Pilih
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">Tambah Keranjang</button>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php endif ?>
         </div>
     </div>
 <?php else : ?>
@@ -249,8 +258,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <div>
-                        <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
-                        <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
+                        <?php if ($varianItem > 1) : ?>
+                            <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
+                            <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
+                        <?php elseif ($varianItem == 1) : ?>
+                            <input type="hidden" id="qty" name="qty" value="1">
+                            <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
+                            <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>"><i class=" bi bi-cart-fill"></i></button>
+                            <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</a>
+                        <?php endif ?>
                     </div>
                     <div class="row my-4">
                         <div class="col-lg-6">
@@ -329,49 +345,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    <!-- Modal Varian cart desktop  -->
-    <div class="modal fade" id="modalVarian" tabindex="-1" aria-labelledby="modalVarianLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalVarianLabel">Varian Produk</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row row-cols-3">
-                        <?php foreach ($varian as $key => $v) : ?>
-                            <div class="col" key="<?= $key; ?>">
-                                <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?= $v['value_item']; ?></h5>
-                                        <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
-                                        <div class="form-check">
-                                            <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $v['id_variasi_item']; ?>">
-                                            <label class="form-check-label" for="radioVarian<?= $v['id_variasi_item']; ?>">
-                                                Pilih
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach ?>
+    <?php if ($varianItem > 1) : ?>
+        <!-- Modal Varian cart desktop  -->
+        <div class="modal fade" id="modalVarian" tabindex="-1" aria-labelledby="modalVarianLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalVarianLabel">Varian Produk</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">Tambah Keranjang</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal varian buy desktop  -->
-    <div class="modal fade" id="modalVarianBuy" tabindex="-1" aria-labelledby="modalVarianBuyLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli Langsung</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
                     <div class="modal-body">
                         <div class="row row-cols-3">
                             <?php foreach ($varian as $key => $v) : ?>
@@ -381,8 +363,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <h5 class="card-title"><?= $v['value_item']; ?></h5>
                                             <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                             <div class="form-check">
-                                                <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarianBuy<?= $v['id_variasi_item']; ?>">
-                                                <label class="form-check-label" for="radioVarianBuy<?= $v['id_variasi_item']; ?>">
+                                                <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $v['id_variasi_item']; ?>">
+                                                <label class="form-check-label" for="radioVarian<?= $v['id_variasi_item']; ?>">
                                                     Pilih
                                                 </label>
                                             </div>
@@ -393,14 +375,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <input type="hidden" id="qty" name="qty" value="1">
-                        <button type="submit" class="btn btn-danger mt-4">Beli Sekarang</button>
+                        <button type="button" class="btn btn-danger add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">Tambah Keranjang</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-
+        <!-- Modal varian buy desktop  -->
+        <div class="modal fade" id="modalVarianBuy" tabindex="-1" aria-labelledby="modalVarianBuyLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli Langsung</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
+                        <div class="modal-body">
+                            <div class="row row-cols-3">
+                                <?php foreach ($varian as $key => $v) : ?>
+                                    <div class="col" key="<?= $key; ?>">
+                                        <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><?= $v['value_item']; ?></h5>
+                                                <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
+                                                <div class="form-check">
+                                                    <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarianBuy<?= $v['id_variasi_item']; ?>">
+                                                    <label class="form-check-label" for="radioVarianBuy<?= $v['id_variasi_item']; ?>">
+                                                        Pilih
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" id="qty" name="qty" value="1">
+                            <button type="submit" class="btn btn-danger mt-4">Beli Sekarang</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php endif ?>
 <?php endif; ?>
 <!-- end Desktop -->
 
@@ -489,7 +506,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         value = isNaN(value) ? 0 : value;
         value++;
         input.value = value;
-        document.getElementById('qty').value = value;
+        $("#qty").val(value);
+        <?php if ($varianItem == 1) : ?>
+            var link = `<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+            $("#buyButton_1").attr("href", link);
+        <?php endif ?>
     }
 
     function decreaseCount(a, b) {
@@ -499,8 +520,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             value = isNaN(value) ? 0 : value;
             value--;
             input.value = value;
-            document.getElementById('qty').value = value;
-
+            $("#qty").val(value);
+            <?php if ($varianItem == 1) : ?>
+                var link = `<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+                $("#buyButton_1").attr("href", link);
+            <?php endif ?>
         }
     }
 </script>
