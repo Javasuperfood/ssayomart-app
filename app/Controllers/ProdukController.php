@@ -17,7 +17,7 @@ class ProdukController extends BaseController
             'title' => 'Ssayomart',
             'kategori' => $kategori->findAll()
         ];
-        
+
         return view('user/produk/index', $data);
     }
 
@@ -30,7 +30,7 @@ class ProdukController extends BaseController
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_sub_kategori.id_kategori', 'inner')
             ->where('jsf_sub_kategori.id_kategori', $katSub['id_kategori'])->findAll();
         $subSlug = $subKategori->getSubKategori($slug2);
-        
+
         $produkModel = new ProdukModel();
         if ($this->request->isAJAX()) {
             $page = $this->request->getVar('page') ? $this->request->getVar('page') : 1;
@@ -82,6 +82,7 @@ class ProdukController extends BaseController
             'kategori' => $kategori->findAll(),
             'produk' => $single,
             'varian' => $varianItem,
+            'varianItem' => count($varianItem),
             'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
         ];
         // dd($data);

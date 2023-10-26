@@ -29,12 +29,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
-                <?= csrf_field(); ?>
                 <div class="row text-center row-cols-2">
                     <?php foreach ($produk as $p) : ?>
                         <div class="col">
                             <div class="card my-2 border-0 shadow-sm" style="width: auto;">
-                                <a href=" <?= base_url() ?>/produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
+                                <a href=" <?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="..." style="width: 150px; height: 150px;">
                                 </a>
                                 <div class="card-body">
@@ -46,16 +45,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
                                     </div>
 
-                                    <form id="formDelete" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
-                                        <?= csrf_field(); ?>
-                                        <button form="formDelete" type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
-                                    </form>
+
+                                    <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn" style="background-color: #ec2614; color: #fff;"><i class="bi bi-trash"></i></button>
+
                                     <div class="form-check form-check-lg position-absolute top-0 end-0" style="font-size: 25px;">
                                         <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     <?php endforeach; ?>
                 </div>
                 <div class="row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
@@ -64,6 +63,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </form>
+            <?php foreach ($produk as $p) : ?>
+                <form id="formdelete<?= $p['id_cart_produk']; ?>" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
+                    <?= csrf_field(); ?>
+                </form>
+            <?php endforeach; ?>
             <div class="pb-5"></div>
         </div>
     </div>
