@@ -124,10 +124,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
                                                             </div>
                                                         </div>
-                                                        <form id="formDelete" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline mx-0 my-0" style="position: absolute; right: 0; bottom:0;">
-                                                            <?= csrf_field(); ?>
-                                                            <button form="formDelete" type="submit" class="btn rounded-circle"><i class="bi bi-trash text-danger"></i></button>
-                                                        </form>
+                                                        <?= csrf_field(); ?>
+                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn rounded-circle"><i class="bi bi-trash text-danger"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,6 +157,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+    <?php foreach ($produk as $p) : ?>
+        <form id="formdelete<?= $p['id_cart_produk']; ?>" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
+            <?= csrf_field(); ?>
+        </form>
+    <?php endforeach; ?>
 <?php endif; ?>
 <!-- end Desktop -->
 
