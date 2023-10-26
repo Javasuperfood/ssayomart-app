@@ -52,7 +52,7 @@ class Promo extends Seeder
                 'start_at' => '2023-09-07',
                 'end_at' => '2023-12-20',
                 'deskripsi' => 'lorem',
-                'img' => 'promo-4.jpg'
+                'img' => 'promo-2.jpg'
             ],
             // [
             //     'id_promo' => 4,
