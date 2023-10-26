@@ -12,131 +12,131 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container mt-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
-                </div>
-                <!-- View Mobile -->
-                <div class="col-md-6 mt-4">
-                    <h2><?= $produk['nama']; ?></h2>
-                    <div class="row">
-                        <div class="col">
-                            <p class="text-secondary fs-4">
-                                <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
-                                    Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
-                                <?php else : ?>
-                                    <?= substr('Rp. ' . number_format($produk['harga_min'], 0, ',', '.') . '-' . number_format($produk['harga_max'], 0, ',', '.'), 0, 15); ?>...
-                                <?php endif ?>
-                            </p>
-                        </div>
 
+            <div class="col-md-6">
+                <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+            </div>
+            <!-- View Mobile -->
+            <div class="col-md-6 mt-4">
+                <h2><?= $produk['nama']; ?></h2>
+                <div class="row">
+                    <div class="col">
+                        <p class="text-secondary fs-4">
+                            <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
+                                Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
+                            <?php else : ?>
+                                <?= substr('Rp. ' . number_format($produk['harga_min'], 0, ',', '.') . '-' . number_format($produk['harga_max'], 0, ',', '.'), 0, 15); ?>...
+                            <?php endif ?>
+                        </p>
                     </div>
-                    <div class="container pt-3">
-                        <div class="row px-5">
-                            <div class="col px-3">
-                                <div class="input-group mb-3 d-flex justify-content-center">
-                                    <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                                    <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
-                                    <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
-                                </div>
+
+                </div>
+                <div class="container pt-3">
+                    <div class="row px-5">
+                        <div class="col px-3">
+                            <div class="input-group mb-3 d-flex justify-content-center">
+                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
+                                <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <?php if ($varianItem > 1) : ?>
-                            <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
-
-                            <button class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
-                        <?php elseif ($varianItem == 1) : ?>
-                            <input type="hidden" id="qty" name="qty" value="1">
-                            <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-                            <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>"><i class="bi bi-cart-fill"></i></button>
-
-                            <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</a>
-                        <?php endif ?>
-                    </div>
                 </div>
-                <div class="row mt-4 mb-5">
-                    <div class="col-lg-6">
-                        <h2 class="text-merah"> Deskripsi </h2>
-                        <p class="text-potong"><?= $produk['deskripsi']; ?></p>
-                        <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
-                    </div>
+                <div class="text-center">
+                    <?php if ($varianItem > 1) : ?>
+                        <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
 
-                    <div class="badge-container d-flex">
-                        <span class="badge text-bg-danger rounded-5">Kategori</span>
-                        <span class="badge text-bg-danger mx-2 rounded-5">Sub Kategori</span>
-                        <span class="badge text-bg-danger rounded-5">Varian</span>
-                    </div>
+                        <button class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy">Beli Sekarang</button>
+                    <?php elseif ($varianItem == 1) : ?>
+                        <input type="hidden" id="qty" name="qty" value="1">
+                        <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
+                        <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>"><i class="bi bi-cart-fill"></i></button>
+
+                        <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</a>
+                    <?php endif ?>
+                </div>
+            </div>
+            <div class="row mt-4 mb-5">
+                <div class="col-lg-6">
+                    <h2 class="text-merah"> Deskripsi </h2>
+                    <p class="text-potong"><?= $produk['deskripsi']; ?></p>
+                    <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                 </div>
 
-                <div class="row mt-3">
-                    <div class="col">
-                        <h2 class="mb-4 text-merah">Produk Lainnya</h2>
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper d-flex">
-                                <?php foreach ($randomProducts as $p) : ?>
-                                    <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
-                                        <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
-                                            <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                                <div class="d-flex justify-content-center align-items-center">
-                                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
-                                                </div>
-                                            </a>
-                                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                                <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                                                    <p class=" text-secondary fw-bold " style=" font-size: 13px; margin: 0;"><?= substr($p['nama'], 0, 40); ?>...</p>
-                                                </div>
-                                                <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
-                                                    <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
-                                                </p>
+                <div class="badge-container d-flex">
+                    <span class="badge text-bg-danger rounded-5">Kategori</span>
+                    <span class="badge text-bg-danger mx-2 rounded-5">Sub Kategori</span>
+                    <span class="badge text-bg-danger rounded-5">Varian</span>
+                </div>
+            </div>
 
-                                                <h1 class="text-danger fs-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
-                                                    <?php if ($p['harga_min'] == $p['harga_max']) : ?>
-                                                        Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
-                                                    <?php else : ?>
-                                                        <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
-                                                    <?php endif ?>
-                                                </h1>
+            <div class="row mt-3">
+                <div class="col">
+                    <h2 class="mb-4 text-merah">Produk Lainnya</h2>
+                    <div class="d-flex justify-content-center align-items-center swiper mySwiper">
+                        <div class="swiper-wrapper d-flex mb-3">
+                            <?php foreach ($randomProducts as $p) : ?>
+                                <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
+                                    <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
+                                        <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
+                                            </div>
+                                        </a>
+                                        <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+                                            <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                                                <p class=" text-secondary fw-bold " style=" font-size: 13px; margin: 0;"><?= substr($p['nama'], 0, 40); ?>...</p>
+                                            </div>
+                                            <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
+                                                <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
+                                            </p>
 
-                                                <div class="container mt-2">
-                                                    <div class="row justify-items-center">
-                                                        <div class="col">
-                                                            <div class="horizontal-counter">
-                                                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                                                                <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
-                                                                <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
-                                                            </div>
+                                            <h1 class="text-danger fs-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
+                                                <?php if ($p['harga_min'] == $p['harga_max']) : ?>
+                                                    Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
+                                                <?php else : ?>
+                                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
+                                                <?php endif ?>
+                                            </h1>
+
+                                            <div class="container mt-2">
+                                                <div class="row justify-items-center">
+                                                    <div class="col">
+                                                        <div class="horizontal-counter">
+                                                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                                            <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
+                                                            <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
-                                                        <input type="hidden" name="add-to-cart" value="show">
-                                                        <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                                            <i class="bi bi-basket"></i>
-                                                        </button>
-                                                    </form>
-                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
-                                                        <input type="hidden" name="buy" value="show">
-                                                        <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                                            Beli
-                                                        </button>
-                                                        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                                                    </form>
-                                                </div>
+                                            </div>
+                                            <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                                    <input type="hidden" name="add-to-cart" value="show">
+                                                    <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                                    <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                                        <i class="bi bi-basket"></i>
+                                                    </button>
+                                                </form>
+                                                <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                                    <input type="hidden" name="buy" value="show">
+                                                    <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
+                                                    <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                                        Beli
+                                                    </button>
+                                                    <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                <?php endforeach; ?>
-                                <?= $this->include('user/component/scriptAddToCart'); ?>
-                            </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <?= $this->include('user/component/scriptAddToCart'); ?>
                         </div>
                     </div>
                 </div>
             </div>
+
 
             <?php if ($varianItem > 1) : ?>
                 <!-- Modal Varian Buy -->
@@ -311,13 +311,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <?php else : ?>
                                                             <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                                         <?php endif ?></h1>
-                                                    <div class="container pt-3">
+                                                    <div class="container mt-2">
                                                         <div class="row justify-items-center">
                                                             <div class="col">
-                                                                <div class="input-group mb-3 d-flex justify-content-center">
-                                                                    <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
-                                                                    <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
-                                                                    <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                                                                <div class="horizontal-counter">
+                                                                    <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                                                    <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
+                                                                    <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                                                 </div>
                                                             </div>
                                                         </div>
