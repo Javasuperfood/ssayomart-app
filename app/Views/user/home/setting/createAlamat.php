@@ -45,7 +45,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
                                     <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                                 </div>
-                            </div>
+                          </div>
+                    </div>
+                    <div class="mb-3 mx-3 my-3">
+                        <div class="form-floating">
+                            <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
+                            <label class="fs-6" for="floatingInput" style="display: block;">
+                                <?= lang('Text.no_telp_alamat') ?>
+                                <span class="text-danger ms-2"><?= lang('Text.optional') ?></span>
+                            </label>
+                            <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                         </div>
                     </div>
 
