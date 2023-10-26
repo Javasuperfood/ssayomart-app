@@ -4,30 +4,27 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProdukModel extends Model
+class ProdukKategoriBatchModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jsf_produk';
-    protected $primaryKey       = 'id_produk';
+    protected $table            = 'jsf_produk_batch';
+    protected $primaryKey       = 'id_produk_batch';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $useSoftDeletes   = true;
+    protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'id_kategori',
         'nama',
         'slug',
         'sku',
-        // 'stok',
         'deskripsi',
         'img',
         'is_active',
-        'id_sub_kategori',
         'created_by'
     ];
 
     // Dates
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
@@ -85,14 +82,14 @@ class ProdukModel extends Model
             return $this->where('deleted_at', null)->findAll();
         }
 
-        return $this->select('jsf_produk.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
-            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+        return $this->select('jsf_produk_batch.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk_batch = vi.id_produk_batch', 'left')
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->where(['slug' => $slug1])->first();
     }
 
     public function getSubKategoriByKategori($kategoriId)
     {
-        return $this->db->table('jsf_subkategori')
+        return $this->db->table('jsf_sub_kategori')
             ->where('id_kategori', $kategoriId)
             ->get()
             ->getResultArray();
@@ -100,10 +97,10 @@ class ProdukModel extends Model
     public function getNamaKategori($produkId)
     {
         // Query untuk mengambil nama kategori berdasarkan ID produk
-        return $this->db->table('jsf_produk')
-            ->join('jsf_subkategori', 'jsf_subkategori.id_sub_kategori = jsf_produk.id_sub_kategori')
-            ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_subkategori.id_kategori')
-            ->where('jsf_produk.id_produk', $produkId)
+        return $this->db->table('jsf_produk_batch')
+            ->join('jsf_sub_kategori', 'jsf_sub_kategori.id_sub_kategori = jsf_produk_batch.id_sub_kategori')
+            ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_sub_kategori.id_kategori')
+            ->where('jsf_produk_batch.id_produk_batch', $produkId)
             ->select('jsf_kategori.nama_kategori')
             ->get()
             ->getRowArray();
@@ -111,9 +108,9 @@ class ProdukModel extends Model
 
     public function getProdukWithVarianBySlug($slug, $id_varian)
     {
-        return $this->db->table('jsf_produk')
+        return $this->db->table('jsf_produk_batch')
             ->select('*')
-            ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_produk.id_produk', 'INNER')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk_batch = jsf_produk.id_produk_batch', 'INNER')
             ->where('slug', $slug)
             ->where('id_variasi_item', $id_varian)
             ->get()
@@ -123,7 +120,7 @@ class ProdukModel extends Model
     public function getRandomProducts()
     {
         $products = $this->select('jsf_produk.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
-            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk_batch', 'left')
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')
             ->orderBy('RAND()')->findAll(10);
         return $products;
@@ -132,10 +129,10 @@ class ProdukModel extends Model
     public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 5)
     {
         $offset = ($page - 1) * $limit; // Menghitung offset berdasarkan halaman
-        $getProduk = $this->db->table('jsf_produk p')
+        $getProduk = $this->db->table('jsf_produk_batch p')
             ->select('p.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
-            ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
-            ->groupBy('p.id_produk, p.nama')
+            ->join('jsf_variasi_item vi', 'p.id_produk_batch = vi.id_produk_batch', 'left')
+            ->groupBy('p.id_produk_batch, p.nama')
             ->where('deleted_at', null);
         if ($k != false) {
             $getProduk->where('id_kategori', $k);
@@ -151,13 +148,13 @@ class ProdukModel extends Model
     }
     public function adminProdukSearch($keyword)
     {
-        return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', $keyword);
+        return $this->table('jsf_produk_batch')->where('deleted_at', null)->like('nama', $keyword);
     }
 
     public function insertCategoryAssociation($productId, $categoryId)
     {
         $data = [
-            'id_produk' => $productId,
+            'id_produk_batch' => $productId,
             'id_kategori' => $categoryId,
         ];
         return $this->db->table('jsf_kategori_produk')->insert($data);
@@ -166,7 +163,7 @@ class ProdukModel extends Model
     public function insertSubcategoryAssociation($productId, $subcategoryId)
     {
         $data = [
-            'id_produk' => $productId,
+            'id_produk_batch' => $productId,
             'id_sub_kategori' => $subcategoryId,
         ];
         return $this->db->table('jsf_sub_kategori_produk')->insert($data);

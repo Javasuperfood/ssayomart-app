@@ -69,9 +69,9 @@ class AdminProfil extends BaseController
         $namaUserImage = $this->request->getVar('imageLama'); // Tetapkan nama gambar lama sebagai nilai awal
 
         if ($image->getError() != 4) { // Jika ada file gambar yang diunggah, proses unggahan gambar
-            $produk = $usersModel->find($id);
+            $userImg = $usersModel->find($id);
 
-            if ($produk['img'] == 'default.png') {
+            if ($userImg['img'] == 'default.png') {
                 $namaUserImage = $image->getRandomName();
                 $image->move('assets/img/pic', $namaUserImage);
             } else {

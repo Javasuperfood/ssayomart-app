@@ -16,12 +16,9 @@
 </div>
 <hr class="sidebar-divider">
 <?php if (auth()->user()->inGroup('superadmin')) : ?>
-
-
     <div class="sidebar-heading">
         Admin Super
     </div>
-
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard/home">
@@ -68,6 +65,7 @@
                 <h6 class="collapse-header text-danger">Menu Produk:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk">List Produk</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/produk-batch">Produk-Kategori Batch</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-variasi">Tambah Variasi</a>
                 <!-- Section Promo -->
                 <h6 class="collapse-header text-danger">Menu Promosi:</h6>
@@ -89,7 +87,6 @@
                 <h6 class="collapse-header text-danger">Kategori :</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori2">Tambah Kategori update</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah Urutan Kategori</a>
             </div>
         </div>
