@@ -31,15 +31,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
                 <div class="row text-center row-cols-2">
                     <?php foreach ($produk as $p) : ?>
-                        <div class="col">
-                            <div class="card my-2 border-0 shadow-sm" style="width: auto;">
+                        <div class="col-6 col-md-4 col-lg-3 pt-3">
+                            <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                                 <a href=" <?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top" alt="..." style="width: 150px; height: 150px;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
                                 </a>
                                 <div class="card-body">
-                                    <p class="card-text text-secondary" style="margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
-                                    <p class="card-title text-danger" style="margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
-                                    <div class="input-group mb-1 d-flex justify-content-center">
+                                    <p class="card-text text-secondary" style="font-size: 14px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
+                                    <p class="card-title text-danger" style="font-size: 18px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                    <div class="input-group mt-2 d-flex justify-content-center">
                                         <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
                                         <input type="text" class="form-control form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 30px;">
                                         <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
@@ -90,7 +90,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card border-0 shadow-sm rounded-3 mb-3">
                                             <div class="card-body">
                                                 <div class="d-flex flex-row align-items-center justify-content-between">
-                                                    <div class="form-check" style="font-size: 20px;">
+                                                    <div class="form-check" style="font-size: 20px; margin: 0;">
                                                         <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                                     </div>
                                                     <div class="d-flex">
@@ -116,7 +116,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="d-flex align-items-center justify-content-between" style="padding-left: 15px;">
                                                         <div class="d-flex flex-column">
                                                             <div class="text-center me-5 pb-2" style="margin-top: 10px;">
-                                                                <h5 class="mb-0" style="font-size: 20px;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
+                                                                <h5 class="mb-0" style="font-size: 20px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
                                                             </div>
                                                             <div class="d-flex align-items-center me-5">
                                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
