@@ -28,20 +28,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
                         </div>
                     </div>
-                    <div class="mb-3 mx-3 my-3">
-                        <div class="form-floating">
-                            <input class="form-control shadow-sm floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event)">
-                            <label for=" floatingInput"><?= lang('Text.no_telp_alamat') ?><span class="text-danger fs-5"> *</span></label>
-                            <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
+                    <div class="container text-secondary">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-3">
+                                    <label for="no_telp1" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger fs-5"> *</span></label>
+                                    <input class="form-control shadow-sm floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event)">
+                                    <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-3">
+                                    <label for="no_telp2" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
+                                    <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
+                                    <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="mb-3 mx-3 my-3">
-                        <div class="form-floating">
-                            <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
-                            <label for=" floatingInput"><?= lang('Text.no_telp_alamat') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
-                            <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
-                        </div>
-                    </div>
+
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
                             <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
