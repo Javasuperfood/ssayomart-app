@@ -38,10 +38,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
                             <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
-                            <label for=" floatingInput"><?= lang('Text.no_telp_alamat') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
+                            <label class="fs-6" for="floatingInput" style="display: block;">
+                                <?= lang('Text.no_telp_alamat') ?>
+                                <span class="text-danger ms-2"><?= lang('Text.optional') ?></span>
+                            </label>
                             <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                         </div>
                     </div>
+
                     <div class="mb-3 mx-3 my-3">
                         <div class="form-floating">
                             <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
