@@ -54,22 +54,26 @@
         </form>
     </div>
 </div>
-
 <script>
     var subcategories = <?= json_encode($subKategori); ?>;
     var selectedCategory = <?= json_encode($p['id_kategori']); ?>; // Ambil id_kategori dari data produk
+    var selectedSubCategory = <?= json_encode($p['id_sub_kategori']); ?>; // Ambil id_kategori dari data produk
+
 
     function updateSubcategories() {
         var subcategorySelect = $("#sub_kategori");
         subcategorySelect.empty();
         subcategories.forEach(function(subcategory) {
             if (subcategory.id_kategori == selectedCategory) {
+
                 subcategorySelect.append($('<option>', {
                     value: subcategory.id_sub_kategori,
                     text: subcategory.nama_kategori
                 }));
+
             }
         });
+
     }
 
     // Panggil fungsi updateSubcategories saat perubahan terjadi pada pilihan kategori
@@ -82,6 +86,7 @@
 
         // Panggil updateSubcategories untuk mengisi dropdown subkategori
         updateSubcategories();
+
     });
 </script>
 
@@ -97,6 +102,7 @@
             if (subcategory.id_kategori == selectedCategory) {
                 subcategorySelect.append($('<option>', {
                     value: subcategory.id_sub_kategori,
+                    selected: (subcategory.id_sub_kategori == selectedSubCategory),
                     text: subcategory.nama_kategori
                 }));
             }
