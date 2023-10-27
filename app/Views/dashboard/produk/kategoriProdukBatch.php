@@ -54,26 +54,26 @@
                                         <input type="text" id="searchKategori" class="form-control border-0 shadow-sm" placeholder="Cari Kategori...">
                                     </div>
                                     <div class="row" id="kategoriList">
-                                        <div class="col-6 mb-3 px-3">
-                                            <div class="card border-0">
-                                                <div class="row g-0">
-                                                    <?php foreach ($kategori as $k) : ?>
+                                        <?php foreach ($kategori as $k) : ?>
+                                            <div class="col-6 mb-3 px-4">
+                                                <div class="card border-0">
+                                                    <div class="row g-0">
                                                         <div class="card-body border-0 shadow-sm mb-3">
                                                             <div class="row">
-                                                                <div class="col-2 text-center">
-                                                                    <input type="checkbox" id="kategoriCheckbox<?= $k['id_kategori']; ?>" name="kategori_id[]" value="<?= $k['id_kategori']; ?>" data-nama="<?= $k['nama_kategori']; ?>" class="border-0 rounded-circle" data-parent-kategori="<?= $k['id_kategori']; ?>">
+                                                                <div class="col-2 text-center" style="font-size: 20px; margin: 0;">
+                                                                    <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" id="kategoriCheckbox<?= $k['id_kategori']; ?>" name="kategori_id[]" value="<?= $k['id_kategori']; ?>" data-nama="<?= $k['nama_kategori']; ?>" class="border-0 rounded-circle" data-parent-kategori="<?= $k['id_kategori']; ?>">
                                                                 </div>
                                                                 <div class="col-10">
-                                                                    <p class="fs-6">
+                                                                    <p class="fs-5">
                                                                         <?= $k['nama_kategori']; ?>
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    <?php endforeach; ?>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
 
                                     <!-- Pesan "Produk tidak tersedia" -->
@@ -127,26 +127,26 @@
                                     </div>
 
                                     <div class="row" id="subKategoriList">
-                                        <div class="col-6 mb-3 px-3">
-                                            <div class="card border-0">
-                                                <div class="row g-0">
-                                                    <?php foreach ($subKategori as $sk) : ?>
-                                                        <div class="card-body border-0 shadow-sm">
+                                        <?php foreach ($subKategori as $sk) : ?>
+                                            <div class="col-6 mb-3 px-4">
+                                                <div class="card border-0">
+                                                    <div class="row g-0">
+                                                        <div class="card-body border-0 shadow-sm mb-3">
                                                             <div class="row">
-                                                                <div class="col-3">
-                                                                    <input type="checkbox" id="subKategoriCheckbox<?= $sk['id_sub_kategori']; ?>" name="sub_kategori_id[]" value="<?= $sk['id_sub_kategori']; ?>" data-nama="<?= $sk['nama_kategori']; ?>" data-parent="<?= $sk['id_kategori']; ?>" class="border-0">
+                                                                <div class="col-1 text-center" style="font-size: 20px; margin-left: 20px;">
+                                                                    <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" id="subKategoriCheckbox<?= $sk['id_sub_kategori']; ?>" name="sub_kategori_id[]" value="<?= $sk['id_sub_kategori']; ?>" data-nama="<?= $sk['nama_kategori']; ?>" data-parent="<?= $sk['id_kategori']; ?>" class="border-0">
                                                                 </div>
                                                                 <div class="col-9">
-                                                                    <p class="fs-4">
+                                                                    <p class="fs-6">
                                                                         <?= $sk['nama_kategori']; ?>
                                                                     </p>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    <?php endforeach; ?>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                     <!-- Pesan "Produk tidak tersedia" -->
                                     <div id="noProductAlert" class="alert alert-danger rounded border-0" style="display: none;">
@@ -339,34 +339,34 @@
     }
 
     // Fungsi untuk menangani pencarian produk
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('searchProduct');
-        const productList = document.getElementById('productList').children;
-        const noProductAlert = document.getElementById('noProductAlert');
+    // document.addEventListener('DOMContentLoaded', function() {
+    //     const searchInput = document.getElementById('searchProduct');
+    //     const productList = document.getElementById('productList').children;
+    //     const noProductAlert = document.getElementById('noProductAlert');
 
-        searchInput.addEventListener('input', function() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
-            let productsFound = false;
+    //     searchInput.addEventListener('input', function() {
+    //         const searchTerm = searchInput.value.trim().toLowerCase();
+    //         let productsFound = false;
 
-            for (let i = 0; i < productList.length; i++) {
-                const productName = productList[i].querySelector('.fs-4').textContent.toLowerCase();
+    //         for (let i = 0; i < productList.length; i++) {
+    //             const productName = productList[i].querySelector('.fs-4').textContent.toLowerCase();
 
-                if (productName.includes(searchTerm)) {
-                    productList[i].style.display = 'block';
-                    productsFound = true;
-                } else {
-                    productList[i].style.display = 'none';
-                }
-            }
+    //             if (productName.includes(searchTerm)) {
+    //                 productList[i].style.display = 'block';
+    //                 productsFound = true;
+    //             } else {
+    //                 productList[i].style.display = 'none';
+    //             }
+    //         }
 
-            // Tampilkan atau sembunyikan alert "Produk tidak tersedia"
-            if (!productsFound) {
-                noProductAlert.style.display = 'block';
-            } else {
-                noProductAlert.style.display = 'none';
-            }
-        });
-    });
+    //         // Tampilkan atau sembunyikan alert "Produk tidak tersedia"
+    //         if (!productsFound) {
+    //             noProductAlert.style.display = 'block';
+    //         } else {
+    //             noProductAlert.style.display = 'none';
+    //         }
+    //     });
+    // });
 </script>
 
 <?= $this->endSection(); ?>
