@@ -106,9 +106,10 @@
                     <!-- Button Pilih Sub Kategori -->
                     <div class="mb-3">
                         <label for="produk" class="form-label text-secondary">Pilih Sub Kategori</label>
-                        <button type="button" class="btn form-control shadow-sm border-0 border-left-danger text-left view-product text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal_sub">
+                        <button type="button" class="btn form-control shadow-sm border-0 border-left-danger text-left view-product text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal_sub" id="btnChooseSubCategory" disabled>
                             Tekan Untuk Memilih Sub Kategori
                         </button>
+
                     </div>
 
                     <!-- Modal Box Sub Kategori -->
@@ -284,8 +285,13 @@
 
             // Perbarui pilihan subkategori sesuai dengan kategori yang dipilih
             updateSubcategories(selectedCategories);
+
+            // Aktifkan atau nonaktifkan tombol "Tekan Untuk Memilih Sub Kategori" berdasarkan apakah ada kategori yang dipilih
+            var btnChooseSubCategory = document.getElementById('btnChooseSubCategory');
+            btnChooseSubCategory.disabled = selectedCategories.length === 0;
         });
     });
+
 
     // Menambahkan event listener untuk perubahan pada checkbox subkategori
     subKategoriCheckboxes.forEach(function(checkbox) {
