@@ -15,16 +15,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-md-blok d-lg-none d-xl-none">
             <div class="row">
                 <div class="col">
-                    <div class="row row-cols-1">
+                    <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center mb-3">
                         <div class="col">
-                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
+                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 14px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
-                        <div class="col pt-3">
-                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
+                        <div class="col">
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 14px;"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
                     </div>
 
-                    <div class="row pb-4">
+                    <div class="row mb-2">
                         <div class="col-9">
                             <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
                         </div>
@@ -36,18 +36,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <div class="row py-3">
+            <div class="row mb-2">
                 <div class="col">
                     <div class="alert alert-danger rounded border-0" role="alert">
                         <div class="row">
-                            <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i></div>
-                            <div class="col-9 text-secondary fs-6"><?= lang('Text.alert') ?></div>
-                            <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0 text-dark"><?= lang('Text.alert_btn') ?></a></div>
+                            <div class="col-2"><i class="bi bi-heart-pulse-fill text-danger fs-1 position-absolute top-50 start-0 translate-middle-y px-4"></i></div>
+                            <div class="col-10 text-secondary" style="font-size: 14px;"><?= lang('Text.alert') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row pb-1">
+            <div class="row mb-2">
                 <div class="col">
                     <div class="card text-bg-light mb-3 shadow border-0 rounded">
                         <div class="card-body">
