@@ -96,11 +96,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </section>
             <!-- end rekomendasi -->
             <div id="ktr" class="container">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col text-white">
                         <h2>test</h2>
                     </div>
-                </div>
+                </div> -->
             </div>
             <!-- All Kategori -->
             <div class="container">
