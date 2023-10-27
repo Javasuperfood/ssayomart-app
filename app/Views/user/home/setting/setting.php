@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <div class="row mb-2">
+            <div class="row ">
                 <div class="col">
                     <div class="alert alert-danger rounded border-0" role="alert">
                         <div class="row">
@@ -48,14 +48,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row mb-2">
                 <div class="col">
-                    <div class="card text-bg-light mb-3 shadow border-0 rounded">
+                    <div class="card text-bg-light mb-4 shadow-sm border-0 rounded">
                         <div class="card-body">
                             <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
                                 <div class="row">
-                                    <div class="col-3"><img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img"></div>
+                                    <div class="col-3">
+                                        <img src="<?= base_url(); ?>assets/img/coupon.png" alt="Kupon" class="card-img img-fluid" style="width: 20; height: 50;">
+                                    </div>
                                     <div class="col">
-                                        <h5 class="card-title text-dark"><?= lang('Text.judul_kupon') ?></h5>
-                                        <p class="card-text text-secondary"><?= lang('Text.isi_kupon') ?></p>
+                                        <h5 class="card-title text-dark" style="font-size: 14px;"><?= lang('Text.judul_kupon') ?></h5>
+                                        <p class="card-text text-secondary" style="font-size: 14px;"><?= lang('Text.isi_kupon') ?></p>
                                     </div>
                                 </div>
                             </a>
