@@ -538,9 +538,23 @@ class Kategori extends Seeder
             [
                 'id_kategori' => 4,
                 'id_sub_kategori' => 53,
-                'nama_kategori' => ' 소금 & 설탕 / GARAM & GULA',
+                'nama_kategori' => '소금 & 설탕 /GARAM & GULA',
                 'deskripsi'    => 'Lorem',
-                'slug'    => ' 소금-설탕-garam-gula',
+                'slug'    => '소금-설탕-garam-gula',
+            ],
+            [
+                'id_kategori' => 2,
+                'id_sub_kategori' => 54,
+                'nama_kategori' => '미역 / RUMPUT LAUT',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '미역-rumput-laut',
+            ],
+            [
+                'id_kategori' => 6,
+                'id_sub_kategori' => 55,
+                'nama_kategori' => '건어물 / KERING MAKANAN LAUT',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '건어물-kering-makanan-laut',
             ]
         ];
 
