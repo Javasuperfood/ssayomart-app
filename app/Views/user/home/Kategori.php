@@ -95,11 +95,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </section>
             <!-- end rekomendasi -->
-
+            <div id="ktr" class="container">
+                <div class="row">
+                    <div class="col text-white">
+                        <h2>test</h2>
+                    </div>
+                </div>
+            </div>
             <!-- All Kategori -->
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #C1E1C1;">
-                    <div id="ktr" class="card-warning">
+                    <div class="card-warning">
                         <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
                         </span>
                     </div>
