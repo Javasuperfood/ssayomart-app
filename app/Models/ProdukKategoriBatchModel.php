@@ -82,7 +82,7 @@ class ProdukKategoriBatchModel extends Model
             return $this->where('deleted_at', null)->findAll();
         }
 
-        return $this->select('jsf_produk_batch.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
+        return $this->select('jsf_produk_batch.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk_batch = vi.id_produk_batch', 'left')
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->where(['slug' => $slug1])->first();
     }
@@ -119,7 +119,7 @@ class ProdukKategoriBatchModel extends Model
 
     public function getRandomProducts()
     {
-        $products = $this->select('jsf_produk.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
+        $products = $this->select('jsf_produk.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk_batch', 'left')
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')
             ->orderBy('RAND()')->findAll(10);
@@ -130,7 +130,7 @@ class ProdukKategoriBatchModel extends Model
     {
         $offset = ($page - 1) * $limit; // Menghitung offset berdasarkan halaman
         $getProduk = $this->db->table('jsf_produk_batch p')
-            ->select('p.*, MIN(vi.harga_item) AS harga_min, MAX(vi.harga_item) AS harga_max')
+            ->select('p.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'p.id_produk_batch = vi.id_produk_batch', 'left')
             ->groupBy('p.id_produk_batch, p.nama')
             ->where('deleted_at', null);
