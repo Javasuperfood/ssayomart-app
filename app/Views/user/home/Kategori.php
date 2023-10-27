@@ -57,7 +57,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </section>
             <!-- rekomendasi -->
             <section class="mt-0" id="rekomendasi">
-                <div class="container pt-0 mb-3">
+                <div class="container pt-0">
                     <div class="card mt-3 rounded-3" style="background-color: #fce0e4; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
                         <div class="card-warning mt-3">
                             <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 340px;">
@@ -96,11 +96,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </section>
             <!-- end rekomendasi -->
             <div id="ktr" class="container">
-                <!-- <div class="row">
+                <div class="row">
                     <div class="col text-white">
-                        <h2>test</h2>
+                        <p class="px-0 py-0"></p>
                     </div>
-                </div> -->
+                </div>
             </div>
             <!-- All Kategori -->
             <div class="container">
