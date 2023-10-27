@@ -32,7 +32,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                        <div class="deskripsi col-5 position-absolute top-50 start-50 translate-middle">
                                             <h5 class="card-title fs-6"><?= substr($t->nama, 0, 10); ?>...</h5>
                                             <p class="text-secondary fs-6">Rp. <?= number_format($t->harga, 0, ',', '.'); ?></p>
                                         </div>
@@ -41,42 +41,42 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php if ($t->snap_token != null) : ?>
                                             <?php if ($t->id_status_pesan == 1) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger">
+                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-danger custom-btn">
                                                         <?= lang('Text.transaksi_1') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 2) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-warning">
+                                                    <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-warning custom-btn">
                                                         <?= lang('Text.transaksi_2') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 3) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">
                                                         <?= lang('Text.transaksi_3') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 4) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">
                                                         <?= lang('Text.transaksi_4') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 5) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger">
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger custom-btn">
                                                         <?= lang('Text.transaksi_5') ?>
                                                     </a>
                                                 </div>
                                             <?php else : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success">Detail</a>
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">Detail</a>
                                                 </div>
                                             <?php endif ?>
                                         <?php else : ?>
                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-primary"> <?= lang('Text.transaksi_6') ?></a>
+                                                <a href="<?= base_url('checkout/' . $t->id_checkout); ?>" class="btn btn-outline-primary custom-btn"> <?= lang('Text.transaksi_6') ?></a>
                                             </div>
                                         <?php endif ?>
                                     </div>
@@ -119,6 +119,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+    <style>
+        @media screen and (max-width: 820px) {
+            .btn.custom-btn {
+                font-size: 14px !important;
+                /* Ukuran font untuk iPad */
+            }
+
+        }
+
+        @media screen and (max-width: 280px) {
+            .btn.custom-btn {
+                font-size: 5px !important;
+                /* Ukuran font untuk iPad */
+            }
+        }
+
+        @media screen and (max-width: 414px) {
+            .btn.custom-btn {
+                font-size: 10px !important;
+                /* Ukuran font untuk iPad */
+            }
+        }
+    </style>
+
 <?php else : ?>
     <!-- End Tampilan mobile dan Ipad -->
 
@@ -247,6 +271,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 <!-- end Desktop -->
+
+
+
+
 
 
 <?= $this->endSection(); ?>
