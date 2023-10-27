@@ -18,13 +18,13 @@
                         <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kategori" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="slug" class="form-label">Slug</label>
                         <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
                             <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Nama Kategori atau Sub Kategori.</b>
                         </div>
                         <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= old('slug') ?>">
-                    </div>
+                    </div> -->
                     <label for="parent_kategori_id">Kategori Induk</label>
                     <select class="form-control border-0 shadow-sm" id="parent_kategori_id" name="parent_kategori_id">
                         <option value="">Pilih Kategori Induk (kosongkan jika untuk kategori utama)</option>

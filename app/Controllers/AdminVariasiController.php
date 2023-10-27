@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\ProdukModel;
 use App\Models\VariasiItemModel;
+use App\Models\KategoriModel;
 use App\Models\VariasiModel;
 
 class AdminVariasiController extends BaseController
@@ -156,6 +157,7 @@ class AdminVariasiController extends BaseController
     {
         session();
         $produkModel = new ProdukModel();
+        $kategoriModel = new KategoriModel();
         $variasiModel = new VariasiModel();
         $variasiItemModel = new VariasiItemModel();
         $produk = $produkModel->getProduk($slug);

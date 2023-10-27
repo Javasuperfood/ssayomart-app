@@ -16,11 +16,11 @@
                 <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
             </div>
 
-            <div class="mb-3">
+            <!-- <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
                 <input required type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $subkategori['slug'] ?>">
                 <span id="slugError" class="text-danger"></span>
-            </div>
+            </div> -->
 
             <label for="parent_kategori_id">Kategori Induk</label>
             <select class="form-control border-0 shadow-sm" id="parent_kategori_id" name="parent_kategori_id">

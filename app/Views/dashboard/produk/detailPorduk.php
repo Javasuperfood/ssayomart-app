@@ -115,6 +115,7 @@
                         <div class="col">
                             <div class="pb-3">
                                 <button id="btnTambah" class="btn btn-outline-danger">Tambah varian</button>
+                                <a href="<?= base_url() ?>produk/<?= $produk['slug']; ?>" class="btn btn-outline-danger">Lihat Halaman Produk</a>
                             </div>
                         </div>
                     </div>

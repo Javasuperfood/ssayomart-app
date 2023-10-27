@@ -317,7 +317,7 @@ class AdminkategoriController extends BaseController
             'id_sub_kategori' => $id,
             'nama_kategori' => $this->request->getVar('kategori'),
             'deskripsi' => $this->request->getVar('deskripsi'),
-            'img' => $image
+            'img' => $image,
         ];
 
         //validate data
@@ -342,7 +342,7 @@ class AdminkategoriController extends BaseController
                 }
             }
         }
-        $slug = url_title($this->request->getVar('sub_kategori'), '-', true);
+        $slug = url_title($this->request->getVar('kategori'), '-', true);
         // Replace Data
         $data = [
             'id_kategori' => $parentKategoriId,
@@ -358,11 +358,11 @@ class AdminkategoriController extends BaseController
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Kategori berhasil diubah.'
+                'message' => 'Sub Kategori berhasil diubah.'
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kategori/kategori');
+            return redirect()->to('dashboard/kategori/');
         } else {
             $alert = [
                 'type' => 'error',
@@ -374,6 +374,7 @@ class AdminkategoriController extends BaseController
             return redirect()->to('dashboard/kategori/edit-sub-kategori/' . $id)->withInput();
         }
     }
+
     // Delete ke database
     public function deleteSubKategori($id)
     {
