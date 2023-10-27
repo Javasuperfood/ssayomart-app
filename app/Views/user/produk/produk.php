@@ -14,7 +14,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container mt-5">
 
             <div class="col-md-6">
-                <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+                <div class="zoom-image">
+                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+                </div>
             </div>
             <!-- View Mobile -->
             <div class="col-md-6 mt-4">
@@ -156,7 +158,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-none d-md-block">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+                    <div class="zoom-image">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+                    </div>
                 </div>
                 <div class="col-md-6">
                     <p class="fw-bold fs-3"><?= $produk['nama']; ?></p>
@@ -318,6 +322,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         text-align: center;
     }
 
+    /* Efek zoom saat dihover */
+    .zoom-image {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .zoom-image img {
+        transition: transform 0.3s;
+        border-radius: 25px;
+    }
+
+    .zoom-image:hover img {
+        transform: scale(1.1);
+        /* Anda dapat menyesuaikan faktor scaling sesuai kebutuhan Anda */
+    }
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
