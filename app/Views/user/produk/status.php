@@ -9,43 +9,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 ?>
 
 <?php if ($isMobile) : ?>
-    <div id="mobileContent">
+    <div id="mobileContent" style="width: 100%;">
 
         <div class="container pt-3 pb-4">
             <div class="col">
-                <div class="container">
-                    <div class="card border-0 shadow-sm">
-                        <div class="col-md-12">
-                            <div class="timeline text-center">
-                                <?php
-                                $count = 0;
-                                if ($status->pesan_status == 5) {
-                                    $count = 4;
-                                }
-
-                                foreach ($getstatus as $gs) :
-                                    if ($count >= $status->pesan_status) {
-                                        break;
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card border-0 shadow-sm mb-2">
+                            <div class="card-body">
+                                <div class="track">
+                                    <?php
+                                    $count = 0;
+                                    if ($status->pesan_status == 5) {
+                                        $count = 3;
                                     }
-                                ?>
-                                    <div class="timeline-item">
-                                        <div class="timeline-content bg-white">
-                                            <div class="timeline-icon bg-warning"></div>
-                                            <p class="fw-bold badge text-bg-danger"><?= $gs['status']; ?></p>
+                                    foreach ($getstatus as $gs) :
+                                        if ($count >= $status->pesan_status || $count == 4) {
+                                            break;
+                                        }
+                                    ?>
+                                        <div class="step active">
+                                            <span class="icon"><i class="bi bi-credit-card"></i></span>
+                                            <span class="text"><?= $gs['status']; ?></span>
                                         </div>
-                                    </div>
-                                <?php
-                                    $count++;
-                                endforeach;
-                                ?>
-                                <?php if ($status->pesan_status == 5) : ?>
-                                    <div class="timeline-item">
-                                        <div class="timeline-content bg-white">
-                                            <div class="timeline-icon bg-warning"></div>
-                                            <p class="fw-bold badge text-bg-danger"><?= $getstatus[4]['status']; ?></p>
+
+                                    <?php
+                                        $count++;
+                                    endforeach;
+                                    ?>
+                                    <?php if ($status->pesan_status == 5) : ?>
+                                        <div class="step active">
+                                            <span class="icon"><i class="bi bi-credit-card"></i></span>
+                                            <span class="text"><?= $getstatus[4]['status']; ?></span>
                                         </div>
-                                    </div>
-                                <?php endif ?>
+                                    <?php endif ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -78,10 +76,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             <?php endforeach ?>
             <div class="col mt-3">
-                <div class="card border-0">
-                    <h2>Lokasi Tujuan</h2>
-                    <div class="mb-0 mx-0 my-0">
-                        <div class="card form-control form-control-md border-0 shadow-sm">
+                <div class="card form-control form-control-md border-0 shadow-sm">
+                    <div class="card border-0">
+                        <h2>Lokasi Tujuan</h2>
+                        <div class="mb-0 mx-0 my-0">
                             <div class="row row-cols-1">
                                 <div class="col">
                                     <ul class="list-group list-group-flush">
@@ -170,117 +168,126 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
 
         </div>
-
-        <div class="row">
-            <div class="col"></div>
-        </div>
-        <?php   // =====================    PRNTING  =================================
-        if ($status->id_status_pesan == 1) : ?>
-            <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
-            <div class="row p-3 py-3 position-absolute" style="left: 0; right: 0;">
-                <div class="d-flex align-items-center justify-content-center w-100 h-100">
-                    <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
-                </div>
-            </div>
-
-            <script type="text/javascript">
-                function lpSanp() {
-                    window.snap.pay('<?= $status->snap_token; ?>', {
-                        onSuccess: function(result) {
-                            $.ajax({
-                                type: "POST",
-                                url: "<?= base_url('payment/token'); ?>",
-                                dataType: "json",
-                                data: {
-                                    csrf_test_name: '<?= csrf_hash(); ?>',
-                                    token: '<?= $status->snap_token; ?>',
-                                    result: result,
-                                },
-                                success: function(response) {
-                                    if (response.success) {
-                                        Swal.fire({
-                                            icon: 'success',
-                                            title: 'Pembayaran berhasil',
-                                            showConfirmButton: false,
-                                            timer: 1500,
-                                            text: response.message,
-                                        })
-                                    }
-                                },
-                                error: function(error) {
-                                    console.error("Error:", error);
-                                }
-                            });
-                        },
-                        onPending: function(result) {
-                            /* You may add your own implementation here */
-                            alert("wating your payment!");
-                            console.log(result);
-                        },
-                        onError: function(result) {
-                            /* You may add your own implementation here */
-                            alert("payment failed!");
-                            console.log(result);
-                        },
-                        onClose: function() {
-                            /* You may add your own implementation here */
-                            alert('you closed the popup without finishing the payment');
-                        }
-                    })
-                }
-
-                var payButton = document.getElementById('pay-button');
-                payButton.addEventListener('click', function() {
-                    lpSanp();
-                });
-            </script>
-        <?php endif ?>
     </div>
 
+    <?php   // =====================    PRNTING  =================================
+    if ($status->id_status_pesan == 1) : ?>
+        <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
+        <div class="row p-3 py-3 position-absolute" style="left: 0; right: 0;">
+            <div class="d-flex align-items-center justify-content-center w-100 h-100">
+                <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function lpSanp() {
+                window.snap.pay('<?= $status->snap_token; ?>', {
+                    onSuccess: function(result) {
+                        $.ajax({
+                            type: "POST",
+                            url: "<?= base_url('payment/token'); ?>",
+                            dataType: "json",
+                            data: {
+                                csrf_test_name: '<?= csrf_hash(); ?>',
+                                token: '<?= $status->snap_token; ?>',
+                                result: result,
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Pembayaran berhasil',
+                                        showConfirmButton: false,
+                                        timer: 1500,
+                                        text: response.message,
+                                    })
+                                }
+                            },
+                            error: function(error) {
+                                console.error("Error:", error);
+                            }
+                        });
+                    },
+                    onPending: function(result) {
+                        /* You may add your own implementation here */
+                        alert("wating your payment!");
+                        console.log(result);
+                    },
+                    onError: function(result) {
+                        /* You may add your own implementation here */
+                        alert("payment failed!");
+                        console.log(result);
+                    },
+                    onClose: function() {
+                        /* You may add your own implementation here */
+                        alert('you closed the popup without finishing the payment');
+                    }
+                })
+            }
+
+            var payButton = document.getElementById('pay-button');
+            payButton.addEventListener('click', function() {
+                lpSanp();
+            });
+        </script>
+    <?php endif ?>
+
+
     <style>
-        /* Gaya tambahan kustom bisa ditambahkan di sini */
-        .timeline {
+        /* timeline  */
+        .track {
             position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline:before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background-color: #fbdb14;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
+            background-color: #ddd;
+            height: 7px;
+            display: flex;
             margin-bottom: 50px;
+            margin-top: 50px;
         }
 
-        .timeline-icon {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: #3498db;
-            color: #fff;
+        .track .step {
+            flex-grow: 1;
+            width: 25%;
+            margin-top: -18px;
             text-align: center;
-            line-height: 30px;
-            font-size: 18px;
+            position: relative;
         }
 
-        .timeline-content {
+        .track .step.active:before {
+            background: #FF5722;
+        }
 
-            padding: 15px;
-            background-color: #f4f4f4;
-            border-radius: 5px;
+        .track .step::before {
+            height: 7px;
+            position: absolute;
+            content: "";
+            width: 100%;
+            left: 0;
+            top: 18px;
+        }
 
+        .track .step.active .icon {
+            background: #ee5435;
+            color: #fff;
+        }
+
+        .track .icon {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            position: relative;
+            border-radius: 100%;
+            background: #ddd;
+        }
+
+        .track .step.active .text {
+            font-weight: 400;
+            color: #000;
+        }
+
+        .track .text {
+            display: block;
+            margin-top: 7px;
         }
     </style>
 
