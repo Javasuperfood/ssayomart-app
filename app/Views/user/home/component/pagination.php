@@ -15,17 +15,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     var productContainer = $("#product-container");
     var cardLoader = `<div class="col-6 col-md-4 col-lg-3 pt-3" id="cardLoader">
                 <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
-                    <div class="d-flex justify-content-center align-items-center pb-4">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <svg class="bd-placeholder-img card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" width="150%" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#868e96"></rect>
+                            <rect width="150%" height="150%" fill="#868e96"></rect>
                         </svg>
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                    <p class=" text-secondary" style="font-size: 16px; margin: 0;"><span class="placeholder col-7"></span></p>
-                        <h1 class="text-secondary fs-bold mt-1" style="font-size: 12px; margin: 0;">
+                    <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                    <p class=" text-secondary fw-bold" style="font-size: 14px; margin: 0;">
+                        <span class="placeholder col-6"></span>
+                    </p>
+                    </div>
+                    <p class=" text-secondary" style="font-size: 12px; margin: 0;">
+                        <span class="placeholder col-6"></span>
+                    </p>
+ 
+                        <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
                             <span class="placeholder col-6"></span>
                         </h1>
+                        
                         <div class="container mt-2">
                             <div class="row justify-items-center">
                                 <div class="col">
@@ -73,10 +82,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         var html = '<div class="col-6 col-md-4 col-lg-3 pt-3">' +
                             '<div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">' +
                             ` <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-3" alt="..." style="width: 150px; height: 150px;">
+                            <div class="d-flex justify-content-center align-items-center">
+                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                            </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <p class=" text-secondary" style="font-size: 16px; margin: 0;"><?= substr('${p.nama}', 0, 20); ?>...</p>
+                            <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                            <p class=" text-secondary fw-bold" style="font-size: 14px; margin: 0;"><?= substr('${p.nama}', 0, 40); ?>...</p>
+                            </div
                             <p class=" text-secondary" style="font-size: 12px; margin: 0;">
                                 <del>Rp. ${formatRupiah(p.harga_min)}</del>
                             </p>
@@ -98,7 +111,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                        <p class=" text-secondary" style="font-size: 13px; margin: 0;"><?= substr('${p.nama}', 0, 40); ?>...</p>
+                        <p class=" text-secondary fw-bold" style="font-size: 14px; margin: 0;"><?= substr('${p.nama}', 0, 40); ?>...</p>
                         </div>
                         <p class=" text-secondary" style="font-size: 12px; margin: 0;">
                             <del>Rp. ${formatRupiah(p.harga_min)}</del>
@@ -106,7 +119,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
                             ${hargaText}
                             </h1>
-                            <div class="container pt-2">
+                            <div class="container mt-2">
                                 <div class="row justify-items-center">
                                     <div class="col">
                                         <div class="horizontal-counter">
