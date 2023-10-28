@@ -19,7 +19,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="class" style="position: relative; top: -15px;">
             <section class="mt-0" id="unggul">
                 <div class="container pt-0 mb-3">
-                    <div class="card mt-3 rounded-3" style="background-color: #d7eff8; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
+                    <div class="card mt-3 rounded-3" style="background-color: #ebf4f7; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
                         <div class="card-warning mt-3">
                             <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-conten-between" style="width: 340px;">
                         </div>
@@ -58,7 +58,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <!-- rekomendasi -->
             <section class="mt-0" id="rekomendasi">
                 <div class="container pt-0">
-                    <div class="card mt-3 rounded-3" style="background-color: #fce0e4; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
+                    <div class="card mt-3 rounded-3" style="background-color:  #fff2f4; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
                         <div class="card-warning mt-3">
                             <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 340px;">
                         </div>
