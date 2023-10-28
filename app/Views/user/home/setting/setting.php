@@ -17,10 +17,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center mb-3">
                         <div class="col">
-                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 14px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
+                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 12px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
                         <div class="col">
-                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 14px;"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 12px;"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
                     </div>
 
@@ -72,9 +72,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                        <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
+                        <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                        </a>
+                        </a> -->
                         <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?>n <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
@@ -124,7 +124,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container py-5 d-none d-lg-block">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card border-0 shadow-sm mb-4">
+                    <div class="card border-0 shadow-sm mb-4" style="height: 350px;">
                         <div class="card-body text-center" style="height: 325px;">
                             <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" alt="profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
                             <h3 class="fw-bold  fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
@@ -175,7 +175,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class=" row">
                         <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-4 mb-md-0">
+                            <div class="card border-0 shadow-sm mb-4 mb-md-0" style="height: 268px;">
                                 <div class="card-body">
                                     <h3><?= lang('Text.setting') ?>
                                     </h3>
@@ -183,9 +183,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
-                                        <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
+                                        <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                        </a>
+                                        </a> -->
                                         <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
