@@ -11,19 +11,19 @@ var swiper = new Swiper(".mySwiper", {
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
     1280: {
-      slidesPerView: 6, // 3 card per tampilan
+      slidesPerView: 4, // 3 card per tampilan
 
     },
     // Tampilan iPad (lebar >= 768px)
     768: {
-      slidesPerView: 3, // 3 card per tampilan
+      slidesPerView: 1, // 3 card per tampilan
     },
     // Tampilan Mobile (lebar < 768px)
     375: {
-      slidesPerView: 2, // 2 card per tampilan
+      slidesPerView: 1, // 2 card per tampilan
     },
     280: {
-      slidesPerView: 2, // 2 card per tampilan
+      slidesPerView: 1, // 2 card per tampilan
     },
   },
   navigation: {
