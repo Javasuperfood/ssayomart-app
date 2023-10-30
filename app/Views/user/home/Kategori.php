@@ -19,11 +19,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="class" style="position: relative; top: -15px;">
             <section class="mt-0" id="unggul">
 
-                <div class="card mt-2 rounded-3" style="border: none; text-align: center; font-family: 'Poppins'; position: relative;">
+                <div class="card rounded-3" style="border: none; text-align: start; font-family: 'Poppins'; position: relative;">
                     <div class="card-warning mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-conten-between" style="width: 340px;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-content-between" style="width: 340px; margin-left: 20px;">
                     </div>
-                    <div class="container my-3">
+                    <div class="container mt-1">
                         <div class="swiper mySwiper" style="position: relative;">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($promo as $p) : ?>
@@ -58,11 +58,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <!-- rekomendasi -->
             <section class="mt-0" id="rekomendasi">
 
-                <div class="card mt-1 rounded-3" style="border: none; text-align: center; font-family: 'Poppins'; position: relative;">
+                <div class="card rounded-3" style="border: none; text-align: start; font-family: 'Poppins'; position: relative;">
                     <div class="card-warning mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 340px;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-content-between" style="width: 340px; margin-left: 20px;">
                     </div>
-                    <div class="container my-3">
+                    <div class="container mt-1">
                         <div class="swiper mySweety" style="position: relative;">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($blog_detail as $bd) : ?>
