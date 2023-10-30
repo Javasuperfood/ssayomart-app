@@ -37,6 +37,7 @@ $routes->set404Override();
 $routes->get('/', 'KategoriController::index');
 $routes->get('lang/{locale}', 'Language::index');
 $routes->get('/search', 'ProdukController::search');
+$routes->get('/search-history', 'HistoryTransaksiController::searchHistory');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');

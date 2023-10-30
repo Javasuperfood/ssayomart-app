@@ -149,6 +149,13 @@ class ProdukModel extends Model
         $getProduk->limit($limit, $offset);
         return $getProduk->get()->getResultArray();
     }
+
+    public function getHistoryTransaction($keyword, $page = 1)
+    {
+        return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', 'sku', $keyword);
+    }
+
+
     public function adminProdukSearch($keyword)
     {
         return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', $keyword);
