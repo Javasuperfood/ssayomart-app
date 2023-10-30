@@ -26,4 +26,5 @@ jobs:
             git pull
             git status
             cp -rf ~/${{ secrets.DEV_PATH }}/public/assets/* ~/public_html/public-dev.ssayomart.com/assets/
+            cp -rf ~/public_html/apps.ssayomart.com/assets/produk/main/* ~/public_html/public-dev.ssayomart.com/assets/produk/main/
             ssh-agent -k

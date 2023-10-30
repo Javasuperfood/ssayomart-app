@@ -38,7 +38,7 @@ class ProdukController extends BaseController
                 $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], false, false, $page);
             }
             if ($slug1 && $slug2) {
-                $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori'], false);
+                $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori'], false, $page);
             }
 
             // Kirim data dalam format JSON
