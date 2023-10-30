@@ -17,8 +17,7 @@
     <!-- Modal -->
 
     <div class="modal fade" id="selectMarket" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen-md-down">
-
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
             <form class="modal-content" action="<?= base_url(); ?>setting/update-market" method="post">
                 <?= csrf_field(); ?>
                 <div class="modal-body">
@@ -46,7 +45,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" <?= (!$user['market_selected']) ? '' : 'data-bs-dismiss="modal"' ?>>Close</button>
+                    <button type="button" class="btn btn-secondary close-modal-marker" <?= (!$user['market_selected']) ? '' : 'data-bs-dismiss="modal"' ?>>Close</button>
                     <button type="submit" class="btn btn-danger"><?= (!$user['market_selected']) ? 'Simpan' : 'Update'; ?> Lokasi Market</button>
                 </div>
             </form>
@@ -58,4 +57,9 @@
     function selectMarket(i) {
         $('#market' + i).prop('checked', true);
     }
+    <?php if ($user['market_selected']) :  ?>
+        $(".close-modal-marker").click(function() {
+            $('#market' + <?= $user['market_selected']; ?>).prop('checked', true);
+        });
+    <?php endif ?>
 </script>
