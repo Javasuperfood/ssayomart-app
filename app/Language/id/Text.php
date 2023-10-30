@@ -11,7 +11,7 @@ return [
     'layanan' => '고객 서비스 / Layanan Pelanggan',
     'kontak' => '문의하기 / Hubungi Kami',
     'follow' => '우리를 따르라 / Ikuti Kami',
-    'cari_produk' => '여기서 제품을 찾아보세요... / Cari Produk...',
+    'cari_produk' => 'Search...',
     'jadwal_pelayanan' => '월요일~토요일 / Senin-Sabtu',
     'jadwal_pelayanan_2' => '일요일 : 휴무 / Minggu : Tutup',
     'saran_masak' => '오늘 이 요리 어때요? / SARAN MASAK',

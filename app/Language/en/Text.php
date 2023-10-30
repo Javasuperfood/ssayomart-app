@@ -11,7 +11,7 @@ return [
     'layanan' => 'Customer Service',
     'kontak' => 'Contact Us',
     'follow' => 'Follow Us',
-    'cari_produk' => 'Search Product Here...',
+    'cari_produk' => 'Search...',
     'jadwal_pelayanan' => 'Monday-Saturday',
     'jadwal_pelayanan_2' => 'Sunday : Closed',
     'saran_masak' => 'Our Recommendation',
