@@ -18,6 +18,10 @@ class KategoriController extends BaseController
     public function index()
     {
         // ================ INI PENTING ==================
+        $lang = $this->session->get('lang');
+        if (!$lang) {
+            $this->session->set('lang', 'id');
+        }
         if (auth()->loggedIn()) {
             $cart = new CartModel();
             $result1 = $cart->where(['id_user' => user_id()])->first();
