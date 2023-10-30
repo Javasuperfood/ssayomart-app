@@ -18,81 +18,81 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="class" style="position: relative; top: -15px;">
             <section class="mt-0" id="unggul">
-                <div class="container pt-0 mb-3">
-                    <div class="card mt-3 rounded-3" style="background-color: #ebf4f7; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
-                        <div class="card-warning mt-3">
-                            <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-conten-between" style="width: 340px;">
-                        </div>
-                        <div class="container my-3">
-                            <div class="swiper mySwiper" style="position: relative;">
-                                <div class="swiper-wrapper d-flex">
-                                    <?php foreach ($promo as $p) : ?>
-                                        <div class="swiper-slide">
-                                            <div class="shadow-sm">
-                                                <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                                    <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
-                                                </a>
-                                            </div>
+
+                <div class="card mt-2 rounded-3" style="border: none; text-align: center; font-family: 'Poppins'; position: relative;">
+                    <div class="card-warning mt-3">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-conten-between" style="width: 340px;">
+                    </div>
+                    <div class="container my-3">
+                        <div class="swiper mySwiper" style="position: relative;">
+                            <div class="swiper-wrapper d-flex">
+                                <?php foreach ($promo as $p) : ?>
+                                    <div class="swiper-slide">
+                                        <div class="shadow-sm">
+                                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                            </a>
                                         </div>
-                                    <?php endforeach ?>
-                                </div>
+                                    </div>
+                                <?php endforeach ?>
+                            </div>
 
-                                <!-- Previous button centered within the image -->
-                                <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                        <i class="bi bi-arrow-left"></i>
-                                    </button>
-                                </div>
+                            <!-- Previous button centered within the image -->
+                            <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                    <i class="bi bi-arrow-left"></i>
+                                </button>
+                            </div>
 
-                                <!-- Next button centered within the image -->
-                                <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                        <i class="bi bi-arrow-right"></i>
-                                    </button>
-                                </div>
+                            <!-- Next button centered within the image -->
+                            <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                    <i class="bi bi-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </section>
             <!-- rekomendasi -->
             <section class="mt-0" id="rekomendasi">
-                <div class="container pt-0">
-                    <div class="card mt-3 rounded-3" style="background-color:  #fff2f4; border: none; text-align: center; font-family: 'Poppins'; position: relative;">
-                        <div class="card-warning mt-3">
-                            <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 340px;">
-                        </div>
-                        <div class="container my-3">
-                            <div class="swiper mySweety" style="position: relative;">
-                                <div class="swiper-wrapper d-flex">
-                                    <?php foreach ($blog_detail as $bd) : ?>
-                                        <div class="swiper-slide">
-                                            <div class="shadow-sm">
-                                                <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top" alt="Thumbnail Artikel">
-                                                <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
-                                                    <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                                <!-- Previous button centered within the image -->
-                                <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                        <i class="bi bi-arrow-left"></i>
-                                    </button>
-                                </div>
 
-                                <!-- Next button centered within the image -->
-                                <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                    <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                        <i class="bi bi-arrow-right"></i>
-                                    </button>
-                                </div>
+                <div class="card mt-1 rounded-3" style="border: none; text-align: center; font-family: 'Poppins'; position: relative;">
+                    <div class="card-warning mt-3">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top img-fluid responsive-image justify-conten-between" style="width: 340px;">
+                    </div>
+                    <div class="container my-3">
+                        <div class="swiper mySweety" style="position: relative;">
+                            <div class="swiper-wrapper d-flex">
+                                <?php foreach ($blog_detail as $bd) : ?>
+                                    <div class="swiper-slide">
+                                        <div class="shadow-sm">
+                                            <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top" alt="Thumbnail Artikel">
+                                            <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
+                                                <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <!-- Previous button centered within the image -->
+                            <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                    <i class="bi bi-arrow-left"></i>
+                                </button>
+                            </div>
+
+                            <!-- Next button centered within the image -->
+                            <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                    <i class="bi bi-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </section>
             <!-- end rekomendasi -->
             <div id="ktr" class="container">
