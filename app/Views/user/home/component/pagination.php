@@ -3,6 +3,8 @@
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
 // Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
+
+$countProduk = count($produk);
 ?>
 <script>
     var page = 1; // Halaman awal
@@ -58,7 +60,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>`
-    productContainer.append(cardLoader);
+    <?php if ($countProduk > 5) : ?>
+        productContainer.append(cardLoader);
+    <?php endif; ?>
 
     function loadMoreData() {
         if (!isLoading) {
