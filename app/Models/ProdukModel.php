@@ -139,9 +139,9 @@ class ProdukModel extends Model
             ->where('deleted_at', null);
         if ($k != false) {
             $getProduk->where('id_kategori', $k);
-            if ($sk != false) {
-                $getProduk->where('id_sub_kategori', $sk);
-            }
+        }
+        if ($sk != false) {
+            $getProduk->where('id_sub_kategori', $sk);
         }
         if ($search != false) {
             $getProduk->like('nama', $search);
