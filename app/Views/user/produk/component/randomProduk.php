@@ -1,7 +1,7 @@
 <div class="row mt-3">
     <div class="col">
         <h2 class="mb-4 text-merah">Produk Lainnya</h2>
-        <div class="d-flex justify-content-center align-items-center swiper mySwiper">
+        <div class="d-flex justify-content-center align-items-center swiper mySwing">
             <div class="swiper-wrapper d-flex mb-3">
                 <?php foreach ($randomProducts as $p) : ?>
                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">

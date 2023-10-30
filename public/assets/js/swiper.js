@@ -62,6 +62,37 @@ var swiper = new Swiper(".mySwiper", {
   
     });
 
+    var swiper = new Swiper(".mySwing", {
+      slidesPerView: 2,
+      centeredSlides: false,
+      spaceBetween: 10,
+      grabCursor: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    
+      breakpoints: {
+        // Tampilan iPad (lebar >= 768px)
+        1280: {
+          slidesPerView: 2, // 3 card per tampilan
+    
+        },
+        // Tampilan iPad (lebar >= 768px)
+        768: {
+          slidesPerView: 3, // 3 card per tampilan
+        },
+        375: {
+          slidesPerView: 2, // 2 card per tampilan
+        },
+        280: {
+          slidesPerView: 1, // 2 card per tampilan
+        },
+        
+      },
+    
+      });
+
   var swiper = new Swiper(".mySweety", {
     slidesPerView: 0,
     centeredSlides: false,

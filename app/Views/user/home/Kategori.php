@@ -168,7 +168,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container py-3 d-none d-lg-block">
                 <div class="row">
                     <div class="col">
-                        <div class="swiper mySwiper">
+                        <div class="swiper cardWeb">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($randomProducts as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
