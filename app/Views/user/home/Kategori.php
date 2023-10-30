@@ -17,12 +17,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="class" style="position: relative; top: -15px;">
-            <section class="mt-0 custom-section" id="unggul">
+            <section class="mt-2" id="unggul">
                 <div class="card" style="border: none; text-align: start; font-family: 'Poppins'; position: relative;">
                     <div class="card-warning mt-2" style="background-color: #f7f0eb;">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="mt-2 card-img-top responsive-image justify-content-between" style="width: 340px; margin-left: 20px;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class=" mt-2 card-img-top responsive-image justify-content-between" style="width: 340px; margin-left: 20px;">
                     </div>
-                    <div class="container" style="background-color: #f7f0eb; height:155px;">
+                    <div class="container" style="background-color: #f7f0eb;">
                         <div class="swiper mySwiper" style="position: relative;">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($promo as $p) : ?>
@@ -52,16 +52,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-
             </section>
             <!-- rekomendasi -->
-            <section class="mt-0" id="rekomendasi">
-
-                <div style="height:215px; border: none; text-align: start; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
-                    <div class="card-warning">
+            <section id="rekomendasi">
+                <div class="card" style="border: none; text-align: start; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
+                    <div class="card-warning mt-3">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-content-between" style="width: 340px; margin-left: 20px;">
                     </div>
-                    <div class="container mb-1 ">
+                    <div class="container ">
                         <div class="swiper mySweety" style="position: relative;">
                             <div class="swiper-wrapper d-flex">
                                 <?php foreach ($blog_detail as $bd) : ?>
