@@ -3,6 +3,10 @@ var swiper = new Swiper(".mySwiper", {
   centeredSlides: false,
   spaceBetween: 10,
   grabCursor: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
