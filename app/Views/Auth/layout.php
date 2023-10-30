@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+  <?= $this->include('user/home/component/preloader.php'); ?>
   <main role="main" class="container">
     <?= $this->renderSection('main') ?>
   </main>
@@ -48,6 +48,27 @@
         togglePassword2.classList.remove('bi-eye');
         togglePassword2.classList.add('bi-eye-slash');
       }
+    });
+
+    function buttonGoogle() {
+      var preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.position = 'fixed';
+        preloader.style.top = '0';
+        preloader.style.left = '0';
+        preloader.style.width = '100%';
+        preloader.style.height = '100%';
+        preloader.style.backgroundColor = '#ffffffb9';
+        preloader.style.display = 'flex';
+        preloader.style.justifyContent = 'center';
+        preloader.style.alignItems = 'center';
+        preloader.style.zIndex = '9999';
+      }
+    }
+    // Menunggu halaman selesai dimuat
+    window.addEventListener('load', function() {
+      // Menghilangkan preloader
+      document.getElementById('preloader').style.display = 'none';
     });
   </script>
 </body>
