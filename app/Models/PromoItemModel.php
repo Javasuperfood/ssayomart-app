@@ -58,6 +58,7 @@ class PromoItemModel extends Model
             ->join('jsf_produk', 'jsf_promo_item.id_produk = jsf_produk.id_produk')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
             ->groupBy('jsf_promo_item.id_promo_item')
+            ->where('jsf_produk.deleted_at', null)
             ->where(['jsf_promo.slug' => $slug])
             ->orderBy('jsf_promo_item.created_at', 'DESC')
             ->get();
