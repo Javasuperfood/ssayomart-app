@@ -15,6 +15,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container d-md-blok d-lg-none d-xl-none">
+            <div class="row">
+                <div class="col">
+                    <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
+                        <div class="input-group mb-3">
+                            <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
+                            <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="cari History lur" aria-label="search" aria-describedby="basic-addon1">
+                        </div>
+                    </form>
+                </div>
+            </div>
             <?php
             $idTransaksi = null;
             foreach ($transaksi as $t) : ?>
@@ -159,6 +169,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </ol>
                     </nav>
                 </div>
+            </div>
+
+            <div class="col">
+                <form class="border-0 mt-3 mb-5" role="search" action="<?= base_url('search'); ?>" method="get">
+                    <div class="input-group mb-3">
+                        <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
+                        <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="cari History lur" aria-label="search" aria-describedby="basic-addon1">
+                    </div>
+                </form>
             </div>
             <?php
             $idTransaksi = null;
