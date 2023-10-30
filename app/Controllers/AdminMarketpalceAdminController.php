@@ -76,4 +76,43 @@ class AdminMarketpalceAdminController extends BaseController
         session()->setFlashdata('alert', $alert);
         return redirect()->to(base_url('dashboard/admin-market'));
     }
+
+    public function storeDataUpdate($id)
+    {
+        $adminTokoModel = new AdminTokoModel();
+        $id_toko = $this->request->getVar('chakedMarket');
+        if (!$id_toko) {
+            $id_toko = [];
+        }
+        $allmarket = $adminTokoModel->where('id_user', $id)->findAll();
+        foreach ($allmarket as $key => $m) {
+            if (!in_array($m['id_toko'], $id_toko)) {
+                $adminTokoModel->delete($m['id_admin_toko']);
+            }
+        }
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Berhasil update admin'
+        ];
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to(base_url('dashboard/admin-market'));
+    }
+
+    public function deleteAllAdminMarket($id)
+    {
+        $adminTokoModel = new AdminTokoModel();
+        $allMarket = $adminTokoModel->where('id_user', $id)->findAll();
+        // delete all $allMarket
+        foreach ($allMarket as $market) {
+            $adminTokoModel->delete($market['id_admin_toko']);
+        }
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Berhasil hapus admin dari semua market'
+        ];
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to(base_url('dashboard/admin-market'));
+    }
 }

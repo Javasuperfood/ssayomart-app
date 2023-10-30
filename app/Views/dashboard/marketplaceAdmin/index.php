@@ -86,36 +86,75 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-banner/">
+                                            <button class="dropdown-item" data-toggle="modal" data-target="#updateMarkert<?= $u['id']; ?>">
                                                 <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Update
-                                            </a>
+                                            </button>
                                             <div class="dropdown-divider"></div>
-                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner">
+                                            <button class="dropdown-item" data-toggle="modal" data-target="#deleteMarketAdminModal<?= $u['id']; ?>">
                                                 <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                                 <span class="text-danger">Delete</span>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                     <!-- ================= START MODAL DELETE SINGLE PRODUK ================== -->
-                                    <div class="modal fade" id="deleteBanner" tabindex="-1" role="dialog" aria-labelledby="deleteBanner" aria-hidden="true">
+                                    <div class="modal fade" id="updateMarkert<?= $u['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="updatearkert <?= $u['id']; ?>" aria-hidden="true">
                                         <div class="modal-dialog text-start text-secondary" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteBanner">Delete ?</h5>
+                                                    <h5 class="modal-title" id="updatearkert <?= $u['id']; ?>">Update Admin ?</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body text-center">
-                                                    <br><br>
-                                                    Pilih Delete untuk Menghapus Produk
+                                                <div class="modal-body">
+                                                    <form id="updateChakedMarket<?= $u['id']; ?>" action="<?= base_url('dashboard/admin-market/update/' . $u['id']); ?>" method="post">
+                                                        <?= csrf_field() ?>
+                                                        <?php foreach ($marketAdmin as $m) : ?>
+                                                            <?php if ($m['id_user'] == $u['id']) : ?>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" name="chakedMarket[]" value="<?= $m['id_toko']; ?>" id="updateChakedMarket<?= $m['id_toko']; ?>" checked>
+                                                                    <label class="form-check-label" for="updateChakedMarket<?= $m['id_toko']; ?>">
+                                                                        <?= $m['city'] . ' - ' . $m['zip_code']; ?>
+                                                                    </label>
+                                                                </div>
+                                                            <?php endif; ?>
+                                                        <?php endforeach ?>
+                                                    </form>
+
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                    <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/" method="post">
+                                                    <button form="updateChakedMarket<?= $u['id']; ?>" type="submit" class="btn btn-danger"> <i class="bi bi-pen-fill"></i> Update Admin</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ================= END MODAL DELETE SINGLE PRODUK ================== -->
+                                    <!-- ================= START MODAL DELETE SINGLE PRODUK ================== -->
+                                    <div class="modal fade" id="deleteMarketAdminModal<?= $u['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteMarketAdminModal<?= $u['id']; ?>" aria-hidden="true">
+                                        <div class="modal-dialog text-start text-secondary" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteMarketAdminModal<?= $u['id']; ?>">Delete ?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>
+                                                        Pilih Delete untuk Menghapus atau mengeluarkan admin dari Market
+                                                    </p>
+                                                    <?php foreach ($marketAdmin as $m) : ?>
+                                                        <?php if ($m['id_user'] == $u['id']) : ?>
+                                                            <?= '• ' . $m['city'] . ' - ' . $m['zip_code']; ?><br>
+                                                        <?php endif; ?>
+                                                    <?php endforeach ?>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <form action="<?= base_url() ?>dashboard/admin-market/delete/<?= $u['id'];; ?>" method="post">
                                                         <?= csrf_field() ?>
-                                                        <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
                                                         <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                     </form>
                                                 </div>

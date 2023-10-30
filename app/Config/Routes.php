@@ -191,6 +191,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     //Admin Marketplace
     $routes->get('admin-market', 'AdminMarketpalceAdminController::index');
     $routes->post('admin-market/save', 'AdminMarketpalceAdminController::adminSave');
+    $routes->post('admin-market/update/(:segment)', 'AdminMarketpalceAdminController::storeDataUpdate/$1');
+    $routes->post('admin-market/delete/(:segment)', 'AdminMarketpalceAdminController::deleteAllAdminMarket/$1');
 
 
     // CRUD Promo
