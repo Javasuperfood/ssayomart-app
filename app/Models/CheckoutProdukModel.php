@@ -46,20 +46,25 @@ class CheckoutProdukModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getHistoryTransaksi($id)
+    public function getHistoryTransaction($keyword, $page = 1)
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_checkout_produk')
             ->select('*, jsf_checkout.updated_at AS last_update')
             ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
-            ->where('jsf_checkout.id_user', $id)
+            ->where('jsf_checkout.id_user', user_id())
+            ->groupStart()
+            ->like('jsf_produk.nama', $keyword) // Search by product name
+            ->orLike('jsf_produk.sku', $keyword) // Search by SKU
+            ->groupEnd()
             ->orderBy('jsf_checkout_produk.created_at', 'DESC')
             ->get();
 
         $result = $query->getResult();
         return $result;
     }
+
     public function getAllTransaksi($toko = null, $perPage, $currentPage)
     {
         $db = \Config\Database::connect();

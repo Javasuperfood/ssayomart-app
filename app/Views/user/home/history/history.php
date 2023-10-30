@@ -2,10 +2,6 @@
 <?= $this->section('page-content') ?>
 
 <?php
-// Mendeteksi User-Agent
-
-use PhpParser\Node\Stmt\Break_;
-
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
 // Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
@@ -17,19 +13,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-md-blok d-lg-none d-xl-none">
             <div class="row">
                 <div class="col">
-                    <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
+                    <form action="<?= base_url('history'); ?>" method="get">
                         <div class="input-group mb-3">
-                            <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
-                            <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="cari History lur" aria-label="search" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control border-0 shadow-sm" placeholder="Cari..." name="search" aria-label="search" aria-describedby="search" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                            <button class="btn btn-danger border-0" type="submit"><i class="bi bi-search"></i></button>
                         </div>
                     </form>
                 </div>
             </div>
             <?php
             $idTransaksi = null;
-            foreach ($transaksi as $t) : ?>
+            $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
+
+            foreach ($transaksi as $t) :
+                if ($searchTerm != '' && (strpos(strtolower($t->nama), strtolower($searchTerm)) === false) && (strpos(strtolower($t->sku), strtolower($searchTerm)) === false)) {
+                    continue; // Skip this transaction if it doesn't match the search term
+                }
+            ?>
                 <?php if ($idTransaksi != $t->id_checkout) : ?>
-                    <div class="row pt-3">
+                    <div class="row pt-3" onclick="toggleHistory(<?= $t->id_checkout; ?>)">
                         <div class="col">
                             <div class="card border-0 shadow-sm">
                                 <div class="card-body">
@@ -94,7 +96,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-
                 <?php endif ?>
                 <?php if ($t->id_checkout == $idTransaksi) : ?>
                     <script>
@@ -156,7 +157,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- End Tampilan mobile dan Ipad -->
 
-    <!-- Tampilan Destop -->
+    <!-- Tampilan Desktop -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container py-5 d-none d-lg-block">
             <div class="row">
@@ -172,10 +173,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
 
             <div class="col">
-                <form class="border-0 mt-3 mb-5" role="search" action="<?= base_url('search'); ?>" method="get">
+                <form class="border-0 mt-3 mb-5" role="search" action="<?= base_url('search-history'); ?>" method="get">
                     <div class="input-group mb-3">
                         <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
-                        <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="cari History lur" aria-label="search" aria-describedby="basic-addon1">
+                        <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="Search Riwayat Transaksi..." aria-label="search" aria-describedby="basic-addon1">
                     </div>
                 </form>
             </div>

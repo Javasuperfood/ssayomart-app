@@ -45,8 +45,7 @@ class JsfProduk extends Migration
                 'constraint'    => '225'
             ],
             'deskripsi' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => '255',
+                'type'          => 'TEXT'
             ],
             'img' => [
                 'type'          => 'VARCHAR',

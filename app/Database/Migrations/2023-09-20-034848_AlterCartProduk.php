@@ -8,7 +8,6 @@ class AlterCartProduk extends Migration
 {
     public function up()
     {
-
         $fields = [
             'id_variasi_item' => [
                 'type'           => 'INT',
