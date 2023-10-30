@@ -38,7 +38,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                             <div class="col d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
                                                 <div class="form-check form-switch">
-                                                    <input class="form-check-input" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
+                                                    <input class="form-check-input fs-3" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
                                                 </div>
                                             </div>
                                         </div>
@@ -101,7 +101,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
                                 <h2 class="mb-0"><?= lang('Text.title_alamat') ?></h2>
-                                <hr class="text-danger">
+                                <hr class="border border-danger">
                             </li>
                         </ol>
                     </nav>
@@ -130,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                                 <div class="col-10 d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
+                                                        <input class="form-check-input fs-4" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
                                                     </div>
                                                 </div>
                                             </div>
