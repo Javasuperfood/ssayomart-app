@@ -7,8 +7,8 @@
                     <h5 class="mb-0">Anda yakin ingin logout ?</h5>
                 </div>
                 <div class="modal-footer flex-nowrap p-0">
-                    <a href="<?= base_url(); ?>logout" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Yes</strong></a>
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
+                    <a href="<?= base_url(); ?>logout" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger"><strong>Yes</strong></a>
+                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 text-danger" data-bs-dismiss="modal">No thanks</button>
                 </div>
             </div>
         </div>
