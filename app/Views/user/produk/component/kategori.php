@@ -50,59 +50,38 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- tampilan Desktop -->
-    <div id="desktopContent" style="margin-top: 100px;">
+    <div id="desktopContent">
         <div class="container-fluid d-none d-lg-block">
-            <div class="mb-5">
+            <div class="mb-2">
                 <div class="row">
                     <div class="col-3">
-                        <div class="card-side" style="top: 50px; position: sticky">
-                            <div class="card-body border-0">
-                                <h3 class="mt-5">Kategori</h3>
-                                <hr style="border-color: red; border-width: 3px;">
+                        <div class="card-side">
+                            <div class="card-body">
+                                <h3>Kategori</h3>
+                                <hr>
                                 <ul class="list-group-flush">
                                     <?php foreach ($kategori as $k) : ?>
-                                        <?php
-                                        // Check if the current category has subcategories
-                                        $hasSubcategories = count(array_filter($subKategori, function ($sub) use ($k) {
-                                            return $sub['slugK'] == $k['slug'];
-                                        })) > 0;
-                                        ?>
-                                        <li class="list-group-item pb-1 list-group-flush border-0">
-                                            <?php if ($hasSubcategories) : ?>
-                                                <!-- If category has subcategories, display a dropdown -->
-                                                <a href="#" class="link-offset-2 link-underline link-underline-opacity-0 link-dark" data-bs-toggle="collapse" data-bs-target="#subcategories<?= $k['slug']; ?>">
-                                                    <?= $k['nama_kategori']; ?>
-                                                    <i class="bi bi-chevron-down fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                                </a>
-                                                <div id="subcategories<?= $k['slug']; ?>" class="collapse">
-                                                    <ul class="list-group-flush border-0">
-                                                        <?php foreach ($subKategori as $sub) : ?>
-                                                            <?php if ($sub['slugK'] == $k['slug']) : ?>
-                                                                <a href="<?= base_url('produk/kategori/' . $k['slug'] . '/' . $sub['slugS']); ?>" class="link-dark list-group-item">
-                                                                    <?= $sub['nama_kategori']; ?>
-                                                                </a>
-                                                            <?php endif; ?>
-                                                        <?php endforeach; ?>
-                                                    </ul>
-                                                </div>
-                                            <?php else : ?>
-                                        </li>
-                                        <!-- If category doesn't have subcategories, display a regular link -->
-                                        <li class="list-group-item pb-1 list-group-flush border-0">
-                                            <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="link-offset-2 link-underline link-underline-opacity-0 link-dark list-group-item pb-3 fw-bold">
+                                        <li class="list-group-item">
+                                            <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="link-offset-2 link-underline link-underline-opacity-0 link-white list-group-item-link fw-bold" data-slug="<?= $k['slug'] ?>">
                                                 <?= $k['nama_kategori']; ?>
-                                                <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                                                <i id="icon-<?= $k['slug'] ?>" class="bi bi-caret-right arrow-icon"></i>
                                             </a>
+                                            <ul class="list-group-flush">
+                                                <?php foreach ($subKategori as $sub) : ?>
+                                                    <?php if ($sub['slugK'] == $k['slug']) : ?>
+                                                        <li class="list-group-item">
+                                                            <a href="<?= base_url('produk/kategori/' . $k['slug'] . '/' . $sub['slugS']); ?>" class="link-dark list-group-item-link">
+                                                                <?= $sub['nama_kategori']; ?>
+                                                            </a>
+                                                        </li>
+                                                <?php endif;
+                                                endforeach; ?>
+                                            </ul>
                                         </li>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                         </div>
-                        <!-- <div class="card-body">
-                            <h3 class="mt-5">Promo Special</h3>
-                            <hr style="border-color: red; border-width: 3px;">
-                        </div> -->
                     </div>
                     <div class="col-9">
                         <?= $this->include('user/produk/component/card') ?>
@@ -111,6 +90,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+
 
 <?php endif; ?>
 <!-- tampilan Desktop -->
@@ -130,6 +110,102 @@ if ($isMobile) {
 }
 ?>
 
+<style>
+    #desktopContent {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .card-side {
+        position: sticky;
+        top: 50px;
+        height: fit-content;
+    }
+
+    .card-body {
+        border: 0;
+        padding: 0;
+
+    }
+
+    h3 {
+        margin-top: 5px;
+        margin-bottom: 5px;
+
+    }
+
+    hr {
+        border-color: red;
+        border-width: 3px;
+        margin-top: 0;
+        margin-bottom: 0;
+
+    }
+
+    ul.list-group-flush {
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .list-group-item {
+        border: 0;
+        padding: 0;
+        margin: 0;
+
+
+    }
+
+    .list-group-item a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        text-decoration: none;
+        color: #333;
+        background-color: #fff;
+        border-bottom: 1px solid #e6e6e6;
+        border-radius: 0;
+        transition: all 0.3s ease;
+
+        /* Customize the color */
+    }
+
+    .list-group-item a:hover {
+        background-color: #ce2614;
+        color: white;
+
+        /* Add a subtle background color on hover */
+    }
+
+    .list-group-item a:hover .arrow-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Ikon panah di dalam tautan */
+    .list-group-item-link .bi-caret-right {
+        margin-left: auto;
+        /* Menempatkan ikon di sebelah kanan tautan */
+    }
+
+    /* Ganti warna ikon panah pada hover */
+    .list-group-item-link:hover .bi-caret-right {
+        color: #fff;
+        /* Warna ikon saat dihover */
+    }
+
+
+    .col-3 {
+        flex: 1;
+
+    }
+
+    .col-9 {
+        flex: 3;
+
+    }
+</style>
 
 
 <script>
