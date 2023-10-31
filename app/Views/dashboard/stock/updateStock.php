@@ -60,9 +60,13 @@
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Total Stok Produk</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <?php foreach ($stock as $key => $s) : ?>
-                                <?= $s['value_item'] . ' : ' . $s['stok']; ?><br>
-                            <?php endforeach; ?>
+                            <?php if (count($stock) > 0) : ?>
+                                <?php foreach ($stock as $key => $s) : ?>
+                                    <?= $s['value_item'] . ' : ' . $s['stok']; ?><br>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                0
+                            <?php endif ?>
                         </div>
                     </div>
                     <div class="col-auto">
