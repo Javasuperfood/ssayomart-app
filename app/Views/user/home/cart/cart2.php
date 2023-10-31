@@ -33,9 +33,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php foreach ($produk as $p) : ?>
                         <div class="col-6 col-md-4 col-lg-3 pt-3">
                             <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
-                                <a href=" <?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                                <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mx-auto" alt="...">
                                 </a>
+
                                 <div class="card-body">
                                     <p class="card-text text-secondary" style="font-size: 14px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
                                     <p class="card-title text-danger" style="font-size: 18px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
@@ -188,61 +189,79 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     .form-check-input[type=checkbox]:indeterminate {
         background-color: #ec2614;
         border-color: #ec2614;
+    }
+</style>
 
-        @media (max-width: 280px) {
-            .horizontal-counter.btn {
-                padding: 0.25rem 0.5rem;
-                font-size: 12px;
-                margin: 0 5px;
-            }
+<style>
+    /* Stil umum untuk tampilan mobile dan desktop */
+    .card-body {
+        padding: 1rem;
+    }
 
-            .horizontal-counter input {
-                width: 40px;
-                text-align: center;
-            }
+    /* Media query untuk tampilan Samsung Galaxy Fold atau ukuran layar yang sesuai */
+    @media screen and (max-width: 280px) {
 
-            .custom-button .btn {
-                padding: 0.25rem 0.5rem;
-                font-size: 12px;
-            }
+        /* Mengatur tata letak untuk card dan elemen lainnya pada tampilan yang lebih kecil */
+        .col-3 {
+            width: 30%;
+        }
 
-            .input-group .btn {
-                padding: 0.15rem 0.3rem;
-                font-size: 0.9rem;
-            }
+        .col-9 {
+            width: 70%;
+        }
 
-            .input-group .btn {
-                width: 30px;
-                /* Lebar tombol */
-                height: 30px;
-                /* Tinggi tombol */
-                padding: 0;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 1rem;
-                /* Sesuaikan ukuran ikon jika diperlukan */
-                border: 1px solid #ce2614;
-                /* Tambahkan garis pemisah antara tombol */
-                background-color: #fff;
-                /* Warna latar belakang tombol */
+        /* Atur ukuran font dan padding untuk tampilan yang lebih kecil */
+        .fs-1 {
+            font-size: 24px;
+        }
 
-            }
+        .text-center p {
+            font-size: 14px;
+        }
 
-            /* Style untuk input number */
-            .input-group input {
+        .card-text {
+            font-size: 12px;
+        }
 
-                width: 50px;
-                text-align: center;
-                display: flex;
-                border: 1px solid #ce2614;
-                /* Tambahkan garis pemisah untuk input number */
-                height: 30px;
-                padding: 0;
-                font-size: 1.2rem;
-                /* Sesuaikan ukuran teks jika diperlukan */
-            }
+        .card-title {
+            font-size: 16px;
+        }
+
+        .form-check-input {
+            font-size: 18px;
+            top: 5px;
+            right: 5px;
+        }
+
+        /* Atur ukuran gambar agar sesuai dengan tampilan yang lebih kecil */
+        .card-img-top {
+            width: 80px;
+            height: 80px;
+        }
+
+        /* Stil untuk elemen pada d-flex align-items-center */
+        .d-flex.align-items-center {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        /* Lebih banyak penyesuaian sesuai kebutuhan tampilan yang lebih kecil */
+        .btn.btn-outline-danger.btn-sm.rounded-circle {
+            padding: 2px;
+            /* Sesuaikan padding agar tombol lebih mudah ditekan pada tampilan yang lebih kecil */
+        }
+
+        .form-control.text-small.text-center.bg-white.border-0 {
+            width: 10px;
+            /* Sesuaikan lebar input agar sesuai dengan tampilan yang lebih kecil */
+            font-size: 12px;
+            /* Sesuaikan ukuran font agar sesuai dengan tampilan yang lebih kecil */
+        }
+
+        .bi.bi-dash,
+        .bi.bi-plus {
+            font-size: 10px;
+            /* Sesuaikan ukuran ikon agar sesuai dengan tampilan yang lebih kecil */
         }
     }
 </style>
