@@ -31,7 +31,6 @@ class HistoryTransaksiController extends BaseController
         $cekTransaksi = $checkoutProdModel->getHistoryTransaction(user_id());
 
         $perPage = 10;
-        $currentPage = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
 
         $produk = [];
         $keyword = $this->request->getVar('search');
@@ -57,8 +56,7 @@ class HistoryTransaksiController extends BaseController
             'transaksi' =>  $cekTransaksi,
             'back' => '',
             'kategori' => $kategori->findAll(),
-            'pager' => $produkModel->pager,
-            'iterasi' => ($currentPage - 1) * $perPage + 1,
+            // 'pager' => $produkModel->pager,
             'produk' => $filteredProduk
         ];
         // dd($filteredProduk);
