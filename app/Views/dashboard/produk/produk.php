@@ -125,6 +125,10 @@
                                                     <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Update
                                                 </a>
+                                                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/update-stok/<?= $km['slug']; ?>">
+                                                    <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                    Stok
+                                                </a>
                                                 <div class="dropdown-divider"></div>
 
                                                 <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteProduk<?= $km['id_produk']; ?>">
