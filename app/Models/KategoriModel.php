@@ -73,6 +73,15 @@ class KategoriModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function getKategoriByProdukId($id_produk)
+    {
+        return $this->select('nama_kategori')
+            ->join('jsf_produk', 'jsf_produk.id_kategori = jsf_kategori.id_kategori')
+            ->where('jsf_produk.id_produk', $id_produk)
+            ->first();
+    }
+
     public function getGambarKategori($slug)
     {
         return $this->where(['slug' => $slug])->select('img')->first();

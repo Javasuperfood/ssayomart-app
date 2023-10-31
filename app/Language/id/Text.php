@@ -80,5 +80,12 @@ return [
     'transaksi_6' => '쇼핑을 계속 / Lanjutkan Belanja',
 
     // ARTIKEL
-    'saran_masak' => '싸요마트의 다른 요리 제안 / Saran Masak Lainnya di Ssayomart.'
+    'saran_masak' => '싸요마트의 다른 요리 제안 / Saran Masak Lainnya di Ssayomart.',
+
+    // PRODUK SINGLE
+    'deskripsi_produk' => '설명 / Deskripsi',
+    'produk_lainnya' => '다른 제품들 / Produk Lainnya',
+    'btn_beli' => '구입하다 / Beli',
+    'badge_kategori' => '범주 / Kategori',
+    'badge_subkategori' => '하위 카테고리 / Sub Kategori',
 ];

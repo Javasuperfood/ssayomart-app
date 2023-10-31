@@ -75,6 +75,14 @@ class SubKategoriModel extends Model
         return $this->where(['slug' => $slug])->first();
     }
 
+    public function getSubKategoriByProdukId($id_produk)
+    {
+        return $this->select('nama_kategori')
+            ->join('jsf_produk', 'jsf_produk.id_sub_kategori = jsf_sub_kategori.id_sub_kategori')
+            ->where('jsf_produk.id_produk', $id_produk)
+            ->first();
+    }
+
     public function joinTable()
     {
         $db = \Config\Database::connect();

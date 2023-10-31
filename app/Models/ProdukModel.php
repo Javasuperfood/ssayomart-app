@@ -90,6 +90,23 @@ class ProdukModel extends Model
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->where(['slug' => $slug1])->first();
     }
 
+    // public function getKategoriByProdukId($produkId)
+    // {
+    //     return $this->db->table('jsf_kategori')
+    //         ->where('jsf_kategori.id_kategori', $produkId)
+    //         ->get()
+    //         ->getResultArray();
+    // }
+
+    // public function getKategoriByProdukIdBatch($produkId)
+    // {
+    //     return $this->db->table('jsf_kategori_produk')
+    //         ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_kategori_produk.id_kategori')
+    //         ->where('jsf_kategori_produk.id_produk', $produkId)
+    //         ->get()
+    //         ->getResultArray();
+    // }
+
     public function getSubKategoriByKategori($kategoriId)
     {
         return $this->db->table('jsf_subkategori')

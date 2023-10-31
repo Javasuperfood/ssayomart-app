@@ -80,5 +80,12 @@ return [
     'transaksi_6' => 'Continue Shopping',
 
     // ARTIKEL
-    'saran_masak' => 'Other Cooking Suggestions at Ssayomart.'
+    'saran_masak' => 'Other Cooking Suggestions at Ssayomart.',
+
+    // PRODUK SINGLE
+    'deskripsi_produk' => 'Description',
+    'produk_lainnya' => 'Another Product',
+    'btn_beli' => 'Buy Now',
+    'badge_kategori' => 'Category',
+    'badge_subkategori' => 'Sub Category',
 ];
