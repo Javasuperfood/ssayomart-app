@@ -28,7 +28,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-9">
                             <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 text-center">
                             <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>">
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
                             </a>
@@ -155,18 +155,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                 <div class="row">
                                     <div class="col">
-                                        <div class="card text-bg-light mb-3 shadow-sm border-0 rounded">
-                                            <div class="card-body">
-                                                <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
-                                                    <div class="row">
-                                                        <div class="col-3"><img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img"></div>
-                                                        <div class="col">
-                                                            <h5 class="card-title text-dark"><?= lang('Text.judul_kupon') ?></h5>
-                                                            <p class="card-text text-secondary"><?= lang('Text.isi_kupon') ?></p>
-                                                        </div>
+                                        <div class="mb-3 border-0 rounded">
+                                            <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img">
                                                     </div>
-                                                </a>
-                                            </div>
+                                                    <div class="col-9 mt-5 text-center">
+                                                        <h5 class="card-title text-dark"><?= lang('Text.judul_kupon') ?></h5>
+                                                        <p class="card-text text-secondary"><?= lang('Text.isi_kupon') ?></p>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
