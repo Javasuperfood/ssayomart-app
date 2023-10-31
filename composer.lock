@@ -141,12 +141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/shield.git",
-                "reference": "5b50267c91e5126ab8900dff57c5284a3e42066d"
+                "reference": "6a57e3b1a81db155ec4255f3389a1d9004987925"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/5b50267c91e5126ab8900dff57c5284a3e42066d",
-                "reference": "5b50267c91e5126ab8900dff57c5284a3e42066d",
+                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/6a57e3b1a81db155ec4255f3389a1d9004987925",
+                "reference": "6a57e3b1a81db155ec4255f3389a1d9004987925",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +207,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/shield"
             },
-            "time": "2023-10-26T07:20:14+00:00"
+            "time": "2023-10-30T06:30:47+00:00"
         },
         {
             "name": "datamweb/shield-oauth",
