@@ -1,18 +1,17 @@
 // Slider Banner Promosi Homepage All Device 
 var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 2,
+  slidesPerView: 2, // Mengatur agar selalu ada 2 slide yang terlihat
   centeredSlides: true,
   spaceBetween: 10,
   grabCursor: true,
   autoplay: {
     delay: 2500,
-    disableOnInteraction: false,
+    disableOnInteraction: true,
   },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
-  },
-
+  },  
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
     1280: {
