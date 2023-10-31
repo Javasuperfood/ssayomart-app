@@ -77,6 +77,7 @@ class VariasiItemModel extends Model
 
         return $results;
     }
+
     public function getByIdProduk($id)
     {
         $db = \Config\Database::connect();

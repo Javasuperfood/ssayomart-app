@@ -71,11 +71,16 @@ class ProdukController extends BaseController
     public function produkShowSingle($slug)
     {
         $kategori = new KategoriModel();
+        $subKategori = new SubKategoriModel();
         $produk = new ProdukModel();
         $varianModel = new VariasiItemModel();
         $single = $produk->getProduk($slug);
         $varianItem = $varianModel->getByIdProduk($single['id_produk']);
         $randomProducts = $produk->getRandomProducts();
+
+        // Mengambil kategori berdasarkan id_produk
+        $kategoriProduk = $kategori->getKategoriByProdukId($single['id_produk']);
+        $subKategoriProduk = $subKategori->getSubKategoriByProdukId($single['id_produk']);
 
         $data = [
             'title' => $single['nama'],
@@ -83,11 +88,15 @@ class ProdukController extends BaseController
             'produk' => $single,
             'varian' => $varianItem,
             'varianItem' => count($varianItem),
-            'randomProducts' => $randomProducts, // Kirim produk-produk acak ke view.
+            'randomProducts' => $randomProducts,
+            'kategoriProduk' => $kategoriProduk, // Menambahkan kategori produk
+            'subKategoriProduk' => $subKategoriProduk, // Menambahkan kategori produk
         ];
-        // dd($data);
+
         return view('user/produk/produk', $data);
     }
+
+
 
     public function search()
     {
