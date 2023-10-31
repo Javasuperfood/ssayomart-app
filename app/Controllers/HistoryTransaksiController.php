@@ -28,7 +28,7 @@ class HistoryTransaksiController extends BaseController
         $checkoutModel = new CheckoutModel();
         $produkModel = new ProdukModel();
         $kategori = new KategoriModel();
-        $cekTransaksi = $checkoutProdModel->getHistoryTransaction(user_id());
+        $cekTransaksi = $checkoutProdModel->getHistoryTransaksi(user_id());
 
         // $produk = [];
         // $keyword = $this->request->getVar('search');
