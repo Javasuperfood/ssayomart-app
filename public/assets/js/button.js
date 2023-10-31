@@ -29,38 +29,6 @@ var swiper = new Swiper(".buttonSwiper", {
 
 });
 
-var swiper = new swiper(".mySwing", {
-  slidesPerView: 2,
-  centeredSlides: false,
-  spaceBetween: 10,
-  grabCursor: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-
-  breakpoints: {
-    // Tampilan iPad (lebar >= 768px)
-    1280: {
-      slidesPerView: 2, // 3 card per tampilan
-
-    },
-    // Tampilan iPad (lebar >= 768px)
-    768: {
-      slidesPerView: 3, // 3 card per tampilan
-    },
-    375: {
-      slidesPerView: 2, // 2 card per tampilan
-    },
-    280: {
-      slidesPerView: 1, // 2 card per tampilan
-    },
-    
-  },
-
-  });
-
-
 // tombol Scroll Up
 var scrollUpButton = document.getElementById("scrollUpButton");
 

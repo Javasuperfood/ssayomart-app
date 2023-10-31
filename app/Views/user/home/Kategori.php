@@ -17,79 +17,79 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="class" style="position: relative; top: -15px;">
-            <section class="mt-2" id="unggul">
-                <div class="card" style="border: none; text-align: start; font-family: 'Poppins'; position: relative;">
-                    <div class="card-warning mt-2" style="background-color: #f7f0eb;">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class=" mt-2 card-img-top responsive-image justify-content-between" style="width: 340px; margin-left: 20px;">
+            <section class="mt-3" id="unggul" style="background-color: #f7f0eb;">
+                <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f7f0eb;">
+                    <div class="container mb-2 mt-2" style="background-color: #f7f0eb;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="mt-2 card-img-top responsive-image" style="width: 340px;">
                     </div>
-                    <div class="container" style="background-color: #f7f0eb;">
-                        <div class="swiper mySwiper" style="position: relative;">
-                            <div class="swiper-wrapper d-flex">
-                                <?php foreach ($promo as $p) : ?>
-                                    <div class="swiper-slide">
-                                        <div class="shadow-sm">
-                                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
-                                            </a>
-                                        </div>
+                </div>
+                <div class="container" style="background-color: #f7f0eb;">
+                    <div class="swiper mySwiper" style="position: relative;">
+                        <div class="swiper-wrapper d-flex">
+                            <?php foreach ($promo as $p) : ?>
+                                <div class="swiper-slide">
+                                    <div class="shadow-sm">
+                                        <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                            <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                        </a>
                                     </div>
-                                <?php endforeach ?>
-                            </div>
+                                </div>
+                            <?php endforeach ?>
+                        </div>
 
-                            <!-- Previous button centered within the image -->
-                            <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                    <i class="bi bi-arrow-left"></i>
-                                </button>
-                            </div>
+                        <!-- Previous button centered within the image -->
+                        <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-left"></i>
+                            </button>
+                        </div>
 
-                            <!-- Next button centered within the image -->
-                            <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                    <i class="bi bi-arrow-right"></i>
-                                </button>
-                            </div>
+                        <!-- Next button centered within the image -->
+                        <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- rekomendasi -->
-            <section id="rekomendasi">
-                <div class="card" style="border: none; text-align: start; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
-                    <div class="card-warning mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image justify-content-between" style="width: 340px; margin-left: 20px;">
-                    </div>
-                    <div class="container ">
-                        <div class="swiper mySweety" style="position: relative;">
-                            <div class="swiper-wrapper d-flex">
-                                <?php foreach ($blog_detail as $bd) : ?>
-                                    <div class="swiper-slide">
-                                        <div class="shadow-sm">
-                                            <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top" alt="Thumbnail Artikel">
-                                            <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
-                                                <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                            <!-- Previous button centered within the image -->
-                            <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                    <i class="bi bi-arrow-left"></i>
-                                </button>
-                            </div>
-
-                            <!-- Next button centered within the image -->
-                            <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                                <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                    <i class="bi bi-arrow-right"></i>
-                                </button>
-                            </div>
-                        </div>
+            <section id="rekomendasi" style="background-color: #f3f5df;">
+                <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
+                    <div class="container mb-2 mt-2">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
                     </div>
                 </div>
 
+                <div class="container">
+                    <div class="swiper mySweety" style="position: relative;">
+                        <div class="swiper-wrapper d-flex">
+                            <?php foreach ($blog_detail as $bd) : ?>
+                                <div class="swiper-slide">
+                                    <div class="shadow-sm">
+                                        <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top" alt="Thumbnail Artikel">
+                                        <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
+                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                        <!-- Previous button centered within the image -->
+                        <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-left"></i>
+                            </button>
+                        </div>
+
+                        <!-- Next button centered within the image -->
+                        <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </section>
             <!-- end rekomendasi -->
             <div id="ktr" class="container">
@@ -145,7 +145,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="swiper-wrapper d-flex justify-content-center align-items-center">
                                 <?php foreach ($promo as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                                        <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
+                                        <div class="text-bg-light mb-3 bg-white">
                                             <div class="card-body">
                                                 <a href="<?= base_url('promo/' . $p['slug']) ?>">
                                                     <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="<?= $p['title']; ?>" class="card-img-top">
@@ -163,13 +163,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- swipper card tampilan web -->
         <section class="mt-1 " id="unggul">
             <div class="container py-3 d-none d-lg-block">
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col">
-                        <div class="swiper cardWeb">
-                            <div class="swiper-wrapper d-flex">
+                        <h2 class="mb-4 text-merah">Produk Lainnya</h2>
+                        <div class="d-flex justify-content-center align-items-center swiper mySwing">
+                            <div class="swiper-wrapper d-flex mb-3">
                                 <?php foreach ($randomProducts as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
-                                        <div class="card border-0 shadow-sm" style="width: auto; height: 450px;">
+                                        <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
@@ -177,7 +178,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </a>
                                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                                 <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                                                    <p class=" text-secondary fw-bold " style=" font-size: 14px; margin: 0;"><?= substr($p['nama'], 0, 50); ?>...</p>
+                                                    <p class=" text-secondary fw-bold " style=" font-size: 13px; margin: 0;"><?= substr($p['nama'], 0, 40); ?>...</p>
                                                 </div>
                                                 <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
                                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
@@ -195,22 +196,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="row justify-items-center">
                                                         <div class="col">
                                                             <div class="horizontal-counter">
-                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                                                <input type="text" id="counter" class="form-control form-control-sm border-0 text-center" value="1" readonly>
-                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(event, this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                                                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='RdecreaseCount(this, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
+                                                                <input type="text" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
+                                                                <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='RincreaseCount(this, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
                                                         <input type="hidden" name="add-to-cart" value="show">
                                                         <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
                                                         <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                                            <i class="bi bi-cart-plus text-white fa-lg"></i>
+                                                            <i class="bi bi-basket"></i>
                                                         </button>
                                                     </form>
-                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
                                                         <input type="hidden" name="buy" value="show">
                                                         <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
                                                         <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
@@ -224,33 +225,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 <?php endforeach; ?>
                             </div>
-                            <script type="text/javascript">
-                                function increaseCount(a, b, id) {
-                                    var input = b.previousElementSibling;
-                                    var value = parseInt(input.value, 10);
-                                    value = isNaN(value) ? 0 : value;
-                                    value++;
-                                    input.value = value;
-                                    $('#Cqty' + id).val(value);
-                                    $('#Bqty' + id).val(value);
-                                }
-
-                                function decreaseCount(a, b, id) {
-                                    var input = b.nextElementSibling;
-                                    var value = parseInt(input.value, 10);
-                                    if (value > 1) {
-                                        value = isNaN(value) ? 0 : value;
-                                        value--;
-                                        input.value = value;
-                                        $('#Cqty' + id).val(value);
-                                        $('#Bqty' + id).val(value);
-
-                                    }
-                                }
-                            </script>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- rekomendasi title -->
                 <div class="container py-3">
