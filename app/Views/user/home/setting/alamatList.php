@@ -52,7 +52,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content rounded-3 shadow">
                             <div class="modal-body p-4 text-center">
-                                <h6 class="mb-0">Anda yakin untuk mengahpus <?= $au['label']; ?> ?</h6>
+                                <h6 class="mb-0">Anda yakin untuk menghapus <?= $au['label']; ?> ?</h6>
                             </div>
                             <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
                                 <div class="modal-footer flex-nowrap p-0">
@@ -144,7 +144,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content rounded-3 shadow">
                                 <div class="modal-body p-4 text-center">
-                                    <h6 class="mb-0">Anda yakin untuk mengahpus <?= $au['label']; ?> ?</h6>
+                                    <h6 class="mb-0">Anda yakin untuk menghapus <?= $au['label']; ?> ?</h6>
                                 </div>
                                 <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
                                     <div class="modal-footer flex-nowrap p-0">
