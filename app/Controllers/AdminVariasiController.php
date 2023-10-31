@@ -4,9 +4,11 @@ namespace App\Controllers;
 
 
 use App\Controllers\BaseController;
+use App\Models\AdminTokoModel;
 use App\Models\ProdukModel;
 use App\Models\VariasiItemModel;
 use App\Models\KategoriModel;
+use App\Models\StockModel;
 use App\Models\VariasiModel;
 
 class AdminVariasiController extends BaseController
@@ -160,14 +162,19 @@ class AdminVariasiController extends BaseController
         $kategoriModel = new KategoriModel();
         $variasiModel = new VariasiModel();
         $variasiItemModel = new VariasiItemModel();
+        $stokModel = new StockModel();
+        $adminTokoModel = new AdminTokoModel();
+        $adminToko = $adminTokoModel->getAdminToko(user_id());
         $produk = $produkModel->getProduk($slug);
+        $stok = $stokModel->getStock($produk['id_produk'], $adminToko[0]['id_toko']);
         $variasi = $variasiModel->findAll();
         $varianList = $variasiItemModel->getByIdProduk($produk['id_produk']);
         // dd($varianList);
         $data = [
             'produk' => $produk,
             'variasi' => $variasi,
-            'varian' => $varianList
+            'varian' => $varianList,
+            'stock' => $stok
         ];
         // dd($data);
         return view('dashboard/produk/detailPorduk', $data);

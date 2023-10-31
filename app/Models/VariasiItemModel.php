@@ -82,12 +82,12 @@ class VariasiItemModel extends Model
         $db = \Config\Database::connect();
         $builder = $db->table('jsf_variasi_item');
         $builder->join('jsf_variasi', 'jsf_variasi_item.id_variasi = jsf_variasi.id_variasi', 'inner');
-        $builder->where('id_produk', $id);
+        $builder->where('jsf_variasi_item.id_produk', $id);
         // $builder->where('id_produk', $id);
         $query = $builder->get();
 
         $results = $query->getResultArray();
-
+        // dd($results);
         return $results;
     }
 }

@@ -28,13 +28,14 @@ class AdminTokoModel extends Model
     // Validation
     protected $validationRules      = [
         'id_user' => [
-            'rule' => 'required',
+            'rules' => 'required|is_unique[jsf_admin_toko.id_user, id_user, id_user]',
             'errors' => [
                 'required' => 'Admin harus dipilih',
+                'is_unique' => 'Admin ini sudah terdaftar pada market',
             ]
         ],
         'id_toko' => [
-            'rule' => 'required',
+            'rules' => 'required',
             'errors' => [
                 'required' => 'Market harus dipilih',
             ]

@@ -56,11 +56,19 @@
         <div class="card border-left-danger border-0 shadow-sm h-100 py-2">
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
+                    <a href="<?= base_url(); ?>dashboard/update-stok/<?= $produk['slug']; ?>" class="col mr-2">
                         <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                             Total Stok Produk</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{stok}}</div>
-                    </div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">
+                            <?php if (count($stock) > 0) : ?>
+                                <?php foreach ($stock as $key => $s) : ?>
+                                    <?= $s['value_item'] . ' : ' . $s['stok']; ?><br>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                0
+                            <?php endif ?>
+                        </div>
+                    </a>
                     <div class="col-auto">
                         <i class="bi bi-clipboard-data-fill fa-2x text-gray-300"></i>
                     </div>
@@ -95,6 +103,9 @@
                             <div class="card-body">
                                 <h5 class="card-title border-0 font-weight-bold"><?= $produk['nama']; ?></h5>
                                 <p class="card-text"><?= $produk['deskripsi']; ?></p>
+                                <p>
+                                    <a href="<?= base_url() ?>produk/<?= $produk['slug']; ?>" class="btn btn-outline-danger">Lihat Halaman Produk</a>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -115,7 +126,7 @@
                         <div class="col">
                             <div class="pb-3">
                                 <button id="btnTambah" class="btn btn-outline-danger">Tambah varian</button>
-                                <a href="<?= base_url() ?>produk/<?= $produk['slug']; ?>" class="btn btn-outline-danger">Lihat Halaman Produk</a>
+                                <a href="<?= base_url() ?>dashboard/update-stok/<?= $produk['slug']; ?>" class="btn btn-outline-danger">Update stock Produk</a>
                             </div>
                         </div>
                     </div>
@@ -125,7 +136,6 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Stok</th>
                                         <th scope="col">Variasi</th>
                                         <th scope="col">Value</th>
                                         <th scope="col">Berat (gram)</th>
@@ -138,7 +148,6 @@
                                     foreach ($varian as $v) : ?>
                                         <tr>
                                             <th scope="row"><?= $i++; ?></th>
-                                            <th>{{Stok}}</th>
                                             <td><?= $v['nama_varian']; ?></td>
                                             <td><?= $v['value_item']; ?></td>
                                             <td><?= $v['berat']; ?></td>
@@ -197,11 +206,6 @@
                                 <?= csrf_field(); ?>
                                 <input type="hidden" name="id_produk" value="<?= $produk['id_produk']; ?>">
                                 <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
-                                <div class="mb-3">
-                                    <label for="harga" class="form-label">Stok</label>
-                                    <input type="price" class="form-control border-0 shadow-sm" id="stock" name="harga" placeholder="Stok" value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
-                                    <span id="stockError" class="text-danger"></span>
-                                </div>
                                 <?php if ($varian) : ?>
                                     <div class="mb-3">
                                         <div class="row">
@@ -264,11 +268,6 @@
                                 <input type="hidden" name="id_produk" value="<?= $produk['id_produk']; ?>">
                                 <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
                                 <input type="hidden" name="id_vi" id="updateID">
-                                <div class="mb-3">
-                                    <label for="harga" class="form-label">Stok</label>
-                                    <input type="price" class="form-control border-0 shadow-sm" id="stock" name="harga" placeholder="Stok" value="" onkeypress="return isNumber(event);">
-
-                                </div>
                                 <div class="mb-3">
                                     <div class="row">
                                         <div class="col-md-6">
