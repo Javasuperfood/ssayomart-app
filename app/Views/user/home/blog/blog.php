@@ -146,8 +146,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div> -->
 
         <!-- link video Youtube -->
-        <div class="ratio ratio-16x9 text-center">
-            <?= $videoEmbedCode; ?>
+        <div class="position-sticky top-0" style="z-index: 100;">
+            <div class="ratio ratio-16x9 text-center">
+                <?= $videoEmbedCode; ?>
+            </div>
         </div>
         <!-- Link Video Youtube -->
 
@@ -254,7 +256,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div> -->
         <!-- Link Video Youtube -->
-        <div class="ratio ratio-16x9">
+        <div class="ratio ratio-16x9 mt-5">
             <?= $videoEmbedCode; ?>
         </div>
         <!-- Link Video Youtube -->
