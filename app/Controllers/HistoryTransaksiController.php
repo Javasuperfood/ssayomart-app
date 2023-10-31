@@ -30,26 +30,24 @@ class HistoryTransaksiController extends BaseController
         $kategori = new KategoriModel();
         $cekTransaksi = $checkoutProdModel->getHistoryTransaction(user_id());
 
-        $perPage = 10;
+        // $produk = [];
+        // $keyword = $this->request->getVar('search');
 
-        $produk = [];
-        $keyword = $this->request->getVar('search');
+        // if (!empty($keyword)) {
+        //     $produk = $checkoutProdModel->getHistoryTransaction($keyword);
+        // } else {
+        //     $produk = $checkoutProdModel->getHistoryTransaction(user_id());
+        // }
 
-        if (!empty($keyword)) {
-            $produk = $checkoutProdModel->getHistoryTransaction($keyword);
-        } else {
-            $produk = $checkoutProdModel->getHistoryTransaction(user_id());
-        }
+        // // Filter produk yang sesuai dengan kata kunci pencarian
+        // $filteredProduk = [];
 
-        // Filter produk yang sesuai dengan kata kunci pencarian
-        $filteredProduk = [];
-
-        foreach ($produk as $t) {
-            // Misalkan Anda ingin mencocokkan nama produk dan SKU (disesuaikan dengan struktur data Anda)
-            if (stristr($t->nama, $keyword) || stristr($t->sku, $keyword)) {
-                $filteredProduk[] = $t;
-            }
-        }
+        // foreach ($produk as $t) {
+        //     // Misalkan Anda ingin mencocokkan nama produk dan SKU (disesuaikan dengan struktur data Anda)
+        //     if (stristr($t->nama, $keyword) || stristr($t->sku, $keyword)) {
+        //         $filteredProduk[] = $t;
+        //     }
+        // }
 
         $data = [
             'title' => lang('Text.title_history'),
@@ -57,7 +55,7 @@ class HistoryTransaksiController extends BaseController
             'back' => '',
             'kategori' => $kategori->findAll(),
             // 'pager' => $produkModel->pager,
-            'produk' => $filteredProduk
+            // 'produk' => $filteredProduk
         ];
         // dd($filteredProduk);
 
