@@ -164,9 +164,13 @@ class AdminVariasiController extends BaseController
         $variasiItemModel = new VariasiItemModel();
         $stokModel = new StockModel();
         $adminTokoModel = new AdminTokoModel();
-        $adminToko = $adminTokoModel->getAdminToko(user_id());
         $produk = $produkModel->getProduk($slug);
-        $stok = $stokModel->getStock($produk['id_produk'], $adminToko[0]['id_toko']);
+        $adminToko = $adminTokoModel->getAdminToko(user_id());
+        if ($adminToko) {
+            $stok = $stokModel->getStock($produk['id_produk'], $adminToko[0]['id_toko']);
+        } else {
+            $stok = [];
+        }
         $variasi = $variasiModel->findAll();
         $varianList = $variasiItemModel->getByIdProduk($produk['id_produk']);
         // dd($varianList);

@@ -21,6 +21,9 @@ class AdminStokController extends BaseController
 
         $produk = $produkModel->getProduk($slug);
         $adminToko = $adminTokoModel->getAdminToko(user_id());
+        if (empty($adminToko)) {
+            return view('dashboard/adminNotlisted');
+        }
         $variasiItemList = $variasiItemModel->getByIdProduk($produk['id_produk'], $adminToko[0]['id_toko']);
         $stok = $stokModel->getStock($produk['id_produk'], $adminToko[0]['id_toko']);
         $data = [

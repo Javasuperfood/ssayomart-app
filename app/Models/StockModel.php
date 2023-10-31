@@ -49,7 +49,8 @@ class StockModel extends Model
     {
         $query = $this->select('*')
             ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_stock.id_variasi_item')
-            ->where('jsf_stock.id_produk', $id_produk)->where('jsf_stock.id_toko', $id_toko)->findAll();
+            ->where('jsf_stock.id_produk', $id_produk)
+            ->where('jsf_stock.id_toko', $id_toko)->findAll();
 
         return $query;
     }
