@@ -6,7 +6,9 @@
 <!-- Button Kategori -->
 <br>
 <!-- Card -->
-<?= $this->include('user/produk/component/card') ?>
+<div class="mt-5">
+    <?= $this->include('user/produk/component/card') ?>
+</div>
 
 <?= $this->include('user/home/component/pagination'); ?>
 
