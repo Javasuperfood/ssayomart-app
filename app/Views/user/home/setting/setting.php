@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Tampilan mobile & ipad -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container d-md-blok d-lg-none d-xl-none">
+        <div class="container d-md-blok">
             <div class="row">
                 <div class="col">
                     <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center mt-3 ">
