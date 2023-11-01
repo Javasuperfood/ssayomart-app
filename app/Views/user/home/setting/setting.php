@@ -100,9 +100,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.ssayomart_care') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                      
+
                         <a href="<?= base_url(); ?>/setting/kebijakanPrivasi" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-lock pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.kebijakan_privasi') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
 
