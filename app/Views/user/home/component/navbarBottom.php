@@ -8,7 +8,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Footer Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <nav class="navbar navbar-expand d-md-blok d-lg-none d-xl-none fixed-bottom" style="margin-top: 6%; height: 55px; background-color:#fff">
+        <nav class="navbar navbar-expand d-md-blok fixed-bottom" style="margin-top: 6%; height: 55px; background-color:#fff">
             <ul class="navbar-nav nav-justified w-100">
                 <li class="nav-item">
                     <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4 text-danger"></i></a>
