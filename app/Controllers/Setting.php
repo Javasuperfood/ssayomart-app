@@ -633,4 +633,16 @@ class Setting extends BaseController
         ];
         return view('user/home/setting/sayoCare', $data);
     }
+
+    // Kebijakan Privasi 
+    public function kebijakanPrivasi()
+    {
+        $kategori = new KategoriModel();
+        $data = [
+            'title' => 'Kebijakan Privasi',
+            'kategori' => $kategori->findAll()
+
+        ];
+        return view('user/home/setting/kebijakanPrivasi', $data);
+    }
 }
