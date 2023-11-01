@@ -92,7 +92,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-headset pe-2 text-secondary"></i> <?= lang('Text.ssayomart_care') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                        <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>/setting/kebijakanPrivasi" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a role="button" data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold">

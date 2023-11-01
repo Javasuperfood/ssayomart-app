@@ -75,6 +75,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
         $routes->get('create-alamat', 'Setting::createAlamat');
         $routes->get('update-alamat/(:any)', 'Setting::updateAlamat/$1');
         $routes->get('sayoCare', 'Setting::sayoCare');
+        $routes->get('kebijakanPrivasi', 'Setting::kebijakanPrivasi');
 
         // Post
         $routes->post('select-alamat', 'Setting::storeDataAlamat');
