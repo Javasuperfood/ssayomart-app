@@ -70,13 +70,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <h3><?= lang('Text.setting') ?></h3>
                     <ul class="list-group list-group-flush">
                         <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-person-circle pe-2 text-secondary"></i>
+                            <span class="py-0 my-0 text-secondary"><?= lang('Text.detail_akun') ?></span>
+                            <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a> -->
                         <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-cursor pe-2 text-secondary"></i>
+                            <span class="py-0 my-0 text-secondary"> <?= lang('Text.alamat_tersimpan') ?> </span>
+                            <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                     </ul>
 
@@ -87,16 +91,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <h3><?= lang('Text.bantuan') ?></h3>
                     <ul class="list-group list-group-flush">
                         <a href="<?= base_url(); ?>/setting/sayoCare" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-question-circle pe-2 text-secondary"></i>
+                            <span class="py-0 my-0 text-secondary"><?= lang('Text.tentang') ?></span>
+                            <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-headset pe-2 text-secondary"></i> <?= lang('Text.ssayomart_care') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-headset pe-2 text-secondary"></i>
+                            <span class="py-0 my-0 text-secondary"><?= lang('Text.ssayomart_care') ?></span>
+                            <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-lock pe-2 text-secondary"></i>
+                            <span class="py-0 my-0 text-secondary"><?= lang('Text.kebijakan_privasi') ?></span>
+                            <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <a role="button" data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> <?= lang('Text.logout') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                            <i class="bi bi-box-arrow-right pe-2 text-secondary"></i>
+                            <span class="py-0 my-0 text-secondary"><?= lang('Text.logout') ?> </span>
+                            <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
                         <div class="container mb-3">
                             <div class="row justify-content-center mt-4">

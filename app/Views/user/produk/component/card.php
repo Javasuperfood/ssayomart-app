@@ -1,9 +1,9 @@
 <?php if ($produk) : ?>
-    <div class="container" id="product">
+    <div class="container bg-light" id="product">
         <!-- <h2>Produk terlaris</h2> -->
         <div class="row row-cols-3" id="product-container">
             <?php foreach ($produk as $p) : ?>
-                <div class="col-6 col-md-4 col-lg-3 pt-3">
+                <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
                     <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
@@ -112,10 +112,6 @@
         width: 40px;
         text-align: center;
     }
-
-
-
-
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {

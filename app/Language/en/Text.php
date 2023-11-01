@@ -88,4 +88,7 @@ return [
     'btn_beli' => 'Buy Now',
     'badge_kategori' => 'Category',
     'badge_subkategori' => 'Sub Category',
+
+    // RIWAYAT TRANSAKSI
+    'alert_history' => 'The transaction history you are looking for was not found.',
 ];
