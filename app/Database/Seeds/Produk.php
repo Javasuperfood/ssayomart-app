@@ -132,7 +132,7 @@ class Produk extends Seeder
 
 
             $id_variasi = 1;
-            for ($j = 1; $j <= 2; $j++) {
+            for ($j = 1; $j <= 1; $j++) {
                 if ($id_variasi == 1) {
                     $val = $rasa[mt_rand(1, 3)];
                 }
