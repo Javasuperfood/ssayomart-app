@@ -139,4 +139,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 
-<!-- navbar Website -->
+<!-- navbar dekstop -->
+
+<style>
+    /* CSS untuk tampilan seluler standar */
+    @media (max-width: 280px) {
+        .col.text-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            /* Mengatur elemen .col agar berada di tengah-tengah dan dapat memanfaatkan space dengan baik */
+        }
+
+        .navbar-brand {
+            font-size: 12px !important;
+            /* Mengurangi ukuran font untuk judul agar sesuai dengan layar kecil */
+        }
+
+        .position-absolute.top-50.start-0.translate-middle-y {
+            position: static;
+            transform: none;
+            /* Menghilangkan properti yang menggeser tombol kembali ke tengah */
+        }
+    }
+</style>

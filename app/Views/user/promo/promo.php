@@ -74,5 +74,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
         ?>
         <!-- desktop -->
+        <style>
+            @media (max-width: 280px) {
+                .swiper-slide {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    /* Atur elemen swiper-slide di tengah-tengah tampilan Samsung Galaxy Fold */
+                }
+
+                .btn-custom-rounded {
+                    /* Jika perlu, sesuaikan gaya tombol agar berada di tengah-tengah */
+                    margin: 0 auto;
+                    /* Ini akan mengatur margin secara horizontal agar tombol berada di tengah */
+                }
+            }
+        </style>
+
         <?= $this->include('user/produk/component/card') ?>
         <?= $this->endSection(); ?>

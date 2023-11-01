@@ -15,7 +15,7 @@ $countProduk = count($produk);
         keyword = urlParams.get('produk');
     }
     var productContainer = $("#product-container");
-    var cardLoader = `<div class="col-6 col-md-4 col-lg-3 pt-3" id="cardLoader">
+    var cardLoader = `<div class="col-6 col-md-4 col-lg-3 mb-2 mx-0" id="cardLoader">
                 <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                     <div class="d-flex justify-content-center align-items-center">
                         <svg class="bd-placeholder-img card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" width="150%" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -25,7 +25,7 @@ $countProduk = count($produk);
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                     <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                    <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
+                    <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
                     </div>
@@ -83,7 +83,7 @@ $countProduk = count($produk);
                         } else {
                             hargaText = ("Rp. " + formatRupiah(p.harga_min) + "-" + formatRupiah(p.harga_max)).substring(0, 13) + "...";
                         }
-                        var html = '<div class="col-6 col-md-4 col-lg-3 pt-3">' +
+                        var html = '<div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">' +
                             '<div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">' +
                             ` <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
@@ -92,7 +92,7 @@ $countProduk = count($produk);
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                            <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
+                            <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                                 ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
                             </p>
                             </div
@@ -108,7 +108,7 @@ $countProduk = count($produk);
                             </div>` +
                             '</div>' +
                             '</div>';
-                        var html = `<div class="col-6 col-md-4 col-lg-3 pt-3">
+                        var html = `<div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
                     <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
@@ -118,7 +118,7 @@ $countProduk = count($produk);
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
                         
-                        <p class=" text-secondary fw-bold" style="font-size: 11px; margin: 0;">
+                        <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                             ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
                         </p>
                         </div>
