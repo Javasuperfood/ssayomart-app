@@ -120,12 +120,13 @@
             <div class="collapse show" id="stock">
                 <div class="card-body">
                     <div class="alert alert-danger" role="alert">
-                        Saat ini anda sedang update stok produk <span id="produkText" class="fw-bold">{{produkText}}</span> pada market <span id="marketText" class="fw-bold">{{market}}</span>
+                        Saat ini anda sedang update stok produk <span id="produkText" class="fw-bold">Produk varian Tidak ditemukan tambahkan varian terlebih dahulu <a href="<?= base_url('dashboard/produk/detail-varian/' . $produk['slug']); ?>">disini</a></span> pada market <span id="marketText" class="fw-bold">{{market}}</span>
                     </div>
                     <form action="<?= base_url('dashboard/update-stok/update'); ?>" method="post">
                         <?= csrf_field(); ?>
                         <input type="hidden" name="produk" value="<?= $produk['id_produk']; ?>">
                         <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
+                        <input type="hidden" name="page" value="<?= (isset($_GET['page']) ? $_GET['page'] : '1'); ?>">
                         <?php foreach ($stock as $s) : ?>
                             <input type="hidden" name="id_stok[]" value="<?= $s['id_stock']; ?>">
                         <?php endforeach; ?>

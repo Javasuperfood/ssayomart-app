@@ -25,15 +25,15 @@ $countProduk = count($produk);
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                     <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                    <p class=" text-secondary fw-bold" style="font-size: 14px; margin: 0;">
+                    <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
                     </div>
-                    <p class=" text-secondary" style="font-size: 12px; margin: 0;">
+                    <p class=" text-secondary" style="font-size: 10px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
  
-                        <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
                             <span class="placeholder col-6"></span>
                         </h1>
                         
@@ -92,14 +92,14 @@ $countProduk = count($produk);
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                            <p class=" text-secondary fw-bold" style="font-size: 14px; margin: 0;">
+                            <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
                                 ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
                             </p>
                             </div
-                            <p class="text-secondary" style="font-size: 12px; margin: 0;">
+                            <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                 <del>Rp. ${formatRupiah(p.harga_min)}</del>
                             </p>
-                                <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
                                    ${hargaText}
                                 </h1>
                                 <p class=" text-center">
@@ -117,15 +117,15 @@ $countProduk = count($produk);
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                        <p class="text-secondary fw-bold" style="font-size: 14px; margin: 0;">
-                        <p class=" text-secondary fw-bold" style="font-size: 14px; margin: 0;">
+                        
+                        <p class=" text-secondary fw-bold" style="font-size: 11px; margin: 0;">
                             ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
                         </p>
                         </div>
-                        <p class="text-secondary" style="font-size: 12px; margin: 0;">
+                        <p class="text-secondary" style="font-size: 10px; margin: 0;">
                             <del>Rp. ${formatRupiah(p.harga_min)}</del>
                         </p>
-                            <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
+                            <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
                             ${hargaText}
                             </h1>
                             <div class="container mt-2">

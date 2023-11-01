@@ -93,8 +93,8 @@
                                     <td>
                                         <?php foreach ($variasiItem as $keyv => $v) : ?>
                                             <?php if ($key == $keyv) : ?>
-                                                <?php foreach ($v as $vv) : ?>
-                                                    <?= $vv['value_item']; ?> <?= (isset($stok[$key][$keyv]['stok'])) ? ' (Stok :' . $stok[$key][$keyv]['stok'] . ' )' : ''; ?><br>
+                                                <?php foreach ($v as $keyvv => $vv) : ?>
+                                                    <?= $vv['value_item']; ?> <?= (isset($stok[$keyv][$keyvv]['stok'])) ? ' ( Stok :' . $stok[$keyv][$keyvv]['stok'] . ' )' : ''; ?><br>
                                                 <?php endforeach ?>
                                             <?php endif ?>
                                         <?php endforeach ?>
@@ -118,7 +118,7 @@
                                                     <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Update
                                                 </a>
-                                                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/update-stok/<?= $km['slug']; ?>">
+                                                <a class="dropdown-item" href="<?= base_url(); ?>dashboard/update-stok/<?= $km['slug']; ?>?page=<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
                                                     <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Stok
                                                 </a>

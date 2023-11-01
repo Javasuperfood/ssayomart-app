@@ -1,9 +1,9 @@
 <?php if ($produk) : ?>
-    <div class="container" id="product">
+    <div class="container bg-light" id="product">
         <!-- <h2>Produk terlaris</h2> -->
         <div class="row row-cols-3" id="product-container">
             <?php foreach ($produk as $p) : ?>
-                <div class="col-6 col-md-4 col-lg-3 pt-3">
+                <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
                     <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
@@ -12,13 +12,13 @@
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                                <p class=" text-secondary fw-bold " style=" font-size: 14px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                                <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                             </div>
-                            <p class="text-secondary" style="font-size: 12px; margin: 0;">
+                            <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                 <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                             </p>
 
-                            <h1 class="text-danger fs-bold mt-1" style="font-size: 18px; margin: 0;">
+                            <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
@@ -112,10 +112,6 @@
         width: 40px;
         text-align: center;
     }
-
-
-
-
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {

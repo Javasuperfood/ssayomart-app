@@ -79,6 +79,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?php endif ?>
                     </div>
                 </div>
+                <div class="mx-1">
+                    <div class="badge-container mb-2">
+                        <p class="text-secondary py-0 my-0">Stok Tersedia : </p>
+                        <?php foreach ($stok as $s) : ?>
+                            <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                        <?php endforeach ?>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -215,27 +223,38 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</a>
                         <?php endif ?>
                     </div>
-                    <div class="row my-4">
-                        <div class="col-lg-6">
+                    <div class="row row-cols-1 my-4">
+                        <div class="col-md-12">
                             <h4 class="text-merah"> <?= lang('Text.deskripsi_produk') ?> </h4>
                             <p class="text-potong"><?= $produk['deskripsi']; ?></p>
                             <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                         </div>
-
-                        <div class="mx-1">
-                            <div class="badge-container mb-2">
-                                <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
-                                <br>
-                                <?php if (!empty($kategoriProduk)) : ?>
-                                    <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
-                                <?php endif ?>
+                        <div class="col-md-6">
+                            <div class="mx-1">
+                                <div class="badge-container mb-2">
+                                    <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
+                                    <br>
+                                    <?php if (!empty($kategoriProduk)) : ?>
+                                        <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
+                                    <?php endif ?>
+                                </div>
+                                <div class="badge-container ">
+                                    <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
+                                    <br>
+                                    <?php if (!empty($subKategoriProduk)) : ?>
+                                        <span class="badge text-bg-warning rounded-5"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                                    <?php endif ?>
+                                </div>
                             </div>
-                            <div class="badge-container ">
-                                <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
-                                <br>
-                                <?php if (!empty($subKategoriProduk)) : ?>
-                                    <span class="badge text-bg-warning rounded-5"><?= $subKategoriProduk['nama_kategori']; ?></span>
-                                <?php endif ?>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mx-1">
+                                <div class="badge-container mb-2">
+                                    <p class="text-secondary py-0 my-0">Stok Tersedia : </p>
+                                    <?php foreach ($stok as $s) : ?>
+                                        <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                                    <?php endforeach ?>
+                                </div>
                             </div>
                         </div>
                     </div>

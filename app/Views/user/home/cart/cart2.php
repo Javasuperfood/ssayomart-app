@@ -280,9 +280,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     });
 
     function setElemetCheck(cp, qty, harga) {
-        $("#cproduct" + cp).attr('qty', qty);
-        $("#cproduct" + cp).attr('harga', harga);
-        totalA(produkSelected)
+        var inputCheck = $("#cproduct" + cp);
+        inputCheck.attr('qty', qty);
+        inputCheck.attr('harga', harga);
+        if (inputCheck.is(':checked')) {
+            totalA(produkSelected)
+        }
     }
 
     function increaseCount(cp, a, b, harga) {
