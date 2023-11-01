@@ -239,11 +239,13 @@ class Setting extends BaseController
             $ruleTelp2 = [];
         } else {
             $ruleTelp2 = [
-                'rules' => 'numeric|exact_length[11]|regex_match[/^[08]/]',
+                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
                 'errors' => [
+                    'required' => 'Nomor telepon harus diisi.',
                     'numeric' => 'Nomor telepon harus berupa angka.',
-                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 atau 8.',
-                    'exact_length' => 'Nomor telepon harus terdiri dari 11 digit.',
+                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ];
         }
@@ -262,9 +264,16 @@ class Setting extends BaseController
                 ]
             ],
             'alamat_1' => [
-                'rules' => 'required',
+                'rules' => 'required|min_length[11]',
                 'errors' => [
-                    'required' => 'Alamat harus diisi.'
+                    'required' => 'Alamat harus diisi.',
+                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.'
+                ]
+            ],
+            'alamat_2' => [
+                'rules' => 'min_length[11]',
+                'errors' => [
+                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.'
                 ]
             ],
             'id_province' => [
@@ -372,11 +381,13 @@ class Setting extends BaseController
             $ruleTelp2 = [];
         } else {
             $ruleTelp2 = [
-                'rules' => 'numeric|exact_length[11]|regex_match[/^[08]/]',
+                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
                 'errors' => [
+                    'required' => 'Nomor telepon harus diisi.',
                     'numeric' => 'Nomor telepon harus berupa angka.',
-                    'exact_length' => 'Nomor telepon harus terdiri dari 11 digit.',
-                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 atau 8.'
+                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ];
         }
@@ -398,6 +409,12 @@ class Setting extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Alamat harus diisi.'
+                ]
+            ],
+            'alamat_2' => [
+                'rules' => 'min_length[11]',
+                'errors' => [
+                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.'
                 ]
             ],
             'id_province' => [
