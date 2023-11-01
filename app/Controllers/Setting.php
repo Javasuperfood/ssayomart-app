@@ -34,7 +34,7 @@ class Setting extends BaseController
             $marketSelected = 'Pilih Lokasi Market';
         }
         $addressSelected = null;
-        if ($user['market_selected']) {
+        if ($user['address_selected']) {
             $getLabel = isset($alamatUserModel->find($user['address_selected'])['city']);
             $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Lokasi Pengataran';
         } else {
