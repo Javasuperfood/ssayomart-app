@@ -118,7 +118,7 @@
                                                 </div>
                                                 <form action="<?= base_url('dashboard/order/in-proccess/update-status/' . $o['id_checkout']); ?>" method="post">
                                                     <?= csrf_field(); ?>
-                                                    <input type="hidden" name="page" value="<?= (isset($pages)) ? $pages : '' . '?page_order=' ?><?= (isset($_GET['page_order']) != null) ? $_GET['page_order'] : '1'; ?>">
+                                                    <input type="hidden" name="page" value="<?= (isset($_GET['page_order']) != null) ? $_GET['page_order'] : '1'; ?>">
                                                     <div class="modal-body">
                                                         <div class="form-group">
                                                             <label for="status">Status</label>
