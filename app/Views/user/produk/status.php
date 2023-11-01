@@ -209,18 +209,53 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         });
                     },
                     onPending: function(result) {
-                        /* You may add your own implementation here */
-                        alert("wating your payment!");
-                        console.log(result);
+                        let timerInterval
+                        Swal.fire({
+                            title: '<?= lang('Text.onpending_title') ?>',
+                            html: '<?= lang('Text.onpending_deskripsi') ?> <b></b> milliseconds.',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        }).then((result) => {
+                            /* Read more about handling dismissals below */
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                console.log('I was closed by the timer')
+                            }
+                        })
                     },
                     onError: function(result) {
-                        /* You may add your own implementation here */
-                        alert("payment failed!");
-                        console.log(result);
+                        Swal.fire({
+                            icon: 'error',
+                            title: '<?= lang('Text.onerror_title') ?>'
+                        })
                     },
                     onClose: function() {
-                        /* You may add your own implementation here */
-                        alert('you closed the popup without finishing the payment');
+                        Swal.fire({
+                            text: '<?= lang('Text.onclose_title') ?>',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: '<?= lang('Text.onclose_cnfrm_btn') ?>',
+                            cancelButtonText: '<?= lang('Text.onclose_cancel_btn') ?>'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+                            } else {
+
+                                lpSanp();
+                            }
+                        });
+                        return false; // Mencegah pop-up Midtrans untuk menutup secara otomatis
                     }
                 })
             }
@@ -501,18 +536,53 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             });
                         },
                         onPending: function(result) {
-                            /* You may add your own implementation here */
-                            alert("wating your payment!");
-                            console.log(result);
+                            let timerInterval
+                            Swal.fire({
+                                title: '<?= lang('Text.onpending_title') ?>',
+                                html: '<?= lang('Text.onpending_deskripsi') ?> <b></b> milliseconds.',
+                                timer: 2000,
+                                timerProgressBar: true,
+                                didOpen: () => {
+                                    Swal.showLoading()
+                                    const b = Swal.getHtmlContainer().querySelector('b')
+                                    timerInterval = setInterval(() => {
+                                        b.textContent = Swal.getTimerLeft()
+                                    }, 100)
+                                },
+                                willClose: () => {
+                                    clearInterval(timerInterval)
+                                }
+                            }).then((result) => {
+                                /* Read more about handling dismissals below */
+                                if (result.dismiss === Swal.DismissReason.timer) {
+                                    console.log('I was closed by the timer')
+                                }
+                            })
                         },
                         onError: function(result) {
-                            /* You may add your own implementation here */
-                            alert("payment failed!");
-                            console.log(result);
+                            Swal.fire({
+                                icon: 'error',
+                                title: '<?= lang('Text.onerror_title') ?>'
+                            })
                         },
                         onClose: function() {
-                            /* You may add your own implementation here */
-                            alert('you closed the popup without finishing the payment');
+                            Swal.fire({
+                                text: '<?= lang('Text.onclose_title') ?>',
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: '<?= lang('Text.onclose_cnfrm_btn') ?>',
+                                cancelButtonText: '<?= lang('Text.onclose_cancel_btn') ?>'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+
+                                } else {
+
+                                    lpSanp();
+                                }
+                            });
+                            return false; // Mencegah pop-up Midtrans untuk menutup secara otomatis
                         }
                     })
                 }
