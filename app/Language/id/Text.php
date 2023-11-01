@@ -91,4 +91,16 @@ return [
 
     // RIWAYAT TRANSAKSI
     'alert_history' => '찾으시는 거래내역을 찾을 수 없습니다 / Riwayat Transaksi yang Anda cari tidak ditemukan.',
+
+    // MIDTRANS RESPONSE SWAL
+    // ON CLOSE //
+    'onclose_title' => '결제를 완료하기 전에 결제를 종료하시겠습니까? / Anda akan menutup pembayaran sebelum menyelesaikannya, Anda yakin?',
+    'onclose_cnfrm_btn' => '물론이지 / Ya, Yakin',
+    'onclose_cancel_btn' => '반품 / Kembali',
+    'onclose_title2' => '성공하다! / Berhasil!',
+    // ON ERROR //
+    'onerror_title' => '결제 실패! / Pembayaran Gagal!',
+    // ON PENDING //
+    'onpending_title' => '결제를 기다리는 중 / Menunggu Pembayaran Anda.',
+    'onpending_deskripsi' => '이 알림은 자동으로 닫힙니다. / Notifikasi ini akan tertutup otomatis',
 ];

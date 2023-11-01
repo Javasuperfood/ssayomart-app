@@ -91,4 +91,16 @@ return [
 
     // RIWAYAT TRANSAKSI
     'alert_history' => 'The transaction history you are looking for was not found.',
+
+    // MIDTRANS RESPONSE SWAL
+    // ON CLOSE //
+    'onclose_title' => 'You will close the payment before completing it, are you sure?',
+    'onclose_cnfrm_btn' => 'Yes',
+    'onclose_cancel_btn' => 'Back to Payment',
+    'onclose_title2' => 'Success!',
+    // ON ERROR //
+    'onerror_title' => 'Payment Failed!',
+    // ON PENDING //
+    'onpending_title' => 'Waiting for your Payment.',
+    'onpending_deskripsi' => 'This notification will be close automaticly',
 ];
