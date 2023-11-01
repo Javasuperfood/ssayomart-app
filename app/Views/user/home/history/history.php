@@ -15,7 +15,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <form action="<?= base_url('history'); ?>" method="get">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control border-0 shadow-sm" placeholder="Cari..." name="search" aria-label="search" aria-describedby="search" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                            <input type="text" class="form-control border-0 shadow-sm" placeholder="Search... (by product name or sku)" name="search" aria-label="search" aria-describedby="search" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>">
                             <button class="btn btn-danger border-0" type="submit"><i class="bi bi-search"></i></button>
                         </div>
                     </form>
@@ -134,7 +134,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="alert alert-danger rounded border-0" role="alert">
                             <div class="row">
                                 <div class="col-2"><i class="bi bi-exclamation-diamond-fill text-danger fs-1 position-absolute top-50 start-0 translate-middle-y px-4"></i></div>
-                                <div class="col-10 text-secondary" style="font-size: 15px;">Riwayat Transaksi yang Anda cari tidak ditemukan.</div>
+                                <div class="col-10 text-secondary" style="font-size: 15px;"><?= lang('Text.alert_history') ?></div>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col">
                 <form action="<?= base_url('history'); ?>" method="get">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" placeholder="Cari..." name="search" aria-label="search" aria-describedby="search" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" placeholder="Search... (by product name or sku)" name="search" aria-label="search" aria-describedby="search" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>">
                         <button class="btn btn-lg btn-danger border-0" type="submit"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
@@ -321,7 +321,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <i class="bi bi-exclamation-diamond-fill text-danger fs-1 px-4"></i>
                                 </div>
                                 <div class="col-10 text-secondary position-absolute top-50 start-50 translate-middle" style="font-size: 20px;">
-                                    Riwayat Transaksi yang Anda cari tidak ditemukan.
+                                    <?= lang('Text.alert_history') ?>
                                 </div>
                             </div>
                         </div>

@@ -88,4 +88,7 @@ return [
     'btn_beli' => '구입하다 / Beli',
     'badge_kategori' => '범주 / Kategori',
     'badge_subkategori' => '하위 카테고리 / Sub Kategori',
+
+    // RIWAYAT TRANSAKSI
+    'alert_history' => '찾으시는 거래내역을 찾을 수 없습니다 / Riwayat Transaksi yang Anda cari tidak ditemukan.',
 ];
