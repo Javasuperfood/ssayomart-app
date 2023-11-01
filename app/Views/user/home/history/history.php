@@ -133,11 +133,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col">
                         <div class="alert alert-danger rounded border-0" role="alert">
                             <div class="row">
-                                <div class="col-2">
+                                <div class="d-flex">
                                     <i class="bi bi-exclamation-diamond-fill text-danger fs-1 position-absolute top-50 start-0 translate-middle-y px-4"></i>
-                                </div>
-                                <div class="col-10">
-
                                     <div class="text-secondary" style="font-size: 15px;"><?= lang('Text.alert_history') ?>
                                     </div>
                                 </div>
@@ -182,7 +179,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             /* Your default styles for larger screens go here */
 
             @media (max-width: 280px) {
+
                 /* Styles for screens with a width of 280px or less */
+                .d-flex i {
+                    font-size: 10px;
+                }
+
+                i.bi-exclamation-diamond-fill {
+                    display: none;
+                    /* Sembunyikan elemen <i> pada tampilan Galaxy Fold */
+                }
 
                 .row {
                     flex-direction: column;
