@@ -6,6 +6,8 @@ use App\Controllers\BaseController;
 use App\Models\KategoriModel;
 use App\Models\SubKategoriModel;
 use App\Models\ProdukModel;
+use App\Models\StockModel;
+use App\Models\UsersModel;
 use App\Models\VariasiItemModel;
 
 class ProdukController extends BaseController
@@ -70,29 +72,37 @@ class ProdukController extends BaseController
 
     public function produkShowSingle($slug)
     {
-        $kategori = new KategoriModel();
+        $kategoriModel = new KategoriModel();
         $subKategori = new SubKategoriModel();
-        $produk = new ProdukModel();
+        $produkModel = new ProdukModel();
         $varianModel = new VariasiItemModel();
-        $single = $produk->getProduk($slug);
-        $varianItem = $varianModel->getByIdProduk($single['id_produk']);
-        $randomProducts = $produk->getRandomProducts();
+        $varianModel = new VariasiItemModel();
+        $userModel = new UsersModel();
+        $stokModel = new StockModel();
 
+        $marketSelected = $userModel->find(user_id())['market_selected'];
+        $produk = $produkModel->getProduk($slug);
+        $varianItem = $varianModel->getByIdProduk($produk['id_produk']);
+
+        $stok = $stokModel->getStock($produk['id_produk'], $marketSelected);
+
+        $randomProducts = $produkModel->getRandomProducts();
         // Mengambil kategori berdasarkan id_produk
-        $kategoriProduk = $kategori->getKategoriByProdukId($single['id_produk']);
-        $subKategoriProduk = $subKategori->getSubKategoriByProdukId($single['id_produk']);
+        $kategoriProduk = $kategoriModel->getKategoriByProdukId($produk['id_produk']);
+        $subKategoriProduk = $subKategori->getSubKategoriByProdukId($produk['id_produk']);
 
         $data = [
-            'title' => $single['nama'],
-            'kategori' => $kategori->findAll(),
-            'produk' => $single,
+            'title' => $produk['nama'],
+            'kategori' => $kategoriModel->findAll(),
+            'produk' => $produk,
             'varian' => $varianItem,
+            'stok' => $stok,
             'varianItem' => count($varianItem),
             'randomProducts' => $randomProducts,
             'kategoriProduk' => $kategoriProduk, // Menambahkan kategori produk
             'subKategoriProduk' => $subKategoriProduk, // Menambahkan kategori produk
         ];
-
+        // dd($data);
         return view('user/produk/produk', $data);
     }
 
