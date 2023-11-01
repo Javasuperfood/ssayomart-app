@@ -7,7 +7,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- tampilan mobile & ipad -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container d-md-block d-lg-none bg-light">
+        <div class="container d-md-block">
             <!-- <div class="row text-center flex-nowrap">
                 <div class="col-2 col-md-1 my-1 col-samsung-fold">
                     <div class="card mb-2 border-0 shadow-sm rounded-circle">
