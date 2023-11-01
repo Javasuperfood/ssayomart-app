@@ -7,6 +7,7 @@ use App\Models\AdminTokoModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\StatusPesanModel;
+use App\Models\StockModel;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use Midtrans\Config as MidtransConfig;
@@ -170,9 +171,33 @@ class AdminPesananController extends BaseController
     // =============================================== Store Data =================================================
     public function updateStatus($id)
     {
-        $page = $this->request->getVar('page');
+        $page = '?page_order=' . $this->request->getVar('page');
         $checkoutModel = new CheckoutModel();
+        $stokModel = new StockModel();
+        $checkoutProdModel = new CheckoutProdukModel();
 
+        $checkout = $checkoutModel->find($id);
+
+        $produk = $checkoutProdModel->getProdukByIdCheckout($id);
+
+        if ($checkout['id_status_pesan'] == 2) {
+            $id_toko = $checkout['id_toko'];
+            foreach ($produk as $p) {
+                $id_variasi_item = $p['id_variasi_item'];
+                $id_produk = $p['id_produk'];
+                $stok = $stokModel->where('id_toko', $id_toko)->where('id_produk', $id_produk)->where('id_variasi_item', $id_variasi_item)->first();
+                if ($stok) {
+                    if ($stok['stok'] > $p['qty']) {
+                        $stokModel->save([
+                            'id_stock' => $stok['id_stock'],
+                            'stok' => $stok['stok'] - $p['qty'],
+                        ]);
+                    } else {
+                        return redirect()->to(base_url('dashboard/order/in-proccess?' . $page))->withInput();
+                    }
+                }
+            }
+        }
         $url = base_url() . 'dashboard/order/';
         if (!$checkoutModel->save(['id_checkout' => $id, 'id_status_pesan' => $this->request->getVar('status')])) {
             return 'gagal update';
