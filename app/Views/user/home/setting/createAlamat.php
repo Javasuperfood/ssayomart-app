@@ -14,8 +14,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3">
                     <?= csrf_field(); ?>
-
-
                     <div class="container text-secondary" style="font-size: 12px;">
                         <div class="row">
                             <div class="col-12">
@@ -119,7 +117,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- end mobile -->
-
     <!-- dekstop -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container d-none d-md-block">
@@ -184,17 +181,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="form-floating col-md-6">
                         <input class="form-control border-0 shadow-sm <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
                         <label for=" alamat_1"><?= lang('Text.detail_alamat') ?><span style="color: red"> *</span></label>
-                        <span id="detailError" class="text-danger"></span>
                     </div>
                     <div class="form-floating col-md-6">
                         <input class="form-control border-0 shadow-sm <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
                         <label for=" alamat_2"><?= lang('Text.patokan_alamat') ?><span style="color: red"> *</span></label>
-                        <span id="patokanError" class="text-danger"></span>
                     </div>
                     <div class="form-floating col-md-6">
                         <input class="form-control border-0 shadow-sm <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
                         <label for="zip_code"><?= lang('Text.zipcode') ?><span style="color: red"> *</span></label>
-                        <span id="kodePosError" class="text-danger"></span>
                     </div>
                     <div class="col-12 d-flex justify-content-center">
                         <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>

@@ -101,10 +101,13 @@ class Setting extends BaseController
                 ]
             ],
             'telp' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
                 'errors' => [
                     'required' => 'Nomor telepon harus diisi.',
-                    'numeric' => 'Nomor telepon harus berupa angka.'
+                    'numeric' => 'Nomor telepon harus berupa angka.',
+                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ],
             'img' => [
@@ -174,8 +177,6 @@ class Setting extends BaseController
         }
     }
 
-
-
     // PEMBAYARAN
     public function pembayaran(): string
     {
@@ -238,9 +239,11 @@ class Setting extends BaseController
             $ruleTelp2 = [];
         } else {
             $ruleTelp2 = [
-                'rules' => 'numeric',
+                'rules' => 'numeric|exact_length[11]|regex_match[/^[08]/]',
                 'errors' => [
-                    'numeric' => 'Nomor telepon harus berupa angka.'
+                    'numeric' => 'Nomor telepon harus berupa angka.',
+                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 atau 8.',
+                    'exact_length' => 'Nomor telepon harus terdiri dari 11 digit.',
                 ]
             ];
         }
@@ -277,19 +280,24 @@ class Setting extends BaseController
                 ]
             ],
             'zip_code' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|numeric|exact_length[5]',
                 'errors' => [
-                    'required' => 'Kode POS harus diisi.',
-                    'numeric' => 'Kode POS harus berupa angka.'
+                    'required' => 'Kode Pos harus diisi.',
+                    'numeric' => 'Kode Pos harus berupa angka.',
+                    'exact_length' => 'Kode Pos harus terdiri dari 5 digit.'
                 ]
             ],
             'telp' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
                 'errors' => [
                     'required' => 'Nomor telepon harus diisi.',
-                    'numeric' => 'Nomor telepon harus berupa angka.'
+                    'numeric' => 'Nomor telepon harus berupa angka.',
+                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ],
+
             'telp2' => $ruleTelp2
         ])) {
             $alert = [
@@ -364,9 +372,11 @@ class Setting extends BaseController
             $ruleTelp2 = [];
         } else {
             $ruleTelp2 = [
-                'rules' => 'numeric',
+                'rules' => 'numeric|exact_length[11]|regex_match[/^[08]/]',
                 'errors' => [
-                    'numeric' => 'Nomor telepon harus berupa angka.'
+                    'numeric' => 'Nomor telepon harus berupa angka.',
+                    'exact_length' => 'Nomor telepon harus terdiri dari 11 digit.',
+                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 atau 8.'
                 ]
             ];
         }
@@ -403,17 +413,21 @@ class Setting extends BaseController
                 ]
             ],
             'zip_code' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|numeric|exact_length[5]',
                 'errors' => [
-                    'required' => 'Kode POS harus diisi.',
-                    'numeric' => 'Kode POS harus berupa angka.'
+                    'required' => 'Kode Pos harus diisi.',
+                    'numeric' => 'Kode Pos harus berupa angka.',
+                    'exact_length' => 'Kode Pos harus terdiri dari 5 digit.'
                 ]
             ],
             'telp' => [
-                'rules' => 'required|numeric',
+                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
                 'errors' => [
                     'required' => 'Nomor telepon harus diisi.',
-                    'numeric' => 'Nomor telepon harus berupa angka.'
+                    'numeric' => 'Nomor telepon harus berupa angka.',
+                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ],
             'telp2' => $ruleTelp2
