@@ -284,7 +284,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         inputCheck.attr('qty', qty);
         inputCheck.attr('harga', harga);
         if (inputCheck.is(':checked')) {
-            produkSelected[cp] = (harga * qty);
+            produkSelected[cp] = harga;
             totalA(produkSelected)
         }
     }
