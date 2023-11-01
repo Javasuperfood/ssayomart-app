@@ -7,6 +7,8 @@ use App\Models\VariasiModel;
 use App\Models\KategoriModel;
 use App\Models\SubKategoriModel;
 use App\Controllers\BaseController;
+use App\Models\AdminTokoModel;
+use App\Models\StockModel;
 use App\Models\VariasiItemModel;
 
 class AdminProduk extends BaseController
@@ -17,12 +19,17 @@ class AdminProduk extends BaseController
         $produkModel = new ProdukModel();
         $kategoriModel = new KategoriModel();
         $subKategoriModel = new SubKategoriModel();
-        $variasiModel = new VariasiModel();
         $variasiItemModel = new VariasiItemModel();
-        $variasList = $variasiModel->findAll();
-        $variasiItemList = $variasiItemModel->getVariasiItem();
-        $sub_kategori_list = $subKategoriModel->findAll();
-        $kategori_list = $kategoriModel->findAll();
+        $stokModel = new StockModel();
+        $adminTokoModel = new AdminTokoModel();
+
+        $admin = $adminTokoModel->getAdminToko(user_id());
+        $getStok = false;
+        $pa['stok'] = [];
+        if (isset($admin[0]['id_toko'])) {
+            $getStok = true;
+        }
+
         $perPage = 10;
 
         $currentPage = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
@@ -34,16 +41,30 @@ class AdminProduk extends BaseController
             $produk = $produkModel->orderBy('id_produk', 'DESC');
         }
         $produk_list = $produk->paginate($perPage, 'produk');
+        //optimasi agar hanya mengamnil data dari 1 halaman
+        foreach ($produk_list as $key => $p) {
+            $pa['kategori'][$key] = $kategoriModel->find($p['id_kategori']);
+            $pa['sub_kategori'][$key] = $subKategoriModel->find($p['id_sub_kategori']);
+            $pa['variasi_item'][$key] = $variasiItemModel->select('*')
+                ->join('jsf_variasi', 'jsf_variasi.id_variasi = jsf_variasi_item.id_variasi')
+                ->where('id_produk', $p['id_produk'])->findAll();
+            if ($getStok) {
+                $pa['stok'][$key] = $stokModel->getStockOnly($p['id_produk'], $admin[0]['id_toko']);
+            }
+        }
+        // dd($pa);
         $data = [
             'title' => 'Daftar Produk',
             'produk' => $produk_list,
-            'kategori' => $kategori_list,
-            'subKategori' => $sub_kategori_list,
-            'variasi' => $variasList,
-            'variasiItem' => $variasiItemList,
+            'kategori' => $pa['kategori'],
+            'subKategori' => $pa['sub_kategori'],
+            'variasiItem' => $pa['variasi_item'],
+            'stok' => $pa['stok'],
             'pager' => $produkModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
         ];
+        // dd($data['stok'][0][0]);
+        // dd($data);
         return view('dashboard/produk/produk', $data);
     }
 

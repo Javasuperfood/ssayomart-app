@@ -49,12 +49,12 @@
                                 <th>Gambar</th>
                                 <th>Nama Produk</th>
                                 <th>Kategori/Subkategori</th>
-                                <th>Varian Produk</th>
+                                <th>Varian & Stok Produk</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($produk as $km) : ?>
+                            <?php foreach ($produk as $key => $km) : ?>
                                 <tr>
                                     <td>
                                         <div class="form-check">
@@ -91,19 +91,12 @@
                                         ?>
                                     </td>
                                     <td>
-                                        <?php
-                                        $previousVarian = null;
-                                        foreach ($variasiItem as $vi) : ?>
-                                            <?php
-                                            $i = 0;
-                                            if ($km['id_produk'] == $vi['id_produk']) {
-                                                if ($previousVarian !== $vi['nama_varian']) {
-                                                    echo $vi['nama_varian'] . ' : ';
-                                                    $previousVarian = $vi['nama_varian'];
-                                                }
-                                                echo '|' . $vi['value_item'] . '|';
-                                            }
-                                            ?>
+                                        <?php foreach ($variasiItem as $keyv => $v) : ?>
+                                            <?php if ($key == $keyv) : ?>
+                                                <?php foreach ($v as $vv) : ?>
+                                                    <?= $vv['value_item']; ?> <?= (isset($stok[$key][$keyv]['stok'])) ? ' (Stok :' . $stok[$key][$keyv]['stok'] . ' )' : ''; ?><br>
+                                                <?php endforeach ?>
+                                            <?php endif ?>
                                         <?php endforeach ?>
                                     </td>
                                     <td class="text-center">
