@@ -54,4 +54,12 @@ class StockModel extends Model
 
         return $query;
     }
+    public function getStockOnly($id_produk, $id_toko)
+    {
+        $query = $this->select('*')
+            ->where('jsf_stock.id_produk', $id_produk)
+            ->where('jsf_stock.id_toko', $id_toko)->findAll();
+
+        return $query;
+    }
 }
