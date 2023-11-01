@@ -184,7 +184,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="form-floating col-md-6">
                         <input class="form-control border-0 shadow-sm <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
-                        <label for=" alamat_2"><?= lang('Text.patokan_alamat') ?><span style="color: red"> *</span></label>
+                        <label for=" alamat_2"><?= lang('Text.patokan_alamat') ?><span style="color: red"> <?= lang('Text.optional') ?></span></label>
                     </div>
                     <div class="form-floating col-md-6">
                         <input class="form-control border-0 shadow-sm <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
