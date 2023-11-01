@@ -86,6 +86,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($stok as $s) : ?>
                                 <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
                             <?php endforeach ?>
+                            <?php if (count($stok) < 1) : ?>
+                                <p class="text-secondary">Gagal mengambil data stok</p>
+                            <?php endif ?>
+                        <?php else : ?>
+                            Silakan login lalu pilih lokasi market
                         <?php endif ?>
                     </div>
                 </div>
@@ -257,6 +262,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php foreach ($stok as $s) : ?>
                                             <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
                                         <?php endforeach ?>
+                                        <?php if (count($stok) < 1) : ?>
+                                            <p class="text-secondary">Gagal mengambil data stok</p>
+                                        <?php endif ?>
+                                    <?php else : ?>
+                                        Silakan login lalu pilih lokasi market
                                     <?php endif ?>
                                 </div>
                             </div>

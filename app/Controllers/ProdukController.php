@@ -82,11 +82,7 @@ class ProdukController extends BaseController
 
         $produk = $produkModel->getProduk($slug);
         $varianItem = $varianModel->getByIdProduk($produk['id_produk']);
-        if (auth()->loggedIn()) {
-            $marketSelected = $userModel->find(user_id())['market_selected'];
-            $stok = $stokModel->getStock($produk['id_produk'], $marketSelected);
-            $data['stok'] = $stok;
-        }
+
 
         $randomProducts = $produkModel->getRandomProducts();
         // Mengambil kategori berdasarkan id_produk
@@ -103,6 +99,11 @@ class ProdukController extends BaseController
             'kategoriProduk' => $kategoriProduk, // Menambahkan kategori produk
             'subKategoriProduk' => $subKategoriProduk, // Menambahkan kategori produk
         ];
+        if (auth()->loggedIn()) {
+            $marketSelected = $userModel->find(user_id())['market_selected'];
+            $stok = $stokModel->getStock($produk['id_produk'], $marketSelected);
+            $data['stok'] = $stok;
+        }
         // dd($data);
         return view('user/produk/produk', $data);
     }
