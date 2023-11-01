@@ -167,7 +167,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?= csrf_field(); ?>
                         <input type="hidden" name="alamat" id="alamatField">
                         <button type="submit" id="selectAddress" class="btn btn-danger btn-lg">
-                            <i class="bi bi-check fw-bold"> Update Alamat terpiplih</i>
+                            <i class="bi bi-check fw-bold"> Update Alamat terpilih</i>
                         </button>
                     </form>
                 </div>
