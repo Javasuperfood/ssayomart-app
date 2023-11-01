@@ -41,6 +41,8 @@ class AdminStokController extends BaseController
     {
         // dd($this->request->getVar());
         $stokModel = new StockModel();
+
+        $page = ($this->request->getVar('page')) ? $this->request->getVar('page') : 1;
         $id_produk = $this->request->getvar('produk');
         $id_variasi_item = $this->request->getVar('variasi_item');
         $id_toko = $this->request->getVar('market');
@@ -106,7 +108,7 @@ class AdminStokController extends BaseController
                 'message' => 'Stok produk berhasil diupdate'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to(base_url('dashboard/update-stok/' . $this->request->getVar('slug')));
+            return redirect()->to(base_url('dashboard/produk?page_produk=' . $page));
         }
     }
 }
