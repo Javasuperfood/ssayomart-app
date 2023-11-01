@@ -28,7 +28,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'korin.png');
                             ?>
                             <div class="dropdown mx-md-2">
-                                <button class="btn btn-transparent text-danger dropdown-toggle fs-6 d-lg-none border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-transparent text-danger dropdown-toggle fs-6 border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="40px" alt="" class="flag-icon">
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-white" aria-labelledby="languageDropdown">
