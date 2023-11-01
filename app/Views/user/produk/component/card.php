@@ -1,5 +1,5 @@
 <?php if ($produk) : ?>
-    <div class="container bg-light" id="product">
+    <div class="container bg-white" id="product">
         <!-- <h2>Produk terlaris</h2> -->
         <div class="row row-cols-3" id="product-container">
             <?php foreach ($produk as $p) : ?>
