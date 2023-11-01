@@ -82,9 +82,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="mx-1">
                     <div class="badge-container mb-2">
                         <p class="text-secondary py-0 my-0">Stok Tersedia : </p>
-                        <?php foreach ($stok as $s) : ?>
-                            <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
-                        <?php endforeach ?>
+                        <?php if (isset($stok)) : ?>
+                            <?php foreach ($stok as $s) : ?>
+                                <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -251,9 +253,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="mx-1">
                                 <div class="badge-container mb-2">
                                     <p class="text-secondary py-0 my-0">Stok Tersedia : </p>
-                                    <?php foreach ($stok as $s) : ?>
-                                        <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
-                                    <?php endforeach ?>
+                                    <?php if (isset($stok)) : ?>
+                                        <?php foreach ($stok as $s) : ?>
+                                            <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                                        <?php endforeach ?>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>

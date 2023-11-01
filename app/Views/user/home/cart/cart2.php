@@ -284,6 +284,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         inputCheck.attr('qty', qty);
         inputCheck.attr('harga', harga);
         if (inputCheck.is(':checked')) {
+            produkSelected[cp] = (harga * qty);
             totalA(produkSelected)
         }
     }
@@ -301,7 +302,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             $("#textQty" + cp).text(value)
             $("#textHargaItem" + cp).text(formatRupiah((harga * value)))
         <?php endif ?>
-        produkSelected[cp] = (harga * value);
+
         setElemetCheck(cp, value, (harga * value));
         changeQty(cp, value);
     }
@@ -319,8 +320,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 $("#textQty" + cp).text(value)
                 $("#textHargaItem" + cp).text(formatRupiah((harga * value)))
             <?php endif ?>
-
-            produkSelected[cp] = (harga * value);
             setElemetCheck(cp, value, (harga * value));
             changeQty(cp, value);
         }
