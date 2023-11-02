@@ -29,7 +29,7 @@ return [
     'riwayat' => '거래 내역 / Riwayat Transaksi',
     'tentang' => '싸요마트 소개 / Tentang Ssayomart',
     'ssayomart_care' => '싸요마트 서비스 / Layanan Ssayomart',
-    'kebijakan_privasi' => '개인 정보 정책 / Kebijakan Privasi',
+    'kebijakan_privasi' => '우리의 정책 / Kebijakan Kami',
     'judul_kupon' => '할인 쿠폰 사용 가능! / TERSEDIA KUPON DISKON!',
     'isi_kupon' => '싸요마트 신규유저를 위한 / Untuk pengguna baru Ssayomart',
     'alert' => '죄송합니다. 귀하의 지역은 아직 당사 서비스를 이용할 수 없습니다. / Mohon maaf area anda belum terjangkau oleh pelayanan kami.',

@@ -29,7 +29,7 @@ return [
     'riwayat' => 'Transaction History',
     'tentang' => 'About Ssayomart',
     'ssayomart_care' => 'Ssayomart Service',
-    'kebijakan_privasi' => 'Privacy Policy',
+    'kebijakan_privasi' => 'Our Policy',
     'judul_kupon' => 'DISCOUNT COUPON AVAILABLE!',
     'isi_kupon' => 'For New Ssayomart Users',
     'alert' => 'Sorry, your area is not yet covered by our services.',
