@@ -34,6 +34,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2" role="tab" aria-controls="tab-content-2" aria-selected="false">Refund Policy</a>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab-content-3" role="tab" aria-controls="tab-content-2" aria-selected="false">T&C</a>
+                    </li>
 
                 </ul>
                 <!-- Tabs navs -->
@@ -107,6 +110,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
 
+                    <div class="tab-pane fade" id="tab-content-3" role="tabpanel" aria-labelledby="tab-3">
+                        <!-- T & C -->
+                        <div class="container">
+                            <h4>Terms and Conditions <span class="text-danger">SsayoMart</span></h4>
+                            <div class="card border-0 shadow-sm p-3 m-2 mt-3">
+                                <p><strong>Harap baca dengan seksama sebelum menggunakan layanan kami.</strong></p>
+
+                                <p><strong> Penerimaan Syarat dan Ketentuan:</strong> Dengan mengakses atau menggunakan layanan yang disediakan oleh SSayoMart, Anda dianggap telah membaca, memahami, dan menerima sepenuhnya semua Syarat dan Ketentuan yang ada di halaman ini. Jika Anda tidak setuju dengan salah satu ketentuan ini, mohon untuk tidak menggunakan layanan kami.</p>
+
+                                <p><strong> Penggunaan Layanan:</strong> Layanan kami tersedia untuk pengguna yang berusia di atas 18 tahun. Jika Anda di bawah usia 18 tahun, Anda hanya boleh menggunakan layanan kami di bawah pengawasan orang dewasa.</p>
+
+                                <p><strong>Akun Pengguna: </strong> Anda mungkin perlu membuat akun untuk mengakses beberapa bagian dari layanan kami. Informasi akun Anda harus akurat dan lengkap.</p>
+
+                                <p><strong>Pembelian: </strong> Anda dapat melakukan pembelian melalui layanan kami. Anda bertanggung jawab untuk memberikan informasi pembayaran yang akurat dan up-to-date.</p>
+
+                                <p><strong> Privasi: </strong> Kami menghargai privasi Anda. Informasi pribadi yang Anda berikan akan diatur sesuai dengan Kebijakan Privasi kami.</p>
+
+                                <p><strong>Kebijakan Pengembalian: </strong> SSayoMart memiliki kebijakan pengembalian yang mengatur pengembalian produk. Mohon baca kebijakan tersebut sebelum melakukan pembelian.</p>
+
+                                <p><strong>Perubahan Syarat dan Ketentuan:</strong> SSayoMart berhak untuk mengubah Syarat dan Ketentuan ini kapan saja. Perubahan akan diumumkan di situs web kami.</p>
+
+                                <p><strong>Kontak:</strong> Jika Anda memiliki pertanyaan atau komentar terkait Syarat dan Ketentuan ini, silakan hubungi kami di [email atau nomor telepon].</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Tabs content -->
             </div>
@@ -150,6 +178,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" id="tab-2" data-toggle="tab" href="#tab-content-2" role="tab" aria-controls="tab-content-2" aria-selected="false">Refund Policy</a>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab-content-3" role="tab" aria-controls="tab-content-2" aria-selected="false">T & C </a>
+                    </li>
                 </ul>
                 <!-- Tabs navs -->
 
@@ -222,6 +253,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
 
+                    <div class="tab-pane fade" id="tab-content-3" role="tabpanel" aria-labelledby="tab-3">
+                        <!-- T & C -->
+                        <div class="container">
+                            <h4>Terms and Conditions <span class="text-danger">SsayoMart</span></h4>
+                            <div class="card border-0 shadow-sm p-3 m-2 mt-3">
+                                <p><strong>Harap baca dengan seksama sebelum menggunakan layanan kami.</strong></p>
+
+                                <p><strong> Penerimaan Syarat dan Ketentuan:</strong> Dengan mengakses atau menggunakan layanan yang disediakan oleh SSayoMart, Anda dianggap telah membaca, memahami, dan menerima sepenuhnya semua Syarat dan Ketentuan yang ada di halaman ini. Jika Anda tidak setuju dengan salah satu ketentuan ini, mohon untuk tidak menggunakan layanan kami.</p>
+
+                                <p><strong> Penggunaan Layanan:</strong> Layanan kami tersedia untuk pengguna yang berusia di atas 18 tahun. Jika Anda di bawah usia 18 tahun, Anda hanya boleh menggunakan layanan kami di bawah pengawasan orang dewasa.</p>
+
+                                <p><strong>Akun Pengguna: </strong> Anda mungkin perlu membuat akun untuk mengakses beberapa bagian dari layanan kami. Informasi akun Anda harus akurat dan lengkap.</p>
+
+                                <p><strong>Pembelian: </strong> Anda dapat melakukan pembelian melalui layanan kami. Anda bertanggung jawab untuk memberikan informasi pembayaran yang akurat dan up-to-date.</p>
+
+                                <p><strong> Privasi: </strong> Kami menghargai privasi Anda. Informasi pribadi yang Anda berikan akan diatur sesuai dengan Kebijakan Privasi kami.</p>
+
+                                <p><strong>Kebijakan Pengembalian: </strong> SSayoMart memiliki kebijakan pengembalian yang mengatur pengembalian produk. Mohon baca kebijakan tersebut sebelum melakukan pembelian.</p>
+
+                                <p><strong>Perubahan Syarat dan Ketentuan:</strong> SSayoMart berhak untuk mengubah Syarat dan Ketentuan ini kapan saja. Perubahan akan diumumkan di situs web kami.</p>
+
+                                <p><strong>Kontak:</strong> Jika Anda memiliki pertanyaan atau komentar terkait Syarat dan Ketentuan ini, silakan hubungi kami di [email atau nomor telepon].</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Tabs content -->
             </div>
