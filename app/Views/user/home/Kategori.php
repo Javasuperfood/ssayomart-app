@@ -17,13 +17,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
 
-
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 bg-transparent">
                     <div class="modal-body p-0 d-flex justify-content-center align-items-center">
-                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="img-fluid" alt="Gambar Modal">
+                        <img src="<?= base_url() ?>assets/img/banner/popup/default.png" class="img-fluid" alt="Gambar Modal">
                         <button type="button" class="btn-close position-absolute top-0 end-0 btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                 </div>
@@ -416,7 +415,6 @@ if ($isMobile) {
         }
 
     }
-
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
