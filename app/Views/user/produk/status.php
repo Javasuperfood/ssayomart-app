@@ -10,7 +10,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php if ($isMobile) : ?>
     <div id="mobileContent" style="width: 100%;">
-
         <div class="container pt-3 pb-4">
             <div class="col">
                 <div class="row">

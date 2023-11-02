@@ -3,7 +3,7 @@
         <div class="col">
             <h2 class="mb-4 text-merah"><?= lang('Text.produk_lainnya') ?></h2>
             <div class="d-flex justify-content-center align-items-center swiper mySwing">
-                <div class="swiper-wrapper d-flex mb-3">
+                <div class="swiper-wrapper d-flex mb-0">
                     <?php foreach ($randomProducts as $p) : ?>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
                             <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">

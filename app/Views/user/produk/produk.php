@@ -62,43 +62,43 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <p class="text-potong "><?= $produk['deskripsi']; ?></p>
                     <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                 </div>
-              <div class="d-flex">
-                <div class="mx-1">
-                    <div class="badge-container mb-2">
-                        <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
-                        <br>
-                        <?php if (!empty($kategoriProduk)) : ?>
-                            <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
-                        <?php endif ?>
-                    </div>
-                    <div class="badge-container mb-2">
-                        <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
-                        <br>
-                        <?php if (!empty($subKategoriProduk)) : ?>
-                            <span class="badge text-bg-warning rounded-5 text-uppercase"><?= $subKategoriProduk['nama_kategori']; ?></span>
-                        <?php endif ?>
-                    </div>
-                    <div class="badge-container mb-2">
-                        <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>
-                        <?php if (isset($stok)) : ?>
-                            <?php foreach ($stok as $s) : ?>
-                                <p class="badge text-bg-primary rounded-5 text-uppercase my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
-                            <?php endforeach ?>
-                            <?php if (count($stok) < 1) : ?>
-                                <p class="fw-bold py-0 my-0"><?= lang('Text.stock2') ?></p>
+                <div class="d-flex">
+                    <div class="mx-1">
+                        <div class="badge-container mb-2">
+                            <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
+                            <br>
+                            <?php if (!empty($kategoriProduk)) : ?>
+                                <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
                             <?php endif ?>
-                        <?php else : ?>
-                            <p class="fw-bold py-0 my-0"><?= lang('Text.stock3') ?></p>
-                        <?php endif ?>
-                    </div>
-                    <div class="badge-container mb-0">
-                        <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
-                        <?php if (!empty($produk)) : ?>
-                            <span class="badge text-bg-success rounded-5 text-uppercase"><?= $produk['sku']; ?></span>
-                        <?php endif ?>
+                        </div>
+                        <div class="badge-container mb-2">
+                            <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
+                            <br>
+                            <?php if (!empty($subKategoriProduk)) : ?>
+                                <span class="badge text-bg-warning rounded-5 text-uppercase"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                            <?php endif ?>
+                        </div>
+                        <div class="badge-container mb-2">
+                            <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>
+                            <?php if (isset($stok)) : ?>
+                                <?php foreach ($stok as $s) : ?>
+                                    <p class="badge text-bg-primary rounded-5 text-uppercase my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                                <?php endforeach ?>
+                                <?php if (count($stok) < 1) : ?>
+                                    <p class="fw-bold py-0 my-0"><?= lang('Text.stock2') ?></p>
+                                <?php endif ?>
+                            <?php else : ?>
+                                <p class="fw-bold py-0 my-0"><?= lang('Text.stock3') ?></p>
+                            <?php endif ?>
+                        </div>
+                        <div class="badge-container mb-0">
+                            <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
+                            <?php if (!empty($produk)) : ?>
+                                <span class="badge text-bg-success rounded-5 text-uppercase"><?= $produk['sku']; ?></span>
+                            <?php endif ?>
+                        </div>
                     </div>
                 </div>
-              </div>
             </div>
         </div>
 
@@ -181,7 +181,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- Akhir view mobile -->
-
     <!-- View Desktop -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container d-none d-md-block">
