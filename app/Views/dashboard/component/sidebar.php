@@ -102,6 +102,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header text-danger">Menu Banner:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/">List Banner</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/list-banner">List Banner App</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a>
             </div>
         </div>
