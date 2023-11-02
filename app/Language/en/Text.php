@@ -88,6 +88,11 @@ return [
     'btn_beli' => 'Buy Now',
     'badge_kategori' => 'Category',
     'badge_subkategori' => 'Sub Category',
+    'stock' => 'Stock Available',
+    'stock2' => 'Failed to get stock data from market.',
+    'stock3' => 'Choose market location first.',
+    'sku_produk' => 'Stock Keeping Unit',
+    'sku_produk2' => 'Failed to get stock keeping unit',
 
     // RIWAYAT TRANSAKSI
     'alert_history' => 'The transaction history you are looking for was not found.',

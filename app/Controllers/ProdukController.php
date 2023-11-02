@@ -83,7 +83,6 @@ class ProdukController extends BaseController
         $produk = $produkModel->getProduk($slug);
         $varianItem = $varianModel->getByIdProduk($produk['id_produk']);
 
-
         $randomProducts = $produkModel->getRandomProducts();
         // Mengambil kategori berdasarkan id_produk
         $kategoriProduk = $kategoriModel->getKategoriByProdukId($produk['id_produk']);
@@ -107,8 +106,6 @@ class ProdukController extends BaseController
         // dd($data);
         return view('user/produk/produk', $data);
     }
-
-
 
     public function search()
     {
