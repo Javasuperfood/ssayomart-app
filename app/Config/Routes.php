@@ -34,6 +34,10 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+$routes->get('/notif', 'NotifController::index');
+// $routes->get('/notif', 'NotifController::index');
+// $routes->post('/notif', 'NotifController::post');
+
 $routes->get('/', 'KategoriController::index');
 $routes->get('lang/{locale}', 'Language::index');
 $routes->get('/search', 'ProdukController::search');
@@ -241,6 +245,8 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->post('add-to-wishlist', 'WishlistController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
     $routes->get('getcity', 'Setting::getCity');
     $routes->get('getcost', 'Setting::getCost');
+    $routes->post('set-uuid', 'NotifController::setUuid');
+    $routes->Post('payment-success', 'NotifController::PaymentSuccess');
 });
 
 

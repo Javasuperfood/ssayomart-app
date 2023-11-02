@@ -41,9 +41,9 @@ class UserStatusController extends BaseController
             'getstatus'                 => $status,
             'status' => $userSatus,
             'produk' => $cekProduk,
-            'jasa' => 1000,
             'key' => $midtransConfig->clientKey,
             'urlMidtrans' => $midtransConfig->urlMidtrans,
+            'order_id' => $order_id,
             'kategori' => $kategori->findAll(),
             'back' => 'history'
 
