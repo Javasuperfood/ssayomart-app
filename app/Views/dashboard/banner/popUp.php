@@ -1,12 +1,12 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Management Banner Homepage</h1>
+<h1 class="h3 mb-2 text-gray-800">Management Pop Up</h1>
 <hr />
-<p class="mb-4">Anda dapat mengatur banner homepage yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
+<p class="mb-4">Anda dapat mengatur pop up yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
-    <b>Note : perhatikan ukuran dan resolusi banner sebelum upload ke Aplikasi Ssayomart Supermarket</b>
+    <b>Note : perhatikan ukuran dan resolusi pop up serta format pop up harus png agar background transparant sebelum upload ke Aplikasi Ssayomart Supermarket</b>
 </div>
 
 <div class="row">
@@ -17,15 +17,15 @@
                 <h6 class="m-0 font-weight-medium">Masukan Foto Banner Baru</h6>
             </div>
             <div class="card-body">
-                <form action="<?= base_url(); ?>dashboard/banner/tambah-banner/save" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url(); ?>dashboard/banner/pop-up-banner/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
-                        <label for="banner">Judul Banner</label>
+                        <label for="banner">Judul Pop Up</label>
                         <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
                         <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
                     <div class="mb-3">
-                        <label for="img" class="form-label">Gambar Banner</label>
+                        <label for="img" class="form-label">Gambar Pop Up</label>
                         <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>" accept="image/*">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
@@ -61,7 +61,7 @@
                                     <?= $bl['title']; ?>
                                 </td>
                                 <td>
-                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                    <img src="<?= base_url('assets/img/banner/popup/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
                                 </td>
                                 <td class="text-center">
                                     <div class="nav-item dropdown no-arrow">
@@ -70,35 +70,35 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-banner/<?= $bl['id_banner']; ?>">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-pop-up/<?= $bl['id_pop_up_banner']; ?>">
                                                 <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Update
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_banner']; ?>">
+                                            <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_pop_up_banner']; ?>">
                                                 <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                                 <span class="text-danger">Delete</span>
                                             </a>
                                         </div>
                                     </div>
                                     <!-- ================= START MODAL DELETE SINGLE PRODUK ================== -->
-                                    <div class="modal fade" id="deleteBanner<?= $bl['id_banner']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteBanner<?= $bl['id_banner']; ?>" aria-hidden="true">
+                                    <div class="modal fade" id="deleteBanner<?= $bl['id_pop_up_banner']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteBanner<?= $bl['id_pop_up_banner']; ?>" aria-hidden="true">
                                         <div class="modal-dialog text-start text-secondary" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteBanner<?= $bl['id_banner']; ?>">Delete <?= $bl['title']; ?> ?</h5>
+                                                    <h5 class="modal-title" id="deleteBanner<?= $bl['id_pop_up_banner']; ?>">Delete <?= $bl['title']; ?> ?</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body text-center">
-                                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                    <img src="<?= base_url('assets/img/banner/popup/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
                                                     <br><br>
                                                     Pilih Delete untuk Menghapus Produk <?= $bl['title']; ?>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                    <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
+                                                    <form action="<?= base_url() ?>dashboard/banner/pop-up-banner/delete/<?= $bl['id_pop_up_banner']; ?>" method="post">
                                                         <?= csrf_field() ?>
                                                         <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
                                                         <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>

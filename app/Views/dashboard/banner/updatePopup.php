@@ -3,20 +3,20 @@
 
 <div class="card border-0 shadow-sm position-relative">
     <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-medium">Edit Banner</h6>
+        <h6 class="m-0 font-weight-medium">Edit Pop Up</h6>
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/banner/update-banner/save" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateBanner()">
+        <form action="<?= base_url(); ?>dashboard/banner/update-pop-up/save-pop-up" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateBanner()">
             <?= csrf_field(); ?>
-            <input type="hidden" class="form-control border-0 shadow-sm" id="id_banner" name="id_banner" value="<?= $bl['id_banner'] ?>">
+            <input type="hidden" class="form-control border-0 shadow-sm" id="id_pop_up_banner" name="id_pop_up_banner" value="<?= $bl['id_pop_up_banner'] ?>">
             <div class="mb-3">
-                <label for="title" class="form-label">Judul Banner</label>
+                <label for="title" class="form-label">Judul Pop Up</label>
                 <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" value="<?= $bl['title'] ?>">
                 <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
             </div>
             <div class="mb-3">
-                <label for="img" class="form-label">Gambar Banner</label>
+                <label for="img" class="form-label">Gambar Pop Up</label>
                 <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= $bl['img'] ?>">
                 <span id="imgError" class="text-danger"></span>
                 <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">

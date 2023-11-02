@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\BannerModel;
+use App\Models\BannerPopupModel;
 
 class AdminBannerController extends BaseController
 {
@@ -57,7 +58,7 @@ class AdminBannerController extends BaseController
             return redirect()->to('dashboard/banner/tambah-banner')->withInput();
         }
         if ($fotoBanner->getError() == 4) {
-            $namaBanner = 'default.jpg';
+            $namaBanner = 'default.png';
         } else {
             $namaBanner = $fotoBanner->getRandomName();
             $fotoBanner->move('assets/img/banner/', $namaBanner);
@@ -141,10 +142,10 @@ class AdminBannerController extends BaseController
     public function updateBannerSave()
     {
         $bannerModel = new BannerModel();
-        $id = $this->request->getVar('id_banner');
+        $id = $this->request->getVar('id_pop_up_banner');
         $image = $this->request->getFile('img');
         $data = [
-            'id_banner' => $id,
+            'id_pop_up_banner' => $id,
             'img' => $image,
             'title' => $this->request->getVar('title'),
         ];
@@ -181,7 +182,7 @@ class AdminBannerController extends BaseController
 
         // repalce data 
         $data = [
-            'id_banner' => $id,
+            'id_pop_up_banner' => $id,
             'img' => $namaBannerImage,
             'title' => $this->request->getVar('title'),
         ];
@@ -205,6 +206,211 @@ class AdminBannerController extends BaseController
             session()->setFlashdata('alert', $alert);
 
             return redirect()->to('dashboard/banner/tambah-banner/update/' . $id)->withInput();
+        }
+    }
+
+    public function listBanner(): string
+    {
+        $bannerModel = new BannerModel();
+        $bannerList = $bannerModel->findAll();
+        $data = [
+            'title' => 'List Banner Aplikasi',
+            'banner_list' => $bannerList
+        ];
+        return view('/dashboard/banner/bannerPilih', $data);
+    }
+
+    // =================================================================
+    // =======================POP UP BANNER ============================
+    // =================================================================
+
+    public function popUp(): string
+    {
+        $bannerModel = new BannerPopupModel();
+        $bannerList = $bannerModel->findAll();
+        $data = [
+            'title' => 'Banner Pop Up Homepage',
+            'banner_list' => $bannerList
+        ];
+        return view('/dashboard/banner/popUp', $data);
+    }
+
+    public function savePopup()
+    {
+        // ambil gambar
+        $bannerModel = new BannerPopupModel();
+
+        $fotoBanner = $this->request->getFile('img');
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'img' => $fotoBanner
+        ];
+        //validate data
+        if (!$this->validateData($data, $bannerModel->validationRules) && !$this->validateData($data, [
+            'img' => [
+                'errors' => [
+                    'uploaded' => 'Gambar pop up wajib diunggah.'
+                ]
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
+        }
+        if ($fotoBanner->getError() == 4) {
+            $namaBanner = 'default.png';
+        } else {
+            $namaBanner = $fotoBanner->getRandomName();
+            $fotoBanner->move('assets/img/banner/popup/', $namaBanner);
+        }
+
+        //repalce data
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'img' => $namaBanner
+        ];
+        // dd($data);
+
+        // swet alert
+        if ($bannerModel->save($data)) {
+            session()->setFlashdata('success', 'Gambar banner berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Gambar pop up berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada upload pop up'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
+        }
+    }
+
+    public function deletePopup($id)
+    {
+        $bannerModel = new BannerPopupModel();
+        $banner = $bannerModel->find($id);
+
+        if ($banner['img'] != 'default.jpg') {
+            $gambarLamaPath = 'assets/img/banner/popup/' . $banner['img'];
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+        }
+        $deleted = $bannerModel->delete($id);
+        // dd($id);
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Gambar pop up berhasil di hapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/pop-up-banner');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan gambar pop up'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
+        }
+    }
+
+    // view
+    public function updatePopup($id)
+    {
+        $bannerModel = new BannerPopupModel();
+
+        $bl = $bannerModel->find($id);
+        $data = [
+            'title' => 'Edit Pop Up Banner',
+            'bl' => $bl,
+            'back'  => 'dashboard/banner/pop-up-banner'
+        ];
+        return view('dashboard/banner/updatePopup', $data);
+    }
+    // action
+    public function savePopupEdit()
+    {
+        $bannerModel = new BannerPopupModel();
+        $id = $this->request->getVar('id_pop_up_banner');
+        $image = $this->request->getFile('img');
+        $data = [
+            'id_pop_up_banner' => $id,
+            'img' => $image,
+            'title' => $this->request->getVar('title'),
+        ];
+        //validate data
+
+        if (!$this->validateData($data, $bannerModel->validationRules)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/update-pop-up/' . $id)->withInput();
+        }
+
+
+        if ($image->getError() == 4) {
+            $namaBannerImage = $this->request->getVar('imageLama');
+        } else {
+            $produk = $bannerModel->find($id);
+
+            if ($produk['img'] == 'default.jpg') {
+                $namaBannerImage = $image->getRandomName();
+                $image->move('assets/img/banner/popup', $namaBannerImage);
+            } else {
+                $namaBannerImage = $image->getRandomName();
+                $image->move('assets/img/banner/popup', $namaBannerImage);
+                $gambarLamaPath = 'assets/img/banner/popup/' . $this->request->getVar('imageLama');
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+        }
+
+        // repalce data 
+        $data = [
+            'id_pop_up_banner' => $id,
+            'img' => $namaBannerImage,
+            'title' => $this->request->getVar('title'),
+        ];
+
+        if ($bannerModel->save($data)) {
+            session()->setFlashdata('success', 'Gambar banner berhasil diubah.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Gambar pop up berhasil diubah.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/pop-up-banner');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/pop-up-banner/update-pop-up/' . $id)->withInput();
         }
     }
 }

@@ -4,11 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class BannerModel extends Model
+class BannerPopupModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'jsf_banner';
-    protected $primaryKey       = 'id_banner';
+    protected $table            = 'jsf_pop_up_banner';
+    protected $primaryKey       = 'id_pop_up_banner';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
