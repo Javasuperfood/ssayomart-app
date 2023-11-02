@@ -361,20 +361,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="collapse" id="history<?= $t->id_checkout; ?>">
                                 <div class="row">
                                     <div class="col mx-auto">
-                                        <div class="card border-0 shadow-sm mb-4">
+                                        <div class="card border-0 mb-4 bg-light">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-2">
-                                                        <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width: 50px;">
+                                                    <div class="col-4">
+                                                        <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width: 150px;">
                                                         <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                                             <a class="link-secondary" href="#" role="button" id="colsId<?= $t->id_checkout; ?>" style="display: none;">
                                                                 <i class="bi bi-chevron-bar-down fs-4" style="font-weight: bold;"></i>
                                                             </a>
                                                         </div>
                                                     </div>
-                                                    <div class="col-10 position-absolute top-50 start-50 translate-middle">
-                                                        <h5 class="card-title fs-6"><?= substr($t->nama, 0, 10); ?>...</h5>
-                                                        <p class="text-secondary fs-6">Rp. <?= number_format($t->harga, 0, ',', '.'); ?></p>
+                                                    <div class="col-8 position-absolute top-50 start-50 translate-middle">
+                                                        <h5 class="card-title fs-4"><?= substr($t->nama, 0, 10); ?>...</h5>
+                                                        <p class="text-secondary fs-5">Rp. <?= number_format($t->harga, 0, ',', '.'); ?></p>
                                                     </div>
 
                                                 </div>
