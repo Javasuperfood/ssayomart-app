@@ -39,9 +39,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <input onchange="selectCheck(this)" class="form-check-input border-danger " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                         </div>
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1" alt="..." style="width:150px; height:150px;">
+                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1 img-small" alt="..." style="max-width: 100%; height: auto; max-height: 150px;">
                                         </a>
                                     </div>
+
                                     <div class="col">
                                         <div class="card-body">
                                             <p class="card-text text-secondary" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 40); ?></p>
@@ -196,78 +197,79 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 </style>
 
 <style>
-    /* Stil umum untuk tampilan mobile dan desktop */
+    /* Common styles for both mobile and desktop */
     .card-body {
         padding: 1rem;
     }
 
-    /* Media query untuk tampilan Samsung Galaxy Fold atau ukuran layar yang sesuai */
+    /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
     @media screen and (max-width: 280px) {
 
-        /* Mengatur tata letak untuk card dan elemen lainnya pada tampilan yang lebih kecil */
-        .col-3 {
-            width: 30%;
+        .img-small {
+            max-height: 150px !important;
+            /* Sesuaikan tinggi maksimum yang Anda inginkan */
+            max-width: 80px !important;
+            /* Biarkan lebar gambar menyesuaikan */
+            margin: 25px 0 25px auto !important;
+            /* Geser gambar ke tengah kanan */
         }
 
-        .col-9 {
-            width: 70%;
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: stretch;
+            max-width: 280px;
+            width: 100%;
+            margin: 0 auto;
+            flex-wrap: nowrap;
         }
 
-        /* Atur ukuran font dan padding untuk tampilan yang lebih kecil */
-        .fs-1 {
-            font-size: 24px;
+        .form-control {
+            width: 20px;
+            padding: 0;
+            margin-bottom: 25px;
         }
 
-        .text-center p {
-            font-size: 14px;
+        button.position-absolute {
+            bottom: 5px;
+            right: 10px;
         }
 
-        .card-text {
-            font-size: 12px;
-        }
-
-        .card-title {
-            font-size: 16px;
-        }
-
-        .form-check-input {
-            font-size: 18px;
-            top: 5px;
-            right: 5px;
-        }
-
-        /* Atur ukuran gambar agar sesuai dengan tampilan yang lebih kecil */
-        .card-img-top {
-            width: 80px;
-            height: 80px;
-        }
-
-        /* Stil untuk elemen pada d-flex align-items-center */
-        .d-flex.align-items-center {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-
-        /* Lebih banyak penyesuaian sesuai kebutuhan tampilan yang lebih kecil */
-        .btn.btn-outline-danger.btn-sm.rounded-circle {
-            padding: 2px;
-            /* Sesuaikan padding agar tombol lebih mudah ditekan pada tampilan yang lebih kecil */
-        }
-
-        .form-control.text-small.text-center.bg-white.border-0 {
-            width: 10px;
-            /* Sesuaikan lebar input agar sesuai dengan tampilan yang lebih kecil */
-            font-size: 12px;
-            /* Sesuaikan ukuran font agar sesuai dengan tampilan yang lebih kecil */
-        }
-
-        .bi.bi-dash,
-        .bi.bi-plus {
+        .btn.btn-lg.fw-bold {
             font-size: 10px;
-            /* Sesuaikan ukuran ikon agar sesuai dengan tampilan yang lebih kecil */
+            padding: 2px 10px;
         }
+
+        .btn.btn-sm.mt-3.position-absolute.end-0.mx-2 {
+            font-size: 10px;
+            padding: 5px 10px;
+        }
+
+        .btn.btn-outline-danger.btn-sm.rounded-circle {
+            padding: 0;
+            width: 20px;
+            height: 20px;
+
+        }
+
+        .btn.btn-outline-danger.btn-sm.rounded-circle i {
+            font-size: 10px;
+
+        }
+
+        .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
+            margin-left: -2px;
+        }
+
+        .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
+            margin-left: -1px;
+        }
+
+        /* Add specific CSS styles for the delete button if needed */
     }
 </style>
+
+
 
 <script type="text/javascript">
     var produkSelected = {};
