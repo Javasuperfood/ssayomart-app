@@ -16,6 +16,47 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
+
+
+        <!-- Modal  Homepage-->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 bg-transparent"> <!-- Mengatur latar belakang transparan -->
+                    <div class="modal-body p-0 text-center">
+                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="img-fluid" alt="Gambar Modal">
+                        <button type="button" class="btn-close position-absolute top-0 end-0 btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Otomatis tampilkan modal saat halaman dimuat
+            $(document).ready(function() {
+                $('#imageModal').modal('show');
+            });
+        </script>
+
+        <style>
+            /* Ganti warna tombol close menjadi putih */
+            .btn-close {
+                background-color: #fff;
+                color: #000;
+                /* atau warna lain sesuai kebutuhan */
+            }
+
+            /* Membuat tombol close berbentuk lingkaran */
+            .btn-close {
+                border-radius: 50%;
+                width: 30px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+                height: 30px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+            }
+        </style>
+
+        <!-- Akhir Modal  Homepage-->
+
         <div class="class" style="position: relative; top: -15px;">
             <section class="mt-3" id="unggul" style="background-color: #f7f0eb;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f7f0eb;">

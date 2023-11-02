@@ -120,7 +120,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col" key="<?= $key; ?>">
                                             <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
                                                 <div class="card-body">
-                                                    <h5 class="card-title"><?= $v['value_item']; ?></h5>
+                                                    <h5 class="card-title" style="font-size: 18px;"><?= $v['value_item']; ?></h5>
                                                     <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                                     <div class="form-check">
                                                         <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarianBuy<?= $v['id_variasi_item']; ?>">
@@ -157,8 +157,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="col" key="<?= $key; ?>">
                                         <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
                                             <div class="card-body">
-                                                <h5 class="card-title"><?= $v['value_item']; ?></h5>
-                                                <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
+                                                <h5 class="card-title" style="font-size: 18px;"><?= $v['value_item']; ?></h5>
+                                                <p class=" text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                                 <div class="form-check">
                                                     <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $v['id_variasi_item']; ?>">
                                                     <label class="form-check-label" for="radioVarian<?= $v['id_variasi_item']; ?>">
@@ -408,6 +408,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     /* Atur gaya untuk tampilan Samsung Galaxy Fold atau layar yang lebih kecil */
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
+
+
+        .col.mt-4.text-center h2 {
+            /* Sesuaikan ukuran font sesuai kebutuhan Anda */
+            font-size: 45px;
+            /* Misalnya, ubah ukuran font menjadi 16px */
+        }
+
+        .col.mt-4.text-center p {
+            /* Sesuaikan ukuran font pada elemen paragraf */
+            font-size: 12px;
+            /* Misalnya, ubah ukuran font pada paragraf menjadi 12px */
+        }
+
         .row-cols-3 .col {
             flex: 0 0 100%;
             /* Mengatur lebar kolom menjadi 100% */
