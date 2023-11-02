@@ -23,7 +23,8 @@ class UsersModel extends Model
         'fullname',
         'telp',
         'market_selected',
-        'address_selected'
+        'address_selected',
+        'uuid'
     ];
 
     // Dates

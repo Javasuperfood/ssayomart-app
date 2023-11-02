@@ -206,6 +206,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 console.error("Error:", error);
                             }
                         });
+                        paymentSuccess('<?= $order_id; ?>')
                     },
                     onPending: function(result) {
                         let timerInterval
@@ -259,13 +260,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 })
             }
 
+
             var payButton = document.getElementById('pay-button');
             payButton.addEventListener('click', function() {
                 lpSanp();
             });
         </script>
     <?php endif ?>
-
+    <script>
+        function paymentSuccess(inv) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('api/payment-success'); ?>",
+                dataType: "json",
+                data: {
+                    csrf_test_name: '<?= csrf_hash(); ?>',
+                    inv: inv
+                },
+                success: function(response) {
+                    //
+                },
+                error: function(error) {
+                    //
+                }
+            })
+        }
+    </script>
 
     <style>
         /* timeline  */

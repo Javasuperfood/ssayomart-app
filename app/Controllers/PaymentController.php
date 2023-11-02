@@ -43,6 +43,7 @@ class PaymentController extends BaseController
             'produk' => $cekProduk,
             'key' => $midtransConfig->clientKey,
             'urlMidtrans' => $midtransConfig->urlMidtrans,
+            'order_id' => $order_id,
             'back' => 'history',
             'kategori' => $kategori->findAll()
 

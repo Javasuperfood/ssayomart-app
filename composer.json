@@ -1,51 +1,52 @@
 {
-    "name": "codeigniter4/appstarter",
-    "type": "project",
-    "description": "CodeIgniter4 starter app",
-    "homepage": "https://codeigniter.com",
-    "license": "MIT",
-    "require": {
-        "php": "^7.4 || ^8.0",
-        "codeigniter4/framework": "4.3.8",
-        "codeigniter4/shield": "dev-develop",
-        "datamweb/shield-oauth": "dev-develop",
-        "midtrans/midtrans-php": "^2.5",
-        "tecnickcom/tcpdf": "^6.6"
-    },
-    "require-dev": {
-        "fakerphp/faker": "^1.9",
-        "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^9.1"
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "php-http/discovery": true
-        }
-    },
-    "autoload": {
-        "exclude-from-classmap": [
-            "**/Database/Migrations/**"
-        ]
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\Support\\": "tests/_support"
-        }
-    },
-    "scripts": {
-        "test": "phpunit",
-        "alamat": "php spark db:seed Alamat",
-        "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon && php spark db:seed Blog",
-        "ms2": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon"
-    },
-    "support": {
-        "forum": "https://forum.codeigniter.com/",
-        "source": "https://github.com/codeigniter4/CodeIgniter4",
-        "slack": "https://codeigniterchat.slack.com"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+  "name": "codeigniter4/appstarter",
+  "type": "project",
+  "description": "CodeIgniter4 starter app",
+  "homepage": "https://codeigniter.com",
+  "license": "MIT",
+  "require": {
+    "php": "^7.4 || ^8.0",
+    "codeigniter4/framework": "4.3.8",
+    "codeigniter4/shield": "dev-develop",
+    "datamweb/shield-oauth": "dev-develop",
+    "midtrans/midtrans-php": "^2.5",
+    "onesignal/onesignal-php-api": "dev-main",
+    "tecnickcom/tcpdf": "^6.6"
+  },
+  "require-dev": {
+    "fakerphp/faker": "^1.9",
+    "mikey179/vfsstream": "^1.6",
+    "phpunit/phpunit": "^9.1"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "**/Database/Migrations/**"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\Support\\": "tests/_support"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "alamat": "php spark db:seed Alamat",
+    "ms": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed Produk && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon && php spark db:seed Blog",
+    "ms2": "php spark migrate --all && php spark db:seed Banner && php spark db:seed Kategori && php spark db:seed StatusProses && php spark db:seed Promo && php spark db:seed Kupon"
+  },
+  "support": {
+    "forum": "https://forum.codeigniter.com/",
+    "source": "https://github.com/codeigniter4/CodeIgniter4",
+    "slack": "https://codeigniterchat.slack.com"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
