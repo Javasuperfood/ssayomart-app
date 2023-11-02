@@ -31,26 +31,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <script>
-            // Otomatis tampilkan modal saat halaman dimuat
+            // Periksa apakah modal sudah ditampilkan sebelumnya
+            var isModalShown = localStorage.getItem('isModalShown');
+
             $(document).ready(function() {
-                $('#imageModal').modal('show');
+                // Cek apakah modal sudah ditampilkan sebelumnya
+                if (isModalShown !== 'true') {
+                    $('#imageModal').modal('show');
+                    // Setel status modal sudah ditampilkan
+                    localStorage.setItem('isModalShown', 'true');
+                }
             });
         </script>
 
         <style>
             /* Ganti warna tombol close menjadi putih */
             .btn-close {
-                background-color: #fff;
+                background-color: #ffff;
                 color: #000;
+                font-size: 10px;
+
                 /* atau warna lain sesuai kebutuhan */
             }
 
             /* Membuat tombol close berbentuk lingkaran */
             .btn-close {
                 border-radius: 50%;
-                width: 30px;
+                width: 20px;
                 /* Sesuaikan ukuran sesuai kebutuhan */
-                height: 30px;
+                height: 20px;
                 /* Sesuaikan ukuran sesuai kebutuhan */
             }
         </style>
