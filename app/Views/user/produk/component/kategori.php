@@ -70,7 +70,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <?php foreach ($subKategori as $sub) : ?>
                                                     <?php if ($sub['slugK'] == $k['slug']) : ?>
                                                         <li class="list-group-item">
-                                                            <a href="<?= base_url('produk/kategori/' . $k['slug'] . '/' . $sub['slugS']); ?>" class="link-dark list-group-item-link">
+                                                            <a href="<?= base_url('produk/kategori/' . $k['slug'] . '/' . $sub['slugS']); ?>" class="link-white list-group-item-link">
                                                                 <?= $sub['nama_kategori']; ?>
                                                             </a>
                                                         </li>

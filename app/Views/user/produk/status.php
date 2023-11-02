@@ -316,13 +316,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         .track .step.active .text {
-            font-weight: 400;
+            font-weight: 500;
             color: #000;
+            font-size: 10px;
         }
 
         .track .text {
             display: block;
             margin-top: 7px;
+        }
+    </style>
+
+    <style>
+        /* Tampilan Samsung Galaxy Fold */
+        @media (max-width: 280px) {
+            .track .step {
+                width: 30%;
+            }
+
+            .track .icon {
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+            }
+
+            .track .step.active .text {
+                font-size: 8px;
+            }
         }
     </style>
 
