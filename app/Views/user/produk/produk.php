@@ -11,16 +11,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- View Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container mt-4">
-            <div class="col-md-6">
+        <div class="container mt-4 justify-content-center">
+            <div class="col text-center">
                 <div class="zoom-image">
                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
                 </div>
             </div>
-            <div class="col-md-6 mt-4 mx-1">
+            <div class="col mt-4 mx-1 text-center">
                 <h2><?= $produk['nama']; ?></h2>
                 <div class="row">
-                    <div class="col">
+                    <div class="col text-center">
                         <p class="text-secondary fs-4">
                             <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
                                 Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
@@ -57,12 +57,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <div class="row mt-4 mb-5">
-                <div class="col-lg-6 mx-1">
-                    <h2 class="text-merah"> <?= lang('Text.deskripsi_produk') ?> </h2>
-                    <p class="text-potong"><?= $produk['deskripsi']; ?></p>
+                <div class="col">
+                    <h2 class="text-merah text-center"> <?= lang('Text.deskripsi_produk') ?> </h2>
+                    <p class="text-potong "><?= $produk['deskripsi']; ?></p>
                     <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                 </div>
-
+              <div class="d-flex">
                 <div class="mx-1">
                     <div class="badge-container mb-2">
                         <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
@@ -98,6 +98,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?php endif ?>
                     </div>
                 </div>
+              </div>
             </div>
         </div>
 

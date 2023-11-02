@@ -160,9 +160,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="col">
                                     <div class="alert alert-danger rounded border-0" role="alert">
                                         <div class="row">
-                                            <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i></div>
+                                            <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-4"></i></div>
                                             <div class="col-9 text-secondary fs-6"><?= lang('Text.alert') ?></div>
-                                            <div class="col-2 text-end"><a href="#" class="link-primary link-underline link-underline-opacity-0 text-dark"><?= lang('Text.alert_btn') ?></a></div>
                                         </div>
                                     </div>
                                 </div>

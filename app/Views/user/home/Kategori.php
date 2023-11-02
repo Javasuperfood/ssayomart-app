@@ -196,9 +196,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="row justify-items-center">
                                                         <div class="col">
                                                             <div class="horizontal-counter">
-                                                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='RdecreaseCount(this, <?= $p['id_produk']; ?>)'><i class="bi bi-dash"></i></button>
-                                                                <input type="text" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
-                                                                <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='RincreaseCount(this, <?= $p['id_produk']; ?>)'><i class="bi bi-plus"></i></button>
+                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
+                                                                <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" disabled>
+                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -386,7 +386,31 @@ if ($isMobile) {
     }
 </style>
 
+<script type="text/javascript">
+    function increaseCount(b, id) {
+        var input = b.previousElementSibling;
+        console.log(input);
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+        $('#Cqty' + id).val(value);
+        $('#Bqty' + id).val(value);
+    }
 
+    function decreaseCount(b, id) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+            $('#Cqty' + id).val(value);
+            $('#Bqty' + id).val(value);
+
+        }
+    }
+</script>
 
 
 <?= $this->endSection(); ?>
