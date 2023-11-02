@@ -88,6 +88,11 @@ return [
     'btn_beli' => '구입하다 / Beli',
     'badge_kategori' => '범주 / Kategori',
     'badge_subkategori' => '하위 카테고리 / Sub Kategori',
+    'stock' => '재고 있음 / Stok Tersedia',
+    'stock2' => '주식 데이터를 검색하지 못했습니다. / Gagal mengambil data stok',
+    'stock3' => '로그인 후 시장 위치를 ​​선택하세요. / Silakan login lalu pilih lokasi market',
+    'sku_produk' => '재고 유지 단위 / SKU Produk',
+    'sku_produk2' => '재고 보관 장치를 확보하지 못했습니다. / Gagal mengambil data sku',
 
     // RIWAYAT TRANSAKSI
     'alert_history' => '찾으시는 거래내역을 찾을 수 없습니다 / Riwayat Transaksi yang Anda cari tidak ditemukan.',

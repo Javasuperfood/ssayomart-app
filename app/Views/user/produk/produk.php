@@ -52,7 +52,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
                         <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>"><i class="bi bi-cart-fill"></i></button>
 
-                        <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</a>
+                        <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                     <?php endif ?>
                 </div>
             </div>
@@ -71,26 +71,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
                         <?php endif ?>
                     </div>
-                    <div class="badge-container ">
+                    <div class="badge-container mb-2">
                         <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
                         <br>
                         <?php if (!empty($subKategoriProduk)) : ?>
-                            <span class="badge text-bg-warning rounded-5"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                            <span class="badge text-bg-warning rounded-5 text-uppercase"><?= $subKategoriProduk['nama_kategori']; ?></span>
                         <?php endif ?>
                     </div>
-                </div>
-                <div class="mx-1">
                     <div class="badge-container mb-2">
-                        <p class="text-secondary py-0 my-0">Stok Tersedia : </p>
+                        <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>
                         <?php if (isset($stok)) : ?>
                             <?php foreach ($stok as $s) : ?>
-                                <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                                <p class="badge text-bg-primary rounded-5 text-uppercase my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
                             <?php endforeach ?>
                             <?php if (count($stok) < 1) : ?>
-                                <p class="text-secondary">Gagal mengambil data stok</p>
+                                <p class="fw-bold py-0 my-0"><?= lang('Text.stock2') ?></p>
                             <?php endif ?>
                         <?php else : ?>
-                            Silakan login lalu pilih lokasi market
+                            <p class="fw-bold py-0 my-0"><?= lang('Text.stock3') ?></p>
+                        <?php endif ?>
+                    </div>
+                    <div class="badge-container mb-0">
+                        <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
+                        <?php if (!empty($produk)) : ?>
+                            <span class="badge text-bg-success rounded-5 text-uppercase"><?= $produk['sku']; ?></span>
                         <?php endif ?>
                     </div>
                 </div>
@@ -105,7 +109,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="modal-dialog" style="top: calc(100% - 300px);">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli</h1>
+                            <h1 class="modal-title fs-5" id="modalVarianBuyLabel"><?= lang('Text.btn_beli') ?></h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
@@ -131,7 +135,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="modal-footer">
                                 <input type="hidden" id="qty" name="qty" value="1">
-                                <button type="submit" class="btn btn-danger mt-4">Beli Sekarang</button>
+                                <button type="submit" class="btn btn-danger mt-4"><?= lang('Text.btn_beli') ?></button>
                             </div>
                         </form>
                     </div>
@@ -227,7 +231,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <input type="hidden" id="qty" name="qty" value="1">
                             <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
                             <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>"><i class=" bi bi-cart-fill"></i></button>
-                            <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold">Beli Sekarang</a>
+                            <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=1'); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                         <?php endif ?>
                     </div>
                     <div class="row row-cols-1 my-4">
@@ -242,14 +246,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
                                     <br>
                                     <?php if (!empty($kategoriProduk)) : ?>
-                                        <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
+                                        <span class="badge text-bg-danger rounded-5 text-uppercase fs-6"><?= $kategoriProduk['nama_kategori']; ?></span>
                                     <?php endif ?>
                                 </div>
                                 <div class="badge-container ">
                                     <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
                                     <br>
                                     <?php if (!empty($subKategoriProduk)) : ?>
-                                        <span class="badge text-bg-warning rounded-5"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                                        <span class="badge text-bg-warning rounded-5 text-uppercase fs-6"><?= $subKategoriProduk['nama_kategori']; ?></span>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -257,16 +261,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-md-6">
                             <div class="mx-1">
                                 <div class="badge-container mb-2">
-                                    <p class="text-secondary py-0 my-0">Stok Tersedia : </p>
+                                    <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>
                                     <?php if (isset($stok)) : ?>
                                         <?php foreach ($stok as $s) : ?>
-                                            <p class="badge text-bg-primary rounded-5"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                                            <p class="badge text-bg-primary rounded-5 text-uppercase fs-6 my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
                                         <?php endforeach ?>
                                         <?php if (count($stok) < 1) : ?>
-                                            <p class="text-secondary">Gagal mengambil data stok</p>
+                                            <p class="text-secondary py-0 my-0"><?= lang('Text.stock2') ?></p>
                                         <?php endif ?>
                                     <?php else : ?>
-                                        Silakan login lalu pilih lokasi market
+                                        <?= lang('Text.stock3') ?>
+                                    <?php endif ?>
+                                </div>
+                                <div class="badge-container mb-2">
+                                    <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
+                                    <?php if (!empty($produk)) : ?>
+                                        <span class="badge text-bg-success rounded-5 text-uppercase fs-6"><?= $produk['sku']; ?></span>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -320,7 +330,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="modalVarianBuyLabel">Beli Langsung</h1>
+                        <h1 class="modal-title fs-5" id="modalVarianBuyLabel"><?= lang('Text.btn_beli') ?></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
@@ -346,7 +356,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                         <div class="modal-footer">
                             <input type="hidden" id="qty" name="qty" value="1">
-                            <button type="submit" class="btn btn-danger mt-4">Beli Sekarang</button>
+                            <button type="submit" class="btn btn-danger mt-4"><?= lang('Text.btn_beli') ?></button>
                         </div>
                     </form>
                 </div>
