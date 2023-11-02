@@ -21,8 +21,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
             <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-0 bg-transparent"> <!-- Mengatur latar belakang transparan -->
-                    <div class="modal-body p-0 text-center">
+                <div class="modal-content border-0 bg-transparent">
+                    <div class="modal-body p-0 d-flex justify-content-center align-items-center">
                         <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="img-fluid" alt="Gambar Modal">
                         <button type="button" class="btn-close position-absolute top-0 end-0 btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -30,28 +30,42 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
 
-        <script>
-            // Periksa apakah modal sudah ditampilkan sebelumnya
-            var isModalShown = localStorage.getItem('isModalShown');
 
+        <script>
+            // Otomatis tampilkan modal saat halaman dimuat
             $(document).ready(function() {
-                // Cek apakah modal sudah ditampilkan sebelumnya
-                if (isModalShown !== 'true') {
-                    $('#imageModal').modal('show');
-                    // Setel status modal sudah ditampilkan
-                    localStorage.setItem('isModalShown', 'true');
-                }
+                $('#imageModal').modal('show');
             });
         </script>
 
         <style>
+            #imageModal {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .modal-dialog {
+                max-width: 100%;
+                margin: 0;
+            }
+
+            .modal-content {
+                background: transparent;
+                border: none;
+            }
+
             /* Ganti warna tombol close menjadi putih */
             .btn-close {
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-
+                text-align: left;
                 /* atau warna lain sesuai kebutuhan */
+            }
+
+            .end-0 {
+                right: 25px !important;
             }
 
             /* Membuat tombol close berbentuk lingkaran */
