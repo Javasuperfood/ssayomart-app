@@ -232,7 +232,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="text-secondary mt-2 mx-3">
                                             Selengkapnya untuk melihat artikel...
                                         </p>
-                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3"><?= lang('Text.selengkapnya') ?> <i class="bi bi-arrow-right-circle"></i></a>
+                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3 mx-3 mb-3"><?= lang('Text.selengkapnya') ?> <i class="bi bi-arrow-right-circle"></i></a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -303,13 +303,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <div class="row mt-3">
                         <span class="fw-bold fs-3">Produk <span class="text-danger">Ssayomart</span></span>
-                        <hr class="mt-0">
+                        <hr class="mt-2">
                     </div>
 
                     <?php $count = 0; ?>
                     <?php foreach ($randomProducts as $randomProduct) : ?>
                         <?php if ($count < 5) : ?>
-                            <div class="card border-0 mt-3">
+                            <div class="card border-0 mt-2">
                                 <div class="d-flex text-black">
                                     <div class="flex-shrink-0">
                                         <a href="<?= base_url() ?>produk/<?= $randomProduct['slug']; ?>">
@@ -356,8 +356,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
             <!-- Sistem Grid Desktop -->
-            <div class="row justify-content-center">
-                <div class="col-md-3">
+            <div class="row justify-content-center my-3">
+                <div class="col-md-6">
                     <div data-aos="fade-right">
                         <div class="mb-4">
                             <span class="font-weight-bold display-4">Tips memasak ala Korea dirumah Anda dengan <strong>Praktis</strong> dan <strong>Enak</strong> dari <span class="text-danger"><strong>Ssayomart</strong>.</span></span>
@@ -397,13 +397,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper-wrapper">
                             <?php foreach ($randomBlogs as $randomBlog) : ?>
                                 <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                    <div class="card border-0 shadow-sm">
+                                    <div class="card border-0 shadow-sm mt-2">
                                         <img src="<?= base_url() . 'assets/img/blog/' . $randomBlog['img_thumbnail']; ?>" class="card-img-top img-fluid" alt="Artikel Lainnya" style="height:300px; width:300px;">
                                         <h5 class="menu-title text-dark mt-3 mx-3"><?= $randomBlog['judul_blog']; ?></h5>
                                         <p class="text-secondary mt-2 mx-3">
                                             Selengkapnya untuk melihat artikel...
                                         </p>
-                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
+                                        <a href="<?= base_url('blog/' . $randomBlog['id_blog']); ?>" class="btn btn-danger rounded-3 mx-3 mb-3">Selengkapnya <i class="bi bi-arrow-right-circle"></i></a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
