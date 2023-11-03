@@ -32,21 +32,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <script>
-            // Periksa apakah modal sudah ditampilkan sebelumnya
-            var isModalShown = localStorage.getItem('isModalShown');
-
             $(document).ready(function() {
-                // Cek apakah modal sudah ditampilkan sebelumnya
-                if (isModalShown !== 'true') {
+                // Fungsi untuk menampilkan modal
+                function showModal() {
                     $('#imageModal').modal('show');
                     // Setel status modal sudah ditampilkan
                     localStorage.setItem('isModalShown', 'true');
                 }
 
-                // Tampilkan modal setiap 5 detik setelah aplikasi pertama kali dibuka
+                // Cek apakah modal sudah ditampilkan sebelumnya
+                var isModalShown = localStorage.getItem('isModalShown');
+
+                if (isModalShown !== 'true') {
+                    showModal(); // Tampilkan modal jika belum ditampilkan sebelumnya
+                }
+
+                // Tampilkan modal setiap 24 jam
                 setInterval(function() {
-                    $('#imageModal').modal('show');
-                }, 10000); // 5000 milidetik = 5 detik
+                    showModal();
+                }, 24 * 60 * 60 * 1000); // 24 jam dalam milidetik
             });
         </script>
 
