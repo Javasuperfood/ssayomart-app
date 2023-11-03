@@ -46,6 +46,7 @@ $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
+$routes->get('user/home/contenBanner/contenBanner', 'Blog::contenBanner');
 
 $routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
 

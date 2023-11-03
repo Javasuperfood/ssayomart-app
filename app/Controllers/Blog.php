@@ -12,6 +12,23 @@ use App\Helpers\YoutubeHelper;
 
 class Blog extends BaseController
 {
+    // ===================================================================
+    // ------------------------ KONTEN BANNER ------------------------------
+    // ===================================================================
+    public function contenBanner()
+    {
+
+        $data = [
+            'title' => 'conten Banner',
+        ];
+        // dd($data);
+        return view('user/home/contenBanner/contenBanner', $data);
+    }
+
+    // ===================================================================
+    // ------------------------ END KONTEN BANNER ----------------------------
+    // ===================================================================
+
     public function index($id)
     {
         // Memuat helper YouTube
