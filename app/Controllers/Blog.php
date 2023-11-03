@@ -7,6 +7,8 @@ use App\Models\KategoriModel;
 use App\Models\BlogModel;
 use App\Models\UsersModel;
 use App\Models\ProdukModel;
+use App\Models\BannerAdsKontenModel;
+
 
 use App\Helpers\YoutubeHelper;
 
@@ -21,10 +23,12 @@ class Blog extends BaseController
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
         $produkModel = new ProdukModel();
+        $bannerModel = new BannerAdsKontenModel();
 
         // Ambil semua data artikel dari database
         $allBlogs = $blogModel->getAllBlog();
         $blog_detail = $blogModel->getBlogDetail($id);
+        $bannerList = $bannerModel->findAll();
 
         // Acak urutan artikel
         shuffle($allBlogs);
@@ -47,7 +51,8 @@ class Blog extends BaseController
             'user_info' => $user_info,
             'randomProducts' => $randomProducts,
             'randomBlogs' => $allBlogs,
-            'videoEmbedCode' => $videoEmbedCode
+            'videoEmbedCode' => $videoEmbedCode,
+            'banner_list' => $bannerList
         ];
 
         return view('user/home/blog/blog', $data);
