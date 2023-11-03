@@ -182,6 +182,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             function lpSanp() {
                 window.snap.pay('<?= $status->snap_token; ?>', {
                     onSuccess: function(result) {
+                        paymentSuccess('<?= $order_id; ?>')
                         $.ajax({
                             type: "POST",
                             url: "<?= base_url('payment/token'); ?>",
@@ -206,7 +207,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 console.error("Error:", error);
                             }
                         });
-                        paymentSuccess('<?= $order_id; ?>')
                     },
                     onPending: function(result) {
                         let timerInterval
@@ -226,10 +226,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 clearInterval(timerInterval)
                             }
                         }).then((result) => {
-                            /* Read more about handling dismissals below */
-                            if (result.dismiss === Swal.DismissReason.timer) {
-                                console.log('I was closed by the timer')
-                            }
+                            //
                         })
                     },
                     onError: function(result) {

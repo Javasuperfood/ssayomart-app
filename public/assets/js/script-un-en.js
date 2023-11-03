@@ -18,14 +18,30 @@ function isNumber(e) {
 }
 
 function copyBtn(text) {
-  if (navigator.clipboard.writeText(text)) {
-    Swal.fire({
-      icon: "success",
-      title: "Copy",
-      html: `${text}<br/>has been copied to the clipboard`,
-      showConfirmButton: false,
-      timer: 1500,
-    });
+  try {
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(text)
+        .then(function () {
+          Swal.fire({
+            icon: "success",
+            title: "Copy",
+            html: `${text}<br/>has been copied to the clipboard`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch(function (error) {
+          console.error("Error copying to clipboard:", error);
+          // You can display an error message to the user here if needed.
+        });
+    } else {
+      console.error("Clipboard API not supported in this browser");
+      // You can display a message to the user that clipboard functionality is not available.
+    }
+  } catch (error) {
+    console.error("An error occurred:", error);
+    // Handle any other errors that may occur.
   }
 }
 
