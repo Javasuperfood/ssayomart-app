@@ -30,7 +30,7 @@ class NotifController extends BaseController
     {
         $uuid = $this->request->getVar('uuid');
         $usersModel = new UsersModel();
-        $user = $usersModel->find(user_id())[0];
+        $user = $usersModel->find(user_id());
         if ($user) {
             if ($user['uuid'] != $uuid) {
                 $usersModel->update($user['id'], [
