@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Tampilan mobile & ipad -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container d-md-blok">
+        <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center mt-3 ">
@@ -135,10 +135,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Tampilan Desktop -->
     <div id="desktopContent" style="margin-top:100px;">
-        <div class="container py-5 d-none d-lg-block">
+        <div class="container py-5 ">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card border-0 shadow-sm mb-4" style="height: 350px;">
+                    <div class="card border-0 shadow-sm mb-4">
                         <div class="card-body text-center" style="height: 325px;">
                             <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" alt="profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
                             <h3 class="fw-bold  fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
@@ -188,7 +188,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class=" row">
                         <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-4 mb-md-0" style="height: 268px;">
+                            <div class="card border-0 shadow-sm mb-4 mb-md-0">
                                 <div class="card-body">
                                     <h3><?= lang('Text.setting') ?>
                                     </h3>
@@ -219,9 +219,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </a>
                                         <a href="<?= base_url(); ?>/setting/sayoCare" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                        </a>
-                                        <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-headset pe-2 text-secondary"></i> <?= lang('Text.ssayomart_care') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>

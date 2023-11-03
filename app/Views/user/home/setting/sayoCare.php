@@ -30,7 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container-fluid p-0 position-relative">
             <div class="img-container">
-                <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="img-overlay"></div>
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2 " style="font-family:cursive;">
@@ -39,17 +39,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
 
+        <!-- tentang ssayomart -->
         <div class="container mt-3">
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <!-- Konten Kolom Pertama -->
+                <!-- Konten Kolom Pertama -->
+                <!-- <div class="col-12 col-md-6">
                     <div class="img-container">
-                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid rounded-4">
+                        <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid rounded-4">
                         <div class="img-overlay"></div>
                     </div>
 
-                </div>
-                <div class="col-12 col-md-6 text-end">
+                </div> -->
+                <div class="col">
                     <!-- Konten Kolom Kedua -->
                     <h3>Tentang Ssayomart </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
@@ -58,8 +59,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
 
-
-
         <!-- galery photos Mobile -->
         <div class="container d-md-none">
             <section class="galeri" id="galeri">
@@ -67,16 +66,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="swiper telkom mt-3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/sampel.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" alt="Gambar Besar" class="gambar img-fluid">
                         </div>
                         <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/sampel.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            <img src="<?= base_url() ?>assets/img/about/menu-2.png" alt="Gambar Besar" class="gambar img-fluid">
                         </div>
                         <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/sampel.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
                         </div>
                         <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/sampel.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-8.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-9.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-10.jpg" alt="Gambar Besar" class="gambar img-fluid">
                         </div>
                     </div>
 
@@ -164,7 +181,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <label for="name">Name:</label>
                             <input type="text" class="form-control" id="name" placeholder="Enter your name">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group my-2">
                             <label for="email">Email:</label>
                             <input type="email" class="form-control" id="email" placeholder="Enter your email">
                         </div>

@@ -26,7 +26,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- navbar Website -->
     <div id="desktopContent">
-        <div class="container mb-5 d-none d-md-block">
+        <div class="container mb-5">
             <nav class="navbar navbar-expand fixed-top shadow-sm" style="background-color: #ffff;">
                 <div class="container">
                     <a href="<?= base_url() ?>">
@@ -138,6 +138,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 <?php endif; ?>
+<?php
+if ($isMobile) {
+
+    echo '<div id="mobileContent">';
+
+    echo '</div>';
+} else {
+
+    echo '<div id="desktopContent">';
+
+    echo '</div>';
+}
+?>
 
 <!-- navbar dekstop -->
 
@@ -164,3 +177,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     }
 </style>
+
+<!-- End Desktop View -->
