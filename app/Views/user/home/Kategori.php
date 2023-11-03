@@ -19,16 +19,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content border-0 bg-transparent">
-                    <div class="modal-body p-0 d-flex justify-content-center align-items-center">
-                        <img src="<?= base_url() ?>assets/img/banner/popup/default.png" class="img-fluid" alt="Gambar Modal">
-                        <button type="button" class="btn-close position-absolute top-0 end-0 btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+            <?php foreach ($banner_pop_up as $pop) : ?>
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 bg-transparent">
+                        <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+                            <img src="<?= base_url() ?>assets/img/banner/popup/<?= $pop['img'] ?>" class="img-fluid" alt="<?= $pop['title']; ?>">
+                            <button type="button" class="btn-close position-absolute top-0 end-0 btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach ?>
         </div>
-
 
         <script>
             // Otomatis tampilkan modal saat halaman dimuat

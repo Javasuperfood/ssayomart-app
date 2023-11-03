@@ -25,10 +25,10 @@ class BannerPopupModel extends Model
     // Validation
     protected $validationRules      = [
         'title' => [
-            'rules' => 'required|min_length[8]|max_length[50]',
+            'rules' => 'required|min_length[2]|max_length[50]',
             'errors' => [
                 'required' => 'Judul banner wajib diisi.',
-                'min_length' => 'Judul banner minimal 8 karakter.',
+                'min_length' => 'Judul banner minimal 2 karakter.',
                 'max_length' => 'Judul banner maksimal 50 karakter.',
             ],
         ],
