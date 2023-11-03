@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\KategoriModel;
 use App\Models\BannerModel;
-use App\Models\BannerPopUpModel;
+use App\Models\BannerPopupModel;
 use App\Models\CartModel;
 use App\Models\CartProdukModel;
 use App\Models\PromoModel;
@@ -57,7 +57,7 @@ class KategoriController extends BaseController
         $promoModel = new PromoModel();
         $kategoriModel = new KategoriModel();
         $bannerModel = new BannerModel();
-        $bannerPopupModel = new BannerPopUpModel();
+        $bannerPopupModel = new BannerPopupModel();
         $produkModel = new ProdukModel();
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
