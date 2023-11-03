@@ -57,7 +57,25 @@ class NotifController extends BaseController
             new GuzzleHttp\Client(),
             $config
         );
-        $notification = $this->createNotification('Pesanan ' . $inv . ' Telah Berhasil', $uuid);
+        $notification = $this->createNotification('Pebayaran anda dengan nomor ' . $inv . ' Telah Berhasil', $uuid);
+
+        $result = $apiInstance->createNotification($notification);
+        return $result;
+    }
+    public function PaymentSuccess2()
+    {
+        $usersModel = new UsersModel();
+        $uuid = $usersModel->find(user_id())['uuid'];
+        $inv = '1029371382198';
+        // dd($uuid);
+        $config = Configuration::getDefaultConfiguration()
+            ->setAppKeyToken($this->APP_KEY_TOKEN)
+            ->setUserKeyToken($this->USER_KEY_TOKEN);
+        $apiInstance = new DefaultApi(
+            new GuzzleHttp\Client(),
+            $config
+        );
+        $notification = $this->createNotification('Pebayaran anda dengan nomor ' . $inv . ' Telah Berhasil', $uuid);
 
         $result = $apiInstance->createNotification($notification);
         return $result;

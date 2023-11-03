@@ -17,19 +17,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
 
-
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
+           <?php foreach ($banner_pop_up as $pop) : ?>
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content border-0 bg-transparent">
                     <div class="modal-body d-flex justify-content-center align-items-center">
                         <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="img-fluid" alt="Gambar Modal">
                         <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endforeach ?>
         </div>
-
 
         <script>
             // Otomatis tampilkan modal saat halaman dimuat
@@ -398,7 +398,6 @@ if ($isMobile) {
         }
 
     }
-
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
