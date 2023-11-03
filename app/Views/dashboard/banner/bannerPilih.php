@@ -27,7 +27,7 @@
     <div class="col-4">
         <div class="card border-0 shadow-sm border-left-danger mb-4">
             <div class="row">
-                <a href="#" target="__blank">
+                <a href="<?= base_url() ?>dashboard/banner/ads-konten-banner" target="__blank">
                     <div class="card-body d-flex">
                         <div class="col-9 text-center">
                             <span class="text-secondary fs-5 position-absolute top-50 start-50 translate-middle">Banner Artikel/Blog Konten</span>

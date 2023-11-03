@@ -152,6 +152,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('banner/pop-up-banner/delete/(:segment)', 'AdminBannerController::deletePopup/$1');
     $routes->get('banner/update-pop-up/(:segment)', 'AdminBannerController::updatePopup/$1');
     $routes->post('banner/update-pop-up/save-pop-up', 'AdminBannerController::savePopupEdit');
+    // Adsvertisements
+    $routes->get('banner/ads-konten-banner', 'AdminBannerController::kontenAds');
+    $routes->post('banner/ads-konten-banner/save', 'AdminBannerController::saveKontenAds');
+    $routes->post('banner/ads-konten-banner/delete/(:segment)', 'AdminBannerController::deleteKontenAds/$1');
+    $routes->get('banner/update-ads-konten/(:segment)', 'AdminBannerController::updateKontenAds/$1');
+    $routes->post('banner/update-ads-konten/save-ads', 'AdminBannerController::saveKontenAdsEdit');
 
     // CRUD routes produk
     $routes->get('produk/', 'AdminProduk::produk');

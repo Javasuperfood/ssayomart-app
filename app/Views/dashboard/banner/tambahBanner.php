@@ -84,7 +84,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <!-- ================= START MODAL DELETE SINGLE PRODUK ================== -->
+                                    <!-- ================= START MODAL DELETE SINGLE GAMBAR ================== -->
                                     <div class="modal fade" id="deleteBanner<?= $bl['id_banner']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteBanner<?= $bl['id_banner']; ?>" aria-hidden="true">
                                         <div class="modal-dialog text-start text-secondary" role="document">
                                             <div class="modal-content">
@@ -97,7 +97,7 @@
                                                 <div class="modal-body text-center">
                                                     <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
                                                     <br><br>
-                                                    Pilih Delete untuk Menghapus Produk <?= $bl['title']; ?>
+                                                    Pilih Delete untuk Menghapus Gambar <?= $bl['title']; ?>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
