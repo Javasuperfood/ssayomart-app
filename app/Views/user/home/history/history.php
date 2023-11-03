@@ -107,7 +107,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?php if ($t->id_checkout_produk == $c->id_checkout_produk) : ?>
                             <div class="row pt-3 collapse" id="history<?= $t->id_checkout; ?>">
                                 <div class="col">
-                                    <div class="card border-0 shadow-sm">
+                                    <div class="card border-0 bg-light">
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-3">

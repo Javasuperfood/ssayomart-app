@@ -84,7 +84,7 @@ var swiper = new Swiper(".mySwiper", {
         768: {
           slidesPerView: 3, // 3 card per tampilan
         },
-        375: {
+        360: {
           slidesPerView: 2, // 2 card per tampilan
         },
         280: {
