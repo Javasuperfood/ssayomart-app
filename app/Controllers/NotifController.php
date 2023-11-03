@@ -40,6 +40,11 @@ class NotifController extends BaseController
                     'type' => 'UUID Updated',
                     'uuid' => $uuid
                 ], 200);
+            } else {
+                return $this->respond([
+                    'type' => 'UUID Already Up to date',
+                    'uuid' => $uuid
+                ], 200);
             }
         }
     }
@@ -65,7 +70,7 @@ class NotifController extends BaseController
     public function PaymentSuccess2()
     {
         $usersModel = new UsersModel();
-        $uuid = $usersModel->find(user_id())['uuid'];
+        $uuid = 'cd4e7bca-f047-4321-937c-7699d2a5ad3b';
         $inv = '1029371382198';
         // dd($uuid);
         $config = Configuration::getDefaultConfiguration()

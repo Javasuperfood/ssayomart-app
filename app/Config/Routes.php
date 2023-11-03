@@ -34,9 +34,6 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/notif', 'NotifController::PaymentSuccess2');
-// $routes->get('/notif', 'NotifController::index');
-// $routes->post('/notif', 'NotifController::post');
 
 $routes->get('/', 'KategoriController::index');
 $routes->get('lang/{locale}', 'Language::index');
@@ -254,6 +251,10 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->get('getcost', 'Setting::getCost');
     $routes->post('set-uuid', 'NotifController::setUuid');
     $routes->Post('payment-success', 'NotifController::PaymentSuccess');
+
+    $routes->get('/notif', 'NotifController::PaymentSuccess2');
+    // $routes->get('/notif', 'NotifController::index');
+    // $routes->post('/notif', 'NotifController::post');
 });
 
 
