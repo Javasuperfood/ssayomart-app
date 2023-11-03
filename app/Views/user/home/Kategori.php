@@ -32,11 +32,56 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <script>
-            // Otomatis tampilkan modal saat halaman dimuat
+            // Periksa apakah modal sudah ditampilkan sebelumnya
+            var isModalShown = localStorage.getItem('isModalShown');
+
             $(document).ready(function() {
-                $('#imageModal').modal('show');
+                // Cek apakah modal sudah ditampilkan sebelumnya
+                if (isModalShown !== 'true') {
+                    $('#imageModal').modal('show');
+                    // Setel status modal sudah ditampilkan
+                    localStorage.setItem('isModalShown', 'true');
+                }
+
+                // Tampilkan modal setiap 5 detik setelah aplikasi pertama kali dibuka
+                setInterval(function() {
+                    $('#imageModal').modal('show');
+                }, 10000); // 5000 milidetik = 5 detik
             });
         </script>
+
+
+        <!-- tampil close scroll kategori -->
+        <!-- <script>
+            $(document).ready(function() {
+                // Periksa apakah modal sudah ditampilkan sebelumnya
+                var isModalShown = localStorage.getItem('isModalShown');
+
+                // Tampilkan modal saat aplikasi pertama kali dibuka
+                if (isModalShown !== 'true') {
+                    $('#imageModal').modal('show');
+                    // Setel status modal sudah ditampilkan
+                    localStorage.setItem('isModalShown', 'true');
+                } else {
+                    // Tampilkan modal setelah 20 detik jika bukan saat aplikasi pertama kali dibuka
+                    setTimeout(function() {
+                        $('#imageModal').modal('show');
+                    }, 5000); // 20000 milidetik = 20 detik
+                }
+
+                // Tambahkan event listener saat modal ditutup
+                $('#imageModal').on('hidden.bs.modal', function() {
+                    // Hapus status modal sudah ditampilkan
+                    localStorage.removeItem('isModalShown');
+
+                    // Pindah otomatis ke elemen dengan ID "ktr" (All Kategori)
+                    $('html, body').animate({
+                        scrollTop: $('#ktr').offset().top
+                    }, 200); // Waktu animasi dalam milidetik (contoh: 1000 = 1 detik)
+                });
+            });
+        </script> -->
+        <!-- akhir tampil close scroll kategori -->
 
         <style>
             /* Ganti warna tombol close menjadi putih */
