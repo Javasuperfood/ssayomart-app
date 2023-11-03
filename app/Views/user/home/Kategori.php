@@ -19,12 +19,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
-            <?php foreach ($banner_pop_up as $pop) : ?>
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content border-0 bg-transparent">
-                        <div class="modal-body p-0 d-flex justify-content-center align-items-center">
-                            <img src="<?= base_url() ?>assets/img/banner/popup/<?= $pop['img'] ?>" class="img-fluid" alt="<?= $pop['title']; ?>">
-                            <button type="button" class="btn-close position-absolute top-0 end-0 btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+           <?php foreach ($banner_pop_up as $pop) : ?>
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 bg-transparent">
+                    <div class="modal-body d-flex justify-content-center align-items-center">
+                        <img src="<?= base_url() ?>assets/img/promo/promo-1.png" class="img-fluid" alt="Gambar Modal">
+                        <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                     </div>
                 </div>
@@ -39,33 +39,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </script>
 
         <style>
-            #imageModal {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .modal-dialog {
-                max-width: 100%;
-                margin: 0;
-            }
-
-            .modal-content {
-                background: transparent;
-                border: none;
-            }
-
             /* Ganti warna tombol close menjadi putih */
             .btn-close {
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-                text-align: left;
-                /* atau warna lain sesuai kebutuhan */
-            }
+                margin-left: 75%;
+                margin-bottom: 75%;
 
-            .end-0 {
-                right: 25px !important;
+                /* atau warna lain sesuai kebutuhan */
             }
 
             /* Membuat tombol close berbentuk lingkaran */
