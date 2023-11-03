@@ -278,7 +278,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div> -->
 
-        <div class="container mt-3">
+        <div class="container mt-4">
             <div class="row">
                 <!-- Left Panel -->
                 <div class="col-8">
@@ -299,7 +299,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <!-- Right Panel -->
                 <div class="col-4 px-5 position-sticky top-0">
-                    <img src="<?= base_url() ?>assets/img/blog/banner-blog.jpg" class="img-fluid text-center rounded-3" alt="Promotion" style="height:576px; width:325px;">
+                    <div id="imageSlider" class="carousel slide rounded-4" data-bs-ride="carousel" data-bs-interval="3000">
+                        <div class="carousel-inner rounded-4">
+                            <?php $first = true; ?>
+                            <?php foreach ($banner_list as $key => $bl) : ?>
+                                <div class="carousel-item <?= $first ? 'active' : ''; ?>">
+                                    <img src="<?= base_url() ?>assets/img/banner/ads/<?= $bl['img']; ?>" class="img-fluid text-center rounded-4" alt="Promotion">
+                                </div>
+                                <?php $first = false; ?>
+                            <?php endforeach ?>
+                        </div>
+                        <a class="carousel-control-prev" href="#imageSlider" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#imageSlider" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>
+
 
                     <div class="row mt-3">
                         <span class="fw-bold fs-3">Produk <span class="text-danger">Ssayomart</span></span>
