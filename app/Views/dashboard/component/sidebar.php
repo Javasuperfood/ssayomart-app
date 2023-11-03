@@ -96,23 +96,15 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Banner Menu</span>
+            <span>Management Konten</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header text-danger">Menu Banner:</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/">List Banner</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/list-banner">List Banner App</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/tambah-banner">Tambah Banner</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/list-banner">Banner</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/blog/blog">Artikel</a>
             </div>
         </div>
-    </li>
-
-    <!-- blog -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard/blog/blog">
-            <i class="bi bi-newspaper"></i>
-            <span>Konten Menu</span></a>
     </li>
 
     <!-- kupon -->

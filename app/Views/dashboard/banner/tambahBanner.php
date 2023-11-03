@@ -2,7 +2,10 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-2 text-gray-800">Management Banner Homepage</h1>
-<hr />
+<ul class="breadcrumb bg-light">
+    <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
+    <li class="breadcrumb-item active text-danger">Banner Homepage</li>
+</ul>
 <p class="mb-4">Anda dapat mengatur banner homepage yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">

@@ -58,7 +58,7 @@ class AdminBannerController extends BaseController
             return redirect()->to('dashboard/banner/tambah-banner')->withInput();
         }
         if ($fotoBanner->getError() == 4) {
-            $namaBanner = 'default.png';
+            $namaBanner = 'banner-2.png';
         } else {
             $namaBanner = $fotoBanner->getRandomName();
             $fotoBanner->move('assets/img/banner/', $namaBanner);
@@ -167,7 +167,7 @@ class AdminBannerController extends BaseController
         } else {
             $produk = $bannerModel->find($id);
 
-            if ($produk['img'] == 'default.jpg') {
+            if ($produk['img'] == 'banner-2.png') {
                 $namaBannerImage = $image->getRandomName();
                 $image->move('assets/img/banner', $namaBannerImage);
             } else {
@@ -262,7 +262,7 @@ class AdminBannerController extends BaseController
             return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
         }
         if ($fotoBanner->getError() == 4) {
-            $namaBanner = 'default.png';
+            $namaBanner = 'pop-up-1.png';
         } else {
             $namaBanner = $fotoBanner->getRandomName();
             $fotoBanner->move('assets/img/banner/popup/', $namaBanner);
@@ -372,7 +372,7 @@ class AdminBannerController extends BaseController
         } else {
             $produk = $bannerModel->find($id);
 
-            if ($produk['img'] == 'default.jpg') {
+            if ($produk['img'] == 'pop-up-1.png') {
                 $namaBannerImage = $image->getRandomName();
                 $image->move('assets/img/banner/popup', $namaBannerImage);
             } else {
