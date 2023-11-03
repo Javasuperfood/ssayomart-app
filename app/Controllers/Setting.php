@@ -270,12 +270,6 @@ class Setting extends BaseController
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.'
                 ]
             ],
-            'alamat_2' => [
-                'rules' => 'min_length[11]',
-                'errors' => [
-                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.'
-                ]
-            ],
             'id_province' => [
                 'rules' => 'required',
                 'errors' => [
@@ -409,12 +403,6 @@ class Setting extends BaseController
                 'rules' => 'required',
                 'errors' => [
                     'required' => 'Alamat harus diisi.'
-                ]
-            ],
-            'alamat_2' => [
-                'rules' => 'min_length[11]',
-                'errors' => [
-                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.'
                 ]
             ],
             'id_province' => [
