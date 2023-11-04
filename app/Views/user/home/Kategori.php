@@ -30,31 +30,120 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             <?php endforeach ?>
         </div>
-
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
         <script>
             $(document).ready(function() {
                 // Fungsi untuk menampilkan modal
                 function showModal() {
                     $('#imageModal').modal('show');
-                    // Setel status modal sudah ditampilkan
-                    localStorage.setItem('isModalShown', 'true');
                 }
 
-                // Cek apakah modal sudah ditampilkan sebelumnya
-                var isModalShown = localStorage.getItem('isModalShown');
+                // Cek apakah modal sudah ditampilkan sebelumnya dalam sesi ini
+                var modalShownThisSession = sessionStorage.getItem('modalShown');
 
-                if (isModalShown !== 'true') {
-                    showModal(); // Tampilkan modal jika belum ditampilkan sebelumnya
+                if (modalShownThisSession !== 'true') {
+                    // Tampilkan modal setelah 1 detik pertama
+                    setTimeout(function() {
+                        showModal();
+                        sessionStorage.setItem('modalShown', 'true');
+                    }, 1 * 1000);
+                } else {
+                    // Setelah 1 detik pertama, tampilkan modal setiap 24 jam
+                    setInterval(function() {
+                        showModal();
+                    }, 86400 * 1000); // 24 jam dalam milidetik
                 }
 
-                // Tampilkan modal setiap 24 jam
-                setInterval(function() {
+                // Cek apakah modal pernah ditampilkan dengan cookie
+                var modalShownBefore = getCookie('modalShown');
+
+                if (modalShownBefore !== 'true') {
                     showModal();
-                }, 24 * 60 * 60 * 1000); // 24 jam dalam milidetik
+                    setCookie('modalShown', 'true', 365); // Setel cookie untuk menandai modal sudah ditampilkan
+                }
             });
+
+            // Fungsi untuk mengatur cookie
+            function setCookie(name, value, days) {
+                var expires = "";
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
+
+            // Fungsi untuk mendapatkan nilai cookie
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
         </script>
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
+
+
+
+
+
+        <!-- <script>
+            $(document).ready(function() {
+                // Fungsi untuk menampilkan modal
+                function showModal() {
+                    $('#imageModal').modal('show');
+                }
+
+                // Cek apakah modal sudah ditampilkan sebelumnya dengan menggunakan cookie
+                var modalShownBefore = getCookie('modalShown');
+
+                if (modalShownBefore !== 'true') {
+                    showModal(); // Tampilkan modal jika belum ditampilkan sebelumnya
+                    setCookie('modalShown', 'true', 365); // Setel cookie untuk menandai modal sudah ditampilkan
+                }
+
+                // Tampilkan modal setiap 1 detik pertama
+                var initialInterval = setInterval(function() {
+                    showModal();
+                }, 1 * 1000); // 1 detik dalam milidetik
+
+                // Setelah 1 detik pertama, tampilkan modal setiap 1 menit
+                setTimeout(function() {
+                    clearInterval(initialInterval); // Hentikan interval 1 detik pertama
+                    setInterval(function() {
+                        showModal();
+                    }, 86400 * 1000); // 1 menit dalam milidetik
+                }, 1 * 1000);
+
+                // Fungsi untuk mengatur cookie
+                function setCookie(name, value, days) {
+                    var expires = "";
+                    if (days) {
+                        var date = new Date();
+                        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                        expires = "; expires=" + date.toUTCString();
+                    }
+                    document.cookie = name + "=" + value + expires + "; path=/";
+                }
+
+                // Fungsi untuk mendapatkan nilai cookie
+                function getCookie(name) {
+                    var nameEQ = name + "=";
+                    var ca = document.cookie.split(';');
+                    for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                    }
+                    return null;
+                }
+            });
+        </script> -->
 
 
         <!-- tampil close scroll kategori -->
