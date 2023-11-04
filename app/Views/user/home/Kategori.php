@@ -30,9 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             <?php endforeach ?>
         </div>
-
-
-
+        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
         <script>
             $(document).ready(function() {
                 // Fungsi untuk menampilkan modal
@@ -88,6 +86,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 return null;
             }
         </script>
+        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
 
 
