@@ -31,6 +31,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php endforeach ?>
         </div>
 
+        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
         <script>
             $(document).ready(function() {
                 // Fungsi untuk menampilkan modal
@@ -53,6 +54,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }, 24 * 60 * 60 * 1000); // 24 jam dalam milidetik
             });
         </script>
+        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
 
         <!-- tampil close scroll kategori -->

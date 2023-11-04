@@ -35,7 +35,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="form-check form-check-lg position-absolute top-50 start-0 mx-2" style="font-size: 20px;">
+                                        <div class="form-check form-check-lg position-absolute top-0 start-0 mx-2" style="font-size: 20px;">
                                             <input onchange="selectCheck(this)" class="form-check-input border-danger " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                         </div>
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center">
