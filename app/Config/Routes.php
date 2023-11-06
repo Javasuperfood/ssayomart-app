@@ -240,6 +240,9 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('profil/profile-admin/(:segment)', 'AdminProfil::profilAdmin/$1');
     $routes->get('profil/edit-admin/(:any)', 'AdminProfil::editProfil/$1');
     $routes->post('profil/edit-admin/(:segment)', 'AdminProfil::saveProfil/$1');
+
+    // USER MANAGEMENT
+    $routes->get('user-management', 'AdminUserManagementController::index');
 });
 
 service('auth')->routes($routes);

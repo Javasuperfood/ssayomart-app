@@ -117,6 +117,14 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/user-management">
+            <i class="bi bi-people-fill"></i>
+            <span>User Management</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard/marketplace">
             <i class="bi bi-shop"></i>
             <span>Market</span></a>

@@ -141,12 +141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/shield.git",
-                "reference": "6a57e3b1a81db155ec4255f3389a1d9004987925"
+                "reference": "f1c2150e54f6aa5108a6e2cc25ddb00a77c5d801"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/6a57e3b1a81db155ec4255f3389a1d9004987925",
-                "reference": "6a57e3b1a81db155ec4255f3389a1d9004987925",
+                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/f1c2150e54f6aa5108a6e2cc25ddb00a77c5d801",
+                "reference": "f1c2150e54f6aa5108a6e2cc25ddb00a77c5d801",
                 "shasum": ""
             },
             "require": {
@@ -207,7 +207,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/shield"
             },
-            "time": "2023-10-30T06:30:47+00:00"
+            "time": "2023-11-01T01:36:49+00:00"
         },
         {
             "name": "datamweb/shield-oauth",
@@ -3074,7 +3074,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "codeigniter4/shield": 20,
-        "datamweb/shield-oauth": 20
+        "datamweb/shield-oauth": 20,
+        "onesignal/onesignal-php-api": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -3082,5 +3083,5 @@
         "php": "^7.4 || ^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
