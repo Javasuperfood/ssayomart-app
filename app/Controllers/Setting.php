@@ -88,16 +88,21 @@ class Setting extends BaseController
 
         if (!$this->validateData($data, [
             'username' => [
-                'rules' => 'required|is_unique[users.username,users.id, ' . $id . ']',
+                'rules' => 'required|is_unique[users.username,users.id, ' . $id . ']|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
                     'required' => 'Username harus diisi.',
-                    'is_unique' => 'Username sudah digunakan.'
+                    'is_unique' => 'Username sudah digunakan.',
+                    'regex_match' => 'Username hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Username tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'fullname' => [
-                'rules' => 'required',
+                'label' => 'Nama lengkap',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
-                    'required' => 'Nama lengkap harus diisi.'
+                    'required' => 'Nama lengkap harus diisi.',
+                    'regex_match' => 'Nama lengkap hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Nama lengkap tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'telp' => [
@@ -252,22 +257,29 @@ class Setting extends BaseController
         //validation
         if (!$this->validateData($data, [
             'label' => [
-                'rules' => 'required',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
-                    'required' => 'Label harus diisi.'
+                    'required' => 'Label harus diisi.',
+                    'regex_match' => 'Label hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+
                 ]
             ],
             'penerima' => [
-                'rules' => 'required',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
-                    'required' => 'Nama penerima harus diisi.'
+                    'required' => 'Nama penerima harus diisi.',
+                    'regex_match' => 'Penerima hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Penerima tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'alamat_1' => [
-                'rules' => 'required|min_length[11]',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
-                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.'
+                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'id_province' => [
@@ -388,21 +400,29 @@ class Setting extends BaseController
         //validation data
         if (!$this->validateData($data, [
             'label' => [
-                'rules' => 'required',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
-                    'required' => 'Label harus diisi.'
+                    'required' => 'Label harus diisi.',
+                    'regex_match' => 'Label hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+
                 ]
             ],
             'penerima' => [
-                'rules' => 'required',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
-                    'required' => 'Nama penerima harus diisi.'
+                    'required' => 'Nama penerima harus diisi.',
+                    'regex_match' => 'Penerima hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Penerima tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'alamat_1' => [
-                'rules' => 'required',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
-                    'required' => 'Alamat harus diisi.'
+                    'required' => 'Alamat harus diisi.',
+                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'id_province' => [
