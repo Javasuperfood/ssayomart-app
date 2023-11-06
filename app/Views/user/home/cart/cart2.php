@@ -206,9 +206,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     @media screen and (max-width: 280px) {
 
         .img-small {
-            max-height: 150px !important;
+            max-height: 100px !important;
             /* Sesuaikan tinggi maksimum yang Anda inginkan */
-            max-width: 80px !important;
+            max-width: 100px !important;
             /* Biarkan lebar gambar menyesuaikan */
             margin: 25px 0 25px auto !important;
             /* Geser gambar ke tengah kanan */
@@ -259,10 +259,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
             margin-left: -2px;
+            display: flex;
+            justify-content: center;
         }
 
         .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
             margin-left: -1px;
+            display: flex;
+            justify-content: center;
         }
 
         /* Add specific CSS styles for the delete button if needed */
