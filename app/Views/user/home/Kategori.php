@@ -389,6 +389,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 return null;
             }
         </script>
+        <style>
+            /* Ganti warna tombol close menjadi putih */
+            .btn-close {
+                background-color: #ffff;
+                color: #000;
+                font-size: 10px;
+                margin-left: 75%;
+                margin-bottom: 75%;
+
+                /* atau warna lain sesuai kebutuhan */
+            }
+
+            /* Membuat tombol close berbentuk lingkaran */
+            .btn-close {
+                border-radius: 50%;
+                width: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+                height: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+            }
+        </style>
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
         <section id="unggul">
             <div class="container">
