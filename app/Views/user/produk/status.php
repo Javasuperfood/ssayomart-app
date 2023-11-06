@@ -172,12 +172,36 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <?php   // =====================    PRNTING  =================================
     if ($status->id_status_pesan == 1) : ?>
         <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
-        <div class="p-3 py-3 position-absolute" style="left: 0; right: 0;">
-            <div class="d-flex align-items-center justify-content-center w-100 h-100">
-                <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
-            </div>
+        <div class="d-flex align-items-center justify-content-center w-100 h-100" style="left: 0; right: 0;">
+            <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+        </div>
+        <div class="py-3"></div>
+        <div class="d-flex align-items-center justify-content-center w-100 h-100" style="left: 0; right: 0;">
+            <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; display: none;">Ubah Metode Pembayaran</button>
         </div>
 
+        <!-- Modal Change Payment -->
+        <div class="modal fade" id="changePaymentMethod" tabindex="-1" aria-labelledby="changePaymentMethodLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="changePaymentMethodLabel">Ubah Metode Pembayaran</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>결제 방법을 변경하면 이 거래가 취소되고 새 거래가 생성됩니다.</p>
+                        <p>Dengan mengubah metode pembayaran anda akan membatakan transaksi ini dan membuat transaksi baru.</p>
+                        <form id="changePayment" action="<?= base_url('new-payment'); ?>" method="post">
+                            <?= csrf_field(); ?>
+                            <input type="hidden" name="invoice" value="<?= $status->invoice; ?>">
+                        </form>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center align-items-center">
+                        <button type="submit" form="changePayment" class="btn btn-danger">Ubah Metode Pembayaran</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script type="text/javascript">
             function lpSanp() {
                 window.snap.pay('<?= $status->snap_token; ?>', {
@@ -246,7 +270,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             cancelButtonText: '<?= lang('Text.onclose_cancel_btn') ?>'
                         }).then((result) => {
                             if (result.isConfirmed) {
-
+                                $("#cahnge-pay-button").show();
                             } else {
 
                                 lpSanp();
@@ -525,6 +549,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="row p-3 px-4">
                                                         <button id="pay-button" class="btn btn-lg d-none d-md-block" style="background-color: #ec2614; color: #fff;">Metode Pembayaran</button>
                                                     </div>
+                                                    <div class="row p-3 px-4">
+                                                        <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg" style="background-color: #ec2614; color: #fff; display: none;">Ubah Metode Pembayaran</button>
+                                                    </div>
+
+                                                    <!-- Modal Change Payment -->
+                                                    <div class="modal fade" id="changePaymentMethod" tabindex="-1" aria-labelledby="changePaymentMethodLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="changePaymentMethodLabel">Ubah Metode Pembayaran</h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>결제 방법을 변경하면 이 거래가 취소되고 새 거래가 생성됩니다.</p>
+                                                                    <p>Dengan mengubah metode pembayaran anda akan membatakan transaksi ini dan membuat transaksi baru.</p>
+                                                                    <form id="changePayment" action="<?= base_url('new-payment'); ?>" method="post">
+                                                                        <?= csrf_field(); ?>
+                                                                        <input type="hidden" name="invoice" value="<?= $status->invoice; ?>">
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer d-flex justify-content-center align-items-center">
+                                                                    <button type="submit" form="changePayment" class="btn btn-danger">Ubah Metode Pembayaran</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 <?php endif ?>
                                             </div>
                                         </div>
@@ -594,6 +644,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     console.log('I was closed by the timer')
                                 }
                             })
+
                         },
                         onError: function(result) {
                             Swal.fire({
@@ -612,7 +663,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 cancelButtonText: '<?= lang('Text.onclose_cancel_btn') ?>'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-
+                                    $("#cahnge-pay-button").show();
                                 } else {
 
                                     lpSanp();
@@ -688,6 +739,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </style>
     </div>
 <?php endif; ?>
+<script>
 
-
+</script>
 <?= $this->endSection(); ?>
