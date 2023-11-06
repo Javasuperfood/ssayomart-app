@@ -63,7 +63,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <p class="card-text text-secondary fs-6"><?= $p->qty; ?> <?= $p->value_item; ?>
                                             </p>
                                         </div>
-                                        <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                        <div class="col-4 position-absolute top-50 end-0 mt-2 translate-middle-y">
                                             <h5 class="text-secondary fs-6">Total</h5>
                                             <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
                                         </div>

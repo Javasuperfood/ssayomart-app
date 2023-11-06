@@ -19,7 +19,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="no_telp1" class="form-label"><?= lang('Text.label_alamat') ?><span class="text-danger fs-5"> *</span></label>
-                                    <input class="form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" value="<?= old('label') ?>">
+                                    <input class="form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" style="font-size: 14px;" value="<?= old('label') ?>">
                                     <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
                                 </div>
                             </div>
@@ -28,7 +28,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="no_telp1" class="form-label"><?= lang('Text.nama_penerima') ?><span class="text-danger fs-5"> *</span></label>
-                                    <input class="form-control <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
+                                    <input class="form-control <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" id="nama_penerima" style="font-size: 14px;" value="<?= old('nama_penerima') ?>">
                                     <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="no_telp1" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger fs-5"> *</span></label>
-                                    <input class="form-control shadow-sm floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0' ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event)">
+                                    <input class="form-control shadow-sm floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0' ?>" name="no_telp1" id="no_telp1" style="font-size: 14px;" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event)">
                                     <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
                                 </div>
                             </div>
@@ -46,7 +46,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="no_telp2" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
-                                    <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
+                                    <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" style="font-size: 14px;" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
                                     <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="provinsi"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
-                                    <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
+                                    <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi" style="font-size: 14px;">
                                         <option selected></option>
                                         <?php foreach ($provinsi as $p) : ?>
                                             <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
@@ -69,7 +69,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="kabupaten"><?= lang('Text.kab_kota') ?><span class="text-danger fs-5"> *</span></label>
-                                    <select class="form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
+                                    <select class="form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten" style="font-size: 14px;">
                                         <option selected></option>
                                     </select>
                                     <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
@@ -83,7 +83,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for=" floatingInput"><?= lang('Text.zipcode') ?><span class="text-danger fs-5"> *</span></label>
-                                    <input class="form-control <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event)">
+                                    <input class="form-control <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" style="font-size: 14px;" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event)">
                                     <div class="invalid-feedback"><?= validation_show_error('zip_code') ?></div>
                                 </div>
                             </div>
@@ -93,7 +93,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger fs-5"> *</span></label>
-                                    <input class="form-control <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
+                                    <input class="form-control <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" style="font-size: 14px;" value="<?= old('alamat_1') ?>">
                                     <div class="invalid-feed"><?= validation_show_error('alamat_1') ?></div>
                                 </div>
                             </div>
@@ -103,13 +103,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for=" floatingInput"><?= lang('Text.patokan_alamat') ?><span class="text-danger"> (optional)</span></label>
-                                    <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
+                                    <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" style="font-size: 14px;" value="<?= old('alamat_2') ?>">
                                     <span id="patokanError" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="row p-3 px-4">
-                            <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                            <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 16px"><?= lang('Text.btn_simpan') ?></button>
                         </div>
                 </form>
             </div>
