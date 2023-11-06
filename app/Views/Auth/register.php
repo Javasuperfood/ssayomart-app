@@ -104,7 +104,7 @@ if (session('errors')) {
 
 <style>
     .button {
-        max-width: 320px;
+        max-width: 450px;
         display: flex;
         padding: 0.5rem 1.4rem;
         font-size: 0.875rem;
@@ -137,9 +137,7 @@ if (session('errors')) {
 
     @media (min-width: 768px) and (max-width: 1024px) {
         .button {
-            text-align: center;
-            display: block;
-            margin: 0 auto;
+            width: 450px !important;
         }
 
         @media (min-width: 280px) {
