@@ -205,4 +205,147 @@ class BuyController extends BaseController
         }
         return redirect()->to(base_url('payment/' . $inv));
     }
+    public function getNewPayment()
+    {
+        $midtransConfig = config('Midtrans');
+        // Set the Midtrans API credentials
+        MidtransConfig::$serverKey = $midtransConfig->serverKey;
+        MidtransConfig::$clientKey = $midtransConfig->clientKey;
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        MidtransConfig::$isProduction = $midtransConfig->isProduction;
+        // Set sanitization on (default)
+        MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
+        // Set 3DS transaction for credit card to true
+        MidtransConfig::$is3ds = $midtransConfig->is3ds;
+
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdukModel = new CheckoutProdukModel();
+        $userModel = new UsersModel();
+        $produkModel = new ProdukModel();
+        $email = $userModel->getEmail(user_id());
+        $checkout = $checkoutModel->where('invoice', $this->request->getVar('invoice'))->first();
+        $produk = $checkoutProdukModel->where('id_checkout', $checkout['id_checkout'])->findAll();
+        foreach ($produk as $key => $value) {
+            $item = $produkModel->getProdukWithVarianByID($value['id_produk'], $value['id_variasi_item']);
+            $cekProduk[] = [
+                'id' => $value['id_produk'],
+                'price' => $value['harga'],
+                'quantity' => $value['qty'],
+                'name' => $item['nama'] . '(' . $item['value_item'] . ')',
+            ];
+        }
+        $newInvoice = $this->generateNewInvoice($checkout['invoice']);
+        $penerima = $this->getInfoPenerima($checkout['kirim']);
+        $params = [
+            'transaction_details' => [
+                'order_id' => $newInvoice,
+                'gross_amount' => $checkout['total_2'],
+            ],
+            'customer_details' => [
+                'first_name' => $penerima['nama'],
+                'last_name' => '',
+                'email' => $email,
+                'phone' => $checkout['telp'],
+                "billing_address" => [
+                    "first_name" => $penerima['nama'],
+                    "last_name" => "",
+                    "email" => $email,
+                    "phone" => $penerima['telp'],
+                    "address" => $penerima['alamat'],
+                    "city" => $checkout['city'],
+                    "postal_code" => $checkout['zip_code'],
+                    "country_code" => "IDN"
+                ],
+                "shipping_address" => [
+                    "first_name" => $penerima['nama'],
+                    "last_name" => "",
+                    "email" => $email,
+                    "phone" => $penerima['telp'],
+                    "address" => $penerima['alamat'],
+                    "city" => $checkout['city'],
+                    "postal_code" => $checkout['zip_code'],
+                    "country_code" => "IDN"
+                ],
+            ],
+            "item_details" => $cekProduk,
+        ];
+        // dd($params);
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $dbStore = [
+            'id_user' => user_id(),
+            'id_toko' => $checkout['id_toko'],
+            'id_status_pesan' => 1,
+            'id_status_kirim' => 1,
+            'invoice' => $newInvoice,
+            'total_1' => $checkout['total_1'],
+            'total_2' => $checkout['total_2'],
+            'service' => $checkout['service'],
+            'harga_service' => $checkout['harga_service'],
+            'kurir' => $checkout['kurir'],
+            'kirim' => $checkout['kirim'],
+            'city' => $checkout['city'],
+            'zip_code' => $checkout['zip_code'],
+            'telp' => $checkout['telp'],
+            'discount' => $checkout['discount'],
+            'kupon' => $checkout['kupon'],
+            'snap_token' => $snapToken
+        ];
+        $chechkoutId = $checkoutModel->insert($dbStore);
+        foreach ($produk as $key => $value) {
+            $checkoutProdukData = [
+                'id_checkout' => $chechkoutId,
+                'id_produk' => $value['id_produk'],
+                'id_variasi_item' => $value['id_variasi_item'],
+                'qty' => $value['qty'],
+                'harga' => $value['harga'],
+            ];
+            $checkoutProdukModel->insert($checkoutProdukData);
+        }
+        $checkoutModel->save([
+            'id_checkout' => $checkout['id_checkout'],
+            'id_status_pesan' => 5
+        ]);
+        return redirect()->to(base_url('payment/' . $newInvoice));
+        $data = [
+            'params' => $params,
+            'dbStore' => $dbStore,
+            'checkoutProdukData' => $checkoutProdukData,
+            'checkout' => $checkout,
+            'produk' => $produk
+        ];
+        dd($data);
+    }
+
+    function generateNewInvoice($inv)
+    {
+        $string = $inv;
+        $pieces = explode("-", $string);
+        if (count($pieces) >= 3) {
+            $result = $pieces[0] . "-" . $pieces[1];
+            return $result . '-' . mt_rand(10, 99) . time();
+        } else {
+            echo "Tidak ada tanda - ke-2 dalam string.";
+        }
+    }
+
+    function getInfoPenerima($txt)
+    {
+        $text = $txt;
+
+        $pattern = '/<b>Nama<\/b> : (.*?)<br><b>Alamat<\/b> :<br>(.*?)<br><b>Telp<\/b> :  (\d+)/';
+
+        preg_match_all($pattern, $text, $matches1, PREG_SET_ORDER);
+
+        if (!empty($matches1)) {
+            $nama = $matches1[0][1];
+            $alamat = $matches1[0][2];
+            $telp = $matches1[0][3];
+
+            return [
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'telp' => $telp
+            ];
+        }
+    }
 }
