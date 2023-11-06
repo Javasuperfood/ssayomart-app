@@ -129,8 +129,108 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
+        <div class="container">
+            <input type="checkbox" id="check"> <label class="chat-btn" for="check"><i class="bi bi-chat-dots"></i></label>
+            <div class="wrapper shadow-sm">
+                <div class="header bg-danger">
+                    <h6>Masukan Kendala !</h6>
+                </div>
+                <div class="text-center p-2" style="font-size: 12px;"> <span>Silahkan tanyakan kepada kami!</span> </div>
+                <div class="chat-form">
+                    <input type="text" class="form-control" style="font-size: 12px;" placeholder="Name">
+                    <input type="text" class="form-control" style="font-size: 12px;" placeholder="Email">
+                    <textarea class="form-control" style="font-size: 12px;" placeholder="Your Text Message"></textarea>
+                    <button class="btn btn-danger btn-block" style="font-size: 10px;">Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <style>
+        .chat-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 67px;
+            cursor: pointer;
+            z-index: 999;
+            border-radius: 50%;
+            background-color: #ec2614;
+            color: #fff;
+            font-size: 22px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.9s ease;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-btn i {
+            font-size: 22px;
+            color: #fff !important
+        }
+
+        .chat-btn {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            color: #fff;
+            font-size: 22px;
+            border: none
+        }
+
+        .wrapper {
+            border: 1px darkgrey;
+            position: fixed;
+            right: 20px;
+            bottom: 127px;
+            width: 250px;
+            background-color: #fff;
+            border-radius: 5px;
+            opacity: 0;
+            transition: all 0.4s
+        }
+
+        #check:checked~.wrapper {
+            opacity: 1
+        }
+
+        .header {
+            padding: 13px;
+
+            border-radius: 5px 5px 0px 0px;
+            margin-bottom: 10px;
+            color: #fff
+        }
+
+        .chat-form {
+            padding: 15px
+        }
+
+        .chat-form input,
+        textarea,
+        button {
+            margin-bottom: 10px
+        }
+
+        .chat-form textarea {
+            resize: none
+        }
+
+        .form-control:focus,
+        .btn:focus {
+            box-shadow: none
+        }
+
+
+        #check {
+            display: none !important
+        }
+    </style>
 
     <style>
         /* Default styling for larger screens */
