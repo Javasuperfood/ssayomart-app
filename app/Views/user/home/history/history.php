@@ -41,21 +41,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
-                                                Sedang Diproses
+                                                Menunggu Konfirmasi
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
-                                                Sedang Dikirim
+                                                Diproses
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
-                                                Barang Sudah diterima
+                                                Dikirim
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide mb-2">
+                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                            <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                                Diterima
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide mb-2">
+                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                            <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                                Gagal
                                             </a>
                                         </div>
                                     </div>
@@ -63,11 +77,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -225,6 +234,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 font-size: 10px !important;
                 /* Ukuran font untuk iPad */
             }
+        }
+    </style>
+    <style>
+        .custom-button {
+            background-color: white;
+            color: black;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .custom-button.active {
+            background-color: #dc3545 !important;
+            color: white !important;
         }
     </style>
 
