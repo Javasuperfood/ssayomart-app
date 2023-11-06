@@ -164,6 +164,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     background-color: transparent;
                     /* Latar belakang transparan */
                 }
+
+                /* Media query untuk Samsung Galaxy Fold dengan lebar 280px */
+                @media screen and (max-width: 280px) {
+                    .nav-link.active {
+                        border: none;
+                        /* Menghapus border atas */
+                        border-bottom: 2px solid red !important;
+                        /* Menambahkan garis bawah merah */
+                        color: black;
+                        /* Warna teks tab aktif (misalnya, hitam) */
+                        background-color: transparent;
+                        /* Latar belakang transparan */
+                        font-size: 9px;
+                        /* Ubah ukuran font sesuai dengan keinginan Anda */
+                    }
+
+                    .nav-link {
+                        border: none;
+                        /* Menghapus border atas */
+                        color: gray;
+                        /* Warna teks tab non-aktif (misalnya, abu-abu) */
+                        background-color: transparent;
+                        /* Latar belakang transparan */
+                        font-size: 9px;
+                        /* Ubah ukuran font sesuai dengan keinginan Anda */
+                    }
+                }
             </style>
         </div>
     <?php else : ?>
