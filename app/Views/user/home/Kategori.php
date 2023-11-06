@@ -318,6 +318,78 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:50px;">
+
+
+        <!-- Modal  Homepage-->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
+            <?php foreach ($banner_pop_up as $pop) : ?>
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 bg-transparent">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
+                            <img src="<?= base_url() ?>assets/img/banner/popup/<?= $pop['img'] ?>" class="img-fluid" alt="<?= $pop['title']; ?>">
+                            <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
+        <script>
+            $(document).ready(function() {
+                // Fungsi untuk menampilkan modal
+                function showModal() {
+                    $('#imageModal').modal('show');
+                }
+
+                // Cek apakah modal sudah ditampilkan sebelumnya dalam sesi ini
+                var modalShownThisSession = sessionStorage.getItem('modalShown');
+
+                if (modalShownThisSession !== 'true') {
+                    // Tampilkan modal setelah 1 detik pertama
+                    setTimeout(function() {
+                        showModal();
+                        sessionStorage.setItem('modalShown', 'true');
+                    }, 1 * 1000);
+                } else {
+                    // Setelah 1 detik pertama, tampilkan modal setiap 24 jam
+                    setInterval(function() {
+                        showModal();
+                    }, 86400 * 1000); // 24 jam dalam milidetik
+                }
+
+                // Cek apakah modal pernah ditampilkan dengan cookie
+                var modalShownBefore = getCookie('modalShown');
+
+                if (modalShownBefore !== 'true') {
+                    showModal();
+                    setCookie('modalShown', 'true', 365); // Setel cookie untuk menandai modal sudah ditampilkan
+                }
+            });
+
+            // Fungsi untuk mengatur cookie
+            function setCookie(name, value, days) {
+                var expires = "";
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + value + expires + "; path=/";
+            }
+
+            // Fungsi untuk mendapatkan nilai cookie
+            function getCookie(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+        </script>
+        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
         <section id="unggul">
             <div class="container">
                 <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">

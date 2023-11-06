@@ -196,6 +196,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- akhir form dan maps -->
 
+        <style>
+            @media screen and (max-width: 280px) {
+                h1 {
+                    font-size: small;
+                }
+
+                p {
+                    font-size: small;
+                }
+
+                .col-md-6 {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .maps {
+                    max-width: 100%;
+                    /* Agar peta tidak melebihi lebar layar */
+                }
+            }
+        </style>
     </div>
 <?php else : ?>
     <!-- Desktop View -->
