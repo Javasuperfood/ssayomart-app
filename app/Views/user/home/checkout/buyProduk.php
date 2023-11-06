@@ -10,7 +10,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-5">
+        <div class="container pt-3">
             <form action="<?= base_url('store/' . $produk['slug']); ?>" method="post">
                 <?= csrf_field(); ?>
                 <?php if (!$alamat_list) : ?>
