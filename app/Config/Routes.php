@@ -45,6 +45,13 @@ $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
 $routes->get('user/home/contenBanner/contenBanner', 'Blog::contenBanner');
 
+// Rute untuk AppleAuthController
+$routes->get('apple-login', 'AppleAuthController::appleLogin');
+
+// Rute untuk AppleCallbackController
+$routes->get('apple-callback', 'AppleCallbackController::appleCallback');
+
+
 $routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
