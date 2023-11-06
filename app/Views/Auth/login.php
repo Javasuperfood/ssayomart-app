@@ -99,7 +99,7 @@ $error = session('error'); ?>
 </div>
 <style>
     .button {
-        max-width: 320px;
+        max-width: 500px;
         display: flex;
         padding: 0.5rem 1.4rem;
         font-size: 0.875rem;
