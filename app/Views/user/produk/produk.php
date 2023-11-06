@@ -18,10 +18,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <div class="col mt-4 mx-1 text-center">
-                <h2><?= $produk['nama']; ?></h2>
+                <h4><?= $produk['nama']; ?></h4>
                 <div class="row">
                     <div class="col text-center">
-                        <p class="text-secondary fs-4">
+                        <p class="text-secondary">
                             <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
                                 Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
                             <?php else : ?>
@@ -58,7 +58,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row mt-4 mb-5">
                 <div class="col">
-                    <h2 class="text-merah text-center"> <?= lang('Text.deskripsi_produk') ?> </h2>
+                    <h2 class="text-merah"> <?= lang('Text.deskripsi_produk') ?> </h2>
                     <p class="text-potong "><?= $produk['deskripsi']; ?></p>
                     <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                 </div>
@@ -110,7 +110,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="modal-dialog" style="top: calc(100% - 300px);">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modalVarianBuyLabel"><?= lang('Text.btn_beli') ?></h1>
+                            <h1 class="modal-title fs-6" id="modalVarianBuyLabel"><?= lang('Text.btn_beli') ?></h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <form action="<?= base_url('buy/' . $produk['slug']); ?>" method="get" class="d-inline">
@@ -120,7 +120,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col" key="<?= $key; ?>">
                                             <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
                                                 <div class="card-body">
-                                                    <h5 class="card-title" style="font-size: 18px;"><?= $v['value_item']; ?></h5>
+                                                    <h5 class="card-title fs-6"><?= $v['value_item']; ?></h5>
                                                     <p class="text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                                     <div class="form-check">
                                                         <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarianBuy<?= $v['id_variasi_item']; ?>">
@@ -136,7 +136,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="modal-footer">
                                 <input type="hidden" id="qty" name="qty" value="1">
-                                <button type="submit" class="btn btn-danger mt-4"><?= lang('Text.btn_beli') ?></button>
+                                <button type="submit" class="btn btn-danger"><?= lang('Text.btn_beli') ?></button>
                             </div>
                         </form>
                     </div>
@@ -148,7 +148,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="modal-dialog" style="top: calc(100% - 300px);">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="modalVarianLabel">Varian Produk</h1>
+                            <h1 class="modal-title fs-6" id="modalVarianLabel">Varian Produk</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -157,7 +157,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="col" key="<?= $key; ?>">
                                         <div class="card border-0 shadow" onclick="selectVarian(<?= $v['id_variasi_item']; ?>)">
                                             <div class="card-body">
-                                                <h5 class="card-title" style="font-size: 18px;"><?= $v['value_item']; ?></h5>
+                                                <h5 class="card-title fs-6"><?= $v['value_item']; ?></h5>
                                                 <p class=" text-secondary fs-6"><?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                                 <div class="form-check">
                                                     <input <?= $key === 0 ? 'checked' : '' ?> class="form-check-input" type="radio" value="<?= $v['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $v['id_variasi_item']; ?>">
@@ -246,14 +246,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
                                     <br>
                                     <?php if (!empty($kategoriProduk)) : ?>
-                                        <span class="badge text-bg-danger rounded-5 text-uppercase fs-6"><?= $kategoriProduk['nama_kategori']; ?></span>
+                                        <span class="badge text-bg-danger rounded-5 text-uppercase fs-8"><?= $kategoriProduk['nama_kategori']; ?></span>
                                     <?php endif ?>
                                 </div>
                                 <div class="badge-container ">
                                     <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
                                     <br>
                                     <?php if (!empty($subKategoriProduk)) : ?>
-                                        <span class="badge text-bg-warning rounded-5 text-uppercase fs-6"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                                        <span class="badge text-bg-warning rounded-5 text-uppercase fs-8"><?= $subKategoriProduk['nama_kategori']; ?></span>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -264,7 +264,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>
                                     <?php if (isset($stok)) : ?>
                                         <?php foreach ($stok as $s) : ?>
-                                            <p class="badge text-bg-primary rounded-5 text-uppercase fs-6 my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                                            <p class="badge text-bg-primary rounded-5 text-uppercase fs-8 my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
                                         <?php endforeach ?>
                                         <?php if (count($stok) < 1) : ?>
                                             <p class="text-secondary py-0 my-0"><?= lang('Text.stock2') ?></p>
@@ -276,7 +276,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="badge-container mb-2">
                                     <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
                                     <?php if (!empty($produk)) : ?>
-                                        <span class="badge text-bg-success rounded-5 text-uppercase fs-6"><?= $produk['sku']; ?></span>
+                                        <span class="badge text-bg-success rounded-5 text-uppercase fs-8"><?= $produk['sku']; ?></span>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -405,20 +405,57 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 </style>
 
 <style>
+    /* Atur gaya untuk tampilan Samsung Galaxy S9+ atau layar yang lebih kecil */
+    /* Atur gaya untuk tampilan dengan lebar layar sekitar 320px */
+    @media (max-width: 320px) {
+
+        .row-cols-3 .col {
+            flex: 0 0 100%;
+            /* Mengatur lebar kolom menjadi 100% */
+            max-width: 100%;
+        }
+
+        .card {
+            margin-bottom: 10px;
+            margin-top: 10px;
+            /* Menambah jarak antara kartu */
+        }
+
+        .modal-body {
+            padding: 10px;
+            /* Mengurangi padding modal body */
+        }
+
+        .card-title {
+            font-size: 12px;
+            /* Sesuaikan ukuran teks judul kartu */
+        }
+
+        p.text-secondary.fs-6 {
+            font-size: 12px;
+            /* Sesuaikan ukuran teks harga */
+        }
+    }
+</style>
+
+<style>
     /* Atur gaya untuk tampilan Samsung Galaxy Fold atau layar yang lebih kecil */
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
 
 
-        .col.mt-4.text-center h2 {
+        .col.mt-4.text-center h5 {
             /* Sesuaikan ukuran font sesuai kebutuhan Anda */
-            font-size: 45px;
+            font-size: 20px;
             /* Misalnya, ubah ukuran font menjadi 16px */
         }
 
         .col.mt-4.text-center p {
             /* Sesuaikan ukuran font pada elemen paragraf */
-            font-size: 12px;
+            font-size: 18px;
+            margin-left: 5px;
+            margin-right: 5px;
+            display: block;
             /* Misalnya, ubah ukuran font pada paragraf menjadi 12px */
         }
 
