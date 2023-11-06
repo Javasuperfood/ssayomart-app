@@ -21,6 +21,56 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </form>
                 </div>
             </div>
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col position-relative">
+                        <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left"></i></button>
+                        </div>
+                        <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
+
+
+                        <div class="col">
+                            <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
+                                <div class="swiper-wrapper">
+
+                                    <div class="swiper-slide mb-2">
+                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                            <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                                Sedang Diproses
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide mb-2">
+                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                            <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                                Sedang Dikirim
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide mb-2">
+                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                            <a href="#" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                                Barang Sudah diterima
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
             <?php
             $idTransaksi = null;
             $searchTerm = isset($_GET['search']) ? $_GET['search'] : '';
@@ -152,6 +202,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col"></div>
             </div>
         </div>
+
     </div>
     <style>
         @media screen and (max-width: 820px) {
