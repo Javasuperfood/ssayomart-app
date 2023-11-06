@@ -534,7 +534,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="flex-grow-1 ms-3">
                                                         <p class="mb-2 pb-1 fw-bold fs-5 text-dark"><?= substr($bd['judul_blog'], 0, 40); ?>...</p>
                                                         <div class="d-flex justify-content-start rounded-3 p-2 mb-0">
-                                                            <p class="text-secondary"><?= lang('Text/deskripsi_artikel') ?></p>
+                                                            <p class="text-secondary"><?= lang('Text.selengkapnya') ?></p>
                                                         </div>
                                                         <div class="d-flex pt-0">
                                                             <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger fw-medium flex-grow-1">View More <i class="bi bi-arrow-right-circle"></i></a>
