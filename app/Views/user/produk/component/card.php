@@ -135,5 +135,9 @@
             width: 100px !important;
             height: 100px !important;
         }
+
+        p.text-secondary {
+            font-size: 9px !important;
+        }
     }
 </style>

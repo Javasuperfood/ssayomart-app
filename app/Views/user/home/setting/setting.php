@@ -130,6 +130,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+
+
+    <style>
+        /* Default styling for larger screens */
+        .list-group-item {
+            padding: 15px;
+        }
+
+        /* Responsive styling for smaller screens (Samsung Galaxy Fold) */
+        @media screen and (max-width: 280px) {
+            .list-group-item {
+                padding: 10px 5px !important;
+                font-size: 12px !important;
+            }
+
+            .social-links {
+                margin-top: 10px;
+            }
+
+            img.img-thumbnail {
+                width: 50px !important;
+                height: 50px !important;
+                margin-top: 15px !important;
+            }
+        }
+    </style>
+
+
 <?php else : ?>
     <!-- end mobile&ipad -->
 

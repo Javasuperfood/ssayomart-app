@@ -24,7 +24,7 @@ $countProduk = count($produk);
                         </svg>
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                    <div class="d-flex align-items-start justify-content-center" style="height: 85px;">
+                    <div class="d-flex align-items-start justify-content-center" style="height: 90px;">
                     <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
@@ -91,7 +91,7 @@ $countProduk = count($produk);
                             </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <div class="d-flex align-items-start justify-content-center" style="height: 85px;">
+                            <div class="d-flex align-items-start justify-content-center" style="height: 90px;">
                             <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                                 ${p.nama.length > 70 ? p.nama.slice(0, 70) + '' : p.nama}
                             </p>
@@ -116,7 +116,7 @@ $countProduk = count($produk);
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                        <div class="d-flex align-items-start justify-content-center" style="height: 85px;">
+                        <div class="d-flex align-items-start justify-content-center" style="height: 90px;">
                         
                         <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                             ${p.nama.length > 70 ? p.nama.slice(0, 70) + '' : p.nama}
