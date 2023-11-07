@@ -16,9 +16,9 @@ if (session('errors')) {
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />
                 </div>
                 <div class="heading mb-3">
-                    <h2>Daftar</h2>
-                    <h6>Sudah punya akun?</h6>
-                    <a href="<?= base_url(); ?>login" class="toggle">Masuk</a>
+                    <h2><?= lang('Text.btn_daftar') ?></h2>
+                    <h6><?= lang('Text.sudah_punya_akun') ?></h6>
+                    <a href="<?= base_url(); ?>login" class="toggle"><?= lang('Text.btn_login') ?></a>
                 </div>
 
                 <a onclick="buttonGoogle()" href="<?= base_url('oauth/glogin'); ?>" class="button justify-content-center align-items-center mb-3" style="border: 1px solid #000000;">
@@ -39,34 +39,34 @@ if (session('errors')) {
                 </a> -->
 
                 <div class="divider align-items-center mb-3">
-                    <p class="text-center fw-medium mb-0 small" style="font-size: 12px;">atau daftar</p>
+                    <p class="text-center fw-medium mb-0 small" style="font-size: 12px;"><?= lang('Text.atau') ?></p>
                 </div>
 
 
                 <div class="actual-form">
                     <span class="small text-danger"><?= (isset($error['username'])) ? $error['username'] : ''; ?></span>
                     <div class="input-wrap">
-                        <input type="username" class="input-field shadow-sm border-0" name="username" inputmode="text" autocomplete="username" placeholder="  username" value="<?= old('username') ?>" required />
+                        <input type="username" class="input-field shadow-sm border-0 px-2" name="username" inputmode="text" autocomplete="username" placeholder="<?= lang('Text.username') ?>" value="<?= old('username') ?>" required />
                     </div>
 
                     <span class="small text-danger"><?= (isset($error['email'])) ? $error['email'] : ''; ?></span>
                     <div class="input-wrap">
-                        <input type="email" class="input-field shadow-sm border-0" name="email" inputmode="email" autocomplete="email" placeholder="  email" value="<?= old('email') ?>" required />
+                        <input type="email" class="input-field shadow-sm border-0 px-2" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Text.email') ?>" value="<?= old('email') ?>" required />
                     </div>
 
                     <span class="small text-danger"><?= (isset($error['password'])) ? $error['password'] : ''; ?></span>
                     <div class="input-wrap position-relative">
-                        <input type="password" class="input-field shadow-sm border-0" name="password" inputmode="text" placeholder="  kata sandi" autocomplete="new-password" required />
-                        <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword"></i>
+                        <input type="password" class="input-field shadow-sm border-0 px-2" name="password" inputmode="text" placeholder="<?= lang('Text.password') ?>" autocomplete="new-password" required />
+                        <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-4" id="togglePassword"></i>
                     </div>
                     <span class="small text-danger"><?= (isset($error['password_confirm'])) ? $error['password_confirm'] : ''; ?>
                     </span>
                     <div class="input-wrap position-relative">
-                        <input type="password" class="input-field shadow-sm border-0" name="password_confirm" inputmode="text" placeholder="  komfirmasi kata sandi" autocomplete="new-password" required />
-                        <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-3" id="togglePassword2"></i>
+                        <input type="password" class="input-field shadow-sm border-0 px-2" name="password_confirm" inputmode="text" placeholder="<?= lang('Text.konfirm_password') ?>" autocomplete="new-password" required />
+                        <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-4" id="togglePassword2"></i>
                     </div>
 
-                    <button type="submit" value="Daftar" class="sign-btn" id="btn-register">Daftar</button>
+                    <button type="submit" value="Daftar" class="sign-btn" id="btn-register"><?= lang('Text.btn_daftar') ?></button>
 
                     <p class="text mb-5">
                         Dengan mendaftarkan diri, berarti anda menyetujui

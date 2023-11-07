@@ -10,7 +10,7 @@ class AlterStatusProses extends Seeder
     {
         $data = [
             [
-                'id_status_pesan'            => 6,
+                'id_status_pesan' => 6,
                 'status'        => 'Dibatalkan',
                 'deskripsi'     => 'Pesanan Dibatalkan',
             ],

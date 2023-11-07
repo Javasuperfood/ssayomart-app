@@ -108,4 +108,21 @@ return [
     // ON PENDING //
     'onpending_title' => '결제를 기다리는 중 / Menunggu Pembayaran Anda.',
     'onpending_deskripsi' => '이 알림은 자동으로 닫힙니다. / Notifikasi ini akan tertutup otomatis',
+
+    // LOGIN & REGISTER
+    'username' => '귀하의 사용자 이름 / Username Anda',
+    'email' => '귀하의 이메일 / Email Anda',
+    'password' => '너의 비밀번호 / Kata sandi Anda',
+    'konfirm_password' => '암호를 확인 / Konfimasi kata sandi',
+    'btn_login' => '로그인 / Masuk',
+    'btn_daftar' => '목록 / Daftar',
+    'lihat_barang' => '로그인하지 않고 항목 보기 / Lihat Barang Tanpa Login',
+    'lupa_password' => '비밀번호를 잊으 셨나요? / Lupa Kata Sandi?',
+    'klik_disini' => '여기를 누르세요 / Klik Disini',
+    'atau' => '또는 / Atau',
+    'login_apple' => 'Masuk Dengan Apple',
+    'login_google' => 'Masuk Dengan Google',
+    'belum_punya_akun' => 'Belum punya akun? / 아직 계정이 없나요?',
+    'sudah_punya_akun' => '이미 계정이 있나요? / Sudah punya akun?'
+
 ];
