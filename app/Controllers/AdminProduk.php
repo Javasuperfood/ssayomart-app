@@ -22,6 +22,7 @@ class AdminProduk extends BaseController
         $variasiItemModel = new VariasiItemModel();
         $stokModel = new StockModel();
         $adminTokoModel = new AdminTokoModel();
+        $totalProduk = $produkModel->countAllResults();
 
         $admin = $adminTokoModel->getAdminToko(user_id());
         $getStok = false;
@@ -62,6 +63,7 @@ class AdminProduk extends BaseController
             'stok' => $pa['stok'],
             'pager' => $produkModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'totalProduk' => $totalProduk,
         ];
         // dd($data['stok'][0][0]);
         // dd($data);

@@ -2,12 +2,27 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-2 text-gray-800">Produk</h1>
-<ul class="breadcrumb bg-light">
-    <li class="breadcrumb-item text-danger active">List Produk</li>
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a></li>
-</ul>
 <p class="mb-3">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
 </p>
+
+<div class="row">
+    <div class="col-4">
+        <div class="card border-0 shadow-sm border-left-danger mb-4">
+            <div class="row">
+                <div class="card-body d-flex">
+                    <div class="col-9 text-center">
+                        <span class="text-secondary fs-5 position-absolute top-50 start-50 translate-middle">
+                            Total Produk: <?= $totalProduk; ?>
+                        </span>
+                    </div>
+                    <div class="col-3 text-center">
+                        <i class="bi bi-bag-fill fs-1 text-secondary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <div class="col">
