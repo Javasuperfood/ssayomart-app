@@ -216,9 +216,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             transition: all 0.4s
         }
 
+
         #check:checked~.wrapper {
             opacity: 1
         }
+
 
         .header {
             padding: 13px;
@@ -255,32 +257,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         /* Media Query untuk Samsung Galaxy Fold */
         @media screen and (max-width: 280px) {
 
-            .close-btn,
-            .chat-btn {
-                /* Sesuaikan gaya untuk layar kecil di sini */
+            .close-btn {
                 right: 10px;
                 bottom: 70px;
-                font-size: 18px;
-                width: 40px;
-                height: 40px;
             }
+        }
 
-            .wrapper {
-                right: 29px;
-                bottom: 120px;
-                width: 200px;
-            }
+        .chat-btn {
+            /* Sesuaikan gaya untuk layar kecil di sini */
+            right: 10px;
+            bottom: 70px;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+        }
 
-            .header {
-                font-size: 14px;
-            }
+        .wrapper {
+            right: 29px;
+            bottom: 120px;
+            width: 200px;
+        }
 
-            .chat-form input,
-            .chat-form textarea {
-                font-size: 10px;
-            }
+        .header {
+            font-size: 14px;
+        }
 
-
+        .chat-form input,
+        .chat-form textarea {
+            font-size: 10px;
         }
     </style>
 
@@ -305,6 +309,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 width: 50px !important;
                 height: 50px !important;
                 margin-top: 15px !important;
+            }
+
+            h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
+                font-size: 9px !important;
+            }
+
+            p.card-text.text-secondary.d-flex.text-center.justify-content-center.align-items-center {
+                font-size: 9px !important;
             }
         }
 
