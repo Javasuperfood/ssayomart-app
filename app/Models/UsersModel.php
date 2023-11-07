@@ -118,10 +118,14 @@ class UsersModel extends Model
         return $query->getResultArray();
     }
 
-    public function getUser($perPage, $username = null)
+    public function getUser($perPage, $username = null, $isAdmin = false)
     {
         $query = $this->select('*')
             ->join('auth_groups_users', 'users.id = auth_groups_users.user_id');
+        if ($isAdmin) {
+            $query->where('group', 'admin');
+        }
+
         if ($username != null) {
             $query->like('username', '%' . $username . '%');
         }

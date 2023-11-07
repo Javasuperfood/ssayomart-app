@@ -117,6 +117,12 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/admin-management">
+            <i class="bi bi-person-fill"></i>
+            <span>Admin Management</span></a>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard/user-management">
             <i class="bi bi-people-fill"></i>
             <span>User Management</span></a>

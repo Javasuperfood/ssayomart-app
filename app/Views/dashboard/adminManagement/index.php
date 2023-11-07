@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">User Management</h1>
+<h1 class="h3 mb-2 text-gray-800">Admin Management</h1>
 
 <div class="row">
     <div class="col-4">
@@ -10,11 +10,11 @@
                 <div class="card-body d-flex">
                     <div class="col-9 text-center">
                         <span class="text-secondary fs-5 position-absolute top-50 start-50 translate-middle">
-                            Total Users: <?= $totalUsers; ?>
+                            Total Admins: <?= $totalAdmins; ?>
                         </span>
                     </div>
                     <div class="col-3 text-center">
-                        <i class="bi bi-people-fill fs-1 text-secondary"></i>
+                        <i class="bi bi-person-fill fs-1 text-secondary"></i>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
         </a>
     </div>
     <div class="col text-end">
-        <form action="<?= base_url('dashboard/user-management'); ?>" method="get">
+        <form action="<?= base_url('dashboard/admin-management'); ?>" method="get">
             <div class="input-group mb-3">
                 <input value="<?= (isset($_GET['search']) ? $_GET['search'] : ''); ?>" type="text" class="form-control" placeholder="search" aria-label="search" name="search" aria-describedby="search">
                 <button class="btn btn-outline-danger" type="submit" id="search">Search</button>
@@ -39,7 +39,7 @@
 
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-bold text-danger">List User Management</h6>
+        <h6 class="m-0 font-weight-bold text-danger">List Admin Management</h6>
     </div>
     <div class="card-body ">
         <div class="row">
@@ -64,14 +64,14 @@
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($users as $user) : ?>
+                            foreach ($admin as $a) : ?>
                                 <tr>
                                     <td><?= $iterasi++; ?></td>
-                                    <td><?= $user['username']; ?></td>
-                                    <td><?= $user['telp']; ?></td>
-                                    <td><?= $user['active']; ?></td>
-                                    <td><?= $user['group']; ?></td>
-                                    <td><?= $user['created_at']; ?></td>
+                                    <td><?= $a['username']; ?></td>
+                                    <td><?= $a['telp']; ?></td>
+                                    <td><?= $a['active']; ?></td>
+                                    <td><?= $a['group']; ?></td>
+                                    <td><?= $a['created_at']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
