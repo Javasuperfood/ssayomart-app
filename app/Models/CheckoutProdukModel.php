@@ -7,14 +7,14 @@ use PhpParser\Node\Identifier;
 
 class CheckoutProdukModel extends Model
 {
-    protected $DBGroup          = 'default';
-    protected $table            = 'jsf_checkout_produk';
-    protected $primaryKey       = 'id_checkout_produk';
+    protected $DBGroup = 'default';
+    protected $table = 'jsf_checkout_produk';
+    protected $primaryKey = 'id_checkout_produk';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [
+    protected $returnType = 'array';
+    protected $useSoftDeletes = false;
+    protected $protectFields = true;
+    protected $allowedFields = [
         'id_checkout',
         'id_produk',
         'id_variasi_item',
@@ -24,29 +24,29 @@ class CheckoutProdukModel extends Model
 
     // Dates
     protected $useTimestamps = true;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $dateFormat = 'datetime';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
+    protected $validationRules = [];
+    protected $validationMessages = [];
+    protected $skipValidation = false;
     protected $cleanValidationRules = true;
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $beforeInsert = [];
+    protected $afterInsert = [];
+    protected $beforeUpdate = [];
+    protected $afterUpdate = [];
+    protected $beforeFind = [];
+    protected $afterFind = [];
+    protected $beforeDelete = [];
+    protected $afterDelete = [];
 
-    public function getHistoryTransaksi($id)
+    public function getHistoryTransaksi($id, $keyword = null, $status = null)
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_checkout_produk')
@@ -54,10 +54,31 @@ class CheckoutProdukModel extends Model
             ->join('jsf_checkout', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->where('jsf_checkout.id_user', $id)
-            ->orderBy('jsf_checkout_produk.created_at', 'DESC')
-            ->get();
+            ->orderBy('jsf_checkout_produk.created_at', 'DESC');
 
-        $result = $query->getResult();
+        if ($keyword != null) {
+            $query->like('jsf_produk.nama', '%' . $keyword . '%');
+            $query->orLike('jsf_produk.sku', '%' . $keyword . '%');
+        }
+        if ($status == 'waiting-payment') {
+            $query->where('jsf_checkout.id_status_pesan', '1');
+        }
+        if ($status == 'on-process') {
+            $query->where('jsf_checkout.id_status_pesan', '2');
+        }
+        if ($status == 'delivery') {
+            $query->where('jsf_checkout.id_status_pesan', '3');
+        }
+        if ($status == 'complited') {
+            $query->where('jsf_checkout.id_status_pesan', '4');
+        }
+        if ($status == 'failed') {
+            $query->where('jsf_checkout.id_status_pesan', '5');
+        }
+        if ($status == 'canceled') {
+            $query->where('jsf_checkout.id_status_pesan', '6');
+        }
+        $result = $query->get()->getResult();
         return $result;
     }
 
@@ -157,11 +178,12 @@ class CheckoutProdukModel extends Model
                     $query->orLike('id_toko', $t['id_toko']);
                 }
             }
-        };
+        }
+        ;
 
         $result = $query->get()->getResultArray();
 
-        return  $result;
+        return $result;
     }
 
     public function getTransaksi($inv)

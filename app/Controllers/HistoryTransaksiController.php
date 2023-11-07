@@ -28,32 +28,17 @@ class HistoryTransaksiController extends BaseController
         $checkoutModel = new CheckoutModel();
         $produkModel = new ProdukModel();
         $kategori = new KategoriModel();
-        $cekTransaksi = $checkoutProdModel->getHistoryTransaksi(user_id());
-
-        // $produk = [];
-        // $keyword = $this->request->getVar('search');
-
-        // if (!empty($keyword)) {
-        //     $produk = $checkoutProdModel->getHistoryTransaction($keyword);
-        // } else {
-        //     $produk = $checkoutProdModel->getHistoryTransaction(user_id());
-        // }
-
-        // // Filter produk yang sesuai dengan kata kunci pencarian
-        // $filteredProduk = [];
-
-        // foreach ($produk as $t) {
-        //     // Misalkan Anda ingin mencocokkan nama produk dan SKU (disesuaikan dengan struktur data Anda)
-        //     if (stristr($t->nama, $keyword) || stristr($t->sku, $keyword)) {
-        //         $filteredProduk[] = $t;
-        //     }
-        // }
+        $keyword = $this->request->getVar('search');
+        $filter = $this->request->getVar('filter');
+        $cekTransaksi = $checkoutProdModel->getHistoryTransaksi(user_id(), $keyword, $filter);
 
         $data = [
             'title' => lang('Text.title_history'),
-            'transaksi' =>  $cekTransaksi,
+            'transaksi' => $cekTransaksi,
             'back' => '',
             'kategori' => $kategori->findAll(),
+            'search' => $keyword,
+            'filter' => $filter
             // 'pager' => $produkModel->pager,
             // 'produk' => $filteredProduk
         ];
