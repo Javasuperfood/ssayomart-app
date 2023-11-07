@@ -117,4 +117,20 @@ class UsersModel extends Model
             ->get();
         return $query->getResultArray();
     }
+
+    public function getUser($perPage, $username = null)
+    {
+        $query = $this->select('*')
+            ->join('auth_groups_users', 'users.id = auth_groups_users.user_id');
+        if ($username != null) {
+            $query->like('username', '%' . $username . '%');
+        }
+
+        // $data = [
+        //     'news'  => $this->paginate($perPage),
+        //     'pager' => $this->pager,
+        // ];
+
+        return $query->get()->getResultArray();
+    }
 }
