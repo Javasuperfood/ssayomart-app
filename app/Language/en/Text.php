@@ -108,4 +108,21 @@ return [
     // ON PENDING //
     'onpending_title' => 'Waiting for your Payment.',
     'onpending_deskripsi' => 'This notification will be close automaticly',
+
+    // LOGIN & REGISTER
+    'username' => 'Your username',
+    'email' => 'Your email',
+    'password' => 'Your password',
+    'konfirm_password' => 'Confirmation password',
+    'btn_login' => 'Login',
+    'btn_daftar' => 'Register',
+    'lihat_barang' => 'View items without login',
+    'lupa_password' => 'Forgot Password?',
+    'klik_disini' => 'Click Here',
+    'atau' => 'Or',
+    'login_apple' => 'Login With Apple',
+    'login_google' => 'Login With Google',
+    'belum_punya_akun' => 'Dont have an account yet?',
+    'sudah_punya_akun' => 'Already have an account?'
+
 ];
