@@ -35,7 +35,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Banner Desktop -->
     <div id="desktopContent" style="margin-top: 90px;">
-        <div class="container d-none d-md-block">
+        <div class="container">
             <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <?php
@@ -46,25 +46,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             $classBanner .= " active";
                         }
                     ?>
-                        <div class="<?= $classBanner; ?>">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i]['title']; ?>">
+                        <a href="<?= base_url(); ?>user/home/contenBanner/contenBanner">
+                            <div class="<?= $classBanner; ?>">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i]['title']; ?>">
+                                    </div>
+                                    <?php if ($i + 1 < $totalBanners) : ?>
+                                        <div class="col-md-6">
+                                            <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i + 1]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i + 1]['title']; ?>">
+                                        </div>
+                                    <?php else : ?>
+                                        <!-- Jika tidak ada gambar berikutnya, tambahkan gambar default atau pesan placeholder -->
+                                        <div class="col-md-6">
+                                            <img src="<?= base_url() ?>assets/img/banner/default.jpg" class="d-block w-100 rounded-3" alt="Placeholder">
+                                            <!-- Atau pesan placeholder -->
+                                            <!-- <p>Placeholder</p> -->
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                                <?php if ($i + 1 < $totalBanners) : ?>
-                                    <div class="col-md-6">
-                                        <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i + 1]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i + 1]['title']; ?>">
-                                    </div>
-                                <?php else : ?>
-                                    <!-- Jika tidak ada gambar berikutnya, tambahkan gambar default atau pesan placeholder -->
-                                    <div class="col-md-6">
-                                        <img src="<?= base_url() ?>assets/img/banner/default.jpg" class="d-block w-100 rounded-3" alt="Placeholder">
-                                        <!-- Atau pesan placeholder -->
-                                        <!-- <p>Placeholder</p> -->
-                                    </div>
-                                <?php endif; ?>
                             </div>
-                        </div>
+                        </a>
                     <?php endfor; ?>
                 </div>
                 <!-- Tombol Previous -->

@@ -171,7 +171,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <!-- Kolom 1: Peta -->
                 <div class="col-md-6 col-lg-6">
-                    <iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63461.253843224215!2d106.58139326405951!3d-6.220359270402854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f96aaaaaaa9d%3A0x61260dece4fe3535!2sJAVA%20SUPER%20FOOD%20(PT%20ANEKA%20DASUIB%20JAYA)!5e0!3m2!1sen!2sid!4v1697420053341!5m2!1sen!2sid" width="320" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe class="text-center maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63461.253843224215!2d106.58139326405951!3d-6.220359270402854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f96aaaaaaa9d%3A0x61260dece4fe3535!2sJAVA%20SUPER%20FOOD%20(PT%20ANEKA%20DASUIB%20JAYA)!5e0!3m2!1sen!2sid!4v1697420053341!5m2!1sen!2sid" width="320" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <!-- Kolom 2: Formulir Inputan -->
@@ -197,6 +197,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- akhir form dan maps -->
 
         <style>
+            .maps {
+                max-width: 100%;
+                /* Agar peta tidak melebihi lebar layar */
+            }
+
             @media screen and (max-width: 280px) {
                 h1 {
                     font-size: small;
@@ -224,7 +229,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="desktopContent" style="margin-top:50px;">
         <div class="container-fluid p-0 position-relative">
             <div class="img-container">
-                <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
+                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="img-overlay"></div>
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2 " style="font-family:cursive;">
@@ -235,17 +240,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <div class="container mt-3">
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <!-- Konten Kolom Pertama -->
-                    <div class="img-container">
-                        <img src="<?= base_url() ?>assets/img/sampel.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                        <div class="img-overlay"></div>
-                    </div>
 
-                </div>
-                <div class="col-12 col-md-6 text-end">
+                <div class="col">
                     <!-- Konten Kolom Kedua -->
-                    <h3>Tentang Ssayomart </h3>
+                    <h3 class="text-center mt-2">Tentang Ssayomart </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
                 </div>
@@ -264,11 +262,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-12 col-md-6">
                     <!-- Konten Kolom Pertama -->
 
-                    <div class="img-container">
-                        <!-- Ganti gambar dengan video YouTube -->
-                        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-                        <!-- Ganti "VIDEO_ID" dengan ID video YouTube yang sesuai -->
-                        <div class="img-overlay"></div>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
                     </div>
 
                 </div>
@@ -280,31 +275,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
             </div>
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/sampel.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
             </div>
         </div>

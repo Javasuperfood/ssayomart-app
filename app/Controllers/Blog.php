@@ -19,9 +19,10 @@ class Blog extends BaseController
     // ===================================================================
     public function contenBanner()
     {
-
+        $kategori = new KategoriModel();
         $data = [
             'title' => 'conten Banner',
+            'kategori' => $kategori->findAll(),
         ];
         // dd($data);
         return view('user/home/contenBanner/contenBanner', $data);
