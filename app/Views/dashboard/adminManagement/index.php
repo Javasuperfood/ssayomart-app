@@ -37,6 +37,12 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col">
+        <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/admin-management/tambah-admin"><i class="bi bi-plus-square"></i> Tambah Admin</a>
+    </div>
+</div>
+
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header border-0 py-3">
         <h6 class="m-0 font-weight-bold text-danger">List Admin Management</h6>

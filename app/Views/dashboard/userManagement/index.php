@@ -41,6 +41,7 @@
     <div class="card-header border-0 py-3">
         <h6 class="m-0 font-weight-bold text-danger">List User Management</h6>
     </div>
+
     <div class="card-body ">
         <div class="row">
             <div class="col">
@@ -60,6 +61,7 @@
                                 <th>Status</th>
                                 <th>Grup</th>
                                 <th>Created At</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,6 +74,53 @@
                                     <td><?= $user['active']; ?></td>
                                     <td><?= $user['group']; ?></td>
                                     <td><?= $user['created_at']; ?></td>
+                                    <td class="text-center">
+                                        <div class="nav-item dropdown no-arrow">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </a>
+                                            <?php if (auth()->user()->inGroup('superadmin')) : ?>
+                                                <!-- Dropdown - User Information -->
+                                                <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                                    <!-- <a class="dropdown-item" href="<?= base_url('dashboard/admin-management/tambah-admin'); ?>">
+                                                        <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                        Update
+                                                    </a> -->
+                                                    <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#userModal<?= $user['id'] ?>">
+                                                        <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                        Update
+                                                    </button>
+                                                </div>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="userModal<?= $user['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel<?= $user['id'] ?>" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="userModalLabel<?= $user['id'] ?>">Are you sure you want to change the role, <?= $user['username'] ?>?</h1>
+
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro optio recusandae aperiam sunt saepe ab fuga ipsam reiciendis</p>
+                                                                <select class="form-select" aria-label="Default select example">
+                                                                    <option selected>Select</option>
+                                                                    <option value="1">Admin</option>
+                                                                    <option value="2">User</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-danger text-white"><i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>Update Admin</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+
+                                        </div>
+                                    </td>
+
+
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -82,6 +131,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    const myModal = document.getElementById('myModal')
+    const myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', () => {
+        myInput.focus()
+    })
+</script>
 
 
 <?= $this->endSection(); ?>
