@@ -56,8 +56,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <img src="<?= base_url(); ?>assets/img/coupon.png" alt="Kupon" class="card-img img-fluid" style="width: 20; height: 50;">
                                     </div>
                                     <div class="col">
-                                        <h5 class="card-title text-dark" style="font-size: 14px;"><?= lang('Text.judul_kupon') ?></h5>
-                                        <p class="card-text text-secondary" style="font-size: 14px;"><?= lang('Text.isi_kupon') ?></p>
+                                        <h5 class="card-title text-dark d-flex text-center justify-content-center align-items-center" style="font-size: 14px;"><?= lang('Text.judul_kupon') ?></h5>
+                                        <p class="card-text text-secondary d-flex text-center justify-content-center align-items-center" style="font-size: 14px;"><?= lang('Text.isi_kupon') ?></p>
                                     </div>
                                 </div>
                             </a>
@@ -130,12 +130,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <div class="container">
-            <input type="checkbox" id="check"> <label class="chat-btn" for="check"><i class="bi bi-chat-dots"></i></label>
+            <input type="checkbox" id="check">
+            <label class="chat-btn" for="check"><i class="bi bi-chat-dots"></i></label>
             <div class="wrapper shadow-sm">
+                <label class="close-btn" for="check"><i class="bi bi-x"></i></label>
                 <div class="header bg-danger">
-                    <h6>Masukan Kendala !</h6>
+                    <h6>Welcome, Chat me!</h6>
                 </div>
-                <div class="text-center p-2" style="font-size: 12px;"> <span>Silahkan tanyakan kepada kami!</span> </div>
+                <div class="text-center p-2" style="font-size: 12px;">
+                    <span>Apa masalah anda, laporkan kepada kami</span>
+                </div>
                 <div class="chat-form">
                     <input type="text" class="form-control" style="font-size: 12px;" placeholder="Name">
                     <input type="text" class="form-control" style="font-size: 12px;" placeholder="Email">
@@ -146,7 +150,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
+
     <style>
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            z-index: 999;
+            color: #ffff;
+            font-size: 20px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
         .chat-btn {
             position: fixed;
             right: 20px;
@@ -230,6 +251,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         #check {
             display: none !important
         }
+
+        /* Media Query untuk Samsung Galaxy Fold */
+        @media screen and (max-width: 280px) {
+
+            .close-btn,
+            .chat-btn {
+                /* Sesuaikan gaya untuk layar kecil di sini */
+                right: 10px;
+                bottom: 70px;
+                font-size: 18px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .wrapper {
+                right: 29px;
+                bottom: 120px;
+                width: 200px;
+            }
+
+            .header {
+                font-size: 14px;
+            }
+
+            .chat-form input,
+            .chat-form textarea {
+                font-size: 10px;
+            }
+
+
+        }
     </style>
 
     <style>
@@ -253,6 +305,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 width: 50px !important;
                 height: 50px !important;
                 margin-top: 15px !important;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
+                font-size: 20px !important;
+                margin-top: 50px !important;
+            }
+        }
+
+        @media screen and (min-width: 820px) and (max-width: 1024px) {
+            h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
+                font-size: 24px !important;
+                margin-top: 80px !important;
             }
         }
     </style>
