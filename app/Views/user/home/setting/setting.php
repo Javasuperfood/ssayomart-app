@@ -129,10 +129,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
+        
         <div class="container">
             <input type="checkbox" id="check">
             <label class="chat-btn" for="check"><i class="bi bi-chat-dots"></i></label>
-            <div class="wrapper shadow-sm">
+            <div class="wrapper shadow-lg">
                 <label class="close-btn" for="check"><i class="bi bi-x"></i></label>
                 <div class="header bg-danger">
                     <h6>Welcome, Chat me!</h6>
@@ -144,7 +145,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <input type="text" class="form-control" style="font-size: 12px;" placeholder="Name">
                     <input type="text" class="form-control" style="font-size: 12px;" placeholder="Email">
                     <textarea class="form-control" style="font-size: 12px;" placeholder="Your Text Message"></textarea>
-                    <button class="btn btn-danger btn-block" style="font-size: 10px;">Submit</button>
+                    <button class="btn btn-danger btn-block" style="font-size: 12px;">Submit</button>
                 </div>
             </div>
         </div>
@@ -209,7 +210,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             position: fixed;
             right: 20px;
             bottom: 127px;
-            width: 250px;
+            width: 320px;
             background-color: #fff;
             border-radius: 5px;
             opacity: 0;
@@ -218,7 +219,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
         #check:checked~.wrapper {
-            opacity: 1
+            opacity: 1;
         }
 
 
@@ -246,7 +247,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .form-control:focus,
         .btn:focus {
-            box-shadow: none
+            box-shadow: none;
+            border: 1px solid #ced4da; /* Warna dan lebar border saat input di-focus */
         }
 
 
@@ -254,14 +256,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             display: none !important
         }
 
-        /* Media Query untuk Samsung Galaxy Fold */
+
+        /* Responsive styling for smaller screens (Samsung Galaxy Fold) */
         @media screen and (max-width: 280px) {
 
-            .close-btn {
-                right: 10px;
-                bottom: 70px;
-            }
+        .close-btn {
+            right: 10px;
+            bottom: 70px;
         }
+
 
         .chat-btn {
             /* Sesuaikan gaya untuk layar kecil di sini */
@@ -279,12 +282,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         .header {
-            font-size: 14px;
+            font-size: 14px;    
         }
 
         .chat-form input,
         .chat-form textarea {
             font-size: 10px;
+        }
         }
     </style>
 
