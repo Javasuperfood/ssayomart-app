@@ -23,13 +23,11 @@ class AdminUserManagementController extends BaseController
             $user = $usersModel->getUser($perPage);
         }
 
-        $user_list = $usersModel->paginate($perPage, 'user');
-
         $totalUsers = $usersModel->countAllResults();
 
         $data = [
-            'users' =>  $user,
-            'pager' => $usersModel->pager,
+            'users' =>  $user['users'],
+            'pager' => $user['pager'],
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'totalUsers' => $totalUsers,
         ];
