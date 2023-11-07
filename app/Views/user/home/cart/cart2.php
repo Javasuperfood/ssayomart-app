@@ -19,7 +19,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-3 text-center">
                                 <i class="bi bi-cash-stack fs-1 fw-bold text-success"></i>
                             </div>
-                            <div class="col-9">
+                            <div class="col-9 d-flex justify-content-start align-items-center">
                                 <p class="mt-0 mb-0"><?= lang('Text.total_cart') ?></p>
                                 <p class="mt-0 mb-0 fw-bold" id="textTotal"></p>
                                 <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
@@ -45,7 +45,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                     <div class="col">
                                         <div class="card-body">
-                                            <p class="card-text text-secondary" style="font-size: 14px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 40); ?></p>
+                                            <p class="card-text text-secondary" style="font-size: 14px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
                                             <p class="card-title text-danger" style="font-size: 14px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                             <div class="input-group mt-2">
                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
