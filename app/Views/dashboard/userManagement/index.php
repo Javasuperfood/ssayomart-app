@@ -32,8 +32,8 @@
     <div class="col text-end">
         <form action="<?= base_url('dashboard/user-management'); ?>" method="get">
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="search" aria-label="search" name="search" aria-describedby="search">
-                <button class="btn btn-outline-danger" type="submit" id="search">Search</button>
+                <input value="<?= (isset($_GET['search']) ? $_GET['search'] : ''); ?>" type="text" class="form-control" placeholder="search" aria-label="search" name="search" aria-describedby="search">
+                <button class="btn btn-outline-danger" type="submit" id="search" >Search</button>
             </div>
         </form>
     </div>
