@@ -357,8 +357,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <div class="col">
                 <form action="<?= base_url('history'); ?>" method="get">
+                <input type="hidden" name="filter" value="<?= ($filter) ? $filter : ''; ?>">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" placeholder="Search... (by product name or sku)" name="search" aria-label="search" aria-describedby="search" value="<?= isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" placeholder="Search... (by product name or sku)" name="search" aria-label="search" aria-describedby="search" value="<?= ($search) ? $search : ''; ?>">
                         <button class="btn btn-lg btn-danger border-0" type="submit"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
