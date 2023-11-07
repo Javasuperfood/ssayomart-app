@@ -113,8 +113,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                         <div class="deskripsi col-5 position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title fs-6">
-                                                <?= substr($t->nama, 0, 10); ?>...
+                                            <h5 class="card-title fs-6 mt-3">
+                                                <?= substr($t->nama, 0, 10); ?>
                                             </h5>
                                             <p class="text-secondary fs-6">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
@@ -187,7 +187,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                                 <div class="col-5 position-absolute top-50 start-50 translate-middle">
                                                     <h5 class="card-title fs-6">
-                                                        <?= substr($c->nama, 0, 10); ?>...
+                                                        <?= substr($c->nama, 0, 10); ?>
                                                     </h5>
                                                     <p class="text-secondary fs-6">Rp.
                                                         <?= number_format($c->harga, 0, ',', '.'); ?>
@@ -357,7 +357,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <div class="col">
                 <form action="<?= base_url('history'); ?>" method="get">
-                <input type="hidden" name="filter" value="<?= ($filter) ? $filter : ''; ?>">
+                    <input type="hidden" name="filter" value="<?= ($filter) ? $filter : ''; ?>">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control form-control-lg border-0 shadow-sm" placeholder="Search... (by product name or sku)" name="search" aria-label="search" aria-describedby="search" value="<?= ($search) ? $search : ''; ?>">
                         <button class="btn btn-lg btn-danger border-0" type="submit"><i class="bi bi-search"></i></button>
@@ -455,7 +455,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="row">
                                         <div class="col-8 position-absolute top-50 start-50 translate-middle" id="colsId<?= $t->id_checkout; ?>" data-bs-target="#history<?= $t->id_checkout; ?>" data-bs-toggle="collapse">
                                             <h5 class="card-title fs-4">
-                                                <?= substr($t->nama, 0, 10); ?>...
+                                                <?= substr($t->nama, 0, 20); ?>
                                             </h5>
                                             <p class="text-secondary fs-5">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>

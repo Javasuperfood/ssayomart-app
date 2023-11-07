@@ -351,8 +351,4 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         echo '</div>';
     }
     ?>
-
-
-
-
     <?= $this->endSection(); ?>
