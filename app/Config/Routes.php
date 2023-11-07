@@ -110,7 +110,9 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
     $routes->group('order/', static function ($routes) {
-        $routes->get('/', 'AdminPesananController::index');
+        // $routes->get('/', 'AdminPesananController::index');
+        // $routes->get('2', 'AdminPesananController::index2');
+        $routes->get('/', 'AdminPesananController::index2');
         $routes->get('awaiting-payment', 'AdminPesananController::awaitingPayment');
         $routes->get('in-proccess', 'AdminPesananController::inProccess');
         $routes->post('in-proccess/update-status/(:segment)', 'AdminPesananController::updateStatus/$1');

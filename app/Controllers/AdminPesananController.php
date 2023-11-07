@@ -17,6 +17,42 @@ class AdminPesananController extends BaseController
 {
     // =============================================== Route Get =================================================
 
+    public function index2()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $statusPesanModel = new StatusPesanModel();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
+
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
+
+
+        $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
+
+        $perPage = 10;
+
+        $checkout = $checkoutModel->select('jsf_checkout.*, jsf_status_pesan.status as status')
+            ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
+            ->where('id_toko', $toko[0]['id_toko'])->paginate($perPage, 'order');
+        foreach ($checkout as $key => $c) {
+            $checkout[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
+        }
+
+        $data = [
+            'checkout' => $checkout,
+            'pager' => $checkoutModel->pager,
+            'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'statusPesan' => $statusPesanModel->findAll(),
+        ];
+
+        foreach ($toko as $key => $t) {
+            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
+        }
+
+        // dd($data);
+        return view('dashboard/pesanan/index2', $data);
+    }
     public function index()
     {
         $checkoutProdModel = new CheckoutProdukModel();
