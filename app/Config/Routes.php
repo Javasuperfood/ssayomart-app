@@ -251,6 +251,9 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
     // USER MANAGEMENT
     $routes->get('user-management', 'AdminUserManagementController::index');
+
+    // ADMIN MANAGEMENT
+    $routes->get('admin-management', 'AdminManagementController::index');
 });
 
 service('auth')->routes($routes);
