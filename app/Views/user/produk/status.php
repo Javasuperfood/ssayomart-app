@@ -59,7 +59,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
                                         </div>
                                         <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?>...</h5>
+                                            <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?></h5>
                                             <p class="card-text text-secondary fs-6"><?= $p->qty; ?> <?= $p->value_item; ?>
                                             </p>
                                         </div>
@@ -370,6 +370,46 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <style>
         /* Tampilan Samsung Galaxy Fold */
         @media (max-width: 280px) {
+
+            .btn-group-lg>.btn,
+            .btn-lg {
+                font-size: 12px;
+                padding: 0.5rem !important;
+            }
+
+            i.bi-clipboard-fill {
+                font-size: 16px !important;
+                /* Sesuaikan ukuran ikon sesuai kebutuhan */
+            }
+
+            p.fw-bold.fs-6 {
+                font-size: 0.7rem !important;
+            }
+
+            p.card-text.text-secondary.fs-6 {
+                font-size: 0.8rem !important;
+            }
+
+            .col {
+                width: 100%;
+            }
+
+            .list-group-item {
+                padding: 5px;
+            }
+
+            h2 {
+                font-size: 13px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .table {
+                font-size: 0.8rem;
+            }
+
             .track .step {
                 width: 30%;
             }

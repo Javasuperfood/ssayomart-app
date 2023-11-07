@@ -86,7 +86,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="" class="card-img">
                                     </div>
                                     <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                        <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?>...</h5>
+                                        <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?></h5>
                                         <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
                                         </p>
                                         <input type="hidden" name="qty" value="<?= $qty; ?>">
@@ -137,6 +137,53 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
     <div class="pb-5"></div>
+
+    <style>
+        @media (max-width: 280px) {
+            .col-5.position-absolute.top-50.start-50.translate-middle-y {
+                font-size: 12px !important;
+            }
+
+            .table.fs-6 {
+                font-size: 12px !important;
+                /* Atur ukuran font sesuai kebutuhan */
+            }
+
+            .tbody.td {
+                font-size: 12px !important;
+            }
+
+            h5.card-title.fs-6.p.card-text.text-secondary {
+                font-size: 12px;
+            }
+
+            .form-control {
+                font-size: 12px;
+                /* Ukuran font input sesuai kebutuhan */
+            }
+
+            .card-title {
+                font-size: 12px;
+                /* Ukuran font judul kartu sesuai kebutuhan */
+            }
+
+            .card-text {
+                font-size: 12px;
+                /* Ukuran font teks kartu sesuai kebutuhan */
+            }
+
+            .ps-2 {
+                font-size: 12px;
+                padding-left: 0.5rem !important;
+            }
+
+            .btn-bayar {
+                font-size: 12px;
+                padding: 0.5rem !important;
+            }
+
+        }
+    </style>
     <!-- end mobile -->
 <?php else : ?>
 
