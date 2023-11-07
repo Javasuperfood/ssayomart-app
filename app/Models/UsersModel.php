@@ -126,11 +126,10 @@ class UsersModel extends Model
             $query->like('username', '%' . $username . '%');
         }
 
-        // $data = [
-        //     'news'  => $this->paginate($perPage),
-        //     'pager' => $this->pager,
-        // ];
-
-        return $query->get()->getResultArray();
+        $data = [
+            'users'  => $this->paginate($perPage, 'user'),
+            'pager' => $this->pager,
+        ];
+        return $data;
     }
 }
