@@ -129,37 +129,47 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-        
         <div class="container">
-            <input type="checkbox" id="check">
-            <label class="chat-btn" for="check"><i class="bi bi-chat-dots"></i></label>
-            <div class="wrapper shadow-lg">
-                <label class="close-btn" for="check"><i class="bi bi-x"></i></label>
-                <div class="header bg-danger">
-                    <h6>Welcome, Chat me!</h6>
-                </div>
-                <div class="text-center p-2" style="font-size: 12px;">
-                    <span>Apa masalah anda, laporkan kepada kami</span>
-                </div>
-                <div class="chat-form">
-                    <input type="text" class="form-control" style="font-size: 12px;" placeholder="Name">
-                    <input type="text" class="form-control" style="font-size: 12px;" placeholder="Email">
-                    <textarea class="form-control" style="font-size: 12px;" placeholder="Your Text Message"></textarea>
-                    <button class="btn btn-danger btn-block" style="font-size: 12px;">Submit</button>
+            <button class="chat-btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="bi bi-chat-dots"></i>
+            </button>
+
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Welcome, Chat me!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" placeholder="Your Text Message"></textarea>
+                                </div>
+                                <button type="button" class="btn btn-danger btn-block">Submit</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-
     <style>
-        .close-btn {
+        /* CSS untuk close button di dalam modal */
+        .close-btn-modal {
             position: absolute;
             top: 10px;
             right: 10px;
             cursor: pointer;
             z-index: 999;
-            color: #ffff;
+            color: #fff;
             font-size: 20px;
             width: 30px;
             height: 30px;
@@ -169,6 +179,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             transition: all 0.3s ease;
         }
 
+        /* CSS untuk chat button yang memunculkan modal */
         .chat-btn {
             position: fixed;
             right: 20px;
@@ -188,107 +199,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
 
-        .chat-btn i {
-            font-size: 22px;
-            color: #fff !important
-        }
-
-        .chat-btn {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50px;
-            color: #fff;
-            font-size: 22px;
-            border: none
-        }
-
-        .wrapper {
-            border: 1px darkgrey;
-            position: fixed;
-            right: 20px;
-            bottom: 127px;
-            width: 320px;
+        /* CSS tambahan untuk modal content */
+        .modal-content {
             background-color: #fff;
             border-radius: 5px;
-            opacity: 0;
-            transition: all 0.4s
         }
 
-
-        #check:checked~.wrapper {
-            opacity: 1;
-        }
-
-
-        .header {
-            padding: 13px;
-
+        /* CSS untuk header dalam modal */
+        .modal-header {
+            background-color: #ec2614;
+            color: #fff;
             border-radius: 5px 5px 0px 0px;
-            margin-bottom: 10px;
-            color: #fff
+            padding: 13px;
         }
 
-        .chat-form {
-            padding: 15px
+        /* CSS untuk teks dalam modal */
+        .modal-body {
+            padding: 15px;
         }
 
-        .chat-form input,
-        textarea,
-        button {
-            margin-bottom: 10px
-        }
-
-        .chat-form textarea {
-            resize: none
-        }
-
-        .form-control:focus,
-        .btn:focus {
-            box-shadow: none;
-            border: 1px solid #ced4da; /* Warna dan lebar border saat input di-focus */
-        }
-
-
-        #check {
-            display: none !important
-        }
-
-
-        /* Responsive styling for smaller screens (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
-
-        .close-btn {
-            right: 10px;
-            bottom: 70px;
-        }
-
-
-        .chat-btn {
-            /* Sesuaikan gaya untuk layar kecil di sini */
-            right: 10px;
-            bottom: 70px;
-            font-size: 18px;
-            width: 40px;
-            height: 40px;
-        }
-
-        .wrapper {
-            right: 29px;
-            bottom: 120px;
-            width: 200px;
-        }
-
-        .header {
-            font-size: 14px;    
-        }
-
-        .chat-form input,
-        .chat-form textarea {
-            font-size: 10px;
-        }
+        /* CSS untuk tombol "Submit" dalam modal */
+        .modal-body .btn-danger {
+            font-size: 12px;
         }
     </style>
 
