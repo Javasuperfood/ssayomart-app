@@ -15,16 +15,23 @@ class AdminUserManagementController extends BaseController
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
         $keyword = $this->request->getVar('search');
+
+
         if ($keyword) {
-            $users = $usersModel->orderBy('id', 'DESC')->like('username', $keyword);
+            $user = $usersModel->getUser($perPage, $keyword);
         } else {
-            $users = $usersModel->orderBy('id', 'DESC');
+            $user = $usersModel->getUser($perPage);
         }
+
         $user_list = $usersModel->paginate($perPage, 'user');
+
+        $totalUsers = $usersModel->countAllResults();
+
         $data = [
-            'users' => $user_list,
+            'users' =>  $user,
             'pager' => $usersModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'totalUsers' => $totalUsers,
         ];
 
         return view('dashboard/userManagement/index', $data);
