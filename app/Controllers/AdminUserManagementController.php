@@ -34,4 +34,14 @@ class AdminUserManagementController extends BaseController
 
         return view('dashboard/userManagement/index', $data);
     }
+
+    public function tambahAdmin()
+    {
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'username' => 'required',
+            'telp' => 'required',
+            'status' => 'required',
+        ]);
+    }
 }

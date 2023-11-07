@@ -16,17 +16,29 @@
 </div>
 <hr class="sidebar-divider">
 <?php if (auth()->user()->inGroup('superadmin')) : ?>
-    <div class="sidebar-heading">
-        Admin Super
-    </div>
-    <!-- Nav Item - Dashboard -->
+    <hr class="sidebar-divider">
+
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard/home">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/admin-management">
+            <i class="bi bi-person-fill"></i>
+            <span>Admin Management</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/user-management">
+            <i class="bi bi-people-fill"></i>
+            <span>User Management</span></a>
+    </li>
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/marketplace">
+            <i class="bi bi-shop"></i>
+            <span>Market</span></a>
     </li>
 <?php endif; ?>
-<?php if (auth()->user()->inGroup('superadmin', 'admin')) : ?>
+<?php if (auth()->user()->inGroup('admin')) : ?>
     <div class="sidebar-heading">
         Pesanan
     </div>
@@ -114,27 +126,6 @@
             <span>Kupon</span></a>
     </li>
 
-    <hr class="sidebar-divider">
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard/admin-management">
-            <i class="bi bi-person-fill"></i>
-            <span>Admin Management</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard/user-management">
-            <i class="bi bi-people-fill"></i>
-            <span>User Management</span></a>
-    </li>
-
-    <hr class="sidebar-divider">
-
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard/marketplace">
-            <i class="bi bi-shop"></i>
-            <span>Market</span></a>
-    </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 <?php endif; ?>
