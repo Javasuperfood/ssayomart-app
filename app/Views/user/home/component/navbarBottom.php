@@ -8,7 +8,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Footer Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <nav class="navbar navbar-expand fixed-bottom" style="margin-top: 6%; height: 55px; background-color:#fff">
+        <nav class="navbar navbar-expand fixed-bottom" style="margin-top: 10%; height: 55px; background-color:#fff">
             <ul class="navbar-nav nav-justified w-100">
                 <li class="nav-item">
                     <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4 text-danger"></i></a>
@@ -17,8 +17,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light">
                         <i class="bi bi-cart-fill fw-bold fs-2 position-relative <?php if (session()->get('countCart') > 0) : ?>text-danger<?php else : ?>text-danger<?php endif ?>">
                             <?php if (session()->get('countCart') > 0) : ?>
-                                <i class="bi bi-chat position-absolute top-0 start-100 translate-middle text-danger"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle fw-bold" style="font-size: 0.75rem; <?php if (session()->get('countCart') > 0) : ?>color: #c2614;<?php else : ?>color: yellow;<?php endif ?>"><?= session()->get('countCart'); ?></span>
+                                <i class="bi bi-chat position-absolute top-0 start-100 translate-middle text-danger mt-2 mx-1"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle fw-bold mt-2 mx-1" style="font-size: 0.75rem; <?php if (session()->get('countCart') > 0) : ?>color: #c2614;<?php else : ?>color: yellow;<?php endif ?>"><?= session()->get('countCart'); ?></span>
                             <?php endif ?>
                         </i>
                     </a>
