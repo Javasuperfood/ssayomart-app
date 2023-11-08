@@ -9,7 +9,6 @@
     "codeigniter4/framework": "4.3.8",
     "codeigniter4/shield": "dev-develop",
     "datamweb/shield-oauth": "dev-develop",
-    "hybridauth/hybridauth": "^3.10",
     "midtrans/midtrans-php": "^2.5",
     "onesignal/onesignal-php-api": "dev-main",
     "tecnickcom/tcpdf": "^6.6"

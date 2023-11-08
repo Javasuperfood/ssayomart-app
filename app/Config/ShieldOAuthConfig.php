@@ -51,6 +51,13 @@ class ShieldOAuthConfig extends OAuthConfig
             'allow_login' => false,
         ],
 
+        'applelogin' => [
+            'client_id' => 'com.javasuperfood.ssayomartappready',
+            'client_secret' => 'MBB23HH2V3',
+
+            'allow_login' => true,
+        ],
+
         // 'yahoo' => [
         //     'client_id'     => 'Get it from Yahoo',
         //     'client_secret' => 'Get it from Yahoo',
