@@ -18,14 +18,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
 
-        <div class="col-12 col-md-6 mt-2">
-            <!-- Konten Kolom Kedua -->
-            <h3 class="text-center mt-3" style="font-size: 1.5rem; margin-bottom: 1rem;">Content Banner</h3>
-            <p style="font-size: 12px; line-height: 1.4; text-align: justify;">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.
-            </p>
-        </div>
-
         <!-- <div class="col-12 col-md-6 mt-2">
             <h3 class=" mt-3" style="font-size: 1.5rem; margin-bottom: 1rem;">Gallery</h3>
             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper">
@@ -96,7 +88,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div> -->
                 <div class="col">
                     <!-- Konten Kolom Kedua -->
-                    <h3>Tentang Ssayomart </h3>
+                    <h3>Content Banner </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
                 </div>
@@ -107,7 +99,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-md-none">
             <section class="galeri" id="galeri">
                 <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
-                <div class="swiper slider mt-3">
+                <div class="swiper mySwiper mt-3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" alt="Gambar Besar" class="gambar img-fluid">
@@ -150,20 +142,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <script>
+        // slider galeri produk mobile dan 
         var swiper = new Swiper(".mySwiper", {
-            speed: 600,
-            parallax: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-
-        var swiper = new Swiper(".slider", {
             speed: 600,
             parallax: true,
             pagination: {
