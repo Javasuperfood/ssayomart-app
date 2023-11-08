@@ -4,12 +4,15 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
+use App\Models\AuthGroupUsersModel;
 
 class AdminProfil extends BaseController
 {
     public function profilAdmin($id)
     {
         $usersModel = new UsersModel();
+        $authGroupModel = new AuthGroupUsersModel();
+        $group = $authGroupModel->where('user_id', $id)->first();
         $query = $usersModel->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret')
             ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
             ->where('users.id', $id)
@@ -19,7 +22,8 @@ class AdminProfil extends BaseController
         $data = [
             'title' => 'Profile Admin',
             'um' => $um[0],
-            'results' => $query->getResult()
+            'results' => $query->getResult(),
+            'id' => $group['group'],
         ];
         return view('dashboard/profil/profilAdmin', $data);
     }
