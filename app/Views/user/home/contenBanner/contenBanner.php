@@ -12,108 +12,182 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
 
-        <div class="container">
-            <div class="container-fluid p-0 position-relative mt-3">
-                <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-                </div>
+        <div class="container-fluid p-0 position-relative mt-3">
+            <div class="ratio ratio-16x9" style="position: sticky; top: 60px;"> <!-- Ganti 60px dengan ketinggian navbar Anda -->
+                <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
             </div>
+        </div>
 
-            <div class="col-12 col-md-6 mt-2">
-                <!-- Konten Kolom Kedua -->
-                <h3 class="text-center mt-3" style="font-size: 1.5rem; margin-bottom: 1rem;">Content Banner</h3>
-                <p style="font-size: 12px; line-height: 1.4; text-align: justify;">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.
-                </p>
-            </div>
+        <div class="col-12 col-md-6 mt-2">
+            <!-- Konten Kolom Kedua -->
+            <h3 class="text-center mt-3" style="font-size: 1.5rem; margin-bottom: 1rem;">Content Banner</h3>
+            <p style="font-size: 12px; line-height: 1.4; text-align: justify;">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.
+            </p>
+        </div>
 
-            <div class="col-12 col-md-6 mt-2">
-                <h3 class=" mt-3" style="font-size: 1.5rem; margin-bottom: 1rem;">Gallery</h3>
-                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper">
-                    <div class="parallax-bg" style="
+        <!-- <div class="col-12 col-md-6 mt-2">
+            <h3 class=" mt-3" style="font-size: 1.5rem; margin-bottom: 1rem;">Gallery</h3>
+            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper">
+                <div class="parallax-bg" style="
           background-image: url(https://swiperjs.com/demos/images/nature-1.jpg);
         " data-swiper-parallax="-23%"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="title" data-swiper-parallax="-300">Slide 1</div>
+                        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+                        <div class="text" data-swiper-parallax="-100">
+                            <p style="font-size: 9px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+                                laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+                                Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+                                Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+                                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
+                                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="title" data-swiper-parallax="-300">Slide 2</div>
+                        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+                        <div class="text" data-swiper-parallax="-100">
+                            <p style="font-size: 9px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+                                laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+                                Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+                                Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+                                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
+                                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="title" data-swiper-parallax="-300">Slide 3</div>
+                        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
+                        <div class="text" data-swiper-parallax="-100">
+                            <p style="font-size: 9px;">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+                                dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
+                                laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
+                                Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
+                                Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
+                                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
+                                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> -->
+
+        <!-- tentang ssayomart -->
+        <div class="container mt-3">
+            <div class="row">
+                <!-- Konten Kolom Pertama -->
+                <!-- <div class="col-12 col-md-6">
+                    <div class="img-container">
+                        <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid rounded-4">
+                        <div class="img-overlay"></div>
+                    </div>
+
+                </div> -->
+                <div class="col">
+                    <!-- Konten Kolom Kedua -->
+                    <h3>Tentang Ssayomart </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- galery photos Mobile -->
+        <div class="container d-md-none">
+            <section class="galeri" id="galeri">
+                <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
+                <div class="swiper slider mt-3">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <div class="title" data-swiper-parallax="-300">Slide 1</div>
-                            <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
-                            <div class="text" data-swiper-parallax="-100">
-                                <p style="font-size: 9px;">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                    dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                    laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                    Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                    Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                    ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                    tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                                </p>
-                            </div>
+                            <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" alt="Gambar Besar" class="gambar img-fluid">
                         </div>
                         <div class="swiper-slide">
-                            <div class="title" data-swiper-parallax="-300">Slide 2</div>
-                            <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
-                            <div class="text" data-swiper-parallax="-100">
-                                <p style="font-size: 9px;">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                    dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                    laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                    Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                    Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                    ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                    tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                                </p>
-                            </div>
+                            <img src="<?= base_url() ?>assets/img/about/menu-2.png" alt="Gambar Besar" class="gambar img-fluid">
                         </div>
                         <div class="swiper-slide">
-                            <div class="title" data-swiper-parallax="-300">Slide 3</div>
-                            <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
-                            <div class="text" data-swiper-parallax="-100">
-                                <p style="font-size: 9px;">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                    dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                    laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                    Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                    Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                    ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                    tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                                </p>
-                            </div>
+                            <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-8.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-9.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="<?= base_url() ?>assets/img/about/menu-10.jpg" alt="Gambar Besar" class="gambar img-fluid">
                         </div>
                     </div>
 
                 </div>
-            </div>
-
-
+            </section>
         </div>
+        <!-- akhir galeri photos -->
 
-        <script>
-            var swiper = new Swiper(".mySwiper", {
-                speed: 600,
-                parallax: true,
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
-            });
-        </script>
+
+    </div>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            speed: 600,
+            parallax: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        var swiper = new Swiper(".slider", {
+            speed: 600,
+            parallax: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
     </div>
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:80px;">
         <div class="container-fluid p-0 position-relative mt-3">
-            <div class="ratio ratio-16x9">
+            <div class="ratio ratio-16x9" style="position: sticky; top: 60px;"> <!-- Ganti 60px dengan ketinggian navbar Anda -->
                 <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
             </div>
         </div>
 
         <div class="container mt-3">
             <div class="row">
-
                 <div class="col">
                     <!-- Konten Kolom Kedua -->
                     <h3 class="text-center mt-2">Tentang Ssayomart </h3>
