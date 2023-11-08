@@ -60,6 +60,7 @@
                                 <th>No Tlp</th>
                                 <th>Status</th>
                                 <th>Grup</th>
+                                <th>Market(Cabang)</th>
                                 <th>Created At</th>
                                 <th>Aksi</th>
                             </tr>
@@ -73,6 +74,13 @@
                                     <td><?= $user['telp']; ?></td>
                                     <td><?= $user['active']; ?></td>
                                     <td><?= $user['group']; ?></td>
+                                    <td>
+                                        <?php foreach ($marketAdmin as $m) : ?>
+                                            <?php if ($m['id_user'] == $user['id']) : ?>
+                                                <?= $m['city'] . ' - ' . $m['zip_code']; ?><br>
+                                            <?php endif; ?>
+                                        <?php endforeach ?>
+                                    </td>
                                     <td><?= $user['created_at']; ?></td>
                                     <td class="text-center">
                                         <div class="nav-item dropdown no-arrow">
@@ -82,45 +90,42 @@
                                             <?php if (auth()->user()->inGroup('superadmin')) : ?>
                                                 <!-- Dropdown - User Information -->
                                                 <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                                    <!-- <a class="dropdown-item" href="<?= base_url('dashboard/admin-management/tambah-admin'); ?>">
-                                                        <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                        Update
-                                                    </a> -->
                                                     <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#userModal<?= $user['id'] ?>">
                                                         <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                         Update
                                                     </button>
                                                 </div>
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="userModal<?= $user['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel<?= $user['id'] ?>" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="userModalLabel<?= $user['id'] ?>">Are you sure you want to change the role, <?= $user['username'] ?>?</h1>
-
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro optio recusandae aperiam sunt saepe ab fuga ipsam reiciendis</p>
-                                                                <select class="form-select" aria-label="Default select example">
-                                                                    <option selected>Select</option>
-                                                                    <option value="1">Admin</option>
-                                                                    <option value="2">User</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                <button type="button" class="btn btn-danger text-white"><i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>Update Admin</button>
+                                                <form method="post" action="<?= base_url('dashboard/user-management/update/' . $user['id']); ?>">
+                                                    <?= csrf_field() ?>
+                                                    <div class="modal fade" id="userModal<?= $user['id'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel<?= $user['id'] ?>" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="userModalLabel<?= $user['id'] ?>">Are you sure you want to change the role, <?= $user['username'] ?>?</h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro optio recusandae aperiam sunt saepe ab fuga ipsam reiciendis</p>
+                                                                    <select class="form-select" name="newRole" aria-label="Default select example">
+                                                                        <option value="admin" selected>Admin</option>
+                                                                        <option value="user">User</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <div class="modal-footer">
+                                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                        <button type="submit" class="btn btn-danger">Update Role</button>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                             <?php endif; ?>
 
                                         </div>
                                     </td>
-
-
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -133,12 +138,16 @@
 </div>
 
 <script>
-    const myModal = document.getElementById('myModal')
-    const myInput = document.getElementById('myInput')
-
-    myModal.addEventListener('shown.bs.modal', () => {
-        myInput.focus()
-    })
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
 </script>
 
 
