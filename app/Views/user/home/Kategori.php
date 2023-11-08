@@ -199,7 +199,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Sesuaikan ukuran sesuai kebutuhan */
             }
         </style>
-
         <!-- Akhir Modal  Homepage-->
 
         <div class="class" style="position: relative; top: -15px;">
@@ -226,14 +225,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <!-- Previous button centered within the image -->
                         <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                             <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-arrow-left"></i>
+                                <i class="bi bi-chevron-left"></i>
                             </button>
                         </div>
 
                         <!-- Next button centered within the image -->
                         <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                             <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-arrow-right"></i>
+                                <i class="bi bi-chevron-right"></i>
                             </button>
                         </div>
                     </div>
@@ -261,19 +260,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             <?php endforeach; ?>
                         </div>
+
+
                         <!-- Previous button centered within the image -->
                         <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                             <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-arrow-left"></i>
+                                <i class="bi bi-chevron-left"></i>
                             </button>
                         </div>
 
                         <!-- Next button centered within the image -->
                         <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                             <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-arrow-right"></i>
+                                <i class="bi bi-chevron-right"></i>
                             </button>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -313,6 +315,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <!-- All Kategori -->
+
+
     </div>
     <!-- End Mobile View -->
 <?php else : ?>
