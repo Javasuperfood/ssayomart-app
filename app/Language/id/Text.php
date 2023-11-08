@@ -120,8 +120,8 @@ return [
     'lupa_password' => '비밀번호를 잊으 셨나요? / Lupa Kata Sandi?',
     'klik_disini' => '여기를 누르세요 / Klik Disini',
     'atau' => '또는 / Atau',
-    'login_apple' => 'Masuk Dengan Apple',
-    'login_google' => 'Masuk Dengan Google',
+    'login_apple' => 'Login With Apple',
+    'login_google' => 'Login With Google',
     'belum_punya_akun' => 'Belum punya akun? / 아직 계정이 없나요?',
     'sudah_punya_akun' => '이미 계정이 있나요? / Sudah punya akun?'
 
