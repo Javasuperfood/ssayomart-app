@@ -357,12 +357,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container my-5">
                 <div class="row text-center">
                     <div class="col position-relative">
-                        <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
-                            <button class="shadow-sm btn btn-light  btn-lg rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left" style="font-size: 20px !important;"></i></button>
+                        <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 40px; height: 40px;">
+                            <button class="shadow-sm btn btn-danger rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-chevron-left" style="font-size: 20px;"></i>
+                            </button>
                         </div>
-                        <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
-                            <button class="shadow-sm btn btn-light  btn-lg rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-arrow-right" style="font-size: 20px !important;"></i>
+                        <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 40px; height: 40px;">
+                            <button class="shadow-sm btn btn-danger btn-lg rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-chevron-right" style="font-size: 20px;"></i>
                             </button>
                         </div>
                         <div class="col">
@@ -562,29 +564,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <style>
         /* Tombol Previous */
-        .button-prev:hover {
-            opacity: 1;
-            /* Muncul saat dihover */
-        }
-
         .button-prev {
             opacity: 0;
             /* Tidak muncul secara default */
-            transition: opacity 0.3s;
+            transform: translateX(-20px);
+            /* Geser ke kiri saat tidak muncul */
+            transition: opacity 0.3s, transform 0.3s;
             /* Efek transisi saat muncul */
+        }
+
+        .button-prev:hover {
+            opacity: 1;
+            /* Muncul saat dihover */
+            transform: translateX(0);
+            /* Kembali ke posisi semula saat dihover */
         }
 
         /* Tombol Next */
-        .button-next:hover {
-            opacity: 1;
-            /* Muncul saat dihover */
-        }
-
         .button-next {
             opacity: 0;
             /* Tidak muncul secara default */
-            transition: opacity 0.3s;
+            transform: translateX(20px);
+            /* Geser ke kanan saat tidak muncul */
+            transition: opacity 0.3s, transform 0.3s;
             /* Efek transisi saat muncul */
+        }
+
+        .button-next:hover {
+            opacity: 1;
+            /* Muncul saat dihover */
+            transform: translateX(0);
+            /* Kembali ke posisi semula saat dihover */
         }
     </style>
 <?php endif; ?>
