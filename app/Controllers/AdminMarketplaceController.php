@@ -24,6 +24,17 @@ class AdminMarketplaceController extends BaseController
             'toko' => $tokoModel->findAll()
         ]);
     }
+
+    public function show($id)
+    {
+        $tokoModel = new TokoModel();
+        $toko = $tokoModel->find($id);
+
+        return view('dashboard/marketplace/market', [
+            'toko' => $toko
+        ]);
+    }
+
     public function market($id)
     {
         $tokoModel = new TokoModel();
@@ -40,13 +51,9 @@ class AdminMarketplaceController extends BaseController
     {
         session();
         $tokoModel = new TokoModel();
-        $toko = $tokoModel->where('id_user', user_id())->first();
-        if ($toko) {
-            return redirect()->to(base_url('dashboard/marketplace'));
-        }
+
         $provinsi = $this->rajaongkir('province');
         $data = [
-            'toko' => $toko,
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
         ];
         // dd($data);
@@ -61,8 +68,8 @@ class AdminMarketplaceController extends BaseController
         $id_province = ($this->request->getVar('id_provinsi') == '') ? null : $this->request->getVar('id_provinsi');
         $id_city = ($this->request->getVar('id_kabupaten') == '') ? null : $this->request->getVar('id_kabupaten');
 
+
         $data = [
-            'id_user' => user_id(),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('detail-alamat'),
@@ -116,9 +123,7 @@ class AdminMarketplaceController extends BaseController
         $tokoModel = new TokoModel();
 
         $toko = $tokoModel->find($id);
-        if ($toko['id_user'] != user_id()) {
-            return redirect()->to(base_url('dashboard/marketplace'));
-        }
+
         $provinsi = $this->rajaongkir('province');
         $data = [
             'title' => 'Edit Toko',
@@ -126,18 +131,26 @@ class AdminMarketplaceController extends BaseController
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
             'back' => 'dashboard/marketplace'
         ];
+
         return view('dashboard/marketplace/edit', $data);
     }
 
     public function update()
     {
+        // dd($this->request->getVar());
         $tokoModel = new TokoModel();
         $id_province = ($this->request->getVar('id_provinsi') == '') ? null : $this->request->getVar('id_provinsi');
         $id_city = ($this->request->getVar('id_kabupaten') == '') ? null : $this->request->getVar('id_kabupaten');
         $id = $this->request->getVar('id_toko');
+
+        if ($this->request->getVar('telp2') == '') {
+            $telp2 = null;
+        } else {
+            $telp2 = $this->request->getVar('telp2');
+        }
+
         $data = [
             'id_toko' => $id,
-            'id_user' => user_id(),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('detail-alamat'),
@@ -147,10 +160,12 @@ class AdminMarketplaceController extends BaseController
             'id_city' => $id_city,
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('telp'),
-            'telp2' => $this->request->getVar('telp2'),
+            'telp2' => $telp2,
             'latitude' => $this->request->getVar('latitude'),
             'longitude' => $this->request->getVar('longitude'),
         ];
+        // dd($data);
+
         if (!$this->validateData($data, $tokoModel->validationRules)) {
             session()->setFlashdata('success', 'Berhasil menambahkan keterangan toko');
             $alert = [
