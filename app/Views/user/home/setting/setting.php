@@ -130,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <div class="container">
-            <button class="chat-btn" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#myModal">
                 <i class="bi bi-chat-dots"></i>
             </button>
 
@@ -138,19 +138,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Welcome, Chat me!</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <h5 class="modal-title fw-bold-sm" style="font-size: 14px;">Welcome, Chat me!</h5>
+                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle" style="position: absolute; top:7px; right:10px; cursor:pointer; z-index:999; color:#fff; font-size:20px; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;"></i></button>
                         </div>
                         <div class="modal-body">
                             <form>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Name">
+                                    <input type="text" class="form-control" placeholder="Name" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email">
+                                    <input type="text" class="form-control" placeholder="Email" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Your Text Message"></textarea>
+                                    <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <button type="button" class="btn btn-danger btn-block">Submit</button>
                             </form>
@@ -162,23 +162,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
-        /* CSS untuk close button di dalam modal */
-        .close-btn-modal {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-            z-index: 999;
-            color: #fff;
-            font-size: 20px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
         /* CSS untuk chat button yang memunculkan modal */
         .chat-btn {
             position: fixed;
@@ -195,7 +178,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: all 0.9s ease;
+            transition: all 0.5s ease;
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
         }
 
