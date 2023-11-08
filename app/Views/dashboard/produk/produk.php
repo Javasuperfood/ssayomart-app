@@ -172,8 +172,13 @@
 
                                     </td>
                                 </tr>
+                            <?php endforeach; ?>
+                            <?php if (!$produk) :  ?>
+                                <tr>
+                                    <td colspan="6" class="text-center">Produk tidak ditemukan</td>
+                                </tr>
+                            <?php endif; ?>
                         </tbody>
-                    <?php endforeach; ?>
                     </table>
                     <?= $pager->links('produk', 'pagerS'); ?>
                 </div>
