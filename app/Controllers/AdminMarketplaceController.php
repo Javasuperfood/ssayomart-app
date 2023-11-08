@@ -198,6 +198,23 @@ class AdminMarketplaceController extends BaseController
         }
     }
 
+    public function delete($id)
+    {
+        $tokoModel = new TokoModel();
+
+        $model = $tokoModel->find($id);
+
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Berhasil hapus admin dari semua market'
+        ];
+
+        $tokoModel->delete($id);
+
+        return redirect()->to('/dashboard/marketplace')->with('success', 'Item deleted successfully.');
+    }
+
     // FETCHING DATA API PROVINSI & KOTA
     public function getCity()
     {
