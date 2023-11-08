@@ -212,6 +212,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
     // CRUD Marketplace
     $routes->get('marketplace', 'AdminMarketplaceController::index');
+    $routes->get('marketplace/show/(:num)', 'AdminMarketplaceController::show/$1');
     $routes->get('marketplace/(:num)', 'AdminMarketplaceController::market/$1');
     $routes->post('marketplace/store', 'AdminMarketplaceController::store');
     $routes->get('marketplace/create', 'AdminMarketplaceController::create');

@@ -6,6 +6,7 @@
 <div class="row py-3">
     <div class="col-md-6">
         <a href="<?= base_url('dashboard/admin-market'); ?>" class="btn btn-danger">Tambahkan Admin Untuk Market</a>
+        <a href="<?= base_url('dashboard/marketplace/create'); ?>" class="btn btn-danger">Tambahkan Market</a>
     </div>
     <div class="col-md-6"></div>
 </div>
@@ -46,7 +47,11 @@
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" role="button" onclick="alert('Saat ini kamu tidak punya akses untuk memperbarui data ini.')">
+                                        <a class="dropdown-item" role="button" href="<?= base_url('dashboard/marketplace/show/' . $t['id_toko']); ?>">
+                                            <i class=" bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Detail Market
+                                        </a>
+                                        <a class="dropdown-item" role="button" href="<?= base_url('dashboard/marketplace/edit/' . $t['id_toko']); ?>">
                                             <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Update
                                         </a>

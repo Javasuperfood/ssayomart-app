@@ -77,7 +77,7 @@ class TokoModel extends Model
             ]
         ],
         'telp2' => [
-            'rules' => 'numeric',
+            'rules' => 'permit_empty|numeric',
             'errors' => [
                 'numeric' => 'Nomor telepon harus berupa angka',
             ]
