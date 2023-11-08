@@ -56,10 +56,14 @@
                                             Update
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <a role="button" class="dropdown-item" onclick="alert('Saat ini kamu tidak punya akses untuk menghapus data ini.')">
-                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                            <span class="text-danger">Delete</span>
-                                        </a>
+                                        <form method="post" action="<?= base_url('dashboard/marketplace/delete/' . $t['id_toko']); ?>">
+                                            <?= csrf_field() ?>
+                                            <input type="hidden" name="method" value="DELETE">
+                                            <button type="submit" class="dropdown-item">
+                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                                <span class="text-danger">Delete</span>
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>
