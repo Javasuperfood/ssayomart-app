@@ -278,8 +278,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             i.bi-exclamation-diamond-fill {
-                display: none;
+                font-size: 25px !important;
                 /* Sembunyikan elemen <i> pada tampilan Galaxy Fold */
+            }
+
+            .col-10 {
+                margin-left: 50px;
             }
 
             .row {
@@ -295,20 +299,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 margin-bottom: 10px;
                 /* Add some spacing between columns */
             }
-
-            .col-2 {
-                text-align: center;
-                /* Pusatkan ikon */
-                margin-bottom: 10px;
-                /* Tambahkan jarak antara ikon dan teks */
-            }
-
-            .col-10 {
-                text-align: center;
-                /* Pusatkan teks */
-            }
-
-
 
             .deskripsi {
                 width: 100%;
