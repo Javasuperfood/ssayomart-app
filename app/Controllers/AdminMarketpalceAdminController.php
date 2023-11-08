@@ -70,7 +70,7 @@ class AdminMarketpalceAdminController extends BaseController
         }
         $alert = [
             'type' => 'success',
-            'title' => 'Barhasil',
+            'title' => 'Berhasil',
             'message' => 'Berhasil menambahkan keterangan market'
         ];
         session()->setFlashdata('alert', $alert);

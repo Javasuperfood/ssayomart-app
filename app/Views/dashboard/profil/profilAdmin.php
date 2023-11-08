@@ -16,6 +16,7 @@
                     <img src="<?= base_url() ?>assets/img/pic/<?= $um['img']; ?>" alt="Profile" class="rounded-circle" style="width: 150px; height: 150px;">
                     <h6 class="mt-3"><b><?= $um['fullname']; ?></b></h6>
                     <h6 class="mb-4"><?= $results[0]->secret; ?></h6>
+                    <h6 class="mb-4"><?= $id; ?></h6>
                 </div>
             </div>
         </div>
