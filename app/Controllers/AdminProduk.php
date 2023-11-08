@@ -43,6 +43,10 @@ class AdminProduk extends BaseController
         }
         $produk_list = $produk->paginate($perPage, 'produk');
         //optimasi agar hanya mengamnil data dari 1 halaman
+        $pa['kategori'] = [];
+        $pa['sub_kategori'] = [];
+        $pa['variasi_item'] = [];
+        $pa['stok'] = [];
         foreach ($produk_list as $key => $p) {
             $pa['kategori'][$key] = $kategoriModel->find($p['id_kategori']);
             $pa['sub_kategori'][$key] = $subKategoriModel->find($p['id_sub_kategori']);
