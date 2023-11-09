@@ -134,7 +134,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
-    <div id="mobileContent">
+    <div id="mobileContent" style="margin-top:10px;">
         <!-- <div class="container-fluid p-0 position-relative">
             <div class="img-container">
                 <img src="addbaseurl/assets/img/kfood.jpg" class="img-fluid rounded-bottom-3">
@@ -246,7 +246,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- Desktop View -->
-    <div id="desktopContent">
+    <div id="desktopContent" style="margin-top: 75px;">
         <!-- <div class="container-fluid p-0 position-relative">
             <div class="img-container">
                 <img src="<?= base_url() ?>assets/img/kfood.jpg" class="img-fluid rounded-bottom-5">
