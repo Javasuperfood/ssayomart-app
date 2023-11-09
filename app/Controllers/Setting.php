@@ -231,9 +231,6 @@ class Setting extends BaseController
             'penerima' => $this->request->getVar('nama_penerima'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
-            'alamat_3' => $this->request->getVar('alamat_3'),
-            'latitude' => $this->request->getVar('latitude'),
-            'longitude' => $this->request->getVar('longitude'),
             'id_province' => $this->request->getVar('id_provinsi'),
             'province' => $this->request->getVar('provinsi'),
             'id_city' => $this->request->getVar('id_kabupaten'),
@@ -242,7 +239,6 @@ class Setting extends BaseController
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2')
         ];
-        // dd($data);
         // SWAL
         if ($data['telp2'] == null) {
             $ruleTelp2 = [];
@@ -278,18 +274,12 @@ class Setting extends BaseController
                 ]
             ],
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
                     'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ;  : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
-                ]
-            ],
-            'alamat_3' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Detail harus diisi.'
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'id_province' => [
@@ -385,9 +375,6 @@ class Setting extends BaseController
             'penerima' => $this->request->getVar('penerima'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
-            'alamat_3' => $this->request->getVar('alamat_3'),
-            'latitude' => $this->request->getVar('latitude'),
-            'longitude' => $this->request->getVar('longitude'),
             'id_province' => $this->request->getVar('id_provinsi'),
             'province' => $this->request->getVar('provinsi'),
             'id_city' => $this->request->getVar('id_kabupaten'),
@@ -413,11 +400,11 @@ class Setting extends BaseController
         //validation data
         if (!$this->validateData($data, [
             'label' => [
-                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
                     'required' => 'Label harus diisi.',
                     'regex_match' => 'Label hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ;  : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
 
                 ]
             ],
@@ -430,18 +417,12 @@ class Setting extends BaseController
                 ]
             ],
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
                     'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ;  : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
-                ]
-            ],
-            'alamat_3' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Detail harus diisi.'
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
             'id_province' => [

@@ -266,9 +266,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <!-- Konten Kolom Pertama -->
 
                     <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM?autoplay=1&mute=1&loop=1&controls=1&showinfo=1&rel=1" title="YouTube video" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
                     </div>
-
 
                 </div>
 

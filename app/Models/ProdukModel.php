@@ -90,6 +90,23 @@ class ProdukModel extends Model
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->where(['slug' => $slug1])->first();
     }
 
+    // public function getKategoriByProdukId($produkId)
+    // {
+    //     return $this->db->table('jsf_kategori')
+    //         ->where('jsf_kategori.id_kategori', $produkId)
+    //         ->get()
+    //         ->getResultArray();
+    // }
+
+    // public function getKategoriByProdukIdBatch($produkId)
+    // {
+    //     return $this->db->table('jsf_kategori_produk')
+    //         ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_kategori_produk.id_kategori')
+    //         ->where('jsf_kategori_produk.id_produk', $produkId)
+    //         ->get()
+    //         ->getResultArray();
+    // }
+
     public function getSubKategoriByKategori($kategoriId)
     {
         return $this->db->table('jsf_subkategori')
@@ -99,6 +116,7 @@ class ProdukModel extends Model
     }
     public function getNamaKategori($produkId)
     {
+        // Query untuk mengambil nama kategori berdasarkan ID produk
         return $this->db->table('jsf_produk')
             ->join('jsf_subkategori', 'jsf_subkategori.id_sub_kategori = jsf_produk.id_sub_kategori')
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_subkategori.id_kategori')
@@ -140,7 +158,7 @@ class ProdukModel extends Model
 
     public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 5)
     {
-        $offset = ($page - 1) * $limit;
+        $offset = ($page - 1) * $limit; // Menghitung offset berdasarkan halaman
         $getProduk = $this->db->table('jsf_produk p')
             ->select('p.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
@@ -163,6 +181,7 @@ class ProdukModel extends Model
     {
         return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', 'sku', $keyword);
     }
+
 
     public function adminProdukSearch($keyword)
     {

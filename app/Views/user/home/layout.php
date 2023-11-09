@@ -11,7 +11,6 @@
 
     <!-- Panggil file CSS dari folder public/assets -->
     <link rel="stylesheet" href="<?= base_url('assets/css/produk.css') ?>">
-    <?= $this->renderSection('custom_head') ?>
 </head>
 
 <body>

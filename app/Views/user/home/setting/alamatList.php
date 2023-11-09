@@ -72,23 +72,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <button type="submit" id="selectAddress" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-check"></i></button>
             </form>
         </div>
-
-        <style>
-            @media screen and (max-width: 280px) {
-                .card-body {
-                    font-size: 13px;
-                    flex: 1 1 auto;
-                    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-                    color: var(--bs-card-color);
-                }
-
-                .border-0 {
-                    font-size: 12px;
-                    border: 0 !important;
-                }
-
-            }
-        </style>
         <style>
             .position-fixed {
                 position: fixed;
