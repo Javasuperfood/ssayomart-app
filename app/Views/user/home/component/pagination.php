@@ -60,9 +60,6 @@ $countProduk = count($produk);
                     </div>
                 </div>
             </div>`
-    <?php if ($countProduk > 5) : ?>
-        productContainer.append(cardLoader);
-    <?php endif; ?>
 
     function loadMoreData() {
         if (!isLoading) {
@@ -159,9 +156,9 @@ $countProduk = count($produk);
                         </div>
                     </div>
                 </div>`
-                        $("#cardLoader").remove()
+                        // $("#cardLoader").remove()
                         productContainer.append(html);
-                        productContainer.append(cardLoader);
+                        // productContainer.append(cardLoader);
                     });
                     isLoading = false;
                 },
