@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container d-md-none">
+        <div class="container">
             <form action="<?= base_url() ?>setting/update-alamat/edit-alamat/<?= $au['id_alamat_users']; ?>" method="post" class="pt-3">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_user" value="<?= $au['id_user']; ?>">
@@ -120,7 +120,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="mb-3 mx-3 my-3">
                     <div id="map"></div>
                     <div class="button-container">
-                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i>My Location</button>
+                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
                     </div>
                 </div>
                 <div class="row p-3 px-4">
@@ -131,6 +131,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         </div>
     </div>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+        .leaflet-control-attribution {
+            display: none;
+        }
+
+        .button-container {
+            position: absolute;
+            margin-bottom: -340px;
+            bottom: 10px;
+            margin-left: 10px;
+            z-index: 1000;
+            top: 1160px;
+        }
+
+
+        #getLocationBtn {
+            border-radius: 50% !important;
+
+        }
+    </style>
 <?php else : ?>
     <!-- end mobile -->
 
@@ -234,7 +259,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-12">
                     <div id="map"></div>
                     <div class="button-container">
-                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i>My Location</button>
+                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i></button>
                         <div class="row p-4 px-4">
                             <div class="col-12 d-flex justify-content-center">
                                 <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;">Simpan Data</button>
@@ -243,6 +268,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         </div>
     </div>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+        .leaflet-control-attribution {
+            display: none;
+        }
+
+        .button-container {
+            position: absolute;
+            margin-bottom: -340px;
+            bottom: 10px;
+            margin-left: 10px;
+            z-index: 1000;
+
+
+        }
+
+        #getLocationBtn {
+            border-radius: 50% !important;
+            margin-bottom: 20%;
+            margin-left: 5%;
+        }
+    </style>
 <?php endif; ?>
 <!-- end Desktop -->
 
@@ -360,22 +411,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?= $this->section('custom_head') ?>
 <link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
 <script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
-<style>
-    #map {
-        height: 400px;
-        width: 100%;
-    }
 
-    .leaflet-control-attribution {
-        display: none;
-    }
-
-    .button-container {
-        position: absolute;
-        margin-bottom: -340px;
-        bottom: 10px;
-        margin-left: 10px;
-        z-index: 1000;
-    }
-</style>
 <?= $this->endSection(); ?>
