@@ -28,9 +28,7 @@ class ProdukController extends BaseController
         $kategori = new KategoriModel();
         $katSub = $kategori->getKategori($slug1);
         $subKategori = new SubKategoriModel();
-        $subResult = $subKategori->select('jsf_kategori.slug as slugK, jsf_sub_kategori.slug as slugS , jsf_sub_kategori.nama_kategori')
-            ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_sub_kategori.id_kategori', 'inner')
-            ->where('jsf_sub_kategori.id_kategori', $katSub['id_kategori'])->findAll();
+        $subResult = $subKategori->getSubKategoriByKategoriId($katSub['id_kategori']);
         $subSlug = $subKategori->getSubKategori($slug2);
 
         $produkModel = new ProdukModel();
