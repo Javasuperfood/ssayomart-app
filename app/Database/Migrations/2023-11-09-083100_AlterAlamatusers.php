@@ -8,6 +8,7 @@ class AlterAlamatusers extends Migration
 {
     public function up()
     {
+        $this->forge->dropColumn('jsf_alamat_users', ['update_at']);
         $fields = [
             'alamat_3' => [
                 'type' => 'text',
@@ -23,7 +24,13 @@ class AlterAlamatusers extends Migration
                 'type' => 'decimal(11,8)',
                 'null' => true,
                 'after' => 'latitude'
-            ]
+            ],
+            'updated_at' => [
+                'type' => 'timestamp',
+                'null' => true,
+                'after' => 'created_at'
+            ],
+
 
         ];
         $this->forge->addColumn('jsf_alamat_users', $fields);
@@ -31,6 +38,15 @@ class AlterAlamatusers extends Migration
 
     public function down()
     {
-        $this->forge->dropColumn('jsf_alamat_users', ['alamat_3, latitude, longitude']);
+        $this->forge->dropColumn('jsf_alamat_users', ['alamat_3, latitude, longitude, updated_at']);
+        $fields = [
+            'update_at' => [
+                'type' => 'timestamp',
+                'null' => true,
+                'after' => 'created_at'
+            ],
+
+        ];
+        $this->forge->addColumn('jsf_alamat_users', $fields);
     }
 }

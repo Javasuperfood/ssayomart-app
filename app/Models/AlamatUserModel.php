@@ -25,11 +25,14 @@ class AlamatUserModel extends Model
         'city',
         'zip_code',
         'telp',
-        'telp2'
+        'telp2',
+        'alamat_3',
+        'latitude',
+        'longitude',
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
