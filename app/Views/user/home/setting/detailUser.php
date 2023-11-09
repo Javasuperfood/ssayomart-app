@@ -25,7 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                                 <!-- Button trigger modal -->
-                                <div class="text-end mt-2">
+                                <div class="text-center mt-2">
                                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <i class="bi bi-trash"></i> Hapus Akun
                                     </button>
@@ -80,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="py-3 px-3">
                                 <div class="col text-center">
-                                    <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                                    <button type="submit" class="mt-3 btn btn-md btn-danger rounded-2" style="color: #fff;"><?= lang('Text.btn_simpan') ?></button>
                                 </div>
                             </div>
                         </div>
@@ -110,15 +110,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-lg-4">
-                        <div class="card border-0 shadow rounded-3">
+                        <div class="card border-0 shadow-sm rounded-3">
                             <div class="card-body text-center">
-                                <p class="fs-5 text-secondary"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
+                                <p class="fs-5 text-secondary"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
+                                <!-- Button trigger modal -->
+                                <div class="text-center mt-3">
+                                    <button type="button" class="rounded-2 btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <i class="bi bi-trash"></i> Hapus Akun
+                                    </button>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi Penghapusan Akun</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Akun anda akan dihapus oleh Admin.
+                                                Apakah anda yakin untuk mengajukan penghapusan akun?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="button" class="btn btn-danger">Ya</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8">
-                        <div class="card border-0 shadow rounded-3">
+                        <div class="card border-0 shadow-sm rounded-3">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-3">
@@ -171,7 +197,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                                 <div class="py-3 px-3">
                                     <div class="col text-center">
-                                        <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                                        <button type="submit" class="mt-5 btn btn-sm btn-danger rounded-2" style="color: #fff;"><?= lang('Text.btn_simpan') ?></button>
                                     </div>
                                 </div>
                             </div>
