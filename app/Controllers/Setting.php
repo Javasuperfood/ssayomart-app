@@ -274,12 +274,11 @@ class Setting extends BaseController
                 ]
             ],
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/]+$/]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, atau garis miring.'
                 ]
             ],
             'id_province' => [
@@ -417,14 +416,14 @@ class Setting extends BaseController
                 ]
             ],
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/]+$/]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Alamat tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, atau garis miring.'
                 ]
             ],
+
             'id_province' => [
                 'rules' => 'required',
                 'errors' => [

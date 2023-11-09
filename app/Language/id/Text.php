@@ -57,6 +57,7 @@ return [
     'subtitle_alamat' => '주소를 입력하세요 / Masukan Alamat Anda',
     'label_alamat' => '주소 라벨 / Label Alamat',
     'no_telp_alamat' => '수신자 휴대폰 번호 / Nomor Handphone Penerima',
+    'no_telp_alamat2' => '대체 휴대폰 번호 / Nomor Handphone Alternatif',
     'nama_penerima' => '수신자 이름 / Nama Penerima',
     'provinsi' => '주 / Provinsi',
     'kab_kota' => '리젠시/시 / Kabupaten/Kota',
@@ -122,7 +123,7 @@ return [
     'atau' => '또는 / Atau',
     'login_apple' => 'Login With Apple',
     'login_google' => 'Login With Google',
-    'belum_punya_akun' => 'Belum punya akun? / 아직 계정이 없나요?',
+    'belum_punya_akun' => '아직 계정이 없나요? / Belum punya akun?',
     'sudah_punya_akun' => '이미 계정이 있나요? / Sudah punya akun?'
 
 ];
