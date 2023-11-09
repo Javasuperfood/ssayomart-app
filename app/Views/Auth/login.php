@@ -26,7 +26,7 @@ $error = session('error'); ?>
                 <div class="actual-form">
                     <span class="small text-danger"><?= $error; ?></span>
                     <div class="input-wrap">
-                        <input type="email" class="input-field shadow-sm border-0 px-2" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Text.username') ?>" value="<?= old('email') ?>" required />
+                        <input type="email" class="input-field shadow-sm border-0 px-2" name="email" inputmode="email" autocomplete="email" placeholder="<?= lang('Text.email') ?>" value="<?= old('email') ?>" required />
                     </div>
                     <div class="input-wrap position-relative">
                         <input type="password" class="input-field shadow-sm border-0 px-2" name="password" inputmode="text" placeholder="<?= lang('Text.password') ?>" autocomplete="current-password" required />

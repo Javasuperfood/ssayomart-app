@@ -231,13 +231,16 @@ class Setting extends BaseController
             'penerima' => $this->request->getVar('nama_penerima'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
+            'alamat_3' => $this->request->getVar('alamat_3'),
             'id_province' => $this->request->getVar('id_provinsi'),
             'province' => $this->request->getVar('provinsi'),
             'id_city' => $this->request->getVar('id_kabupaten'),
             'city' => $this->request->getVar('kabupaten'),
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
-            'telp2' => $this->request->getVar('no_telp2')
+            'telp2' => $this->request->getVar('no_telp2'),
+            'latitude' => $this->request->getVar('latitude'),
+            'longitude' => $this->request->getVar('longitude'),
         ];
         // SWAL
         if ($data['telp2'] == null) {
@@ -374,13 +377,16 @@ class Setting extends BaseController
             'penerima' => $this->request->getVar('penerima'),
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
+            'alamat_3' => $this->request->getVar('alamat_3'),
             'id_province' => $this->request->getVar('id_provinsi'),
             'province' => $this->request->getVar('provinsi'),
             'id_city' => $this->request->getVar('id_kabupaten'),
             'city' => $this->request->getVar('kabupaten'),
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
-            'telp2' => $this->request->getVar('no_telp2')
+            'telp2' => $this->request->getVar('no_telp2'),
+            'latitude' => $this->request->getVar('latitude'),
+            'longitude' => $this->request->getVar('longitude'),
         ];
         if ($data['telp2'] == null) {
             $ruleTelp2 = [];
