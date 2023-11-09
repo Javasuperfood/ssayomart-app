@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Dashboard (on develop)</h1>
+<h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
 
 <div class="card border-0 shadow-sm mb-4">
 	<div class="card-header border-0 py-3">
@@ -65,8 +65,7 @@
 	// Get total_2 values from PHP and convert to JSON
 	const total2Values = <?= json_encode(array_column($checkoutWithProduk, 'total_2')); ?>;
 	const months = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-	const year = ['2021', '2022', '2023', '2024'];
-
+	const year = ['']
 
 	const chartData = {
 		labels: months,
@@ -99,7 +98,7 @@
 		} else if (selectedFilter === 'yearly') {
 			//  yearly data
 			const yearlyData = [120, 130, 400, 200, 40];
-			myChart.data.labels = years;
+			myChart.data.labels = ['2021', '2022', '2023', '2024'];
 			myChart.data.datasets[0].data = yearlyData;
 		}
 
