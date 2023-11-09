@@ -79,4 +79,14 @@ class CheckoutModel extends Model
             ->where('jsf_checkout.id_user', $id_user)
             ->get()->getResultArray();
     }
+
+    public function getCheckoutWithProduk()
+    {
+        $builder = $this->db->table('jsf_checkout');
+        $builder->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout.id_checkout');
+        $builder->select('jsf_checkout.*, jsf_produk.id_produk');
+        $query = $builder->get();
+
+        return $query->getResult();
+    }
 }

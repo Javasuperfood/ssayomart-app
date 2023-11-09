@@ -18,7 +18,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <label for="no_telp1" class="form-label"><?= lang('Text.label_alamat') ?><span class="text-danger fs-5"> *</span></label>
+                                    <label for="label" class="form-label"><?= lang('Text.label_alamat') ?><span class="text-danger fs-5"> *</span></label>
                                     <input class="form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" style="font-size: 14px;" value="<?= old('label') ?>">
                                     <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
                                 </div>
@@ -27,7 +27,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <label for="no_telp1" class="form-label"><?= lang('Text.nama_penerima') ?><span class="text-danger fs-5"> *</span></label>
+                                    <label for="nama_penerima" class="form-label"><?= lang('Text.nama_penerima') ?><span class="text-danger fs-5"> *</span></label>
                                     <input class="form-control <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('nama_penerima')) ? 'is-invalid' : '' ?>" name="nama_penerima" id="nama_penerima" style="font-size: 14px;" value="<?= old('nama_penerima') ?>">
                                     <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
                                 </div>
@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <label for="no_telp1" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger fs-5"> *</span></label>
+                                    <label for="telp" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger fs-5"> *</span></label>
                                     <input class="form-control shadow-sm floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0' ?>" name="no_telp1" id="no_telp1" style="font-size: 14px;" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event)">
                                     <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
                                 </div>
@@ -45,7 +45,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <label for="no_telp2" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
+                                    <label for="telp2" class="form-label"><?= lang('Text.no_telp_alamat2') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
                                     <input class="form-control <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="no_telp2" style="font-size: 14px;" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event)">
                                     <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                                 </div>
@@ -104,7 +104,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="form-group mb-3">
                                     <label for=" floatingInput"><?= lang('Text.patokan_alamat') ?><span class="text-danger"> (optional)</span></label>
                                     <input class="form-control border-0 shadow-sm floatingInput <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" style="font-size: 14px;" value="<?= old('alamat_2') ?>">
-                                    <span id="patokanError" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>

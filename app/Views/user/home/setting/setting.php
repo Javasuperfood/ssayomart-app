@@ -152,7 +152,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="mb-3">
                                     <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
-                                <button type="button" class="btn btn-danger btn-block">Submit</button>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-danger btn-block" style="width: 100%">Submit</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -206,7 +208,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             font-size: 12px;
         }
 
-        .modal-body .form-control{
+        .modal-body .form-control {
             border: 1px solid #DEE2E6;
         }
     </style>
@@ -219,6 +221,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         /* Responsive styling for smaller screens (Samsung Galaxy Fold) */
         @media screen and (max-width: 280px) {
+
+            h3.fw-bold.py-3.fs-5 {
+                font-size: 15px !important;
+            }
+
+            i.bi-heart-pulse-fill {
+                font-size: 25px !important;
+
+            }
+
+            .col-10 {
+                margin-left: 50px;
+                font-size: 10px !important;
+            }
+
             .list-group-item {
                 padding: 10px 5px !important;
                 font-size: 12px !important;

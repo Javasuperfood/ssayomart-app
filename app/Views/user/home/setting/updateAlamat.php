@@ -16,76 +16,96 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_user" value="<?= $au['id_user']; ?>">
 
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="label" name="label" style="font-size: 14px;" value="<?= $au['label']; ?>">
-                        <label for="floatingInput">Label*</label>
-                        <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
+                <div class="container text-secondary" style="font-size: 12px;">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="label" class="form-label"><?= lang('Text.label_alamat') ?><span class="text-danger fs-5"> *</span></label>
+                                <input class="form-control floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="label" name="label" style="font-size: 14px;" value="<?= $au['label']; ?>">
+                                <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="penerima" name="penerima" style="font-size: 14px;" value="<?= $au['penerima']; ?>">
-                        <label for="floatingInput">Nama Penerima*</label>
-                        <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
-                    </div>
-                </div>
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp1" style="font-size: 14px;" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
-                        <label for="floatingInput">Nomor Handphone Penerima*</label>
-                        <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
-                    </div>
-                </div>
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp2" style="font-size: 14px;" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
-                        <label for="floatingInput">Nomor Handphone Penerima (Optional)</label>
-                        <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
-                    </div>
-                </div>
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi" style="font-size: 14px;">
-                            <option selected value="<?= $au['id_province']; ?>"><?= $au['province']; ?></option>
-                            <?php foreach ($provinsi as $p) : ?>
-                                <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <label for="provinsi">Provinsi</label>
-                    </div>
-                </div>
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten" style="font-size: 14px;">
-                            <option selected value="<?= $au['id_city']; ?>"><?= $au['city']; ?></option>
-                        </select>
-                        <label for="kabupaten">Kota</label>
-                    </div>
-                </div>
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="zip_code" name="zip_code" style="font-size: 14px;" value="<?= $au['zip_code']; ?>" onkeypress="return isNumber(event);">
-                        <label for=" floatingInput">Kode Pos*</label>
-                        <div class="invalid-feedback"><?= validation_show_error('zip_code') ?></div>
-                    </div>
-                </div>
 
-                <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi" value="<?= $au['province']; ?>">
-                <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>">
-
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0';; ?> shadow-sm" id="alamat_1" name="alamat_1" style="font-size: 14px;" value="<?= $au['alamat_1']; ?>">
-                        <label for=" floatingInput">Detail Alamat*</label>
-                        <div class="invalid-feedback"><?= validation_show_error('alamat_1') ?></div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="nama_penerima" class="form-label"><?= lang('Text.nama_penerima') ?><span class="text-danger fs-5"> *</span></label>
+                                <input class="form-control floatingInput <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="penerima" name="penerima" style="font-size: 14px;" value="<?= $au['penerima']; ?>">
+                                <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput border-0 shadow-sm" id="alamat_2" name="alamat_2" style="font-size: 14px;" value="<?= $au['alamat_2']; ?>">
-                        <label for=" floatingInput">Detail Alamat (optional)</label>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="telp" class="form-label"><?= lang('Text.no_telp_alamat') ?><span class="text-danger fs-5"> *</span></label>
+                                <input class="form-control floatingInput <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp1" style="font-size: 14px;" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
+                                <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="telp2" class="form-label"><?= lang('Text.no_telp_alamat2') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
+                                <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp2" style="font-size: 14px;" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
+                                <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="provinsi"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
+                                <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi" style="font-size: 14px;">
+                                    <option selected value="<?= $au['id_province']; ?>"><?= $au['province']; ?></option>
+                                    <?php foreach ($provinsi as $p) : ?>
+                                        <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <div class="invalid-feedback"><?= validation_show_error('id_province') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="kabupaten"><?= lang('Text.kab_kota') ?><span class="text-danger fs-5"> *</span></label>
+                                <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten" style="font-size: 14px;">
+                                    <option selected value="<?= $au['id_city']; ?>"><?= $au['city']; ?></option>
+                                </select>
+                                <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi" value="<?= $au['province']; ?>">
+                    <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for=" floatingInput"><?= lang('Text.zipcode') ?><span class="text-danger fs-5"> *</span></label> 
+                                <input class="form-control floatingInput <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="zip_code" name="zip_code" style="font-size: 14px;" value="<?= $au['zip_code']; ?>" onkeypress="return isNumber(event);">
+                                <div class="invalid-feedback"><?= validation_show_error('zip_code') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger fs-5"> *</span></label> 
+                                <input class="form-control floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0';; ?> shadow-sm" id="alamat_1" name="alamat_1" style="font-size: 14px;" value="<?= $au['alamat_1']; ?>">
+                                <div class="invalid-feedback"><?= validation_show_error('alamat_1') ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3 mx-3 my-3">

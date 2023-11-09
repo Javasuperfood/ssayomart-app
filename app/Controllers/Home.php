@@ -2,19 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\CheckoutModel;
+
 class Home extends BaseController
 {
     // test role 
     public function dashboard()
     {
-        if (auth()->user()->inGroup('admin')) {
-            return redirect()->to(base_url('dashboard/order'));
-        }
-        $data = [
-            'title' => 'Ssayomart'
-        ];
-        return view('dashboard/home', $data);
+        $checkoutModel = new CheckoutModel();
+        $checkoutWithProduk = $checkoutModel->getCheckoutWithProduk();
+
+        return view('dashboard/home', ['checkoutWithProduk' => $checkoutWithProduk]);
     }
+
     public function admin(): string
     {
         return "admin";

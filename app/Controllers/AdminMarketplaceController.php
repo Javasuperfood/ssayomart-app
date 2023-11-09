@@ -202,17 +202,16 @@ class AdminMarketplaceController extends BaseController
     {
         $tokoModel = new TokoModel();
 
-        $model = $tokoModel->find($id);
-
         $alert = [
             'type' => 'success',
             'title' => 'Berhasil',
-            'message' => 'Berhasil hapus admin dari semua market'
+            'message' => 'Berhasil hapus alamat marketplace'
         ];
 
         $tokoModel->delete($id);
 
-        return redirect()->to('/dashboard/marketplace')->with('success', 'Item deleted successfully.');
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to(base_url('dashboard/marketplace'));
     }
 
     // FETCHING DATA API PROVINSI & KOTA

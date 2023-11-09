@@ -53,6 +53,22 @@
     </div>
 </div>
 
+<style>
+    
+    /* Media query for Samsung Galaxy Fold */
+    @media (max-width: 280px) {
+
+        .btn.btn-secondary {
+            font-size: 14px;
+        }
+
+        .btn.btn-danger {
+            font-size: 14px;
+        }
+    }
+
+</style>
+
 <script>
     function selectMarket(i) {
         $('#market' + i).prop('checked', true);
