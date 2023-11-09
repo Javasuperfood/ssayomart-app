@@ -38,7 +38,6 @@ $routes->set404Override();
 $routes->get('/', 'KategoriController::index');
 $routes->get('lang/{locale}', 'Language::index');
 $routes->get('/search', 'ProdukController::search');
-$routes->get('/search-history', 'HistoryTransaksiController::searchHistory');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
@@ -279,9 +278,16 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->post('set-uuid', 'NotifController::setUuid');
     $routes->Post('payment-success', 'NotifController::PaymentSuccess');
 
-    $routes->get('/notif', 'NotifController::PaymentSuccess2');
+    // $routes->get('/notif', 'NotifController::PaymentSuccess2');
     // $routes->get('/notif', 'NotifController::index');
     // $routes->post('/notif', 'NotifController::post');
+
+    $routes->group('home', ['filter' => 'resourceapi'], static function ($routes) {
+        $routes->get('/', 'RestfullApiController::index');
+        $routes->get('user/(:num)', 'RestfullApiController::user/$1');
+        $routes->get('origin', 'RestfullApiController::originList');
+        $routes->get('origin/(:num)', 'RestfullApiController::origin/$1');
+    });
 });
 
 

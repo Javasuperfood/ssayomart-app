@@ -107,6 +107,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-3">
+                                    <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
+                                    <input class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
+                                    <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
+                                    <input type="hidden" id="latitude" name="latitude">
+                                    <input type="hidden" id="longitude" name="longitude">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div id="map"></div>
+                                <div class="button-container">
+                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i>My Location</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row p-3 px-4">
                             <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 16px"><?= lang('Text.btn_simpan') ?></button>
                         </div>
@@ -189,6 +206,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <input class="form-control border-0 shadow-sm <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
                         <label for="zip_code"><?= lang('Text.zipcode') ?><span style="color: red"> *</span></label>
                     </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
+                                <input class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
+                                <input type="hidden" id="latitude" name="latitude">
+                                <input type="hidden" id="longitude" name="longitude">
+                            </div>
+                            <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
+                        </div>
+                        <div class="col-12">
+                            <div id="map"></div>
+                            <div class="button-container">
+                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i>My Location</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12 d-flex justify-content-center">
                         <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
                     </div>
@@ -201,6 +235,88 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
 <script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    var map = L.map('map', {
+        center: [-6.175247, 106.8270488],
+        zoom: 13,
+        layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')]
+    });
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+
+        // Clear all previous markers
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Add a new marker with a popup showing the full address
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup('Loading address...').openPopup();
+
+        // Perform reverse geocoding to get the full address
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+            .then(response => response.json())
+            .then(data => {
+                var address = data.display_name;
+                // Update the popup with the full address
+                map.eachLayer(function(layer) {
+                    if (layer instanceof L.Marker) {
+                        layer.getPopup().setContent('You are here: ' + address).openPopup();
+                        $("#alamat_3").val(address);
+                        $("#latitude").val(lat);
+                        $("#longitude").val(lon);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching address:', error));
+
+        map.setView([lat, lon], 15);
+    }
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+        // Clear all previous markers
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Add a new marker with a popup showing the full address
+        L.marker(e.latlng).addTo(map)
+            .bindPopup('Loading address...').openPopup();
+
+        // Perform reverse geocoding to get the full address
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${e.latlng.lat}&lon=${e.latlng.lng}`)
+            .then(response => response.json())
+            .then(data => {
+                var address = data.display_name;
+                // Update the popup with the full address
+                map.eachLayer(function(layer) {
+                    if (layer instanceof L.Marker) {
+                        layer.getPopup().setContent('You clicked here: ' + address).openPopup();
+                        $("#alamat_3").val(address);
+                        $("#latitude").val(e.latlng.lat);
+                        $("#longitude").val(e.latlng.lng);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching address:', error));
+    }
+
+    map.on('click', onMapClick);
     document.addEventListener('DOMContentLoaded', function() {
         <?php if (session()->has('alert')) : ?>
             var alertData = <?= json_encode(session('alert')) ?>;
@@ -213,4 +329,48 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     });
 </script>
 
+<?= $this->endSection(); ?>
+<?= $this->section('custom_head') ?>
+<link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
+<script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+
+    .leaflet-control-attribution {
+        display: none;
+    }
+
+    .button-container {
+        position: absolute;
+        margin-bottom: -340px;
+        bottom: 10px;
+        margin-left: 10px;
+        z-index: 1000;
+    }
+</style>
+<?= $this->endSection(); ?>
+<?= $this->section('custom_head') ?>
+<link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
+<script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+
+    .leaflet-control-attribution {
+        display: none;
+    }
+
+    .button-container {
+        position: absolute;
+        margin-bottom: -340px;
+        bottom: 10px;
+        margin-left: 10px;
+        z-index: 1000;
+    }
+</style>
 <?= $this->endSection(); ?>
