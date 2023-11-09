@@ -120,7 +120,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div id="map"></div>
                                 <div class="button-container">
-                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i>My Location</button>
+                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -131,6 +131,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+        .leaflet-control-attribution {
+            display: none;
+        }
+
+        .button-container {
+            position: absolute;
+            margin-left: 10px;
+            z-index: 1000;
+            border-radius: 50% !important;
+            /* Mengatur elemen menjadi bentuk bulat */
+            top: 1200px;
+        }
+
+        #getLocationBtn {
+            border-radius: 50%;
+            /* Mengatur tombol menjadi bentuk bulat */
+
+        }
+    </style>
 <?php else : ?>
     <!-- end mobile -->
     <!-- dekstop -->
@@ -219,7 +244,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-12">
                             <div id="map"></div>
                             <div class="button-container">
-                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i>My Location</button>
+                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i></button>
                             </div>
                         </div>
                     </div>
@@ -230,6 +255,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+
+        .leaflet-control-attribution {
+            display: none;
+        }
+
+        .button-container {
+            position: absolute;
+            margin-left: 10px;
+            z-index: 1000;
+            border-radius: 50% !important;
+            /* Mengatur elemen menjadi bentuk bulat */
+            bottom: 110px;
+        }
+
+        #getLocationBtn {
+            border-radius: 50%;
+            /* Mengatur tombol menjadi bentuk bulat */
+
+        }
+    </style>
 <?php endif; ?>
 <!-- end desktop -->
 
@@ -333,44 +383,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?= $this->section('custom_head') ?>
 <link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
 <script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
-<style>
-    #map {
-        height: 400px;
-        width: 100%;
-    }
 
-    .leaflet-control-attribution {
-        display: none;
-    }
-
-    .button-container {
-        position: absolute;
-        margin-bottom: -340px;
-        bottom: 10px;
-        margin-left: 10px;
-        z-index: 1000;
-    }
-</style>
-<?= $this->endSection(); ?>
-<?= $this->section('custom_head') ?>
-<link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
-<script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
-<style>
-    #map {
-        height: 400px;
-        width: 100%;
-    }
-
-    .leaflet-control-attribution {
-        display: none;
-    }
-
-    .button-container {
-        position: absolute;
-        margin-bottom: -340px;
-        bottom: 10px;
-        margin-left: 10px;
-        z-index: 1000;
-    }
-</style>
 <?= $this->endSection(); ?>
