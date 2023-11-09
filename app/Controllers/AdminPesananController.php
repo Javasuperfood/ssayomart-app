@@ -27,14 +27,27 @@ class AdminPesananController extends BaseController
 
         $toko = $adminTokoModel->where('id_user', user_id())->findAll();
 
-
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
         $perPage = 10;
 
-        $checkout = $checkoutModel->select('jsf_checkout.*, jsf_status_pesan.status as status')
-            ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
-            ->where('id_toko', $toko[0]['id_toko'])->paginate($perPage, 'order');
+        $allOrder = $checkoutProdModel->getAllTransaksiWithStatus($toko, $perPage, $currentPage, 2);
+        $data = [
+            'pages' => 'in-proccess',
+            'order' => $allOrder,
+            'pager' => $checkoutProdModel->pager,
+            'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'statusPesan' => $statusPesanModel->findAll()
+        ];
+
+        if (!empty($toko)) {
+            $checkout = $checkoutModel->select('jsf_checkout.*, jsf_status_pesan.status as status')
+                ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
+                ->where('id_toko', $toko[0]['id_toko'])->paginate($perPage, 'order');
+        } else {
+            return view('dashboard/pesanan/index', $data);
+        }
+
         foreach ($checkout as $key => $c) {
             $checkout[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }

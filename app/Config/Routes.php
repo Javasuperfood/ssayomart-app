@@ -109,6 +109,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
+    $routes->get('/dashboard/home', 'Home::dashboard');
     $routes->group('order/', static function ($routes) {
         // $routes->get('/', 'AdminPesananController::index');
         // $routes->get('2', 'AdminPesananController::index2');
