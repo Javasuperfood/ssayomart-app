@@ -88,6 +88,57 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+
+    <style>
+        @media (max-width: 280px) {
+
+            .btn.btn-lg.fw-bold {
+                font-size: 12px !important;
+            }
+
+            .btn.btn-sm {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.8rem;
+                margin-top: 5px !important;
+                margin-right: 60px !important;
+            }
+
+            p.fs-5 {
+                font-size: 13px !important;
+            }
+
+            .container {
+                padding-top: 1rem;
+            }
+
+            .card {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .modal-dialog {
+                max-width: 100%;
+            }
+
+            .modal-content {
+                width: 100%;
+            }
+
+            .input-group-text {
+                font-size: 0.8rem;
+            }
+
+            .form-control {
+                font-size: 0.9rem;
+            }
+
+            .btn-sm {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+
 <?php else : ?>
 
     <!-- end Mobile -->
