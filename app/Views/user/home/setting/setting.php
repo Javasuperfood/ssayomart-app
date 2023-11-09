@@ -205,6 +205,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         .modal-body .btn-danger {
             font-size: 12px;
         }
+
+        .modal-body .form-control{
+            border: 1px solid #DEE2E6;
+        }
     </style>
 
     <style>
