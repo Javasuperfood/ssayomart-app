@@ -49,7 +49,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
-                                                Menunggu Pemabayarn
+                                                Menunggu Pembayaran
                                             </a>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col-3">
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img">
                                             <div class="position-absolute bottom-0 start-50 translate-middle-x">
-                                                <a class="link-secondary" href="#" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
+                                                <a class="link-secondary" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
                                                     <i class="bi bi-chevron-bar-down fs-4" style="font-weight: bold;"></i>
                                                 </a>
                                             </div>
@@ -300,11 +300,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Add some spacing between columns */
             }
 
+            a.btn {
+                padding: 5px;
+            }
+
+            .form-control{
+                font-size: 14px;
+            }
+
             .deskripsi {
                 width: 100%;
                 /* Full width for description column */
                 text-align: center;
                 /* Center the description */
+            }
+
+            .deskripsi .card-title{
+                font-size: 14px !important;
+                margin-top: 8px !important;
+            }
+
+            .deskripsi .text-secondary{
+                font-size: 14px !important;
             }
 
             .position-absolute {
@@ -372,49 +389,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                            <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
                                                 Semua Transaksi
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
-                                                Menunggu Pemabayarn
+                                            <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                                Menunggu Pembayaran
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                            <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
                                                 Diproses
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                            <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
                                                 Dikirim
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                            <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
                                                 Diterima
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                            <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
                                                 Dibatalkan
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:8px; color:#000;">
+                                            <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
                                                 Gagal
                                             </a>
                                         </div>
@@ -438,7 +455,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col-4">
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width: 150px;">
                                             <div class="position-absolute bottom-0 start-50 translate-middle-x">
-                                                <a class="link-secondary" href="#" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
+                                                <a class="link-secondary" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
                                                     <i class="bi bi-chevron-bar-down fs-4" style="font-weight: bold;"></i>
                                                 </a>
                                             </div>
