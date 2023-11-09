@@ -156,7 +156,7 @@ class ProdukModel extends Model
         return $products;
     }
 
-    public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 5)
+    public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 10)
     {
         $offset = ($page - 1) * $limit; // Menghitung offset berdasarkan halaman
         $getProduk = $this->db->table('jsf_produk p')
