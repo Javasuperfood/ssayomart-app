@@ -39,15 +39,15 @@
     </li>
 <?php endif; ?>
 <?php if (auth()->user()->inGroup('admin')) : ?>
-    <div class="sidebar-heading">
-        Pesanan
-    </div>
-    <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard">
             <i class="bi bi-speedometer2"></i>
             <span>Dashboard</span></a>
     </li>
+    <div class="sidebar-heading">
+        Pesanan
+    </div>
+    <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#pesanan" aria-expanded="false" aria-controls="pesanan">
             <i class="fas fa-fw fa-receipt"></i>
