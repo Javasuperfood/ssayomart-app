@@ -19,6 +19,9 @@ class AlamatUserModel extends Model
         'penerima',
         'alamat_1',
         'alamat_2',
+        'alamat_3',
+        'latitude',
+        'longitude',
         'id_province',
         'province',
         'id_city',
@@ -29,7 +32,7 @@ class AlamatUserModel extends Model
     ];
 
     // Dates
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

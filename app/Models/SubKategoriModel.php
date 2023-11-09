@@ -74,6 +74,12 @@ class SubKategoriModel extends Model
 
         return $this->where(['slug' => $slug])->first();
     }
+    public function getSubKategoriByidKategori($id)
+    {
+        return $this->select('jsf_kategori.slug as slugK, jsf_sub_kategori.slug as slugS , jsf_sub_kategori.nama_kategori')
+            ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_sub_kategori.id_kategori', 'inner')
+            ->where('jsf_sub_kategori.id_kategori', $id)->findAll();
+    }
 
     public function getSubKategoriByProdukId($id_produk)
     {
@@ -102,6 +108,7 @@ class SubKategoriModel extends Model
         return $result;
     }
 
+    //Funtion delete sub kategori
     public function delSubKategori($id)
     {
         $produkModel = new ProdukModel();
