@@ -14,7 +14,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <div class="position-relative">
             <div class="ratio ratio-16x9">
-                <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0" title="YouTube video" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM?autoplay=1&mute=1&loop=1&controls=1&showinfo=1&rel=1" title="YouTube video" allowfullscreen></iframe>
             </div>
             <div class="overlay"></div>
             <div class="container py-5 text-white bg-danger">
@@ -34,13 +34,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
 
-
-
-
         <!-- Products -->
         <section>
             <!-- galery photos Mobile -->
-            <div class="container d-md-none">
+            <div class="container text-center">
                 <section class="galeri" id="galeri">
                     <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper mySwiper mt-3">
@@ -86,7 +83,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- Feature -->
         <section class="mt-3" style="background-color: #ffff;">
-            <div class="container text-dark pt-1">
+            <div class="container text-dark pt-1 text-center">
                 <header class="pt-4 pb-3 text-center">
                     <h3>Kenapa Pilih Kami ?</h3>
                 </header>
@@ -128,7 +125,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Feature -->
 
         <!-- Blog -->
-        <section class="mt-3 mb-2">
+        <section class="mt-3 mb-2 text-center">
             <div class="container text-dark">
                 <header class="mb-4">
                     <h3>Blog posts</h3>
@@ -237,218 +234,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     Join
                                 </button>
                             </div>
-        <div class="container-fluid p-0 position-relative mt-3">
-            <div class="ratio ratio-16x9" style="position: sticky; top: 60px;"> <!-- Ganti 60px dengan ketinggian navbar Anda -->
-                <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <!-- <div class="col-12 col-md-6 mt-2">
-            <h3 class=" mt-3" style="font-size: 1.5rem; margin-bottom: 1rem;">Gallery</h3>
-            <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper">
-                <div class="parallax-bg" style="
-          background-image: url(https://swiperjs.com/demos/images/nature-1.jpg);
-        " data-swiper-parallax="-23%"></div>
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="title" data-swiper-parallax="-300">Slide 1</div>
-                        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
-                        <div class="text" data-swiper-parallax="-100">
-                            <p style="font-size: 9px;">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                            </p>
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="title" data-swiper-parallax="-300">Slide 2</div>
-                        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
-                        <div class="text" data-swiper-parallax="-100">
-                            <p style="font-size: 9px;">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="title" data-swiper-parallax="-300">Slide 3</div>
-                        <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>
-                        <div class="text" data-swiper-parallax="-100">
-                            <p style="font-size: 9px;">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div> -->
-
-        <!-- tentang ssayomart -->
-        <div class="container mt-3">
-            <div class="row">
-                <!-- Konten Kolom Pertama -->
-                <!-- <div class="col-12 col-md-6">
-                    <div class="img-container">
-                        <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid rounded-4">
-                        <div class="img-overlay"></div>
-                    </div>
-
-                </div> -->
-                <div class="col">
-                    <!-- Konten Kolom Kedua -->
-                    <h3>Content Banner </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- galery photos Mobile -->
-        <div class="container d-md-none">
-            <section class="galeri" id="galeri">
-                <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
-                <div class="swiper mySwiper mt-3">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-2.png" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-8.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-9.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-10.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Grid row -->
-                </div>
-            </section>
-
-            <script>
-                // slider galeri produk mobile dan 
-                var swiper = new Swiper(".mySwiper", {
-                    speed: 600,
-                    parallax: true,
-                    pagination: {
-                        el: ".swiper-pagination",
-                        clickable: true,
-                    },
-                    navigation: {
-                        nextEl: ".swiper-button-next",
-                        prevEl: ".swiper-button-prev",
-                    },
-                });
-            </script>
-
-            <style>
-                .overlay {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    /* Warna gelap dengan opasitas 50% */
-                    z-index: 1;
-                }
-
-                .container {
-                    position: relative;
-                    z-index: 2;
-                }
-
-                /* Penyesuaian untuk tampilan mobile */
-                @media (max-width: 767px) {
-                    .container {
-                        text-align: center;
-                    }
-                }
-            </style>
-        <?php else : ?>
-            <!-- Desktop View -->
-            <div id="desktopContent" style="margin-top:80px;">
-                <div class="container-fluid p-0 position-relative mt-3">
-                    <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
                     </div>
                 </div>
             </section>
-        </div>
-        <!-- akhir galeri photos -->
-
-                <div class="container mt-3">
-                    <div class="row">
-                        <div class="col">
-                            <!-- Konten Kolom Kedua -->
-                            <h3 class="text-center mt-2">Tentang Ssayomart </h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container mt-3">
-                    <div class="row">
-                        <div class="col-12 col-md-6 ">
-                            <!-- Konten Kolom Kedua -->
-    </div>
-
-    <script>
-        // slider galeri produk mobile dan 
-        var swiper = new Swiper(".mySwiper", {
-            speed: 600,
-            parallax: true,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
+        </footer>
     </div>
 <?php else : ?>
-    <!-- Desktop View -->
+    <!-- end mobile -->
+
+    <!-- desktop konten -->
     <div id="desktopContent" style="margin-top:80px;">
         <div class="container-fluid p-0 position-relative mt-3">
             <div class="ratio ratio-16x9" style="position: sticky; top: 60px;"> <!-- Ganti 60px dengan ketinggian navbar Anda -->
@@ -463,85 +258,79 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <h3 class="text-center mt-2">Tentang Ssayomart </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
-                            <h3>Dokumentasi SSayomart Live</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <!-- Konten Kolom Pertama -->
-
-                            <div class="ratio ratio-16x9">
-                                <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="container mt-3 d-none d-md-block">
-                    <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                    <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                        <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                            <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                        </div>
-                    </div>
                 </div>
             </div>
-        <?php endif; ?>
-        <!-- End Desktop View -->
-        <?php
-        if ($isMobile) {
+        </div>
 
-            echo '<div id="mobileContent">';
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-12 col-md-6 ">
+                    <!-- Konten Kolom Kedua -->
 
-            echo '</div>';
-        } else {
+                    <h3>Dokumentasi SSayomart Live</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
-            echo '<div id="desktopContent">';
+                </div>
+                <div class="col-12 col-md-6">
+                    <!-- Konten Kolom Pertama -->
 
-            echo '</div>';
-        }
-        ?>
+                    <div class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
+                    </div>
 
+                </div>
 
+            </div>
+        </div>
 
+        <div class="container mt-3 d-none d-md-block">
+            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+            </div>
+            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
+<!-- End Desktop View -->
+<?php
+if ($isMobile) {
 
+    echo '<div id="mobileContent">';
 
+    echo '</div>';
+} else {
 
+    echo '<div id="desktopContent">';
 
+    echo '</div>';
+}
+?>
 
-
-
-
-
-
-
-
-
-        <?= $this->endSection(); ?>
+<?= $this->endSection(); ?>
