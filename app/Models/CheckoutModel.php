@@ -80,13 +80,13 @@ class CheckoutModel extends Model
             ->get()->getResultArray();
     }
 
-    public function getCheckoutWithProduk()
+    public function getCheckoutWithProduct()
     {
-        $builder = $this->db->table('jsf_stock');
-        $builder->join('jsf_toko', 'jsf_toko.id_toko = jsf_stock.id_toko');
-        $builder->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_stock.id_variasi_item');
-        $builder->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk');
-        $builder->select('jsf_toko.lable, jsf_produk.nama, jsf_variasi_item.value_item, jsf_stock.created_at, jsf_stock.id_toko, jsf_stock.stok');
+        $builder = $this->db->table('jsf_checkout');
+        $builder->select('users.fullname, jsf_produk.nama, jsf_checkout.created_at, jsf_checkout.total_2, jsf_checkout_produk.qty');
+        $builder->join('users', 'users.id = jsf_checkout.id_user');
+        $builder->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout');
+        $builder->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk');
         $query = $builder->get();
 
         return $query->getResult();
