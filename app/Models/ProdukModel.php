@@ -139,26 +139,59 @@ class ProdukModel extends Model
         return $products;
     }
 
+    // ...
+
     public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 10)
     {
-        $offset = ($page - 1) * $limit; // Menghitung offset berdasarkan halaman
+        $offset = ($page - 1) * $limit; // Calculate offset based on page
         $getProduk = $this->db->table('jsf_produk p')
             ->select('p.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
             ->groupBy('p.id_produk, p.nama')
             ->where('deleted_at', null);
+
         if ($k != false) {
             $getProduk->where('id_kategori', $k);
         }
+
         if ($sk != false) {
             $getProduk->where('id_sub_kategori', $sk);
         }
+
         if ($search != false) {
             $getProduk->like('nama', $search);
         }
+
+        $getProduk->orderBy('created_at', 'ASC'); // Order by the created_at column in ascending order
+
         $getProduk->limit($limit, $offset);
+
         return $getProduk->get()->getResultArray();
     }
+
+    // ...
+
+
+    // public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 10)
+    // {
+    //     $offset = ($page - 1) * $limit; // Menghitung offset berdasarkan halaman
+    //     $getProduk = $this->db->table('jsf_produk p')
+    //         ->select('p.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
+    //         ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
+    //         ->groupBy('p.id_produk, p.nama')
+    //         ->where('deleted_at', null);
+    //     if ($k != false) {
+    //         $getProduk->where('id_kategori', $k);
+    //     }
+    //     if ($sk != false) {
+    //         $getProduk->where('id_sub_kategori', $sk);
+    //     }
+    //     if ($search != false) {
+    //         $getProduk->like('nama', $search);
+    //     }
+    //     $getProduk->limit($limit, $offset);
+    //     return $getProduk->get()->getResultArray();
+    // }
 
     public function getHistoryTransaction($keyword, $page = 1)
     {

@@ -9,6 +9,8 @@ use App\Models\ProdukModel;
 use App\Models\StockModel;
 use App\Models\UsersModel;
 use App\Models\VariasiItemModel;
+use App\Models\PromoItemModel;
+use App\Models\PromoModel;
 
 class ProdukController extends BaseController
 {
@@ -27,9 +29,37 @@ class ProdukController extends BaseController
     {
         $kategori = new KategoriModel();
         $katSub = $kategori->getKategori($slug1);
+
+        $promoItemModel = new PromoItemModel();
+        $promoModel = new PromoModel();
+
         $subKategori = new SubKategoriModel();
         $subResult = $subKategori->getSubKategoriByKategoriId($katSub['id_kategori']);
         $subSlug = $subKategori->getSubKategori($slug2);
+
+        $now = date('Y-m-d H:i:s');
+        $promo = $promoModel->getPromo($now);
+        $promoItem = $promoItemModel->getPromo($slug1);
+        if ($promoItem) {
+            $filteredPromoItems = [];
+
+            foreach ($promoItem as $item) {
+                $idPromoProduk = $item['id_promo'];
+
+                $idPromoKategoriCocok = false;
+                foreach ($promo as $kategoriItem) {
+                    if ($kategoriItem['id_promo'] === $idPromoProduk) {
+                        $idPromoKategoriCocok = true;
+                        break;
+                    }
+                }
+                if ($idPromoKategoriCocok) {
+                    $filteredPromoItems[] = $item;
+                }
+            }
+            $promoItem = $filteredPromoItems;
+        }
+
 
         $produkModel = new ProdukModel();
         if ($this->request->isAJAX()) {
@@ -61,6 +91,7 @@ class ProdukController extends BaseController
                 'produk' => $getProduk,
                 'subKategori' => $subResult,
                 'sk' => $slug2,
+                'kategori_promo' => $promo,
                 'back' => '/' . '#ktr'
             ];
             // dd($data);
