@@ -287,6 +287,9 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->get('user/(:num)', 'RestfullApiController::user/$1');
         $routes->get('origin', 'RestfullApiController::originList');
         $routes->get('origin/(:num)', 'RestfullApiController::origin/$1');
+        $routes->get('transaction', 'RestfullApiController::transaction');
+        $routes->get('transaction/gosend', 'RestfullApiController::transactionGoSend');
+        $routes->get('transaction/gosend/(:segment)', 'RestfullApiController::transactionGoSendId/$1');
     });
 });
 

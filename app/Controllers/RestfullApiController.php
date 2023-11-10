@@ -5,6 +5,8 @@ namespace App\Controllers;
 use CodeIgniter\API\ResponseTrait;
 use App\Controllers\BaseController;
 use App\Models\AlamatUserModel;
+use App\Models\CheckoutModel;
+use App\Models\CheckoutProdukModel;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 
@@ -81,6 +83,80 @@ class RestfullApiController extends BaseController
             'status' => 200,
             'success' => $origin['lable'],
             'response' => $origin
+        ];
+        return $this->respond($response, 200);
+    }
+    public function transaction()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['gosend'] == 1) {
+                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+                if ($t['id_destination']) {
+                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                } else {
+                    $transaction[$key]['destination'] = [];
+                }
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
+    public function transactionGoSend()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->where('gosend', 1)->orderBy('id_checkout')->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+            if ($t['id_destination']) {
+                $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+            } else {
+                $transaction[$key]['destination'] = [];
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
+    public function transactionGoSendId($id)
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->where('gosend', 1)->like('id_checkout', $id)->orLike('invoice', $id)->orderBy('id_checkout')->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+            if ($t['id_destination']) {
+                $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+            } else {
+                $transaction[$key]['destination'] = [];
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
         ];
         return $this->respond($response, 200);
     }
