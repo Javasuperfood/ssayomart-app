@@ -76,6 +76,85 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="pb-5"></div>
         </div>
     </div>
+
+    <style>
+        /* Common styles for both mobile and desktop */
+        .card-body {
+            padding: 1rem;
+        }
+
+        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
+        @media screen and (max-width: 280px) {
+
+            .img-small {
+                max-height: 100px !important;
+                /* Sesuaikan tinggi maksimum yang Anda inginkan */
+                max-width: 100px !important;
+                /* Biarkan lebar gambar menyesuaikan */
+                margin: 25px 0 25px auto !important;
+                /* Geser gambar ke tengah kanan */
+            }
+
+            .input-group {
+                position: relative;
+                display: flex;
+                align-items: stretch;
+                max-width: 280px;
+                width: 100%;
+                margin: 0 auto;
+                flex-wrap: nowrap;
+            }
+
+            .form-control {
+                width: 20px;
+                padding: 0;
+                margin-bottom: 25px;
+            }
+
+            button.position-absolute {
+                bottom: 5px;
+                right: 10px;
+            }
+
+            .btn.btn-lg.fw-bold {
+                font-size: 12px;
+                padding: 6px 6px;
+                border-radius: 5px;
+            }
+
+            .btn.btn-sm.mt-3.position-absolute.end-0.mx-2 {
+                font-size: 10px;
+                padding: 5px 10px;
+            }
+
+            .btn.btn-outline-danger.btn-sm.rounded-circle {
+                padding: 0;
+                width: 20px;
+                height: 20px;
+
+            }
+
+            .btn.btn-outline-danger.btn-sm.rounded-circle i {
+                font-size: 10px;
+
+            }
+
+            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
+                margin-left: -2px;
+                display: flex;
+                justify-content: center;
+            }
+
+            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
+                margin-left: -1px;
+                display: flex;
+                justify-content: center;
+            }
+
+            /* Add specific CSS styles for the delete button if needed */
+        }
+    </style>
+
 <?php else : ?>
     <!-- End Mobile View -->
 
@@ -195,86 +274,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         border-color: #ec2614;
     }
 </style>
-
-<style>
-    /* Common styles for both mobile and desktop */
-    .card-body {
-        padding: 1rem;
-    }
-
-    /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
-    @media screen and (max-width: 280px) {
-
-        .img-small {
-            max-height: 100px !important;
-            /* Sesuaikan tinggi maksimum yang Anda inginkan */
-            max-width: 100px !important;
-            /* Biarkan lebar gambar menyesuaikan */
-            margin: 25px 0 25px auto !important;
-            /* Geser gambar ke tengah kanan */
-        }
-
-        .input-group {
-            position: relative;
-            display: flex;
-            align-items: stretch;
-            max-width: 280px;
-            width: 100%;
-            margin: 0 auto;
-            flex-wrap: nowrap;
-        }
-
-        .form-control {
-            width: 20px;
-            padding: 0;
-            margin-bottom: 25px;
-        }
-
-        button.position-absolute {
-            bottom: 5px;
-            right: 10px;
-        }
-
-        .btn.btn-lg.fw-bold {
-            font-size: 14px;
-            padding: 2px 10px;
-        }
-
-        .btn.btn-sm.mt-3.position-absolute.end-0.mx-2 {
-            font-size: 10px;
-            padding: 5px 10px;
-        }
-
-        .btn.btn-outline-danger.btn-sm.rounded-circle {
-            padding: 0;
-            width: 20px;
-            height: 20px;
-
-        }
-
-        .btn.btn-outline-danger.btn-sm.rounded-circle i {
-            font-size: 10px;
-
-        }
-
-        .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
-            margin-left: -2px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
-            margin-left: -1px;
-            display: flex;
-            justify-content: center;
-        }
-
-        /* Add specific CSS styles for the delete button if needed */
-    }
-</style>
-
-
-
 <script type="text/javascript">
     var produkSelected = {};
 
