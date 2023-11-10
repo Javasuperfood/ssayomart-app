@@ -290,6 +290,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->get('transaction', 'RestfullApiController::transaction');
         $routes->get('transaction/gosend', 'RestfullApiController::transactionGoSend');
         $routes->get('transaction/gosend/(:segment)', 'RestfullApiController::transactionGoSendId/$1');
+        $routes->post('transaction/update-status/(:segment)', 'RestfullApiController::updateStatus/$1');
     });
 });
 

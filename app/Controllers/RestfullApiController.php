@@ -160,4 +160,31 @@ class RestfullApiController extends BaseController
         ];
         return $this->respond($response, 200);
     }
+    public function updateStatus($id)
+    {
+        $checkoutModel = new CheckoutModel();
+        $transaction = $checkoutModel->like('id_checkout', $id)->orLike('invoice', $id)->first();
+
+        $update = $this->request->getVar('update');
+        if ($update == 'pickup' || $update == 'send') {
+            $id = 3;
+        } elseif ($update == 'cancel') {
+            $id = 5;
+        } else {
+            $id = 2;
+        }
+        $data = [
+            'id_checkout' => $transaction['id_checkout'],
+            'id_status_pesan' => $id
+        ];
+        $checkoutModel->save($data);
+        $transaction = $checkoutModel->like('id_checkout', $id)->orLike('invoice', $id)->first();
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'update' => $data,
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
 }
