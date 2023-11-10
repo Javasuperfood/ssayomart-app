@@ -264,12 +264,17 @@ class Setting extends BaseController
     {
         session();
         $kategori = new KategoriModel();
-        $provinsi = $this->rajaongkir('province');
+
         $data = [
             'title'     => lang('Text.btn_tambah'),
-            'provinsi' => json_decode($provinsi)->rajaongkir->results,
+            'provinsi' => [],
             'kategori' => $kategori->findAll(),
         ];
+        $provinsi = $this->rajaongkir('province');
+        // dd($provinsi);
+        if (json_decode($provinsi)->rajaongkir->status->code == 200) {
+            $data['provinsi'] = json_decode($provinsi)->rajaongkir->results;
+        }
         return view('user/home/setting/createAlamat', $data);
     }
     public function saveAlamat()

@@ -20,6 +20,58 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?php endif ?>
 
                 <div class="row row-cols-1 <?= (!$alamat_list) ? 'd-none' : ''; ?>">
+                    <div class="col d-none">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-shop-window"></i>
+                            </span>
+                            <div class="form-floating">
+                                <?php foreach ($market_list as $key => $m) : ?>
+                                    <?php if ($m['id_toko'] == $marketSelected) : ?>
+                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" readonly>
+                                    <?php elseif (!$marketSelected) : ?>
+                                        <?php if ($key == 0) : ?>
+                                            <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" readonly>
+                                        <?php endif ?>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                                <label for="mpOrigin">Market</label>
+                            </div>
+                            <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                        </div>
+                        <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modal-pilih-originLabel">Pilih Market</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row row-cols-1">
+                                            <div class="col">
+                                                <div class="row row-cols-1">
+                                                    <?php foreach ($market_list as $key => $m) : ?>
+                                                        <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>')">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div class="form-check form-switch">
+                                                                        <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
+                                                                    </div>
+                                                                    <p class="fw-bold">Ssayomart <?= $m['lable']; ?></p>
+                                                                    <p><?= $m['alamat_1']; ?></p>
+                                                                    <p><?= $m['telp']; ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="form-floating mb-2">
                             <select class="form-control border-0 shadow-sm" id="market" name="market">
@@ -28,6 +80,58 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endforeach ?>
                             </select>
                             <label for="market" id="market">Lokasi Market</label>
+                        </div>
+                    </div>
+                    <div class="col d-none">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-house"></i>
+                            </span>
+                            <div class="form-floating">
+                                <?php foreach ($alamat_list as $key => $al) : ?>
+                                    <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
+                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" readonly>
+                                    <?php elseif (!$addressSelected) : ?>
+                                        <?php if ($key == 0) : ?>
+                                            <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" readonly>
+                                        <?php endif ?>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                                <label for="mpOrigin">Alamat</label>
+                            </div>
+                            <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                        </div>
+                        <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row row-cols-1">
+                                            <div class="col">
+                                                <div class="row row-cols-1">
+                                                    <?php foreach ($alamat_list as $key => $a) : ?>
+                                                        <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>')">
+                                                            <div class="card">
+                                                                <div class="card-body">
+                                                                    <div class="form-check form-switch">
+                                                                        <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
+                                                                    </div>
+                                                                    <p class="fw-bold"> <?= $a['label']; ?></p>
+                                                                    <p><?= $m['alamat_1']; ?></p>
+                                                                    <p><?= $m['telp']; ?></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col">
@@ -61,15 +165,47 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="modal-body">
                                         <div class="row row-cols-1">
                                             <div class="col">
-                                                <input type="radio" name="kurirRadio" id=""> {{img Gosend}} Gosend
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 130px;">
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end">
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="setKurirM(this)">Pilih</button>
+                                                    </div>
+                                                </div>
                                                 <hr>
                                             </div>
                                             <div class="col">
-                                                <input type="radio" name="kurirRadio" id="">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 130px;">
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end">
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="setKurirM(this)">Pilih</button>
+                                                    </div>
+                                                </div>
                                                 <hr>
                                             </div>
                                             <div class="col">
-                                                <input type="radio" name="kurirRadio" id="">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 130px;">
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end">
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="setKurirM(this)">Pilih</button>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 130px;">
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end align-items-center">
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="setKurirM(this)">Pilih</button>
+                                                    </div>
+                                                </div>
                                                 <hr>
                                             </div>
                                         </div>

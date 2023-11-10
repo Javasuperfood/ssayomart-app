@@ -11,7 +11,11 @@
     $('#perubahan').text(selectedOption);
 
     var total = <?= $total; ?>; // Inisialisasi total dengan harga total awal
-
+    function setKurirM(e) {
+        var brand = $(e).attr('brand');
+        $('#mpkirim').val(brand);
+        populateServices(e.value, origin, destination);
+    }
     // Fungsi untuk mengisi layanan berdasarkan kurir yang dipilih
     function populateServices(kurir, origin, destination) {
         $("#service, #ongkir, #ongkirText, #estimasi, #total, #totalText, #serviceText, #field_subtotal").empty().val('');
@@ -127,4 +131,16 @@
             updateDiscount();
         });
     });
+
+    function selectMarket(i, label) {
+        $('#market' + i).prop('checked', true);
+        $('#mpOrigin').val(label);
+        $('#modal-pilih-origin').modal('hide');
+    }
+
+    function selectAlamat(i, label) {
+        $('#alamatD' + i).prop('checked', true);
+        $('#mpDestination').val(label);
+        $('#modal-pilih-destination').modal('hide');
+    }
 </script>
