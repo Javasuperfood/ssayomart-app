@@ -109,7 +109,6 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
-    $routes->get('/dashboard/home', 'Home::dashboard');
     $routes->group('order/', static function ($routes) {
         // $routes->get('/', 'AdminPesananController::index');
         // $routes->get('2', 'AdminPesananController::index2');
@@ -125,6 +124,9 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->get('(:segment)', 'AdminPesananController::detail/$1');
     });
 
+    // Route Reporting File
+    $routes->get('report/', 'Home::show');
+    $routes->get('report/printpdf', 'Home::print');
 
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');

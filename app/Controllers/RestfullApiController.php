@@ -95,6 +95,23 @@ class RestfullApiController extends BaseController
         $transaction = $checkoutModel->findAll();
         foreach ($transaction as $key => $t) {
             $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['id_status_pesan'] == 1) {
+                $transaction[$key]['status'] = 'Pending';
+            }
+            if ($t['id_status_pesan'] == 2) {
+                $transaction[$key]['status'] = 'Porcess';
+            }
+            if ($t['id_status_pesan'] == 3) {
+                $transaction[$key]['status'] = 'Sending';
+            }
+            if ($t['id_status_pesan'] == 4) {
+                $transaction[$key]['status'] = 'Finish';
+            }
+            if ($t['id_status_pesan'] == 5) {
+                $transaction[$key]['status'] = 'Failed';
+            }
+
+            $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
             if ($t['gosend'] == 1) {
                 $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
                 if ($t['id_destination']) {
@@ -181,7 +198,7 @@ class RestfullApiController extends BaseController
         $transaction = $checkoutModel->like('id_checkout', $id)->orLike('invoice', $id)->first();
         $response = [
             'status' => 200,
-            'success' => 'Transaction',
+            'success' => 'Transaction ' . $transaction['invoice'],
             'update' => $data,
             'response' => $transaction
         ];
@@ -197,6 +214,21 @@ class RestfullApiController extends BaseController
         $transaction = $checkoutModel->where('id_status_pesan', 1)->findAll();
         foreach ($transaction as $key => $t) {
             $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['id_status_pesan'] == 1) {
+                $transaction[$key]['status'] = 'Pending';
+            }
+            if ($t['id_status_pesan'] == 2) {
+                $transaction[$key]['status'] = 'Porcess';
+            }
+            if ($t['id_status_pesan'] == 3) {
+                $transaction[$key]['status'] = 'Sending';
+            }
+            if ($t['id_status_pesan'] == 4) {
+                $transaction[$key]['status'] = 'Finish';
+            }
+            if ($t['id_status_pesan'] == 5) {
+                $transaction[$key]['status'] = 'Failed';
+            }
             if ($t['gosend'] == 1) {
                 $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
                 if ($t['id_destination']) {
@@ -209,7 +241,7 @@ class RestfullApiController extends BaseController
         }
         $response = [
             'status' => 200,
-            'success' => 'Transaction',
+            'success' => 'Transaction Waiting Process',
             'response' => $transaction
         ];
         return $this->respond($response, 200);
@@ -223,6 +255,21 @@ class RestfullApiController extends BaseController
         $transaction = $checkoutModel->where('id_status_pesan', 2)->findAll();
         foreach ($transaction as $key => $t) {
             $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['id_status_pesan'] == 1) {
+                $transaction[$key]['status'] = 'Pending';
+            }
+            if ($t['id_status_pesan'] == 2) {
+                $transaction[$key]['status'] = 'Porcess';
+            }
+            if ($t['id_status_pesan'] == 3) {
+                $transaction[$key]['status'] = 'Sending';
+            }
+            if ($t['id_status_pesan'] == 4) {
+                $transaction[$key]['status'] = 'Finish';
+            }
+            if ($t['id_status_pesan'] == 5) {
+                $transaction[$key]['status'] = 'Failed';
+            }
             if ($t['gosend'] == 1) {
                 $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
                 if ($t['id_destination']) {
@@ -235,7 +282,7 @@ class RestfullApiController extends BaseController
         }
         $response = [
             'status' => 200,
-            'success' => 'Transaction',
+            'success' => 'Transaction In Process',
             'response' => $transaction
         ];
         return $this->respond($response, 200);
@@ -249,6 +296,21 @@ class RestfullApiController extends BaseController
         $transaction = $checkoutModel->where('id_status_pesan', 3)->findAll();
         foreach ($transaction as $key => $t) {
             $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['id_status_pesan'] == 1) {
+                $transaction[$key]['status'] = 'Pending';
+            }
+            if ($t['id_status_pesan'] == 2) {
+                $transaction[$key]['status'] = 'Porcess';
+            }
+            if ($t['id_status_pesan'] == 3) {
+                $transaction[$key]['status'] = 'Sending';
+            }
+            if ($t['id_status_pesan'] == 4) {
+                $transaction[$key]['status'] = 'Finish';
+            }
+            if ($t['id_status_pesan'] == 5) {
+                $transaction[$key]['status'] = 'Failed';
+            }
             if ($t['gosend'] == 1) {
                 $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
                 if ($t['id_destination']) {
@@ -261,7 +323,7 @@ class RestfullApiController extends BaseController
         }
         $response = [
             'status' => 200,
-            'success' => 'Transaction',
+            'success' => 'Transaction Sending',
             'response' => $transaction
         ];
         return $this->respond($response, 200);
@@ -275,6 +337,21 @@ class RestfullApiController extends BaseController
         $transaction = $checkoutModel->where('id_status_pesan', 4)->findAll();
         foreach ($transaction as $key => $t) {
             $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['id_status_pesan'] == 1) {
+                $transaction[$key]['status'] = 'Pending';
+            }
+            if ($t['id_status_pesan'] == 2) {
+                $transaction[$key]['status'] = 'Porcess';
+            }
+            if ($t['id_status_pesan'] == 3) {
+                $transaction[$key]['status'] = 'Sending';
+            }
+            if ($t['id_status_pesan'] == 4) {
+                $transaction[$key]['status'] = 'Finish';
+            }
+            if ($t['id_status_pesan'] == 5) {
+                $transaction[$key]['status'] = 'Failed';
+            }
             if ($t['gosend'] == 1) {
                 $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
                 if ($t['id_destination']) {
@@ -287,7 +364,7 @@ class RestfullApiController extends BaseController
         }
         $response = [
             'status' => 200,
-            'success' => 'Transaction',
+            'success' => 'Transaction Finished',
             'response' => $transaction
         ];
         return $this->respond($response, 200);
@@ -301,6 +378,21 @@ class RestfullApiController extends BaseController
         $transaction = $checkoutModel->where('id_status_pesan', 5)->orderBy('id_checkout')->findAll();
         foreach ($transaction as $key => $t) {
             $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['id_status_pesan'] == 1) {
+                $transaction[$key]['status'] = 'Pending';
+            }
+            if ($t['id_status_pesan'] == 2) {
+                $transaction[$key]['status'] = 'Porcess';
+            }
+            if ($t['id_status_pesan'] == 3) {
+                $transaction[$key]['status'] = 'Sending';
+            }
+            if ($t['id_status_pesan'] == 4) {
+                $transaction[$key]['status'] = 'Finish';
+            }
+            if ($t['id_status_pesan'] == 5) {
+                $transaction[$key]['status'] = 'Failed';
+            }
             if ($t['gosend'] == 1) {
                 $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
                 if ($t['id_destination']) {
@@ -313,7 +405,7 @@ class RestfullApiController extends BaseController
         }
         $response = [
             'status' => 200,
-            'success' => 'Transaction',
+            'success' => 'Transaction Failed',
             'response' => $transaction
         ];
         return $this->respond($response, 200);

@@ -29,7 +29,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($checkoutWithProduk as $checkout) : ?>
+							<?php foreach ($getStockWithToko as $checkout) : ?>
 								<tr>
 									<td><?= $checkout->lable; ?></td>
 									<td><?= $checkout->nama; ?></td>
@@ -55,7 +55,7 @@
 	const ctx = document.getElementById('myChart');
 	const filterSelect = document.getElementById('filter');
 
-	const quantityData = <?= json_encode(array_column($checkoutWithProduk, 'stok')); ?>;
+	const quantityData = <?= json_encode(array_column($getStockWithToko, 'stok')); ?>;
 	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct', 'Nov', 'Des'];
 
 	const initialChartData = {

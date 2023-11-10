@@ -274,7 +274,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         border-color: #ec2614;
     }
 </style>
-
 <script type="text/javascript">
     var produkSelected = {};
 
