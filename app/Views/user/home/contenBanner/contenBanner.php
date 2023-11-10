@@ -12,7 +12,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
 
-        <div class="position-relative">
+        <div class="container pt-1">
+            <img src="<?= base_url() ?>assets/img/banner/content-1.jpeg" alt="Gambar Besar" class="gambar img-fluid">
+            <section class="desc" id="desc">
+                <h2 class="fw-bold text-dark mt-4 mb-3 text-center fs-4">Ulasan Aplikasi <span class="text-danger">Ssayomart</span></h2>
+                <p>
+                    저희 싸요마트를 이용해 주셔서 진심으로 감사합니다.
+                    플레이스토어에 싸요마트 어플에 대한 평가 및 리뷰를 작성해주시면, 100명에게 배추김치 500g 교환권을 드리겠습니다.
+                    앞으로도 항상 노력하는 싸요마트가 되겠습니다. 감사합니다.
+                </p>
+                <p>
+                    Terima kasih banyak telah menggunakan Ssayomart kami.
+                    Jika Anda menulis rating dan review untuk aplikasi Ssayomart di Google PlayStore, kami akan memberikan voucher penukaran kimchi sawi 500g kepada 100 orang.
+                    Kami akan terus menjadi Ssayomart yang selalu bekerja keras. Terimakasih.
+                </p>
+
+        </div>
+
+        <!-- <div class="position-relative">
             <div class="ratio ratio-16x9">
                 <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM?autoplay=1&mute=1&loop=1&controls=1&showinfo=1&rel=1" title="YouTube video" allowfullscreen></iframe>
             </div>
@@ -32,14 +49,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <span class="pt-1">Belanja Sekarang</span>
                 </button>
             </div>
-        </div>
+        </div> -->
 
         <!-- Products -->
         <section>
             <!-- galery photos Mobile -->
             <div class="container text-center">
                 <section class="galeri" id="galeri">
-                    <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
+                    <h2 class="fw-bold text-dark mt-4 mb-3 fs-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper mySwiper mt-3">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
