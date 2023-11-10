@@ -8,7 +8,6 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
-
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -26,10 +25,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                                 <!-- Button trigger modal -->
                                 <div class="text-center mt-2">
-                                    <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <i class="bi bi-trash"></i> Hapus Akun
-                                    </button>
+                                    <?php if (!$deleteRequestExists) : ?>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="bi bi-trash"></i> Hapus Akun
+                                        </button>
+                                    <?php endif; ?>
                                 </div>
+
                             </div>
                             <?= csrf_field() ?>
                             <div class="col-12">
@@ -90,7 +92,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
                                             <button type="submit" class="btn btn-danger">Ya</button>
@@ -273,7 +274,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
 <?php endif; ?>
-
 <!-- end Desktop -->
-
 <?= $this->endSection(); ?>
