@@ -90,7 +90,7 @@ $countProduk = count($produk);
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
                             <p class=" text-secondary fw-bold" style="font-size: 11px; margin: 0;">
-                                ${p.nama.length > 40 ? p.nama.slice(0, 40) + '' : p.nama}
+                                ${p.nama.length > 50 ? p.nama.slice(0, 50) + '' : p.nama}
                             </p>
                             </div
                             <p class="text-secondary" style="font-size: 10px; margin: 0;">
@@ -116,7 +116,7 @@ $countProduk = count($produk);
                         <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
                         
                         <p class=" text-secondary fw-bold" style="font-size: 11px; margin: 0;">
-                            ${p.nama.length > 40 ? p.nama.slice(0, 40) + '' : p.nama}
+                            ${p.nama.length > 50 ? p.nama.slice(0, 50) + '' : p.nama}
                         </p>
                         </div>
                         <p class="text-secondary" style="font-size: 10px; margin: 0;">
