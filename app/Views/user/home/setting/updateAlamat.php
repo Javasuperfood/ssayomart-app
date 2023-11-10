@@ -108,15 +108,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-                <div class="mb-3 mx-3 my-3">
-                    <div class="form-floating">
-                        <input class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>" readonly>
-                        <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
-                        <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
-                        <input type="hidden" id="latitude" name="latitude" value="<?= $au['latitude']; ?>">
-                        <input type="hidden" id="longitude" name="longitude" value="<?= $au['longitude']; ?>">
+                <!-- detail alamat maps -->
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-12" style="font-size: 12px;">
+                            <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger" style="font-size: 9px;"> (Lokasi maps *)</span></label>
+                            <input class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>" readonly>
+                            <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
+                            <input type="hidden" id="latitude" name="latitude" value="<?= $au['latitude']; ?>">
+                            <input type="hidden" id="longitude" name="longitude" value="<?= $au['longitude']; ?>">
+                        </div>
                     </div>
                 </div>
+                <!-- maps -->
                 <div class="mb-3 mx-3 my-3">
                     <div id="map"></div>
                     <div class="button-container">
@@ -131,6 +135,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         </div>
     </div>
+    <!-- style untuk samsung galaxy fold -->
+    <style>
+        /* Common styles for all screen sizes */
+        .container {
+            max-width: 100%;
+            padding: 0 15px;
+        }
+
+        /* Responsive styles for screens with a maximum width of 280 pixels (Samsung Galaxy Fold) */
+        @media (max-width: 280px) {
+
+            #map {
+                height: 400px;
+                width: 100%;
+            }
+
+            .leaflet-control-attribution {
+                display: none;
+            }
+
+            .button-container {
+                position: absolute;
+                margin-left: 10px;
+                z-index: 1000;
+                top: 1200px !important;
+            }
+        }
+    </style>
+    <!-- style maps -->
     <style>
         #map {
             height: 400px;
@@ -143,11 +176,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .button-container {
             position: absolute;
-            margin-bottom: -340px;
-            bottom: 10px;
+            margin-right: 10px;
             margin-left: 10px;
             z-index: 1000;
-            top: 1160px;
+            top: 1150px;
         }
 
 
@@ -259,7 +291,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-12">
                     <div id="map"></div>
                     <div class="button-container">
-                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i></button>
+                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
                         <div class="row p-4 px-4">
                             <div class="col-12 d-flex justify-content-center">
                                 <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;">Simpan Data</button>

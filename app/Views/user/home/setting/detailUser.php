@@ -101,7 +101,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 padding: 0.25rem 0.5rem;
                 font-size: 0.8rem;
                 margin-top: 5px !important;
-                margin-right: 60px !important;
             }
 
             p.fs-5 {
