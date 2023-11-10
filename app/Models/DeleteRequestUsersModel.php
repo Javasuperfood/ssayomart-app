@@ -43,4 +43,10 @@ class DeleteRequestUsersModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getAllRequests()
+    {
+        // Fetch all records from the table
+        return $this->findAll();
+    }
 }

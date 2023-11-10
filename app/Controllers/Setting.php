@@ -59,6 +59,8 @@ class Setting extends BaseController
     {
         $kategori = new KategoriModel();
         $usersModel = new UsersModel();
+        $deleteReq = new DeleteRequestUsersModel();
+        $existingRequest = $deleteReq->where('id_user', user_id())->first();
         $query = $usersModel->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret')
             ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
             ->where('users.id', $id)
@@ -69,13 +71,31 @@ class Setting extends BaseController
             'title' => lang('Text.title'),
             'du' => $du[0],
             'kategori' => $kategori->findAll(),
-            'results' => $query->getResult()
+            'results' => $query->getResult(),
+            'deleteRequestExists' => $existingRequest !== null
         ];
         return view('user/home/setting/detailUser', $data);
     }
+    // REQUEST DELETE ACCOUNT
     public function submitDeleteRequest()
     {
         $deleteReq = new DeleteRequestUsersModel();
+        $existingRequest = $deleteReq->where('id_user', user_id())->first();
+
+        if ($existingRequest) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Anda sudah mengajukan. Tunggu informasi lebih lanjut.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            // Bersihkan flash data yang sudah ada untuk 'alert'
+            session()->setFlashdata('alert', null);
+
+            return redirect()->to('setting');
+        }
+
         $data = [
             'id_user' => user_id(),
             'alasan' => $this->request->getVar('alasan'),
@@ -84,13 +104,11 @@ class Setting extends BaseController
         //validation
         if (!$this->validateData($data, [
             'alasan' => [
-                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s,.\&!]+$/]',
                 'errors' => [
                     'required' => 'Alasan hapus akun harus diisi.',
-                    'regex_match' => 'Alasan hapus akun hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
-
-                ]
+                    'regex_match' => 'Alasan hapus akun hanya boleh mengandung huruf, angka, spasi, koma, titik, tanda seru, atau ampersand.',
+                ],
             ],
         ])) {
             $alert = [

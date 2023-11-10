@@ -7,13 +7,17 @@ use App\Models\UsersModel;
 use App\Models\AdminTokoModel;
 use App\Models\AuthGroupUsersModel;
 use App\Models\DeleteRequestUsersModel;
+use App\Models\AuthIdentitesModel;
 
 class AdminUserManagementController extends BaseController
 {
+    protected $usersModel;
     public function index()
     {
         $usersModel = new UsersModel();
         $adminTokoModel = new AdminTokoModel();
+        $delRequest = new DeleteRequestUsersModel();
+        $authIdentitiesModel = new AuthIdentitesModel();
 
         $perPage = 10;
 
@@ -21,6 +25,9 @@ class AdminUserManagementController extends BaseController
         $keyword = $this->request->getVar('search');
 
         $users = $usersModel->getUser($perPage, $keyword);
+
+        $delRequestAll = $delRequest->getAllRequests();
+        $delRequestCount = count($delRequestAll);
 
         // Retrieve the emails for the users and add them to the user data
         $emails = [];
@@ -37,18 +44,31 @@ class AdminUserManagementController extends BaseController
             'pager' => $users['pager'],
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'totalUsers' => $totalUsers,
-            'marketAdmin' => $adminTokoModel->getAdminToko()
+            'marketAdmin' => $adminTokoModel->getAdminToko(),
+            'delRequest' => $delRequestAll,
+            'usersModel' => $usersModel,
+            'authIdentitiesModel' => $authIdentitiesModel,
+            'delRequestCount' => $delRequestCount
+
         ];
 
         return view('dashboard/userManagement/index', $data);
     }
 
-    public function viewDeleteRequests()
+    public function deleteAccountUser($id)
     {
-        $deleteRequestsModel = new DeleteRequestUsersModel();
-        $deleteRequests = $deleteRequestsModel->getAllDeleteRequests();
+        $userInfo = $this->usersModel->getUserInfo($id);
 
-        return view('admin/delete_requests_list', ['deleteRequests' => $deleteRequests]);
+        if (!$userInfo) {
+            // Handle the case where user information is not found
+            return redirect()->back()->with('error', 'User not found.');
+        }
+
+        $data = [
+            'usersModel' => $userInfo,
+        ];
+
+        return view('dashboard/userManagement/index', $data);
     }
 
 
