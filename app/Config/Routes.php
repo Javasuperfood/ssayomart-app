@@ -125,8 +125,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     });
 
     // Route Reporting File
-    $routes->get('report/', 'Home::show');
-    $routes->get('report/printpdf', 'Home::print');
+    $routes->get('report/', 'ReportController::index');
+    $routes->get('report/printpdf', 'ReportController::print');
 
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');

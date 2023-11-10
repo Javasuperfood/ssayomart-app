@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
+<h1 class="h3 mb-3 text-gray-800">Dashboard</h1>
 <div class="col">
     <p>Berikut adalah data report penjualan aplikasi Ssayomart</p>
     <a href="<?= site_url('dashboard/report/printpdf') ?>" type="button" class="btn btn-danger mb-3">Download PDF</a>
@@ -9,12 +9,12 @@
 
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-bold text-danger">List Data Report</h6>
+        <h6 class="m-0 font-weight-bold text-danger">List Report Data</h6>
     </div>
 
     <div class="card-body">
         <div class="row">
-            <div class="col">
+            <div class="col col-sm-6">
                 <div class="table-responsive">
                     <table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -40,8 +40,43 @@
                     </table>
                 </div>
             </div>
+
+            <!-- Chart -->
+            <div class="card-body col-sm-6">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+
+    const quantityData = <?= json_encode(array_column($getCheckoutWithProduct, 'total_2')); ?>;
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct', 'Nov', 'Des'];
+
+    const initialChartData = {
+        labels: months,
+        datasets: [{
+            label: 'Penjualan',
+            data: quantityData,
+            borderWidth: 1
+        }]
+    };
+
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: initialChartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 <?= $this->endSection(); ?>

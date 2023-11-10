@@ -41,6 +41,7 @@
 					</table>
 				</div>
 			</div>
+
 			<!-- Chart -->
 			<div class="card-body col-sm-6">
 				<canvas id="myChart"></canvas>
