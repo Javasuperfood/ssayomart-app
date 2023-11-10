@@ -40,6 +40,44 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <label for="alamat_list" id="alamat_list"><span id="perubahan"></span></label>
                         </div>
                     </div>
+                    <div class="col d-none">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-truck"></i>
+                            </span>
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="mpkirim" placeholder="Metode Pengiriman">
+                                <label for="mpkirim">Metode Pengiriman</label>
+                            </div>
+                            <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                        </div>
+                        <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row row-cols-1">
+                                            <div class="col">
+                                                <input type="radio" name="kurirRadio" id=""> {{img Gosend}} Gosend
+                                                <hr>
+                                            </div>
+                                            <div class="col">
+                                                <input type="radio" name="kurirRadio" id="">
+                                                <hr>
+                                            </div>
+                                            <div class="col">
+                                                <input type="radio" name="kurirRadio" id="">
+                                                <hr>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="form-floating mb-2">
                             <select class="form-control border-0 shadow-sm" id="kurir" name="kurir">
