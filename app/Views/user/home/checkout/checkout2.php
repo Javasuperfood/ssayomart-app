@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-5">
+        <div class="container pt-3">
             <form action="<?= base_url('checkout-cart/bayar'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <?php foreach ($cart_id as $c) : ?>
@@ -25,7 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="row row-cols-1 <?= (!$alamat_list) ? 'd-none' : ''; ?>">
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <select class="form-control border-0 shadow-sm" id="market" name="market">
+                            <select class="form-control border-0 shadow-sm" id="market" name="market" style="font-size: 14px">
                                 <?php foreach ($market_list as $m) : ?>
                                     <option value="<?= $m['id_toko']; ?>" city="<?= $m['id_city']; ?>" <?= ($m['id_toko'] == $marketSelected) ? 'selected' : ''; ?>>Ssayomart - <?= $m['city']; ?></option>
                                 <?php endforeach ?>
@@ -35,7 +35,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <select class="form-control border-0 shadow-sm" id="alamat_list" name="alamat_list">
+                            <select class="form-control border-0 shadow-sm" id="alamat_list" name="alamat_list" style="font-size: 14px">
                                 <?php foreach ($alamat_list as $al) : ?>
                                     <option penerima="<?= $al['label']; ?>" value="<?= $al['id_alamat_users']; ?>" class="card-text text-secondary" city="<?= $al['id_city']; ?>" <?= ($addressSelected == $al['id_alamat_users']) ? 'selected' : ''; ?>><?= $al['label'] . ' - ' . $al['alamat_1']; ?></option>
                                 <?php endforeach ?>
@@ -45,7 +45,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <select class="form-control border-0 shadow-sm" id="kurir" name="kurir">
+                            <select class="form-control border-0 shadow-sm" id="kurir" name="kurir" style="font-size: 14px">
                                 <option value="jne" class="card-text text-secondary">JNE</option>
                                 <option value="tiki" class="card-text text-secondary">TIKI</option>
                                 <option value="pos" class="card-text text-secondary">Pos Indonesia</option>
@@ -56,18 +56,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <select class="form-control border-0 shadow-sm" id="service" name="service">
+                            <select class="form-control border-0 shadow-sm" id="service" name="service" style="font-size: 14px">
                                 <option value="" class="card-text text-secondary"></option>
                             </select>
                             <label for="service" id="serviceLabel">Pilih Layanan</label>
-                            <strong>Estimasi : <span id="estimasi"></span></strong>
+                            <strong style="font-size: 14px">Estimasi : <span id="estimasi"></span></strong>
                         </div>
                     </div>
                     <input type="hidden" name="serviceText" id="serviceText">
                     <?php if ($kupon) : ?>
                         <div class="col">
                             <div class="form-floating mb-2">
-                                <select class="form-control border-0 shadow-sm" id="kupon" name="kupon">
+                                <select class="form-control border-0 shadow-sm" id="kupon" name="kupon" style="font-size: 14px">
                                     <option selected value="" class="card-text text-secondary">
                                         Pilih Kupon
                                     </option>
@@ -94,7 +94,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <p class="card-text text-secondary fs-6"><?= $p['qty']; ?> pcs
                                             </p>
                                         </div>
-                                        <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                        <div class="col-4 position-absolute top-50 end-0 translate-middle-y mt-2">
                                             <h5 class="text-secondary fs-6">Total</h5>
                                             <p class="fw-bold fs-6">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                         </div>
@@ -139,6 +139,52 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
     <div class="pb-5"></div>
+
+    <style>
+
+        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
+         @media screen and (max-width: 280px) {
+
+            /* div.card-body{
+                height: 100px
+            } */
+
+            img.card-img {
+                align-items: center;
+            }
+
+            .col-5 h5 {
+                font-size: 14px !important
+            }
+
+            .col-5 p{
+                font-size: 12px !important;
+            }
+
+            .col-4 h5 {
+                font-size: 14px !important
+            }
+
+            .col-4 p{
+                font-size: 12px !important;
+            }
+
+            .btn-bayar{
+                font-size: 12px !important;
+            }
+
+            th{
+                font-size: 14px;
+            }
+
+            td{
+                font-size: 12px;
+            }
+
+        }
+    </style>
+
+
 <?php else : ?>
     <!-- end mobile -->
 
