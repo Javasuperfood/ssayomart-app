@@ -8,6 +8,8 @@ use App\Controllers\BaseController;
 use App\Models\AuthIdentitesModel;
 use App\Models\KategoriModel;
 use App\Models\TokoModel;
+use App\Models\DeleteRequestUsersModel;
+
 
 class Setting extends BaseController
 {
@@ -70,6 +72,55 @@ class Setting extends BaseController
             'results' => $query->getResult()
         ];
         return view('user/home/setting/detailUser', $data);
+    }
+    public function submitDeleteRequest()
+    {
+        $deleteReq = new DeleteRequestUsersModel();
+        $data = [
+            'id_user' => user_id(),
+            'alasan' => $this->request->getVar('alasan'),
+        ];
+
+        //validation
+        if (!$this->validateData($data, [
+            'alasan' => [
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'errors' => [
+                    'required' => 'Alasan hapus akun harus diisi.',
+                    'regex_match' => 'Alasan hapus akun hanya boleh mengandung huruf, angka, atau spasi.',
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+
+                ]
+            ],
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => $this->validator->listErrors()
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting')->withInput();
+        }
+        if ($deleteReq->save($data)) {
+            session()->setFlashdata('success', 'Permintaan penghapusan akun berhasil diajukan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Permintaan penghapusan akun berhasil diajukan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('setting');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('setting')->withInput();
+        }
     }
 
     public function updateDetailUser($id)
