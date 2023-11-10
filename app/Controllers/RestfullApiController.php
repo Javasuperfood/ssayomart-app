@@ -187,4 +187,135 @@ class RestfullApiController extends BaseController
         ];
         return $this->respond($response, 200);
     }
+
+    public function transactionWp()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->where('id_status_pesan', 1)->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['gosend'] == 1) {
+                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+                if ($t['id_destination']) {
+                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                } else {
+                    $transaction[$key]['destination'] = [];
+                }
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
+    public function transactionIp()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->where('id_status_pesan', 2)->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['gosend'] == 1) {
+                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+                if ($t['id_destination']) {
+                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                } else {
+                    $transaction[$key]['destination'] = [];
+                }
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
+    public function transactionDd()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->where('id_status_pesan', 3)->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['gosend'] == 1) {
+                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+                if ($t['id_destination']) {
+                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                } else {
+                    $transaction[$key]['destination'] = [];
+                }
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
+    public function transactionFh()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->where('id_status_pesan', 4)->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['gosend'] == 1) {
+                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+                if ($t['id_destination']) {
+                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                } else {
+                    $transaction[$key]['destination'] = [];
+                }
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
+    public function transactionFail()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $tokoModel = new TokoModel();
+        $alamatUserModel = new AlamatUserModel();
+        $transaction = $checkoutModel->where('id_status_pesan', 5)->orderBy('id_checkout')->findAll();
+        foreach ($transaction as $key => $t) {
+            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            if ($t['gosend'] == 1) {
+                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+                if ($t['id_destination']) {
+                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                } else {
+                    $transaction[$key]['destination'] = [];
+                }
+            }
+            $transaction[$key]['produk'] = $produk;
+        }
+        $response = [
+            'status' => 200,
+            'success' => 'Transaction',
+            'response' => $transaction
+        ];
+        return $this->respond($response, 200);
+    }
 }

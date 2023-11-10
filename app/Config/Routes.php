@@ -292,6 +292,11 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->get('transaction/gosend', 'RestfullApiController::transactionGoSend');
         $routes->get('transaction/gosend/(:segment)', 'RestfullApiController::transactionGoSendId/$1');
         $routes->post('transaction/update-status/(:segment)', 'RestfullApiController::updateStatus/$1');
+        $routes->get('transaction/waiting-payment', 'RestfullApiController::transactionWp');
+        $routes->get('transaction/in-process', 'RestfullApiController::transactionIp');
+        $routes->get('transaction/delivered', 'RestfullApiController::transactionDd');
+        $routes->get('transaction/finish', 'RestfullApiController::transactionFh');
+        $routes->get('transaction/failed', 'RestfullApiController::transactionFail');
     });
 });
 
