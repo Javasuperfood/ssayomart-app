@@ -7,12 +7,8 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 // Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
-
-
-<!-- Navbar -->
 <?= $this->include('user/home/component/navbarMain') ?>
-<!-- Button Kategori -->
-<!-- mobile -->
+
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <section class="mt-2 ">
@@ -24,7 +20,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($kategori_promo as $k) : ?>
                                     <div class="swiper-slide">
                                         <a href="<?= base_url('promo/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded">
-                                            <?= $k['title']; ?>
+
                                         </a>
                                     </div>
                                 <?php endforeach; ?>
@@ -36,7 +32,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </section>
     <?php else : ?>
         <!-- end mobile -->
-        <!-- desktoop -->
+        <!-- desktop -->
         <div id="desktopContent" style="margin-top:100px;">
             <section class="py-2">
                 <div class="container d-none d-md-block">
@@ -90,6 +86,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
             }
         </style>
-
         <?= $this->include('user/produk/component/card') ?>
         <?= $this->endSection(); ?>
