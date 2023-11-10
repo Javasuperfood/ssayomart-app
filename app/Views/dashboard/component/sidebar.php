@@ -44,11 +44,20 @@
             <i class="bi bi-speedometer2"></i>
             <span>Dashboard</span></a>
     </li>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Report
+    </div>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard/report">
             <i class="bi bi-file-text-fill"></i>
             <span>Report</span></a>
     </li>
+
+    <hr class="sidebar-divider">
+
     <div class="sidebar-heading">
         Pesanan
     </div>

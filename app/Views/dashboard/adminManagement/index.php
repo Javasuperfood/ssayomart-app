@@ -30,7 +30,7 @@
     <div class="col text-end">
         <form action="<?= base_url('dashboard/admin-management'); ?>" method="get">
             <div class="input-group mb-3">
-                <input value="<?= (isset($_GET['search']) ? $_GET['search'] : ''); ?>" type="text" class="form-control" placeholder="search" aria-label="search" name="search" aria-describedby="search">
+                <input value="<?= (isset($_GET['search']) ? $_GET['search'] : ''); ?>" type="text" class="form-control" placeholder="Cari Admin Disini.." aria-label="search" name="search" aria-describedby="search">
                 <button class="btn btn-outline-danger" type="submit" id="search">Search</button>
             </div>
         </form>
