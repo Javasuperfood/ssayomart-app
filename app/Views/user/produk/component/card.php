@@ -12,8 +12,8 @@
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                                <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 38); ?></p>
+                            <div class="d-flex align-items-start justify-content-center" style="height: 78px;">
+                                <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 35); ?></p>
                             </div>
                             <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                 <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
