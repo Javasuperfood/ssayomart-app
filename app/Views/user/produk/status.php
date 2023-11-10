@@ -309,7 +309,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </script>
 
     <style>
-        /* timeline  */
+        /* timeline  style di semua tampilan*/
         .track {
             position: relative;
             background-color: #ddd;
@@ -368,7 +368,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </style>
 
     <style>
-        /* Tampilan Samsung Galaxy Fold */
+        /* Tampilan track khusus Samsung Galaxy Fold */
         @media (max-width: 280px) {
 
             .btn-group-lg>.btn,
@@ -412,6 +412,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             .track .step {
                 width: 30%;
+                top: 7px;
+            }
+
+            .track .step::before {
+                height: 7px;
+                position: absolute;
+                content: "";
+                width: 100%;
+                left: 0;
+                top: 11px;
             }
 
             .track .icon {
@@ -421,7 +431,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .track .step.active .text {
-                font-size: 8px;
+                font-size: 11px;
             }
         }
     </style>

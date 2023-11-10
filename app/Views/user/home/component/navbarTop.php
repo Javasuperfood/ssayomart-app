@@ -44,6 +44,69 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+    <style>
+        /* CSS untuk mengatur panel dropdown */
+        .dropdown-menu {
+            padding: 0;
+            /* Menghapus padding bawaan */
+            min-width: auto;
+            /* Menghapus lebar minimum */
+
+        }
+
+        /* CSS untuk mengatur tampilan mobile */
+        @media (max-width: 992px) {
+            .dropdown-menu {
+                right: 0;
+                /* Mengatur posisi menu ke kanan */
+                left: auto;
+                top: 100%;
+                /* Menempatkan menu di bawah ikon */
+                border: none;
+                /* Menghapus border */
+                box-shadow: none;
+                /* Menghapus shadow */
+                position: absolute;
+            }
+        }
+
+        @media (max-width: 280px) {
+            .input-group {
+                right: 5px;
+                width: 200px;
+            }
+
+            /* Mengurangi ukuran dan margin pada ikon bahasa */
+            .flag-icon {
+                width: 40px;
+                /* Atur ukuran ikon bahasa sesuai kebutuhan Anda */
+            }
+
+            .dropdown-toggle {
+                padding: 0.1rem 0.5rem;
+                /* Reduce padding for smaller screens */
+            }
+
+            .btn-wishlist {
+
+                padding: 3px;
+                /* Atur padding tombol sesuai kebutuhan Anda */
+                width: 25px;
+                /* Atur lebar tombol sesuai kebutuhan Anda */
+                height: 25px;
+                /* Atur tinggi tombol sesuai kebutuhan Anda */
+                text-align: center;
+                /* Tengahkan teks di dalam tombol */
+            }
+
+            /* Untuk mengurangkan ukuran ikon hati (wishlist) */
+            .heart-icon {
+                font-size: 16px;
+                /* Atur ukuran ikon sesuai kebutuhan Anda */
+            }
+
+        }
+    </style>
 <?php else : ?>
     <!-- END OF NAVBAR -->
 
@@ -149,7 +212,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <ul class="dropdown-menu dropdown-menu-white">
                                                 <a href="<?= site_url('lang/id'); ?>" class="dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korin.png" width="30px" alt="" class="flag-icon"> ID/KR</a>
                                                 <a href="<?= site_url('lang/en'); ?>" class="dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> EN</a>
-
                                             </ul>
                                         </li>
                                     </ul>
@@ -164,72 +226,4 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
 <?php endif; ?>
-
-<!-- end Nav Desk -->
-<style>
-    /* CSS untuk mengatur panel dropdown */
-    .dropdown-menu {
-        padding: 0;
-        /* Menghapus padding bawaan */
-        min-width: auto;
-        /* Menghapus lebar minimum */
-
-    }
-
-    /* CSS untuk mengatur tampilan mobile */
-    @media (max-width: 992px) {
-        .dropdown-menu {
-            right: 0;
-            /* Mengatur posisi menu ke kanan */
-            left: auto;
-            top: 100%;
-            /* Menempatkan menu di bawah ikon */
-            border: none;
-            /* Menghapus border */
-            box-shadow: none;
-            /* Menghapus shadow */
-            position: absolute;
-        }
-    }
-
-    @media (max-width: 280px) {
-        .input-group {
-            right: 5px;
-            width: 200px;
-        }
-
-
-
-        /* Mengurangi ukuran dan margin pada ikon bahasa */
-        .flag-icon {
-            width: 25px;
-            /* Atur ukuran ikon bahasa sesuai kebutuhan Anda */
-            margin-right: 2px;
-            /* Sesuaikan margin kanan sesuai kebutuhan Anda */
-        }
-
-        .btn-wishlist {
-
-            padding: 3px;
-            /* Atur padding tombol sesuai kebutuhan Anda */
-            width: 25px;
-            /* Atur lebar tombol sesuai kebutuhan Anda */
-            height: 25px;
-            /* Atur tinggi tombol sesuai kebutuhan Anda */
-            text-align: center;
-            /* Tengahkan teks di dalam tombol */
-        }
-
-        /* Untuk mengurangkan ukuran ikon hati (wishlist) */
-        .heart-icon {
-            font-size: 16px;
-            /* Atur ukuran ikon sesuai kebutuhan Anda */
-        }
-
-    }
-</style>
-
-
-
-
 <!-- end Nav Desk -->
