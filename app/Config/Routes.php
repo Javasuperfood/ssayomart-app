@@ -80,6 +80,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
         // Get
         $routes->get('/', 'Setting::setting');
         $routes->get('detail-user/(:any)', 'Setting::detailUser/$1');
+        $routes->post('detail-user/delete-account/(:segment)', 'Setting::submitDeleteRequest/$1');
         $routes->get('pembayaran', 'Setting::pembayaran');
         $routes->get('alamat-list', 'Setting::alamatList');
         $routes->get('create-alamat', 'Setting::createAlamat');

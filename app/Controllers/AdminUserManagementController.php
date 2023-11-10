@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\UsersModel;
 use App\Models\AdminTokoModel;
 use App\Models\AuthGroupUsersModel;
+use App\Models\DeleteRequestUsersModel;
 
 class AdminUserManagementController extends BaseController
 {
@@ -19,18 +20,21 @@ class AdminUserManagementController extends BaseController
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
         $keyword = $this->request->getVar('search');
 
+        $users = $usersModel->getUser($perPage, $keyword);
 
-        if ($keyword) {
-            $user = $usersModel->getUser($perPage, $keyword);
-        } else {
-            $user = $usersModel->getUser($perPage);
+        // Retrieve the emails for the users and add them to the user data
+        $emails = [];
+        foreach ($users['users'] as $user) {
+            $email = $usersModel->getEmail($user['id']);
+            $emails[$user['id']] = $email;
         }
 
         $totalUsers = $usersModel->countAllResults();
 
         $data = [
-            'users' =>  $user['users'],
-            'pager' => $user['pager'],
+            'users' => $users['users'],
+            'emails' => $emails, // Pass the emails to the view
+            'pager' => $users['pager'],
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'totalUsers' => $totalUsers,
             'marketAdmin' => $adminTokoModel->getAdminToko()
@@ -38,6 +42,16 @@ class AdminUserManagementController extends BaseController
 
         return view('dashboard/userManagement/index', $data);
     }
+
+    public function viewDeleteRequests()
+    {
+        $deleteRequestsModel = new DeleteRequestUsersModel();
+        $deleteRequests = $deleteRequestsModel->getAllDeleteRequests();
+
+        return view('admin/delete_requests_list', ['deleteRequests' => $deleteRequests]);
+    }
+
+
 
     public function updateUserRole($id)
     {
