@@ -236,7 +236,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         .btn.btn-lg.fw-bold {
-            font-size: 10px;
+            font-size: 14px;
             padding: 2px 10px;
         }
 
