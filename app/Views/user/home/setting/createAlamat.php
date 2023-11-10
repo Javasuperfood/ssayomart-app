@@ -120,7 +120,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div id="map"></div>
                                 <div class="button-container">
-                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i></button>
+                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -147,13 +147,40 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             z-index: 1000;
             border-radius: 50% !important;
             /* Mengatur elemen menjadi bentuk bulat */
-            top: 1200px;
+            top: 1208px;
         }
 
         #getLocationBtn {
             border-radius: 50%;
             /* Mengatur tombol menjadi bentuk bulat */
 
+        }
+
+        @media screen and (max-width: 280px) {
+            #map {
+                height: 400px;
+                width: 100%;
+            }
+
+            .leaflet-control-attribution {
+                display: none;
+            }
+
+            .button-container {
+                position: absolute;
+                margin-left: 5px;
+                z-index: 1000;
+                border-radius: 50% !important;
+                /* Mengatur elemen menjadi bentuk bulat */
+                top: 77rem;
+                margin-right: 10px;
+            }
+
+            #getLocationBtn {
+                border-radius: 50%;
+                /* Mengatur tombol menjadi bentuk bulat */
+
+            }
         }
     </style>
 <?php else : ?>
@@ -173,69 +200,69 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <!-- form -->
                 <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3 row g-3 mt-4 mx-3 my-3" onsubmit="return validasiTambahAlamat()">
                     <?= csrf_field(); ?>
-                    <div class="form-floating col-md-6">
-                        <input class="form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="label" id="label_alamat" value="<?= old('label') ?>">
+                    <div class="form-group col-md-6">
                         <label for="floatingInput"><?= lang('Text.label_alamat') ?><span style="color: red"> *</span></label>
+                        <input class="mt-2 form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="label" id="label_alamat" value="<?= old('label') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
                     </div>
-                    <div class="form-floating col-md-6">
-                        <input class="form-control shadow-sm <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
+                    <div class="form-group col-md-6">
                         <label for="nama_penerima"><?= lang('Text.nama_penerima') ?><span style="color: red"> *</span></label>
+                        <input class="mt-2 form-control shadow-sm <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
                     </div>
-                    <div class="form-floating col-md-6">
-                        <input class="form-control shadow-sm <?= validation_show_error('telp') ? 'is-invalid' : 'border-0'; ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
+                    <div class="form-group col-md-6">
                         <label for=" no_telp1"><?= lang('Text.no_telp_alamat') ?><span style="color: red"> *</span></label>
+                        <input class="mt-2 form-control shadow-sm <?= validation_show_error('telp') ? 'is-invalid' : 'border-0'; ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
                         <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
                     </div>
-                    <div class="form-floating col-md-6">
-                        <input class="form-control shadow-sm <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
+                    <div class="form-group col-md-6">
                         <label for="no_telp2"><?= lang('Text.no_telp_alamat') ?><span style="color: red"> <?= lang('Text.optional') ?></span></label>
+                        <input class="mt-2 form-control shadow-sm <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
                         <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                     </div>
                     <!-- dropdown -->
                     <div class="col-12">
-                        <div class="form-floating">
-                            <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
+                        <div class="form-group">
+                            <label for="provinsi"><?= lang('Text.provinsi') ?><span style="color: red"> *</span></label>
+                            <select class="mt-2 form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
                                 <option selected></option>
                                 <?php foreach ($provinsi as $p) : ?>
                                     <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
                                 <?php endforeach; ?>
                             </select>
-                            <label for="provinsi"><?= lang('Text.provinsi') ?><span style="color: red"> *</span></label>
                             <div class="invalid-feedback"><?= validation_show_error('id_province') ?></div>
                         </div>
                     </div>
 
                     <div class="col-12">
-                        <div class="form-floating">
-                            <select class="form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
+                        <div class="form-group">
+                            <label for="kabupaten"><?= lang('Text.kab_kota') ?><span style="color: red"> *</span></label>
+                            <select class="mt-2 form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
                                 <option selected></option>
                             </select>
-                            <label for="kabupaten"><?= lang('Text.kab_kota') ?><span style="color: red"> *</span></label>
                             <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
                         </div>
                     </div>
                     <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi">
                     <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten">
                     <!-- end dropdown -->
-                    <div class="form-floating col-md-6">
-                        <input class="form-control border-0 shadow-sm <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
+                    <div class="form-group col-md-6">
                         <label for=" alamat_1"><?= lang('Text.detail_alamat') ?><span style="color: red"> *</span></label>
+                        <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
                     </div>
-                    <div class="form-floating col-md-6">
-                        <input class="form-control border-0 shadow-sm <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
+                    <div class="form-group col-md-6">
                         <label for=" alamat_2"><?= lang('Text.patokan_alamat') ?><span style="color: red"> <?= lang('Text.optional') ?></span></label>
+                        <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
                     </div>
-                    <div class="form-floating col-md-6">
-                        <input class="form-control border-0 shadow-sm <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
+                    <div class="form-group col-md-6">
                         <label for="zip_code"><?= lang('Text.zipcode') ?><span style="color: red"> *</span></label>
+                        <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="form-group mb-3">
+                            <div class="form-group mb-3 mt-2">
                                 <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
-                                <input class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
+                                <input class="mt-2 form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
                                 <input type="hidden" id="latitude" name="latitude">
                                 <input type="hidden" id="longitude" name="longitude">
                             </div>
@@ -244,7 +271,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-12">
                             <div id="map"></div>
                             <div class="button-container">
-                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-primary"><i class="bi bi-geo-alt-fill"></i></button>
+                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
                             </div>
                         </div>
                     </div>
