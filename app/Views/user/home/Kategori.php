@@ -323,7 +323,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:50px;">
 
-
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
             <?php foreach ($banner_pop_up as $pop) : ?>
@@ -399,7 +398,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-                margin-left: 75%;
+                margin-left: 60%;
                 margin-bottom: 75%;
 
                 /* atau warna lain sesuai kebutuhan */
