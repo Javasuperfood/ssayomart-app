@@ -19,12 +19,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container pt-2 text-center">
                 <div class="row">
                     <div class="col">
-                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="btn btn-block" style="width: 112%;">
+                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" target="__blank" class="btn btn-block" style="width: 112%;">
                             <img src="<?= base_url() ?>assets/img/plays.png" alt="Gambar Besar" class="gambar img-fluid">
                         </a>
                     </div>
                     <div class="col">
-                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="btn btn-block" style="width: 100%">
+                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" target="__blank" class="btn btn-block" style="width: 100%">
                             <img src="<?= base_url() ?>assets/img/Apps.png" alt="Gambar Besar" class="gambar img-fluid">
                         </a>
                     </div>
