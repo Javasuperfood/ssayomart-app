@@ -151,6 +151,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 justify-content: center;
             }
 
+            .col-9 p{
+            font-size: 14px !important;
+            margin: 3px;
+            }
+
             /* Add specific CSS styles for the delete button if needed */
         }
     </style>

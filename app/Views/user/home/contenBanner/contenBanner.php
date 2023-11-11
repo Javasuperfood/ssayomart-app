@@ -12,21 +12,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
 
-        <div class="container pt-1">
-            <img src="<?= base_url() ?>assets/img/banner/content-1.jpeg" alt="Gambar Besar" class="gambar img-fluid">
-            <!-- <section class="desc" id="desc">
-                <h2 class="fw-bold text-dark mt-4 mb-3 text-center fs-4">Ulasan Aplikasi <span class="text-danger">Ssayomart</span></h2>
-                <p>
-                    저희 싸요마트를 이용해 주셔서 진심으로 감사합니다.
-                    플레이스토어에 싸요마트 어플에 대한 평가 및 리뷰를 작성해주시면, 100명에게 배추김치 500g 교환권을 드리겠습니다.
-                    앞으로도 항상 노력하는 싸요마트가 되겠습니다. 감사합니다.
-                </p>
-                <p>
-                    Terima kasih banyak telah menggunakan Ssayomart kami.
-                    Jika Anda menulis rating dan review untuk aplikasi Ssayomart di Google PlayStore, kami akan memberikan voucher penukaran kimchi sawi 500g kepada 100 orang.
-                    Kami akan terus menjadi Ssayomart yang selalu bekerja keras. Terimakasih.
-                </p>
-            </section> -->
+        <div class="container pt-2">
+            <div class="container">
+                <img src="<?= base_url() ?>assets/img/banner/content-1.jpeg" alt="Gambar Besar" class="gambar img-fluid">
+            </div>
+            <div class="container pt-2 text-center">
+                <div class="row">
+                    <div class="col">
+                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="btn btn-block" style="width: 112%;">
+                            <img src="<?= base_url() ?>assets/img/plays.png" alt="Gambar Besar" class="gambar img-fluid">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="btn btn-block" style="width: 100%">
+                            <img src="<?= base_url() ?>assets/img/Apps.png" alt="Gambar Besar" class="gambar img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- <div class="position-relative">
