@@ -21,7 +21,7 @@ class Blog extends BaseController
     {
         $kategori = new KategoriModel();
         $data = [
-            'title' => 'conten Banner',
+            'title' => '돌아가기 / Kembali',
             'kategori' => $kategori->findAll(),
         ];
         // dd($data);
