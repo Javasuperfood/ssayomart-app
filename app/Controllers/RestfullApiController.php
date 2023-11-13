@@ -752,8 +752,8 @@ class RestfullApiController extends BaseController
             $telp = $matches1[0][3];
 
             return [
-                'nama' => $nama,
-                'alamat' => $alamat,
+                'name' => $nama,
+                'address' => $alamat,
                 'telp' => $telp
             ];
         }
