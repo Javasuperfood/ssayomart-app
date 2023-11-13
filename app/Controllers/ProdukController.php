@@ -25,10 +25,13 @@ class ProdukController extends BaseController
         return view('user/produk/index', $data);
     }
 
+
+
     public function getProduk($slug1, $slug2)
     {
-        $kategori = new KategoriModel();
-        $katSub = $kategori->getKategori($slug1);
+        $kategoriModel = new KategoriModel();
+        $produkModel = new ProdukModel();
+        $katSub = $kategoriModel->getKategori($slug1);
 
         $promoItemModel = new PromoItemModel();
         $promoModel = new PromoModel();
@@ -36,6 +39,15 @@ class ProdukController extends BaseController
         $subKategori = new SubKategoriModel();
         $subResult = $subKategori->getSubKategoriByKategoriId($katSub['id_kategori']);
         $subSlug = $subKategori->getSubKategori($slug2);
+        $kategori = $kategoriModel->findAll();
+
+        // Fetch produk unggulan untuk setiap kategori
+        // $featuredProducts = [];
+        // foreach ($kategori as $key => $category) {
+        //     $categoryId = $category['id_kategori'];
+        //     $featuredProducts[$key] = $produkModel->getFeaturedProductsByCategory($slug1);
+        //     // dd($featuredProducts[$categoryId]);
+        // }
 
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
@@ -86,13 +98,14 @@ class ProdukController extends BaseController
 
             $data = [
                 'title' => $katSub['nama_kategori'],
-                'kategori' => $kategori->findAll(),
-                'kategori_single' => $kategori->findAll(),
+                'kategori' => $kategori,
+                'kategori_single' => $kategori,
                 'produk' => $getProduk,
                 'subKategori' => $subResult,
                 'sk' => $slug2,
                 'kategori_promo' => $promo,
-                'back' => '/' . '#ktr'
+                'back' => '/' . '#ktr',
+                'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2)
             ];
             // dd($data);
             return view('user/produk/index', $data);
@@ -158,7 +171,8 @@ class ProdukController extends BaseController
                 'title' => 'Hasil Pencarian',
                 'produk' => $getProduk,
                 'kategori' => $kategori->findAll(),
-                'back' => ''
+                'back' => '',
+                'featuredProducts' => $produkModel->getProductWithRange(false, false, $keyword)
             ];
 
             return view('user/produk/search', $data);
