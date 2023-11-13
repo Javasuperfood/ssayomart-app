@@ -22,7 +22,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </button>
                         </div>
 
-                        
                         <div class="col">
                             <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
                                 <div class="swiper-wrapper">
@@ -38,10 +37,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
-
-
-
-
 
                     </div>
                 </div> -->
@@ -66,7 +61,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <?= $k['nama_kategori']; ?>
                                                 <i id="icon-<?= $k['slug'] ?>" class="bi bi-caret-right arrow-icon"></i>
                                             </a>
-                                            <ul class="list-group-flush">
+                                            <ul class="list-group-flush mx-4">
                                                 <?php foreach ($subKategori as $sub) : ?>
                                                     <?php if ($sub['slugK'] == $k['slug']) : ?>
                                                         <li class="list-group-item">
@@ -90,8 +85,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
-
-
 <?php endif; ?>
 <!-- tampilan Desktop -->
 
@@ -206,7 +199,6 @@ if ($isMobile) {
 
     }
 </style>
-
 
 <script>
     // Inisialisasi komponen dropdown
