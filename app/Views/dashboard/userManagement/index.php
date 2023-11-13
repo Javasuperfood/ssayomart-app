@@ -52,81 +52,6 @@
 
     </div>
 
-    <!-- Modal Notification -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Tambahkan class modal-lg di sini -->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Notifikasi Penghapusan Akun User</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Nama Lengkap</th>
-                                <th>Email</th>
-                                <th>Alasan Penghapusan</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($delRequest as $del) : ?>
-                                <?php $userInfo = $usersModel->getUserInfo($del['id_user']); ?>
-                                <tr>
-                                    <td><?= $userInfo['fullname']; ?></td>
-                                    <td><?= $userInfo['email']; ?></td>
-                                    <td><?= $del['alasan']; ?></td>
-                                    <td class="text-center">
-                                        <button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#confirmationDelete">
-                                            <i class="bi bi-trash-fill mr-2 text-danger"></i>
-                                            <span class="text-danger">Hapus Akun</span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Kembali</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Confirmation Delete -->
-    <div class="modal fade" id="confirmationDelete" tabindex="-1" aria-labelledby="confirmationDelete" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi Penghapusan Akun</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="#" method="post" enctype="multipart/form-data">
-                        <?= csrf_field() ?>
-                        <div class="alert alert-danger">
-                            <div class="col-auto text-center mb-2" style="font-size:50px;">
-                                <i class="bi bi-exclamation-triangle-fill"></i>
-                            </div>
-                            <?php $userInfo = $usersModel->getUserInfo($del['id_user']); ?>
-                            <div class="col text-center">
-                                <p><strong>Penghapusan akun bersifat permanen.</strong></p>
-                                <p>Apakah anda yakin untuk melakukan penghapusan akun <b><?= $userInfo['fullname'] ?></b> dengan email <b><?= $userInfo['email'] ?></b>?</p>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-danger">Ya</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="card-body ">
         <div class="row">
             <div class="col">
@@ -207,8 +132,47 @@
                                                         </div>
                                                     </div>
                                                 </form>
+                                                <!-- Modal Notification -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Tambahkan class modal-lg di sini -->
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Notifikasi Penghapusan Akun User</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Nama Lengkap</th>
+                                                                            <th>Username</th>
+                                                                            <th>Alasan Penghapusan</th>
+                                                                            <th>Aksi</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <?php foreach ($delRequest as $del) : ?>
+                                                                            <tr>
+                                                                                <td><?= $user['fullname']; ?></td>
+                                                                                <td><?= $user['username']; ?></td>
+                                                                                <td><?= $del['alasan']; ?></td>
+                                                                                <td class="text-center">
+                                                                                    <a href="<?= base_url() ?>dashboard/user-management/delete-account" type="button" class="btn position-relative">
+                                                                                        <span class="text-danger fs-6 text-danger"><i class="bi bi-trash-fill"></i> Hapus</span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        <?php endforeach; ?>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             <?php endif; ?>
-
                                         </div>
                                     </td>
                                 </tr>
@@ -234,6 +198,5 @@
         <?php endif; ?>
     });
 </script>
-
 
 <?= $this->endSection(); ?>
