@@ -151,9 +151,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 justify-content: center;
             }
 
-            .col-9 p{
-            font-size: 14px !important;
-            margin: 3px;
+            .col-9 p {
+                font-size: 14px !important;
+                margin: 3px;
             }
 
             /* Add specific CSS styles for the delete button if needed */
@@ -194,10 +194,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                     <h4 class="product_name">
                                                                         <a href="<?= base_url('produk/' . $p['slug']); ?>" class="link-underline link-underline-opacity-0 link-dark">
                                                                             <?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>
-                                                                            <?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '...' : ''; ?>
+                                                                            <?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '' : ''; ?>
                                                                         </a>
                                                                     </h4>
-                                                                    <p class="mb-0"><?= substr($p['deskripsi'], 0, 80); ?>...</p>
+                                                                    <p class="mb-0"><?= substr($p['deskripsi'], 0, 80); ?></p>
                                                                 </div>
                                                             </div>
                                                         </div>

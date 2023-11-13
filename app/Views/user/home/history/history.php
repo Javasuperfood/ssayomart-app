@@ -234,7 +234,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- style slider -->
     <style>
         /* Gaya saat card dipilih */
-        .card-selected{
+        .card-selected {
             background-color: #dc3545;
             color: white !important;
 
@@ -301,7 +301,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <style>
-
         /* Untuk ubah fitur search */
         .custom-button {
             background-color: white;
@@ -393,7 +392,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 font-size: 14px !important;
             }
 
-            p.text-secondary.fs-6{
+            p.text-secondary.fs-6 {
                 font-size: 14px !important;
             }
 
@@ -448,49 +447,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link" style="font-size:10px; color:#000;">
                                                 Semua Transaksi
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link" style="font-size:10px; color:#000;">
                                                 Menunggu Pembayaran
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link" style="font-size:10px; color:#000;">
                                                 Diproses
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link" style="font-size:10px; color:#000;">
                                                 Dikirim
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link" style="font-size:10px; color:#000;">
                                                 Diterima
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link" style="font-size:10px; color:#000;">
                                                 Dibatalkan
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                            <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link" style="font-size:10px; color:#000;">
                                                 Gagal
                                             </a>
                                         </div>
@@ -637,7 +636,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php endif ?>
         </div>
     </div>
+    <!-- style slider -->
+    <style>
+        /* Gaya saat card dipilih */
+        .card-selected {
+            background-color: #dc3545;
+            color: white !important;
+        }
 
+        .card-selected a {
+            color: white !important;
+        }
+
+        a {
+            font-size: 8px;
+            color: black;
+        }
+    </style>
+    <!-- END STYLE SLIDER -->
+
+    <!-- script slider -->
+    <script>
+        $(document).ready(function() {
+            // Mengambil URL saat ini
+            var currentUrl = window.location.href;
+
+            // Menandai card yang sesuai dengan URL saat ini
+            $(".card-link").each(function() {
+                if ($(this).attr("href") === currentUrl) {
+                    $(this).closest(".card").addClass("card-selected").removeClass("card-default");
+                }
+            });
+
+            $(".card-link").click(function(e) {
+                e.preventDefault();
+                $(".swiper-slide .card").removeClass("card-selected").addClass("card-default");
+                $(this).closest(".card").addClass("card-selected").removeClass("card-default");
+
+                // Handle link redirection
+                window.location = $(this).attr("href");
+            });
+        });
+    </script>
+    <!-- END SLIDER  -->
     <style>
         /* Tombol Previous */
         .button-prev {
