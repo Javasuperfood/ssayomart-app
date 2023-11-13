@@ -130,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <i class="bi bi-truck"></i>
                             </span>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="mpkirim" placeholder="Metode Pengiriman">
+                                <input type="text" class="form-control" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
                                 <label for="mpkirim">Metode Pengiriman</label>
                             </div>
                             <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
@@ -508,7 +508,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <i class="bi bi-truck"></i>
                                         </span>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="mpkirim" placeholder="Metode Pengiriman">
+                                            <input type="text" class="form-control" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
                                             <label for="mpkirim">Metode Pengiriman</label>
                                         </div>
                                         <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
