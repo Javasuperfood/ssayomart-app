@@ -63,7 +63,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <p class="card-text text-secondary fs-6"><?= $p->qty; ?> <?= $p->value_item; ?>
                                             </p>
                                         </div>
-                                        <div class="col-4 position-absolute top-50 end-0 mt-2 translate-middle-y">
+                                        <div class="col-5 position-absolute top-50 end-0 mt-2 translate-middle-y ps-4">
                                             <h5 class="text-secondary fs-6">Total</h5>
                                             <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
                                         </div>
@@ -382,12 +382,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Sesuaikan ukuran ikon sesuai kebutuhan */
             }
 
+            span.fw-bold {
+                font-size: 12px !important;
+            }
+
             p.fw-bold.fs-6 {
-                font-size: 0.7rem !important;
+                font-size: 12px !important;
             }
 
             p.card-text.text-secondary.fs-6 {
-                font-size: 0.8rem !important;
+                font-size: 12px !important;
             }
 
             .col {
@@ -395,11 +399,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .list-group-item {
-                padding: 5px;
+                padding: 0px;
             }
 
             h2 {
-                font-size: 13px;
+                margin-top: 8px;
+                font-size: 14px;
             }
 
             p {
@@ -432,6 +437,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             .track .step.active .text {
                 font-size: 11px;
+            }
+
+            h5.card-title.fs-6 {
+                font-size: 14px !important;
+            }
+
+            h5.text-secondary.fs-6 {
+                font-size: 14px !important;
             }
         }
     </style>

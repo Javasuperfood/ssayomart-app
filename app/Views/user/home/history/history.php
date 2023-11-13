@@ -338,6 +338,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Center the link */
             }
 
+            h5.card-title.fs-6 {
+                margin-top: 10px;
+                font-size: 14px !important;
+            }
+
+            p.text-secondary.fs-6{
+                font-size: 14px !important;
+            }
+
             /* Additional styles for smaller screens as needed */
         }
     </style>
