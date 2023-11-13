@@ -99,6 +99,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
@@ -179,6 +180,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
@@ -252,6 +254,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
@@ -343,6 +346,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
@@ -423,6 +427,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
@@ -503,6 +508,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
@@ -583,6 +589,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
@@ -663,6 +670,7 @@ class RestfullApiController extends BaseController
                 'order_id' => $t['invoice'],
                 'telp' => $t['telp'],
                 'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'Shipment_method' => $t['service'],
                 'snap_token' => $t['snap_token'],
             ];
             $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
