@@ -334,7 +334,7 @@ class CheckoutController extends BaseController
         $serviceText = $this->request->getVar('serviceText');
         $service = $this->request->getVar('service');
         $kode = $this->request->getVar('kupon');
-        $alamatId = $this->request->getVar('alamat_list');
+        $alamatId = $this->request->getVar('alamatD');
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
 
         $alamat = $alamatUserModel->find($alamatId);
@@ -436,6 +436,7 @@ class CheckoutController extends BaseController
         $dbStore = [
             'id_user' => user_id(),
             'id_toko' => $this->request->getVar('market'),
+            'id_destination' => $alamatId,
             'kupon' => '',
             'id_status_pesan' => 1,
             'id_status_kirim' => 1,
