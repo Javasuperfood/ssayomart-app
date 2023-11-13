@@ -85,7 +85,6 @@
                     $("#ongkirText").html(formatRupiah(ongkir));
                     $("#estimasi").html(estimasi + " Hari");
                     $("#total").val(total);
-                    $("#diskon").val(diskon);
                     $("#totalText").html(formatRupiah(ongkir + total));
                     $("#field_subtotal").val(ongkir + total);
                     $('.btn-bayar').show();
@@ -94,6 +93,33 @@
             });
         } else if (courier == 'gosend') {
             $('.btn-bayar').hide();
+            $("#service").empty();
+            $("#service").append($('<option>', {
+                value: '25000',
+                text: 'Same Day Delivery',
+                etd: '100000',
+                std: 'Same Day Delivery'
+            }));
+            $("#service").append($('<option>', {
+                value: '50000',
+                text: 'Instant Delivery',
+                etd: '100000',
+                std: 'Instant Delivery'
+            }));
+            var estimasi = $('option:selected', $("#service")).attr('etd');
+            ongkir = parseInt($("#service").val());
+            $("#ongkir").val(ongkir);
+            $("#ongkirText").html(formatRupiah(ongkir));
+            $("#estimasi").html(estimasi + " Hari");
+            $("#total").val(total);
+            $("#totalText").html(formatRupiah(ongkir + total));
+            $("#field_subtotal").val(ongkir + total);
+            updateDiscount();
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Courier not available",
+            });
         }
     }
     $("#service").on('change', function() {
@@ -106,8 +132,10 @@
         $("#field_subtotal").val(ongkir + total);
         $("#serviceText").val($("#service option:selected").text());
         $("#totalText").html(formatRupiah(ongkir + total));
-        $('.btn-bayar').show();
         updateDiscount();
+        if (getD.get('courier') != 'gosend') {
+            $('.btn-bayar').show();
+        }
     });
 
     function formatRupiah(angka) {
