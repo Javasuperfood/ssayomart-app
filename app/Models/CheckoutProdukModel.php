@@ -178,8 +178,7 @@ class CheckoutProdukModel extends Model
                     $query->orLike('id_toko', $t['id_toko']);
                 }
             }
-        }
-        ;
+        };
 
         $result = $query->get()->getResultArray();
 
@@ -213,5 +212,16 @@ class CheckoutProdukModel extends Model
 
         $result = $query->getResultArray();
         return $result;
+    }
+
+    public function getAllProdukByIdCheckout($id_checkout)
+    {
+        $query = $this->select('*')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item')
+            ->where('jsf_checkout_produk.id_checkout', $id_checkout);
+
+
+        return $query->findAll();
     }
 }

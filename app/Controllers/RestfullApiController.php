@@ -93,39 +93,76 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->findAll();
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
             if ($t['id_status_pesan'] == 1) {
-                $transaction[$key]['status'] = 'Pending';
+                $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $transaction[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Porcess';
             }
             if ($t['id_status_pesan'] == 3) {
-                $transaction[$key]['status'] = 'Sending';
+                $order[$key]['status'] = 'Sending';
             }
             if ($t['id_status_pesan'] == 4) {
-                $transaction[$key]['status'] = 'Finish';
+                $order[$key]['status'] = 'Finish';
             }
             if ($t['id_status_pesan'] == 5) {
-                $transaction[$key]['status'] = 'Failed';
+                $order[$key]['status'] = 'Failed';
             }
 
-            $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-            if ($t['gosend'] == 1) {
-                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-                if ($t['id_destination']) {
-                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
-                } else {
-                    $transaction[$key]['destination'] = [];
-                }
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
+
+            if ($t['id_destination']) {
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
+            } else {
+                $order[$key]['destination'] = $this->getInfoPenerima($t['kirim']);
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
     }
@@ -136,20 +173,59 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('gosend', 1)->orderBy('id_checkout')->findAll();
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
-            $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
             if ($t['id_destination']) {
-                $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
             } else {
-                $transaction[$key]['destination'] = [];
+                $order[$key]['destination'] = [];
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
     }
@@ -160,20 +236,69 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('gosend', 1)->like('id_checkout', $id)->orLike('invoice', $id)->orderBy('id_checkout')->findAll();
+        // foreach ($transaction as $key => $t) {
+        //     $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+        //     $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+        //     if ($t['id_destination']) {
+        //         $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+        //     } else {
+        //         $transaction[$key]['destination'] = [];
+        //     }
+        //     $transaction[$key]['produk'] = $produk;
+        // }
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
-            $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
             if ($t['id_destination']) {
-                $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
             } else {
-                $transaction[$key]['destination'] = [];
+                $order[$key]['destination'] = [];
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
     }
@@ -212,37 +337,76 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('id_status_pesan', 1)->findAll();
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
             if ($t['id_status_pesan'] == 1) {
-                $transaction[$key]['status'] = 'Pending';
+                $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $transaction[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Porcess';
             }
             if ($t['id_status_pesan'] == 3) {
-                $transaction[$key]['status'] = 'Sending';
+                $order[$key]['status'] = 'Sending';
             }
             if ($t['id_status_pesan'] == 4) {
-                $transaction[$key]['status'] = 'Finish';
+                $order[$key]['status'] = 'Finish';
             }
             if ($t['id_status_pesan'] == 5) {
-                $transaction[$key]['status'] = 'Failed';
+                $order[$key]['status'] = 'Failed';
             }
-            if ($t['gosend'] == 1) {
-                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-                if ($t['id_destination']) {
-                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
-                } else {
-                    $transaction[$key]['destination'] = [];
-                }
+
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
+
+            if ($t['id_destination']) {
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
+            } else {
+                $order[$key]['destination'] = $this->getInfoPenerima($t['kirim']);
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction Waiting Process',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
     }
@@ -253,37 +417,76 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('id_status_pesan', 2)->findAll();
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
             if ($t['id_status_pesan'] == 1) {
-                $transaction[$key]['status'] = 'Pending';
+                $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $transaction[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Porcess';
             }
             if ($t['id_status_pesan'] == 3) {
-                $transaction[$key]['status'] = 'Sending';
+                $order[$key]['status'] = 'Sending';
             }
             if ($t['id_status_pesan'] == 4) {
-                $transaction[$key]['status'] = 'Finish';
+                $order[$key]['status'] = 'Finish';
             }
             if ($t['id_status_pesan'] == 5) {
-                $transaction[$key]['status'] = 'Failed';
+                $order[$key]['status'] = 'Failed';
             }
-            if ($t['gosend'] == 1) {
-                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-                if ($t['id_destination']) {
-                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
-                } else {
-                    $transaction[$key]['destination'] = [];
-                }
+
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
+
+            if ($t['id_destination']) {
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
+            } else {
+                $order[$key]['destination'] = $this->getInfoPenerima($t['kirim']);
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction In Process',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
     }
@@ -294,37 +497,76 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('id_status_pesan', 3)->findAll();
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
             if ($t['id_status_pesan'] == 1) {
-                $transaction[$key]['status'] = 'Pending';
+                $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $transaction[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Porcess';
             }
             if ($t['id_status_pesan'] == 3) {
-                $transaction[$key]['status'] = 'Sending';
+                $order[$key]['status'] = 'Sending';
             }
             if ($t['id_status_pesan'] == 4) {
-                $transaction[$key]['status'] = 'Finish';
+                $order[$key]['status'] = 'Finish';
             }
             if ($t['id_status_pesan'] == 5) {
-                $transaction[$key]['status'] = 'Failed';
+                $order[$key]['status'] = 'Failed';
             }
-            if ($t['gosend'] == 1) {
-                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-                if ($t['id_destination']) {
-                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
-                } else {
-                    $transaction[$key]['destination'] = [];
-                }
+
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
+
+            if ($t['id_destination']) {
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
+            } else {
+                $order[$key]['destination'] = $this->getInfoPenerima($t['kirim']);
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction Sending',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
     }
@@ -335,37 +577,76 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('id_status_pesan', 4)->findAll();
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
             if ($t['id_status_pesan'] == 1) {
-                $transaction[$key]['status'] = 'Pending';
+                $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $transaction[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Porcess';
             }
             if ($t['id_status_pesan'] == 3) {
-                $transaction[$key]['status'] = 'Sending';
+                $order[$key]['status'] = 'Sending';
             }
             if ($t['id_status_pesan'] == 4) {
-                $transaction[$key]['status'] = 'Finish';
+                $order[$key]['status'] = 'Finish';
             }
             if ($t['id_status_pesan'] == 5) {
-                $transaction[$key]['status'] = 'Failed';
+                $order[$key]['status'] = 'Failed';
             }
-            if ($t['gosend'] == 1) {
-                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-                if ($t['id_destination']) {
-                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
-                } else {
-                    $transaction[$key]['destination'] = [];
-                }
+
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
+
+            if ($t['id_destination']) {
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
+            } else {
+                $order[$key]['destination'] = $this->getInfoPenerima($t['kirim']);
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction Finished',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
     }
@@ -376,38 +657,97 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('id_status_pesan', 5)->orderBy('id_checkout')->findAll();
+        $order = [];
         foreach ($transaction as $key => $t) {
-            $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
+            $order[$key] = [
+                'order_id' => $t['invoice'],
+                'telp' => $t['telp'],
+                'status_payment' => ($t['id_status_pesan'] >= 2) ? 'Paid' : 'Unpaid',
+                'snap_token' => $t['snap_token'],
+            ];
+            $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
             if ($t['id_status_pesan'] == 1) {
-                $transaction[$key]['status'] = 'Pending';
+                $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $transaction[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Porcess';
             }
             if ($t['id_status_pesan'] == 3) {
-                $transaction[$key]['status'] = 'Sending';
+                $order[$key]['status'] = 'Sending';
             }
             if ($t['id_status_pesan'] == 4) {
-                $transaction[$key]['status'] = 'Finish';
+                $order[$key]['status'] = 'Finish';
             }
             if ($t['id_status_pesan'] == 5) {
-                $transaction[$key]['status'] = 'Failed';
+                $order[$key]['status'] = 'Failed';
             }
-            if ($t['gosend'] == 1) {
-                $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-                if ($t['id_destination']) {
-                    $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
-                } else {
-                    $transaction[$key]['destination'] = [];
-                }
+
+            $origin = $tokoModel->find($t['id_toko']);
+            $order[$key]['origin'] = [
+                'name' => $origin['lable'],
+                'address' => $origin['alamat_1'],
+                'address_2' => $origin['alamat_2'],
+                'city' => $origin['city'],
+                'province' => $origin['province'],
+                'zip_code' => $origin['zip_code'],
+                'telp' => $origin['telp'],
+                'telp_2' => $origin['telp2'],
+                'latitude' => $origin['latitude'],
+                'longitude' => $origin['longitude'],
+            ];
+
+            if ($t['id_destination']) {
+                $destination = $alamatUserModel->find($t['id_destination']);
+                $order[$key]['destination'] = [
+                    'name' => $destination['penerima'],
+                    'address' => $destination['alamat_1'],
+                    'address_2' => $destination['alamat_2'],
+                    'address_3' => $destination['alamat_3'],
+                    'city' => $destination['city'],
+                    'province' => $destination['province'],
+                    'zip_code' => $destination['zip_code'],
+                    'telp' => $destination['telp'],
+                    'telp_2' => $destination['telp2'],
+                    'latitude' => $destination['latitude'],
+                    'longitude' => $destination['longitude'],
+                ];
+            } else {
+                $order[$key]['destination'] = $this->getInfoPenerima($t['kirim']);
             }
-            $transaction[$key]['produk'] = $produk;
+            foreach ($produk as $p) {
+                $order[$key]['item'][] = [
+                    'product_id' => $p['id_produk'],
+                    'name' => $p['nama'] . ' (' . $p['value_item'] . ')',
+                    'qty' => $p['qty'],
+                    'price' => $p['harga'],
+                ];
+            }
         }
         $response = [
             'status' => 200,
             'success' => 'Transaction Failed',
-            'response' => $transaction
+            'response' => $order
         ];
         return $this->respond($response, 200);
+    }
+    function getInfoPenerima($txt)
+    {
+        $text = $txt;
+
+        $pattern = '/<b>Nama<\/b> : (.*?)<br><b>Alamat<\/b> :<br>(.*?)<br><b>Telp<\/b> :  (\d+)/';
+
+        preg_match_all($pattern, $text, $matches1, PREG_SET_ORDER);
+
+        if (!empty($matches1)) {
+            $nama = $matches1[0][1];
+            $alamat = $matches1[0][2];
+            $telp = $matches1[0][3];
+
+            return [
+                'nama' => $nama,
+                'alamat' => $alamat,
+                'telp' => $telp
+            ];
+        }
     }
 }
