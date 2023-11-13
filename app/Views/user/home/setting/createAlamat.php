@@ -142,12 +142,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         .button-container {
-            position: absolute;
+            position: relative;
             margin-left: 10px;
             z-index: 1000;
             border-radius: 50% !important;
             /* Mengatur elemen menjadi bentuk bulat */
-            top: 1208px;
+            bottom: 50px !important;
+
         }
 
         #getLocationBtn {
@@ -167,12 +168,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .button-container {
-                position: absolute;
+                position: relative;
                 margin-left: 5px;
                 z-index: 1000;
                 border-radius: 50% !important;
                 /* Mengatur elemen menjadi bentuk bulat */
-                top: 77rem;
+                bottom: 0px;
                 margin-right: 10px;
             }
 
