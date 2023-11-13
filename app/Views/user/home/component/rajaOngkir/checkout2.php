@@ -12,8 +12,10 @@
         $('#mpOrigin').val(label);
         $('#modal-pilih-origin').modal('hide');
         $("#mpOrigin").attr('origin', origin);
-        setOrigin(origin);
-        getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+        if (getD.get('origin') != origin) {
+            setOrigin(origin);
+            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+        }
     }
 
     function selectAlamat(i, label, destination) {
@@ -21,15 +23,19 @@
         $('#mpDestination').val(label);
         $('#modal-pilih-destination').modal('hide');
         $("#mpDestination").attr('destination', destination);
-        setDestination(destination);
-        getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+        if (getD.get('destination') != destination) {
+            setDestination(destination);
+            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+        }
     }
 
     function selectCourier(e) {
         var brand = $(e).attr('brand');
         $('#mpkirim').val(brand);
-        setCourier($(e).val());
-        getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+        if ($(e).val() != getD.get('courier')) {
+            setCourier($(e).val());
+            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+        }
     }
 
     function setOrigin(o) {
