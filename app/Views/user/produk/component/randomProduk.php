@@ -44,13 +44,13 @@
                                             <input type="hidden" name="add-to-cart" value="show">
                                             <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
                                             <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                                <i class="bi bi-basket text-white fa-lg"></i>
+                                                <i class="bi bi-basket text-white fa-sm"></i>
                                             </button>
                                         </form>
                                         <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
                                             <input type="hidden" name="buy" value="show">
                                             <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                            <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                            <button type="submit" class="btn btn-danger mx-1 mt-2">
                                                 Beli
                                             </button>
                                             <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
