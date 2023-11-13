@@ -398,7 +398,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-                margin-left: 60%;
+                margin-left: 75%;
                 margin-bottom: 75%;
 
                 /* atau warna lain sesuai kebutuhan */
