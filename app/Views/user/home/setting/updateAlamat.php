@@ -175,17 +175,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         .button-container {
-            position: absolute;
+            position: relative;
             margin-right: 10px;
             margin-left: 10px;
             z-index: 1000;
-            top: 1150px;
+            bottom: 50px;
         }
-
 
         #getLocationBtn {
             border-radius: 50% !important;
-
         }
     </style>
 <?php else : ?>

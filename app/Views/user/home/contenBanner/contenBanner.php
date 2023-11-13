@@ -12,21 +12,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
 
-        <div class="container pt-1">
-            <img src="<?= base_url() ?>assets/img/banner/content-1.jpeg" alt="Gambar Besar" class="gambar img-fluid">
-            <!-- <section class="desc" id="desc">
-                <h2 class="fw-bold text-dark mt-4 mb-3 text-center fs-4">Ulasan Aplikasi <span class="text-danger">Ssayomart</span></h2>
-                <p>
-                    저희 싸요마트를 이용해 주셔서 진심으로 감사합니다.
-                    플레이스토어에 싸요마트 어플에 대한 평가 및 리뷰를 작성해주시면, 100명에게 배추김치 500g 교환권을 드리겠습니다.
-                    앞으로도 항상 노력하는 싸요마트가 되겠습니다. 감사합니다.
-                </p>
-                <p>
-                    Terima kasih banyak telah menggunakan Ssayomart kami.
-                    Jika Anda menulis rating dan review untuk aplikasi Ssayomart di Google PlayStore, kami akan memberikan voucher penukaran kimchi sawi 500g kepada 100 orang.
-                    Kami akan terus menjadi Ssayomart yang selalu bekerja keras. Terimakasih.
-                </p>
-            </section> -->
+        <div class="container pt-2">
+            <div class="container">
+                <img src="<?= base_url() ?>assets/img/banner/content-1.jpeg" alt="Gambar Besar" class="gambar img-fluid">
+            </div>
+            <div class="container pt-2 text-center">
+                <div class="row">
+                    <div class="col">
+                        <a href="market://details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="btn btn-block" style="width: 112%;">
+                            <img src="<?= base_url() ?>assets/img/plays.png" alt="Gambar Besar" class="gambar img-fluid">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="btn btn-block" style="width: 100%">
+                            <img src="<?= base_url() ?>assets/img/Apps.png" alt="Gambar Besar" class="gambar img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- <div class="position-relative">
@@ -113,10 +116,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmor</p>
                             </figcaption>
                         </figure> -->
-                        <!-- itemside // -->
-                    </div>
-                    <!-- col // -->
-                    <!-- <div class="col-lg-4 col-md-6">
+        <!-- itemside // -->
+    </div>
+    <!-- col // -->
+    <!-- <div class="col-lg-4 col-md-6">
                         <figure class="d-flex align-items-center mb-4">
                             <figcaption class="info">
                                 <h6 class="title fw-bold">Produk berkualitas tinggi</h6>
@@ -125,8 +128,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </figure>
                          itemside 
                     </div> -->
-                    <!-- col // -->
-                    <!-- <div class="col-lg-4 col-md-6">
+    <!-- col // -->
+    <!-- <div class="col-lg-4 col-md-6">
                         <figure class="d-flex align-items-center mb-4">
                             <figcaption class="info">
                                 <h6 class="title fw-bold">Kami Tersebar di seluruh kota</h6>
@@ -136,13 +139,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                          itemside 
                     </div>
                 </div> -->
-            </div>
-           <!-- container end.// -->
-        </section>
-        <!-- Feature -->
+    </div>
+    <!-- container end.// -->
+    </section>
+    <!-- Feature -->
 
-        <!-- Blog -->
-        <!-- <section class="mt-3 mb-2 text-center">
+    <!-- Blog -->
+    <!-- <section class="mt-3 mb-2 text-center">
             <div class="container text-dark">
                 <header class="mb-4">
                     <h3>Blog posts</h3>
@@ -166,8 +169,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </article>
                     </div> -->
-                    <!-- col.// -->
-                    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+    <!-- col.// -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <article>
                             <a href="#" class="img-fluid">
                                 <img src="<?= base_url() ?>assets/img/banner/banner-2.png" class="rounded w-100" style="object-fit: cover;" height="160" />
@@ -184,8 +187,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </article>
                     </div> -->
-                    <!-- col.// -->
-                    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+    <!-- col.// -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <article>
                             <a href="#" class="img-fluid">
                                 <img src="<?= base_url() ?>assets/img/banner/banner-3.png" class="rounded w-100" style="object-fit: cover;" height="160" />
@@ -202,8 +205,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </article>
                     </div> -->
-                    <!-- col.// -->
-                    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+    <!-- col.// -->
+    <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                         <article>
                             <a href="#" class="img-fluid">
                                 <img src="<?= base_url() ?>assets/img/banner/banner-4.png" class="rounded w-100" style="object-fit: cover;" height="160" />
@@ -222,28 +225,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div> -->
-        </section>
-        <!-- Blog -->
+    </section>
+    <!-- Blog -->
 
-        <!-- Footer -->
-        <!-- <footer class="text-center text-lg-start text-muted mt-5" style="background-color: #f5f5f5;"> -->
-            <!-- Section: Links  -->
-            <!-- <section class="">
+    <!-- Footer -->
+    <!-- <footer class="text-center text-lg-start text-muted mt-5" style="background-color: #f5f5f5;"> -->
+    <!-- Section: Links  -->
+    <!-- <section class="">
                 <div class="container text-center text-md-start pt-4 pb-4"> -->
-                    <!-- Grid row -->
-                    <!-- <div class="row mt-3"> -->
-                        <!-- Grid column -->
-                        <!-- <div class="col-12 col-lg-3 col-sm-12 mb-2"> -->
-                            <!-- Content -->
-                            <!-- <p class="mt-2 text-dark">
+    <!-- Grid row -->
+    <!-- <div class="row mt-3"> -->
+    <!-- Grid column -->
+    <!-- <div class="col-12 col-lg-3 col-sm-12 mb-2"> -->
+    <!-- Content -->
+    <!-- <p class="mt-2 text-dark">
                                 © 2023 Copyright: SSayomart Indonesia
                             </p>
                         </div> -->
-                        <!-- Grid column -->
-                        <!-- Grid column -->
-                        <!-- <div class="col-12 col-sm-12 col-lg-3"> -->
-                            <!-- Links -->
-                            <!-- <h6 class="text-uppercase text-dark fw-bold mb-2">Informasi</h6>
+    <!-- Grid column -->
+    <!-- Grid column -->
+    <!-- <div class="col-12 col-sm-12 col-lg-3"> -->
+    <!-- Links -->
+    <!-- <h6 class="text-uppercase text-dark fw-bold mb-2">Informasi</h6>
                             <p class="text-muted">Tetap berada di dekat kami agar kamu tau promo terbaru dari kami</p>
                             <div class="input-group mb-3">
                                 <input type="email" class="form-control border" placeholder="Email" aria-label="Email" aria-describedby="button-addon2" />

@@ -1,9 +1,8 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
         <h3 class="d-block mb-4 text-center">Produk Unggulan</h3>
-        <div class="row row-cols-3" id="product-container">
+        <div class="row row-cols-3" id="product-unggulan-container">
             <!-- Featured Products -->
-
             <?php foreach ($featuredProducts as $fp) : ?>
                 <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0 text-center">
                     <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
@@ -154,8 +153,8 @@
     <div class="container px-5 my-5 align-middle">
         <div class="card border-0 text-center rounded shadow-sm">
             <div class="card-body mx-3 my-3">
-                <h5 class="card-title">Produk tidak ditemukan atau belum tersedia</h5>
-                <a href="/" class="btn btn-danger border-0 rounded ">Kembali</a>
+                <h5 class="card-title" style="font-size: 16px">Produk tidak ditemukan atau belum tersedia</h5>
+                <a href="/" class="btn btn-danger border-0 rounded mt-2" style="font-size: 14px">Kembali</a>
             </div>
         </div>
     </div>

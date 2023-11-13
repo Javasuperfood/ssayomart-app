@@ -49,4 +49,22 @@ class DeleteRequestUsersModel extends Model
         // Fetch all records from the table
         return $this->findAll();
     }
+    public function getByIdUser($id)
+    {
+        // Fetch all records from the table based on user ID
+        return $this->where('id_user', $id)->findAll();
+    }
+
+    public function getUserInfo($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_request_delete')
+            ->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret AS email') // Include email from auth_identities
+            ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
+            ->where('users.id', $id)
+            ->get();
+
+        $result = $query->getRowArray();
+        return $result;
+    }
 }

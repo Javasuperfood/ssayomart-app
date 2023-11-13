@@ -11,14 +11,12 @@ use App\Models\AuthIdentitesModel;
 
 class AdminUserManagementController extends BaseController
 {
-    protected $usersModel;
     public function index()
     {
         $usersModel = new UsersModel();
         $adminTokoModel = new AdminTokoModel();
         $delRequest = new DeleteRequestUsersModel();
         $authIdentitiesModel = new AuthIdentitesModel();
-
         $perPage = 10;
 
         $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
@@ -30,17 +28,16 @@ class AdminUserManagementController extends BaseController
         $delRequestCount = count($delRequestAll);
 
         // Retrieve the emails for the users and add them to the user data
-        $emails = [];
-        foreach ($users['users'] as $user) {
-            $email = $usersModel->getEmail($user['id']);
-            $emails[$user['id']] = $email;
-        }
+        // $emails = [];
+        // foreach ($users['users'] as $user) {
+        //     // $email = $usersModel->getEmail($user['id']);
+        //     $emails[$user['id']] = $email;
+        // }
 
         $totalUsers = $usersModel->countAllResults();
 
         $data = [
             'users' => $users['users'],
-            'emails' => $emails, // Pass the emails to the view
             'pager' => $users['pager'],
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'totalUsers' => $totalUsers,
@@ -48,30 +45,11 @@ class AdminUserManagementController extends BaseController
             'delRequest' => $delRequestAll,
             'usersModel' => $usersModel,
             'authIdentitiesModel' => $authIdentitiesModel,
-            'delRequestCount' => $delRequestCount
-
+            'delRequestCount' => $delRequestCount,
         ];
 
         return view('dashboard/userManagement/index', $data);
     }
-
-    public function deleteAccountUser($id)
-    {
-        $userInfo = $this->usersModel->getUserInfo($id);
-
-        if (!$userInfo) {
-            // Handle the case where user information is not found
-            return redirect()->back()->with('error', 'User not found.');
-        }
-
-        $data = [
-            'usersModel' => $userInfo,
-        ];
-
-        return view('dashboard/userManagement/index', $data);
-    }
-
-
 
     public function updateUserRole($id)
     {
@@ -106,5 +84,57 @@ class AdminUserManagementController extends BaseController
 
         session()->setFlashdata('alert', $alert);
         return redirect()->to(base_url('dashboard/user-management'))->withInput();
+    }
+
+    // =============================================================
+    // =================== DELETE ACCOUNT PAGE =====================
+    // =============================================================
+
+    public function delRequest()
+    {
+        $usersModel = new UsersModel();
+        $delRequest = new DeleteRequestUsersModel();
+        $authIdentitiesModel = new AuthIdentitesModel();
+        $perPage = 10;
+
+        $currentPage = $this->request->getVar('page_user') ? $this->request->getVar('page_user') : 1;
+        $keyword = $this->request->getVar('search');
+        $users = $usersModel->getUser($perPage, $keyword);
+        $delRequestAll = $delRequest->getAllRequests();
+
+        $data = [
+            'users' => $users['users'],
+            'delRequest' => $delRequestAll,
+            'usersModel' => $usersModel,
+            'authIdentitiesModel' => $authIdentitiesModel,
+        ];
+
+        return view('dashboard/userManagement/deleteRequest', $data);
+    }
+
+    public function delete($id)
+    {
+        $authIdentitiesModel = new AuthIdentitesModel();;
+        $authIdentitiesModel->find($id);
+
+        $deleted = $authIdentitiesModel->delete($id);
+        // dd($id);
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Akun berhasil di hapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/user-management');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan Akun'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/user-management')->withInput();
+        }
     }
 }

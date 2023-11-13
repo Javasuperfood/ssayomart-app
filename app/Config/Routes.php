@@ -259,6 +259,9 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // USER MANAGEMENT
     $routes->get('user-management', 'AdminUserManagementController::index');
     $routes->post('user-management/update/(:segment)', 'AdminUserManagementController::updateUserRole/$1');
+    // DELETE REQUEST USER
+    $routes->get('user-management/delete-account', 'AdminUserManagementController::delRequest');
+    $routes->post('user-management/delete-account/delete/(:segment)', 'AdminUserManagementController::delete/$1');
 
     // ADMIN MANAGEMENT
     $routes->get('admin-management', 'AdminManagementController::index');

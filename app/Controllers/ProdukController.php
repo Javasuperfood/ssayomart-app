@@ -40,7 +40,6 @@ class ProdukController extends BaseController
         $subResult = $subKategori->getSubKategoriByKategoriId($katSub['id_kategori']);
         $subSlug = $subKategori->getSubKategori($slug2);
         $kategori = $kategoriModel->findAll();
-
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
         $promoItem = $promoItemModel->getPromo($slug1);
