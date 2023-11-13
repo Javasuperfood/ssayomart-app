@@ -1,11 +1,10 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
-        <h3 class="d-block mb-4">Produk Unggulan</h3>
-        <div class="row row-cols-3" id="product-container">
+        <h3 class="d-block mb-4 text-center">Produk Unggulan</h3>
+        <div class="row row-cols-3" id="product-unggulan-container">
             <!-- Featured Products -->
-
             <?php foreach ($featuredProducts as $fp) : ?>
-                <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
+                <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0 text-center">
                     <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
@@ -64,7 +63,7 @@
     </div>
 
     <div class="container bg-white" id="product">
-        <h3 class="d-block my-4">Produk</h3>
+        <h2 class="d-block my-4 text-center">Produk</h2>
         <div class="row row-cols-3" id="product-container">
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>

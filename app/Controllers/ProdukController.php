@@ -40,15 +40,6 @@ class ProdukController extends BaseController
         $subResult = $subKategori->getSubKategoriByKategoriId($katSub['id_kategori']);
         $subSlug = $subKategori->getSubKategori($slug2);
         $kategori = $kategoriModel->findAll();
-
-        // Fetch produk unggulan untuk setiap kategori
-        // $featuredProducts = [];
-        // foreach ($kategori as $key => $category) {
-        //     $categoryId = $category['id_kategori'];
-        //     $featuredProducts[$key] = $produkModel->getFeaturedProductsByCategory($slug1);
-        //     // dd($featuredProducts[$categoryId]);
-        // }
-
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
         $promoItem = $promoItemModel->getPromo($slug1);
