@@ -88,7 +88,7 @@ class BuyController extends BaseController
 
         $wishlist = $wishlistModel->where('id_user', user_id())->first();
         $wishlistItem = $wishlistProdModel->where('id_wishlist', $wishlist['id_wishlist'])->where('id_produk', $produk['id_produk'])->first();
-        $id_alamat = $this->request->getVar('alamat_list');
+        $id_alamat = $this->request->getVar('alamatD');
         $alamat = $alamatUserModel->find($id_alamat);
         $service = $this->request->getVar('service');
         $servicetext = $this->request->getVar('serviceText');
@@ -174,6 +174,7 @@ class BuyController extends BaseController
         $dbStore = [
             'id_user' => user_id(),
             'id_toko' => $this->request->getVar('market'),
+            'id_destination' => $id_alamat,
             'id_status_pesan' => 1,
             'id_status_kirim' => 1,
             'invoice' => $inv,
@@ -190,6 +191,7 @@ class BuyController extends BaseController
             'kupon' => $kupon['kupon'],
             'snap_token' => $snapToken
         ];
+        // dd($dbStore);
         $chechkoutId = $checkoutModel->insert($dbStore);
 
         $checkoutProdukData = [

@@ -16,6 +16,7 @@ class CheckoutModel extends Model
     protected $allowedFields    = [
         'id_user',
         'id_toko',
+        'id_destination',
         'id_kupon',
         'id_status_pesan',
         'id_status_kirim',
