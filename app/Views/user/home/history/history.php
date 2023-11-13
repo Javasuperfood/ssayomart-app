@@ -234,13 +234,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- style slider -->
     <style>
         /* Gaya saat card dipilih */
-        .card-selected {
+        .card-selected{
             background-color: #dc3545;
             color: white !important;
 
         }
 
-        .card-link {
+        .card-selected a {
+            color: white;
+        }
+
+        a {
             font-size: 8px;
             color: black;
         }
@@ -297,6 +301,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <style>
+
+        /* Untuk ubah fitur search */
         .custom-button {
             background-color: white;
             color: black;
