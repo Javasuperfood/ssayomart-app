@@ -377,7 +377,93 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
+
+        <div class="container">
+            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#myModal">
+                <i class="bi bi-chat-dots"></i>
+            </button>
+
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title fw-bold-sm" style="font-size: 14px;">Welcome, Chat me!</h5>
+                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle" style="position: absolute; top:7px; right:10px; cursor:pointer; z-index:999; color:#fff; font-size:20px; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;"></i></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Name" style="font-size: 12px;">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Email" style="font-size: 12px;">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
+                                </div>
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn btn-danger btn-block" style="width: 100%">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- style button modal dialog -->
+
+    <style>
+        /* CSS untuk chat button yang memunculkan modal */
+        .chat-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 130px;
+            cursor: pointer;
+            z-index: 999;
+            border-radius: 50%;
+            background-color: #ec2614;
+            color: #fff;
+            font-size: 22px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.5s ease;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        /* CSS tambahan untuk modal content */
+        .modal-content {
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        /* CSS untuk header dalam modal */
+        .modal-header {
+            background-color: #ec2614;
+            color: #fff;
+            border-radius: 5px 5px 0px 0px;
+            padding: 13px;
+        }
+
+        /* CSS untuk teks dalam modal */
+        .modal-body {
+            padding: 15px;
+        }
+
+        /* CSS untuk tombol "Submit" dalam modal */
+        .modal-body .btn-danger {
+            font-size: 12px;
+        }
+
+        .modal-body .form-control {
+            border: 1px solid #DEE2E6;
+        }
+    </style>
+
 <?php endif; ?>
 <!-- end Desktop -->
 
