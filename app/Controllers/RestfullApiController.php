@@ -354,7 +354,7 @@ class RestfullApiController extends BaseController
                 $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $order[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Process';
             }
             if ($t['id_status_pesan'] == 3) {
                 $order[$key]['status'] = 'Sending';
