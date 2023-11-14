@@ -42,7 +42,7 @@ $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
-$routes->get('user/home/contenBanner/contenBanner', 'Blog::contenBanner');
+$routes->get('user/home/contenBanner/conten-banner', 'Blog::contenBanner');
 $routes->get('sayo-care', 'Setting::sayoCare');
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 
@@ -86,7 +86,9 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
         $routes->get('alamat-list', 'Setting::alamatList');
         $routes->get('create-alamat', 'Setting::createAlamat');
         $routes->get('update-alamat/(:any)', 'Setting::updateAlamat/$1');
-
+        $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
+        $routes->get('sayo-care', 'Setting::sayoCare');
+        
 
         // Post
         $routes->post('select-alamat', 'Setting::storeDataAlamat');
