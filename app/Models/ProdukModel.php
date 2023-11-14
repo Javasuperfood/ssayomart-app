@@ -222,10 +222,11 @@ class ProdukModel extends Model
         return $this->db->table('jsf_sub_kategori_produk')->insert($data);
     }
 
-    public function getFeaturedProductsByCategory($slug1 = false, $slug2 = false)
+    public function getFeaturedProductsByCategory($slug1 = null, $slug2 = null)
     {
         $query = $this->select('jsf_produk.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, p.qty')
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_produk.id_kategori', 'left')
+            ->join('jsf_sub_kategori', 'jsf_sub_kategori.id_sub_kategori = jsf_produk.id_sub_kategori', 'left')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
             ->join('jsf_checkout_produk p', 'jsf_produk.id_produk = p.id_produk', 'left');
 
@@ -234,15 +235,11 @@ class ProdukModel extends Model
         }
 
         if ($slug2 != null) {
-            $query->join('jsf_sub_kategori', 'jsf_sub_kategori.id_sub_kategori = jsf_produk.id_sub_kategori', 'left');
             $query->where('jsf_sub_kategori.slug', $slug2);
         }
-
-        $query->where('p.id_produk IS NOT NULL');
-
-        $query->groupBy('jsf_produk.id_produk')
-            ->orderBy('qty', 'DESC')
-            ->limit(3);
-        return $query->get()->getResultArray();
+        $query->limit(4)->groupBy('jsf_produk.id_produk, p.qty');
+        $result = $query->get()
+            ->getResultArray();
+        return $result;
     }
 }
