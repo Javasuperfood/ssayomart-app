@@ -265,16 +265,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- desktop konten -->
     <div id="desktopContent" style="margin-top:80px;">
-        <div class="container-fluid p-0 position-relative mt-3">
-            <div class="ratio ratio-16x9" style="position: sticky; top: 60px;"> <!-- Ganti 60px dengan ketinggian navbar Anda -->
-                <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-            </div>
+
+        <div class="container-fluid d-flex justify-content-center align-items-center position-relative py-4">
+            <img src="<?= base_url() ?>assets/img/banner/Playstore-3.jpg" alt="Gambar Besar" class="gambar img-fluid">
         </div>
 
-        <div class="container mt-3">
+        <section>
+            <div class="container justify-content-between d-flex justify-content-center align-items-center">
+                <div class="row">
+                    <div class="col mx-5">
+                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="btn btn-block" style="width: 112%;">
+                            <img src="<?= base_url() ?>assets/img/plays.png" alt="Gambar Besar" class="gambar img-fluid">
+                        </a>
+                    </div>
+                    <div class="col mx-5">
+                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="btn btn-block" style="width: 100%">
+                            <img src="<?= base_url() ?>assets/img/Apps.png" alt="Gambar Besar" class="gambar img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <!-- Konten Kolom Kedua -->
+                  
                     <h3 class="text-center mt-2">Tentang Ssayomart </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
@@ -285,14 +301,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container mt-3">
             <div class="row">
                 <div class="col-12 col-md-6 ">
-                    <!-- Konten Kolom Kedua -->
+                  
 
                     <h3>Dokumentasi SSayomart Live</h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
 
                 </div>
                 <div class="col-12 col-md-6">
-                    <!-- Konten Kolom Pertama -->
+                    
 
                     <div class="ratio ratio-16x9">
                         <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
@@ -301,40 +317,40 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
 
             </div>
-        </div>
+        </div> -->
 
-        <div class="container mt-3 d-none d-md-block">
+        <!-- <div class="container mt-3 d-none d-md-block">
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
             </div>
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
-                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                <div class="col mb-4 zoom-in">
                     <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 <?php endif; ?>
 
