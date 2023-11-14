@@ -288,6 +288,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
         @media screen and (max-width: 280px) {
 
+            .modal-body img {
+                width: 80px !important;
+            }
+
+            .modal-body button {
+                font-size: 10px !important;
+            }
+
+            .modal-content {
+                font-size: 13px;
+            }
+
+            .input-group .btn {
+                font-size: 9px;
+            }
+
             .form-control {
                 font-size: 12px;
                 /* Ukuran font input sesuai kebutuhan */
@@ -622,11 +638,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 
-    <style>
-        .form-control[readonly] {
-            border: 1px solid #DEE2E6;
-        }
-    </style>
+<style>
+    .form-control[readonly] {
+        border: 1px solid #DEE2E6;
+    }
+</style>
 
 
 <!-- end desktop -->
