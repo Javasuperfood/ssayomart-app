@@ -302,6 +302,8 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->get('transaction/delivered', 'RestfullApiController::transactionDd');
         $routes->get('transaction/finish', 'RestfullApiController::transactionFh');
         $routes->get('transaction/failed', 'RestfullApiController::transactionFail');
+        // GOSEND API
+        $routes->get('get-order/(:segment)', 'WebhookController::getOrder/$1');
     });
 });
 

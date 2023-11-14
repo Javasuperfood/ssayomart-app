@@ -85,17 +85,17 @@ class UsersModel extends Model
         return $result;
     }
 
-    // public function getEmail($id)
-    // {
-    //     $db = \Config\Database::connect();
-    //     $query = $db->table('auth_identities')
-    //         ->select('secret')
-    //         ->where('user_id', $id)
-    //         ->get();
+    public function getEmail($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('auth_identities')
+            ->select('secret')
+            ->where('user_id', $id)
+            ->get();
 
-    //     $result = $query->getResultArray()[0]['secret'];
-    //     return $result;
-    // }
+        $result = $query->getResultArray()[0]['secret'];
+        return $result;
+    }
 
     public function getUserInfo($id)
     {
