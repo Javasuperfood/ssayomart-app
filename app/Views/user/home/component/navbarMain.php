@@ -89,10 +89,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <a class="dropdown-item" href="<?= base_url(); ?>setting/alamat-list"><?= lang('Text.alamat'); ?></a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>setting/kebijakan-privasi"><?= lang('Text.kebijakan_privasi'); ?></a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>kebijakan-privasi"><?= lang('Text.kebijakan_privasi'); ?></a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>setting/sayo-care"><?= lang('Text.tentang'); ?></a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>sayo-care"><?= lang('Text.tentang'); ?></a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider" />
