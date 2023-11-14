@@ -13,18 +13,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container mt-4 justify-content-center">
             <div class="col text-center">
-                <div class="container">
-                    <div class="gallery">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
-                    </div>
-                    <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                    <div class="modal-content bg-transparent border-0">
-                        <div class="modal-body d-flex align-items-center justify-content-center">
-                            <img src="" id="lightboxImage" alt="Zoomed Image">
+                    <div class="container">
+                        <div class="gallery">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                        </div>
+                        <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content bg-transparent border-0">
+                            <div class="modal-body d-flex align-items-center justify-content-center">
+                                <img src="" id="lightboxImage" alt="Zoomed Image">
+                            </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             <div class="col mt-4 mx-1 text-center">
                 <h4><?= $produk['nama']; ?></h4>
