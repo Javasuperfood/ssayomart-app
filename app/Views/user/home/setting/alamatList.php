@@ -10,15 +10,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <!-- view Mobile -->
 <?php if ($isMobile) : ?>
-    <div id="mobileContent">
+    <div id="mobileContent" style="margin-top: 30px;">
         <?php if (empty($alamat_user_model)) : ?>
             <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-danger" role="alert">
                 <?= lang('Text.alert_alamat') ?>
             </div>
             <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
         <?php else : ?>
-            <div class="col-12 d-flex justify-content-center">
+            <!-- <div class="col-12 d-flex justify-content-center">
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
@@ -27,8 +27,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </li>
                     </ol>
                 </nav>
-            </div>
-            <div class="container pt-3">
+            </div> -->
+            <div class="container">
                 <?php foreach ($alamat_user_model as $au) : ?>
                     <div class="row row-cols-1">
                         <div class="col">
@@ -72,7 +72,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
                                     <div class="modal-footer flex-nowrap p-0">
                                         <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-link btn-danger fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong><?= lang('Text.btn_hapus') ?></strong></button>
+                                        <button type="submit" class="btn btn-lg btn-link btn-light fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong><?= lang('Text.btn_hapus') ?></strong></button>
                                         <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
                                     </div>
                                 </form>

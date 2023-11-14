@@ -52,7 +52,7 @@ class CartController extends BaseController
             return redirect()->to(base_url() . 'cart')->with('failed', 'Gagal menghapus produk.');
         }
         $this->session->set(['countCart' => $this->countCart()]);
-        return redirect()->to(base_url() . 'cart')->with('success', 'Berhasil Mengapus produk dalam cart.');
+        return redirect()->to(base_url() . 'cart')->with('success', 'Berhasil Menghapus produk dalam cart.');
     }
     public function ajaxAdd()
     {
@@ -100,7 +100,7 @@ class CartController extends BaseController
         if (!$cartProdModel->save($dbCartProd)) {
             $response = [
                 'success' => false,
-                'message' => 'Gagal menambhakan produk dalam cart.'
+                'message' => 'Gagal menambahkan produk dalam cart.'
             ];
             return $this->response->setJSON($response);
         }
@@ -110,7 +110,7 @@ class CartController extends BaseController
         }
         $response = [
             'success' => true,
-            'message' => 'Berhasil menambhakan produk dalam cart.'
+            'message' => 'Berhasil menambahkan produk dalam cart.'
         ];
 
         return $this->response->setJSON($response);
