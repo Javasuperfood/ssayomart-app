@@ -4,7 +4,7 @@
 <?php
 $error = session('error'); ?>
 <?= $this->section('main') ?>
-<div class="box shadow-sm">
+<div class="box shadow-sm" style="height: 800px">
     <div class="inner-box">
         <div class="forms-wrap">
             <form action="<?= url_to('login') ?>" method="post">
@@ -68,6 +68,12 @@ $error = session('error'); ?>
                         <?php endif ?>
                     </p>
                     <p class="text-center"><a class="toggle" href="<?= base_url(); ?>"><?= lang('Text.lihat_barang') ?></a></p>
+                        <p class="text mb-5 text-center">
+                            Dengan mendaftarkan diri, berarti anda menyetujui
+                            <!-- <a href="#">Peraturan Pelayanan</a> dan -->
+                            <a href="<?= base_url(); ?>kebijakan-privasi">Kebijakan Kami</a>
+                        </p>
+                    </p>
                 </div>
             </form>
         </div>
