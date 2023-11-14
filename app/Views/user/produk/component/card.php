@@ -1,6 +1,7 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
-        <h3 class="d-block mb-4 text-center">Produk Unggulan</h3>
+        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;">Produk Unggulan</p>
+        <hr class="border-darker mt-0 mb-3">
         <div class="row row-cols-3" id="product-unggulan-container">
             <!-- Featured Products -->
             <?php foreach ($featuredProducts as $fp) : ?>
@@ -63,7 +64,8 @@
     </div>
 
     <div class="container bg-white" id="product">
-        <h2 class="d-block my-4 text-center">Produk</h2>
+        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;">Produk</p>
+        <hr class="border-darker mt-0 mb-3">
         <div class="row row-cols-3" id="product-container">
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
@@ -161,6 +163,11 @@
 <?php endif ?>
 
 <style>
+    .border-darker {
+        border-color: #DC143C;
+        /* Warna merah yang lebih gelap */
+    }
+
     .horizontal-counter {
         display: flex;
         align-items: center;

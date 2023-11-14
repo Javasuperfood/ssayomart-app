@@ -13,20 +13,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container mt-4 justify-content-center">
             <div class="col text-center">
-                    <div class="container">
-                        <div class="gallery">
-                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
-                        </div>
-                        <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content bg-transparent border-0">
-                            <div class="modal-body d-flex align-items-center justify-content-center">
-                                <img src="" id="lightboxImage" alt="Zoomed Image">
+                <div class="container">
+                    <div class="gallery">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                    </div>
+                    <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content bg-transparent border-0">
+                                <div class="modal-body d-flex align-items-center justify-content-center">
+                                    <img src="" id="lightboxImage" alt="Zoomed Image">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
             <div class="col mt-4 mx-1 text-center">
                 <h4><?= $produk['nama']; ?></h4>
@@ -40,7 +40,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php endif ?>
                         </p>
                     </div>
-
                 </div>
                 <div class="container pt-3">
                     <div class="row px-5">
@@ -191,33 +190,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php endif ?>
     </div>
 
-        <style>
-            /* CSS untuk mengatur tata letak galeri */
-            .gallery {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                margin: 20px;
-            }
+    <style>
+        /* CSS untuk mengatur tata letak galeri */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
 
-            .gallery img {
-                width: 100%;
-                height: auto;
-                margin: 10px;
-                cursor: pointer;
-            }
-        </style>
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
 
-        <script>
-            // JavaScript untuk menangani lightbox
-            function openLightbox(imagePath) {
-                // Set path gambar pada elemen lightboxImage
-                document.getElementById('lightboxImage').src = imagePath;
+    <script>
+        // JavaScript untuk menangani lightbox
+        function openLightbox(imagePath) {
+            // Set path gambar pada elemen lightboxImage
+            document.getElementById('lightboxImage').src = imagePath;
 
-                // Tampilkan modal
-                $('#lightboxModal').modal('show');
-            }
-        </script>
+            // Tampilkan modal
+            $('#lightboxModal').modal('show');
+        }
+    </script>
 <?php else : ?>
     <!-- Akhir view mobile -->
     <!-- View Desktop -->
@@ -225,8 +224,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-none d-md-block">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="zoom-image">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+                    <div class="container">
+                        <div class="gallery">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                        </div>
+                        <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content bg-transparent border-0">
+                                    <div class="modal-body d-flex align-items-center justify-content-center">
+                                        <img src="" id="lightboxImage" alt="Zoomed Image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -406,6 +416,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- end Desktop -->
 
 <!-- akhir view desktop -->
+
+<style>
+    /* CSS untuk mengatur tata letak galeri */
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 20px;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: auto;
+        margin: 10px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    // JavaScript untuk menangani lightbox
+    function openLightbox(imagePath) {
+        // Set path gambar pada elemen lightboxImage
+        document.getElementById('lightboxImage').src = imagePath;
+
+        // Tampilkan modal
+        $('#lightboxModal').modal('show');
+    }
+</script>
+
+
+
+
+
+
+
 
 <style>
     .horizontal-counter {
