@@ -496,8 +496,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
                                                         <input type="hidden" name="buy" value="show">
                                                         <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                                            Beli
+                                                        <button type="submit" class="btn btn-danger mx-1 mt-2">
+                                                            Buy Now
                                                         </button>
                                                         <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                                     </form>
@@ -510,7 +510,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-
 
                 <!-- rekomendasi title -->
                 <div class="container py-3">
