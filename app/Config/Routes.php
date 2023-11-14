@@ -44,7 +44,6 @@ $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
 $routes->get('user/home/contenBanner/conten-banner', 'Blog::contenBanner');
 $routes->get('sayo-care', 'Setting::sayoCare');
-
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 
 // Rute untuk AppleAuthController
