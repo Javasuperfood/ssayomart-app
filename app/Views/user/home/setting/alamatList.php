@@ -65,7 +65,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endforeach; ?>
-            <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-plus"></i></a>
+            <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="rounded-2 mt-5 btn btn-danger btn-sm center-screen"><i class="bi bi-plus fw-bold"><?= lang('Text.btn_tambah') ?></i></a>
             <form action="<?= base_url('setting/select-alamat'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="alamat" id="alamatField">
@@ -74,6 +74,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <style>
+            /* CSS untuk memposisikan tombol di tengah layar */
+            .center-screen {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
             @media screen and (max-width: 280px) {
                 .card-body {
                     font-size: 13px;
@@ -89,15 +97,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             }
         </style>
-        <style>
-            .position-fixed {
-                position: fixed;
-                bottom: 70px;
-                /* Atur jarak dari bawah sesuai kebutuhan */
-                right: 10px;
-                /* Atur jarak dari kanan sesuai kebutuhan */
-            }
-        </style>
+
     </div>
 <?php else : ?>
     <!-- End View Mobile -->
