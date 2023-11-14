@@ -33,7 +33,6 @@ class ProdukController extends BaseController
         $produkModel = new ProdukModel();
         $katSub = $kategoriModel->getKategori($slug1);
 
-        $promoItemModel = new PromoItemModel();
         $promoModel = new PromoModel();
 
         $subKategori = new SubKategoriModel();
@@ -42,26 +41,7 @@ class ProdukController extends BaseController
         $kategori = $kategoriModel->findAll();
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
-        $promoItem = $promoItemModel->getPromo($slug1);
-        if ($promoItem) {
-            $filteredPromoItems = [];
 
-            foreach ($promoItem as $item) {
-                $idPromoProduk = $item['id_promo'];
-
-                $idPromoKategoriCocok = false;
-                foreach ($promo as $kategoriItem) {
-                    if ($kategoriItem['id_promo'] === $idPromoProduk) {
-                        $idPromoKategoriCocok = true;
-                        break;
-                    }
-                }
-                if ($idPromoKategoriCocok) {
-                    $filteredPromoItems[] = $item;
-                }
-            }
-            $promoItem = $filteredPromoItems;
-        }
 
 
         $produkModel = new ProdukModel();
@@ -86,7 +66,7 @@ class ProdukController extends BaseController
             if ($slug1 && $slug2) {
                 $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori'], false);
             }
-
+            $featuredProducts = $produkModel->getFeaturedProductsByCategory($slug1, $slug2);
             $data = [
                 'title' => $katSub['nama_kategori'],
                 'kategori' => $kategori,
@@ -96,7 +76,7 @@ class ProdukController extends BaseController
                 'sk' => $slug2,
                 'kategori_promo' => $promo,
                 'back' => '/' . '#ktr',
-                'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2)
+                'featuredProducts' => $featuredProducts
             ];
             // dd($data);
             return view('user/produk/index', $data);
