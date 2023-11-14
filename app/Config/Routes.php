@@ -88,7 +88,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
         $routes->get('update-alamat/(:any)', 'Setting::updateAlamat/$1');
         $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
         $routes->get('sayo-care', 'Setting::sayoCare');
-        
+
 
         // Post
         $routes->post('select-alamat', 'Setting::storeDataAlamat');
@@ -307,6 +307,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->get('transaction/failed', 'RestfullApiController::transactionFail');
         // GOSEND API
         $routes->get('get-order/(:segment)', 'WebhookController::getOrder/$1');
+        $routes->post('get-order/pickup-item/(:segment)', 'WebhookController::pickupItem/$1');
     });
 });
 
