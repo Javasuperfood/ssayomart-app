@@ -25,7 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="row row-cols-1 <?= (!$alamat_list) ? 'd-none' : ''; ?>">
                     <div class="col">
                         <div class="input-group mb-3">
-                            <span class="input-group-text border-0 shadow-sm text-danger">
+                            <span class="input-group-text border-0 shadow-sm">
                                 <i class="bi bi-shop-window fw-bold"></i>
                             </span>
                             <div class="form-floating">
@@ -40,7 +40,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endforeach ?>
                                 <label for="mpOrigin">Market</label>
                             </div>
-                            <button class="btn btn-outline-danger input-group-text shadow-sm text-danger rounded-3" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -77,7 +77,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="col">
                         <div class="input-group mb-3">
-                            <span class="input-group-text border-0 shadow-sm text-danger">
+                            <span class="input-group-text border-0 shadow-sm">
                                 <i class="bi bi-house fw-bold"></i>
                             </span>
                             <div class="form-floating">
@@ -92,7 +92,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endforeach ?>
                                 <label for="mpOrigin">Alamat</label>
                             </div>
-                            <button class="btn btn-outline-danger input-group-text shadow-sm text-danger rounded-3" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -129,14 +129,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="col">
                         <div class="input-group mb-3">
-                            <span class="input-group-text border-0 shadow-sm text-danger">
+                            <span class="input-group-text border-0 shadow-sm">
                                 <i class="bi bi-truck fw-bold"></i>
                             </span>
                             <div class="form-floating">
-                                <input type="text" class="form-control border-0 shadow-sm" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
-                                <label for="mpkirim">Metode Pengiriman</label>
+                                <input type="text" class="form-control border-0 shadow-sm fs-6" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
+                                <label for="mpkirim" style="font-size: 14px">Metode Pengiriman</label>
                             </div>
-                            <button class="btn btn-outline-danger input-group-text shadow-sm rounded-3" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -406,7 +406,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php endforeach ?>
                                             <label for="mpOrigin">Market</label>
                                         </div>
-                                        <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                                        <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -421,7 +421,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <div class="row row-cols-1">
                                                                 <?php foreach ($market_list as $key => $m) : ?>
                                                                     <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>',)">
-                                                                        <div class="card">
+                                                                        <div class="card border-0 shadow-sm">
                                                                             <div class="card-body">
                                                                                 <div class="form-check form-switch">
                                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
@@ -461,7 +461,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php endforeach ?>
                                             <label for="mpOrigin">Alamat</label>
                                         </div>
-                                        <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                                        <button class="btn btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -476,7 +476,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <div class="row row-cols-1">
                                                                 <?php foreach ($alamat_list as $key => $a) : ?>
                                                                     <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>)">
-                                                                        <div class="card">
+                                                                        <div class="card border-0 shadow-sm">
                                                                             <div class="card-body">
                                                                                 <div class="form-check form-switch">
                                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
@@ -508,7 +508,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <input type="text" class="form-control" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
                                             <label for="mpkirim">Metode Pengiriman</label>
                                         </div>
-                                        <button class="btn btn-outline-secondary input-group-text" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                                        <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -621,6 +621,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 <?php endif; ?>
+
+    <style>
+        .form-control[readonly] {
+            border: 1px solid #DEE2E6;
+        }
+    </style>
 
 
 <!-- end desktop -->
