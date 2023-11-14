@@ -83,7 +83,7 @@ class WebhookController extends BaseController
             'status' => 200,
             'success' => 'PickUp Button',
             'type' => 'For PickUp development stage',
-            'message' => 'For Tim : please add callback for curl request',
+            'message' => 'For Ssayomart Team : please add callback for curl request',
             'bodypayload' => $body,
             'response' => 'No response'
 
