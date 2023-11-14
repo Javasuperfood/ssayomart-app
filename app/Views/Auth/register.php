@@ -68,10 +68,10 @@ if (session('errors')) {
 
                     <button type="submit" value="Daftar" class="sign-btn" id="btn-register"><?= lang('Text.btn_daftar') ?></button>
 
-                    <p class="text mb-5">
+                    <p class="text mb-5 text-center">
                         Dengan mendaftarkan diri, berarti anda menyetujui
-                        <a href="#">Peraturan Pelayanan</a> dan
-                        <a href="#">Kebijakan</a>
+                        <!-- <a href="#">Peraturan Pelayanan</a> dan -->
+                        <a href="<?= base_url(); ?>kebijakan-privasi">Kebijakan Kami</a>
                     </p>
                 </div>
             </form>
