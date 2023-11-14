@@ -230,18 +230,19 @@ class ProdukModel extends Model
             ->join('jsf_checkout_produk p', 'jsf_produk.id_produk = p.id_produk', 'left');
 
         if ($slug1 != null) {
-            $query->where('jsf_kategori.slug', $slug1)
-                ->limit(3);
+            $query->where('jsf_kategori.slug', $slug1);
         }
 
         if ($slug2 != null) {
             $query->join('jsf_sub_kategori', 'jsf_sub_kategori.id_sub_kategori = jsf_produk.id_sub_kategori', 'left');
-            $query->where('jsf_sub_kategori.slug', $slug2)
-                ->limit(3);
+            $query->where('jsf_sub_kategori.slug', $slug2);
         }
 
+        $query->where('p.id_produk IS NOT NULL');
+
         $query->groupBy('jsf_produk.id_produk')
-            ->orderBy('qty', 'DESC');
+            ->orderBy('qty', 'DESC')
+            ->limit(3);
         return $query->get()->getResultArray();
     }
 }

@@ -131,6 +131,8 @@ class ProdukController extends BaseController
             'kategoriProduk' => $kategoriProduk, // Menambahkan kategori produk
             'subKategoriProduk' => $subKategoriProduk, // Menambahkan kategori produk
         ];
+        // dd($data);
+
         if (auth()->loggedIn()) {
             $marketSelected = $userModel->find(user_id())['market_selected'];
             $stok = $stokModel->getStock($produk['id_produk'], $marketSelected);
