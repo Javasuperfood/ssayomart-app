@@ -42,9 +42,9 @@ $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
-$routes->get('user/home/contenBanner/contenBanner', 'Blog::contenBanner');
-$routes->get('sayoCare', 'Setting::sayoCare');
-$routes->get('kebijakanPrivasi', 'Setting::kebijakanPrivasi');
+$routes->get('user/home/contenBanner/conten-banner', 'Blog::contenBanner');
+$routes->get('setting/sayo-care', 'Setting::sayoCare');
+$routes->get('setting/kebijakan-privasi', 'Setting::kebijakanPrivasi');
 
 // Rute untuk AppleAuthController
 $routes->get('apple-login', 'AppleAuthController::appleLogin');
