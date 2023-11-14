@@ -90,7 +90,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <h3><?= lang('Text.bantuan') ?></h3>
                     <ul class="list-group list-group-flush">
-                        <a href="<?= base_url(); ?>/setting/sayoCare" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-question-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.tentang') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -101,7 +101,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a> -->
 
-                        <a href="<?= base_url(); ?>/setting/kebijakanPrivasi" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-lock pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.kebijakan_privasi') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -153,7 +153,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger btn-block" style="width: 100%">Submit</button>
+                                    <button type="button" class="btn btn-block text-white border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -363,10 +363,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <a href="<?= base_url(); ?>history" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-clock-history pe-2 text-secondary"></i> <?= lang('Text.riwayat') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
-                                        <a href="<?= base_url(); ?>/setting/sayoCare" class="list-group-item pb-3 fw-bold">
+                                        <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
-                                        <a href="<?= base_url(); ?>/setting/kebijakanPrivasi" class="list-group-item pb-3 fw-bold">
+                                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                     </ul>
@@ -402,7 +402,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger btn-block" style="width: 100%">Submit</button>
+                                    <button type="button" class="btn btn-danger btn-block border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
                                 </div>
                             </form>
                         </div>

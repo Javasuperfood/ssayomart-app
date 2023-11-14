@@ -46,7 +46,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             $classBanner .= " active";
                         }
                     ?>
-                        <a href="<?= base_url(); ?>user/home/contenBanner/contenBanner">
+                        <a href="<?= base_url(); ?>user/home/contenBanner/conten-banner">
                             <div class="<?= $classBanner; ?>">
                                 <div class="row">
                                     <div class="col-md-6">

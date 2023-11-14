@@ -527,6 +527,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
 
+        .modal-body img {
+            width: 350px;
+
+        }
 
         .col.mt-4.text-center h5 {
             /* Sesuaikan ukuran font sesuai kebutuhan Anda */
@@ -537,8 +541,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         .col.mt-4.text-center p {
             /* Sesuaikan ukuran font pada elemen paragraf */
             font-size: 18px;
-            margin-left: 5px;
-            margin-right: 5px;
+            margin-left: 50px;
+            margin-right: 50px;
             display: block;
             /* Misalnya, ubah ukuran font pada paragraf menjadi 12px */
         }
