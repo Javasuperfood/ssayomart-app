@@ -1,6 +1,6 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
-        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;">Produk Unggulan</p>
+        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
         <hr class="border-darker mt-0 mb-3">
         <div class="row row-cols-3" id="product-unggulan-container">
             <!-- Featured Products -->
@@ -38,33 +38,33 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                    <form action="<?= base_url('produk/' . $fp['slug']); ?>">
-                                        <input type="hidden" name="add-to-cart" value="show">
-                                        <input type="hidden" name="qty" id="Cqty<?= $fp['id_produk']; ?>" value="1" value="show">
-                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                            <i class="fas fa-shopping-cart text-white fa-sm"></i>
-                                        </button>
-                                    </form>
-                                    <form action="<?= base_url('produk/' . $fp['slug']); ?>">
-                                        <input type="hidden" name="buy" value="show">
-                                        <input type="hidden" name="qty" id="Bqty<?= $fp['id_produk']; ?>" value="1" value="show">
-                                        <button type="submit" class="btn btn-danger mx-1 mt-2">
-                                            Buy
-                                        </button>
-                                        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                                    </form>
-                                </div>
+                            </div>
+                            <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                <form action="<?= base_url('produk/' . $fp['slug']); ?>">
+                                    <input type="hidden" name="add-to-cart" value="show">
+                                    <input type="hidden" name="qty" id="Cqty<?= $fp['id_produk']; ?>" value="1" value="show">
+                                    <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+                                        <i class="fas fa-shopping-cart text-white fa-sm"></i>
+                                    </button>
+                                </form>
+                                <form action="<?= base_url('produk/' . $fp['slug']); ?>">
+                                    <input type="hidden" name="buy" value="show">
+                                    <input type="hidden" name="qty" id="Bqty<?= $fp['id_produk']; ?>" value="1" value="show">
+                                    <button type="submit" class="btn btn-danger mx-1 mt-2">
+                                        Buy
+                                    </button>
+                                    <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
+                                </form>
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                </div>
+            <?php endforeach; ?>
         </div>
-    <?php endif ?>
+    </div>
 
     <div class="container bg-white" id="product">
-        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;">Produk</p>
+        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
         <hr class="border-darker mt-0 mb-3">
         <div class="row row-cols-3" id="product-container">
             <!-- All Produk -->
@@ -163,11 +163,6 @@
 <?php endif ?>
 
 <style>
-    .border-darker {
-        border-color: #DC143C;
-        /* Warna merah yang lebih gelap */
-    }
-
     .horizontal-counter {
         display: flex;
         align-items: center;
