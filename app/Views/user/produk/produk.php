@@ -13,20 +13,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container mt-4 justify-content-center">
             <div class="col text-center">
-                    <div class="container">
-                        <div class="gallery">
-                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
-                        </div>
-                        <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                        <div class="modal-content bg-transparent border-0">
-                            <div class="modal-body d-flex align-items-center justify-content-center">
-                                <img src="" id="lightboxImage" alt="Zoomed Image">
+                <div class="container">
+                    <div class="gallery">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                    </div>
+                    <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                            <div class="modal-content bg-transparent border-0">
+                                <div class="modal-body d-flex align-items-center justify-content-center">
+                                    <img src="" id="lightboxImage" alt="Zoomed Image">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
             <div class="col mt-4 mx-1 text-center">
                 <h4><?= $produk['nama']; ?></h4>
@@ -191,33 +191,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php endif ?>
     </div>
 
-        <style>
-            /* CSS untuk mengatur tata letak galeri */
-            .gallery {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                margin: 20px;
-            }
+    <style>
+        /* CSS untuk mengatur tata letak galeri */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
 
-            .gallery img {
-                width: 100%;
-                height: auto;
-                margin: 10px;
-                cursor: pointer;
-            }
-        </style>
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
 
-        <script>
-            // JavaScript untuk menangani lightbox
-            function openLightbox(imagePath) {
-                // Set path gambar pada elemen lightboxImage
-                document.getElementById('lightboxImage').src = imagePath;
+    <script>
+        // JavaScript untuk menangani lightbox
+        function openLightbox(imagePath) {
+            // Set path gambar pada elemen lightboxImage
+            document.getElementById('lightboxImage').src = imagePath;
 
-                // Tampilkan modal
-                $('#lightboxModal').modal('show');
-            }
-        </script>
+            // Tampilkan modal
+            $('#lightboxModal').modal('show');
+        }
+    </script>
 <?php else : ?>
     <!-- Akhir view mobile -->
     <!-- View Desktop -->
@@ -482,6 +482,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
 
+        .modal-body img {
+            width: 350px;
+
+        }
 
         .col.mt-4.text-center h5 {
             /* Sesuaikan ukuran font sesuai kebutuhan Anda */
@@ -492,8 +496,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         .col.mt-4.text-center p {
             /* Sesuaikan ukuran font pada elemen paragraf */
             font-size: 18px;
-            margin-left: 5px;
-            margin-right: 5px;
+            margin-left: 50px;
+            margin-right: 50px;
             display: block;
             /* Misalnya, ubah ukuran font pada paragraf menjadi 12px */
         }
