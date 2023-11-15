@@ -424,7 +424,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <form action="<?= base_url('history'); ?>" method="get">
                     <input type="hidden" name="filter" value="<?= ($filter) ? $filter : ''; ?>">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" placeholder="Search... (by product name or sku)" name="search" aria-label="search" aria-describedby="search" value="<?= ($search) ? $search : ''; ?>">
+                        <input type="text" class="form-control form-control-lg border-0 shadow-sm" placeholder="Search... (by product name or sku)" style="font-size: 15px;" name="search" aria-label="search" aria-describedby="search" value="<?= ($search) ? $search : ''; ?>">
                         <button class="btn btn-lg btn-danger border-0" type="submit"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
@@ -511,7 +511,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="card-body">
                                     <div class="row" id="colsId<?= $t->id_checkout; ?>" data-bs-target="#history<?= $t->id_checkout; ?>" data-bs-toggle="collapse">
                                         <div class="col-4">
-                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width: 150px;">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width: 90px;">
                                             <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                                 <a class="link-secondary" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
                                                     <i class="bi bi-chevron-bar-down fs-4" style="font-weight: bold;"></i>
@@ -521,10 +521,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                     <div class="row">
                                         <div class="col-8 position-absolute top-50 start-50 translate-middle" id="colsId<?= $t->id_checkout; ?>" data-bs-target="#history<?= $t->id_checkout; ?>" data-bs-toggle="collapse">
-                                            <h5 class="card-title fs-4">
+                                            <h5 class="card-title" style="font-size: 15px;">
                                                 <?= substr($t->nama, 0, 20); ?>
                                             </h5>
-                                            <p class="text-secondary fs-5">Rp.
+                                            <p class="text-secondary" style="font-size: 15px;">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
                                             </p>
                                         </div>
@@ -646,11 +646,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .card-selected a {
             color: white !important;
-        }
-
-        a {
-            font-size: 8px;
-            color: black;
         }
     </style>
     <!-- END STYLE SLIDER -->
