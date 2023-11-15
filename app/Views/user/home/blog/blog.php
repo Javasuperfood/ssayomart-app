@@ -241,9 +241,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-
-
     </div>
+
+    <style>
+        /* Media query for Samsung Galaxy Fold 280 */
+        @media (max-width: 280px) {
+            .text-dark {
+                font-size: 13px;
+            }
+
+            .text-secondary {
+                font-size: 13px;
+            }
+
+            .btn-danger {
+                font-size: 13px;
+            }
+    </style>
+
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top: 75px;">
