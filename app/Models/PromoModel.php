@@ -57,4 +57,19 @@ class PromoModel extends Model
         return $this->where("'$now' >= start_at AND '$now' <= end_at")
             ->findAll();
     }
+
+    public function getOngoingPromoItems()
+    {
+        $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
+
+        $query = $this->table('jsf_promo')
+            ->select('jsf_promo.*, jsf_promo.title as promo_title, jsf_produk.nama as produk_nama')
+            ->join('jsf_promo_item', 'jsf_promo.id_promo_item = jsf_promo_item.id_promo')
+            ->join('jsf_produk', 'jsf_promo.id_produk = jsf_produk.id_produk')
+            ->where('jsf_promo.start_at <=', $currentDate)
+            ->where('jsf_promo.end_at >=', $currentDate)
+            ->get();
+
+        return $query->getResultArray();
+    }
 }
