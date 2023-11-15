@@ -13,8 +13,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent" style="margin-top: 30px;">
         <?php if (empty($alamat_user_model)) : ?>
             <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
-            <div class="alert alert-danger" role="alert">
-                <?= lang('Text.alert_alamat') ?>
+            <div class="container mt-4">
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <i class="bi bi-house-add mr-2" style="font-size: 25px;"></i>
+                    <div style="margin-left: 18px;"> <!-- Menambahkan margin kiri -->
+                        <?= lang('Text.alert_alamat') ?>
+                    </div>
+                </div>
             </div>
             <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
         <?php else : ?>
@@ -88,34 +93,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         <?php endif; ?>
         <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-plus"></i></a>
-
-
-        <style>
-            @media screen and (max-width: 280px) {
-                .card-body {
-                    font-size: 13px;
-                    flex: 1 1 auto;
-                    padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-                    color: var(--bs-card-color);
-                }
-
-                .border-0 {
-                    font-size: 12px;
-                    border: 0 !important;
-                }
-
-            }
-        </style>
-        <style>
-            .position-fixed {
-                position: fixed;
-                bottom: 70px;
-                /* Atur jarak dari bawah sesuai kebutuhan */
-                right: 10px;
-                /* Atur jarak dari kanan sesuai kebutuhan */
-            }
-        </style>
     </div>
+    <!-- style untuk samsung galaxy fold 280 -->
+    <style>
+        @media screen and (max-width: 280px) {
+            .card-body {
+                font-size: 13px;
+                flex: 1 1 auto;
+                padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+                color: var(--bs-card-color);
+            }
+
+            .border-0 {
+                font-size: 12px;
+                border: 0 !important;
+            }
+
+            .alert-danger {
+                font-size: 13px;
+            }
+
+
+        }
+    </style>
+
+    <style>
+        .position-fixed {
+            position: fixed;
+            bottom: 70px;
+            /* Atur jarak dari bawah sesuai kebutuhan */
+            right: 10px;
+            /* Atur jarak dari kanan sesuai kebutuhan */
+        }
+    </style>
 <?php else : ?>
     <!-- End View Mobile -->
 
