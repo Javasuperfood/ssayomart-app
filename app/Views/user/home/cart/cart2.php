@@ -64,7 +64,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <div class="row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
                     <div class="col">
-                        <button id="btnCheckout" type="submit" form="formCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%;"><?= lang('Text.btn_checkout') ?></button>
+                        <button id="btnCheckout" type="submit" form="formCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px"><?= lang('Text.btn_checkout') ?></button>
                     </div>
                 </div>
             </form>
