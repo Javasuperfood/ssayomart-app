@@ -1,23 +1,24 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Promo Item Produk</h1>
+<h1 class="h3 mb-2 text-gray-800">Edit Promo Item Produk</h1>
 
 <div class="row">
     <!-- Left Panel -->
-    <div class="col-lg-6">
+    <div class="col-lg-8">
         <div class="card border-0 shadow-sm position-relative">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Tambah Promo Produk</h6>
+                <h6 class="m-0 font-weight-medium">Edit Promo Produk</h6>
             </div>
             <div class="card-body">
-                <form action="<?= base_url(); ?>dashboard/promo/tambah-promo-item/save-promo-item" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url(); ?>dashboard/promo/tambah-promo-item/edit-promo-item/<?= $op['id_promo_item'] ?>" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
+                    <input type="hidden" class="form-control" id="id_promo_item" name="id_promo_item" value="<?= $op['id_promo_item'] ?>">
                     <div class="mb-3">
                         <label for="promo" class="form-label text-secondary">Pilih Promo Tersedia</label>
                         <select name="promo" id="promo" class="form-control shadow-sm border-0">
-                            <?php foreach ($promo as $item) : ?>
-                                <option value="<?= $item['id_promo']; ?>"><?= $item['title']; ?></option>
+                            <?php foreach ($promo as $p) : ?>
+                                <option value="<?= $p['id_promo']; ?>" <?= ($p['id_promo'] == $op['id_promo']) ? 'selected' : ''; ?>><?= $p['title']; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <span id="promoError" class="text-danger"></span>
@@ -52,7 +53,7 @@
                                                         <div class="card-body border-0 shadow-sm">
                                                             <div class="row">
                                                                 <div class="col-1">
-                                                                    <input type="radio" id="produkRadio<?= $item['id_produk']; ?>" name="produk_id" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0">
+                                                                    <input type="radio" id="produkRadio<?= $item['id_produk']; ?>" name="produk_id" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0" <?= ($item['id_produk'] == $op['id_produk']) ? 'checked' : ''; ?>>
                                                                 </div>
                                                                 <div class="col-3">
                                                                     <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid">
@@ -95,19 +96,19 @@
 
                     <div class="mb-3">
                         <label for="produk" class="form-label text-secondary">Produk Terpilih</label>
-                        <input type="text" class="form-control border-0 shadow-sm bg-white" id="produkTerpilih" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
+                        <input type="text" class="form-control border-0 shadow-sm bg-white" id="produkTerpilih" value="<?= $op['produk_nama']; ?>" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
                         <span id="produkError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <label for="min" class="form-label text-secondary">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." value="<?= old('min') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." value="<?= $op['min']; ?>">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <label for="discount" class="form-label text-secondary">Diskon (%)</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon..." value="<?= old('discount') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon..." value="<?= $op['discount']; ?>">
                         <span id="discountError" class="text-danger"></span>
                     </div>
 
@@ -118,64 +119,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-    <div class="col-lg-6 mb-3">
-        <div class="card position-relative border-0 shadow-sm">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Promo Sedang Berlangsung</h6>
-            </div>
-            <div class="card-body">
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th class="col-1">No</th>
-                            <th class="col-5">Promo Aktif</th>
-                            <th class="col-5">Produk</th>
-                            <th class="col-1">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($ongoingPromoItems as $promoItem) : ?>
-                            <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $promoItem['promo_title']; ?></td>
-                                <td><?= $promoItem['produk_nama']; ?></td>
-                                <td class="text-center">
-                                    <div class="nav-item dropdown no-arrow">
-                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="bi bi-three-dots-vertical"></i>
-                                        </a>
-                                        <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item/edit-promo-item/<?= $promoItem['id_promo_item']; ?>">
-                                                <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                Update
-                                            </a>
-                                            <div class="dropdown-divider"></div>
-                                            <form action="<?= base_url() ?>dashboard/promo/tambah-promo-item/delete-promo-item/<?= $promoItem['id_promo_item']; ?>" method="post">
-                                                <?= csrf_field() ?>
-                                                <button type="submit" class="dropdown-item">
-                                                    <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                    <span class="text-danger">Delete</span>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <script>

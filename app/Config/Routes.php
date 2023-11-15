@@ -42,9 +42,7 @@ $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
-$routes->get('user/home/contenBanner/conten-banner', 'Blog::contenBanner');
-$routes->get('sayo-care', 'Setting::sayoCare');
-$routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
+$routes->get('user/home/contenBanner/contenBanner', 'Blog::contenBanner');
 
 // Rute untuk AppleAuthController
 $routes->get('apple-login', 'AppleAuthController::appleLogin');
@@ -86,9 +84,8 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
         $routes->get('alamat-list', 'Setting::alamatList');
         $routes->get('create-alamat', 'Setting::createAlamat');
         $routes->get('update-alamat/(:any)', 'Setting::updateAlamat/$1');
-        $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
-        $routes->get('sayo-care', 'Setting::sayoCare');
-        
+        $routes->get('sayoCare', 'Setting::sayoCare');
+        $routes->get('kebijakanPrivasi', 'Setting::kebijakanPrivasi');
 
         // Post
         $routes->post('select-alamat', 'Setting::storeDataAlamat');
@@ -232,16 +229,20 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('admin-market/update/(:segment)', 'AdminMarketpalceAdminController::storeDataUpdate/$1');
     $routes->post('admin-market/delete/(:segment)', 'AdminMarketpalceAdminController::deleteAllAdminMarket/$1');
 
-
     // CRUD Promo
     $routes->get('promo/tambah-promo', 'AdminPromoController::tambahPromo');
     $routes->post('promo/tambah-promo/save', 'AdminPromoController::savePromo');
     $routes->post('promo/tambah-promo/delete-promo/(:segment)', 'AdminPromoController::deletePromo/$1');
     $routes->get('promo/update-promo/(:segment)', 'AdminPromoController::updatePromo/$1');
     $routes->post('promo/tambah-promo/edit-promo/(:segment)', 'AdminPromoController::editPromo/$1');
+
     // Promo Item
     $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
     $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');
+
+    $routes->get('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::editPromoItem/$1');
+    $routes->post('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::updatePromoItem/$1');
+
     $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
 
     // CRUD KONTEN/BLOG/ARTIKEL
@@ -305,8 +306,6 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->get('transaction/delivered', 'RestfullApiController::transactionDd');
         $routes->get('transaction/finish', 'RestfullApiController::transactionFh');
         $routes->get('transaction/failed', 'RestfullApiController::transactionFail');
-        // GOSEND API
-        $routes->get('get-order/(:segment)', 'WebhookController::getOrder/$1');
     });
 });
 
