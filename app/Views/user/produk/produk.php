@@ -24,7 +24,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content bg-transparent border-0">
                         <div class="modal-body d-flex align-items-center justify-content-center">
-                            <img src="" id="lightboxImage" alt="Zoomed Image" style="width: 450px; height:450px">
+                            <img src="" id="lightboxImage" alt="Zoomed Image">
                         </div>
                         <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -193,6 +193,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
+        .modal-body img {
+            width: 350px !important;
+            height: 350px !important;
+        }
+
         /* Ganti warna tombol close menjadi putih */
         .btn-close {
             background-color: #ffff;
@@ -223,10 +228,29 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         @media (max-width: 280px) {
-
             .modal-body img {
                 width: 250px !important;
                 height: 250px !important;
+            }
+        }
+
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .modal-body img {
+                width: 700px !important;
+                height: 700px !important;
+            }
+
+            .btn-close {
+                background-color: #ffff;
+                color: #000;
+                font-size: 15px;
+                margin-left: 95%;
+                border-radius: 50%;
+                width: 40px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+                height: 40px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
             }
         }
     </style>
@@ -245,7 +269,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Akhir view mobile -->
     <!-- View Desktop -->
     <div id="desktopContent" style="margin-top:100px;">
-        <div class="container d-none d-md-block">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="container">
