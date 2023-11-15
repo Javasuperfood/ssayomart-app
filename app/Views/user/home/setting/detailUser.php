@@ -155,7 +155,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
 <?php else : ?>
-
     <!-- end Mobile -->
 
     <!-- dekstop -->
@@ -180,31 +179,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
                                 <p class="fs-5 text-secondary"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
                                 <!-- Button trigger modal -->
-                                <div class="text-center mt-3">
-                                    <button type="button" class="rounded-2 btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <i class="bi bi-trash"></i> Hapus Akun
-                                    </button>
+                                <div class="text-center mt-2">
+                                    <?php if (!$deleteRequestExists) : ?>
+                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="bi bi-trash"></i> Hapus Akun
+                                        </button>
+                                    <?php endif; ?>
                                 </div>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi Penghapusan Akun</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                Akun anda akan dihapus oleh Admin.
-                                                Apakah anda yakin untuk mengajukan penghapusan akun?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button type="button" class="btn btn-danger">Ya</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -270,6 +252,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </form>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Konfirmasi Penghapusan Akun</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?= base_url() ?>setting/detail-user/delete-account/<?= user_id() ?>" method="post" enctype="multipart/form-data">
+                                <?= csrf_field() ?>
+                                <div class="alert alert-danger">
+                                    <div class="col-auto text-center mb-2" style="font-size:50px;">
+                                        <i class="bi bi-exclamation-triangle-fill"></i>
+                                    </div>
+                                    <div class="col text-center">
+                                        <p><strong>Akun anda akan dihapus oleh Admin.</strong></p>
+                                        <p>Apakah anda yakin untuk mengajukan penghapusan akun?</p>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control form-control-lg <?= (validation_show_error('alasan')) ? 'is-invalid' : 'border-0'; ?>" id="alasan" name="alasan" placeholder="Alasan penghapusan akun" value="<?= old('alasan'); ?>">
+                                            <div class="invalid-feedback"><?= validation_show_error('alasan'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-danger">Ya</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
