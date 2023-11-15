@@ -24,7 +24,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content bg-transparent border-0">
                         <div class="modal-body d-flex align-items-center justify-content-center">
-                            <img src="" id="lightboxImage" alt="Zoomed Image">
+                            <img src="" id="lightboxImage" alt="Zoomed Image" style="width: 450px; height:450px">
                         </div>
                         <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -220,6 +220,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             height: auto;
             margin: 10px;
             cursor: pointer;
+        }
+
+        @media (max-width: 280px) {
+
+            .modal-body img {
+                width: 250px !important;
+                height: 250px !important;
+            }
         }
     </style>
 
@@ -557,11 +565,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     /* Atur gaya untuk tampilan Samsung Galaxy Fold atau layar yang lebih kecil */
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
-
-        .modal-body img {
-            width: 350px;
-
-        }
 
         .col.mt-4.text-center h5 {
             /* Sesuaikan ukuran font sesuai kebutuhan Anda */
