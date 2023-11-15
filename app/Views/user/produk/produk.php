@@ -193,9 +193,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
-        .modal-body img {
+        /* .modal-body img {
             width: 350px !important;
             height: 350px !important;
+        } */
+
+        .modal-body img {
+            width: 100%;
+            /* Ubah nilai sesuai kebutuhan desain Anda */
+            height: auto;
+            /* Atau sesuaikan dengan proporsi gambar Anda */
+            max-width: fit-content;
+            /* Sesuaikan dengan kebutuhan Anda */
         }
 
         /* Ganti warna tombol close menjadi putih */
@@ -229,8 +238,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         @media (max-width: 280px) {
             .modal-body img {
-                width: 250px !important;
-                height: 250px !important;
+                width: 100%;
+                /* Ubah nilai sesuai kebutuhan desain Anda */
+                height: auto;
+                /* Atau sesuaikan dengan proporsi gambar Anda */
+                max-width: fit-content;
+                /* Sesuaikan dengan kebutuhan Anda */
+            }
+
+            .btn-close {
+                background-color: #ffff;
+                color: #000;
+                font-size: 10px;
+                margin-left: 90%;
+                border-radius: 50%;
+                width: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+                height: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
             }
         }
 
