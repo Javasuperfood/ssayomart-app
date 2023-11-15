@@ -41,13 +41,13 @@
     <div class="card-header border-0 py-3 d-flex">
         <h6 class="m-0 font-weight-bold text-danger">List User Management</h6>
         <div class="ml-auto">
-            <button type="button" class="btn btn-outline-danger position-relative" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a href="<?= base_url() ?>dashboard/user-management/delete-account" type="button" class="btn btn-outline-danger position-relative">
                 Permintaan Hapus Akun
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border-0">
                     <?= $delRequestCount > 99 ? '99+' : $delRequestCount; ?>
                     <span class="visually-hidden"></span>
                 </span>
-            </button>
+            </a>
         </div>
 
     </div>
@@ -132,46 +132,6 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <!-- Modal Notification -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- Tambahkan class modal-lg di sini -->
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Notifikasi Penghapusan Akun User</h1>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Nama Lengkap</th>
-                                                                            <th>Username</th>
-                                                                            <th>Alasan Penghapusan</th>
-                                                                            <th>Aksi</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <?php foreach ($delRequest as $del) : ?>
-                                                                            <tr>
-                                                                                <td><?= $user['fullname']; ?></td>
-                                                                                <td><?= $user['username']; ?></td>
-                                                                                <td><?= $del['alasan']; ?></td>
-                                                                                <td class="text-center">
-                                                                                    <a href="<?= base_url() ?>dashboard/user-management/delete-account" type="button" class="btn position-relative">
-                                                                                        <span class="text-danger fs-6 text-danger"><i class="bi bi-trash-fill"></i> Hapus</span>
-                                                                                    </a>
-                                                                                </td>
-                                                                            </tr>
-                                                                        <?php endforeach; ?>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kembali</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             <?php endif; ?>
                                         </div>
                                     </td>

@@ -92,4 +92,21 @@ class CheckoutModel extends Model
 
         return $query->getResult();
     }
+
+    public function getOrderByInvoice($invoice)
+    {
+        return $this->db->table('jsf_checkout')
+            ->where('invoice', $invoice)
+            ->get()
+            ->getRowArray();
+    }
+
+    public function getProdukDetailByIdCheckout($id_checkout)
+    {
+        $query = $this->select('jsf_checkout_produk.id_produk, jsf_produk.nama, jsf_checkout_produk.id_variasi_item, jsf_checkout_produk.qty, jsf_checkout_produk.harga')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->where('jsf_checkout_produk.id_checkout', $id_checkout);
+
+        return $query->findAll();
+    }
 }

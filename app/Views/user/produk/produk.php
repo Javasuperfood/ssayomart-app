@@ -17,14 +17,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="gallery">
                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
                     </div>
-                    <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content bg-transparent border-0">
-                                <div class="modal-body d-flex align-items-center justify-content-center">
-                                    <img src="" id="lightboxImage" alt="Zoomed Image">
-                                </div>
-                            </div>
+
+                </div>
+            </div>
+            <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content bg-transparent border-0">
+                        <div class="modal-body d-flex align-items-center justify-content-center">
+                            <img src="" id="lightboxImage" alt="Zoomed Image">
                         </div>
+                        <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                 </div>
             </div>
@@ -40,7 +42,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php endif ?>
                         </p>
                     </div>
-
                 </div>
                 <div class="container pt-3">
                     <div class="row px-5">
@@ -192,7 +193,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
-        /* CSS untuk mengatur tata letak galeri */
+        /* .modal-body img {
+            width: 350px !important;
+            height: 350px !important;
+        } */
+
+        .modal-body img {
+            width: 100%;
+            /* Ubah nilai sesuai kebutuhan desain Anda */
+            height: auto;
+            /* Atau sesuaikan dengan proporsi gambar Anda */
+            max-width: fit-content;
+            /* Sesuaikan dengan kebutuhan Anda */
+        }
+
+        /* Ganti warna tombol close menjadi putih */
+        .btn-close {
+            background-color: #ffff;
+            color: #000;
+            font-size: 10px;
+            margin-left: 85%;
+            border-radius: 50%;
+            width: 20px;
+            /* Sesuaikan ukuran sesuai kebutuhan */
+            height: 20px;
+            /* Sesuaikan ukuran sesuai kebutuhan */
+        }
+
+        /* CSS untuk mengatur tata letak Gambar Produk */
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -200,16 +228,60 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin: 20px;
         }
 
+        /* CSS untuk Gambar Produk */
         .gallery img {
             width: 100%;
             height: auto;
             margin: 10px;
             cursor: pointer;
         }
+
+        @media (max-width: 280px) {
+            .modal-body img {
+                width: 100%;
+                /* Ubah nilai sesuai kebutuhan desain Anda */
+                height: auto;
+                /* Atau sesuaikan dengan proporsi gambar Anda */
+                max-width: fit-content;
+                /* Sesuaikan dengan kebutuhan Anda */
+            }
+
+            .btn-close {
+                background-color: #ffff;
+                color: #000;
+                font-size: 10px;
+                margin-left: 90%;
+                border-radius: 50%;
+                width: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+                height: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+            }
+        }
+
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .modal-body img {
+                width: 700px !important;
+                height: 700px !important;
+            }
+
+            .btn-close {
+                background-color: #ffff;
+                color: #000;
+                font-size: 15px;
+                margin-left: 95%;
+                border-radius: 50%;
+                width: 40px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+                height: 40px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+            }
+        }
     </style>
 
+    <!-- // JavaScript untuk menangani lightbox -->
     <script>
-        // JavaScript untuk menangani lightbox
         function openLightbox(imagePath) {
             // Set path gambar pada elemen lightboxImage
             document.getElementById('lightboxImage').src = imagePath;
@@ -222,12 +294,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Akhir view mobile -->
     <!-- View Desktop -->
     <div id="desktopContent" style="margin-top:100px;">
-        <div class="container d-none d-md-block">
+        <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="zoom-image">
-                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>">
+                    <div class="container">
+                        <div class="gallery">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                        </div>
                     </div>
+                    <!-- Lightbox Modal -->
+                    <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-xl">
+                            <div class="modal-content bg-transparent border-0">
+                                <div class="modal-body d-flex align-items-center justify-content-center">
+                                    <img src="" id="lightboxImage" class="img-fluid" alt="Zoomed Image" style="width: 750px; height:750px">
+                                </div>
+                                <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="col-md-6">
                     <p class="fw-bold fs-3"><?= $produk['nama']; ?></p>
@@ -327,6 +414,42 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?= $this->include('user/produk/component/randomProduk'); ?>
             </div>
         </div>
+        <style>
+            /* Ganti warna tombol close menjadi putih */
+            .btn-close {
+                background-color: #ffff;
+                color: #000;
+                font-size: 10px;
+                margin-left: 75%;
+                margin-bottom: 75%;
+
+                /* atau warna lain sesuai kebutuhan */
+            }
+
+            /* Membuat tombol close berbentuk lingkaran */
+            .btn-close {
+                border-radius: 50%;
+                width: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+                height: 20px;
+                /* Sesuaikan ukuran sesuai kebutuhan */
+            }
+
+            /* CSS untuk mengatur tata letak galeri */
+            .gallery {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                margin: 20px;
+            }
+
+            .gallery img {
+                width: 100%;
+                height: auto;
+                margin: 10px;
+                cursor: pointer;
+            }
+        </style>
     </div>
 
     <?php if ($varianItem > 1) : ?>
@@ -402,10 +525,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     <?php endif ?>
+
 <?php endif; ?>
 <!-- end Desktop -->
 
-<!-- akhir view desktop -->
+<script>
+    function openLightbox(imageUrl) {
+        // Setel sumber gambar pada elemen modal
+        document.getElementById('lightboxImage').src = imageUrl;
+
+        // Buka modal
+        var lightboxModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
+        lightboxModal.show();
+    }
+</script>
 
 <style>
     .horizontal-counter {
@@ -481,11 +614,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     /* Atur gaya untuk tampilan Samsung Galaxy Fold atau layar yang lebih kecil */
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
-
-        .modal-body img {
-            width: 350px;
-
-        }
 
         .col.mt-4.text-center h5 {
             /* Sesuaikan ukuran font sesuai kebutuhan Anda */

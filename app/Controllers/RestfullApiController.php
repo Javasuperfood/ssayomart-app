@@ -238,16 +238,6 @@ class RestfullApiController extends BaseController
         $tokoModel = new TokoModel();
         $alamatUserModel = new AlamatUserModel();
         $transaction = $checkoutModel->where('gosend', 1)->like('id_checkout', $id)->orLike('invoice', $id)->orderBy('id_checkout')->findAll();
-        // foreach ($transaction as $key => $t) {
-        //     $produk = $checkoutProdModel->where('id_checkout', $t['id_checkout'])->findAll();
-        //     $transaction[$key]['origin'] = $tokoModel->find($t['id_toko']);
-        //     if ($t['id_destination']) {
-        //         $transaction[$key]['destination'] = $alamatUserModel->find($t['id_destination']);
-        //     } else {
-        //         $transaction[$key]['destination'] = [];
-        //     }
-        //     $transaction[$key]['produk'] = $produk;
-        // }
         $order = [];
         foreach ($transaction as $key => $t) {
             $order[$key] = [
@@ -327,6 +317,7 @@ class RestfullApiController extends BaseController
         $response = [
             'status' => 200,
             'success' => 'Transaction ' . $transaction['invoice'],
+            'message' => 'For Ssayomart Team : please add callback for curl request',
             'update' => $data,
             'response' => $transaction
         ];
@@ -354,7 +345,7 @@ class RestfullApiController extends BaseController
                 $order[$key]['status'] = 'Pending';
             }
             if ($t['id_status_pesan'] == 2) {
-                $order[$key]['status'] = 'Porcess';
+                $order[$key]['status'] = 'Process';
             }
             if ($t['id_status_pesan'] == 3) {
                 $order[$key]['status'] = 'Sending';

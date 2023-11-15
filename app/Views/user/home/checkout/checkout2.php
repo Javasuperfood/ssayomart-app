@@ -276,7 +276,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </table>
                     </div>
                     <div class="col p-3 px-4">
-                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
+                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px">Bayar</button>
                     </div>
                 </div>
             </form>
@@ -287,6 +287,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <style>
         /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
         @media screen and (max-width: 280px) {
+
+            .modal-body img {
+                width: 80px !important;
+            }
+
+            .modal-body button {
+                font-size: 10px !important;
+            }
+
+            .modal-content {
+                font-size: 13px;
+            }
+
+            .input-group .btn {
+                font-size: 9px;
+            }
 
             .form-control {
                 font-size: 12px;
@@ -622,11 +638,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 
-    <style>
-        .form-control[readonly] {
-            border: 1px solid #DEE2E6;
-        }
-    </style>
+<style>
+    .form-control[readonly] {
+        border: 1px solid #DEE2E6;
+    }
+</style>
 
 
 <!-- end desktop -->

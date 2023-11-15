@@ -94,6 +94,9 @@ return [
     'stock3' => 'Choose market location first.',
     'sku_produk' => 'Stock Keeping Unit',
     'sku_produk2' => 'Failed to get stock keeping unit',
+    // PRODUK COMPONENT CARD
+    'produk_unggulan' => 'Best Seller',
+    'nama_produk' => 'Product',
 
     // RIWAYAT TRANSAKSI
     'alert_history' => 'The transaction history you are looking for was not found.',

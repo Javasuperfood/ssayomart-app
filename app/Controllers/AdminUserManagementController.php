@@ -87,7 +87,7 @@ class AdminUserManagementController extends BaseController
     }
 
     // =============================================================
-    // =================== DELETE ACCOUNT PAGE =====================
+    // ===================== DELETE ACCOUNT ========================
     // =============================================================
 
     public function delRequest()
@@ -114,20 +114,29 @@ class AdminUserManagementController extends BaseController
 
     public function delete($id)
     {
-        $authIdentitiesModel = new AuthIdentitesModel();;
-        $authIdentitiesModel->find($id);
+        $authIdentitiesModel = new AuthIdentitesModel();
+        $authGroupUsersModel = new AuthGroupUsersModel();
+        $requestDeleteModel = new DeleteRequestUsersModel();
 
-        $deleted = $authIdentitiesModel->delete($id);
-        // dd($id);
-        if ($deleted) {
+        // Retrieve user data
+        $userToDelete = $authIdentitiesModel->find($id);
+
+        if (!$userToDelete) {
+            // Handle if data is not found
             $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Akun berhasil di hapus.'
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Data tidak ditemukan.'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/user-management');
-        } else {
+        }
+
+        // Delete from auth_identities table
+        $authIdentitiesDeleted = $authIdentitiesModel->delete($id);
+
+        if (!$authIdentitiesDeleted) {
+            // Handle deletion error
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
@@ -136,5 +145,23 @@ class AdminUserManagementController extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/user-management')->withInput();
         }
+
+        // Delete from auth_groups_users table
+        $authGroupUsersModel->where('user_id', $userToDelete['user_id'])
+            ->where('group !=', 'superadmin') // Hanya hapus jika bukan superadmin
+            ->delete();
+
+        // Delete from jsf_request_delete table
+        $requestDeleteModel->deleteByUserId($userToDelete['user_id']);
+
+        // Display success message
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Akun berhasil dihapus.'
+        ];
+        session()->setFlashdata('alert', $alert);
+
+        return redirect()->to('dashboard/user-management');
     }
 }

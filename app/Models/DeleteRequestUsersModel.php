@@ -67,4 +67,8 @@ class DeleteRequestUsersModel extends Model
         $result = $query->getRowArray();
         return $result;
     }
+    public function deleteByUserId($userId)
+    {
+        return $this->where('id_user', $userId)->delete();
+    }
 }

@@ -19,7 +19,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 $classBanner .= " active";
                                 $firstLoop = false;
                             } ?>
-                            <a href="<?= base_url(); ?>user/home/contenBanner/contenBanner">
+                            <a href="<?= base_url(); ?>user/home/contenBanner/conten-banner">
                                 <div class="<?= $classBanner; ?>">
                                     <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
                                 </div>

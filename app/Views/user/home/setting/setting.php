@@ -153,7 +153,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger btn-block" style="width: 100%">Submit</button>
+                                    <button type="button" class="btn btn-block text-white border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -402,7 +402,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger btn-block" style="width: 100%">Submit</button>
+                                    <button type="button" class="btn btn-danger btn-block border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
                                 </div>
                             </form>
                         </div>
