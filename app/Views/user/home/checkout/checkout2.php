@@ -276,7 +276,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </table>
                     </div>
                     <div class="col p-3 px-4">
-                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
+                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px">Bayar</button>
                     </div>
                 </div>
             </form>
