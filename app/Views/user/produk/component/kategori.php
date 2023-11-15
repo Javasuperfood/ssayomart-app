@@ -154,15 +154,14 @@ if ($isMobile) {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 15px;
+        padding: 6px 10px;
         text-decoration: none;
         color: #333;
         background-color: #fff;
         border-bottom: 1px solid #e6e6e6;
         border-radius: 0;
-        transition: all 0.3s ease;
+        font-size: 13px;
 
-        /* Customize the color */
     }
 
     .list-group-item a:hover {
@@ -173,7 +172,7 @@ if ($isMobile) {
     }
 
     .list-group-item a:hover .arrow-icon {
-        transform: rotate(180deg);
+        transform: rotate(90deg);
     }
 
     /* Ikon panah di dalam tautan */
