@@ -8,6 +8,26 @@ use App\Models\BannerAdsKontenModel;
 
 class AdminBannerController extends BaseController
 {
+
+    // ===================================================================
+    // ------------------------ TAMBAH KONTEN BANNER ------------------------------
+    // ===================================================================
+    public function tambahKonten()
+    {
+        $bannerModel = new BannerModel();
+        $bannerList = $bannerModel->findAll();
+        $data = [
+            'title' => 'Tambah Konten Banner',
+            'banner_list' => $bannerList
+        ];
+        // dd($data);
+        return view('/dashboard/banner/tambahKonten', $data);
+    }
+
+    // ===================================================================
+    // ------------------------ END TAMBAH KONTEN BANNER ----------------------------
+    // ===================================================================
+
     public function index(): string
     {
         $bannerModel = new BannerModel();
