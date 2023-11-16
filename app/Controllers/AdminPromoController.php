@@ -43,6 +43,8 @@ class AdminPromoController extends BaseController
             'end_at' => $this->request->getVar('ended'),
             'deskripsi' => $this->request->getVar('deskripsi')
         ];
+        // dd($data);
+
         // swet alert
         if ($promoModel->save($data)) {
             session()->setFlashdata('success', 'Promosi terbaru berhasil disimpan.');
@@ -203,7 +205,8 @@ class AdminPromoController extends BaseController
         $promoList = $promoModel->findAll();
         $variasiList = $variasiItemModel->findAll();
         $produkList = $produkModel->findAll(); // Mengambil daftar produk
-        $ongoingPromoItems = $promoItemModel->getOngoingPromoItems();
+        $ongoingPromoItems = $promoItemModel->getOngoingPromo();
+        // dd($ongoingPromoItems);
 
         $data = [
             'promo' => $promoList,

@@ -8,7 +8,7 @@
     <div class="col-lg-8">
         <div class="card border-0 shadow-sm position-relative">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Edit Promo Produk</h6>
+                <h6 class="m-0 font-weight-medium">Edit Promo Item Produk</h6>
             </div>
             <div class="card-body">
                 <form action="<?= base_url(); ?>dashboard/promo/tambah-promo-item/edit-promo-item/<?= $op['id_promo_item'] ?>" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
