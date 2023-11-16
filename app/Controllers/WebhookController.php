@@ -334,4 +334,13 @@ class WebhookController extends BaseController
 
         return $nomor;
     }
+
+    public function index()
+    {
+        return $this->respond([
+            'status' => 200,
+            'success' => true,
+            'response' => 'Index of webhook'
+        ], 200);
+    }
 }

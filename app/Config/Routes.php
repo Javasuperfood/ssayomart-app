@@ -320,6 +320,10 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
 $routes->get('/maps', 'MapsController::maps');
 
 
+$routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($routes) {
+    $routes->get('/', 'WebhookController::index');
+});
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
