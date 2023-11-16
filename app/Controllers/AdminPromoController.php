@@ -113,7 +113,7 @@ class AdminPromoController extends BaseController
         ];
         return view('dashboard/promo/updatePromo', $data);
     }
-    // Update Acgtion
+    // Update Action
     public function editPromo($id)
     {
         $promoModel = new PromoModel();
@@ -137,7 +137,9 @@ class AdminPromoController extends BaseController
             }
         }
         $slug = url_title($this->request->getVar('title'), '-', true);
+
         $data = [
+            'id_promo' => $id,
             'title' => $this->request->getVar('title'),
             'slug' => $slug,
             'img' => $namaPromoImage,
@@ -145,6 +147,26 @@ class AdminPromoController extends BaseController
             'end_at' => $this->request->getVar('ended'),
             'deskripsi' => $this->request->getVar('deskripsi')
         ];
+
+        // Validation
+        $this->validation->setRules([
+            'title' => 'required',
+            'slug' => 'required',
+            'img' => 'uploaded[img]|mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,1024]',
+            'start_at' => 'required',
+            'end_at' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        if (!$this->validation->withRequest($this->request)->run()) {
+            $errors = $this->validation->getErrors();
+            $alert = [
+                'type'    => 'error',
+                'title'   => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+        }
 
         if ($promoModel->save($data)) {
             session()->setFlashdata('success', 'Gambar banner berhasil diubah.');
@@ -155,7 +177,7 @@ class AdminPromoController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/promo/tambah-promo');
+            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
         } else {
             $alert = [
                 'type' => 'error',
@@ -252,6 +274,7 @@ class AdminPromoController extends BaseController
         return view('dashboard/promo/updatePromoItem', $data);
     }
 
+    // Update Action
     public function updatePromoItem($id)
     {
         $promoItemModel = new PromoItemModel();

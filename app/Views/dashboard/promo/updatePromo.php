@@ -48,7 +48,7 @@
                 <label for="img" class="form-label">Gambar Promo</label>
                 <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" value="<?= $promo['img'] ?>">
                 <input type="hidden" name="imageLama" value="<?= $promo['img']; ?>">
-                <span id="imgError" class="text-danger"></span>
+                <!-- <span id="imgError" class="text-danger"></span> -->
             </div>
             <div>
                 <button type="submit" class="btn btn-danger">Simpan</button>
