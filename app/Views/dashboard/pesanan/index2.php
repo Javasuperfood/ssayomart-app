@@ -19,6 +19,19 @@
         </div>
         <div class="card-body">
             <div class="row mb-3 header">
+                <div class="col-md-2">
+                    <form action="<?= base_url('dashboard/order/' . $pages) ?>" method="get">
+                        <div class="input-group">
+                            <span class="input-group-text">Filter by</span>
+                            <select class="form-select" name="shipment" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <option value="all" <?= ($shipment == 'all') ? 'selected' : ''; ?>>Semua</option>
+                                <option value="GoSend" <?= ($shipment == 'GoSend') ? 'selected' : ''; ?>>GoSend</option>
+                                <option value="non-GoSend" <?= ($shipment == 'non-GoSend') ? 'selected' : ''; ?>>non-GoSend</option>
+                            </select>
+                            <button class="btn btn-outline-secondary" type="submit">Filter</button>
+                        </div>
+                    </form>
+                </div>
                 <div class="col text-end">
                     <?php if (isset($pages) && $pages == 'in-proccess') : ?>
                         <a href="<?= base_url('dashboard/order/in-proccess/print-all'); ?>" class="btn btn-outline-danger <?= (count($checkout) == 0) ? 'd-none' : ''; ?>"><i class="bi bi-printer"></i> Print All</a>

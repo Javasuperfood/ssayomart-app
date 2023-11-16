@@ -28,11 +28,13 @@ class AdminPesananController extends BaseController
         $toko = $adminTokoModel->where('id_user', user_id())->findAll();
 
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
+        $shipment = $this->request->getVar('shipment') ? $this->request->getVar('shipment') : 'all';
+        $kurir = ($shipment == 'GoSend') ? 1 : (($shipment == 'non-GoSend') ? 0 : 'all');
 
         $perPage = 10;
 
         if (!empty($toko)) {
-            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], null);
+            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], null, $kurir);
         } else {
             return view('dashboard/pesanan/index2');
         }
@@ -42,11 +44,12 @@ class AdminPesananController extends BaseController
         }
 
         $data = [
-            'pages' => 'order',
+            'pages' => '',
             'checkout' => $checkout,
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll(),
+            'shipment' => $shipment,
         ];
 
         foreach ($toko as $key => $t) {
@@ -55,36 +58,6 @@ class AdminPesananController extends BaseController
 
         // dd($data);
         return view('dashboard/pesanan/index2', $data);
-    }
-    public function index()
-    {
-        $checkoutProdModel = new CheckoutProdukModel();
-        $statusPesanModel = new StatusPesanModel();
-        $adminTokoModel = new AdminTokoModel();
-        $tokoModel = new TokoModel();
-
-        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
-
-
-        $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
-
-        $perPage = 10;
-        $checkoutProdModel->paginate($perPage, 'order');
-        $allOrder = $checkoutProdModel->getAllTransaksi($toko, $perPage, $currentPage);
-        $data = [
-            'pages' => 'order',
-            'order' => $allOrder,
-            'pager' => $checkoutProdModel->pager,
-            'iterasi' => ($currentPage - 1) * $perPage + 1,
-            'statusPesan' => $statusPesanModel->findAll(),
-        ];
-
-        foreach ($toko as $key => $t) {
-            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
-        }
-
-        // dd($data);
-        return view('dashboard/pesanan/index', $data);
     }
 
     public function awaitingPayment()
@@ -98,16 +71,17 @@ class AdminPesananController extends BaseController
         $toko = $adminTokoModel->where('id_user', user_id())->findAll();
 
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
+        $shipment = $this->request->getVar('shipment') ? $this->request->getVar('shipment') : 'all';
+        $kurir = ($shipment == 'GoSend') ? 1 : (($shipment == 'non-GoSend') ? 0 : 'all');
 
         $perPage = 10;
 
-        // dd($data);
         if (!empty($toko)) {
-            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 2);
+            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 1, $kurir);
         } else {
             return view('dashboard/pesanan/index2');
         }
-        // dd($checkout);
+
         foreach ($checkout as $key => $c) {
             $checkout[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -118,6 +92,7 @@ class AdminPesananController extends BaseController
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll(),
+            'shipment' => $shipment,
         ];
 
         foreach ($toko as $key => $t) {
@@ -139,16 +114,17 @@ class AdminPesananController extends BaseController
         $toko = $adminTokoModel->where('id_user', user_id())->findAll();
 
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
+        $shipment = $this->request->getVar('shipment') ? $this->request->getVar('shipment') : 'all';
+        $kurir = ($shipment == 'GoSend') ? 1 : (($shipment == 'non-GoSend') ? 0 : 'all');
 
         $perPage = 10;
 
-        // dd($data);
         if (!empty($toko)) {
-            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 2);
+            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 2, $kurir);
         } else {
             return view('dashboard/pesanan/index2');
         }
-        // dd($checkout);
+
         foreach ($checkout as $key => $c) {
             $checkout[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -159,6 +135,7 @@ class AdminPesananController extends BaseController
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll(),
+            'shipment' => $shipment,
         ];
 
         foreach ($toko as $key => $t) {
@@ -181,15 +158,17 @@ class AdminPesananController extends BaseController
 
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
 
+        $shipment = $this->request->getVar('shipment') ? $this->request->getVar('shipment') : 'all';
+        $kurir = ($shipment == 'GoSend') ? 1 : (($shipment == 'non-GoSend') ? 0 : 'all');
+
         $perPage = 10;
 
-        // dd($data);
         if (!empty($toko)) {
-            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 3);
+            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 3, $kurir);
         } else {
             return view('dashboard/pesanan/index2');
         }
-        // dd($checkout);
+
         foreach ($checkout as $key => $c) {
             $checkout[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -200,6 +179,7 @@ class AdminPesananController extends BaseController
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll(),
+            'shipment' => $shipment,
         ];
 
         foreach ($toko as $key => $t) {
@@ -220,16 +200,17 @@ class AdminPesananController extends BaseController
         $toko = $adminTokoModel->where('id_user', user_id())->findAll();
 
         $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
+        $shipment = $this->request->getVar('shipment') ? $this->request->getVar('shipment') : 'all';
+        $kurir = ($shipment == 'GoSend') ? 1 : (($shipment == 'non-GoSend') ? 0 : 'all');
 
         $perPage = 10;
 
-        // dd($data);
         if (!empty($toko)) {
-            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 4);
+            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], 4, $kurir);
         } else {
             return view('dashboard/pesanan/index2');
         }
-        // dd($checkout);
+
         foreach ($checkout as $key => $c) {
             $checkout[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -240,6 +221,7 @@ class AdminPesananController extends BaseController
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'statusPesan' => $statusPesanModel->findAll(),
+            'shipment' => $shipment,
         ];
 
         foreach ($toko as $key => $t) {
