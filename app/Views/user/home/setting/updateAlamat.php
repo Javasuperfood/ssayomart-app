@@ -277,24 +277,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <label for=" floatingInput">Detail Alamat (optional)</label>
                     </div>
                 </div>
-                <div class="col-12">
-                    <div class="form-group mb-3">
-                        <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
-                        <input class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
-                        <input type="hidden" id="latitude" name="latitude">
-                        <input type="hidden" id="longitude" name="longitude">
-                    </div>
-                    <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
-                </div>
-                <div class="col-12">
-                    <div id="map"></div>
-                    <div class="button-container">
-                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
-                        <div class="row p-4 px-4">
-                            <div class="col-12 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;">Simpan Data</button>
-                            </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group mb-3 mt-2">
+                            <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
+                            <input class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
+                            <input type="hidden" id="latitude" pattern="-?\d+(\.\d{1,6})?" name="latitude">
+                            <input type="hidden" id="longitude" pattern="-?\d+(\.\d{1,6})?" name="longitude">
                         </div>
+                        <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
+                    </div>
+                    <div class="col-12">
+                        <div id="map"></div>
+                        <div class="button-container">
+                            <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                </div>
             </form>
         </div>
     </div>
@@ -359,6 +362,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     function showPosition(position) {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
+        console.log('Latitude:', lat);
+        console.log('Longitude:', lon);
 
         // Clear all previous markers
         map.eachLayer(function(layer) {
@@ -388,12 +393,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             })
             .catch(error => console.error('Error fetching address:', error));
 
-        map.setView([lat, lon], 15);
+        map.setView([lat, lon], 20);
     }
 
     var popup = L.popup();
 
     function onMapClick(e) {
+        var lat = e.latlng.lat.toFixed(6);
+        var lon = e.latlng.lng.toFixed(6);
+        console.log('Latitude:', lat);
+        console.log('Longitude:', lon);
         // Clear all previous markers
         map.eachLayer(function(layer) {
             if (layer instanceof L.Marker) {
