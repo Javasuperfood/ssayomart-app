@@ -43,7 +43,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="modal-pilih-originLabel">Pilih Market</h1>
+                                        <h1 class="modal-title fs-6" id="modal-pilih-originLabel">Pilih Market</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -53,10 +53,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php foreach ($market_list as $key => $m) : ?>
                                                         <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>',)">
                                                             <div class="card shadow-sm border-0">
-                                                                <div class="card-body">
-                                                                    <div class="form-check form-switch">
-                                                                        <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
-                                                                    </div>
+                                                                <div class="card-body form-check form-switch">
+                                                                    <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                     <p class="fw-bold">Ssayomart <?= $m['lable']; ?></p>
                                                                     <p><?= $m['alamat_1']; ?></p>
                                                                     <p><?= $m['telp']; ?></p>
@@ -95,7 +93,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
+                                        <h1 class="modal-title fs-6" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -105,10 +103,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php foreach ($alamat_list as $key => $a) : ?>
                                                         <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>)">
                                                             <div class="card shadow-sm border-0">
-                                                                <div class="card-body">
-                                                                    <div class="form-check form-switch">
-                                                                        <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
-                                                                    </div>
+                                                                <div class="card-body form-check form-switch">
+                                                                    <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                     <p class="fw-bold"> <?= $a['label']; ?></p>
                                                                     <p><?= $m['alamat_1']; ?></p>
                                                                     <p><?= $m['telp']; ?></p>
@@ -139,51 +135,51 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
+                                        <h1 class="modal-title fs-6" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row row-cols-1">
                                             <div class="col">
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 130px;">
+                                                    <div class="col d-flex align-items-center">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 100px;">
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
-                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">Pilih</button>
+                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">
                                                     </div>
                                                 </div>
                                                 <hr>
                                             </div>
                                             <div class="col">
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 130px;">
+                                                    <div class="col d-flex align-items-center">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 100px;">
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
-                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">Pilih</button>
+                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">
                                                     </div>
                                                 </div>
                                                 <hr>
                                             </div>
                                             <div class="col">
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 130px;">
+                                                    <div class="col d-flex align-items-center">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 100px;">
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
-                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">Pilih</button>
+                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">
                                                     </div>
                                                 </div>
                                                 <hr>
                                             </div>
                                             <div class="col">
                                                 <div class="row">
-                                                    <div class="col">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 130px;">
+                                                    <div class="col d-flex align-items-center">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 100px;">
                                                     </div>
                                                     <div class="col d-flex justify-content-end align-items-center">
-                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">Pilih</button>
+                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -425,10 +421,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <?php foreach ($market_list as $key => $m) : ?>
                                                                     <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>',)">
                                                                         <div class="card shadow-sm border-0">
-                                                                            <div class="card-body">
-                                                                                <div class="form-check form-switch">
-                                                                                    <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
-                                                                                </div>
+                                                                            <div class="card-body form-check form-switch">
+                                                                                <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                                 <p class="fw-bold">Ssayomart <?= $m['lable']; ?></p>
                                                                                 <p><?= $m['alamat_1']; ?></p>
                                                                                 <p><?= $m['telp']; ?></p>
@@ -480,10 +474,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <?php foreach ($alamat_list as $key => $a) : ?>
                                                                     <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>)">
                                                                         <div class="card shadow-sm border-0">
-                                                                            <div class="card-body">
-                                                                                <div class="form-check form-switch">
-                                                                                    <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
-                                                                                </div>
+                                                                            <div class="card-body form-check form-switch">
+                                                                                <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                                 <p class="fw-bold"> <?= $a['label']; ?></p>
                                                                                 <p><?= $m['alamat_1']; ?></p>
                                                                                 <p><?= $m['telp']; ?></p>
@@ -524,44 +516,44 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="row row-cols-1">
                                                         <div class="col">
                                                             <div class="row">
-                                                                <div class="col">
-                                                                    <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 130px;">
+                                                                <div class="col d-flex align-items-center">
+                                                                    <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 100px;">
                                                                 </div>
                                                                 <div class="col d-flex justify-content-end">
-                                                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">Pilih</button>
+                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">
                                                                 </div>
                                                             </div>
                                                             <hr>
                                                         </div>
                                                         <div class="col">
                                                             <div class="row">
-                                                                <div class="col">
-                                                                    <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 130px;">
+                                                                <div class="col d-flex align-items-center">
+                                                                    <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 100px;">
                                                                 </div>
                                                                 <div class="col d-flex justify-content-end">
-                                                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">Pilih</button>
+                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">
                                                                 </div>
                                                             </div>
                                                             <hr>
                                                         </div>
                                                         <div class="col">
                                                             <div class="row">
-                                                                <div class="col">
-                                                                    <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 130px;">
-                                                                </div>
-                                                                <div class="col d-flex justify-content-end">
-                                                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">Pilih</button>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="row">
-                                                                <div class="col">
-                                                                    <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 130px;">
+                                                                <div class="col d-flex align-items-center">
+                                                                    <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 100px;">
                                                                 </div>
                                                                 <div class="col d-flex justify-content-end align-items-center">
-                                                                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">Pilih</button>
+                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="row">
+                                                                <div class="col d-flex align-items-center">
+                                                                    <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 100px;">
+                                                                </div>
+                                                                <div class="col d-flex justify-content-end align-items-center">
+                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -627,6 +619,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 <!-- end desktop -->
+
+<style>
+    .form-control[readonly] {
+        border: 1px solid #DEE2E6;
+    }
+</style>
 
 <script>
     $('document').ready(function() {
