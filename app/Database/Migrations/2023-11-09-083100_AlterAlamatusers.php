@@ -16,12 +16,12 @@ class AlterAlamatusers extends Migration
                 'after' => 'alamat_2'
             ],
             'latitude' => [
-                'type' => 'decimal(10,8)',
+                'type' => 'decimal(9,6)',
                 'null' => true,
                 'after' => 'telp2'
             ],
             'longitude' => [
-                'type' => 'decimal(11,8)',
+                'type' => 'decimal(10,6)',
                 'null' => true,
                 'after' => 'latitude'
             ],
