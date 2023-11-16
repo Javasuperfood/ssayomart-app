@@ -448,6 +448,9 @@ class Setting extends BaseController
     {
         $alamatModel = new AlamatUserModel();
 
+        $latitude = number_format($this->request->getVar('latitude'), 6, '.', '');
+        $longitude = number_format($this->request->getVar('longitude'), 6, '.', '');
+
         $data = [
             'id_alamat_users' => $id,
             'id_user' => $this->request->getVar('id_user'),
@@ -463,8 +466,8 @@ class Setting extends BaseController
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2'),
-            'latitude' => $this->request->getVar('latitude'),
-            'longitude' => $this->request->getVar('longitude'),
+            'latitude' => $latitude,
+            'longitude' => $longitude
         ];
         if ($data['telp2'] == null) {
             $ruleTelp2 = [];
