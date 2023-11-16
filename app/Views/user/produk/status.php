@@ -77,7 +77,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col mt-3">
                 <div class="card form-control form-control-md border-0 shadow-sm">
                     <div class="card border-0">
-                        <h2>Lokasi Tujuan</h2>
+                        <h2 class="fs-5">Lokasi Tujuan</h2>
                         <div class="mb-0 mx-0 my-0">
                             <div class="row row-cols-1">
                                 <div class="col">
@@ -101,7 +101,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col mt-3">
                 <div class="card border-0">
                     <div class="card form-control form-control-md border-0 shadow-sm">
-                        <h2>Pesanan kamu</h2>
+                        <h2 class="fs-5">Pesanan kamu</h2>
                         <div class="row">
                             <div class="col-10">
                                 <p><?= $status->invoice; ?></p>
@@ -173,11 +173,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     if ($status->id_status_pesan == 1) : ?>
         <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
         <div class="d-flex align-items-center justify-content-center w-100 h-100" style="left: 0; right: 0;">
-            <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff;">Buka Pembayaran</button>
+            <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 14px; width: 90%">Buka Pembayaran</button>
         </div>
         <div class="py-3"></div>
         <div class="d-flex align-items-center justify-content-center w-100 h-100" style="left: 0; right: 0;">
-            <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; display: none;">Ubah Metode Pembayaran</button>
+            <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; display: none; font-size: 14px; width: 90%">Ubah Metode Pembayaran</button>
         </div>
 
         <!-- Modal Change Payment -->
@@ -402,9 +402,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 padding: 0px;
             }
 
-            h2 {
-                margin-top: 8px;
-                font-size: 14px;
+            h2.fs-5 {
+                margin-top: 8px !important; 
+                font-size: 14px !important;
             }
 
             p {
