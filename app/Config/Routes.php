@@ -311,6 +311,9 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         // GOSEND API
         $routes->get('get-order/(:segment)', 'WebhookController::getOrder/$1');
         $routes->post('get-order/pickup-item/(:segment)', 'WebhookController::pickupItem/$1');
+        $routes->patch('get-order/pickup-item/(:segment)', 'WebhookController::handlerPickupItem/$1');
+        $routes->get('get-order/gosend', 'WebhookController::getSingleOrder');
+        $routes->post('get-order/gosend', 'WebhookController::updateSingleOrder');
     });
 });
 
