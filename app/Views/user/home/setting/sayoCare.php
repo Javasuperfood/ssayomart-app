@@ -29,10 +29,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container-fluid p-0 position-relative">
-            <div class="img-container">
+
+            <div class="bg-image">
+                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
+                <div class="mask"></div>
+            </div>
+            <!-- <div class="img-container">
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="img-overlay"></div>
-            </div>
+            </div> -->
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2 " style="font-family:cursive;">
                 <h1>ABOUT US</h1>
                 <p>PT Ssayomart Indonesia </p>
@@ -51,9 +56,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 </div> -->
                 <div class="col">
-                    <!-- Konten Kolom Kedua -->
-                    <h3>Tentang Ssayomart </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+                    <div data-aos="fade-down" data-aos-delay="500">
+                        <!-- Konten Kolom Kedua -->
+                        <h3>Tentang Ssayomart </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+                    </div>
+
 
                 </div>
             </div>
@@ -61,110 +69,115 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- galery photos Mobile -->
         <div class="container d-md-none">
-            <section class="galeri" id="galeri">
-                <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
-                <div class="swiper telkom mt-3">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" alt="Gambar Besar" class="gambar img-fluid">
+            <div data-aos="fade-right" data-aos-delay="1000">
+                <section class="galeri" id="galeri">
+                    <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
+                    <div class="swiper telkom mt-3">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-2.png" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-8.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-9.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="<?= base_url() ?>assets/img/about/menu-10.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                            </div>
                         </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-2.png" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-8.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-9.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?= base_url() ?>assets/img/about/menu-10.jpg" alt="Gambar Besar" class="gambar img-fluid">
-                        </div>
-                    </div>
 
-                </div>
-            </section>
+                    </div>
+                </section>
+            </div>
         </div>
         <!-- akhir galeri photos -->
 
         <!-- Slider card  -->
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
-                    <div class="swiper card-swiper mt-3">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+            <div data-aos="zoom-in-down">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
+                        <div class="swiper card-swiper mt-3">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
 
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+                                        <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                        <h5 class="menu-title text-muted small text-center">CEO</h5>
 
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
+                                        <p class="text-secondary text-center mt-2 mx-3">
+                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
 
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+                                        <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                        <h5 class="menu-title text-muted small text-center">CEO</h5>
 
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
+                                        <p class="text-secondary text-center mt-2 mx-3">
+                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
 
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+                                        <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                        <h5 class="menu-title text-muted small text-center">CEO</h5>
 
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
+                                        <p class="text-secondary text-center mt-2 mx-3">
+                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
+                                <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
 
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
+                                        <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
+                                        <h5 class="menu-title text-muted small text-center">CEO</h5>
 
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
+                                        <p class="text-secondary text-center mt-2 mx-3">
+                                            "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
         <!-- Akhir Slider Card -->
 
@@ -174,7 +187,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <!-- Kolom 1: Peta -->
                 <div class="col-md-6 col-lg-6">
-                    <iframe class="text-center maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63461.253843224215!2d106.58139326405951!3d-6.220359270402854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f96aaaaaaa9d%3A0x61260dece4fe3535!2sJAVA%20SUPER%20FOOD%20(PT%20ANEKA%20DASUIB%20JAYA)!5e0!3m2!1sen!2sid!4v1697420053341!5m2!1sen!2sid" width="320" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe class="text-center maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d588.8346382611838!2d106.6190360362805!3d-6.224009368681214!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fdd1b4844f71%3A0x7a215719bcf3a770!2sSsayo%20Mart%20Indonesia!5e1!3m2!1sen!2sid!4v1700099064396!5m2!1sen!2sid" width="320" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
                 </div>
 
                 <!-- Kolom 2: Formulir Inputan -->
@@ -200,30 +214,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- akhir form dan maps -->
 
         <style>
-            .maps {
-                max-width: 100%;
-                /* Agar peta tidak melebihi lebar layar */
+            .bg-image {
+                position: relative;
+                overflow: hidden;
             }
 
-            @media screen and (max-width: 280px) {
-                h1 {
-                    font-size: small;
-                }
+            .bg-image img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
 
-                p {
-                    font-size: small;
-                }
+            .mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, hsla(168, 85%, 52%, 0.5), hsla(263, 88%, 45%, 0.5) 100%);
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
 
-                .col-md-6 {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .maps {
-                    max-width: 100%;
-                    /* Agar peta tidak melebihi lebar layar */
-                }
+            .bg-image:hover .mask {
+                opacity: 1;
             }
         </style>
     </div>
@@ -444,7 +458,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About As <span class="text-danger">Ssayomart</span></h2>
                 <!-- Kolom 1: Peta -->
                 <div class="col-md-6">
-                    <iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63461.253843224215!2d106.58139326405951!3d-6.220359270402854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f96aaaaaaa9d%3A0x61260dece4fe3535!2sJAVA%20SUPER%20FOOD%20(PT%20ANEKA%20DASUIB%20JAYA)!5e0!3m2!1sen!2sid!4v1697420053341!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d588.8346382611838!2d106.6190360362805!3d-6.224009368681214!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fdd1b4844f71%3A0x7a215719bcf3a770!2sSsayo%20Mart%20Indonesia!5e1!3m2!1sen!2sid!4v1700099064396!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
                 <!-- Kolom 2: Formulir Inputan -->
