@@ -311,6 +311,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     });
 });
 
+$routes->get('/maps', 'MapsController::maps');
 
 
 /*
