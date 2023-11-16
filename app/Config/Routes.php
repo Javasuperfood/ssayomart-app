@@ -156,6 +156,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori/edit-sub-kategori/(:segment)', 'AdminKategoriController::editSubKategori/$1');
 
     //CRUD Admin Banner
+    $routes->get('banner/tambah-konten', 'AdminBannerController::tambahKonten');
     $routes->get('banner/', 'AdminBannerController::index');
     $routes->get('banner/list-banner', 'AdminBannerController::listBanner');
     $routes->get('banner/tambah-banner', 'AdminBannerController::tambahBanner');

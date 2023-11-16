@@ -313,18 +313,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .button-container {
             position: absolute;
-            margin-bottom: -340px;
-            bottom: 10px;
             margin-left: 10px;
             z-index: 1000;
-
-
+            border-radius: 50% !important;
+            /* Mengatur elemen menjadi bentuk bulat */
+            top: 1080px;
         }
 
         #getLocationBtn {
-            border-radius: 50% !important;
-            margin-bottom: 20%;
-            margin-left: 5%;
+            border-radius: 50%;
+            /* Mengatur tombol menjadi bentuk bulat */
+
         }
     </style>
 <?php endif; ?>
