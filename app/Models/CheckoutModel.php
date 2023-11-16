@@ -109,4 +109,16 @@ class CheckoutModel extends Model
 
         return $query->findAll();
     }
+
+    public function getOrder($perPage = null, $toko = null, $status = null)
+    {
+        $query =  $this->select('jsf_checkout.*, jsf_status_pesan.status as status')
+            ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
+            ->where('id_toko', $toko);
+        if ($status != null) {
+            $query->where('jsf_checkout.id_status_pesan', $status);
+        }
+        $result = $query->paginate($perPage, 'order');
+        return $result;
+    }
 }
