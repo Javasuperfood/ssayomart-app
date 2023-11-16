@@ -129,7 +129,7 @@ class CheckoutProdukModel extends Model
 
         return $paginatedResults;
     }
-    public function getAllTransaksiWithStatus($toko = null, $perPage, $currentPage, $status)
+    public function getAllTransaksiWithStatus($toko = null, $perPage, $currentPage, $status = null)
     {
         $db = \Config\Database::connect();
 
@@ -139,8 +139,11 @@ class CheckoutProdukModel extends Model
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->join('jsf_status_pesan', 'jsf_checkout.id_status_pesan = jsf_status_pesan.id_status_pesan')
             ->join('jsf_status_kirim', 'jsf_checkout.id_status_kirim = jsf_status_kirim.id_status_kirim')
-            ->where('jsf_checkout.id_status_pesan', $status)
             ->orderBy('jsf_checkout_produk.created_at', 'DESC');
+
+        if ($status != null) {
+            $query->where('jsf_checkout.id_status_pesan', $status);
+        }
         if ($toko != null) {
             foreach ($toko as $key => $t) {
                 if ($key == 0) {

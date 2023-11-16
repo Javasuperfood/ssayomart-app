@@ -21,7 +21,7 @@
             <div class="row mb-3 header">
                 <div class="col text-end">
                     <?php if (isset($pages) && $pages == 'in-proccess') : ?>
-                        <a href="<?= base_url('dashboard/order/in-proccess/print-all'); ?>" class="btn btn-outline-danger <?= (count($order) == 0) ? 'd-none' : ''; ?>"><i class="bi bi-printer"></i> Print All</a>
+                        <a href="<?= base_url('dashboard/order/in-proccess/print-all'); ?>" class="btn btn-outline-danger <?= (count($checkout) == 0) ? 'd-none' : ''; ?>"><i class="bi bi-printer"></i> Print All</a>
                     <?php endif ?>
                 </div>
             </div>
