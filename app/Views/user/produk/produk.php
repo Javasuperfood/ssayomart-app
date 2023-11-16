@@ -236,6 +236,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             cursor: pointer;
         }
 
+        /* CSS edit inputan counter*/
+        #counterProduct {
+            width: 70%;
+            /* Sesuaikan lebar sesuai kebutuhan Anda */
+            max-width: 100px;
+            /* Batasi lebar maksimum jika diperlukan */
+        }
+
         @media (max-width: 280px) {
             .modal-body img {
                 width: 100%;
@@ -257,10 +265,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 height: 20px;
                 /* Sesuaikan ukuran sesuai kebutuhan */
             }
+
+            /* CSS edit inputan counter*/
+            #counterProduct {
+                width: 20%;
+                /* Sesuaikan lebar sesuai kebutuhan Anda */
+                max-width: 30px;
+                /* Batasi lebar maksimum jika diperlukan */
+            }
         }
 
 
         @media (min-width: 768px) and (max-width: 1024px) {
+
+            /* CSS edit inputan counter*/
+            #counterProduct {
+                width: 70%;
+                /* Sesuaikan lebar sesuai kebutuhan Anda */
+                max-width: 100px;
+                /* Batasi lebar maksimum jika diperlukan */
+            }
+
             .modal-body img {
                 width: 700px !important;
                 height: 700px !important;
