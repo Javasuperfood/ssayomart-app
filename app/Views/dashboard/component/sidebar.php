@@ -70,7 +70,7 @@
         <div id="pesanan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header text-danger">Menu Pesanan:</h6>
-                <a class="collapse-item <?= (isset($pages) && $pages == 'order') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order'); ?>">Semua Pesanan</a>
+                <a class="collapse-item <?= (isset($pages) && $pages == '') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order'); ?>">Semua Pesanan</a>
                 <a class="collapse-item <?= (isset($pages) && $pages == 'awaiting-payment') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/awaiting-payment'); ?>">Menunggu Pembayaran</a>
                 <a class="collapse-item <?= (isset($pages) && $pages == 'in-proccess') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/in-proccess'); ?>">Dalam Proses</a>
                 <a class="collapse-item <?= (isset($pages) && $pages == 'being-delivered') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/being-delivered'); ?>">Dalam Perjalanan</a>
