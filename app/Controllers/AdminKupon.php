@@ -124,10 +124,10 @@ class AdminKupon extends BaseController
         return view('dashboard/kupon/editKupon', $data);
     }
     // save update
-    public function updateKupon()
+    public function updateKupon($id)
     {
         $kuponModel = new KuponModel();
-        $id = $this->request->getVar('id_kupon');
+        // $id = $this->request->getVar('id_kupon');
         if ($this->request->getVar('is_active') == 1) {
             $is_active = 1;
         } else {
@@ -154,11 +154,13 @@ class AdminKupon extends BaseController
             'is_active' => $is_active,
             'created_by' => user_id()
         ];
+        // dd($data);
         if (!$this->validateData($data, $kuponModel->validationRules)) {
 
             return redirect()->to('dashboard/kupon/edit-kupon/' . $id)->withInput();
         }
         if ($kuponModel->save($data)) {
+            // echo "Available Kupon: " . $data['available_kupon'];
             session()->setFlashdata('success', 'Kupon berhasil diubah.');
             $alert = [
                 'type' => 'success',
