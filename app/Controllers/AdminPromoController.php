@@ -80,6 +80,9 @@ class AdminPromoController extends BaseController
             }
         }
 
+        $promoItemModel = new PromoItemModel();
+        $promoItemModel->where('id_promo', $id)->delete();
+
         $deleted = $promoModel->delete($id);
         if ($deleted) {
             $alert = [
