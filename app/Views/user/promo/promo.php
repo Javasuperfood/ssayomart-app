@@ -40,11 +40,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col">
                             <div class="swiper button-swiper">
                                 <div class="swiper-wrapper">
-                                    <?php foreach ($kategori_promo as $k) : ?>
+                                    <?php foreach ($kategori_promo as $kp) : ?>
                                         <div class="swiper-slide">
-                                            <a href="<?= base_url('promo/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded">
-                                                <?= $k['title']; ?>
-                                            </a>
+                                            <p><?= $kp['title']; ?></p>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
@@ -86,5 +84,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
             }
         </style>
-        <?= $this->include('user/produk/component/card') ?>
+        <?= $this->include('user/produk/component/cardProduk') ?>
         <?= $this->endSection(); ?>

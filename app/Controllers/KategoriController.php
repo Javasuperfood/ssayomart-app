@@ -75,6 +75,7 @@ class KategoriController extends BaseController
             'blog_detail' => $blog_detail,
         ];
         // dd($data);
+
         return view('user/home/Kategori', $data);
     }
 }
