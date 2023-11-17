@@ -222,7 +222,8 @@ class ProdukModel extends Model
         return $this->db->table('jsf_sub_kategori_produk')->insert($data);
     }
 
-    public function getFeaturedProductsByCategory($slug1 = false, $slug2 = false)
+    // jika parameter yang akan dibuat kondisi wajib mempunya value null di setiap parameter
+    public function getFeaturedProductsByCategory($slug1 = null, $slug2 = null)
     {
         $query = $this->select('jsf_produk.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, p.qty')
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_produk.id_kategori', 'left')
@@ -238,11 +239,13 @@ class ProdukModel extends Model
             $query->where('jsf_sub_kategori.slug', $slug2);
         }
 
-        $query->where('p.id_produk IS NOT NULL');
+        $query->where('p.id_produk IS NOT NULL')->where('jsf_produk.deleted_at', null);
 
-        $query->groupBy('jsf_produk.id_produk')
+        // jsf_produk.id_produk & p.qty harus masuk pada group
+        $query->groupBy('jsf_produk.id_produk, p.qty')
             ->orderBy('qty', 'DESC')
             ->limit(3);
-        return $query->get()->getResultArray();
+        $result = $query->get()->getResultArray();
+        return $result;
     }
 }
