@@ -456,7 +456,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
-                                            <label for="mpOrigin">Alamat</label>
+                                            <label for="mpDestination">Alamat</label>
                                         </div>
                                         <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                                     </div>
