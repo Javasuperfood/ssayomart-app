@@ -451,5 +451,6 @@ class App extends BaseConfig
     public $aliases = [
         // ...
         'Hybridauth' => \Hybridauth\Hybridauth::class,
+        'webhook' => \Config\WebHook::class,
     ];
 }
