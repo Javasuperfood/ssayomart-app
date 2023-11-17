@@ -2,37 +2,39 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-2 text-gray-800">Management Pop Up</h1>
-<ul class="breadcrumb bg-light">
+<ul class="breadcrumb bg-light px-0">
     <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
-    <li class="breadcrumb-item active text-danger">Pop Up Homepage</li>
+    <li class="breadcrumb-item active text-danger text-decoration-underline">Pop Up Homepage</li>
 </ul>
 <p class="mb-4">Anda dapat mengatur pop up yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>
-<div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
+<div class="alert alert-danger text-center border-1 my-4 shadow-sm" role="alert">
     <b>Note : perhatikan ukuran dan resolusi pop up serta format pop up harus png agar background transparant sebelum upload ke Aplikasi Ssayomart Supermarket</b>
 </div>
 
 <div class="row">
     <!-- Left Panel -->
     <div class="col-lg-6">
-        <div class="card position-relative border-0 shadow-sm">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Masukan Foto Pop Up Baru</h6>
+        <div class="card position-relative border-1 shadow-sm">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-earmark-plus-fill"></i>
+                <h6 class="m-0 fw-bold px-2">Masukan Foto Pop Up Baru</h6>
             </div>
             <div class="card-body">
                 <form action="<?= base_url(); ?>dashboard/banner/pop-up-banner/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="banner">Judul Pop Up</label>
-                        <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" rows="3" placeholder="Judul untuk pop up Anda..." value="<?= old('title') ?>"></input>
+                        <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" rows="3" placeholder="Judul untuk pop up Anda..." value="<?= old('title') ?>"></input>
                         <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Pop Up</label>
-                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>" accept="image/*">
+                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>" accept="image/*">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
-                    <div class="text-center">
+                    <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                    <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
@@ -41,12 +43,13 @@
     </div>
 
     <!-- Right Panel -->
-    <div class="col-lg-6 mb-3">
-        <div class="card position-relative border-0 shadow-sm">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">List Banner</h6>
+    <div class="col-lg-6 mb-5">
+        <div class="card position-relative border-1 shadow-sm">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-text-fill"></i>
+                <h6 class="m-0 fw-bold px-2">List Banner</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-2">
                 <table class="table text-center" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>

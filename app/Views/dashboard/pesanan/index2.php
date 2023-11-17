@@ -19,7 +19,7 @@
         </div>
         <div class="card-body">
             <div class="row mb-3 header">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <form action="<?= base_url('dashboard/order/' . $pages) ?>" method="get">
                         <div class="input-group">
                             <span class="input-group-text">Filter by</span>
@@ -104,6 +104,21 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                            <?php if ($c['gosend'] == 1) : ?>
+                                                <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="pickUp(this)">
+                                                    <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
+                                                    Pick-Up
+                                                </a>
+                                                <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="repickUp(this)">
+                                                    <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
+                                                    Retry Pick-Up
+                                                </a>
+                                                <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="cancelPickUp(this)">
+                                                    <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
+                                                    Cancel
+                                                </a>
+                                                <hr>
+                                            <?php endif ?>
                                             <?php if ((int)$c['id_status_pesan'] > 1) : ?>
                                                 <a class="dropdown-item" href="<?= base_url('dashboard/order/print-order/' . $c['id_checkout']); ?>">
                                                     <i class="bi bi-printer fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -162,6 +177,28 @@
             <?= $pager->links('order', 'pagerS'); ?>
         </div>
     </div>
+    <script>
+        function pickUp(e) {
+            console.log(e);
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Apa barang sudah siap di ambil?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, pick it up!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Memanggil driver",
+                        text: "Menunggu driver",
+                        icon: "success"
+                    });
+                }
+            });
+        }
+    </script>
 <?php else : ?>
 
     <div class="row">

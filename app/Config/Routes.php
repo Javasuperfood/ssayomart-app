@@ -216,7 +216,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->post('tambah-kupon/save', 'AdminKupon::saveKupon');
         $routes->post('delete-kupon/(:segment)', 'AdminKupon::deleteKupon/$1');
         $routes->get('edit-kupon/(:segment)', 'AdminKupon::editKupon/$1');
-        $routes->post('edit-kupon/save', 'AdminKupon::updateKupon');
+        $routes->post('edit-kupon/(:segment)', 'AdminKupon::updateKupon/$1');
     });
 
     // CRUD Marketplace

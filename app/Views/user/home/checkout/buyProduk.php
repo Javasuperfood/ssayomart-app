@@ -374,7 +374,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </table>
                         <strong>Estimasi : <span id="estimasi"></span></strong>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
+                            <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar mt-3" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
                         </div>
                     </div>
                     <!-- Left Panel -->
@@ -456,7 +456,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
-                                            <label for="mpOrigin">Alamat</label>
+                                            <label for="mpDestination">Alamat</label>
                                         </div>
                                         <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                                     </div>

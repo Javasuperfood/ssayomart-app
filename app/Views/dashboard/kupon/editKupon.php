@@ -8,7 +8,7 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/kupon/edit-kupon/save" method="post">
+        <form action="<?= base_url(); ?>dashboard/kupon/edit-kupon/<?= $kp['id_kupon'] ?>" method="post">
             <?= csrf_field(); ?>
             <input type="hidden" class="form-control" id="id_kupon" name="id_kupon" value="<?= $kp['id_kupon'] ?>">
             <div class="mb-3">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="" class="form-label">Maksimal Digunakan <span class="text-danger fs-5">*</span></label>
-                        <input type="number" class="form-control <?= (validation_show_error('available_kupon')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="available_kupon" value="<?= (old('available_kupon')) ? old('available_kupon') : $kp['available_kupon']; ?>" id="" placeholder="Mkasimal digunakan">
+                        <input type="number" class="form-control <?= (validation_show_error('available_kupon')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="available_kupon" value="<?= (old('available_kupon')) ? old('available_kupon') : $kp['available_kupon']; ?>" id="" placeholder="Maksimal digunakan">
                         <div class="invalid-feedback"><?= validation_show_error('available_kupon'); ?></div>
                     </div>
                 </div>

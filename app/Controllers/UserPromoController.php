@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\ProdukModel;
 use App\Models\PromoItemModel;
 use App\Models\KategoriModel;
 use App\Models\PromoModel;
