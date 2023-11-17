@@ -20,6 +20,7 @@ class KuponModel extends Model
         'discount',
         'total_buy',
         'is_active',
+        'available_kupon',
         'created_by'
     ];
 
