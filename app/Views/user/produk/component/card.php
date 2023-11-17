@@ -165,6 +165,15 @@
 <?php endif ?>
 
 <style>
+    .border-darker {
+        border-color: red;
+        /* Ubah warna garis menjadi merah */
+        border-width: 2px;
+        /* Sesuaikan ketebalan garis sesuai kebutuhan Anda */
+        font-weight: bold;
+        /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
+    }
+
     .horizontal-counter {
         display: flex;
         align-items: center;
@@ -206,6 +215,15 @@
 
         p.text-secondary {
             font-size: 9px !important;
+        }
+
+        .border-darker {
+            border-color: red;
+            /* Ubah warna garis menjadi merah */
+            border-width: 2px;
+            /* Sesuaikan ketebalan garis sesuai kebutuhan Anda */
+            font-weight: bold;
+            /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
         }
     }
 </style>
