@@ -160,18 +160,19 @@ class AdminBannerController extends BaseController
         return view('dashboard/banner/updateBanner', $data);
     }
     // action
-    public function updateBannerSave()
+    public function updateBannerSave($id)
     {
         $bannerModel = new BannerModel();
-        $id = $this->request->getVar('id_pop_up_banner');
+
+        // $id = $this->request->getVar('id_pop_up_banner');
         $image = $this->request->getFile('img');
         $data = [
-            'id_pop_up_banner' => $id,
+            'id_banner' => $id,
             'img' => $image,
             'title' => $this->request->getVar('title'),
         ];
-        //validate data
 
+        //validate data
         if (!$this->validateData($data, $bannerModel->validationRules)) {
             $alert = [
                 'type' => 'error',
@@ -181,7 +182,6 @@ class AdminBannerController extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/banner/update-banner/' . $id)->withInput();
         }
-
 
         if ($image->getError() == 4) {
             $namaBannerImage = $this->request->getVar('imageLama');
@@ -201,9 +201,9 @@ class AdminBannerController extends BaseController
             }
         }
 
-        // repalce data 
+        // replace data 
         $data = [
-            'id_pop_up_banner' => $id,
+            'id_banner' => $id,
             'img' => $namaBannerImage,
             'title' => $this->request->getVar('title'),
         ];

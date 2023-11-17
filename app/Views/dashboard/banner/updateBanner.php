@@ -7,7 +7,7 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/banner/update-banner/save" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateBanner()">
+        <form action="<?= base_url(); ?>dashboard/banner/update-banner/<?= $bl['id_banner'] ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateBanner()">
             <?= csrf_field(); ?>
             <input type="hidden" class="form-control border-0 shadow-sm" id="id_banner" name="id_banner" value="<?= $bl['id_banner'] ?>">
             <div class="mb-3">

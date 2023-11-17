@@ -163,7 +163,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('banner/tambah-banner/save', 'AdminBannerController::saveBanner');
     $routes->post('banner/tambah-banner/delete/(:segment)', 'AdminBannerController::deleteBanner/$1');
     $routes->get('banner/update-banner/(:segment)', 'AdminBannerController::updateBanner/$1');
-    $routes->post('banner/update-banner/save', 'AdminBannerController::updateBannerSave');
+    $routes->post('banner/update-banner/(:segment)', 'AdminBannerController::updateBannerSave/$1');
     // Pop Up
     $routes->get('banner/pop-up-banner', 'AdminBannerController::popUp');
     $routes->post('banner/pop-up-banner/save', 'AdminBannerController::savePopup');
