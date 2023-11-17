@@ -44,6 +44,7 @@ $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
 $routes->get('user/home/contenBanner/conten-banner', 'Blog::contenBanner');
 $routes->get('/status-gosend', 'StatusGosend::statusGosend');
+$routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 
 
 // Rute untuk AppleAuthController
@@ -156,7 +157,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori/edit-sub-kategori/(:segment)', 'AdminKategoriController::editSubKategori/$1');
 
     //CRUD Admin Banner
-    $routes->get('banner/tambah-konten', 'AdminBannerController::tambahKonten');
     $routes->get('banner/', 'AdminBannerController::index');
     $routes->get('banner/list-banner', 'AdminBannerController::listBanner');
     $routes->get('banner/tambah-banner', 'AdminBannerController::tambahBanner');
@@ -176,6 +176,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('banner/ads-konten-banner/delete/(:segment)', 'AdminBannerController::deleteKontenAds/$1');
     $routes->get('banner/update-ads-konten/(:segment)', 'AdminBannerController::updateKontenAds/$1');
     $routes->post('banner/update-ads-konten/save-ads', 'AdminBannerController::saveKontenAdsEdit');
+    // Content
+    $routes->get('banner/tambah-konten', 'AdminBannerController::tambahKonten');
 
     // CRUD routes produk
     $routes->get('produk/', 'AdminProduk::produk');

@@ -5,17 +5,18 @@ namespace App\Controllers;
 use App\Models\BannerModel;
 use App\Models\BannerPopupModel;
 use App\Models\BannerAdsKontenModel;
+use App\Models\BannerContentModel;
 
 class AdminBannerController extends BaseController
 {
 
     // ===================================================================
-    // ------------------------ TAMBAH KONTEN BANNER ------------------------------
+    // ------------------------ TAMBAH KONTEN BANNER ---------------------
     // ===================================================================
     public function tambahKonten()
     {
-        $bannerModel = new BannerModel();
-        $bannerList = $bannerModel->findAll();
+        $contentModel = new BannerContentModel();
+        $bannerList = $contentModel->findAll();
         $data = [
             'title' => 'Tambah Konten Banner',
             'banner_list' => $bannerList
@@ -23,9 +24,72 @@ class AdminBannerController extends BaseController
         // dd($data);
         return view('/dashboard/banner/tambahKonten', $data);
     }
+    public function saveContent()
+    {
+        // ambil gambar
+        $contentModel = new BannerContentModel();
+
+        $fotoBanner = $this->request->getFile('img');
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'img' => $fotoBanner
+        ];
+        //validate data
+        if (!$this->validateData($data, $contentModel->validationRules) && !$this->validateData($data, [
+            'img' => [
+                'errors' => [
+                    'uploaded' => 'Gambar content wajib diunggah.'
+                ]
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/tambah-konten')->withInput();
+        }
+        if ($fotoBanner->getError() == 4) {
+            $namaBanner = 'pop-up-1.png';
+        } else {
+            $namaBanner = $fotoBanner->getRandomName();
+            $fotoBanner->move('assets/img/banner/content/', $namaBanner);
+        }
+
+        //repalce data
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'img' => $namaBanner
+        ];
+        // dd($data);
+
+        // swet alert
+        if ($contentModel->save($data)) {
+            session()->setFlashdata('success', 'Gambar pop up berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Gambar pop up berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada upload pop up'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
+        }
+    }
+
 
     // ===================================================================
-    // ------------------------ END TAMBAH KONTEN BANNER ----------------------------
+    // ------------------------ END TAMBAH KONTEN BANNER -----------------
     // ===================================================================
 
     public function index(): string
@@ -242,7 +306,7 @@ class AdminBannerController extends BaseController
     }
 
     // =================================================================
-    // ====================== =POP UP BANNER ===========================
+    // ======================= POP UP BANNER ===========================
     // =================================================================
 
     public function popUp(): string

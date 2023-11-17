@@ -1,12 +1,12 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Management Tambah Banner Homepage</h1>
+<h1 class="h3 mb-2 text-gray-800">Management Banner Content</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
-    <li class="breadcrumb-item active text-danger">Tambah Banner Homepage</li>
+    <li class="breadcrumb-item active text-danger">Banner Homepage</li>
 </ul>
-<p class="mb-4">Anda dapat mengatur banner homepage yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
+<p class="mb-4">Anda dapat mengatur banner content yang akan di tampilkan kepada pengguna aplikasi.
 </p>
 <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
     <b>Note : perhatikan ukuran dan resolusi banner sebelum upload ke Aplikasi Ssayomart Supermarket</b>
@@ -17,26 +17,25 @@
     <div class="col-lg-6">
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Masukan Banner Anda</h6>
+                <h6 class="m-0 font-weight-medium">Tambah Banner Content Anda</h6>
             </div>
             <div class="card-body">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Masukan Banner</label>
-                        <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted" style="font-size: 9px; margin-bottom: 20px;">perhatikan ukuran dan resolusi banner sebelum upload ke Aplikasi Ssayomart Supermarket.</small>
-
-                        <label for="inputState mt-3">Pilih untuk menjadikan Banner pada urutan Ke-</label>
-                        <select id="inputState" class="form-control">
-                            <option selected>Klik untuk memilih...</option>
-                            <option>...</option>
-                        </select>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <?= csrf_field(); ?>
+                    <div class="mb-3">
+                        <label for="banner">Judul Banner Content</label>
+                        <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" rows="3" placeholder="Judul untuk content Anda..." value="<?= old('title') ?>"></input>
+                        <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Gambar Content</label>
+                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= old('img') ?>" accept="image/*">
+                        <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger">Simpan</button>
+                    </div>
                 </form>
-                <div class="text-center">
-                    <button type="submit" class="btn btn-danger">Simpan</button>
-                </div>
             </div>
         </div>
     </div>
@@ -71,7 +70,7 @@
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </a>
-                                    <!-- Dropdown - User Information -->
+                                    <!-- Dropdown -->
                                     <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
                                         <a class="dropdown-item" href="#">
                                             <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>

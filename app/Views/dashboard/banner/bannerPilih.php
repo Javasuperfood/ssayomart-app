@@ -64,7 +64,7 @@
                 <a href="<?= base_url() ?>dashboard/banner/tambah-konten">
                     <div class="card-body d-flex">
                         <div class="col-9 text-center">
-                            <span class="text-secondary fs-5 position-absolute top-50 start-50 translate-middle">Tambah Banner Content</span>
+                            <span class="text-secondary fs-5 position-absolute top-50 start-50 translate-middle">Banner Content</span>
                         </div>
                         <div class="col-3 text-center">
                             <i class="bi bi-display fs-1 text-secondary"></i>

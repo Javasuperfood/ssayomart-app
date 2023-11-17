@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Management Management Advertisements Artikel</h1>
+<h1 class="h3 mb-2 text-gray-800">Management Advertisements Artikel</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
     <li class="breadcrumb-item active text-danger">Management Advertisements Artikel</li>
