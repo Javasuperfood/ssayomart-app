@@ -38,7 +38,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="img-overlay"></div>
             </div> -->
-            <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2 " style="font-family:cursive;">
+            <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-6 " style="font-family:cursive;">
                 <h1>ABOUT US</h1>
                 <p>PT Ssayomart Indonesia </p>
             </div>
