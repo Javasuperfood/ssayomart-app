@@ -25,14 +25,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </p>
                             <p class="mt-4 mb-1" style="font-size: 16px;">driver_name</p>
                             <span class="fw-bold">Gilang Aditya</span>
-                            <p class="mt-4 mb-1" style="font-size: 16px;">driver_phone</p>
-                            <span class="fw-bold">0874545131</span> <button type="button" class="ms-4 btn-sm btn btn-success"><i class="bi bi-whatsapp"></i></button>
+                            <hr>
+                            <div class="row">
+                                <div class="col-8">
+                                    <p class="driver-phone" style="font-size: 16px;">driver_phone</p>
+                                    <span class="fw-bold mt-3">0874545131</span>
+                                </div>
+                                <div class="col-4 text-end">
+                                    <button type="button" class="ms-auto mt-3 mt-md-0 btn-sm btn btn-success"><i class="bi bi-whatsapp"></i></button>
+                                </div>
+                            </div>
+
+                            <hr>
                             <p class="mt-4 mb-1" style="font-size: 16px;">booking_id</p>
                             <span class="fw-bold">123245</span>
+                            <hr>
                             <p class="mt-4 mb-1" style="font-size: 16px;">status</p>
                             <span class="fw-bold">sudah sampai</span>
+                            <hr>
                             <p class="mt-4 mb-1" style="font-size: 16px;">cancellation_reason</p>
                             <span class="fw-bold">Barang harganya kemurahan</span>
+                            <hr>
                             <p class="mt-4 mb-1" style="font-size: 16px;">receiver_name</p>
                             <span class="fw-bold">Gilang Aditya</span>
                         </div>
@@ -89,6 +102,44 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+
+    <!-- samsung galaxy fold -->
+    <style>
+        /* Custom styles for Galaxy Fold */
+        @media (max-width: 280px) {
+
+            .maps.responsive-iframe {
+                width: 100%;
+                height: 200px;
+            }
+
+            .responsive-iframe {
+                width: 100%;
+                height: 200px;
+
+            }
+
+            .card-body p,
+            .card-body span {
+                font-size: 12px;
+
+            }
+
+            .track .step span.text {
+                font-size: 10px;
+
+            }
+
+            .track .step span.icon {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+
+            }
+
+
+        }
+    </style>
 
     <style>
         .map-container {
