@@ -45,7 +45,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <div class="container pt-3">
                     <div class="row px-5">
-                        <div class="col px-3">
+                        <div class="col">
                             <div class="input-group mb-3 d-flex justify-content-center">
                                 <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                                 <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
@@ -238,7 +238,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         /* CSS edit inputan counter*/
         #counterProduct {
-            width: 70%;
+            width: 50%;
             /* Sesuaikan lebar sesuai kebutuhan Anda */
             max-width: 100px;
             /* Batasi lebar maksimum jika diperlukan */
@@ -267,10 +267,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             /* CSS edit inputan counter*/
+            .d-flex {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+
             #counterProduct {
-                width: 20%;
+                font-size: 13px;
+                width: 70%;
                 /* Sesuaikan lebar sesuai kebutuhan Anda */
-                max-width: 30px;
+                max-width: 100px;
                 /* Batasi lebar maksimum jika diperlukan */
             }
         }
