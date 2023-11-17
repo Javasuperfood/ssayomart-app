@@ -101,13 +101,13 @@
 
                     <div class="mb-3">
                         <label for="min" class="form-label text-secondary">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." value="<?= old('min') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk...">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <label for="discount" class="form-label text-secondary">Diskon (%)</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon..." value="<?= old('discount') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon...">
                         <span id="discountError" class="text-danger"></span>
                     </div>
 
@@ -118,12 +118,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
     <div class="col-lg-6 mb-3">
         <div class="card position-relative border-0 shadow-sm">
