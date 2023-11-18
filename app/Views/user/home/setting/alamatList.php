@@ -134,7 +134,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container pt-3 d-none d-md-block">
             <?php if (empty($alamat_user_model)) : ?>
                 <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
-                <div class="alert alert-warning" role="alert">
+                <div class="alert alert-danger" role="alert">
+                    <span class="me-3">
+                        <i class="bi bi-house-add" style="font-size: 25px;"></i>
+                    </span>
                     <?= lang('Text.alert_alamat') ?>
                 </div>
 
@@ -193,7 +196,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
                                     <div class="modal-footer flex-nowrap p-0">
                                         <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-link btn-danger fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong><?= lang('Text.btn_hapus') ?></strong></button>
+                                        <button type="submit" class="btn btn-lg btn-link btn-light fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong><?= lang('Text.btn_hapus') ?></strong></button>
                                         <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
                                     </div>
                                 </form>
