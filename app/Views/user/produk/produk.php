@@ -236,13 +236,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             cursor: pointer;
         }
 
-        /* CSS edit inputan counter*/
-        #counterProduct {
-            width: 50%;
-            /* Sesuaikan lebar sesuai kebutuhan Anda */
-            max-width: 100px;
-            /* Batasi lebar maksimum jika diperlukan */
-        }
+
 
         @media (max-width: 280px) {
             .modal-body img {
@@ -273,13 +267,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 flex-wrap: nowrap;
             }
 
-            #counterProduct {
-                font-size: 13px;
-                width: 70%;
-                /* Sesuaikan lebar sesuai kebutuhan Anda */
-                max-width: 100px;
-                /* Batasi lebar maksimum jika diperlukan */
-            }
+
         }
 
 
@@ -287,7 +275,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             /* CSS edit inputan counter*/
             #counterProduct {
-                width: 70%;
+                width: 32%;
                 /* Sesuaikan lebar sesuai kebutuhan Anda */
                 max-width: 100px;
                 /* Batasi lebar maksimum jika diperlukan */
@@ -374,7 +362,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
                                     <i class="bi bi-dash"></i>
                                 </button>
-                                <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
+                                <input type="number" id="counterProduct" class="form-control form-control-sm text-center bg-white border-0" disabled value="1">
                                 <button class="btn btn-outline-danger mr-4 rounded-circle" type="button" onClick="increaseCount(event, this)">
                                     <i class="bi bi-plus"></i>
                                 </button>
@@ -556,6 +544,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
+        <style>
+            .horizontal-counter {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .horizontal-counter .btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 12px;
+            }
+
+            .horizontal-counter input {
+                width: 40px;
+                text-align: center;
+            }
+
+            /* Efek zoom saat dihover */
+            .zoom-image {
+                overflow: hidden;
+                position: relative;
+            }
+
+            .zoom-image img {
+                transition: transform 0.3s;
+                border-radius: 25px;
+            }
+
+            .zoom-image:hover img {
+                transform: scale(1.1);
+                /* Anda dapat menyesuaikan faktor scaling sesuai kebutuhan Anda */
+            }
+
+            /* Media query for Samsung Galaxy Fold */
+        </style>
     <?php endif ?>
 
 <?php endif; ?>
@@ -646,6 +669,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     /* Atur gaya untuk tampilan Samsung Galaxy Fold atau layar yang lebih kecil */
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
+
+        .horizontal-counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .horizontal-counter .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 12px;
+        }
+
+        .horizontal-counter input {
+            width: 40px;
+            text-align: center;
+        }
 
         .col.mt-4.text-center h5 {
             /* Sesuaikan ukuran font sesuai kebutuhan Anda */
