@@ -146,10 +146,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col d-flex align-items-center">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 100px">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 100px;">
                                                     </div>
-                                                    <div class="col form-check d-flex justify-content-end align-items-center">
-                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">
+                                                    <div class="col d-flex justify-content-end">
+                                                        <input class="fs-3 btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">
+                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault1">Pilih</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -159,8 +160,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="col d-flex align-items-center">
                                                         <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 100px;">
                                                     </div>
-                                                    <div class="col form-check d-flex justify-content-end align-items-center">
-                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">
+                                                    <div class="col d-flex justify-content-end">
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">
+                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault2">Pilih</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -170,8 +172,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="col d-flex align-items-center">
                                                         <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 100px;">
                                                     </div>
-                                                    <div class="col form-check d-flex justify-content-end align-items-center">
-                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">
+                                                    <div class="col d-flex justify-content-end">
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">
+                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault3">Pilih</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -182,7 +185,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 100px;">
                                                     </div>
                                                     <div class="col d-flex justify-content-end align-items-center">
-                                                        <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">
+                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault4">Pilih</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -532,8 +536,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <div class="col d-flex align-items-center">
                                                                     <img src="<?= base_url(); ?>assets/img/checkout/gosend.png" alt="GoSend" srcset="" style="width: 100px;">
                                                                 </div>
-                                                                <div class="col form-check d-flex justify-content-end align-items-center">
-                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">
+                                                                <div class="col d-flex justify-content-end">
+                                                                    <input class="fs-3 btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">
+                                                                    <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault1">Pilih</label>
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -544,7 +549,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                     <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 100px;">
                                                                 </div>
                                                                 <div class="col d-flex justify-content-end">
-                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">
+                                                                    <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">
+                                                                    <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault2">Pilih</label>
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -555,7 +561,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                     <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 100px;">
                                                                 </div>
                                                                 <div class="col d-flex justify-content-end">
-                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">
+                                                                    <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">
+                                                                    <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault3">Pilih</label>
                                                                 </div>
                                                             </div>
                                                             <hr>
@@ -566,7 +573,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                     <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 100px;">
                                                                 </div>
                                                                 <div class="col d-flex justify-content-end align-items-center">
-                                                                    <input class="form-check-input fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">
+                                                                    <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">
+                                                                    <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault4">Pilih</label>
                                                                 </div>
                                                             </div>
                                                             <hr>
