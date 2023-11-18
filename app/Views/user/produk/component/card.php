@@ -194,11 +194,11 @@
     @media (max-width: 280px) {
         .horizontal-counter .btn {
             padding: 0.15rem 0.3rem;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
         }
 
         .horizontal-counter input {
-            width: 30px;
+            width: 39px;
             text-align: center;
         }
 

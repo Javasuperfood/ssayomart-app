@@ -34,7 +34,7 @@
                                         <div class="horizontal-counter">
                                             <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
                                             <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" disabled>
-                                            <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger mr-4 rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
                                         </div>
                                     </div>
                                 </div>
