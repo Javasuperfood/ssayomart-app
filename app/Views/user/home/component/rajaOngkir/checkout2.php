@@ -5,6 +5,7 @@
         ['origin', $("#mpOrigin").attr('origin')],
         ['destination', $("#mpDestination").attr('destination')],
         ['courier', null],
+        ['label', null],
     ]);
 
     function selectMarket(i, label, origin) {
@@ -30,11 +31,22 @@
     }
 
     function selectCourier(e) {
+        var label = $(e).closest('.col').find('label');
         var brand = $(e).attr('brand');
         $('#mpkirim').val(brand);
-        if ($(e).val() != getD.get('courier')) {
+
+        if ($(e).val() !== getD.get('courier')) {
             setCourier($(e).val());
             getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+        }
+        label.text("Terpilih");
+        oldLabel(getD.get('label'));
+        getD.set('label', label);
+    }
+
+    function oldLabel(e) {
+        if (e != null) {
+            e.text("Pilih");
         }
     }
 
