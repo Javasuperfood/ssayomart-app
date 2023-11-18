@@ -38,10 +38,10 @@
         if ($(e).val() !== getD.get('courier')) {
             setCourier($(e).val());
             getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+            label.text("Terpilih");
+            oldLabel(getD.get('label'));
+            getD.set('label', label);
         }
-        label.text("Terpilih");
-        oldLabel(getD.get('label'));
-        getD.set('label', label);
     }
 
     function oldLabel(e) {
