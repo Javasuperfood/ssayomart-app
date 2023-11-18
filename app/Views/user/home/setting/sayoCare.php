@@ -24,12 +24,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <title>Ssayomart Blog Page</title>
 </head>
-
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container-fluid p-0 position-relative">
-
             <div class="bg-image">
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="mask"></div>
@@ -39,8 +37,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="img-overlay"></div>
             </div> -->
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-6 " style="font-family:cursive;">
-                <h1>ABOUT US</h1>
-                <p>PT Ssayomart Indonesia </p>
+                <h3>ABOUT US</h3>
+                <span class="fw-bold">PT Ssayomart Indonesia </span>
             </div>
         </div>
 
