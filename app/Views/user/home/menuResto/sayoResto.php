@@ -11,6 +11,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile view -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
+        <div class="container">
+            <img src="<?= base_url() ?>assets/img/ssayoresto/restobanner.jpg" class="d-block w-100 rounded-3">
+        </div>
         <div class="container py-5">
             <div class="card">
                 <div class="tools">
@@ -29,9 +32,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <hr>
                     <p class="content text-center">"Mohon maaf barang yang anda cari belum tersedia, Terimakasih."
                     </p>
+                    <div class="d-flex justify-content-center">
+                        <a href="<?= base_url(); ?>menu-resto" class="btn btn-danger"> Lihat Menu <i class="bi bi-arrow-right-circle"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <style>
