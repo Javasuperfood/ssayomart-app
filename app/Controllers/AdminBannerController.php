@@ -169,12 +169,52 @@ class AdminBannerController extends BaseController
     {
         $bannerModel = new BannerModel();
 
-        // $id = $this->request->getVar('id_pop_up_banner');
         $image = $this->request->getFile('img');
+        $imageContent = $this->request->getFile('img_konten');
+
+        // Data awal dari database
+        $bannerData = $bannerModel->find($id);
+
+        // Mengecek apakah ada file img yang diupload
+        if ($image->getError() != 4) {
+            $namaBannerImage = $image->getRandomName();
+            $image->move('assets/img/banner', $namaBannerImage);
+
+            // Menghapus gambar lama jika tidak default
+            if ($bannerData['img'] != 'banner-2.png') {
+                $gambarLamaPath = 'assets/img/banner/' . $bannerData['img'];
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+        } else {
+            // Jika tidak ada file img yang diupload, gunakan data lama
+            $namaBannerImage = $bannerData['img'];
+        }
+
+        // Mengecek apakah ada file img_konten yang diupload
+        if ($imageContent->getError() != 4) {
+            $namaContentImage = $imageContent->getRandomName();
+            $imageContent->move('assets/img/banner/content', $namaContentImage);
+
+            // Menghapus gambar lama jika tidak default
+            if ($bannerData['img_konten'] != 'default_content_image.png') {
+                $gambarLamaPath = 'assets/img/banner/content/' . $bannerData['img_konten'];
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+        } else {
+            // Jika tidak ada file img_konten yang diupload, gunakan data lama
+            $namaContentImage = $bannerData['img_konten'];
+        }
+
         $data = [
             'id_banner' => $id,
-            'img' => $image,
+            'img' => $namaBannerImage,
+            'img_konten' => $namaContentImage,
             'title' => $this->request->getVar('title'),
+            'deskripsi' => $this->request->getVar('deskripsi')
         ];
 
         //validate data
@@ -188,31 +228,6 @@ class AdminBannerController extends BaseController
             return redirect()->to('dashboard/banner/detail-banner/' . $id)->withInput();
         }
 
-        if ($image->getError() == 4) {
-            $namaBannerImage = $this->request->getVar('imageLama');
-        } else {
-            $produk = $bannerModel->find($id);
-
-            if ($produk['img'] == 'banner-2.png') {
-                $namaBannerImage = $image->getRandomName();
-                $image->move('assets/img/banner', $namaBannerImage);
-            } else {
-                $namaBannerImage = $image->getRandomName();
-                $image->move('assets/img/banner', $namaBannerImage);
-                $gambarLamaPath = 'assets/img/banner/' . $this->request->getVar('imageLama');
-                if (file_exists($gambarLamaPath)) {
-                    unlink($gambarLamaPath);
-                }
-            }
-        }
-
-        // replace data 
-        $data = [
-            'id_banner' => $id,
-            'img' => $namaBannerImage,
-            'title' => $this->request->getVar('title'),
-        ];
-
         if ($bannerModel->save($data)) {
             session()->setFlashdata('success', 'Data banner berhasil diubah.');
             $alert = [
@@ -222,7 +237,7 @@ class AdminBannerController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/banner/detail-banner');
+            return redirect()->to('dashboard/banner/detail-banner/' . $id);
         } else {
             $alert = [
                 'type' => 'error',
@@ -234,6 +249,7 @@ class AdminBannerController extends BaseController
             return redirect()->to('dashboard/banner/detail-banner/update/' . $id)->withInput();
         }
     }
+
 
     public function listBanner(): string
     {
