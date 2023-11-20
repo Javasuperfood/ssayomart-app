@@ -3,12 +3,12 @@
 
 <!-- Navbar -->
 <?= $this->include('user/home/component/navbarMain') ?>
-<!-- Button Kategori -->
-<br>
+
 <!-- Card -->
-<div class="mt-5">
+<div class="mt-4">
     <?= $this->include('user/produk/component/card') ?>
 </div>
+
 
 <?= $this->include('user/home/component/pagination'); ?>
 
