@@ -73,10 +73,10 @@
                         <?php foreach ($banner_list as $bl) : ?>
                             <tr>
                                 <td>
-                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="500" height="500">
                                 </td>
                                 <td>
-                                    <img src="<?= base_url('assets/img/banner/content/' . $bl['img_konten']); ?>" class="img-fluid" alt="" width="500" height="300">
+                                    <img src="<?= base_url('assets/img/banner/content/' . $bl['img_konten']); ?>" class="img-fluid" alt="" width="120" height="10">
                                 </td>
                                 <td class="text-center">
                                     <div class="nav-item dropdown no-arrow">
