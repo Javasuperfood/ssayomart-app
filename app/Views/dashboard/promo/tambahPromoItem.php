@@ -1,21 +1,22 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Promo Item Produk</h1>
+<h1 class="h3 mb-3 text-gray-800">Promo Item Produk</h1>
 
 <div class="row">
     <!-- Left Panel -->
-    <div class="col-lg-6">
-        <div class="card border-0 shadow-sm position-relative">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Tambah Promo Produk</h6>
+    <div class="col-lg-6 mb-5">
+        <div class="card border-1 shadow-sm position-relative">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-earmark-plus-fill"></i>
+                <h6 class="m-0 fw-bold px-2">Tambah Promo Produk</h6>
             </div>
             <div class="card-body">
                 <form action="<?= base_url(); ?>dashboard/promo/tambah-promo-item/save-promo-item" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="promo" class="form-label text-secondary">Pilih Promo Tersedia</label>
-                        <select name="promo" id="promo" class="form-control shadow-sm border-0">
+                        <select name="promo" id="promo" class="form-control border-1">
                             <?php foreach ($promo as $item) : ?>
                                 <option value="<?= $item['id_promo']; ?>"><?= $item['title']; ?></option>
                             <?php endforeach; ?>
@@ -23,9 +24,9 @@
                         <span id="promoError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Pilih Produk Yang Akan Diberikan Promo</label>
-                        <button type="button" class="btn form-control shadow-sm border-0 text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn form-control border-1 text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                             Tekan Untuk Memilih Produk
                         </button>
                     </div>
@@ -93,25 +94,26 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Produk Terpilih</label>
-                        <input type="text" class="form-control border-0 shadow-sm bg-white" id="produkTerpilih" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
+                        <input type="text" class="form-control border-1 bg-white" id="produkTerpilih" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
                         <span id="produkError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="min" class="form-label text-secondary">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk...">
+                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk...">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="discount" class="form-label text-secondary">Diskon (%)</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon...">
+                        <input type="text" class="form-control border-1" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon...">
                         <span id="discountError" class="text-danger"></span>
                     </div>
-
-                    <div class="text-center">
+                    
+                    <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                    <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
@@ -119,12 +121,13 @@
         </div>
     </div>
 
-    <div class="col-lg-6 mb-3">
-        <div class="card position-relative border-0 shadow-sm">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Promo Sedang Berlangsung</h6>
+    <div class="col-lg-6 mb-5">
+        <div class="card position-relative border-1 shadow-sm">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-text-fill"></i>
+                <h6 class="m-0 fw-bold px-2">Promo Sedang Berlangsung</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-2">
                 <table class="table text-center">
                     <thead>
                         <tr>
@@ -138,10 +141,10 @@
                         <?php $i = 1;
                         foreach ($ongoingPromoItems as $promoItem) : ?>
                             <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $promoItem['promo_title']; ?></td>
-                                <td><?= $promoItem['produk_nama']; ?></td>
-                                <td class="text-center">
+                                <td class="align-middle"><?= $i++; ?></td>
+                                <td class="align-middle"><?= $promoItem['promo_title']; ?></td>
+                                <td class="align-middle"><?= $promoItem['produk_nama']; ?></td>
+                                <td class="text-center align-middle">
                                     <div class="nav-item dropdown no-arrow">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="bi bi-three-dots-vertical"></i>
