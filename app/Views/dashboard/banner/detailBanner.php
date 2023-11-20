@@ -3,7 +3,7 @@
 
 <div class="card border-0 shadow-sm position-relative">
     <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-medium">Edit Banner</h6>
+        <h6 class="m-0 font-weight-medium">Detail Banner</h6>
     </div>
     <div class="card-body">
         <!-- code -->

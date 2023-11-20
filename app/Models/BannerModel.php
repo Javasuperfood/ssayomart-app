@@ -13,7 +13,12 @@ class BannerModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['title', 'img'];
+    protected $allowedFields    = [
+        'title',
+        'img',
+        'img_konten',
+        'deskripsi'
+    ];
 
     // Dates
     protected $useTimestamps = true;
@@ -33,6 +38,13 @@ class BannerModel extends Model
             ],
         ],
         'img' => [
+            'rules' => 'max_size[img,3124]',
+            'errors' => [
+                'max_size' => 'Ukuran gambar terlalu besar.',
+                'mime_in' => 'Format gambar tidak sesuai. iamge/jpg/jpeg/png',
+            ]
+        ],
+        'img_konten' => [
             'rules' => 'max_size[img,3124]',
             'errors' => [
                 'max_size' => 'Ukuran gambar terlalu besar.',

@@ -8,7 +8,7 @@
 </ul>
 <p>Anda dapat mengatur banner homepage yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.</p>
 <div class="alert alert-danger text-center border-1 my-4 shadow-sm" role="alert">
-    <b>Note : perhatikan ukuran dan resolusi banner sebelum upload ke Aplikasi Ssayomart Supermarket</b>
+    <b>Note : Perhatikan ukuran dan resolusi banner sebelum upload ke Aplikasi Ssayomart Supermarket. Disarankan agar menghubungi tim Design untuk penambahan Banner.</b>
 </div>
 
 <div class="row">
@@ -24,16 +24,26 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="banner">Judul Banner</label>
-                        <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
+                        <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= old('title') ?>"></input>
                         <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
                     <div class="mb-3">
-                        <label for="img" class="form-label">Gambar Banner</label>
-                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" placeholder="Masukan Gambar" value="<?= old('img') ?>" accept="image/*">
+                        <label for="img" class="form-label">Gambar Banner (Home Page)</label>
+                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= old('img') ?>" accept="image/*">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Gambar Banner Content (Content Page)</label>
+                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img_konten" name="img_konten" value="<?= old('img_konten') ?>" accept="image/*">
+                        <div class="invalid-feedback"><?= validation_show_error('img_konten'); ?></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="banner">Deskripsi (Optional)</label>
+                        <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi untuk banner Anda..." value="<?= old('deskripsi') ?>"></input>
+                        <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
+                    </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
@@ -53,8 +63,8 @@
                     <thead>
                         <tr>
                         <tr>
-                            <th>Judul Banner</th>
-                            <th>Gambar Banner</th>
+                            <th>Gambar Banner (Home Page)</th>
+                            <th>Gambar Content (Content Page)</th>
                             <th>Aksi</th>
                         </tr>
                         </tr>
@@ -63,10 +73,10 @@
                         <?php foreach ($banner_list as $bl) : ?>
                             <tr>
                                 <td>
-                                    <?= $bl['title']; ?>
+                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
                                 </td>
                                 <td>
-                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                    <img src="<?= base_url('assets/img/banner/content/' . $bl['img_konten']); ?>" class="img-fluid" alt="" width="500" height="300">
                                 </td>
                                 <td class="text-center">
                                     <div class="nav-item dropdown no-arrow">
@@ -75,9 +85,13 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/update-banner/<?= $bl['id_banner']; ?>">
+                                            <a class="dropdown-item" href="<?= base_url() ?>">
+                                                <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Lihat Banner
+                                            </a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/banner/detail-banner/<?= $bl['id_banner']; ?>">
                                                 <i class=" bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                Update
+                                                Detail Banner
                                             </a>
                                             <div class="dropdown-divider"></div>
                                             <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_banner']; ?>">

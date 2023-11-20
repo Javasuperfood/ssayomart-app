@@ -42,7 +42,7 @@ $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
-$routes->get('user/home/contenBanner/conten-banner', 'Blog::contenBanner');
+$routes->get('/content-banner/(:segment)', 'BannerContentController::contentBanner/$1');
 $routes->get('/status-gosend', 'StatusGosend::statusGosend');
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 
@@ -162,8 +162,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('banner/tambah-banner', 'AdminBannerController::tambahBanner');
     $routes->post('banner/tambah-banner/save', 'AdminBannerController::saveBanner');
     $routes->post('banner/tambah-banner/delete/(:segment)', 'AdminBannerController::deleteBanner/$1');
-    $routes->get('banner/update-banner/(:segment)', 'AdminBannerController::updateBanner/$1');
-    $routes->post('banner/update-banner/(:segment)', 'AdminBannerController::updateBannerSave/$1');
+    $routes->get('banner/detail-banner/(:segment)', 'AdminBannerController::detailBanner/$1');
+    $routes->post('banner/detail-banner/(:segment)', 'AdminBannerController::detailBannerSave/$1');
     // Pop Up
     $routes->get('banner/pop-up-banner', 'AdminBannerController::popUp');
     $routes->post('banner/pop-up-banner/save', 'AdminBannerController::savePopup');
