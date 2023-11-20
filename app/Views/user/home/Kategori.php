@@ -17,7 +17,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
             <?php foreach ($banner_pop_up as $pop) : ?>
@@ -114,11 +113,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <div class="class" style="position: relative; top: -15px;">
             <!-- ssayo Resto -->
-            <section class="py-2 my-2" style="background-color: #dcf7d0;">
+            <section>
                 <div class="container d-flex justify-content-between align-items-center">
-                    <span class="fs-2 fw-bold" style="font-family:cursive; color: #406b2e;">Ssayo Resto</span>
-                    <a href="<?= base_url(); ?>menu-resto" class="btn" style="background-color:#406b2e;">
-                        <span class="d-flex align-items-center text-white"> lihat disini <i class=" ms-2 bi bi-arrow-right-circle"></i></span>
+                    <a href="<?= base_url(); ?>ss">
+                        <img src="<?= base_url() ?>assets/img/ssayoresto/btnsayoresto.jpg" class="d-block w-100 rounded-3">
                     </a>
                 </div>
             </section>
