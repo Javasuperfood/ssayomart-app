@@ -362,6 +362,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </section>
+        <!-- ssayo Resto -->
+        <section>
+            <div class="container d-flex justify-content-between align-items-center">
+                <a href="<?= base_url(); ?>sayo-resto">
+                    <img src="<?= base_url() ?>assets/img/ssayoresto/btnsayoresto.jpg" class="d-block w-100 rounded-3">
+                </a>
+            </div>
+        </section>
+        <!-- Akhir SSayo Resto -->
         <!-- swipper card tampilan web -->
         <section class="mt-1 " id="unggul">
             <div class="container py-3 d-none d-lg-block">
