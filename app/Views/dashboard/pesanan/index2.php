@@ -95,7 +95,7 @@
                                     <?php endforeach ?>
                                 </td>
                                 <td><?= $c['kirim']; ?></td>
-                                <td><?= $c['kurir'] . ' (' . $c['service'] . ')'; ?></td>
+                                <td class="courier-type"><?= $c['kurir'] . ' (' . $c['service'] . ')'; ?></td>
                                 <td><?= $c['status']; ?></td>
                                 <td class="text-right">
                                     <div class="nav-item dropdown no-arrow">
@@ -232,4 +232,32 @@
         </div>
     </div>
 <?php endif; ?>
+
+<script>
+    const filterSelect = document.getElementById('inputGroupSelect04');
+    const itemsToFilter = document.querySelectorAll('.table tbody tr');
+
+    // filter
+    filterSelect.addEventListener('change', function() {
+        const selectedFilter = filterSelect.value;
+
+        itemsToFilter.forEach(item => {
+            const courierTypeElement = item.querySelector('.courier-type');
+
+            if (courierTypeElement) {
+                const courierType = courierTypeElement.textContent.trim();
+                console.log('Courier Type:', courierType);
+
+                if (selectedFilter === 'all' || (selectedFilter === 'GoSend' && courierType.includes('GoSend')) || (selectedFilter === 'non-GoSend' && !courierType.includes('GoSend'))) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            } else {
+                console.error('Courier Type element not found for item:', item);
+            }
+        });
+    });
+</script>
+
 <?= $this->endSection(); ?>
