@@ -1,59 +1,61 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Promosi Ssayomart</h1>
-<a href="<?= base_url() ?>dashboard/promo/tambah-promo-item" class="btn btn-outline-danger">Tambahkan Promo Produk</a>
+<h1 class="h3 mb-3 text-gray-800">Promosi Ssayomart</h1>
+<a href="<?= base_url() ?>dashboard/promo/tambah-promo-item" class="btn btn-danger mb-3">Tambahkan Promo Produk</a>
 <div class="row">
     <!-- Left Panel -->
-    <div class="col-lg-6">
-        <div class="card border-0 shadow-sm position-relative">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Buat Promo</h6>
+    <div class="col-lg-6 mb-5">
+        <div class="card border-1 shadow-sm position-relative">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-earmark-plus-fill"></i>
+                <h6 class="m-0 fw-bold px-2">Buat Promo</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
                 <form action="<?= base_url(); ?>dashboard/promo/tambah-promo/save" onsubmit="return validasiPromo()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="value" class="form-label text-secondary">Judul Promosi <span class="text-danger">(Cth : Promo Lebaran, Promo Natal Promo Nyepi, dll)</span></label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="title" name="title" placeholder="Judul Promosi Anda..." value="<?= old('value') ?>">
+                        <input type="text" class="form-control border-1" id="title" name="title" placeholder="Judul Promosi Anda..." value="<?= old('value') ?>">
                         <span id="titleError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="slug" class="form-label text-secondary">Slug</label>
-                        <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
+                        <div class="alert alert-danger text-center border-1 shadow-sm mb-4" role="alert">
                             <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Judul Promo.</b>
                         </div>
-                        <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukkan Slug... (Boleh Kosong)" name="slug" value="<?= old('slug') ?>">
+                        <input type="text" class="form-control border-1" id="slug" placeholder="Masukkan Slug... (Boleh Kosong)" name="slug" value="<?= old('slug') ?>">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="started" class="form-label text-secondary">Waktu Mulai Promo</label>
-                        <input type="datetime-local" class="form-control border-0 shadow-sm" name="started" id="started" value="<?= old('started') ?>">
+                        <input type="datetime-local" class="form-control border-1" name="started" id="started" value="<?= old('started') ?>">
                         <span id="startedError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="ended" class="form-label text-secondary">Waktu Berakhir Promo</label>
-                        <input type="datetime-local" class="form-control border-0 shadow-sm" name="ended" id="ended" value="<?= old('ended') ?>">
+                        <input type="datetime-local" class="form-control border-1" name="ended" id="ended" value="<?= old('ended') ?>">
                         <span id="endedError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="deskripsi" class="form-label text-secondary">Deskripsi Promo (Optional)</label>
-                        <input type="textarea" class="form-control border-0 shadow-sm" placeholder="Masukkan Deskripsi Promo Anda..." name="deskripsi" id="deskripsi" style="height: 100px;" value="<?= old('deskripsi') ?>">
+                        <textarea class="form-control" id="deskripsi" name="deskripsi" placeholder="Deskripsi Promo Anda .." value="<?= old('deskripsi') ?>"></textarea>
                     </div>
 
-                    <div class="mb-3">
-                        <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
+                    <div class="mb-4">
+                        <div class="alert alert-danger text-center border-1 shadow-sm" role="alert">
                             <b>Dimensi foto harus berbentuk persegi! (Cth: 256px x 256px atau 512px x 512px)</b>
                         </div>
                         <label for="img" class="form-label text-secondary">Masukan Gambar/Foto/Icon Promo</label>
-                        <input type="file" class="form-control border-0 shadow-sm" id="img" name="img" placeholder="Masukan Gambar Promosi">
+                        <input type="file" class="form-control border-1" id="img" name="img" placeholder="Masukan Gambar Promosi">
                         <span id="imgError" class="text-danger"></span>
                     </div>
-                    <div>
+                    <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                    <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
@@ -62,12 +64,13 @@
     </div>
 
     <!-- Right Panel -->
-    <div class="col-lg-6 mb-3">
-        <div class="card position-relative border-0 shadow-sm">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">List Promosi Ssayomart</h6>
+    <div class="col-lg-6 mb-5">
+        <div class="card position-relative border-1 shadow-sm">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-text-fill"></i>
+                <h6 class="m-0 fw-bold px-2">List Promosi Ssayomart</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-2">
                 <table class="table text-center">
                     <thead>
                         <tr>
@@ -82,11 +85,11 @@
                         <?php $i = 1;
                         foreach ($promo as $p) : ?>
                             <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $p['title']; ?></td>
-                                <td><?= strftime('%d %B %Y %H:%M', strtotime($p['start_at'])); ?></td>
-                                <td><?= strftime('%d %B %Y %H:%M', strtotime($p['end_at'])); ?></td>
-                                <td class="text-center">
+                                <td class="align-middle"><?= $i++; ?></td>
+                                <td class="align-middle"><?= $p['title']; ?></td>
+                                <td class="align-middle"><?= strftime('%d %B %Y %H:%M', strtotime($p['start_at'])); ?></td>
+                                <td class="align-middle"><?= strftime('%d %B %Y %H:%M', strtotime($p['end_at'])); ?></td>
+                                <td class="text-center align-middle">
                                     <div class="nav-item dropdown no-arrow">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="bi bi-three-dots-vertical"></i>
