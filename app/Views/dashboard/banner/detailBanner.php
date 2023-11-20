@@ -1,75 +1,85 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<div class="card border-0 shadow-sm position-relative">
-    <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-medium">Detail Banner</h6>
+<div class="card border-0 shadow-sm border-left-danger mb-4">
+    <div class="card-header border-0 py-3 bg-white">
+        <h5 class=" mb-0">Pembuat Konten</h5>
     </div>
-    <div class="card-body">
-        <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/banner/update-banner/<?= $bl['id_banner'] ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiUpdateBanner()">
-            <?= csrf_field(); ?>
-            <input type="hidden" class="form-control border-0 shadow-sm" id="id_banner" name="id_banner" value="<?= $bl['id_banner'] ?>">
-            <div class="mb-3">
-                <label for="title" class="form-label">Judul Banner</label>
-                <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" value="<?= $bl['title'] ?>">
-                <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
+    <div class="row">
+        <div class="card-body d-flex">
+            <div class="col-2 text-center top-50 start-0 translate-middle-y">
+                <img src="<?= base_url() ?>assets/img/about/bg1.png" class="rounded-circle" style="width: 120px; height: 120px; margin-right: 25px;">
             </div>
-            <div class="mb-3">
-                <label for="img" class="form-label">Gambar Banner</label>
-                <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= $bl['img'] ?>">
-                <span id="imgError" class="text-danger"></span>
-                <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
-                <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
+            <div class="col-6">
+                <div class="mx-0 my-0 mb-0">
+                    <div class="form-floating">
+                        <input class="form-control border-0 floatingInput text-dark bg-white fw-bold" disabled>
+                        <label for="fullname">Nama Lengkap Author</label>
+                    </div>
+                </div>
+                <div class="mx-0 my-0 mb-0">
+                    <div class="form-floating">
+                        <input class="form-control border-0 floatingInput text-dark bg-white fw-bold" disabled>
+                        <label for="username">Username Author</label>
+                    </div>
+                </div>
             </div>
-            <div>
-                <button type="submit" class="btn btn-danger">Simpan</button>
+            <div class="col-4 text-center position-absolute top-50 end-0 translate-middle-y mt-4">
+                <button type="submit" class="btn btn-danger"><i class="bi bi-trash-fill"> </i> Hapus Konten</button>
             </div>
-        </form>
+        </div>
     </div>
 </div>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        <?php if (session()->has('alert')) : ?>
-            var alertData = <?= json_encode(session('alert')) ?>;
-            Swal.fire({
-                icon: alertData.type,
-                title: alertData.title,
-                text: alertData.message
-            });
-        <?php endif; ?>
-    });
 
-    //Validasi Form
-    function validasiUpdateBanner() {
-        var isValid = true;
+<div class="row d-flex justify-content-center my-4">
+    <div class="col-md-8">
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header border-0 py-3">
+                <h5 class="mb-0">Isi Konten Artikel/Blog</h5>
+            </div>
+            <div class="card border-0 w-100">
+                <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="30" name="isi_blog" readonly>
+            </textarea>
+            </div>
+        </div>
+    </div>
 
-        var namaBannerField = document.getElementById('title');
-        var imgField = document.getElementById('img');
-
-        var namaBannerError = document.getElementById('bannerError');
-        var imgError = document.getElementById('imgError');
-
-        namaBannerError.textContent = '';
-        imgError.textContent = '';
-
-        if (namaBannerField.value.trim() === '') {
-            namaBannerField.classList.add('invalid-field');
-            namaBannerError.textContent = 'Judul banner harus diisi';
-            isValid = false;
-        } else {
-            namaBannerField.classList.remove('invalid-field');
-        }
-
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar banner harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
-        }
-
-        return isValid;
-    }
-</script>
+    <div class=" col-md-4">
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-header border-0 py-3">
+                <h5 class="mb-0 text-center">Thumbnail</h5>
+            </div>
+            <div class="card border-0">
+                <div class="card-body border-0 rounded-5 text-center">
+                    <img src="" class="img-thumbnail rounded-5" alt="Thumbnail Image" style="width: 400px;">
+                </div>
+                <div class="card border-0">
+                    <div class="card-body border-0">
+                        <div class="row">
+                            <div class="mx-0 my-0 mb-3">
+                                <div class="form-floating">
+                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white border-left-danger" value="" disabled>
+                                    <label for="judul_blog">Judul Artikel/Blog</label>
+                                </div>
+                            </div>
+                            <div class="mx-0 my-0 mb-3">
+                                <div class="form-floating">
+                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white border-left-danger" value="" disabled>
+                                    <label for="tanggal_dibuat">Dipublikasikan</label>
+                                </div>
+                            </div>
+                            <div class="mx-0 my-0 mb-3">
+                                <div class="form-floating">
+                                    <input class="form-control border-0 shadow-sm floatingInput text-dark bg-white border-left-danger" value="" disabled>
+                                    <label for="slug">Slug</label>
+                                </div>
+                            </div>
+                            <a class="btn btn-warning" href=""><i class="bi bi-gear-fill"> </i> Edit Konten</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?= $this->endSection(); ?>
