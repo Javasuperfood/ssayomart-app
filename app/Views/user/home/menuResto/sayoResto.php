@@ -14,7 +14,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <img src="<?= base_url() ?>assets/img/ssayoresto/restobanner.jpg" class="d-block w-100 rounded-3">
         </div>
-        <div class="container py-5">
+        <!-- <div class="container py-5">
             <div class="card">
                 <div class="tools">
                     <div class="circle">
@@ -38,11 +38,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div> -->
     </div>
 
-    <style>
+    <!-- <style>
         .card {
             width: 190px;
             height: 254px;
@@ -115,7 +114,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         .green {
             background-color: #00ca4e;
         }
-    </style>
+    </style> -->
 <?php else : ?>
     <!-- end mobile view -->
 
