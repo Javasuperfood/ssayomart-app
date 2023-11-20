@@ -1,25 +1,27 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Variasi Produk</h1>
+<h1 class="h3 mb-3 text-gray-800">Variasi Produk</h1>
 
 <div class="row">
     <!-- Left Panel -->
     <div class="col-lg-6">
-        <div class="card border-0 shadow-sm position-relative">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Tambah Variasi Produk</h6>
+        <div class="card border-1 shadow-sm position-relative">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-earmark-plus-fill"></i>
+                <h6 class="m-0 fw-bold px-2">Tambah Variasi Produk</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
                 <form action="<?= base_url(); ?>dashboard/produk/tambah-variasi/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
-                        <label for="value" class="form-label text-dark">Nama Variasi <span class="text-danger">(contoh : Rasa, dan lain-lain)</span></label>
-                        <input type="text" class="form-control <?= (validation_show_error('nama_varian')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="value" name="nama_varian" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
+                        <label for="value" class="form-label">Nama Variasi <span class="text-danger">(contoh : Rasa, dan lain-lain)</span></label>
+                        <input type="text" class="form-control <?= (validation_show_error('nama_varian')) ? 'is-invalid' : 'border-1'; ?>" id="value" name="nama_varian" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('nama_varian'); ?></div>
                     </div>
-                    <div>
+                    <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                    <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
@@ -29,11 +31,12 @@
 
     <!-- Right Panel -->
     <div class="col-lg-6 mb-3">
-        <div class="card position-relative border-0 shadow-sm">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">List Variasi Produk</h6>
+        <div class="card position-relative border-1 shadow-sm">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-text-fill"></i>
+                <h6 class="m-0 fw-bold px-2">List Variasi Produk</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-2">
                 <table class="table text-center">
                     <thead>
                         <tr>
@@ -46,9 +49,9 @@
                         <?php $i = 1;
                         foreach ($variasi as $v) : ?>
                             <tr>
-                                <td><?= $i++; ?></td>
-                                <td><?= $v['nama_varian']; ?></td>
-                                <td class="text-center">
+                                <td class="align-middle"><?= $i++; ?></td>
+                                <td class="align-middle"><?= $v['nama_varian']; ?></td>
+                                <td class="text-center align-middle">
                                     <div class="nav-item dropdown no-arrow">
                                         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="bi bi-three-dots-vertical"></i>

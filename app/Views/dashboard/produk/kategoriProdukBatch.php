@@ -1,40 +1,41 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-1 text-gray-800">Tambah Produk - Kategori Batch</h1>
+<h1 class="h3 mb-3 text-gray-800">Tambah Produk - Kategori Batch</h1>
 
 <div class="row">
-    <div class="col">
-        <div class="card border-0 shadow-sm position-relative">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-bold text-danger">Tambah Produk - Kategori Batch</h6>
+    <div class="col mb-5">
+        <div class="card border-1 shadow-sm position-relative">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-earmark-plus-fill"></i>
+                <h6 class="m-0 fw-bold px-2">Tambah Produk - Kategori Batch</h6>
             </div>
             <div class="card-body">
                 <form action="<?= base_url(); ?>dashboard/produk/produk-batch/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="nama" class="form-label">Nama Produk</label>
-                        <input type="text" class="form-control shadow-sm <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-0'; ?>" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= old('nama') ?>">
+                        <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-1'; ?>" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= old('nama') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="sku" class="form-label">Stock Keeping Unit (SKU)</label>
-                        <input type="text" class="form-control shadow-sm <?= (validation_show_error('sku')) ? 'is-invalid' : 'border-0'; ?>" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
+                        <input type="text" class="form-control <?= (validation_show_error('sku')) ? 'is-invalid' : 'border-1'; ?>" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
                         <div class="invalid-feedback"><?= validation_show_error('sku'); ?></div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="deskripsi">Deskripsi Produk</label>
-                        <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="deskripsi" name="deskripsi" placeholder="Deskripsi Produk Anda .." value="<?= old('deskripsi') ?>"></textarea>
+                        <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" placeholder="Deskripsi Produk Anda .." value="<?= old('deskripsi') ?>"></textarea>
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
                     </div>
 
                     <!-- Buttom Pilih Kategori -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Pilih Kategori</label>
-                        <button type="button" class="btn form-control shadow-sm text-left border-0 view-product border-left-danger text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="btn form-control text-left border-1 view-product border-left-danger text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid #d1d3e2">
                             Tekan Untuk Memilih Kategori
                         </button>
                     </div>
@@ -43,28 +44,28 @@
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header d-flex align-items-center">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">List Kategori</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <!-- Input pencarian -->
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text shadow-sm border-0 bg-danger" id="basic-addon1"><i class="bi bi-search text-white"></i></span>
-                                        <input type="text" id="searchKategori" class="form-control border-0 shadow-sm" placeholder="Cari Kategori...">
+                                    <div class="input-group mt-2 mb-4">
+                                        <input type="text" id="searchKategori" class="form-control border-1" placeholder="Cari Kategori...">
+                                        <span class="input-group-text border-0 bg-danger" id="basic-addon1"><i class="bi bi-search text-white"></i></span>
                                     </div>
                                     <div class="row" id="kategoriList">
                                         <?php foreach ($kategori as $k) : ?>
-                                            <div class="col-6 mb-3 px-4">
+                                            <div class="col-6 py-1 px-4">
                                                 <div class="card border-0">
                                                     <div class="row g-0">
-                                                        <div class="card-body border-0 shadow-sm mb-3">
+                                                        <div class="card-body border-0 shadow-sm py-2 px-2 mb-3">
                                                             <div class="row">
-                                                                <div class="col-2 text-center" style="font-size: 20px; margin: 0;">
+                                                                <div class="col-2 text-center py-3" style="font-size: 20px; margin: 0;">
                                                                     <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" id="kategoriCheckbox<?= $k['id_kategori']; ?>" name="kategori_id[]" value="<?= $k['id_kategori']; ?>" data-nama="<?= $k['nama_kategori']; ?>" class="border-0 rounded-circle" data-parent-kategori="<?= $k['id_kategori']; ?>">
                                                                 </div>
-                                                                <div class="col-10">
-                                                                    <p class="fs-5">
+                                                                <div class="col-10 py-3">
+                                                                    <p class="fs-5 m-0">
                                                                         <?= $k['nama_kategori']; ?>
                                                                     </p>
                                                                 </div>
@@ -97,16 +98,16 @@
                     </div>
 
                     <!-- Span Badge Kategori Terpilih -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="kategori" class="form-label text-secondary">Kategori Terpilih</label>
                         <br>
                         <div id="kategoriTerpilih"></div>
                     </div>
 
                     <!-- Button Pilih Sub Kategori -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Pilih Sub Kategori</label>
-                        <button type="button" class="btn form-control shadow-sm border-0 border-left-danger text-left view-product text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal_sub" id="btnChooseSubCategory" disabled>
+                        <button type="button" class="btn form-control border-1 border-left-danger text-left view-product text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal_sub" id="btnChooseSubCategory" style="border: 1px solid #d1d3e2" disabled>
                             Tekan Untuk Memilih Sub Kategori
                         </button>
 
@@ -116,15 +117,15 @@
                     <div class="modal fade" id="exampleModal_sub" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
                             <div class="modal-content">
-                                <div class="modal-header">
+                                <div class="modal-header d-flex align-items-center">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">List Sub Kategori</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <!-- Input pencarian -->
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mt-2 mb-4">
+                                        <input type="text" id="searchSubKategori" class="form-control border-1" placeholder="Cari Sub Kategori...">
                                         <span class="input-group-text shadow-sm border-0 bg-danger" id="basic-addon1"><i class="bi bi-search text-white"></i></span>
-                                        <input type="text" id="searchSubKategori" class="form-control border-0 shadow-sm" placeholder="Cari Sub Kategori...">
                                     </div>
 
                                     <div class="row" id="subKategoriList">
@@ -132,13 +133,13 @@
                                             <div class="col-6 mb-3 px-4">
                                                 <div class="card border-0">
                                                     <div class="row g-0">
-                                                        <div class="card-body border-0 shadow-sm mb-3">
+                                                        <div class="card-body border-0 shadow-sm py-2 px-2 mb-3">
                                                             <div class="row">
-                                                                <div class="col-1 text-center" style="font-size: 20px; margin-left: 20px;">
+                                                                <div class="col-2 text-center py-4 px-2 d-flex align-items-center justify-content-center" style="font-size: 20px; margin-left: 0px;">
                                                                     <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" id="subKategoriCheckbox<?= $sk['id_sub_kategori']; ?>" name="sub_kategori_id[]" value="<?= $sk['id_sub_kategori']; ?>" data-nama="<?= $sk['nama_kategori']; ?>" data-parent="<?= $sk['id_kategori']; ?>" class="border-0">
                                                                 </div>
-                                                                <div class="col-9">
-                                                                    <p class="fs-6">
+                                                                <div class="col-9 d-flex align-items-center">
+                                                                    <p class="fs-6 m-0">
                                                                         <?= $sk['nama_kategori']; ?>
                                                                     </p>
                                                                 </div>
@@ -170,26 +171,26 @@
                     </div>
 
                     <!-- Span Badge Sub Kategori Terpilih -->
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="subKategori" class="form-label text-secondary">Sub Kategori Terpilih</label>
                         <br>
                         <div id="subKategoriTerpilih"></div>
                     </div>
 
-                    <div class="mb-3">
-                        <div class="alert alert-danger text-center border-0 shadow-sm" role="alert">
+                    <div class="mb-4">
+                        <div class="alert alert-danger text-center border-1 shadow-sm" role="alert">
                             <b>Dimensi foto harus berbentuk persegi! (Cth: 256px x 256px atau 512px x 512px)</b>
                         </div>
                         <label for="img" class="form-label">Masukan Gambar</label>
-                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" placeholder="Masukan Gambar">
+                        <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" placeholder="Masukan Gambar">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="selectVariant">Pilih Variant</label>
-                                <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
+                                <select class="form-control border-1" name="selectVariant" id="selectVariant">
                                     <option value="">Pilih</option>
                                     <?php foreach ($variasi as $v) : ?>
                                         <option value="<?= $v['id_variasi']; ?>" <?= (old('selectVariant') == $v['id_variasi']) ? 'selected' : ''; ?>><?= $v['nama_varian']; ?></option>
@@ -198,24 +199,25 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="valueVariant">Value Variant <span class="text-danger">(e.g : Ayam, Sapi atau 500 Gram, 1 Kg)</span></label>
-                                <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian">
+                                <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-1'; ?>" placeholder="Value Varian">
                                 <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="berat" class="form-label">Berat Produk <span class="text-danger">(* Harus Dalam Satuan Gram. Contoh : 1kg = 1000)</span></label>
-                        <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                        <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-1'; ?>" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
                         <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
                     </div>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label for="harga" class="form-label">Harga Produk</label>
-                        <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
+                        <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-1'; ?>" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
                         <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
                     </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-danger mt-3">Simpan</button>
+                    <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
             </div>
