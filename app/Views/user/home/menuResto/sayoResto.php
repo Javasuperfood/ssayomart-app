@@ -121,9 +121,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="bi bi-exclamation-triangle me-1"></i>
-                Mohon maaf barang yang anda cari belum tersedia, Terimakasih.
+            <div class="container">
+                <img src="<?= base_url() ?>assets/img/ssayoresto/restobannerlc.jpg" class="d-block w-100 rounded-3">
             </div>
         </div>
     </div>
