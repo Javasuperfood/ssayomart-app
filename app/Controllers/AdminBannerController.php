@@ -5,93 +5,10 @@ namespace App\Controllers;
 use App\Models\BannerModel;
 use App\Models\BannerPopupModel;
 use App\Models\BannerAdsKontenModel;
-use App\Models\BannerContentModel;
+use App\Models\KategoriModel;
 
 class AdminBannerController extends BaseController
 {
-
-    // ===================================================================
-    // ------------------------ TAMBAH KONTEN BANNER ---------------------
-    // ===================================================================
-    public function tambahKonten()
-    {
-        $contentModel = new BannerContentModel();
-        $bannerList = $contentModel->findAll();
-        $data = [
-            'title' => 'Tambah Konten Banner',
-            'banner_list' => $bannerList
-        ];
-        // dd($data);
-        return view('/dashboard/banner/tambahKonten', $data);
-    }
-    public function saveContent()
-    {
-        // ambil gambar
-        $contentModel = new BannerContentModel();
-
-        $fotoBanner = $this->request->getFile('img');
-        $data = [
-            'title' => $this->request->getVar('title'),
-            'img' => $fotoBanner
-        ];
-        //validate data
-        if (!$this->validateData($data, $contentModel->validationRules) && !$this->validateData($data, [
-            'img' => [
-                'errors' => [
-                    'uploaded' => 'Gambar content wajib diunggah.'
-                ]
-            ]
-        ])) {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/banner/tambah-konten')->withInput();
-        }
-        if ($fotoBanner->getError() == 4) {
-            $namaBanner = 'pop-up-1.png';
-        } else {
-            $namaBanner = $fotoBanner->getRandomName();
-            $fotoBanner->move('assets/img/banner/content/', $namaBanner);
-        }
-
-        //repalce data
-        $data = [
-            'title' => $this->request->getVar('title'),
-            'img' => $namaBanner
-        ];
-        // dd($data);
-
-        // swet alert
-        if ($contentModel->save($data)) {
-            session()->setFlashdata('success', 'Gambar pop up berhasil disimpan.');
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Gambar pop up berhasil disimpan.'
-            ];
-            session()->setFlashdata('alert', $alert);
-
-            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
-        } else {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada upload pop up'
-            ];
-            session()->setFlashdata('alert', $alert);
-
-            return redirect()->to('dashboard/banner/pop-up-banner')->withInput();
-        }
-    }
-
-
-    // ===================================================================
-    // ------------------------ END TAMBAH KONTEN BANNER -----------------
-    // ===================================================================
-
     public function index(): string
     {
         $bannerModel = new BannerModel();
@@ -121,9 +38,12 @@ class AdminBannerController extends BaseController
 
 
         $fotoBanner = $this->request->getFile('img');
+        $fotoContent = $this->request->getFile('img_konten');
         $data = [
             'title' => $this->request->getVar('title'),
-            'img' => $fotoBanner
+            'img' => $fotoBanner,
+            'img_konten' => $fotoContent,
+            'deskripsi' => $this->request->getVar('deskripsi')
         ];
         //validate data
         if (!$this->validateData($data, $bannerModel->validationRules) && !$this->validateData($data, [
@@ -131,6 +51,12 @@ class AdminBannerController extends BaseController
                 'rules' => 'uploaded[img]',
                 'errors' => [
                     'uploaded' => 'Gambar banner wajib diunggah.'
+                ]
+            ],
+            'img_konten' => [
+                'rules' => 'uploaded[img]',
+                'errors' => [
+                    'uploaded' => 'Gambar konten wajib diunggah.'
                 ]
             ]
         ])) {
@@ -142,27 +68,35 @@ class AdminBannerController extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/banner/tambah-banner')->withInput();
         }
+        // Homepage Banner
         if ($fotoBanner->getError() == 4) {
             $namaBanner = 'banner-2.png';
         } else {
             $namaBanner = $fotoBanner->getRandomName();
             $fotoBanner->move('assets/img/banner/', $namaBanner);
         }
-
-        //repalce data
+        // Content Banner
+        if ($fotoContent->getError() == 4) {
+            $namaContent = 'content-1.jpg';
+        } else {
+            $namaContent = $fotoContent->getRandomName();
+            $fotoContent->move('assets/img/banner/content/', $namaContent);
+        }
         $data = [
             'title' => $this->request->getVar('title'),
-            'img' => $namaBanner
+            'img' => $namaBanner,
+            'img_konten' => $namaContent,
+            'deskripsi' => $this->request->getVar('deskripsi')
         ];
         // dd($data);
 
-        // swet alert
+        // SWAL
         if ($bannerModel->save($data)) {
-            session()->setFlashdata('success', 'Gambar banner berhasil disimpan.');
+            session()->setFlashdata('success', 'Data banner konten berhasil disimpan.');
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Gambar banner berhasil disimpan.'
+                'message' => 'Data banner konten berhasil disimpan.'
             ];
             session()->setFlashdata('alert', $alert);
 
@@ -190,13 +124,20 @@ class AdminBannerController extends BaseController
                 unlink($gambarLamaPath);
             }
         }
+
+        if ($banner['img_konten'] != 'default.jpg') {
+            $contentLamaPath = 'assets/img/banner/content/' . $banner['img_konten'];
+            if (file_exists($contentLamaPath)) {
+                unlink($contentLamaPath);
+            }
+        }
         $deleted = $bannerModel->delete($id);
         // dd($id);
         if ($deleted) {
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Gambar banner berhasil di hapus.'
+                'message' => 'Data banner berhasil di hapus.'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/banner/tambah-banner');
@@ -211,7 +152,7 @@ class AdminBannerController extends BaseController
         }
     }
     // view
-    public function updateBanner($id)
+    public function detailBanner($id)
     {
         $bannerModel = new BannerModel();
 
@@ -221,10 +162,10 @@ class AdminBannerController extends BaseController
             'bl' => $bl,
             'back'  => 'dashboard/banner/tambah-banner'
         ];
-        return view('dashboard/banner/updateBanner', $data);
+        return view('dashboard/banner/detailBanner', $data);
     }
     // action
-    public function updateBannerSave($id)
+    public function detailBannerSave($id)
     {
         $bannerModel = new BannerModel();
 
@@ -244,7 +185,7 @@ class AdminBannerController extends BaseController
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/banner/update-banner/' . $id)->withInput();
+            return redirect()->to('dashboard/banner/detail-banner/' . $id)->withInput();
         }
 
         if ($image->getError() == 4) {
@@ -273,15 +214,15 @@ class AdminBannerController extends BaseController
         ];
 
         if ($bannerModel->save($data)) {
-            session()->setFlashdata('success', 'Gambar banner berhasil diubah.');
+            session()->setFlashdata('success', 'Data banner berhasil diubah.');
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Gambar banner berhasil diubah.'
+                'message' => 'Data banner berhasil diubah.'
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/banner/tambah-banner');
+            return redirect()->to('dashboard/banner/detail-banner');
         } else {
             $alert = [
                 'type' => 'error',
@@ -290,7 +231,7 @@ class AdminBannerController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/banner/tambah-banner/update/' . $id)->withInput();
+            return redirect()->to('dashboard/banner/detail-banner/update/' . $id)->withInput();
         }
     }
 

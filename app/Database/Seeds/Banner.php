@@ -12,19 +12,20 @@ class Banner extends Seeder
             [
                 'title' => 'Banner 1',
                 'img'    => 'banner-1.jpg',
+                'img_konten'    => 'content-1.jpg',
             ],
             [
                 'title' => 'Banner 2',
-                'img'    => 'banner-2.png',
+                'img_konten'    => 'content-2.jpg',
             ],
             [
                 'title' => 'Banner 3',
-                'img'    => 'banner-3.png',
+                'img_konten'    => 'content-3.jpg',
             ],
-            [
-                'title' => 'Banner 4',
-                'img'    => 'banner-4.png',
-            ]
+            // [
+            //     'title' => 'Banner 4',
+            //     'img_konten'    => 'content-4.jpg',
+            // ]
 
         ];
 

@@ -64,6 +64,7 @@ class KategoriController extends BaseController
         $blog_detail = $blogModel->getAllBlog();
 
         $randomProducts = $produkModel->getRandomProducts();
+        $bannerList = $bannerModel->findAll();
 
         $data = [
             'title' => 'Ssayomart',
@@ -73,6 +74,7 @@ class KategoriController extends BaseController
             'banner_pop_up' => $bannerPopupModel->find(),
             'randomProducts' => $randomProducts,
             'blog_detail' => $blog_detail,
+            'content' => $bannerList
         ];
         // dd($data);
 

@@ -14,24 +14,6 @@ use App\Helpers\YoutubeHelper;
 
 class Blog extends BaseController
 {
-    // ===================================================================
-    // ------------------------ KONTEN BANNER ------------------------------
-    // ===================================================================
-    public function contenBanner()
-    {
-        $kategori = new KategoriModel();
-        $data = [
-            'title' => '돌아가기 / Kembali',
-            'kategori' => $kategori->findAll(),
-        ];
-        // dd($data);
-        return view('user/home/contenBanner/contenBanner', $data);
-    }
-
-    // ===================================================================
-    // ------------------------ END KONTEN BANNER ----------------------------
-    // ===================================================================
-
     public function index($id)
     {
         // Memuat helper YouTube
@@ -72,7 +54,6 @@ class Blog extends BaseController
             'videoEmbedCode' => $videoEmbedCode,
             'banner_list' => $bannerList
         ];
-
         return view('user/home/blog/blog', $data);
     }
 }

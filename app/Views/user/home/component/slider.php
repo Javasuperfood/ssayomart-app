@@ -13,7 +13,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="swiper-wrapper d-flex">
                     <?php foreach ($banner as $b) : ?>
                         <div class="swiper-slide">
-                            <a href="<?= base_url(); ?>user/home/contenBanner/conten-banner">
+                            <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
                                 <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
                             </a>
                         </div>
