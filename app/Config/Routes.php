@@ -45,6 +45,8 @@ $routes->get('/blog/(:segment)', 'Blog::index/$1');
 $routes->get('user/home/contenBanner/conten-banner', 'Blog::contenBanner');
 $routes->get('/status-gosend', 'StatusGosend::statusGosend');
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
+$routes->get('/menu-resto', 'MenuResto::menuResto');
+$routes->get('/sayo-resto', 'MenuResto::sayoResto');
 
 
 // Rute untuk AppleAuthController
