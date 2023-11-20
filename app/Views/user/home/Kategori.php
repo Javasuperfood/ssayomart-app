@@ -13,6 +13,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Font Noto Sans Korean -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap">
 
+
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -88,96 +89,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </script>
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
-
-
-
-
-        <!-- <script>
-            $(document).ready(function() {
-                // Fungsi untuk menampilkan modal
-                function showModal() {
-                    $('#imageModal').modal('show');
-                }
-
-                // Cek apakah modal sudah ditampilkan sebelumnya dengan menggunakan cookie
-                var modalShownBefore = getCookie('modalShown');
-
-                if (modalShownBefore !== 'true') {
-                    showModal(); // Tampilkan modal jika belum ditampilkan sebelumnya
-                    setCookie('modalShown', 'true', 365); // Setel cookie untuk menandai modal sudah ditampilkan
-                }
-
-                // Tampilkan modal setiap 1 detik pertama
-                var initialInterval = setInterval(function() {
-                    showModal();
-                }, 1 * 1000); // 1 detik dalam milidetik
-
-                // Setelah 1 detik pertama, tampilkan modal setiap 1 menit
-                setTimeout(function() {
-                    clearInterval(initialInterval); // Hentikan interval 1 detik pertama
-                    setInterval(function() {
-                        showModal();
-                    }, 86400 * 1000); // 1 menit dalam milidetik
-                }, 1 * 1000);
-
-                // Fungsi untuk mengatur cookie
-                function setCookie(name, value, days) {
-                    var expires = "";
-                    if (days) {
-                        var date = new Date();
-                        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                        expires = "; expires=" + date.toUTCString();
-                    }
-                    document.cookie = name + "=" + value + expires + "; path=/";
-                }
-
-                // Fungsi untuk mendapatkan nilai cookie
-                function getCookie(name) {
-                    var nameEQ = name + "=";
-                    var ca = document.cookie.split(';');
-                    for (var i = 0; i < ca.length; i++) {
-                        var c = ca[i];
-                        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                    }
-                    return null;
-                }
-            });
-        </script> -->
-
-
-        <!-- tampil close scroll kategori -->
-        <!-- <script>
-            $(document).ready(function() {
-                // Periksa apakah modal sudah ditampilkan sebelumnya
-                var isModalShown = localStorage.getItem('isModalShown');
-
-                // Tampilkan modal saat aplikasi pertama kali dibuka
-                if (isModalShown !== 'true') {
-                    $('#imageModal').modal('show');
-                    // Setel status modal sudah ditampilkan
-                    localStorage.setItem('isModalShown', 'true');
-                } else {
-                    // Tampilkan modal setelah 20 detik jika bukan saat aplikasi pertama kali dibuka
-                    setTimeout(function() {
-                        $('#imageModal').modal('show');
-                    }, 5000); // 20000 milidetik = 20 detik
-                }
-
-                // Tambahkan event listener saat modal ditutup
-                $('#imageModal').on('hidden.bs.modal', function() {
-                    // Hapus status modal sudah ditampilkan
-                    localStorage.removeItem('isModalShown');
-
-                    // Pindah otomatis ke elemen dengan ID "ktr" (All Kategori)
-                    $('html, body').animate({
-                        scrollTop: $('#ktr').offset().top
-                    }, 200); // Waktu animasi dalam milidetik (contoh: 1000 = 1 detik)
-                });
-            });
-        </script> -->
-        <!-- akhir tampil close scroll kategori -->
-
         <style>
             /* Ganti warna tombol close menjadi putih */
             .btn-close {
@@ -202,6 +113,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Akhir Modal  Homepage-->
 
         <div class="class" style="position: relative; top: -15px;">
+            <!-- ssayo Resto -->
+            <section class="py-2 my-2" style="background-color: #dcf7d0;">
+                <div class="container d-flex justify-content-between align-items-center">
+                    <span class="fs-2 fw-bold" style="font-family:cursive; color: #406b2e;">Ssayo Resto</span>
+                    <a href="<?= base_url(); ?>menu-resto" class="btn" style="background-color:#406b2e;">
+                        <span class="d-flex align-items-center text-white"> lihat disini <i class=" ms-2 bi bi-arrow-right-circle"></i></span>
+                    </a>
+                </div>
+            </section>
+            <!-- Akhir SSayo Resto -->
+            <!-- Banner Promosi -->
             <section class="mt-3" id="unggul" style="background-color: #f7f0eb;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f7f0eb;">
                     <div class="container mb-2 mt-2" style="background-color: #f7f0eb;">
@@ -238,6 +160,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </section>
+            <!-- Akhir Banner Promosi -->
+
             <!-- rekomendasi -->
             <section id="rekomendasi" style="background-color: #f3f5df;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
@@ -260,7 +184,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             <?php endforeach; ?>
                         </div>
-
 
                         <!-- Previous button centered within the image -->
                         <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
@@ -289,7 +212,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <!-- All Kategori -->
             <div class="container">
-                <div class="card border-0 text-center font-family-poppins" style="background-color: #C1E1C1;">
+                <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
                     <div class="card-warning">
                         <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
                         </span>
@@ -315,7 +238,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <!-- All Kategori -->
-
 
     </div>
     <!-- End Mobile View -->
