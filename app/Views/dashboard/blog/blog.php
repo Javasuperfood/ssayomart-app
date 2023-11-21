@@ -59,14 +59,34 @@
                                             Edit Konten
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <form action="<?= base_url() ?>dashboard/blog/delete-konten/<?= $bm['id_blog'] ?>" method="post">
-                                            <?= csrf_field() ?>
-                                            <input type="hidden" name="pager" value="<?= (isset($_GET['page_konten']) ? $_GET['page_konten'] : '1'); ?>">
-                                            <button type="submit" class="dropdown-item">
-                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                <span class="text-danger">Delete</span>
-                                            </button>
-                                        </form>
+                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteArtikel<?= $bm['id_blog'] ?>">
+                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                            <span class="text-danger">Hapus Artikel</span>
+                                        </a>
+                                    </div>
+                                    <div class="modal fade" id="deleteArtikel<?= $bm['id_blog'] ?>" tabindex="-1" role="dialog" aria-labelledby="deleteArtikel<?= $bm['id_blog'] ?>" aria-hidden="true">
+                                        <div class="modal-dialog text-start text-secondary" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteArtikel<?= $bm['id_blog'] ?>">Hapus Artikel <b class="text-uppercase text-danger"><?= $bm['judul_blog']; ?></b>?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <img src="<?= base_url('assets/img/blog/' . $bm['img_thumbnail']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                    <br><br>
+                                                    Pilih tombol "Hapus" untuk menghapus Artikel <b class="text-uppercase text-danger"><?= $bm['judul_blog']; ?></b> secara <b class="text-danger">PERMANENT</b>.
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                                    <form action="<?= base_url() ?>dashboard/blog/delete-konten/<?= $bm['id_blog'] ?>" method="post">
+                                                        <?= csrf_field() ?>
+                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </td>

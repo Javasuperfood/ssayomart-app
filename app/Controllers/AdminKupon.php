@@ -96,7 +96,7 @@ class AdminKupon extends BaseController
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Produk Berhasil di Hapus'
+                'message' => 'Data kupon Berhasil di Hapus'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/kupon');

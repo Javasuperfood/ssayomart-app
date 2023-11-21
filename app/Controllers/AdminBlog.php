@@ -100,22 +100,23 @@ class AdminBlog extends BaseController
         $blogModel = new BlogModel();
         $image = $this->request->getFile('img_thumbnail');
 
+        // Ambil data konten yang akan diubah
+        $konten = $blogModel->find($id);
         if ($image->getError() == 4) {
-            $namaKontenImage = $this->request->getVar('imageLama');
+            // Tidak ada file yang diunggah, gunakan gambar lama
+            $namaKontenImage = $konten['img_thumbnail'];
         } else {
-            $konten = $blogModel->find($id);
-
-            if ($konten['img_thumbnail'] == 'default.jpg') {
-                $namaKontenImage = $image->getRandomName();
-                $image->move('assets/img/blog', $namaKontenImage);
-            } else {
-                $namaKontenImage = $image->getRandomName();
-                $image->move('assets/img/blog', $namaKontenImage);
-                $gambarLamaPath = 'assets/img/blog/' . $this->request->getVar('imageLama');
+            // Ada file yang diunggah, periksa apakah gambar lama bukan default
+            if ($konten['img_thumbnail'] != 'default.jpg') {
+                // Hapus gambar lama
+                $gambarLamaPath = 'assets/img/blog/' . $konten['img_thumbnail'];
                 if (file_exists($gambarLamaPath)) {
                     unlink($gambarLamaPath);
                 }
             }
+            // Pindahkan gambar baru
+            $namaKontenImage = $image->getRandomName();
+            $image->move('assets/img/blog', $namaKontenImage);
         }
         $slug = url_title($this->request->getVar('judul_blog'), '-', true);
         $data = [

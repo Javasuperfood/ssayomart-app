@@ -70,49 +70,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Banner Desktop -->
     <div id="desktopContent" style="margin-top: 90px;">
         <div class="container">
-            <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <?php
-                    $totalBanners = count($banner);
-                    for ($i = 0; $i < $totalBanners; $i += 2) :
-                        $classBanner = "carousel-item";
-                        if ($i === 0) {
-                            $classBanner .= " active";
-                        }
-                    ?>
-                        <a href="<?= base_url(); ?>user/home/contenBanner/conten-banner">
-                            <div class="<?= $classBanner; ?>">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i]['title']; ?>">
-                                    </div>
-                                    <?php if ($i + 1 < $totalBanners) : ?>
-                                        <div class="col-md-6">
-                                            <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i + 1]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i + 1]['title']; ?>">
-                                        </div>
-                                    <?php else : ?>
-                                        <!-- Jika tidak ada gambar berikutnya, tambahkan gambar default atau pesan placeholder -->
-                                        <div class="col-md-6">
-                                            <img src="<?= base_url() ?>assets/img/banner/default.jpg" class="d-block w-100 rounded-3" alt="Placeholder">
-                                            <!-- Atau pesan placeholder -->
-                                            <!-- <p>Placeholder</p> -->
-                                        </div>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </a>
-                    <?php endfor; ?>
+            <div class="swiper mySwiper" style="position: relative; margin-bottom:32px;">
+                <div class="swiper-wrapper d-flex">
+                    <?php foreach ($banner as $b) : ?>
+                        <div class="swiper-slide">
+                            <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
+                                <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-                <!-- Tombol Previous -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <!-- Tombol Next -->
-                <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
     </div>

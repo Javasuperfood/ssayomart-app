@@ -16,7 +16,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-4">
                         <label for="promo" class="form-label text-secondary">Pilih Promo Tersedia</label>
-                        <select name="promo" id="promo" class="form-control border-1">
+                        <select name="promo" id="promo" class="form-control border-0 shadow-sm">
                             <?php foreach ($promo as $item) : ?>
                                 <option value="<?= $item['id_promo']; ?>"><?= $item['title']; ?></option>
                             <?php endforeach; ?>
@@ -26,7 +26,7 @@
 
                     <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Pilih Produk Yang Akan Diberikan Promo</label>
-                        <button type="button" class="btn form-control border-1 text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                        <button type="button" class="btn form-control border-left-danger text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                             Tekan Untuk Memilih Produk
                         </button>
                     </div>
@@ -96,25 +96,25 @@
 
                     <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Produk Terpilih</label>
-                        <input type="text" class="form-control border-1 bg-white" id="produkTerpilih" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
+                        <input type="text" class="form-control border-0 shadow-sm bg-white" id="produkTerpilih" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
                         <span id="produkError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
                         <label for="min" class="form-label text-secondary">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk...">
+                        <input type="text" class="form-control border-0 shadow-sm" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk...">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
                         <label for="discount" class="form-label text-secondary">Diskon (%)</label>
-                        <input type="text" class="form-control border-1" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon...">
+                        <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon...">
                         <span id="discountError" class="text-danger"></span>
                     </div>
-                    
+
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-danger">Simpan</button>
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger fw-bold">Simpan</button>
                     </div>
                 </form>
             </div>
