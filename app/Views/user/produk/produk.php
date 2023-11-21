@@ -34,7 +34,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <h4><?= $produk['nama']; ?></h4>
                 <div class="row">
                     <div class="col text-center">
-                        <p class="text-secondary">
+                        <p class="text-secondary price fw-bold">
                             <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
                                 Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
                             <?php else : ?>
@@ -276,6 +276,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
         @media (min-width: 768px) and (max-width: 1024px) {
+
+            .price {
+                font-size: 35px !important;
+            }
 
             /* CSS edit inputan counter*/
             #counterProduct {
