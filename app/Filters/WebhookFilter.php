@@ -54,7 +54,17 @@ class WebhookFilter implements FilterInterface
      */
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        //
+        $response_service = \Config\Services::response();
+        $method = $request->getMethod();
+        $endpoint = $request->uri->getPath();
+        $data = [
+            'Method' => $method,
+            'Endpoint' => $endpoint,
+            'Response' => json_decode($response_service->getJSON())
+        ];
+        log_message('info', '{message}', [
+            'message' => json_encode($data)
+        ]);
     }
     private function resErrorCustom($txt = null)
     {
