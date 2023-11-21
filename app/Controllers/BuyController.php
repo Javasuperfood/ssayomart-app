@@ -68,6 +68,8 @@ class BuyController extends BaseController
         $userModel = new UsersModel();
         $wishlistModel = new WishlistModel();
         $wishlistProdModel = new WishlistProdukModel();
+        // $kuponModel = new KuponModel();
+        // $kuponList = $kuponModel->find($id);
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -110,6 +112,7 @@ class BuyController extends BaseController
         if ($kode != '') {
             $kuponModel = new KuponModel();
             $cekKupon = $kuponModel->getKupon($kode);
+            $idKupon = $kuponModel->getKuponId($kode);
             $total_2 = floatval($total_1);
             $discount = floatval($cekKupon['discount']);
             $total_2 = $total_2 - ($total_2 * $discount);
@@ -205,8 +208,19 @@ class BuyController extends BaseController
         if ($wishlistItem) {
             $wishlistProdModel->delete($wishlistItem['id_wishlist_produk']);
         }
+
+        if (!empty($kode)) {
+            $idKupon = $kuponModel->getKuponId($kode);
+            if ($idKupon) {
+                if ($kuponModel->useCoupon($idKupon)) {
+                    return redirect()->to(base_url('payment/' . $inv))->with('success', 'Your order has been placed successfully.');
+                }
+            }
+        }
+
         return redirect()->to(base_url('payment/' . $inv));
     }
+
     public function getNewPayment()
     {
         $midtransConfig = config('Midtrans');
