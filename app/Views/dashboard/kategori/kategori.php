@@ -62,12 +62,14 @@
                                         <div class="modal-dialog text-start text-secondary" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteKategori<?= $km['id_kategori']; ?>">Delete <?= $km['nama_kategori']; ?> ?</h5>
+                                                    <h5 class="modal-title" id="deleteKategori<?= $km['id_kategori']; ?>">Hapus Kategori <b class="text-uppercase text-danger"><?= $km['nama_kategori']; ?></b> ?</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">Pilih Delete untuk menghapus kategori <?= $km['nama_kategori']; ?></div>
+                                                <div class="modal-body text-center">
+                                                    Pilih tombol "Hapus" untuk menghapus kategori <b class="text-uppercase text-danger"><?= $km['nama_kategori']; ?></b> secara <b class="text-danger">PERMANENT</b>.
+                                                </div>
                                                 <div class="modal-footer">
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                     <form action="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km['id_kategori']; ?>" method="post">

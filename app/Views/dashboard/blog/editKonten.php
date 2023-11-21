@@ -42,7 +42,7 @@
 
                     <div class="mb-3">
                         <label for="isi_blog" class="form-label">Isi Blog/Artikel <span class="text-danger fs-5">*</span></label>
-                        <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" placeholder="Masukan Isi Konten Artikel/Blog Anda Disini..." name="isi_blog" value="<?= $bm['isi_blog']; ?>"></textarea>
+                        <textarea class="tinymce border-0 shadow-sm" id="isi_blog" rows="3" name="isi_blog"><?= $bm['isi_blog']; ?></textarea>
                         <!-- <span id="kontenError" class="text-danger"></span> -->
                     </div>
 
@@ -157,7 +157,6 @@
         var isValid = true;
 
         var judulField = document.getElementById('judul_blog');
-        var imgField = document.getElementById('img_thumbnail');
         var kontenField = document.getElementById('isi_blog');
         var linkField = document.getElementById('link_video');
 
@@ -167,7 +166,6 @@
         // var kontenError = document.getElementById('kontenError');
 
         judulError.textContent = '';
-        imgError.textContent = '';
         linkError.textContent = '';
         // kontenError.textContent = '';
 
@@ -177,14 +175,6 @@
             isValid = false;
         } else {
             judulField.classList.remove('invalid-field');
-        }
-
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar thumbnail tidak boleh kosong';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
         }
 
         if (linkField.value.trim() === '') {

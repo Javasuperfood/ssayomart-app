@@ -14,7 +14,7 @@
             <?= csrf_field(); ?>
             <div class="mb-4">
                 <div class="form-check">
-                    <input class="form-check-input bg-danger" type="checkbox" value="1" name="is_active" id="isActive" <?= (old('is_active') == 1) ? 'checked' : ''; ?>>
+                    <input class="form-check-input bg-danger fs-5" type="checkbox" value="1" name="is_active" id="isActive" <?= (old('is_active') == 1) ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="isActive">
                         Tekan untuk Aktifkan Kupon
                     </label>

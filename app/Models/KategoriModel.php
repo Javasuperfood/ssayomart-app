@@ -45,8 +45,7 @@ class KategoriModel extends Model
         'img' => [
             'rules' => 'max_size[img,1024]',
             'errors' => [
-                'max_size' => 'Ukuran gambar terlalu besar',
-                'is_image' => 'Yang anda pilih bukan gambar'
+                'max_size' => 'Ukuran gambar terlalu besar'
             ]
         ]
     ];

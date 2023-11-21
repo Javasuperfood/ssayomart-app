@@ -44,11 +44,9 @@ class SubKategoriModel extends Model
             ],
         ],
         'img' => [
-            'rules' => 'max_size[img,1024]|mime_in[img,image/jpg,image/jpeg,image/png]',
+            'rules' => 'max_size[img,1024]',
             'errors' => [
                 'max_size' => 'Ukuran gambar terlalu besar',
-                'is_image' => 'Yang anda pilih bukan gambar',
-                'mime_in' => 'Yang anda pilih bukan gambar'
             ]
         ]
     ];

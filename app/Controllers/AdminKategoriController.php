@@ -115,6 +115,7 @@ class AdminkategoriController extends BaseController
             'slug' => $slug,
             'id_kategori' => $parentKategoriId,
         ];
+        // dd($data);
         // Save sub kategori 
         if ($parentKategoriId != "") {
             if ($subKategoriModel->save($data)) {

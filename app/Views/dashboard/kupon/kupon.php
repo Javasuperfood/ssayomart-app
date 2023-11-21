@@ -55,15 +55,33 @@
                                             Edit
                                         </a>
                                         <div class="dropdown-divider"></div>
-                                        <form action="<?= base_url() ?>dashboard/kupon/delete-kupon/<?= $kp['id_kupon']; ?>" method="post">
-                                            <?= csrf_field() ?>
-                                            <button type="submit" class="dropdown-item">
-                                                <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
-                                                <span class="text-danger">Delete</span>
-                                            </button>
-                                        </form>
+                                        <a href="#" class="dropdown-item" data-toggle="modal" data-target="#deleteKupon<?= $kp['id_kupon']; ?>">
+                                            <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
+                                            <span class="text-danger">Hapus Kupon</span>
+                                        </a>
                                     </div>
-
+                                    <div class="modal fade" id="deleteKupon<?= $kp['id_kupon']; ?>" tabindex="-1" role="dialog" aria-labelledby="deleteKupon<?= $kp['id_kupon']; ?>" aria-hidden="true">
+                                        <div class="modal-dialog text-start text-secondary" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteKupon<?= $kp['id_kupon']; ?>">Hapus Kupon <b class="text-uppercase text-danger"><?= $kp['nama']; ?></b>?</h5>
+                                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    Pilih tombol "Hapus" untuk menghapus Kupon <b class="text-uppercase text-danger"><?= $kp['nama']; ?></b> secara <b class="text-danger">PERMANENT</b>.
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                                                    <form action="<?= base_url() ?>dashboard/kupon/delete-kupon/<?= $kp['id_kupon']; ?>" method="post">
+                                                        <?= csrf_field() ?>
+                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

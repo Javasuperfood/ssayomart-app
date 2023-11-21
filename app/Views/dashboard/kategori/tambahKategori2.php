@@ -51,7 +51,7 @@
                                                                 <img src="#" class="img-fluid">
                                                             </div>
                                                             <div class="col-8">
-                                                                <p class="nama item" </p>
+                                                                <p class="nama item"> </p>
 
                                                             </div>
                                                         </div>
