@@ -68,54 +68,54 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Banner Mobile -->
 
     <!-- Banner Desktop -->
-    <div id="desktopContent" style="margin-top: 90px;">
+    <div id="desktopContent" style="margin-top: 120px;">
         <div class="container">
-            <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <?php
-                    $totalBanners = count($banner);
-                    for ($i = 0; $i < $totalBanners; $i += 2) :
-                        $classBanner = "carousel-item";
-                        if ($i === 0) {
-                            $classBanner .= " active";
-                        }
-                    ?>
-                        <a href="<?= base_url(); ?>user/home/contenBanner/conten-banner">
-                            <div class="<?= $classBanner; ?>">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i]['title']; ?>">
-                                    </div>
-                                    <?php if ($i + 1 < $totalBanners) : ?>
-                                        <div class="col-md-6">
-                                            <img src="<?= base_url() ?>assets/img/banner/<?= $banner[$i + 1]['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $banner[$i + 1]['title']; ?>">
-                                        </div>
-                                    <?php else : ?>
-                                        <!-- Jika tidak ada gambar berikutnya, tambahkan gambar default atau pesan placeholder -->
-                                        <div class="col-md-6">
-                                            <img src="<?= base_url() ?>assets/img/banner/default.jpg" class="d-block w-100 rounded-3" alt="Placeholder">
-                                            <!-- Atau pesan placeholder -->
-                                            <!-- <p>Placeholder</p> -->
-                                        </div>
-                                    <?php endif; ?>
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper d-flex justify-content-center align-items-center">
+                    <?php foreach ($banner as $b) : ?>
+                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                            <div class="text-bg-light bg-white">
+                                <div class="card-body">
+                                    <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
+                                        <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
+                                    </a>
                                 </div>
                             </div>
-                        </a>
-                    <?php endfor; ?>
+                        </div>
+                    <?php endforeach ?>
                 </div>
-                <!-- Tombol Previous -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <!-- Tombol Next -->
-                <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
         </div>
+        <style>
+            .swiper-container {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        <script>
+            var mySwiper = new Swiper('.mySwiper', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000, // Ganti dengan interval otomatis yang diinginkan (dalam milidetik)
+                },
+
+                simulateTouch: true, // Mengaktifkan kemampuan swipe manual
+                breakpoints: {
+                    // Breakpoint untuk mode mobile
+                    768: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+        </script>
     </div>
+
     <!-- End Footer Desktop -->
 <?php endif; ?>
 
