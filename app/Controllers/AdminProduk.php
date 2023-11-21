@@ -229,15 +229,19 @@ class AdminProduk extends BaseController
         // dd($data);
         return view('dashboard/produk/updateProduk', $data);
     }
-    public function saveUpdateProduk()
+
+    public function saveUpdateProduk($id)
     {
         // dd($this->request->getVar());
         $id = $this->request->getVar('id_produk');
+        $id_variasi_item = $this->request->getVar('id_variasi_item');
         $produkModel = new ProdukModel();
+        $variasItemiModel = new VariasiItemModel();
         $image = $this->request->getFile('img');
         if (!$this->validate($produkModel->validationRules)) {
             return redirect()->to('dashboard/produk/update-produk/' . $id)->withInput();
         }
+
         if ($image->getError() == 4) {
             $namaProdukImage = $this->request->getVar('imageLama');
         } else {
@@ -254,12 +258,14 @@ class AdminProduk extends BaseController
                 }
             }
         }
+
         $slug = url_title($this->request->getVar('nama'), '-', true);
         $cekSlug = $produkModel->where('slug', $slug)->first();
         if ($cekSlug != null) {
             $slug = $slug . '-' . time();
         }
         $data = [
+            'id_produk' => $id,
             'slug' => $slug,
             'nama' => $this->request->getVar('nama'),
             'sku' => $this->request->getVar('sku'),
@@ -269,6 +275,23 @@ class AdminProduk extends BaseController
             'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
         // dd($data);
+
+        $id_varian = $this->request->getVar('selectVariant');
+        if ($id_varian != '') {
+            $id_varian = $id_varian;
+        } else {
+            $id_varian = null;
+        }
+        // dd($id_varian);
+        $data2 = [
+            'id_variasi_item' => $id_variasi_item,
+            'id_variasi' => $id_varian,
+            'value_item' => $this->request->getVar('valueItem'),
+            'harga_item' => $this->request->getVar('harga'),
+            'berat' => $this->request->getVar('berat'),
+        ];
+        // dd($data2);
+
         $ruleData = [
             'nama' => [
                 'rules'  => 'required',
@@ -283,21 +306,22 @@ class AdminProduk extends BaseController
                 ],
             ]
         ];
-        if (!$this->validateData($data, $ruleData)) {
+        if (!$this->validateData($data, $ruleData) || !$this->validateData($data2, $variasItemiModel->validationRules)) {
             return redirect()->to('dashboard/produk/update-produk/' . $id)->withInput();
         }
-
         // Pembaruan data produk
         if ($produkModel->update($id, $data)) {
-            session()->setFlashdata('success', 'Produk berhasil diubah.');
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Produk berhasil diubah.'
-            ];
-            session()->setFlashdata('alert', $alert);
+            if ($variasItemiModel->save($data2)) {
+                session()->setFlashdata('success', 'Produk berhasil diubah.');
+                $alert = [
+                    'type' => 'success',
+                    'title' => 'Berhasil',
+                    'message' => 'Produk berhasil diubah.'
+                ];
+                session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('page'));
+                return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('page'));
+            }
         } else {
             $alert = [
                 'type' => 'error',

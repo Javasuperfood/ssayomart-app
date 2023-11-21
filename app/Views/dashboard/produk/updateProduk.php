@@ -7,11 +7,12 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/produk/update-produk/save" method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url(); ?>dashboard/produk/update-produk/<?= $p['id_produk'] ?>" method="POST" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <input type="hidden" name="page" value="<?= (isset($_GET['page']) ? $_GET['page'] : '1'); ?>">
             <input type="hidden" name="slug" value="<?= $p['slug'] ?>">
             <input type="text" class="form-control border-0 shadow-sm d-none" name="id_produk" value="<?= $p['id_produk'] ?>">
+            <input type="hidden" name="id_variasi_item" value="<?= $variasiItem['id_variasi_item']; ?>">
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama Produk</label>
                 <input type="text" class="form-control shadow-sm <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-0'; ?>" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= (old('nama')) ? old('nama') : $p['nama'] ?>">
@@ -44,7 +45,31 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="img" class="form-label">Gambar</label>
+                <label for="selectVariant">Pilih Variant</label>
+                <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
+                    <option value="" selected>Pilih</option>
+                    <?php foreach ($variasi as $v) : ?>
+                        <option value="<?= $v['id_variasi']; ?>" selected><?= $v['nama_varian']; ?></option>
+                    <?php endforeach ?>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
+                <input type="text" id="valueItem" value="<?= $variasiItem['value_item'] ?>" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm">
+                <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
+            </div>
+            <div class="mb-3">
+                <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
+                <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0' ?> shadow-sm" id="berat" name="berat" value="<?= $variasiItem['berat'] ?>" onkeypress="return isNumber(event);">
+                <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
+            </div>
+            <div class="mb-3">
+                <label for="harga" class="form-label">Harga Produk</label>
+                <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm " id="harga" name="harga" value="<?= $variasiItem['harga_item'] ?>" onkeypress="return isNumber(event);">
+                <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
+            </div>
+            <div class="mb-3">
+                <label for="img" class="form-label">Gambar Produk</label>
                 <input type="file" accept="image/*" style="border: none;" class="form-control border-0 shadow-sm" id="img" name="img">
                 <input type="hidden" name="imageLama" value="<?= $p['img']; ?>">
             </div>

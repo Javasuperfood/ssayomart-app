@@ -204,7 +204,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
     $routes->post('produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
-    $routes->post('produk/update-produk/save', 'AdminProduk::saveUpdateProduk');
+    $routes->post('produk/update-produk/(:segment)', 'AdminProduk::saveUpdateProduk/$1');
 
     // Kategori Produk Batch
     $routes->get('produk/produk-batch', 'AdminKategoriBatch::produkBatch');
