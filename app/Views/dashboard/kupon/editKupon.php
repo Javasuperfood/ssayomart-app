@@ -1,17 +1,19 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
+<h1 class="h3 mb-3 text-gray-800">Edit Kupon</h1>
 
-<div class="card position-relative">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-danger">Edit Keterangan Kupon</h6>
+<div class="card border-1 shadow-sm position-relative mb-5">
+    <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+        <i class="bi bi-pencil-square"></i>
+        <h6 class="m-0 fw-bold px-2">Edit Keterangan Kupon</h6>
     </div>
     <div class="card-body">
         <!-- code -->
         <form action="<?= base_url(); ?>dashboard/kupon/edit-kupon/<?= $kp['id_kupon'] ?>" method="post">
             <?= csrf_field(); ?>
             <input type="hidden" class="form-control" id="id_kupon" name="id_kupon" value="<?= $kp['id_kupon'] ?>">
-            <div class="mb-3">
+            <div class="mb-4">
                 <div class="form-check">
                     <input class="form-check-input bg-danger" type="checkbox" value="1" name="is_active" id="isActive" <?= (old('is_active')) ? 'checked' : (($kp['is_active']) ? 'checked' : ''); ?>>
                     <label class="form-check-label" for="isActive">
@@ -19,48 +21,49 @@
                     </label>
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="nama_kupon" class="form-label">Judul Kupon <span class="text-danger fs-5">*</span></label>
-                <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= (old('nama_kupon')) ? old('nama_kupon') : $kp['nama'] ?>">
+            <div class="mb-4">
+                <label for="nama_kupon" class="form-label">Judul Kupon<span class="text-danger fs-5">*</span></label>
+                <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-1'; ?>" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= (old('nama_kupon')) ? old('nama_kupon') : $kp['nama'] ?>">
                 <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
             </div>
-            <label for="kode_kupon" class="form-label">Kode Reveral Kupon <span class="text-danger fs-5">*</span></label>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control <?= (validation_show_error('kode')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon" value="<?= (old('kode_kupon')) ? old('kode_kupon') : $kp['kode'] ?>" aria-describedby="generateKode">
-                <button class="btn btn-outline-danger shadow-sm" id="generateKode" type="button">Dapatkan Kode</button>
+            <label for="kode_kupon" class="form-label">Kode Reveral Kupon<span class="text-danger fs-5">*</span></label>
+            <div class="input-group mb-4">
+                <input type="text" class="form-control <?= (validation_show_error('kode')) ? 'is-invalid' : 'border-1'; ?>" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon" value="<?= (old('kode_kupon')) ? old('kode_kupon') : $kp['kode'] ?>" aria-describedby="generateKode">
+                <button class="btn btn-danger" id="generateKode" type="button">Dapatkan Kode</button>
             </div>
             <div class="invalid-feedback"><?= validation_show_error('kode'); ?></div>
-            <div class="mb-3">
-                <label for="deskripsi_kupon" class="form-label">Deskripsi Kupon <span class="text-danger fs-5">*</span></label>
-                <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." value=""><?= (old('deskripsi_kupon')) ? old('deskripsi_kupon') : $kp['deskripsi'] ?></textarea>
+            <div class="mb-4">
+                <label for="deskripsi_kupon" class="form-label">Deskripsi Kupon<span class="text-danger fs-5">*</span></label>
+                <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." value=""><?= (old('deskripsi_kupon')) ? old('deskripsi_kupon') : $kp['deskripsi'] ?></textarea>
                 <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
 
-            <div class="mb-3">
-                <label for="" class="form-label">Potongan Harga Kupon <span class="text-danger fs-5">*</span></label>
-                <select class="form-select <?= (validation_show_error('discount')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="discount" id="">
+            <div class="mb-4">
+                <label for="" class="form-label">Potongan Harga Kupon<span class="text-danger fs-5">*</span></label>
+                <select class="form-select <?= (validation_show_error('discount')) ? 'is-invalid' : 'border-1'; ?>" name="discount" id="">
                     <?php for ($i = 5; $i <= 100; $i += 5) : ?>
                         <option value="<?= $i / 100; ?>" <?= (old('discount') == $i / 100) ? 'selected' : (($kp['discount'] == $i / 100) ? 'selected' : ''); ?>><?= $i; ?>%</option>
                     <?php endfor; ?>
                 </select>
                 <div class="invalid-feedback"><?= validation_show_error('discount'); ?></div>
             </div>
-            <div class="mb-3">
+            <div class="mb-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="total_buy" class="form-label">Minimal Pembelian <span class="text-danger fs-5">*</span></label>
-                        <input type="text" class="form-control <?= (validation_show_error('total_buy')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="total_buy" name="total_buy" placeholder="total pembelian" value="<?= (old('total_buy')) ? old('total_buy') : $kp['total_buy'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        <label for="total_buy" class="form-label">Minimal Pembelian<span class="text-danger fs-5">*</span></label>
+                        <input type="text" class="form-control <?= (validation_show_error('total_buy')) ? 'is-invalid' : 'border-1'; ?>" id="total_buy" name="total_buy" placeholder="total pembelian" value="<?= (old('total_buy')) ? old('total_buy') : $kp['total_buy'] ?>" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                         <div class="invalid-feedback"><?= validation_show_error('total_buy'); ?></div>
                     </div>
                     <div class="col-md-6">
-                        <label for="" class="form-label">Maksimal Digunakan <span class="text-danger fs-5">*</span></label>
-                        <input type="number" class="form-control <?= (validation_show_error('available_kupon')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="available_kupon" value="<?= (old('available_kupon')) ? old('available_kupon') : $kp['available_kupon']; ?>" id="" placeholder="Maksimal digunakan">
+                        <label for="" class="form-label">Maksimal Digunakan<span class="text-danger fs-5">*</span></label>
+                        <input type="number" class="form-control <?= (validation_show_error('available_kupon')) ? 'is-invalid' : 'border-1'; ?>" name="available_kupon" value="<?= (old('available_kupon')) ? old('available_kupon') : $kp['available_kupon']; ?>" id="" placeholder="Maksimal digunakan">
                         <div class="invalid-feedback"><?= validation_show_error('available_kupon'); ?></div>
                     </div>
                 </div>
             </div>
-            <div class="mb-3 d-flex justify-content-center">
-                <button type="submit" class="btn btn-danger mt-3">Simpan Perubahan</button>
+            <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-danger">Simpan Perubahan</button>
             </div>
         </form>
     </div>
