@@ -127,7 +127,10 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->get('print-order/(:segment)', 'AdminPesananController::printOrder/$1');
         $routes->get('being-delivered/', 'AdminPesananController::beingDelivered');
         $routes->get('delivered/', 'AdminPesananController::delivered');
+        $routes->get('refunds/', 'AdminPesananController::refundList');
         $routes->get('(:segment)', 'AdminPesananController::detail/$1');
+        $routes->get('refund/(:segment)', 'AdminPesananController::refund/$1');
+        $routes->post('refund/(:segment)', 'AdminPesananController::refundStore/$1');
     });
 
     // Route Reporting File
