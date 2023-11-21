@@ -4,7 +4,7 @@
 
 <?= $this->section('main') ?>
 
-<div class="box">
+<div class="box shadow-sm">
     <div class="inner-box">
         <div class="forms-wrap">
 

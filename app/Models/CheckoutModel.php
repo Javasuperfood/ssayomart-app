@@ -110,11 +110,13 @@ class CheckoutModel extends Model
         return $query->findAll();
     }
 
-    public function getOrder($perPage = null, $toko = null, $status = null, $shipment = null)
+    public function getOrder($perPage = null, $toko = null, $status = null, $shipment = null, $refund = null)
     {
-        $query =  $this->select('jsf_checkout.*, jsf_status_pesan.status as status')
+        $query = $this->select('*, jsf_checkout.id_status_pesan as status_pesan_id, jsf_status_pesan.status as status')
             ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
-            ->where('id_toko', $toko);
+            ->join('jsf_refunds', 'jsf_refunds.order_id = jsf_checkout.invoice', 'left');
+        $query->where('id_toko', $toko)
+            ->orderBy('jsf_checkout.id_checkout', 'DESC');
         if ($status != null) {
             $query->where('jsf_checkout.id_status_pesan', $status);
         }
@@ -124,7 +126,14 @@ class CheckoutModel extends Model
         if ($shipment == 0) {
             $query->where('jsf_checkout.gosend', null);
         }
+
+        if ($refund != null) {
+            $query->where('id_refund !=', null);
+        } else {
+            $query->where('id_refund', null);
+        }
         $result = $query->paginate($perPage, 'order');
+        // dd($result);
         return $result;
     }
 }

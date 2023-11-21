@@ -128,6 +128,10 @@
                                                     <i class="bi bi-pencil-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Update Status
                                                 </a>
+                                                <a class="dropdown-item" href="<?= base_url('dashboard/order/refund/' . $c['invoice']); ?>">
+                                                    <i class="bi bi-pencil-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                    Refund
+                                                </a>
                                             <?php endif ?>
                                             <a class="dropdown-item" href="<?= base_url('dashboard/order/' . $c['invoice']); ?>">
                                                 <i class="bi bi-box-seam-fill fa-sm fa-fw mr-2 text-gray-400"></i>

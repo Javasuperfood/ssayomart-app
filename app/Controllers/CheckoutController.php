@@ -113,7 +113,7 @@ class CheckoutController extends BaseController
             'kupon' => $kuponList,
             'kategori' => $kategori->findAll()
         ];
-        dd($data);
+        // dd($data);
 
         return view('user/home/checkout/checkout', $data);
     }

@@ -241,7 +241,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Mobile View -->
 <?php else : ?>
     <!-- Desktop View -->
-    <div id="desktopContent" style="margin-top:50px;">
+    <div id="desktopContent" style="margin-top:15px;">
 
         <!-- Modal  Homepage-->
         <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
@@ -372,12 +372,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </section>
         <!-- Akhir SSayo Resto -->
         <!-- swipper card tampilan web -->
-        <section class="mt-1 " id="unggul">
-            <div class="container py-3 d-none d-lg-block">
+        <section id="unggul">
+            <div class="container py-3">
                 <div class="row mt-3">
                     <div class="col">
-                        <h2 class="mb-4 text-merah">Produk Lainnya</h2>
-                        <div class="d-flex justify-content-center align-items-center swiper mySwing">
+                        <div class="card border-0 text-center font-family-poppins" style="background-color: #ccebbc;">
+                            <div class="card-danger">
+                                <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.nama_produk') ?></h2>
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-center align-items-center swiper mySwing">
                             <div class="swiper-wrapper d-flex mb-3">
                                 <?php foreach ($randomProducts as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
@@ -450,10 +454,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <!-- end rekomendasi title-->
                 <!-- card rekomendasi -->
-                <div class="container mb-3 mt-3">
+                <div class="container mt-3">
                     <div class="row">
                         <div class="swiper mySwung">
-                            <div class="swiper-wrapper d-flex">
+                            <div class="mb-5 swiper-wrapper d-flex">
                                 <?php foreach ($blog_detail as $bd) : ?>
                                     <div class="swiper-slide">
                                         <div class="card shadow-sm border-0" style="border-radius: 15px;">
@@ -481,8 +485,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
                 <!-- end card rekomendasi-->
-                <div class="container py-3">
-                    <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #C1E1C1;">
+                <div class="container py-1">
+                    <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #ccebbc;">
                         <div class="card-success">
                             <span class="card-title text-dark fw-bold fs-2 text-capitalize"><?= lang('Text.kategori') ?></span>
                         </div>

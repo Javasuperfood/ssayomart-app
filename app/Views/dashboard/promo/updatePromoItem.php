@@ -1,22 +1,23 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Edit Promo Item Produk</h1>
+<h1 class="h3 mb-3 text-gray-800">Edit Promo Item Produk</h1>
 
 <div class="row">
     <!-- Left Panel -->
     <div class="col-lg-8">
-        <div class="card border-0 shadow-sm position-relative">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Edit Promo Item Produk</h6>
+        <div class="card border-1 shadow-sm position-relative">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-pencil-square"></i>
+                <h6 class="m-0 fw-bold px-2">Edit Promo Item Produk</h6>
             </div>
             <div class="card-body">
                 <form action="<?= base_url(); ?>dashboard/promo/tambah-promo-item/edit-promo-item/<?= $op['id_promo_item'] ?>" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" class="form-control" id="id_promo_item" name="id_promo_item" value="<?= $op['id_promo_item'] ?>">
-                    <div class="mb-3">
-                        <label for="promo" class="form-label text-secondary">Pilih Promo Tersedia</label>
-                        <select name="promo" id="promo" class="form-control shadow-sm border-0">
+                    <div class="mb-4">
+                        <label for="promo" class="form-label">Pilih Promo Tersedia</label>
+                        <select name="promo" id="promo" class="form-control border-1">
                             <?php foreach ($promo as $p) : ?>
                                 <option value="<?= $p['id_promo']; ?>" <?= ($p['id_promo'] == $op['id_promo']) ? 'selected' : ''; ?>><?= $p['title']; ?></option>
                             <?php endforeach; ?>
@@ -24,9 +25,9 @@
                         <span id="promoError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="produk" class="form-label text-secondary">Pilih Produk Yang Akan Diberikan Promo</label>
-                        <button type="button" class="btn form-control shadow-sm border-0 text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <div class="mb-4">
+                        <label for="produk" class="form-label">Pilih Produk Yang Akan Diberikan Promo</label>
+                        <button type="button" class="btn form-control border-1 text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                             Tekan Untuk Memilih Produk
                         </button>
                     </div>
@@ -94,25 +95,26 @@
                         </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="produk" class="form-label text-secondary">Produk Terpilih</label>
-                        <input type="text" class="form-control border-0 shadow-sm bg-white" id="produkTerpilih" value="<?= $op['produk_nama']; ?>" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
+                    <div class="mb-4">
+                        <label for="produk" class="form-label">Produk Terpilih</label>
+                        <input type="text" class="form-control border-1 bg-white" id="produkTerpilih" value="<?= $op['produk_nama']; ?>" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
                         <span id="produkError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="min" class="form-label text-secondary">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." value="<?= $op['min']; ?>">
+                    <div class="mb-4">
+                        <label for="min" class="form-label">Minimal Pembelian Produk</label>
+                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." value="<?= $op['min']; ?>">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
-                    <div class="mb-3">
-                        <label for="discount" class="form-label text-secondary">Diskon (%)</label>
-                        <input type="text" class="form-control border-0 shadow-sm" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon..." value="<?= $op['discount']; ?>">
+                    <div class="mb-4">
+                        <label for="discount" class="form-label">Diskon (%)</label>
+                        <input type="text" class="form-control border-1" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon..." value="<?= $op['discount']; ?>">
                         <span id="discountError" class="text-danger"></span>
                     </div>
 
-                    <div class="text-center">
+                    <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                    <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>

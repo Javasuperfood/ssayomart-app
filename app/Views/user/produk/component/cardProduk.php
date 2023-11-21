@@ -142,5 +142,9 @@
         p.text-secondary {
             font-size: 9px !important;
         }
+
+        h1.text-danger {
+            font-size: 12px !important;
+        }
     }
 </style>

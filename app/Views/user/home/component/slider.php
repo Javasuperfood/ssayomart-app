@@ -68,21 +68,54 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Banner Mobile -->
 
     <!-- Banner Desktop -->
-    <div id="desktopContent" style="margin-top: 90px;">
+    <div id="desktopContent" style="margin-top: 120px;">
         <div class="container">
-            <div class="swiper mySwiper" style="position: relative; margin-bottom:32px;">
-                <div class="swiper-wrapper d-flex">
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper d-flex justify-content-center align-items-center">
                     <?php foreach ($banner as $b) : ?>
-                        <div class="swiper-slide">
-                            <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
-                                <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
-                            </a>
+                        <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
+                            <div class="text-bg-light bg-white">
+                                <div class="card-body">
+                                    <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
+                                        <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>
+        <style>
+            .swiper-container {
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        <script>
+            var mySwiper = new Swiper('.mySwiper', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                autoplay: {
+                    delay: 5000, // Ganti dengan interval otomatis yang diinginkan (dalam milidetik)
+                },
+
+                simulateTouch: true, // Mengaktifkan kemampuan swipe manual
+                breakpoints: {
+                    // Breakpoint untuk mode mobile
+                    768: {
+                        slidesPerView: 1,
+                    },
+                },
+            });
+        </script>
     </div>
+
     <!-- End Footer Desktop -->
 <?php endif; ?>
 

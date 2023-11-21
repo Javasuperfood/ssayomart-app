@@ -4,8 +4,10 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AdminTokoModel;
+use App\Models\AlamatUserModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
+use App\Models\RefundModel;
 use App\Models\StatusPesanModel;
 use App\Models\StockModel;
 use App\Models\TokoModel;
@@ -389,5 +391,173 @@ class AdminPesananController extends BaseController
         }
         // dd($data);
         return view('dashboard/pesanan/printOrder', $data);
+    }
+
+    // ================== Refund ========================
+    public function refundList()
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $statusPesanModel = new StatusPesanModel();
+        $adminTokoModel = new AdminTokoModel();
+        $tokoModel = new TokoModel();
+
+        $toko = $adminTokoModel->where('id_user', user_id())->findAll();
+
+        $currentPage = $this->request->getVar('page_order') ? $this->request->getVar('page_order') : 1;
+
+        $shipment = $this->request->getVar('shipment') ? $this->request->getVar('shipment') : 'all';
+        $kurir = ($shipment == 'GoSend') ? 1 : (($shipment == 'non-GoSend') ? 0 : 'all');
+
+        $perPage = 10;
+
+        if (!empty($toko)) {
+            $checkout = $checkoutModel->getOrder($perPage, $toko[0]['id_toko'], null, $kurir, 'refund');
+        } else {
+            return view('dashboard/pesanan/index2');
+        }
+
+        foreach ($checkout as $key => $c) {
+            $checkout[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
+        }
+
+        $data = [
+            'pages' => 'refund',
+            'checkout' => $checkout,
+            'pager' => $checkoutModel->pager,
+            'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'statusPesan' => $statusPesanModel->findAll(),
+            'shipment' => $shipment,
+        ];
+
+        foreach ($toko as $key => $t) {
+            $data['toko'][$key] = $tokoModel->find($t['id_toko'])['lable'];
+        }
+
+        // dd($data);
+        return view('dashboard/pesanan/index2', $data);
+    }
+    public function refund($id)
+    {
+        $checkoutProdModel = new CheckoutProdukModel();
+        $statusPesanModel = new StatusPesanModel();
+        $order = $checkoutProdModel->getTransaksi($id);
+        $midtransConfig = config('Midtrans');
+
+        // Set the Midtrans API credentials
+        MidtransConfig::$serverKey = $midtransConfig->serverKey;
+        MidtransConfig::$clientKey = $midtransConfig->clientKey;
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        MidtransConfig::$isProduction = $midtransConfig->isProduction;
+        // Set sanitization on (default)
+        MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
+        // Set 3DS transaction for credit card to true
+        MidtransConfig::$is3ds = $midtransConfig->is3ds;
+
+        $midtrans = \Midtrans\Transaction::status($id);
+        $status = json_decode(json_encode($midtrans), true);
+        $data = [
+            'inv' => $id,
+            'orders' => $order,
+            'order' => $order[0],
+            'statusPesan' => $statusPesanModel->findAll(),
+            'status' => $status,
+        ];
+        if ($order[0]['id_destination']) {
+            $alamatUserModel = new AlamatUserModel();
+            $data['destination'] = $alamatUserModel->find($order[0]['id_destination']);
+        }
+        // dd($data);
+        return view('dashboard/pesanan/refund', $data);
+    }
+
+    public function refundStore($id)
+    {
+        // dd($this->request->getPost());
+        $code1 = $this->request->getPost('code');
+        $code2 = $this->request->getPost('code-confirm');
+        $refund_note = $this->request->getPost('refund_note');
+        $validate = [
+            'code-confirm' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kode harus diisi.'
+                ]
+            ],
+            'refund_note' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Note refund harus diisi.'
+                ]
+            ],
+        ];
+        if (!$this->validateData([
+            'code-confirm' => $code2,
+            'refund_note' => $refund_note
+        ], $validate)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => $this->validator->listErrors()
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to(base_url('dashboard/order/refund/' . $id))->withInput();
+        }
+        if ($code1 != $code2) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Pastikan menuli kode dengan benar.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to(base_url('dashboard/order/refund/' . $id))->withInput();
+        }
+        if (!auth()->user()->inGroup('admin')) {
+            return "You're not allowed to do this";
+        }
+        $midtransConfig = config('Midtrans');
+
+        // Set the Midtrans API credentials
+        MidtransConfig::$serverKey = $midtransConfig->serverKey;
+        MidtransConfig::$clientKey = $midtransConfig->clientKey;
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        MidtransConfig::$isProduction = $midtransConfig->isProduction;
+        // Set sanitization on (default)
+        MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
+        // Set 3DS transaction for credit card to true
+        MidtransConfig::$is3ds = $midtransConfig->is3ds;
+
+        $checkoutModel = new CheckoutModel();
+        $refundModel = new RefundModel();
+        $order = $checkoutModel->where('invoice', $id)->first();
+
+        $params = [
+            'refund_key' => $id,
+            'amount' => $order['total_2'],
+            'reason' => $refund_note
+        ];
+        $refund = \Midtrans\Transaction::refund($id, $params);
+        $refundArray = json_decode(json_encode($refund), true);
+
+        $data = [
+            'id_checkout' => $order['id_checkout'],
+            'order_id' => $refundArray['order_id'],
+            'refund_code' => $code1,
+            'refund_status' => $refundArray['fraud_status'],
+            'refund_note' => $refund_note,
+            'refund_amount' => $refundArray['refund_amount'],
+            'created_by' => user_id(),
+            'updated_by' => user_id(),
+
+        ];
+        $refundModel->save($data);
+
+        $alert = [
+            'type' => 'success',
+            'title' => 'Success',
+            'message' => 'Refund Berhasil.'
+        ];
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to(base_url('dashboard/order/refund/' . $id));
     }
 }

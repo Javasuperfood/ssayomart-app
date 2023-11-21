@@ -75,6 +75,7 @@
                 <a class="collapse-item <?= (isset($pages) && $pages == 'in-proccess') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/in-proccess'); ?>">Dalam Proses</a>
                 <a class="collapse-item <?= (isset($pages) && $pages == 'being-delivered') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/being-delivered'); ?>">Dalam Perjalanan</a>
                 <a class="collapse-item <?= (isset($pages) && $pages == 'delivered') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/delivered'); ?>">Pesanan Terkirim</a>
+                <a class="collapse-item <?= (isset($pages) && $pages == 'refunds') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/refunds'); ?>">Refund</a>
             </div>
         </div>
     </li>
