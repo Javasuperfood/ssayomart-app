@@ -130,12 +130,14 @@ class ProdukController extends BaseController
             'randomProducts' => $randomProducts,
             'kategoriProduk' => $kategoriProduk, // Menambahkan kategori produk
             'subKategoriProduk' => $subKategoriProduk, // Menambahkan kategori produk
+            'useStock' => false
         ];
 
         if (auth()->loggedIn()) {
             $marketSelected = $userModel->find(user_id())['market_selected'];
             $stok = $stokModel->getStock($produk['id_produk'], $marketSelected);
             $data['stok'] = $stok;
+            $data['useStock'] = (count($stok) < 1);
         }
         // dd($data);
         return view('user/produk/produk', $data);
