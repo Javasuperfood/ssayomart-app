@@ -107,4 +107,25 @@ class KuponModel extends Model
         $result = $query->getResultArray();
         return $result;
     }
+
+    public function getKuponId($kode)
+    {
+        if (!empty($kode)) {
+            $coupon = $this->where(['kode' => $kode])->select('id_kupon')->first();
+            return !empty($coupon) ? $coupon['id_kupon'] : null;
+        }
+        return null;
+    }
+
+    public function useCoupon($idKupon)
+    {
+        $coupon = $this->find($idKupon);
+
+        if ($coupon && $coupon['available_kupon'] > 0) {
+            $this->set(['available_kupon' => $coupon['available_kupon'] - 1])->update($idKupon);
+            return true;
+        }
+
+        return false;
+    }
 }
