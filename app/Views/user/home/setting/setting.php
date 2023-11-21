@@ -258,21 +258,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             p.card-text.text-secondary.d-flex.text-center.justify-content-center.align-items-center {
                 font-size: 9px !important;
             }
-        }
 
-        @media screen and (min-width: 768px) {
-            h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                font-size: 20px !important;
-                margin-top: 50px !important;
+            .link-underline-opacity-0 {
+                display: flex;
             }
-        }
 
-        @media screen and (min-width: 820px) and (max-width: 1024px) {
-            h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                font-size: 24px !important;
-                margin-top: 80px !important;
+            @media screen and (min-width: 768px) {
+                h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
+                    font-size: 20px !important;
+                    margin-top: 50px !important;
+                }
             }
-        }
+
+            @media screen and (min-width: 820px) and (max-width: 1024px) {
+                h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
+                    font-size: 24px !important;
+                    margin-top: 80px !important;
+                }
+            }
     </style>
 
 
