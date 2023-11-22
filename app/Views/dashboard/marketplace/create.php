@@ -15,7 +15,7 @@
                     <h6 class="m-0 font-weight-bold text-danger">Deskripsi</h6>
                 </a>
                 <!-- Card Content - Collapse -->
-                <div class="collapse show" id="deskripsi">
+                <div class="collapse show" id="deskripsi">+
                     <div class="card-body">
                         <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Deskripsi Market..." name="deskripsi" id="deskripsivalid" style="height: 100px"><?= old('deskripsi'); ?></textarea>
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
