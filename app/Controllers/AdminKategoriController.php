@@ -191,7 +191,6 @@ class AdminkategoriController extends BaseController
 
         // validate data
         if (!$this->validateData($data, $kategoriModel->validationRules)) {
-            // dd($data);
             return redirect()->to(base_url('dashboard/kategori/edit-kategori/' . $id))->withInput();
         }
 

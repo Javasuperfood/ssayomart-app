@@ -20,7 +20,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($kategori_promo as $k) : ?>
                                     <div class="swiper-slide">
                                         <a href="<?= base_url('promo/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded">
-
+                                            <p><?= $k['title']; ?></p>
                                         </a>
                                     </div>
                                 <?php endforeach; ?>
