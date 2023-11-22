@@ -32,8 +32,9 @@ class WebhookFilter implements FilterInterface
 
         // Dapatkan nilai header 'X-key'
         $keyId = $request->getHeaderLine('Client-Key');
+        $Authorization = $request->getHeaderLine('Authorization');
         // Lakukan validasi sesuai dengan kebutuhan
-        if ($keyId === 'lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE') {
+        if ($keyId === 'lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE' || $Authorization === 'lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE') {
             // Jika nilai header tidak valid, kembalikan response dengan status Unauthorized
             return $request;
         }
