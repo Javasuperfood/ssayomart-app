@@ -11,8 +11,9 @@ class ReportController extends BaseController
         $checkoutModel = new CheckoutModel();
         $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct();
 
-        $data = ['getCheckoutWithProduct' => $getCheckoutWithProduct];
-        // dd($data);
+        $data = [
+            'getCheckoutWithProduct' => $getCheckoutWithProduct,
+        ];
         return view('dashboard/report/report', $data);
     }
 
