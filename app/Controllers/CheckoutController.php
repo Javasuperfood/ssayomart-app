@@ -16,6 +16,11 @@ use Midtrans\Config as MidtransConfig;
 
 class CheckoutController extends BaseController
 {
+    private $key;
+    public function __construct()
+    {
+        $this->key = '15139';
+    }
     public function storeData()
     {
         $cartModel = new CartModel();
@@ -333,6 +338,7 @@ class CheckoutController extends BaseController
         $email = $userModel->getEmail(user_id());
         $serviceText = $this->request->getVar('serviceText');
         $service = $this->request->getVar('service');
+        $service = $this->decryptValue($service, $this->key);
         $kode = $this->request->getVar('kupon');
         $alamatId = $this->request->getVar('alamatD');
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
@@ -470,5 +476,14 @@ class CheckoutController extends BaseController
         }
 
         return redirect()->to(base_url('payment/' . $inv));
+    }
+    function decryptValue($encryptedValue, $key)
+    {
+        $cipher = "aes-256-cbc";
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $data = base64_decode($encryptedValue);
+        $iv = substr($data, 0, $ivlen);
+        $encrypted = substr($data, $ivlen);
+        return openssl_decrypt($encrypted, $cipher, $key, 0, $iv);
     }
 }

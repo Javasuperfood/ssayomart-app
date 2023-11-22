@@ -101,7 +101,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row row-cols-1">
                                                     <?php foreach ($alamat_list as $key => $a) : ?>
-                                                        <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $al['latitude']; ?>,<?= $al['longitude']; ?>')">
+                                                        <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $a['latitude']; ?>,<?= $a['longitude']; ?>')">
                                                             <div class="card shadow-sm border-0">
                                                                 <div class="card-body form-check form-switch">
                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
@@ -476,7 +476,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <div class="col">
                                                             <div class="row row-cols-1">
                                                                 <?php foreach ($alamat_list as $key => $a) : ?>
-                                                                    <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $al['latitude']; ?>,<?= $al['longitude']; ?>')">
+                                                                    <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $a['latitude']; ?>,<?= $a['longitude']; ?>')">
                                                                         <div class="card shadow-sm border-0">
                                                                             <div class="card-body form-check form-switch">
                                                                                 <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>

@@ -18,6 +18,11 @@ use Midtrans\Config as MidtransConfig;
 
 class BuyController extends BaseController
 {
+    private $key;
+    public function __construct()
+    {
+        $this->key = "15139";;
+    }
     public function index($slug)
     {
         $kategori = new KategoriModel();
@@ -93,6 +98,10 @@ class BuyController extends BaseController
         $id_alamat = $this->request->getVar('alamatD');
         $alamat = $alamatUserModel->find($id_alamat);
         $service = $this->request->getVar('service');
+        $service = $this->decryptValue($service, $this->key);
+        if (!$service) {
+            return redirect()->back();
+        }
         $servicetext = $this->request->getVar('serviceText');
         $kode = $this->request->getVar('kupon');
         $qty =  intval($this->request->getVar('qty'));
@@ -363,5 +372,23 @@ class BuyController extends BaseController
                 'telp' => $telp
             ];
         }
+    }
+
+    function encryptValue($value, $key)
+    {
+        $cipher = "aes-256-cbc";
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $iv = openssl_random_pseudo_bytes($ivlen);
+        $encrypted = openssl_encrypt($value, $cipher, $key, 0, $iv);
+        return base64_encode($iv . $encrypted);
+    }
+    function decryptValue($encryptedValue, $key)
+    {
+        $cipher = "aes-256-cbc";
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $data = base64_decode($encryptedValue);
+        $iv = substr($data, 0, $ivlen);
+        $encrypted = substr($data, $ivlen);
+        return openssl_decrypt($encrypted, $cipher, $key, 0, $iv);
     }
 }
