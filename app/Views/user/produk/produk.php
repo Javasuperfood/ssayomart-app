@@ -482,6 +482,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 margin: 10px;
                 cursor: pointer;
             }
+
+            .input-group>.form-control,
+            .input-group>.form-floating,
+            .input-group>.form-select {
+                position: relative;
+                flex: none;
+                width: 100px;
+                min-width: 0;
+            }
         </style>
     </div>
 
@@ -624,24 +633,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         width: 40px;
         text-align: center;
     }
-
-    /* Efek zoom saat dihover */
-    .zoom-image {
-        overflow: hidden;
-        position: relative;
-    }
-
-    .zoom-image img {
-        transition: transform 0.3s;
-        border-radius: 25px;
-    }
-
-    .zoom-image:hover img {
-        transform: scale(1.1);
-        /* Anda dapat menyesuaikan faktor scaling sesuai kebutuhan Anda */
-    }
-
-    /* Media query for Samsung Galaxy Fold */
 </style>
 
 <style>

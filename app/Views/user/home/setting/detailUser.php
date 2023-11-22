@@ -26,7 +26,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <!-- Button trigger modal -->
                                 <div class="text-center mt-2">
                                     <?php if (!$deleteRequestExists) : ?>
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-sm btn-danger rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <i class="bi bi-trash"></i> Hapus Akun
                                         </button>
                                     <?php endif; ?>
