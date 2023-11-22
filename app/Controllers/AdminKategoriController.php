@@ -188,11 +188,11 @@ class AdminkategoriController extends BaseController
             'slug' => $slug,
             'img' => $image
         ];
+
         // validate data
-        if ($this->validateData($data, $kategoriModel->validationRules)) {
+        if (!$this->validateData($data, $kategoriModel->validationRules)) {
             return redirect()->to(base_url('dashboard/kategori/edit-kategori/' . $id))->withInput();
         }
-
 
         if ($image->getError() == 4) {
             $namaKategoriImage = $this->request->getVar('imageLama');
@@ -220,6 +220,7 @@ class AdminkategoriController extends BaseController
             'img' => $namaKategoriImage
         ];
         // dd($data);
+
         if ($kategoriModel->save($data)) {
             session()->setFlashdata('success', 'Kategori berhasil diubah.');
             $alert = [
@@ -238,7 +239,7 @@ class AdminkategoriController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/kategori/edit-kategori/' . $id)->withInput();
+            return redirect()->to('dashboard/kategori/edit-kategori/update' . $id)->withInput();
         }
     }
 

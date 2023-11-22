@@ -30,7 +30,7 @@
                 <div class="invalid-feedback"><?= validation_show_error('sku'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="deskripsi">Deskripsi Produk</label>
+                <label for="deskripsi" class="form-label">Deskripsi Produk</label>
                 <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" placeholder="Deskripsi Produk Anda .." value="<?= old('deskripsi') ?>"></textarea>
                 <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-md-6">
                         <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
-                        <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-1'; ?>" placeholder="Value Varian">
+                        <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-1'; ?>" value="<?= old('valueItem') ?>" placeholder="Value Varian">
                         <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                     </div>
                 </div>
