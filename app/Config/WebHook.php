@@ -6,20 +6,20 @@ use CodeIgniter\Config\BaseConfig;
 
 class WebHook extends BaseConfig
 {
-    public $url;
-    public $secretKey;
-    public $timeout;
+    public $base_url;
+    public $client_id;
+    public $pas_key;
     public function __construct()
     {
         $isP = getenv('CI_ENVIRONMENT');
         if ($isP == 'production') {
-            $this->url = 'https://example.com/prod/webhook';
-            $this->secretKey = 'your_secret_key';
-            $this->timeout = 10; // Waktu timeout dalam detik
+            $this->base_url = 'https://integration-kilat-api.gojekapi.com';
+            $this->client_id = 'your_secret_key';
+            $this->pas_key = '10'; // Waktu timeout dalam detik
         } elseif ($isP == 'development') {
-            $this->url = 'https://example.com/dev/webhook';
-            $this->secretKey = 'your_secret_key';
-            $this->timeout = 10; // Waktu timeout dalam detik
+            $this->base_url = 'https://integration-kilat-api.gojekapi.com';
+            $this->client_id = 'ssayomart-engine';
+            $this->pas_key = 'caffa1988f9930ca7c66747e892a7e689f3ded81b3d142b10fc99df7ff36f989';
         }
     }
 }

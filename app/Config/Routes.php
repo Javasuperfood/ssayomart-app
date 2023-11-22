@@ -297,7 +297,10 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     $routes->get('getcity', 'Setting::getCity');
     $routes->get('getcost', 'Setting::getCost');
     $routes->post('set-uuid', 'NotifController::setUuid');
-    $routes->Post('payment-success', 'NotifController::PaymentSuccess');
+    $routes->post('payment-success', 'NotifController::PaymentSuccess');
+
+    $routes->post('gosend/getcost', 'GoSendAPIController::getCostGoSend');
+
 
     // $routes->get('/notif', 'NotifController::PaymentSuccess2');
     // $routes->get('/notif', 'NotifController::index');
