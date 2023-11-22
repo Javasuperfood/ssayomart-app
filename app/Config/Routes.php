@@ -144,8 +144,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('kategori', 'AdminKategoriController::index');
     $routes->get('inputkategori', 'inputkategori::inputkategori');
 
-
-
     //CRUD Admin kategori
     $routes->get('kategori', 'AdminKategoriController::index');
     $routes->get('kategori/shorting', 'AdminKategoriController::editKategoriShort');
@@ -327,6 +325,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->patch('get-order/pickup-item/(:segment)', 'WebhookController::handlerPickupItem/$1');
         $routes->get('get-order/gosend', 'WebhookController::getSingleOrder');
         $routes->post('get-order/gosend', 'WebhookController::updateSingleOrder');
+        $routes->post('webhook', 'WebhookController::handleWebhook');
     });
 });
 
