@@ -31,10 +31,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="form-floating">
                                 <?php foreach ($market_list as $key => $m) : ?>
                                     <?php if ($m['id_toko'] == $marketSelected) : ?>
-                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" readonly>
+                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                     <?php elseif (!$marketSelected) : ?>
                                         <?php if ($key == 0) : ?>
-                                            <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" readonly>
+                                            <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
@@ -54,7 +54,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row row-cols-1">
                                                     <?php foreach ($market_list as $key => $m) : ?>
-                                                        <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>',)">
+                                                        <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>','<?= $m['latitude']; ?>,<?= $m['longitude']; ?>')">
                                                             <div class="card border-0 shadow-sm">
                                                                 <div class="card-body form-check form-switch">
                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
@@ -81,14 +81,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="form-floating">
                                 <?php foreach ($alamat_list as $key => $al) : ?>
                                     <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
-                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" readonly>
+                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                     <?php elseif (!$addressSelected) : ?>
                                         <?php if ($key == 0) : ?>
-                                            <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" readonly>
+                                            <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
-                                <label for="mpOrigin">Alamat</label>
+                                <label for="mpDestination">Alamat</label>
                             </div>
                             <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                         </div>
@@ -104,7 +104,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row row-cols-1">
                                                     <?php foreach ($alamat_list as $key => $a) : ?>
-                                                        <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>)">
+                                                        <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $a['latitude']; ?>,<?= $a['longitude']; ?>')">
                                                             <div class="card border-0 shadow-sm">
                                                                 <div class="card-body form-check form-switch">
                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
@@ -413,10 +413,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="form-floating">
                                             <?php foreach ($market_list as $key => $m) : ?>
                                                 <?php if ($m['id_toko'] == $marketSelected) : ?>
-                                                    <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" readonly>
+                                                    <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                                 <?php elseif (!$marketSelected) : ?>
                                                     <?php if ($key == 0) : ?>
-                                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" readonly>
+                                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
@@ -436,7 +436,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <div class="col">
                                                             <div class="row row-cols-1">
                                                                 <?php foreach ($market_list as $key => $m) : ?>
-                                                                    <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>',)">
+                                                                    <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>','<?= $m['latitude']; ?>,<?= $m['longitude']; ?>')">
                                                                         <div class="card border-0 shadow-sm">
                                                                             <div class="card-body form-check form-switch">
                                                                                 <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
@@ -466,14 +466,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="form-floating">
                                             <?php foreach ($alamat_list as $key => $al) : ?>
                                                 <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
-                                                    <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" readonly>
+                                                    <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                                 <?php elseif (!$addressSelected) : ?>
                                                     <?php if ($key == 0) : ?>
-                                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" readonly>
+                                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
-                                            <label for="mpOrigin">Alamat</label>
+                                            <label for="mpDestination">Alamat</label>
                                         </div>
                                         <button class="btn btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                                     </div>
@@ -489,7 +489,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <div class="col">
                                                             <div class="row row-cols-1">
                                                                 <?php foreach ($alamat_list as $key => $a) : ?>
-                                                                    <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>)">
+                                                                    <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $a['latitude']; ?>,<?= $a['longitude']; ?>')">
                                                                         <div class="card border-0 shadow-sm">
                                                                             <div class="card-body form-check form-switch">
                                                                                 <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>

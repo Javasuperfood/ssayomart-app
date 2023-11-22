@@ -185,7 +185,7 @@ class BuyController extends BaseController
             'total_2' => $total_2,
             'service' => $servicetext,
             'harga_service' => $service,
-            'kurir' => strtoupper($this->request->getVar('kurir')),
+            'kurir' => $this->request->getVar('kurir'),
             'kirim' => $kirim,
             'city' => $alamat['city'],
             'zip_code' => $alamat['zip_code'],

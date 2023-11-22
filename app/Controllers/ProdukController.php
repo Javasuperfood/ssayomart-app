@@ -137,7 +137,7 @@ class ProdukController extends BaseController
             $marketSelected = $userModel->find(user_id())['market_selected'];
             $stok = $stokModel->getStock($produk['id_produk'], $marketSelected);
             $data['stok'] = $stok;
-            $data['useStock'] = (count($stok) < 1);
+            // $data['useStock'] = (count($stok) < 1);
         }
         // dd($data);
         return view('user/produk/produk', $data);

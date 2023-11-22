@@ -6,16 +6,18 @@
         ['destination', $("#mpDestination").attr('destination')],
         ['courier', null],
         ['label', null],
+        ['originLatLong', $("#mpOrigin").attr('originLatLong')],
+        ['destinationLatLong', $("#mpDestination").attr('destinationLatLong')]
     ]);
 
-    function selectMarket(i, label, origin) {
+    function selectMarket(i, label, origin, originLatLong) {
         $('#market' + i).prop('checked', true);
         $('#mpOrigin').val(label);
         $('#modal-pilih-origin').modal('hide');
         $("#mpOrigin").attr('origin', origin);
         if (getD.get('origin') != origin) {
-            setOrigin(origin);
-            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+            setOrigin(origin, originLatLong);
+            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'), getD.get('originLatLong'), getD.get('destinationLatLong'));
         }
     }
 
@@ -26,7 +28,7 @@
         $("#mpDestination").attr('destination', destination);
         if (getD.get('destination') != destination) {
             setDestination(destination);
-            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'), getD.get('originLatLong'), getD.get('destinationLatLong'));
         }
     }
 
@@ -37,7 +39,7 @@
 
         if ($(e).val() !== getD.get('courier')) {
             setCourier($(e).val());
-            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'));
+            getCost(getD.get('origin'), getD.get('destination'), getD.get('courier'), getD.get('originLatLong'), getD.get('destinationLatLong'));
             label.text("Terpilih");
             oldLabel(getD.get('label'));
             getD.set('label', label);
@@ -50,9 +52,11 @@
         }
     }
 
-    function setOrigin(o) {
+    function setOrigin(o, ll) {
         getD.set('origin', null);
+        getD.set('originLatLong', null);
         getD.set('origin', o);
+        getD.set('originLatLong', ll);
     }
 
     function setDestination(d) {
@@ -65,7 +69,7 @@
         getD.set('courier', c);
     }
 
-    function getCost(origin = null, destination = null, courier = null) {
+    function getCost(origin = null, destination = null, courier = null, originLatLong = null, destinationLatLong = null) {
         if (origin != null && destination != null && courier != null && courier != 'gosend') {
             $("#service, #ongkir, #ongkirText, #estimasi, #total, #totalText, #serviceText, #field_subtotal").empty().val('');
             $.ajax({
@@ -104,33 +108,67 @@
                 },
             });
         } else if (courier == 'gosend') {
-            $('.btn-bayar').hide();
-            $("#service").empty();
-            $("#service").append($('<option>', {
-                value: '25000',
-                text: 'Same Day Delivery',
-                etd: '100000',
-                std: 'Same Day Delivery'
-            }));
-            $("#service").append($('<option>', {
-                value: '50000',
-                text: 'Instant Delivery',
-                etd: '100000',
-                std: 'Instant Delivery'
-            }));
-            var estimasi = $('option:selected', $("#service")).attr('etd');
-            ongkir = parseInt($("#service").val());
-            $("#ongkir").val(ongkir);
-            $("#ongkirText").html(formatRupiah(ongkir));
-            $("#estimasi").html(estimasi + " Hari");
-            $("#total").val(total);
-            $("#totalText").html(formatRupiah(ongkir + total));
-            $("#field_subtotal").val(ongkir + total);
-            updateDiscount();
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Courier not available",
+            $("#service, #ongkir, #ongkirText, #estimasi, #total, #totalText, #serviceText, #field_subtotal").empty().val('');
+            $.ajax({
+                url: "<?= base_url('api/gosend/getcost') ?>",
+                type: 'POST',
+                data: {
+                    'origin': originLatLong, // lokasi awal
+                    'destination': destinationLatLong, // lokasi user
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    Object.keys(data).forEach(method => {
+                        const shipment = data[method];
+                        if (shipment.serviceable) {
+                            var text = 'GoSend ' + shipment.shipment_method;
+                            $("#service").append($('<option>', {
+                                value: shipment.price.total_price, // Fix the typo here
+                                text: text,
+                                etd: shipment.shipment_method_description,
+                                std: shipment.shipment_method
+                            }));
+                            // Access properties
+                            // for each shipment method
+                            console.log(`Shipment Method: ${shipment.shipment_method}`);
+                            console.log(`Description: ${shipment.shipment_method_description}`);
+                            console.log(`Serviceable: ${shipment.serviceable}`);
+                            console.log(`Active: ${shipment.active}`);
+                            console.log(`Distance: ${shipment.distance}`);
+                            console.log(`Route Polyline: ${shipment.route_polyline}`);
+                            console.log(`Decode Route Polyline:`);
+                            console.log(decodePolyline(shipment.route_polyline));
+
+                            // Access pricing details
+                            console.log("Pricing:");
+                            console.log(`  Total Price: ${shipment.price.total_price}`);
+                            console.log(`  Go Pay Total Price: ${shipment.price.go_pay_total_price}`);
+                            console.log(`  Go Pay Discount: ${shipment.price.go_pay_discount}`);
+                            console.log(`  Voucher Discount: ${shipment.price.voucher_discount}`);
+                            console.log(`  Total Price with Voucher: ${shipment.price.total_price_with_voucher}`);
+
+                            // Add additional properties as needed
+                            console.log("\n"); // Separate each shipment method for clarity
+                        }
+                    });
+                    let methodS;
+                    if (data['Instant'].serviceable) {
+                        methodS = data['Instant'];
+                    } else {
+                        methodS = data['SameDay'];
+                    }
+                    $("#serviceText").val(methodS.shipment_method);
+                    ongkir = parseInt(methodS.price.total_price);
+                    $("#ongkir").val(ongkir);
+                    $("#ongkirText").html(formatRupiah(ongkir));
+                    $("#estimasi").html(methodS.shipment_method_description);
+                    $("#total").val(total);
+                    $("#totalText").html(formatRupiah(ongkir + total));
+                    $("#field_subtotal").val(ongkir + total);
+                    $('.btn-bayar').show();
+                    updateDiscount();
+                },
             });
         }
     }
@@ -139,7 +177,11 @@
         ongkir = parseInt($(this).val());
         $("#ongkir").val(ongkir);
         $("#ongkirText").html(formatRupiah(ongkir));
-        $("#estimasi").html(estimasi + " Hari");
+        if ($("#mpkirim").val() == 'GoSend') {
+            $("#estimasi").html(estimasi);
+        } else {
+            $("#estimasi").html(estimasi + " Hari");
+        }
         $("#total").val(total);
         $("#field_subtotal").val(ongkir + total);
         $("#serviceText").val($("#service option:selected").text());
@@ -149,6 +191,46 @@
             $('.btn-bayar').show();
         }
     });
+
+    function decodePolyline(encoded) {
+        var poly = [];
+        var index = 0;
+        var len = encoded.length;
+        var lat = 0;
+        var lng = 0;
+
+        while (index < len) {
+            var b;
+            var shift = 0;
+            var result = 0;
+            do {
+                b = encoded.charAt(index++).charCodeAt(0) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+
+            var dlat = ((result & 1) !== 0 ? ~(result >> 1) : (result >> 1));
+            lat += dlat;
+
+            shift = 0;
+            result = 0;
+            do {
+                b = encoded.charAt(index++).charCodeAt(0) - 63;
+                result |= (b & 0x1f) << shift;
+                shift += 5;
+            } while (b >= 0x20);
+
+            var dlng = ((result & 1) !== 0 ? ~(result >> 1) : (result >> 1));
+            lng += dlng;
+
+            var point = {
+                lat: lat / 1e5,
+                lng: lng / 1e5
+            };
+            poly.push(point);
+        }
+        return poly;
+    }
 
     function formatRupiah(angka) {
         var formatter = new Intl.NumberFormat('id-ID', {
