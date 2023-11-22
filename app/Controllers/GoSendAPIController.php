@@ -6,6 +6,11 @@ use App\Controllers\BaseController;
 
 class GoSendAPIController extends BaseController
 {
+    private $key;
+    public function __construct()
+    {
+        $this->key = "15139";;
+    }
     public function getCostGoSend()
     {
         $origin = $this->request->getVar('origin');
@@ -39,9 +44,34 @@ class GoSendAPIController extends BaseController
         if (curl_errno($ch)) {
             return 'Error: ' . curl_error($ch);
         } else {
-            return response()->setJSON($response);
+            $response = json_decode($response, true);
+            foreach ($response as $key => $value) {
+                if ($value['active']) {
+                    $response[$key]['encodeCost'] = $this->encryptValue($value['price']['go_pay_total_price'], $this->key);
+                }
+            }
         }
 
         curl_close($ch);
+        return response()->setJSON($response);
+    }
+
+
+    function encryptValue($value, $key)
+    {
+        $cipher = "aes-256-cbc";
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $iv = openssl_random_pseudo_bytes($ivlen);
+        $encrypted = openssl_encrypt($value, $cipher, $key, 0, $iv);
+        return base64_encode($iv . $encrypted);
+    }
+    function decryptValue($encryptedValue, $key)
+    {
+        $cipher = "aes-256-cbc";
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $data = base64_decode($encryptedValue);
+        $iv = substr($data, 0, $ivlen);
+        $encrypted = substr($data, $ivlen);
+        return openssl_decrypt($encrypted, $cipher, $key, 0, $iv);
     }
 }

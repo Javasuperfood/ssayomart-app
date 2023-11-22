@@ -15,10 +15,13 @@ class Setting extends BaseController
 {
     private $url;
     private $apiKey;
+    private $key;
+
     public function __construct()
     {
         $this->url = getenv('API_URL_RO');
         $this->apiKey = getenv('API_KEY_RO');
+        $this->key = "15139";
     }
     public function setting()
     {
@@ -693,7 +696,10 @@ class Setting extends BaseController
         $err = curl_error($curl);
 
         curl_close($curl);
-
+        $response = json_decode($response, true);
+        foreach ($response['rajaongkir']['results'][0]['costs'] as $key => $value) {
+            $response['rajaongkir']['results'][0]['costs'][$key]['cost'][0]['encodeCost'] = $this->encryptValue($value['cost'][0]['value'], $this->key);
+        }
         return $response;
     }
 
@@ -726,7 +732,14 @@ class Setting extends BaseController
         curl_close($curl);
         return $response;
     }
-
+    function encryptValue($value, $key)
+    {
+        $cipher = "aes-256-cbc";
+        $ivlen = openssl_cipher_iv_length($cipher);
+        $iv = openssl_random_pseudo_bytes($ivlen);
+        $encrypted = openssl_encrypt($value, $cipher, $key, 0, $iv);
+        return base64_encode($iv . $encrypted);
+    }
     // sayocare
     public function sayoCare()
     {
