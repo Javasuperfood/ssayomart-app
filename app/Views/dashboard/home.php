@@ -1,15 +1,16 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Dashboard</h1>
+<h1 class="h3 mb-3 text-gray-800">Dashboard</h1>
 
-<div class="card border-0 shadow-sm mb-4">
-	<div class="card-header border-0 py-3">
-		<h6 class="m-0 font-weight-bold text-danger">List Stok Produk</h6>
+<div class="card border-1 shadow-sm mb-5">
+	<div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+		<i class="bi bi-file-text-fill"></i>
+		<h6 class="m-0 fw-bold px-2">List Stok Produk</h6>
 	</div>
 
 	<div class="card-body">
-		<div class="mb-3 row">
+		<div class="mb-4 row">
 			<label for="filter" class="form-label col-sm-2 d-flex align-items-center">Urutkan berdasarkan:</label>
 			<select id="filter" class="form-select mb-3 col-sm-10" aria-label="Select">
 				<option selected value="monthly">Bulan</option>
@@ -31,10 +32,10 @@
 						<tbody>
 							<?php foreach ($getStockWithToko as $checkout) : ?>
 								<tr>
-									<td><?= $checkout->lable; ?></td>
-									<td><?= $checkout->nama; ?></td>
-									<td><?= $checkout->value_item; ?></td>
-									<td><?= $checkout->stok; ?></td>
+									<td class="align-middle"><?= $checkout->lable; ?></td>
+									<td class="align-middle"><?= $checkout->nama; ?></td>
+									<td class="align-middle"><?= $checkout->value_item; ?></td>
+									<td class="align-middle"><?= $checkout->stok; ?></td>
 								</tr>
 							<?php endforeach ?>
 						</tbody>
