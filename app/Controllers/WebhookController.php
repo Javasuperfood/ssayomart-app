@@ -343,4 +343,39 @@ class WebhookController extends BaseController
             'response' => 'Index of webhook'
         ], 200);
     }
+    // EXAMPLE TESTING
+    public function handleWebhook()
+    {
+        // Validasi Header Authorization
+        $authorizationHeader = $this->request->getHeaderLine('Authorization');
+        if ($authorizationHeader !== 'ssayomart-engine') {
+            return $this->respondUnauthorized('Invalid Authorization');
+        }
+
+        // Ambil Payload JSON
+        $payload = $this->request->getJSON();
+
+        // Log Payload
+        log_message('debug', 'Webhook Data: ' . json_encode($payload));
+
+        // Proses Payload
+        $this->processWebhookPayload($payload);
+
+        // Berikan respons 200 OK
+        return $this->respond(['status' => 'success'], 200);
+    }
+
+    private function processWebhookPayload($payload)
+    {
+        // Implementasikan logika khusus Anda untuk menangani payload GoSend di sini
+        // ...
+
+        // Contoh: Log payload yang diterima
+        log_message('debug', 'Mengolah payload webhook: ' . json_encode($payload));
+    }
+
+    private function respondUnauthorized($message)
+    {
+        return $this->respond(['status' => 'error', 'message' => $message], 401);
+    }
 }
