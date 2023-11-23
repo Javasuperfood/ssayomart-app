@@ -16,7 +16,7 @@ class MenuResto extends BaseController
     {
         $kategori = new KategoriModel();
         $data = [
-            'title' => 'Sayo Resto',
+            'title' => 'Ssayoresto',
             'kategori' => $kategori->findAll(),
         ];
         // dd($data);
@@ -35,7 +35,7 @@ class MenuResto extends BaseController
     {
         $kategori = new KategoriModel();
         $data = [
-            'title' => 'Menu Resto',
+            'title' => 'Menu Ssayoresto',
             'kategori' => $kategori->findAll(),
         ];
 
