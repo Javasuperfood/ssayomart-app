@@ -54,7 +54,8 @@ class AdminVariasiController extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to(base_url('dashboard/produk/tambah-variasi'))->withInput();
         }
-        // swet alert
+
+        // sweet alert
         if ($variasiModel->save($data)) {
             session()->setFlashdata('success', 'Variasi produk berhasil disimpan.');
             $alert = [
@@ -75,6 +76,7 @@ class AdminVariasiController extends BaseController
             return redirect()->to('dashboard/produk/tambah-variasi')->withInput();
         }
     }
+
     // Delete
     public function deleteVariasi($id)
     {
