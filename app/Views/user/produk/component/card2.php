@@ -7,7 +7,7 @@
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
-                    <div class="col-12 col-md-3 col-lg-4 mb-3 mx-1">
+                    <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
                         <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -16,7 +16,7 @@
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                                    <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($fp['nama'], 0, 50); ?></p>
+                                    <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($fp['nama'], 0, 40); ?></p>
                                 </div>
                                 <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
