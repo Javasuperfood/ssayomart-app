@@ -231,3 +231,45 @@
         }
     }
 </style>
+
+<!-- samsung galaxy fold tonggle dual screen mode gak sreg hapus aja gak usah cacicu -->
+<style>
+    @media screen and (min-width: 717px) and (max-width: 717px) {
+
+        .col-lg-3,
+        .col-md-4,
+        .col-6 {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 30px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container.row.row-cols-3 {
+            width: 100%;
+            height: auto;
+            margin-left: 5%;
+        }
+    }
+</style>
+<!-- end samsung galaxy fold tonggle dual screen mode 717 -->
