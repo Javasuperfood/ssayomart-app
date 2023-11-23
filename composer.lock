@@ -141,12 +141,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/shield.git",
-                "reference": "f1c2150e54f6aa5108a6e2cc25ddb00a77c5d801"
+                "reference": "434e5a0e550d24199dc4f04033a872e8d3d847d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/f1c2150e54f6aa5108a6e2cc25ddb00a77c5d801",
-                "reference": "f1c2150e54f6aa5108a6e2cc25ddb00a77c5d801",
+                "url": "https://api.github.com/repos/codeigniter4/shield/zipball/434e5a0e550d24199dc4f04033a872e8d3d847d7",
+                "reference": "434e5a0e550d24199dc4f04033a872e8d3d847d7",
                 "shasum": ""
             },
             "require": {
@@ -165,7 +165,7 @@
                 "mockery/mockery": "^1.0",
                 "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan-strict-rules": "^1.5",
-                "rector/rector": "0.18.6"
+                "rector/rector": "0.18.10"
             },
             "suggest": {
                 "ext-curl": "Required to use the password validation rule via PwnedValidator class.",
@@ -207,7 +207,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/shield"
             },
-            "time": "2023-11-01T01:36:49+00:00"
+            "time": "2023-11-22T23:56:12+00:00"
         },
         {
             "name": "datamweb/shield-oauth",
@@ -215,12 +215,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/datamweb/shield-oauth.git",
-                "reference": "2bc6d664c8aa19f045796d72da6f7427429d6bdd"
+                "reference": "519f62c26c5c8da17bf2831bd206f2d9b36bd250"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/datamweb/shield-oauth/zipball/2bc6d664c8aa19f045796d72da6f7427429d6bdd",
-                "reference": "2bc6d664c8aa19f045796d72da6f7427429d6bdd",
+                "url": "https://api.github.com/repos/datamweb/shield-oauth/zipball/519f62c26c5c8da17bf2831bd206f2d9b36bd250",
+                "reference": "519f62c26c5c8da17bf2831bd206f2d9b36bd250",
                 "shasum": ""
             },
             "require": {
@@ -232,7 +232,7 @@
                 "codeigniter4/devkit": "^1.0",
                 "codeigniter4/framework": "^4.3.5",
                 "codeigniter4/shield": "dev-develop",
-                "rector/rector": "0.18.6"
+                "rector/rector": "0.18.10"
             },
             "default-branch": true,
             "type": "library",
@@ -272,7 +272,7 @@
                 "issues": "https://github.com/datamweb/shield-oauth/issues",
                 "source": "https://github.com/datamweb/shield-oauth"
             },
-            "time": "2023-10-26T13:05:54+00:00"
+            "time": "2023-11-17T09:54:41+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -1298,7 +1298,7 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
@@ -1345,7 +1345,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -3293,16 +3293,16 @@
         },
         {
             "name": "theseer/tokenizer",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theseer/tokenizer.git",
-                "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e"
+                "reference": "b2ad5003ca10d4ee50a12da31de12a5774ba6b96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/34a41e998c2183e22995f158c581e7b5e755ab9e",
-                "reference": "34a41e998c2183e22995f158c581e7b5e755ab9e",
+                "url": "https://api.github.com/repos/theseer/tokenizer/zipball/b2ad5003ca10d4ee50a12da31de12a5774ba6b96",
+                "reference": "b2ad5003ca10d4ee50a12da31de12a5774ba6b96",
                 "shasum": ""
             },
             "require": {
@@ -3331,7 +3331,7 @@
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "support": {
                 "issues": "https://github.com/theseer/tokenizer/issues",
-                "source": "https://github.com/theseer/tokenizer/tree/1.2.1"
+                "source": "https://github.com/theseer/tokenizer/tree/1.2.2"
             },
             "funding": [
                 {
@@ -3339,7 +3339,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-28T10:34:58+00:00"
+            "time": "2023-11-20T00:12:19+00:00"
         }
     ],
     "aliases": [],
@@ -3355,5 +3355,5 @@
         "php": "^7.4 || ^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
