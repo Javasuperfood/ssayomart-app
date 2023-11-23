@@ -94,8 +94,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-                margin-left: 87%;
-                margin-bottom: 125%;
+                margin-right: 8%;
+                margin-top: 125%;
 
                 /* atau warna lain sesuai kebutuhan */
             }
@@ -103,10 +103,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             /* Membuat tombol close berbentuk lingkaran */
             .btn-close {
                 border-radius: 50%;
-                width: 20px;
+                width: 25px;
                 /* Sesuaikan ukuran sesuai kebutuhan */
-                height: 20px;
+                height: 25px;
                 /* Sesuaikan ukuran sesuai kebutuhan */
+            }
+
+            /* Ipad*/
+            @media screen and (min-width: 768px) and (max-width: 1024px) {
+                /* Your styles for iPad (portrait and landscape) go here */
+            }
+
+            /* HP samsung fold nyusain */
+            @media screen and (min-width: 717px) {
+                /* Your styles for iPad (portrait and landscape) go here */
             }
         </style>
         <!-- Akhir Modal  Homepage-->
@@ -318,8 +328,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-                margin-left: 65%;
-                margin-bottom: 85%;
+                margin-right: 65%;
+                margin-top: 85%;
 
                 /* atau warna lain sesuai kebutuhan */
             }

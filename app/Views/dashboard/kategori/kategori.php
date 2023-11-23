@@ -3,21 +3,22 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-2 text-gray-800">Kategori Produk</h1>
-<ul class="breadcrumb bg-light">
-    <li class="breadcrumb-item text-danger active">Dashboard</li>
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">Kategori</a></li>
+<ul class="breadcrumb bg-light px-0">
+    <li class="breadcrumb-item">Dashboard</li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline"><a class="text-danger" href="<?= base_url(); ?>dashboard/kategori">Kategori</a></li>
 </ul>
 <div class="row">
-    <div class="col mb-3">
-        <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
+    <div class="col mb-4">
+        <a class="btn btn-danger mb-4" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
         </a>
-        <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah urutan kategori
+        <a class="btn btn-danger mb-4 ms-2" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah urutan kategori
         </a>
-        <div class="card border-0 shadow-sm position-relative">
-            <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-bold text-danger">List Kategori dan Sub Kategori Produk</h6>
+        <div class="card border-1 shadow-sm position-relative">
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+                <i class="bi bi-file-text-fill"></i>
+                <h6 class="m-0 fw-bold px-2">List Kategori dan Sub Kategori Produk</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body mt-2">
                 <table class="table table-hover" id="dataTable" cellspacing="0">
                     <thead>
                         <tr>
@@ -31,14 +32,14 @@
                         <?php $no = 1; ?>
                         <?php foreach ($kategori_list as $km) : ?>
                             <tr>
-                                <td>
+                                <td class="align-middle">
                                     <img src="<?= base_url('assets/img/kategori/' . $km['img_kategori']); ?>" class="img-fluid" alt="" width="50" height="50">
                                 </td>
 
-                                <td><strong><?= $km['nama_kategori'] ?></strong></td>
-                                <td><?= $km['slug_kategori'] ?></td>
+                                <td class="align-middle"><strong><?= $km['nama_kategori'] ?></strong></td>
+                                <td class="align-middle"><?= $km['slug_kategori'] ?></td>
 
-                                <td>
+                                <td class="align-middle">
                                     <div class="text-center">
                                         <div class="nav-item dropdown no-arrow">
                                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,12 +90,12 @@
                                         <td>
                                             <p></p>
                                         </td>
-                                        <td>
+                                        <td class="align-middle">
                                             <div class="text-secondary">
                                                 <li><?= $ks['nama_sub_kategori'] ?></li>
                                             </div>
                                         </td>
-                                        <td><?= $ks['slug_sub_kategori']; ?></td>
+                                        <td class="align-middle"><?= $ks['slug_sub_kategori']; ?></td>
                                         <td>
                                             <div class="text-center">
                                                 <div class="nav-item dropdown no-arrow">
