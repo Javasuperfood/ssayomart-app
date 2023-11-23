@@ -104,22 +104,27 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <?php if ($c['gosend'] == 1) : ?>
-                                                <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="pickUp(this)">
-                                                    <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
-                                                    Pick-Up
-                                                </a>
-                                                <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="repickUp(this)">
-                                                    <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
-                                                    Retry Pick-Up
-                                                </a>
-                                                <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="cancelPickUp(this)">
-                                                    <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
-                                                    Cancel
-                                                </a>
-                                                <hr>
-                                            <?php endif ?>
+
                                             <?php if ((int)$c['id_status_pesan'] > 1) : ?>
+                                                <?php if ($c['gosend'] == 1) : ?>
+                                                    <a class="dropdown-item fw-bold text-danger" href="gosend-update/<?= $c['invoice']; ?>">
+                                                        <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
+                                                        GoSend Update
+                                                    </a>
+                                                    <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="pickUp(this)">
+                                                        <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
+                                                        Pick-Up
+                                                    </a>
+                                                    <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="repickUp(this)">
+                                                        <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
+                                                        Retry Pick-Up
+                                                    </a>
+                                                    <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="cancelPickUp(this)">
+                                                        <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
+                                                        Cancel
+                                                    </a>
+                                                    <hr>
+                                                <?php endif ?>
                                                 <a class="dropdown-item" href="<?= base_url('dashboard/order/print-order/' . $c['id_checkout']); ?>">
                                                     <i class="bi bi-printer fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Print
@@ -236,32 +241,5 @@
         </div>
     </div>
 <?php endif; ?>
-
-<script>
-    const filterSelect = document.getElementById('inputGroupSelect04');
-    const itemsToFilter = document.querySelectorAll('.table tbody tr');
-
-    // filter
-    filterSelect.addEventListener('change', function() {
-        const selectedFilter = filterSelect.value;
-
-        itemsToFilter.forEach(item => {
-            const courierTypeElement = item.querySelector('.courier-type');
-
-            if (courierTypeElement) {
-                const courierType = courierTypeElement.textContent.trim();
-                console.log('Courier Type:', courierType);
-
-                if (selectedFilter === 'all' || (selectedFilter === 'GoSend' && courierType.includes('GoSend')) || (selectedFilter === 'non-GoSend' && !courierType.includes('GoSend'))) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            } else {
-                console.error('Courier Type element not found for item:', item);
-            }
-        });
-    });
-</script>
 
 <?= $this->endSection(); ?>

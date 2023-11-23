@@ -56,7 +56,51 @@ class GoSendAPIController extends BaseController
         return response()->setJSON($response);
     }
 
+    function bookingAPI($body = [])
+    {
+        $webhookConfig = config('WebHook');
+        $baseUrl = $webhookConfig->base_url;
+        $clientId = $webhookConfig->client_id;
+        $pasKey = $webhookConfig->pas_key;
 
+        $endpoint = $baseUrl . '/gokilat/v10/booking';
+
+        // Request headers
+        $headers = array(
+            'Accept: application/json',
+            'Client-ID: ' . $clientId,
+            'Pass-Key: ' . $pasKey
+        );
+
+        // Request body payload
+        $data = $body;
+
+        // Convert the data array to JSON format
+        $jsonData = json_encode($data);
+
+        // Initialize cURL session
+        $ch = curl_init($endpoint);
+
+        // Set cURL options
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        // Execute cURL session and get the response
+        $response = curl_exec($ch);
+
+        // Check for cURL errors
+        if (curl_errno($ch)) {
+            echo 'Curl error: ' . curl_error($ch);
+        }
+
+        // Close cURL session
+        curl_close($ch);
+
+        // Print the response
+        return $response;
+    }
     function encryptValue($value, $key)
     {
         $cipher = "aes-256-cbc";
