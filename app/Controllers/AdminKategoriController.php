@@ -256,6 +256,19 @@ class AdminkategoriController extends BaseController
             }
         }
 
+        $ProdukModel = new ProdukModel();
+        $produk = $ProdukModel->where('id_kategori', $id)->findAll();
+        if (!empty($produk)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat produk yang terhubung dengan kategori ini. Hapus produk terlebih dahulu.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/kategori');
+        }
+
         $deleted = $kategoriModel->delKategori($id);
         if ($deleted) {
             $alert = [
@@ -381,8 +394,21 @@ class AdminkategoriController extends BaseController
     public function deleteSubKategori($id)
     {
         $subKategoriModel = new SubKategoriModel();
-        $deleted = $subKategoriModel->delSubKategori($id);
 
+        $ProdukModel = new ProdukModel();
+        $produk = $ProdukModel->where('id_sub_kategori', $id)->findAll();
+        if (!empty($produk)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat produk yang terhubung dengan sub-kategori ini. Hapus produk terlebih dahulu.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/kategori');
+        }
+
+        $deleted = $subKategoriModel->delSubKategori($id);
         if ($deleted) {
             $alert = [
                 'type' => 'success',
