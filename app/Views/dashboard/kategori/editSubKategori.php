@@ -38,7 +38,7 @@
 
             <div class="mb-3">
                 <label for="deskripsi" class="form-label">Deskripsi</label>
-                <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="deskripsi" name="deskripsi"><?= $subkategori['deskripsi'] ?></textarea>
+                <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="deskripsi" name="deskripsi"><?= (old('deskripsi')) ? old('deskripsi') : $subkategori['deskripsi'] ?></textarea>
                 <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
 
