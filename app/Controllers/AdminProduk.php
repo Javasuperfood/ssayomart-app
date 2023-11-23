@@ -216,6 +216,17 @@ class AdminProduk extends BaseController
         $sub_kategori_list = $subKategoriModel->findAll();
         $produk = $produkModel->find($id);
 
+        if ($variasiItemList == null) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Varian harus diisi terlebih dahulu.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/produk');
+        }
+
         $data = [
             'title' => 'Edit Produk',
             'p' => $produk,
