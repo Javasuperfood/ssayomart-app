@@ -94,7 +94,7 @@ class GoSendController extends BaseController
                 "originAddress" => $origin['alamat_1'],
                 "destinationName" => $destination['penerima'],
                 "destinationNote" => "Tolong Hati-Hati",
-                "destinationContactName" => $destination['alamat_2'],
+                "destinationContactName" => $destination['penerima'],
                 "destinationContactPhone" => $this->formatTelp($destination['telp']),
                 "destinationLatLong" => $destination['latitude'] . ',' . $destination['longitude'],
                 "destinationAddress" => $destination['alamat_1'],

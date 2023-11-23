@@ -293,10 +293,14 @@ class AdminPesananController extends BaseController
         $page = $this->request->getVar('page');
         $checkoutModel = new CheckoutModel();
 
-        $url = base_url() . 'dashboard/order/';
+        $resi = $this->request->getVar('resi');
+        if (!$resi) {
+            $resi = null;
+        }
+        $url = base_url() . 'dashboard/order/?page_order=';
         if (!$checkoutModel->save([
             'id_checkout' => $id, 'id_status_pesan' => $this->request->getVar('status'),
-            'resi' => $this->request->getVar('resi'),
+            'resi' => $resi,
         ])) {
             return 'gagal update';
             return redirect()->to(base_url('dashboard/order/in-proccess'))->withInput();
