@@ -37,6 +37,7 @@ class UserPromoController extends BaseController
             }
             $promoItem = $filteredPromoItems;
         }
+        // dd($promoItem);
 
         $title = (!$promoItem) ? 'Promo' : $promoItem[0]['title'];
 
