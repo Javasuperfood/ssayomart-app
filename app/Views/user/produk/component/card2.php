@@ -239,7 +239,7 @@
 <style>
     @media screen and (min-width: 717px) and (max-width: 717px) {
 
-        .col-lg-3,
+        .col-lg-2,
         .col-md-2,
         .col-4 {
             flex: 0 0 100% !important;
@@ -271,7 +271,13 @@
         #product-container.row.row-cols-3 {
             width: 100%;
             height: auto;
+            margin-left: 1%;
 
+        }
+
+        #product-unggulan-container.row.row-cols-3 {
+            width: 100%;
+            height: auto;
             margin-left: 1%;
 
         }
