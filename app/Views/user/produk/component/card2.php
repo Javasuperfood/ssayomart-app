@@ -3,10 +3,11 @@
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
             <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
             <hr class="border-darker mt-0 mb-3">
+
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
-                    <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0 text-center">
+                    <div class="col-12 col-md-3 col-lg-4 mb-3 mx-1">
                         <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -29,6 +30,7 @@
                                     <?php endif ?>
                                 </h1>
 
+
                                 <div class="container mt-2">
                                     <div class="row justify-items-center">
                                         <div class="col">
@@ -40,7 +42,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                                     <form action="<?= base_url('produk/' . $fp['slug']); ?>">
                                         <input type="hidden" name="add-to-cart" value="show">
                                         <input type="hidden" name="qty" id="Cqty<?= $fp['id_produk']; ?>" value="1" value="show">
@@ -56,7 +58,7 @@
                                         </button>
                                         <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                     </form>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -68,25 +70,26 @@
 <div class="container bg-white" id="product">
     <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
     <hr class="border-darker mt-0 mb-3">
+
     <div class="row row-cols-3" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
-            <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
-                <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+            <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
+                <div class="card border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
-                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
                         </div>
                     </a>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                        <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                            <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                        <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                            <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
                         </div>
-                        <p class="text-secondary" style="font-size: 10px; margin: 0;">
+                        <p class="text-secondary" style="font-size: 5px; margin: 0;">
                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                         </p>
 
-                        <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1 mb-2" style="font-size: 11px; margin: 0;">
                             <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                 Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                             <?php else : ?>
@@ -94,7 +97,7 @@
                             <?php endif ?>
                         </h1>
 
-                        <div class="container mt-2">
+                        <!-- <div class="container mt-2">
                             <div class="row justify-items-center">
                                 <div class="col">
                                     <div class="horizontal-counter">
@@ -104,8 +107,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                        </div> -->
+                        <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                             <form action="<?= base_url('produk/' . $p['slug']); ?>">
                                 <input type="hidden" name="add-to-cart" value="show">
                                 <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
@@ -121,7 +124,7 @@
                                 </button>
                                 <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -164,7 +167,7 @@
     </div>
 <?php endif ?>
 
-<style>
+<!-- <style>
     .border-darker {
         border-color: red;
         /* Ubah warna garis menjadi merah */
@@ -230,17 +233,17 @@
             /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
         }
     }
-</style>
+</style> -->
 
 <!-- samsung galaxy fold tonggle dual screen mode gak sreg hapus aja gak usah cacicu -->
 <style>
     @media screen and (min-width: 717px) and (max-width: 717px) {
 
         .col-lg-3,
-        .col-md-4,
-        .col-6 {
+        .col-md-2,
+        .col-4 {
             flex: 0 0 100% !important;
-            max-width: 30%;
+            max-width: 25%;
         }
 
 
@@ -268,7 +271,19 @@
         #product-container.row.row-cols-3 {
             width: 100%;
             height: auto;
-            margin-left: 5%;
+
+            margin-left: 1%;
+
+        }
+    }
+
+    @media (max-width: 280px) {
+
+        .col-lg-3,
+        .col-md-3,
+        .col-6 {
+            flex: 0 0 100% !important;
+            max-width: 50%;
         }
     }
 </style>
