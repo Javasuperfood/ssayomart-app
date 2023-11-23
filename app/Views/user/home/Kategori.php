@@ -94,8 +94,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-                margin-right: 8%;
-                margin-top: 125%;
+                /* margin-right: 4%; */
+                margin-top: 130%;
 
                 /* atau warna lain sesuai kebutuhan */
             }
@@ -109,14 +109,74 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Sesuaikan ukuran sesuai kebutuhan */
             }
 
-            /* Ipad*/
-            @media screen and (min-width: 768px) and (max-width: 1024px) {
-                /* Your styles for iPad (portrait and landscape) go here */
+            /*samsung galaxy fold dual mode*/
+            @media screen and (min-width: 717px) and (max-width: 717px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-left: 7%;
+                    margin-top: 90%;
+
+                    /* atau warna lain sesuai kebutuhan */
+                }
+
+                /* Membuat tombol close berbentuk lingkaran */
+                .btn-close {
+                    border-radius: 50%;
+                    width: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                    height: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                }
             }
 
-            /* HP samsung fold nyusain */
-            @media screen and (min-width: 717px) {
-                /* Your styles for iPad (portrait and landscape) go here */
+            /* Ipad */
+            @media screen and (min-width: 768px) and (max-width: 1024px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-left: 7%;
+                    margin-top: 90%;
+
+                    /* atau warna lain sesuai kebutuhan */
+                }
+
+                /* Membuat tombol close berbentuk lingkaran */
+                .btn-close {
+                    border-radius: 50%;
+                    width: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                    height: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                }
+            }
+
+            /* samsung galaxy fold lipat */
+            @media (max-width: 280px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-right: 0%;
+                    margin-top: 140%;
+
+                    /* atau warna lain sesuai kebutuhan */
+                }
+
+                /* Membuat tombol close berbentuk lingkaran */
+                .btn-close {
+                    border-radius: 50%;
+                    width: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                    height: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                }
+
             }
         </style>
         <!-- Akhir Modal  Homepage-->
