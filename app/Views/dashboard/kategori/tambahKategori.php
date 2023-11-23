@@ -48,7 +48,7 @@
 
                     <div class="mb-4">
                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                        <textarea type="text" class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" rows="3" placeholder="Masukan deskripsi kategori atau sub kategori" name="deskripsi" value="<?= old('deskripsi') ?>"></textarea>
+                        <textarea type="text" class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" rows="3" placeholder="Masukan deskripsi kategori atau sub kategori" name="deskripsi"><?= old('deskripsi') ?></textarea>
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
