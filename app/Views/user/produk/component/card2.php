@@ -279,8 +279,8 @@
 
     @media (max-width: 280px) {
 
-        .col-lg-3,
-        .col-md-3,
+        .col-lg-2,
+        .col-md-2,
         .col-6 {
             flex: 0 0 100% !important;
             max-width: 50%;
