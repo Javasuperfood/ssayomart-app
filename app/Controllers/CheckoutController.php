@@ -339,6 +339,11 @@ class CheckoutController extends BaseController
         $serviceText = $this->request->getVar('serviceText');
         $service = $this->request->getVar('service');
         $service = $this->decryptValue($service, $this->key);
+        $kurir = $this->request->getVar('kurir');
+        $GoSend = null;
+        if ($kurir == 'GoSend') {
+            $GoSend = 1;
+        }
         $kode = $this->request->getVar('kupon');
         $alamatId = $this->request->getVar('alamatD');
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
@@ -451,7 +456,8 @@ class CheckoutController extends BaseController
             'total_2' => $total_2,
             'service' => $serviceText,
             'harga_service' => $service,
-            'kurir' => $this->request->getVar('kurir'),
+            'gosend' => $GoSend,
+            'kurir' => $kurir,
             'kirim' => $kirim,
             'city' => $alamat['city'],
             'zip_code' => $alamat['zip_code'],

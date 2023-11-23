@@ -103,6 +103,12 @@ class BuyController extends BaseController
             return redirect()->back();
         }
         $servicetext = $this->request->getVar('serviceText');
+        $kurir = $this->request->getVar('kurir');
+        $GoSend = null;
+        if ($kurir == 'GoSend') {
+            $GoSend = 1;
+        }
+
         $kode = $this->request->getVar('kupon');
         $qty =  intval($this->request->getVar('qty'));
 
@@ -194,7 +200,8 @@ class BuyController extends BaseController
             'total_2' => $total_2,
             'service' => $servicetext,
             'harga_service' => $service,
-            'kurir' => $this->request->getVar('kurir'),
+            'gosend' => $GoSend,
+            'kurir' => $kurir,
             'kirim' => $kirim,
             'city' => $alamat['city'],
             'zip_code' => $alamat['zip_code'],
