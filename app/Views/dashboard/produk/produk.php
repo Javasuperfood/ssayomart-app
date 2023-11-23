@@ -26,25 +26,26 @@
 
 <div class="row">
     <div class="col">
-        <a class="btn btn-danger mb-3" href="<?= base_url(); ?>dashboard/produk/tambah-produk"><i class="bi bi-plus-square"></i> Tambah Produk</a>
-        <a class="btn btn-danger mb-3" href="#" data-toggle="modal" data-target="#deleteBatchModal" id="btnDelete" style="display: none;">
+        <a class="btn btn-danger mb-4" href="<?= base_url(); ?>dashboard/produk/tambah-produk"><i class="bi bi-plus-square"></i> Tambah Produk</a>
+        <a class="btn btn-danger mb-4" href="#" data-toggle="modal" data-target="#deleteBatchModal" id="btnDelete" style="display: none;">
             <i class="bi bi-trash-fill"></i>
             Delete
         </a>
     </div>
     <div class="col text-end">
         <form action="<?= base_url('dashboard/produk'); ?>" method="get">
-            <div class="input-group mb-3">
+            <div class="input-group mb-4">
                 <input type="text" class="form-control" placeholder="search (nama produk)" aria-label="search" name="search" aria-describedby="search">
-                <button class="btn btn-outline-danger" type="submit" id="search">Search</button>
+                <button class="btn btn-danger" type="submit" id="search">Search</button>
             </div>
         </form>
     </div>
 </div>
 
-<div class="card border-0 shadow-sm mb-4">
-    <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-bold text-danger">List Produk</h6>
+<div class="card border-1 shadow-sm mb-5">
+    <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+        <i class="bi bi-file-text-fill"></i>
+        <h6 class="m-0 fw-bold px-2">List Produk</h6>
     </div>
     <div class="card-body ">
         <div class="row">
@@ -71,7 +72,7 @@
                         <tbody>
                             <?php foreach ($produk as $key => $km) : ?>
                                 <tr>
-                                    <td>
+                                    <td class="align-middle">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="check_id[]" value="<?= $km['id_produk']; ?>" id="checkProduk_<?= $km['id_produk']; ?>" onchange="checkProduk(this.value)">
                                             <label class="form-check-label" for="checkProduk">
@@ -79,11 +80,11 @@
                                             </label>
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="align-middle">
                                         <img src="<?= base_url('assets/img/produk/main/' . $km['img']); ?>" class="img-fluid" alt="" width="50" height="50">
                                     </td>
-                                    <td><?= $km['nama']; ?></td>
-                                    <td>
+                                    <td class="align-middle"><?= $km['nama']; ?></td>
+                                    <td class="align-middle">
                                         <?php
                                         $kategoriNama = '';
                                         $subKategoriNama = '';
@@ -105,7 +106,7 @@
                                         // echo ($kategoriNama !== '') ? $kategoriNama . '<br>(' . $subKategoriNama . ')' : 'Kategori Tidak Ditemukan';
                                         ?>
                                     </td>
-                                    <td>
+                                    <td class="align-middle">
                                         <?php foreach ($variasiItem as $keyv => $v) : ?>
                                             <?php if ($key == $keyv) : ?>
                                                 <?php foreach ($v as $keyvv => $vv) : ?>
@@ -114,7 +115,7 @@
                                             <?php endif ?>
                                         <?php endforeach ?>
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center align-middle">
                                         <div class="nav-item dropdown no-arrow">
                                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="bi bi-three-dots-vertical"></i>
