@@ -8,21 +8,21 @@
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
                     <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                        <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+                        <div class="card border-0 shadow-sm text-center" style="width: 105px; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
+                                <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
                                     <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($fp['nama'], 0, 40); ?></p>
                                 </div>
-                                <p class="text-secondary" style="font-size: 10px; margin: 0;">
+                                <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                 </p>
 
-                                <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1" style="font-size: 11px; margin: 0;">
                                     <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                         Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>
@@ -31,7 +31,7 @@
                                 </h1>
 
 
-                                <div class="container mt-2">
+                                <!-- <div class="container mt-2">
                                     <div class="row justify-items-center">
                                         <div class="col">
                                             <div class="horizontal-counter">
@@ -41,7 +41,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                                     <form action="<?= base_url('produk/' . $fp['slug']); ?>">
                                         <input type="hidden" name="add-to-cart" value="show">
@@ -83,9 +83,9 @@
                     </a>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                            <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                            <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                         </div>
-                        <p class="text-secondary" style="font-size: 5px; margin: 0;">
+                        <p class="text-secondary" style="font-size: 8px; margin: 0;">
                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                         </p>
 
