@@ -30,8 +30,6 @@ class AlterAlamatusers extends Migration
                 'null' => true,
                 'after' => 'created_at'
             ],
-
-
         ];
         $this->forge->addColumn('jsf_alamat_users', $fields);
     }

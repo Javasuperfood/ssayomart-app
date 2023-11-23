@@ -398,8 +398,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     var popup = L.popup();
 
     function onMapClick(e) {
-        var lat = e.latlng.lat.toFixed(6);
-        var lon = e.latlng.lng.toFixed(6);
+        var lat = e.latlng.lat.toFixed(7);
+        var lon = e.latlng.lng.toFixed(7);
         console.log('Latitude:', lat);
         console.log('Longitude:', lon);
         // Clear all previous markers
