@@ -43,11 +43,11 @@ $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
 $routes->get('/content-banner/(:segment)', 'BannerContentController::contentBanner/$1');
-$routes->get('/status-gosend', 'StatusGosend::statusGosend');
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
 
+$routes->get('/status-gosend', 'StatusGosendController::statusGosend');
 
 // Rute untuk AppleAuthController
 $routes->get('apple-login', 'AppleAuthController::appleLogin');

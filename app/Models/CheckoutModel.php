@@ -34,7 +34,8 @@ class CheckoutModel extends Model
         'zip_code',
         'telp',
         'snap_token',
-        'city'
+        'city',
+        'gosend',
     ];
 
     // Dates

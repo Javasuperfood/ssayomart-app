@@ -14,22 +14,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container-fluid">
             <div class="row">
                 <div class="col">
-                    <div class="map-container">
-                        <iframe class="text-center maps responsive-iframe" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d588.8346382611838!2d106.6190360362805!3d-6.224009368681214!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fdd1b4844f71%3A0x7a215719bcf3a770!2sSsayo%20Mart%20Indonesia!5e1!3m2!1sen!2sid!4v1700099064396!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
                     <!-- Konten kartu -->
                     <div class="card p-4 rounded-top-4 rounded-bottom-0 border-0 shadow-sm">
                         <div class="card-body">
                             <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1">Data Status Pengiriman</p>
                             <hr class="border-darker mt-0 mb-3">
                             </p>
-                            <p class="mt-4 mb-1" style="font-size: 16px;">driver_name</p>
-                            <span class="fw-bold">Gilang Aditya</span>
+                            <p class="mt-4 mb-1" style="font-size: 16px;">Nama Driver</p>
+                            <span class="fw-bold"><?= $gosendStatus['driverName']; ?></span>
                             <hr>
                             <div class="row">
                                 <div class="col-8">
-                                    <p class="driver-phone" style="font-size: 16px;">driver_phone</p>
-                                    <span class="fw-bold mt-3">0874545131</span>
+                                    <p class="driver-phone" style="font-size: 16px;">Driver Phone</p>
+                                    <span class="fw-bold mt-3"><?= $gosendStatus['driverPhone']; ?></span>
                                 </div>
                                 <div class="col-4 text-end">
                                     <button type="button" class="ms-auto mt-3 mt-md-0 btn-sm btn btn-success"><i class="bi bi-whatsapp"></i></button>
@@ -37,17 +34,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
 
                             <hr>
-                            <p class="mt-4 mb-1" style="font-size: 16px;">booking_id</p>
-                            <span class="fw-bold">123245</span>
+                            <p class="mt-4 mb-1" style="font-size: 16px;">Booking ID</p>
+                            <span class="fw-bold"><?= $gosendStatus['orderNo']; ?></span>
                             <hr>
                             <p class="mt-4 mb-1" style="font-size: 16px;">status</p>
-                            <span class="fw-bold">sudah sampai</span>
+                            <span class="fw-bold"><?= $gosendStatus['status']; ?></span>
                             <hr>
-                            <p class="mt-4 mb-1" style="font-size: 16px;">cancellation_reason</p>
-                            <span class="fw-bold">Barang harganya kemurahan</span>
-                            <hr>
-                            <p class="mt-4 mb-1" style="font-size: 16px;">receiver_name</p>
-                            <span class="fw-bold">Gilang Aditya</span>
+                            <?php if ($gosendStatus['cancelDescription']) : ?>
+                                <p class="mt-4 mb-1" style="font-size: 16px;">cancelDescription</p>
+                                <span class="fw-bold"><?= $gosendStatus['cancelDescription']; ?></span>
+                                <hr>
+                            <?php endif; ?>
+                            <p class="mt-4 mb-1" style="font-size: 16px;">Nama Penerima</p>
+                            <span class="fw-bold"><?= $gosendStatus['receiverName']; ?></span>
                         </div>
                     </div>
 
@@ -78,14 +77,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             <div class="col">
                                 <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-send fw-bold"></i> Pengirim</p>
-                                <span class="fw-bold ms-4">Gilang Adtya</span>
-                                <p class="ms-4 text-secondary">Jl. in aja dulu kalo cocok pasti lanjut</p>
+                                <span class="fw-bold ms-4"><?= $gosendStatus['sellerAddressName']; ?></span>
+                                <p class="ms-4 text-secondary"><?= $gosendStatus['sellerAddressDetail']; ?></p>
                                 <hr>
                             </div>
                             <div class="col">
                                 <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-house"></i> Penerima</p>
-                                <span class="fw-bold ms-4">Mr Gils</span>
-                                <p class="ms-4 text-secondary">Jl. ni saja hidup ini sambil ngopi</p>
+                                <span class="fw-bold ms-4"><?= $gosendStatus['buyerAddressName']; ?></span>
+                                <p class="ms-4 text-secondary"><?= $gosendStatus['buyerAddressDetail']; ?></p>
                                 <hr>
                             </div>
                             <div class="col">
@@ -94,8 +93,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <span class="ms-4 text-secondary">08.00 - 12.00 am</span>
                                 <hr>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <!-- Button trigger modal -->
+                    <div class="fixed-bottom bg-white" style="padding-bottom: 20%;">
+                        <div class="pt-2"></div>
+                        <button type="button" class="btn btn-outline-success px-5" data-bs-toggle="modal" data-bs-target="#liveTarcking">
+                            Live Tracking
+                        </button>
+                    </div>
 
-
+                    <!-- Modal -->
+                    <div class="modal fade" id="liveTarcking" tabindex="-1" aria-labelledby="liveTarckingLabel" aria-hidden="true" style="overflow: hidden;">
+                        <div class="modal-dialog modal-fullscreen">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="liveTarckingLabel">Live Tracking</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <iframe src="<?= $gosendStatus['liveTrackingUrl']; ?>" loading="lazy" frameborder="0" style="width: 100%; height: 100%; overflow: hidden;"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,75 +126,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- samsung galaxy fold -->
     <style>
-        /* Custom styles for Galaxy Fold */
-        @media (max-width: 280px) {
+        .card-body p,
+        .card-body span {
+            font-size: 12px;
 
-            .maps.responsive-iframe {
-                width: 100%;
-                height: 200px;
-            }
+        }
 
-            .responsive-iframe {
-                width: 100%;
-                height: 200px;
+        .track .step span.text {
+            font-size: 10px;
 
-            }
+        }
 
-            .card-body p,
-            .card-body span {
-                font-size: 12px;
-
-            }
-
-            .track .step span.text {
-                font-size: 10px;
-
-            }
-
-            .track .step span.icon {
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
-
-            }
-
+        .track .step span.icon {
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
 
         }
     </style>
 
     <style>
-        .map-container {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 50vh;
-            border: 0;
-        }
-
-        @media (max-width: 767px) {
-            .map-container iframe {
-                height: calc(50vh - 80px);
-                /* Adjust the height for mobile view */
-            }
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .map-container iframe {
-                height: calc(50vh - 60px);
-                /* Adjust the height for iPad view */
-            }
-        }
-
         .card {
             border-radius: 20px;
             /* Sudut bulat pada seluruh kartu */
             overflow: hidden;
-            /* Mengatasi gambar yang keluar dari kartu */
-            margin-top: -30px;
         }
 
         .card img {

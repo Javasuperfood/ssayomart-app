@@ -137,25 +137,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 3) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">
+                                                    <a href="<?= (!$t->gosend) ? base_url('status?order_id=' . $t->invoice) : base_url('status-gosend?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">
                                                         <?= lang('Text.transaksi_3') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 4) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">
+                                                    <a href="<?= (!$t->gosend) ? base_url('status?order_id=' . $t->invoice) : base_url('status-gosend?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">
                                                         <?= lang('Text.transaksi_4') ?>
                                                     </a>
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 5) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger custom-btn">
+                                                    <a href="<?= (!$t->gosend) ? base_url('status?order_id=' . $t->invoice) : base_url('status-gosend?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger custom-btn">
                                                         <?= lang('Text.transaksi_5') ?>
                                                     </a>
                                                 </div>
                                             <?php else : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">Detail</a>
+                                                    <a href="<?= (!$t->gosend) ? base_url('status?order_id=' . $t->invoice) : base_url('status-gosend?order_id=' . $t->invoice); ?>" class="btn btn-outline-success custom-btn">Detail</a>
                                                 </div>
                                             <?php endif ?>
                                         <?php else : ?>
