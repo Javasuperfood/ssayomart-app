@@ -1,6 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 <!-- Page Heading -->
+<link rel="stylesheet" href="<?= base_url() ?>assets/bootstrap/css/bootstrap.min.css">
 <div class="card border-0 text-center bg-light mb-4 px-2 py-2">
     <h1 class="h3 mb-2 text-danger fw-bold">Pesanan <br> <?= $inv; ?></h1>
 </div>
@@ -86,6 +87,39 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="row row-cols-1">
+                        <div class="col my-3">
+                            <div class="card border-1 border-left-danger px-2 pt-2">
+                                <div class="col font-weight-bold">
+                                    <p class="fw-bold fs-5">Transaksi </p>
+                                </div>
+                                <div class="col">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td>Potongan Harga (Diskon)</td>
+                                            <td>:</td>
+                                            <td><?= ($order['discount'] != '') ? ($order['discount'] * 100) . '%' : ''; ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Belanja</td>
+                                            <td>:</td>
+                                            <td>Rp. <?= number_format($order['total_1'], 0, ',', '.'); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Biaya Layanan</td>
+                                            <td>:</td>
+                                            <td>Rp. <?= number_format($order['harga_service'], 0, ',', '.'); ?></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td>:</td>
+                                            <td class="fw-bold">Rp. <?= number_format($order['total_2'], 0, ',', '.'); ?></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-md-6">
@@ -94,40 +128,160 @@
                             <div class="card-header bg-white border-1 py-3">
                                 <h6 class="m-0 font-weight-bold text-danger">GoSend Update</h6>
                             </div>
-                            <div class="row row-cols-1">
-                                <div class="col my-3">
-                                    <div class="card border-1 border-left-danger px-2 pt-2">
-                                        <div class="col font-weight-bold">
-                                            <p class="fw-bold fs-5">Transaksi </p>
-                                        </div>
-                                        <div class="col">
+                            <?php if ($gosendStatus) : ?>
+                                <div class="col-12 my-3">
+                                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                        <div class="col p-4 d-flex flex-column position-static">
                                             <table class="table table-borderless">
-                                                <tr>
-                                                    <td>Potongan Harga (Diskon)</td>
-                                                    <td>:</td>
-                                                    <td><?= ($order['discount'] != '') ? ($order['discount'] * 100) . '%' : ''; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>:</td>
-                                                    <td class="fw-bold">Rp. <?= number_format($order['total_2'], 0, ',', '.'); ?></td>
-                                                </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>:</td>
+                                                        <td><?= $gosendStatus['driverId']; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nama Driver</td>
+                                                        <td>:</td>
+                                                        <td><?= $gosendStatus['driverName']; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Driver Phone </td>
+                                                        <td>:</td>
+                                                        <td><?= $gosendStatus['driverPhone']; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Nomor Kendaraan </td>
+                                                        <td>:</td>
+                                                        <td><?= $gosendStatus['vehicleNumber']; ?></td>
+                                                    </tr>
+                                                </tbody>
                                             </table>
+                                        </div>
+                                        <div class="col-auto d-none d-lg-block">
+                                            <img class="img-fluid" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="">
+                                            <!-- <img class="img-fluid" src="https://source.unsplash.com/200x250" alt="Driver IMG" srcset=""> -->
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                //
-                                <form action="<?= base_url('dashboard/order/gosend-update/' . $inv . '/pickup'); ?>" method="post">
-                                    <?= csrf_field(); ?>
-                                    <input type="hidden" name="inv" value="<?= $inv; ?>">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Note For driver GoSend" id="floatingTextarea2" name="note" style="height: 100px">Di tunggu di Lobi</textarea>
-                                        <label for="floatingTextarea2">Note For driver GoSend</label>
-                                    </div>
-                                    <button type="submit" class="btn btn-danger btn-lg">Pickup</button>
-                                </form>
+                            <?php endif ?>
+                            <div class="col-12 my-3">
+                                <?php if (!$gosendStatus) : ?>
+                                    <form action="<?= base_url('dashboard/order/gosend-update/' . $inv . '/pickup'); ?>" method="post">
+                                        <?= csrf_field(); ?>
+                                        <input type="hidden" name="inv" value="<?= $inv; ?>">
+                                        <input type="hidden" name="req" value="pickup">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Note For driver GoSend" id="floatingTextarea2" name="note" style="height: 100px">Di tunggu di Lobi</textarea>
+                                            <label for="floatingTextarea2">Note For driver GoSend</label>
+                                        </div>
+                                        <div class="my-3 text-center">
+                                            <button type="submit" class="btn btn-danger btn-lg">Pickup</button>
+                                        </div>
+                                    </form>
+                                <?php else : ?>
+                                    <?php if ($gosendStatus['status'] == 'Finding Driver') : ?>
+                                        <div class="alert alert-info my-3" role="alert">
+                                            <h4 class="alert-heading">Mencari Driver!</h4>
+                                            <p>Status saat ini sedang mencari driver untuk pickup produk.</p>
+                                            <hr>
+                                            <p class="mb-0">Nomor Order : <?= $gosendStatus['orderNo']; ?></p>
+                                        </div>
+                                    <?php endif ?>
+                                    <?php if ($gosendStatus['status'] == 'Driver not found') : ?>
+                                        <div class="alert alert-danger my-3" role="alert">
+                                            <h4 class="alert-heading">Driver tidak ditemukan!</h4>
+                                            <p>Status saat ini driver tidak ditemukan.</p>
+                                            <hr>
+                                            <p class="mb-0">Mohon Klik retery untuk mencoba kembali.</p>
+                                        </div>
+                                    <?php endif ?>
+                                    <?php if ($gosendStatus['status'] == 'Cancelled') : ?>
+                                        <div class="alert alert-danger my-3" role="alert">
+                                            <h4 class="alert-heading">Pengirimian dibatalkan!</h4>
+                                            <p>Status saat ini pengirimian dibatalkan.</p>
+                                            <hr>
+                                            <p class="mb-0">Mohon Klik retry untuk mencoba kembali.</p>
+                                        </div>
+                                    <?php endif ?>
+                                    <?php if ($gosendStatus['status'] == 'Rejected') : ?>
+                                        <div class="alert alert-danger" role="alert">
+                                            <h4 class="alert-heading">Pengirimian ditolak!</h4>
+                                            <p>Status saat ini pengirimian ditolak.</p>
+                                            <hr>
+                                        </div>
+                                    <?php endif ?>
+                                    <?php if ($gosendStatus['status'] == 'Completed') : ?>
+                                        <div class="alert alert-success" role="alert">
+                                            <h4 class="alert-heading">Pengirimian Selesai!</h4>
+                                            <p>Status saat ini pengirimian selesai.</p>
+                                            <hr>
+                                            <p class="mb-0">Produk telah sampapi tujuan.</p>
+                                        </div>
+                                    <?php endif ?>
+                                    <?php if ($gosendStatus) : ?>
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Nomor Order</td>
+                                                    <td>:</td>
+                                                    <td><?= $gosendStatus['orderNo']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Booking Status</td>
+                                                    <td>:</td>
+                                                    <td><?= $gosendStatus['bookingStatus']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total Driver Distance</td>
+                                                    <td>:</td>
+                                                    <td><?= $gosendStatus['totalDriverDistanceInKms']; ?> KM</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <?php if ($gosendStatus['status'] == 'Cancelled' || $gosendStatus['status'] == 'Driver not found') : ?>
+                                            <form action="<?= base_url('dashboard/order/gosend-update/' . $inv . '/pickup'); ?>" method="post">
+                                                <?= csrf_field(); ?>
+                                                <input type="hidden" name="inv" value="<?= $inv; ?>">
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="Note For driver GoSend" id="floatingTextarea2" name="note" style="height: 100px">Di tunggu di Lobi</textarea>
+                                                    <label for="floatingTextarea2">Note For driver GoSend</label>
+                                                </div>
+                                                <div class="my-3 text-center">
+                                                    <button type="submit" class="btn btn-danger btn-lg">Retry Pick-up</button>
+                                                </div>
+                                            </form>
+                                        <?php elseif ($gosendStatus['status'] == 'Completed') : ?>
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <a class="btn btn-primary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#liveTarcking">Completed</a></td>
+                                                </div>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="row">
+                                                <div class="col text-center">
+                                                    <a class="btn btn-primary" href="#" role="button" data-bs-toggle="modal" data-bs-target="#liveTarcking">Live Tracking</a></td>
+                                                </div>
+                                            </div>
+                                        <?php endif ?>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="liveTarcking" tabindex="-1" aria-labelledby="liveTarckingLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-fullscreen">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="liveTarckingLabel">Live Tracking <?= $gosendStatus['orderNo']; ?></h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <iframe src="<?= $gosendStatus['liveTrackingUrl']; ?>" style="border: none; width: 100%; height: 100%;"></iframe>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

@@ -23,7 +23,7 @@ class Alamat extends Seeder
                 'zip_code' => '15139',
                 'telp' => '085112345678',
                 'telp2' => '085112345678',
-                'latidude' => -6.182595,
+                'latitude' => -6.182595,
                 'longitude' => 106.813331
             ],
             [
@@ -40,7 +40,7 @@ class Alamat extends Seeder
                 'zip_code' => '11410',
                 'telp' => '085112345678',
                 'telp2' => '085112345678',
-                'latidude' => -6.182595,
+                'latitude' => -6.182595,
                 'longitude' => 106.813331
             ],
             [
@@ -56,7 +56,10 @@ class Alamat extends Seeder
                 'city' => 'Kabupaten Sukabumi',
                 'zip_code' => '43144',
                 'telp' => '085112345678',
-                'telp2' => '085112345678'
+                'telp2' => '085112345678',
+                'latitude' => null,
+                'longitude' => null
+
             ]
         ];
         $this->db->table('jsf_alamat_users')->insertBatch($data);

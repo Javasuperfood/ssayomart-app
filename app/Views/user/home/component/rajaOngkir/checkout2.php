@@ -123,7 +123,7 @@
                 },
                 dataType: 'json',
                 success: function(data) {
-                    // console.log(data);
+                    console.log(data);
                     Object.keys(data).forEach(method => {
                         const shipment = data[method];
                         if (shipment.serviceable) {
@@ -132,7 +132,7 @@
                                 value: shipment.encodeCost, // Fix the typo here
                                 text: text,
                                 etd: shipment.shipment_method_description,
-                                std: shipment.shipment_method,
+                                std: method,
                                 price: shipment.price.total_price
                             }));
                             // Access properties
@@ -144,7 +144,7 @@
                             // console.log(`Distance: ${shipment.distance}`);
                             // console.log(`Route Polyline: ${shipment.route_polyline}`);
                             // console.log(`Decode Route Polyline:`);
-                            // console.log(decodePolyline(shipment.route_polyline));
+                            console.log(decodePolyline(shipment.route_polyline));
 
                             // // Access pricing details
                             // console.log("Pricing:");
@@ -190,7 +190,7 @@
         }
         $("#total").val(total);
         $("#field_subtotal").val(ongkir + total);
-        $("#serviceText").val($("#service option:selected").text());
+        $("#serviceText").val($("#service option:selected").attr('std'));
         $("#totalText").html(formatRupiah(ongkir + total));
         updateDiscount();
         if (getD.get('courier') != 'gosend') {

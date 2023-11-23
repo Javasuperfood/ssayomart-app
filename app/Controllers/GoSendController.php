@@ -19,15 +19,18 @@ class GoSendController extends BaseController
     {
         $checkoutProdModel = new CheckoutProdukModel();
         $order = $checkoutProdModel->getTransaksi($id);
+        $GoSendStatus = $this->getStatusGosend($id);
         $data = [
             'inv' => $id,
             'orders' => $order,
             'order' => $order[0],
+            'gosendStatus' => $GoSendStatus
         ];
         if ($order[0]['id_destination']) {
             $alamatUserModel = new AlamatUserModel();
             $data['destination'] = $alamatUserModel->find($order[0]['id_destination']);
         }
+        // dd($data);
         return view('dashboard/pesanan/GoSend/GoSendUpdate', $data);
     }
 
@@ -49,11 +52,11 @@ class GoSendController extends BaseController
         } else {
             $ida = 2;
         }
-        // $data = [
-        //     'id_checkout' => $t['id_checkout'],
-        //     'id_status_pesan' => $id
-        // ];
-        // $checkoutModel->save($data);
+        $data = [
+            'id_checkout' => $t['id_checkout'],
+            'id_status_pesan' => $ida
+        ];
+        $checkoutModel->save($data);
         $produk = $checkoutProdModel->getAllProdukByIdCheckout($t['id_checkout']);
         $origin = $tokoModel->find($t['id_toko']);
         $destination = $alamatUserModel->find($t['id_destination']);
@@ -79,7 +82,7 @@ class GoSendController extends BaseController
 
         $body = [
             "paymentType" => 3,
-            "collection_location" => "pickup",
+            "collection_location" => $req,
             "shipment_method" => $t['service'],
             "routes" =>
             [[
@@ -168,5 +171,36 @@ class GoSendController extends BaseController
 
         // Print the response
         return $response;
+    }
+
+    function getStatusGosend($id)
+    {
+        $webhookConfig = config('WebHook');
+        $baseUrl = $webhookConfig->base_url;
+        $clientId = $webhookConfig->client_id;
+        $pasKey = $webhookConfig->pas_key;
+        $endpoint = $baseUrl . '/gokilat/v10/booking/storeOrderId';
+
+        $headers = array(
+            'Accept: application/json',
+            'Client-ID: ' . $clientId,
+            'Pass-Key: ' . $pasKey
+        );
+
+        $url = "{$endpoint}/{$id}";
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            return 'Error: ' . curl_error($ch);
+        }
+        curl_close($ch);
+        return json_decode($response, true);
+        return response()->setJSON($response);
     }
 }
