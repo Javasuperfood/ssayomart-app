@@ -37,8 +37,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="img-overlay"></div>
             </div> -->
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-6 " style="font-family:cursive;">
-                <h3>ABOUT US</h3>
-                <span class="fw-bold">PT Ssayomart Indonesia </span>
+                <h3 class="tagline-1">ABOUT US</h3>
+                <span class="fw-bold tagline-2">PT Ssayomart Indonesia </span>
             </div>
         </div>
 
@@ -51,23 +51,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid rounded-4">
                         <div class="img-overlay"></div>
                     </div>
-
                 </div> -->
                 <div class="col">
                     <div data-aos="fade-down" data-aos-delay="500">
                         <!-- Konten Kolom Kedua -->
-                        <h3>Tentang Ssayomart </h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+                        <h2 class="fw-bold mb-3">Tentang <span class="text-danger">Ssayomart</span> </h2>
+                        <p><span class="fw-bold text-danger fs-5 me-1">Ssayomart</span> adalah sebuah supermarket yang mengkhususkan diri dalam menyediakan berbagai produk makanan dan kebutuhan sehari-hari dengan fokus pada makanan Korea dan Jepang. Dalam supermarket ini, pelanggan dapat menemukan berbagai macam produk seperti bahan makanan segar, makanan olahan, minuman, produk kesehatan, kecantikan, dan masih banyak lagi yang terkait dengan kedua budaya kuliner tersebut.</p>
+                        <p><span class="fw-bold text-danger fs-5 me-1">Ssayomart</span> memprioritaskan kualitas produk, keberlanjutan, dan kepuasan pelanggan. Mereka menawarkan berbagai produk otentik dari Korea dan Jepang, sehingga pelanggan dapat merasakan dan menghadirkan cita rasa khas Asia dalam rumah mereka. Dengan staf yang ramah dan pengetahuan yang luas tentang produk, Ssayomart berusaha memberikan pengalaman belanja yang menyenangkan dan informatif bagi pelanggan yang ingin menjelajahi kuliner Asia.</p>
                     </div>
-
-
                 </div>
             </div>
         </div>
 
         <!-- galery photos Mobile -->
         <div class="container d-md-none">
-            <div data-aos="fade-right" data-aos-delay="1000">
+            <div data-aos="fade-right" data-aos-delay="300">
                 <section class="galeri" id="galeri">
                     <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper telkom mt-3">
@@ -112,8 +110,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <!-- akhir galeri photos -->
-
-        <!-- Slider card  -->
+        <!-- Galery Photos View Ipad -->
+        <div class="container mt-3 d-none d-md-block">
+            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+            </div>
+            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+                <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <!-- Galery Photos View Ipad -->
+        <!-- Slider card  Profil Founder-->
         <div class="container">
             <div data-aos="zoom-in-down">
                 <div class="row">
@@ -177,7 +208,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
 
         </div>
-        <!-- Akhir Slider Card -->
+        <!-- Slider card  Profil Founder-->
 
         <!-- form dan maps -->
         <div class="container mb-5">
@@ -237,15 +268,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             .bg-image:hover .mask {
                 opacity: 1;
             }
+
+
+            @media screen and (min-width: 768px) and (max-width: 1024px) {
+                .tagline-1 {
+                    font-size: 78px;
+                }
+
+                .tagline-2 {
+                    font-size: 50px;
+                }
+            }
         </style>
     </div>
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:50px;">
         <div class="container-fluid p-0 position-relative">
-            <div class="img-container">
+            <!-- <div class="img-container">
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="img-overlay"></div>
+            </div> -->
+            <div class="bg-image">
+                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
+                <div class="mask"></div>
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2 " style="font-family:cursive;">
                 <h1>ABOUT US</h1>
@@ -258,8 +304,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <div class="col">
                     <!-- Konten Kolom Kedua -->
-                    <h3 class="text-center mt-2">Tentang Ssayomart </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
+                    <h3 class="text-center mt-2">Tentang <span class="fw-bold text-danger fs-2 me-1">Ssayomart</span> </h3>
+                    <p><span class="fw-bold text-danger fs-5 me-1">Ssayomart</span> adalah sebuah supermarket yang mengkhususkan diri dalam menyediakan berbagai produk makanan dan kebutuhan sehari-hari dengan fokus pada makanan Korea dan Jepang. Dalam supermarket ini, pelanggan dapat menemukan berbagai macam produk seperti bahan makanan segar, makanan olahan, minuman, produk kesehatan, kecantikan, dan masih banyak lagi yang terkait dengan kedua budaya kuliner tersebut.</p>
+                    <p><span class="fw-bold text-danger fs-5 me-1">Ssayomart</span> memprioritaskan kualitas produk, keberlanjutan, dan kepuasan pelanggan. Mereka menawarkan berbagai produk otentik dari Korea dan Jepang, sehingga pelanggan dapat merasakan dan menghadirkan cita rasa khas Asia dalam rumah mereka. Dengan staf yang ramah dan pengetahuan yang luas tentang produk, Ssayomart berusaha memberikan pengalaman belanja yang menyenangkan dan informatif bagi pelanggan yang ingin menjelajahi kuliner Asia.</p>
 
                 </div>
             </div>
@@ -276,19 +323,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <div class="col-12 col-md-6">
                     <!-- Konten Kolom Pertama -->
-
                     <div class="ratio ratio-16x9">
                         <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
                     </div>
-
                 </div>
-
             </div>
         </div>
 
         <div class="container mt-3 d-none d-md-block">
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
                     <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
@@ -303,7 +347,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
                     <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
@@ -383,23 +427,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Akhir Slider Card -->
 
         <!-- Sistem Grid Desktop -->
-        <div class="container d-none d-md-block mt-3">
-            <div class="row">
-                <!-- Kolom Kiri -->
-                <div class="col-md-3">
+        <!-- <div class="container d-none d-md-block mt-3">
+            <div class="row"> -->
+        <!-- Kolom Kiri -->
+        <!-- <div class="col-md-3">
                     <div data-aos="fade-right">
 
                         <div class="mb-4">
                             <span class="font-weight-bold display-4">Berbagai <strong>Penghargaan</strong> dan <strong>Pencapaian</strong> yang diperoleh dari tahun 2015 smapai saat ini</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <!-- Kolom Kanan -->
-                <div class="col-md-9">
-                    <div class="row">
-                        <!-- Kolom Atas Kanan -->
-                        <div class="col-md-6">
+        <!-- Kolom Kanan -->
+        <!-- <div class="col-md-9">
+                    <div class="row"> -->
+        <!-- Kolom Atas Kanan -->
+        <!-- <div class="col-md-6">
                             <div data-aos="fade-left">
                                 <div class="mb-4">
                                     <div class="img-container">
@@ -409,10 +453,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
 
-                        </div>
+                        </div> -->
 
-                        <!-- Kolom Atas Kiri -->
-                        <div class="col-md-6">
+        <!-- Kolom Atas Kiri -->
+        <!-- <div class="col-md-6">
                             <div data-aos="fade-left">
                                 <div class="mb-4">
                                     <div class="img-container">
@@ -421,10 +465,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <!-- Kolom Bawah Kanan -->
-                        <div class="col-md-6">
+        <!-- Kolom Bawah Kanan -->
+        <!-- <div class="col-md-6">
                             <div data-aos="fade-left">
                                 <div class="mb-4">
                                     <div class="img-container">
@@ -433,10 +477,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <!-- Kolom Bawah Kiri -->
-                        <div class="col-md-6">
+        <!-- Kolom Bawah Kiri -->
+        <!-- <div class="col-md-6">
                             <div class="mb-4">
                                 <div class="img-container">
                                     <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
@@ -447,7 +491,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Akhir sistem grid Destop -->
 
         <!-- form dan maps -->
@@ -480,6 +524,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <!-- akhir form dan maps -->
+
+        <style>
+            .bg-image {
+                position: relative;
+                overflow: hidden;
+            }
+
+            .bg-image img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+
+            .mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, hsla(168, 85%, 52%, 0.5), hsla(263, 88%, 45%, 0.5) 100%);
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+
+            .bg-image:hover .mask {
+                opacity: 1;
+            }
+        </style>
     </div>
 <?php endif; ?>
 <!-- End Desktop View -->

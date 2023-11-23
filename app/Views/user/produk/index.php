@@ -19,7 +19,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?= $this->include('user/produk/component/subkategori') ?>
         <!-- Card -->
         <div class="mb-5 pb-5">
-            <?= $this->include('user/produk/component/card') ?>
+            <?= $this->include('user/produk/component/card2') ?>
         </div>
         <!-- button Scroll Up -->
         <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>

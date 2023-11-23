@@ -13,9 +13,9 @@ class Alamat extends Seeder
                 'id_user' => 1,
                 'label' => 'Rumah Tangerang',
                 'penerima' => 'Adib Alfaini',
-                'alamat_1' => 'Jalan Pandan Raya, Panunggangan Barat, Cibodas, Tangerang, Banten, Jawa, 15139, Indonesia',
-                'alamat_2' => 'Jalan Pandan Raya, Panunggangan Barat, Cibodas, Tangerang, Banten, Jawa, 15139, Indonesia',
-                'alamat_3' => 'Jalan Pandan Raya, Panunggangan Barat, Cibodas, Tangerang, Banten, Jawa, 15139, Indonesia',
+                'alamat_1' => 'Jalan Kalimantan, Lippo Village, Panunggangan Barat, Cibodas, Tangerang, Banten, Jawa, 15139, Indonesia',
+                'alamat_2' => 'Jalan Kalimantan, Lippo Village, Panunggangan Barat, Cibodas, Tangerang, Banten, Jawa, 15139, Indonesia',
+                'alamat_3' => 'Jalan Kalimantan, Lippo Village, Panunggangan Barat, Cibodas, Tangerang, Banten, Jawa, 15139, Indonesia',
                 'id_province' => 3,
                 'province' => 'Banten',
                 'id_city' => 456,
@@ -23,8 +23,8 @@ class Alamat extends Seeder
                 'zip_code' => '15139',
                 'telp' => '085112345678',
                 'telp2' => '085112345678',
-                'latitude' => -6.182595,
-                'longitude' => 106.813331
+                'latitude' => -6.219030,
+                'longitude' => 106.619629
             ],
             [
                 'id_user' => 1,

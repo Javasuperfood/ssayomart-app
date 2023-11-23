@@ -406,15 +406,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     // }
 
     function showPosition(position) {
-        var lat = position.coords.latitude.toFixed(6);
-        var lon = position.coords.longitude.toFixed(6);
+        var lat = position.coords.latitude.toFixed(7);
+        var lon = position.coords.longitude.toFixed(7);
 
         updateMap(lat, lon);
     }
 
     function onMapClick(e) {
-        var lat = e.latlng.lat.toFixed(6);
-        var lon = e.latlng.lng.toFixed(6);
+        var lat = e.latlng.lat.toFixed(7);
+        var lon = e.latlng.lng.toFixed(7);
 
         updateMap(lat, lon);
     }

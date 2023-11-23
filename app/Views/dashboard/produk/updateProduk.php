@@ -87,7 +87,7 @@
     var subcategories = <?= json_encode($subKategori); ?>;
     var selectedCategory = <?= json_encode($p['id_kategori']); ?>; // Ambil id_kategori dari data produk
     var selectedSubCategory = <?= json_encode($p['id_sub_kategori']); ?>; // Ambil id_kategori dari data produk
-  
+
 
     function updateSubcategories() {
         var subcategorySelect = $("#sub_kategori");
