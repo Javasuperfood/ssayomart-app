@@ -162,7 +162,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     background-color: #ffff;
                     color: #000;
                     font-size: 10px;
-                    margin-right: 0%;
                     margin-top: 140%;
 
                     /* atau warna lain sesuai kebutuhan */
@@ -388,7 +387,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
-                margin-right: 65%;
                 margin-top: 85%;
 
                 /* atau warna lain sesuai kebutuhan */
@@ -404,6 +402,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         </style>
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
+
         <section id="unggul">
             <div class="container">
                 <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">
