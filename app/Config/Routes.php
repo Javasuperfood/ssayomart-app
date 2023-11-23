@@ -131,6 +131,11 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->get('(:segment)', 'AdminPesananController::detail/$1');
         $routes->get('refund/(:segment)', 'AdminPesananController::refund/$1');
         $routes->post('refund/(:segment)', 'AdminPesananController::refundStore/$1');
+
+        // gosend
+
+        $routes->get('gosend-update/(:segment)', 'GoSendController::gosendUpdate/$1');
+        $routes->post('gosend-update/(:segment)/pickup', 'GoSendController::pickUp/$1');
     });
 
     // Route Reporting File
