@@ -156,17 +156,29 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="<?= base_url('dashboard/order/in-proccess/update-status/' . $c['id_checkout']); ?>" method="post">
+                                            <form action="<?= base_url('dashboard/order/in-proccess/update-resi/' . $c['id_checkout']); ?>" method="post">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="page" value="<?= (isset($_GET['page_order']) != null) ? $_GET['page_order'] : '1'; ?>">
                                                 <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label for="status">Status</label>
-                                                        <select class="form-control" id="status" name="status">
-                                                            <?php foreach ($statusPesan as $s) : ?>
-                                                                <option value="<?= $s['id_status_pesan']; ?>" <?= ($s['id_status_pesan'] == $c['id_status_pesan']) ? 'selected' : ''; ?>><?= $s['status']; ?></option>
-                                                            <?php endforeach ?>
-                                                        </select>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <label for="status">Status</label>
+                                                                <select class="form-control" id="status" name="status">
+                                                                    <?php foreach ($statusPesan as $s) : ?>
+                                                                        <option value="<?= $s['id_status_pesan']; ?>" <?= ($s['id_status_pesan'] == $c['id_status_pesan']) ? 'selected' : ''; ?>><?= $s['status']; ?></option>
+                                                                    <?php endforeach ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <?php if (!$c['gosend']) : ?>
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <label for="note">Resi</label>
+                                                                    <textarea class="form-control" id="note" name="resi" rows="3" placeholder="Masukkan resi"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        <?php endif ?>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">

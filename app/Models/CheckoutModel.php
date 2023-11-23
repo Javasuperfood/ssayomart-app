@@ -112,7 +112,7 @@ class CheckoutModel extends Model
 
     public function getOrder($perPage = null, $toko = null, $status = null, $shipment = null, $refund = null)
     {
-        $query = $this->select('*, jsf_checkout.id_status_pesan as status_pesan_id, jsf_status_pesan.status as status')
+        $query = $this->select('jsf_checkout.id_checkout, jsf_checkout.invoice,jsf_checkout.kirim,jsf_checkout.kurir,jsf_checkout.service, jsf_checkout.id_status_pesan,jsf_checkout.gosend, jsf_checkout.id_status_pesan as status_pesan_id, jsf_status_pesan.status as status')
             ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
             ->join('jsf_refunds', 'jsf_refunds.order_id = jsf_checkout.invoice', 'left');
         $query->where('id_toko', $toko)
