@@ -153,7 +153,7 @@
                                         <h6 class="m-0 font-weight-bold text-danger">GoSend Update</h6>
                                     </div>
                                     <div class="col text-end">
-                                        <?php if ($gosendStatus) : ?>
+                                        <?php if ($gosendStatus) :  ?>
                                             <?php if (in_array($gosendStatus['status'], ['Finding Driver', 'Driver not found', 'Enroute Drop', 'Enroute Pickup', 'Driver Allocated', 'Item Picked', 'On Hold'])) : ?>
                                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
                                             <?php endif; ?>
