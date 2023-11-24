@@ -162,7 +162,7 @@ class GoSendController extends BaseController
 
         $storeDataToGoSend = $this->bookingAPI($body);
 
-        if ($storeDataToGoSend['status'] == 200) {
+        if ($storeDataToGoSend['status'] == '200') {
             return redirect()->back();
         }
     }

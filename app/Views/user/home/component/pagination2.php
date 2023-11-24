@@ -48,15 +48,7 @@ $countProduk = count($produk);
                                 </div>
                             </div>
                         </div>
-                        // <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                        //     <span type="submit" class="btn btn-secondary mx-1 mt-2 fw-bold">
-                        //         <i class="fas fa-shopping-cart text-white fa-sm"></i>
-                        //     </span>
-                        //     <span type="submit" class="btn btn-secondary mx-1 mt-2">
-                        //         Beli
-                        //     </span>
-                        //     <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                        // </div>
+                        
                     </div>
                 </div>
             </div>`
@@ -99,9 +91,9 @@ $countProduk = count($produk);
                                 <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
                                    ${hargaText}
                                 </h1>
-                                // <p class=" text-center">
-                                //     <a href="<?= base_url('produk/'); ?>${p.slug}?add-to-cart=show" class="btn btn-white"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></a>
-                                // </p>
+                                
+
+                                
                             </div>` +
                             '</div>' +
                             '</div>';
@@ -136,23 +128,17 @@ $countProduk = count($produk);
                                     </div>
                                 </div>
                             </div>
-                            // <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                            //     <form action="<?= base_url('produk/'); ?>${p.slug}">
-                            //         <input type="hidden" name="add-to-cart" value="show">
-                            //         <input type="hidden" name="qty" id="Cqty${p.id_produk}" value="1" value="show">
-                            //         <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                            //             <i class="fas fa-shopping-cart text-white fa-sm"></i>
-                            //         </button>
-                            //     </form>
-                            //     <form action="<?= base_url('produk/'); ?>${p.slug}">
-                            //         <input type="hidden" name="buy" value="show">
-                            //         <input type="hidden" name="qty" id="Bqty${p.id_produk}" value="1" value="show">
-                            //         <button type="submit" class="btn btn-danger mx-1 mt-2">
-                            //             Beli
-                            //         </button>
-                            //         <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                            //     </form>
-                            // </div>
+                            
+
+
+
+
+
+
+
+
+
+                            
                         </div>
                     </div>
                 </div>`
