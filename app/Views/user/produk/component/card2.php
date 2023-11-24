@@ -4,13 +4,13 @@
             <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
             <hr class="border-darker mt-0 mb-3">
 
-            <div class="row row-cols-3 me-1" id="product-unggulan-container">
+            <div class="row row-cols-3 me-0" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
                     <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
 
 
-                        <div class="card border-0 shadow-sm text-center" style="width: 105px; height: 100%;">
+                        <div class="card border-0 shadow-sm text-center" style="width: 95px; height: 100%;padding: 5px;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
@@ -73,11 +73,12 @@
     <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
     <hr class="border-darker mt-0 mb-3">
 
-    <div class="row row-cols-3 me-1" id="product-container">
+
+    <div class="row row-cols-3 me-0" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
             <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                <div class="card border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
+                <div class="card border-0 shadow-sm text-center" style="width: 95px; height: 100%; padding: 5px;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
@@ -261,7 +262,7 @@
         .horizontal-counter input {
             width: 40px;
             /* Adjust as needed */
-            height: 30px;
+            height: 20px;
             /* Adjust as needed */
             font-size: 13px;
             /* Adjust as needed */
