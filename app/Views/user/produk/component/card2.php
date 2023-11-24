@@ -4,7 +4,7 @@
             <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
             <hr class="border-darker mt-0 mb-3">
 
-            <div class="row row-cols-3" id="product-unggulan-container">
+            <div class="row row-cols-3 me-1" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
                     <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
@@ -24,7 +24,7 @@
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                 </p>
 
-                                <h1 class="text-danger fs-bold mt-1 mb-2" style="font-size: 11px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
                                     <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                         Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>
@@ -32,8 +32,7 @@
                                     <?php endif ?>
                                 </h1>
 
-
-                                <!-- <div class="container mt-2">
+                                <div class="container mt-1 mb-2">
                                     <div class="row justify-items-center">
                                         <div class="col">
                                             <div class="horizontal-counter">
@@ -43,7 +42,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
+
                                 <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                                     <form action="<?= base_url('produk/' . $fp['slug']); ?>">
                                         <input type="hidden" name="add-to-cart" value="show">
@@ -73,7 +73,7 @@
     <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
     <hr class="border-darker mt-0 mb-3">
 
-    <div class="row row-cols-3" id="product-container">
+    <div class="row row-cols-3 me-1" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
             <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
@@ -91,7 +91,7 @@
                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                         </p>
 
-                        <h1 class="text-danger fs-bold mt-1 mb-2" style="font-size: 11px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
                             <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                 Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                             <?php else : ?>
@@ -99,7 +99,7 @@
                             <?php endif ?>
                         </h1>
 
-                        <!-- <div class="container mt-2">
+                        <div class="container mt-1 mb-1">
                             <div class="row justify-items-center">
                                 <div class="col">
                                     <div class="horizontal-counter">
@@ -109,7 +109,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
+
                         <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                             <form action="<?= base_url('produk/' . $p['slug']); ?>">
                                 <input type="hidden" name="add-to-cart" value="show">
@@ -170,14 +171,11 @@
     </div>
 <?php endif ?>
 
-<!-- <style>
+<style>
     .border-darker {
         border-color: red;
-        /* Ubah warna garis menjadi merah */
         border-width: 2px;
-        /* Sesuaikan ketebalan garis sesuai kebutuhan Anda */
         font-weight: bold;
-        /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
     }
 
     .horizontal-counter {
@@ -187,15 +185,18 @@
     }
 
     .horizontal-counter .btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 12px;
+        padding: 0.10rem 0.2rem;
+        font-size: 10px;
     }
 
     .horizontal-counter input {
-        width: 40px;
+        font-size: 10px;
+        width: 33px;
         text-align: center;
     }
+</style>
 
+<!-- <style>
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
         .horizontal-counter .btn {
