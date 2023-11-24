@@ -20,6 +20,7 @@
                     <table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>No.</th>
                                 <th>Nama</th>
                                 <th>Nama Produk</th>
                                 <th>Qty</th>
@@ -30,6 +31,7 @@
                         <tbody>
                             <?php foreach ($getCheckoutWithProduct as $p) : ?>
                                 <tr>
+                                    <td><?= $iterasi++; ?></td>
                                     <td><?= $p->fullname; ?></td>
                                     <td><?= $p->nama; ?></td>
                                     <td><?= $p->qty; ?></td>
@@ -39,6 +41,7 @@
                             <?php endforeach ?>
                         </tbody>
                     </table>
+                    <?= $pager->links('page_checkout', 'pagerS') ?>
                 </div>
             </div>
 

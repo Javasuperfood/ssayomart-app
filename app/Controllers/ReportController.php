@@ -11,8 +11,17 @@ class ReportController extends BaseController
         $checkoutModel = new CheckoutModel();
         $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct();
 
+        $perPage = 10;
+
+        $currentPage = $this->request->getVar('page_checkout') ? $this->request->getVar('page_checkout') : 1;
+
+        $checkoutList = $checkoutModel->paginate($perPage, 'page_checkout');
+
         $data = [
             'getCheckoutWithProduct' => $getCheckoutWithProduct,
+            'checkout' => $checkoutList,
+            'pager' => $checkoutModel->pager,
+            'iterasi' => ($currentPage - 1) * $perPage + 1,
         ];
         return view('dashboard/report/report', $data);
     }
