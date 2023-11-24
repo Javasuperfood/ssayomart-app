@@ -244,11 +244,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- button Animasi -->
         <div class="button-container">
-            <div class="button" onclick="changeToCapsule()">
-                <i class="icon fas fa-plus"></i>
+            <div class="button ms-5" onclick="changeToCapsule()">
+                <i class="icon fas fa-plus d-flex justify-content-center align-items-center">+</i>
             </div>
 
-            <div class="button-capsule" onclick="changeToCircle()">
+            <div class="button-capsule ms-5" style="display: none;">
                 <i class="icon fas fa-minus" onclick="decreaseValue()">-</i>
                 <input type="number" class="input" value="1" id="counter">
                 <i class="icon fas fa-plus" onclick="increaseValue()">+</i>
@@ -263,8 +263,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .button {
-                width: 25px;
-                height: 25px;
+                width: 30px;
+                height: 30px;
                 border-radius: 50%;
                 background-color: #3498db;
                 display: flex;
@@ -277,8 +277,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .button-capsule {
-                width: 80px;
-                height: 25px;
+                width: 90px;
+                height: 35px;
                 border-radius: 25px;
                 background-color: #3498db;
                 display: none;
@@ -293,11 +293,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 font-size: 20px;
                 color: #fff;
                 transition: all 0.3s ease;
+                cursor: pointer;
             }
 
             .input {
-                width: 20px;
-                height: 20px;
+                width: 30px;
+                height: 30px;
                 text-align: center;
                 margin: 0 5px;
                 color: #000;
@@ -309,6 +310,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             function changeToCapsule() {
                 document.querySelector('.button').style.display = 'none';
                 document.querySelector('.button-capsule').style.display = 'flex';
+            }
+
+            function decreaseValue() {
+                var counter = document.getElementById('counter');
+                counter.value = parseInt(counter.value) - 1;
+                if (counter.value <= 0) {
+                    document.querySelector('.button-capsule').style.display = 'none';
+                    document.querySelector('.button').style.display = 'flex';
+                }
+            }
+
+            function increaseValue() {
+                var counter = document.getElementById('counter');
+                counter.value = parseInt(counter.value) + 1;
             }
 
             function changeToCircle() {
