@@ -34,7 +34,10 @@ class UserStatusController extends BaseController
         $transaction_status = $this->request->getGet('transaction_status');
         $userSatus = $userModel->getStatus($order_id);
         if ($userSatus->gosend == 1 && $userSatus->id_status_pesan != '1') {
-            return redirect()->to(base_url('status-gosend/?order_id=' . $order_id . '&status_code=' . $status_code . '&transaction_status=' . $transaction_status));
+            $gosendStatus = $this->getStatusGosend($order_id);
+            if ($gosendStatus) {
+                return redirect()->to(base_url('status-gosend/?order_id=' . $order_id . '&status_code=' . $status_code . '&transaction_status=' . $transaction_status));
+            }
         }
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
@@ -73,5 +76,35 @@ class UserStatusController extends BaseController
 
         // dd($data);
         return view('user/produk/status', $data);
+    }
+    function getStatusGosend($id)
+    {
+        $webhookConfig = config('WebHook');
+        $baseUrl = $webhookConfig->base_url;
+        $clientId = $webhookConfig->client_id;
+        $pasKey = $webhookConfig->pas_key;
+        $endpoint = $baseUrl . '/gokilat/v10/booking/storeOrderId';
+
+        $headers = array(
+            'Accept: application/json',
+            'Client-ID: ' . $clientId,
+            'Pass-Key: ' . $pasKey
+        );
+
+        $url = "{$endpoint}/{$id}";
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = curl_exec($ch);
+
+        if (curl_errno($ch)) {
+            return 'Error: ' . curl_error($ch);
+        }
+        curl_close($ch);
+        return json_decode($response, true);
+        return response()->setJSON($response);
     }
 }
