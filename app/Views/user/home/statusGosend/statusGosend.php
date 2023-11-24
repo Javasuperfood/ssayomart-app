@@ -66,7 +66,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="step active"> <span class="icon"> <i class="bi bi-check2-circle"></i> </span> <span class="text" style="font-size: smaller;">Order confirmed</span> </div>
                         <?php if ($gosendStatus) : ?>
                             <?php foreach ($status as $s) :  ?>
-                                <div class="step active"> <span class="icon"> <i class="bi bi-truck"></i> </span> <span class="text" style="font-size: smaller;"> <?= $s; ?> </span> </div>
+                                <div class="step active"> <span class="icon"> <i class="bi <?= ($s == 'Completed') ? 'bi-check2-circle' : 'bi-truck'; ?>"></i> </span> <span class="text" style="font-size: smaller;"> <?= $s; ?> </span> </div>
                             <?php endforeach ?>
                         <?php endif ?>
                     </div>
