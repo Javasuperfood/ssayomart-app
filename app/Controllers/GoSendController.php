@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\AlamatUserModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
+use App\Models\StatusPesanModel;
 use App\Models\TokoModel;
 
 class GoSendController extends BaseController
@@ -18,13 +19,15 @@ class GoSendController extends BaseController
     public function gosendUpdate($id)
     {
         $checkoutProdModel = new CheckoutProdukModel();
+        $statusPesananModel = new StatusPesanModel();
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
         $data = [
             'inv' => $id,
             'orders' => $order,
             'order' => $order[0],
-            'gosendStatus' => $GoSendStatus
+            'gosendStatus' => $GoSendStatus,
+            'statusPesanan' => $statusPesananModel->findAll(),
         ];
         if ($order[0]['id_destination']) {
             $alamatUserModel = new AlamatUserModel();
@@ -202,5 +205,65 @@ class GoSendController extends BaseController
         curl_close($ch);
         return json_decode($response, true);
         return response()->setJSON($response);
+    }
+
+    public function gosendCancel($no)
+    {
+        $bookingNo = $this->request->getVar('orderNo');
+        $webhookConfig = config('WebHook');
+        if ($bookingNo != $no) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'No. Booking Tidak Sesuai!'
+            ];
+            return redirect()->back()->with('alert', $alert);
+        }
+        $baseUrl = $webhookConfig->base_url;
+        $clientId = $webhookConfig->client_id;
+        $pasKey = $webhookConfig->pas_key;
+        $url = $baseUrl . "/gokilat/v10/booking/cancel";
+        $method = "PUT";
+        $headers = [
+            'Accept: application/json',
+            'Client-ID: ' . $clientId,
+            'Pass-Key: ' . $pasKey
+        ];
+
+        $data = [
+            "orderNo" => $bookingNo
+        ];
+        // dd($data);
+        $payload = json_encode($data);
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        curl_close($ch);
+
+        // Handle the response
+        if ($httpCode == 200) {
+            $response = json_decode($response, true);
+            $alert = [
+                'type' => 'success',
+                'title' => 'Success',
+                'message' => $response['message']
+            ];
+            return redirect()->back()->with('alert', $alert);
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Request failed. HTTP Code: ' . $httpCode . ', Response: ' . $response
+            ];
+            return redirect()->back()->with('alert', $alert);
+        }
     }
 }
