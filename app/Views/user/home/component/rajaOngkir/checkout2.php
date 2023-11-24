@@ -114,6 +114,14 @@
             });
         } else if (courier == 'gosend') {
             $("#service, #ongkir, #ongkirText, #estimasi, #total, #totalText, #serviceText, #field_subtotal").empty().val('');
+            if (destinationLatLong == ',' || originLatLong == ',') {
+                return Swal.fire({
+                    title: "Error",
+                    text: "Alamat yang anda pilih belum menentukan titik lokasi pengantaran!\n Silahkan pilih kembali atau update lokasi pengantaran di edit alamat.",
+                    icon: "error",
+                    footer: '<a class="link-underline link-underline-opacity-0" href="<?= base_url('setting/alamat-list'); ?>">Update Alamat? klik disini.</a>'
+                });;
+            }
             $.ajax({
                 url: "<?= base_url('api/gosend/getcost') ?>",
                 type: 'POST',
@@ -123,7 +131,6 @@
                 },
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
                     Object.keys(data).forEach(method => {
                         const shipment = data[method];
                         if (shipment.serviceable) {
@@ -144,7 +151,7 @@
                             // console.log(`Distance: ${shipment.distance}`);
                             // console.log(`Route Polyline: ${shipment.route_polyline}`);
                             // console.log(`Decode Route Polyline:`);
-                            console.log(decodePolyline(shipment.route_polyline));
+                            // console.log(decodePolyline(shipment.route_polyline));
 
                             // // Access pricing details
                             // console.log("Pricing:");
@@ -158,6 +165,14 @@
                             // console.log("\n"); // Separate each shipment method for clarity
                         }
                     });
+                    if (!data['Instant'].serviceable && !data['Instant'].serviceable) {
+                        return Swal.fire({
+                            title: "Error",
+                            text: "Layanan pengiriman tidak tersedia! \n jarak telah melebihi jarak maksimal!",
+                            icon: "error",
+                            footer: "silakan gunkana metode pengiriman lain."
+                        })
+                    }
                     let methodS;
                     if (data['Instant'].serviceable) {
                         methodS = data['Instant'];
