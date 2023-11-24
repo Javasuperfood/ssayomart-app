@@ -47,6 +47,8 @@ $routes->get('/content-banner/(:segment)', 'BannerContentController::contentBann
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
+// app/Config/Routes.php
+$routes->get('/show-notification', 'WebhookController::showNotification');
 
 $routes->get('/status-gosend', 'StatusGosendController::statusGosend');
 
@@ -333,7 +335,6 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->patch('get-order/pickup-item/(:segment)', 'WebhookController::handlerPickupItem/$1');
         $routes->get('get-order/gosend', 'WebhookController::getSingleOrder');
         $routes->post('get-order/gosend', 'WebhookController::updateSingleOrder');
-        $routes->post('webhook', 'WebhookController::handleWebhook');
     });
 });
 
@@ -342,6 +343,10 @@ $routes->get('/maps', 'MapsController::maps');
 
 $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($routes) {
     $routes->get('/', 'WebhookController::index');
+    $routes->post('webhook-gosend', 'WebhookController::handleWebhook');
+    $routes->get('webhook-gosend', 'WebhookController::handleWebhook');
+
+    $routes->post('test-notif', 'NotifController::notifTest');
 });
 
 /*
