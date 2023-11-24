@@ -22,6 +22,9 @@ class GoSendController extends BaseController
         $statusPesananModel = new StatusPesanModel();
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
+
+        $id_status_pesan = $this->request->getVar('status');
+
         $data = [
             'inv' => $id,
             'orders' => $order,
@@ -29,12 +32,52 @@ class GoSendController extends BaseController
             'gosendStatus' => $GoSendStatus,
             'statusPesanan' => $statusPesananModel->findAll(),
         ];
+
         if ($order[0]['id_destination']) {
             $alamatUserModel = new AlamatUserModel();
             $data['destination'] = $alamatUserModel->find($order[0]['id_destination']);
         }
         // dd($data);
         return view('dashboard/pesanan/GoSend/GoSendUpdate', $data);
+    }
+
+    public function updateStatusOrder($id)
+    {
+        $checkoutModel = new CheckoutModel();
+        // dd($this->request->getVar());
+        $checkoutProdModel = new CheckoutProdukModel();
+        $statusPesananModel = new StatusPesanModel();
+        $order = $checkoutProdModel->getTransaksi($id);
+        $GoSendStatus = $this->getStatusGosend($id);
+
+        $id_status_pesan = $this->request->getVar('status');
+
+        $data = [
+            'inv' => $id,
+            'orders' => $order,
+            'order' => $order[0],
+            'gosendStatus' => $GoSendStatus,
+            'statusPesanan' => $statusPesananModel->findAll(),
+        ];
+
+        $id_checkout = $this->request->getVar('id_checkout');
+
+        if ($order[0]['id_destination']) {
+            $alamatUserModel = new AlamatUserModel();
+            $data['destination'] = $alamatUserModel->find($order[0]['id_destination']);
+        }
+
+        if ($checkoutModel->save(['id_checkout' => $id_checkout, 'id_status_pesan' => $id_status_pesan])) {
+            session()->setFlashdata('success', 'Status berhasil diubah.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Status berhasil diubah.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return view('dashboard/pesanan/GoSend/GoSendUpdate', $data);
+        }
     }
 
     public function pickUp($id)
