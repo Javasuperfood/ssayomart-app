@@ -79,10 +79,10 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card border-1 shadow-sm mb-4">
             <!-- Card Header - Accordion -->
-            <div class="card-header border-0 py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 text-danger"> Nama Produk : <span class="font-weight-bold"><?= $produk['nama']; ?></span></h6>
+            <div class="card-header border-1 py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0"> Nama Produk : <span class="font-weight-bold"><?= $produk['nama']; ?></span></h6>
                 <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -114,10 +114,10 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card border-0 shadow-sm mb-4">
+        <div class="card border-1 shadow-sm mb-5">
             <!-- Card Header - Accordion -->
-            <a href="#Variasi" class="d-block card-header border-0 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="Variasi">
-                <h6 class="m-0 font-weight-bold text-danger">Variasi & Stock</h6>
+            <a href="#Variasi" class="d-block card-header border-1 py-3" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="Variasi">
+                <h6 class="m-0 fw-bold text-black">Variasi & Stock</h6>
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="Variasi">
@@ -134,7 +134,7 @@
                         <div class="col">
                             <table class="table">
                                 <thead>
-                                    <tr>
+                                    <tr class="align-middle">
                                         <th scope="col">#</th>
                                         <th scope="col">Variasi</th>
                                         <th scope="col">Value</th>
@@ -147,12 +147,12 @@
                                     <?php $i = 1;
                                     foreach ($varian as $v) : ?>
                                         <tr>
-                                            <th scope="row"><?= $i++; ?></th>
-                                            <td><?= $v['nama_varian']; ?></td>
-                                            <td><?= $v['value_item']; ?></td>
-                                            <td><?= $v['berat']; ?></td>
-                                            <td><?= $v['harga_item']; ?></td>
-                                            <td>
+                                            <th class="align-middle" scope="row"><?= $i++; ?></th>
+                                            <td class="align-middle"><?= $v['nama_varian']; ?></td>
+                                            <td class="align-middle"><?= $v['value_item']; ?></td>
+                                            <td class="align-middle"><?= $v['berat']; ?></td>
+                                            <td class="align-middle"><?= $v['harga_item']; ?></td>
+                                            <td class="align-middle">
                                                 <div class="nav-item dropdown no-arrow">
                                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         <i class="bi bi-three-dots-vertical"></i>
@@ -212,7 +212,7 @@
                                             <div class="col-md-6">
                                                 <label for="selectVariant">Nama Variant</label>
                                                 <label for="selectVariant">Pilih Variant</label>
-                                                <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
+                                                <select class="form-control border-1" name="selectVariant" id="selectVariant">
                                                     <?php foreach ($variasi as $v) : ?>
                                                         <?php if (($varian[0]['id_variasi'] == $v['id_variasi'])) : ?>
                                                             <option value="<?= $v['id_variasi']; ?>" <?= ($varian[0]['id_variasi'] == $v['id_variasi']) ? 'selected' : '' ?>><?= $v['nama_varian']; ?></option>
@@ -222,7 +222,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
-                                                <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian">
+                                                <input type="text" id="valueItem" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-1'; ?>" placeholder="Value Varian">
                                                 <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                                             </div>
                                         </div>
@@ -232,7 +232,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label for="selectVariant">Pilih Variant</label>
-                                                <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
+                                                <select class="form-control border-1" name="selectVariant" id="selectVariant">
                                                     <option value="" selected>Pilih</option>
                                                     <?php foreach ($variasi as $v) : ?>
                                                         <option value="<?= $v['id_variasi']; ?>"><?= $v['nama_varian']; ?></option>
@@ -240,8 +240,8 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
-                                                <input type="text" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian">
+                                                <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Gram 1Kg)</span></label>
+                                                <input type="text" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-1'; ?>" placeholder="Value Varian">
                                                 <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                                             </div>
                                         </div>
@@ -249,12 +249,12 @@
                                 <?php endif ?>
                                 <div class="mb-3">
                                     <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
-                                    <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0' ?> shadow-sm" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                                    <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-1' ?>" id="berat" name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
                                     <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga Produk</label>
-                                    <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm " id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
+                                    <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-1'; ?>" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
                                     <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
                                 </div>
                                 <button type="submit" class="btn btn-danger">Simpan</button><a role="button" id="btnBatal" class="btn btn-warning mx-2">Batal</a>
@@ -272,7 +272,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="selectVariant">Pilih Variant</label>
-                                            <select class="form-control border-0 shadow-sm" name="selectVariant" id="selectVariant">
+                                            <select class="form-control border-1" name="selectVariant" id="selectVariant">
                                                 <?php foreach ($variasi as $v) : ?>
                                                     <?php if (($varian[0]['id_variasi'] == $v['id_variasi'])) : ?>
                                                         <option value="<?= $v['id_variasi']; ?>" <?= ($varian[0]['id_variasi'] == $v['id_variasi']) ? 'selected' : '' ?>><?= $v['nama_varian']; ?></option>
@@ -281,20 +281,20 @@
                                             </select>
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Garm 1Kg)</span></label>
-                                            <input type="text" id="updateVI" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Value Varian" value="<?= old('valueItem') ?>">
+                                            <label for="valueVariant">Value Variant <span class="text-secondary">(e.g : ayam, sapi or 500 Gram 1Kg)</span></label>
+                                            <input type="text" id="updateVI" name="valueItem" class="form-control <?= (validation_show_error('value_item')) ? 'is-invalid' : 'border-1'; ?>" placeholder="Value Varian" value="<?= old('valueItem') ?>">
                                             <div class="invalid-feedback"><?= validation_show_error('value_item'); ?></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
-                                    <input type="price" id="updateBerat" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0' ?> shadow-sm" id="berat" <?= old('berat') ?> name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
+                                    <input type="price" id="updateBerat" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-1' ?>" id="berat" <?= old('berat') ?> name="berat" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
                                     <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="harga" class="form-label">Harga Produk</label>
-                                    <input type="price" id="updateHarga" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?> shadow-sm " <?= old('harga') ?> id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
+                                    <input type="price" id="updateHarga" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-1'; ?>" <?= old('harga') ?> id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
                                     <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
                                 </div>
                                 <button type="submit" class="btn btn-danger">Simpan</button><a role="button" id="btnBatalUpdate" class="btn btn-warning mx-2">Batal</a>
