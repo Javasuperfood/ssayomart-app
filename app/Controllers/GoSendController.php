@@ -149,16 +149,22 @@ class GoSendController extends BaseController
                 "insuranceDetails" => $insuranceDetails[0]
             ]]
         ];
-        $response = [
-            'status' => 200,
-            'success' => 'PickUp Button',
-            'type' => 'For PickUp development stage',
-            'message' => 'For Ssayomart Team : please add callback for curl request',
-            'bodypayload' => $body,
-            'response' => $this->bookingAPI($body)
+        // $response = [
+        //     'status' => 200,
+        //     'success' => 'PickUp Button',
+        //     'type' => 'For PickUp development stage',
+        //     'message' => 'For Ssayomart Team : please add callback for curl request',
+        //     'bodypayload' => $body,
+        //     'response' => $this->bookingAPI($body)
 
-        ];
-        return response()->setJSON($response, 200);
+        // ];
+        // return response()->setJSON($response, 200);
+
+        $storeDataToGoSend = $this->bookingAPI($body);
+
+        if ($storeDataToGoSend['status'] == 200) {
+            return redirect()->back();
+        }
     }
     function formatTelp($nomor)
     {

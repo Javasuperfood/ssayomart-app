@@ -62,7 +62,7 @@ class StatusGosendController extends BaseController
                 $status[] = 'Finding Driver';
                 $status[] = 'Enroute Pickup';
                 $status[] = 'Item Picked';
-                $status[] = 'Driver Allocated';
+                $status[] = 'Enroute Drop Success';
                 $status[] = 'Completed';
             }
             if (in_array($GoSendStatus['status'], ['Cancelled'])) {
