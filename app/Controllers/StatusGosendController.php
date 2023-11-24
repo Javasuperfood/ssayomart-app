@@ -27,31 +27,36 @@ class StatusGosendController extends BaseController
         }
 
         $cekProduk = $userModel->getTransaksi($id);
-        if (in_array($GoSendStatus['status'], ['Finding Driver'])) {
-            $status[] = 'Finding Driver';
-        }
-        if (in_array($GoSendStatus['status'], ['Item Picked'])) {
-            $status[] = 'Finding Driver';
-            $status[] = 'Item Picked';
-        }
-        if (in_array($GoSendStatus['status'], ['Completed'])) {
-            $status[] = 'Finding Driver';
-            $status[] = 'Item Picked';
-            $status[] = 'Driver Allocated';
-            $status[] = 'Completed';
-        }
-        if (in_array($GoSendStatus['status'], ['Cancelled'])) {
-            $status[] = 'Finding Driver';
-            $status[] = 'Cancelled';
-        }
+
+
         $data = [
             'title' => 'status Gosend',
             'kategori' => $kategori->findAll(),
             'gosendStatus' => $GoSendStatus,
             'payment' => $this->getStatusMidtrans($id),
             'produk' => $cekProduk,
-            'status' => $status,
+
         ];
+        if ($GoSendStatus) {
+            if (in_array($GoSendStatus['status'], ['Finding Driver'])) {
+                $status[] = 'Finding Driver';
+            }
+            if (in_array($GoSendStatus['status'], ['Item Picked'])) {
+                $status[] = 'Finding Driver';
+                $status[] = 'Item Picked';
+            }
+            if (in_array($GoSendStatus['status'], ['Completed'])) {
+                $status[] = 'Finding Driver';
+                $status[] = 'Item Picked';
+                $status[] = 'Driver Allocated';
+                $status[] = 'Completed';
+            }
+            if (in_array($GoSendStatus['status'], ['Cancelled'])) {
+                $status[] = 'Finding Driver';
+                $status[] = 'Cancelled';
+            }
+            $data['status'] = $status;
+        }
         // dd($data);
         return view('user/home/statusGosend/statusGosend', $data);
     }
