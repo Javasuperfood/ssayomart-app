@@ -8,10 +8,12 @@
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
                     <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
+
+
                         <div class="card border-0 shadow-sm text-center" style="width: 105px; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -22,7 +24,7 @@
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                 </p>
 
-                                <h1 class="text-danger fs-bold mt-1" style="font-size: 11px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-2" style="font-size: 11px; margin: 0;">
                                     <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                         Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>
@@ -131,6 +133,7 @@
         <?php endforeach; ?>
     </div>
 </div>
+
 <script type="text/javascript">
     function increaseCount(b, id) {
         var input = b.previousElementSibling;
