@@ -244,10 +244,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- button Animasi -->
         <div class="button-container">
-            <div class="button" onclick="changeShape()">
-                <i class="icon icon-left fas fa-plus"></i>
-                <input type="number" class="input" value="1">
-                <i class="icon icon-right fas fa-minus"></i>
+            <div class="button" onclick="changeToCapsule()">
+                <i class="icon fas fa-plus"></i>
+            </div>
+
+            <div class="button-capsule" onclick="changeToCircle()">
+                <i class="icon fas fa-minus" onclick="decreaseValue()">-</i>
+                <input type="number" class="input" value="1" id="counter">
+                <i class="icon fas fa-plus" onclick="increaseValue()">+</i>
             </div>
         </div>
         <!-- akhir button animasi -->
@@ -255,13 +259,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <style>
             .button-container {
                 display: flex;
-                align-items: center;
+                gap: 10px;
             }
 
             .button {
-                position: relative;
-                width: 35px;
-                height: 35px;
+                width: 25px;
+                height: 25px;
                 border-radius: 50%;
                 background-color: #3498db;
                 display: flex;
@@ -273,44 +276,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 transition: all 0.3s ease;
             }
 
-            .button.clicked {
-                width: 100px;
-                border-radius: 30px;
+            .button-capsule {
+                width: 80px;
+                height: 25px;
+                border-radius: 25px;
+                background-color: #3498db;
+                display: none;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 10px;
+                transition: all 0.3s ease;
             }
 
             .icon {
-                position: absolute;
                 font-size: 20px;
-            }
-
-            .icon-left {
-                left: 5px;
-            }
-
-            .icon-right {
-                right: 5px;
+                color: #fff;
+                transition: all 0.3s ease;
             }
 
             .input {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 30px;
+                width: 20px;
+                height: 20px;
                 text-align: center;
-            }
-
-            .button.clicked .icon {
-                display: inline;
+                margin: 0 5px;
+                color: #000;
+                transition: all 0.3s ease;
             }
         </style>
 
         <script>
-            function changeShape() {
-                var button = document.querySelector('.button');
-                button.classList.toggle('clicked');
+            function changeToCapsule() {
+                document.querySelector('.button').style.display = 'none';
+                document.querySelector('.button-capsule').style.display = 'flex';
+            }
+
+            function changeToCircle() {
+                document.querySelector('.button').style.display = 'flex';
+                document.querySelector('.button-capsule').style.display = 'none';
             }
         </script>
+
+
+
 
 
 
