@@ -23,6 +23,7 @@
 					<table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
 						<thead>
 							<tr>
+								<th>No.</th>
 								<th>Toko</th>
 								<th>Nama Produk</th>
 								<th>Variasi Item</th>
@@ -32,6 +33,7 @@
 						<tbody>
 							<?php foreach ($getStockWithToko as $checkout) : ?>
 								<tr>
+									<td class="align-middle"><?= $iterasi++; ?></td>
 									<td class="align-middle"><?= $checkout->lable; ?></td>
 									<td class="align-middle"><?= $checkout->nama; ?></td>
 									<td class="align-middle"><?= $checkout->value_item; ?></td>
@@ -40,6 +42,7 @@
 							<?php endforeach ?>
 						</tbody>
 					</table>
+					<?= $pager->links('dashboard', 'pagerS') ?>
 				</div>
 			</div>
 

@@ -110,7 +110,7 @@
                                         <?php foreach ($variasiItem as $keyv => $v) : ?>
                                             <?php if ($key == $keyv) : ?>
                                                 <?php foreach ($v as $keyvv => $vv) : ?>
-                                                    <?= $vv['value_item']; ?> <?= (isset($stok[$keyv][$keyvv]['stok'])) ? ' ( Stok : <b>' . $stok[$keyv][$keyvv]['stok'] . '</b> )' : '( Stok belum diudpate )'; ?><br>
+                                                    <?= $vv['value_item']; ?> <?= (isset($stok[$keyv][$keyvv]['stok'])) ? ' ( Stok : <b>' . $stok[$keyv][$keyvv]['stok'] . '</b> )' : '( Stok belum di-update )'; ?><br>
                                                 <?php endforeach ?>
                                             <?php endif ?>
                                         <?php endforeach ?>
