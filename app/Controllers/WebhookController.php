@@ -13,20 +13,6 @@ use Faker\Core\Uuid;
 class WebhookController extends BaseController
 {
     use ResponseTrait;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function getOrder($invoice)
     {
         $checkoutModel = new CheckoutModel();
@@ -357,27 +343,6 @@ class WebhookController extends BaseController
             'response' => 'Index of webhook'
         ], 200);
     }
-    // EXAMPLE TESTING
-    public function handleWebhook()
-    {
-        // Validasi Header Authorization
-        $authorizationHeader = $this->request->getHeaderLine('Authorization');
-        if ($authorizationHeader !== 'ssayomart-engine') {
-            return $this->respondUnauthorized('Invalid Authorization');
-        }
-
-        // Ambil Payload JSON
-        $payload = $this->request->getJSON();
-
-        // Log Payload
-        log_message('debug', 'Webhook Data: ' . json_encode($payload));
-
-        // Proses Payload
-        $this->processWebhookPayload($payload);
-
-        // Berikan respons 200 OK
-        return $this->respond(['status' => 'success'], 200);
-    }
 
     private function processWebhookPayload($payload)
     {
@@ -391,5 +356,54 @@ class WebhookController extends BaseController
     private function respondUnauthorized($message)
     {
         return $this->respond(['status' => 'error', 'message' => $message], 401);
+    }
+
+    // EXAMPLE WEBHOOK TESTING
+    public function handleWebhook()
+    {
+        $payload = $this->request->getVar();
+
+        log_message('info', 'Webhook payload: ' . json_encode($payload));
+
+        return $this->showNotification($payload);
+    }
+
+    public function showNotification($payload = [])
+    {
+        $endpoint = base_url() . '/webhook/test-notif';
+
+        $headers = array(
+            'Accept: application/json',
+            'Client-Key: ' . "lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE",
+        );
+
+        // Request body payload
+        $data = $payload;
+
+        // Convert the data array to JSON format
+        $jsonData = json_encode($data);
+
+        // Initialize cURL session
+        $ch = curl_init($endpoint);
+
+        // Set cURL options
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        // Execute cURL session and get the response
+        $response = curl_exec($ch);
+
+        // Check for cURL errors
+        if (curl_errno($ch)) {
+            echo 'Curl error: ' . curl_error($ch);
+        }
+
+        // Close cURL session
+        curl_close($ch);
+
+        // Print the response
+        return json_decode($response);
     }
 }

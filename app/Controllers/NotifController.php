@@ -67,6 +67,7 @@ class NotifController extends BaseController
         $result = $apiInstance->createNotification($notification);
         return $result;
     }
+
     public function PaymentSuccess2()
     {
         $usersModel = new UsersModel();
@@ -85,6 +86,7 @@ class NotifController extends BaseController
         $result = $apiInstance->createNotification($notification);
         return $result;
     }
+
     function createNotification($enContent, $uuid): Notification
     {
         $content = new StringMap();
@@ -96,6 +98,7 @@ class NotifController extends BaseController
         $notification->setIncludePlayerIds([$uuid]);
         return $notification;
     }
+
     function createPlayerModel($playerId): Player
     {
         $player = new Player();
@@ -105,5 +108,23 @@ class NotifController extends BaseController
         $player->setDeviceType(1);
         // dd($player);
         return $player;
+    }
+
+    public function notifTest()
+    {
+        $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
+        $inv = $this->request->getVar('entity_id');
+        // dd($uuid);
+        $config = Configuration::getDefaultConfiguration()
+            ->setAppKeyToken($this->APP_KEY_TOKEN)
+            ->setUserKeyToken($this->USER_KEY_TOKEN);
+        $apiInstance = new DefaultApi(
+            new GuzzleHttp\Client(),
+            $config
+        );
+        // $notification = $this->createNotification($inv, $uuid);
+
+        $result = $apiInstance->createNotification($notification);
+        return $result;
     }
 }
