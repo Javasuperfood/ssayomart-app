@@ -13,6 +13,7 @@ class UserStatusController extends BaseController
 {
     public function status()
     {
+
         $midtransConfig = config('Midtrans');
 
         // Set the Midtrans API credentials
@@ -32,7 +33,9 @@ class UserStatusController extends BaseController
         $status_code = $this->request->getGet('status_code');
         $transaction_status = $this->request->getGet('transaction_status');
         $userSatus = $userModel->getStatus($order_id);
-
+        if ($userSatus->gosend == 1) {
+            return redirect()->to(base_url('status-gosend/?order_id=' . $order_id . '&status_code=' . $status_code . '&transaction_status=' . $transaction_status));
+        }
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
 

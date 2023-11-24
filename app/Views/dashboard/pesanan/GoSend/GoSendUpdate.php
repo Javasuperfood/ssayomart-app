@@ -51,6 +51,27 @@
         <div class="card-body">
             <div class="row row-cols-1">
                 <div class="col-md-6">
+                    <div class="my-3">
+                        <div class="row">
+                            <div class="col">
+                                <form id="updateStatus" action="" method="post">
+                                    <?= csrf_field(); ?>
+                                    <input type="hidden" name="inv" value="<?= $inv; ?>">
+                                    <div class="form-floating">
+                                        <select class="form-select" name="status" id="floatingSelect" aria-label="Floating label select example">
+                                            <?php foreach ($statusPesanan as $s) : ?>
+                                                <option value="<?= $s['id_status_pesan']; ?>" <?= $s['id_status_pesan'] == $order['id_status_pesan'] ? 'selected' : ''; ?>><?= $s['status']; ?></option>
+                                            <?php endforeach ?>
+                                        </select>
+                                        <label for="floatingSelect">Status Pesanan</label>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col">
+                                <button type="submit" form="updateStatus" class="btn btn-outline-danger py-3">Update</button>
+                            </div>
+                        </div>
+                    </div>
                     Detail :
                     </p>
                     <table class="table border-1">
@@ -126,7 +147,16 @@
                     <div class="card border-1" style="height: 100%;">
                         <div class="card-body">
                             <div class="card-header bg-white border-1 py-3">
-                                <h6 class="m-0 font-weight-bold text-danger">GoSend Update</h6>
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 class="m-0 font-weight-bold text-danger">GoSend Update</h6>
+                                    </div>
+                                    <div class="col text-end">
+                                        <?php if (in_array($gosendStatus['status'], ['Finding Driver', 'Driver not found', 'Enroute Drop', 'Enroute Pickup', 'Driver Allocated', 'Item Picked', 'On Hold'])) : ?>
+                                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
                             </div>
                             <?php if ($gosendStatus) : ?>
                                 <div class="col-12 my-3">
@@ -200,7 +230,7 @@
                                             <h4 class="alert-heading">Pengirimian dibatalkan!</h4>
                                             <p>Status saat ini pengirimian dibatalkan.</p>
                                             <hr>
-                                            <p class="mb-0">Mohon Klik retry untuk mencoba kembali.</p>
+                                            <p class="mb-0">Mohon Klik retry jika ingin mencoba kembali.</p>
                                         </div>
                                     <?php endif ?>
                                     <?php if ($gosendStatus['status'] == 'Rejected') : ?>
@@ -281,6 +311,27 @@
                                             </div>
                                         </div>
                                     <?php endif ?>
+                                    <div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="cancelModalLabel">Cancel Booking <?= $gosendStatus['orderNo']; ?></h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Apakah anda yakin ingin membatalkan pesanan ini?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <form action="<?= base_url('dashboard/order/gosend-update/' . $gosendStatus['orderNo'] . '/cancel'); ?>" method="post">
+                                                        <?= csrf_field(); ?>
+                                                        <input type="hidden" name="orderNo" value="<?= $gosendStatus['orderNo']; ?>">
+                                                        <button type="submit" class="btn btn-danger">Cancel</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
