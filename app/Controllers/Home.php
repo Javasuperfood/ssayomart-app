@@ -12,7 +12,7 @@ class Home extends BaseController
         $getStockWithToko = $stockModel->getStockWithProduct();
 
         $perPage = 5;
-        $currentPage = $this->request->getVar('page_dashboard') ? $this->request->getVar('dashboard') : 1;
+        $currentPage = $this->request->getVar('page_dashboard') ? $this->request->getVar('page_dashboard') : 1;
 
         $stockList = $stockModel->paginate($perPage, 'page_dashboard');
 

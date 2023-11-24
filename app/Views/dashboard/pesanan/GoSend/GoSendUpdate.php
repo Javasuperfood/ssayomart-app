@@ -54,9 +54,10 @@
                     <div class="my-3">
                         <div class="row">
                             <div class="col">
-                                <form id="updateStatus" action="" method="post">
+                                <form id="updateStatus" action="<?= base_url('dashboard/order/gosend-update/update-status/') . $inv ?>" method="post">
                                     <?= csrf_field(); ?>
                                     <input type="hidden" name="inv" value="<?= $inv; ?>">
+                                    <input type="hidden" name="id_checkout" value="<?= $order['id_checkout']; ?>">
                                     <div class="form-floating">
                                         <select class="form-select" name="status" id="floatingSelect" aria-label="Floating label select example">
                                             <?php foreach ($statusPesanan as $s) : ?>
