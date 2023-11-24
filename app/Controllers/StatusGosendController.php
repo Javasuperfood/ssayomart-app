@@ -37,16 +37,30 @@ class StatusGosendController extends BaseController
             'produk' => $cekProduk,
 
         ];
+        $status = [];
+        // ['Finding Driver', 'Cancelled', 'Completed', 'Enroute Drop', 'Driver not found', 'Enroute Pickup', 'Driver Allocated', 'Item Picked', 'On Hold', 'Rejected'
         if ($GoSendStatus) {
             if (in_array($GoSendStatus['status'], ['Finding Driver'])) {
                 $status[] = 'Finding Driver';
             }
+            if (in_array($GoSendStatus['status'], ['Enroute Pickup'])) {
+                $status[] = 'Finding Driver';
+                $status[] = 'Enroute Pickup';
+            }
             if (in_array($GoSendStatus['status'], ['Item Picked'])) {
                 $status[] = 'Finding Driver';
+                $status[] = 'Enroute Pickup';
                 $status[] = 'Item Picked';
+            }
+            if (in_array($GoSendStatus['status'], ['Enroute Drop'])) {
+                $status[] = 'Finding Driver';
+                $status[] = 'Enroute Pickup';
+                $status[] = 'Item Picked';
+                $status[] = 'Driver Enroute Drop';
             }
             if (in_array($GoSendStatus['status'], ['Completed'])) {
                 $status[] = 'Finding Driver';
+                $status[] = 'Enroute Pickup';
                 $status[] = 'Item Picked';
                 $status[] = 'Driver Allocated';
                 $status[] = 'Completed';
