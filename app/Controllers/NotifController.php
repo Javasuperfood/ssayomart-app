@@ -122,7 +122,7 @@ class NotifController extends BaseController
             new GuzzleHttp\Client(),
             $config
         );
-        // $notification = $this->createNotification($inv, $uuid);
+        $notification = $this->createNotification($inv, $uuid);
 
         $result = $apiInstance->createNotification($notification);
         return $result;
