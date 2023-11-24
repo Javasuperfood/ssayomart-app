@@ -82,16 +82,17 @@ class CheckoutModel extends Model
             ->get()->getResultArray();
     }
 
-    public function getCheckoutWithProduct()
+    public function getCheckoutWithProduct($perPage = null)
     {
-        $builder = $this->db->table('jsf_checkout');
-        $builder->select('users.fullname, jsf_produk.nama, jsf_checkout.created_at, jsf_checkout.total_2, jsf_checkout_produk.qty');
-        $builder->join('users', 'users.id = jsf_checkout.id_user');
-        $builder->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout');
-        $builder->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk');
-        $query = $builder->get();
-
-        return $query->getResult();
+        $query = $this->select('users.fullname, jsf_produk.nama, jsf_checkout.created_at, jsf_checkout.total_2, jsf_checkout_produk.qty, jsf_toko.lable')
+            ->join('jsf_toko', 'jsf_toko.id_toko = jsf_checkout.id_toko')
+            ->join('users', 'users.id = jsf_checkout.id_user')
+            ->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
+            ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk')
+            ->where('jsf_checkout.id_toko', 1);
+        $data = $query->paginate($perPage, 'checkout');
+        // dd($data);
+        return $data;
     }
 
     public function getOrderByInvoice($invoice)

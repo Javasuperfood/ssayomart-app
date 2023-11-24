@@ -64,15 +64,14 @@ class StockModel extends Model
         return $query;
     }
 
-    public function getStockWithProduct()
+    public function getStockWithProduct($perPage = null)
     {
-        $builder = $this->db->table('jsf_stock');
-        $builder->join('jsf_toko', 'jsf_toko.id_toko = jsf_stock.id_toko');
-        $builder->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_stock.id_variasi_item');
-        $builder->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk');
-        $builder->select('jsf_toko.lable, jsf_produk.nama, jsf_variasi_item.value_item, jsf_stock.created_at, jsf_stock.id_toko, jsf_stock.stok');
-        $query = $builder->get();
+        $query = $this->select('jsf_toko.lable, jsf_produk.nama, jsf_variasi_item.value_item, jsf_stock.created_at, jsf_stock.id_toko, jsf_stock.stok')
+            ->join('jsf_toko', 'jsf_toko.id_toko = jsf_stock.id_toko')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_stock.id_variasi_item')
+            ->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk');
+        $data = $query->paginate($perPage, 'stock');
 
-        return $query->getResult();
+        return $data;
     }
 }

@@ -34,10 +34,10 @@
 							<?php foreach ($getStockWithToko as $checkout) : ?>
 								<tr>
 									<td class="align-middle"><?= $iterasi++; ?></td>
-									<td class="align-middle"><?= $checkout->lable; ?></td>
-									<td class="align-middle"><?= $checkout->nama; ?></td>
-									<td class="align-middle"><?= $checkout->value_item; ?></td>
-									<td class="align-middle"><?= $checkout->stok; ?></td>
+									<td class="align-middle"><?= $checkout['lable']; ?></td>
+									<td class="align-middle"><?= $checkout['nama']; ?></td>
+									<td class="align-middle"><?= $checkout['value_item']; ?></td>
+									<td class="align-middle"><?= $checkout['stok']; ?></td>
 								</tr>
 							<?php endforeach ?>
 						</tbody>

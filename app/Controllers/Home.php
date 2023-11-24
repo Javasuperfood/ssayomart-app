@@ -9,16 +9,13 @@ class Home extends BaseController
     public function dashboard()
     {
         $stockModel = new StockModel();
-        $getStockWithToko = $stockModel->getStockWithProduct();
+        $perPage = 10;
+        $getStockWithToko = $stockModel->getStockWithProduct($perPage);
 
-        $perPage = 5;
         $currentPage = $this->request->getVar('page_dashboard') ? $this->request->getVar('page_dashboard') : 1;
-
-        $stockList = $stockModel->paginate($perPage, 'page_dashboard');
 
         $data = [
             'getStockWithToko' => $getStockWithToko,
-            'stock' => $stockList,
             'pager' => $stockModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
         ];
