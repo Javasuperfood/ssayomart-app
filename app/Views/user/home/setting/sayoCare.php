@@ -242,6 +242,85 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- akhir form dan maps -->
 
+        <!-- button Animasi -->
+        <div class="button-container">
+            <div class="button" onclick="changeShape()">
+                <i class="icon icon-left fas fa-plus"></i>
+                <input type="number" class="input" value="1">
+                <i class="icon icon-right fas fa-minus"></i>
+            </div>
+        </div>
+        <!-- akhir button animasi -->
+
+        <style>
+            .button-container {
+                display: flex;
+                align-items: center;
+            }
+
+            .button {
+                position: relative;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background-color: #3498db;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .button.clicked {
+                width: 100px;
+                border-radius: 30px;
+            }
+
+            .icon {
+                position: absolute;
+                font-size: 20px;
+            }
+
+            .icon-left {
+                left: 5px;
+            }
+
+            .icon-right {
+                right: 5px;
+            }
+
+            .input {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 30px;
+                text-align: center;
+            }
+
+            .button.clicked .icon {
+                display: inline;
+            }
+        </style>
+
+        <script>
+            function changeShape() {
+                var button = document.querySelector('.button');
+                button.classList.toggle('clicked');
+            }
+        </script>
+
+
+
+
+
+
+
+
+
+
         <style>
             .bg-image {
                 position: relative;
@@ -524,6 +603,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <!-- akhir form dan maps -->
+
+
+
 
         <style>
             .bg-image {
