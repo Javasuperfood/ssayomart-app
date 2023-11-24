@@ -21,6 +21,7 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
+                                <th>Toko</th>
                                 <th>Nama</th>
                                 <th>Nama Produk</th>
                                 <th>Qty</th>
@@ -32,16 +33,17 @@
                             <?php foreach ($getCheckoutWithProduct as $p) : ?>
                                 <tr>
                                     <td><?= $iterasi++; ?></td>
-                                    <td><?= $p->fullname; ?></td>
-                                    <td><?= $p->nama; ?></td>
-                                    <td><?= $p->qty; ?></td>
-                                    <td><?= number_format($p->total_2, 0, ',', '.'); ?></td>
-                                    <td><?= date("d-m-Y", strtotime($p->created_at));  ?></td>
+                                    <td><?= $p['lable']; ?></td>
+                                    <td><?= $p['fullname']; ?></td>
+                                    <td><?= $p['nama']; ?></td>
+                                    <td><?= $p['qty']; ?></td>
+                                    <td><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
+                                    <td><?= date("d-m-Y", strtotime($p['created_at']));  ?></td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
                     </table>
-                    <?= $pager->links('page_checkout', 'pagerS') ?>
+                    <?= $pager->links('checkout', 'pagerS') ?>
                 </div>
             </div>
 
