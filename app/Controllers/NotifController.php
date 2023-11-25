@@ -112,9 +112,28 @@ class NotifController extends BaseController
 
     public function notifTest()
     {
+        $usersModel = new UsersModel();
+
+        // $uuid = $usersModel->find(user_id())['uuid'];
         $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
-        $inv = $this->request->getVar('entity_id');
-        // dd($uuid);
+
+        $entity_id = $this->request->getVar('entity_id');
+        $booking_id = $this->request->getVar('booking_id');
+        $status = $this->request->getVar('status');
+        $driver_name = $this->request->getVar('driver_name');
+        $driver_phone = $this->request->getVar('driver_phone');
+        $receiver_name = $this->request->getVar('receiver_name');
+        $cancellation_reason = $this->request->getVar('cancellation_reason');
+        $link_tracking_url = $this->request->getVar('link_tracking_url');
+
+        $notification = $this->createNotification(
+            'Pesanan untuk ' . $entity_id . ' atas nama ' . $receiver_name . ' dengan kode booking ' . $booking_id . ' sudah kami terima. ' . $driver_name . ' akan mengantarkan barang milik ' . $receiver_name . ' dengan sepenuh hati! Kamu juga bisa menghubungi driver ' . $driver_phone,
+            $uuid,
+            $entity_id,
+            $status,
+            $cancellation_reason
+        );
+
         $config = Configuration::getDefaultConfiguration()
             ->setAppKeyToken($this->APP_KEY_TOKEN)
             ->setUserKeyToken($this->USER_KEY_TOKEN);
@@ -122,7 +141,6 @@ class NotifController extends BaseController
             new GuzzleHttp\Client(),
             $config
         );
-        $notification = $this->createNotification($inv, $uuid);
 
         $result = $apiInstance->createNotification($notification);
         return $result;
