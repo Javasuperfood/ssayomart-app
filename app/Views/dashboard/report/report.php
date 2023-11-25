@@ -15,16 +15,15 @@
 
     <div class="card-body mt-2">
         <div class="row">
-            <div class="col col-sm-6">
+            <div class="col col-sm-12">
                 <div class="table-responsive">
                     <table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No.</th>
                                 <th>Toko</th>
-                                <th>Nama</th>
-                                <th>Nama Produk</th>
-                                <th>Qty</th>
+                                <th>INV</th>
+                                <th>Produk</th>
                                 <th>Total (Rp)</th>
                                 <th>Created At</th>
                             </tr>
@@ -34,10 +33,19 @@
                                 <tr>
                                     <td><?= $iterasi++; ?></td>
                                     <td><?= $p['lable']; ?></td>
-                                    <td><?= $p['fullname']; ?></td>
-                                    <td><?= $p['nama']; ?></td>
-                                    <td><?= $p['qty']; ?></td>
-                                    <td><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
+                                    <td><?= $p['invoice']; ?></td>
+                                    <td>
+                                        <table class="table table-bordered">
+                                            <tr>
+                                                <td><?= $p['nama']; ?></td>
+                                                <td rowspan="2">Qty : <?= $p['qty']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>SKU : <?= $p['sku']; ?></td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
                                     <td><?= date("d-m-Y", strtotime($p['created_at']));  ?></td>
                                 </tr>
                             <?php endforeach ?>
@@ -48,7 +56,7 @@
             </div>
 
             <!-- Chart -->
-            <div class="card-body col-sm-6">
+            <div class="card-body col-sm-12">
                 <canvas id="myChart"></canvas>
             </div>
         </div>
@@ -60,7 +68,7 @@
 <script>
     const ctx = document.getElementById('myChart');
 
-    const quantityData = <?= json_encode(array_column($getCheckoutWithProduct, 'total_2')); ?>;
+    const quantityData = <?= json_encode(array_column($getCheckoutWithProduct, 'total_1')); ?>;
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct', 'Nov', 'Des'];
 
     const initialChartData = {
