@@ -38,6 +38,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <!-- end tampilan Desktop -->
 <?php endif ?>
-<?= $this->include('user/home/component/pagination'); ?>
+<?= $this->include('user/home/component/pagination2'); ?>
 <!-- END -->
 <?= $this->endSection(); ?>
