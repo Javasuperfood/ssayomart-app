@@ -302,7 +302,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 text-align: center;
                 margin: 0 5px;
                 color: #000;
+                font-size: 11px;
                 transition: all 0.3s ease;
+
             }
         </style>
 
@@ -314,23 +316,38 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             function decreaseValue() {
                 var counter = document.getElementById('counter');
-                counter.value = parseInt(counter.value) - 1;
-                if (counter.value <= 0) {
-                    document.querySelector('.button-capsule').style.display = 'none';
-                    document.querySelector('.button').style.display = 'flex';
+                if (parseInt(counter.value) > 0) {
+                    counter.value = parseInt(counter.value) - 1;
                 }
+                validateCounter();
             }
 
             function increaseValue() {
                 var counter = document.getElementById('counter');
                 counter.value = parseInt(counter.value) + 1;
+                validateCounter();
             }
 
             function changeToCircle() {
                 document.querySelector('.button').style.display = 'flex';
                 document.querySelector('.button-capsule').style.display = 'none';
             }
+
+            function validateCounter() {
+                var counter = document.getElementById('counter');
+                if (parseInt(counter.value) <= 1) {
+                    counter.value = 1;
+                    changeToCircle();
+                }
+            }
         </script>
+
+
+        <div class="floating-counter-btn" onclick="toggleCounter(this)">
+            <i class="bi bi-gear"></i>
+        </div>
+
+
 
 
 
