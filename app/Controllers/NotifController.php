@@ -117,7 +117,7 @@ class NotifController extends BaseController
         $usersModel = new UsersModel();
 
         $uuid = $usersModel->find(user_id())['uuid'];
-        // $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';  
+        // $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
 
         $entity_id = $this->request->getVar('entity_id');
         $booking_id = $this->request->getVar('booking_id');
@@ -145,56 +145,58 @@ class NotifController extends BaseController
         );
 
         $result = $apiInstance->createNotification($notification);
-        return $result;
+        return response()->setJSON($result);
     }
 
     public function warehouseGosendNotification()
     {
-        $adminEmail = 'alfaini01@gmail.com';
-
+        $usersModel = new UsersModel();
         helper('email');
 
         $emailConfig = config('Email');
-        $email = emailer()->initialize($emailConfig);
 
-        // $data = [
-        //     'entity_id' => 
-        // ];
+        // Dapatkan email admin
+        $adminEmails = $usersModel->getAdminEmails();
 
-        $email->setFrom(setting('Email.fromEmail'), setting('Email.fromName') ?? '');
-        $email->setTo($adminEmail);
-        $email->setSubject('PESANAN MASUK!');
-        $email->setMessage(view('Email/warehouseNotification'));
+        if (!empty($adminEmails)) {
+            foreach ($adminEmails as $adminEmail) {
+                $email = emailer()->initialize($emailConfig);
+                $email->setFrom(setting('Email.fromEmail'), setting('Email.fromName') ?? '');
+                $email->setSubject('PESANAN MASUK!');
+                $email->setMessage(view('Email/warehouseNotification'));
+                $email->setTo($adminEmail);
 
-        if (!$email->send()) {
-            log_message('error', $email->printDebugger(['headers']));
+                if (!$email->send()) {
+                    log_message('error', $email->printDebugger(['headers']));
+                }
+            }
         }
-
-        $email->clear();
     }
 
-    public function warehouseNotification()
-    {
-        $adminEmail = 'alfaini01@gmail.com';
 
-        helper('email');
 
-        $emailConfig = config('Email');
-        $email = emailer()->initialize($emailConfig);
+    // public function warehouseNotification()
+    // {
+    //     $adminEmail = 'alfaini01@gmail.com';
 
-        // $data = [
-        //     'entity_id' => 
-        // ];
+    //     helper('email');
 
-        $email->setFrom(setting('Email.fromEmail'), setting('Email.fromName') ?? '');
-        $email->setTo($adminEmail);
-        $email->setSubject('PESANAN MASUK!');
-        $email->setMessage(view('Email/warehouseNotification'));
+    //     $emailConfig = config('Email');
+    //     $email = emailer()->initialize($emailConfig);
 
-        if (!$email->send()) {
-            log_message('error', $email->printDebugger(['headers']));
-        }
+    //     // $data = [
+    //     //     'entity_id' => 
+    //     // ];
 
-        $email->clear();
-    }
+    //     $email->setFrom(setting('Email.fromEmail'), setting('Email.fromName') ?? '');
+    //     $email->setTo($adminEmail);
+    //     $email->setSubject('PESANAN MASUK!');
+    //     $email->setMessage(view('Email/warehouseNotification'));
+
+    //     if (!$email->send()) {
+    //         log_message('error', $email->printDebugger(['headers']));
+    //     }
+
+    //     $email->clear();
+    // }
 }

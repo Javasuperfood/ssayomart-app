@@ -137,4 +137,24 @@ class UsersModel extends Model
         ];
         return $data;
     }
+
+    public function getAdminEmails()
+    {
+        $userModel = new \App\Models\UsersModel();
+        $adminEmails = [];
+
+        // Dapatkan pengguna dengan grup 'admin'
+        $admins = $userModel->getUserWithRole();
+
+        foreach ($admins as $admin) {
+            // Dapatkan email admin menggunakan ID pengguna
+            $email = $userModel->getEmail($admin['id']);
+
+            if (!empty($email)) {
+                $adminEmails[] = $email;
+            }
+        }
+
+        return $adminEmails;
+    }
 }
