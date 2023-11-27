@@ -42,7 +42,7 @@
 							<?php endforeach ?>
 						</tbody>
 					</table>
-					<?= $pager->links('dashboard', 'pagerS') ?>
+					<?= $pager->links('stock', 'pagerS') ?>
 				</div>
 			</div>
 

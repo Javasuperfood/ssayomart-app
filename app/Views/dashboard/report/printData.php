@@ -108,29 +108,46 @@
 <textarea id="open-source-plugins">
 <!-- Content -->
 <h1 style="text-align: center;"><span style="text-decoration: underline;">Report Penjualan Aplikasi Ssayomart</span></h1>
-<table style="border-collapse: collapse; width: 100%;" border="1">
-<tbody>
+<!-- End of Content -->
+<table style="border-collapse: collapse; width: 99.9995%;" border="1">
+<thead>
 <tr>
-<td style="width: 20.0319%; text-align: center;"><strong>Nama</strong></td>
-<th style="width: 20.0319%;">Nama Produk</th>
-<td style="width: 20.0319%; text-align: center;"><strong>Qty</strong></td>
-<th style="width: 20.0319%;">Total (Rp)</th>
-<td style="width: 19.8723%; text-align: center;"><strong>Created At</strong></td>
+<th style="width: 3.28862%; text-align: center;">No</th>
+<th style="width: 30.0915%; text-align: center;">Toko</th>
+<th style="width: 16.6901%; text-align: center;">INV</th>
+<th style="width: 16.6901%; text-align: center;">Produk</th>
+<th style="width: 16.6901%; text-align: center;">Total</th>
+<th style="width: 16.566%; text-align: center;">Tanggal Pembelian</th>
 </tr>
+</thead>
+<tbody>
 <?php foreach ($getCheckoutWithProduct as $p) : ?>
 <tr>
-<td style="width: 20.0319%; text-align: center;"><?= $p->fullname; ?></td>
-<td style="width: 20.0319%; text-align: center;"><?= $p->nama; ?></td>
-<td style="width: 20.0319%; text-align: center;"><?= $p->qty; ?></td>
-<td style="width: 20.0319%; text-align: center;"><?= number_format($p->total_2, 0, ',', '.'); ?></td>
-<td style="width: 19.8723%; text-align: center;"><?= date("d-m-Y", strtotime($p->created_at));  ?></td>
+<td style="width: 3.28862%; text-align: center;"><?= $iterasi++; ?></td>
+<td style="width: 30.0915%; text-align: center;"><?= $p['lable']; ?></td>
+<td style="width: 16.6901%; text-align: center;"><?= $p['invoice']; ?></td>
+<td style="width: 16.6901%; text-align: center;">
+<table style="border-collapse: collapse; width: 100.674%;" border="1">
+<tbody>
+<tr>
+<td style="width: 44.3103%;"><?= $p['nama']; ?></td>
+<td style="width: 55.682%;" rowspan="2">Qty : <?= $p['qty']; ?></td>
 </tr>
-<?php endforeach ?>
+<tr>
+<td style="width: 44.3103%;">SKU : <?= $p['sku']; ?></td>
+</tr>
 </tbody>
 </table>
-<!-- End of Content -->
+</td>
+<td style="width: 16.6901%; text-align: center;">90.000</td>
+<td style="width: 16.566%; text-align: center;"><?= date("d-m-Y", strtotime($p['created_at']));  ?></td>
+</tr>
+<?php endforeach; ?>
+</tbody>
+</table>
 </textarea>
 <!-- </div> -->
+<?= $pager->links('checkout', 'pagerS') ?>
 
 <?= $this->endSection(); ?>
 <!-- <p>&nbsp;</p> -->

@@ -84,7 +84,7 @@ class CheckoutModel extends Model
 
     public function getCheckoutWithProduct($perPage = null)
     {
-        $query = $this->select('jsf_produk.nama, jsf_produk.sku, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.lable')
+        $query = $this->select('jsf_checkout.id_checkout, jsf_produk.nama, jsf_produk.sku, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.lable')
             ->join('jsf_toko', 'jsf_toko.id_toko = jsf_checkout.id_toko')
             ->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk')

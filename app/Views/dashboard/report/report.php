@@ -1,10 +1,12 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-3 text-gray-800">Dashboard</h1>
+<h1 class="h3 mb-3 text-gray-800">Data Penjualan</h1>
 <div class="col px-0">
     <p>Berikut adalah data report penjualan aplikasi Ssayomart</p>
-    <a href="<?= site_url('dashboard/report/printpdf') ?>" type="button" class="btn btn-danger mb-4">Download PDF</a>
+    <?= csrf_field(); ?>
+    <a href="<?= site_url('dashboard/report/printpdf/' . $getCheckoutWithProduct[0]['id_checkout']) ?>" type="button" class="btn btn-danger mb-4">Download PDF</a>
+    <input type="hidden" name="id_checkout" id="id_checkout">
 </div>
 
 <div class="card border-1 shadow-sm mb-5">
