@@ -25,11 +25,6 @@ class WebhookFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!$request->hasHeader('Client-Key')) {
-            // Jika header tidak ada, kembalikan response dengan status Unauthorized
-            return $this->resErrorCustom('Client-Key header is missing');
-        }
-
         // // Dapatkan nilai header 'X-key'
         $keyId = $request->getHeaderLine('Client-Key');
         $Authorization = $request->getHeaderLine('Authorization');
