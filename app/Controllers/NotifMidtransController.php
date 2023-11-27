@@ -41,6 +41,13 @@ class NotifMidtransController extends BaseController
         $string = $data->order_id . ' ' . 'Pembayaran anda berhasil ' . $total . ' dengan metode ' . $data->payment_type;
         $usersModel = new UsersModel();
         $uuid = $usersModel->where('id', $transaksi['id_user'])->first()['uuid'];
+        if ($uuid == null) {
+            return response()->setJSON([
+                'status' => 200,
+                'result' => 'UUID NOT FOUND',
+                'body' => $data,
+            ], 200);
+        }
         $config = Configuration::getDefaultConfiguration()
             ->setAppKeyToken($this->APP_KEY_TOKEN)
             ->setUserKeyToken($this->USER_KEY_TOKEN);
