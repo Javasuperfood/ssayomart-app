@@ -18,6 +18,8 @@ use onesignal\client\model\FilterExpressions;
 use PHPUnit\Framework\TestCase;
 use GuzzleHttp;
 use CodeIgniter\API\ResponseTrait;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class NotifController extends BaseController
 {
@@ -110,12 +112,12 @@ class NotifController extends BaseController
         return $player;
     }
 
-    public function notifTest()
+    public function notificationGosend()
     {
         $usersModel = new UsersModel();
 
         $uuid = $usersModel->find(user_id())['uuid'];
-        // $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
+        // $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';  
 
         $entity_id = $this->request->getVar('entity_id');
         $booking_id = $this->request->getVar('booking_id');
@@ -144,5 +146,55 @@ class NotifController extends BaseController
 
         $result = $apiInstance->createNotification($notification);
         return $result;
+    }
+
+    public function warehouseGosendNotification()
+    {
+        $adminEmail = 'alfaini01@gmail.com';
+
+        helper('email');
+
+        $emailConfig = config('Email');
+        $email = emailer()->initialize($emailConfig);
+
+        // $data = [
+        //     'entity_id' => 
+        // ];
+
+        $email->setFrom(setting('Email.fromEmail'), setting('Email.fromName') ?? '');
+        $email->setTo($adminEmail);
+        $email->setSubject('PESANAN MASUK!');
+        $email->setMessage(view('Email/warehouseNotification'));
+
+        if (!$email->send()) {
+            log_message('error', $email->printDebugger(['headers']));
+        }
+
+        $email->clear();
+    }
+
+    public function warehouseNotification()
+    {
+        $adminEmail = 'alfaini01@gmail.com';
+
+        helper('email');
+
+        $emailConfig = config('Email');
+        $email = emailer()->initialize($emailConfig);
+
+        // $data = [
+        //     'entity_id' => 
+        // ];
+
+        $email->setFrom(setting('Email.fromEmail'), setting('Email.fromName') ?? '');
+        $email->setTo($adminEmail);
+        $email->setSubject('PESANAN MASUK!');
+        $email->setMessage(view('Email/warehouseNotification'));
+
+        if (!$email->send()) {
+            log_message('error', $email->printDebugger(['headers']));
+        }
+
+        $email->clear();
     }
 }
