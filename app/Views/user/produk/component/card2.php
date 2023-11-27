@@ -11,6 +11,8 @@
 
 
                         <div class="card border-0 shadow-sm text-center" style="width: 95px; height: 100%;padding: 5px;">
+
+
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
@@ -32,7 +34,115 @@
                                     <?php endif ?>
                                 </h1>
 
-                                <div class="container mt-1 mb-2">
+
+                                <!-- button Animasi -->
+                                <div class="button-container">
+                                    <div class="button ms-5" onclick="changeToCapsule()">
+                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center">+</i>
+                                    </div>
+
+                                    <div class="button-capsule ms-5" style="display: none;">
+                                        <i class="icon fas fa-minus" onclick="decreaseValue()">-</i>
+                                        <input type="number" class="input" value="1" id="counter">
+                                        <i class="icon fas fa-plus" onclick="increaseValue()">+</i>
+                                    </div>
+                                </div>
+                                <!-- akhir button animasi -->
+                                <!-- styling button counter animasi -->
+                                <style>
+                                    .button-container {
+                                        display: flex;
+                                        gap: 10px;
+                                    }
+
+                                    .button {
+                                        width: 15px;
+                                        height: 15px;
+                                        border-radius: 50%;
+                                        background-color: #3498db;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        color: #fff;
+                                        font-weight: bold;
+                                        cursor: pointer;
+                                        transition: all 0.3s ease;
+                                    }
+
+                                    .button-capsule {
+                                        width: 75px;
+                                        height: 15px;
+                                        border-radius: 15px;
+                                        background-color: #3498db;
+                                        display: none;
+                                        flex-direction: row;
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        padding: 0 10px;
+                                        transition: all 0.3s ease;
+                                    }
+
+                                    .icon {
+                                        font-size: 12px;
+                                        color: #fff;
+                                        transition: all 0.3s ease;
+                                        cursor: pointer;
+                                    }
+
+                                    .input {
+                                        width: 15px;
+                                        height: 15px;
+                                        text-align: center;
+                                        margin: 0 5px;
+                                        color: #000;
+                                        font-size: 10px;
+                                        transition: all 0.3s ease;
+
+                                    }
+                                </style>
+                                <!-- akhir styling button counter animasi -->
+                                <!-- script button counter animasi -->
+                                <script>
+                                    function changeToCapsule() {
+                                        document.querySelector('.button').style.display = 'none';
+                                        document.querySelector('.button-capsule').style.display = 'flex';
+                                    }
+
+                                    function decreaseValue() {
+                                        var counter = document.getElementById('counter');
+                                        if (parseInt(counter.value) > 0) {
+                                            counter.value = parseInt(counter.value) - 1;
+                                        }
+                                        validateCounter();
+                                    }
+
+                                    function increaseValue() {
+                                        var counter = document.getElementById('counter');
+                                        counter.value = parseInt(counter.value) + 1;
+                                        validateCounter();
+                                    }
+
+                                    function changeToCircle() {
+                                        document.querySelector('.button').style.display = 'flex';
+                                        document.querySelector('.button-capsule').style.display = 'none';
+                                    }
+
+                                    function validateCounter() {
+                                        var counter = document.getElementById('counter');
+                                        if (parseInt(counter.value) <= 1) {
+                                            counter.value = 1;
+                                            changeToCircle();
+                                        }
+                                    }
+                                </script>
+                                <!-- akhir script button counter animasi -->
+
+
+
+
+
+
+                                <!-- <div class="container mt-1 mb-2">
                                     <div class="row justify-items-center">
                                         <div class="col">
                                             <div class="horizontal-counter">
@@ -42,7 +152,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                                     <form action="<?= base_url('produk/' . $fp['slug']); ?>">
