@@ -309,6 +309,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
 
     $routes->post('gosend/getcost', 'GoSendAPIController::getCostGoSend');
 
+    $routes->post('payment/VZrM5D3PfjP5GGn1dfGa', 'NotifMidtransController::webhookMidtranss');
 
     // $routes->get('/notif', 'NotifController::PaymentSuccess2');
     // $routes->get('/notif', 'NotifController::index');
