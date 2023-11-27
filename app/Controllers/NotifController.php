@@ -114,8 +114,8 @@ class NotifController extends BaseController
     {
         $usersModel = new UsersModel();
 
-        // $uuid = $usersModel->find(user_id())['uuid'];
-        $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
+        $uuid = $usersModel->find(user_id())['uuid'];
+        // $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
 
         $entity_id = $this->request->getVar('entity_id');
         $booking_id = $this->request->getVar('booking_id');
