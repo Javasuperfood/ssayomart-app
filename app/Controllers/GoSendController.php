@@ -161,9 +161,20 @@ class GoSendController extends BaseController
         // return response()->setJSON($response, 200);
 
         $storeDataToGoSend = $this->bookingAPI($body);
-
-        if ($storeDataToGoSend['status'] == '200') {
-            return redirect()->back();
+        if ($storeDataToGoSend['status_code'] === 201) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Success',
+                'message' => 'Booking Berhasil'
+            ];
+            return redirect()->back()->with('alert', $alert);
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => $storeDataToGoSend['response']
+            ];
+            return redirect()->back()->with('alert', $alert);
         }
     }
     function formatTelp($nomor)
@@ -217,12 +228,15 @@ class GoSendController extends BaseController
         if (curl_errno($ch)) {
             echo 'Curl error: ' . curl_error($ch);
         }
-
+        $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         // Close cURL session
         curl_close($ch);
 
         // Print the response
-        return $response;
+        return [
+            'status_code' => $httpStatusCode,
+            'response' => $response
+        ];
     }
 
     function getStatusGosend($id)
