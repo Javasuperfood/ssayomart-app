@@ -154,18 +154,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="fixed-bottom bg-white" style="padding-bottom: 20%; padding-top: 2%;">
                         <div class="row">
                             <div class="col-1 pt-2 pe-5">
-                                <button class="btn border-0" type="button" data-bs-toggle="modal" data-bs-target="#updateStatus">
+                                <button class="btn border-0" style="display: flex; justify-content: center; align-items:center" type="button" data-bs-toggle="modal" data-bs-target="#updateStatus">
                                     <i class="bi bi-three-dots-vertical fs-1 fw-bold text-secondary"></i>
                                 </button>
                             </div>
                             <div class="col pt-2 d-grid">
-                                <button type="button" class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#liveTarcking">
+                                <button type="button" class="btn btn-danger fw-bold" style="padding: 3%; margin-right: 35px;" data-bs-toggle="modal" data-bs-target="#liveTarcking">
                                     Live Tracking
                                 </button>
                             </div>
                         </div>
                     </div>
-
 
                     <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
                         <div class="modal-dialog modal-dialog-centered" role="document">

@@ -30,7 +30,7 @@ class StatusGosendController extends BaseController
 
 
         $data = [
-            'title' => 'status Gosend',
+            'title' => 'Status Gosend',
             'kategori' => $kategori->findAll(),
             'gosendStatus' => $GoSendStatus,
             'payment' => $this->getStatusMidtrans($id),
