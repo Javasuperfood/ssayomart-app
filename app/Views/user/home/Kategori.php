@@ -24,7 +24,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="modal-content border-0 bg-transparent">
                         <div class="modal-body d-flex justify-content-center align-items-center">
                             <img src="<?= base_url() ?>assets/img/banner/popup/<?= $pop['img'] ?>" class="img-fluid" alt="<?= $pop['title']; ?>">
-                            <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close position-absolute btn rounded-circle" data-bs-dismiss="modal" aria-label="Close" style="background-color: white; opacity: 1;"></button>
                         </div>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 color: #000;
                 font-size: 10px;
                 /* margin-right: 4%; */
-                margin-top: 130%;
+                margin-top: 123%;
 
                 /* atau warna lain sesuai kebutuhan */
             }
@@ -146,7 +146,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     color: #000;
                     font-size: 10px;
                     margin-left: 7%;
-                    margin-top: 90%;
+                    margin-top: 87%;
 
                     /* atau warna lain sesuai kebutuhan */
                 }
@@ -169,7 +169,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     background-color: #ffff;
                     color: #000;
                     font-size: 10px;
-                    margin-top: 140%;
+                    margin-top: 125%;
 
                     /* atau warna lain sesuai kebutuhan */
                 }
