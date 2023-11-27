@@ -44,6 +44,21 @@ class NotifMidtransController extends BaseController
         }
         if ($data->transaction_status == 'pending') {
             $string = $data->order_id . ' ' . ' terkonfirmasi saat ini sedang menggung pembayaran ' . $total . ' dengan metode ' . $data->payment_type;
+            if ($transaksi['id_status_pesan'] == 1) {
+                $checkoutModel->save([
+                    'id_checkout' => $transaksi['id_checkout'],
+                    'id_status_pesan' => 2
+                ]);
+            }
+        }
+        if ($data->transaction_status == 'expire') {
+            if ($transaksi['id_status_pesan'] == 1) {
+                $checkoutModel->save([
+                    'id_checkout' => $transaksi['id_checkout'],
+                    'id_status_pesan' => 5
+                ]);
+            }
+            $string = $data->order_id . ' ' . ' dengan ' . $total . ' dengan metode ' . $data->payment_type . ' telah kadalwarsa';
         }
         $usersModel = new UsersModel();
         $uuid = $usersModel->where('id', $transaksi['id_user'])->first()['uuid'];
@@ -64,12 +79,7 @@ class NotifMidtransController extends BaseController
         $notification = $this->createNotification($string, $uuid);
 
         $result = $apiInstance->createNotification($notification);
-        if ($transaksi['id_status_pesan'] == 1) {
-            $checkoutModel->save([
-                'id_checkout' => $transaksi['id_checkout'],
-                'id_status_pesan' => 2
-            ]);
-        }
+
         return response()->setJSON([
             'status' => 200,
             'result' => $result,
