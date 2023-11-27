@@ -36,9 +36,9 @@ class NotifMidtransController extends BaseController
     function NotifHandler($data)
     {
         $checkoutModel = new CheckoutModel();
-        $transaksi = $checkoutModel->where('invoice', $data->transaction->transaction_id)->first();
-        $total = 'Rp. ' . number_format(($data->subscription->amount), 0, ',', '.');
-        $string = $data->transaction->transaction_id . ' ' . 'Pembayaran anda berhasil ' . $total . ' ' . $data->subscription->payment_type;
+        $transaksi = $checkoutModel->where('invoice', $data->order_id)->first();
+        $total = 'Rp. ' . number_format(($data->gross_amount), 0, ',', '.');
+        $string = $data->order_id . ' ' . 'Pembayaran anda berhasil ' . $total . ' dengan metode ' . $data->payment_type;
         $usersModel = new UsersModel();
         $uuid = $usersModel->where('id', $transaksi['id_user'])->first()['uuid'];
         $config = Configuration::getDefaultConfiguration()
