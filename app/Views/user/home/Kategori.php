@@ -116,8 +116,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     background-color: #ffff;
                     color: #000;
                     font-size: 10px;
-                    margin-left: 7%;
-                    margin-top: 90%;
+
+                    margin-top: 60%;
 
                     /* atau warna lain sesuai kebutuhan */
                 }
@@ -129,6 +129,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     /* Sesuaikan ukuran sesuai kebutuhan */
                     height: 25px;
                     /* Sesuaikan ukuran sesuai kebutuhan */
+                }
+
+                .img-fluid {
+                    width: 200px;
+                    max-width: 100%;
+                    height: auto;
                 }
             }
 
@@ -147,12 +153,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 /* Membuat tombol close berbentuk lingkaran */
                 .btn-close {
-                    border-radius: 50%;
+                    margin-right: 5%;
                     width: 25px;
                     /* Sesuaikan ukuran sesuai kebutuhan */
                     height: 25px;
                     /* Sesuaikan ukuran sesuai kebutuhan */
                 }
+
             }
 
             /* samsung galaxy fold lipat */

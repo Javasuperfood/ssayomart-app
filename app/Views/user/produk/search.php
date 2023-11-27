@@ -15,10 +15,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Card -->
 
         <div class="mt-4">
-            <?= $this->include('user/produk/component/card') ?>
+            <?= $this->include('user/produk/component/card2') ?>
         </div>
 
-        <?= $this->include('user/home/component/pagination'); ?>
+        <?= $this->include('user/home/component/pagination2'); ?>
 
         <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>
         <!-- fotter -->
