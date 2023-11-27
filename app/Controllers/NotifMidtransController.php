@@ -38,7 +38,13 @@ class NotifMidtransController extends BaseController
         $checkoutModel = new CheckoutModel();
         $transaksi = $checkoutModel->where('invoice', $data->order_id)->first();
         $total = 'Rp. ' . number_format(($data->gross_amount), 0, ',', '.');
-        $string = $data->order_id . ' ' . 'Pembayaran anda berhasil ' . $total . ' dengan metode ' . $data->payment_type;
+        $string = '';
+        if ($data->transaction_status == 'settlement') {
+            $string = $data->order_id . ' ' . 'Pembayaran anda berhasil ' . $total . ' dengan metode ' . $data->payment_type;
+        }
+        if ($data->transaction_status == 'pending') {
+            $string = $data->order_id . ' ' . ' terkonfirmasi saat ini sedang menggung pembayaran ' . $total . ' dengan metode ' . $data->payment_type;
+        }
         $usersModel = new UsersModel();
         $uuid = $usersModel->where('id', $transaksi['id_user'])->first()['uuid'];
         if ($uuid == null) {
