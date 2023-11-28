@@ -171,7 +171,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="modal-dialog modal-dialog-centered" role="document">
                             <div class="modal-content rounded-4 shadow">
                                 <div class="modal-header border-bottom-0 text-center">
-                                    <h1 class="modal-title fs-5 fw-bold">Selesiaikan Pesanan</h1>
+                                    <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
                                 </div>
                                 <div class="modal-body py-0">
                                     <p>Pastikan pesanan anda telah diterima.</p>
@@ -386,7 +386,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updateStatus"><i class="bi bi-three-dots-vertical fs-1 fw-bold text-white"></i></button>
                                         </div>
                                         <div class="col d-grid">
-                                            <button class="btn btn-danger fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#liveTarcking">Live Tarcking</button>
+                                            <button class="btn btn-danger fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#liveTarcking">Live Tracking</button>
                                         </div>
                                     </div>
 
@@ -405,18 +405,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endif ?>
                                 <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content rounded-4 shadow">
-                                            <div class="modal-header border-bottom-0 text-center">
-                                                <h1 class="modal-title fs-5 fw-bold">Selesiaikan Pesanan</h1>
+                                        <form action="<?= base_url('status-gosend/update/' . $inv) ?>" method="post">
+                                            <?= csrf_field(); ?>
+                                            <div class="modal-content rounded-4 shadow">
+                                                <div class="modal-header border-bottom-0 text-center">
+                                                    <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
+                                                </div>
+                                                <div class="modal-body py-0">
+                                                    <p>Pastikan pesanan anda telah diterima.</p>
+                                                </div>
+                                                <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                                                    <button type="submit" class="btn btn-lg btn-success">Selesai</button>
+                                                    <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-body py-0">
-                                                <p>Pastikan pesanan anda telah diterima.</p>
-                                            </div>
-                                            <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                                                <button type="button" class="btn btn-lg btn-success">Selesai</button>
-                                                <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -582,5 +585,18 @@ if ($isMobile) {
     echo '</div>';
 }
 ?>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
+</script>
 
 <?= $this->endSection(); ?>
