@@ -151,23 +151,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <div class="col text-center">
                     <!-- Button trigger modal -->
-                    <div class="fixed-bottom bg-white" style="padding-bottom: 20%; padding-top: 2%;">
-                        <div class="row">
-                            <div class="col-1 pt-2 pe-5">
-                                <button class="btn border-0" style="display: flex; justify-content: center; align-items:center" type="button" data-bs-toggle="modal" data-bs-target="#updateStatus">
-                                    <i class="bi bi-three-dots-vertical fs-1 fw-bold text-secondary"></i>
-                                </button>
-                            </div>
-                            <div class="col pt-2 d-grid">
-                                <button type="button" class="btn btn-danger fw-bold" style="padding: 3%; margin-right: 35px;" data-bs-toggle="modal" data-bs-target="#liveTarcking">
-                                    Live Tracking
-                                </button>
+                    <?php if ($order['id_status_pesan'] == 3 && $status_transaction == 0) : ?>
+                        <div class="fixed-bottom bg-white" style="padding-bottom: 20%; padding-top: 2%;">
+                            <div class="row">
+                                <div class="col-1 pt-2 pe-5">
+                                    <button class="btn border-0" style="display: flex; justify-content: center; align-items:center" type="button" data-bs-toggle="modal" data-bs-target="#updateStatus">
+                                        <i class="bi bi-three-dots-vertical fs-1 fw-bold text-secondary"></i>
+                                    </button>
+                                </div>
+                                <div class="col pt-2 d-grid">
+                                    <button type="button" class="btn btn-danger fw-bold" style="padding: 3%; margin-right: 35px;" data-bs-toggle="modal" data-bs-target="#liveTarcking">
+                                        Live Tracking
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
 
                     <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
                         <div class="modal-dialog modal-dialog-centered" role="document">
+
                             <div class="modal-content rounded-4 shadow">
                                 <div class="modal-header border-bottom-0 text-center">
                                     <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
@@ -175,10 +178,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="modal-body py-0">
                                     <p>Pastikan pesanan anda telah diterima.</p>
                                 </div>
-                                <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                                    <button type="button" class="btn btn-lg btn-success">Selesai</button>
-                                    <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
-                                </div>
+                                <form action="<?= base_url('status-gosend/update/' . $inv) ?>" method="post">
+                                    <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                                        <?= csrf_field(); ?>
+                                        <button type="submit" class="btn btn-lg btn-success">Selesai</button>
+                                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -375,37 +381,36 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endif ?>
                             </div>
                         </div>
-                        <div class="card mb-4 mb-md-0 border-0 shadow-sm mt-3">
-                            <div class="card-body">
-                                <h3 class="mb-4"><span class="text-dark font-italic me-1">Tracking Order</h3>
-                                <hr class="border-darker mt-0 mb-3">
-                                <?php if ($gosendStatus) : ?>
-                                    <div class="row">
-                                        <div class="col-2 d-grid">
-                                            <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updateStatus"><i class="bi bi-three-dots-vertical fs-1 fw-bold text-white"></i></button>
-                                        </div>
-                                        <div class="col d-grid">
-                                            <button class="btn btn-danger fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#liveTarcking">Live Tracking</button>
-                                        </div>
-                                    </div>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="liveTarcking" tabindex="-1" aria-labelledby="liveTarckingLabel" aria-hidden="true" style="overflow: hidden;">
-                                        <div class="modal-dialog modal-fullscreen">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="liveTarckingLabel">Live Tracking</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <iframe src="<?= $gosendStatus['liveTrackingUrl']; ?>" loading="lazy" frameborder="0" style="width: 100%; height: 100%; overflow: hidden;"></iframe>
+                        <?php if ($order['id_status_pesan'] == 3 && $status_transaction == 0) : ?>
+                            <div class="card mb-4 mb-md-0 border-0 shadow-sm mt-3">
+                                <div class="card-body">
+                                    <h3 class="mb-4"><span class="text-dark font-italic me-1">Tracking Order</h3>
+                                    <hr class="border-darker mt-0 mb-3">
+                                    <?php if ($gosendStatus) : ?>
+                                        <div class="row">
+                                            <div class="col-2 d-grid">
+                                                <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#updateStatus"><i class="bi bi-three-dots-vertical fs-1 fw-bold text-white"></i></button>
+                                            </div>
+                                            <div class="col d-grid">
+                                                <button class="btn btn-danger fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#liveTarcking">Live Tracking</button>
                                             </div>
                                         </div>
-                                    </div>
-                                <?php endif ?>
-                                <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <form action="<?= base_url('status-gosend/update/' . $inv) ?>" method="post">
-                                            <?= csrf_field(); ?>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="liveTarcking" tabindex="-1" aria-labelledby="liveTarckingLabel" aria-hidden="true" style="overflow: hidden;">
+                                            <div class="modal-dialog modal-fullscreen">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="liveTarckingLabel">Live Tracking</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <iframe src="<?= $gosendStatus['liveTrackingUrl']; ?>" loading="lazy" frameborder="0" style="width: 100%; height: 100%; overflow: hidden;"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endif ?>
+                                    <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content rounded-4 shadow">
                                                 <div class="modal-header border-bottom-0 text-center">
                                                     <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
@@ -413,16 +418,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <div class="modal-body py-0">
                                                     <p>Pastikan pesanan anda telah diterima.</p>
                                                 </div>
-                                                <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                                                    <button type="submit" class="btn btn-lg btn-success">Selesai</button>
-                                                    <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
-                                                </div>
+                                                <form action="<?= base_url('status-gosend/update/' . $inv) ?>" method="post">
+                                                    <?= csrf_field(); ?>
+                                                    <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                                                        <button type="submit" class="btn btn-lg btn-success">Selesai</button>
+                                                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                                                    </div>
+                                                </form>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                     <div class="col-md-6">
                         <div class="card mb-4 mb-md-0 border-0 shadow-sm">

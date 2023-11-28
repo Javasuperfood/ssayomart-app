@@ -162,11 +162,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col pt-2 d-grid">
-                            <button type="button" class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#liveTarcking">
-                                Paket Diproses
-                            </button>
-                        </div>
+                        <?php if ($status->id_status_pesan == 3 && $status_transaction == 0) : ?>
+                            <div class="card mb-4 mb-md-0 border-0 shadow-sm mt-3">
+                                <div class="card-body">
+                                    <h3 class="mb-4"><span class="text-dark font-italic me-1">Tracking Order</h3>
+                                    <hr class="border-darker mt-0 mb-3">
+                                    <div class="row">
+                                        <div class="col d-grid">
+                                            <button class="btn btn-danger fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#updateStatus">Pesanan Selesai</button>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <?= csrf_field(); ?>
+                                            <input type="hidden" name="id_status_pesan" value="4">
+                                            <div class="modal-content rounded-4 shadow">
+                                                <div class="modal-header border-bottom-0 text-center">
+                                                    <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
+                                                </div>
+                                                <div class="modal-body py-0">
+                                                    <p>Pastikan pesanan anda telah diterima.</p>
+                                                </div>
+                                                <form action="<?= base_url('status/update/' . $inv) ?>" method="post">
+                                                    <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                                                        <button type="submit" class="btn btn-lg btn-success">Selesai</button>
+                                                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -584,12 +612,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </table>
                                             </div>
                                         </div>
-                                        <!-- <div class="col pt-2 d-grid">
-                                            <button type="button" class="btn btn-danger fw-bold" data-bs-toggle="modal" data-bs-target="#liveTarcking">
-                                                Paket Diproses
-                                            </button>
-                                        </div> -->
-
+                                        <?php if ($status->id_status_pesan == 3 && $status_transaction == 0) : ?>
+                                            <div class="card mb-4 mb-md-0 border-0 shadow-sm mt-3">
+                                                <div class="card-body">
+                                                    <h3 class="mb-4"><span class="text-dark font-italic me-1">Tracking Order</h3>
+                                                    <hr class="border-darker mt-0 mb-3">
+                                                    <div class="row">
+                                                        <div class="col d-grid">
+                                                            <button class="btn btn-danger fw-bold fs-4" data-bs-toggle="modal" data-bs-target="#updateStatus">Pesanan Selesai</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <?= csrf_field(); ?>
+                                                            <input type="hidden" name="id_status_pesan" value="4">
+                                                            <div class="modal-content rounded-4 shadow">
+                                                                <div class="modal-header border-bottom-0 text-center">
+                                                                    <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
+                                                                </div>
+                                                                <div class="modal-body py-0">
+                                                                    <p>Pastikan pesanan anda telah diterima.</p>
+                                                                </div>
+                                                                <form action="<?= base_url('status/update/' . $inv) ?>" method="post">
+                                                                    <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+                                                                        <button type="submit" class="btn btn-lg btn-success">Selesai</button>
+                                                                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <!-- end -->
@@ -814,6 +869,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 <script>
-
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
 </script>
 <?= $this->endSection(); ?>

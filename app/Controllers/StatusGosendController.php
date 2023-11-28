@@ -8,6 +8,7 @@ use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\KategoriModel;
 use App\Models\UsersModel;
+use App\Models\StatusPesanModel;
 use Midtrans\Config as MidtransConfig;
 
 
@@ -22,6 +23,8 @@ class StatusGosendController extends BaseController
         $id = $this->request->getVar('order_id');
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
+        $status_transaction = false;
+        $id_status_pesan = $this->request->getVar('id_status_pesan');
         if ($order[0]['id_destination']) {
             $alamatUserModel = new AlamatUserModel();
             $data['destination'] = $alamatUserModel->find($order[0]['id_destination']);
@@ -33,9 +36,12 @@ class StatusGosendController extends BaseController
             'inv' => $id,
             'title' => 'status Gosend',
             'kategori' => $kategori->findAll(),
+            'id_status_pesan' => $id_status_pesan,
+            'status_transaction' => $status_transaction,
             'gosendStatus' => $GoSendStatus,
             'payment' => $this->getStatusMidtrans($id),
             'produk' => $cekProduk,
+            'order' => $order[0]
         ];
         // dd($data);
         $status = [];
@@ -79,16 +85,21 @@ class StatusGosendController extends BaseController
     public function updateStatusGosend($id)
     {
         $checkoutModel = new CheckoutModel();
+        $statusModel = new StatusPesanModel();
+        $status = $statusModel->findAll();
         $id_checkout = $checkoutModel->where('invoice', $id)->first()['id_checkout'];
-        // dd($id_checkout);
+        $status_transaction = true;
+
 
         $data = [
+            'getstatus' => $status,
             'id_checkout' => $id_checkout,
-            'status_transaction' => 1,
+            'status_transaction' => $status_transaction,
+            'id_status_pesan' => 4,
         ];
         // dd($data);
 
-        if (!$checkoutModel->save($data)) {
+        if (!$checkoutModel->update($id_checkout, $data)) {
             $alert = [
                 'type' => 'error',
                 'title' => 'Gagal',
