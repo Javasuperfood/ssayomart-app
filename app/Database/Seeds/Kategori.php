@@ -153,6 +153,22 @@ class Kategori extends Seeder
                 'slug'    => 'nasi-instant-dan-bubur',
                 'img'    => 'ICON CATEGORY-18.png',
                 'short' => 11,
+            ],
+            [
+                'id_kategori' => 19,
+                'nama_kategori' => '생활용품 / Perlengkapan Rumah Tangga',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '생활용품-perlengkapan-rumah-tangga',
+                'img'    => 'default.png',
+                'short' => 19,
+            ],
+            [
+                'id_kategori' => 20,
+                'nama_kategori' => '애완동물용품 / Perlengkapan Hewan',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '애완동물용품-perlengkapan-hewan',
+                'img'    => 'default.png',
+                'short' => 20,
             ]
         ];
 
@@ -555,7 +571,22 @@ class Kategori extends Seeder
                 'nama_kategori' => '건어물 / KERING MAKANAN LAUT',
                 'deskripsi'    => 'Lorem',
                 'slug'    => '건어물-kering-makanan-laut',
+            ],
+            [
+                'id_kategori' => 19,
+                'id_sub_kategori' => 56,
+                'nama_kategori' => '방역제품 / PRODUK KARANTINA',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '방역제품-produk-karantina',
+            ],
+            [
+                'id_kategori' => 20,
+                'id_sub_kategori' => 57,
+                'nama_kategori' => '먹이 / MAKANAN HEWAN',
+                'deskripsi'    => 'Lorem',
+                'slug'    => '먹이-makanan-hewan',
             ]
+
         ];
 
         $this->db->table('jsf_sub_kategori')->insertBatch($data2);
