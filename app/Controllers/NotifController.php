@@ -156,23 +156,32 @@ class NotifController extends BaseController
 
         // Mendapatkan data pengguna berdasarkan user_id
         $userData = $usersModel->find(user_id());
+        // After obtaining user data
 
         log_message('debug', 'UserData: ' . print_r($userData, true));
 
         // Periksa apakah data pengguna ditemukan dan memiliki kunci 'uuid'
-        if ($userData && isset($userData['uuid'])) {
-            $uuid = $userData['uuid'];
+        if ($userData && isset($userData[0]['uuid'])) {
+            $uuid = $userData[0]['uuid'];
+            log_message('debug', 'UUID: ' . $uuid);
 
             // Ambil data atau parameter dari request sesuai kebutuhan
             $order_id = $this->request->getVar('order_id');
             $total_amount = $this->request->getVar('total_amount');
             $payment_method = $this->request->getVar('payment_method');
 
+            // Periksa apakah $total_amount tidak null sebelum menggunakan number_format
+            $total_amount_formatted = $total_amount !== null ? number_format($total_amount, 0, ',', '.') : 'N/A';
+
             // Buat pesan notifikasi
-            $notification_message = 'Pesanan dengan ID ' . $order_id . ' telah diproses. Total pembayaran: Rp. ' . number_format($total_amount, 0, ',', '.') . ' dengan metode pembayaran ' . $payment_method;
+            $notification_message = 'Pesanan dengan ID ' . $order_id . ' telah diproses. Total pembayaran: Rp. ' . $total_amount_formatted . ' dengan metode pembayaran ' . $payment_method;
+            // Before sending the notification
+            log_message('debug', 'Notification Message: ' . $notification_message);
 
             // Kirim notifikasi
             $result = $this->sendNotificationToUser($uuid, $notification_message);
+            // After sending the notification
+            log_message('debug', 'OneSignal API Response: ' . print_r($result, true));
 
             return response()->setJSON($result);
         } else {
@@ -183,6 +192,8 @@ class NotifController extends BaseController
             ], 200);
         }
     }
+
+
 
     private function sendNotificationToUser($uuid, $message)
     {
