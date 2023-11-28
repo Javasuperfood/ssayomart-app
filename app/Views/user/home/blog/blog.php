@@ -8,12 +8,12 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
-<head>
-    <!-- Required meta tags -->
+<!-- <head>
+    Required meta tags
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
+    Bootstrap CSS
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="<?= base_url() ?>/assets/img/logo.png" />
 
@@ -130,7 +130,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         }
     </style>
-</head>
+</head> -->
 
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
@@ -146,11 +146,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div> -->
 
         <!-- link video Youtube -->
-        <div class="position-sticky top-0" style="z-index: 100;">
+        <!-- <div class="position-sticky top-0" style="z-index: 100;">
             <div class="ratio ratio-16x9 text-center">
                 <?= $videoEmbedCode; ?>
             </div>
-        </div>
+        </div> -->
         <!-- Link Video Youtube -->
 
         <!-- Carousel wrapper -->
@@ -171,7 +171,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div> -->
 
         <!-- Assets Inputan Administrasi -->
-        <div class="container mt-3">
+        <!-- <div class="container mt-3">
             <div class="row">
                 <h1 class="text-center">
                     <?= $blog_detail['judul_blog']; ?>
@@ -190,7 +190,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <?= str_replace('<img', '<img class="img-fluid rounded-4 img-zoom"', html_entity_decode($blog_detail['isi_blog'])); ?>
             </div>
-        </div>
+        </div> -->
         <!-- End Assets Inputan Administrasi -->
 
         <!-- galery photos Mobile -->
@@ -218,7 +218,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- akhir galeri photos -->
 
         <!-- Slider card  -->
-        <div class="container mb-0">
+        <!-- <div class="container mb-0">
             <div class="row mb-0">
                 <div class="col">
                     <p class="fw-bold text-dark my-4 fs-4 text-center"><?= lang('Text.saran_masak') ?></p>
@@ -240,11 +240,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
-    <style>
-        /* Media query for Samsung Galaxy Fold 280 */
+    <!-- <style>
+        Media query for Samsung Galaxy Fold 280
         @media (max-width: 280px) {
             .text-dark {
                 font-size: 13px;
@@ -257,7 +257,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             .btn-danger {
                 font-size: 13px;
             }
-    </style>
+    </style> -->
 
 <?php else : ?>
     <!-- Desktop View -->
