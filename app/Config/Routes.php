@@ -51,6 +51,7 @@ $routes->get('/sayo-resto', 'MenuResto::sayoResto');
 $routes->get('/show-notification', 'WebhookController::showNotification');
 
 $routes->get('/status-gosend', 'StatusGosendController::statusGosend');
+$routes->post('/status-gosend/update/(:segment)', 'StatusGosendController::updateStatusGosend/$1');
 
 // Rute untuk AppleAuthController
 $routes->get('apple-login', 'AppleAuthController::appleLogin');

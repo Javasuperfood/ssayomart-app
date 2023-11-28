@@ -15,6 +15,7 @@ class CheckoutModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'id_user',
+        'status_transaction',
         'id_toko',
         'id_destination',
         'id_kupon',

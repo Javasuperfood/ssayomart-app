@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AlamatUserModel;
+use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\KategoriModel;
 use App\Models\UsersModel;
@@ -28,15 +29,15 @@ class StatusGosendController extends BaseController
 
         $cekProduk = $userModel->getTransaksi($id);
 
-
         $data = [
-            'title' => 'Status Gosend',
+            'inv' => $id,
+            'title' => 'status Gosend',
             'kategori' => $kategori->findAll(),
             'gosendStatus' => $GoSendStatus,
             'payment' => $this->getStatusMidtrans($id),
             'produk' => $cekProduk,
-
         ];
+        // dd($data);
         $status = [];
         // ['Finding Driver', 'Cancelled', 'Completed', 'Enroute Drop', 'Driver not found', 'Enroute Pickup', 'Driver Allocated', 'Item Picked', 'On Hold', 'Rejected'
         if ($GoSendStatus) {
@@ -73,6 +74,36 @@ class StatusGosendController extends BaseController
         }
         // dd($data);
         return view('user/home/statusGosend/statusGosend', $data);
+    }
+
+    public function updateStatusGosend($id)
+    {
+        $checkoutModel = new CheckoutModel();
+        $id_checkout = $checkoutModel->where('invoice', $id)->first()['id_checkout'];
+        // dd($id_checkout);
+
+        $data = [
+            'id_checkout' => $id_checkout,
+            'status_transaction' => 1,
+        ];
+        // dd($data);
+
+        if (!$checkoutModel->save($data)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => 'Gagal mengupdate status'
+            ];
+        } else {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Berhasil mengupdate status'
+            ];
+        }
+
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to(base_url('status-gosend/?order_id=' . $id))->withInput();
     }
 
     function getStatusGosend($id)
