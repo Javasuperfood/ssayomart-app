@@ -189,13 +189,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <div class="class" style="position: relative; top: -15px;">
             <!-- ssayo Resto -->
-            <section>
+            <!-- <section>
                 <div class="container d-flex justify-content-between align-items-center">
                     <a href="<?= base_url(); ?>sayo-resto">
                         <img src="<?= base_url() ?>assets/img/ssayoresto/btnsayoresto.jpg" class="d-block w-100 rounded-3">
                     </a>
                 </div>
-            </section>
+            </section> -->
             <!-- Akhir SSayo Resto -->
             <!-- Banner Promosi -->
             <section class="mt-3" id="unggul" style="background-color: #f7f0eb;">
