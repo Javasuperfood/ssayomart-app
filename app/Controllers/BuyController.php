@@ -345,7 +345,7 @@ class BuyController extends BaseController
             'checkout' => $checkout,
             'produk' => $produk
         ];
-        dd($data);
+        // dd($data);
     }
 
     function generateNewInvoice($inv)

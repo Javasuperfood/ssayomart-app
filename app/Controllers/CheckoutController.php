@@ -13,10 +13,16 @@ use App\Models\ProdukModel;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use Midtrans\Config as MidtransConfig;
+use OneSignal\OneSignal;
+
 
 class CheckoutController extends BaseController
 {
     private $key;
+    private $APP_ID = '1191e933-e52c-466f-946f-e8cab83009d7';
+    private $APP_KEY_TOKEN = 'OTM4N2YxMGYtNjM5NS00ZGZiLWEyNGYtZmNjNGM5ODNiNDVi';
+    private $USER_KEY_TOKEN = 'NmNkYTljMGQtY2UwYS00NjQzLTgyMjItYzUyNjYyYzljMzE5';
+
     public function __construct()
     {
         $this->key = '15139';
@@ -69,59 +75,59 @@ class CheckoutController extends BaseController
         }
         return redirect()->to(base_url() . 'checkout/' . $chechkoutId);
     }
-    public function checkout($id)
-    {
-        $kategori = new KategoriModel();
-        $checkoutModel = new CheckoutModel();
-        $alamatModel = new AlamatUserModel();
-        $kuponModel = new KuponModel();
+    // public function checkout($id)
+    // {
+    //     $kategori = new KategoriModel();
+    //     $checkoutModel = new CheckoutModel();
+    //     $alamatModel = new AlamatUserModel();
+    //     $kuponModel = new KuponModel();
 
-        $cekUser = $checkoutModel->where('id_checkout', $id)->first();
+    //     $cekUser = $checkoutModel->where('id_checkout', $id)->first();
 
-        if ($cekUser['id_user'] != user_id()) {
-            return redirect()->to(base_url());
-        }
-        if ($cekUser['snap_token'] != null) {
-            if ($cekUser['id_status_pesan'] == 1) {
-                return redirect()->to(base_url('payment/' . $cekUser['invoice']));
-            }
-            return redirect()->to(base_url('payment/' . $cekUser['invoice']));
-        }
-        if ($cekUser['id_status_pesan'] != 1) {
-            return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
-        }
-        $checkoutProdModel = new CheckoutProdukModel();
-        $cekProduk = $checkoutProdModel
-            ->select('*')
-            ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
-            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
-            ->where('id_checkout', $id)
-            ->findAll();
+    //     if ($cekUser['id_user'] != user_id()) {
+    //         return redirect()->to(base_url());
+    //     }
+    //     if ($cekUser['snap_token'] != null) {
+    //         if ($cekUser['id_status_pesan'] == 1) {
+    //             return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+    //         }
+    //         return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+    //     }
+    //     if ($cekUser['id_status_pesan'] != 1) {
+    //         return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
+    //     }
+    //     $checkoutProdModel = new CheckoutProdukModel();
+    //     $cekProduk = $checkoutProdModel
+    //         ->select('*')
+    //         ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
+    //         ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
+    //         ->where('id_checkout', $id)
+    //         ->findAll();
 
+    //     $totalAkhir = 0;
 
-        $totalAkhir = 0;
+    //     foreach ($cekProduk as $produk) {
+    //         $rowTotal = $produk['qty'] * $produk['harga_item'];
+    //         $totalAkhir += $rowTotal;
+    //     }
+    //     $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
 
-        foreach ($cekProduk as $produk) {
-            $rowTotal = $produk['qty'] * $produk['harga_item'];
-            $totalAkhir += $rowTotal;
-        }
-        $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
+    //     $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
 
-        $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
+    //     $data = [
+    //         'title' => 'Checkout',
+    //         'alamat_list' => $alamat_list,
+    //         'produk' => $cekProduk,
+    //         'id' => $id,
+    //         'total' => $totalAkhir,
+    //         'kupon' => $kuponList,
+    //         'kategori' => $kategori->findAll()
+    //     ];
+    //     // dd($data);
 
-        $data = [
-            'title' => 'Checkout',
-            'alamat_list' => $alamat_list,
-            'produk' => $cekProduk,
-            'id' => $id,
-            'total' => $totalAkhir,
-            'kupon' => $kuponList,
-            'kategori' => $kategori->findAll()
-        ];
-        // dd($data);
+    //     return view('user/home/checkout/checkout', $data);
+    // }
 
-        return view('user/home/checkout/checkout', $data);
-    }
     public function bayar($id)
     {
         $midtransConfig = config('Midtrans');
@@ -491,5 +497,93 @@ class CheckoutController extends BaseController
         $iv = substr($data, 0, $ivlen);
         $encrypted = substr($data, $ivlen);
         return openssl_decrypt($encrypted, $cipher, $key, 0, $iv);
+    }
+
+    public function checkout($id)
+    {
+        $kategori = new KategoriModel();
+        $checkoutModel = new CheckoutModel();
+        $alamatModel = new AlamatUserModel();
+        $kuponModel = new KuponModel();
+
+        $cekUser = $checkoutModel->where('id_checkout', $id)->first();
+
+        if ($cekUser['id_user'] != user_id()) {
+            return redirect()->to(base_url());
+        }
+
+        if ($cekUser['snap_token'] != null) {
+            if ($cekUser['id_status_pesan'] == 1) {
+                return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+            }
+            return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+        }
+
+        if ($cekUser['id_status_pesan'] != 1) {
+            return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
+        }
+
+        $checkoutProdModel = new CheckoutProdukModel();
+        $cekProduk = $checkoutProdModel
+            ->select('*')
+            ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
+            ->where('id_checkout', $id)
+            ->findAll();
+
+        $totalAkhir = 0;
+
+        foreach ($cekProduk as $produk) {
+            $rowTotal = $produk['qty'] * $produk['harga_item'];
+            $totalAkhir += $rowTotal;
+        }
+
+        $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
+        $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
+
+        $data = [
+            'title' => 'Checkout',
+            'alamat_list' => $alamat_list,
+            'produk' => $cekProduk,
+            'id' => $id,
+            'total' => $totalAkhir,
+            'kupon' => $kuponList,
+            'kategori' => $kategori->findAll()
+        ];
+
+        // Kirim notifikasi setelah checkout berhasil
+        $userId = user_id(); // Sesuaikan dengan metode pengambilan user ID Anda
+        $message = 'Pembayaran Anda telah berhasil. Terima kasih atas pembeliannya!';
+        $this->sendNotification($userId, $message);
+
+        // Redirect ke halaman pembayaran
+        return redirect()->to(base_url('payment/' . $id));
+    }
+    // Fungsi untuk mengirim notifikasi menggunakan OneSignal
+    private function sendNotification($userId, $message)
+    {
+        // Ambil device token pengguna dari database (sesuaikan dengan struktur tabel Anda)
+        $userModel = new UsersModel();
+        $deviceToken = $userModel->getDeviceToken($userId); // Sesuaikan dengan metode yang sesuai
+
+        // Konfigurasi OneSignal
+        $config = [
+            'app_id' => $this->APP_ID,
+            'rest_api_key' => $this->APP_KEY_TOKEN,
+            'user_auth_key' => $this->USER_KEY_TOKEN,
+        ];
+
+        // Inisialisasi OneSignal
+        $oneSignal = new OneSignal($config);
+
+        // Kirim notifikasi
+        $oneSignal->sendNotificationToUser(
+            $message,
+            $deviceToken,
+            $url = null,
+            $data = null,
+            $buttons = null,
+            $schedule = null
+        );
     }
 }

@@ -20,6 +20,8 @@ use GuzzleHttp;
 use CodeIgniter\API\ResponseTrait;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client as GuzzleClient;
 
 class NotifController extends BaseController
 {
@@ -112,40 +114,104 @@ class NotifController extends BaseController
         return $player;
     }
 
-    public function notificationGosend()
+    // public function notificationGosend()
+    // {
+    //     $usersModel = new UsersModel();
+
+    //     $uuid = $usersModel->find(user_id())['uuid'];
+    //     // $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
+
+    //     $entity_id = $this->request->getVar('entity_id');
+    //     $booking_id = $this->request->getVar('booking_id');
+    //     $status = $this->request->getVar('status');
+    //     $driver_name = $this->request->getVar('driver_name');
+    //     $driver_phone = $this->request->getVar('driver_phone');
+    //     $receiver_name = $this->request->getVar('receiver_name');
+    //     $cancellation_reason = $this->request->getVar('cancellation_reason');
+    //     $link_tracking_url = $this->request->getVar('link_tracking_url');
+
+    //     $notification = $this->createNotification(
+    //         'Pesanan untuk ' . $entity_id . ' atas nama ' . $receiver_name . ' dengan kode booking ' . $booking_id . ' sudah kami terima. ' . $driver_name . ' akan mengantarkan barang milik ' . $receiver_name . ' dengan sepenuh hati! Kamu juga bisa menghubungi driver ' . $driver_phone,
+    //         $uuid,
+    //         $entity_id,
+    //         $status,
+    //         $cancellation_reason
+    //     );
+
+    //     $config = Configuration::getDefaultConfiguration()
+    //         ->setAppKeyToken($this->APP_KEY_TOKEN)
+    //         ->setUserKeyToken($this->USER_KEY_TOKEN);
+    //     $apiInstance = new DefaultApi(
+    //         new GuzzleHttp\Client(),
+    //         $config
+    //     );
+
+    //     $result = $apiInstance->createNotification($notification);
+    //     return response()->setJSON($result);
+    // }
+
+    public function notificationOrderProcessed()
     {
         $usersModel = new UsersModel();
 
-        $uuid = $usersModel->find(user_id())['uuid'];
-        // $uuid = 'f96e2bff-7141-4afa-b357-edc5d34dace8';
+        // Mendapatkan data pengguna berdasarkan user_id
+        $userData = $usersModel->find(user_id());
 
-        $entity_id = $this->request->getVar('entity_id');
-        $booking_id = $this->request->getVar('booking_id');
-        $status = $this->request->getVar('status');
-        $driver_name = $this->request->getVar('driver_name');
-        $driver_phone = $this->request->getVar('driver_phone');
-        $receiver_name = $this->request->getVar('receiver_name');
-        $cancellation_reason = $this->request->getVar('cancellation_reason');
-        $link_tracking_url = $this->request->getVar('link_tracking_url');
+        log_message('debug', 'UserData: ' . print_r($userData, true));
 
-        $notification = $this->createNotification(
-            'Pesanan untuk ' . $entity_id . ' atas nama ' . $receiver_name . ' dengan kode booking ' . $booking_id . ' sudah kami terima. ' . $driver_name . ' akan mengantarkan barang milik ' . $receiver_name . ' dengan sepenuh hati! Kamu juga bisa menghubungi driver ' . $driver_phone,
-            $uuid,
-            $entity_id,
-            $status,
-            $cancellation_reason
-        );
+        // Periksa apakah data pengguna ditemukan dan memiliki kunci 'uuid'
+        if ($userData && isset($userData['uuid'])) {
+            $uuid = $userData['uuid'];
 
+            // Ambil data atau parameter dari request sesuai kebutuhan
+            $order_id = $this->request->getVar('order_id');
+            $total_amount = $this->request->getVar('total_amount');
+            $payment_method = $this->request->getVar('payment_method');
+
+            // Buat pesan notifikasi
+            $notification_message = 'Pesanan dengan ID ' . $order_id . ' telah diproses. Total pembayaran: Rp. ' . number_format($total_amount, 0, ',', '.') . ' dengan metode pembayaran ' . $payment_method;
+
+            // Kirim notifikasi
+            $result = $this->sendNotificationToUser($uuid, $notification_message);
+
+            return response()->setJSON($result);
+        } else {
+            return response()->setJSON([
+                'status' => 200,
+                'result' => 'UUID NOT FOUND',
+                'message' => 'User data not found or UUID is missing.',
+            ], 200);
+        }
+    }
+
+    private function sendNotificationToUser($uuid, $message)
+    {
         $config = Configuration::getDefaultConfiguration()
             ->setAppKeyToken($this->APP_KEY_TOKEN)
             ->setUserKeyToken($this->USER_KEY_TOKEN);
+
         $apiInstance = new DefaultApi(
-            new GuzzleHttp\Client(),
+            new GuzzleClient(),
             $config
         );
 
-        $result = $apiInstance->createNotification($notification);
-        return response()->setJSON($result);
+        $notification = $this->createNotification($message, $uuid);
+
+        try {
+            $result = $apiInstance->createNotification($notification);
+
+            return response()->setJSON([
+                'status' => 200,
+                'result' => $result,
+                'message' => $message,
+            ], 200);
+        } catch (GuzzleException $e) {
+            // Handle error, log, or return an appropriate response
+            return response()->setJSON([
+                'status' => 500,
+                'error' => $e->getMessage(),
+            ], 500);
+        }
     }
 
     public function warehouseGosendNotification()
@@ -172,31 +238,4 @@ class NotifController extends BaseController
             }
         }
     }
-
-
-
-    // public function warehouseNotification()
-    // {
-    //     $adminEmail = 'alfaini01@gmail.com';
-
-    //     helper('email');
-
-    //     $emailConfig = config('Email');
-    //     $email = emailer()->initialize($emailConfig);
-
-    //     // $data = [
-    //     //     'entity_id' => 
-    //     // ];
-
-    //     $email->setFrom(setting('Email.fromEmail'), setting('Email.fromName') ?? '');
-    //     $email->setTo($adminEmail);
-    //     $email->setSubject('PESANAN MASUK!');
-    //     $email->setMessage(view('Email/warehouseNotification'));
-
-    //     if (!$email->send()) {
-    //         log_message('error', $email->printDebugger(['headers']));
-    //     }
-
-    //     $email->clear();
-    // }
 }
