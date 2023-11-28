@@ -501,7 +501,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px;">
+                                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px; object-fit: contain; object-position: 20% 10%;">
                                                 </div>
                                             </a>
                                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -532,13 +532,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                 </div>
                                                 <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
-                                                        <input type="hidden" name="add-to-cart" value="show">
-                                                        <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                                            <i class="bi bi-basket"></i>
-                                                        </button>
-                                                    </form>
+
                                                     <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
                                                         <input type="hidden" name="buy" value="show">
                                                         <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
