@@ -9,18 +9,16 @@
                 <?php foreach ($featuredProducts as $fp) : ?>
                     <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
 
-
-                        <div class="card border-0 shadow-sm text-center" style="width: 95px; height: 100%;padding: 5px;">
-
+                        <div class="card card-produk border-0 shadow-sm text-center" style="width: 95px; height: 100%;padding: 5px;">
 
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                                    <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($fp['nama'], 0, 40); ?></p>
+                                    <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($fp['nama'], 0, 25); ?></p>
                                 </div>
                                 <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
@@ -33,115 +31,6 @@
                                         <?= substr('Rp. ' . number_format($fp['harga_min'], 0, ',', '.') . '-' . number_format($fp['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                     <?php endif ?>
                                 </h1>
-
-
-                                <!-- button Animasi -->
-                                <div class="button-container">
-                                    <div class="button ms-5" onclick="changeToCapsule()">
-                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center">+</i>
-                                    </div>
-
-                                    <div class="button-capsule ms-5" style="display: none;">
-                                        <i class="icon fas fa-minus" onclick="decreaseValue()">-</i>
-                                        <input type="number" class="input" value="1" id="counter">
-                                        <i class="icon fas fa-plus" onclick="increaseValue()">+</i>
-                                    </div>
-                                </div>
-                                <!-- akhir button animasi -->
-                                <!-- styling button counter animasi -->
-                                <style>
-                                    .button-container {
-                                        display: flex;
-                                        gap: 10px;
-                                    }
-
-                                    .button {
-                                        width: 15px;
-                                        height: 15px;
-                                        border-radius: 50%;
-                                        background-color: #3498db;
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        color: #fff;
-                                        font-weight: bold;
-                                        cursor: pointer;
-                                        transition: all 0.3s ease;
-                                    }
-
-                                    .button-capsule {
-                                        width: 75px;
-                                        height: 15px;
-                                        border-radius: 15px;
-                                        background-color: #3498db;
-                                        display: none;
-                                        flex-direction: row;
-                                        align-items: center;
-                                        justify-content: space-between;
-                                        padding: 0 10px;
-                                        transition: all 0.3s ease;
-                                    }
-
-                                    .icon {
-                                        font-size: 12px;
-                                        color: #fff;
-                                        transition: all 0.3s ease;
-                                        cursor: pointer;
-                                    }
-
-                                    .input {
-                                        width: 15px;
-                                        height: 15px;
-                                        text-align: center;
-                                        margin: 0 5px;
-                                        color: #000;
-                                        font-size: 10px;
-                                        transition: all 0.3s ease;
-
-                                    }
-                                </style>
-                                <!-- akhir styling button counter animasi -->
-                                <!-- script button counter animasi -->
-                                <script>
-                                    function changeToCapsule() {
-                                        document.querySelector('.button').style.display = 'none';
-                                        document.querySelector('.button-capsule').style.display = 'flex';
-                                    }
-
-                                    function decreaseValue() {
-                                        var counter = document.getElementById('counter');
-                                        if (parseInt(counter.value) > 0) {
-                                            counter.value = parseInt(counter.value) - 1;
-                                        }
-                                        validateCounter();
-                                    }
-
-                                    function increaseValue() {
-                                        var counter = document.getElementById('counter');
-                                        counter.value = parseInt(counter.value) + 1;
-                                        validateCounter();
-                                    }
-
-                                    function changeToCircle() {
-                                        document.querySelector('.button').style.display = 'flex';
-                                        document.querySelector('.button-capsule').style.display = 'none';
-                                    }
-
-                                    function validateCounter() {
-                                        var counter = document.getElementById('counter');
-                                        if (parseInt(counter.value) <= 1) {
-                                            counter.value = 1;
-                                            changeToCircle();
-                                        }
-                                    }
-                                </script>
-                                <!-- akhir script button counter animasi -->
-
-
-
-
-
-
                                 <!-- <div class="container mt-1 mb-2">
                                     <div class="row justify-items-center">
                                         <div class="col">
@@ -171,6 +60,20 @@
                                         <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                     </form>
                                 </div> -->
+
+                                <!-- button Animasi -->
+                                <div class="button-container" id="button-container-<?= $fp['id_produk']; ?>">
+                                    <div class="button" onclick="changeToCapsule(<?= $fp['id_produk']; ?>)">
+                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
+                                    </div>
+
+                                    <div class="button-capsule" style="display: none;">
+                                        <i class="icon fas fa-minus" onclick="decreaseValue(<?= $fp['id_produk']; ?>)"></i>
+                                        <input type="number" class="input border-0" value="1" id="counter-<?= $fp['id_produk']; ?>">
+                                        <i class="icon fas fa-plus" onclick="increaseValue(<?= $fp['id_produk']; ?>)"></i>
+                                    </div>
+                                </div>
+                                <!-- akhir button animasi -->
                             </div>
                         </div>
                     </div>
@@ -183,20 +86,19 @@
     <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
     <hr class="border-darker mt-0 mb-3">
 
-
     <div class="row row-cols-3 me-0" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
             <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                <div class="card border-0 shadow-sm text-center" style="width: 95px; height: 100%; padding: 5px;">
+                <div class="card card-produk border-0 shadow-sm text-center" style="width: 95px; height: 100%; padding: 5px;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
-                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                         </div>
                     </a>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                            <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
+                            <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 25); ?></p>
                         </div>
                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
@@ -210,7 +112,135 @@
                             <?php endif ?>
                         </h1>
 
-                        <div class="container mt-1 mb-1">
+                        <!-- button Animasi -->
+                        <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
+                            <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>)">
+                                <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
+                            </div>
+
+                            <div class="button-capsule" style="display: none;">
+                                <i class="icon fas fa-minus" onclick="decreaseValue(<?= $p['id_produk']; ?>)"></i>
+                                <input type="number" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
+                                <i class="icon fas fa-plus" onclick="increaseValue(<?= $p['id_produk']; ?>)"></i>
+                            </div>
+                        </div>
+                        <!-- akhir button animasi -->
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+        <!-- styling button counter animasi -->
+        <style>
+            .button-container {
+                position: absolute;
+                top: 5px;
+                /* Jarak dari atas */
+                left: 5px;
+                /* Jarak dari kiri */
+                display: flex;
+                gap: 5px;
+                /* Jarak antar tombol */
+            }
+
+            .button {
+                width: 20px;
+                /* Ukuran tombol yang lebih kecil */
+                height: 20px;
+                /* Ukuran tombol yang lebih kecil */
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-weight: bold;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                outline: 1px solid #e83b2e;
+                background-color: #fff;
+            }
+
+            .button-capsule {
+                width: 60px;
+                /* Ukuran capsule yang lebih kecil */
+                height: 20px;
+                /* Ukuran capsule yang lebih kecil */
+                border-radius: 15px;
+                display: none;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 5px;
+                /* Padding yang lebih kecil */
+                transition: all 0.3s ease;
+                outline: 1px solid #e83b2e;
+                background-color: #fff;
+            }
+
+            .icon {
+                font-size: 8px;
+                color: #e83b2e;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .input {
+                width: 20px;
+                /* Ukuran input yang lebih kecil */
+                height: 15px;
+                /* Ukuran input yang lebih kecil */
+                text-align: center;
+                margin: 0 3px;
+                /* Margin yang lebih kecil */
+                color: #000;
+                font-size: 8px;
+                font-weight: bold;
+                transition: all 0.3s ease;
+                border: none;
+                outline: none;
+            }
+        </style>
+        <!-- akhir styling button counter animasi -->
+        <!-- script button counter animasi -->
+        <script>
+            function changeToCapsule(productId) {
+                document.querySelector(`#button-container-${productId} .button`).style.display = 'none';
+                document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'flex';
+            }
+
+            function decreaseValue(productId) {
+                var counter = document.getElementById(`counter-${productId}`);
+                if (parseInt(counter.value) > 0) {
+                    counter.value = parseInt(counter.value) - 1;
+                }
+                validateCounter(productId);
+            }
+
+            function increaseValue(productId) {
+                var counter = document.getElementById(`counter-${productId}`);
+                counter.value = parseInt(counter.value) + 1;
+                validateCounter(productId);
+            }
+
+            function changeToCircle(productId) {
+                document.querySelector(`#button-container-${productId} .button`).style.display = 'flex';
+                document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'none';
+            }
+
+            function validateCounter(productId) {
+                var counter = document.getElementById(`counter-${productId}`);
+                if (parseInt(counter.value) <= 1) {
+                    counter.value = 1;
+                    changeToCircle(productId);
+                }
+            }
+        </script>
+        <!-- akhir script button counter animasi -->
+    </div>
+</div>
+
+<!-- Button counter lama -->
+<!-- <div class="container mt-1 mb-1">
                             <div class="row justify-items-center">
                                 <div class="col">
                                     <div class="horizontal-counter">
@@ -220,9 +250,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
+<!-- akhir button counter lama -->
 
-                        <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+<!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                             <form action="<?= base_url('produk/' . $p['slug']); ?>">
                                 <input type="hidden" name="add-to-cart" value="show">
                                 <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
@@ -239,12 +270,7 @@
                                 <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                             </form>
                         </div> -->
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
+
 
 <script type="text/javascript">
     function increaseCount(b, id) {
@@ -358,9 +384,13 @@
         .col-md-2,
         .col-4 {
             flex: 0 0 100% !important;
-            max-width: 25%;
+            max-width: 30%;
         }
 
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
 
         .horizontal-counter {
             display: flex;

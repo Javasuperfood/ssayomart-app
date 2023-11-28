@@ -310,6 +310,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
 
     $routes->post('gosend/getcost', 'GoSendAPIController::getCostGoSend');
 
+    $routes->post('payment/VZrM5D3PfjP5GGn1dfGa', 'NotifMidtransController::webhookMidtranss');
 
     // $routes->get('/notif', 'NotifController::PaymentSuccess2');
     // $routes->get('/notif', 'NotifController::index');
@@ -347,7 +348,8 @@ $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($rout
     $routes->post('webhook-gosend', 'WebhookController::handleWebhook');
     $routes->get('webhook-gosend', 'WebhookController::handleWebhook');
 
-    $routes->post('test-notif', 'NotifController::notifTest');
+    $routes->post('/', 'NotifController::notificationGosend');
+    $routes->post('for_warehouse_notification', 'NotifController::warehouseGosendNotification');
 });
 
 /*
