@@ -231,6 +231,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         text: response.message,
                                     })
                                 }
+                                location.reload();
                             },
                             error: function(error) {
                                 console.error("Error:", error);
@@ -689,6 +690,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             text: response.message,
                                         })
                                     }
+                                    location.reload();
                                 },
                                 error: function(error) {
                                     console.error("Error:", error);

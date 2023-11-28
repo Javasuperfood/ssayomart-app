@@ -398,4 +398,294 @@ class BuyController extends BaseController
         $encrypted = substr($data, $ivlen);
         return openssl_decrypt($encrypted, $cipher, $key, 0, $iv);
     }
+
+
+    // ========== TEST ===============
+
+    public function index2($slug)
+    {
+        $kategori = new KategoriModel();
+        $alamatModel = new AlamatUserModel();
+        $kuponModel = new KuponModel();
+        $produkModel = new ProdukModel();
+        $tokoModel = new TokoModel();
+        $userModel = new UsersModel();
+        $id_varian = $this->request->getVar('varian');
+        $qty = $this->request->getVar('qty');
+        $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
+        // dd($produk);
+        $totalAkhir = $produk['harga_item'] * $qty;
+        $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
+        $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
+        $beratTotal = $produk['berat'] * $qty;
+        // if ($userModel->find(user_id())['market_selected']) {
+        //     $market =  $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'];
+        // } else {
+        //     $market =  $tokoModel->first()['id_city'];
+        // }
+        $data = [
+            'title' => 'Buy ' . $produk['nama'],
+            'alamat_list' => $alamat_list,
+            'produk' => $produk,
+            'qty' => $qty,
+            'varian' => $id_varian,
+            'total' => $totalAkhir,
+            'kupon' => $kuponList,
+            'kategori' => $kategori->findAll(),
+            'market_list' => $tokoModel->findAll(),
+            'marketSelected' => $userModel->find(user_id())['market_selected'],
+            'addressSelected' => $userModel->find(user_id())['address_selected'],
+            // 'market' => $market,
+            'beratTotal' => $beratTotal,
+        ];
+        // dd($data);
+        return view('user/home/checkout/buyProduk2', $data);
+    }
+    public function storeData2($slug)
+    {
+        // dd($this->request->getVar());
+        $metode_pemabayaran = $this->request->getVar('paymentType');
+
+        if (!$metode_pemabayaran) {
+            return redirect()->back();
+        }
+        $produkModel = new ProdukModel();
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdukModel = new CheckoutProdukModel();
+        $midtransConfig = config('Midtrans');
+        $alamatUserModel = new AlamatUserModel();
+        $userModel = new UsersModel();
+        $wishlistModel = new WishlistModel();
+        $wishlistProdModel = new WishlistProdukModel();
+        // $kuponModel = new KuponModel();
+        // $kuponList = $kuponModel->find($id);
+
+        // Set the Midtrans API credentials
+        MidtransConfig::$serverKey = $midtransConfig->serverKey;
+        MidtransConfig::$clientKey = $midtransConfig->clientKey;
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        MidtransConfig::$isProduction = $midtransConfig->isProduction;
+        // Set sanitization on (default)
+        MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
+        // Set 3DS transaction for credit card to true
+        MidtransConfig::$is3ds = $midtransConfig->is3ds;
+
+
+        $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
+        $id_varian = $this->request->getVar('varian');
+
+        $email = $userModel->getEmail(user_id());
+        $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
+        $wishlist = $wishlistModel->where('id_user', user_id())->first();
+        $wishlistItem = $wishlistProdModel->where('id_wishlist', $wishlist['id_wishlist'])->where('id_produk', $produk['id_produk'])->first();
+        $id_alamat = $this->request->getVar('alamatD');
+        $alamat = $alamatUserModel->find($id_alamat);
+        $service = $this->request->getVar('service');
+        $service = $this->decryptValue($service, $this->key);
+        if (!$service) {
+            return redirect()->back();
+        }
+        $servicetext = $this->request->getVar('serviceText');
+        $kurir = $this->request->getVar('kurir');
+        $GoSend = null;
+        if ($kurir == 'GoSend') {
+            $GoSend = 1;
+        }
+
+        $kode = $this->request->getVar('kupon');
+        $qty =  intval($this->request->getVar('qty'));
+
+        $total_1 = floatval($produk['harga_item']) * $qty;
+        $total_2 = $total_1 + $service;
+        $kupon = [
+            'discount' => '',
+            'kupon' => ''
+        ];
+        $cekProduk[] = [
+            'id' => $produk['id_produk'],
+            'price' => $produk['harga_item'],
+            'quantity' => $qty,
+            'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
+        ];
+        if ($kode != '') {
+            $kuponModel = new KuponModel();
+            $cekKupon = $kuponModel->getKupon($kode);
+            $idKupon = $kuponModel->getKuponId($kode);
+            $total_2 = floatval($total_1);
+            $discount = floatval($cekKupon['discount']);
+            $total_2 = $total_2 - ($total_2 * $discount);
+            $getDiscount = floatval($total_1) - $total_2;
+            $total_2 = $service + $total_2;
+            $kupon = [
+                'discount' => $cekKupon['discount'],
+                'kupon' => $cekKupon['kode']
+            ];
+            $cekProduk[] = [
+                'id' => 'Diskon',
+                'price' => -$getDiscount,
+                'quantity' => 1,
+                'name' => 'Diskon',
+            ];
+        }
+        $cekProduk[] = [
+            'id' => 'Service',
+            'price' => $service,
+            'quantity' => 1,
+            'name' => $servicetext,
+        ];
+        $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
+
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => $inv,
+                'gross_amount' => $total_2,
+            ],
+            'customer_details' => [
+                'first_name' => $alamat['penerima'],
+                'last_name' => '',
+                'email' => $email,
+                'phone' => $alamat['telp'],
+                "billing_address" => [
+                    "first_name" => $alamat['penerima'],
+                    "last_name" => "",
+                    "email" => $email,
+                    "phone" => $alamat['telp'],
+                    "address" => $alamat['alamat_1'],
+                    "city" => $alamat['city'],
+                    "postal_code" => $alamat['zip_code'],
+                    "country_code" => "IDN"
+                ],
+                "shipping_address" => [
+                    "first_name" => $alamat['penerima'],
+                    "last_name" => "",
+                    "email" => $email,
+                    "phone" => $alamat['telp'],
+                    "address" => $alamat['alamat_1'],
+                    "city" => $alamat['city'],
+                    "postal_code" => $alamat['zip_code'],
+                    "country_code" => "IDN"
+                ],
+            ],
+            "item_details" => $cekProduk,
+        ];
+        switch ($metode_pemabayaran) {
+            case 'cc':
+                $params['payment_type'] = "credit_card";
+                $params["credit_card"] = [
+                    "token_id" => "<token_id from Get Card Token Step>",
+                    "authentication" => true,
+                ];
+                break;
+
+            case 'bca_va':
+                $params['payment_type'] = "bank_transfer";
+                $params["bank_transfer"] = [
+                    "bank" => "bca"
+                ];
+                break;
+
+            case 'mandiri_va':
+                $params['payment_type'] = "echannel";
+                $params["echannel"] = [
+                    "bill_info1" => "Payment:",
+                    "bill_info2" => "Online purchase"
+                ];
+                break;
+            case 'bni_va':
+                $params['payment_type'] = "bank_transfer";
+                $params["bank_transfer"] = [
+                    "bank" => "bni"
+                ];
+                break;
+            case 'permata_va':
+                $params['payment_type'] = "permata";
+                break;
+            case 'bri_va':
+                $params['payment_type'] = "bank_transfer";
+                $params["bank_transfer"] = [
+                    "bank" => "bri"
+                ];
+                break;
+            case 'gopay_online':
+                $params['payment_type'] = "gopay";
+                $params["gopay"] = [
+                    "enable_callback" => true,
+                    "callback_url" => base_url() . 'status?order_id=' . $inv
+                ];
+                break;
+            case 'qris_online':
+                $params['payment_type'] = "qris";
+                $params["qris"] = [
+                    "acquirer" => "gopay"
+                ];
+                break;
+            case 'shopeepay':
+                $params['payment_type'] = "echannel";
+                $params["echannel"] = [
+                    "bill_info1" => "Payment:",
+                    "bill_info2" => "Online purchase"
+                ];
+                break;
+
+            default:
+                // Jika tidak ada kecocokan dengan nilai yang diharapkan
+                // Lakukan sesuatu, misalnya kirim pesan error atau nilai default lainnya.
+                break;
+        }
+
+        // dd($params);
+        return response()->setJSON($params);
+        $carger = \Midtrans\CoreApi::charge($params);
+        return response()->setJSON($carger);
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        $dbStore = [
+            'id_user' => user_id(),
+            'id_toko' => $this->request->getVar('market'),
+            'id_destination' => $id_alamat,
+            'id_status_pesan' => 1,
+            'id_status_kirim' => 1,
+            'invoice' => $inv,
+            'total_1' => $total_1,
+            'total_2' => $total_2,
+            'service' => $servicetext,
+            'harga_service' => $service,
+            'gosend' => $GoSend,
+            'kurir' => $kurir,
+            'kirim' => $kirim,
+            'city' => $alamat['city'],
+            'zip_code' => $alamat['zip_code'],
+            'telp' => $alamat['telp'],
+            'discount' => $kupon['discount'],
+            'kupon' => $kupon['kupon'],
+            'snap_token' => $snapToken
+        ];
+        // dd($dbStore);
+        $chechkoutId = $checkoutModel->insert($dbStore);
+
+        $checkoutProdukData = [
+            'id_checkout' => $chechkoutId,
+            'id_produk' => $produk['id_produk'],
+            'id_variasi_item' => $id_varian,
+            'qty' => $qty,
+            'harga' => $produk['harga_item'],
+        ];
+        $checkoutProdukModel->insert($checkoutProdukData);
+        if ($wishlistItem) {
+            $wishlistProdModel->delete($wishlistItem['id_wishlist_produk']);
+        }
+
+        if (!empty($kode)) {
+            $idKupon = $kuponModel->getKuponId($kode);
+            if ($idKupon) {
+                if ($kuponModel->useCoupon($idKupon)) {
+                    return redirect()->to(base_url('payment/' . $inv))->with('success', 'Your order has been placed successfully.');
+                }
+            }
+        }
+
+        return redirect()->to(base_url('payment/' . $inv));
+    }
 }
