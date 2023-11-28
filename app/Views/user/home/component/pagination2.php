@@ -262,38 +262,3 @@ $countProduk = count($produk);
         outline: none;
     }
 </style>
-
-<!-- Pagination counter -->
-<script>
-    function changeToCapsule(productId) {
-        document.querySelector(`#button-container-${productId} .button`).style.display = 'none';
-        document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'flex';
-    }
-
-    function decreaseValue(productId) {
-        var counter = document.getElementById(`counter-${productId}`);
-        if (parseInt(counter.value) > 0) {
-            counter.value = parseInt(counter.value) - 1;
-        }
-        validateCounter(productId);
-    }
-
-    function increaseValue(productId) {
-        var counter = document.getElementById(`counter-${productId}`);
-        counter.value = parseInt(counter.value) + 1;
-        validateCounter(productId);
-    }
-
-    function changeToCircle(productId) {
-        document.querySelector(`#button-container-${productId} .button`).style.display = 'flex';
-        document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'none';
-    }
-
-    function validateCounter(productId) {
-        var counter = document.getElementById(`counter-${productId}`);
-        if (parseInt(counter.value) <= 1) {
-            counter.value = 1;
-            changeToCircle(productId);
-        }
-    }
-</script>

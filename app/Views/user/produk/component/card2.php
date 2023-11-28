@@ -63,14 +63,14 @@
 
                                 <!-- button Animasi -->
                                 <div class="button-container" id="button-container-<?= $fp['id_produk']; ?>">
-                                    <div class="button" onclick="changeToCapsule(<?= $fp['id_produk']; ?>)">
+                                    <div class="button" onclick="changeToCapsule(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)">
                                         <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
                                     </div>
 
                                     <div class="button-capsule" style="display: none;">
-                                        <i class="icon fas fa-minus" onclick="decreaseValue(<?= $fp['id_produk']; ?>)"></i>
+                                        <i class="icon fas fa-minus" onclick="decreaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
                                         <input type="number" class="input border-0" value="1" id="counter-<?= $fp['id_produk']; ?>">
-                                        <i class="icon fas fa-plus" onclick="increaseValue(<?= $fp['id_produk']; ?>)"></i>
+                                        <i class="icon fas fa-plus" onclick="increaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
                                     </div>
                                 </div>
                                 <!-- akhir button animasi -->
@@ -114,14 +114,14 @@
 
                         <!-- button Animasi -->
                         <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
-                            <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>)">
+                            <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">
                                 <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
                             </div>
 
                             <div class="button-capsule" style="display: none;">
-                                <i class="icon fas fa-minus" onclick="decreaseValue(<?= $p['id_produk']; ?>)"></i>
+                                <i class="icon fas fa-minus" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                                 <input type="number" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
-                                <i class="icon fas fa-plus" onclick="increaseValue(<?= $p['id_produk']; ?>)"></i>
+                                <i class="icon fas fa-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                             </div>
                         </div>
                         <!-- akhir button animasi -->
@@ -203,36 +203,104 @@
         <!-- akhir styling button counter animasi -->
         <!-- script button counter animasi -->
         <script>
-            function changeToCapsule(productId) {
-                document.querySelector(`#button-container-${productId} .button`).style.display = 'none';
-                document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'flex';
+            function changeToCapsule(c, v) {
+                $(`#button-container-${c} .button`).css('display', 'none');
+                $(`#button-container-${c} .button-capsule`).css('display', 'flex');
+                addToCartProductList(c, v, 1)
             }
 
-            function decreaseValue(productId) {
-                var counter = document.getElementById(`counter-${productId}`);
-                if (parseInt(counter.value) > 0) {
-                    counter.value = parseInt(counter.value) - 1;
+            function decreaseValue(c, v) {
+                var counter = document.querySelectorAll(`#counter-${c}`);;
+                let q = 1;
+                let ss = true
+                counter.forEach(function(e) {
+                    if (parseInt(e.value) > 0) {
+                        e.value = (parseInt(e.value) - 1);
+                        if (parseInt(e.value) < 1) {
+                            e.value = 1;
+                            if (ss) {
+                                ss = changeToCircle(c);
+                            }
+                        }
+                    }
+                });
+                if (ss) {
+                    addToCartProductList(c, v, q)
                 }
-                validateCounter(productId);
             }
 
-            function increaseValue(productId) {
-                var counter = document.getElementById(`counter-${productId}`);
-                counter.value = parseInt(counter.value) + 1;
-                validateCounter(productId);
+            function increaseValue(c, v) {
+                var counter = document.querySelectorAll(`#counter-${c}`);
+                let q = 1
+                counter.forEach(function(e) {
+                    e.value = (parseInt(e.value) + 1);
+                    q = e.value;
+                });
+                addToCartProductList(c, v, q)
             }
 
-            function changeToCircle(productId) {
-                document.querySelector(`#button-container-${productId} .button`).style.display = 'flex';
-                document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'none';
+            function changeToCircle(c) {
+                $(`#button-container-${c} .button`).css('display', 'flex');
+                $(`#button-container-${c} .button-capsule`).css('display', 'none');
+                cartDeleteProdukList(c)
             }
 
-            function validateCounter(productId) {
-                var counter = document.getElementById(`counter-${productId}`);
-                if (parseInt(counter.value) <= 1) {
-                    counter.value = 1;
-                    changeToCircle(productId);
-                }
+
+            function addToCartProductList(c, v, q) {
+                var produk = c;
+                var varian = v;
+                var qty = q;
+                console.log(produk, varian, qty)
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('api/add-to-cart'); ?>",
+                    dataType: "json",
+                    data: {
+                        id_produk: produk,
+                        id_varian: varian,
+                        qty: qty
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            console.log(response.message)
+                            return true
+                        } else {
+                            console.log(response.message)
+                            return false
+                        }
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                        <?php if (!auth()->loggedIn()) : ?>
+                            location.href = '<?= base_url(); ?>login'
+                        <?php endif ?>
+                        return false
+                    }
+                });
+            }
+
+            function cartDeleteProdukList(produk) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('api/delete-cart-product'); ?>",
+                    dataType: "json",
+                    data: {
+                        produk: produk,
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            console.log(response.message)
+                        } else {
+                            console.log(response.message)
+                        }
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                        <?php if (!auth()->loggedIn()) : ?>
+                            location.href = '<?= base_url(); ?>login'
+                        <?php endif ?>
+                    }
+                });
             }
         </script>
         <!-- akhir script button counter animasi -->
@@ -273,29 +341,29 @@
 
 
 <script type="text/javascript">
-    function increaseCount(b, id) {
-        var input = b.previousElementSibling;
-        console.log(input);
-        var value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        input.value = value;
-        $('#Cqty' + id).val(value);
-        $('#Bqty' + id).val(value);
-    }
+    // function increaseCount(b, id) {
+    //     var input = b.previousElementSibling;
+    //     console.log(input);
+    //     var value = parseInt(input.value, 10);
+    //     value = isNaN(value) ? 0 : value;
+    //     value++;
+    //     input.value = value;
+    //     $('#Cqty' + id).val(value);
+    //     $('#Bqty' + id).val(value);
+    // }
 
-    function decreaseCount(b, id) {
-        var input = b.nextElementSibling;
-        var value = parseInt(input.value, 10);
-        if (value > 1) {
-            value = isNaN(value) ? 0 : value;
-            value--;
-            input.value = value;
-            $('#Cqty' + id).val(value);
-            $('#Bqty' + id).val(value);
+    // function decreaseCount(b, id) {
+    //     var input = b.nextElementSibling;
+    //     var value = parseInt(input.value, 10);
+    //     if (value > 1) {
+    //         value = isNaN(value) ? 0 : value;
+    //         value--;
+    //         input.value = value;
+    //         $('#Cqty' + id).val(value);
+    //         $('#Bqty' + id).val(value);
 
-        }
-    }
+    //     }
+    // }
 </script>
 <?php else : ?>
     <div class="container px-5 my-5 align-middle">

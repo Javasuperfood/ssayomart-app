@@ -54,6 +54,18 @@ class CartController extends BaseController
         $this->session->set(['countCart' => $this->countCart()]);
         return redirect()->to(base_url() . 'cart')->with('success', 'Berhasil Menghapus produk dalam cart.');
     }
+    public function ajaxDeleteProduk()
+    {
+        $cartProdModel = new CartProdukModel();
+        $cartModel = new CartModel();
+        $id_cart = $cartModel->where('id_user', user_id())->first()['id_cart'];
+        $id_cart_produk = $cartProdModel->where('id_cart', $id_cart)->where('id_produk', $this->request->getVar('produk'))->first()['id_cart_produk'];
+        if (!$cartProdModel->delete($id_cart_produk)) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Gagal menghapus produk.']);
+        }
+        $this->session->set(['countCart' => $this->countCart()]);
+        return $this->response->setJSON(['success' => true, 'message' => 'Berhasil Menghapus produk dalam cart.']);
+    }
     public function ajaxAdd()
     {
         $cartModel = new CartModel();
