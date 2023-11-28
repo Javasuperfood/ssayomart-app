@@ -242,124 +242,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- akhir form dan maps -->
 
-        <!-- button Animasi -->
-        <div class="button-container">
-            <div class="button ms-5" onclick="changeToCapsule()">
-                <i class="icon fas fa-plus d-flex justify-content-center align-items-center">+</i>
-            </div>
-
-            <div class="button-capsule ms-5" style="display: none;">
-                <i class="icon fas fa-minus" onclick="decreaseValue()">-</i>
-                <input type="number" class="input" value="1" id="counter">
-                <i class="icon fas fa-plus" onclick="increaseValue()">+</i>
-            </div>
-        </div>
-        <!-- akhir button animasi -->
-
-        <style>
-            .button-container {
-                display: flex;
-                gap: 10px;
-            }
-
-            .button {
-                width: 30px;
-                height: 30px;
-                border-radius: 50%;
-                background-color: #3498db;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-                font-weight: bold;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            .button-capsule {
-                width: 90px;
-                height: 35px;
-                border-radius: 25px;
-                background-color: #3498db;
-                display: none;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 10px;
-                transition: all 0.3s ease;
-            }
-
-            .icon {
-                font-size: 20px;
-                color: #fff;
-                transition: all 0.3s ease;
-                cursor: pointer;
-            }
-
-            .input {
-                width: 30px;
-                height: 30px;
-                text-align: center;
-                margin: 0 5px;
-                color: #000;
-                font-size: 11px;
-                transition: all 0.3s ease;
-
-            }
-        </style>
-
-        <script>
-            function changeToCapsule() {
-                document.querySelector('.button').style.display = 'none';
-                document.querySelector('.button-capsule').style.display = 'flex';
-            }
-
-            function decreaseValue() {
-                var counter = document.getElementById('counter');
-                if (parseInt(counter.value) > 0) {
-                    counter.value = parseInt(counter.value) - 1;
-                }
-                validateCounter();
-            }
-
-            function increaseValue() {
-                var counter = document.getElementById('counter');
-                counter.value = parseInt(counter.value) + 1;
-                validateCounter();
-            }
-
-            function changeToCircle() {
-                document.querySelector('.button').style.display = 'flex';
-                document.querySelector('.button-capsule').style.display = 'none';
-            }
-
-            function validateCounter() {
-                var counter = document.getElementById('counter');
-                if (parseInt(counter.value) <= 1) {
-                    counter.value = 1;
-                    changeToCircle();
-                }
-            }
-        </script>
-
-
-        <div class="floating-counter-btn" onclick="toggleCounter(this)">
-            <i class="bi bi-gear"></i>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <style>
             .bg-image {
@@ -391,11 +273,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             @media screen and (min-width: 768px) and (max-width: 1024px) {
                 .tagline-1 {
-                    font-size: 78px;
+                    font-size: 60px;
                 }
 
                 .tagline-2 {
-                    font-size: 50px;
+                    font-size: 40px;
                 }
             }
         </style>
