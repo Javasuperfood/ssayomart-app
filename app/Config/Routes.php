@@ -141,6 +141,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
         $routes->get('gosend-update/(:segment)', 'GoSendController::gosendUpdate/$1');
         $routes->post('gosend-update/update-status/(:segment)', 'GoSendController::updateStatusOrder/$1');
+        $routes->post('gosend-update/update-status/save/(:segment)', 'GoSendController::orderSucceed/$1');
         $routes->post('gosend-update/(:segment)/pickup', 'GoSendController::pickUp/$1');
         $routes->post('gosend-update/(:segment)/cancel', 'GoSendController::gosendCancel/$1');
     });

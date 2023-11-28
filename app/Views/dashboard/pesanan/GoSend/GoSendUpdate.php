@@ -70,6 +70,12 @@
                             </div>
                             <div class="col">
                                 <button type="submit" form="updateStatus" class="btn btn-outline-danger py-3">Update</button>
+                                <?php if ($order['id_status_pesan'] == 3 && $status_transaction == 0) : ?>
+                                    <form method="post" action="<?= base_url('dashboard/order/gosend-update/update-status/save/') . $inv ?>" class="d-inline">
+                                        <?= csrf_field(); ?>
+                                        <button type="submit" class="btn btn-outline-success py-3">Selesai</button>
+                                    </form>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -245,10 +251,10 @@
                                     <?php endif ?>
                                     <?php if ($gosendStatus['status'] == 'Completed') : ?>
                                         <div class="alert alert-success" role="alert">
-                                            <h4 class="alert-heading">Pengirimian Selesai!</h4>
-                                            <p>Status saat ini pengirimian selesai.</p>
+                                            <h4 class="alert-heading">Pengiriman selesai!</h4>
+                                            <p>Status saat ini pengiriman selesai.</p>
                                             <hr>
-                                            <p class="mb-0">Produk telah sampapi tujuan.</p>
+                                            <p class="mb-0">Produk telah sampai tujuan.</p>
                                         </div>
                                     <?php endif ?>
                                     <?php if ($gosendStatus) : ?>
