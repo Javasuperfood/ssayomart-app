@@ -201,7 +201,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <section class="mt-3" id="unggul" style="background-color: #f7f0eb;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f7f0eb;">
                     <div class="container mb-2 mt-2" style="background-color: #f7f0eb;">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="mt-2 card-img-top responsive-image" style="width: 340px;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="mt-2 card-img-top responsive-image" style="width: 247px;">
                     </div>
                 </div>
                 <div class="container" style="background-color: #f7f0eb;">
@@ -239,7 +239,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <!-- Banner Promosi ke 2 -->
             <section id="rekomendasi" style="background-color: #f3f5df;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
-                    <div class="container mb-2 mt-2">
+                    <div class="container mb-0 mt-3">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
                     </div>
                 </div>
@@ -673,12 +673,12 @@ if ($isMobile) {
     }
 
     /* Media Iphone XE */
-    @media (max-width: 375px) {
+    /* @media (max-width: 375px) {
         .responsive-image {
             width: 280px !important;
         }
 
-    }
+    } */
 
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
