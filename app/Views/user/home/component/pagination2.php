@@ -16,15 +16,15 @@ $countProduk = count($produk);
     }
     var productContainer = $("#product-container");
     var cardLoader = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0" id="cardLoader">
-                <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding:5px;">
+                <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
                     <div class="d-flex justify-content-center align-items-center">
-                        <svg class="bd-placeholder-img card-img-top text-center py-0 px-0 mx-0 my-0" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <svg class="bd-placeholder-img card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" width="100px" height="100px object-fit: contain; object-position: 20% 10%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
                             <rect width="100px" height="100px" fill="#868e96"></rect>
                         </svg>
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                    <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                    <div class="d-flex align-items-start justify-content-center" style="witdh: 70px; height: 65px;">
                     <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
@@ -33,7 +33,7 @@ $countProduk = count($produk);
                         <span class="placeholder col-6"></span>
                     </p>
  
-                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
                             <span class="placeholder col-6"></span>
                         </h1>
                         
@@ -47,6 +47,7 @@ $countProduk = count($produk);
                                 <input type="number" class="input border-0" value="1">
                                 <i class="icon fas fa-plus"></i>
                             </div>
+                         </div>
     
                     </div>
                 </div>
@@ -75,19 +76,19 @@ $countProduk = count($produk);
                             '<div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding:5px;">' +
                             ` <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                            <div class="d-flex align-items-start justify-content-center" style="witdh: 70px; height: 65px;">
                             <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
-                                ${p.nama.length > 25 ? p.nama.slice(0, 25) + '' : p.nama}
+                                ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
                             </p>
                             </div
                             <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                 <del>Rp. ${formatRupiah(p.harga_min)}</del>
                             </p>
-                                <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
                                    ${hargaText}
                                 </h1>
                                 
@@ -112,20 +113,20 @@ $countProduk = count($produk);
                     <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
                         <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                        <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                        <div class="d-flex align-items-start justify-content-center" style="width: 70px; height: 65px;">
                         
                         <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
-                            ${p.nama.length > 25 ? p.nama.slice(0, 25) + '' : p.nama}
+                            ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
                         </p>
                         </div>
                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
                             <del>Rp. ${formatRupiah(p.harga_min)}</del>
                         </p>
-                            <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
+                            <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
                             ${hargaText}
                             </h1>
 
@@ -260,5 +261,72 @@ $countProduk = count($produk);
         transition: all 0.3s ease;
         border: none;
         outline: none;
+    }
+
+    @media screen and (min-width: 400px) and (max-width: 450px) {
+        .card-produk {
+            width: 120px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
+
+    @media screen and (min-width: 717px) and (max-width: 717px) {
+
+        .col-lg-2,
+        .col-md-2,
+        .col-4 {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 20px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container.row.row-cols-3 {
+            width: 100%;
+            height: auto;
+            margin-left: 1%;
+
+        }
+
+        #product-unggulan-container.row.row-cols-3 {
+            width: 100%;
+            height: auto;
+            margin-left: 1%;
+
+        }
+    }
+
+    @media (max-width: 280px) {
+
+        .col-lg-2,
+        .col-md-2,
+        .col-6 {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+        }
     }
 </style>
