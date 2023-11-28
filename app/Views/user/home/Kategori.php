@@ -236,8 +236,45 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </section>
             <!-- Akhir Banner Promosi -->
 
-            <!-- rekomendasi -->
+            <!-- Banner Promosi ke 2 -->
             <section id="rekomendasi" style="background-color: #f3f5df;">
+                <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
+                    <div class="container mb-2 mt-2">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row px-2">
+                        <div class="col-6 py-1 px-1">
+                            <a href="#">
+                                <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" alt="tes" class="card-img-top rounded-3">
+                            </a>
+                        </div>
+                        <div class="col-6 py-1 px-1">
+                            <a href="#">
+                                <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" alt="tes" class="card-img-top rounded-3">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row px-2">
+                        <div class="col-6 py-1 px-1">
+                            <a href="#">
+                                <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" alt="tes" class="card-img-top rounded-3">
+                            </a>
+                        </div>
+                        <div class="col-6 py-1 px-1">
+                            <a href="#">
+                                <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" alt="tes" class="card-img-top rounded-3">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Akhir Banner Promosi ke 2 -->
+
+            <!-- rekomendasi -->
+            <!-- <section id="rekomendasi" style="background-color: #f3f5df;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
                     <div class="container mb-2 mt-2">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
@@ -259,14 +296,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php endforeach; ?>
                         </div>
 
-                        <!-- Previous button centered within the image -->
+
                         <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                             <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
                                 <i class="bi bi-chevron-left"></i>
                             </button>
                         </div>
 
-                        <!-- Next button centered within the image -->
+
                         <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                             <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
                                 <i class="bi bi-chevron-right"></i>
@@ -275,7 +312,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     </div>
                 </div>
-            </section>
+            </section> -->
             <!-- end rekomendasi -->
             <div id="ktr" class="container">
                 <div class="row">
