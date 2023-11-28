@@ -33,6 +33,8 @@ class UserStatusController extends BaseController
         $status_code = $this->request->getGet('status_code');
         $transaction_status = $this->request->getGet('transaction_status');
         $userSatus = $userModel->getStatus($order_id);
+        $status_transaction = false;
+        $id_status_pesan = $this->request->getVar('id_status_pesan');
         if ($userSatus->gosend == 1 && $userSatus->id_status_pesan != '1') {
             $gosendStatus = $this->getStatusGosend($order_id);
             if ($gosendStatus) {
@@ -43,8 +45,11 @@ class UserStatusController extends BaseController
         $cekProduk = $userModel->getTransaksi($order_id);
 
         $data = [
+            'inv' => $order_id,
             'title'                     => 'Status Pesanan',
             'getstatus'                 => $status,
+            'id_status_pesan' => $id_status_pesan,
+            'status_transaction' => $status_transaction,
             'status' => $userSatus,
             'produk' => $cekProduk,
             'key' => $midtransConfig->clientKey,
@@ -54,6 +59,7 @@ class UserStatusController extends BaseController
             'back' => 'history'
 
         ];
+        // dd($data);
         // ==================================================================
         if ($userSatus->id_status_pesan != '1') {
             try {
@@ -77,6 +83,42 @@ class UserStatusController extends BaseController
         // dd($data);
         return view('user/produk/status', $data);
     }
+
+    public function updateStatus($id)
+    {
+        $checkoutModel = new CheckoutModel();
+        $statusModel = new StatusPesanModel();
+        $status = $statusModel->findAll();
+        $id_checkout = $checkoutModel->where('invoice', $id)->first()['id_checkout'];
+        $status_transaction = true;
+        $id_status_pesan = $this->request->getVar('id_status_pesan');
+
+        $data = [
+            'getstatus' => $status,
+            'id_checkout' => $id_checkout,
+            'status_transaction' => $status_transaction,
+            'id_status_pesan' => $id_status_pesan,
+        ];
+        // dd($data);
+
+        if ($checkoutModel->update($id_checkout, $data)) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Berhasil mengupdate status'
+            ];
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => 'Gagal mengupdate status'
+            ];
+        }
+
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to(base_url('status/?order_id=' . $id))->withInput();
+    }
+
     function getStatusGosend($id)
     {
         $webhookConfig = config('WebHook');

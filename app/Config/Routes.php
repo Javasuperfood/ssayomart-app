@@ -113,6 +113,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 
     $routes->get('/status', 'UserStatusController::status');
+    $routes->post('/status/update/(:segment)', 'UserStatusController::updateStatus/$1');
     $routes->get('/payment/(:segment)', 'PaymentController::index/$1');
     $routes->post('/payment/token', 'PaymentController::ajaxPay');
 });
