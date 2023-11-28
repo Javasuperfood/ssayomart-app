@@ -9,7 +9,7 @@
                 <?php foreach ($featuredProducts as $fp) : ?>
                     <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
 
-                        <div class="card card-produk border-0 shadow-sm text-center" style="width: 95px; height: 100%;padding: 5px;">
+                        <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%;padding: 5px;">
 
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -17,14 +17,14 @@
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                                <div class="d-flex align-items-start justify-content-center" style="width:70px; height: 65px;">
                                     <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($fp['nama'], 0, 25); ?></p>
                                 </div>
                                 <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                 </p>
 
-                                <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
                                     <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                         Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>
@@ -90,21 +90,21 @@
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
             <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                <div class="card card-produk border-0 shadow-sm text-center" style="width: 95px; height: 100%; padding: 5px;">
+                <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                         </div>
                     </a>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                        <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                            <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 25); ?></p>
+                        <div class="d-flex align-items-start justify-content-center" style="width:70px; height: 65px;">
+                            <p class=" text-center text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 25); ?></p>
                         </div>
                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                         </p>
 
-                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
                             <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                 Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                             <?php else : ?>
@@ -322,22 +322,22 @@
 <!-- akhir button counter lama -->
 
 <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                            <form action="<?= base_url('produk/' . $p['slug']); ?>">
-                                <input type="hidden" name="add-to-cart" value="show">
-                                <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                    <i class="fas fa-shopping-cart text-white fa-sm"></i>
-                                </button>
-                            </form>
-                            <form action="<?= base_url('produk/' . $p['slug']); ?>">
-                                <input type="hidden" name="buy" value="show">
-                                <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                <button type="submit" class="btn btn-danger mx-1 mt-2">
-                                    Buy
-                                </button>
-                                <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                            </form>
-                        </div> -->
+    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+        <input type="hidden" name="add-to-cart" value="show">
+        <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
+        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
+            <i class="fas fa-shopping-cart text-white fa-sm"></i>
+        </button>
+    </form>
+    <form action="<?= base_url('produk/' . $p['slug']); ?>">
+        <input type="hidden" name="buy" value="show">
+        <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
+        <button type="submit" class="btn btn-danger mx-1 mt-2">
+            Buy
+        </button>
+        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
+    </form>
+</div> -->
 
 
 <script type="text/javascript">
@@ -446,6 +446,13 @@
 
 <!-- samsung galaxy fold tonggle dual screen mode gak sreg hapus aja gak usah cacicu -->
 <style>
+    @media screen and (min-width: 400px) and (max-width: 450px) {
+        .card-produk {
+            width: 120px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
+
     @media screen and (min-width: 717px) and (max-width: 717px) {
 
         .col-lg-2,
