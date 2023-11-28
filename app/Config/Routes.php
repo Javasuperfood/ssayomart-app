@@ -72,7 +72,9 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 
     $routes->get('/buy/(:segment)', 'BuyController::index/$1');
+    $routes->get('/buy2/(:segment)', 'BuyController::index2/$1');
     $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
+    $routes->post('/store2/(:segment)', 'BuyController::storeData2/$1');
     $routes->post('/new-payment', 'BuyController::getNewPayment');
 
     // $routes->get('/cart', 'CartController::cart');
