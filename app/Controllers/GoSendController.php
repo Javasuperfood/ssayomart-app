@@ -23,7 +23,8 @@ class GoSendController extends BaseController
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
 
-        $id_status_pesan = $this->request->getVar('status');
+        // $id_status_pesan = $this->request->getVar('status');
+        $status_transaction = false;
 
         $data = [
             'inv' => $id,
@@ -31,6 +32,7 @@ class GoSendController extends BaseController
             'order' => $order[0],
             'gosendStatus' => $GoSendStatus,
             'statusPesanan' => $statusPesananModel->findAll(),
+            'status_transaction' => $status_transaction,
         ];
 
         if ($order[0]['id_destination']) {
@@ -44,12 +46,12 @@ class GoSendController extends BaseController
     public function updateStatusOrder($id)
     {
         $checkoutModel = new CheckoutModel();
-        // dd($this->request->getVar());
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesananModel = new StatusPesanModel();
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
 
+        $id_checkout = $this->request->getVar('id_checkout');
         $id_status_pesan = $this->request->getVar('status');
 
         $data = [
@@ -59,8 +61,6 @@ class GoSendController extends BaseController
             'gosendStatus' => $GoSendStatus,
             'statusPesanan' => $statusPesananModel->findAll(),
         ];
-
-        $id_checkout = $this->request->getVar('id_checkout');
 
         if ($order[0]['id_destination']) {
             $alamatUserModel = new AlamatUserModel();
@@ -76,8 +76,52 @@ class GoSendController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return view('dashboard/pesanan/GoSend/GoSendUpdate', $data);
+            return redirect()->back()->withInput();
         }
+    }
+
+    public function orderSucceed($id)
+    {
+        $checkoutModel = new CheckoutModel();
+        $checkoutProdModel = new CheckoutProdukModel();
+        $order = $checkoutProdModel->getTransaksi($id);
+        $GoSendStatus = $this->getStatusGosend($id);
+
+        $id_checkout = $checkoutModel->where('invoice', $id)->first()['id_checkout'];
+        $status_transaction = true;
+
+        $data = [
+            'inv' => $id,
+            'id_checkout' => $id_checkout,
+            'orders' => $order,
+            'order' => $order[0],
+            'gosendStatus' => $GoSendStatus,
+            'status_transaction' => $status_transaction,
+            'id_status_pesan' => 4,
+        ];
+        // dd($data);
+
+        if ($order[0]['id_destination']) {
+            $alamatUserModel = new AlamatUserModel();
+            $data['destination'] = $alamatUserModel->find($order[0]['id_destination']);
+        }
+
+        if (!$checkoutModel->update($id_checkout, $data)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => 'Gagal mengupdate status'
+            ];
+        } else {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Berhasil mengupdate status'
+            ];
+        }
+        session()->setFlashdata('alert', $alert);
+
+        return redirect()->back()->withInput();
     }
 
     public function pickUp($id)
