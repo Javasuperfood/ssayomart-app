@@ -231,13 +231,13 @@
                                             <h4 class="alert-heading">Driver tidak ditemukan!</h4>
                                             <p>Status saat ini driver tidak ditemukan.</p>
                                             <hr>
-                                            <p class="mb-0">Mohon Klik retery untuk mencoba kembali.</p>
+                                            <p class="mb-0">Mohon Klik retry untuk mencoba kembali.</p>
                                         </div>
                                     <?php endif ?>
                                     <?php if ($gosendStatus['status'] == 'Cancelled') : ?>
                                         <div class="alert alert-danger my-3" role="alert">
                                             <h4 class="alert-heading">Pengirimian dibatalkan!</h4>
-                                            <p>Status saat ini pengirimian dibatalkan.</p>
+                                            <p>Status saat ini pengiriman dibatalkan.</p>
                                             <hr>
                                             <p class="mb-0">Mohon Klik retry jika ingin mencoba kembali.</p>
                                         </div>
@@ -245,7 +245,7 @@
                                     <?php if ($gosendStatus['status'] == 'Rejected') : ?>
                                         <div class="alert alert-danger" role="alert">
                                             <h4 class="alert-heading">Pengirimian ditolak!</h4>
-                                            <p>Status saat ini pengirimian ditolak.</p>
+                                            <p>Status saat ini pengiriman ditolak.</p>
                                             <hr>
                                         </div>
                                     <?php endif ?>
