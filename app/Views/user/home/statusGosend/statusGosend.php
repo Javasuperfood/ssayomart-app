@@ -128,7 +128,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <tr>
                                             <td>Metode</td>
                                             <td>:</td>
-                                            <td><?= $payment['payment_type']; ?> (<?= $payment['issuer']; ?>)</td>
+                                            <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . '-' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
                                         </tr>
                                         <tr>
                                             <td>Total</td>
@@ -487,7 +487,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <tr>
                                                 <td>Metode</td>
                                                 <td>:</td>
-                                                <td><?= $payment['payment_type']; ?> (<?= $payment['issuer']; ?>)</td>
+                                                <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . '-' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
                                             </tr>
                                             <tr>
                                                 <td>Total</td>
