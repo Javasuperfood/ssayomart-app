@@ -88,7 +88,7 @@ $countProduk = count($produk);
                             <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                 <del>Rp. ${formatRupiah(p.harga_min)}</del>
                             </p>
-                                <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                                <h1 class="text-danger fw-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
                                    ${hargaText}
                                 </h1>
                                 
@@ -126,7 +126,7 @@ $countProduk = count($produk);
                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
                             <del>Rp. ${formatRupiah(p.harga_min)}</del>
                         </p>
-                            <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                            <h1 class="text-danger fw-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
                             ${hargaText}
                             </h1>
 
