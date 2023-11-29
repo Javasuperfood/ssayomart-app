@@ -16,7 +16,7 @@ $countProduk = count($produk);
     }
     var productContainer = $("#product-container");
     var cardLoader = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0" id="cardLoader">
-                <div class="card border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
+                <div class="card .card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
                     <div class="d-flex justify-content-center align-items-center">
                         <svg class="bd-placeholder-img card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" width="100px" height="100px object-fit: contain; object-position: 20% 10%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
@@ -73,7 +73,7 @@ $countProduk = count($produk);
                             hargaText = ("Rp. " + formatRupiah(p.harga_min) + "-" + formatRupiah(p.harga_max)).substring(0, 13) + "...";
                         }
                         var html = '<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">' +
-                            '<div class="card border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding:5px;">' +
+                            '<div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding:5px;">' +
                             ` <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
                                 <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
@@ -110,7 +110,7 @@ $countProduk = count($produk);
                             '</div>' +
                             '</div>';
                         var html = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                    <div class="card border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
+                    <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
                         <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
                                 <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
