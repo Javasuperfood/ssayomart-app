@@ -75,6 +75,7 @@ class CheckoutController extends BaseController
         }
         return redirect()->to(base_url() . 'checkout/' . $chechkoutId);
     }
+
     // public function checkout($id)
     // {
     //     $kategori = new KategoriModel();
