@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\AlamatUserModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
+use App\Models\CheckoutResponseModel;
 use App\Models\KategoriModel;
 use App\Models\KuponModel;
 use App\Models\ProdukModel;
@@ -460,6 +461,8 @@ class BuyController extends BaseController
         $userModel = new UsersModel();
         $wishlistModel = new WishlistModel();
         $wishlistProdModel = new WishlistProdukModel();
+        $checkoutResponseModel = new CheckoutResponseModel();
+
         // $kuponModel = new KuponModel();
         // $kuponList = $kuponModel->find($id);
 
@@ -638,12 +641,15 @@ class BuyController extends BaseController
         }
 
         // dd($params);
-        return response()->setJSON($params);
+        // return response()->setJSON($params);
         $carger = \Midtrans\CoreApi::charge($params);
-        return response()->setJSON($carger);
+        // return response()->setJSON($carger);
+        // $snapToken = \Midtrans\Snap::getSnapToken($params);
+        // return response()->setJSON($snapToken);
 
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-
+        if ($carger->status_code != 201) {
+            return redirect()->back();
+        }
         $dbStore = [
             'id_user' => user_id(),
             'id_toko' => $this->request->getVar('market'),
@@ -663,7 +669,7 @@ class BuyController extends BaseController
             'telp' => $alamat['telp'],
             'discount' => $kupon['discount'],
             'kupon' => $kupon['kupon'],
-            'snap_token' => $snapToken
+            'snap_token' => null
         ];
         // dd($dbStore);
         $chechkoutId = $checkoutModel->insert($dbStore);
@@ -676,6 +682,10 @@ class BuyController extends BaseController
             'harga' => $produk['harga_item'],
         ];
         $checkoutProdukModel->insert($checkoutProdukData);
+        $checkoutResponseModel->insert([
+            'id_checkout' => $chechkoutId,
+            'response' => json_encode($carger),
+        ]);
         if ($wishlistItem) {
             $wishlistProdModel->delete($wishlistItem['id_wishlist_produk']);
         }
@@ -689,6 +699,27 @@ class BuyController extends BaseController
             }
         }
 
-        return redirect()->to(base_url('payment/' . $inv));
+        return redirect()->to(base_url('pay?order_id=' . $inv));
+    }
+
+    public function pay()
+    {
+        $inv = $this->request->getGet('order_id');
+        if (!$inv) {
+            return view('404', [
+                'title' => '404'
+            ]);
+        }
+        $checkoutModel = new CheckoutModel();
+        $checkoutResponseModel = new CheckoutResponseModel();
+
+        $order = $checkoutModel->where('invoice', $inv)->first();
+        $paymentResponse = $checkoutResponseModel->where('id_checkout', $order['id_checkout'])->first();
+        $paymentResponse['response'] = json_decode($paymentResponse['response']);
+
+        return response()->setJSON([
+            'order' => $order,
+            'paymentResponse' => $paymentResponse['response']
+        ]);
     }
 }
