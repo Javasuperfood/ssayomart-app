@@ -650,6 +650,10 @@ class BuyController extends BaseController
         if ($carger->status_code != 201) {
             return redirect()->back();
         }
+        $response = [
+            'request' => $params,
+            'response' => $carger
+        ];
         $dbStore = [
             'id_user' => user_id(),
             'id_toko' => $this->request->getVar('market'),
@@ -684,7 +688,7 @@ class BuyController extends BaseController
         $checkoutProdukModel->insert($checkoutProdukData);
         $checkoutResponseModel->insert([
             'id_checkout' => $chechkoutId,
-            'response' => json_encode($carger),
+            'response' => json_encode($response),
         ]);
         if ($wishlistItem) {
             $wishlistProdModel->delete($wishlistItem['id_wishlist_produk']);
@@ -699,27 +703,116 @@ class BuyController extends BaseController
             }
         }
 
-        return redirect()->to(base_url('pay?order_id=' . $inv));
+        return redirect()->to(base_url('pay?order_id=' . $inv . '&payment_type=' . $params['payment_type']));
     }
 
     public function pay()
     {
         $inv = $this->request->getGet('order_id');
-        if (!$inv) {
+        $payment_type = $this->request->getGet('payment_type');
+        if (!$inv || !$payment_type) {
             return view('404', [
                 'title' => '404'
             ]);
         }
         $checkoutModel = new CheckoutModel();
         $checkoutResponseModel = new CheckoutResponseModel();
+        $kategoriModel = new KategoriModel();
+        $alamatUserModel = new AlamatUserModel();
 
         $order = $checkoutModel->where('invoice', $inv)->first();
-        $paymentResponse = $checkoutResponseModel->where('id_checkout', $order['id_checkout'])->first();
-        $paymentResponse['response'] = json_decode($paymentResponse['response']);
 
-        return response()->setJSON([
+
+        $paymentResponse = $checkoutResponseModel->where('id_checkout', $order['id_checkout'])->first();
+        $paymentResponse['response'] = json_decode($paymentResponse['response'], true);
+
+        $data = [
+            'title' => 'Payment',
+            'kategori' => $kategoriModel->findAll(),
             'order' => $order,
-            'paymentResponse' => $paymentResponse['response']
-        ]);
+            'destination' => $alamatUserModel->where('id_alamat_users', $order['id_destination'])->first(),
+            'penerima' => $this->getInfoPenerima($order['kirim']),
+            'pay' => $paymentResponse['response']
+        ];
+        // dd($data);
+        if ($payment_type == 'bank_transfer') {
+            return $this->bank_transfer($data);
+        }
+        return response()->setJSON($data);
+    }
+
+    function bank_transfer($data = [])
+    {
+        $data['title'] = 'Payment Bank';
+        $midtransConfig = config('Midtrans');
+        MidtransConfig::$serverKey = $midtransConfig->serverKey;
+        MidtransConfig::$clientKey = $midtransConfig->clientKey;
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        MidtransConfig::$isProduction = $midtransConfig->isProduction;
+        // Set sanitization on (default)
+        MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
+        // Set 3DS transaction for credit card to true
+        MidtransConfig::$is3ds = $midtransConfig->is3ds;
+        $checkoutModel = new CheckoutModel();
+
+        $statusPesan = $data['order']['id_status_pesan'];
+        $id_cehckout = $data['order']['id_checkout'];
+        try {
+            // dd($id_cehckout);
+            /**
+             * @var object $paymentStatus
+             */
+            $paymentStatus = \Midtrans\Transaction::status($data['pay']['response']['transaction_id']);
+            if ($paymentStatus->transaction_status == "settlement" && $statusPesan == '1') {
+                $checkoutModel->save([
+                    'id_checkout' => $id_cehckout,
+                    'id_status_pesan' => 2
+                ]);
+            } else if ($paymentStatus->transaction_status == 'pending') {
+                // TODO set payment status in merchant's database to 'Pending'
+                $checkoutModel->save([
+                    'id_checkout' => $id_cehckout,
+                    'id_status_pesan' => 1
+                ]);
+            } else if ($paymentStatus->transaction_status == 'deny') {
+                // TODO set payment status in merchant's database to 'Denied'
+                $checkoutModel->save([
+                    'id_checkout' => $id_cehckout,
+                    'id_status_pesan' => 5
+                ]);
+            } else if ($paymentStatus->transaction_status == 'expire') {
+                // TODO set payment status in merchant's database to 'expire'
+                $checkoutModel->save([
+                    'id_checkout' => $id_cehckout,
+                    'id_status_pesan' => 5
+                ]);
+            } else if ($paymentStatus->transaction_status == 'cancel') {
+                // TODO set payment status in merchant's database to 'Denied'
+                $checkoutModel->save([
+                    'id_checkout' => $id_cehckout,
+                    'id_status_pesan' => 5
+                ]);
+            }
+
+            $data['paymentStatus'] = $paymentStatus;
+            $data['pay']['status'] = $paymentStatus;
+            if ($paymentStatus->transaction_status == "settlement" && $statusPesan != '1') {
+                return redirect()->to(base_url('status?order_id=' . $paymentStatus->order_id));
+            }
+            return view('user/home/payment/virtualAccount', $data);
+        } catch (\Exception $e) {
+            // echo "An error occurred: " . $e->getMessage();
+            $currentTimestamp = time(); // Get the current timestamp
+            $twentyFourHoursAgo = $currentTimestamp - (24 * 60 * 60);
+            $lastUpdateTimestamp = strtotime($data['order']['updated_at']);
+            if ($lastUpdateTimestamp <= $twentyFourHoursAgo && $statusPesan == '1') {
+                $checkoutModel->save([
+                    'id_checkout' => $id_cehckout,
+                    'id_status_pesan' => 5
+                ]);
+            }
+        }
+        $data['pay']['status'] = $paymentStatus;
+        return redirect()->to(base_url('status?order_id=' . $paymentStatus->order_id));
     }
 }
