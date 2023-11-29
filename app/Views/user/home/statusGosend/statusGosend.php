@@ -60,7 +60,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <hr class="border-darker mt-0 mb-2">
                 </div>
             </div>
-            <div class="row">
+
+            <!-- tracking lama horizontal-->
+            <!-- <div class="row">
                 <div class="col">
                     <div class="track">
                         <div class="step active"> <span class="icon"> <i class="bi bi-check2-circle"></i> </span> <span class="text" style="font-size: smaller;">Order confirmed</span> </div>
@@ -71,10 +73,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?php endif ?>
                     </div>
                 </div>
+            </div> -->
+            <!-- end tracking lama -->
+
+            <!-- tracking baru vertical -->
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div id="tracking-pre"></div>
+                    <div id="tracking" class="tracking-list">
+                        <?php foreach ($status as $s) : ?>
+                            <div class="tracking-item <?= ($s == 'Delivered') ? 'tracking-item-pending' : ''; ?>">
+                                <div class="tracking-icon <?= ($s == 'Delivered') ? 'status-intransit' : 'status-current blinker'; ?>">
+                                    <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                        <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                    </svg>
+                                </div>
+                                <div class="tracking-date"><i class="bi bi-truck" class="img-responsive" style="font-size: 30px;" alt="order-placed" /></i></div>
+                                <div class="tracking-content"><?= $s; ?></div>
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                </div>
             </div>
+            <!-- end tracking -->
+
             <div class="row">
                 <div class="col">
-                    <div class="mt-5 card mb-4 mb-md-0 border-0 shadow-sm">
+                    <div class="mt-2 card mb-4 mb-md-0 border-0 shadow-sm">
                         <div class="card-body">
                             <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1">Rincian</p>
                             <hr class="border-darker mt-0 mb-2">
@@ -229,6 +254,184 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </style>
 
     <style>
+        #tracking {
+            background: #fff
+        }
+
+        .tracking-detail {
+            padding: 3rem 0;
+        }
+
+        #tracking {
+            margin-bottom: 1rem;
+        }
+
+        [class*="tracking-status-"] p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        [class*="tracking-status-"] {
+            padding: 1.6rem 0;
+        }
+
+        .tracking-list {
+            border: 1px solid #e5e5e5;
+        }
+
+        .tracking-item {
+            border-left: 4px solid #ce2614;
+            position: relative;
+            padding: 2rem 1.5rem 0.5rem 2.5rem;
+            font-size: 0.9rem;
+            margin-left: 3rem;
+            min-height: 5rem;
+        }
+
+        .tracking-item:last-child {
+            padding-bottom: 4rem;
+        }
+
+
+        .tracking-item .tracking-content {
+            padding: 0.5rem 0.8rem;
+            background-color: #f4f4f4;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .tracking-item .tracking-content span {
+            display: block;
+            color: #767676;
+            font-size: 10px;
+        }
+
+        .tracking-item .tracking-icon {
+            position: absolute;
+            left: -0.7rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            background-color: #fff;
+            color: #fff;
+        }
+
+        .tracking-item-pending {
+            border-left: 4px solid #d17a71;
+            position: relative;
+            padding: 2rem 1.5rem 0.5rem 2.5rem;
+            font-size: 0.9rem;
+            margin-left: 3rem;
+            min-height: 5rem;
+        }
+
+        .tracking-item-pending:last-child {
+            padding-bottom: 4rem;
+        }
+
+        .tracking-item-pending .tracking-content {
+            padding: 0.5rem 0.8rem;
+            background-color: #f4f4f4;
+            border-radius: 0.5rem;
+        }
+
+        .tracking-item-pending .tracking-content span {
+            display: block;
+            color: #767676;
+            font-size: 13px;
+        }
+
+        .tracking-item-pending .tracking-icon {
+            line-height: 2.6rem;
+            position: absolute;
+            left: -0.7rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            color: #d6d6d6;
+        }
+
+        .tracking-item-pending .tracking-content {
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .tracking-item .tracking-icon.status-current {
+            width: 1.9rem;
+            height: 1.9rem;
+            left: -1.1rem;
+        }
+
+        .tracking-item .tracking-icon.status-intransit {
+            color: #ce2614;
+            font-size: 0.6rem;
+        }
+
+        .tracking-item .tracking-icon.status-current {
+            color: #ce2614;
+            font-size: 0.6rem;
+        }
+
+        @media (min-width: 992px) {
+            .tracking-item {
+                margin-left: 10rem;
+            }
+
+
+            .tracking-item .tracking-content {
+                padding: 0;
+                background-color: transparent;
+            }
+
+            .tracking-item-pending {
+                margin-left: 10rem;
+            }
+
+            .tracking-item-pending .tracking-date {
+                position: absolute;
+                left: -10rem;
+                width: 7.5rem;
+                text-align: right;
+            }
+
+            .tracking-item-pending .tracking-date span {
+                display: block;
+            }
+
+            .tracking-item-pending .tracking-content {
+                padding: 0;
+                background-color: transparent;
+            }
+        }
+
+        .tracking-item .tracking-content {
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .blinker {
+            border: 7px solid #e9f8ea;
+            animation: blink 1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: #fff;
+            }
+        }
+    </style>
+
+    <!-- style tracking horizontal -->
+    <!-- <style>
         .card {
             border-radius: 20px;
             /* Sudut bulat pada seluruh kartu */
@@ -319,7 +522,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             font-size: smaller;
             /* Mengubah ukuran font ke smaller */
         }
-    </style>
+    </style> -->
 
 <?php else : ?>
     <!-- Desktop View -->
