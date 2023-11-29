@@ -47,7 +47,7 @@ $routes->get('/content-banner/(:segment)', 'BannerContentController::contentBann
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
-$routes->get('/virtualAccount', 'Payment::virtualAccount');
+$routes->get('/virtual-account', 'Payment::virtualAccount');
 $routes->get('/qriss', 'Payment::qriss');
 $routes->get('/ccard', 'Payment::ccard');
 $routes->get('/ewallet', 'Payment::ewallet');
