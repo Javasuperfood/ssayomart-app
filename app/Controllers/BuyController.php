@@ -239,6 +239,7 @@ class BuyController extends BaseController
 
     public function getNewPayment()
     {
+        // dd($this->request->getVar());
         $midtransConfig = config('Midtrans');
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -308,10 +309,12 @@ class BuyController extends BaseController
             'id_toko' => $checkout['id_toko'],
             'id_status_pesan' => 1,
             'id_status_kirim' => 1,
+            'id_destination' => $checkout['id_destination'],
             'invoice' => $newInvoice,
             'total_1' => $checkout['total_1'],
             'total_2' => $checkout['total_2'],
             'service' => $checkout['service'],
+            'gosend' => $checkout['gosend'],
             'harga_service' => $checkout['harga_service'],
             'kurir' => $checkout['kurir'],
             'kirim' => $checkout['kirim'],
