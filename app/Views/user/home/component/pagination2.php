@@ -308,14 +308,14 @@ $countProduk = count($produk);
         #product-container.row.row-cols-3 {
             width: 100%;
             height: auto;
-            margin-left: 1%;
+            margin-left: 4.5%;
 
         }
 
         #product-unggulan-container.row.row-cols-3 {
             width: 100%;
             height: auto;
-            margin-left: 1%;
+            margin-left: 4.5%;
 
         }
     }
@@ -327,6 +327,11 @@ $countProduk = count($produk);
         .col-6 {
             flex: 0 0 100% !important;
             max-width: 50%;
+        }
+
+        .card-produk {
+            width: 110px !important;
+            /* Mengisi lebar parent container */
         }
     }
 </style>
