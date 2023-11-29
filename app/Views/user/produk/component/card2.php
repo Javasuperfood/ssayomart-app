@@ -24,11 +24,11 @@
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                 </p>
 
-                                <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                                     <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                         Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>
-                                        <?= substr('Rp. ' . number_format($fp['harga_min'], 0, ',', '.') . '-' . number_format($fp['harga_max'], 0, ',', '.'), 0, 13); ?>...
+                                        <?= substr('Rp. ' . number_format($fp['harga_min'], 0, ',', '.') . '-' . number_format($fp['harga_max'], 0, ',', '.'), 0, 13); ?>
                                     <?php endif ?>
                                 </h1>
                                 <!-- <div class="container mt-1 mb-2">
@@ -104,11 +104,11 @@
                                 <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                             </p>
 
-                            <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                            <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
-                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
+                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>
                                 <?php endif ?>
                             </h1>
 
