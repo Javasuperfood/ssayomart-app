@@ -667,6 +667,12 @@ if ($isMobile) {
             width: 100%;
             height: auto;
         }
+
+        p {
+            font-size: 14px;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
     }
 
     /* Untuk layar dengan lebar 768px atau lebih (tampilan desktop) */

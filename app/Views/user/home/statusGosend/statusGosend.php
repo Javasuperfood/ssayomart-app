@@ -232,24 +232,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    <!-- samsung galaxy fold -->
+
     <style>
-        .card-body p,
-        .card-body span {
-            font-size: 12px;
+        @media screen and (max-width: 280px) {
 
-        }
+            p.fw-bold.fs-6 {
+                width: 100px;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
 
-        .track .step span.text {
-            font-size: 10px;
+            .fs-6 {
+                font-size: 12px !important;
+            }
 
-        }
+            .card-body p,
+            .card-body span {
+                font-size: 12px;
 
-        .track .step span.icon {
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+            }
 
+            .track .step span.text {
+                font-size: 10px;
+
+            }
+
+            .track .step span.icon {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+
+            }
         }
     </style>
 
