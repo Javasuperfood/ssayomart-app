@@ -190,6 +190,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         font-size: 9px;
                         /* Ubah ukuran font sesuai dengan keinginan Anda */
                     }
+
+                    p {
+                        font-size: 13px;
+                        margin-top: 0;
+                        margin-bottom: 1rem;
+                    }
+
+                    .h4,
+                    h4 {
+                        font-size: 1rem;
+                    }
                 }
             </style>
         </div>

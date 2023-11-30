@@ -354,7 +354,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .form-control {
-                font-size: 14px;
+                font-size: 12px;
             }
 
             .deskripsi {
