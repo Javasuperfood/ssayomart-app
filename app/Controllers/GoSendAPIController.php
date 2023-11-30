@@ -18,7 +18,7 @@ class GoSendAPIController extends BaseController
         if (!$this->validateData(['origin' => $origin, 'destination' => $destination], ['origin' => 'required', 'destination' => 'required'])) {
             return response()->setJSON(validation_errors());
         }
-        $webhookConfig = config('WebHook');
+        $webhookConfig = new \Config\WebHook();
         $baseUrl = $webhookConfig->base_url;
         $clientId = $webhookConfig->client_id;
         $pasKey = $webhookConfig->pas_key;
@@ -58,7 +58,7 @@ class GoSendAPIController extends BaseController
 
     function bookingAPI($body = [])
     {
-        $webhookConfig = config('WebHook');
+        $webhookConfig = new \Config\WebHook();
         $baseUrl = $webhookConfig->base_url;
         $clientId = $webhookConfig->client_id;
         $pasKey = $webhookConfig->pas_key;

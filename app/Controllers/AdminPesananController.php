@@ -312,7 +312,7 @@ class AdminPesananController extends BaseController
 
     public function printAllOrder()
     {
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -355,7 +355,7 @@ class AdminPesananController extends BaseController
 
     public function printOrder($id)
     {
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -446,7 +446,8 @@ class AdminPesananController extends BaseController
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesanModel = new StatusPesanModel();
         $order = $checkoutProdModel->getTransaksi($id);
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
+
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -519,7 +520,8 @@ class AdminPesananController extends BaseController
         if (!auth()->user()->inGroup('admin')) {
             return "You're not allowed to do this";
         }
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
+
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;

@@ -12,7 +12,7 @@ class HistoryTransaksiController extends BaseController
 {
     public function index(): string
     {
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;

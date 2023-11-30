@@ -130,7 +130,7 @@ class CheckoutController extends BaseController
 
     public function bayar($id)
     {
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -326,7 +326,7 @@ class CheckoutController extends BaseController
             return redirect()->to(base_url('cart2'));
         }
 
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;

@@ -69,7 +69,7 @@ class BuyController extends BaseController
         $produkModel = new ProdukModel();
         $checkoutModel = new CheckoutModel();
         $checkoutProdukModel = new CheckoutProdukModel();
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
         $wishlistModel = new WishlistModel();
@@ -241,7 +241,7 @@ class BuyController extends BaseController
     public function getNewPayment()
     {
         // dd($this->request->getVar());
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
         MidtransConfig::$clientKey = $midtransConfig->clientKey;
@@ -456,7 +456,7 @@ class BuyController extends BaseController
         $produkModel = new ProdukModel();
         $checkoutModel = new CheckoutModel();
         $checkoutProdukModel = new CheckoutProdukModel();
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
         $wishlistModel = new WishlistModel();
@@ -746,7 +746,7 @@ class BuyController extends BaseController
     function bank_transfer($data = [])
     {
         $data['title'] = 'Payment Bank';
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
         MidtransConfig::$clientKey = $midtransConfig->clientKey;
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).

@@ -119,7 +119,7 @@ class StatusGosendController extends BaseController
 
     function getStatusGosend($id)
     {
-        $webhookConfig = config('WebHook');
+        $webhookConfig = new \Config\WebHook();
         $baseUrl = $webhookConfig->base_url;
         $clientId = $webhookConfig->client_id;
         $pasKey = $webhookConfig->pas_key;
@@ -150,7 +150,7 @@ class StatusGosendController extends BaseController
 
     function getStatusMidtrans($id)
     {
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
