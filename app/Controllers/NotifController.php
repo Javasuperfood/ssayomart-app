@@ -114,38 +114,39 @@ class NotifController extends BaseController
         return $player;
     }
 
-    public function notificationOrderProcessed()
+    // webhook notification driver picked up //
+    public function sendOrderNotification()
     {
+        // Ambil data status dari permintaan POST
+        $status = $this->request->getPost('status');
+
+        log_message('debug', 'Status: ' . $status);
+
+        // Panggil fungsi yang sebelumnya kita buat
+        return $this->sendOrderNotificationByStatus($status);
+    }
+
+    public function sendOrderNotificationByStatus($status)
+    {
+        log_message('debug', 'Status in sendOrderNotificationByStatus: ' . $status);
+
         $usersModel = new UsersModel();
 
         // Mendapatkan data pengguna berdasarkan user_id
         $userData = $usersModel->find(user_id());
-        // After obtaining user data
-
-        log_message('debug', 'UserData: ' . print_r($userData, true));
 
         // Periksa apakah data pengguna ditemukan dan memiliki kunci 'uuid'
         if ($userData && isset($userData[0]['uuid'])) {
             $uuid = $userData[0]['uuid'];
-            log_message('debug', 'UUID: ' . $uuid);
 
             // Ambil data atau parameter dari request sesuai kebutuhan
             $order_id = $this->request->getVar('order_id');
-            $total_amount = $this->request->getVar('total_amount');
-            $payment_method = $this->request->getVar('payment_method');
-
-            // Periksa apakah $total_amount tidak null sebelum menggunakan number_format
-            $total_amount_formatted = $total_amount !== null ? number_format($total_amount, 0, ',', '.') : 'N/A';
 
             // Buat pesan notifikasi
-            $notification_message = 'Pesanan dengan ID ' . $order_id . ' telah diproses. Total pembayaran: Rp. ' . $total_amount_formatted . ' dengan metode pembayaran ' . $payment_method;
-            // Before sending the notification
-            log_message('debug', 'Notification Message: ' . $notification_message);
+            $notification_message = $this->getNotificationMessage($status, $order_id);
 
             // Kirim notifikasi
             $result = $this->sendNotificationToUser($uuid, $notification_message);
-            // After sending the notification
-            log_message('debug', 'OneSignal API Response: ' . print_r($result, true));
 
             return response()->setJSON($result);
         } else {
@@ -156,6 +157,40 @@ class NotifController extends BaseController
             ], 200);
         }
     }
+
+    private function getNotificationMessage($status, $order_id)
+    {
+        // Default message
+        // $default_message = 'Terjadi masalah yang diluar dugaan kami. Kami akan memperbaiki nya segera';
+        $default_message = 'Pesan awal contoh';
+
+        // Pesan notifikasi sesuai dengan status
+        switch ($status) {
+            case 'confirmed':
+                return 'Driver sudah dikonfirmasi. Pesanan dengan ID ' . $order_id;
+            case 'allocated':
+                return 'Driver sudah ditemukan. Pesanan dengan ID ' . $order_id;
+            case 'out_for_pickup':
+                return 'Driver sedang dalam perjalanan mengambil pesananan Anda. Pesanan dengan ID ' . $order_id;
+            case 'out_for_delivery':
+                return 'Driver sudah dalam perjalanan ke lokasi Anda. Pesanan dengan ID ' . $order_id;
+            case 'picked':
+                return 'Driver telah mengambil pesanan Anda. Pesanan dengan ID ' . $order_id;
+            case 'cancelled':
+                return 'Pesanan dibatalkan. Pesanan dengan ID ' . $order_id;
+            case 'rejected':
+                return 'Pesanan ditolak. Pesanan dengan ID ' . $order_id;
+            case 'on_hold':
+                return 'Pesanan ditunda. Pesanan dengan ID ' . $order_id;
+            case 'no_driver':
+                return 'Driver tidak dalam jangkauan terdekat. Mohon menunggu. Pesanan dengan ID ' . $order_id;
+            case 'unknown':
+                return $default_message;
+            default:
+                return $default_message;
+        }
+    }
+
 
     private function sendNotificationToUser($uuid, $message)
     {
