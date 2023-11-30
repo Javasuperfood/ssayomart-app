@@ -105,7 +105,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="card-body">
                                     <div class="row" id="colsId<?= $t->id_checkout; ?>" data-bs-target="#history<?= $t->id_checkout; ?>" data-bs-toggle="collapse">
                                         <div class="col-3">
-                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                                             <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                                 <a class="link-secondary" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
                                                     <i class="bi bi-chevron-bar-down fs-4" style="font-weight: bold;"></i>
