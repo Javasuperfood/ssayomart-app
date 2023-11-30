@@ -250,6 +250,11 @@
             im_produk.addEventListener('animationend', () => {
                 im_produk.classList.remove('animate__animated', 'animate__tada');
             });
+            let cartcart = document.querySelector('.a_cart_link_0');
+            cartcart.classList.add('animate__animated', 'animate__shakeY');
+            cartcart.addEventListener('animationend', () => {
+                cartcart.classList.remove('animate__animated', 'animate__shakeY');
+            });
         }
 
         function decreaseValue(c, v) {
@@ -280,6 +285,11 @@
                 q = e.value;
             });
             addToCartProductList(c, v, q)
+            let cartcart = document.querySelector('.a_cart_link_0');
+            cartcart.classList.add('animate__animated', 'animate__shakeY');
+            cartcart.addEventListener('animationend', () => {
+                cartcart.classList.remove('animate__animated', 'animate__shakeY');
+            });
         }
 
         function changeToCircle(c) {
@@ -306,11 +316,6 @@
                 success: function(response) {
                     if (response.success) {
                         // console.log(response.message)
-                        let cartcart = document.querySelector('.a_cart_link_0');
-                        cartcart.classList.add('animate__animated', 'animate__shakeY');
-                        cartcart.addEventListener('animationend', () => {
-                            cartcart.classList.remove('animate__animated', 'animate__shakeY');
-                        });
                         return true
                     } else {
                         // console.log(response.message)
