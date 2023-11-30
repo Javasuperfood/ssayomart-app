@@ -627,10 +627,9 @@ class BuyController extends BaseController
                 ];
                 break;
             case 'shopeepay':
-                $params['payment_type'] = "echannel";
-                $params["echannel"] = [
-                    "bill_info1" => "Payment:",
-                    "bill_info2" => "Online purchase"
+                $params['payment_type'] = "shopeepay";
+                $params["shopeepay"] =  [
+                    "callback_url" => base_url() . 'status?order_id=' . $inv
                 ];
                 break;
 
@@ -643,7 +642,7 @@ class BuyController extends BaseController
         // dd($params);
         // return response()->setJSON($params);
         $carger = \Midtrans\CoreApi::charge($params);
-        // return response()->setJSON($carger);
+        return response()->setJSON($carger);
         // $snapToken = \Midtrans\Snap::getSnapToken($params);
         // return response()->setJSON($snapToken);
 
@@ -738,6 +737,9 @@ class BuyController extends BaseController
         if ($payment_type == 'bank_transfer') {
             return $this->bank_transfer($data);
         }
+        if ($payment_type == 'bank_transfer') {
+            return $this->bank_transfer($data);
+        }
         return response()->setJSON($data);
     }
 
@@ -814,5 +816,15 @@ class BuyController extends BaseController
         }
         $data['pay']['status'] = $paymentStatus;
         return redirect()->to(base_url('status?order_id=' . $paymentStatus->order_id));
+    }
+
+    function eMoney()
+    {
+        // TODO implement midtrans emoney
+    }
+
+    function credit_card()
+    {
+        // TODO implement midtrans credit card
     }
 }
