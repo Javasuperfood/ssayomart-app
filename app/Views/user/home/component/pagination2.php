@@ -207,9 +207,9 @@ $countProduk = count($produk);
     }
 
     .button {
-        width: 20px;
+        width: 25px;
         /* Ukuran tombol yang lebih kecil */
-        height: 20px;
+        height: 25px;
         /* Ukuran tombol yang lebih kecil */
         border-radius: 50%;
         display: flex;
@@ -226,7 +226,7 @@ $countProduk = count($produk);
     .button-capsule {
         width: 60px;
         /* Ukuran capsule yang lebih kecil */
-        height: 20px;
+        height: 25px;
         /* Ukuran capsule yang lebih kecil */
         border-radius: 15px;
         display: none;
