@@ -199,6 +199,13 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('banner/ads-konten-banner/delete/(:segment)', 'AdminBannerController::deleteKontenAds/$1');
     $routes->get('banner/update-ads-konten/(:segment)', 'AdminBannerController::updateKontenAds/$1');
     $routes->post('banner/update-ads-konten/save-ads', 'AdminBannerController::saveKontenAdsEdit');
+    // Promotion Banner
+    $routes->get('banner/promotion-banner', 'AdminBannerController::promotionBanner');
+    $routes->post('banner/promotion-banner/save', 'AdminBannerController::saveBannerPromo');
+    $routes->post('banner/promotion-banner/delete/(:segment)', 'AdminBannerController::deletePromotion/$1');
+    $routes->get('banner/update-promotion-banner/(:segment)', 'AdminBannerController::updatePromotion/$1');
+    $routes->post('banner/update-promotion-banner/update/(:segment)', 'AdminBannerController::updatePromotionStore/$1');
+
     // Content
     $routes->get('banner/tambah-konten', 'AdminBannerController::tambahKonten');
 

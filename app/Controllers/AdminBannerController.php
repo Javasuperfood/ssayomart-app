@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\BannerModel;
 use App\Models\BannerPopupModel;
 use App\Models\BannerAdsKontenModel;
+use App\Models\BannerPromotionModel;
 use App\Models\KategoriModel;
 
 class AdminBannerController extends BaseController
@@ -249,7 +250,6 @@ class AdminBannerController extends BaseController
             return redirect()->to('dashboard/banner/detail-banner/update/' . $id)->withInput();
         }
     }
-
 
     public function listBanner(): string
     {
@@ -646,6 +646,199 @@ class AdminBannerController extends BaseController
             session()->setFlashdata('alert', $alert);
 
             return redirect()->to('dashboard/banner/update-ads-konten/' . $id)->withInput();
+        }
+    }
+
+    // =================================================================
+    // ======================= ADSVERTISEMENTS =========================
+    // =================================================================
+
+    public function promotionBanner(): string
+    {
+        $bannerModel = new BannerPromotionModel();
+        $bannerList = $bannerModel->findAll();
+        $data = [
+            'title' => 'List Banner Aplikasi',
+            'banner_list' => $bannerList
+        ];
+        return view('/dashboard/banner/promotionBanner', $data);
+    }
+
+    public function saveBannerPromo()
+    {
+        // ambil gambar
+        $bannerModel = new BannerPromotionModel();
+
+        $fotoBanner = $this->request->getFile('img');
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'img' => $fotoBanner
+        ];
+        //validate data
+        if (!$this->validateData($data, $bannerModel->validationRules) && !$this->validateData($data, [
+            'img' => [
+                'errors' => [
+                    'uploaded' => 'Gambar promo wajib diunggah.'
+                ]
+            ]
+        ])) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian data banner promotion'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/promotion-banner')->withInput();
+        }
+        if ($fotoBanner->getError() == 4) {
+            $namaBanner = 'default.png';
+        } else {
+            $namaBanner = $fotoBanner->getRandomName();
+            $fotoBanner->move('assets/img/banner/promotion/', $namaBanner);
+        }
+
+        //repalce data
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'img' => $namaBanner
+        ];
+        // dd($data);
+
+        // swet alert
+        if ($bannerModel->save($data)) {
+            session()->setFlashdata('success', 'Gambar promotion berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Gambar promotion berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/promotion-banner')->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada upload gambar promotion'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/promotion-banner')->withInput();
+        }
+    }
+
+    public function deletePromotion($id)
+    {
+        $bannerModel = new BannerPromotionModel();
+        $banner = $bannerModel->find($id);
+
+        if ($banner['img'] != 'default.png') {
+            $gambarLamaPath = 'assets/img/banner/promotion/' . $banner['img'];
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+        }
+        $deleted = $bannerModel->delete($id);
+
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Gambar promotion berhasil di hapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/promotion-banner');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan gambar promotion'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/promotion-banner')->withInput();
+        }
+    }
+
+    public function updatePromotion($id)
+    {
+        $bannerModel = new BannerPromotionModel();
+
+        $bl = $bannerModel->find($id);
+        $data = [
+            'title' => 'Edit Promotion Banner',
+            'bl' => $bl,
+            'back'  => 'dashboard/banner/promotion-banner'
+        ];
+        return view('dashboard/banner/updatePromotionBanner', $data);
+    }
+
+    public function updatePromotionStore()
+    {
+        $bannerModel = new BannerPromotionModel();
+        $id = $this->request->getVar('id_banner_promotion');
+        $image = $this->request->getFile('img');
+        $data = [
+            'id_banner_promotion' => $id,
+            'img' => $image,
+            'title' => $this->request->getVar('title'),
+        ];
+        //validate data
+
+        if (!$this->validateData($data, $bannerModel->validationRules)) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/banner/update-promotion-banner/' . $id)->withInput();
+        }
+
+
+        if ($image->getError() == 4) {
+            $namaBannerImage = $this->request->getVar('imageLama');
+        } else {
+            $produk = $bannerModel->find($id);
+
+            if ($produk['img'] == 'default.png') {
+                $namaBannerImage = $image->getRandomName();
+                $image->move('assets/img/banner/promotion', $namaBannerImage);
+            } else {
+                $namaBannerImage = $image->getRandomName();
+                $image->move('assets/img/banner/promotion', $namaBannerImage);
+                $gambarLamaPath = 'assets/img/banner/promotion/' . $this->request->getVar('imageLama');
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+        }
+
+        // repalce data 
+        $data = [
+            'id_banner_promotion' => $id,
+            'img' => $namaBannerImage,
+            'title' => $this->request->getVar('title'),
+        ];
+
+        if ($bannerModel->save($data)) {
+            session()->setFlashdata('success', 'Gambar promotion banner berhasil diubah.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Gambar promotion banner berhasil diubah.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/promotion-banner');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/banner/update-promotion-banner/' . $id)->withInput();
         }
     }
 }
