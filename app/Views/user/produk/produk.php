@@ -19,7 +19,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col text-center">
                 <div class="container">
                     <div class="gallery">
-                        <img style="object-fit: contain; object-position: 20% 10%;" src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid toss-add-to-cart" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                        <img style="width: 350px; height: 350px; object-fit: contain; object-position: 20% 10%;" src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid toss-add-to-cart" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
                     </div>
 
                 </div>
