@@ -17,7 +17,7 @@
 
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_<?= $fp['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -97,7 +97,7 @@
                     <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -204,124 +204,6 @@
                     outline: none;
                 }
             </style>
-            <!-- akhir styling button counter animasi -->
-            <!-- script button counter animasi -->
-            <script>
-                function changeToCapsule(c, v) {
-                    $(`#button-container-${c} .button`).css('display', 'none');
-                    $(`#button-container-${c} .button-capsule`).css('display', 'flex');
-                    addToCartProductList(c, v, 1)
-                    cartItemShow('plus'); // cart script
-                    let elementButtonCart = document.querySelector('.toss-add-to-cart');
-                    let cartcart = document.querySelector('.a_cart_link_0');
-                    cartcart.classList.add('animate__animated', 'animate__swing');
-                    cartcart.addEventListener('animationend', () => {
-                        cartcart.classList.remove('animate__animated', 'animate__swing');
-                    });
-                }
-
-                function decreaseValue(c, v) {
-                    var counter = document.querySelectorAll(`#counter-${c}`);;
-                    let q = 1;
-                    let ss = true
-                    counter.forEach(function(e) {
-                        if (parseInt(e.value) > 0) {
-                            e.value = (parseInt(e.value) - 1);
-                            if (parseInt(e.value) < 1) {
-                                e.value = 1;
-                                if (ss) {
-                                    ss = changeToCircle(c);
-                                }
-                            }
-                        }
-                    });
-                    if (ss) {
-                        addToCartProductList(c, v, q)
-                    }
-                }
-
-                function increaseValue(c, v) {
-                    var counter = document.querySelectorAll(`#counter-${c}`);
-                    let q = 1
-                    counter.forEach(function(e) {
-                        e.value = (parseInt(e.value) + 1);
-                        q = e.value;
-                    });
-                    addToCartProductList(c, v, q)
-                }
-
-                function changeToCircle(c) {
-                    $(`#button-container-${c} .button`).css('display', 'flex');
-                    $(`#button-container-${c} .button-capsule`).css('display', 'none');
-                    cartDeleteProdukList(c)
-                    let elementButtonCart = document.querySelector('.toss-add-to-cart');
-                    let cartcart = document.querySelector('.a_cart_link_0');
-                    cartcart.classList.add('animate__animated', 'animate__swing');
-                    cartcart.addEventListener('animationend', () => {
-                        cartcart.classList.remove('animate__animated', 'animate__swing');
-                    });
-                }
-
-
-                function addToCartProductList(c, v, q) {
-                    var produk = c;
-                    var varian = v;
-                    var qty = q;
-                    // console.log(produk, varian, qty)
-                    $.ajax({
-                        type: "POST",
-                        url: "<?= base_url('api/add-to-cart'); ?>",
-                        dataType: "json",
-                        data: {
-                            id_produk: produk,
-                            id_varian: varian,
-                            qty: qty
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                // console.log(response.message)
-                                return true
-                            } else {
-                                // console.log(response.message)
-                                return false
-                            }
-                        },
-                        error: function(error) {
-                            console.error("Error:", error);
-                            <?php if (!auth()->loggedIn()) : ?>
-                                location.href = '<?= base_url(); ?>login'
-                            <?php endif ?>
-                            return false
-                        }
-                    });
-                }
-
-                function cartDeleteProdukList(produk) {
-                    $.ajax({
-                        type: "POST",
-                        url: "<?= base_url('api/delete-cart-product'); ?>",
-                        dataType: "json",
-                        data: {
-                            produk: produk,
-                        },
-                        success: function(response) {
-                            // if (response.success) {
-                            //     console.log(response.message)
-                            // } else {
-                            //     console.log(response.message)
-                            // }
-                            cartItemShow('minus'); // cart script
-                        },
-                        error: function(error) {
-                            console.error("Error:", error);
-                            <?php if (!auth()->loggedIn()) : ?>
-                                location.href = '<?= base_url(); ?>login'
-                            <?php endif ?>
-                        }
-                    });
-                }
-            </script>
-            <!-- akhir script button counter animasi -->
         </div>
     </div>
 
@@ -357,7 +239,119 @@
     </form>
 </div> -->
 
+    <script>
+        function changeToCapsule(c, v) {
+            $(`#button-container-${c} .button`).css('display', 'none');
+            $(`#button-container-${c} .button-capsule`).css('display', 'flex');
+            addToCartProductList(c, v, 1)
+            cartItemShow('plus'); // cart script
+            let im_produk = document.querySelector('.im_produk_' + c + '_');
+            im_produk.classList.add('animate__animated', 'animate__tada');
+            im_produk.addEventListener('animationend', () => {
+                im_produk.classList.remove('animate__animated', 'animate__tada');
+            });
+        }
 
+        function decreaseValue(c, v) {
+            var counter = document.querySelectorAll(`#counter-${c}`);;
+            let q = 1;
+            let ss = true
+            counter.forEach(function(e) {
+                if (parseInt(e.value) > 0) {
+                    e.value = (parseInt(e.value) - 1);
+                    if (parseInt(e.value) < 1) {
+                        e.value = 1;
+                        if (ss) {
+                            ss = changeToCircle(c);
+                        }
+                    }
+                }
+            });
+            if (ss) {
+                addToCartProductList(c, v, q)
+            }
+        }
+
+        function increaseValue(c, v) {
+            var counter = document.querySelectorAll(`#counter-${c}`);
+            let q = 1
+            counter.forEach(function(e) {
+                e.value = (parseInt(e.value) + 1);
+                q = e.value;
+            });
+            addToCartProductList(c, v, q)
+        }
+
+        function changeToCircle(c) {
+            $(`#button-container-${c} .button`).css('display', 'flex');
+            $(`#button-container-${c} .button-capsule`).css('display', 'none');
+            cartDeleteProdukList(c)
+        }
+
+
+        function addToCartProductList(c, v, q) {
+            var produk = c;
+            var varian = v;
+            var qty = q;
+            // console.log(produk, varian, qty)
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('api/add-to-cart'); ?>",
+                dataType: "json",
+                data: {
+                    id_produk: produk,
+                    id_varian: varian,
+                    qty: qty
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // console.log(response.message)
+                        let cartcart = document.querySelector('.a_cart_link_0');
+                        cartcart.classList.add('animate__animated', 'animate__shakeY');
+                        cartcart.addEventListener('animationend', () => {
+                            cartcart.classList.remove('animate__animated', 'animate__shakeY');
+                        });
+                        return true
+                    } else {
+                        // console.log(response.message)
+                        return false
+                    }
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                    <?php if (!auth()->loggedIn()) : ?>
+                        location.href = '<?= base_url(); ?>login'
+                    <?php endif ?>
+                    return false
+                }
+            });
+        }
+
+        function cartDeleteProdukList(produk) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('api/delete-cart-product'); ?>",
+                dataType: "json",
+                data: {
+                    produk: produk,
+                },
+                success: function(response) {
+                    let cartcart = document.querySelector('.a_cart_link_0');
+                    cartcart.classList.add('animate__animated', 'animate__shakeY');
+                    cartcart.addEventListener('animationend', () => {
+                        cartcart.classList.remove('animate__animated', 'animate__shakeY');
+                    });
+                    cartItemShow('minus'); // cart script
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                    <?php if (!auth()->loggedIn()) : ?>
+                        location.href = '<?= base_url(); ?>login'
+                    <?php endif ?>
+                }
+            });
+        }
+    </script>
     <script type="text/javascript">
         // function increaseCount(b, id) {
         //     var input = b.previousElementSibling;
