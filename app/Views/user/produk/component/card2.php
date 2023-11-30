@@ -336,11 +336,6 @@
                     produk: produk,
                 },
                 success: function(response) {
-                    let cartcart = document.querySelector('.a_cart_link_0');
-                    cartcart.classList.add('animate__animated', 'animate__shakeY');
-                    cartcart.addEventListener('animationend', () => {
-                        cartcart.classList.remove('animate__animated', 'animate__shakeY');
-                    });
                     cartItemShow('minus'); // cart script
                 },
                 error: function(error) {
