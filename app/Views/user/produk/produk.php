@@ -34,7 +34,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <h4><?= $produk['nama']; ?></h4>
                 <div class="row">
                     <div class="col text-center">
-                        <p class="text-secondary price fw-bold">
+                        <p class="fs-2 text-danger price fw-bold">
                             <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
                                 Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
                             <?php else : ?>
