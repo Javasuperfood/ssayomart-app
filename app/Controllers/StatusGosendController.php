@@ -78,7 +78,7 @@ class StatusGosendController extends BaseController
             }
             $data['status'] = $status;
         }
-        // dd($data);
+        dd($data);
         return view('user/home/statusGosend/statusGosend', $data);
     }
 

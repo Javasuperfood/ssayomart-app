@@ -366,7 +366,7 @@ $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($rout
     $routes->get('webhook-gosend', 'WebhookController::handleWebhook');
 
     // $routes->post('user_notification', 'NotifController::notificationGosend');
-    $routes->post('user_notification', 'NotifController::notificationOrderProcessed');
+    $routes->post('user_notification', 'NotifController::sendOrderNotification');
     $routes->post('for_warehouse_notification', 'NotifController::warehouseGosendNotification');
 });
 
