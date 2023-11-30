@@ -14,15 +14,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4 text-danger"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
+                    <a href="<?= base_url('cart'); ?>" class="nav-link link-light a_cart_link_0">
                         <i class="bi bi-cart-fill fw-bold fs-2 position-relative text-danger">
-                            <div id="cartItem_0" style="display: none;">
-                                <i class="bi bi-chat position-absolute top-0 start-100 translate-middle text-danger mt-2 mx-1"></i>
-                                <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle fw-bold mt-2 mx-1" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                            <div id="cartItem_0">
+                                <span id=" cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial bg-danger rounded-pill text-white fw-bold mt-2 mx-1" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                             </div>
                         </i>
                     </a>
-
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2 text-danger"></i></a>
@@ -36,32 +34,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
-        /* Style untuk saat hover */
         .nav-item a:hover {
             background-color: #0000;
-            /* Ganti warna latar belakang saat dihover */
             color: #333;
-            /* Ganti warna teks saat dihover */
-            transition: transform 0.2s;
-            /* Efek transisi zoom in */
+            transition: transform 0.2s
         }
 
-        /* Ikon dalam tautan saat dihover */
         .nav-item a:hover i {
             transform: scale(1.1);
-            /* Efek zoom in saat dihover */
         }
 
-        /* Style untuk saat diklik */
         .nav-item.active a {
             color: #000;
-            /* Ganti warna teks saat diklik */
         }
 
-        /* Ikon dalam tautan saat diklik */
         .nav-item.active a i {
             color: #ffc107 !important;
-            /* Ganti warna ikon saat tautan diklik */
         }
     </style>
     <script>
