@@ -15,7 +15,6 @@ use App\Models\UsersModel;
 use Midtrans\Config as MidtransConfig;
 use OneSignal\OneSignal;
 
-
 class CheckoutController extends BaseController
 {
     private $key;
@@ -76,58 +75,58 @@ class CheckoutController extends BaseController
         return redirect()->to(base_url() . 'checkout/' . $chechkoutId);
     }
 
-    // public function checkout($id)
-    // {
-    //     $kategori = new KategoriModel();
-    //     $checkoutModel = new CheckoutModel();
-    //     $alamatModel = new AlamatUserModel();
-    //     $kuponModel = new KuponModel();
+    public function checkout($id)
+    {
+        $kategori = new KategoriModel();
+        $checkoutModel = new CheckoutModel();
+        $alamatModel = new AlamatUserModel();
+        $kuponModel = new KuponModel();
 
-    //     $cekUser = $checkoutModel->where('id_checkout', $id)->first();
+        $cekUser = $checkoutModel->where('id_checkout', $id)->first();
 
-    //     if ($cekUser['id_user'] != user_id()) {
-    //         return redirect()->to(base_url());
-    //     }
-    //     if ($cekUser['snap_token'] != null) {
-    //         if ($cekUser['id_status_pesan'] == 1) {
-    //             return redirect()->to(base_url('payment/' . $cekUser['invoice']));
-    //         }
-    //         return redirect()->to(base_url('payment/' . $cekUser['invoice']));
-    //     }
-    //     if ($cekUser['id_status_pesan'] != 1) {
-    //         return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
-    //     }
-    //     $checkoutProdModel = new CheckoutProdukModel();
-    //     $cekProduk = $checkoutProdModel
-    //         ->select('*')
-    //         ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
-    //         ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
-    //         ->where('id_checkout', $id)
-    //         ->findAll();
+        if ($cekUser['id_user'] != user_id()) {
+            return redirect()->to(base_url());
+        }
+        if ($cekUser['snap_token'] != null) {
+            if ($cekUser['id_status_pesan'] == 1) {
+                return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+            }
+            return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+        }
+        if ($cekUser['id_status_pesan'] != 1) {
+            return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
+        }
+        $checkoutProdModel = new CheckoutProdukModel();
+        $cekProduk = $checkoutProdModel
+            ->select('*')
+            ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
+            ->where('id_checkout', $id)
+            ->findAll();
 
-    //     $totalAkhir = 0;
+        $totalAkhir = 0;
 
-    //     foreach ($cekProduk as $produk) {
-    //         $rowTotal = $produk['qty'] * $produk['harga_item'];
-    //         $totalAkhir += $rowTotal;
-    //     }
-    //     $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
+        foreach ($cekProduk as $produk) {
+            $rowTotal = $produk['qty'] * $produk['harga_item'];
+            $totalAkhir += $rowTotal;
+        }
+        $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
 
-    //     $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
+        $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
 
-    //     $data = [
-    //         'title' => 'Checkout',
-    //         'alamat_list' => $alamat_list,
-    //         'produk' => $cekProduk,
-    //         'id' => $id,
-    //         'total' => $totalAkhir,
-    //         'kupon' => $kuponList,
-    //         'kategori' => $kategori->findAll()
-    //     ];
-    //     // dd($data);
+        $data = [
+            'title' => 'Checkout',
+            'alamat_list' => $alamat_list,
+            'produk' => $cekProduk,
+            'id' => $id,
+            'total' => $totalAkhir,
+            'kupon' => $kuponList,
+            'kategori' => $kategori->findAll()
+        ];
+        // dd($data);
 
-    //     return view('user/home/checkout/checkout', $data);
-    // }
+        return view('user/home/checkout/checkout', $data);
+    }
 
     public function bayar($id)
     {
@@ -500,67 +499,69 @@ class CheckoutController extends BaseController
         return openssl_decrypt($encrypted, $cipher, $key, 0, $iv);
     }
 
-    public function checkout($id)
-    {
-        $kategori = new KategoriModel();
-        $checkoutModel = new CheckoutModel();
-        $alamatModel = new AlamatUserModel();
-        $kuponModel = new KuponModel();
 
-        $cekUser = $checkoutModel->where('id_checkout', $id)->first();
+    // public function checkout($id)
+    // {
+    //     $kategori = new KategoriModel();
+    //     $checkoutModel = new CheckoutModel();
+    //     $alamatModel = new AlamatUserModel();
+    //     $kuponModel = new KuponModel();
 
-        if ($cekUser['id_user'] != user_id()) {
-            return redirect()->to(base_url());
-        }
+    //     $cekUser = $checkoutModel->where('id_checkout', $id)->first();
 
-        if ($cekUser['snap_token'] != null) {
-            if ($cekUser['id_status_pesan'] == 1) {
-                return redirect()->to(base_url('payment/' . $cekUser['invoice']));
-            }
-            return redirect()->to(base_url('payment/' . $cekUser['invoice']));
-        }
+    //     if ($cekUser['id_user'] != user_id()) {
+    //         return redirect()->to(base_url());
+    //     }
 
-        if ($cekUser['id_status_pesan'] != 1) {
-            return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
-        }
+    //     if ($cekUser['snap_token'] != null) {
+    //         if ($cekUser['id_status_pesan'] == 1) {
+    //             return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+    //         }
+    //         return redirect()->to(base_url('payment/' . $cekUser['invoice']));
+    //     }
 
-        $checkoutProdModel = new CheckoutProdukModel();
-        $cekProduk = $checkoutProdModel
-            ->select('*')
-            ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
-            ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
-            ->where('id_checkout', $id)
-            ->findAll();
+    //     if ($cekUser['id_status_pesan'] != 1) {
+    //         return redirect()->to(base_url('status?order_id=' . $cekUser['invoice']));
+    //     }
 
-        $totalAkhir = 0;
+    //     $checkoutProdModel = new CheckoutProdukModel();
+    //     $cekProduk = $checkoutProdModel
+    //         ->select('*')
+    //         ->join('jsf_produk', 'jsf_produk.id_produk = jsf_checkout_produk.id_produk', 'inner')
+    //         ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_checkout_produk.id_variasi_item', 'inner')
+    //         ->where('id_checkout', $id)
+    //         ->findAll();
 
-        foreach ($cekProduk as $produk) {
-            $rowTotal = $produk['qty'] * $produk['harga_item'];
-            $totalAkhir += $rowTotal;
-        }
+    //     $totalAkhir = 0;
 
-        $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
-        $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
+    //     foreach ($cekProduk as $produk) {
+    //         $rowTotal = $produk['qty'] * $produk['harga_item'];
+    //         $totalAkhir += $rowTotal;
+    //     }
 
-        $data = [
-            'title' => 'Checkout',
-            'alamat_list' => $alamat_list,
-            'produk' => $cekProduk,
-            'id' => $id,
-            'total' => $totalAkhir,
-            'kupon' => $kuponList,
-            'kategori' => $kategori->findAll()
-        ];
+    //     $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
+    //     $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
 
-        // Kirim notifikasi setelah checkout berhasil
-        $userId = user_id(); // Sesuaikan dengan metode pengambilan user ID Anda
-        $message = 'Pembayaran Anda telah berhasil. Terima kasih atas pembeliannya!';
-        $this->sendNotification($userId, $message);
+    //     $data = [
+    //         'title' => 'Checkout',
+    //         'alamat_list' => $alamat_list,
+    //         'produk' => $cekProduk,
+    //         'id' => $id,
+    //         'total' => $totalAkhir,
+    //         'kupon' => $kuponList,
+    //         'kategori' => $kategori->findAll()
+    //     ];
 
-        // Redirect ke halaman pembayaran
-        return redirect()->to(base_url('payment/' . $id));
-    }
+    //     // Kirim notifikasi setelah checkout berhasil
+    //     $userId = user_id(); // Sesuaikan dengan metode pengambilan user ID Anda
+    //     $message = 'Pembayaran Anda telah berhasil. Terima kasih atas pembeliannya!';
+    //     $this->sendNotification($userId, $message);
+
+    //     // Redirect ke halaman pembayaran
+    //     return redirect()->to(base_url('payment/' . $id));
+    // }
     // Fungsi untuk mengirim notifikasi menggunakan OneSignal
+
     private function sendNotification($userId, $message)
     {
         // Ambil device token pengguna dari database (sesuaikan dengan struktur tabel Anda)
