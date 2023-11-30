@@ -9,7 +9,7 @@
                             <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                                 <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
+                                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                                     </div>
                                 </a>
                                 <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -31,7 +31,7 @@
                                     <!-- button Animasi -->
                                     <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
                                         <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
-                                            <i class="bi bi-plus text-danger fw-bold" style="font-size: 13px;"></i>
+                                            <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>
                                         </div>
                                         <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
                                             <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>)">-</div>
@@ -93,9 +93,9 @@
     }
 
     .button {
-        width: 20px;
+        width: 25px;
         /* Ukuran tombol yang lebih kecil */
-        height: 20px;
+        height: 25px;
         /* Ukuran tombol yang lebih kecil */
         border-radius: 50%;
         display: flex;
@@ -112,7 +112,7 @@
     .button-capsule {
         width: 60px;
         /* Ukuran capsule yang lebih kecil */
-        height: 20px;
+        height: 25px;
         /* Ukuran capsule yang lebih kecil */
         border-radius: 15px;
         display: none;
@@ -127,7 +127,7 @@
     }
 
     .icon {
-        font-size: 11px;
+        font-size: 14px;
         color: #e83b2e;
         transition: all 0.3s ease;
         cursor: pointer;
