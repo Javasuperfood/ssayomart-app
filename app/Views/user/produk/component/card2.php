@@ -1,4 +1,8 @@
 <?php if ($produk) : ?>
+
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    </head>
     <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
         <div class="container bg-white" id="product">
             <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
@@ -208,6 +212,12 @@
                     $(`#button-container-${c} .button-capsule`).css('display', 'flex');
                     addToCartProductList(c, v, 1)
                     cartItemShow('plus'); // cart script
+                    let elementButtonCart = document.querySelector('.toss-add-to-cart');
+                    let cartcart = document.querySelector('.a_cart_link_0');
+                    cartcart.classList.add('animate__animated', 'animate__swing');
+                    cartcart.addEventListener('animationend', () => {
+                        cartcart.classList.remove('animate__animated', 'animate__swing');
+                    });
                 }
 
                 function decreaseValue(c, v) {
@@ -244,6 +254,12 @@
                     $(`#button-container-${c} .button`).css('display', 'flex');
                     $(`#button-container-${c} .button-capsule`).css('display', 'none');
                     cartDeleteProdukList(c)
+                    let elementButtonCart = document.querySelector('.toss-add-to-cart');
+                    let cartcart = document.querySelector('.a_cart_link_0');
+                    cartcart.classList.add('animate__animated', 'animate__swing');
+                    cartcart.addEventListener('animationend', () => {
+                        cartcart.classList.remove('animate__animated', 'animate__swing');
+                    });
                 }
 
 

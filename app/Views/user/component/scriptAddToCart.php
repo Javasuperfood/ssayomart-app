@@ -31,13 +31,13 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Ditambahakan ke cart',
-                            showConfirmButton: false,
-                            timer: 1500,
-                            text: response.message,
-                        })
+                        // Swal.fire({
+                        //     icon: 'success',
+                        //     title: 'Ditambahakan ke cart',
+                        //     showConfirmButton: false,
+                        //     timer: 1500,
+                        //     text: response.message,
+                        // })
                         if (!isAdd) {
                             addCartItem()
                         }
@@ -63,6 +63,25 @@
 
     function addCartItem() {
         cartItemShow('plus'); // cart script
+        let elementButtonCart = document.querySelector('.toss-add-to-cart');
+        elementButtonCart.classList.add('animate__animated', 'animate__swing');
+        elementButtonCart.addEventListener('animationend', () => {
+            elementButtonCart.classList.remove('animate__animated', 'animate__swing');
+            elementButtonCart.classList.add('animate__animated', 'animate__bounceOutDown');
+            elementButtonCart.addEventListener('animationend', () => {
+                elementButtonCart.classList.remove('animate__animated', 'animate__bounceOutDown');
+                elementButtonCart.classList.add('animate__animated', 'animate__bounceInDown');
+                elementButtonCart.addEventListener('animationend', () => {
+                    elementButtonCart.classList.remove('animate__animated', 'animate__bounceInDown');
+                });
+            });
+        });
+        let cartcart = document.querySelector('.a_cart_link_0');
+        cartcart.classList.add('animate__animated', 'animate__bounce');
+        cartcart.addEventListener('animationend', () => {
+            cartcart.classList.remove('animate__animated', 'animate__bounce');
+
+        });
         isAdd = true
     }
 </script>
