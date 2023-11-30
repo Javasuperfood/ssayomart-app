@@ -142,19 +142,28 @@ class UsersModel extends Model
     {
         $userModel = new \App\Models\UsersModel();
         $adminEmails = [];
-
-        // Dapatkan pengguna dengan grup 'admin'
         $admins = $userModel->getUserWithRole();
 
         foreach ($admins as $admin) {
-            // Dapatkan email admin menggunakan ID pengguna
             $email = $userModel->getEmail($admin['id']);
 
             if (!empty($email)) {
                 $adminEmails[] = $email;
             }
         }
-
         return $adminEmails;
+    }
+
+    public function getDeviceToken($userId)
+    {
+        // Sesuaikan dengan struktur tabel Anda
+        $user = $this->find($userId);
+
+        // Pastikan user ditemukan dan memiliki kolom device_token
+        if ($user && isset($user['uuid'])) {
+            return $user['uuid'];
+        }
+
+        return null;
     }
 }
