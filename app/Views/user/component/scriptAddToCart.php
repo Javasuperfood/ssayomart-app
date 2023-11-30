@@ -76,12 +76,6 @@
                 });
             });
         });
-        let cartcart = document.querySelector('.a_cart_link_0');
-        cartcart.classList.add('animate__animated', 'animate__bounce');
-        cartcart.addEventListener('animationend', () => {
-            cartcart.classList.remove('animate__animated', 'animate__bounce');
-
-        });
         isAdd = true
     }
 </script>
