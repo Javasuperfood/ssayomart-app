@@ -2,7 +2,9 @@
 
 namespace Config;
 
-class Midtrans
+use CodeIgniter\Config\BaseConfig;
+
+class Midtrans extends BaseConfig
 {
     public $isProduction;
     public $serverKey;
