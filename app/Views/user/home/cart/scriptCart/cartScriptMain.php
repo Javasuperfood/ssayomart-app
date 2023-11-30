@@ -20,4 +20,8 @@
         }
         $('#cartItem_1').text(cart.get('item'));
     }
+
+    $('.add-to-cart-btn').click(function() {
+
+    })
 </script>
