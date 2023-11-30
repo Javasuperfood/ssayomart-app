@@ -182,7 +182,7 @@
                 }
 
                 .icon {
-                    font-size: 8px;
+                    font-size: 12px;
                     color: #e83b2e;
                     transition: all 0.3s ease;
                     cursor: pointer;
