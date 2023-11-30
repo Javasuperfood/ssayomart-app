@@ -65,7 +65,7 @@ var swiper = new Swiper(".mySwiper", {
 
     // Slider card produk detail (All Device) dan slider Homepage (Desktop)
     var swiper = new Swiper(".mySwing", {
-      slidesPerView: 2,
+      slidesPerView: 3,
       centeredSlides: false,
       spaceBetween: 10,
       grabCursor: true,
@@ -77,14 +77,22 @@ var swiper = new Swiper(".mySwiper", {
       breakpoints: {
         // Tampilan iPad (lebar >= 768px)
         1280: {
-          slidesPerView: 6, // 3 card per tampilan
-    
+          slidesPerView: 6, // 6 card per tampilan
         },
         // Tampilan iPad (lebar >= 768px)
         768: {
-          slidesPerView: 4, // 3 card per tampilan
+          slidesPerView: 4, // 4 card per tampilan
+        },
+        717: {
+          slidesPerView: 3, // 2 card per tampilan
+        },
+        450: {
+          slidesPerView: 3, // 3 card per tampilan
         },
         360: {
+          slidesPerView: 3, // 2 card per tampilan
+        },
+        320: {
           slidesPerView: 2, // 2 card per tampilan
         },
         280: {
