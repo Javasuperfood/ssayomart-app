@@ -13,7 +13,7 @@ class PaymentController extends BaseController
 {
     public function index($inv)
     {
-        $midtransConfig = config('Midtrans');
+        $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;

@@ -27,4 +27,12 @@ class Home extends BaseController
     {
         return "admin";
     }
+
+    public function testConfigMidtarns()
+    {
+        //
+        $config = new \Config\Midtrans();
+        dd($config->serverKey);
+        return 'a';
+    }
 }

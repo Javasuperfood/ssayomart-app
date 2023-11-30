@@ -236,7 +236,7 @@ class GoSendController extends BaseController
     }
     function bookingAPI($body = [])
     {
-        $webhookConfig = config('WebHook');
+        $webhookConfig = new \Config\WebHook();
         $baseUrl = $webhookConfig->base_url;
         $clientId = $webhookConfig->client_id;
         $pasKey = $webhookConfig->pas_key;
@@ -285,7 +285,7 @@ class GoSendController extends BaseController
 
     function getStatusGosend($id)
     {
-        $webhookConfig = config('WebHook');
+        $webhookConfig = new \Config\WebHook();
         $baseUrl = $webhookConfig->base_url;
         $clientId = $webhookConfig->client_id;
         $pasKey = $webhookConfig->pas_key;
@@ -317,7 +317,7 @@ class GoSendController extends BaseController
     public function gosendCancel($no)
     {
         $bookingNo = $this->request->getVar('orderNo');
-        $webhookConfig = config('WebHook');
+        $webhookConfig = new \Config\WebHook();
         if ($bookingNo != $no) {
             $alert = [
                 'type' => 'error',
