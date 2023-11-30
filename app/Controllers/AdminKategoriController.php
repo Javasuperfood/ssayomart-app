@@ -249,13 +249,6 @@ class AdminkategoriController extends BaseController
         $kategoriModel = new KategoriModel();
         $kategori = $kategoriModel->find($id);
 
-        if ($kategori['img'] != 'default.png') {
-            $gambarLamaPath = 'assets/img/kategori/' . $kategori['img'];
-            if (file_exists($gambarLamaPath)) {
-                unlink($gambarLamaPath);
-            }
-        }
-
         $ProdukModel = new ProdukModel();
         $produk = $ProdukModel->where('id_kategori', $id)->findAll();
         if (!empty($produk)) {
@@ -267,6 +260,13 @@ class AdminkategoriController extends BaseController
             session()->setFlashdata('alert', $alert);
 
             return redirect()->to('dashboard/kategori');
+        }
+
+        if ($kategori['img'] != 'default.png') {
+            $gambarLamaPath = 'assets/img/kategori/' . $kategori['img'];
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
         }
 
         $deleted = $kategoriModel->delKategori($id);

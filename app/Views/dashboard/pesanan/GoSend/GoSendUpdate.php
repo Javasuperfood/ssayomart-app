@@ -231,20 +231,20 @@
                                             <h4 class="alert-heading">Driver tidak ditemukan!</h4>
                                             <p>Status saat ini driver tidak ditemukan.</p>
                                             <hr>
-                                            <p class="mb-0">Mohon Klik retry untuk mencoba kembali.</p>
+                                            <p class="mb-0">Mohon klik retry untuk mencoba kembali.</p>
                                         </div>
                                     <?php endif ?>
                                     <?php if ($gosendStatus['status'] == 'Cancelled') : ?>
                                         <div class="alert alert-danger my-3" role="alert">
-                                            <h4 class="alert-heading">Pengirimian dibatalkan!</h4>
+                                            <h4 class="alert-heading">Pengiriman dibatalkan!</h4>
                                             <p>Status saat ini pengiriman dibatalkan.</p>
                                             <hr>
-                                            <p class="mb-0">Mohon Klik retry jika ingin mencoba kembali.</p>
+                                            <p class="mb-0">Mohon klik retry jika ingin mencoba kembali.</p>
                                         </div>
                                     <?php endif ?>
                                     <?php if ($gosendStatus['status'] == 'Rejected') : ?>
                                         <div class="alert alert-danger" role="alert">
-                                            <h4 class="alert-heading">Pengirimian ditolak!</h4>
+                                            <h4 class="alert-heading">Pengiriman ditolak!</h4>
                                             <p>Status saat ini pengiriman ditolak.</p>
                                             <hr>
                                         </div>
@@ -282,7 +282,7 @@
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="inv" value="<?= $inv; ?>">
                                                 <div class="form-floating">
-                                                    <textarea class="form-control" placeholder="Note For driver GoSend" id="floatingTextarea2" name="note" style="height: 100px">Di tunggu di Lobi</textarea>
+                                                    <textarea class="form-control" placeholder="Note For driver GoSend" id="floatingTextarea2" name="note" style="height: 100px">Ditunggu di lobi</textarea>
                                                     <label for="floatingTextarea2">Note For driver GoSend</label>
                                                 </div>
                                                 <div class="my-3 text-center">
