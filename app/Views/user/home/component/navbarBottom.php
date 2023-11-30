@@ -15,11 +15,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light">
-                        <i class="bi bi-cart-fill fw-bold fs-2 position-relative <?php if (session()->get('countCart') > 0) : ?>text-danger<?php else : ?>text-danger<?php endif ?>">
-                            <?php if (session()->get('countCart') > 0) : ?>
+                        <i class="bi bi-cart-fill fw-bold fs-2 position-relative text-danger">
+                            <div id="cartItem_0" style="display: none;">
                                 <i class="bi bi-chat position-absolute top-0 start-100 translate-middle text-danger mt-2 mx-1"></i>
-                                <span class="position-absolute top-0 start-100 translate-middle fw-bold mt-2 mx-1" style="font-size: 0.75rem; <?php if (session()->get('countCart') > 0) : ?>color: #c2614;<?php else : ?>color: yellow;<?php endif ?>"><?= session()->get('countCart'); ?></span>
-                            <?php endif ?>
+                                <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle fw-bold mt-2 mx-1" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                            </div>
                         </i>
                     </a>
 

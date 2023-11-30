@@ -207,6 +207,7 @@
                     $(`#button-container-${c} .button`).css('display', 'none');
                     $(`#button-container-${c} .button-capsule`).css('display', 'flex');
                     addToCartProductList(c, v, 1)
+                    cartItemShow('plus'); // cart script
                 }
 
                 function decreaseValue(c, v) {
@@ -250,7 +251,7 @@
                     var produk = c;
                     var varian = v;
                     var qty = q;
-                    console.log(produk, varian, qty)
+                    // console.log(produk, varian, qty)
                     $.ajax({
                         type: "POST",
                         url: "<?= base_url('api/add-to-cart'); ?>",
@@ -262,10 +263,10 @@
                         },
                         success: function(response) {
                             if (response.success) {
-                                console.log(response.message)
+                                // console.log(response.message)
                                 return true
                             } else {
-                                console.log(response.message)
+                                // console.log(response.message)
                                 return false
                             }
                         },
@@ -288,11 +289,12 @@
                             produk: produk,
                         },
                         success: function(response) {
-                            if (response.success) {
-                                console.log(response.message)
-                            } else {
-                                console.log(response.message)
-                            }
+                            // if (response.success) {
+                            //     console.log(response.message)
+                            // } else {
+                            //     console.log(response.message)
+                            // }
+                            cartItemShow('minus'); // cart script
                         },
                         error: function(error) {
                             console.error("Error:", error);

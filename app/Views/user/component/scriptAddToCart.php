@@ -1,4 +1,6 @@
 <script>
+    let isAdd = false;
+
     function selectVarian(id) {
         $(`#radioVarian${id}`).prop('checked', true);
         $(`#radioVarianBuy${id}`).prop('checked', true);
@@ -36,6 +38,9 @@
                             timer: 1500,
                             text: response.message,
                         })
+                        if (!isAdd) {
+                            addCartItem()
+                        }
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -55,4 +60,9 @@
             });
         });
     });
+
+    function addCartItem() {
+        cartItemShow('plus'); // cart script
+        isAdd = true
+    }
 </script>
