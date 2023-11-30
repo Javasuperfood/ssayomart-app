@@ -11,15 +11,12 @@
     <!-- Panggil file CSS dari folder public/assets -->
     <link rel="stylesheet" href="<?= base_url('assets/css/produk.css') ?>">
     <?= $this->renderSection('custom_head') ?>
+    <?= $this->include('user/home/cart/scriptCart/cartScriptInit'); ?>
 </head>
 
 <body>
     <?= $this->include('user/home/component/preloader') ?>
     <?= $this->include('user/home/component/navbarMain') ?>
-
-
-
-
     <?= $this->renderSection('page-content') ?>
     <div class="pb-5 mt-5"></div>
 
@@ -33,6 +30,8 @@
     <script src="<?= base_url('assets/js/script-un-en.js'); ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="<?= base_url() ?>assets/js/swiper.js"></script>
+    <?= $this->include('user/home/cart/scriptCart/cartScriptMain'); ?>
+
 </body>
 
 </html>
