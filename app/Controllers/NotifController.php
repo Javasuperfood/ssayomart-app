@@ -114,11 +114,15 @@ class NotifController extends BaseController
         return $player;
     }
 
-    // webhook notification driver picked up //
+    // WEBHOOK NOTIFICAITON DRIVER PICKED UP //
     public function sendOrderNotification()
     {
-        // Ambil data status dari permintaan POST
-        $status = $this->request->getPost('status');
+        // Ambil data raw dari permintaan POST
+        $rawData = file_get_contents('php://input');
+        $postData = json_decode($rawData, true);
+
+        // Pastikan 'status' ada dalam data yang diterima
+        $status = isset($postData['status']) ? $postData['status'] : null;
 
         log_message('debug', 'Status: ' . $status);
 
@@ -130,20 +134,27 @@ class NotifController extends BaseController
     {
         log_message('debug', 'Status in sendOrderNotificationByStatus: ' . $status);
 
+        $rawData = file_get_contents('php://input');
+        $payload = json_decode($rawData, true);
+
+
+        $status = isset($payload['status']) ? $payload['status'] : null;
+
         $usersModel = new UsersModel();
 
-        // Mendapatkan data pengguna berdasarkan user_id
         $userData = $usersModel->find(user_id());
 
-        // Periksa apakah data pengguna ditemukan dan memiliki kunci 'uuid'
         if ($userData && isset($userData[0]['uuid'])) {
             $uuid = $userData[0]['uuid'];
-
-            // Ambil data atau parameter dari request sesuai kebutuhan
-            $order_id = $this->request->getVar('order_id');
+            $payload['booking_id'];
+            $payload['driver_name'];
+            $payload['driver_phone'];
+            $payload['cancellation_reason'];
+            $payload['cancelled_by'];
+            $payload['live_tracking_url'];
 
             // Buat pesan notifikasi
-            $notification_message = $this->getNotificationMessage($status, $order_id);
+            $notification_message = $this->getNotificationMessage($status, $payload);
 
             // Kirim notifikasi
             $result = $this->sendNotificationToUser($uuid, $notification_message);
@@ -158,39 +169,35 @@ class NotifController extends BaseController
         }
     }
 
-    private function getNotificationMessage($status, $order_id)
+    private function getNotificationMessage($status, $payload)
     {
-        // Default message
-        // $default_message = 'Terjadi masalah yang diluar dugaan kami. Kami akan memperbaiki nya segera';
-        $default_message = 'Pesan awal contoh';
+        $default_message = 'Terjadi masalah yang diluar dugaan kami. Kami akan memperbaiki nya segera';
 
-        // Pesan notifikasi sesuai dengan status
         switch ($status) {
             case 'confirmed':
-                return 'Driver sudah dikonfirmasi. Pesanan dengan ID ' . $order_id;
+                return 'Driver sudah dikonfirmasi. Pesanan dengan nomor booking ' . $payload['booking_id'];
             case 'allocated':
-                return 'Driver sudah ditemukan. Pesanan dengan ID ' . $order_id;
+                return 'Driver sudah ditemukan. ' . $payload['driver_name'] . ' akan segera mengambil pesananmu';
             case 'out_for_pickup':
-                return 'Driver sedang dalam perjalanan mengambil pesananan Anda. Pesanan dengan ID ' . $order_id;
+                return $payload['driver_name'] . ' sedang dalam perjalanan mengambil pesananan Anda. Kamu bisa menghubungi driver di nomor ' . $payload['driver_phone'];
             case 'out_for_delivery':
-                return 'Driver sudah dalam perjalanan ke lokasi Anda. Pesanan dengan ID ' . $order_id;
+                return $payload['driver_name'] . ' sedang dalam perjalanan ke lokasi Anda. Kamu bisa menghubungi driver di nomor ' . $payload['driver_phone'];
             case 'picked':
-                return 'Driver telah mengambil pesanan Anda. Pesanan dengan ID ' . $order_id;
+                return $payload['driver_name'] . ' sudah mengambil pesananan Anda. Kamu bisa menghubungi driver di nomor ' . $payload['driver_phone'];
             case 'cancelled':
-                return 'Pesanan dibatalkan. Pesanan dengan ID ' . $order_id;
+                return 'Pesanan dibatalkan oleh ' . $payload['cancelled_by'] . '. Dengan keterangan ' . $payload['cancellation_reason'];
             case 'rejected':
-                return 'Pesanan ditolak. Pesanan dengan ID ' . $order_id;
+                return 'Pesanan ditolak. Mohon maaf atas ketidaknyamannya';
             case 'on_hold':
-                return 'Pesanan ditunda. Pesanan dengan ID ' . $order_id;
+                return 'Pesanan ditunda. Mohon maaf atas ketidaknyamannya';
             case 'no_driver':
-                return 'Driver tidak dalam jangkauan terdekat. Mohon menunggu. Pesanan dengan ID ' . $order_id;
+                return 'Driver tidak dalam jangkauan terdekat. Mohon maaf atas ketidaknyamannya';
             case 'unknown':
                 return $default_message;
             default:
                 return $default_message;
         }
     }
-
 
     private function sendNotificationToUser($uuid, $message)
     {
@@ -222,6 +229,7 @@ class NotifController extends BaseController
         }
     }
 
+    // WEBHOOK NOTIFICAITON TO WAREHOUSE EMAIL WHEN INCOMING ORDERS  //
     public function warehouseGosendNotification()
     {
         $usersModel = new UsersModel();
