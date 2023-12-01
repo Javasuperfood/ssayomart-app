@@ -109,38 +109,42 @@
 <!-- Content -->
 <h1 style="text-align: center;"><span style="text-decoration: underline;">Report Penjualan Aplikasi Ssayomart</span></h1>
 <!-- End of Content -->
-<table style="border-collapse: collapse; width: 99.9995%;" border="1">
-<thead>
-<tr>
-<th style="width: 3.28862%; text-align: center;">No</th>
-<th style="width: 30.0915%; text-align: center;">Toko</th>
-<th style="width: 16.6901%; text-align: center;">INV</th>
-<th style="width: 16.6901%; text-align: center;">Produk</th>
-<th style="width: 16.6901%; text-align: center;">Total</th>
-<th style="width: 16.566%; text-align: center;">Tanggal Pembelian</th>
-</tr>
-</thead>
+<table class="table table-border-bottom-0 table-striped" style="border-collapse: collapse; width: 100.022%; height: 58.75px;" border="1">
 <tbody>
-<?php foreach ($getCheckoutWithProduct as $p) : ?>
-<tr>
-<td style="width: 3.28862%; text-align: center;"><?= $iterasi++; ?></td>
-<td style="width: 30.0915%; text-align: center;"><?= $p['lable']; ?></td>
-<td style="width: 16.6901%; text-align: center;"><?= $p['invoice']; ?></td>
-<td style="width: 16.6901%; text-align: center;">
-<table style="border-collapse: collapse; width: 100.674%;" border="1">
+<tr style="height: 19.5833px;">
+<td style="width: 2.79796%; height: 19.5833px; text-align: center;">No</td>
+<td style="width: 10.2592%; height: 19.5833px; text-align: center;">Toko</td>
+<td style="width: 8.39389%; height: 19.5833px; text-align: center;">INV</td>
+<td style="width: 23.2446%; height: 19.5833px; text-align: center;">Produk</td>
+<td style="width: 23.2446%; text-align: center;">Nama</td>
+<td style="width: 6.02638%; height: 19.5833px; text-align: center;">Total 1&nbsp;</td>
+<td style="width: 6.31335%; height: 19.5833px; text-align: center;">Total 2</td>
+<td style="width: 19.7292%; height: 19.5833px; text-align: center;">Tanggal</td>
+</tr>
+ <?php foreach ($getCheckoutWithProduct as $p) : ?>
+<tr style="height: 39.1667px;">
+<td style="width: 2.76367%; height: 39.1667px;"><?= $iterasi++; ?></td>
+<td style="width: 10.2547%; height: 39.1667px;"><?= $p['lable']; ?></td>
+<td style="width: 16.1457%; height: 39.1667px;"><?= $p['invoice']; ?></td>
+<td style="width: 23.2003%; height: 39.1667px;">
+<?php foreach ($p['produk'] as $pr) : ?>
+<table style="border-collapse: collapse; width: 100.333%;" border="1">
 <tbody>
 <tr>
-<td style="width: 44.3103%;"><?= $p['nama']; ?></td>
-<td style="width: 55.682%;" rowspan="2">Qty : <?= $p['qty']; ?></td>
+<td style="width: 45.4813%;"><?= $pr['nama']; ?> (<?= $pr['value_item']; ?>)</td>
+<td style="width: 54.5131%;" rowspan="2">Jumlah: <?= $pr['qty']; ?></td>
 </tr>
 <tr>
-<td style="width: 44.3103%;">SKU : <?= $p['sku']; ?></td>
+<td style="width: 45.4813%;">SKU: <?= $pr['sku']; ?></td>
 </tr>
 </tbody>
 </table>
+<?php endforeach; ?>
 </td>
-<td style="width: 16.6901%; text-align: center;">90.000</td>
-<td style="width: 16.566%; text-align: center;"><?= date("d-m-Y", strtotime($p['created_at']));  ?></td>
+<td style="width: 23.2446%; text-align: center;"><?= $p['fullname']; ?></td>
+<td style="width: 6.02638%; height: 39.1667px;"><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
+<td style="width: 6.31335%; height: 39.1667px;"><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
+<td style="width: 19.7292%; height: 39.1667px;"><?= date("d-m-Y", strtotime($p['created_at'])); ?></td>
 </tr>
 <?php endforeach; ?>
 </tbody>
