@@ -70,54 +70,19 @@ $countProduk = count($produk);
                 },
                 success: function(data) {
                     data.forEach(function(p) {
+                        console.log(p);
                         var hargaText;
                         if (p.harga_min == p.harga_max) {
                             hargaText = "Rp. " + formatRupiah(p.harga_min);
                         } else {
                             hargaText = ("Rp. " + formatRupiah(p.harga_min) + "-" + formatRupiah(p.harga_max)).substring(0, 13) + "...";
                         }
-                        var html = '<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">' +
-                            '<div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding:5px;">' +
-                            ` <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
-                            </div>
-                            </a>
-                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                            <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
-                                ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
-                            </p>
-                            </div
-                            <p class="text-secondary" style="font-size: 8px; margin: 0;">
-                                <del>Rp. ${formatRupiah(p.harga_min)}</del>
-                            </p>
-                                <h1 class="text-danger fw-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
-                                   ${hargaText}
-                                </h1>
-                                
-                                <div class="button-container" id="button-container-${p.id_produk}">
-                                    <div class="button" onclick="changeToCapsule(${p.id_produk})">
-                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
-                                    </div>
 
-                                    <div class="button-capsule" style="display: none;">
-                                        <i class="icon fas fa-minus" onclick="decreaseValue(${p.id_produk})"></i>
-                                        <input type="number" class="input border-0" value="1" id="counter-${p.id_produk}">
-                                        <i class="icon fas fa-plus" onclick="increaseValue(${p.id_produk})"></i>
-                        </div>
-                                </div>
-                                
-
-                                
-                            </div>` +
-                            '</div>' +
-                            '</div>';
                         var html = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
                     <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
                         <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_${p.id_produk}_" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -135,14 +100,14 @@ $countProduk = count($produk);
                             </h1>
 
                             <div class="button-container" id="button-container-${p.id_produk}">
-                                    <div class="button" onclick="changeToCapsule(${p.id_produk})">
+                                    <div class="button" onclick="changeToCapsule(${p.id_produk}, ${p.id_variasi_item})">
                                         <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
                                     </div>
 
                                     <div class="button-capsule" style="display: none;">
-                                        <i class="icon fas fa-minus" onclick="decreaseValue(${p.id_produk})"></i>
+                                        <i class="icon fas fa-minus" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                         <input type="number" class="input border-0" value="1" id="counter-${p.id_produk}">
-                                        <i class="icon fas fa-plus" onclick="increaseValue(${p.id_produk})"></i>
+                                        <i class="icon fas fa-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                     </div>
                                 </div>
                             
