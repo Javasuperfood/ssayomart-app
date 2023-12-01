@@ -278,7 +278,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('promo/tambah-promo/save', 'AdminPromoController::savePromo');
     $routes->post('promo/tambah-promo/delete-promo/(:segment)', 'AdminPromoController::deletePromo/$1');
     $routes->get('promo/update-promo/(:segment)', 'AdminPromoController::updatePromo/$1');
-    $routes->post('promo/tambah-promo/edit-promo/(:segment)', 'AdminPromoController::editPromo/$1');
+    $routes->post('promo/update-promo/edit-promo/(:segment)', 'AdminPromoController::editPromo/$1');
 
     // Promo Item
     $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
