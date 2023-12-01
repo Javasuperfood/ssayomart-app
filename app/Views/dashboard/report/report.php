@@ -19,15 +19,17 @@
         <div class="row">
             <div class="col col-sm-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-border-bottom-0" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th>No.</th>
                                 <th>Toko</th>
                                 <th>INV</th>
                                 <th>Produk</th>
-                                <th>Total (Rp)</th>
-                                <th>Created At</th>
+                                <th>Nama</th>
+                                <th>Total 1 (Rp)</th>
+                                <th>Total 2 (Rp)</th>
+                                <th>Tanggal</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,18 +39,23 @@
                                     <td><?= $p['lable']; ?></td>
                                     <td><?= $p['invoice']; ?></td>
                                     <td>
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <td><?= $p['nama']; ?></td>
-                                                <td rowspan="2">Qty : <?= $p['qty']; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>SKU : <?= $p['sku']; ?></td>
-                                            </tr>
-                                        </table>
+                                        <?php foreach ($p['produk'] as $pr) : ?>
+                                            <table class="table table-bordered ">
+                                                <tr>
+                                                    <td><?= $pr['nama']; ?> (<?= $pr['value_item']; ?>)</td>
+                                                    <td rowspan="2">Jumlah: <?= $pr['qty']; ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>SKU: <?= $pr['sku']; ?></td>
+                                                </tr>
+                                            </table>
+
+                                        <?php endforeach ?>
                                     </td>
+                                    <td><?= $p['fullname']; ?></td>
                                     <td><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
-                                    <td><?= date("d-m-Y", strtotime($p['created_at']));  ?></td>
+                                    <td><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
+                                    <td><?= date("d-m-Y", strtotime($p['created_at'])); ?></td>
                                 </tr>
                             <?php endforeach ?>
                         </tbody>
