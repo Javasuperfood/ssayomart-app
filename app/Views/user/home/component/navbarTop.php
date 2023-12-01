@@ -71,6 +71,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         @media (max-width: 280px) {
+
+            .input-group>.form-control,
+            .input-group>.form-floating,
+            .input-group>.form-select {
+                font-size: 12px;
+                position: relative;
+                flex: 1 1 auto;
+                width: 1%;
+                min-width: 0
+            }
+
             .input-group {
                 right: 5px;
                 width: 200px;
