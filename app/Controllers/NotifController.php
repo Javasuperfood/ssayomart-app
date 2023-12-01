@@ -245,5 +245,10 @@ class NotifController extends BaseController
                 }
             }
         }
+
+        return response()->setJSON([
+            'status' => 'success',
+            'message' => 'payload dikirm ke email warehouse dan disimpan ke database',
+        ]);
     }
 }
