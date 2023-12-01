@@ -169,7 +169,7 @@ class GoSendController extends BaseController
             }
         }
         $insuranceDetails[0]['product_description'] = $item;
-        $insuranceDetails[0]['product_price'] = $t['total_1'];
+        $insuranceDetails[0]['product_price'] = $t['total_2'];
 
         $body = [
             "paymentType" => 3,
@@ -204,7 +204,6 @@ class GoSendController extends BaseController
 
         // ];
         // return response()->setJSON($response, 200);
-
         $storeDataToGoSend = $this->bookingAPI($body);
         if ($storeDataToGoSend['status_code'] === 201) {
             $alert = [
