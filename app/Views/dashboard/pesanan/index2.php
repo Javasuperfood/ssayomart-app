@@ -111,18 +111,7 @@
                                                         <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
                                                         GoSend Update
                                                     </a>
-                                                    <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="pickUp(this)">
-                                                        <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
-                                                        Pick-Up
-                                                    </a>
-                                                    <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="repickUp(this)">
-                                                        <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
-                                                        Retry Pick-Up
-                                                    </a>
-                                                    <a class="dropdown-item fw-bold text-danger" href="#" role="button" onclick="cancelPickUp(this)">
-                                                        <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
-                                                        Cancel
-                                                    </a>
+
                                                     <hr>
                                                 <?php endif ?>
                                                 <a class="dropdown-item" href="<?= base_url('dashboard/order/print-order/' . $c['id_checkout']); ?>">
