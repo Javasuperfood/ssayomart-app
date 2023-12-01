@@ -77,8 +77,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
                                     <div class="modal-footer flex-nowrap p-0">
                                         <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-link btn-light fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong><?= lang('Text.btn_hapus') ?></strong></button>
-                                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
+                                        <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger"><strong><?= lang('Text.btn_hapus') ?></strong></button>
+                                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 text-danger" data-bs-dismiss="modal">No thanks</button>
                                     </div>
                                 </form>
                             </div>
@@ -196,8 +196,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
                                     <div class="modal-footer flex-nowrap p-0">
                                         <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-link btn-light fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong><?= lang('Text.btn_hapus') ?></strong></button>
-                                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
+                                        <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger"><strong><?= lang('Text.btn_hapus') ?></strong></button>
+                                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 text-danger" data-bs-dismiss="modal">No thanks</button>
                                     </div>
                                 </form>
                             </div>
