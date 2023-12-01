@@ -149,7 +149,7 @@ class NotifController extends BaseController
             $payload['driver_phone'];
             $payload['cancellation_reason'];
             $payload['cancelled_by'];
-            $payload['live_tracking_url'];
+            $payload['liveTrackingUrl'];
 
             // Buat pesan notifikasi
             $notification_message = $this->getNotificationMessage($status, $payload);
@@ -157,7 +157,11 @@ class NotifController extends BaseController
             // Kirim notifikasi
             $result = $this->sendNotificationToUser($uuid, $notification_message);
 
-            return response()->setJSON($result);
+            // return response()->setJSON($result);
+            return response()->setJSON([
+                'status' => 201,
+                'message' => 'data payload sudah dikirim user dan di simpan ke database',
+            ]);
         } else {
             return response()->setJSON([
                 'status' => 200,
