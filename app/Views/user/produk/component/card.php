@@ -10,7 +10,7 @@
                         <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -75,7 +75,7 @@
                 <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
-                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
                         </div>
                     </a>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
