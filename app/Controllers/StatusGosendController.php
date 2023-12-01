@@ -34,7 +34,7 @@ class StatusGosendController extends BaseController
 
         $data = [
             'inv' => $id,
-            'title' => 'status Gosend',
+            'title' => 'Status GoSend',
             'kategori' => $kategori->findAll(),
             'id_status_pesan' => $id_status_pesan,
             'status_transaction' => $status_transaction,
