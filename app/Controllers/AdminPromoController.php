@@ -191,7 +191,7 @@ class AdminPromoController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/promo/tambah-promo/update/' . $id)->withInput();
+            return redirect()->to('dashboard/promo/update-promo/' . $id)->withInput();
         }
     }
 

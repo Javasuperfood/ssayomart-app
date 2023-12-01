@@ -4,9 +4,7 @@
 <?= $this->include('user/home/component/slider') ?>
 
 <?php
-// Mendeteksi User-Agent
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
-// Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
@@ -197,7 +195,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </section> -->
             <!-- Akhir SSayo Resto -->
-            <!-- Banner Promosi -->
+
+            <!-- Banner Promotion -->
             <section class="mt-3" id="unggul" style="background-color: #f7f0eb;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f7f0eb;">
                     <div class="container mb-2 mt-2" style="background-color: #f7f0eb;">
@@ -207,11 +206,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container" style="background-color: #f7f0eb;">
                     <div class="swiper mySwiper" style="position: relative;">
                         <div class="swiper-wrapper d-flex">
-                            <?php foreach ($promo as $p) : ?>
+                            <?php foreach ($banner_promotion as $p) : ?>
                                 <div class="swiper-slide">
                                     <div class="shadow-sm">
-                                        <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                            <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                        <a href="<?= base_url() ?>">
+                                            <img src="<?= base_url() ?>assets/img/banner/promotion/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
                                         </a>
                                     </div>
                                 </div>
@@ -234,9 +233,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </section>
-            <!-- Akhir Banner Promosi -->
+            <!-- Akhir Banner Promotion -->
 
-            <!-- Banner Promosi ke 2 -->
+            <!-- Banner Promosi Item -->
             <section id="rekomendasi" style="background-color: #f3f5df;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
                     <div class="container mb-0 mt-3">
@@ -246,32 +245,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <div class="container">
                     <div class="row px-2">
-                        <div class="col-6 py-1 px-1">
-                            <a href="#">
-                                <img src="<?= base_url() ?>assets/img/promo/anto1.jpg" alt="tes" class="card-img-top rounded-3">
-                            </a>
-                        </div>
-                        <div class="col-6 py-1 px-1">
-                            <a href="#">
-                                <img src="<?= base_url() ?>assets/img/promo/anto2.jpg" alt="tes" class="card-img-top rounded-3">
-                            </a>
-                        </div>
+                        <?php
+                        $iteration = 0; // Inisialisasi variabel iterasi
+                        foreach ($promo as $p) :
+                            if ($iteration < 4) : // Batasan 4 iterasi
+                        ?>
+                                <div class="col-6 py-1 px-1">
+                                    <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                        <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                    </a>
+                                </div>
+                        <?php
+                                $iteration++; // Tingkatkan variabel iterasi
+                            endif;
+                        endforeach
+                        ?>
                     </div>
+
                     <div class="row px-2">
                         <div class="col-6 py-1 px-1">
-                            <a href="#">
-                                <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" alt="tes" class="card-img-top rounded-3">
+                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
                             </a>
                         </div>
                         <div class="col-6 py-1 px-1">
-                            <a href="#">
-                                <img src="<?= base_url() ?>assets/img/promo/promo-3.jpg" alt="tes" class="card-img-top rounded-3">
+                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
+                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
-            <!-- Akhir Banner Promosi ke 2 -->
+
+            <!-- Akhir Banner Promosi Item -->
 
             <!-- rekomendasi -->
             <!-- <section id="rekomendasi" style="background-color: #f3f5df;">
@@ -659,6 +665,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             background-color: #fff;
         }
 
+
         .button-capsule {
             width: 60px;
             /* Ukuran capsule yang lebih kecil */
@@ -735,8 +742,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </script>
     <!-- akhir script button counter animasi -->
-
-
+    </div>
 <?php endif; ?>
 <!-- End Desktop View -->
 
@@ -755,7 +761,6 @@ if ($isMobile) {
 ?>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
-
 
 <style>
     .font-family-poppins {

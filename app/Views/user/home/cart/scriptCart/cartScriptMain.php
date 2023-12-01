@@ -6,7 +6,6 @@
 
     function cartItemShow(con = null) {
         if (con == 'plus') {
-            console.log('plus');
             cart.set('item', cart.get('item') + 1);
         }
         if (con == 'minus') {

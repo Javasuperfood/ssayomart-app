@@ -20,6 +20,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Card -->
         <div class="mb-5 pb-5">
             <?= $this->include('user/produk/component/card2') ?>
+            <?= $this->include('user/home/component/pagination2'); ?>
         </div>
         <!-- button Scroll Up -->
         <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>
@@ -38,7 +39,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <!-- end tampilan Desktop -->
 <?php endif ?>
-<?= $this->include('user/home/component/pagination2'); ?>
+<?= $this->include('user/home/component/pagination'); ?>
 <!-- END -->
 <script>
     // $('a').click(function() {

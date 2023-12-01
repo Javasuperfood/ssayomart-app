@@ -96,7 +96,7 @@ var swiper = new Swiper(".mySwiper", {
           slidesPerView: 2, // 2 card per tampilan
         },
         280: {
-          slidesPerView: 1, // 2 card per tampilan
+          slidesPerView: 2, // 2 card per tampilan
         },
         
       },

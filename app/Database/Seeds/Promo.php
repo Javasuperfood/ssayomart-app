@@ -12,31 +12,22 @@ class Promo extends Seeder
 
             [
                 'id_promo' => 1,
-                'title' => 'Diskon Sayuran',
-                'slug' =>  'diskon-sayuran',
+                'title' => 'Promo Kimchi',
+                'slug' =>  'promo-kimchi',
                 'start_at' => '2023-09-07',
                 'end_at' => '2026-12-20',
-                'deskripsi' => 'Diskon Semua Kategori Sayur',
-                'img' => 'promo-1.jpg'
+                'deskripsi' => 'Promo Harga Kimchi',
+                'img' => 'promotion-1.jpg'
             ],
             [
                 'id_promo' => 2,
-                'title' => 'Produk Terbaru',
-                'slug' =>  'produk-terbaru',
+                'title' => 'Diskon 20%',
+                'slug' =>  'diskon-kwangcheon-kim',
                 'start_at' => '2023-09-07',
                 'end_at' => '2026-12-20',
-                'deskripsi' => 'Produk terbaru dari Ssayomart',
-                'img' => 'promo-2.jpg'
-            ],
-            [
-                'id_promo' => 3,
-                'title' => 'Spesial Promo',
-                'slug' =>  'special-promo',
-                'start_at' => '2023-09-07',
-                'end_at' => '2026-12-20',
-                'deskripsi' => 'Spesial promo dari Ssayomart',
-                'img' => 'promo-3.jpg'
-            ],
+                'deskripsi' => 'Diskon 20% Untuk Merayakan Kwangcheon Kim',
+                'img' => 'promotion-2.jpg'
+            ]
         ];
 
         $this->db->table('jsf_promo')->insertBatch($data);

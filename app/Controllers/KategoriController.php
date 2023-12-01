@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\KategoriModel;
 use App\Models\BannerModel;
 use App\Models\BannerPopupModel;
+use App\Models\BannerPromotionModel;
 use App\Models\CartModel;
 use App\Models\CartProdukModel;
 use App\Models\PromoModel;
@@ -58,6 +59,7 @@ class KategoriController extends BaseController
         $kategoriModel = new KategoriModel();
         $bannerModel = new BannerModel();
         $bannerPopupModel = new BannerPopupModel();
+        $bannerPromotionModel = new BannerPromotionModel();
         $produkModel = new ProdukModel();
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
@@ -72,6 +74,7 @@ class KategoriController extends BaseController
             'kategori' => $kategoriModel->orderBy('short', SORT_ASC)->findAll(),
             'banner' => $bannerModel->find(),
             'banner_pop_up' => $bannerPopupModel->find(),
+            'banner_promotion' => $bannerPromotionModel->find(),
             'randomProducts' => $randomProducts,
             'blog_detail' => $blog_detail,
             'content' => $bannerList
