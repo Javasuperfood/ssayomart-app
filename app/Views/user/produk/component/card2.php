@@ -245,11 +245,14 @@
             $(`#button-container-${c} .button-capsule`).css('display', 'flex');
             addToCartProductList(c, v, 1)
             cartItemShow('plus'); // cart script
-            let im_produk = document.querySelector('.im_produk_' + c + '_');
-            im_produk.classList.add('animate__animated', 'animate__tada');
-            im_produk.addEventListener('animationend', () => {
-                im_produk.classList.remove('animate__animated', 'animate__tada');
+            let im_produk = document.querySelectorAll('.im_produk_' + c + '_');
+            im_produk.forEach(function(e) {
+                e.classList.add('animate__animated', 'animate__tada');
+                e.addEventListener('animationend', () => {
+                    e.classList.remove('animate__animated', 'animate__tada');
+                });
             });
+
             let cartcart = document.querySelector('.a_cart_link_0');
             cartcart.classList.add('animate__animated', 'animate__shakeY');
             cartcart.addEventListener('animationend', () => {
