@@ -121,12 +121,10 @@ class NotifController extends BaseController
         $rawData = file_get_contents('php://input');
         $postData = json_decode($rawData, true);
 
-        // Pastikan 'status' ada dalam data yang diterima
         $status = isset($postData['status']) ? $postData['status'] : null;
 
         log_message('debug', 'Status: ' . $status);
 
-        // Panggil fungsi yang sebelumnya kita buat
         return $this->sendOrderNotificationByStatus($status);
     }
 
