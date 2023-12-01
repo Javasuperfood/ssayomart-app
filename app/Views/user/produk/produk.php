@@ -27,7 +27,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content bg-transparent border-0">
                         <div class="modal-body d-flex align-items-center justify-content-center">
-                            <img src="" id="lightboxImage" alt="Zoomed Image">
+                            <img src="" id="lightboxImage" alt="Zoomed Image" style="object-fit: contain; object-position: 20% 10%;">
                         </div>
                         <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -408,7 +408,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-md-6">
                     <div class="container">
                         <div class="gallery">
-                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                            <img style="width: 350px; height: 350px; object-fit: contain; object-position: 20% 10%;" src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
                         </div>
                     </div>
                     <!-- Lightbox Modal -->
@@ -416,7 +416,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="modal-dialog modal-dialog-centered modal-xl">
                             <div class="modal-content bg-transparent border-0">
                                 <div class="modal-body d-flex align-items-center justify-content-center">
-                                    <img src="" id="lightboxImage" class="img-fluid" alt="Zoomed Image" style="width: 750px; height:750px">
+                                    <img src="" id="lightboxImage" class="img-fluid" alt="Zoomed Image" style="width: 750px; height:750px; object-fit: contain; object-position: 20% 10%;">
                                 </div>
                                 <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
