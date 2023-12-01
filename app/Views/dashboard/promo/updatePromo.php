@@ -84,12 +84,12 @@
         var titleError = document.getElementById('titleError');
         var startedError = document.getElementById('startedError');
         var endedError = document.getElementById('endedError');
-        var imgError = document.getElementById('imgError');
+        // var imgError = document.getElementById('imgError');
 
         titleError.textContent = '';
         startedError.textContent = '';
         endedError.textContent = '';
-        imgError.textContent = '';
+        // imgError.textContent = '';
 
         if (titleField.value.trim() === '') {
             titleField.classList.add('invalid-field');
@@ -115,13 +115,13 @@
             endedField.classList.remove('invalid-field');
         }
 
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar atau Foto promosi harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
-        }
+        // if (imgField.value.trim() === '') {
+        //     imgField.classList.add('invalid-field');
+        //     imgError.textContent = 'Gambar atau Foto promosi harus diisi';
+        //     isValid = false;
+        // } else {
+        //     imgField.classList.remove('invalid-field');
+        // }
 
         return isValid;
     }
