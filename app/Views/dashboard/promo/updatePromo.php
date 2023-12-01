@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/promo/tambah-promo/edit-promo/<?= $promo['id_promo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiPromo()">
+        <form action="<?= base_url(); ?>dashboard/promo/update-promo/edit-promo/<?= $promo['id_promo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiPromo()">
             <?= csrf_field(); ?>
             <input type="hidden" class="form-control border-1" id="id_promo" name="id_promo" value="<?= $promo['id_promo'] ?>">
             <div class="mb-4">
