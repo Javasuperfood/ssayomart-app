@@ -70,7 +70,6 @@ $countProduk = count($produk);
                 },
                 success: function(data) {
                     data.forEach(function(p) {
-                        console.log(p);
                         var hargaText;
                         if (p.harga_min == p.harga_max) {
                             hargaText = "Rp. " + formatRupiah(p.harga_min);
