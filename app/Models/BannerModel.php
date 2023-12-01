@@ -41,14 +41,14 @@ class BannerModel extends Model
             'rules' => 'max_size[img,3124]',
             'errors' => [
                 'max_size' => 'Ukuran gambar terlalu besar.',
-                'mime_in' => 'Format gambar tidak sesuai. iamge/jpg/jpeg/png',
+                'mime_in' => 'Format gambar tidak sesuai. Format harus dalam bentuk jpg/jpeg/png',
             ]
         ],
         'img_konten' => [
-            'rules' => 'max_size[img,3124]',
+            'rules' => 'max_size[img_konten,3124]',
             'errors' => [
                 'max_size' => 'Ukuran gambar terlalu besar.',
-                'mime_in' => 'Format gambar tidak sesuai. iamge/jpg/jpeg/png',
+                'mime_in' => 'Format gambar tidak sesuai. Format harus dalam bentuk jpg/jpeg/png',
             ]
         ]
     ];

@@ -17,7 +17,7 @@
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Gambar Pop Up</label>
-                <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= $bl['img'] ?>">
+                <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= $bl['img'] ?>" accept="image/jpeg, image/png, image/jpg">
                 <span id="imgError" class="text-danger"></span>
                 <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
                 <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>

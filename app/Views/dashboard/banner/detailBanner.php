@@ -31,13 +31,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Banner (Home Page)</label>
-                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= $bl['img'] ?>" accept="image/*">
+                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= $bl['img'] ?>" accept="image/jpeg, image/png, image/jpg">
                         <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Banner Content (Content Page)</label>
-                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img_konten" name="img_konten" value="<?= $bl['img_konten'] ?>" accept="image/*">
+                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img_konten" name="img_konten" value="<?= $bl['img_konten'] ?>" accept="image/jpeg, image/png, image/jpg">
                         <input type="hidden" name="imageContentLama" value="<?= $bl['img_konten']; ?>">
                         <div class="invalid-feedback"><?= validation_show_error('img_konten'); ?></div>
                     </div>
