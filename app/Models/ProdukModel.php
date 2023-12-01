@@ -233,7 +233,7 @@ class ProdukModel extends Model
     // jika parameter yang akan dibuat kondisi wajib mempunya value null di setiap parameter
     public function getFeaturedProductsByCategory($slug1 = null, $slug2 = null)
     {
-        $query = $this->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, p.qty')
+        $query = $this->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, SUM(p.qty) AS total_qty')
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_produk.id_kategori', 'left')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
             ->join('jsf_checkout_produk p', 'jsf_produk.id_produk = p.id_produk', 'left');
@@ -250,10 +250,11 @@ class ProdukModel extends Model
         $query->where('p.id_produk IS NOT NULL')->where('jsf_produk.deleted_at', null);
 
         // jsf_produk.id_produk & p.qty harus masuk pada group
-        $query->groupBy('jsf_produk.id_produk, p.qty, vi.id_variasi_item')
-            ->orderBy('qty', 'DESC')
+        $query->groupBy('jsf_produk.id_produk, vi.id_variasi_item')
+            ->orderBy('total_qty', 'DESC')
             ->limit(3);
         $result = $query->get()->getResultArray();
+        // dd($result);
         return $result;
     }
 }
