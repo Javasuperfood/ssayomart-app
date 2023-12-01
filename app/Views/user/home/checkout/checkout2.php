@@ -26,7 +26,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col">
                         <div class="input-group mb-3">
                             <span class="input-group-text">
-                                <i class="bi bi-shop-window fw-bold"></i>
+                                <i class="bi bi-shop-window"></i>
                             </span>
                             <div class="form-floating">
                                 <?php foreach ($market_list as $key => $m) : ?>
@@ -284,6 +284,61 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <div class="pb-5"></div>
 
+    <!-- <style>
+        @media (max-width: 280px) {
+            .col-5.position-absolute.top-50.start-50.translate-middle-y {
+                font-size: 12px !important;
+            }
+
+            .table.fs-6 {
+                font-size: 12px !important;
+                /* Atur ukuran font sesuai kebutuhan */
+            }
+
+            .tbody.td {
+                font-size: 12px !important;
+            }
+
+            h5.card-title.fs-6.p.card-text.text-secondary {
+                font-size: 12px;
+            }
+
+            .form-control {
+                font-size: 12px;
+                /* Ukuran font input sesuai kebutuhan */
+            }
+
+            .card-title {
+                font-size: 12px;
+                /* Ukuran font judul kartu sesuai kebutuhan */
+            }
+
+            .card-text {
+                font-size: 12px;
+                /* Ukuran font teks kartu sesuai kebutuhan */
+            }
+
+            .ps-2 {
+                font-size: 12px;
+                padding-left: 0.5rem !important;
+            }
+
+            .btn-bayar {
+                font-size: 12px;
+                padding: 0.5rem !important;
+            }
+
+            .col-5 h5 {
+                font-size: 14px !important
+            }
+
+            .col-5 p {
+                font-size: 12px !important;
+            }
+
+        }
+    </style> -->
+
     <style>
         /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
         @media screen and (max-width: 280px) {
@@ -330,10 +385,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 font-size: 12px;
             }
 
+            .fs-6 {
+                font-size: 0.7rem !important;
+            }
+
         }
     </style>
-
-
 <?php else : ?>
     <!-- end mobile -->
 
