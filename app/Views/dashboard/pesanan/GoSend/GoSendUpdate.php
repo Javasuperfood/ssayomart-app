@@ -54,7 +54,7 @@
                     <div class="my-3">
                         <div class="row">
                             <div class="col">
-                                <form id="updateStatus" action="<?= base_url('dashboard/order/gosend-update/update-status/') . $inv ?>" method="post">
+                                <form id="updateStatus" action="<?= base_url('dashboard/order/update-booking/update-status/') . $inv ?>" method="post">
                                     <?= csrf_field(); ?>
                                     <input type="hidden" name="inv" value="<?= $inv; ?>">
                                     <input type="hidden" name="id_checkout" value="<?= $order['id_checkout']; ?>">
@@ -71,7 +71,7 @@
                             <div class="col">
                                 <button type="submit" form="updateStatus" class="btn btn-outline-danger py-3">Update</button>
                                 <?php if ($order['id_status_pesan'] == 3 && $status_transaction == 0) : ?>
-                                    <form method="post" action="<?= base_url('dashboard/order/gosend-update/update-status/save/') . $inv ?>" class="d-inline">
+                                    <form method="post" action="<?= base_url('dashboard/order/update-booking/update-status/save/') . $inv ?>" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <button type="submit" class="btn btn-outline-success py-3">Selesai</button>
                                     </form>
@@ -205,7 +205,7 @@
                             <?php endif ?>
                             <div class="col-12 my-3">
                                 <?php if (!$gosendStatus) : ?>
-                                    <form action="<?= base_url('dashboard/order/gosend-update/' . $inv . '/pickup'); ?>" method="post">
+                                    <form action="<?= base_url('dashboard/order/update-booking/' . $inv . '/pickup'); ?>" method="post">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="inv" value="<?= $inv; ?>">
                                         <input type="hidden" name="req" value="pickup">
@@ -278,9 +278,10 @@
                                             </tbody>
                                         </table>
                                         <?php if ($gosendStatus['status'] == 'Cancelled' || $gosendStatus['status'] == 'Driver not found') : ?>
-                                            <form action="<?= base_url('dashboard/order/gosend-update/' . $inv . '/pickup'); ?>" method="post">
+                                            <form action="<?= base_url('dashboard/order/update-booking/' . $inv . '/pickup'); ?>" method="post">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="inv" value="<?= $inv; ?>">
+                                                <input type="hidden" name="req" value="pickup">
                                                 <div class="form-floating">
                                                     <textarea class="form-control" placeholder="Note For driver GoSend" id="floatingTextarea2" name="note" style="height: 100px">Ditunggu di lobi</textarea>
                                                     <label for="floatingTextarea2">Note For driver GoSend</label>
@@ -332,7 +333,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <form action="<?= base_url('dashboard/order/gosend-update/' . $gosendStatus['orderNo'] . '/cancel'); ?>" method="post">
+                                                    <form action="<?= base_url('dashboard/order/update-booking/' . $gosendStatus['orderNo'] . '/cancel'); ?>" method="post">
                                                         <?= csrf_field(); ?>
                                                         <input type="hidden" name="orderNo" value="<?= $gosendStatus['orderNo']; ?>">
                                                         <button type="submit" class="btn btn-danger">Cancel</button>

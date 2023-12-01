@@ -114,7 +114,7 @@ class StatusGosendController extends BaseController
         }
 
         session()->setFlashdata('alert', $alert);
-        return redirect()->to(base_url('status-gosend/?order_id=' . $id))->withInput();
+        return redirect()->to(base_url('status/ordering/?order_id=' . $id))->withInput();
     }
 
     function getStatusGosend($id)

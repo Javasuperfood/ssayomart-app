@@ -107,7 +107,7 @@
 
                                             <?php if ((int)$c['id_status_pesan'] > 1) : ?>
                                                 <?php if ($c['gosend'] == 1) : ?>
-                                                    <a class="dropdown-item fw-bold text-danger" href="<?= base_url('dashboard/order/'); ?>gosend-update/<?= $c['invoice']; ?>">
+                                                    <a class="dropdown-item fw-bold text-danger" href="<?= base_url('dashboard/order/'); ?>update-booking/<?= $c['invoice']; ?>">
                                                         <i class="bi bi-box-seam fa-sm fa-fw mr-2"></i>
                                                         GoSend Update
                                                     </a>

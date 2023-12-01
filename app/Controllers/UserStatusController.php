@@ -38,7 +38,7 @@ class UserStatusController extends BaseController
         if ($userSatus->gosend == 1 && $userSatus->id_status_pesan != '1') {
             $gosendStatus = $this->getStatusGosend($order_id);
             if ($gosendStatus) {
-                return redirect()->to(base_url('status-gosend/?order_id=' . $order_id . '&status_code=' . $status_code . '&transaction_status=' . $transaction_status));
+                return redirect()->to(base_url('status/ordering/?order_id=' . $order_id . '&status_code=' . $status_code . '&transaction_status=' . $transaction_status));
             }
         }
         $status = $statusModel->findAll();

@@ -126,6 +126,7 @@ class GoSendController extends BaseController
 
     public function pickUp($id)
     {
+        // dd($this->request->getVar());
         if ($id != $this->request->getVar('inv')) {
             return redirect()->back();
         }

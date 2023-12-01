@@ -54,8 +54,10 @@ $routes->get('/ewallet', 'Payment::ewallet');
 // app/Config/Routes.php
 $routes->get('/show-notification', 'WebhookController::showNotification');
 
-$routes->get('/status-gosend', 'StatusGosendController::statusGosend');
-$routes->post('/status-gosend/update/(:segment)', 'StatusGosendController::updateStatusGosend/$1');
+$routes->get('/status/ordering', 'StatusGosendController::statusGosend');
+$routes->post('/status/ordering/update/(:segment)', 'StatusGosendController::updateStatusGosend/$1');
+// $routes->get('/status-gosend', 'StatusGosendController::statusGosend');
+// $routes->post('/status-gosend/update/(:segment)', 'StatusGosendController::updateStatusGosend/$1');
 
 // Rute untuk AppleAuthController
 $routes->get('apple-login', 'AppleAuthController::appleLogin');
@@ -146,11 +148,17 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
         // gosend
 
-        $routes->get('gosend-update/(:segment)', 'GoSendController::gosendUpdate/$1');
-        $routes->post('gosend-update/update-status/(:segment)', 'GoSendController::updateStatusOrder/$1');
-        $routes->post('gosend-update/update-status/save/(:segment)', 'GoSendController::orderSucceed/$1');
-        $routes->post('gosend-update/(:segment)/pickup', 'GoSendController::pickUp/$1');
-        $routes->post('gosend-update/(:segment)/cancel', 'GoSendController::gosendCancel/$1');
+        $routes->get('update-booking/(:segment)', 'GoSendController::gosendUpdate/$1');
+        $routes->post('update-booking/update-status/(:segment)', 'GoSendController::updateStatusOrder/$1');
+        $routes->post('update-booking/update-status/save/(:segment)', 'GoSendController::orderSucceed/$1');
+        $routes->post('update-booking/(:segment)/pickup', 'GoSendController::pickUp/$1');
+        $routes->post('update-booking/(:segment)/cancel', 'GoSendController::gosendCancel/$1');
+
+        // $routes->get('gosend-update/(:segment)', 'GoSendController::gosendUpdate/$1');
+        // $routes->post('gosend-update/update-status/(:segment)', 'GoSendController::updateStatusOrder/$1');
+        // $routes->post('gosend-update/update-status/save/(:segment)', 'GoSendController::orderSucceed/$1');
+        // $routes->post('gosend-update/(:segment)/pickup', 'GoSendController::pickUp/$1');
+        // $routes->post('gosend-update/(:segment)/cancel', 'GoSendController::gosendCancel/$1');
     });
 
     // Route Reporting File
