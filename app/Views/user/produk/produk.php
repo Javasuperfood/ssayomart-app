@@ -19,9 +19,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col text-center">
                 <div class="container">
                     <div class="gallery">
-                        <img style="width: 350px; height: 350px; object-fit: contain; object-position: 20% 10%;" src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid toss-add-to-cart" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
+                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>" class="img-fluid toss-add-to-cart" alt="<?= $produk['nama']; ?>" onclick="openLightbox('<?= base_url() ?>assets/img/produk/main/<?= $produk['img']; ?>')">
                     </div>
-
                 </div>
             </div>
             <div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-labelledby="lightboxModalLabel" aria-hidden="true">
@@ -240,15 +239,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         /* CSS untuk Gambar Produk */
         .gallery img {
-            width: 100%;
-            height: auto;
-            margin: 10px;
-            cursor: pointer;
+            width: 350px;
+            height: 350px;
+            object-fit: contain;
+            object-position: 20% 10%;
         }
 
 
 
         @media (max-width: 280px) {
+
+            .gallery img {
+                width: 100%;
+                height: auto;
+                margin: 10px;
+                cursor: pointer;
+                object-fit: contain;
+                object-position: 20% 10%;
+            }
+
             .modal-body img {
                 width: 100%;
                 /* Ubah nilai sesuai kebutuhan desain Anda */
@@ -277,8 +286,74 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 flex-wrap: nowrap;
             }
 
+            .horizontal-counter {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
 
+            .horizontal-counter .btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 12px;
+            }
+
+            .horizontal-counter input {
+                width: 40px;
+                text-align: center;
+            }
+
+            .col.mt-4.text-center h5 {
+                /* Sesuaikan ukuran font sesuai kebutuhan Anda */
+                font-size: 20px;
+                /* Misalnya, ubah ukuran font menjadi 16px */
+            }
+
+            .col.mt-4.text-center p {
+                /* Sesuaikan ukuran font pada elemen paragraf */
+                font-size: 18px;
+                margin-left: 50px;
+                margin-right: 50px;
+                display: block;
+                /* Misalnya, ubah ukuran font pada paragraf menjadi 12px */
+            }
+
+            .row-cols-3 .col {
+                flex: 0 0 100%;
+                /* Mengatur lebar kolom menjadi 100% */
+                max-width: 100%;
+            }
+
+            .card {
+                margin-bottom: 10px;
+                /* Menambah jarak antara kartu */
+            }
+
+            .modal-body {
+                padding: 5px;
+                /* Mengurangi padding modal body */
+            }
+
+            .card-title {
+                font-size: 12px;
+                /* Sesuaikan ukuran teks judul kartu */
+            }
+
+            p.text-secondary.fs-6 {
+                font-size: 12px;
+                /* Sesuaikan ukuran teks harga */
+            }
+
+            .form-check {
+                margin-top: 5px;
+                /* Menambah jarak antara elemen form-check */
+            }
+
+            .modal-footer {
+                padding: 5px;
+                /* Mengurangi padding modal footer */
+            }
         }
+
 
 
         @media (min-width: 768px) and (max-width: 1024px) {
@@ -675,7 +750,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     }
 </style>
 
-<style>
+<!-- <style>
     /* Atur gaya untuk tampilan Samsung Galaxy Fold atau layar yang lebih kecil */
     /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
     @media (max-width: 280px) {
@@ -747,7 +822,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             /* Mengurangi padding modal footer */
         }
     }
-</style>
+</style> -->
 
 <script type="text/javascript">
     function increaseCount(a, b) {
