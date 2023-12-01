@@ -518,7 +518,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                                 </p>
 
-                                                <h1 class="text-danger fw-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
+                                                <h1 class="mb-4 text-danger fw-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
                                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                     <?php else : ?>
@@ -526,7 +526,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php endif ?>
                                                 </h1>
 
-                                                <div class="container mt-2">
+                                                <!-- <div class="container mt-2 mb-4">
                                                     <div class="row justify-items-center">
                                                         <div class="col">
                                                             <div class="horizontal-counter">
@@ -536,9 +536,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-
+                                                </div> -->
+                                                <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                                                     <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
                                                         <input type="hidden" name="buy" value="show">
                                                         <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
@@ -547,7 +546,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         </button>
                                                         <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                                     </form>
+                                                </div> -->
+
+                                                <!-- button Animasi -->
+                                                <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
+                                                    <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
+                                                        <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>
+                                                    </div>
+                                                    <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
+                                                        <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>)">-</div>
+                                                        <input type="text" id="counter-<?= $p['id_produk']; ?>" class="input" value="1" disabled>
+                                                        <div class="icon" onClick="increaseValue(<?= $p['id_produk']; ?>)">+</div>
+                                                    </div>
                                                 </div>
+                                                <!-- akhir button animasi -->
                                             </div>
                                         </div>
                                     </div>
@@ -621,9 +633,115 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </section>
         <!-- swipper card  tampilan web-->
+    </div>
+
+    <!-- styling button counter animasi -->
+    <style>
+        .button-container {
+            position: absolute;
+            top: 7px;
+            /* Jarak dari atas */
+            left: 7px;
+            /* Jarak dari kiri */
+            display: flex;
+            gap: 5px;
+            /* Jarak antar tombol */
+        }
+
+        .button {
+            width: 30px;
+            /* Ukuran tombol yang lebih kecil */
+            height: 30px;
+            /* Ukuran tombol yang lebih kecil */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: 1px solid #e83b2e;
+            background-color: #fff;
+        }
 
 
+        .button-capsule {
+            width: 60px;
+            /* Ukuran capsule yang lebih kecil */
+            height: 30px;
+            /* Ukuran capsule yang lebih kecil */
+            border-radius: 15px;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+            /* Padding yang lebih kecil */
+            transition: all 0.3s ease;
+            outline: 1px solid #e83b2e;
+            background-color: #fff;
+        }
 
+        .icon {
+            font-size: 16px;
+            color: #e83b2e;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .input {
+            width: 20px;
+            /* Ukuran input yang lebih kecil */
+            height: 15px;
+            /* Ukuran input yang lebih kecil */
+            text-align: center;
+            margin: 0 3px;
+            /* Margin yang lebih kecil */
+            color: #000;
+            font-size: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+        }
+    </style>
+    <!-- akhir styling button counter animasi -->
+    <!-- script button counter animasi -->
+    <script>
+        function changeToCapsule(productId) {
+            document.querySelector(`#button-container-${productId} .button`).style.display = 'none';
+            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'flex';
+        }
+
+        function decreaseValue(productId) {
+            var counter = document.getElementById(`counter-${productId}`);
+            if (parseInt(counter.value) > 0) {
+                counter.value = parseInt(counter.value) - 1;
+            }
+            validateCounter(productId);
+        }
+
+        function increaseValue(productId) {
+            var counter = document.getElementById(`counter-${productId}`);
+            counter.value = parseInt(counter.value) + 1;
+            validateCounter(productId);
+        }
+
+        function changeToCircle(productId) {
+            document.querySelector(`#button-container-${productId} .button`).style.display = 'flex';
+            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'none';
+        }
+
+        function validateCounter(productId) {
+            var counter = document.getElementById(`counter-${productId}`);
+            if (parseInt(counter.value) <= 1) {
+                counter.value = 1;
+                changeToCircle(productId);
+            }
+        }
+    </script>
+    <!-- akhir script button counter animasi -->
     </div>
 <?php endif; ?>
 <!-- End Desktop View -->
