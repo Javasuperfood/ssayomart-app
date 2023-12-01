@@ -265,12 +265,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row px-2">
                         <div class="col-6 py-1 px-1">
                             <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
                             </a>
                         </div>
                         <div class="col-6 py-1 px-1">
                             <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
                             </a>
                         </div>
                     </div>
