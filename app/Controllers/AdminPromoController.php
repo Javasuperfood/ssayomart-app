@@ -164,6 +164,7 @@ class AdminPromoController extends BaseController
         ]);
 
         if (!$this->validation->withRequest($this->request)->run()) {
+
             $errors = $this->validation->getErrors();
             $alert = [
                 'type'    => 'error',
@@ -171,6 +172,8 @@ class AdminPromoController extends BaseController
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
             ];
             session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/promo/update-promo/' . $id)->withInput();
         }
 
         if ($promoModel->save($data)) {
