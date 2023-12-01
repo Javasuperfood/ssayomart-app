@@ -282,7 +282,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <div class="pb-5"></div>
 
-    <style>
+    <!-- <style>
         @media (max-width: 280px) {
             .col-5.position-absolute.top-50.start-50.translate-middle-y {
                 font-size: 12px !important;
@@ -332,6 +332,59 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             .col-5 p {
                 font-size: 12px !important;
+            }
+
+        }
+    </style> -->
+
+    <style>
+        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
+        @media screen and (max-width: 280px) {
+
+            .modal-body img {
+                width: 80px !important;
+            }
+
+            .modal-body button {
+                font-size: 10px !important;
+            }
+
+            .modal-content {
+                font-size: 13px;
+            }
+
+            .input-group .btn {
+                font-size: 9px;
+            }
+
+            .form-control {
+                font-size: 12px;
+                /* Ukuran font input sesuai kebutuhan */
+            }
+
+            .ps-2 {
+                font-size: 12px;
+                padding-left: 0.5rem !important;
+            }
+
+            .col-5 h5 {
+                font-size: 14px !important
+            }
+
+            .col-5 p {
+                font-size: 12px !important;
+            }
+
+            .btn-bayar {
+                font-size: 12px !important;
+            }
+
+            tr {
+                font-size: 12px;
+            }
+
+            .fs-6 {
+                font-size: 0.7rem !important;
             }
 
         }
