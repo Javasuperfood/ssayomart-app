@@ -694,7 +694,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     }
 </script>
 
-<style>
+<!-- <style>
     .horizontal-counter {
         display: flex;
         align-items: center;
@@ -710,7 +710,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         width: 40px;
         text-align: center;
     }
-</style>
+</style> -->
 
 <style>
     /* Atur gaya untuk tampilan Samsung Galaxy S9+ atau layar yang lebih kecil */
