@@ -4,6 +4,7 @@
 <head>
     <?= $this->include('user/produk/component/header') ?>
     <?= $this->include('user/home/cart/scriptCart/cartScriptInit'); ?>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
@@ -14,6 +15,7 @@
     <script src="<?= base_url() ?>assets/js/swiper.js"></script>
     <script src="<?= base_url() ?>assets/js/button.js"></script>
     <?= $this->include('user/home/cart/scriptCart/cartScriptMain'); ?>
+    <?= $this->include('user/home/component/preloaderMobile'); ?>
 </body>
 
 </html>

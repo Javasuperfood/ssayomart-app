@@ -84,8 +84,13 @@
         preloader.style.justifyContent = 'center';
         preloader.style.alignItems = 'center';
         preloader.style.zIndex = '9999';
+
+        // Set a timeout to hide the preloader after 5 seconds
+        setTimeout(function() {
+          preloader.style.display = 'none';
+        }, 5000);
       }
-    })
+    });
   </script>
 </body>
 
