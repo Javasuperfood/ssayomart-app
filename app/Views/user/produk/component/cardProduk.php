@@ -9,22 +9,22 @@
                     <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                                <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                                <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
                             </div>
                             <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                 <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                             </p>
 
-                            <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                            <h1 class="text-danger fw-bold mt-1" style="font-size: 14px; margin: 0;">
                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
-                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
+                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>
                                 <?php endif ?>
                             </h1>
 
@@ -120,7 +120,7 @@
     @media (max-width: 280px) {
         .horizontal-counter .btn {
             padding: 0.15rem 0.3rem;
-            font-size: 0.9rem;
+
         }
 
         .horizontal-counter input {

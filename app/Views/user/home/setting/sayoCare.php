@@ -573,26 +573,6 @@ if ($isMobile) {
 }
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <style>
     .full-description {
         height: 4em;
@@ -673,17 +653,23 @@ if ($isMobile) {
             margin-top: 0;
             margin-bottom: 1rem;
         }
-    }
 
-    /* Untuk layar dengan lebar 768px atau lebih (tampilan desktop) */
-    @media (min-width: 769px) {
-        .img-container iframe {
-            width: 650px;
-            /* Lebar video untuk desktop */
-            height: 350px;
-            /* Tinggi video untuk desktop */
+        button.mt-3.btn.btn-danger {
+            font-size: 12px;
+            color: #fff;
+            background-color: #dc3545;
+            border-color: #dc3545;
         }
-    }
+
+        /* Untuk layar dengan lebar 768px atau lebih (tampilan desktop) */
+        @media (min-width: 769px) {
+            .img-container iframe {
+                width: 650px;
+                /* Lebar video untuk desktop */
+                height: 350px;
+                /* Tinggi video untuk desktop */
+            }
+        }
 </style>
 
 
