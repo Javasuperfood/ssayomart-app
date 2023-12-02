@@ -241,6 +241,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             object-position: 20% 10%;
         }
 
+        #counterProduct {
+            padding: 0.10rem 0.3rem;
+            width: 30%;
+            /* Sesuaikan lebar sesuai kebutuhan Anda */
+            max-width: 100px;
+            /* Batasi lebar maksimum jika diperlukan */
+        }
+
 
 
         @media (max-width: 280px) {
@@ -276,7 +284,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             /* CSS edit inputan counter*/
-            .d-flex {
+            /* .d-flex {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
@@ -299,55 +307,55 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .col.mt-4.text-center h5 {
-                /* Sesuaikan ukuran font sesuai kebutuhan Anda */
+
                 font-size: 20px;
-                /* Misalnya, ubah ukuran font menjadi 16px */
+
             }
 
             .col.mt-4.text-center p {
-                /* Sesuaikan ukuran font pada elemen paragraf */
+                
                 font-size: 18px;
                 margin-left: 50px;
                 margin-right: 50px;
                 display: block;
-                /* Misalnya, ubah ukuran font pada paragraf menjadi 12px */
+                
             }
 
             .row-cols-3 .col {
                 flex: 0 0 100%;
-                /* Mengatur lebar kolom menjadi 100% */
+               
                 max-width: 100%;
             }
 
             .card {
                 margin-bottom: 10px;
-                /* Menambah jarak antara kartu */
+               
             }
 
             .modal-body {
                 padding: 5px;
-                /* Mengurangi padding modal body */
+                
             }
 
             .card-title {
                 font-size: 12px;
-                /* Sesuaikan ukuran teks judul kartu */
+               
             }
 
             p.text-secondary.fs-6 {
                 font-size: 12px;
-                /* Sesuaikan ukuran teks harga */
+              
             }
 
             .form-check {
                 margin-top: 5px;
-                /* Menambah jarak antara elemen form-check */
+                
             }
 
             .modal-footer {
                 padding: 5px;
-                /* Mengurangi padding modal footer */
-            }
+                
+            } */
         }
 
 

@@ -533,5 +533,13 @@
         }
 
     }
+
+    @media (max-width: 320px) {
+
+        .card-produk {
+            width: 85px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
 </style>
 <!-- end samsung galaxy fold tonggle dual screen mode 717 -->
