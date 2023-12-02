@@ -393,7 +393,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             p.text-secondary.fs-6 {
-                font-size: 14px !important;
+                font-size: 12px !important;
+            }
+
+            div.text-secondary {
+                font-size: 12px !important;
+            }
+
+            .card-img {
+                width: 70px !important;
+                height: 70px !important;
+                object-fit: contain;
+                object-position: 20% 10%;
             }
 
             /* Additional styles for smaller screens as needed */

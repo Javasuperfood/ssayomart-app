@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <nav class="navbar navbar-expand fixed-bottom" style="margin-top: 10%; height: 55px; background-color:#fff">
             <ul class="navbar-nav nav-justified w-100">
                 <li class="nav-item">
-                    <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-4 text-danger"></i></a>
+                    <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
