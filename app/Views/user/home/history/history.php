@@ -280,7 +280,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <style>
         @media screen and (max-width: 820px) {
             .btn.custom-btn {
-                font-size: 14px !important;
+                font-size: 12px !important;
                 /* Ukuran font untuk iPad */
             }
 
