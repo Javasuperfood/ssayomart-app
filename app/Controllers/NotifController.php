@@ -166,7 +166,7 @@ class NotifController extends BaseController
             return response()->setJSON([
                 'status' => 200,
                 'result' => 'UUID NOT FOUND',
-                'message' => 'User data not found or UUID is missing.',
+                'message' => 'User data not found or UUID is missing. payload telah di simpan ke database',
             ], 200);
         }
     }
