@@ -44,31 +44,32 @@
                                     <td><?= $p['lable']; ?></td>
                                     <td><?= $p['invoice']; ?></td>
                                     <td scope="colgroup">
-                                        <table>
-                                            <?php foreach ($p['produk'] as $pr) : ?>
-                                                <tr>
-                                                    <td scope="colgroup"><?= $pr['nama']; ?> </td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </table>
+                                        <?php
+                                        $namaProduk = '';
+                                        $varianProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $namaProduk .= $pr['nama'] . ' - ' . $pr['value_item'] . '<br>';
+                                        }
+                                        echo $namaProduk;
+                                        ?>
                                     </td>
-                                    <td>
-                                        <table>
-                                            <?php foreach ($p['produk'] as $pr) : ?>
-                                                <tr>
-                                                    <td><?= $pr['sku']; ?></td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </table>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $skuProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $skuProduk .= $pr['sku'] . '<br>';
+                                        }
+                                        echo $skuProduk;
+                                        ?>
                                     </td>
-                                    <td>
-                                        <table>
-                                            <?php foreach ($p['produk'] as $pr) : ?>
-                                                <tr>
-                                                    <td><?= $pr['qty']; ?></td>
-                                                </tr>
-                                            <?php endforeach ?>
-                                        </table>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $jumlahProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $jumlahProduk .= $pr['qty'] . '<br>';
+                                        }
+                                        echo $jumlahProduk;
+                                        ?>
                                     </td>
                                     <td><?= $p['fullname']; ?></td>
                                     <td><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
