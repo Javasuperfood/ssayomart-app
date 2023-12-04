@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
+use App\Models\CheckoutModel;
 use DateTime;
 use onesignal\client\api\DefaultApi;
 use onesignal\client\Configuration;
@@ -135,41 +136,104 @@ class NotifController extends BaseController
         $rawData = file_get_contents('php://input');
         $payload = json_decode($rawData, true);
 
-
         $status = isset($payload['status']) ? $payload['status'] : null;
 
         $usersModel = new UsersModel();
 
-        $userData = $usersModel->find(user_id());
+        $users = $usersModel->findUsersByCheckoutStatus();
 
-        if ($userData && isset($userData[0]['uuid'])) {
-            $uuid = $userData[0]['uuid'];
-            $payload['booking_id'];
-            $payload['driver_name'];
-            $payload['driver_phone'];
-            $payload['cancellation_reason'];
-            $payload['cancelled_by'];
-            $payload['liveTrackingUrl'];
+        if (!empty($users)) {
+            foreach ($users as $user) {
+                $uuid = $user['uuid'];
+                $notification_payload = [
+                    'booking_id' => $payload['booking_id'],
+                    'driver_name' => $payload['driver_name'],
+                    'driver_phone' => $payload['driver_phone'],
+                    'cancellation_reason' => $payload['cancellation_reason'],
+                    'cancelled_by' => $payload['cancelled_by'],
+                    'liveTrackingUrl' => $payload['liveTrackingUrl'],
+                ];
 
-            // Buat pesan notifikasi
-            $notification_message = $this->getNotificationMessage($status, $payload);
+                // Buat pesan notifikasi
+                $notification_message = $this->getNotificationMessage($status, $notification_payload);
 
-            // Kirim notifikasi
-            $result = $this->sendNotificationToUser($uuid, $notification_message);
+                // Kirim notifikasi
+                $result = $this->sendNotificationToUser($uuid, $notification_message);
+            }
 
-            // return response()->setJSON($result);
             return response()->setJSON([
-                'status' => 201,
-                'message' => 'data payload sudah dikirim user dan di simpan ke database',
+                'status' => 200,
+                'message' => 'Data payload sudah dikirim kepada semua pengguna yang memenuhi kondisi dan disimpan ke database',
             ]);
         } else {
             return response()->setJSON([
-                'status' => 200,
-                'result' => 'UUID NOT FOUND',
-                'message' => 'User data not found or UUID is missing. payload telah di simpan ke database',
+                'status' => 404,
+                'result' => 'No users found with the specified conditions',
+                'message' => 'Tidak ada pengguna yang memenuhi kondisi.',
             ], 200);
         }
     }
+
+
+    // public function sendOrderNotificationByStatus($status)
+    // {
+    //     log_message('info', 'Status in sendOrderNotificationByStatus: ' . $status);
+
+    //     $rawData = file_get_contents('php://input');
+    //     $payload = json_decode($rawData, true);
+
+    //     $status = isset($payload['status']) ? $payload['status'] : null;
+    //     log_message('debug', 'Payload: ' . json_encode($payload));
+
+    //     $userModel = new UsersModel();
+    //     $checkoutModel = new CheckoutModel();
+
+    //     if (isset($payload['id_user'])) {
+    //         $userId = $payload['id_user'];
+    //         $checkoutData = $checkoutModel->getOrderByBookingIdFromPayload($userId);
+    //         log_message('debug', 'Checkout Data: ' . json_encode($checkoutData));
+
+    //         if ($checkoutData) {
+    //             $userId = $checkoutData['uuid'];
+    //             $statusKirim = $checkoutData['id_status_kirim'];
+    //             // Periksa jika status adalah COMPLETED dan id_status_kirim adalah 3
+    //             if ($status == 'confirmed' && $statusKirim == 3) {
+    //                 // Dapatkan data pengguna
+    //                 $userData = $userModel->getUserUUIDByUserId($userId);
+    //                 if ($userData && isset($userData['uuid'])) {
+    //                     $uuid = $userData['uuid'];
+
+    //                     $payload['booking_id'];
+    //                     $payload['driver_name'];
+    //                     $payload['driver_phone'];
+    //                     $payload['cancellation_reason'];
+    //                     $payload['cancelled_by'];
+    //                     // $payload['liveTrackingUrl'];
+
+    //                     log_message('debug', 'Booking ID: ' . $payload['booking_id']);
+
+    //                     // Buat pesan notifikasi
+    //                     $notification_message = $this->getNotificationMessage($status, $payload);
+
+    //                     // Kirim notifikasi
+    //                     $result = $this->sendNotificationToUser($uuid, $notification_message);
+
+    //                     // return response()->setJSON($result);
+    //                     return response()->setJSON([
+    //                         'status' => 200,
+    //                         'message' => 'data payload sudah dikirim user',
+    //                     ]);
+    //                 }
+    //             }
+    //         }
+    //     } else {
+    //         return response()->setJSON([
+    //             'status' => 404,
+    //             'result' => 'UUID NOT FOUND',
+    //             'message' => 'User data not found or UUID is missing.',
+    //         ], 404);
+    //     }
+    // }
 
     private function getNotificationMessage($status, $payload)
     {

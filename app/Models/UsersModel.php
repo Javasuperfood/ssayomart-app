@@ -166,4 +166,30 @@ class UsersModel extends Model
 
         return null;
     }
+
+    public function getUsersByTransactionStatus($status)
+    {
+        return $this->db->table('jsf_checkout')
+            ->join('users', 'users.id = jsf_checkout.id_user')
+            ->where('jsf_checkout.id_status_pesan', $status)
+            ->get()
+            ->getResultArray();
+    }
+
+    // File: UsersModel.php
+
+    public function findUsersByCheckoutStatus()
+    {
+        $result = $this->db->table('users')
+            ->join('jsf_checkout', 'jsf_checkout.id_user = users.id')
+            ->where('jsf_checkout.id_status_pesan', 3)
+            ->where('jsf_checkout.id_status_kirim', 2)
+            ->get();
+
+        if ($result->getNumRows() > 0) {
+            return $result->getResultArray();
+        } else {
+            return false;
+        }
+    }
 }
