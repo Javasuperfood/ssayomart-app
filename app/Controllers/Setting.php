@@ -290,6 +290,7 @@ class Setting extends BaseController
             'title'     => lang('Text.btn_tambah'),
             'provinsi' => [],
             'kategori' => $kategori->findAll(),
+            'preloader' => false
         ];
         $provinsi = $this->rajaongkir('province');
         // dd($provinsi);
@@ -439,7 +440,8 @@ class Setting extends BaseController
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
             'au' => $au,
             'back'  => 'setting/alamat-list',
-            'kategori' => $kategori->findAll()
+            'kategori' => $kategori->findAll(),
+            'preloader' => false
         ];
         // dd($data);
         return view('user/home/setting/updateAlamat', $data);
