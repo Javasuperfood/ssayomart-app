@@ -251,22 +251,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper grid mt-3">
                             <div class="swiper-wrapper text-center">
                                 <div class="swiper-slide">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 2">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 3">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 4">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
+
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 2">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 3">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 4">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 2">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 3">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/maintenance.jpg" alt="Image 4">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
+                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
                                 </div>
                             </div>
                         </div>
