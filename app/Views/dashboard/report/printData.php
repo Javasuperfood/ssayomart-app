@@ -109,44 +109,68 @@
 <!-- Content -->
 <h1 style="text-align: center;"><span style="text-decoration: underline;">Report Penjualan Aplikasi Ssayomart</span></h1>
 <!-- End of Content -->
-<table class="table table-border-bottom-0 table-striped" style="border-collapse: collapse; width: 100.022%; height: 58.75px;" border="1">
+<table class="table table-border-bottom-0 table-striped" style="border-collapse: collapse; width: 100.015%; height: 100.18px;" border="1">
 <tbody>
+<tr style="height: 32.3264px;">
+<td style="height: 51.9097px; text-align: center; width: 2.79817%;" rowspan="2">No</td>
+<td style="height: 51.9097px; text-align: center; width: 8.10942%;" rowspan="2">Toko</td>
+<td style="height: 51.9097px; text-align: center; width: 18.2938%;" rowspan="2">INV</td>
+<td style="height: 32.3264px; text-align: center; width: 23.2463%;" colspan="3">Produk</td>
+<td style="text-align: center; width: 23.2463%; height: 51.9097px;" rowspan="2">Nama</td>
+<td style="height: 51.9097px; text-align: center; width: 6.02683%;" rowspan="2">Total 1&nbsp;</td>
+<td style="height: 51.9097px; text-align: center; width: 6.31382%;" rowspan="2">Total 2</td>
+<td style="height: 51.9097px; text-align: center; width: 11.9102%;" rowspan="2">Tanggal</td>
+</tr>
 <tr style="height: 19.5833px;">
-<td style="width: 2.79796%; height: 19.5833px; text-align: center;">No</td>
-<td style="width: 10.2592%; height: 19.5833px; text-align: center;">Toko</td>
-<td style="width: 8.39389%; height: 19.5833px; text-align: center;">INV</td>
-<td style="width: 23.2446%; height: 19.5833px; text-align: center;">Produk</td>
-<td style="width: 23.2446%; text-align: center;">Nama</td>
-<td style="width: 6.02638%; height: 19.5833px; text-align: center;">Total 1&nbsp;</td>
-<td style="width: 6.31335%; height: 19.5833px; text-align: center;">Total 2</td>
-<td style="width: 19.7292%; height: 19.5833px; text-align: center;">Tanggal</td>
+<td style="width: 11.0492%; text-align: center; height: 19.5833px;">Nama Produk</td>
+<td style="width: 7.1748%; text-align: center; height: 19.5833px;">SKU</td>
+<td style="width: 5.02236%; text-align: center; height: 19.5833px;">Jumlah</td>
 </tr>
- <?php foreach ($getCheckoutWithProduct as $p) : ?>
-<tr style="height: 39.1667px;">
-<td style="width: 2.76367%; height: 39.1667px;"><?= $iterasi++; ?></td>
-<td style="width: 10.2547%; height: 39.1667px;"><?= $p['lable']; ?></td>
-<td style="width: 16.1457%; height: 39.1667px;"><?= $p['invoice']; ?></td>
-<td style="width: 23.2003%; height: 39.1667px;">
-<?php foreach ($p['produk'] as $pr) : ?>
-<table style="border-collapse: collapse; width: 100.333%;" border="1">
-<tbody>
-<tr>
-<td style="width: 45.4813%;"><?= $pr['nama']; ?> (<?= $pr['value_item']; ?>)</td>
-<td style="width: 54.5131%;" rowspan="2">Jumlah: <?= $pr['qty']; ?></td>
-</tr>
-<tr>
-<td style="width: 45.4813%;">SKU: <?= $pr['sku']; ?></td>
-</tr>
-</tbody>
-</table>
-<?php endforeach; ?>
+<?php foreach ($getCheckoutWithProduct as $p) : ?>
+<tr style="height: 48.2708px;">
+<td style="width: 2.79817%; height: 48.2708px;"><?= $iterasi++; ?></td>
+<td style="width: 8.10942%; height: 48.2708px;"><?= $p['lable']; ?></td>
+<td style="width: 18.2938%; height: 48.2708px;"><?= $p['invoice']; ?></td>
+<td style="width: 11.0492%; height: 48.2708px;">
+<p style="text-align: center;">
+    <?php
+    $namaProduk = '';
+    $varianProduk = '';
+    foreach ($p['produk'] as $pr) {
+        $namaProduk .= $pr['nama'] . ' - ' . $pr['value_item'] . '<br>';
+    }
+    echo $namaProduk;
+    ?>
+</p>
 </td>
-<td style="width: 23.2446%; text-align: center;"><?= $p['fullname']; ?></td>
-<td style="width: 6.02638%; height: 39.1667px;"><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
-<td style="width: 6.31335%; height: 39.1667px;"><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
-<td style="width: 19.7292%; height: 39.1667px;"><?= date("d-m-Y", strtotime($p['created_at'])); ?></td>
+<td style="width: 7.1748%; height: 48.2708px;">
+<p style="text-align: center;">
+    <?php
+    $skuProduk = '';
+    foreach ($p['produk'] as $pr) {
+        $skuProduk .= $pr['sku'] . '<br>';
+    }
+    echo $skuProduk;
+    ?>
+</p>
+</td>
+<td style="width: 5.02236%; height: 48.2708px;">
+<p style="text-align: center;">
+    <?php
+    $jumlahProduk = '';
+    foreach ($p['produk'] as $pr) {
+        $jumlahProduk .= $pr['qty'] . '<br>';
+    }
+    echo $jumlahProduk;
+    ?>
+</p>
+</td>
+<td style="width: 23.2463%; text-align: center; height: 48.2708px;"><?= $p['fullname']; ?></td>
+<td style="width: 6.02683%; height: 48.2708px;"><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
+<td style="width: 6.31382%; height: 48.2708px;"><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
+<td style="width: 11.9102%; text-align: center; height: 48.2708px;"><?= date("d-m-Y", strtotime($p['created_at'])); ?></td>
 </tr>
-<?php endforeach; ?>
+<?php endforeach ?>
 </tbody>
 </table>
 </textarea>
