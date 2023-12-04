@@ -19,17 +19,22 @@
         <div class="row">
             <div class="col col-sm-12">
                 <div class="table-responsive">
-                    <table class="table table-border-bottom-0" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>No.</th>
-                                <th>Toko</th>
-                                <th>INV</th>
-                                <th>Produk</th>
-                                <th>Nama</th>
-                                <th>Total 1 (Rp)</th>
-                                <th>Total 2 (Rp)</th>
-                                <th>Tanggal</th>
+                                <th rowspan="2">No.</th>
+                                <th rowspan="2">Toko</th>
+                                <th rowspan="2">INV</th>
+                                <th class="text-center" colspan="3" scope="colgroup">Produk</th>
+                                <th rowspan="2">Nama</th>
+                                <th rowspan="2">Total 1</th>
+                                <th rowspan="2">Total 2</th>
+                                <th rowspan="2">Tanggal</th>
+                            </tr>
+                            <tr class="text-center">
+                                <th scope="colgroup">Nama Produk</th>
+                                <th scope="colgroup">SKU</th>
+                                <th scope="colgroup">Jumlah</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,19 +43,33 @@
                                     <td><?= $iterasi++; ?></td>
                                     <td><?= $p['lable']; ?></td>
                                     <td><?= $p['invoice']; ?></td>
-                                    <td>
-                                        <?php foreach ($p['produk'] as $pr) : ?>
-                                            <table class="table table-bordered ">
-                                                <tr>
-                                                    <td><?= $pr['nama']; ?> (<?= $pr['value_item']; ?>)</td>
-                                                    <td rowspan="2">Jumlah: <?= $pr['qty']; ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>SKU: <?= $pr['sku']; ?></td>
-                                                </tr>
-                                            </table>
-
-                                        <?php endforeach ?>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $namaProduk = '';
+                                        $varianProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $namaProduk .= $pr['nama'] . ' - ' . $pr['value_item'] . '<br>';
+                                        }
+                                        echo $namaProduk;
+                                        ?>
+                                    </td>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $skuProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $skuProduk .= $pr['sku'] . '<br>';
+                                        }
+                                        echo $skuProduk;
+                                        ?>
+                                    </td>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $jumlahProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $jumlahProduk .= $pr['qty'] . '<br>';
+                                        }
+                                        echo $jumlahProduk;
+                                        ?>
                                     </td>
                                     <td><?= $p['fullname']; ?></td>
                                     <td><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
