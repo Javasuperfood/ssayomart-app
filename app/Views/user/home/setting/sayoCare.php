@@ -243,7 +243,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- akhir form dan maps -->
 
         <!-- Slider card  Profil slider Grid-->
-        <div class="container">
+        <!-- <div class="container">
             <div data-aos="zoom-in-down">
                 <div class="row">
                     <div class="col">
@@ -274,7 +274,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Slider card  Slider Grid-->
 
 
@@ -783,7 +783,7 @@ if ($isMobile) {
 
     });
 
-    var mySwiper = new Swiper('.grid', {
+    /* var mySwiper = new Swiper('.grid', {
         slidesPerView: 1,
         slidesPerGroup: 1,
         spaceBetween: 10,
@@ -810,7 +810,7 @@ if ($isMobile) {
                 slidesPerGroup: 4,
             },
         },
-    });
+    }); */
 
     function tampilkanSelengkapnya(button) {
         var fullDescription = button.parentElement.querySelector('.full-description');

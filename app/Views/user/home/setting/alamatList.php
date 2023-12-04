@@ -158,7 +158,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col">
                             <ul class="list-group list-group-flush">
                                 <div class="position-relative">
-                                    <div class="card shadow-sm mb-3">
+                                    <div class="card border-0 shadow-sm mb-3">
                                         <div class="card-header border-0 bg-white">
                                             <span class="fw-bold fs-5"><?= $au['label']; ?></span>
                                         </div>
