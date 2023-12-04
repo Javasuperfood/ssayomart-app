@@ -8,6 +8,8 @@
     <b>MOHON TELITI KETIKA MENGISI PRODUK UNTUK MENGHINDARI KESALAHAN YANG TIDAK DIINGINKAN!!</b>
     <h4>HARAP TELITI MASUKAN FOTO PRODUK DENGAN UKURAN <strong>500 X 500</strong> PIXEL ATAU DIMENSI, WAJIB!!</h4>
     <b>DILARANG KERAS MEMASUKAN FOTO PRODUK LEBIH DARI UKURAN TERSEBUT!!</b>
+    <br><br>
+    <img class="image-fluid px-0 mb-4" style="width: 500px;" src="<?= base_url() ?>assets/img/produk\main/contoh.png"  alt="">
 </div>
 
 <div class="card border-1 shadow-sm position-relative mb-5">

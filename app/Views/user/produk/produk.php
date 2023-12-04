@@ -250,7 +250,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
 
-
         @media (max-width: 280px) {
 
             .gallery img {
@@ -284,7 +283,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             /* CSS edit inputan counter*/
-            /* .d-flex {
+            .d-flex {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: nowrap;
@@ -313,49 +312,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .col.mt-4.text-center p {
-                
+
                 font-size: 18px;
                 margin-left: 50px;
                 margin-right: 50px;
                 display: block;
-                
+
             }
 
             .row-cols-3 .col {
                 flex: 0 0 100%;
-               
+
                 max-width: 100%;
             }
 
             .card {
                 margin-bottom: 10px;
-               
+
             }
 
             .modal-body {
                 padding: 5px;
-                
+
             }
 
             .card-title {
                 font-size: 12px;
-               
+
             }
 
             p.text-secondary.fs-6 {
                 font-size: 12px;
-              
+
             }
 
             .form-check {
                 margin-top: 5px;
-                
+
             }
 
             .modal-footer {
                 padding: 5px;
-                
-            } */
+
+            }
         }
 
 
