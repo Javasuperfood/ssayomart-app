@@ -39,28 +39,34 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-border-bottom-0" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered-bottom-0" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>INV</th>
-                            <th>Produk</th>
-                            <th>Penerima</th>
-                            <th>Kurir</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
+                            <th rowspan="2">No</th>
+                            <th rowspan="2">INV</th>
+                            <th class="text-center" colspan="3" scope="colgroup">Produk</th>
+                            <th rowspan="2">Penerima</th>
+                            <th rowspan="2">Kurir</th>
+                            <th rowspan="2">Status</th>
+                            <th rowspan="2">Aksi</th>
+                        </tr>
+                        <tr class="text-center">
+                            <th scope="colgroup">Nama Produk</th>
+                            <th scope="colgroup">SKU</th>
+                            <th scope="colgroup">Qty</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>No</th>
-                            <th>INV</th>
-                            <th>Produk</th>
-                            <th>Penerima</th>
-                            <th>Kurir</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
+                            <th rowspan="2">No</th>
+                            <th rowspan="2">INV</th>
+                            <th class="text-center" colspan="3" scope="colgroup">Produk</th>
+                            <th rowspan="2" style="width: 20%;">Penerima</th>
+                            <th rowspan="2">Kurir</th>
+                            <th rowspan="2">Status</th>
+                            <th rowspan="2">Aksi</th>
                         </tr>
+
                     </tfoot>
                     <tbody>
                         <?php if (!$checkout) : ?>
@@ -80,19 +86,33 @@
                             <tr>
                                 <td><?= $iterasi++; ?></td>
                                 <td><?= $c['invoice']; ?></td>
-                                <td>
-                                    <?php foreach ($c['produk'] as $p) : ?>
-                                        <!-- <p><?= $p['nama']; ?> (<?= $p['value_item']; ?>) SKU : <?= $p['sku']; ?></p> -->
-                                        <table class="table table-bordered">
-                                            <tr>
-                                                <td><?= $p['nama']; ?> (<?= $p['value_item']; ?>)</td>
-                                                <td rowspan="2">Qty : <?= $p['qty']; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>SKU : <?= $p['sku']; ?></td>
-                                            </tr>
-                                        </table>
-                                    <?php endforeach ?>
+                                <td scope="colgroup">
+                                    <?php
+                                    $namaProduk = '';
+                                    $varianProduk = '';
+                                    foreach ($c['produk'] as $p) {
+                                        $namaProduk .= $p['nama'] . ' (' . $p['value_item'] . ')<br>';
+                                    }
+                                    echo $namaProduk;
+                                    ?>
+                                </td>
+                                <td scope="colgroup">
+                                    <?php
+                                    $skuProduk = '';
+                                    foreach ($c['produk'] as $p) {
+                                        $skuProduk .= $p['sku'] . '<br>';
+                                    }
+                                    echo $skuProduk;
+                                    ?>
+                                </td>
+                                <td scope="colgroup" class="text-center">
+                                    <?php
+                                    $jumlahProduk = '';
+                                    foreach ($c['produk'] as $p) {
+                                        $jumlahProduk .= $p['qty'] . '<br>';
+                                    }
+                                    echo $jumlahProduk;
+                                    ?>
                                 </td>
                                 <td><?= $c['kirim']; ?></td>
                                 <td class="courier-type"><?= $c['kurir'] . ' (' . $c['service'] . ')'; ?></td>

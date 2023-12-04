@@ -22,7 +22,7 @@
                     <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th rowspan="2">No.</th>
+                                <th rowspan="2">No</th>
                                 <th rowspan="2">Toko</th>
                                 <th rowspan="2">INV</th>
                                 <th class="text-center" colspan="3" scope="colgroup">Produk</th>
@@ -48,7 +48,7 @@
                                         $namaProduk = '';
                                         $varianProduk = '';
                                         foreach ($p['produk'] as $pr) {
-                                            $namaProduk .= $pr['nama'] . ' - ' . $pr['value_item'] . '<br>';
+                                            $namaProduk .= $pr['nama'] . ' (' . $pr['value_item'] . ')<br>';
                                         }
                                         echo $namaProduk;
                                         ?>
