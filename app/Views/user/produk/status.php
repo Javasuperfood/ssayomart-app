@@ -174,8 +174,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                     <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <?= csrf_field(); ?>
-                                            <input type="hidden" name="id_status_pesan" value="4">
                                             <div class="modal-content rounded-4 shadow">
                                                 <div class="modal-header border-bottom-0 text-center">
                                                     <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
@@ -184,6 +182,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <p>Pastikan pesanan anda telah diterima.</p>
                                                 </div>
                                                 <form action="<?= base_url('status/update/' . $inv) ?>" method="post">
+                                                    <?= csrf_field(); ?>
                                                     <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
                                                         <button type="submit" class="btn btn-lg btn-success">Selesai</button>
                                                         <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
@@ -625,8 +624,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="modal fade" id="updateStatus" tabindex="-1" aria-labelledby="updateStatusLabel" aria-hidden="true" style="overflow: hidden;">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <?= csrf_field(); ?>
-                                                            <input type="hidden" name="id_status_pesan" value="4">
                                                             <div class="modal-content rounded-4 shadow">
                                                                 <div class="modal-header border-bottom-0 text-center">
                                                                     <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
@@ -635,6 +632,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                     <p>Pastikan pesanan anda telah diterima.</p>
                                                                 </div>
                                                                 <form action="<?= base_url('status/update/' . $inv) ?>" method="post">
+                                                                    <?= csrf_field(); ?>
                                                                     <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
                                                                         <button type="submit" class="btn btn-lg btn-success">Selesai</button>
                                                                         <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>

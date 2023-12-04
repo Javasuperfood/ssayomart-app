@@ -94,10 +94,9 @@ class UserStatusController extends BaseController
         $id_status_pesan = $this->request->getVar('id_status_pesan');
 
         $data = [
-            'getstatus' => $status,
             'id_checkout' => $id_checkout,
-            'status_transaction' => $status_transaction,
-            'id_status_pesan' => $id_status_pesan,
+            'status_transaction' => 1,
+            'id_status_pesan' => 4,
         ];
         // dd($data);
 

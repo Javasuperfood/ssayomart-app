@@ -10,7 +10,7 @@ use App\Models\ProdukModel;
 
 class HistoryTransaksiController extends BaseController
 {
-    public function index(): string
+    public function index()
     {
         $midtransConfig = new \Config\Midtrans();
 
