@@ -111,7 +111,24 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body text-center">
-                                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Gambar Content (Homepage)</th>
+                                                                <th>Gambar Content (Page Content)</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                                </td>
+                                                                <td>
+                                                                    <img src="<?= base_url('assets/img/banner/content/' . $bl['img_konten']); ?>" class="img-fluid" alt="" width="120" height="10">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                     <br><br>
                                                     Pilih Delete untuk Menghapus Gambar <?= $bl['title']; ?>
                                                 </div>

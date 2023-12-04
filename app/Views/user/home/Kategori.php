@@ -209,7 +209,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($banner_promotion as $p) : ?>
                                 <div class="swiper-slide">
                                     <div class="shadow-sm">
-                                        <a href="<?= base_url() ?>">
+                                        <a href="<?= base_url() ?>content-banner-promotion/<?= $p['id_banner_promotion']; ?>">
                                             <img src="<?= base_url() ?>assets/img/banner/promotion/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
                                         </a>
                                     </div>

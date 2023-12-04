@@ -670,15 +670,23 @@ class AdminBannerController extends BaseController
         $bannerModel = new BannerPromotionModel();
 
         $fotoBanner = $this->request->getFile('img');
+        $fotoBannerPromo = $this->request->getFile('img_promo');
         $data = [
             'title' => $this->request->getVar('title'),
-            'img' => $fotoBanner
+            'img' => $fotoBanner,
+            'img_promo' => $fotoBannerPromo,
+            'title' => $this->request->getVar('title'),
         ];
         //validate data
         if (!$this->validateData($data, $bannerModel->validationRules) && !$this->validateData($data, [
             'img' => [
                 'errors' => [
                     'uploaded' => 'Gambar promo wajib diunggah.'
+                ]
+            ],
+            'img_promo' => [
+                'errors' => [
+                    'uploaded' => 'Gambar konten promo wajib diunggah.'
                 ]
             ]
         ])) {
@@ -690,6 +698,7 @@ class AdminBannerController extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/banner/promotion-banner')->withInput();
         }
+        // Homepage Banner Promo
         if ($fotoBanner->getError() == 4) {
             $namaBanner = 'default.png';
         } else {
@@ -697,10 +706,20 @@ class AdminBannerController extends BaseController
             $fotoBanner->move('assets/img/banner/promotion/', $namaBanner);
         }
 
+        // Content Banner Promo
+        if ($fotoBannerPromo->getError() == 4) {
+            $namaBannerPromo = 'default.jpg';
+        } else {
+            $namaBannerPromo = $fotoBannerPromo->getRandomName();
+            $fotoBannerPromo->move('assets/img/banner/promotion/content/', $namaBannerPromo);
+        }
+
         //repalce data
         $data = [
             'title' => $this->request->getVar('title'),
-            'img' => $namaBanner
+            'img' => $namaBanner,
+            'img_promo' => $namaBannerPromo,
+            'deskripsi' => $this->request->getVar('deskripsi'),
         ];
         // dd($data);
 
@@ -738,6 +757,14 @@ class AdminBannerController extends BaseController
                 unlink($gambarLamaPath);
             }
         }
+
+        if ($banner['img_promo'] != 'default.jpg') {
+            $gambarLamaPath = 'assets/img/banner/promotion/content/' . $banner['img_promo'];
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+        }
+
         $deleted = $bannerModel->delete($id);
 
         if ($deleted) {
@@ -777,12 +804,15 @@ class AdminBannerController extends BaseController
         $bannerModel = new BannerPromotionModel();
         $id = $this->request->getVar('id_banner_promotion');
         $image = $this->request->getFile('img');
+        $image_promo = $this->request->getFile('img_promo');
+
         $data = [
             'id_banner_promotion' => $id,
-            'img' => $image,
             'title' => $this->request->getVar('title'),
+            'img' => $image,
+            'img_promo' => $image_promo,
+            'deskripsi' => $this->request->getVar('deskripsi')
         ];
-        //validate data
 
         if (!$this->validateData($data, $bannerModel->validationRules)) {
             $alert = [
@@ -813,11 +843,30 @@ class AdminBannerController extends BaseController
             }
         }
 
-        // repalce data 
+        if ($image_promo->getError() == 4) {
+            $namaBannerImagePromo = $this->request->getVar('imagePromoLama');
+        } else {
+            $produk = $bannerModel->find($id);
+
+            if ($produk['img_promo'] == 'default.jpg') {
+                $namaBannerImagePromo = $image_promo->getRandomName();
+                $image_promo->move('assets/img/banner/promotion/content', $namaBannerImagePromo);
+            } else {
+                $namaBannerImagePromo = $image_promo->getRandomName();
+                $image_promo->move('assets/img/banner/promotion/content', $namaBannerImagePromo);
+                $gambarPromoLamaPath = 'assets/img/banner/promotion/content/' . $this->request->getVar('imagePromoLama');
+                if (file_exists($gambarPromoLamaPath)) {
+                    unlink($gambarPromoLamaPath);
+                }
+            }
+        }
+
         $data = [
             'id_banner_promotion' => $id,
-            'img' => $namaBannerImage,
             'title' => $this->request->getVar('title'),
+            'img' => $namaBannerImage,
+            'img_promo' => $namaBannerImagePromo,
+            'deskripsi' => $this->request->getVar('deskripsi'),
         ];
 
         if ($bannerModel->save($data)) {

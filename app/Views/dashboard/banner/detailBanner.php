@@ -1,6 +1,16 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
+<h1 class="h3 mb-2 text-gray-800">Edit Banner Content</h1>
+<ul class="breadcrumb bg-light ps-0">
+    <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
+    <li class="breadcrumb-item active"><a href="<?= base_url() ?>dashboard/banner/tambah-banner" class="text-dark">Banner Content</a></li>
+    <li class="breadcrumb-item active text-danger text-decoration-underline">Edit Banner Content</li>
+</ul>
+<p>Anda dapat mengatur banner promotion yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.</p>
+<div class="alert alert-danger text-center border-1 my-4 shadow-sm" role="alert">
+    <b>Note : Perhatikan ukuran dan resolusi banner sebelum upload ke Aplikasi Ssayomart Supermarket. Disarankan agar menghubungi tim Design untuk penambahan Banner.</b>
+</div>
 <div class="card border-0 shadow-sm border-left-danger mb-4">
     <div class="card-header border-0 py-3 bg-white">
         <h5 class=" mb-0">Banner Homepage</h5>
@@ -106,7 +116,24 @@
                                             </button>
                                         </div>
                                         <div class="modal-body text-center">
-                                            <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Gambar Content (Homepage)</th>
+                                                        <th>Gambar Content (Page Content)</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <img src="<?= base_url('assets/img/banner/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                        </td>
+                                                        <td>
+                                                            <img src="<?= base_url('assets/img/banner/content/' . $bl['img_konten']); ?>" class="img-fluid" alt="" width="120" height="10">
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                             <br><br>
                                             Pilih Delete untuk Menghapus Gambar <?= $bl['title']; ?>
                                         </div>

@@ -32,6 +32,16 @@
                         <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= old('img') ?>" accept="image/*">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Gambar Banner Content Promosi</label>
+                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img_promo')) ? 'is-invalid' : 'border-1'; ?>" id="img_promo" name="img_promo" value="<?= old('img_promo') ?>" accept="image/*">
+                        <div class="invalid-feedback"><?= validation_show_error('img_promo'); ?></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="banner">Deskripsi (Optional)</label>
+                        <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi untuk banner Anda..." value="<?= old('deskripsi') ?>"></input>
+                        <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
+                    </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn btn-danger">Simpan</button>
@@ -52,10 +62,9 @@
                 <table class="table text-center" id="example" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                        <tr>
                             <th>Gambar Promosi</th>
+                            <th>Gambar Content Promosi</th>
                             <th>Aksi</th>
-                        </tr>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,6 +72,9 @@
                             <tr>
                                 <td>
                                     <img src="<?= base_url('assets/img/banner/promotion/' . $bl['img']); ?>" class="img-fluid" alt="" width="500" height="500">
+                                </td>
+                                <td>
+                                    <img src="<?= base_url('assets/img/banner/promotion/content/' . $bl['img_promo']); ?>" class="img-fluid" alt="" width="120" height="10">
                                 </td>
                                 <td class="text-center">
                                     <div class="nav-item dropdown no-arrow">
@@ -97,7 +109,24 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body text-center">
-                                                    <img src="<?= base_url('assets/img/banner/promotion/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                    <table>
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Gambar Promosi</th>
+                                                                <th>Gambar Promosi Content</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <img src="<?= base_url('assets/img/banner/promotion/' . $bl['img']); ?>" class="img-fluid" alt="" width="300" height="500">
+                                                                </td>
+                                                                <td>
+                                                                    <img src="<?= base_url('assets/img/banner/promotion/content/' . $bl['img_promo']); ?>" class="img-fluid" alt="" width="120" height="10">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                     <br><br>
                                                     Pilih Delete untuk Menghapus Gambar <?= $bl['title']; ?>
                                                 </div>
