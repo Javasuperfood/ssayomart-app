@@ -44,6 +44,7 @@ $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$
 $routes->get('/produk/(:any)', 'ProdukController::produkShowSingle/$1');
 $routes->get('/blog/(:segment)', 'Blog::index/$1');
 $routes->get('/content-banner/(:segment)', 'BannerContentController::contentBanner/$1');
+$routes->get('/content-banner-promotion/(:segment)', 'BannerContentController::contentBannerPromotion/$1');
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
