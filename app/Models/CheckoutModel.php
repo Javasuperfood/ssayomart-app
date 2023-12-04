@@ -140,4 +140,14 @@ class CheckoutModel extends Model
         // dd($result);
         return $result;
     }
+
+    // public function getOrderByUserIdFromPayload($userId)
+    // {
+    //     return $this->db->table('jsf_checkout')
+    //         ->select('jsf_checkout.*, users.uuid as user_uuid')
+    //         ->join('users', 'users.id = jsf_checkout.id_user') // Sesuaikan dengan kolom yang sesuai di tabel users
+    //         ->where('jsf_checkout.id_user', $userId) // Sesuaikan dengan kolom yang sesuai di tabel jsf_checkout
+    //         ->get()
+    //         ->getRowArray();
+    // }
 }
