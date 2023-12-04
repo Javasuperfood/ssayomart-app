@@ -66,7 +66,7 @@ class CheckoutProdukModel extends Model
         if ($status == 'on-process') {
             $query->where('jsf_checkout.id_status_pesan', '2');
         }
-        if ($status == 'delivery') {
+        if ($status == 'delivered') {
             $query->where('jsf_checkout.id_status_pesan', '3');
         }
         if ($status == 'complited') {

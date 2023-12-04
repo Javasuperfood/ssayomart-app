@@ -130,7 +130,7 @@ class NotifController extends BaseController
 
     public function sendOrderNotificationByStatus($status)
     {
-        log_message('debug', 'Status in sendOrderNotificationByStatus: ' . $status);
+        log_message('info', 'Status in sendOrderNotificationByStatus: ' . $status);
 
         $rawData = file_get_contents('php://input');
         $payload = json_decode($rawData, true);
