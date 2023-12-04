@@ -108,7 +108,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                             <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                                 <a class="link-secondary" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
-                                                    <i class="bi bi-chevron-bar-down fs-4" style="font-weight: bold;"></i>
+                                                    <i class="bi bi-chevron-bar-down fs-6" style="font-weight: bold;"></i>
                                                 </a>
                                             </div>
                                         </div>
@@ -722,4 +722,47 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </style>
 <?php endif; ?>
 <!-- end Desktop -->
+
+<!-- button scrool up -->
+<button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
+
+<style>
+    /* CSS untuk tombol Scroll Up */
+    #scrollUpButton {
+        display: none;
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        width: 30px;
+        height: 40px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 99;
+    }
+</style>
+
+<script>
+    // tombol Scroll Up
+    var scrollUpButton = document.getElementById("scrollUpButton");
+
+    // Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
+    window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollUpButton.style.display = "block";
+        } else {
+            scrollUpButton.style.display = "none";
+        }
+    });
+
+    // Scroll kembali ke atas saat tombol Scroll Up diklik
+    scrollUpButton.addEventListener("click", function() {
+        document.body.scrollTop = 0; // Untuk browser Safari
+        document.documentElement.scrollTop = 0; // Untuk browser lainnya
+    });
+</script>
+
+<!-- end button scroll -->
+
 <?= $this->endSection(); ?>
