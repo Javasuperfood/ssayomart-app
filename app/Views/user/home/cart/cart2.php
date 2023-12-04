@@ -53,7 +53,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
                                             </div>
                                             <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class=" mt-1 btn btn-sm position-absolute end-0 mx-2"><i class="bi bi-trash text-danger"></i></button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +61,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <?php endforeach; ?>
                 </div>
-                <div class="row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
+                <div style="background-color:#fff" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
                     <div class="col">
                         <button id="btnCheckout" type="submit" form="formCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px"><?= lang('Text.btn_checkout') ?></button>
                     </div>
