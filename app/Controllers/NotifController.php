@@ -174,7 +174,6 @@ class NotifController extends BaseController
         }
     }
 
-
     // public function sendOrderNotificationByStatus($status)
     // {
     //     log_message('info', 'Status in sendOrderNotificationByStatus: ' . $status);

@@ -24,6 +24,7 @@ class ProdukModel extends Model
         'img',
         'is_active',
         'id_sub_kategori',
+        'short',
         'created_by'
     ];
 
@@ -256,5 +257,14 @@ class ProdukModel extends Model
         $result = $query->get()->getResultArray();
         // dd($result);
         return $result;
+    }
+
+    public function getLatestProducts($limit = 6)
+    {
+        return $this->select('*')
+            ->orderBy('created_at', 'DESC')
+            ->limit($limit)
+            ->where('deleted_at', null)
+            ->findAll();
     }
 }
