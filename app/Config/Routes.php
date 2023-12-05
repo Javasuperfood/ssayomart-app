@@ -241,11 +241,17 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
     $routes->post('produk/update-produk/(:segment)', 'AdminProduk::saveUpdateProduk/$1');
 
+    // Ubah Urutan Produk Routes
+    $routes->get('produk/management-fetching-content', 'AdminProduk::managementFetching');
+    $routes->get('produk/pilih-produk-rekomendasi', 'AdminProduk::pilihProdukRekomendasi');
+    $routes->get('produk/pilih-produk-terbaru', 'AdminProduk::pilihProdukTerbaru');
+    $routes->post('produk/pilih-produk-terbaru/save', 'AdminProduk::saveProdukTerbaru');
+
     // Kategori Produk Batch
     $routes->get('produk/produk-batch', 'AdminKategoriBatch::produkBatch');
     $routes->post('produk/produk-batch/save', 'AdminKategoriBatch::save');
 
-
+    // Stock Produk
     $routes->get('update-stok/(:segment)', 'AdminStokController::updateStock/$1');
     $routes->post('update-stok/update', 'AdminStokController::storeUpdateStok');
 

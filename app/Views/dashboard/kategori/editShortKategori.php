@@ -43,7 +43,8 @@
                                     <li draggable="true" ondragstart="dragStart(event, <?= $k['id_kategori']; ?>)" ondrop="dragDrop(event, <?= $k['id_kategori']; ?>)">
                                         <i class="bi bi-arrow-up"></i><i class="bi bi-arrow-down"></i>
                                         <img src="<?= base_url('assets/img/kategori/' . $k['img']); ?>" class="img-fluid" alt="" width="50" height="50">
-                                        <strong><?= $k['nama_kategori'] ?></strong> <input type="hidden" name="id_kategori[]" value="<?= $k['id_kategori']; ?>">
+                                        <strong><?= $k['nama_kategori'] ?></strong>
+                                        <input type="hidden" name="id_kategori[]" value="<?= $k['id_kategori']; ?>">
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
