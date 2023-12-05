@@ -257,4 +257,27 @@ class ProdukModel extends Model
         // dd($result);
         return $result;
     }
+    public function getProdukHome($id_kategori = null, $keyword = null, $latest = null)
+    {
+        $getProduk = $this->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+            ->groupBy('jsf_produk.id_produk, jsf_produk.nama, vi.id_variasi_item')
+            ->where('jsf_produk.deleted_at', null);
+
+        if ($id_kategori != null) {
+            $getProduk->where('jsf_produk.id_kategori', $id_kategori);
+        }
+
+        if ($keyword != null) {
+            $getProduk->like('jsf_produk.nama', $keyword)->limit(3);
+        }
+
+        if ($latest != null) {
+            $getProduk->orderBy('jsf_produk.id_produk', 'DESC')->limit(6);
+        }
+
+
+        $result = $getProduk->get()->getResultArray();
+        return $result;
+    }
 }

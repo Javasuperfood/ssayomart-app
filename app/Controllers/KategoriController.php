@@ -68,6 +68,11 @@ class KategoriController extends BaseController
         $randomProducts = $produkModel->getRandomProducts();
         $bannerList = $bannerModel->findAll();
 
+        $produkKimchi = $produkModel->getProdukHome(1, 'kimchi');
+        $produkNori = $produkModel->getProdukHome(2, 'nori');
+
+        $produk = array_merge($produkKimchi, $produkNori);
+
         $data = [
             'title' => 'Ssayomart',
             'promo' => $promoModel->getPromo($now),
@@ -77,7 +82,9 @@ class KategoriController extends BaseController
             'banner_promotion' => $bannerPromotionModel->find(),
             'randomProducts' => $randomProducts,
             'blog_detail' => $blog_detail,
-            'content' => $bannerList
+            'content' => $bannerList,
+            'produk' => $produk,
+            'latest' => $produkModel->getProdukHome(null, null, true)
         ];
         // dd($data);
 
@@ -86,12 +93,13 @@ class KategoriController extends BaseController
 
     // ================ All Kategori ==============================
 
-    public function allkategori()
+    public function allKategori()
     {
         $kategori = new KategoriModel();
         $data = [
             'title' => 'All Kategori',
             'kategori' => $kategori->findAll(),
+            'back' => '/'
         ];
         // dd($data);
         return view('user/home/AllKategori', $data);

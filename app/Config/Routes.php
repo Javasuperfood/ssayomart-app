@@ -52,7 +52,7 @@ $routes->get('/virtual-account', 'Payment::virtualAccount');
 $routes->get('/qriss', 'Payment::qriss');
 $routes->get('/ccard', 'Payment::ccard');
 $routes->get('/ewallet', 'Payment::ewallet');
-$routes->get('/AllKategori', 'KategoriController::allkategori');
+$routes->get('/all-category', 'KategoriController::allKategori');
 // app/Config/Routes.php
 $routes->get('/show-notification', 'WebhookController::showNotification');
 

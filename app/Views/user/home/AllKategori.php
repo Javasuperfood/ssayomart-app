@@ -1,5 +1,6 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
+<div class="py-3"></div>
 <!-- All Kategori -->
 <div class="container">
     <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
