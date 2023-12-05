@@ -130,7 +130,7 @@
                 <h6 class="m-0 fw-bold px-2">Promo Sedang Berlangsung</h6>
             </div>
             <div class="card-body mt-2">
-                <table class="table text-center">
+                <table class="table table-sm text-center">
                     <thead>
                         <tr>
                             <th class="col-1">No</th>
