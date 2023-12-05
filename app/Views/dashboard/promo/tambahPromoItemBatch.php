@@ -157,7 +157,7 @@
                                                 Update
                                             </a>
                                             <div class="dropdown-divider"></div>
-                                            <form action="<?= base_url() ?>dashboard/promo/tambah-promo-item/delete-promo-item/<?= $promoItem['id_promo_item_batch']; ?>" method="post">
+                                            <form action="<?= base_url() ?>dashboard/promo/tambah-promo-item-batch/delete-promo-item-batch/<?= $promoItem['id_promo_item_batch']; ?>" method="post">
                                                 <?= csrf_field() ?>
                                                 <button type="submit" class="dropdown-item">
                                                     <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>

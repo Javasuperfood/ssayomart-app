@@ -43,7 +43,7 @@ class JsfPromoBatch extends Migration
                 'null'          => true
             ],
         ]);
-        $this->forge->addKey('id_promo_item_batch ', true);
+        $this->forge->addKey('id_promo_item_batch', true);
         // $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
         $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk');
         $this->forge->createTable('jsf_promo_batch');
