@@ -8,7 +8,7 @@ class PromoBatchModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'jsf_promo_batch';
-    protected $primaryKey       = 'id_promo_batch';
+    protected $primaryKey       = 'id_promo_item_batch';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;

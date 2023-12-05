@@ -411,26 +411,27 @@ class AdminPromoController extends BaseController
     public function deletePromoItemBatch($id)
     {
         $promoBatchModel = new PromoBatchModel();
-        $promoBatchModel->find($id);
+        $promoBatch = $promoBatchModel->find($id);
 
-        $deleted = $promoBatchModel->delete($id);
-        // dd($id);
-        if ($deleted) {
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Promo item produk berhasil di hapus.'
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo-item-batch');
-        } else {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada penghapusan data'
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo-item-batch')->withInput();
+        if ($promoBatch) {
+            $deleted = $promoBatchModel->delete($id);
+            if ($deleted) {
+                $alert = [
+                    'type' => 'success',
+                    'title' => 'Berhasil',
+                    'message' => 'Promo item produk berhasil di hapus.'
+                ];
+                session()->setFlashdata('alert', $alert);
+                return redirect()->to('dashboard/promo/tambah-promo-item-batch');
+            } else {
+                $alert = [
+                    'type' => 'error',
+                    'title' => 'Error',
+                    'message' => 'Terdapat kesalahan pada penghapusan data'
+                ];
+                session()->setFlashdata('alert', $alert);
+                return redirect()->to('dashboard/promo/tambah-promo-item-batch')->withInput();
+            }
         }
     }
 }
