@@ -3,39 +3,40 @@
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     </head>
-    <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
-        <div class="container bg-white" id="product">
-            <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
-            <hr class="border-darker mt-0 mb-3">
+    <?php if (isset($featuredProducts)) : ?>
+        <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
+            <div class="container bg-white" id="product">
+                <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
+                <hr class="border-darker mt-0 mb-3">
 
-            <div class="row row-cols-3 me-0" id="product-unggulan-container">
-                <!-- Featured Products -->
-                <?php foreach ($featuredProducts as $fp) : ?>
-                    <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
+                <div class="row row-cols-3 me-0" id="product-unggulan-container">
+                    <!-- Featured Products -->
+                    <?php foreach ($featuredProducts as $fp) : ?>
+                        <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
 
-                        <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%;padding: 5px;">
+                            <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%;padding: 5px;">
 
-                            <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_<?= $fp['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
-                                </div>
-                            </a>
-                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                <div class="d-flex align-items-start justify-content-center" style=" height: 65px;">
-                                    <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($fp['nama'], 0, 30); ?></p>
-                                </div>
-                                <p class="text-secondary" style="font-size: 8px; margin: 0;">
-                                    <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
-                                </p>
+                                <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_<?= $fp['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
+                                    </div>
+                                </a>
+                                <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+                                    <div class="d-flex align-items-start justify-content-center" style=" height: 65px;">
+                                        <p class=" text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($fp['nama'], 0, 30); ?></p>
+                                    </div>
+                                    <p class="text-secondary" style="font-size: 8px; margin: 0;">
+                                        <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
+                                    </p>
 
-                                <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
-                                    <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
-                                        Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
-                                    <?php else : ?>
-                                        <?= substr('Rp. ' . number_format($fp['harga_min'], 0, ',', '.') . '-' . number_format($fp['harga_max'], 0, ',', '.'), 0, 13); ?>
-                                    <?php endif ?>
-                                </h1>
-                                <!-- <div class="container mt-1 mb-2">
+                                    <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
+                                        <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
+                                            Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
+                                        <?php else : ?>
+                                            <?= substr('Rp. ' . number_format($fp['harga_min'], 0, ',', '.') . '-' . number_format($fp['harga_max'], 0, ',', '.'), 0, 13); ?>
+                                        <?php endif ?>
+                                    </h1>
+                                    <!-- <div class="container mt-1 mb-2">
                                     <div class="row justify-items-center">
                                         <div class="col">
                                             <div class="horizontal-counter">
@@ -47,7 +48,7 @@
                                     </div>
                                 </div> -->
 
-                                <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
+                                    <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
                                     <form action="<?= base_url('produk/' . $fp['slug']); ?>">
                                         <input type="hidden" name="add-to-cart" value="show">
                                         <input type="hidden" name="qty" id="Cqty<?= $fp['id_produk']; ?>" value="1" value="show">
@@ -65,26 +66,27 @@
                                     </form>
                                 </div> -->
 
-                                <!-- button Animasi -->
-                                <div class="button-container" id="button-container-<?= $fp['id_produk']; ?>">
-                                    <div class="button" onclick="changeToCapsule(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)">
-                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
-                                    </div>
+                                    <!-- button Animasi -->
+                                    <div class="button-container" id="button-container-<?= $fp['id_produk']; ?>">
+                                        <div class="button" onclick="changeToCapsule(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)">
+                                            <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                                        </div>
 
-                                    <div class="button-capsule" style="display: none;">
-                                        <i class="icon fas fa-minus" onclick="decreaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
-                                        <input type="number" class="input border-0" value="1" id="counter-<?= $fp['id_produk']; ?>">
-                                        <i class="icon fas fa-plus" onclick="increaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
+                                        <div class="button-capsule" style="display: none;">
+                                            <i class="icon bi bi-dash" onclick="decreaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
+                                            <input type="number" class="input border-0" value="1" id="counter-<?= $fp['id_produk']; ?>">
+                                            <i class="icon bi bi-plus" onclick="increaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
+                                        </div>
                                     </div>
+                                    <!-- akhir button animasi -->
                                 </div>
-                                <!-- akhir button animasi -->
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
+    <?php endif ?>
 
     <div class="container bg-white" id="product">
         <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
@@ -119,13 +121,13 @@
                             <!-- button Animasi -->
                             <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
                                 <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">
-                                    <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
+                                    <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
                                 </div>
 
                                 <div class="button-capsule" style="display: none;">
-                                    <i class="icon fas fa-minus" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
+                                    <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                                     <input type="number" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
-                                    <i class="icon fas fa-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
+                                    <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                                 </div>
                             </div>
                             <!-- akhir button animasi -->
@@ -206,38 +208,6 @@
             </style>
         </div>
     </div>
-
-    <!-- Button counter lama -->
-    <!-- <div class="container mt-1 mb-1">
-                            <div class="row justify-items-center">
-                                <div class="col">
-                                    <div class="horizontal-counter">
-                                        <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                        <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" disabled>
-                                        <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-    <!-- akhir button counter lama -->
-
-    <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-    <form action="<?= base_url('produk/' . $p['slug']); ?>">
-        <input type="hidden" name="add-to-cart" value="show">
-        <input type="hidden" name="qty" id="Cqty<?= $p['id_produk']; ?>" value="1" value="show">
-        <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-            <i class="fas fa-shopping-cart text-white fa-sm"></i>
-        </button>
-    </form>
-    <form action="<?= base_url('produk/' . $p['slug']); ?>">
-        <input type="hidden" name="buy" value="show">
-        <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-        <button type="submit" class="btn btn-danger mx-1 mt-2">
-            Buy
-        </button>
-        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-    </form>
-</div> -->
 
     <script>
         function changeToCapsule(c, v) {
@@ -355,31 +325,7 @@
             });
         }
     </script>
-    <script type="text/javascript">
-        // function increaseCount(b, id) {
-        //     var input = b.previousElementSibling;
-        //     console.log(input);
-        //     var value = parseInt(input.value, 10);
-        //     value = isNaN(value) ? 0 : value;
-        //     value++;
-        //     input.value = value;
-        //     $('#Cqty' + id).val(value);
-        //     $('#Bqty' + id).val(value);
-        // }
 
-        // function decreaseCount(b, id) {
-        //     var input = b.nextElementSibling;
-        //     var value = parseInt(input.value, 10);
-        //     if (value > 1) {
-        //         value = isNaN(value) ? 0 : value;
-        //         value--;
-        //         input.value = value;
-        //         $('#Cqty' + id).val(value);
-        //         $('#Bqty' + id).val(value);
-
-        //     }
-        // }
-    </script>
 <?php else : ?>
     <div class="container px-5 my-5 align-middle">
         <div class="card border-0 text-center rounded shadow-sm">

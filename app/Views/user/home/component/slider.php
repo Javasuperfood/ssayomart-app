@@ -44,25 +44,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <script>
-        var mySwiper = new Swiper('.mySwiper', {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            autoplay: {
-                delay: 5000, // Ganti dengan interval otomatis yang diinginkan (dalam milidetik)
-            },
+        // var mySwiper = new Swiper('.mySwiper', {
+        //     slidesPerView: 1,
+        //     spaceBetween: 10,
+        //     navigation: {
+        //         nextEl: '.swiper-button-next',
+        //         prevEl: '.swiper-button-prev',
+        //     },
+        //     autoplay: {
+        //         delay: 5000, // Ganti dengan interval otomatis yang diinginkan (dalam milidetik)
+        //     },
 
-            simulateTouch: true, // Mengaktifkan kemampuan swipe manual
-            breakpoints: {
-                // Breakpoint untuk mode mobile
-                768: {
-                    slidesPerView: 1,
-                },
-            },
-        });
+        //     simulateTouch: true, // Mengaktifkan kemampuan swipe manual
+        //     breakpoints: {
+        //         // Breakpoint untuk mode mobile
+        //         768: {
+        //             slidesPerView: 1,
+        //         },
+        //     },
+        // });
     </script>
 <?php else : ?>
     <!-- End Banner Mobile -->
