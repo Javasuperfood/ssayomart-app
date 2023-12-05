@@ -227,7 +227,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </section>
-
             <!-- Akhir Banner Promosi Item -->
 
             <!-- rekomendasi produk -->
@@ -239,9 +238,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
 
-                <div class="row row-cols-3 me-0 mt-2">
-                    <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 d-flex">
-                        <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%;padding: 5px;">
+                <div class="row mt-2">
+                    <div class="col-4 col-md-2 col-lg-2 mb-3 d-flex">
+                        <div class="card card-produk border-0 shadow-sm text-center" style="width: 110px; height: 100%;">
                             <a href="#" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <img src="assets/img/produk\main/default.png" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
@@ -259,7 +258,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     Rp.1000
                                 </h1>
                                 <!-- button Animasi -->
-                                <!--  -->
+                                <div class="button-container">
+                                    <div class="button" onclick="changeToCapsule()">
+                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center">+</i>
+                                    </div>
+
+                                    <div class="button-capsule" style="display: none;">
+                                        <i class="icon fas fa-minus" onclick="decreaseValue()">-</i>
+                                        <input type="number" class="input" value="1" id="counter">
+                                        <i class="icon fas fa-plus" onclick="increaseValue()">+</i>
+                                    </div>
+                                </div>
                                 <!-- akhir button animasi -->
                             </div>
                         </div>
@@ -400,7 +409,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
 
-            <!-- rekomendasi produk -->
+            <!-- Produk Terbaru -->
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
                     <div class="card-warning">
@@ -428,8 +437,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                                     Rp.1000
                                 </h1>
+
                                 <!-- button Animasi -->
-                                <!--  -->
+                                <div class="button-container">
+                                    <div class="button" onclick="changeToCapsule()">
+                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center">+</i>
+                                    </div>
+
+                                    <div class="button-capsule" style="display: none;">
+                                        <i class="icon fas fa-minus" onclick="decreaseValue()">-</i>
+                                        <input type="number" class="input" value="1" id="counter">
+                                        <i class="icon fas fa-plus" onclick="increaseValue()">+</i>
+                                    </div>
+                                </div>
                                 <!-- akhir button animasi -->
                             </div>
                         </div>
@@ -569,35 +589,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <!-- All Kategori -->
-            <div class="container">
-                <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
-                    <div class="card-warning">
-                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
-                        </span>
-                    </div>
-                </div>
 
-
-                <!-- <div class="row text-center row-cols-3 mt-3">
-                    <?php foreach ($kategori as $k) : ?>
-                        <div class="col-4 col-md-4 col-lg-2">
-                            <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                                <div class="text-bg-light mb-3 bg-white border-0">
-                                    <div class="px-0 py-0 mx-0 my-0">
-                                        <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div> -->
-                <div class="row">
-                    <div class="col pb-5">
-                    </div>
-                </div>
-            </div>
             <!-- All Kategori -->
+            <section>
+                <div class="container d-flex justify-content-between align-items-center">
+                    <a href="<?= base_url(); ?>AllKategori">
+                        <img src="<?= base_url() ?>assets/img/ssayoresto/btnsayoresto.jpg" class="d-block w-100 rounded-3">
+                    </a>
+                </div>
+            </section>
 
         </div>
         <!-- End Mobile View -->
@@ -672,121 +672,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 outline: none;
             }
         </style>
-
         <script>
-            function changeToCapsule(c, v) {
-                $(`#button-container-${c} .button`).css('display', 'none');
-                $(`#button-container-${c} .button-capsule`).css('display', 'flex');
-                addToCartProductList(c, v, 1)
-                cartItemShow('plus'); // cart script
-                let im_produk = document.querySelectorAll('.im_produk_' + c + '_');
-                im_produk.forEach(function(e) {
-                    e.classList.add('animate__animated', 'animate__tada');
-                    e.addEventListener('animationend', () => {
-                        e.classList.remove('animate__animated', 'animate__tada');
-                    });
-                });
-
-                let cartcart = document.querySelector('.a_cart_link_0');
-                cartcart.classList.add('animate__animated', 'animate__shakeY');
-                cartcart.addEventListener('animationend', () => {
-                    cartcart.classList.remove('animate__animated', 'animate__shakeY');
-                });
+            function changeToCapsule() {
+                document.querySelector('.button').style.display = 'none';
+                document.querySelector('.button-capsule').style.display = 'flex';
             }
 
-            function decreaseValue(c, v) {
-                var counter = document.querySelectorAll(`#counter-${c}`);;
-                let q = 1;
-                let ss = true
-                counter.forEach(function(e) {
-                    if (parseInt(e.value) > 0) {
-                        e.value = (parseInt(e.value) - 1);
-                        if (parseInt(e.value) < 1) {
-                            e.value = 1;
-                            if (ss) {
-                                ss = changeToCircle(c);
-                            }
-                        }
-                    }
-                });
-                if (ss) {
-                    addToCartProductList(c, v, q)
+            function decreaseValue() {
+                var counter = document.getElementById('counter');
+                if (parseInt(counter.value) > 0) {
+                    counter.value = parseInt(counter.value) - 1;
                 }
+                validateCounter();
             }
 
-            function increaseValue(c, v) {
-                var counter = document.querySelectorAll(`#counter-${c}`);
-                let q = 1
-                counter.forEach(function(e) {
-                    e.value = (parseInt(e.value) + 1);
-                    q = e.value;
-                });
-                addToCartProductList(c, v, q)
-                let cartcart = document.querySelector('.a_cart_link_0');
-                cartcart.classList.add('animate__animated', 'animate__shakeY');
-                cartcart.addEventListener('animationend', () => {
-                    cartcart.classList.remove('animate__animated', 'animate__shakeY');
-                });
+            function increaseValue() {
+                var counter = document.getElementById('counter');
+                counter.value = parseInt(counter.value) + 1;
+                validateCounter();
             }
 
-            function changeToCircle(c) {
-                $(`#button-container-${c} .button`).css('display', 'flex');
-                $(`#button-container-${c} .button-capsule`).css('display', 'none');
-                cartDeleteProdukList(c)
+            function changeToCircle() {
+                document.querySelector('.button').style.display = 'flex';
+                document.querySelector('.button-capsule').style.display = 'none';
             }
 
-
-            function addToCartProductList(c, v, q) {
-                var produk = c;
-                var varian = v;
-                var qty = q;
-                // console.log(produk, varian, qty)
-                $.ajax({
-                    type: "POST",
-                    url: "<?= base_url('api/add-to-cart'); ?>",
-                    dataType: "json",
-                    data: {
-                        id_produk: produk,
-                        id_varian: varian,
-                        qty: qty
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            // console.log(response.message)
-                            return true
-                        } else {
-                            // console.log(response.message)
-                            return false
-                        }
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                        <?php if (!auth()->loggedIn()) : ?>
-                            location.href = '<?= base_url(); ?>login'
-                        <?php endif ?>
-                        return false
-                    }
-                });
-            }
-
-            function cartDeleteProdukList(produk) {
-                $.ajax({
-                    type: "POST",
-                    url: "<?= base_url('api/delete-cart-product'); ?>",
-                    dataType: "json",
-                    data: {
-                        produk: produk,
-                    },
-                    success: function(response) {
-                        cartItemShow('minus'); // cart script
-                    },
-                    error: function(error) {
-                        console.error("Error:", error);
-                        <?php if (!auth()->loggedIn()) : ?>
-                            location.href = '<?= base_url(); ?>login'
-                        <?php endif ?>
-                    }
-                });
+            function validateCounter() {
+                var counter = document.getElementById('counter');
+                if (parseInt(counter.value) <= 1) {
+                    counter.value = 1;
+                    changeToCircle();
+                }
             }
         </script>
 
