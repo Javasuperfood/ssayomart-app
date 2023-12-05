@@ -83,4 +83,17 @@ class KategoriController extends BaseController
 
         return view('user/home/Kategori2', $data);
     }
+
+    // ================ All Kategori ==============================
+
+    public function allkategori()
+    {
+        $kategori = new KategoriModel();
+        $data = [
+            'title' => 'All Kategori',
+            'kategori' => $kategori->findAll(),
+        ];
+        // dd($data);
+        return view('user/home/AllKategori', $data);
+    }
 }
