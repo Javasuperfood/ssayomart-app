@@ -258,7 +258,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php if ($latest) : ?>
                         <?php foreach ($latest as $p) : ?>
                             <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                                <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
+                                <div class="card card-produk border-0 shadow-sm text-center" style="width: 110px; height: 100%; padding: 5px;">
                                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                         <div class="d-flex justify-content-center align-items-center">
                                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
@@ -351,7 +351,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     display: none;
                     flex-direction: row;
                     align-items: center;
-                    justify-content: space-between;
+                    justify-content: center;
                     padding: 0 5px;
                     /* Padding yang lebih kecil */
                     transition: all 0.3s ease;
@@ -360,10 +360,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
 
                 .icon {
-                    font-size: 12px;
+                    font-size: 16px !important;
                     color: #e83b2e;
                     transition: all 0.3s ease;
                     cursor: pointer;
+                    font-weight: bold !important;
+                    /* Menentukan tebalnya ikon */
                 }
 
                 .input {
@@ -510,16 +512,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             @media screen and (min-width: 717px) and (max-width: 717px) {
-
-                .col-lg-2,
-                .col-md-2,
-                .col-4 {
+                .col-4.col-md-2.col-lg-2 {
+                    justify-content: center;
+                    align-items: center;
+                    max-width: 25% !important;
                     flex: 0 0 100% !important;
-                    max-width: 30%;
+                    /* width: 20% !important; */
                 }
 
                 .card-produk {
-                    width: 130px !important;
+                    width: 120px !important;
                     /* Mengisi lebar parent container */
                 }
 
@@ -559,35 +561,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
             }
 
-            @media (max-width: 280px) {
-
-                .col-lg-2,
-                .col-md-2,
-                .col-6 {
+            @media (min-width: 280px) and (max-width: 320px) {
+                .col-4.col-md-2.col-lg-2 {
+                    justify-content: center;
+                    align-items: center;
+                    max-width: 50% !important;
                     flex: 0 0 100% !important;
-                    max-width: 50%;
+                    /* width: 20% !important; */
                 }
 
                 .card-produk {
-                    width: 110px !important;
+                    width: 120px !important;
                     /* Mengisi lebar parent container */
                 }
 
-            }
-
-            @media (max-width: 320px) {
-
-                .card-produk {
-                    width: 85px !important;
-                    /* Mengisi lebar parent container */
-                }
             }
         </style>
         <!-- end samsung galaxy fold tonggle dual screen mode 717 -->
     <?php else : ?>
         <!-- Desktop View -->
         <div id="desktopContent" style="margin-top:15px;">
-
             <!-- Modal  Homepage-->
             <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
                 <?php foreach ($banner_pop_up as $pop) : ?>
