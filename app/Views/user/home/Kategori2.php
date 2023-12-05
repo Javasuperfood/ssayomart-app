@@ -213,7 +213,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         ?>
                     </div>
 
-                    <div class="row px-2">
+                    <!-- <div class="row px-2">
                         <div class="col-6 py-1 px-1">
                             <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
                                 <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
@@ -224,7 +224,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </section>
             <!-- Akhir Banner Promosi Item -->
