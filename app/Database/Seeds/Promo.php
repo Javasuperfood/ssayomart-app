@@ -27,7 +27,27 @@ class Promo extends Seeder
                 'end_at' => '2026-12-20',
                 'deskripsi' => 'Diskon 20% Untuk Merayakan Kwangcheon Kim',
                 'img' => 'promotion-2.jpg'
+            ],
+            [
+                'id_promo' => 3,
+                'title' => 'Promo Terbaru',
+                'slug' =>  'promo-terbaru',
+                'start_at' => '2023-09-07',
+                'end_at' => '2026-12-20',
+                'deskripsi' => 'Produk terbatu dari Ssayomart',
+                'img' => 'promotion-3.jpg'
+            ],
+            [
+                'id_promo' => 4,
+                'title' => 'Diskon Sayuran',
+                'slug' =>  'diskon-sayuran',
+                'start_at' => '2023-09-07',
+                'end_at' => '2026-12-20',
+                'deskripsi' => 'Diskon semua sayuran',
+                'img' => 'promotion-4.jpg'
             ]
+
+
         ];
 
         $this->db->table('jsf_promo')->insertBatch($data);
