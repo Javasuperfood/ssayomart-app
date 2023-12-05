@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col col-sm-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-sm table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th rowspan="2">No</th>
