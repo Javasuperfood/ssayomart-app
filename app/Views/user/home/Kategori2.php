@@ -249,7 +249,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
                     <div class="card-warning">
-                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong>PRODUK TERRBARU</strong></h2>
+                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong>PRODUK TERBARU</strong></h2>
                         </span>
                     </div>
                 </div>
