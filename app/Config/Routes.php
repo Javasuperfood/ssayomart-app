@@ -241,11 +241,17 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
     $routes->post('produk/update-produk/(:segment)', 'AdminProduk::saveUpdateProduk/$1');
 
+    // Ubah Urutan Produk Routes
+    $routes->get('produk/management-fetching-content', 'AdminProduk::managementFetching');
+    $routes->get('produk/pilih-produk-rekomendasi', 'AdminProduk::pilihProdukRekomendasi');
+    $routes->get('produk/pilih-produk-terbaru', 'AdminProduk::pilihProdukTerbaru');
+    $routes->post('produk/pilih-produk-terbaru/save', 'AdminProduk::saveProdukTerbaru');
+
     // Kategori Produk Batch
     $routes->get('produk/produk-batch', 'AdminKategoriBatch::produkBatch');
     $routes->post('produk/produk-batch/save', 'AdminKategoriBatch::save');
 
-
+    // Stock Produk
     $routes->get('update-stok/(:segment)', 'AdminStokController::updateStock/$1');
     $routes->post('update-stok/update', 'AdminStokController::storeUpdateStok');
 
@@ -285,11 +291,13 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // Promo Item
     $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
     $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');
-
     $routes->get('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::editPromoItem/$1');
     $routes->post('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::updatePromoItem/$1');
-
     $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
+
+    // Promo Item Batch
+    $routes->get('promo/tambah-promo-item-batch', 'AdminPromoController::promoItemBatch');
+    $routes->post('promo/tambah-promo-item-batch/save-promo-item-batch', 'AdminPromoController::savePromoItemBatch');
 
     // CRUD KONTEN/BLOG/ARTIKEL
     $routes->get('blog/blog', 'AdminBlog::blog');

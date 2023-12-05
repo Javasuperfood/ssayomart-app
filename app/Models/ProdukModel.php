@@ -24,6 +24,7 @@ class ProdukModel extends Model
         'img',
         'is_active',
         'id_sub_kategori',
+        'short',
         'created_by'
     ];
 
@@ -257,6 +258,7 @@ class ProdukModel extends Model
         // dd($result);
         return $result;
     }
+
     public function getProdukHome($id_kategori = null, $keyword = null, $latest = null)
     {
         $getProduk = $this->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
@@ -279,5 +281,15 @@ class ProdukModel extends Model
 
         $result = $getProduk->get()->getResultArray();
         return $result;
+
+
+    public function getLatestProducts($limit = 6)
+    {
+        return $this->select('*')
+            ->orderBy('created_at', 'DESC')
+            ->limit($limit)
+            ->where('deleted_at', null)
+            ->findAll();
+
     }
 }

@@ -74,7 +74,6 @@ class AdminProduk extends BaseController
         return view('dashboard/produk/produk', $data);
     }
 
-
     public function tambahProduk()
     {
         $produkModel = new ProdukModel();
@@ -410,5 +409,75 @@ class AdminProduk extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('pager'));
         }
+    }
+
+    // Ubah Urutan Produk Controller
+    public function managementFetching()
+    {
+        $data = [
+            'title' => 'Management Fetching Produk',
+        ];
+        return view('dashboard/produk/produkContent/managementFetching', $data);
+    }
+    public function pilihProdukRekomendasi()
+    {
+        $data = [
+            'title' => 'Pilih Produk Rekomendasi',
+        ];
+        return view('dashboard/produk/produkContent/pilihProdukRekomendasi', $data);
+    }
+
+    public function pilihProdukTerbaru()
+    {
+        $produkModel = new ProdukModel();
+
+        // Ambil data 6 produk terbaru dan urutkan berdasarkan 'short'
+        $produkTerbaru = $produkModel->orderBy('short', 'ASC')->getLatestProducts(6);
+
+        $data = [
+            'produkTerbaru' => $produkTerbaru,
+            'kategori' => $produkModel->findAll(), // Anggap saja ingin mengambil semua kategori
+        ];
+
+        return view('dashboard/produk/produkContent/pilihProdukTerbaru', $data);
+    }
+
+
+
+    public function saveProdukTerbaru()
+    {
+        $produkModel = new ProdukModel();
+        $idProduk = $this->request->getVar('id_produk');
+        $originalOrder = $this->request->getVar('original_order');
+
+        // Memulai transaksi
+        $produkModel->transStart();
+
+        try {
+            foreach ($idProduk as $key => $id) {
+                $produkModel->update($id, ['short' => $key + 1]); // Memperbarui 'short' berdasarkan urutan baru
+            }
+
+            // Commit transaksi
+            $produkModel->transComplete();
+
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Urutan Produk berhasil diubah.'
+            ];
+        } catch (\Exception $e) {
+            // Rollback transaksi jika terjadi kesalahan
+            $produkModel->transRollback();
+
+            $alert = [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => 'Terjadi kesalahan saat menyimpan urutan produk.'
+            ];
+        }
+
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to('dashboard/produk/pilih-produk-terbaru');
     }
 }
