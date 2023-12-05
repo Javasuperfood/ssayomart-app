@@ -285,11 +285,13 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // Promo Item
     $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
     $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');
-
     $routes->get('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::editPromoItem/$1');
     $routes->post('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::updatePromoItem/$1');
-
     $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
+
+    // Promo Item Batch
+    $routes->get('promo/tambah-promo-item-batch', 'AdminPromoController::promoItemBatch');
+    $routes->post('promo/tambah-promo-item-batch/save-promo-item-batch', 'AdminPromoController::savePromoItemBatch');
 
     // CRUD KONTEN/BLOG/ARTIKEL
     $routes->get('blog/blog', 'AdminBlog::blog');

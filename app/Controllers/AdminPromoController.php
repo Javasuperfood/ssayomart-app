@@ -7,6 +7,7 @@ use App\Models\PromoModel;
 use App\Models\PromoItemModel;
 use App\Models\ProdukModel;
 use App\Models\VariasiItemModel;
+use App\Models\PromoBatchModel;
 
 class AdminPromoController extends BaseController
 {
@@ -210,13 +211,13 @@ class AdminPromoController extends BaseController
 
         $promoList = $promoModel->findAll();
         $variasiList = $variasiItemModel->findAll();
-        $produkList = $produkModel->findAll(); // Mengambil daftar produk
+        $produkList = $produkModel->findAll();
         $ongoingPromoItems = $promoItemModel->getOngoingPromo();
         // dd($ongoingPromoItems);
 
         $data = [
             'promo' => $promoList,
-            'produk' => $produkList, // Mengirim daftar produk ke View
+            'produk' => $produkList,
             'variasi' => $variasiList,
             'ongoingPromoItems' => $ongoingPromoItems
         ];
@@ -342,5 +343,68 @@ class AdminPromoController extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/promo/tambah-promo-item')->withInput();
         }
+    }
+
+    // =============================================================================
+    //                              PROMO ITEM BATCH CONTROLLER
+    // =============================================================================
+    public function promoItemBatch()
+    {
+        $promoModel = new PromoModel();
+        $promoBatchModel = new PromoBatchModel();
+        $produkModel = new ProdukModel();
+        $promoItemModel = new PromoItemModel();
+        $variasiItemModel = new VariasiItemModel();
+
+        $promoList = $promoModel->findAll();
+        $variasiList = $variasiItemModel->findAll();
+        $produkList = $produkModel->findAll();
+        $ongoingPromoItems = $promoBatchModel->getOngoingPromoItems();
+        // dd($ongoingPromoItems);
+
+        $data = [
+            'promo' => $promoList,
+            'promoBatch' => $promoBatchModel->findAll(),
+            'produk' => $produkList,
+            'variasi' => $variasiList,
+            'ongoingPromoItems' => $ongoingPromoItems
+        ];
+        // dd($data);
+        return view('dashboard/promo/tambahPromoItemBatch', $data);
+    }
+
+    public function savePromoItemBatch()
+    {
+        // dd($this->request->getVar());
+        $promoBatchModel = new PromoBatchModel();
+
+        $produkIds = $this->request->getVar('produk_id');
+
+        $batchData = [];
+
+        foreach ($produkIds as $productId) {
+            $data = [
+                'id_promo' => $this->request->getVar('promo'),
+                'id_produk' => $productId,
+                'discount' => $this->request->getVar('discount'),
+                'min' => $this->request->getVar('min')
+            ];
+
+            $batchData[] = $data;
+        }
+
+        $promoBatchModel->insertBatch($batchData);
+        // dd($batchData);
+
+        session()->setFlashdata('success', 'Promosi produk berhasil disimpan.');
+
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Promosi produk berhasil disimpan.'
+        ];
+        session()->setFlashdata('alert', $alert);
+
+        return redirect()->to('dashboard/promo/tambah-promo-item-batch')->withInput();
     }
 }
