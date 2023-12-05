@@ -281,7 +281,7 @@ class ProdukModel extends Model
 
         $result = $getProduk->get()->getResultArray();
         return $result;
-
+    }
 
     public function getLatestProducts($limit = 6)
     {
