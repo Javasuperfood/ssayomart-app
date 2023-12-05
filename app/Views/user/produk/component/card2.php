@@ -89,8 +89,8 @@
     <?php endif ?>
 
     <div class="container bg-white" id="product">
-        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
-        <hr class="border-darker mt-0 mb-3">
+        <!-- <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
+        <hr class="border-darker mt-0 mb-3"> -->
 
         <div class="row row-cols-3 me-0" id="product-container">
             <!-- All Produk -->
