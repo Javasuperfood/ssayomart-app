@@ -290,6 +290,10 @@ class ProdukModel extends Model
             ->limit($limit)
             ->where('deleted_at', null)
             ->findAll();
+    }
 
+    public function getProdukById($id)
+    {
+        return $this->find($id);
     }
 }

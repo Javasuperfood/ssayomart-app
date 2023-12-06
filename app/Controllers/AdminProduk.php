@@ -8,6 +8,7 @@ use App\Models\KategoriModel;
 use App\Models\SubKategoriModel;
 use App\Controllers\BaseController;
 use App\Models\AdminTokoModel;
+use App\Models\ProdukRekomendasiModel;
 use App\Models\StockModel;
 use App\Models\VariasiItemModel;
 
@@ -410,8 +411,9 @@ class AdminProduk extends BaseController
             return redirect()->to('dashboard/produk?page_produk=' . $this->request->getVar('pager'));
         }
     }
-
-    // Ubah Urutan Produk Controller
+    // ============================================
+    // Ubah Urutan Produk Controller //
+    // ============================================
     public function managementFetching()
     {
         $data = [
@@ -419,30 +421,21 @@ class AdminProduk extends BaseController
         ];
         return view('dashboard/produk/produkContent/managementFetching', $data);
     }
-    public function pilihProdukRekomendasi()
-    {
-        $data = [
-            'title' => 'Pilih Produk Rekomendasi',
-        ];
-        return view('dashboard/produk/produkContent/pilihProdukRekomendasi', $data);
-    }
 
     public function pilihProdukTerbaru()
     {
         $produkModel = new ProdukModel();
 
-        // Ambil data 6 produk terbaru dan urutkan berdasarkan 'short'
+
         $produkTerbaru = $produkModel->orderBy('short', 'ASC')->getLatestProducts(6);
 
         $data = [
             'produkTerbaru' => $produkTerbaru,
-            'kategori' => $produkModel->findAll(), // Anggap saja ingin mengambil semua kategori
+            'kategori' => $produkModel->findAll()
         ];
 
         return view('dashboard/produk/produkContent/pilihProdukTerbaru', $data);
     }
-
-
 
     public function saveProdukTerbaru()
     {
@@ -458,7 +451,6 @@ class AdminProduk extends BaseController
                 $produkModel->update($id, ['short' => $key + 1]); // Memperbarui 'short' berdasarkan urutan baru
             }
 
-            // Commit transaksi
             $produkModel->transComplete();
 
             $alert = [
@@ -467,7 +459,6 @@ class AdminProduk extends BaseController
                 'message' => 'Urutan Produk berhasil diubah.'
             ];
         } catch (\Exception $e) {
-            // Rollback transaksi jika terjadi kesalahan
             $produkModel->transRollback();
 
             $alert = [
@@ -479,5 +470,102 @@ class AdminProduk extends BaseController
 
         session()->setFlashdata('alert', $alert);
         return redirect()->to('dashboard/produk/pilih-produk-terbaru');
+    }
+
+    // ============================================
+    // Produk Rekomendasi //
+    // ============================================
+
+    public function pilihProdukRekomendasi()
+    {
+        $produkModel = new ProdukModel();
+        $rekomendasiModel = new ProdukRekomendasiModel();
+
+        // Ambil data 6 produk terbaru dan urutkan berdasarkan 'short'
+        $produkTerbaru = $produkModel->orderBy('short', 'ASC')->getLatestProducts(6);
+        $produkRekomendasi = $rekomendasiModel->orderBy('short', 'ASC')->getLatestProducts(6);
+
+        // Menyisipkan detail produk ke dalam array produkRekomendasi
+        foreach ($produkRekomendasi as $key => $produk) {
+            $produkDetail = $produkModel->getProdukById($produk['id_produk']);
+            $produkRekomendasi[$key]['img'] = $produkDetail['img'];
+            $produkRekomendasi[$key]['nama'] = $produkDetail['nama'];
+        }
+
+        $data = [
+            'produkTerbaru' => $produkTerbaru,
+            'produkRekomendasi' => $produkRekomendasi,
+            'kategori' => $produkModel->findAll(),
+            'produkModel' => $produkModel, // Pass $produkModel to the view
+        ];
+
+        return view('dashboard/produk/produkContent/pilihProdukRekomendasi', $data);
+    }
+
+
+    public function savePilihProdukRekomendasi()
+    {
+        if ($this->request->getMethod() === 'post') {
+            $produkIds = $this->request->getPost('produk_id');
+
+            $this->saveRekomendasiProduk($produkIds);
+
+            return redirect()->to('dashboard/produk/pilih-produk-rekomendasi')->with('alert', [
+                'type'    => 'success',
+                'title'   => 'Berhasil',
+                'message' => 'Pilihan Produk Rekomendasi berhasil disimpan.'
+            ]);
+        }
+
+        return redirect()->back();
+    }
+
+    public function saveRekomendasiProduk($produkIds)
+    {
+        $rekomendasiModel = new ProdukRekomendasiModel();
+
+        foreach ($produkIds as $index => $produkId) {
+
+            $rekomendasiModel->insert([
+                'id_produk' => $produkId,
+                'short'     => $index + 1,
+                'created_at' => date('Y-m-d H:i:s')
+            ]);
+        }
+    }
+    public function saveUrutanProdukRekomendasi()
+    {
+        $produkRekmendasiModel = new ProdukRekomendasiModel();
+        $idProduk = $this->request->getVar('id_rekomendasi');
+        // dd($idProduk);
+        $originalOrder = $this->request->getVar('original_order');
+
+        // Memulai transaksi
+        $produkRekmendasiModel->transStart();
+
+        try {
+            foreach ($idProduk as $key => $id) {
+                $produkRekmendasiModel->update($id, ['short' => $key + 1]);
+            }
+
+            $produkRekmendasiModel->transComplete();
+
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Urutan Produk berhasil diubah.'
+            ];
+        } catch (\Exception $e) {
+            $produkRekmendasiModel->transRollback();
+
+            $alert = [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => 'Terjadi kesalahan saat menyimpan urutan produk.'
+            ];
+        }
+
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
     }
 }
