@@ -12,6 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap">
 
 
+
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -303,9 +304,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
 
             <!-- All Kategori -->
+
             <section>
                 <div class="container d-flex justify-content-center align-items-center py-5">
-                    <a href="<?= base_url(); ?>all-category" class="btn btn-outline-danger btn-lg rounded-0 shadow-sm"> Go To <br>
+                    <a href="<?= base_url(); ?>all-category" id="goToCategories" class="btn btn-outline-danger btn-lg rounded-3 shadow-sm"> Go To <br>
                         All Categories
                     </a>
                 </div>
@@ -385,6 +387,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
             </style>
             <script>
+                var goToCategoriesBtn = document.getElementById('goToCategories');
+
+                goToCategoriesBtn.addEventListener('click', function() {
+                    // Tambahkan kelas animate.css untuk animasi ke kanan
+                    goToCategoriesBtn.classList.add('animate__animated', 'animate__slideOutRight');
+
+                    // Hapus kelas animate.css setelah animasi selesai
+                    goToCategoriesBtn.addEventListener('animationend', function() {
+                        goToCategoriesBtn.classList.remove('animate__animated', 'animate__slideOutRight');
+                    });
+                });
+
                 function changeToCapsule(c, v) {
                     $(`#button-container-${c} .button`).css('display', 'none');
                     $(`#button-container-${c} .button-capsule`).css('display', 'flex');
@@ -617,6 +631,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     align-items: center;
                     max-width: 50% !important;
                     flex: 0 0 100% !important;
+
+
+
+
                     /* width: 20% !important; */
                 }
 
