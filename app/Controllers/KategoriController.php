@@ -88,8 +88,8 @@ class KategoriController extends BaseController
         ];
         // dd($data);
 
-        return view('user/home/Kategori', $data);
-        // return view('user/home/Kategori2', $data);
+        // return view('user/home/Kategori', $data);
+        return view('user/home/Kategori2', $data);
     }
 
     // ================ All Kategori ==============================
