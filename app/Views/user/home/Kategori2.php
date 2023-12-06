@@ -88,24 +88,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
         <style>
-            /* Ganti warna tombol close menjadi putih */
             .btn-close {
                 background-color: #ffff;
                 color: #000;
                 font-size: 10px;
                 /* margin-right: 4%; */
                 margin-top: 123%;
-
-                /* atau warna lain sesuai kebutuhan */
             }
 
             /* Membuat tombol close berbentuk lingkaran */
             .btn-close {
                 border-radius: 50%;
                 width: 25px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
                 height: 25px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
             }
 
             /*samsung galaxy fold dual mode*/
@@ -115,19 +110,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     background-color: #ffff;
                     color: #000;
                     font-size: 10px;
-
                     margin-top: 60%;
-
-                    /* atau warna lain sesuai kebutuhan */
                 }
 
-                /* Membuat tombol close berbentuk lingkaran */
                 .btn-close {
                     border-radius: 50%;
                     width: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
                     height: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
                 }
 
                 .img-fluid {
