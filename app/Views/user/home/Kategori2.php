@@ -172,6 +172,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
 
             }
+
+            @media (min-width: 512px) and (max-width: 512px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-top: 87%;
+
+                    /* atau warna lain sesuai kebutuhan */
+                }
+
+                /* Membuat tombol close berbentuk lingkaran */
+                .btn-close {
+                    border-radius: 50%;
+                    width: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                    height: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                }
+
+            }
         </style>
         <!-- Akhir Modal  Homepage-->
 
