@@ -749,7 +749,6 @@ class Setting extends BaseController
         $data = [
             'title' => 'Sayomart Care',
             'kategori' => $kategori->findAll()
-
         ];
         return view('user/home/setting/sayoCare', $data);
     }
@@ -761,8 +760,10 @@ class Setting extends BaseController
         $data = [
             'title' => 'Kebijakan Privasi',
             'kategori' => $kategori->findAll()
-
         ];
+        if ($this->request->getUserAgent()->isMobile()) {
+            $data['preloader'] = false;
+        }
         return view('user/home/setting/kebijakanPrivasi', $data);
     }
 }
