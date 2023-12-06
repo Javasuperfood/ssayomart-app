@@ -234,7 +234,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container ">
                     <div class="card border-0 text-center font-family-poppins" style="background-color: #facaaf;">
                         <div class="card-warning">
-                            <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong>PRODUK REKOMENDASI</strong></h2>
+                            <span class="card-title fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #9c2525;"><strong>Produk Rekomendasi</strong></h2>
                             </span>
                         </div>
                     </div>
@@ -249,7 +249,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
                     <div class="card-warning">
-                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong>PRODUK TERBARU</strong></h2>
+                        <span class="card-title  fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #2e6e01;"><strong>Produk Terbaru</strong></h2>
                         </span>
                     </div>
                 </div>
@@ -516,6 +516,56 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     justify-content: center;
                     align-items: center;
                     max-width: 25% !important;
+                    flex: 0 0 100% !important;
+                    /* width: 20% !important; */
+                }
+
+                .card-produk {
+                    width: 120px !important;
+                    /* Mengisi lebar parent container */
+                }
+
+                .horizontal-counter {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .horizontal-counter button,
+                .horizontal-counter input {
+                    width: 40px;
+                    /* Adjust as needed */
+                    height: 20px;
+                    /* Adjust as needed */
+                    font-size: 13px;
+                    /* Adjust as needed */
+                }
+
+                .custom-button {
+                    display: flex;
+                    justify-content: center;
+                }
+
+                #product-container.row.row-cols-3 {
+                    width: 100%;
+                    height: auto;
+                    margin-left: 4.5%;
+
+                }
+
+                #product-unggulan-container.row.row-cols-3 {
+                    width: 100%;
+                    height: auto;
+                    margin-left: 4.5%;
+
+                }
+            }
+
+            @media screen and (min-width: 512px) and (max-width: 512px) {
+                .col-4.col-md-2.col-lg-2 {
+                    justify-content: center;
+                    align-items: center;
+                    max-width: 31% !important;
                     flex: 0 0 100% !important;
                     /* width: 20% !important; */
                 }

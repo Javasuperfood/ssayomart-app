@@ -1,8 +1,8 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
-<div class="py-3"></div>
+
 <!-- All Kategori -->
-<div class="container">
+<div class="container py-2">
     <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
         <div class="card-warning">
             <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
