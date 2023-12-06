@@ -9,7 +9,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 ?>
 
 <!-- Font Noto Sans Korean -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap">
+<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap"> -->
 
 
 <!-- Mobile View  -->
