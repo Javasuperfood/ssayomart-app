@@ -32,7 +32,7 @@
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
                     </div>
 
-                    <!-- Buttom Pilih Kategori -->
+                    <!-- Button Pilih Kategori -->
                     <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Pilih Kategori</label>
                         <button type="button" class="btn form-control text-left border-1 view-product border-left-danger text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid #d1d3e2">

@@ -1,5 +1,6 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
+
 <style>
     #sortable-list {
         list-style-type: none;
@@ -13,6 +14,7 @@
         cursor: pointer;
     }
 </style>
+
 <h1 class="h3 mb-2 text-gray-800">Pilih Produk Terbaru</h1>
 <ul class="breadcrumb bg-light">
     <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/produk/management-fetching-content" class="text-dark">Management Fetching Produk</a></li>
@@ -34,7 +36,7 @@
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
                                     <div class="col-md-6">Shorting Produk Terbaru</div>
-                                    <div class="col-md-6 text-end"><button type="submit" class="btn btn-danger text rounded-0">Update</button></div>
+                                    <div class="col-md-6 text-end"><button type="submit" class="btn btn-danger text rounded-3">Update</button></div>
                                 </div>
                             </div>
                             <?= csrf_field(); ?>
