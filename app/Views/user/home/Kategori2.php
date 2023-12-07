@@ -325,115 +325,44 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </section>
         </div>
-             <!-- button scroll up -->
-             <div>
-                
-             </div>
+        <div>
+
+        </div>
         <?php if (!$produk) : ?>
             <style>
-
-                  #scrollUpButton {
-                     display: none;
+                #scrollUpButton {
+                    display: none;
                     position: fixed;
-                     bottom: 70px;
+                    bottom: 70px;
                     right: 20px;
                     width: 30px;
                     height: 40px;
-                 padding: 10px 20px;
-                     border: none;
-                 border-radius: 50%;
-        cursor: pointer;
-        z-index: 99;
-    }
-                .button-container {
-                    position: absolute;
-                    top: 5px;
-                    /* Jarak dari atas */
-                    left: 5px;
-                    /* Jarak dari kiri */
-                    display: flex;
-                    gap: 5px;
-                    /* Jarak antar tombol */
-                }
-
-                .button {
-                    width: 25px;
-                    /* Ukuran tombol yang lebih kecil */
-                    height: 25px;
-                    /* Ukuran tombol yang lebih kecil */
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: #fff;
-                    font-weight: bold;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                    outline: 1px solid #e83b2e;
-                    background-color: #fff;
-                }
-
-                .button-capsule {
-                    width: 60px;
-                    /* Ukuran capsule yang lebih kecil */
-                    height: 25px;
-                    /* Ukuran capsule yang lebih kecil */
-                    border-radius: 15px;
-                    display: none;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 0 5px;
-                    /* Padding yang lebih kecil */
-                    transition: all 0.3s ease;
-                    outline: 1px solid #e83b2e;
-                    background-color: #fff;
-                }
-
-                .icon {
-                    font-size: 16px !important;
-                    color: #e83b2e;
-                    transition: all 0.3s ease;
-                    cursor: pointer;
-                    font-weight: bold !important;
-                    /* Menentukan tebalnya ikon */
-                }
-
-                .input {
-                    width: 20px;
-                    /* Ukuran input yang lebih kecil */
-                    height: 15px;
-                    /* Ukuran input yang lebih kecil */
-                    text-align: center;
-                    margin: 0 3px;
-                    /* Margin yang lebih kecil */
-                    color: #000;
-                    font-size: 8px;
-                    font-weight: bold;
-                    transition: all 0.3s ease;
+                    padding: 10px 20px;
                     border: none;
-                    outline: none;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    z-index: 99;
                 }
             </style>
             <script>
-    // tombol Scroll Up
-    var scrollUpButton = document.getElementById("scrollUpButton");
+                // tombol Scroll Up
+                var scrollUpButton = document.getElementById("scrollUpButton");
 
-    // Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
-    window.addEventListener("scroll", function() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            scrollUpButton.style.display = "block";
-        } else {
-            scrollUpButton.style.display = "none";
-        }
-    });
+                // Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
+                window.addEventListener("scroll", function() {
+                    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                        scrollUpButton.style.display = "block";
+                    } else {
+                        scrollUpButton.style.display = "none";
+                    }
+                });
 
-    // Scroll kembali ke atas saat tombol Scroll Up diklik
-    scrollUpButton.addEventListener("click", function() {
-        document.body.scrollTop = 0; // Untuk browser Safari
-        document.documentElement.scrollTop = 0; // Untuk browser lainnya
-    });
-</script>
+                // Scroll kembali ke atas saat tombol Scroll Up diklik
+                scrollUpButton.addEventListener("click", function() {
+                    document.body.scrollTop = 0; // Untuk browser Safari
+                    document.documentElement.scrollTop = 0; // Untuk browser lainnya
+                });
+            </script>
             <script>
                 var goToCategoriesBtn = document.getElementById('goToCategories');
 

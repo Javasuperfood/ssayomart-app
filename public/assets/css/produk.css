@@ -1,3 +1,72 @@
+/* styling button counter animasi */
+.button-container {
+    position: absolute;
+    top: 5px;
+    /* Jarak dari atas */
+    left: 5px;
+    /* Jarak dari kiri */
+    display: flex;
+    gap: 5px;
+    /* Jarak antar tombol */
+}
+
+.button {
+    width: 25px;
+    /* Ukuran tombol yang lebih kecil */
+    height: 25px;
+    /* Ukuran tombol yang lebih kecil */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: 1px solid #e83b2e;
+    background-color: #fff;
+}
+
+.button-capsule {
+    width: 60px;
+    /* Ukuran capsule yang lebih kecil */
+    height: 25px;
+    /* Ukuran capsule yang lebih kecil */
+    border-radius: 15px;
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    /* Padding yang lebih kecil */
+    transition: all 0.3s ease;
+    outline: 1px solid #e83b2e;
+    background-color: #fff;
+}
+
+.icon {
+    font-size: 12px;
+    color: #e83b2e;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.input {
+    width: 20px;
+    /* Ukuran input yang lebih kecil */
+    height: 15px;
+    /* Ukuran input yang lebih kecil */
+    text-align: center;
+    margin: 0 3px;
+    /* Margin yang lebih kecil */
+    color: #000;
+    font-size: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+
 .btn-custom-rounded {
     border-radius: 25px;
     height: 35px;
