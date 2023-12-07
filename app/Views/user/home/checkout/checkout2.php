@@ -31,22 +31,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="form-floating">
                                 <?php foreach ($market_list as $key => $m) : ?>
                                     <?php if ($m['id_toko'] == $marketSelected) : ?>
-                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                        <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                     <?php elseif (!$marketSelected) : ?>
                                         <?php if ($key == 0) : ?>
-                                            <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                            <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
                                 <label for="mpOrigin">Market</label>
                             </div>
-                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                                <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6" id="modal-pilih-originLabel">Pilih Market Terdekat</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-originLabel">Pilih Market Terdekat</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -81,22 +81,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="form-floating">
                                 <?php foreach ($alamat_list as $key => $al) : ?>
                                     <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
-                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                        <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                     <?php elseif (!$addressSelected) : ?>
                                         <?php if ($key == 0) : ?>
-                                            <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                            <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
                                 <label for="mpDestination">Alamat</label>
                             </div>
-                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                                <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -129,16 +129,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <i class="bi bi-truck fw-bold"></i>
                             </span>
                             <div class="form-floating">
-                                <input type="text" class="form-control fs-6" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
+                                <input type="text" class="form-control masukan-kata fs-6 pemilihan" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
                                 <label for="mpkirim" style="font-size: 16px">Metode Pengiriman</label>
                             </div>
-                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                                <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -200,18 +200,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <select class="form-control border-0 shadow-sm" id="service" name="service">
+                            <select class="form-control masukan-kata border-0 shadow-sm" id="service" name="service">
                                 <option value="" class="card-text text-secondary"></option>
                             </select>
                             <label for="service" id="serviceLabel">Pilih Layanan</label>
-                            <strong class="ps-2">Estimasi : <span id="estimasi"></span></strong>
+                            <strong class="ps-2 time">Estimasi : <span id="estimasi"></span></strong>
                         </div>
                     </div>
                     <input type="hidden" name="serviceText" id="serviceText">
                     <?php if ($kupon) : ?>
                         <div class="col">
                             <div class="form-floating mb-2">
-                                <select class="form-control border-0 shadow-sm" id="kupon" name="kupon">
+                                <select class="form-control masukan-kata border-0 shadow-sm" id="kupon" name="kupon">
                                     <option selected value="" class="card-text text-secondary">
                                         Pilih Kupon
                                     </option>
@@ -233,14 +233,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col-3">
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
                                         </div>
-                                        <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title fs-6"><?= substr($p['nama'], 0, 10); ?>...</h5>
-                                            <p class="card-text text-secondary fs-6"><?= $p['qty']; ?> pcs
+                                        <div class="col-5 keterangan position-absolute top-50 start-50 translate-middle">
+                                            <h5 class="card-title fs-6 pemilihan"><?= substr($p['nama'], 0, 10); ?>...</h5>
+                                            <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
                                             </p>
                                         </div>
-                                        <div class="col-5 position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                            <h5 class="text-secondary fs-6">Total</h5>
-                                            <p class="fw-bold fs-6">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                        <div class="col-5 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                            <h5 class="text-secondary fs-6 pemilihan">Total</h5>
+                                            <p class="fw-bold fs-6 pemilihan">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -248,7 +248,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     <?php endforeach ?>
                     <div class="col py-3 px-3">
-                        <table class="table fs-6 lh-1">
+                        <table class="table fs-6 pemilihan lh-1">
                             <thead>
                                 <tr>
                                     <th scope="col">Ringkasan Belanja</th>
@@ -282,115 +282,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         </div>
     </div>
-    <div class="pb-5"></div>
-
-    <!-- <style>
-        @media (max-width: 280px) {
-            .col-5.position-absolute.top-50.start-50.translate-middle-y {
-                font-size: 12px !important;
-            }
-
-            .table.fs-6 {
-                font-size: 12px !important;
-                /* Atur ukuran font sesuai kebutuhan */
-            }
-
-            .tbody.td {
-                font-size: 12px !important;
-            }
-
-            h5.card-title.fs-6.p.card-text.text-secondary {
-                font-size: 12px;
-            }
-
-            .form-control {
-                font-size: 12px;
-                /* Ukuran font input sesuai kebutuhan */
-            }
-
-            .card-title {
-                font-size: 12px;
-                /* Ukuran font judul kartu sesuai kebutuhan */
-            }
-
-            .card-text {
-                font-size: 12px;
-                /* Ukuran font teks kartu sesuai kebutuhan */
-            }
-
-            .ps-2 {
-                font-size: 12px;
-                padding-left: 0.5rem !important;
-            }
-
-            .btn-bayar {
-                font-size: 12px;
-                padding: 0.5rem !important;
-            }
-
-            .col-5 h5 {
-                font-size: 14px !important
-            }
-
-            .col-5 p {
-                font-size: 12px !important;
-            }
-
-        }
-    </style> -->
-
-    <style>
-        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
-
-            .modal-body img {
-                width: 80px !important;
-            }
-
-            .modal-body button {
-                font-size: 10px !important;
-            }
-
-            .modal-content {
-                font-size: 13px;
-            }
-
-            .input-group .btn {
-                font-size: 9px;
-            }
-
-            .form-control {
-                font-size: 12px;
-                /* Ukuran font input sesuai kebutuhan */
-            }
-
-            .ps-2 {
-                font-size: 12px;
-                padding-left: 0.5rem !important;
-            }
-
-            .col-5 h5 {
-                font-size: 14px !important
-            }
-
-            .col-5 p {
-                font-size: 12px !important;
-            }
-
-            .btn-bayar {
-                font-size: 12px !important;
-            }
-
-            tr {
-                font-size: 12px;
-            }
-
-            .fs-6 {
-                font-size: 0.7rem !important;
-            }
-
-        }
-    </style>
+    <div class="pb-5">
+    </div>
 <?php else : ?>
     <!-- end mobile -->
 
@@ -417,7 +310,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <!-- Right Panel -->
                             <span class="badge badge-secondary badge-pill">3</span>
                         </h4>
-                        <table class="table fs-6 lh-1 shadow-sm">
+                        <table class="table fs-6 pemilihan lh-1 shadow-sm">
                             <thead>
                                 <tr>
                                     <th scope="col">Ringkasan Belanja</th>
@@ -470,20 +363,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="form-floating">
                                             <?php foreach ($market_list as $key => $m) : ?>
                                                 <?php if ($m['id_toko'] == $marketSelected) : ?>
-                                                    <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                                    <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                                 <?php elseif (!$marketSelected) : ?>
                                                     <?php if ($key == 0) : ?>
-                                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                                        <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                             <label for="mpOrigin">Market</label>
                                         </div>
-                                        <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                                        <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
+                                            <div class="modal-content pilih-cara">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="modal-pilih-originLabel">Pilih Market</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -523,20 +416,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="form-floating">
                                             <?php foreach ($alamat_list as $key => $al) : ?>
                                                 <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
-                                                    <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                                    <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                                 <?php elseif (!$addressSelected) : ?>
                                                     <?php if ($key == 0) : ?>
-                                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                                        <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                             <label for="mpDestination">Alamat</label>
                                         </div>
-                                        <button class="btn btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                                        <button class="btn btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
+                                            <div class="modal-content pilih-cara">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -574,19 +467,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <i class="bi bi-truck"></i>
                                         </span>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
+                                            <input type="text" class="form-control masukan-kata" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
                                             <label for="mpkirim">Metode Pengiriman</label>
                                         </div>
-                                        <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                                        <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
+                                            <div class="modal-content pilih-cara">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body gambar-pengiriman">
                                                     <div class="row row-cols-1">
                                                         <div class="col">
                                                             <div class="row">
@@ -674,7 +567,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <div class="col-3">
                                                     <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
                                                 </div>
-                                                <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                                <div class="col-5 keterangan position-absolute top-50 start-50 translate-middle">
                                                     <h5><?= substr($p['nama'], 0, 10); ?>...</h5>
                                                     <p class="card-text text-secondary"><?= $p['qty']; ?> pcs</p>
                                                 </div>
