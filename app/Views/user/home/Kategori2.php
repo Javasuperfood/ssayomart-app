@@ -321,12 +321,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <a href="<?= base_url(); ?>all-category" id="goToCategories" class="btn btn-outline-danger btn-lg rounded-3 shadow-sm"> Go To <br>
                         All Categories
                     </a>
+                    <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
                 </div>
             </section>
-
         </div>
+             <!-- button scroll up -->
+             <div>
+                
+             </div>
         <?php if (!$produk) : ?>
             <style>
+
+                  #scrollUpButton {
+                     display: none;
+                    position: fixed;
+                     bottom: 70px;
+                    right: 20px;
+                    width: 30px;
+                    height: 40px;
+                 padding: 10px 20px;
+                     border: none;
+                 border-radius: 50%;
+        cursor: pointer;
+        z-index: 99;
+    }
                 .button-container {
                     position: absolute;
                     top: 5px;
@@ -397,6 +415,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     outline: none;
                 }
             </style>
+            <script>
+    // tombol Scroll Up
+    var scrollUpButton = document.getElementById("scrollUpButton");
+
+    // Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
+    window.addEventListener("scroll", function() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollUpButton.style.display = "block";
+        } else {
+            scrollUpButton.style.display = "none";
+        }
+    });
+
+    // Scroll kembali ke atas saat tombol Scroll Up diklik
+    scrollUpButton.addEventListener("click", function() {
+        document.body.scrollTop = 0; // Untuk browser Safari
+        document.documentElement.scrollTop = 0; // Untuk browser lainnya
+    });
+</script>
             <script>
                 var goToCategoriesBtn = document.getElementById('goToCategories');
 
