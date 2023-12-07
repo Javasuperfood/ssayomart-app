@@ -7,16 +7,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom: 90px;">
+    <div id="mobileContent" style="margin-bottom: 100px;">
         <div class="container">
             <div class="row">
-                <nav class="navbar px-md-1 py-md-1 mx-md-1 fixed-top rounded-bottom-3" style="background-color : #fff;">
+                <nav class="navbar px-md-1 mx-md-1 fixed-top rounded-bottom-4 shadow-sm" style="background-color : #ffff;">
                     <div class="container-fluid mx-1">
                         <div class="col-9 col-md-10">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
                                     <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
-                                    <input type="text" name="produk" class="mx-2 form-control border-1 border-danger shadow-sm rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                                    <input type="text" name="produk" class="mx-2 form-control border-1 border-danger rounded-3" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                                 </div>
                             </form>
                         </div>
