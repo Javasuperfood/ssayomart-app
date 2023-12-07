@@ -89,13 +89,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <form action="<?= base_url('setting/select-alamat'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="alamat" id="alamatField">
-                <button type="submit" id="selectAddress" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-check"></i></button>
+                <button type="submit" id="selectAddress" class="btn btn-danger btn-lg addresCircle position-fixed"><i class="bi bi-check"></i></button>
             </form>
         <?php endif; ?>
-        <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg rounded-circle position-fixed"><i class="bi bi-plus"></i></a>
+        <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg addresCircle position-fixed"><i class="bi bi-plus"></i></a>
     </div>
     <!-- style untuk samsung galaxy fold 280 -->
     <style>
+
+        /* style for button create alamat */
+        .addresCircle {
+      width: 40px; 
+      height: 40px; 
+      border-radius: 50%; 
+      background-color: #dc3545;
+      color: #fff; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      margin-left: -100px;
+        }
+        /*  */
+
         @media screen and (max-width: 280px) {
             .card-body {
                 font-size: 13px;
