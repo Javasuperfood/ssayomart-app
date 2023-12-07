@@ -242,42 +242,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- akhir form dan maps -->
 
-        <!-- Slider card  Profil slider Grid-->
-        <!-- <div class="container">
-            <div data-aos="zoom-in-down">
-                <div class="row">
-                    <div class="col">
-                        <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
-                        <div class="swiper grid mt-3">
-                            <div class="swiper-wrapper text-center">
-                                <div class="swiper-slide">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
-
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
-                                </div>
-                                <div class="swiper-slide">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-1.jpg" alt="Image 1">
-                                    <img class="image-fluid py-1 px-0" style="width:160px; height:80px;" src="<?= base_url() ?>assets/img/promo/promotion-2.jpg" alt="Image 2">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Slider card  Slider Grid-->
-
-
         <style>
             .bg-image {
                 position: relative;
@@ -782,35 +746,6 @@ if ($isMobile) {
 
 
     });
-
-    /* var mySwiper = new Swiper('.grid', {
-        slidesPerView: 1,
-        slidesPerGroup: 1,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-
-        breakpoints: {
-            768: {
-                slidesPerView: 1,
-                slidesPerGroup: 4,
-            },
-            992: {
-                slidesPerView: 3,
-                slidesPerGroup: 3,
-            },
-            1200: {
-                slidesPerView: 4,
-                slidesPerGroup: 4,
-            },
-        },
-    }); */
 
     function tampilkanSelengkapnya(button) {
         var fullDescription = button.parentElement.querySelector('.full-description');

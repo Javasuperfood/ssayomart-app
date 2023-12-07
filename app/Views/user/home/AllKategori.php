@@ -2,14 +2,13 @@
 <?= $this->section('page-content') ?>
 
 <!-- All Kategori -->
-<div class="container py-2">
+<div class="container">
     <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
         <div class="card-warning">
-            <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
+            <span class="card-title  fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #2e6e01;"><strong><?= lang('Text.kategori'); ?></strong></h2>
             </span>
         </div>
     </div>
-
     <div class="row text-center row-cols-3 mt-3">
         <?php foreach ($kategori as $k) : ?>
             <div class="col-4 col-md-4 col-lg-2">
