@@ -278,7 +278,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </a>
                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                         <div class="d-flex align-items-start justify-content-center" style=" height: 65px;">
-                                            <p class=" text-center text-secondary fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 25); ?></p>
+                                            <p class=" text-center text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                                         </div>
                                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
