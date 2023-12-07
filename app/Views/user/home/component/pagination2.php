@@ -20,6 +20,7 @@ $countProduk = count($produk);
     }
     var productContainer = $("#product-container");
     var cardLoader = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0" id="cardLoader">
+    <div class="susunan-card">
                 <div class="card .card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
                     <div class="d-flex justify-content-center align-items-center">
                         <svg class="bd-placeholder-img card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" width="100px" height="100px object-fit: contain; object-position: 20% 10%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
@@ -29,7 +30,7 @@ $countProduk = count($produk);
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                     <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                    <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
+                    <p class=" text-secondary fw-bold" style="font-size: 8px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
                     </div>
@@ -55,6 +56,7 @@ $countProduk = count($produk);
     
                     </div>
                 </div>
+                </div>
             </div>`
 
     function loadMoreData() {
@@ -78,6 +80,7 @@ $countProduk = count($produk);
                         }
 
                         var html = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
+                        <div class="susunan-card">
                     <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
                         <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
@@ -87,8 +90,8 @@ $countProduk = count($produk);
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
                         
-                        <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
-                            ${p.nama.length > 30 ? p.nama.slice(0, 30) + '' : p.nama}
+                        <p class=" text-secondary fw-bold" style="font-size: 8px; margin: 0;">
+                            ${p.nama.length > 40 ? p.nama.slice(0, 40) + '' : p.nama}
                         </p>
                         </div>
                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
@@ -111,6 +114,7 @@ $countProduk = count($produk);
                                 </div>
                             
                         </div>
+                    </div>
                     </div>
                 </div>`
                         // $("#cardLoader").remove()
@@ -241,9 +245,7 @@ $countProduk = count($produk);
 
     @media screen and (min-width: 717px) and (max-width: 717px) {
 
-        .col-lg-2,
-        .col-md-2,
-        .col-4 {
+        .susunan-card {
             flex: 0 0 100% !important;
             max-width: 30%;
         }
@@ -274,14 +276,14 @@ $countProduk = count($produk);
             justify-content: center;
         }
 
-        #product-container.row.row-cols-3 {
+        #product-container {
             width: 100%;
             height: auto;
             margin-left: 4.5%;
 
         }
 
-        #product-unggulan-container.row.row-cols-3 {
+        #product-unggulan-container {
             width: 100%;
             height: auto;
             margin-left: 4.5%;
@@ -289,17 +291,72 @@ $countProduk = count($produk);
         }
     }
 
+    /* samsung galfold dual mode screen 512 */
+    @media screen and (min-width: 512px) and (max-width: 512px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 20px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container {
+            width: 100%;
+            height: auto;
+            margin-left: 0%;
+
+        }
+
+        #product-unggulan-container {
+            width: 100%;
+            height: auto;
+            margin-left: 0%;
+
+        }
+    }
+
     @media (max-width: 280px) {
 
-        .col-lg-2,
-        .col-md-2,
-        .col-6 {
+        .susunan-card {
             flex: 0 0 100% !important;
             max-width: 50%;
         }
 
         .card-produk {
             width: 110px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
+
+    @media (max-width: 320px) {
+
+        .card-produk {
+            width: 85px !important;
             /* Mengisi lebar parent container */
         }
     }
