@@ -67,16 +67,33 @@ class PromoBatchModel extends Model
         return $result;
     }
 
-    public function getOngoingPromoItems()
+    public function getOngoingPromoItems($id)
     {
         $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
 
         $query = $this->table('jsf_promo_batch')
-            ->select('jsf_promo_batch.*, jsf_promo.title as promo_title, jsf_produk.nama as produk_nama')
+            ->select('jsf_promo_batch.*, jsf_promo.title as promo_title, jsf_produk.*')
             ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
             ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
+            ->orderBy('jsf_promo_batch.id_produk', 'ASC')
+            ->where('jsf_promo_batch.id_promo', $id)
             ->where('jsf_promo.start_at <=', $currentDate)
             ->where('jsf_promo.end_at >=', $currentDate)
+            ->get();
+        // dd($query);
+
+        return $query->getResultArray();
+    }
+
+    public function getOngoingPromo()
+    {
+        $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
+
+        $query = $this->table('jsf_promo_batch')
+            ->select('jsf_promo_batch.*, jsf_promo.title as promo_title, jsf_produk.*')
+            ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
+            ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
+            ->orderBy('jsf_promo_batch.created_at', 'DESC')
             ->get();
 
         return $query->getResultArray();
