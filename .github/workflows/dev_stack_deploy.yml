@@ -1,0 +1,30 @@
+name: Deploy to Share Hosting
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  Deploy-DevStack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy Using ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_SSH_HOST }}
+          username: ${{ secrets.DEV_SSH_USERNAME }}
+          key: ${{ secrets.DEV_SSH_PRIVATE_KEY }}
+          key_path: ${{ secrets.DEV_SSH_PATH }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            eval $(ssh-agent)
+            ssh-add ${{ secrets.DEV_SSH_PATH }}
+            cd ${{ secrets.DEV_PATH }}
+            git checkout -- composer.lock
+            git pull
+            git status
+            cp -rf ~/${{ secrets.DEV_PATH }}/public/assets/* ~/public_html/public-dev.ssayomart.com/assets/
+            cp -rf ~/public_html/apps.ssayomart.com/assets/img/produk/main/* ~/public_html/public-dev.ssayomart.com/assets/img/produk/main/
+            ssh-agent -k
