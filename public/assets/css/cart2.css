@@ -9,7 +9,7 @@
         /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
         @media screen and (max-width: 280px) {
 
-            .img-small {
+            .gambar-kecil {
                 max-height: 100px !important;
                 /* Sesuaikan tinggi maksimum yang Anda inginkan */
                 max-width: 100px !important;
@@ -18,7 +18,7 @@
                 /* Geser gambar ke tengah kanan */
             }
 
-            .input-group {
+            .grup-masukan {
                 position: relative;
                 display: flex;
                 align-items: stretch;
@@ -28,26 +28,21 @@
                 flex-wrap: nowrap;
             }
 
-            .form-control {
+            .form-masuk {
                 width: 20px;
                 padding: 0;
                 margin-bottom: 25px;
             }
 
-            button.position-absolute {
+            button.posisi-mutlak {
                 bottom: 5px;
                 right: 10px;
             }
 
-            .btn.btn-lg.fw-bold {
-                font-size: 12px;
-                padding: 6px 6px;
-                border-radius: 5px;
-            }
 
-            .btn.btn-sm.mt-3.position-absolute.end-0.mx-2 {
-                font-size: 10px;
-                padding: 5px 10px;
+            .button-sampah {
+                font-size: 15px;
+                bottom: 0.5rem !important;
             }
 
             .btn.btn-outline-danger.btn-sm.rounded-circle {
@@ -83,10 +78,10 @@
         }
 
         /* CSS untuk tombol Scroll Up */
-        #scrollUpButton {
+        #buttonAtas {
             display: none;
             position: fixed;
-            bottom: 85px;
+            bottom: 80px;
             right: 20px;
             width: 30px;
             height: 40px;

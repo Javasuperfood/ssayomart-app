@@ -36,11 +36,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                                 <div class="row">
                                     <div class="col">
-                                        <div class="form-check form-check-lg position-absolute top-0 start-0 mx-2" style="font-size: 20px;">
+                                        <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px;">
                                             <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                         </div>
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1 img-small" alt="Product" style="width:140px; height:140px; object-fit: contain; object-position: 20% 10%;">
+                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1 img-small gambar-kecil" alt="Product" style="width:140px; height:140px; object-fit: contain; object-position: 20% 10%;">
                                         </a>
                                     </div>
 
@@ -48,12 +48,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card-body">
                                             <p class="card-text text-secondary" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 25); ?></p>
                                             <p class="card-title fw-bold text-danger" style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
-                                            <div class="input-group mt-2">
+                                            <div class="input-group grup-masukan mt-2">
                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
-                                                <input type="text" class="form-control form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
+                                                <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
                                             </div>
-                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class=" mt-1 btn btn-sm position-absolute end-0 mx-2"><i class="bi bi-trash text-danger"></i></button>
+                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class=" mt-1 btn btn-sm button-sampah position-absolute end-0 mx-2"><i class="bi bi-trash text-danger"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -78,23 +78,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <!-- button scrooll up -->
-    <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
+    <button class="btn btn-danger button-atas" id="buttonAtas" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
     <!-- end scroll up -->
     <script>
         // tombol Scroll Up
-        var scrollUpButton = document.getElementById("scrollUpButton");
+        var buttonAtas = document.getElementById("buttonAtas");
 
         // Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
         window.addEventListener("scroll", function() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                scrollUpButton.style.display = "block";
+                buttonAtas.style.display = "block";
             } else {
-                scrollUpButton.style.display = "none";
+                buttonAtas.style.display = "none";
             }
         });
 
         // Scroll kembali ke atas saat tombol Scroll Up diklik
-        scrollUpButton.addEventListener("click", function() {
+        buttonAtas.addEventListener("click", function() {
             document.body.scrollTop = 0; // Untuk browser Safari
             document.documentElement.scrollTop = 0; // Untuk browser lainnya
         });
