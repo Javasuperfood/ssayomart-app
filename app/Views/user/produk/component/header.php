@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Font Inter -->
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/inter.css">
+<!-- css card -->
+<link rel="stylesheet" href="<?= base_url('assets/css/card2.css') ?>">
 <style>
     body {
         font-family: 'Inter', sans-serif;
