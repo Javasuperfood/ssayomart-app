@@ -2,7 +2,7 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-3 text-gray-800">Promosi Ssayomart</h1>
-<a href="<?= base_url() ?>dashboard/promo/tambah-promo-item" class="btn btn-danger mb-4">Tambahkan Promo Produk</a>
+<a href="<?= base_url() ?>dashboard/promo/tambah-promo-item-batch" class="btn btn-danger mb-4">Tambah Promo Produk</a>
 <div class="row">
     <!-- Left Panel -->
     <div class="col-lg-6 mb-5">
@@ -96,9 +96,13 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo/show-promo/<?= $p['id_promo']; ?>">
+                                                <i class="bi bi-eye fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Detail Promo
+                                            </a>
                                             <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/update-promo/<?= $p['id_promo']; ?>">
                                                 <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                Update
+                                                Update Promo
                                             </a>
                                             <div class="dropdown-divider"></div>
                                             <form action="<?= base_url() ?>dashboard/promo/tambah-promo/delete-promo/<?= $p['id_promo']; ?>" id="" method="post">

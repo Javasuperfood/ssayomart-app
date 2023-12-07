@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-3 text-gray-800">Tambah Promo Item Produk-Batch</h1>
+<h1 class="h3 mb-3 text-gray-800">EditPromo Item Produk</h1>
 
 <div class="row">
     <!-- Left Panel -->
@@ -9,17 +9,18 @@
         <div class="card border-1 shadow-sm position-relative">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
                 <i class="bi bi-file-earmark-plus-fill"></i>
-                <h6 class="m-0 fw-bold px-2">Tambah Promo Produk</h6>
+                <h6 class="m-0 fw-bold px-2">Edit Promo Item Produk</h6>
             </div>
             <div class="card-body">
-                <form action="<?= base_url(); ?>dashboard/promo/tambah-promo-item-batch/save" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
+                <form action="<?= base_url(); ?>dashboard/promo/tambah-promo/show-promo/edit/update/<?= $op['id_promo_item_batch'] ?>" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
+                    <input type="hidden" name="id_promo_item_batch" value="<?= $op['id_promo_item_batch'] ?>">
                     <input type="hidden" name="produk_id" id="produk_id">
                     <div class="mb-4">
                         <label for="promo" class="form-label">Pilih Promo Tersedia</label>
                         <select name="promo" id="promo" class="form-control border-1">
-                            <?php foreach ($promo as $item) : ?>
-                                <option value="<?= $item['id_promo']; ?>"><?= $item['title']; ?></option>
+                            <?php foreach ($promo as $p) : ?>
+                                <option value="<?= $p['id_promo']; ?>" <?= ($p['id_promo'] == $op['id_promo']) ? 'selected' : ''; ?>><?= $p['title']; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <span id="promoError" class="text-danger"></span>
@@ -54,7 +55,7 @@
                                                         <div class="card-body border-0 shadow-sm">
                                                             <div class="row">
                                                                 <div class="col-1 d-flex justify-content-center">
-                                                                    <input onchange="selectCheck(this)" type="checkbox" id="produkCheckbox<?= $item['id_produk']; ?>" name="produk_id[]" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0">
+                                                                    <input onchange="selectCheck(this)" type="radio" id="produkCheckbox<?= $item['id_produk']; ?>" name="produk_id" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0">
                                                                 </div>
                                                                 <div class="col-3">
                                                                     <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid">
@@ -96,21 +97,27 @@
                     </div>
 
                     <!-- Span Badge Produk Terpilih -->
-                    <div class="mb-4">
+                    <!-- <div class="mb-4">
                         <label for="produk" class="form-label">Produk-Produk Terpilih</label>
                         <br>
                         <div id="selectedProds"></div>
+                    </div> -->
+
+                    <div class="mb-4">
+                        <label for="produk" class="form-label">Produk Terpilih</label>
+                        <input type="text" class="form-control border-1 bg-white" id="produkTerpilih" value="<?= $op['produk_nama']; ?>" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
+                        <span id="produkError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
                         <label for="min" class="form-label">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk...">
+                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." value="<?= $op['min']; ?>">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
                         <label for="discount" class="form-label">Diskon (%)</label>
-                        <input type="text" class="form-control border-1" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon...">
+                        <input type="text" class="form-control border-1" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon..." value="<?= $op['discount']; ?>">
                         <span id="discountError" class="text-danger"></span>
                     </div>
 
@@ -135,65 +142,6 @@
             });
         <?php endif; ?>
     });
-
-    // Inisialisasi array untuk produk terpilih
-    var selectedProducts = [];
-    var productContainer = document.getElementById('selectedProds');
-
-    // Mendapatkan semua checkbox kategori dan subkategori
-    var productCheckboxes = document.querySelectorAll('input[type="checkbox"][name="produk_id[]"]');
-
-    // Menambahkan event listener untuk perubahan pada checkbox produk
-    productCheckboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            var selectedProduk = this.dataset.nama;
-
-            if (this.checked) {
-                // Tambahkan produk yang dipilih ke dalam daftar
-                selectedProducts.push({
-                    id_produk: this.value,
-                    nama: selectedProduk
-                });
-
-                // Buat elemen <span> baru untuk setiap produk yang dipilih
-                var produkSpan = document.createElement('span');
-                produkSpan.className = 'badge rounded-pill text-bg-danger px-2 py-2 mx-1';
-                produkSpan.textContent = selectedProduk;
-
-                // Tambahkan elemen <span> ke dalam container
-                productContainer.appendChild(produkSpan);
-            } else {
-                // Hapus produk yang tidak dipilih dari daftar
-                var produkId = this.value;
-                selectedProducts = selectedProducts.filter(function(product) {
-                    return product.id_produk !== produkId;
-                });
-
-                // Hapus elemen <span> yang sesuai dari container
-                var spans = productContainer.getElementsByTagName('span');
-                for (var i = 0; i < spans.length; i++) {
-                    if (spans[i].textContent === selectedProduk) {
-                        productContainer.removeChild(spans[i]);
-                        break;
-                    }
-                }
-            }
-
-            // Perbarui pilihan produk terpilih
-            updatedProducts(selectedProducts);
-        });
-    });
-
-    var selectedProductsGlobal = [];
-
-    function updatedProducts(selectedProducts) {
-        var selectedProductsId = selectedProducts.map(function(product) {
-            return product.id_produk;
-        });
-
-        var produkIdInput = document.getElementById('produk_id');
-        produkIdInput.value = selectedProductsId.join(',');
-    }
 
     //Validasi Form
     function validasiPromoItem() {
@@ -250,14 +198,14 @@
     }
 
     // Get Nama Produk ke Input Text Disabled
-    // var produkRadios = document.querySelectorAll('input[type=radio][name=produk_id]');
-    // produkRadios.forEach(function(radio) {
-    //     radio.addEventListener('change', function() {
-    //         var selectedProduk = this.dataset.nama;
-    //         var produkField = document.getElementById('produkTerpilih');
-    //         produkField.value = selectedProduk;
-    //     });
-    // });
+    var produkRadios = document.querySelectorAll('input[type=radio][name=produk_id]');
+    produkRadios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            var selectedProduk = this.dataset.nama;
+            var produkField = document.getElementById('produkTerpilih');
+            produkField.value = selectedProduk;
+        });
+    });
 
     // Fungsi untuk menangani pencarian produk
     document.addEventListener('DOMContentLoaded', function() {

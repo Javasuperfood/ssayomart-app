@@ -72,6 +72,9 @@ class AdminPromoController extends BaseController
     public function deletePromo($id)
     {
         $promoModel = new PromoModel();
+        $promoItemModel = new PromoItemModel();
+        $promoBatchModel = new PromoBatchModel();
+
         $promo = $promoModel->find($id);
 
         if ($promo['img'] != 'default.png') {
@@ -81,8 +84,8 @@ class AdminPromoController extends BaseController
             }
         }
 
-        $promoItemModel = new PromoItemModel();
         $promoItemModel->where('id_promo', $id)->delete();
+        $promoBatchModel->where('id_promo', $id)->delete();
 
         $deleted = $promoModel->delete($id);
         if ($deleted) {
@@ -267,14 +270,14 @@ class AdminPromoController extends BaseController
 
         $promo = $promoModel->findAll();
         $variasiList = $variasiItemModel->findAll();
-        $produkList = $produkModel->findAll(); // Mengambil daftar produk
-        $ongoingPromoItems = $promoItemModel->getOngoingPromoItems();
+        $produkList = $produkModel->findAll();
         $ongoingPromo = $promoItemModel->find($id);
+        $ongoingPromoItems = $promoItemModel->getOngoingPromoItems();
 
         $ongoingPromo['produk_nama'] = $produkModel->find($ongoingPromo['id_produk'])['nama'];
         $data = [
             'promo' => $promo,
-            'produk' => $produkList, // Mengirim daftar produk ke View
+            'produk' => $produkList,
             'variasi' => $variasiList,
             'ongoingPromoItems' => $ongoingPromoItems,
             'op' => $ongoingPromo,
@@ -348,19 +351,34 @@ class AdminPromoController extends BaseController
     // =============================================================================
     //                              PROMO ITEM BATCH CONTROLLER
     // =============================================================================
-    public function promoItemBatch()
+    public function show($id)
+    {
+        $promoModel = new PromoModel();
+        $promoBatchModel = new PromoBatchModel();
+        $promoList = $promoModel->findAll();
+
+        $getOngoingPromoItems = $promoBatchModel->getOngoingPromoItems($id);
+
+        $data = [
+            'promo' => $promoList,
+            'ongoingPromoItems' => $getOngoingPromoItems,
+        ];
+        // dd($data);
+        return view('dashboard/promo/index', $data);
+    }
+
+    public function create()
     {
         $promoModel = new PromoModel();
         $promoBatchModel = new PromoBatchModel();
         $produkModel = new ProdukModel();
-        $promoItemModel = new PromoItemModel();
         $variasiItemModel = new VariasiItemModel();
 
         $promoList = $promoModel->findAll();
         $variasiList = $variasiItemModel->findAll();
         $produkList = $produkModel->findAll();
-        $ongoingPromoItems = $promoBatchModel->getOngoingPromoItems();
-        // dd($ongoingPromoItems);
+
+        $ongoingPromoItems = $promoBatchModel->getOngoingPromo();
 
         $data = [
             'promo' => $promoList,
@@ -373,7 +391,7 @@ class AdminPromoController extends BaseController
         return view('dashboard/promo/tambahPromoItemBatch', $data);
     }
 
-    public function savePromoItemBatch()
+    public function store()
     {
         // dd($this->request->getVar());
         $promoBatchModel = new PromoBatchModel();
@@ -405,10 +423,77 @@ class AdminPromoController extends BaseController
         ];
         session()->setFlashdata('alert', $alert);
 
-        return redirect()->to('dashboard/promo/tambah-promo-item-batch')->withInput();
+        return redirect()->to('dashboard/promo/tambah-promo/')->withInput();
     }
 
-    public function deletePromoItemBatch($id)
+    public function edit($id)
+    {
+        $promoModel = new PromoModel();
+        $promoBatchModel = new PromoBatchModel();
+        $produkModel = new ProdukModel();
+        $variasiItemModel = new VariasiItemModel();
+
+        $promoList = $promoModel->findAll();
+        $variasiList = $variasiItemModel->findAll();
+        $produkList = $produkModel->findAll();
+        $ongoingPromo = $promoBatchModel->find($id);
+        $promoBatch = $promoBatchModel->findAll();
+
+        $getOngoingPromoItems = $promoBatchModel->getOngoingPromoItems($id);
+        $ongoingPromo['produk_nama'] = $produkModel->find($ongoingPromo['id_produk'])['nama'];
+
+        $data = [
+            'promo' => $promoList,
+            'promoBatch' => $promoBatch,
+            'produk' => $produkList,
+            'variasi' => $variasiList,
+            'op' => $ongoingPromo,
+            'ongoingPromoItems' => $getOngoingPromoItems
+        ];
+        // dd($data);
+        return view('dashboard/promo/updatePromoItemBatch', $data);
+    }
+
+    public function update($id)
+    {
+        $promoBatchModel = new PromoBatchModel();
+        $ongoingPromo = $promoBatchModel->find($id);
+        $ongoingPromoItems = $promoBatchModel->getOngoingPromoItems($id);
+
+        $produkId = $this->request->getVar('produk_id');
+
+        $data = [
+            'id_promo_item_batch' => $id,
+            'id_promo' => $this->request->getVar('promo'),
+            'id_produk' => $produkId,
+            'discount' => $this->request->getVar('discount'),
+            'min' => $this->request->getVar('min'),
+            'op' => $ongoingPromo,
+            'ongoingPromoItems' => $ongoingPromoItems
+        ];
+
+        if ($promoBatchModel->save($data)) {
+            session()->setFlashdata('success', 'Promosi produk berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Promosi produk berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $ongoingPromo['id_promo'])->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+        }
+    }
+
+    public function delete($id)
     {
         $promoBatchModel = new PromoBatchModel();
         $promoBatch = $promoBatchModel->find($id);
@@ -422,7 +507,7 @@ class AdminPromoController extends BaseController
                     'message' => 'Promo item produk berhasil di hapus.'
                 ];
                 session()->setFlashdata('alert', $alert);
-                return redirect()->to('dashboard/promo/tambah-promo-item-batch');
+                return redirect()->to('dashboard/promo/tambah-promo');
             } else {
                 $alert = [
                     'type' => 'error',
@@ -430,7 +515,7 @@ class AdminPromoController extends BaseController
                     'message' => 'Terdapat kesalahan pada penghapusan data'
                 ];
                 session()->setFlashdata('alert', $alert);
-                return redirect()->to('dashboard/promo/tambah-promo-item-batch')->withInput();
+                return redirect()->to('dashboard/promo/tambah-promo')->withInput();
             }
         }
     }
