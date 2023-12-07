@@ -1,6 +1,7 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
 
+
 <?php
 // Mendeteksi User-Agent
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
@@ -19,7 +20,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-3 text-center">
                                 <i class="bi bi-cash-stack fs-1 fw-bold text-success"></i>
                             </div>
-                            <div class="col-9 d-flex justify-content-start align-items-center">
+                            <div class="col-9 totalbarang d-flex justify-content-start align-items-center">
                                 <p class="mt-0 mb-0"><?= lang('Text.total_cart') ?></p>
                                 <p class="mt-0 mb-0 fw-bold" id="textTotal"></p>
                                 <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
@@ -76,88 +77,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    <style>
-        /* Common styles for both mobile and desktop */
-        .card-body {
-            padding: 1rem;
-        }
+    <!-- button scrooll up -->
+    <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
+    <!-- end scroll up -->
+    <script>
+        // tombol Scroll Up
+        var scrollUpButton = document.getElementById("scrollUpButton");
 
-        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
-
-            .img-small {
-                max-height: 100px !important;
-                /* Sesuaikan tinggi maksimum yang Anda inginkan */
-                max-width: 100px !important;
-                /* Biarkan lebar gambar menyesuaikan */
-                margin: 25px 0 25px auto !important;
-                /* Geser gambar ke tengah kanan */
+        // Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
+        window.addEventListener("scroll", function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollUpButton.style.display = "block";
+            } else {
+                scrollUpButton.style.display = "none";
             }
+        });
 
-            .input-group {
-                position: relative;
-                display: flex;
-                align-items: stretch;
-                max-width: 280px;
-                width: 100%;
-                margin: 0 auto;
-                flex-wrap: nowrap;
-            }
+        // Scroll kembali ke atas saat tombol Scroll Up diklik
+        scrollUpButton.addEventListener("click", function() {
+            document.body.scrollTop = 0; // Untuk browser Safari
+            document.documentElement.scrollTop = 0; // Untuk browser lainnya
+        });
+    </script>
 
-            .form-control {
-                width: 20px;
-                padding: 0;
-                margin-bottom: 25px;
-            }
-
-            button.position-absolute {
-                bottom: 5px;
-                right: 10px;
-            }
-
-            .btn.btn-lg.fw-bold {
-                font-size: 12px;
-                padding: 6px 6px;
-                border-radius: 5px;
-            }
-
-            .btn.btn-sm.mt-3.position-absolute.end-0.mx-2 {
-                font-size: 10px;
-                padding: 5px 10px;
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle {
-                padding: 0;
-                width: 20px;
-                height: 20px;
-
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle i {
-                font-size: 10px;
-
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
-                margin-left: -2px;
-                display: flex;
-                justify-content: center;
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
-                margin-left: -1px;
-                display: flex;
-                justify-content: center;
-            }
-
-            .col-9 p {
-                font-size: 14px !important;
-                margin: 3px;
-            }
-
-            /* Add specific CSS styles for the delete button if needed */
-        }
-    </style>
+    <!-- end button scroll -->
 
 <?php else : ?>
     <!-- End Mobile View -->
@@ -253,31 +196,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php endif; ?>
 <!-- end Desktop -->
 
-<style>
-    .form-check-input:focus {
-        border-color: #ec2614;
-        outline: 0;
-        box-shadow: 0 0 0 0;
-    }
-
-    .form-check-input:checked {
-        background-color: #ec2614;
-        border-color: #ec2614
-    }
-
-    .form-check-input[type=radio] {
-        border-radius: 50%
-    }
-
-    .form-check-input:active {
-        filter: brightness(90%)
-    }
-
-    .form-check-input[type=checkbox]:indeterminate {
-        background-color: #ec2614;
-        border-color: #ec2614;
-    }
-</style>
 <script type="text/javascript">
     var produkSelected = {};
 
