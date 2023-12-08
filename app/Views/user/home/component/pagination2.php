@@ -44,13 +44,13 @@ $countProduk = count($produk);
                         
                         <div class="button-container">
                             <div class="button">
-                                <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
+                                <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
                             </div>
  
                             <div class="button-capsule" style="display: none;">
-                                <i class="icon fas fa-minus"></i>
+                                <i class="icon bi bi-dash"></i>
                                 <input type="number" class="input border-0" value="1">
-                                <i class="icon fas fa-plus"></i>
+                                <i class="icon bi bi-plus"></i>
                             </div>
                          </div>
     
@@ -103,13 +103,13 @@ $countProduk = count($produk);
 
                             <div class="button-container" id="button-container-${p.id_produk}">
                                     <div class="button" onclick="changeToCapsule(${p.id_produk}, ${p.id_variasi_item})">
-                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
+                                        <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
                                     </div>
 
                                     <div class="button-capsule" style="display: none;">
-                                        <i class="icon fas fa-minus" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+                                        <i class="icon bi bi-dash" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                         <input type="number" class="input border-0" value="1" id="counter-${p.id_produk}">
-                                        <i class="icon fas fa-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+                                        <i class="icon bi bi-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                     </div>
                                 </div>
                             
@@ -214,7 +214,7 @@ $countProduk = count($produk);
     }
 
     .icon {
-        font-size: 12px;
+        font-size: 14px;
         color: #e83b2e;
         transition: all 0.3s ease;
         cursor: pointer;
