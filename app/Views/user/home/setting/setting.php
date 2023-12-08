@@ -17,7 +17,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center mt-3 ">
                         <div class="col-6 d-flex justify-content-start align-items-start">
-                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 me-2" style="font-size: 12px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
+                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 me-3" style="font-size: 12px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
                         <div class="col-6 d-flex justify-content-end align-items-end">
                             <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 ms-2" style="font-size: 12px;"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
@@ -163,15 +163,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    <style>
-
-
-      
-    </style>
-
-    <style>
-     
-    </style>
+    
 
 
 <?php else : ?>
@@ -310,57 +302,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    <!-- style button modal dialog -->
-
-    <style>
-        /* CSS untuk chat button yang memunculkan modal */
-        .chat-btn {
-            position: fixed;
-            right: 20px;
-            bottom: 130px;
-            cursor: pointer;
-            z-index: 999;
-            border-radius: 50%;
-            background-color: #ec2614;
-            color: #fff;
-            font-size: 22px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.5s ease;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        /* CSS tambahan untuk modal content */
-        .modal-content {
-            background-color: #fff;
-            border-radius: 5px;
-        }
-
-        /* CSS untuk header dalam modal */
-        .modal-header {
-            background-color: #ec2614;
-            color: #fff;
-            border-radius: 5px 5px 0px 0px;
-            padding: 13px;
-        }
-
-        /* CSS untuk teks dalam modal */
-        .modal-body {
-            padding: 15px;
-        }
-
-        /* CSS untuk tombol "Submit" dalam modal */
-        .modal-body .btn-danger {
-            font-size: 12px;
-        }
-
-        .modal-body .form-control {
-            border: 1px solid #DEE2E6;
-        }
-    </style>
+   
+       
+  
 
 <?php endif; ?>
 <!-- end Desktop -->

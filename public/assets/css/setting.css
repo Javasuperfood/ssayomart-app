@@ -123,3 +123,51 @@
     }
   }
 }
+
+/* CSS untuk chat button yang memunculkan modal */
+.chat-btn {
+  position: fixed;
+  right: 30px;
+  bottom: 70px;
+  cursor: pointer;
+  z-index: 999;
+  border-radius: 50%;
+  background-color: #ec2614;
+  color: #fff;
+  font-size: 22px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* CSS tambahan untuk modal content */
+.modal-content {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* CSS untuk header dalam modal */
+.modal-header {
+  background-color: #ec2614;
+  color: #fff;
+  border-radius: 5px 5px 0px 0px;
+  padding: 13px;
+}
+
+/* CSS untuk teks dalam modal */
+.modal-body {
+  padding: 15px;
+}
+
+/* CSS untuk tombol "Submit" dalam modal */
+.modal-body .btn-danger {
+  font-size: 12px;
+}
+
+.modal-body .form-control {
+  border: 1px solid #dee2e6;
+}
