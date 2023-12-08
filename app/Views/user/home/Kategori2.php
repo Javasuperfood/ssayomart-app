@@ -200,15 +200,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <!--button Goto All Kategori -->
             <section>
-                <div class="container d-flex justify-content-center align-items-center py-5">
-                    <a href="<?= base_url(); ?>all-category" id="goToCategories" class="btn custom-button custom-border btn-lg  shadow-sm fw-bold"> Go To <br>
-                        All Categories
+                <div class="card border-0 font-family-poppins" style="background-color: #fecdce; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 1rem;">
+
+                    <a style="color: #7e0204;" href="<?= base_url(); ?>all-category" id="goToCategories" class="fw-bold text-decoration-none">
+                        Go To <br> All Categories
                     </a>
-                    <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
+
+                    <i class="bi bi-list-check" style="font-size: 24px; color: #7e0204;"></i>
+
                 </div>
+
             </section>
             <!-- end button goto all kategori -->
-
+            <!-- scroll up -->
+            <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
+            <!-- scroll up -->
         </div>
 
         <?php if (!$produk) : ?>
@@ -362,7 +368,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php endif ?>
 
         <!-- STYLE BUTTON ALL KATEGORI -->
-        <style>
+        <!-- <style>
             .custom-border {
                 /* Adjust the RGBA values and alpha (transparency) as needed */
                 border-radius: 10px;
@@ -386,7 +392,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 display: inline-block;
                 transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
             }
-        </style>
+        </style> -->
 
         <!-- style all device css card -->
         <style>
