@@ -304,7 +304,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('promo/tambah-promo/show-promo/edit/(:segment)', 'AdminPromoController::edit/$1');
     $routes->post('promo/tambah-promo/show-promo/edit/update/(:segment)', 'AdminPromoController::update/$1');
     $routes->post('promo/tambah-promo/show-promo/delete/(:segment)', 'AdminPromoController::delete/$1');
-    $routes->post('promo/tambah-promo/show-promo/delete-promo-batch', 'AdminPromoController::deleteBatch');
+    $routes->post('promo/tambah-promo/show-promo/delete-promo-batch/(:segment)', 'AdminPromoController::deleteBatch/$1');
 
 
     // CRUD KONTEN/BLOG/ARTIKEL
