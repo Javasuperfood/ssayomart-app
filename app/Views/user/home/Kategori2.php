@@ -12,7 +12,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap"> -->
 
 
-
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -215,7 +214,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         ?>
                                 <div class="col-6 py-1 px-1">
                                     <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                        <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
+                                        <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="rounded-3 card-img-top">
                                     </a>
                                 </div>
                         <?php
@@ -252,7 +251,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <div class="row mt-2">
-                        <?= $this->include('user/produk/component/card2'); ?>
+                        <?php
+                        // Kategori2.php
+
+                        // Tentukan variabel global untuk menandai bahwa ini adalah homepage
+                        define('IS_HOMEPAGE', true);
+
+                        // Muat tampilan file card2.php
+                        echo view('user/produk/component/card2');
+                        ?>
                     </div>
                 </div>
             <?php endif; ?>
