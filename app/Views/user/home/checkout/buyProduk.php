@@ -106,8 +106,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <div class="card-body form-check form-switch">
                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                     <p class="fw-bold"> <?= $a['label']; ?></p>
-                                                                    <p><?= $m['alamat_1']; ?></p>
-                                                                    <p><?= $m['telp']; ?></p>
+                                                                    <p><?= $a['alamat_1']; ?></p>
+                                                                    <p><?= $a['telp']; ?></p>
                                                                 </div>
                                                             </div>
                                                         </div>
