@@ -11,7 +11,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Font Noto Sans Korean -->
 <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap"> -->
 
-
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -86,115 +85,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </script>
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
-        <style>
-            .btn-close {
-                background-color: #ffff;
-                color: #000;
-                font-size: 10px;
-                /* margin-right: 4%; */
-                margin-top: 123%;
-            }
-
-            /* Membuat tombol close berbentuk lingkaran */
-            .btn-close {
-                border-radius: 50%;
-                width: 25px;
-                height: 25px;
-            }
-
-            /*samsung galaxy fold dual mode*/
-            @media screen and (min-width: 717px) and (max-width: 717px) {
-
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-                    margin-top: 60%;
-                }
-
-                .btn-close {
-                    border-radius: 50%;
-                    width: 25px;
-                    height: 25px;
-                }
-
-                .img-fluid {
-                    width: 200px;
-                    max-width: 100%;
-                    height: auto;
-                }
-            }
-
-            /* Ipad */
-            @media screen and (min-width: 768px) and (max-width: 1024px) {
-
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-                    margin-left: 7%;
-                    margin-top: 87%;
-
-                    /* atau warna lain sesuai kebutuhan */
-                }
-
-                /* Membuat tombol close berbentuk lingkaran */
-                .btn-close {
-                    margin-right: 5%;
-                    width: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                    height: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                }
-
-            }
-
-            /* samsung galaxy fold lipat */
-            @media (max-width: 280px) {
-
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-                    margin-top: 125%;
-
-                    /* atau warna lain sesuai kebutuhan */
-                }
-
-                /* Membuat tombol close berbentuk lingkaran */
-                .btn-close {
-                    border-radius: 50%;
-                    width: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                    height: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                }
-
-            }
-
-            @media (min-width: 512px) and (max-width: 512px) {
-
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-                    margin-top: 87%;
-
-                    /* atau warna lain sesuai kebutuhan */
-                }
-
-                /* Membuat tombol close berbentuk lingkaran */
-                .btn-close {
-                    border-radius: 50%;
-                    width: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                    height: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                }
-
-            }
-        </style>
-        <!-- Akhir Modal  Homepage-->
 
         <div class="class" style="position: relative; top: -15px;">
             <!-- Banner Promosi Item -->
@@ -223,26 +113,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         endforeach
                         ?>
                     </div>
-
-                    <!-- <div class="row px-2">
-                        <div class="col-6 py-1 px-1">
-                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
-                            </a>
-                        </div>
-                        <div class="col-6 py-1 px-1">
-                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
-                            </a>
-                        </div>
-                    </div> -->
                 </div>
             </section>
             <!-- Akhir Banner Promosi Item -->
-            <div class="mt-3"></div>
+
             <!-- rekomendasi produk -->
+            <div class="mt-3"></div>
             <?php if ($produk) : ?>
-                <div class="container ">
+                <div class="container">
                     <div class="card border-0 text-center font-family-poppins" style="background-color: #facaaf;">
                         <div class="card-warning">
                             <span class="card-title fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #9c2525;"><strong>Produk Rekomendasi</strong></h2>
@@ -250,7 +128,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
 
-                    <div class="row mt-2">
+                    <div class="row mt-2 card-grup">
                         <?php
                         // Kategori2.php
 
@@ -273,10 +151,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
 
-                <div class="row row-cols-3 me-0 mt-2">
+                <div class="row row-cols-3 me-0 mt-2 agak-kekanan">
                     <?php if ($latest) : ?>
                         <?php foreach ($latest as $p) : ?>
-                            <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
+                            <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
                                 <div class="card card-produk border-0 shadow-sm text-center" style="width: 110px; height: 100%; padding: 5px;">
                                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                         <div class="d-flex justify-content-center align-items-center">
@@ -317,40 +195,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         <?php endforeach; ?>
                     <?php endif; ?>
-
                 </div>
             </div>
 
-            <!-- All Kategori -->
-
+            <!--button Goto All Kategori -->
             <section>
                 <div class="container d-flex justify-content-center align-items-center py-5">
-                    <a href="<?= base_url(); ?>all-category" id="goToCategories" class="btn btn-outline-danger btn-lg rounded-3 shadow-sm"> Go To <br>
+                    <a href="<?= base_url(); ?>all-category" id="goToCategories" class="btn custom-button custom-border btn-lg  shadow-sm fw-bold"> Go To <br>
                         All Categories
                     </a>
                     <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
                 </div>
             </section>
-        </div>
-        <div>
+            <!-- end button goto all kategori -->
 
         </div>
+
         <?php if (!$produk) : ?>
-            <style>
-                #scrollUpButton {
-                    display: none;
-                    position: fixed;
-                    bottom: 70px;
-                    right: 20px;
-                    width: 30px;
-                    height: 40px;
-                    padding: 10px 20px;
-                    border: none;
-                    border-radius: 50%;
-                    cursor: pointer;
-                    z-index: 99;
-                }
-            </style>
             <script>
                 // tombol Scroll Up
                 var scrollUpButton = document.getElementById("scrollUpButton");
@@ -500,7 +361,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </script>
         <?php endif ?>
 
-        <!-- samsung galaxy fold tonggle dual screen mode gak sreg hapus aja gak usah cacicu -->
+        <!-- STYLE BUTTON ALL KATEGORI -->
+        <style>
+            .custom-border {
+                /* Adjust the RGBA values and alpha (transparency) as needed */
+                border-radius: 10px;
+
+
+            }
+
+            .custom-button {
+                background: linear-gradient(to left, #fb0408, #c90306);
+                /* Set your custom linear gradient */
+                color: #fff;
+                /* Set your custom text color */
+                border: 3px solid rgb(170, 29, 37);
+                /* Set your custom border color */
+                border-radius: 10px;
+                /* Set your custom border radius */
+                padding: 10px 20px;
+                /* Adjust padding as needed */
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            }
+        </style>
+
+        <!-- style all device css card -->
         <style>
             @media screen and (min-width: 400px) and (max-width: 450px) {
                 .card-produk {
@@ -510,7 +398,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             @media screen and (min-width: 717px) and (max-width: 717px) {
-                .col-4.col-md-2.col-lg-2 {
+                .susunan-card {
                     justify-content: center;
                     align-items: center;
                     max-width: 25% !important;
@@ -544,23 +432,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     justify-content: center;
                 }
 
-                #product-container.row.row-cols-3 {
-                    width: 100%;
-                    height: auto;
-                    margin-left: 4.5%;
+                /* .row.card-grup {
+                    justify-content: center;
+                    align-items: center;
+                    max-width: 31% !important;
+                    flex: 0 0 100% !important;
 
-                }
+                } */
 
-                #product-unggulan-container.row.row-cols-3 {
-                    width: 100%;
-                    height: auto;
-                    margin-left: 4.5%;
-
-                }
             }
 
             @media screen and (min-width: 512px) and (max-width: 512px) {
-                .col-4.col-md-2.col-lg-2 {
+                .susunan-card {
                     justify-content: center;
                     align-items: center;
                     max-width: 31% !important;
@@ -594,32 +477,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     justify-content: center;
                 }
 
-                #product-container.row.row-cols-3 {
-                    width: 100%;
-                    height: auto;
-                    margin-left: 4.5%;
-
+                .agak-kekanan {
+                    justify-content: center;
+                    margin-right: 0%;
+                    margin-left: 0%;
                 }
 
-                #product-unggulan-container.row.row-cols-3 {
-                    width: 100%;
-                    height: auto;
-                    margin-left: 4.5%;
-
-                }
             }
 
-            @media (min-width: 280px) and (max-width: 320px) {
-                .col-4.col-md-2.col-lg-2 {
-                    justify-content: center;
-                    align-items: center;
-                    max-width: 50% !important;
+            @media (max-width: 280px) {
+
+                .susunan-card {
                     flex: 0 0 100% !important;
-
-
-
-
-                    /* width: 20% !important; */
+                    max-width: 50%;
                 }
 
                 .card-produk {
@@ -628,8 +498,158 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
 
             }
+
+            @media (min-width: 320px) and (max-width: 320px) {
+
+                .susunan-card {
+                    flex: 0 0 100% !important;
+                    max-width: 50%;
+                }
+
+                .card-produk {
+                    width: 130px !important;
+                    /* Mengisi lebar parent container */
+                }
+
+            }
         </style>
-        <!-- end samsung galaxy fold tonggle dual screen mode 717 -->
+        <!-- end CSS all device -->
+
+        <!-- button scroll up -->
+        <style>
+            #scrollUpButton {
+                display: none;
+                position: fixed;
+                bottom: 70px;
+                right: 20px;
+                width: 30px;
+                height: 40px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                z-index: 99;
+            }
+        </style>
+
+        <!-- buton close  all device-->
+        <style>
+            .btn-close {
+                background-color: #ffff;
+                color: #000;
+                font-size: 10px;
+                /* margin-right: 4%; */
+                margin-top: 123%;
+            }
+
+            /* Membuat tombol close berbentuk lingkaran */
+            .btn-close {
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+            }
+
+            /*samsung galaxy fold dual mode*/
+            @media screen and (min-width: 717px) and (max-width: 717px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-top: 60%;
+                }
+
+                .btn-close {
+                    border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
+                }
+
+                .img-fluid {
+                    width: 200px;
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+
+            /* Ipad */
+            @media screen and (min-width: 768px) and (max-width: 1024px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-left: 7%;
+                    margin-top: 87%;
+
+                    /* atau warna lain sesuai kebutuhan */
+                }
+
+                /* Membuat tombol close berbentuk lingkaran */
+                .btn-close {
+                    margin-right: 5%;
+                    width: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                    height: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                }
+
+            }
+
+            /* samsung galaxy fold lipat */
+            @media (max-width: 280px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-top: 125%;
+
+                    /* atau warna lain sesuai kebutuhan */
+                }
+
+                /* Membuat tombol close berbentuk lingkaran */
+                .btn-close {
+                    border-radius: 50%;
+                    width: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                    height: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                }
+
+            }
+
+            @media (min-width: 512px) and (max-width: 512px) {
+
+                .btn-close {
+                    background-color: #ffff;
+                    color: #000;
+                    font-size: 10px;
+                    margin-top: 87%;
+
+                    /* atau warna lain sesuai kebutuhan */
+                }
+
+                /* Membuat tombol close berbentuk lingkaran */
+                .btn-close {
+                    border-radius: 50%;
+                    width: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                    height: 25px;
+                    /* Sesuaikan ukuran sesuai kebutuhan */
+                }
+
+            }
+        </style>
+
+        <style>
+            /* Media query for Samsung Galaxy Fold jangan di hapus*/
+            @media screen and (max-width: 280px) {
+                img.card-img-top {
+                    max-width: 100%;
+                }
+            }
+        </style>
     <?php else : ?>
         <!-- Desktop View -->
         <div id="desktopContent" style="margin-top:15px;">
@@ -702,27 +722,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     return null;
                 }
             </script>
-            <style>
-                /* Ganti warna tombol close menjadi putih */
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-                    margin-top: 85%;
-
-                    /* atau warna lain sesuai kebutuhan */
-                }
-
-                /* Membuat tombol close berbentuk lingkaran */
-                .btn-close {
-                    border-radius: 50%;
-                    width: 20px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                    height: 20px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                }
-            </style>
-            <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
             <section id="unggul">
                 <div class="container">
@@ -752,15 +751,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </section>
-            <!-- ssayo Resto -->
-            <!-- <section>
-            <div class="container d-flex justify-content-between align-items-center">
-                <a href="<?= base_url(); ?>sayo-resto">
-                    <img src="<?= base_url() ?>assets/img/ssayoresto/btnsayoresto.jpg" class="d-block w-100 rounded-3">
-                </a>
-            </div>
-        </section> -->
-            <!-- Akhir SSayo Resto -->
+
             <!-- swipper card tampilan web -->
             <section id="unggul">
                 <div class="container py-3">
@@ -796,28 +787,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                                         <?php endif ?>
                                                     </h1>
-
-                                                    <!-- <div class="container mt-2 mb-4">
-                                                    <div class="row justify-items-center">
-                                                        <div class="col">
-                                                            <div class="horizontal-counter">
-                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                                                <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" disabled>
-                                                                <button class="btn btn-sm btn-outline-danger mr-4 rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                                    <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
-                                                        <input type="hidden" name="buy" value="show">
-                                                        <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-2">
-                                                            Buy Now
-                                                        </button>
-                                                        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                                                    </form>
-                                                </div> -->
 
                                                     <!-- button Animasi -->
                                                     <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
@@ -903,81 +872,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </section>
-            <!-- swipper card  tampilan web-->
         </div>
-
-        <!-- styling button counter animasi -->
-        <style>
-            .button-container {
-                position: absolute;
-                top: 7px;
-                /* Jarak dari atas */
-                left: 7px;
-                /* Jarak dari kiri */
-                display: flex;
-                gap: 5px;
-                /* Jarak antar tombol */
-            }
-
-            .button {
-                width: 30px;
-                /* Ukuran tombol yang lebih kecil */
-                height: 30px;
-                /* Ukuran tombol yang lebih kecil */
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: #fff;
-                font-weight: bold;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                outline: 1px solid #e83b2e;
-                background-color: #fff;
-            }
-
-
-            .button-capsule {
-                width: 60px;
-                /* Ukuran capsule yang lebih kecil */
-                height: 30px;
-                /* Ukuran capsule yang lebih kecil */
-                border-radius: 15px;
-                display: none;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0 5px;
-                /* Padding yang lebih kecil */
-                transition: all 0.3s ease;
-                outline: 1px solid #e83b2e;
-                background-color: #fff;
-            }
-
-            .icon {
-                font-size: 16px;
-                color: #e83b2e;
-                transition: all 0.3s ease;
-                cursor: pointer;
-            }
-
-            .input {
-                width: 20px;
-                /* Ukuran input yang lebih kecil */
-                height: 15px;
-                /* Ukuran input yang lebih kecil */
-                text-align: center;
-                margin: 0 3px;
-                /* Margin yang lebih kecil */
-                color: #000;
-                font-size: 8px;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                border: none;
-                outline: none;
-            }
-        </style>
-        <!-- akhir styling button counter animasi -->
         <!-- script button counter animasi -->
         <script>
             function changeToCapsule(productId) {
@@ -1014,6 +909,101 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </script>
         <!-- akhir script button counter animasi -->
     </div>
+
+    <style>
+        /* Ganti warna tombol close menjadi putih */
+        .btn-close {
+            background-color: #ffff;
+            color: #000;
+            font-size: 10px;
+            margin-top: 85%;
+
+            /* atau warna lain sesuai kebutuhan */
+        }
+
+        /* Membuat tombol close berbentuk lingkaran */
+        .btn-close {
+            border-radius: 50%;
+            width: 20px;
+            /* Sesuaikan ukuran sesuai kebutuhan */
+            height: 20px;
+            /* Sesuaikan ukuran sesuai kebutuhan */
+        }
+    </style>
+    <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
+
+    <!-- styling button counter animasi  dekstop-->
+    <style>
+        .button-container {
+            position: absolute;
+            top: 7px;
+            /* Jarak dari atas */
+            left: 7px;
+            /* Jarak dari kiri */
+            display: flex;
+            gap: 5px;
+            /* Jarak antar tombol */
+        }
+
+        .button {
+            width: 30px;
+            /* Ukuran tombol yang lebih kecil */
+            height: 30px;
+            /* Ukuran tombol yang lebih kecil */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: 1px solid #e83b2e;
+            background-color: #fff;
+        }
+
+
+        .button-capsule {
+            width: 60px;
+            /* Ukuran capsule yang lebih kecil */
+            height: 30px;
+            /* Ukuran capsule yang lebih kecil */
+            border-radius: 15px;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5px;
+            /* Padding yang lebih kecil */
+            transition: all 0.3s ease;
+            outline: 1px solid #e83b2e;
+            background-color: #fff;
+        }
+
+        .icon {
+            font-size: 16px;
+            color: #e83b2e;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .input {
+            width: 20px;
+            /* Ukuran input yang lebih kecil */
+            height: 15px;
+            /* Ukuran input yang lebih kecil */
+            text-align: center;
+            margin: 0 3px;
+            /* Margin yang lebih kecil */
+            color: #000;
+            font-size: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            outline: none;
+        }
+    </style>
+    <!-- akhir styling button counter animasi -->
 <?php endif; ?>
 <!-- End Desktop View -->
 
@@ -1032,99 +1022,5 @@ if ($isMobile) {
 ?>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
-
-<style>
-    .font-family-poppins {
-        font-family: 'Poppins', sans-serif;
-    }
-
-    .sizing {
-        width: 200px;
-        height: 200px;
-
-    }
-
-    .horizontal-counter {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .horizontal-counter .btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 12px;
-    }
-
-    .horizontal-counter input {
-        width: 40px;
-        text-align: center;
-    }
-
-    /* Media Iphone XE */
-    /* @media (max-width: 375px) {
-        .responsive-image {
-            width: 280px !important;
-        }
-
-    } */
-
-    /* Media query for Samsung Galaxy Fold */
-    @media (max-width: 280px) {
-        .horizontal-counter .btn {
-            padding: 0.15rem 0.3rem;
-            font-size: 0.9rem;
-        }
-
-        .horizontal-counter input {
-            width: 30px;
-            text-align: center;
-        }
-
-        .custom-button .btn {
-            padding: 0.15rem 0.3rem;
-            font-size: 0.9rem;
-
-        }
-
-        .responsive-image {
-            width: 230px !important;
-        }
-
-
-    }
-
-    @media screen and (max-width: 280px) {
-        img.card-img-top {
-            max-width: 100%;
-        }
-    }
-</style>
-
-<script type="text/javascript">
-    function increaseCount(b, id) {
-        var input = b.previousElementSibling;
-        console.log(input);
-        var value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        input.value = value;
-        $('#Cqty' + id).val(value);
-        $('#Bqty' + id).val(value);
-    }
-
-    function decreaseCount(b, id) {
-        var input = b.nextElementSibling;
-        var value = parseInt(input.value, 10);
-        if (value > 1) {
-            value = isNaN(value) ? 0 : value;
-            value--;
-            input.value = value;
-            $('#Cqty' + id).val(value);
-            $('#Bqty' + id).val(value);
-
-        }
-    }
-</script>
-
 
 <?= $this->endSection(); ?>
