@@ -11,8 +11,8 @@
                 <div class="row row-cols-3 me-0" id="product-unggulan-container">
                     <!-- Featured Products -->
                     <?php foreach ($featuredProducts as $fp) : ?>
-                        <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                            <div class="susunan-card">
+                        <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                            <div class="">
                                 <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%;padding: 5px;">
                                     <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                         <div class="d-flex justify-content-center align-items-center">
@@ -60,14 +60,14 @@
     <?php endif ?>
 
     <div class="container bg-white" id="product">
-        <!-- <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
-        <hr class="border-darker mt-0 mb-3"> -->
+        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
+        <hr class="border-darker mt-0 mb-3">
 
         <div class="row row-cols-3 me-0" id="product-container">
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
-                <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                    <div class="susunan-card">
+                <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                    <div class="">
                         <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -238,3 +238,209 @@
         </div>
     </div>
 <?php endif ?>
+
+<style>
+    /* styling button counter animasi */
+    .button-container {
+        position: absolute;
+        top: 5px;
+        /* Jarak dari atas */
+        left: 5px;
+        /* Jarak dari kiri */
+        display: flex;
+        gap: 5px;
+        /* Jarak antar tombol */
+    }
+
+    .button {
+        width: 25px;
+        /* Ukuran tombol yang lebih kecil */
+        height: 25px;
+        /* Ukuran tombol yang lebih kecil */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        outline: 1px solid #e83b2e;
+        background-color: #fff;
+    }
+
+    .button-capsule {
+        width: 60px;
+        /* Ukuran capsule yang lebih kecil */
+        height: 25px;
+        /* Ukuran capsule yang lebih kecil */
+        border-radius: 15px;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5px;
+        /* Padding yang lebih kecil */
+        transition: all 0.3s ease;
+        outline: 1px solid #e83b2e;
+        background-color: #fff;
+    }
+
+    .icon {
+        font-size: 12px;
+        color: #e83b2e;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .input {
+        width: 20px;
+        /* Ukuran input yang lebih kecil */
+        height: 15px;
+        /* Ukuran input yang lebih kecil */
+        text-align: center;
+        margin: 0 3px;
+        /* Margin yang lebih kecil */
+        color: #000;
+        font-size: 8px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        outline: none;
+    }
+
+    /* iphone 14 promax */
+    @media screen and (min-width: 400px) and (max-width: 450px) {
+        .card-produk {
+            width: 120px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
+
+    /* samsung galfold dual mode screen 717 */
+    @media screen and (min-width: 717px) and (max-width: 717px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 20px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container {
+            width: 100%;
+            height: auto;
+            margin-left: 4.5%;
+
+        }
+
+        #product-unggulan-container {
+            width: 100%;
+            height: auto;
+            margin-left: 4.5%;
+
+        }
+    }
+
+    /* samsung galfold dual mode screen 512 */
+    @media screen and (min-width: 512px) and (max-width: 512px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 20px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container {
+            width: 100%;
+            height: auto;
+            margin-left: 3.5%;
+
+        }
+
+        #product-unggulan-container {
+            width: 100%;
+            height: auto;
+            margin-left: 3.5%;
+
+        }
+    }
+
+    /* samsung galfold dual mode screen 280 dan SE 320 */
+    @media (max-width: 280px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+        }
+
+        .card-produk {
+            width: 120px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
+
+    @media (min-width: 320px) and (max-width: 320px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
+</style>

@@ -328,14 +328,14 @@ $countProduk = count($produk);
         #product-container {
             width: 100%;
             height: auto;
-            margin-left: 0%;
+            margin-left: 3.5%;
 
         }
 
         #product-unggulan-container {
             width: 100%;
             height: auto;
-            margin-left: 0%;
+            margin-left: 3.5%;
 
         }
     }
@@ -353,11 +353,17 @@ $countProduk = count($produk);
         }
     }
 
-    @media (max-width: 320px) {
+    @media (min-width: 320px) and (max-width: 320px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+        }
 
         .card-produk {
-            width: 85px !important;
+            width: 130px !important;
             /* Mengisi lebar parent container */
         }
+
     }
 </style>
