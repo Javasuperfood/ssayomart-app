@@ -396,7 +396,7 @@ class AdminPromoController extends BaseController
         // dd($this->request->getVar());
         $promoBatchModel = new PromoBatchModel();
 
-        $produkIds = $this->request->getVar('produk_id');
+        $produkIds = (array) $this->request->getVar('produk_id');
 
         $batchData = [];
 
@@ -409,21 +409,29 @@ class AdminPromoController extends BaseController
             ];
 
             $batchData[] = $data;
+            // dd($batchData);
         }
 
-        $promoBatchModel->insertBatch($batchData);
-        // dd($batchData);
+        if ($promoBatchModel->insertBatch($batchData)) {
+            session()->setFlashdata('success', 'Promosi produk berhasil disimpan.');
 
-        session()->setFlashdata('success', 'Promosi produk berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Promosi produk berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
 
-        $alert = [
-            'type' => 'success',
-            'title' => 'Berhasil',
-            'message' => 'Promosi produk berhasil disimpan.'
-        ];
-        session()->setFlashdata('alert', $alert);
-
-        return redirect()->to('dashboard/promo/tambah-promo/')->withInput();
+            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $this->request->getVar('promo'))->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $this->request->getVar('promo'))->withInput();
+        }
     }
 
     public function edit($id)
@@ -460,12 +468,10 @@ class AdminPromoController extends BaseController
         $ongoingPromo = $promoBatchModel->find($id);
         $ongoingPromoItems = $promoBatchModel->getOngoingPromoItems($id);
 
-        $produkId = $this->request->getVar('produk_id');
-
         $data = [
             'id_promo_item_batch' => $id,
             'id_promo' => $this->request->getVar('promo'),
-            'id_produk' => $produkId,
+            'id_produk' => $this->request->getVar('produk_id'),
             'discount' => $this->request->getVar('discount'),
             'min' => $this->request->getVar('min'),
             'op' => $ongoingPromo,
@@ -507,7 +513,7 @@ class AdminPromoController extends BaseController
                     'message' => 'Promo item produk berhasil di hapus.'
                 ];
                 session()->setFlashdata('alert', $alert);
-                return redirect()->to('dashboard/promo/tambah-promo');
+                return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $promoBatch['id_promo'])->withInput();
             } else {
                 $alert = [
                     'type' => 'error',
