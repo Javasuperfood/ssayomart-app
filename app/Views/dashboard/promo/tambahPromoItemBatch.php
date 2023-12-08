@@ -98,8 +98,8 @@
                     <!-- Span Badge Produk Terpilih -->
                     <div class="mb-4">
                         <label for="produk" class="form-label">Produk-Produk Terpilih</label>
-                        <br>
                         <div id="selectedProds"></div>
+                        <span id="produkError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
@@ -135,6 +135,70 @@
             });
         <?php endif; ?>
     });
+
+    //Validasi Form
+    function validasiPromoItem() {
+        var isValid = true;
+
+        var promoField = document.getElementById('promo');
+        var produkField = document.getElementById('selectedProds'); // Ganti ID menjadi "produkTerpilih"
+        var minField = document.getElementById('min');
+        var discountField = document.getElementById('discount');
+
+        var promoError = document.getElementById('promoError');
+        var produkError = document.getElementById('produkError');
+        var minError = document.getElementById('minError');
+        var discountError = document.getElementById('discountError');
+
+        promoError.textContent = '';
+        produkError.textContent = '';
+        minError.textContent = '';
+        discountError.textContent = '';
+
+        if (promoField.value.trim() === '') {
+            promoField.classList.add('invalid-field');
+            promoError.textContent = 'Pilihan Promo harus diisi';
+            isValid = false;
+        } else {
+            promoField.classList.remove('invalid-field');
+        }
+
+        if (produkField.textContent.trim() === '') {
+            produkField.classList.add('invalid-field');
+            produkError.textContent = 'Produk yang akan diberikan promo harus diisi';
+            isValid = false;
+        } else {
+            produkField.classList.remove('invalid-field');
+        }
+
+        if (minField.value.trim() === '') {
+            minField.classList.add('invalid-field');
+            minError.textContent = 'Minimal pembelian harus diisi';
+            isValid = false;
+        } else {
+            minField.classList.remove('invalid-field');
+        }
+
+        if (discountField.value.trim() === '') {
+            discountField.classList.add('invalid-field');
+            discountError.textContent = 'Diskon promo harus diisi';
+            isValid = false;
+        } else {
+            discountField.classList.remove('invalid-field');
+        }
+
+        return isValid;
+    }
+
+    // Get Nama Produk ke Input Text Disabled
+    // var produkRadios = document.querySelectorAll('input[type=radio][name=produk_id]');
+    // produkRadios.forEach(function(radio) {
+    //     radio.addEventListener('change', function() {
+    //         var selectedProduk = this.dataset.nama;
+    //         var produkField = document.getElementById('produkTerpilih');
+    //         produkField.value = selectedProduk;
+    //     });
+    // });
 
     // Inisialisasi array untuk produk terpilih
     var selectedProducts = [];
@@ -194,70 +258,6 @@
         var produkIdInput = document.getElementById('produk_id');
         produkIdInput.value = selectedProductsId.join(',');
     }
-
-    //Validasi Form
-    function validasiPromoItem() {
-        var isValid = true;
-
-        var promoField = document.getElementById('promo');
-        var produkField = document.getElementById('produkTerpilih'); // Ganti ID menjadi "produkTerpilih"
-        var minField = document.getElementById('min');
-        var discountField = document.getElementById('discount');
-
-        var promoError = document.getElementById('promoError');
-        var produkError = document.getElementById('produkError');
-        var minError = document.getElementById('minError');
-        var discountError = document.getElementById('discountError');
-
-        promoError.textContent = '';
-        produkError.textContent = '';
-        minError.textContent = '';
-        discountError.textContent = '';
-
-        if (promoField.value.trim() === '') {
-            promoField.classList.add('invalid-field');
-            promoError.textContent = 'Pilihan Promo harus diisi';
-            isValid = false;
-        } else {
-            promoField.classList.remove('invalid-field');
-        }
-
-        if (produkField.value.trim() === '') {
-            produkField.classList.add('invalid-field');
-            produkError.textContent = 'Produk yang akan diberikan promo harus diisi';
-            isValid = false;
-        } else {
-            produkField.classList.remove('invalid-field');
-        }
-
-        if (minField.value.trim() === '') {
-            minField.classList.add('invalid-field');
-            minError.textContent = 'Minimal pembelian harus diisi';
-            isValid = false;
-        } else {
-            minField.classList.remove('invalid-field');
-        }
-
-        if (discountField.value.trim() === '') {
-            discountField.classList.add('invalid-field');
-            discountError.textContent = 'Diskon promo harus diisi';
-            isValid = false;
-        } else {
-            discountField.classList.remove('invalid-field');
-        }
-
-        return isValid;
-    }
-
-    // Get Nama Produk ke Input Text Disabled
-    // var produkRadios = document.querySelectorAll('input[type=radio][name=produk_id]');
-    // produkRadios.forEach(function(radio) {
-    //     radio.addEventListener('change', function() {
-    //         var selectedProduk = this.dataset.nama;
-    //         var produkField = document.getElementById('produkTerpilih');
-    //         produkField.value = selectedProduk;
-    //     });
-    // });
 
     // Fungsi untuk menangani pencarian produk
     document.addEventListener('DOMContentLoaded', function() {

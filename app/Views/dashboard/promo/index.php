@@ -88,32 +88,34 @@
             </div>
         </div>
     </div>
-</div>
 
-<!-- ================= Start Modal delete checked ===================== -->
-<div class="modal fade" id="deleteBatchModal" tabindex="-1" role="dialog" aria-labelledby="deleteBatchModal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="deleteBatchModal">Delete Checked Products?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Pilih delete untuk menghapus produk yang dicentang.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <form action="<?= base_url('dashboard/tambah-promo/show-promo/delete-promo-item-batch/'); ?>" method="post">
-                    <?= csrf_field(); ?>
-                    <div id="fieldDelete">
-                    </div>
-                    <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
-                </form>
+    <!-- ================= Start Modal delete checked ===================== -->
+    <div class="modal fade" id="deleteBatchModal" tabindex="-1" role="dialog" aria-labelledby="deleteBatchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteBatchModal">Delete Checked Products?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Pilih delete untuk menghapus produk yang dicentang.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <form action="<?= base_url() ?>dashboard/tambah-promo/show-promo/delete-promo-batch/<?= $ongoingPromoItems[0]['id_promo']; ?>" method="post">
+                        <?= csrf_field(); ?>
+                        <div id="fieldDelete">
+                        </div>
+                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- ================= End Modal deleted chacked ===================== -->
+
+
+<!-- ================= End Modal delete checked ===================== -->
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -201,8 +203,4 @@
         }
     }
 </script>
-
-
-
-
 <?= $this->endSection(); ?>
