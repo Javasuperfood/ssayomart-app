@@ -6,7 +6,7 @@
   "license": "MIT",
   "require": {
     "php": "^7.4 || ^8.0",
-    "codeigniter4/framework": "4.3.8",
+    "codeigniter4/framework": "4.4.0",
     "codeigniter4/shield": "dev-develop",
     "datamweb/shield-oauth": "dev-develop",
     "dompdf/dompdf": "^2.0",
