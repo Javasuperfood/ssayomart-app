@@ -135,34 +135,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         </div>
     </div>
-    <!-- style untuk samsung galaxy fold -->
-    <style>
-        /* Common styles for all screen sizes */
-        .container {
-            max-width: 100%;
-            padding: 0 15px;
-        }
-
-        /* Responsive styles for screens with a maximum width of 280 pixels (Samsung Galaxy Fold) */
-        @media (max-width: 280px) {
-
-            #map {
-                height: 400px;
-                width: 100%;
-            }
-
-            .leaflet-control-attribution {
-                display: none;
-            }
-
-            .button-container {
-                position: absolute;
-                margin-left: 10px;
-                z-index: 1000;
-                top: 1200px !important;
-            }
-        }
-    </style>
     <!-- style maps -->
     <style>
         #map {
@@ -179,7 +151,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-right: 10px;
             margin-left: 10px;
             z-index: 1000;
-            bottom: 50px;
+            top: -50px;
         }
 
         #getLocationBtn {
@@ -313,7 +285,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .button-container {
             position: absolute;
-            margin-left: 10px;
+            margin-left: 320px;
             z-index: 1000;
             border-radius: 50% !important;
             /* Mengatur elemen menjadi bentuk bulat */

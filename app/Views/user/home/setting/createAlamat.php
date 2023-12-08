@@ -147,7 +147,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             z-index: 1000;
             border-radius: 50% !important;
             /* Mengatur elemen menjadi bentuk bulat */
-            bottom: 50px !important;
+            top: -50px !important;
 
         }
 
@@ -155,33 +155,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             border-radius: 50%;
             /* Mengatur tombol menjadi bentuk bulat */
 
-        }
-
-        @media screen and (max-width: 280px) {
-            #map {
-                height: 400px;
-                width: 100%;
-            }
-
-            .leaflet-control-attribution {
-                display: none;
-            }
-
-            .button-container {
-                position: relative;
-                margin-left: 5px;
-                z-index: 1000;
-                border-radius: 50% !important;
-                /* Mengatur elemen menjadi bentuk bulat */
-                bottom: 0px;
-                margin-right: 10px;
-            }
-
-            #getLocationBtn {
-                border-radius: 50%;
-                /* Mengatur tombol menjadi bentuk bulat */
-
-            }
         }
     </style>
 <?php else : ?>
@@ -295,11 +268,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .button-container {
             position: absolute;
-            margin-left: 10px;
+            margin-left: 50px;
             z-index: 1000;
             border-radius: 50% !important;
             /* Mengatur elemen menjadi bentuk bulat */
-            bottom: 110px;
+            top: 1070px;
         }
 
         #getLocationBtn {
