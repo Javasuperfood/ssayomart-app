@@ -139,14 +139,16 @@ class NotifController extends BaseController
         $status = isset($payload['status']) ? $payload['status'] : null;
 
         $usersModel = new UsersModel();
+        $checkoutModel = new CheckoutModel();
 
+        $orderData = $checkoutModel->getOrderByInvoice($payload['booking_id']);
         $users = $usersModel->findUsersByCheckoutStatus();
 
         if (!empty($users)) {
             foreach ($users as $user) {
                 $uuid = $user['uuid'];
                 $notification_payload = [
-                    'booking_id' => $payload['booking_id'],
+                    'booking_id' => $orderData['invoice'],
                     'driver_name' => $payload['driver_name'],
                     'driver_phone' => $payload['driver_phone'],
                     'cancellation_reason' => $payload['cancellation_reason'],

@@ -48,7 +48,6 @@
                                             </div>
                                         </div>
                                         <!-- akhir button animasi -->
-
                                     </div>
                                 </div>
                             </div>
