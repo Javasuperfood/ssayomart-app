@@ -60,9 +60,16 @@
     <?php endif ?>
 
     <div class="container bg-white" id="product">
-        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
-        <hr class="border-darker mt-0 mb-3">
-
+        <?php
+        // Cek apakah variabel global IS_HOMEPAGE telah didefinisikan
+        if (!defined('IS_HOMEPAGE') || !IS_HOMEPAGE) {
+            // Kodingan di card2.php hanya akan dijalankan jika bukan homepage
+        ?>
+            <p class="d-block my-2 text-center fw-bold" style="font-size: medium; font-family: sans-serif;"><?= lang('Text.nama_produk') ?></p>
+            <hr class="border-darker mt-0 mb-3">
+        <?php
+        }
+        ?>
         <div class="row row-cols-3 me-0" id="product-container">
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
