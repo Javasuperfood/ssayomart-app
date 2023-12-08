@@ -55,7 +55,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <div data-aos="fade-down" data-aos-delay="500">
                         <!-- Konten Kolom Kedua -->
-                        <h2 class="fw-bold mb-3">Tentang <span class="text-danger">Ssayomart</span> </h2>
+                        <h2 class="fw-bold mb-3 text-center">Tentang <span class="text-danger">Ssayomart</span> </h2>
                         <p><span class="fw-bold text-danger fs-5 me-1">Ssayomart</span> adalah sebuah supermarket yang mengkhususkan diri dalam menyediakan berbagai produk makanan dan kebutuhan sehari-hari dengan fokus pada makanan Korea dan Jepang. Dalam supermarket ini, pelanggan dapat menemukan berbagai macam produk seperti bahan makanan segar, makanan olahan, minuman, produk kesehatan, kecantikan, dan masih banyak lagi yang terkait dengan kedua budaya kuliner tersebut.</p>
                         <p><span class="fw-bold text-danger fs-5 me-1">Ssayomart</span> memprioritaskan kualitas produk, keberlanjutan, dan kepuasan pelanggan. Mereka menawarkan berbagai produk otentik dari Korea dan Jepang, sehingga pelanggan dapat merasakan dan menghadirkan cita rasa khas Asia dalam rumah mereka. Dengan staf yang ramah dan pengetahuan yang luas tentang produk, Ssayomart berusaha memberikan pengalaman belanja yang menyenangkan dan informatif bagi pelanggan yang ingin menjelajahi kuliner Asia.</p>
                     </div>
@@ -67,7 +67,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container d-md-none">
             <div data-aos="fade-right" data-aos-delay="300">
                 <section class="galeri" id="galeri">
-                    <h2 class="fw-bold text-dark mt-4">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
+                    <h2 class="fw-bold text-dark mt-4 text-center">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper telkom mt-3">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -149,7 +149,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div data-aos="zoom-in-down">
                 <div class="row">
                     <div class="col">
-                        <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
+                        <h2 class="fw-bold text-dark mt-4 text-center">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
                         <div class="swiper card-swiper mt-3">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
@@ -242,44 +242,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- akhir form dan maps -->
 
-        <style>
-            .bg-image {
-                position: relative;
-                overflow: hidden;
-            }
-
-            .bg-image img {
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-
-            .mask {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(45deg, hsla(168, 85%, 52%, 0.5), hsla(263, 88%, 45%, 0.5) 100%);
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out;
-            }
-
-            .bg-image:hover .mask {
-                opacity: 1;
-            }
-
-
-            @media screen and (min-width: 768px) and (max-width: 1024px) {
-                .tagline-1 {
-                    font-size: 60px;
-                }
-
-                .tagline-2 {
-                    font-size: 40px;
-                }
-            }
-        </style>
+        
     </div>
 <?php else : ?>
     <!-- Desktop View -->
@@ -528,33 +491,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
 
-        <style>
-            .bg-image {
-                position: relative;
-                overflow: hidden;
-            }
-
-            .bg-image img {
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-
-            .mask {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(45deg, hsla(168, 85%, 52%, 0.5), hsla(263, 88%, 45%, 0.5) 100%);
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out;
-            }
-
-            .bg-image:hover .mask {
-                opacity: 1;
-            }
-        </style>
+       
     </div>
 <?php endif; ?>
 <!-- End Desktop View -->
@@ -572,104 +509,7 @@ if ($isMobile) {
 }
 ?>
 
-<style>
-    .full-description {
-        height: 4em;
-        /* Atur tinggi elemen "full-description" sesuai keinginan Anda (setara dengan sekitar 4 baris) */
-        overflow: hidden;
-    }
 
-    /* Gaya untuk efek zoom in */
-    .zoom-in {
-        transition: transform 0.2s ease-in-out;
-        /* Efek transisi */
-    }
-
-    .zoom-in:hover {
-        transform: scale(1.1);
-        /* Mengganti skala elemen saat hover (1.1 kali lebih besar) */
-    }
-
-    .img-container {
-        position: relative;
-    }
-
-    .img-container img {
-        width: 100%;
-        height: auto;
-    }
-
-    .img-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        /* Warna latar belakang gelap */
-        opacity: 0;
-        /* Awalnya gambar tidak terlihat */
-        transition: opacity 0.3s ease;
-        /* Animasi perubahan opasitas */
-    }
-
-    .img-container:hover .img-overlay {
-        opacity: 1;
-        /* Ketika dihover, tampilkan latar belakang gelap */
-    }
-
-    @media (min-width: 375px) and (max-width: 415px) {
-        .maps {
-            width: 340px;
-        }
-    }
-
-    @media (max-width: 280px) {
-
-        .maps {
-            width: 250px;
-        }
-
-        .img-container iframe {
-            width: 100%;
-            /* Mengisi lebar container */
-            height: 0;
-            padding-bottom: 56.25%;
-            /* Mengatur rasio aspek video (16:9) */
-        }
-
-        .img-container {
-            position: relative;
-        }
-
-        .img-container img {
-            width: 100%;
-            height: auto;
-        }
-
-        p {
-            font-size: 14px;
-            margin-top: 0;
-            margin-bottom: 1rem;
-        }
-
-        button.mt-3.btn.btn-danger {
-            font-size: 12px;
-            color: #fff;
-            background-color: #dc3545;
-            border-color: #dc3545;
-        }
-
-        /* Untuk layar dengan lebar 768px atau lebih (tampilan desktop) */
-        @media (min-width: 769px) {
-            .img-container iframe {
-                width: 650px;
-                /* Lebar video untuk desktop */
-                height: 350px;
-                /* Tinggi video untuk desktop */
-            }
-        }
-</style>
 
 
 <script>

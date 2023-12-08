@@ -116,11 +116,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="row justify-content-center mt-4">
                                 <div class="text-center"> <!-- Tambahkan class text-center untuk membuatnya berada di tengah horizontal -->
                                     <p class="mb-3 fw-bold"><?= lang('Text.ikuti_kami') ?> :</p>
-                                    <div class="social-links d-flex justify-content-center">
-                                        <a href="#" class="youtube btn btn-danger mx-2 rounded-circle"><i class="bi bi-youtube"></i></a>
-                                        <a href="#" class="facebook btn btn-danger mx-2 rounded-circle"><i class="bi bi-facebook"></i></a>
-                                        <a href="#" class="instagram btn btn-danger mx-2 rounded-circle"><i class="bi bi-instagram"></i></a>
-                                        <a href="#" class="tiktok btn btn-danger mx-2 rounded-circle"><i class="bi bi-tiktok"></i></a>
+                                    <div class="social-links d-flex justify-content-center ">
+                                        <a href="#" class="youtube btn btn-danger mx-2 social-icon"><i class="bi bi-youtube"></i></a>
+                                        <a href="#" class="facebook btn btn-danger mx-2 social-icon"><i class="bi bi-facebook"></i></a>
+                                        <a href="#" class="instagram btn btn-danger mx-2 social-icon"><i class="bi bi-instagram"></i></a>
+                                        <a href="#" class="tiktok btn btn-danger mx-2 social-icon"><i class="bi bi-tiktok"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -164,118 +164,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
-        /* CSS untuk chat button yang memunculkan modal */
-        .chat-btn {
-            position: fixed;
-            right: 20px;
-            bottom: 67px;
-            cursor: pointer;
-            z-index: 999;
-            border-radius: 50%;
-            background-color: #ec2614;
-            color: #fff;
-            font-size: 22px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.5s ease;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        }
 
-        /* CSS tambahan untuk modal content */
-        .modal-content {
-            background-color: #fff;
-            border-radius: 5px;
-        }
 
-        /* CSS untuk header dalam modal */
-        .modal-header {
-            background-color: #ec2614;
-            color: #fff;
-            border-radius: 5px 5px 0px 0px;
-            padding: 13px;
-        }
-
-        /* CSS untuk teks dalam modal */
-        .modal-body {
-            padding: 15px;
-        }
-
-        /* CSS untuk tombol "Submit" dalam modal */
-        .modal-body .btn-danger {
-            font-size: 12px;
-        }
-
-        .modal-body .form-control {
-            border: 1px solid #DEE2E6;
-        }
+      
     </style>
 
     <style>
-        /* Default styling for larger screens */
-        .list-group-item {
-            padding: 15px;
-        }
-
-        /* Responsive styling for smaller screens (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
-
-            h3.fw-bold.py-3.fs-5 {
-                font-size: 15px !important;
-            }
-
-            i.bi-heart-pulse-fill {
-                font-size: 25px !important;
-
-            }
-
-            .col-10 {
-                margin-left: 50px;
-                font-size: 10px !important;
-            }
-
-            .list-group-item {
-                padding: 10px 5px !important;
-                font-size: 12px !important;
-            }
-
-            .social-links {
-                margin-top: 10px;
-            }
-
-            img.img-thumbnail {
-                width: 50px !important;
-                height: 50px !important;
-                margin-top: 15px !important;
-            }
-
-            h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                font-size: 9px !important;
-            }
-
-            p.card-text.text-secondary.d-flex.text-center.justify-content-center.align-items-center {
-                font-size: 9px !important;
-            }
-
-            .link-underline-opacity-0 {
-                display: flex;
-            }
-
-            @media screen and (min-width: 768px) {
-                h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                    font-size: 20px !important;
-                    margin-top: 50px !important;
-                }
-            }
-
-            @media screen and (min-width: 820px) and (max-width: 1024px) {
-                h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                    font-size: 24px !important;
-                    margin-top: 80px !important;
-                }
-            }
+     
     </style>
 
 
