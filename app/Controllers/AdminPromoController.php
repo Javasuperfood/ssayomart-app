@@ -525,4 +525,34 @@ class AdminPromoController extends BaseController
             }
         }
     }
+
+    public function deleteBatch($id)
+    {
+        // dd($this->request->getVar());
+        $promoBatchModel = new PromoBatchModel();
+        $item = $this->request->getVar('promo_id');
+
+        foreach ($item as $promoId) {
+            $promo = $promoBatchModel->find($promoId);
+
+            // Check if 'img' key exists and is not null
+            if (isset($promo['img']) && $promo['img'] != 'default.png') {
+                $gambarLamaPath = 'assets/img/produk/main/' . $promo['img'];
+                if (file_exists($gambarLamaPath)) {
+                    unlink($gambarLamaPath);
+                }
+            }
+            $deleted = $promoBatchModel->delete($promoId);
+        }
+
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Produk berhasil dihapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $this->request->getVar('id_promo'))->withInput();
+        }
+    }
 }
