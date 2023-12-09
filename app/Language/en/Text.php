@@ -17,6 +17,8 @@ return [
     'saran_masak' => 'Our Recommendation',
     'dashboard' => 'Dashboard',
     'selengkapnya' => 'More...',
+    'laman_kategori' => 'Click here',
+    'laman_kategori2' => 'For all categories.',
 
     // SETTING PAGE
     'setting' => 'Setting',

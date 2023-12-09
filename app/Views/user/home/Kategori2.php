@@ -199,17 +199,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
 
             <!--button Goto All Kategori -->
-            <section>
-                <div class="card border-0 font-family-poppins" style="background-color: #fecdce; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 1rem;">
+            <section class="mt-1">
+                <div class="card font-family-poppins" style="background-color: #fecdce; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 1rem; font-size: 12px;">
 
                     <a style="color: #7e0204;" href="<?= base_url(); ?>all-category" id="goToCategories" class="fw-bold text-decoration-none">
-                        Go To <br> All Categories
+                        <span class="text-secondary"><?= lang('Text.laman_kategori') ?></span>
+                        <br>
+                        <span class="fw-bold" style="font-size: 14px;"><?= lang('Text.laman_kategori2') ?></span>
                     </a>
 
-                    <i class="bi bi-list-check" style="font-size: 24px; color: #7e0204;"></i>
+                    <i class="bi bi-grid-3x3-gap-fill" style="font-size: 25px; color: #7e0204;"></i>
 
                 </div>
-
             </section>
             <!-- end button goto all kategori -->
             <!-- scroll up -->
