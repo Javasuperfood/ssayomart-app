@@ -17,8 +17,6 @@ return [
     'saran_masak' => '오늘 이 요리 어때요? / SARAN MASAK',
     'dashboard' => '계기반 / Administrator',
     'selengkapnya' => '더 완벽해 / Selengkapnya',
-    'laman_kategori' => '여기를 클릭하세요. / Klik disini.',
-    'laman_kategori2' => '모든 카테고리를 보려면. / Untuk melihat semua kategori.',
     'produk_rekomendasi' => '추천상품 / Produk Rekomendasi',
     'produk_terbaru' => '새로운 제품 / Produk Terbaru',
 

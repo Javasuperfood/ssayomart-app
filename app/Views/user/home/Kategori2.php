@@ -203,9 +203,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="card font-family-poppins" style="background-color: #fecdce; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 1rem; font-size: 12px;">
 
                     <a style="color: #7e0204;" href="<?= base_url(); ?>all-category" id="goToCategories" class="fw-bold text-decoration-none">
-                        <span class="text-secondary"><?= lang('Text.laman_kategori') ?></span>
+                        <span class="text-secondary fw-bold" style="font-size: 14px;">모든 카테고리 보기</span>
                         <br>
-                        <span class="fw-bold" style="font-size: 14px;"><?= lang('Text.laman_kategori2') ?></span>
+                        <span class="fw-bold" style="font-size: 16px;">Ketuk untuk melihat semua kategori</span>
                     </a>
 
                     <i class="bi bi-grid-3x3-gap-fill" style="font-size: 25px; color: #7e0204;"></i>
