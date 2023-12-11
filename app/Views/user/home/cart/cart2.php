@@ -46,7 +46,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                     <div class="col">
                                         <div class="card-body">
-                                            <p class="card-text text-secondary" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 25); ?></p>
+                                            <p class="card-text text-secondary" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
                                             <p class="card-title fw-bold text-danger" style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                             <div class="input-group grup-masukan mt-2">
                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
