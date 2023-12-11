@@ -9,15 +9,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent" style="margin-bottom:75px;">
         <nav class="navbar pt-3 fixed-top rounded-bottom-4 shadow-sm" style="background-color:#ffff;">
             <div class="container-fluid">
-                <div class="col text-center position-relative">
+                <div class="col text-center position-relative d-flex justify-content-center align-items-center">
                     <?php if (isset($back)) : ?>
-                        <?php $displayTitle = strlen($title) > 30 ? substr($title, 0, 30) . '...' : $title; ?>
+                        <?php $displayTitle = strlen($title) > 50 ? substr($title, 0, 50) . '...' : $title; ?>
                         <span onclick="location.href='<?= base_url(); ?><?= $back; ?>'" class="position-absolute top-50 start-0 translate-middle-y"><i class="bi bi-chevron-left navbar-brand"></i></span>
-                        <span class="navbar-brand" style="font-size: 16px;"><?= $displayTitle; ?></span>
+                        <span class="navbar-brand" style="font-size: 13px;"><?= $displayTitle; ?></span>
                     <?php elseif (!isset($back)) : ?>
-                        <?php $displayTitle = strlen($title) > 30 ? substr($title, 0, 30) . '...' : $title; ?>
+                        <?php $displayTitle = strlen($title) > 50 ? substr($title, 0, 50) . '...' : $title; ?>
                         <span onclick="history.back()" class="position-absolute top-50 start-0 translate-middle-y"><i class="bi bi-chevron-left navbar-brand"></i></span>
-                        <span class="navbar-brand" style="font-size: 16px;"><?= $displayTitle; ?></span>
+                        <span class="navbar-brand" style="font-size: 13px;"><?= $displayTitle; ?></span>
                     <?php endif ?>
                 </div>
             </div>

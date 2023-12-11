@@ -424,6 +424,15 @@
 
     }
 
+    @media (min-width: 360px) and (max-width: 360px) {
+
+        .card-produk {
+            width: 100px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
+
     @media (min-width: 320px) and (max-width: 320px) {
 
         .susunan-card {
