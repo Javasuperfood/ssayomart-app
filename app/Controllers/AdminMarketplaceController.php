@@ -131,7 +131,7 @@ class AdminMarketplaceController extends BaseController
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
             'back' => 'dashboard/marketplace'
         ];
-
+        // dd($data);
         return view('dashboard/marketplace/edit', $data);
     }
 

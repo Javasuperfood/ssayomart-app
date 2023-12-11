@@ -4,7 +4,35 @@
 <h1 class="h3 mb-2 text-gray-800">Edit Marketplace</h1>
 <!-- DataTales Example -->
 
+<?= $this->section('custom_head') ?>
+<link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
+<script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
 
+    .leaflet-control-attribution {
+        display: none;
+    }
+
+    .button-container {
+        position: absolute;
+        margin-left: 320px;
+        z-index: 1000;
+        border-radius: 50% !important;
+        /* Mengatur elemen menjadi bentuk bulat */
+        top: 1080px;
+    }
+
+    #getLocationBtn {
+        border-radius: 50%;
+        /* Mengatur tombol menjadi bentuk bulat */
+
+    }
+</style>
+<?= $this->endSection(); ?>
 <form action="<?= base_url(); ?>dashboard/marketplace/update" method="post">
     <?= csrf_field(); ?>
     <input type="hidden" name="id_toko" value="<?= $t['id_toko']; ?>">
@@ -34,14 +62,18 @@
                         <div class=" mb-3 mx-3 my-3">
                             <div class="input-group" id="lokasi">
                                 <div class="input-group-prepend">
-                                    <a role="button" id="getLocationButton" class="btn btn-outline-danger border-0 shadow-sm">Klik Lokasi Terkini</a>
+                                    <a role="button" id="getLocationButton" class="btn btn-outline-danger border-0 shadow-sm" onclick="getLocation()">Klik Lokasi Terkini</a>
                                 </div>
-                                <input type="text" placeholder="Latitude" id="latitude" value="<?= (old('latitude')) ? old('latitude') : $t['latitude']; ?>" class="form-control border-0 shadow-sm" disabled>
-                                <input type="text" placeholder="Longitude" id="longitude" value="<?= (old('longitude')) ? old('longitude') : $t['longitude']; ?>" class="form-control border-0 shadow-sm" disabled>
-                                <input type="hidden" placeholder="Latitude" id="latitudeH" name="latitude" value="<?= (old('latitude')) ? old('latitude') : $t['latitude']; ?>" class="form-control border-0 shadow-sm">
-                                <input type="hidden" placeholder="Longitude" id="longitudeH" value="<?= (old('longitude')) ? old('longitude') : $t['longitude']; ?>" name="longitude" class="form-control border-0 shadow-sm">
+                                <input type="text" placeholder="Latitude" name="latitude" id="latitude" value="<?= (old('latitude')) ? old('latitude') : $t['latitude']; ?>" class="form-control border-0 shadow-sm" readonly>
+                                <input type="text" placeholder="Longitude" name="longitude" id="longitude" value="<?= (old('longitude')) ? old('longitude') : $t['longitude']; ?>" class="form-control border-0 shadow-sm" readonly>
                             </div>
                             <span class="text-danger"><?= (validation_show_error('latitude') || validation_show_error('longitude')) ? 'Lokasi Harus diisi.' : ''; ?></span>
+                        </div>
+                        <div class="col-12">
+                            <div id="map"></div>
+                            <div class="button-container">
+                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -135,41 +167,120 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <?= $this->include('user/home/component/rajaOngkir/service') ?>
+
 <script>
-    $(document).ready(function() {
-        $("#getLocationButton").click(function() {
-            if ("geolocation" in navigator) {
-                // Browser mendukung geolocation
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    // Mendapatkan data lokasi pengguna
-                    var latitude = position.coords.latitude;
-                    var longitude = position.coords.longitude;
-                    $('#latitude').val(latitude);
-                    $('#longitude').val(longitude);
-                    $('#latitudeH').val(latitude);
-                    $('#longitudeH').val(longitude);
-                }, function(error) {
-                    // Penanganan kesalahan jika permintaan geolocation ditolak atau gagal
-                    switch (error.code) {
-                        case error.PERMISSION_DENIED:
-                            console.log("Akses geolocation ditolak oleh pengguna.");
-                            break;
-                        case error.POSITION_UNAVAILABLE:
-                            console.log("Informasi lokasi tidak tersedia.");
-                            break;
-                        case error.TIMEOUT:
-                            console.log("Permintaan lokasi pengguna time out.");
-                            break;
-                        case error.UNKNOWN_ERROR:
-                            console.log("Terjadi kesalahan yang tidak diketahui.");
-                            break;
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    var latOld = '';
+    var lonOld = '';
+    <?php if ($t['latitude'] && $t['longitude']) : ?>
+        var map = L.map('map', {
+            center: [<?= $t['latitude']; ?>, <?= $t['longitude']; ?>],
+            zoom: 30,
+            layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')],
+        });
+        latOld = '<?= $t['latitude']; ?>';
+        lonOld = '<?= $t['longitude']; ?>';
+        L.marker([latOld, lonOld]).addTo(map)
+            .bindPopup('<?= $t['alamat_1']; ?>').openPopup();
+    <?php else : ?>
+        var map = L.map('map', {
+            center: [-6.175247, 106.8270488],
+            zoom: 13,
+            layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')]
+        });
+
+    <?php endif; ?>
+
+    function showPosition(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        console.log('Latitude:', lat);
+        console.log('Longitude:', lon);
+
+        // Clear all previous markers
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Add a new marker with a popup showing the full address
+        L.marker([lat, lon]).addTo(map)
+            .bindPopup('Loading address...').openPopup();
+
+        // Perform reverse geocoding to get the full address
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+            .then(response => response.json())
+            .then(data => {
+                var address = data.display_name;
+                // Update the popup with the full address
+                map.eachLayer(function(layer) {
+                    if (layer instanceof L.Marker) {
+                        layer.getPopup().setContent('You are here: ' + address).openPopup();
+                        $("#alamat_3").val(address);
+                        $("#latitude").val(lat);
+                        $("#longitude").val(lon);
                     }
                 });
-            } else {
-                // Browser tidak mendukung geolocation
-                console.log("Browser Anda tidak mendukung geolocation.");
+            })
+            .catch(error => console.error('Error fetching address:', error));
+
+        map.setView([lat, lon], 20);
+    }
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+        var lat = e.latlng.lat.toFixed(7);
+        var lon = e.latlng.lng.toFixed(7);
+        console.log('Latitude:', lat);
+        console.log('Longitude:', lon);
+        // Clear all previous markers
+        map.eachLayer(function(layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
             }
-        })
+        });
+
+        // Add a new marker with a popup showing the full address
+        L.marker(e.latlng).addTo(map)
+            .bindPopup('Loading address...').openPopup();
+
+        // Perform reverse geocoding to get the full address
+        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${e.latlng.lat}&lon=${e.latlng.lng}`)
+            .then(response => response.json())
+            .then(data => {
+                var address = data.display_name;
+                // Update the popup with the full address
+                map.eachLayer(function(layer) {
+                    if (layer instanceof L.Marker) {
+                        layer.getPopup().setContent('You clicked here: ' + address).openPopup();
+                        $("#alamat_3").val(address);
+                        $("#latitude").val(e.latlng.lat);
+                        $("#longitude").val(e.latlng.lng);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching address:', error));
+    }
+
+    map.on('click', onMapClick);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                html: alertData.message
+            });
+        <?php endif; ?>
     });
 </script>
 
