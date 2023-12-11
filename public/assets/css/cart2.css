@@ -1,120 +1,130 @@
 /* cart 2 */
 
-
 /* Common styles for both mobile and desktop */
-        .card-body {
-            padding: 1rem;
-        }
+.card-body {
+  padding: 1rem;
+}
 
-        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
+/* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
+@media screen and (max-width: 280px) {
+  .gambar-kecil {
+    max-height: 100px !important;
+    /* Sesuaikan tinggi maksimum yang Anda inginkan */
+    max-width: 100px !important;
+    /* Biarkan lebar gambar menyesuaikan */
+    margin: 25px 0 25px auto !important;
+    /* Geser gambar ke tengah kanan */
+  }
 
-            .gambar-kecil {
-                max-height: 100px !important;
-                /* Sesuaikan tinggi maksimum yang Anda inginkan */
-                max-width: 100px !important;
-                /* Biarkan lebar gambar menyesuaikan */
-                margin: 25px 0 25px auto !important;
-                /* Geser gambar ke tengah kanan */
-            }
+  .grup-masukan {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+  }
 
-            .grup-masukan {
-                position: relative;
-                display: flex;
-                align-items: stretch;
-                max-width: 280px;
-                width: 100%;
-                margin: 0 auto;
-                flex-wrap: nowrap;
-            }
+  .form-masuk {
+    width: 20px;
+    padding: 0;
+    margin-bottom: 25px;
+  }
 
-            .form-masuk {
-                width: 20px;
-                padding: 0;
-                margin-bottom: 25px;
-            }
+  button.posisi-mutlak {
+    bottom: 5px;
+    right: 10px;
+  }
 
-            button.posisi-mutlak {
-                bottom: 5px;
-                right: 10px;
-            }
+  .button-sampah {
+    font-size: 15px;
+    bottom: 0.5rem !important;
+  }
 
+  .btn.btn-outline-danger.btn-sm.rounded-circle {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+  }
 
-            .button-sampah {
-                font-size: 15px;
-                bottom: 0.5rem !important;
-            }
+  .btn.btn-outline-danger.btn-sm.rounded-circle i {
+    font-size: 10px;
+  }
 
-            .btn.btn-outline-danger.btn-sm.rounded-circle {
-                padding: 0;
-                width: 20px;
-                height: 20px;
+  .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
+    margin-left: -2px;
+    display: flex;
+    justify-content: center;
+  }
 
-            }
+  .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
+    margin-left: -1px;
+    display: flex;
+    justify-content: center;
+  }
 
-            .btn.btn-outline-danger.btn-sm.rounded-circle i {
-                font-size: 10px;
+  .totalbarang p {
+    font-size: 14px !important;
+    margin: 3px;
+  }
 
-            }
+  /* Add specific CSS styles for the delete button if needed */
+}
 
-            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
-                margin-left: -2px;
-                display: flex;
-                justify-content: center;
-            }
+/* CSS untuk tombol Scroll Up */
+#buttonAtas {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 30px;
+  height: 40px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 99;
+}
 
-            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
-                margin-left: -1px;
-                display: flex;
-                justify-content: center;
-            }
+/* button pilih objek radio */
+.form-check-input:focus {
+  border-color: #ec2614;
+  outline: 0;
+  box-shadow: 0 0 0 0;
+}
 
-            .totalbarang p {
-                font-size: 14px !important;
-                margin: 3px;
-            }
+.form-check-input:checked {
+  background-color: #ec2614;
+  border-color: #ec2614;
+}
 
-            /* Add specific CSS styles for the delete button if needed */
-        }
+.form-check-input[type="radio"] {
+  border-radius: 50%;
+}
 
-        /* CSS untuk tombol Scroll Up */
-        #buttonAtas {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 30px;
-            height: 40px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 99;
-        }
+.form-check-input:active {
+  filter: brightness(90%);
+}
 
-        /* button pilih objek radio */
-    .form-check-input:focus {
-        border-color: #ec2614;
-        outline: 0;
-        box-shadow: 0 0 0 0;
-    }
+.form-check-input[type="checkbox"]:indeterminate {
+  background-color: #ec2614;
+  border-color: #ec2614;
+}
 
-    .form-check-input:checked {
-        background-color: #ec2614;
-        border-color: #ec2614
-    }
+/* Untuk layar dengan lebar antara 1024px dan 1366px */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .input-group.grup-masukan {
+    justify-content: center;
+  }
 
-    .form-check-input[type=radio] {
-        border-radius: 50%
-    }
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
 
-    .form-check-input:active {
-        filter: brightness(90%)
-    }
-
-    .form-check-input[type=checkbox]:indeterminate {
-        background-color: #ec2614;
-        border-color: #ec2614;
-    }
-
-    
+  .form-masuk {
+    max-width: 40px;
+  }
+}
