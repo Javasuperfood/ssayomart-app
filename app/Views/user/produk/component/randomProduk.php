@@ -120,10 +120,10 @@
         var produk = c;
         var varian = v;
         var qty = q;
-
+        // console.log(produk, varian, qty)
         $.ajax({
             type: "POST",
-            url: "YOUR_ADD_TO_CART_ENDPOINT", // Change this to your endpoint
+            url: "<?= base_url('api/add-to-cart'); ?>",
             dataType: "json",
             data: {
                 id_produk: produk,
@@ -132,17 +132,19 @@
             },
             success: function(response) {
                 if (response.success) {
-                    console.log(response.message); // Handling success
-                    // Perform actions if successful
+                    // console.log(response.message)
+                    return true
                 } else {
-                    console.log(response.message); // Handling failure
-                    // Perform actions if failed
+                    // console.log(response.message)
+                    return false
                 }
             },
             error: function(error) {
                 console.error("Error:", error);
-                // Handling error
-                // Redirect to login if not authenticated
+                <?php if (!auth()->loggedIn()) : ?>
+                    location.href = '<?= base_url(); ?>login'
+                <?php endif ?>
+                return false
             }
         });
     }
@@ -150,18 +152,19 @@
     function cartDeleteProdukList(produk) {
         $.ajax({
             type: "POST",
-            url: "YOUR_DELETE_CART_PRODUCT_ENDPOINT", // Change this to your endpoint
+            url: "<?= base_url('api/delete-cart-product'); ?>",
             dataType: "json",
             data: {
                 produk: produk,
             },
             success: function(response) {
-                cartItemShow('minus'); // script for cart
+                cartItemShow('minus'); // cart script
             },
             error: function(error) {
                 console.error("Error:", error);
-                // Handling error
-                // Redirect to login if not authenticated
+                <?php if (!auth()->loggedIn()) : ?>
+                    location.href = '<?= base_url(); ?>login'
+                <?php endif ?>
             }
         });
     }
