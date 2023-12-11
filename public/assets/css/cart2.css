@@ -76,7 +76,7 @@
 #buttonAtas {
   display: none;
   position: fixed;
-  bottom: 80px;
+bottom: 65px;
   right: 20px;
   width: 30px;
   height: 40px;
@@ -84,7 +84,8 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 99;
+z-index: 200;
+    background-color: #ec2614;
 }
 
 /* button pilih objek radio */
