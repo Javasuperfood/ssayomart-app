@@ -466,7 +466,6 @@ class AdminPromoController extends BaseController
     {
         $promoBatchModel = new PromoBatchModel();
         $ongoingPromo = $promoBatchModel->find($id);
-        $ongoingPromoItems = $promoBatchModel->getOngoingPromoItems($id);
 
         $data = [
             'id_promo_item_batch' => $id,
@@ -474,9 +473,8 @@ class AdminPromoController extends BaseController
             'id_produk' => $this->request->getVar('produk_id'),
             'discount' => $this->request->getVar('discount'),
             'min' => $this->request->getVar('min'),
-            'op' => $ongoingPromo,
-            'ongoingPromoItems' => $ongoingPromoItems
         ];
+        // dd($data);
 
         if ($promoBatchModel->save($data)) {
             session()->setFlashdata('success', 'Promosi produk berhasil disimpan.');
@@ -495,7 +493,7 @@ class AdminPromoController extends BaseController
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $ongoingPromo['id_promo'])->withInput();
         }
     }
 
