@@ -15,7 +15,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center mt-3 ">
+                    <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                         <div class="col-6 d-flex justify-content-start align-items-start">
                             <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 me-3" style="font-size: 12px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
@@ -163,7 +163,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    
+
 
 
 <?php else : ?>
@@ -302,9 +302,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-   
-       
-  
+
+
+
 
 <?php endif; ?>
 <!-- end Desktop -->
