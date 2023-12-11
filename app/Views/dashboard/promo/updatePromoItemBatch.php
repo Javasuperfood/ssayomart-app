@@ -15,7 +15,7 @@
                 <form action="<?= base_url(); ?>dashboard/promo/tambah-promo/show-promo/edit/update/<?= $op['id_promo_item_batch'] ?>" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id_promo_item_batch" value="<?= $op['id_promo_item_batch'] ?>">
-                    <input type="hidden" name="produk_id" id="produk_id">
+                    <input type="hidden" name="produk_id" id="produk_id" value="<?= $op['id_produk'] ?>">
                     <div class="mb-4">
                         <label for="promo" class="form-label">Pilih Promo Tersedia</label>
                         <select name="promo" id="promo" class="form-control border-1">
