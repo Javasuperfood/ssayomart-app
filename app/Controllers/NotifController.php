@@ -182,7 +182,7 @@ class NotifController extends BaseController
 
         switch ($status) {
             case 'confirmed':
-                return 'Driver sudah dikonfirmasi. Pesanan dengan nomor booking ' . $payload['booking_id'];
+                return 'Driver sudah dikonfirmasi. Pesanan dengan nomor keterangan nomor invoice ' . $payload['booking_id'];
             case 'allocated':
                 return 'Driver sudah ditemukan. ' . $payload['driver_name'] . ' akan segera mengambil pesananmu';
             case 'out_for_pickup':
