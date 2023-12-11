@@ -62,9 +62,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <?php endforeach; ?>
                 </div>
-                <div style="background-color:#fff" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
-                    <div class="col">
-                        <button id="btnCheckout" type="submit" form="formCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px"><?= lang('Text.btn_checkout') ?></button>
+                <div style="background-color:#fff; z-index:100" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
+                    <div class="col d-flex justify-content-center">
+                        <button id="btnCheckout" type="submit" form="formCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 50%; font-size: 14px"><?= lang('Text.btn_checkout') ?></button>
                     </div>
                 </div>
             </form>
