@@ -357,19 +357,7 @@
             justify-content: center;
         }
 
-        #product-container {
-            width: 100%;
-            height: auto;
-            margin-left: 4.5%;
 
-        }
-
-        #product-unggulan-container {
-            width: 100%;
-            height: auto;
-            margin-left: 4.5%;
-
-        }
     }
 
     /* samsung galfold dual mode screen 512 */
@@ -430,7 +418,7 @@
         }
 
         .card-produk {
-            width: 120px !important;
+            width: 110px !important;
             /* Mengisi lebar parent container */
         }
 
