@@ -32,6 +32,10 @@ class StatusGosendController extends BaseController
 
         $cekProduk = $userModel->getTransaksi($id);
 
+        if ($GoSendStatus['cancelDescription']) {
+            $GoSendStatus['cancelDescription'] = $this->stringRemoveStripTags($GoSendStatus['cancelDescription']);
+        }
+
         $data = [
             'inv' => $id,
             'title' => 'Status GoSend',
@@ -163,7 +167,33 @@ class StatusGosendController extends BaseController
         MidtransConfig::$is3ds = $midtransConfig->is3ds;
 
         $paymentStatus = \Midtrans\Transaction::status($id);
+        $result = (array)$paymentStatus;
 
-        return (array)$paymentStatus;
+        $result['payment_type'] = $this->formatString($result['payment_type']);
+        return $result;
+    }
+
+    function stringRemoveStripTags($string)
+    {
+        $delimiter = "-";
+
+        $position = strpos($string, $delimiter);
+
+        if ($position !== false) {
+            $result = substr($string, $position + 1);
+            return $result;
+        } else {
+            return $string;
+        }
+    }
+
+    function formatString($string)
+    {
+        if (strpos($string, '_') !== false) {
+            $hasil = ucwords(str_replace("_", " ", $string));
+        } else {
+            $hasil = ucfirst($string);
+        }
+        return $hasil;
     }
 }

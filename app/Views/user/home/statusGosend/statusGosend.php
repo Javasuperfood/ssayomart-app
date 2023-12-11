@@ -38,11 +38,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <p class="mt-4 mb-1" style="font-size: 16px;">Booking ID</p>
                                 <span class="fw-bold"><?= $gosendStatus['orderNo']; ?></span>
                                 <hr>
-                                <p class="mt-4 mb-1" style="font-size: 16px;">status</p>
+                                <p class="mt-4 mb-1" style="font-size: 16px;">Status</p>
                                 <span class="fw-bold"><?= $gosendStatus['status']; ?></span>
                                 <hr>
                                 <?php if ($gosendStatus['cancelDescription']) : ?>
-                                    <p class="mt-4 mb-1" style="font-size: 16px;">cancelDescription</p>
+                                    <p class="mt-4 mb-1" style="font-size: 16px;">Cancel Description</p>
                                     <span class="fw-bold"><?= $gosendStatus['cancelDescription']; ?></span>
                                     <hr>
                                 <?php endif; ?>
@@ -73,7 +73,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
                                     </svg>
                                 </div>
-                                <div class="tracking-date"><i class="bi bi-truck" class="img-responsive" style="font-size: 30px;" alt="order-placed" /></i></div>
+                                <div class="tracking-date"><i class="bi bi-truck" class="img-responsive" style="font-size: 30px;" alt="order-placed"></i></div>
                                 <div class="tracking-content"><?= $s; ?></div>
                             </div>
                         <?php endforeach ?>
@@ -138,7 +138,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <tr>
                                             <td>Metode</td>
                                             <td>:</td>
-                                            <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . '-' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
+                                            <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . ' ' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
                                         </tr>
                                         <tr>
                                             <td>Total</td>
@@ -475,11 +475,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <p class="mt-4 mb-1" style="font-size: 16px;">Booking ID</p>
                                     <span class="fw-bold"><?= $gosendStatus['orderNo']; ?></span>
                                     <hr>
-                                    <p class="mt-4 mb-1" style="font-size: 16px;">status</p>
+                                    <p class="mt-4 mb-1" style="font-size: 16px;">Status</p>
                                     <span class="fw-bold"><?= $gosendStatus['status']; ?></span>
                                     <hr>
                                     <?php if ($gosendStatus['cancelDescription']) : ?>
-                                        <p class="mt-4 mb-1" style="font-size: 16px;">cancelDescription</p>
+                                        <p class="mt-4 mb-1" style="font-size: 16px;">Cancel Description</p>
                                         <span class="fw-bold"><?= $gosendStatus['cancelDescription']; ?></span>
                                         <hr>
                                     <?php endif; ?>
@@ -594,7 +594,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <tr>
                                                 <td>Metode</td>
                                                 <td>:</td>
-                                                <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . '-' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
+                                                <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . ' ' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
                                             </tr>
                                             <tr>
                                                 <td>Total</td>
