@@ -113,10 +113,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                         <div class="deskripsi col-5 position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title fs-6 mt-3">
-                                                <?= substr($t->nama, 0, 10); ?>
+                                            <h5 class="card-title mt-3" style="font-size: 13px;">
+                                                <?= substr($t->nama, 0, 30); ?>
                                             </h5>
-                                            <p class="text-secondary fs-6">Rp.
+                                            <p class="text-secondary" style="font-size: 12px;">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
                                             </p>
                                         </div>
