@@ -300,84 +300,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')]
     });
 
-    // function showPosition(position) {
-    //     var lat = position.coords.latitude.toFixed(6);
-    //     var lon = position.coords.longitude.toFixed(6);
-    //     // Clear all previous markers
-    //     map.eachLayer(function(layer) {
-    //         if (layer instanceof L.Marker) {
-    //             map.removeLayer(layer);
-    //         }
-    //     });
-
-    //     // Add a new marker with a popup showing the full address
-    //     L.marker([lat, lon]).addTo(map)
-    //         .bindPopup('Loading address...').openPopup();
-
-    //     // Perform reverse geocoding to get the full address
-    //     fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             var address = data.display_name;
-    //             // Move the logs here to ensure that they are printed after the values are formatted
-    //             console.log('Raw latitude:', lat);
-    //             console.log('Formatted longitude:', lon);
-    //             // Update the popup with the full address
-    //             map.eachLayer(function(layer) {
-    //                 if (layer instanceof L.Marker) {
-    //                     layer.getPopup().setContent('You are here: ' + address).openPopup();
-    //                     $("#alamat_3").val(address);
-    //                     $("#latitude").val(lat);
-    //                     $("#longitude").val(lon);
-    //                 }
-    //             });
-    //         })
-    //         .catch(error => console.error('Error fetching address:', error));
-
-    //     map.setView([lat, lon], 20);
-    // }
-
-    // var popup = L.popup();
-
-    // function onMapClick(e) {
-    //     var lat = e.latlng.lat.toFixed(6);
-    //     var lon = e.latlng.lng.toFixed(6);
-    //     // Clear all previous markers
-    //     map.eachLayer(function(layer) {
-    //         if (layer instanceof L.Marker) {
-    //             map.removeLayer(layer);
-    //         }
-    //     });
-
-    //     // Add a new marker with a popup showing the full address
-    //     L.marker(e.latlng).addTo(map)
-    //         .bindPopup('Loading address...').openPopup();
-
-    //     // Perform reverse geocoding to get the full address
-    //     fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${e.latlng.lat}&lon=${e.latlng.lng}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             var address = data.display_name;
-    //             console.log('Raw latitude:', e.latlng.lat);
-    //             console.log('Raw longitude:', e.latlng.lng);
-
-    //             // Move the logs here to ensure that they are printed after the values are formatted
-    //             console.log('Formatted latitude:', lat);
-    //             console.log('Formatted longitude:', lon);
-
-    //             // Update the popup with the full address
-    //             map.eachLayer(function(layer) {
-    //                 if (layer instanceof L.Marker) {
-    //                     layer.getPopup().setContent('You clicked here: ' + address).openPopup();
-    //                     $("#alamat_3").val(address);
-    //                     $("#latitude").val(lat);
-    //                     $("#longitude").val(lon);
-    //                 }
-    //             });
-    //         })
-    //         .catch(error => console.error('Error fetching address:', error));
-    // }
-
     function showPosition(position) {
         var lat = position.coords.latitude.toFixed(7);
         var lon = position.coords.longitude.toFixed(7);
@@ -442,5 +364,4 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?= $this->section('custom_head') ?>
 <link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
 <script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
-
 <?= $this->endSection(); ?>

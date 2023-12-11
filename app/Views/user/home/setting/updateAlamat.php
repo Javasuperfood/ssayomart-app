@@ -421,5 +421,4 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?= $this->section('custom_head') ?>
 <link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
 <script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
-
 <?= $this->endSection(); ?>
