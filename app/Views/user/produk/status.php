@@ -659,11 +659,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <div class="card mb-4 shadow-sm" style="border-left: 4px solid red; border-right: 0px; border-top: 0px; border-bottom: 0px;">
                                                             <div class=" row">
                                                                 <div class="col-3">
-                                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
+                                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img" style="width: 150px; height: 100%; padding: 8px; object-fit: contain; object-position: 20% 10%;">
                                                                 </div>
                                                                 <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                                                    <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?>...</h5>
-                                                                    <p class="card-text text-secondary fs-6"><?= $p->qty; ?></p>
+                                                                    <h5 class="card-title fs-6"><?= substr($p->nama, 0, 40); ?>...</h5>
+                                                                    <p class="card-text text-secondary fs-6"><?= $p->qty; ?> Produk</p>
                                                                 </div>
                                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                                     <h5 class="text-secondary fs-6">Total</h5>

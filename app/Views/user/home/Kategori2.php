@@ -155,7 +155,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php if ($latest) : ?>
                         <?php foreach ($latest as $p) : ?>
                             <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
-                                <div class="card card-produk border-0 shadow-sm text-center" style="width: 110px; height: 100%; padding: 5px;">
+                                <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                         <div class="d-flex justify-content-center align-items-center">
                                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
@@ -200,7 +200,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <!--button Goto All Kategori -->
             <section class="mt-1">
-                <div class="card font-family-poppins" style="background-color: #fecdce; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 1rem; font-size: 12px;">
+                <div class="card font-family-poppins border-0" style="background-color: #fecdce; display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 1rem; font-size: 12px;">
 
                     <a style="color: #7e0204;" href="<?= base_url(); ?>all-category" id="goToCategories" class="fw-bold text-decoration-none">
                         <span class="text-secondary fw-bold" style="font-size: 14px;">모든 카테고리 보기</span>
