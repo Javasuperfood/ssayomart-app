@@ -125,4 +125,4 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
-.composer.lock
+composer.lock
