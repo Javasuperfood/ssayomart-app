@@ -23,16 +23,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
         <?php else : ?>
-            <!-- <div class="col-12 d-flex justify-content-center">
-                <nav aria-label="breadcrumb" class="rounded-3 p-2">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item">
-                            <h2 class="mb-0"><?= lang('Text.title_alamat') ?></h2>
-                            <hr class="border border-danger">
-                        </li>
-                    </ol>
-                </nav>
-            </div> -->
             <div class="container">
                 <?php foreach ($alamat_user_model as $au) : ?>
                     <div class="row row-cols-1">
@@ -96,22 +86,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <!-- style untuk samsung galaxy fold 280 -->
     <style>
-
         /* style for button create alamat */
         .addresCircle {
-      width: 40px; 
-      height: 40px; 
-      border-radius: 50%; 
-      background-color: #dc3545;
-      color: #fff; 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      margin-left: -100px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #dc3545;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            margin-left: -100px;
         }
+
         /*  */
 
         @media screen and (max-width: 280px) {
