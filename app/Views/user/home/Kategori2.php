@@ -123,7 +123,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container">
                     <div class="card border-0 text-center font-family-poppins" style="background-color: #facaaf;">
                         <div class="card-warning">
-                            <span class="card-title fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #9c2525;"><strong><?= lang('Text.produk_rekomendasi') ?></strong></h2>
+                            <span class="card-title fw-medium fs-5 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #9c2525;"><strong><?= lang('Text.produk_rekomendasi') ?></strong></h2>
                             </span>
                         </div>
                     </div>
@@ -146,7 +146,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
                     <div class="card-warning">
-                        <span class="card-title  fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #2e6e01;"><strong><?= lang('Text.produk_terbaru') ?></strong></h2>
+                        <span class="card-title  fw-medium fs-5 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif; color: #2e6e01;"><strong><?= lang('Text.produk_terbaru') ?></strong></h2>
                         </span>
                     </div>
                 </div>
