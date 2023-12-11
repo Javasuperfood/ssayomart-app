@@ -61,21 +61,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
 
-            <!-- tracking lama horizontal-->
-            <!-- <div class="row">
-                <div class="col">
-                    <div class="track">
-                        <div class="step active"> <span class="icon"> <i class="bi bi-check2-circle"></i> </span> <span class="text" style="font-size: smaller;">Order confirmed</span> </div>
-                        <?php if ($gosendStatus) : ?>
-                            <?php foreach ($status as $s) :  ?>
-                                <div class="step active"> <span class="icon"> <i class="bi <?= ($s == 'Completed') ? 'bi-check2-circle' : 'bi-truck'; ?>"></i> </span> <span class="text" style="font-size: smaller;"> <?= $s; ?> </span> </div>
-                            <?php endforeach ?>
-                        <?php endif ?>
-                    </div>
-                </div>
-            </div> -->
-            <!-- end tracking lama -->
-
             <!-- tracking baru vertical -->
             <div class="row">
                 <div class="col-md-12 col-lg-12">
@@ -442,100 +427,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         }
     </style>
-
-    <!-- style tracking horizontal -->
-    <!-- <style>
-        .card {
-            border-radius: 20px;
-            /* Sudut bulat pada seluruh kartu */
-            overflow: hidden;
-        }
-
-        .card img {
-            width: 100%;
-            /* Agar gambar mengisi seluruh lebar kartu */
-            height: auto;
-            /* Mengatur ketinggian gambar sesuai aspek ratio */
-        }
-
-        .border-darker {
-            border-color: red;
-            /* Ubah warna garis menjadi merah */
-            border-width: 2px;
-            /* Sesuaikan ketebalan garis sesuai kebutuhan Anda */
-            font-weight: bold;
-            /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
-        }
-
-        /* Style Tracking  */
-        .track {
-            position: relative;
-            background-color: #ddd;
-            height: 5px;
-            /* Mengurangi tinggi tracking */
-            display: flex;
-            margin-bottom: 40px;
-            /* Mengurangi margin bottom */
-            margin-top: 30px;
-            /* Mengurangi margin top */
-        }
-
-        .track .step {
-            flex-grow: 1;
-            width: 20%;
-            /* Mengurangi lebar setiap langkah */
-            margin-top: -14px;
-            /* Mengurangi margin top */
-            text-align: center;
-            position: relative;
-        }
-
-        .track .step.active:before {
-            background: #cf240a;
-        }
-
-        .track .step::before {
-            height: 5px;
-            /* Mengurangi tinggi garis tracking */
-            position: absolute;
-            content: "";
-            width: 100%;
-            left: 0;
-            top: 14px;
-            /* Mengurangi top position */
-        }
-
-        .track .step.active .icon {
-            background: #cf240a;
-            color: #fff;
-        }
-
-        .track .icon {
-            display: inline-block;
-            width: 30px;
-            /* Mengurangi lebar ikon */
-            height: 30px;
-            /* Mengurangi tinggi ikon */
-            line-height: 30px;
-            /* Mengurangi line-height ikon */
-            position: relative;
-            border-radius: 100%;
-            background: #ddd;
-        }
-
-        .track .step.active .text {
-            font-weight: 400;
-            color: #000;
-        }
-
-        .track .text {
-            display: block;
-            margin-top: 5px;
-            /* Mengurangi margin top */
-            font-size: smaller;
-            /* Mengubah ukuran font ke smaller */
-        }
-    </style> -->
 
 <?php else : ?>
     <!-- Desktop View -->

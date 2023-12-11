@@ -348,7 +348,7 @@ $countProduk = count($produk);
         }
 
         .card-produk {
-            width: 120px !important;
+            width: 110px !important;
             /* Mengisi lebar parent container */
         }
     }
