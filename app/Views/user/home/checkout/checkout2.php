@@ -231,10 +231,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                         </div>
                                         <div class="col-5 keterangan position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title fs-6 pemilihan"><?= substr($p['nama'], 0, 10); ?>...</h5>
+                                            <h5 class="card-title fs-6 pemilihan"><?= substr($p['nama'], 0, 15); ?></h5>
                                             <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
                                             </p>
                                         </div>
