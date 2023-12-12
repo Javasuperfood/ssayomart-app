@@ -182,6 +182,10 @@
             minField.classList.add('invalid-field');
             minError.textContent = 'Minimal pembelian harus diisi';
             isValid = false;
+        } else if (isNaN(minField.value)) {
+            minField.classList.add('invalid-add');
+            minError.textContent = 'Minimal pembelian harus berupa angka';
+            isValid = false;
         } else {
             minField.classList.remove('invalid-field');
         }
@@ -190,6 +194,9 @@
             discountField.classList.add('invalid-field');
             discountError.textContent = 'Diskon promo harus diisi';
             isValid = false;
+        } else if (isNaN(discountField.value)) {
+            discountField.classList.add('invalid-field');
+            discountError.textContent = 'Diskon promo harus berupa angka';
         } else {
             discountField.classList.remove('invalid-field');
         }
