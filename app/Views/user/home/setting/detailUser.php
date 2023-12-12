@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-3">
+        <div class="container pb-3">
             <div class="row justify-content-center">
                 <div class="card border-0 shadow-sm py-4 rounded-2">
                     <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
@@ -19,7 +19,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="card border-0 shadow-sm py-4 mb-2 rounded-5 ">
                                 <div class="row g-3 px-3">
                                     <div class="text-center">
-                                        <p class="fs-5 text-secondary"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
+                                        <p class="fs-5 selamat-datang text-secondary"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
                                         <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
                                     </div>
                                 </div>
@@ -37,24 +37,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="input-group has-validation">
                                     <span class="input-group-text bg-white border-0 shadow-sm-sm bg-light">@</span>
-                                    <input type="text" class="form-control form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>">
+                                    <input type="text" class="form-control input-teks form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>" style="font-size: 14px;">
                                     <div class="invalid-feedback"><?= validation_show_error('username'); ?></div>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control form-control-lg <?= (validation_show_error('fullname')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>">
+                                <input type="text" class="form-control input-teks form-control-lg <?= (validation_show_error('fullname')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>" style="font-size: 14px;">
                                 <div class="invalid-feedback"><?= validation_show_error('fullname'); ?></div>
                             </div>
                             <div class=" col-12">
-                                <input type="text" class="form-control form-control-lg <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event)" oninput="validateInput(this);">
+                                <input type="text" class="form-control input-teks form-control-lg <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event)" oninput="validateInput(this);" style="font-size: 14px;">
                                 <div class="invalid-feedback"><?= validation_show_error('telp'); ?></div>
                             </div>
 
                             <div class="col-12">
-                                <input type="email" class="form-control form-control-lg border-0 shadow-sm" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" disabled>
+                                <input type="email" class="form-control input-teks form-control-lg border-0 shadow-sm" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" style="font-size: 14px;" disabled>
                             </div>
                             <div class="col-12">
-                                <input type="file" style="border: none;" class="form-control form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
+                                <input type="file" style="border: none; font-size: 14px;" class="form-control input-teks form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
                                 <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                             </div>
                             <div class="col-12">
@@ -62,7 +62,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="py-3 px-3">
                                 <div class="col text-center">
-                                    <button type="submit" class="mt-3 btn btn-md btn-danger rounded-2" style="color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                                    <button type="submit" class="mt-1 btn btn-md btn-danger rounded-2" style="color: #fff;"><?= lang('Text.btn_simpan') ?></button>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <p><strong>Akun anda akan dihapus oleh Admin.</strong></p>
                                                 <p>Apakah anda yakin untuk mengajukan penghapusan akun?</p>
                                                 <div class="col-12">
-                                                    <input type="text" class="form-control form-control-lg <?= (validation_show_error('alasan')) ? 'is-invalid' : 'border-0'; ?>" id="alasan" name="alasan" placeholder="Alasan penghapusan akun" value="<?= old('alasan'); ?>">
+                                                    <input type="text" style="font-size: 14px;" class="form-control form-control-lg <?= (validation_show_error('alasan')) ? 'is-invalid' : 'border-0'; ?>" id="alasan" name="alasan" placeholder="Alasan penghapusan akun" value="<?= old('alasan'); ?>">
                                                     <div class="invalid-feedback"><?= validation_show_error('alasan'); ?></div>
                                                 </div>
                                             </div>
@@ -108,49 +108,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <style>
         @media (max-width: 280px) {
-
-            .btn.btn-lg.fw-bold {
+            .input-teks {
                 font-size: 12px !important;
             }
 
-            .btn.btn-sm {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.8rem;
-                margin-top: 5px !important;
-            }
-
-            p.fs-5 {
-                font-size: 13px !important;
-            }
-
-            .container {
-                padding-top: 1rem;
-            }
-
-            .card {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-
-            .modal-dialog {
-                max-width: 100%;
-            }
-
-            .modal-content {
-                width: 100%;
-            }
-
-            .input-group-text {
-                font-size: 0.8rem;
-            }
-
-            .form-control {
-                font-size: 0.9rem;
-            }
-
-            .btn-sm {
-                padding: 0.25rem 0.5rem;
-                font-size: 0.8rem;
+            .selamat-datang {
+                font-size: 12px !important;
             }
         }
     </style>
