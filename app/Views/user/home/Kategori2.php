@@ -527,8 +527,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             #scrollUpButton {
                 display: none;
                 position: fixed;
-                bottom: 70px;
-                right: 20px;
+                bottom: 200px;
+                right: 10px;
                 width: 30px;
                 height: 40px;
                 padding: 10px 20px;
