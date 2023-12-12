@@ -22,7 +22,9 @@ class GoSendController extends BaseController
         $statusPesananModel = new StatusPesanModel();
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
-        $GoSendStatus['bookingStatus'] = $this->stringRemoveStripTags($GoSendStatus['bookingStatus']);
+        if (isset($GoSendStatus['bookingStatus'])) {
+            $GoSendStatus['bookingStatus'] = $this->stringRemoveStripTags($GoSendStatus['bookingStatus']);
+        }
         $status_transaction = false;
 
         $data = [
