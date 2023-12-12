@@ -204,7 +204,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <option value="" class="card-text text-secondary"></option>
                             </select>
                             <label for="service" id="serviceLabel">Pilih Layanan</label>
-                            <strong class="ps-2 time">Estimasi : <span id="estimasi"></span></strong>
+                            <span class="badge rounded-pill text-bg-danger"><strong class="time">Estimasi : <span id="estimasi"></span></strong></span>
                         </div>
                     </div>
                     <input type="hidden" name="serviceText" id="serviceText">
