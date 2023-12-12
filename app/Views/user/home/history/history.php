@@ -183,9 +183,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card-body">
                                             <div class="row">
                                                 <div class="col-3">
-                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $c->img; ?>" alt="Foto Produk" class="card-img">
+                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $c->img; ?>" alt="Foto Produk" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                                 </div>
-                                                <div class="col-5 position-absolute top-50 start-50 translate-middle">
+                                                <div class=" col-5 position-absolute top-50 start-50 translate-middle">
                                                     <h5 class="card-title fs-6">
                                                         <?= substr($c->nama, 0, 10); ?>
                                                     </h5>
@@ -357,20 +357,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 font-size: 12px;
             }
 
-            .deskripsi {
-                width: 100%;
-                /* Full width for description column */
-                text-align: center;
-                /* Center the description */
-            }
 
             .deskripsi .card-title {
-                font-size: 14px !important;
+                font-size: 11px !important;
                 margin-top: 8px !important;
             }
 
             .deskripsi .text-secondary {
-                font-size: 14px !important;
+                font-size: 10px !important;
             }
 
             .position-absolute {
@@ -385,19 +379,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Display the link as a block element for stacking */
                 text-align: center;
                 /* Center the link */
-            }
-
-            h5.card-title.fs-6 {
-                margin-top: 10px;
-                font-size: 14px !important;
-            }
-
-            p.text-secondary.fs-6 {
-                font-size: 12px !important;
-            }
-
-            div.text-secondary {
-                font-size: 12px !important;
             }
 
             .card-img {
