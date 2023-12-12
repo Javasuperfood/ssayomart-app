@@ -35,4 +35,13 @@ class Home extends BaseController
         dd($config->serverKey);
         return 'a';
     }
+
+     public function panduanAplikasi()
+    {
+        $data = [
+            'title' => 'Panduan Aplikasi',
+        ];
+        return view('dashboard/panduan/panduanAplikasi', $data);
+    }
+
 }
