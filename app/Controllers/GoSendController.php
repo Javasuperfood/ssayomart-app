@@ -22,8 +22,9 @@ class GoSendController extends BaseController
         $statusPesananModel = new StatusPesanModel();
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
-
-        // $id_status_pesan = $this->request->getVar('status');
+        if (isset($GoSendStatus['bookingStatus'])) {
+            $GoSendStatus['bookingStatus'] = $this->stringRemoveStripTags($GoSendStatus['bookingStatus']);
+        }
         $status_transaction = false;
 
         $data = [
@@ -372,5 +373,10 @@ class GoSendController extends BaseController
             ];
             return redirect()->back()->with('alert', $alert);
         }
+    }
+    function stringRemoveStripTags($string)
+    {
+        $modifiedString = ucwords(str_replace('_', ' ', $string));
+        return $modifiedString;
     }
 }

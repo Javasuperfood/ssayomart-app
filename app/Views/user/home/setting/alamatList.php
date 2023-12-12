@@ -33,7 +33,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card-header border-0 bg-white">
                                             <span class="fw-bold fs-5"><?= $au['label']; ?></span>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body detail-penerima">
                                             <p class="fw-bold"><?= $au['penerima']; ?> - <?= $au['telp']; ?></p>
                                             <p class="text-secondary"><?= $au['province'] ?> - <?= $au['city'] ?></p>
                                             <p class="text-secondary"><?= substr($au['alamat_1'], 0, 40); ?>...</p>
@@ -102,23 +102,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-left: -100px;
         }
 
-        /*  */
+        /*style 280 pixel samsung galaxy fold*/
 
         @media screen and (max-width: 280px) {
+
             .card-body {
-                font-size: 13px;
+                font-size: 11px;
                 flex: 1 1 auto;
                 padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
                 color: var(--bs-card-color);
             }
 
             .border-0 {
-                font-size: 12px;
+                font-size: 11px;
                 border: 0 !important;
             }
 
             .alert-danger {
-                font-size: 13px;
+                font-size: 11px;
             }
 
 

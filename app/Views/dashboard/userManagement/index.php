@@ -91,7 +91,7 @@
                                             <?php endif; ?>
                                         <?php endforeach ?>
                                     </td>
-                                    <td><?= $user['created_at']; ?></td>
+                                    <td><?= date("j F Y H.i", strtotime($user['created_at'])); ?></td>
                                     <td class="text-center">
                                         <div class="nav-item dropdown no-arrow">
                                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
