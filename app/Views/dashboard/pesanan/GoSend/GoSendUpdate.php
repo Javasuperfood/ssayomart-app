@@ -71,10 +71,29 @@
                             <div class="col">
                                 <button type="submit" form="updateStatus" class="btn btn-outline-danger py-3">Update</button>
                                 <?php if ($order['id_status_pesan'] == 3 && $status_transaction == 0) : ?>
-                                    <form method="post" action="<?= base_url('dashboard/order/update-booking/update-status/save/') . $inv ?>" class="d-inline">
-                                        <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-outline-success py-3">Selesai</button>
-                                    </form>
+
+                                    <button type="submit" class="btn btn-outline-success py-3" data-bs-toggle="modal" data-bs-target="#selesaitringer">Selesai</button>
+
+                                    <div class="modal fade" id="selesaitringer" tabindex="-1" aria-labelledby="selesaitringerLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="selesaitringerLabel">Selesaikan Pesanan</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Selesaikan pesanan ini ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <form method="post" action="<?= base_url('dashboard/order/update-booking/update-status/save/') . $inv ?>" class="d-inline">
+                                                        <?= csrf_field(); ?>
+                                                        <button type="submit" class="btn btn-danger">Selesai</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -329,15 +348,21 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Apakah anda yakin ingin membatalkan pesanan ini?</p>
+                                                    <?php if (in_array($gosendStatus['status'], ['Finding Driver'])) : ?>
+                                                        <p>Apakah anda yakin ingin membatalkan pesanan ini?</p>
+                                                    <?php else : ?>
+                                                        <p>Maaf pesanan ini tidak dapat dibatalkan karena status saat ini <?= $gosendStatus['status']; ?></p>
+                                                    <?php endif; ?>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <form action="<?= base_url('dashboard/order/update-booking/' . $gosendStatus['orderNo'] . '/cancel'); ?>" method="post">
-                                                        <?= csrf_field(); ?>
-                                                        <input type="hidden" name="orderNo" value="<?= $gosendStatus['orderNo']; ?>">
-                                                        <button type="submit" class="btn btn-danger">Cancel</button>
-                                                    </form>
+                                                    <?php if (in_array($gosendStatus['status'], ['Finding Driver'])) : ?>
+                                                        <form action="<?= base_url('dashboard/order/update-booking/' . $gosendStatus['orderNo'] . '/cancel'); ?>" method="post">
+                                                            <?= csrf_field(); ?>
+                                                            <input type="hidden" name="orderNo" value="<?= $gosendStatus['orderNo']; ?>">
+                                                            <button type="submit" class="btn btn-danger">Cancel</button>
+                                                        </form>
+                                                    <?php endif ?>
                                                 </div>
                                             </div>
                                         </div>
