@@ -22,7 +22,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="col-9 totalbarang d-flex justify-content-start align-items-center">
                                 <p class="mt-0 mb-0"><?= lang('Text.total_cart') ?></p>
-                                <p class="mt-0 mb-0 fw-bold" id="textTotal"></p>
+                                <p class="mt-0 mb-0 fw-bold mx-2" id="textTotal"></p>
                                 <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
                             </div>
                         </div>
