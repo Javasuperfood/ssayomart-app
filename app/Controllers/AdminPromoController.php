@@ -430,7 +430,7 @@ class AdminPromoController extends BaseController
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $this->request->getVar('promo'))->withInput();
+            return redirect()->to('dashboard/promo/tambah-promo-item-batch')->withInput();
         }
     }
 
@@ -449,6 +449,7 @@ class AdminPromoController extends BaseController
 
         $getOngoingPromoItems = $promoBatchModel->getOngoingPromoItems($id);
         $ongoingPromo['produk_nama'] = $produkModel->find($ongoingPromo['id_produk'])['nama'];
+        // dd($ongoingPromo);
 
         $data = [
             'promo' => $promoList,
@@ -493,7 +494,7 @@ class AdminPromoController extends BaseController
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $ongoingPromo['id_promo'])->withInput();
+            return redirect()->to('dashboard/promo/tambah-promo/show-promo/edit/' . $id)->withInput();
         }
     }
 

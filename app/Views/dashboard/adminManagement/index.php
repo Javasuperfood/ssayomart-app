@@ -71,7 +71,7 @@
                                     <td><?= $a['telp']; ?></td>
                                     <td><?= $a['active']; ?></td>
                                     <td><?= $a['group']; ?></td>
-                                    <td><?= $a['created_at']; ?></td>
+                                    <td><?= date("j F Y H.i", strtotime($a['created_at'])); ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
