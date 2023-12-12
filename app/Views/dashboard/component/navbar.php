@@ -35,8 +35,11 @@
          <a class="d-flex align-items-center mt-3" href="<?= base_url() ?>dashboard/panduan/panduan-aplikasi"  >
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Panduan Aplikasi (Segera Hadir)</span>
             </a>
-        </div>
-         
+        </div><style>
+  .nav-link a:hover {
+    text-decoration: none;
+  }
+</style>
         
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
