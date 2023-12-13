@@ -230,14 +230,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="" class="card-img">
                                     </div>
                                     <div class="col-5 position-absolute top-50 start-50 translate-middle mt-2">
-                                        <p class="card-title pemilihan " style="font-size:14px;"><?= substr($produk['nama'], 0, 15); ?></p>
+                                        <p class="card-title pemilihan " style="font-size:12px;"><?= substr($produk['nama'], 0, 15); ?></p>
                                         <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
                                         </p>
                                         <input type="hidden" name="qty" value="<?= $qty; ?>">
                                         <input type="hidden" name="varian" value="<?= $varian; ?>">
                                     </div>
                                     <div class="col-5 position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                        <h5 class="text-secondary fs-6">Total</h5>
+                                        <h5 class="text-secondary fs-6" style="font-size: 12px;">Total</h5>
                                         <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
                                     </div>
                                 </div>
