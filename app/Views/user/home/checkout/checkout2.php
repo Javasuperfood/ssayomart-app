@@ -239,8 +239,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </p>
                                         </div>
                                         <div class="col-5 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                            <h5 class="text-secondary fs-6 pemilihan" style="font-size: 12px;">Total</h5>
-                                            <p class="fw-bold fs-6 pemilihan">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                            <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
+                                            <p class="fw-bold pemilihan" style="font-size: 13px;">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                         </div>
                                     </div>
                                 </div>

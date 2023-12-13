@@ -113,10 +113,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                         <div class="deskripsi col-5 position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title mt-3" style="font-size: 13px;">
+                                            <h5 class="card-title mt-3" style="font-size: 12px;">
                                                 <?= substr($t->nama, 0, 30); ?>
                                             </h5>
-                                            <p class="text-secondary" style="font-size: 12px;">Rp.
+                                            <p class="text-secondary" style="font-size: 11px;">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
                                             </p>
                                         </div>
@@ -186,10 +186,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <img src="<?= base_url(); ?>assets/img/produk/main/<?= $c->img; ?>" alt="Foto Produk" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                                 </div>
                                                 <div class=" col-5 position-absolute top-50 start-50 translate-middle">
-                                                    <h5 class="card-title fs-6">
+                                                    <h5 class="card-title " style="font-size: 12px;">
                                                         <?= substr($c->nama, 0, 10); ?>
                                                     </h5>
-                                                    <p class="text-secondary fs-6">Rp.
+                                                    <p class="text-secondary fs-6" style="font-size: 11px;">Rp.
                                                         <?= number_format($c->harga, 0, ',', '.'); ?>
                                                     </p>
                                                 </div>
