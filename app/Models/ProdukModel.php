@@ -134,9 +134,9 @@ class ProdukModel extends Model
 
     public function getRandomProducts()
     {
-        $products = $this->select('jsf_produk.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
+        $products = $this->select('jsf_produk.*,vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
-            ->groupBy('jsf_produk.id_produk, jsf_produk.nama')
+            ->groupBy('jsf_produk.id_produk, jsf_produk.nama, vi.id_variasi_item')
             ->orderBy('RAND()')->findAll(10);
         return $products;
     }
@@ -234,6 +234,7 @@ class ProdukModel extends Model
     // jika parameter yang akan dibuat kondisi wajib mempunya value null di setiap parameter
     public function getFeaturedProductsByCategory($slug1 = null, $slug2 = null)
     {
+
         $query = $this->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, SUM(p.qty) AS total_qty')
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_produk.id_kategori', 'left')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')

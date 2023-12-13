@@ -30,13 +30,13 @@
 
                                     <!-- button Animasi -->
                                     <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
-                                        <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)">
+                                        <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">
                                             <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>
                                         </div>
-                                        <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)">
-                                            <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>)">-</div>
+                                        <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">
+                                            <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">-</div>
                                             <input type="text" id="counter-<?= $p['id_produk']; ?>" class="input" value="1" disabled>
-                                            <div class="icon" onClick="increaseValue(<?= $p['id_produk']; ?>)">+</div>
+                                            <div class="icon" onClick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">+</div>
                                         </div>
                                     </div>
                                     <!-- akhir button animasi -->
@@ -120,7 +120,7 @@
         var produk = c;
         var varian = v;
         var qty = q;
-        // console.log(produk, varian, qty)
+        //console.log(produk, varian, qty)
         $.ajax({
             type: "POST",
             url: "<?= base_url('api/add-to-cart'); ?>",
