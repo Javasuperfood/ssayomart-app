@@ -230,7 +230,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="" class="card-img">
                                     </div>
                                     <div class="col-5 position-absolute top-50 start-50 translate-middle mt-2">
-                                        <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?></h5>
+                                        <p class="card-title pemilihan " style="font-size:14px;"><?= substr($produk['nama'], 0, 15); ?></p>
                                         <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
                                         </p>
                                         <input type="hidden" name="qty" value="<?= $qty; ?>">
