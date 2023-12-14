@@ -25,16 +25,26 @@ class WebhookFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        // // Dapatkan nilai header 'X-key'
+        $env = getenv('CI_ENVIRONMENT');
+
+        $validKeys = [
+            'development' => [
+                'key' => 'lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE',
+                'authorization' => 'lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE',
+            ],
+            'production' => [
+                'key' => 'Production_c3NheW9tYXJ0.a2V5',
+                'authorization' => 'Production_c3NheW9tYXJ0.a2V5',
+            ],
+        ];
+
         $keyId = $request->getHeaderLine('Client-Key');
-        $Authorization = $request->getHeaderLine('Authorization');
-        // Lakukan validasi sesuai dengan kebutuhan
-        if ($keyId !== 'lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE' && $Authorization !== 'lNyV2LIYifQIO12TJ5MBCGwWdpsGd7tE') {
-            // Jika nilai header tidak valid, kembalikan response dengan status Unauthorized
+        $authorization = $request->getHeaderLine('Authorization');
+
+        if (isset($validKeys[$env]) && ($keyId !== $validKeys[$env]['key'] && $authorization !== $validKeys[$env]['authorization'])) {
             return $this->resErrorCustom('Invalid Client-Key or Authorization header');
         }
 
-        // Lanjutkan eksekusi jika valid
         return $request;
     }
 
