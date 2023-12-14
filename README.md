@@ -1,66 +1,47 @@
-<<<<<<< HEAD
-# ssayomart-app
-=======
-# CodeIgniter 4 Application Starter
+Ssayomart: Inovatif, Komprehensif, dan Internasional
 
-## What is CodeIgniter?
+1. Pendahuluan
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Ssayomart adalah sebuah supermarket yang menawarkan berbagai macam kebutuhan sehari-hari, menggabungkan konsep tradisional dan modern. Fokusnya tidak hanya pada produk lokal, tetapi juga menyediakan berbagai jenis makanan khas Korea, Jepang, dan Indonesia. Dengan menyediakan produk segar, makanan beku, dan makanan kemasan, Ssayomart bertujuan memenuhi kebutuhan konsumen yang beragam.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+2. Produk dan Kategori
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+Sayuran dan Buah-buahan: Menyediakan pilihan sayuran dan buah-buahan segar berkualitas tinggi untuk memastikan konsumen mendapatkan nutrisi terbaik.
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+Daging: Kualitas daging yang unggul dengan berbagai pilihan, dari daging segar hingga produk olahan siap saji.
 
-## Installation & updates
+Frozen Food: Berbagai macam makanan beku, memudahkan konsumen untuk menyajikan hidangan lezat tanpa repot.
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+Makanan Kemasan: Produk makanan kemasan dari merek terkemuka, memberikan pilihan praktis dan bermutu tinggi.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+Makanan Khas: Spesialisasi dalam menyediakan makanan khas dari Korea, Jepang, dan Indonesia, memberikan pengalaman belanja internasional kepada pelanggan.
 
-## Setup
+3. Pengalaman Belanja
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+Desain Toko: Interior dan tata letak toko didesain untuk memberikan pengalaman belanja yang menyenangkan dan mudah dipahami bagi pelanggan.
 
-## Important Change with index.php
+Pesan Daring: Ssayomart juga menawarkan kemudahan berbelanja online dengan pengiriman cepat dan layanan pelanggan yang responsif.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Program Diskon dan Promo: Berbagai penawaran diskon, promo, dan reward program untuk memberikan nilai tambah kepada pelanggan setia.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+4. Keberlanjutan dan Kesehatan
 
-**Please** read the user guide for a better explanation of how CI4 works!
+Produk Organik: Ssayomart aktif dalam menyediakan produk organik dan mendukung pertanian berkelanjutan untuk mendukung gaya hidup sehat.
 
-## Repository Management
+Label Gizi: Informasi gizi yang jelas dan transparan pada setiap produk membantu pelanggan membuat pilihan makanan yang cerdas.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+5. Hubungan dengan Komunitas
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+Dukungan pada Produk Lokal: Ssayomart berkomitmen untuk mendukung produsen lokal dengan menyediakan platform bagi produk-produk lokal berkualitas.
 
-## Server Requirements
+Pendidikan Gizi: Program edukasi dan seminar tentang gizi dan hidup sehat untuk membantu masyarakat menjalani gaya hidup yang sehat.
 
-PHP version 7.4 or higher is required, with the following extensions installed:
+6. Teknologi dan Inovasi
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+Aplikasi Mobile: Ssayomart menyediakan aplikasi mobile yang memudahkan pelanggan untuk berbelanja, melacak pesanan, dan mendapatkan informasi terkini.
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+Teknologi Pembayaran: Menerima berbagai metode pembayaran termasuk kartu, uang tunai, dan dompet digital untuk meningkatkan kemudahan bertransaksi.
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
->>>>>>> c4ab70cc6db8ac0a688b73ed91e8d2bab93c1ae8
+7. Kesimpulan
+
+Ssayomart bukan hanya sekadar supermarket, tetapi sebuah destinasi belanja yang menyediakan berbagai pilihan produk berkualitas tinggi. Dengan fokus pada keberlanjutan, kesehatan, dan inovasi, Ssayomart berusaha menjadi mitra terpercaya dalam memenuhi kebutuhan harian pelanggan dengan layanan yang ramah dan berkualitas.
