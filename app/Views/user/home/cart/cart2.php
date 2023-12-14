@@ -33,27 +33,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="row text-center row-cols-2">
                     <?php foreach ($produk as $p) : ?>
                         <div class="col-12 pt-3">
-                            <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+                            <div class="card border-0 shadow-sm " style="width: auto; height: 100%;">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-4">
                                         <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px;">
-                                            <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                            <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                         </div>
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1 img-small gambar-kecil" alt="Product" style="width:140px; height:140px; object-fit: contain; object-position: 20% 10%;">
+                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1 img-small gambar-kecil ms-5" alt="Product" style="width:140px; height:140px; object-fit: contain; object-position: 20% 10%;">
                                         </a>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-8">
                                         <div class="card-body">
-                                            <p class="card-text text-secondary" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
-                                            <p class="card-title fw-bold text-danger" style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
-                                            <div class="input-group grup-masukan mt-2">
+                                            <div class="mt-4 text-position"> 
+                                            <p class="card-text text-secondary float-start " style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
+                                            <br>
+                                            <p class="card-title fw-bold text-danger float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                        </div>
+                                           
+                                            <div class="input-group grup-masukan button-group">
                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
                                                 <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
                                             </div>
-                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class=" mt-1 btn btn-sm button-sampah position-absolute end-0 mx-2"><i class="bi bi-trash text-danger"></i></button>
+                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="  btn btn-sm button-sampah position-absolute "><i class="bi bi-trash text-danger"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -146,7 +150,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="d-flex align-items-center justify-content-between" style="padding-left: 15px;">
                                                         <div class="d-flex flex-column">
-                                                            <div class="text-center me-5 pb-2" style="margin-top: 10px;">
+                                                            <div class=" me-5 pb-2" style="margin-top: 10px;">
                                                                 <h5 class="mb-0" style="font-size: 20px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
                                                             </div>
                                                             <div class="d-flex align-items-center me-5">
@@ -156,7 +160,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                         </div>
                                                         <?= csrf_field(); ?>
-                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn rounded-circle"><i class="bi bi-trash text-danger"></i></button>
+                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn rounded-circle float-start"><i class="bi bi-trash text-danger"></i></button>
                                                     </div>
                                                 </div>
                                             </div>

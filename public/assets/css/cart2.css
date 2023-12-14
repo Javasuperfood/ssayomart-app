@@ -2,7 +2,7 @@
 
 /* Common styles for both mobile and desktop */
 .card-body {
-  padding: 1rem;
+  /* padding: 1rem; */
 }
 
 /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
@@ -76,7 +76,7 @@
 #buttonAtas {
   display: none;
   position: fixed;
-bottom: 61px;
+  bottom: 61px;
   right: 20px;
   width: 20px;
   height: 40px;
@@ -84,8 +84,8 @@ bottom: 61px;
   border: none;
   border-radius: 50%;
   cursor: pointer;
-z-index: 200;
-    background-color: #ec2614;
+  z-index: 200;
+  background-color: #ec2614;
 }
 
 /* button pilih objek radio */
@@ -99,6 +99,7 @@ z-index: 200;
   background-color: #ec2614;
   border-color: #ec2614;
 }
+
 
 .form-check-input[type="radio"] {
   border-radius: 50%;
@@ -127,5 +128,34 @@ z-index: 200;
 
   .form-masuk {
     max-width: 40px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 667px) {
+    .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+  }
+  .grup-masukan {
+    margin-top: 29px; /
+  
+  }
+  .form-check-input{
+  padding: 10px 10px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
+
+  .button-sampah {
+    font-size: 24px;
+    left: 37%; 
+    margin-top: -34px; 
   }
 }
