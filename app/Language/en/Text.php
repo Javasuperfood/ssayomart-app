@@ -19,7 +19,8 @@ return [
     'selengkapnya' => 'More...',
     'produk_rekomendasi' => 'Recommendations',
     'produk_terbaru' => 'New Products',
-
+    'go_to_kategori_kr' => '모든 카테고리 보기',
+    'go_to_kategori_id_en' => 'Click here to see All Categories',
 
     // SETTING PAGE
     'setting' => 'Setting',

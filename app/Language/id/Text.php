@@ -19,6 +19,8 @@ return [
     'selengkapnya' => '더 완벽해 / Selengkapnya',
     'produk_rekomendasi' => '추천상품 / Produk Rekomendasi',
     'produk_terbaru' => '새로운 제품 / Produk Terbaru',
+    'go_to_kategori_kr' => '모든 카테고리 보기',
+    'go_to_kategori_id_en' => 'Ketuk untuk melihat semua kategori',
 
     // SETTING PAGE
     'setting' => '환경 / Sunting',
