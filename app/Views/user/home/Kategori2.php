@@ -239,18 +239,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 });
             </script>
             <script>
-                var goToCategoriesBtn = document.getElementById('goToCategories');
-
-                goToCategoriesBtn.addEventListener('click', function() {
-                    // Tambahkan kelas animate.css untuk animasi ke kanan
-                    goToCategoriesBtn.classList.add('animate__animated', 'animate__slideOutRight');
-
-                    // Hapus kelas animate.css setelah animasi selesai
-                    goToCategoriesBtn.addEventListener('animationend', function() {
-                        goToCategoriesBtn.classList.remove('animate__animated', 'animate__slideOutRight');
-                    });
-                });
-
                 function changeToCapsule(c, v) {
                     $(`#button-container-${c} .button`).css('display', 'none');
                     $(`#button-container-${c} .button-capsule`).css('display', 'flex');
