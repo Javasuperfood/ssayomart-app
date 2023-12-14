@@ -1,0 +1,252 @@
+/* styling button counter animasi */
+.button-container {
+    position: absolute;
+    top: 5px;
+    /* Jarak dari atas */
+    left: 5px;
+    /* Jarak dari kiri */
+    display: flex;
+    gap: 5px;
+    /* Jarak antar tombol */
+}
+
+.button {
+    width: 25px;
+    /* Ukuran tombol yang lebih kecil */
+    height: 25px;
+    /* Ukuran tombol yang lebih kecil */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: 1px solid #e83b2e;
+    background-color: #fff;
+}
+
+.button-capsule {
+    width: 60px;
+    /* Ukuran capsule yang lebih kecil */
+    height: 25px;
+    /* Ukuran capsule yang lebih kecil */
+    border-radius: 15px;
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    /* Padding yang lebih kecil */
+    transition: all 0.3s ease;
+    outline: 1px solid #e83b2e;
+    background-color: #fff;
+}
+
+.icon {
+    font-size: 12px;
+    color: #e83b2e;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.input {
+    width: 20px;
+    /* Ukuran input yang lebih kecil */
+    height: 15px;
+    /* Ukuran input yang lebih kecil */
+    text-align: center;
+    margin: 0 3px;
+    /* Margin yang lebih kecil */
+    color: #000;
+    font-size: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.btn-custom-rounded {
+    border-radius: 25px;
+    height: 35px;
+    width: 300px;
+    margin-left: 10px;
+}
+
+.icon {
+    display: flex;
+    gap: 15px;
+    /* Jarak antara ikon-ikon */
+}
+
+.rating {
+    color: gold;
+}
+
+.swiper-slide img {
+    border-radius: 15px;
+}
+
+.swiper-slide button {
+    padding-left: 10px;
+}
+
+.text-merah {
+    color: #81271f;
+}
+
+/* Customize card styles */
+
+
+/* Set swiper container size */
+.swiper-container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* Center swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #333;
+}
+
+
+#read-more-btn {
+    cursor: pointer;
+}
+
+#read-more-btn:hover {
+    text-decoration: underline;
+}
+.paragraph {
+    max-height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.toggle-text::after {
+    content: " Read more";
+    color: #007bff;
+    /* Warna teks biru, sesuaikan dengan preferensi Anda */
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff 50%);
+    padding: 0 5px;
+    transition: all 0.3s ease;
+}
+
+.paragraph.open {
+    max-height: none;
+}
+
+.paragraph.open .toggle-text::after {
+    content: " Read less";
+}
+#more {
+    display: none;
+}
+/* CSS untuk tombol Scroll Up */
+#scrollUpButton {
+    display: none;
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.form-control:focus {
+    border-color: #ffffff;
+    /* Warna garis tepi merah saat focus */
+    box-shadow: none;
+    /* Efek shadow merah saat focus */
+
+}
+
+.form-control-main:focus {
+    border-color: #ffffff;
+    /* Warna garis tepi merah saat focus */
+    box-shadow: none;
+    /* Efek shadow merah saat focus */
+    border: none;
+    /* Menghapus border default */
+    outline: none;
+
+}
+
+.form-control-main {
+
+    box-shadow: none;
+    /* Efek shadow merah saat focus */
+    border-radius: 5px;
+    /* Menentukan sudut tumpul */
+    border: none;
+    /* Menghapus border default */
+    width: 250px;
+
+}
+.footer-search {
+    margin-top: 22%;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .swiper-slide img {
+        border-radius: 25px;
+    }
+
+
+
+}
+
+@media (max-width: 480px) {
+    .swiper-slide img {
+        border-radius: 10px;
+        
+    }
+
+    /* .card {
+        margin-top: 2rem;
+        width: 12rem;
+
+    } */
+
+    .swiper-slide-card {
+        margin-left: 10px;
+    }
+
+}
+@media screen and (max-width: 280px) {
+    .col-samsung-fold {
+        width: 25% !important;
+        display: flex;
+    }
+}
+/* @media (min-width:1512px) and (max-width:1910px) {
+    .card-side {
+        width: 15rem;
+
+    }
+}
+@media (min-width:1024px) and (max-width:1340px) {
+    .card-side {
+        width: 12rem;
+
+    }
+}
+@media (min-width:1920px) and (max-width:2000px) {
+    .card-side {
+        width: 18rem;
+        
+
+    }
+
+
+}
+*/

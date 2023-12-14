@@ -1,0 +1,51 @@
+
+        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
+        @media screen and (max-width: 280px) {
+
+            .gambar-pengiriman img {
+                width: 80px !important;
+            }
+
+            .gambar-pengiriman button {
+                font-size: 8px !important;
+            }
+
+            .pilih-cara {
+                font-size: 13px;
+            }
+
+            .masukan-tim .btn {
+                font-size: 9px;
+            }
+
+            .masukan-kata {
+                font-size: 12px;
+                /* Ukuran font input sesuai kebutuhan */
+            }
+
+            .time {
+                font-size: 12px;
+                padding-left: 0.5rem !important;
+            }
+
+            .keterangan h5 {
+                font-size: 10px !important
+            }
+
+            .keterangan p {
+                font-size: 12px !important;
+            }
+
+            .btn-bayar {
+                font-size: 12px !important;
+            }
+
+            tr {
+                font-size: 12px;
+            }
+
+            .pemilihan {
+                font-size: 0.7rem !important;
+            }
+
+        }
