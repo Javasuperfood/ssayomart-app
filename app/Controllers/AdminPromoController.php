@@ -534,13 +534,12 @@ class AdminPromoController extends BaseController
         foreach ($item as $promoId) {
             $promo = $promoBatchModel->find($promoId);
 
-            // Check if 'img' key exists and is not null
-            if (isset($promo['img']) && $promo['img'] != 'default.png') {
-                $gambarLamaPath = 'assets/img/produk/main/' . $promo['img'];
-                if (file_exists($gambarLamaPath)) {
-                    unlink($gambarLamaPath);
-                }
-            }
+            // if ($promo['img'] != 'default.png') {
+            //     $gambarLamaPath = 'assets/img/produk/main/' . $promo['img'];
+            //     if (file_exists($gambarLamaPath)) {
+            //         unlink($gambarLamaPath);
+            //     }
+            // }
             $deleted = $promoBatchModel->delete($promoId);
         }
 
