@@ -8,9 +8,6 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
-<!-- Font Noto Sans Korean -->
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap"> -->
-
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -28,6 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php endforeach ?>
         </div>
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
+
         <script>
             $(document).ready(function() {
                 // Fungsi untuk menampilkan modal
@@ -85,9 +83,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </script>
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
-
+        <!-- Banner Promosi Item -->
         <div class="class" style="position: relative; top: -15px;">
-            <!-- Banner Promosi Item -->
             <section id="rekomendasi" style="background-color: #f3f5df;">
                 <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
                     <div class="container mb-0 mt-3">
@@ -141,6 +138,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endif; ?>
+            <!-- end produk rekomendasi -->
 
             <!-- Produk Terbaru -->
             <div class="container">
@@ -197,6 +195,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php endif; ?>
                 </div>
             </div>
+            <!-- end produk terbaru -->
 
             <!--button Goto All Kategori -->
             <section class="mt-1">
@@ -213,6 +212,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </section>
             <!-- end button goto all kategori -->
+
             <!-- scroll up -->
             <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
             <!-- scroll up -->
@@ -356,32 +356,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </script>
         <?php endif ?>
 
-        <!-- STYLE BUTTON ALL KATEGORI -->
-        <!-- <style>
-            .custom-border {
-                /* Adjust the RGBA values and alpha (transparency) as needed */
-                border-radius: 10px;
-
-
-            }
-
-            .custom-button {
-                background: linear-gradient(to left, #fb0408, #c90306);
-                /* Set your custom linear gradient */
-                color: #fff;
-                /* Set your custom text color */
-                border: 3px solid rgb(170, 29, 37);
-                /* Set your custom border color */
-                border-radius: 10px;
-                /* Set your custom border radius */
-                padding: 10px 20px;
-                /* Adjust padding as needed */
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-            }
-        </style> -->
 
         <!-- style all device css card -->
         <style>
@@ -426,14 +400,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     display: flex;
                     justify-content: center;
                 }
-
-                /* .row.card-grup {
-                    justify-content: center;
-                    align-items: center;
-                    max-width: 31% !important;
-                    flex: 0 0 100% !important;
-
-                } */
 
             }
 
@@ -515,7 +481,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             #scrollUpButton {
                 display: none;
                 position: fixed;
-                bottom: 200px;
+                bottom: 123px;
                 right: 10px;
                 width: 30px;
                 height: 40px;
@@ -648,6 +614,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <?php else : ?>
         <!-- Desktop View -->
         <div id="desktopContent" style="margin-top:15px;">
+
             <!-- Modal  Homepage-->
             <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
                 <?php foreach ($banner_pop_up as $pop) : ?>
@@ -662,6 +629,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?php endforeach ?>
             </div>
             <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
+
             <script>
                 $(document).ready(function() {
                     // Fungsi untuk menampilkan modal
@@ -718,6 +686,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
             </script>
 
+            <!-- prroduk uunggulan  -->
             <section id="unggul">
                 <div class="container">
                     <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">
@@ -746,6 +715,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </section>
+
 
             <!-- swipper card tampilan web -->
             <section id="unggul">
@@ -804,46 +774,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
 
-                    <!-- rekomendasi title -->
-                    <!-- <div class="container py-3">
-                        <div class="card border-0 text-center font-family-poppins" style="background-color: #fce0e4;">
-                            <div class="card-danger">
-                                <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.saran_masak') ?></h2>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- end rekomendasi title-->
-                    <!-- card rekomendasi -->
-                    <!-- <div class="container mt-3">
-                        <div class="row">
-                            <div class="swiper mySwung">
-                                <div class="mb-5 swiper-wrapper d-flex">
-                                    <?php foreach ($blog_detail as $bd) : ?>
-                                        <div class="swiper-slide">
-                                            <div class="card shadow-sm border-0" style="border-radius: 15px;">
-                                                <div class="card-body p-4">
-                                                    <div class="d-flex text-black">
-                                                        <div class="flex-shrink-0">
-                                                            <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" alt="Thumbnail Artikel" class="img-fluid rounded-3" style="height: 180px; width: 180px;">
-                                                        </div>
-                                                        <div class="flex-grow-1 ms-3">
-                                                            <p class="mb-2 pb-1 fw-bold fs-5 text-dark"><?= substr($bd['judul_blog'], 0, 40); ?>...</p>
-                                                            <div class="d-flex justify-content-start rounded-3 p-2 mb-0">
-                                                                <p class="text-secondary"><?= lang('Text.selengkapnya') ?></p>
-                                                            </div>
-                                                            <div class="d-flex pt-0">
-                                                                <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger fw-medium flex-grow-1">View More <i class="bi bi-arrow-right-circle"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <!-- end card rekomendasi-->
                     <div class="container py-1">
                         <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #ccebbc;">
@@ -868,6 +798,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </section>
         </div>
+
         <!-- script button counter animasi -->
         <script>
             function changeToCapsule(productId) {
@@ -1002,6 +933,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php endif; ?>
 <!-- End Desktop View -->
 
+<!-- userr agent -->
 <?php
 if ($isMobile) {
 
