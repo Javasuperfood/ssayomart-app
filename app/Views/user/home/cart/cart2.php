@@ -53,9 +53,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                            
                                             <div class="input-group grup-masukan button-group">
-                                                <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
-                                                <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
-                                                <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
+                                                <button class="btn btn-outline-danger btn-dash rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" ></i></button>
+                                                <input type="text" class="form-control  form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
+                                                <button class="btn btn-outline-danger btn-plus rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" ></i></button>
                                             </div>
                                             <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="  btn btn-sm button-sampah position-absolute "><i class="bi bi-trash text-danger"></i></button>
                                         </div>

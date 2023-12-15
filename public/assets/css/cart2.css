@@ -12,11 +12,12 @@
     /* Sesuaikan tinggi maksimum yang Anda inginkan */
     max-width: 100px !important;
     /* Biarkan lebar gambar menyesuaikan */
-    margin: 25px 0 25px auto !important;
+    margin-top: 20px !important;
+    /* margin: 25px 0 25px auto !important; */
     /* Geser gambar ke tengah kanan */
   }
 
-  .grup-masukan {
+  /* .grup-masukan {
     position: relative;
     display: flex;
     align-items: stretch;
@@ -67,6 +68,55 @@
   .totalbarang p {
     font-size: 14px !important;
     margin: 3px;
+  } */
+      .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+    
+  }
+  .grup-masukan {
+    margin-top: 29px; 
+    
+
+  }
+  .form-check-input{
+  padding: 10px 10px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+   
+  }
+.btn-dash, .btn-plus {
+  width: 25px; 
+  height: 25px; 
+  border-radius: 50%;
+  background-color: transparent; 
+  color: #dc3545; 
+  border: 1px solid #dc3545; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+ 
+
+.btn-dash i, .btn-plus i {
+  margin-top: 2px; /* Adjust the icon's vertical position */
+}
+
+
+
+
+  .button-sampah {
+    font-size: 18px;
+    left: 37%; 
+    margin-top: -34px; 
   }
 
   /* Add specific CSS styles for the delete button if needed */
@@ -132,6 +182,67 @@
 }
 
 @media screen and (min-width: 375px) and (max-width: 667px) {
+    .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+  }
+  .grup-masukan {
+    margin-top: 29px; /
+  
+  }
+  .form-check-input{
+  padding: 10px 10px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
+
+  .button-sampah {
+    font-size: 24px;
+    left: 37%; 
+    margin-top: -34px; 
+  }
+}
+
+/* samsung galaxy s8 */
+@media screen and (min-width: 360px) and (max-width: 740px) {
+    .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+  }
+  .grup-masukan {
+    margin-top: 29px; /
+  
+  }
+  .form-check-input{
+  padding: 10px 10px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
+
+  .button-sampah {
+    font-size: 24px;
+    left: 37%; 
+    margin-top: -34px; 
+  }
+}
+
+/* ipad mini */
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
     .input-group.grup-masukan {
     justify-content: end;
   }
