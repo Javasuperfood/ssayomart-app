@@ -52,12 +52,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="card-body">
                             <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-3 d-flex justify-content-center align-items-center">
                                         <img src="<?= base_url(); ?>assets/img/coupon.png" alt="Kupon" class="card-img img-fluid" style="width: 20; height: 50;">
                                     </div>
-                                    <div class="col">
-                                        <h5 class="card-title text-dark d-flex text-center justify-content-center align-items-center" style="font-size: 14px;"><?= lang('Text.judul_kupon') ?></h5>
-                                        <p class="card-text text-secondary d-flex text-center justify-content-center align-items-center" style="font-size: 14px;"><?= lang('Text.isi_kupon') ?></p>
+                                    <div class="col d-flex justify-content-center align-items-center">
+                                        <p class="fw-bold card-title text-dark  text-center " style="font-size: 14px;"><?= lang('Text.judul_kupon') ?>
+                                            <br><?= lang('Text.isi_kupon') ?>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
@@ -162,10 +163,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
-
-
-
-
 <?php else : ?>
     <!-- end mobile&ipad -->
 
@@ -301,17 +298,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
-
-
-
-
-
 <?php endif; ?>
 <!-- end Desktop -->
 
 <!-- Modal setting  -->
 <?= $this->include('user/component/modalSetting'); ?>
-
 <?php if (session()->getFlashdata('success')) : ?>
     <script type="module">
         Swal.fire({

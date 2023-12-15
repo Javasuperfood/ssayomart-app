@@ -260,26 +260,20 @@ class ProdukModel extends Model
         return $result;
     }
 
-    public function getProdukHome($id_kategori = null, $keyword = null, $latest = null)
+    public function getProdukHome($short = null)
     {
         $getProduk = $this->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
-            ->groupBy('jsf_produk.id_produk, jsf_produk.nama, vi.id_variasi_item')
             ->where('jsf_produk.deleted_at', null);
-
-        if ($id_kategori != null) {
-            $getProduk->where('jsf_produk.id_kategori', $id_kategori);
+        if ($short == 'rekomendasi') {
+            $getProduk->join('jsf_produk_rekomendasi', 'jsf_produk.id_produk = jsf_produk_rekomendasi.id_produk')
+                ->groupBy('jsf_produk.id_produk, jsf_produk.nama, vi.id_variasi_item, jsf_produk_rekomendasi.short')
+                ->orderBy('jsf_produk_rekomendasi.short', 'ASC')->limit(6);
         }
-
-        if ($keyword != null) {
-            $getProduk->like('jsf_produk.nama', $keyword)->limit(3);
+        if ($short == 'produk_terbaru') {
+            $getProduk->groupBy('jsf_produk.id_produk, jsf_produk.nama, vi.id_variasi_item')
+                ->orderBy('jsf_produk.id_produk', 'desc')->limit(6);
         }
-
-        if ($latest != null) {
-            $getProduk->orderBy('jsf_produk.id_produk', 'DESC')->limit(6);
-        }
-
-
         $result = $getProduk->get()->getResultArray();
         return $result;
     }

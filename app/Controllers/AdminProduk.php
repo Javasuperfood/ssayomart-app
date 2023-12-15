@@ -159,12 +159,12 @@ class AdminProduk extends BaseController
                     'required' => 'Deskripsi wajib diisi.',
                 ],
             ],
-            'parent_kategori_id'    => [
-                'rules'  => 'required',
-                'errors' => [
-                    'required' => 'Kategori wajib diisi.',
-                ],
-            ]
+            // 'parent_kategori_id'    => [
+            //     'rules'  => 'required',
+            //     'errors' => [
+            //         'required' => 'Kategori wajib diisi.',
+            //     ],
+            // ]
         ];
         if (!$this->validateData($data, $ruleData) || !$this->validateData($data2, $variasItemiModel->validationRules)) {
             return redirect()->to('dashboard/produk/tambah-produk')->withInput();
