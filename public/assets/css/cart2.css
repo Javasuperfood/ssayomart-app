@@ -13,6 +13,8 @@
     max-width: 100px !important;
     /* Biarkan lebar gambar menyesuaikan */
     margin-top: 20px !important;
+    margin-left: 60px !important;
+    
     /* margin: 25px 0 25px auto !important; */
     /* Geser gambar ke tengah kanan */
   }
@@ -107,7 +109,7 @@
  
 
 .btn-dash i, .btn-plus i {
-  margin-top: 2px; /* Adjust the icon's vertical position */
+  margin-top: 2px; 
 }
 
 
@@ -181,7 +183,22 @@
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 667px) {
+@media screen and (min-width: 375px) and (max-width: 932px) {
+  .btn-dash, .btn-plus {
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%;
+  background-color: transparent; 
+  color: #dc3545; 
+  border: 1px solid #dc3545; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+  .gambar-kecil {
+    margin-left: 65px !important;
+  }
     .input-group.grup-masukan {
     justify-content: end;
   }
@@ -210,8 +227,23 @@
   }
 }
 
-/* samsung galaxy s8 */
+/* untuk samsung galaxy s8 */
 @media screen and (min-width: 360px) and (max-width: 740px) {
+    .gambar-kecil {
+    margin-left: 65px !important;
+  }
+  .btn-dash, .btn-plus {
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%;
+  background-color: transparent; 
+  color: #dc3545; 
+  border: 1px solid #dc3545; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
     .input-group.grup-masukan {
     justify-content: end;
   }
@@ -224,7 +256,7 @@
   
   }
   .form-check-input{
-  padding: 10px 10px;
+  padding: 9px 9px;
 }
 
   .btn-dash,
@@ -234,15 +266,16 @@
   }
 
   .button-sampah {
-    font-size: 24px;
+    font-size: 20px;
     left: 37%; 
     margin-top: -34px; 
   }
 }
 
-/* ipad mini */
+/* untuk ipad  */
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1366px) {
+  
     .input-group.grup-masukan {
     justify-content: end;
   }
