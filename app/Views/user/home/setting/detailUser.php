@@ -109,7 +109,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <style>
         @media (max-width: 280px) {
             .input-teks {
-                font-size: 12px !important;
+                font-size: 10px !important;
             }
 
             .selamat-datang {
