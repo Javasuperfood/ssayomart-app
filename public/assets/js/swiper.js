@@ -119,7 +119,7 @@ var swiper = new Swiper(".mySwing", {
     },
     // Tampilan iPad (lebar >= 768px)
     768: {
-      slidesPerView: 4, // 4 card per tampilan
+      slidesPerView: 6, // 4 card per tampilan
     },
     717: {
       slidesPerView: 3, // 2 card per tampilan
