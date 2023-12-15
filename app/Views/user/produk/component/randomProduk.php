@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row mt-3">
         <div class="col">
-            <h2 class="mb-4 text-merah"><?= lang('Text.produk_lainnya') ?></h2>
+            <h2 class="fw-bold mb-4 text-merah"><?= lang('Text.produk_lainnya') ?></h2>
             <div class="d-flex justify-content-center align-items-center swiper mySwing">
                 <div class="swiper-wrapper d-flex">
                     <?php foreach ($randomProducts as $p) : ?>

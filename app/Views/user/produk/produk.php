@@ -30,7 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <div class="col mt-4 mx-1 text-center">
-                <h4><?= $produk['nama']; ?></h4>
+                <h4 class="fw-bold"><?= $produk['nama']; ?></h4>
                 <div class="row">
                     <div class="col text-center">
                         <p class="fs-2 text-danger price fw-bold">
@@ -75,7 +75,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row mt-4 mb-5">
                 <div class="col">
-                    <h2 class="text-merah"> <?= lang('Text.deskripsi_produk') ?> </h2>
+                    <h2 class="fw-bold text-merah"> <?= lang('Text.deskripsi_produk') ?> </h2>
                     <p class="text-potong "><?= $produk['deskripsi']; ?></p>
                     <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                 </div>
