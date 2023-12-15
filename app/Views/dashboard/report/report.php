@@ -1,9 +1,9 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-3 text-gray-800">Data Penjualan</h1>
+<h1 class="h3 mb-3 text-gray-800">Data Penjualan Ssayomart</h1>
 <div class="col px-0">
-    <p>Berikut adalah data report penjualan aplikasi Ssayomart</p>
+    <p>Berikut adalah data penjualan Ssayomart.</p>
     <?= csrf_field(); ?>
     <?php if ($getCheckoutWithProduct != null && !empty($getCheckoutWithProduct)) : ?>
         <a href="<?= site_url('dashboard/report/printpdf/' . $getCheckoutWithProduct[0]['id_checkout']) ?>" type="button" class="btn btn-danger mb-4">Download PDF</a>
@@ -88,6 +88,7 @@
 
                 <!-- Chart -->
                 <div class="card-body col-sm-12">
+                    <p class="fw-bold">Data Penjualan Ssayomart</p>
                     <canvas id="myChart"></canvas>
                 </div>
             </div>

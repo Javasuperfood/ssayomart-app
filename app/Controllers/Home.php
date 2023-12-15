@@ -10,12 +10,12 @@ class Home extends BaseController
     {
         $stockModel = new StockModel();
         $perPage = 10;
-        $getStockWithToko = $stockModel->getStockWithProduct($perPage);
+        $getStockWithProduct = $stockModel->getStockWithProduct($perPage);
 
         $currentPage = $this->request->getVar('page_stock') ? $this->request->getVar('page_stock') : 1;
 
         $data = [
-            'getStockWithToko' => $getStockWithToko,
+            'getStockWithProduct' => $getStockWithProduct,
             'pager' => $stockModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
         ];
@@ -36,12 +36,11 @@ class Home extends BaseController
         return 'a';
     }
 
-     public function panduanAplikasi()
+    public function panduanAplikasi()
     {
         $data = [
             'title' => 'Panduan Aplikasi',
         ];
         return view('dashboard/panduan/panduanAplikasi', $data);
     }
-
 }
