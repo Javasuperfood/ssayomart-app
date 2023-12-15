@@ -104,7 +104,7 @@
 <script>
     const ctx = document.getElementById('myChart');
 
-    const quantityData = <?= json_encode(array_column($getCheckoutWithProduct, 'total_1')); ?>;
+    const quantityData = <?= json_encode(array_column($getCheckoutWithProduct, 'total_2')); ?>;
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct', 'Nov', 'Des'];
 
     const initialChartData = {
