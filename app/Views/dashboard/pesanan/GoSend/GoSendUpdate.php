@@ -216,8 +216,19 @@
                                             </table>
                                         </div>
                                         <div class="col-auto d-none d-lg-block">
-                                            <img class="img-fluid" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="">
-                                            <!-- <img class="img-fluid" src="https://source.unsplash.com/200x250" alt="Driver IMG" srcset=""> -->
+                                            <img class="img-fluid" width="200px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                            <!-- <img class="img-fluid" src="https://source.unsplash.com/200x250" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"> -->
+                                        </div>
+                                    </div>
+                                    <!-- Show img modal -->
+                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content border-0 bg-transparent">
+                                                <div class="modal-body d-flex justify-content-center align-items-center">
+                                                    <img class="img-fluid" width="300px" height="350px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="">
+                                                    <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" style="margin-top: 80%; font-size: 15px;" aria-label="Close"></button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
