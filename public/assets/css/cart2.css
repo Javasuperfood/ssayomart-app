@@ -1,9 +1,9 @@
 /* cart 2 */
 
 /* Common styles for both mobile and desktop */
-.card-body {
-  /* padding: 1rem; */
-}
+/* .card-body {
+  padding: 1rem;
+} */
 
 /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
 @media screen and (max-width: 280px) {
