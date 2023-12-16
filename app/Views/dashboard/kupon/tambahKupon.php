@@ -12,14 +12,17 @@
         <!-- code -->
         <form action="<?= base_url(); ?>dashboard/kupon/tambah-kupon/save" method="post">
             <?= csrf_field(); ?>
-            <div class="mb-4">
-                <div class="form-check">
-                    <input class="form-check-input bg-danger fs-5" type="checkbox" value="1" name="is_active" id="isActive" <?= (old('is_active') == 1) ? 'checked' : ''; ?>>
-                    <label class="form-check-label" for="isActive">
-                        Tekan untuk Aktifkan Kupon
-                    </label>
+            <div class="card mb-4 border-0">
+                <div class="card-body shadow-sm">
+                    <div class="form-check">
+                        <input class="form-check-input btn-outline-danger shadow-sm fs-5 mx-1 my-0" type="checkbox" value="1" name="is_active" id="isActive" <?= (old('is_active') == 1) ? 'checked' : ''; ?>>
+                        <label class="form-check-label mx-5 fw-bold" for="isActive">
+                            Cheklish untuk aktifkan kupon
+                        </label>
+                    </div>
                 </div>
             </div>
+
             <div class="mb-4">
                 <label for="nama_kupon" class="form-label">Judul Kupon<span class="text-danger fs-5">*</span></label>
                 <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-1'; ?>" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= old('nama_kupon') ?>">

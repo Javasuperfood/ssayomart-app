@@ -27,7 +27,7 @@
 
                     <div class="mb-4">
                         <label for="produk" class="form-label">Pilih Produk Yang Akan Diberikan Promo</label>
-                        <button type="button" class="btn form-control border-left-danger text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnChooseProducts" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
+                        <button type="button" class="btn form-control border-left-danger text-left view-product shadow-sm fw-bold text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnChooseProducts" style="border-width: 0px; border-color: #d1d3e2; border-style: solid;">
                             Tekan Untuk Memilih Produk
                         </button>
                     </div>
@@ -54,16 +54,16 @@
                                                         <div class="card-body border-0 shadow-sm">
                                                             <div class="row">
                                                                 <div class="col-1 d-flex justify-content-center">
-                                                                    <input onchange="selectCheck(this)" type="checkbox" id="produkCheckbox<?= $item['id_produk']; ?>" name="produk_id[]" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0">
+                                                                    <input onchange="selectCheck(this)" type="checkbox" id="produkCheckbox<?= $item['id_produk']; ?>" name="produk_id[]" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0" style="width: 30px;">
                                                                 </div>
                                                                 <div class="col-3">
-                                                                    <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid">
+                                                                    <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid" style="width:100px; height:100px; object-fit: contain; object-position: 20% 10%;">
                                                                 </div>
                                                                 <div class="col-8">
-                                                                    <p class="fs-4"><?= $item['nama']; ?></p>
+                                                                    <p class="nama-produk" style="font-size: 18px;"><?= $item['nama']; ?></p>
                                                                     <?php foreach ($variasi as $v) : ?>
                                                                         <?php if ($v['id_variasi_item'] == $item['id_produk']) : ?>
-                                                                            <p class="fs-5">Harga: Rp. <?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
+                                                                            <p class="harga" style="font-size: 14px;">Harga: Rp. <?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
                                                                         <?php endif; ?>
                                                                     <?php endforeach; ?>
                                                                 </div>

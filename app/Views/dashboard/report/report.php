@@ -16,83 +16,84 @@
         <i class="bi bi-file-text-fill"></i>
         <h6 class="m-0 fw-bold px-2">List Report Data</h6>
     </div>
+</div>
 
-    <div class="card-body mt-2">
-        <?php if ($getCheckoutWithProduct != null && !empty($getCheckoutWithProduct)) : ?>
-            <div class="row">
-                <div class="col col-sm-12">
-                    <div class="table-responsive">
-                        <table class="table table-sm table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
+<div class="card-body mt-2">
+    <?php if ($getCheckoutWithProduct != null && !empty($getCheckoutWithProduct)) : ?>
+        <div class="row">
+            <div class="col col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-sm table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th rowspan="2">No</th>
+                                <th rowspan="2">Toko</th>
+                                <th rowspan="2">INV</th>
+                                <th class="text-center" colspan="3" scope="colgroup">Produk</th>
+                                <th rowspan="2">Nama</th>
+                                <th rowspan="2">Total 1</th>
+                                <th rowspan="2">Total 2</th>
+                                <th rowspan="2">Tanggal</th>
+                            </tr>
+                            <tr class="text-center">
+                                <th scope="colgroup">Nama Produk</th>
+                                <th scope="colgroup">SKU</th>
+                                <th scope="colgroup">Jumlah</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($getCheckoutWithProduct as $p) : ?>
                                 <tr>
-                                    <th rowspan="2">No</th>
-                                    <th rowspan="2">Toko</th>
-                                    <th rowspan="2">INV</th>
-                                    <th class="text-center" colspan="3" scope="colgroup">Produk</th>
-                                    <th rowspan="2">Nama</th>
-                                    <th rowspan="2">Total 1</th>
-                                    <th rowspan="2">Total 2</th>
-                                    <th rowspan="2">Tanggal</th>
+                                    <td><?= $iterasi++; ?></td>
+                                    <td><?= $p['lable']; ?></td>
+                                    <td><?= $p['invoice']; ?></td>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $namaProduk = '';
+                                        $varianProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $namaProduk .= $pr['nama'] . ' (' . $pr['value_item'] . ')<br>';
+                                        }
+                                        echo $namaProduk;
+                                        ?>
+                                    </td>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $skuProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $skuProduk .= $pr['sku'] . '<br>';
+                                        }
+                                        echo $skuProduk;
+                                        ?>
+                                    </td>
+                                    <td scope="colgroup">
+                                        <?php
+                                        $jumlahProduk = '';
+                                        foreach ($p['produk'] as $pr) {
+                                            $jumlahProduk .= $pr['qty'] . '<br>';
+                                        }
+                                        echo $jumlahProduk;
+                                        ?>
+                                    </td>
+                                    <td><?= $p['fullname']; ?></td>
+                                    <td><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
+                                    <td><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
+                                    <td><?= date("d-m-Y", strtotime($p['created_at'])); ?></td>
                                 </tr>
-                                <tr class="text-center">
-                                    <th scope="colgroup">Nama Produk</th>
-                                    <th scope="colgroup">SKU</th>
-                                    <th scope="colgroup">Jumlah</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($getCheckoutWithProduct as $p) : ?>
-                                    <tr>
-                                        <td><?= $iterasi++; ?></td>
-                                        <td><?= $p['lable']; ?></td>
-                                        <td><?= $p['invoice']; ?></td>
-                                        <td scope="colgroup">
-                                            <?php
-                                            $namaProduk = '';
-                                            $varianProduk = '';
-                                            foreach ($p['produk'] as $pr) {
-                                                $namaProduk .= $pr['nama'] . ' (' . $pr['value_item'] . ')<br>';
-                                            }
-                                            echo $namaProduk;
-                                            ?>
-                                        </td>
-                                        <td scope="colgroup">
-                                            <?php
-                                            $skuProduk = '';
-                                            foreach ($p['produk'] as $pr) {
-                                                $skuProduk .= $pr['sku'] . '<br>';
-                                            }
-                                            echo $skuProduk;
-                                            ?>
-                                        </td>
-                                        <td scope="colgroup">
-                                            <?php
-                                            $jumlahProduk = '';
-                                            foreach ($p['produk'] as $pr) {
-                                                $jumlahProduk .= $pr['qty'] . '<br>';
-                                            }
-                                            echo $jumlahProduk;
-                                            ?>
-                                        </td>
-                                        <td><?= $p['fullname']; ?></td>
-                                        <td><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
-                                        <td><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
-                                        <td><?= date("d-m-Y", strtotime($p['created_at'])); ?></td>
-                                    </tr>
-                                <?php endforeach ?>
-                            </tbody>
-                        </table>
-                        <?= $pager->links('checkout', 'pagerS') ?>
-                    </div>
-                </div>
-
-                <!-- Chart -->
-                <div class="card-body col-sm-12">
-                    <p class="fw-bold">Data Penjualan Ssayomart</p>
-                    <canvas id="myChart"></canvas>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <?= $pager->links('checkout', 'pagerS') ?>
                 </div>
             </div>
-    </div>
+
+            <!-- Chart -->
+            <div class="card-body col-sm-12">
+                <p class="fw-bold">Data Penjualan Ssayomart</p>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+</div>
 <?php else : ?>
     <div class="alert alert-danger text-center" role="alert">
         Data penjualan belum tersedia.
