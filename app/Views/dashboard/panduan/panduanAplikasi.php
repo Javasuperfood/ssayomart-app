@@ -22,9 +22,11 @@
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as
-                  well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
-                  <code>.accordion-body</code>, though the transition does limit overflow.
+                  <p>Dashboard ssayomart memberikan pandangan cepat mengenai stok produk</p>
+               <ul>
+                <li> Pada bagian tabel, pengguna dapat melihat detail produk seperti Toko, Nama Produk, Variasi Item dan Stok. Fitur pengurutan memungkinkan pengguna menyusun data berdasarkan bulan dan tahun untuk analisis yang lebih terfokus.</li>
+                <li> Pada bagian chart, grafik memberikan visualisasi distribusi stok untuk pemantauan yang cepat. Dashboard ini terus terupdate secara real-time, memastikan informasi selalu terkini. Fitur pemantauan inventaris dilengkapi dengan peringatan otomatis. Dengan penambahan fitur pengurutan, pengelolaan persediaan ssayomart menjadi lebih efisien.</li>
+               </ul>
                    <div class="embed-responsive embed-responsive-16by9 mt-3">
          <iframe class="rounded" width="560" height="315" src="https://www.youtube.com/embed/okP1yx39zSM?si=csbbpXi9uEKzaZB2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
@@ -41,9 +43,12 @@
   </h2>
   <div id="panduanAplikasiCollapseTwo" class="accordion-collapse collapse" aria-labelledby="panduanAplikasiHeadingTwo" data-bs-parent="#accordionExample">
     <div class="accordion-body">
-       <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as
-                  well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the
-                  <code>.accordion-body</code>, though the transition does limit overflow.
+      <ul>
+        <p>Report penjualan ssayomart memberikan gambaran komprehensif kinerja penjualan. </p>
+        <li>Tabel laporan menampilkan data transaksi, seperti tanggal, jumlah item terjual, dan total pendapatan. Pengguna dapat dengan mudah mengurutkan data berdasarkan bulan atau kategori produk.</li>
+        <li>Grafik dalam laporan memberikan visualisasi dinamis tentang penjualan, mencakup pertumbuhan bulanan, perbandingan kategori produk, dan tren harian. Laporan selalu terupdate secara otomatis untuk memastikan akurasi data terbaru.</li>
+        <li>Selain itu, untuk kemudahan pengguna, terdapat tombol "Download PDF" yang memungkinkan pengguna untuk mengunduh laporan penjualan dalam format PDF dengan satu klik mudah.</li>
+      </ul>
                            <div class="embed-responsive embed-responsive-16by9 mt-3">
          <iframe class="rounded" width="560" height="315" src="https://www.youtube.com/embed/okP1yx39zSM?si=csbbpXi9uEKzaZB2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>

@@ -183,7 +183,7 @@
   }
 }
 
-@media screen and (min-width: 375px) and (max-width: 932px) {
+@media screen and (min-width: 320px) and (max-width: 932px) {
   .btn-dash, .btn-plus {
   width: 30px; 
   height: 30px; 
