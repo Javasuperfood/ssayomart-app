@@ -233,15 +233,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col-3">
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                         </div>
-                                        <div class="col-5 keterangan position-absolute top-50 start-50 translate-middle">
-                                            <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
+                                        <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
+                                            <p class="card-title pemilihan" style="font-size: 12px;">12345678912345<?= substr($p['nama'], 0, 15); ?></p>
                                             <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
                                             </p>
                                         </div>
-                                        <div class="col-5 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                        <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
                                             <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
                                             <p class="fw-bold pemilihan" style="font-size: 13px;">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -269,7 +270,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td class="fw-bold">Subtotal</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>

@@ -46,18 +46,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                     <div class="col-8">
                                         <div class="card-body">
-                                            <div class="mt-4 text-position"> 
-                                            <p class="card-text text-secondary float-start " style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
-                                            <br>
-                                            <p class="card-title fw-bold text-danger float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
-                                        </div>
-                                           
-                                            <div class="input-group grup-masukan button-group">
-                                                <button class="btn btn-outline-danger btn-dash rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" ></i></button>
-                                                <input type="text" class="form-control  form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
-                                                <button class="btn btn-outline-danger btn-plus rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" ></i></button>
+                                            <div class="mt-4 text-position">
+                                                <p class="card-text text-secondary float-start " style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
+                                                <br>
+                                                <p class="card-title fw-bold text-danger float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                             </div>
-                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="  btn btn-sm button-sampah position-absolute "><i class="bi bi-trash text-danger"></i></button>
+
+                                            <div class="input-group grup-masukan button-group">
+                                                <button class="btn btn-outline-danger btn-dash rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
+                                                <input type="text" class="form-control  form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
+                                                <button class="btn btn-outline-danger btn-plus rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
+                                            </div>
+                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="border-0 btn btn-sm button-sampah position-absolute "><i class="bi bi-trash text-danger"></i></button>
                                         </div>
                                     </div>
                                 </div>
