@@ -41,49 +41,49 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link">
+                                            <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Semua Transaksi
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link">
+                                            <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Menunggu Pembayaran
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link">
+                                            <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Diproses
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link">
+                                            <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Dikirim
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link">
+                                            <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Diterima
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link">
+                                            <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Dibatalkan
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
-                                            <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="my-1 text-decoration-none card-link">
+                                            <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Gagal
                                             </a>
                                         </div>

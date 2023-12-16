@@ -145,7 +145,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- Galery Photos View Ipad -->
         <!-- Slider card  Profil Founder-->
-        <div class="container">
+        <!-- <div class="container">
             <div data-aos="zoom-in-down">
                 <div class="row">
                     <div class="col">
@@ -207,7 +207,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
 
-        </div>
+        </div> -->
         <!-- Slider card  Profil Founder-->
 
         <!-- form dan maps -->
@@ -242,7 +242,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <!-- akhir form dan maps -->
 
-        
+
     </div>
 <?php else : ?>
     <!-- Desktop View -->
@@ -491,7 +491,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
 
-       
+
     </div>
 <?php endif; ?>
 <!-- End Desktop View -->
