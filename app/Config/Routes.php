@@ -241,7 +241,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
     $routes->post('produk/update-produk/(:segment)', 'AdminProduk::saveUpdateProduk/$1');
-
     // Ubah Urutan Produk Routes
     $routes->get('produk/management-fetching-content', 'AdminProduk::managementFetching');
     $routes->get('produk/pilih-produk-rekomendasi', 'AdminProduk::pilihProdukRekomendasi');
@@ -249,6 +248,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('produk/pilih-produk-terbaru/save', 'AdminProduk::saveProdukTerbaru');
     $routes->post('produk/pilih-produk-rekomendasi/save', 'AdminProduk::savePilihProdukRekomendasi');
     $routes->post('produk/urutan-produk-rekomendasi/save', 'AdminProduk::saveUrutanProdukRekomendasi');
+    $routes->post('produk/urutan-produk-rekomendasi/delete/(:segment)', 'AdminProduk::deleteProdukRekomendasi/$1');
 
     // Kategori Produk Batch
     $routes->get('produk/produk-batch', 'AdminKategoriBatch::produkBatch');

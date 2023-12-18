@@ -18,6 +18,7 @@ class JsfProdukRekomendasi extends Migration
             'id_produk' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
+                'unsigned'       => true,
             ],
             'short' => [
                 'type'        => 'INT',
@@ -33,6 +34,7 @@ class JsfProdukRekomendasi extends Migration
             ]
         ]);
         $this->forge->addKey('id_rekomendasi', true);
+        $this->forge->addForeignKey('id_produk', 'jsf_produk', 'id_produk', true, 'CASCADE');
         $this->forge->createTable('jsf_produk_rekomendasi');
     }
 
