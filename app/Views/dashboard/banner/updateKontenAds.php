@@ -12,12 +12,12 @@
             <input type="hidden" class="form-control border-0 shadow-sm" id="id_ads_konten" name="id_ads_konten" value="<?= $bl['id_ads_konten'] ?>">
             <div class="mb-3">
                 <label for="title" class="form-label">Judul Adsvertisements</label>
-                <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="title" name="title" value="<?= $bl['title'] ?>">
+                <input type="text" class="form-control <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>  id=" title" name="title" value="<?= $bl['title'] ?>">
                 <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
             </div>
             <div class="mb-3">
                 <label for="img" class="form-label">Gambar Adsvertisements</label>
-                <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" value="<?= $bl['img'] ?>">
+                <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>  id=" img" name="img" value="<?= $bl['img'] ?>">
                 <span id="imgError" class="text-danger"></span>
                 <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
                 <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>

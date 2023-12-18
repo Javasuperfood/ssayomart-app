@@ -33,40 +33,42 @@
                         </li>
                     </ul>
 
+                    <!-- Profile -->
                     <div class="tab-content pt-4">
                         <div class="tab-pane fade show active" id="profile-overview" role="tabpanel" aria-labelledby="profile-tab">
-                            <h5 class="card-title">Tentang Admin</h5>
-                            <p class="small fst-italic" style="color: red;">Akun Anda merupakan admin dari Ssayomart Supermarket.</p>
-                            <hr class="my-3 border-top border-3">
-                            <h5 class="card-title">Detail Profil Admin</h5>
-                            <hr class="my-3 border-top border-3">
-                            <div class="row mb-3">
-                                <div class="col-md-4 label"><i class="bi bi-person-fill"></i> Nama Lengkap</div>
-                                <div class="col-md-8"><?= $um['fullname']; ?></div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Tentang Admin</h5>
+                                    <p class="small fst-italic text-danger">Akun Anda merupakan admin dari Ssayomart Supermarket.</p>
+                                    <hr class="my-3 border-top border-3">
+                                    <h5 class="card-title">Detail Profil Admin</h5>
+                                    <hr class="my-3 border-top border-3">
+                                    <div class="row mb-3">
+                                        <div class="col-md-4 label"><i class="bi bi-person-fill"></i> Nama Lengkap</div>
+                                        <div class="col-md-8"><?= $um['fullname']; ?></div>
+                                    </div>
+                                    <hr class="my-3 border-top border-3">
+                                    <div class="row mb-3">
+                                        <div class="col-md-4 label"><i class="bi bi-person-badge-fill"></i> Username</div>
+                                        <div class="col-md-8">@<?= $um['username']; ?></div>
+                                    </div>
+                                    <hr class="my-3 border-top border-3">
+                                    <div class="row mb-3">
+                                        <div class="col-md-4 label"><i class="bi bi-envelope-fill"></i> Email</div>
+                                        <div class="col-md-8"><?= $results[0]->secret; ?></div>
+                                    </div>
+                                    <hr class="my-3 border-top border-3">
+                                    <div class="row">
+                                        <div class="col-md-4 label"><i class="bi bi-telephone-fill"></i> Nomor Telepon</div>
+                                        <div class="col-md-8"><?= $um['telp']; ?></div>
+                                    </div>
+                                    <hr class="mt-3 border-top border-3">
+                                </div>
                             </div>
-                            <hr class="my-3 border-top border-3">
-                            <div class="row mb-3">
-                                <div class="col-md-4 label"><i class="bi bi-person-badge-fill"></i> Username</div>
-                                <div class="col-md-8">@<?= $um['username']; ?></div>
-                            </div>
-                            <hr class="my-3 border-top border-3">
-                            <div class="row mb-3">
-                                <div class="col-md-4 label"><i class="bi bi-envelope-fill"></i> Email</div>
-                                <div class="col-md-8"><?= $results[0]->secret; ?></div>
-                            </div>
-                            <!-- <hr class="my-3 border-top border-3">
-                            <div class="row mb-3">
-                                <div class="col-md-4 label"><i class="bi bi-house"></i> Alamat</div>
-                                <div class="col-md-8">Ruko Cyber Park, Jalan Gajah Mada, Jalan Boulevard Jendral Sudirman No.2159/2161/2165, RT.001/RW.009, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten 15139</div>
-                            </div> -->
-                            <hr class="my-3 border-top border-3">
-                            <div class="row">
-                                <div class="col-md-4 label"><i class="bi bi-telephone-fill"></i> Nomor Telpon</div>
-                                <div class="col-md-8"><?= $um['telp']; ?></div>
-                            </div>
-                            <hr class="mt-3 border-top border-3">
                         </div>
 
+
+                        <!-- setting -->
                         <div class="tab-pane fade" id="edit-overview" role="tabpanel" aria-labelledby="edit-tab">
                             <div class="mb-4 mb-md-4">
                                 <form action="<?= base_url() ?>dashboard/profil/edit-admin/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiProfilAdmin()">
@@ -90,38 +92,38 @@
 
                                     <div class="row mb-3">
                                         <label for="role" class="col-md-4 col-lg-3 col-form-label">Role Akun</label>
-                                        <div class="col-md-8 col-lg-8">
+                                        <div class="col-md-8 col-lg-4">
                                             <input name="role" type="text" class="form-control border-0 shadow-sm bg-light" id="role" name="role" value="Admin" disabled>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="fullname" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
-                                        <div class="col-md-8 col-lg-8">
-                                            <input name="fullname" type="text" class="form-control border-0 shadow-sm" id="fullname" nama="fullname" value="<?= $um['fullname']; ?>" placeholder="Nama Lengkap Anda...">
+                                        <div class="col-md-8 col-lg-4">
+                                            <input name="fullname" type="text" class="form-control border-1" id="fullname" nama="fullname" value="<?= $um['fullname']; ?>" placeholder="Nama Lengkap Anda...">
                                             <span id="fullnameError" class="text-danger"></span>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
-                                        <div class="col-md-8 col-lg-8">
-                                            <input name="username" type="text" class="form-control border-0 shadow-sm" id="username" name="username" value="<?= $um['username']; ?>" placeholder="Username Anda...">
+                                        <div class="col-md-8 col-lg-4">
+                                            <input name="username" type="text" class="form-control border-1" id="username" name="username" value="<?= $um['username']; ?>" placeholder="Username Anda...">
                                             <span id="usernameError" class="text-danger"></span>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-                                        <div class="col-md-8 col-lg-8">
+                                        <div class="col-md-8 col-lg-4">
                                             <input name="Email" type="text" class="form-control border-0 shadow-sm bg-light" disabled id="email" name="email" value="<?= $results[0]->secret; ?>">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                                        <div class="col-md-8 col-lg-8">
-                                            <input type="text" class="form-control shadow-sm border-0" id="telp" name="telp" value="<?= $um['telp']; ?>" placeholder="Nomor Telpon Anda...">
+                                        <div class="col-md-8 col-lg-4">
+                                            <input type="text" class="form-control border-1" id="telp" name="telp" value="<?= $um['telp']; ?>" placeholder="Nomor Telpon Anda...">
                                             <span id="telpError" class="text-danger"></span>
                                         </div>
                                     </div>
@@ -132,6 +134,7 @@
                                 </form>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

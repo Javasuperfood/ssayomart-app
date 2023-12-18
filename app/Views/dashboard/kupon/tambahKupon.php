@@ -23,24 +23,24 @@
                 </div>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-2">
                 <label for="nama_kupon" class="form-label">Judul Kupon<span class="text-danger fs-5">*</span></label>
                 <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-1'; ?>" id="nama_kupon" name="nama_kupon" placeholder="Nama Kupon Anda" value="<?= old('nama_kupon') ?>">
                 <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
             </div>
             <label for="kode_kupon" class="form-label">Kode Reveral Kupon<span class="text-danger fs-5">*</span></label>
-            <div class="input-group mb-4">
+            <div class="input-group mb-2">
                 <input type="text" class="form-control <?= (validation_show_error('kode')) ? 'is-invalid' : 'border-1'; ?>" id="kode_kupon" name="kode_kupon" placeholder="Kode Kupon" value="<?= old('kode_kupon') ?>" aria-describedby="generateKode">
                 <button class="btn btn-danger" id="generateKode" type="button">Dapatkan Kode</button>
             </div>
             <div class="invalid-feedback"><?= validation_show_error('kode'); ?></div>
-            <div class="mb-4">
+            <div class="mb-2">
                 <label for="deskripsi_kupon" class="form-label">Deskripsi Kupon<span class="text-danger fs-5">*</span></label>
                 <textarea class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi_kupon" name="deskripsi_kupon" rows="3" placeholder="Deskripsi Kupon ...." value=""><?= old('deskripsi_kupon') ?></textarea>
                 <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
 
-            <div class="mb-4">
+            <div class="mb-2">
                 <label for="" class="form-label">Potongan Harga Kupon<span class="text-danger fs-5">*</span></label>
                 <select class="form-select <?= (validation_show_error('discount')) ? 'is-invalid' : 'border-1'; ?>" name="discount" id="">
                     <option value="" selected>Pilih discount</option>
@@ -50,7 +50,7 @@
                 </select>
                 <div class="invalid-feedback"><?= validation_show_error('discount'); ?></div>
             </div>
-            <div class="mb-4">
+            <div class="mb-2">
                 <div class="row">
                     <div class="col-md-6">
                         <label for="total_buy" class="form-label">Minimal Pembelian<span class="text-danger fs-5">*</span></label>

@@ -36,24 +36,24 @@
                     <input type="hidden" class="form-control border-0 shadow-sm" id="id_banner" name="id_banner" value="<?= $bl['id_banner'] ?>">
                     <div class="mb-3">
                         <label for="banner">Judul Banner</label>
-                        <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= $bl['title'] ?>"></input>
+                        <input type="text" class="form-control border-1 <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= $bl['title'] ?>"></input>
                         <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Banner (Home Page)</label>
-                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= $bl['img'] ?>" accept="image/jpeg, image/png, image/jpg">
+                        <input type="file" class="form-control border-1 <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= $bl['img'] ?>" accept="image/jpeg, image/png, image/jpg">
                         <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Banner Content (Content Page)</label>
-                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img_konten" name="img_konten" value="<?= $bl['img_konten'] ?>" accept="image/jpeg, image/png, image/jpg">
+                        <input type="file" class="form-control border-1 <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img_konten" name="img_konten" value="<?= $bl['img_konten'] ?>" accept="image/jpeg, image/png, image/jpg">
                         <input type="hidden" name="imageContentLama" value="<?= $bl['img_konten']; ?>">
                         <div class="invalid-feedback"><?= validation_show_error('img_konten'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="banner">Deskripsi (Optional)</label>
-                        <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi untuk banner Anda..." value="<?= $bl['deskripsi'] ?>"></input>
+                        <input type="text" class="form-control border-1 <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi untuk banner Anda..." value="<?= $bl['deskripsi'] ?>"></input>
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">

@@ -37,29 +37,29 @@
                     <input type="hidden" class="form-control border-0 shadow-sm" id="id_banner_promotion" name="id_banner_promotion" value="<?= $bl['id_banner_promotion'] ?>">
                     <div class="mb-3">
                         <label for="banner">Judul Banner</label>
-                        <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= $bl['title'] ?>"></input>
+                        <input type="text" class="form-control border-1 <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" rows="3" placeholder="Judul untuk banner Anda..." value="<?= $bl['title'] ?>"></input>
                         <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="img" class="form-label">Gambar Promotion Banner</label>
-                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= $bl['img'] ?>" accept="image/*">
+                        <input type="file" class="form-control border-1 <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" value="<?= $bl['img'] ?>" accept="image/*">
                         <input type="hidden" name="imageLama" value="<?= $bl['img']; ?>">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="img_promo" class="form-label">Gambar Content Promotion Banner</label>
-                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img_promo')) ? 'is-invalid' : 'border-1'; ?>" id="img_promo" name="img_promo" value="<?= $bl['img_promo'] ?>" accept="image/*">
+                        <input type="file" class="form-control border-1 <?= (validation_show_error('img_promo')) ? 'is-invalid' : 'border-1'; ?>" id="img_promo" name="img_promo" value="<?= $bl['img_promo'] ?>" accept="image/*">
                         <input type="hidden" name="imagePromoLama" value="<?= $bl['img_promo']; ?>">
                         <div class="invalid-feedback"><?= validation_show_error('img_promo'); ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi banner promosi Anda..." value="<?= $bl['deskripsi'] ?>"></input>
+                        <input type="text" class="form-control border-1 <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi banner promosi Anda..." value="<?= $bl['deskripsi'] ?>"></input>
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-danger fw-bold">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-danger">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                             <div class="mx-0 my-0 my-3 text-center">
-                                <a href="#" class="btn btn-danger fw-bold" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_banner_promotion']; ?>">
+                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteBanner<?= $bl['id_banner_promotion']; ?>">
                                     <i class="bi bi-trash-fill"> Hapus Banner & Konten </i>
                                 </a>
                             </div>
