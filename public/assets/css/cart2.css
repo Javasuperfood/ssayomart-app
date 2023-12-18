@@ -71,7 +71,12 @@
     font-size: 14px !important;
     margin: 3px;
   } */
-      .input-group.grup-masukan {
+
+  .nama-pesanan{
+    font-size: 10px !important;
+  }
+
+  .input-group.grup-masukan {
     justify-content: end;
   }
  
