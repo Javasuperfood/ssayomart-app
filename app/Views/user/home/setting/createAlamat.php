@@ -111,10 +111,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
-                                    <input class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
-                                    <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
+                                    <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" oninput="getLatLongOnEvent()">
+                                    <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?>
+                                    </div>
                                     <input type="hidden" id="latitude" name="latitude">
                                     <input type="hidden" id="longitude" name="longitude">
+                                    <datalist id="alamat_3_option">
+                                        <!-- this option -->
+                                    </datalist>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -236,9 +240,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-12">
                             <div class="form-group mb-3 mt-2">
                                 <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
-                                <input class="mt-2 form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
+                                <input type="text" list="alamat_3_option" class="mt-2 form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" oninput="getLatLongOnEvent()">
                                 <input type="hidden" id="latitude" pattern="-?\d+(\.\d{1,6})?" name="latitude">
                                 <input type="hidden" id="longitude" pattern="-?\d+(\.\d{1,6})?" name="longitude">
+                                <datalist id="alamat_3_option">
+                                    <!-- this option -->
+                                </datalist>
                             </div>
                             <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
                         </div>
@@ -294,6 +301,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     }
 
+    function getLatLongOnEvent() {
+        var alamat = $('#alamat_3').val();
+        console.log(alamat);
+        if (alamat.length > 3) {
+            fetch(`https://nominatim.openstreetmap.org/search?q=${alamat}&format=jsonv2`)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Data from Nominatim API:', data);
+                    $('#alamat_3_option').empty();
+                    data.forEach(e => {
+                        $('#alamat_3_option').append('<option value="' + e.display_name + '">' + e.display_name + '</option>');
+                    });
+                    updateMap(data[0].lat, data[0].lon, 15, 'event');
+                })
+                .catch(error => console.error('Error fetching address:', error));
+        }
+    }
     var map = L.map('map', {
         center: [-6.175247, 106.8270488],
         zoom: 13,
@@ -314,7 +340,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         updateMap(lat, lon);
     }
 
-    function updateMap(lat, lon) {
+    function updateMap(lat, lon, zoom = null, from = null) {
         // Clear all previous markers
         map.eachLayer(function(layer) {
             if (layer instanceof L.Marker) {
@@ -336,15 +362,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 map.eachLayer(function(layer) {
                     if (layer instanceof L.Marker) {
                         layer.getPopup().setContent('You are here: ' + address).openPopup();
-                        $("#alamat_3").val(address);
-                        $("#latitude").val(lat);
-                        $("#longitude").val(lon);
+                        if (from == 'event') {
+
+                        } else {
+                            $("#alamat_3").val(address);
+                            $("#latitude").val(lat);
+                            $("#longitude").val(lon);
+                        }
                     }
                 });
             })
             .catch(error => console.error('Error fetching address:', error));
-
-        map.setView([lat, lon], 20);
+        if (zoom != null) {
+            map.setView([lat, lon], zoom);
+        } else {
+            map.setView([lat, lon], 18);
+        }
     }
 
 

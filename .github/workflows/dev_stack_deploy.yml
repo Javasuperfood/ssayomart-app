@@ -22,6 +22,7 @@ jobs:
             eval $(ssh-agent)
             ssh-add ${{ secrets.DEV_SSH_PATH }}
             cd ${{ secrets.DEV_PATH }}
+            git status
             git checkout -- composer.lock
             git pull
             git status
