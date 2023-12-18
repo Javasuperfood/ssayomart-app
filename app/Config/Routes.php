@@ -247,7 +247,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('produk/pilih-produk-terbaru', 'AdminProduk::pilihProdukTerbaru');
     $routes->post('produk/pilih-produk-terbaru/save', 'AdminProduk::saveProdukTerbaru');
     $routes->post('produk/pilih-produk-rekomendasi/save', 'AdminProduk::savePilihProdukRekomendasi');
-    $routes->post('produk/urutan-produk-rekomendasi/save', 'AdminProduk::saveUrutanProdukRekomendasi');
+    $routes->post('produk/urutan-produk-rekomendasi/save-urutan', 'AdminProduk::saveUrutanProdukRekomendasi');
     $routes->post('produk/urutan-produk-rekomendasi/delete/(:segment)', 'AdminProduk::deleteProdukRekomendasi/$1');
 
     // Kategori Produk Batch

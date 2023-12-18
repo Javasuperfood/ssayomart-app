@@ -566,20 +566,18 @@ class AdminProduk extends BaseController
 
     public function saveUrutanProdukRekomendasi()
     {
-        $produkRekmendasiModel = new ProdukRekomendasiModel();
-        $idProduk = $this->request->getVar('id_rekomendasi');
-        // dd($idProduk);
-        $originalOrder = $this->request->getVar('original_order');
-
+        $produkRekomendasiModel = new ProdukRekomendasiModel();
+        $idRekomendasi = $this->request->getVar('id_rekomendasi');
+        // dd($idRekomendasi);
         // Memulai transaksi
-        $produkRekmendasiModel->transStart();
+        $produkRekomendasiModel->transStart();
 
         try {
-            foreach ($idProduk as $key => $id) {
-                $produkRekmendasiModel->update($id, ['short' => $key + 1]);
+            foreach ($idRekomendasi as $key => $id) {
+                $produkRekomendasiModel->update($id, ['short' => $key + 1]);
             }
 
-            $produkRekmendasiModel->transComplete();
+            $produkRekomendasiModel->transComplete();
 
             $alert = [
                 'type' => 'success',
@@ -587,7 +585,7 @@ class AdminProduk extends BaseController
                 'message' => 'Urutan Produk berhasil diubah.'
             ];
         } catch (\Exception $e) {
-            $produkRekmendasiModel->transRollback();
+            $produkRekomendasiModel->transRollback();
 
             $alert = [
                 'type' => 'error',
@@ -604,24 +602,23 @@ class AdminProduk extends BaseController
     public function deleteProdukRekomendasi($id)
     {
         $rekomendasiModel = new ProdukRekomendasiModel();
-        $deleted = $rekomendasiModel->delete($id);
-        // dd($id);
-        if ($deleted) {
+
+        if ($rekomendasiModel->delete($id)) {
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Produk rekomendasi berhasil di hapus'
+                'message' => 'Produk rekomendasi berhasil dihapus.'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
         } else {
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
-                'message' => 'Opps... Terdapat Kesalahan pada penghapusan produk rekomendasi'
+                'message' => 'Terjadi kesalahan pada penghapusan produk rekomendasi.'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/produk/pilih-produk-rekomendasi')->withInput();
         }
+
+        return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
     }
 }

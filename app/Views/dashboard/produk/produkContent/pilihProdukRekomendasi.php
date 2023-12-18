@@ -133,7 +133,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="<?= base_url('dashboard/produk/urutan-produk-rekomendasi/save'); ?>" method="post">
+                        <form action="<?= base_url('dashboard/produk/urutan-produk-rekomendasi/save-urutan'); ?>" method="post">
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
                                     <div class="col-md-8">Shorting Produk Rekomendasi</div>
@@ -152,13 +152,13 @@
                                         <div class="ml-auto">
                                             <form action="<?= base_url() ?>dashboard/produk/urutan-produk-rekomendasi/delete/<?= $produk['id_rekomendasi']; ?>" method="post">
                                                 <?= csrf_field() ?>
+                                                <input type="hidden" name="id_rekomendasi" value="<?= $produk['id_rekomendasi']; ?>">
                                                 <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
                                             </form>
                                         </div>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-
                         </form>
                     </div>
                     <div class="col-md-6">
