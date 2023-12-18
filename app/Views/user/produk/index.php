@@ -35,7 +35,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Button Kategori -->
         <?= $this->include('user/produk/component/kategori') ?>
         <!-- button Scroll Up -->
-        <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+        <button class="btn btn-danger d-flex justify-content-center align-items-center" id="scrollUpButton" title="Scroll to top"><i class="bi bi-chevron-up"></i></button>
     </div>
     <!-- end tampilan Desktop -->
 <?php endif ?>
