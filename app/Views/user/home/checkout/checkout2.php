@@ -234,7 +234,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                         </div>
                                         <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
-                                            <p class="card-title pemilihan" style="font-size: 12px;">12345678912345<?= substr($p['nama'], 0, 15); ?></p>
+                                            <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
                                             <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
                                             </p>
                                         </div>

@@ -30,7 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
-                <div class="row text-center row-cols-2">
+                <div class="row row-cols-2">
                     <?php foreach ($produk as $p) : ?>
                         <div class="col-12 pt-3">
                             <div class="card border-0 shadow-sm " style="width: auto; height: 100%;">
@@ -47,7 +47,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="col-8">
                                         <div class="card-body">
                                             <div class="mt-4 text-position">
-                                                <p class="card-text text-secondary float-start " style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
+                                                <p class="card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
                                                 <br>
                                                 <p class="card-title fw-bold text-danger float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                             </div>
