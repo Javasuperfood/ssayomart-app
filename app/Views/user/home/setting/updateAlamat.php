@@ -113,7 +113,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row">
                         <div class="col-12" style="font-size: 12px;">
                             <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger" style="font-size: 9px;"> (Lokasi maps *)</span></label>
-                            <input list="alamat_3_option" class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>" oninput="getLatLongOnEvent()">
+                            <div class="input-group">
+                                <input list="alamat_3_option" class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>">
+                                <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
+                            </div>
                             <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
                             <input type="hidden" id="latitude" name="latitude" value="<?= $au['latitude']; ?>">
                             <input type="hidden" id="longitude" name="longitude" value="<?= $au['longitude']; ?>">
@@ -257,7 +260,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-12">
                         <div class="form-group mb-3 mt-2">
                             <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
-                            <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" oninput="getLatLongOnEvent()">
+                            <div class="input-group">
+                                <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" aria-describedby="button_alamat_3">
+                                <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
+                            </div>
                             <input type="hidden" id="latitude" pattern="-?\d+(\.\d{1,6})?" name="latitude">
                             <input type="hidden" id="longitude" pattern="-?\d+(\.\d{1,6})?" name="longitude">
                             <datalist id="alamat_3_option">
@@ -344,7 +350,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     return response.json();
                 })
                 .then(data => {
-                    console.log('Data from Nominatim API:', data);
                     $('#alamat_3_option').empty();
                     data.forEach(e => {
                         $('#alamat_3_option').append('<option value="' + e.display_name + '">' + e.display_name + '</option>');
