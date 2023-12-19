@@ -105,11 +105,11 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3 mx-3 my-3">
-                                    <input class="form-control <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Kode Pos" name="zip_code" id="zip_code" value="<?= (old('zip_code')) ? old('zip_code') : $t['zip_code']; ?>" onkeypress="return isNumber(event, 'zipcodeError');">
+                                    <input class="form-control <?= (validation_show_error('zip_code')) ? 'is-invalid' : 'border-1'; ?>" placeholder="Kode Pos" name="zip_code" id="zip_code" value="<?= (old('zip_code')) ? old('zip_code') : $t['zip_code']; ?>" onkeypress="return isNumber(event, 'zipcodeError');">
                                     <div class="invalid-feedback"><?= validation_show_error('zip_code'); ?></div>
                                 </div>
                                 <div class="mb-3 mx-3 my-3">
-                                    <select class="form-control <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
+                                    <select class="form-control <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-1'; ?>" aria-label="Default select example" id="provinsi" name="id_provinsi">
                                         <option value="<?= $t['id_province']; ?>"><?= $t['province']; ?></option>
                                         <?php foreach ($provinsi as $p) : ?>
                                             <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
@@ -119,7 +119,7 @@
                                 </div>
 
                                 <div class="mb-3 mx-3 my-3">
-                                    <select class="form-control <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
+                                    <select class="form-control <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-1'; ?>" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
                                         <option value="<?= $t['id_city']; ?>"><?= $t['city']; ?></option>
                                     </select>
                                     <div class="invalid-feedback"><?= validation_show_error('id_city'); ?></div>
@@ -128,11 +128,11 @@
                                 <input type="hidden" class="form-control border-0 shadow-sm" id="inputKabupaten" value="<?= (old('kabupaten')) ? old('kabupaten') : $t['city']; ?>" name="kabupaten">
 
                                 <div class=" mb-3 mx-3 my-3">
-                                    <textarea class="form-control <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_1" id="alamat_1" placeholder="Alamat Lengkap Market (Cth : Nama Jalan, Nomor, atau Blok)" id="floatingTextarea2" style="height: 100px"><?= (old('alamat_1')) ? old('alamat_1') : $t['alamat_1']; ?></textarea>
+                                    <textarea class="form-control <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-1'; ?>" name="alamat_1" id="alamat_1" placeholder="Alamat Lengkap Market (Cth : Nama Jalan, Nomor, atau Blok)" id="floatingTextarea2" style="height: 100px"><?= (old('alamat_1')) ? old('alamat_1') : $t['alamat_1']; ?></textarea>
                                     <div class="invalid-feedback"><?= validation_show_error('alamat_1'); ?></div>
                                 </div>
                                 <div class=" mb-3 mx-3 my-3">
-                                    <textarea class="form-control border-0 shadow-sm" name="detail-alamat" placeholder="Patokan Alamat Market (Optional)" id="patokan" style="height: 100px"><?= (old('detail-alamat')) ? old('detail-alamat') : $t['alamat_2']; ?></textarea>
+                                    <textarea class="form-control border-1" name="detail-alamat" placeholder="Patokan Alamat Market (Optional)" id="patokan" style="height: 100px"><?= (old('detail-alamat')) ? old('detail-alamat') : $t['alamat_2']; ?></textarea>
                                     <span id="patokanError" class="text-danger"></span>
                                 </div>
                             </div>
