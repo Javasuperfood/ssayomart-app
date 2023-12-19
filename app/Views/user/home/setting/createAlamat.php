@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container">
             <div class="row">
-                <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3">
+                <form onsubmit="playPreloaderEvent()" action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3">
                     <?= csrf_field(); ?>
                     <div class="container text-secondary" style="font-size: 12px;">
                         <div class="row">
@@ -112,7 +112,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="form-group mb-3">
                                     <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
                                     <div class="input-group ">
-                                        <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" aria-describedby="button_alamat_3">
+                                        <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" aria-describedby="button_alamat_3">
                                         <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
                                     </div>
                                     <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?>
