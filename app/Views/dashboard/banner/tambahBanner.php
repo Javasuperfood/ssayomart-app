@@ -1,10 +1,14 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
-
+<style>
+  .breadcrumb-item a:hover {
+    text-decoration: none; /* Remove underline on hover */
+  }
+</style>
 <h1 class="h3 mb-2 text-gray-800">Management Banner Homepage</h1>
 <ul class="breadcrumb bg-light ps-0">
-    <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
-    <li class="breadcrumb-item active text-danger text-decoration-underline">Banner Homepage</li>
+    <li class="breadcrumb-item text-underline-none"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
+    <li class="breadcrumb-item active text-danger text-decoration-underline-none">Banner Homepage</li>
 </ul>
 <p>Anda dapat mengatur banner homepage yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.</p>
 <div class="alert alert-danger text-center border-1 my-4 shadow-sm" role="alert">

@@ -16,8 +16,8 @@
     </div>
 </div>
 <?php if ($ongoingPromoItems != null) : ?>
-    <div class="card border-1 shadow-sm mb-5">
-        <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+    <div class="card border-0 shadow-sm mb-5">
+        <div class="card-header d-flex justify-content-start align-items-center border-0 py-3">
             <i class="bi bi-file-text-fill"></i>
             <h6 class="m-0 fw-bold px-2">List Produk Promosi</h6>
         </div>
