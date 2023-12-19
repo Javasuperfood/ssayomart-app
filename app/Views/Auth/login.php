@@ -110,8 +110,8 @@ $error = session('error'); ?>
         clientId: 'com.javasuperfood.ssayomartappready',
         scope: 'email',
         redirectURI: 'https://apps.ssayomart.com/apple-sign-in-callback',
-        state: "initial",
-        usePopup: true
+        state: "initial"
+        // usePopup: true
     });
 
     // Listen for authorization success.
