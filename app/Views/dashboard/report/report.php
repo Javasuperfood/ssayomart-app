@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col col-sm-12">
                 <div class="table-responsive">
-                    <table class="table table-sm table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
                                 <th rowspan="2">No</th>
@@ -86,19 +86,20 @@
                     <?= $pager->links('checkout', 'pagerS') ?>
                 </div>
             </div>
-
-            <!-- Chart -->
-            <div class="card-body col-sm-12">
-                <p class="fw-bold">Data Penjualan Ssayomart</p>
-                <canvas id="myChart"></canvas>
-            </div>
         </div>
-</div>
-<?php else : ?>
-    <div class="alert alert-danger text-center" role="alert">
-        Data penjualan belum tersedia.
-    </div>
-<?php endif; ?>
+
+        <!-- Chart -->
+        <div class="card-body col-sm-12 mt-4">
+            <p class="fw-bold">Data Penjualan Ssayomart</p>
+            <canvas id="myChart" style="width: 100%; height: 400px;"></canvas>
+        </div>
+
+
+    <?php else : ?>
+        <div class="alert alert-danger text-center mt-4" role="alert">
+            Data penjualan belum tersedia.
+        </div>
+    <?php endif; ?>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
