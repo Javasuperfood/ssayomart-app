@@ -91,13 +91,13 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3 mx-3 my-3">
-                                    <input class="form-control <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" placeholder="Nomor Telepon Utama..." name="telp" id="telp" value="<?= (old('telp')) ? old('telp') : $t['telp'];  ?>" onkeypress="return isNumber(event, 'telpError');">
+                                    <input class="form-control <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-1'; ?> " placeholder="Nomor Telepon Utama..." name="telp" id="telp" value="<?= (old('telp')) ? old('telp') : $t['telp'];  ?>" onkeypress="return isNumber(event, 'telpError');">
                                     <div class="invalid-feedback"><?= validation_show_error('telp'); ?></div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3 mx-3 my-3">
-                                    <input class="form-control shadow-sm" placeholder="Nomor Telepon Alternatif (Optional)" name="telp2" value="<?= (old('telp2')) ? old('telp2') : $t['telp2']; ?>" onkeypress="return isNumber(event);">
+                                    <input class="form-control border-1" placeholder="Nomor Telepon Alternatif (Optional)" name="telp2" value="<?= (old('telp2')) ? old('telp2') : $t['telp2']; ?>" onkeypress="return isNumber(event);">
                                     <div class="invalid-feedback"><?= validation_show_error('telp2'); ?></div>
                                 </div>
                             </div>
