@@ -61,17 +61,9 @@ $routes->post('/status/ordering/update/(:segment)', 'StatusGosendController::upd
 // $routes->get('/status-gosend', 'StatusGosendController::statusGosend');
 // $routes->post('/status-gosend/update/(:segment)', 'StatusGosendController::updateStatusGosend/$1');
 
-// Rute untuk AppleAuthController
-// $routes->get('apple-login', 'AppleAuthController::appleLogin');
-$routes->get('apple-login', 'AuthController/appleLogin');
-
-// Rute untuk AppleCallbackController
-$routes->get('apple-callback', 'AuthController::appleCallback');
-
-
 $routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
 
-$routes->get('apple-sign-in-callback', 'AppleCallback::appleSignInCallback');
+$routes->get('/', 'AppleCallback::appleSignInCallback');
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/wishlist', 'WishlistController::index');
