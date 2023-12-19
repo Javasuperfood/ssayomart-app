@@ -15,7 +15,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
-                        <i class="bi bi-cart-fill fw-bold fs-2 position-relative text-danger">
+                        <i class="bi bi-cart-fill fw-bold fs-2 position-absolute text-danger">
                             <div id="cartItem_0">
                                 <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger"></i>
                                 <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial rounded-pill text-danger fw-bold" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
@@ -54,6 +54,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <!-- styling hover active -->
+    <!-- Script hover active -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var navLinks = document.querySelectorAll(".nav-link");
@@ -78,6 +79,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             });
         });
     </script>
+    <!-- Script hover active -->
 <?php else : ?>
 
     <!-- Footer Desktop -->
