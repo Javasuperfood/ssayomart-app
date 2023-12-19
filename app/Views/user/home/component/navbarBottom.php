@@ -9,13 +9,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <nav class="navbar navbar-expand fixed-bottom shadow-sm rounded-top-4" style="height: 55px; background-color:#fff">
-            <ul class="navbar-nav nav-justified w-100">
+            <ul class="navbar-nav nav-justified w-100 d-flex justify-content-around align-items-center">
                 <li class="nav-item">
                     <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
-                        <i class="bi bi-cart-fill fw-bold fs-2 position-absolute text-danger">
+                        <i class="bi bi-cart-fill fw-bold fs-2 position-relative text-danger">
                             <div id="cartItem_0">
                                 <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger mt-2"></i>
                                 <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial rounded-pill text-danger fw-bold mt-2" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
@@ -26,7 +26,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
-
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2 text-danger"></i></a>
                 </li>

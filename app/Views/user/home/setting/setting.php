@@ -56,7 +56,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <img src="<?= base_url(); ?>assets/img/coupon.png" alt="Kupon" class="card-img img-fluid" style="width: 20; height: 50;">
                                     </div>
                                     <div class="col d-flex justify-content-center align-items-center">
-                                        <p class="fw-bold card-title text-dark  text-center " style="font-size: 14px;"><?= lang('Text.judul_kupon') ?>
+                                        <p class="fw-bold card-title text-dark teks-kupon" style="font-size: 14px;"><?= lang('Text.judul_kupon') ?>
                                             <br><?= lang('Text.isi_kupon') ?>
                                         </p>
                                     </div>
