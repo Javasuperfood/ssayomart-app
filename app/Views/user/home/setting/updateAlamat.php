@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container">
-            <form action="<?= base_url() ?>setting/update-alamat/edit-alamat/<?= $au['id_alamat_users']; ?>" method="post" class="pt-3">
+            <form onsubmit="playPreloaderEvent()" action="<?= base_url() ?>setting/update-alamat/edit-alamat/<?= $au['id_alamat_users']; ?>" method="post" class="pt-3">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_user" value="<?= $au['id_user']; ?>">
 
@@ -354,6 +354,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     data.forEach(e => {
                         $('#alamat_3_option').append('<option value="' + e.display_name + '">' + e.display_name + '</option>');
                     });
+                    $('#alamat_3').focus();
                     updateMap(data[0].lat, data[0].lon, 15, 'event');
                 })
                 .catch(error => console.error('Error fetching address:', error));
@@ -366,43 +367,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         console.log('Latitude:', lat);
         console.log('Longitude:', lon);
 
-        // Clear all previous markers
-        map.eachLayer(function(layer) {
-            if (layer instanceof L.Marker) {
-                map.removeLayer(layer);
-            }
-        });
-
-        // Add a new marker with a popup showing the full address
-        L.marker([lat, lon]).addTo(map)
-            .bindPopup('Loading address...').openPopup();
-
-        // Perform reverse geocoding to get the full address
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
-            .then(response => response.json())
-            .then(data => {
-                var address = data.display_name;
-
-                // Update the popup with the full address
-                map.eachLayer(function(layer) {
-                    if (layer instanceof L.Marker) {
-                        layer.getPopup().setContent('You are here: ' + address).openPopup();
-                        if (from == 'event') {
-
-                        } else {
-                            $("#alamat_3").val(address);
-                            $("#latitude").val(lat);
-                            $("#longitude").val(lon);
-                        }
-                    }
-                });
-            })
-            .catch(error => console.error('Error fetching address:', error));
-        if (zoom != null) {
-            map.setView([lat, lon], zoom);
-        } else {
-            map.setView([lat, lon], 18);
-        }
+        updateMap(lat, lon)
     }
 
     var popup = L.popup();
