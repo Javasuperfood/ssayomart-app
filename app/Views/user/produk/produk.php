@@ -60,8 +60,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <button class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                     <?php elseif ($varianItem == 1) : ?>
                         <?php if ($useStock) : ?>
-                            <button class="btn btn-white text-danger border-danger mt-4 d-inline" onclick="alertNoStcok()"><i class="bi bi-cart-fill"></i></button>
-                            <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                            <!-- <button class="btn btn-white text-danger border-danger mt-4 d-inline" onclick="alertNoStcok()"><i class="bi bi-cart-fill"></i></button>
+                            <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a> -->
+                            <button type="button" class="btn btn-secondary text-white mt-4" disabled>Stok Tidak Tersedia</button>
                         <?php else : ?>
                             <input type="hidden" id="qty" name="qty" value="1">
                             <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
@@ -467,8 +468,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                         <?php elseif ($varianItem == 1) : ?>
                             <?php if ($useStock) : ?>
-                                <button onclick="alertNoStcok()" class="btn btn-white text-danger border-danger mt-4 d-inline"><i class=" bi bi-cart-fill"></i></button>
-                                <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                                <!-- <button onclick="alertNoStcok()" class="btn btn-white text-danger border-danger mt-4 d-inline"><i class=" bi bi-cart-fill"></i></button>
+                                <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a> -->
+                                <button type="button" class="btn btn-secondary text-white mt-4" disabled>Stok Tidak Tersedia</button>
                             <?php else : ?>
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
