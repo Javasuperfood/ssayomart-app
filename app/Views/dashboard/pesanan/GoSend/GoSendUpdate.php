@@ -98,9 +98,8 @@
                             </div>
                         </div>
                     </div>
-                    Detail :
-                    </p>
-                    <table class="table border-1">
+
+                    <table class="card card-body table table-borderless">
                         <tbody>
                             <tr>
                                 <td>Penerima</td>
@@ -216,7 +215,7 @@
                                             </table>
                                         </div>
                                         <div class="col-auto d-none d-lg-block">
-                                            <img class="img-fluid rounded-3 " width="100px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                            <img class="img-fluid rounded-3" width="100px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
                                             <!-- <img class="img-fluid" src="https://source.unsplash.com/200x250" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"> -->
                                         </div>
                                     </div>
@@ -226,7 +225,7 @@
                                             <div class="modal-content border-0 bg-transparent">
                                                 <div class="modal-body d-flex justify-content-center align-items-center">
                                                     <img class="img-fluid" width="300px" height="350px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="">
-                                                    <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" style="margin-top: 80%; font-size: 15px;" aria-label="Close"></button>
+                                                    <!-- <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" style="margin-top: 80%; font-size: 15px;" aria-label="Close"></button> -->
                                                 </div>
                                             </div>
                                         </div>
