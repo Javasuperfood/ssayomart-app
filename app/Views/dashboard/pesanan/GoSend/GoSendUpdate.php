@@ -16,7 +16,7 @@
             <div class="row row-cols-2 row-cols-md-4">
                 <?php foreach ($orders as $o) : ?>
                     <div class="col mb-3">
-                        <div class="card">
+                        <div class="card border-0 shadow-sm">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="<?= base_url('assets/img/produk/main/' . $o['img']); ?>" class="img-fluid rounded-start" alt="...">
@@ -136,7 +136,7 @@
                     </table>
                     <div class="row row-cols-1">
                         <div class="col my-3">
-                            <div class="card border-1 border-left-danger px-2 pt-2">
+                            <div class="card border-0 shadow-sm px-2 pt-2">
                                 <div class="col font-weight-bold">
                                     <p class="fw-bold fs-5">Transaksi </p>
                                 </div>
@@ -172,7 +172,7 @@
                 <div class="col-md-6">
                     <div class="card border-1" style="height: 100%;">
                         <div class="card-body">
-                            <div class="card-header bg-white border-1 py-3">
+                            <div class="card-header bg-white py-3">
                                 <div class="row">
                                     <div class="col">
                                         <h6 class="m-0 font-weight-bold text-danger">GoSend Update</h6>
@@ -188,7 +188,7 @@
                             </div>
                             <?php if ($gosendStatus) : ?>
                                 <div class="col-12 my-3">
-                                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                    <div class="row g-0 border-0 rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                         <div class="col p-4 d-flex flex-column position-static">
                                             <table class="table table-borderless">
                                                 <tbody>
@@ -216,7 +216,7 @@
                                             </table>
                                         </div>
                                         <div class="col-auto d-none d-lg-block">
-                                            <img class="img-fluid" width="200px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                            <img class="img-fluid rounded-3 " width="100px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
                                             <!-- <img class="img-fluid" src="https://source.unsplash.com/200x250" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"> -->
                                         </div>
                                     </div>
