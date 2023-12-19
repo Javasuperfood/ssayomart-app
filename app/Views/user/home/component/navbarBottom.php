@@ -8,7 +8,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Footer Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <nav class="navbar navbar-expand fixed-bottom shadow-sm rounded-top-4" style="margin-top: 10%; height: 55px; background-color:#fff">
+        <nav class="navbar navbar-expand fixed-bottom shadow-sm rounded-top-4" style="height: 55px; background-color:#fff">
             <ul class="navbar-nav nav-justified w-100">
                 <li class="nav-item">
                     <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
@@ -16,9 +16,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <li class="nav-item">
                     <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
                         <i class="bi bi-cart-fill fw-bold fs-2 position-relative text-danger">
-                            <div id="cartItem_0" style="display: none;">
-                                <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger mt-2 mx-1"></i>
-                                <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial rounded-pill text-danger fw-bold mt-2 mx-1" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                            <div id="cartItem_0">
+                                <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger"></i>
+                                <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial rounded-pill text-danger fw-bold" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                             </div>
                         </i>
                     </a>
@@ -33,7 +33,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </ul>
         </nav>
     </div>
-
+    <!-- styling hover active -->
     <style>
         .nav-item a:hover {
             background-color: #0000;
@@ -53,6 +53,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             color: #ffc107 !important;
         }
     </style>
+    <!-- styling hover active -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var navLinks = document.querySelectorAll(".nav-link");
