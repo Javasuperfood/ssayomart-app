@@ -21,22 +21,6 @@ class AppleAuthController extends BaseController
         $state = $this->request->getGet('state');
 
         if ($authorizationCode && $state) {
-            // Validasi state untuk mencegah CSRF attacks
-            if ($state !== $this->session->get('apple_oauth_state')) {
-                return redirect()->to('login')->with('error', 'Invalid state parameter. Possible CSRF attack.');
-            }
-
-            // Hapus state dari sesi setelah validasi
-            $this->session->remove('apple_oauth_state');
-
-            // Nonaktifkan validasi CSRF untuk metode handleAppleLoginCallback
-            $this->request->setMethod('post');
-
-            // Validasi CSRF token secara manual
-            if (!$this->validate(['csrf' => 'csrf'])) {
-                return redirect()->to('login')->with('error', 'CSRF token validation failed.');
-            }
-
             // Panggil API Apple untuk mendapatkan ID token dan informasi pengguna
             $appleTokenInfo = $this->getAppleTokenInfo($authorizationCode);
 
