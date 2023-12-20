@@ -61,8 +61,8 @@ $routes->post('/status/ordering/update/(:segment)', 'StatusGosendController::upd
 
 $routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
 
-$routes->get('login/apple_callback', 'AuthController::appleCallback');
-$routes->post('/validate-apple-token', 'AuthController::validateAppleToken');
+$routes->get('callback-apple', 'AppleAuthController::handleAppleLoginCallback');
+
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/wishlist', 'WishlistController::index');
