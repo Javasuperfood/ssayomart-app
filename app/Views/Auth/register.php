@@ -10,7 +10,7 @@ if (session('errors')) {
 <div class="box shadow-sm border-0" style="height: 800px; overflow-y: scroll">
     <div class="inner-box">
         <div class="forms-wrap ">
-            <form onsubmit="formRegister()" action="<?= url_to('register') ?>" method="post">
+            <form onsubmit="playPreloaderEvent()" action="<?= url_to('register') ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="logo d-md-none d-lg-none">
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />

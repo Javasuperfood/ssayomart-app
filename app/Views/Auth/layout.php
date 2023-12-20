@@ -108,7 +108,7 @@
       }
     });
 
-    function formRegister() {
+    function playPreloaderEvent() {
       console.log('register');
       var preloader = document.getElementById('preloader');
       if (preloader) {

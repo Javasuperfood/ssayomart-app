@@ -25,7 +25,7 @@ $preloader = (isset($preloader)) ? $preloader : true;
                     // Set a timeout to hide the preloader after 5 seconds
                     setTimeout(function() {
                         preloader.style.display = 'none';
-                    }, 5000);
+                    }, 3000);
                 }
             });
         </script>
@@ -48,7 +48,7 @@ $preloader = (isset($preloader)) ? $preloader : true;
                 if (time) {
                     setTimeout(function() {
                         preloader.style.display = 'none';
-                    }, 5000);
+                    }, 3000);
                 }
             }
         }

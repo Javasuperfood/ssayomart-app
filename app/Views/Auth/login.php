@@ -7,7 +7,7 @@ $error = session('error'); ?>
 <div class="box shadow-sm" style="height: 800px">
     <div class="inner-box">
         <div class="forms-wrap">
-            <form action="<?= url_to('login') ?>" method="post">
+            <form action="<?= url_to('login') ?>" method="post" onsubmit="playPreloaderEvent()">
                 <?= csrf_field() ?>
                 <div class="logo d-md-none d-lg-none">
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />

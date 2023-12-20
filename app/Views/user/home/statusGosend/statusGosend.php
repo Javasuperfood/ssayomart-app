@@ -188,7 +188,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="modal-body py-0">
                                     <p>Pastikan pesanan anda telah diterima.</p>
                                 </div>
-                                <form action="<?= base_url('status/ordering/update/' . $inv) ?>" method="post">
+                                <form action="<?= base_url('status/ordering/update/' . $inv) ?>" method="post" onsubmit="playPreloaderEvent()">
                                     <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
                                         <?= csrf_field(); ?>
                                         <button type="submit" class="btn btn-lg btn-success">Selesai</button>
