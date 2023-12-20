@@ -14,7 +14,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container pb-3">
             <div class="row justify-content-center">
                 <div class="card border-0 shadow-sm py-4 rounded-2">
-                    <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="return validasiDetailUser()">
+                    <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="playPreloaderEvent()">
                         <div class="row g-3 px-3">
                             <div class="card border-0 shadow-sm py-4 mb-2 rounded-5 ">
                                 <div class="row g-3 px-3">

@@ -63,7 +63,7 @@
 	const filterSelect = document.getElementById('filter');
 
 	const quantityData = <?= json_encode(array_column($getStockWithProduct, 'stok')); ?>;
-	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct', 'Nov', 'Des'];
+	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct'];
 
 	const initialChartData = {
 		labels: months,

@@ -48,7 +48,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                                 <div class="col d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input fs-3" type="checkbox" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
+                                                        <input class="form-check-input fs-3" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -76,7 +76,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 <?php endforeach; ?>
             </div>
-            <form action="<?= base_url('setting/select-alamat'); ?>" method="post">
+            <form action="<?= base_url('setting/select-alamat'); ?>" method="post" onsubmit="playPreloaderEvent()">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="alamat" id="alamatField">
                 <button type="submit" id="selectAddress" class="btn btn-danger btn-lg addresCircle position-fixed"><i class="bi bi-check"></i></button>
