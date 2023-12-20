@@ -160,7 +160,7 @@
                                     </div>
                                 </form>
                             <?php else : ?>
-                                <div class="alert alert-warning border-0 shadow text-center" role="alert">
+                                <div class="alert alert-warning border-0 shadow-sm text-center" role="alert">
                                     <h4 class="alert-heading">Menunggu Pembayaran</h4>
                                     <hr class="fw-bold">
                                     <p>Pelanggan belum membayar tagihan transaksi.</p>

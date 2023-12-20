@@ -17,7 +17,7 @@
                     <div class="form-check">
                         <input class="form-check-input btn-outline-danger shadow-sm fs-5 mx-1 my-0" type="checkbox" value="1" name="is_active" id="isActive" <?= (old('is_active') == 1) ? 'checked' : ''; ?>>
                         <label class="form-check-label mx-5 fw-bold" for="isActive">
-                            Cheklish untuk aktifkan kupon
+                            Cheklist untuk aktifkan kupon
                         </label>
                     </div>
                 </div>

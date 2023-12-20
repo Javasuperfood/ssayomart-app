@@ -8,7 +8,7 @@
 
     #sortable-list li {
         padding: 10px;
-        border: 1px solid #ccc;
+        border: 0px solid #ccc;
         margin-bottom: 5px;
         cursor: pointer;
     }
@@ -40,7 +40,7 @@
                             <?= csrf_field(); ?>
                             <ul id="sortable-list">
                                 <?php foreach ($kategori as $k) : ?>
-                                    <li draggable="true" ondragstart="dragStart(event, <?= $k['id_kategori']; ?>)" ondrop="dragDrop(event, <?= $k['id_kategori']; ?>)">
+                                    <li class="shadow-sm" draggable="true" ondragstart="dragStart(event, <?= $k['id_kategori']; ?>)" ondrop="dragDrop(event, <?= $k['id_kategori']; ?>)">
                                         <i class="bi bi-arrow-up"></i><i class="bi bi-arrow-down"></i>
                                         <img src="<?= base_url('assets/img/kategori/' . $k['img']); ?>" class="img-fluid" alt="" width="50" height="50">
                                         <strong><?= $k['nama_kategori'] ?></strong>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-md-6">
                         <p class="fw-bold fs-3 text-secondary text-center">Preview</p>
-                        <div class="row text-center row-cols-3 mt-3 border">
+                        <div class="row text-center row-cols-3 mt-3 border-0 shadow-sm">
                             <?php foreach ($kategori as $k) : ?>
                                 <div class="col-4 col-md-4 col-lg-2">
                                     <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
