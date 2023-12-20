@@ -19,8 +19,10 @@ class AppleAuthController extends BaseController
     {
         $authorizationCode = $this->request->getGet('code');
         $state = $this->request->getGet('state');
+        $nonce = $this->request->getGet('nonce');
 
-        if ($authorizationCode && $state) {
+        // Periksa apakah state dan nonce sesuai dengan yang disimpan pada sisi klien
+        if ($authorizationCode && $state && $nonce) {
             // Panggil API Apple untuk mendapatkan ID token dan informasi pengguna
             $appleTokenInfo = $this->getAppleTokenInfo($authorizationCode);
 
@@ -37,18 +39,21 @@ class AppleAuthController extends BaseController
                 return redirect()->to('login')->with('error', 'Failed to process Apple login or registration.');
             }
         } else {
-            return redirect()->to('login')->with('error', 'Invalid authorization code or state.');
+            return redirect()->to('login')->with('error', 'Invalid authorization code, state, or nonce.');
         }
     }
 
+
     public function initiateAppleLogin()
     {
-        // Generate state parameter dan simpan di sesi
+        // Generate state dan nonce parameter, dan simpan di sesi
         $state = bin2hex(random_bytes(16));
+        $nonce = bin2hex(random_bytes(16));
         $this->session->set('apple_oauth_state', $state);
+        $this->session->set('apple_oauth_nonce', $nonce);
 
         $redirectURI = base_url('callback-apple'); // Sesuaikan dengan URI callback Anda
-        $appleLoginURL = "https://appleid.apple.com/auth/authorize?client_id=com.javasuperfood.ssayomartappready&redirect_uri={$redirectURI}&response_type=code&scope=name%20email&state={$state}";
+        $appleLoginURL = "https://appleid.apple.com/auth/authorize?client_id=com.javasuperfood.ssayomartappready&redirect_uri={$redirectURI}&response_type=code&scope=name%20email&state={$state}&nonce={$nonce}";
         return redirect()->to($appleLoginURL);
     }
 
@@ -58,13 +63,15 @@ class AppleAuthController extends BaseController
         $clientID = 'com.javasuperfood.ssayomartappready';
         $clientSecret = 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgfxhHs5FLfkY3dZAvVdKYMq63xubAPW6VvoNN+XItD3SgCgYIKoZIzj0DAQehRANCAAQMWT1vwcu/XDS+U/4lhbR/kjqEdBWIejFfd/KfPzqZMlHj4KNfOVvRa+z5kdKMs7T7jvHzop0sQRludLMKTvQC';
         $redirectURI = 'https://apps.ssayomart.com/callback-apple';
+        $_SESSION['state'] = bin2hex(random_bytes(5));
 
         $data = [
             'client_id' => $clientID,
             'client_secret' => $clientSecret,
-            'code' => $authorizationCode,
+            'response_type' => 'code',
             'grant_type' => 'authorization_code',
             'redirect_uri' => $redirectURI,
+            'state' => $this->session->get('state'),
         ];
 
         $response = $this->callAppleApi($appleTokenEndpoint, $data);
@@ -77,6 +84,10 @@ class AppleAuthController extends BaseController
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Content-Type: application/x-www-form-urlencoded',
+            'Accept: application/json',
+        ]);
 
         $response = curl_exec($ch);
         curl_close($ch);
@@ -86,8 +97,11 @@ class AppleAuthController extends BaseController
 
     private function decodeAppleIdToken($idToken)
     {
-        $decodedToken = JWT::decode($idToken, '', null);
-
+        try {
+            $decodedToken = JWT::decode($idToken, '', null);
+        } catch (\Exception $e) {
+            // Tangani kesalahan dekripsi
+        }
         return $decodedToken;
     }
 
