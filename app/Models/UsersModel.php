@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Models\AuthIdentitesModel;
 
 class UsersModel extends Model
 {
@@ -192,45 +193,34 @@ class UsersModel extends Model
             return false;
         }
     }
-    // UsersModel.php
+
     public function saveUserFromAppleID($userData)
     {
-        // Pastikan data yang diperlukan ada dalam respons Apple ID
-        if (!isset($userData['email'])) {
-            return false; // Gagal menyimpan data jika email tidak ada
-        }
-
-        // Cek apakah pengguna sudah ada berdasarkan email
-        $existingUser = $this->where('email', $userData['email'])->first();
-
-        // Data yang akan disimpan ke dalam database
         $userToSave = [
-            'username' => $userData['username'] ?? '', // Sesuaikan dengan respons Apple ID
-            'fullname' => $userData['fullname'] ?? '', // Sesuaikan dengan respons Apple ID
-            'telp' => $userData['telp'] ?? '', // Sesuaikan dengan respons Apple ID
-            'img' => $userData['img'] ?? '', // Sesuaikan dengan respons Apple ID
-            // ... (tambahkan kolom lain sesuai kebutuhan)
+            'username' => $userData['username'] ?? '',
+            'fullname' => $userData['fullname'] ?? '',
+            'telp' => $userData['telp'] ?? '',
+            'img' => $userData['img'] ?? '',
+            'email' => $userData['email'], // Tambahkan email
+            'uuid' => $userData['uuid'] ?? '',
         ];
 
-        if (!$existingUser) {
-            // Jika pengguna belum ada, tambahkan ke dalam database
-            $userToSave['email'] = $userData['email'];
-            $userToSave['uuid'] = $userData['uuid'] ?? ''; // Sesuaikan dengan respons Apple ID
-            $userToSave['status'] = 'active'; // Sesuaikan status sesuai kebutuhan
+        $result = $this->insert($userToSave);
 
-            // Tambahkan pengguna baru
-            $result = $this->insert($userToSave);
+        if ($result) {
+            $userId = $this->getInsertID();
+            $authIdentitiesModel = new AuthIdentitesModel();
+            $identityData = [
+                'user_id' => $userId,
+                'type' => 'email',
+                'name' => 'email',
+                'secret' => $userData['email'],
+            ];
 
-            if ($result) {
-                return $this->getInsertID(); // ID pengguna baru
-            }
-        } else {
-            // Jika pengguna sudah ada, lakukan yang sesuai (misalnya, update data)
-            $this->update(['id' => $existingUser['id']], $userToSave);
+            $authIdentitiesModel->insert($identityData);
 
-            return $existingUser['id']; // ID pengguna yang sudah ada
+            return $userId;
         }
-
-        return false; // Gagal menyimpan data
+        return false;
     }
 }

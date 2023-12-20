@@ -17,8 +17,12 @@ class AppleAuthController extends BaseController
 
         if ($authorizationCode && $state) {
             // Validasi state untuk mencegah CSRF attacks
-            // Sesuaikan dengan cara Anda menyimpan dan memeriksa state
-            // ...
+            if ($state !== $this->session->get('apple_oauth_state')) {
+                return redirect()->to('login')->with('error', 'Invalid state parameter. Possible CSRF attack.');
+            }
+
+            // Hapus state dari sesi setelah validasi
+            $this->session->remove('apple_oauth_state');
 
             // Panggil API Apple untuk mendapatkan ID token dan informasi pengguna
             $appleTokenInfo = $this->getAppleTokenInfo($authorizationCode);
@@ -31,9 +35,7 @@ class AppleAuthController extends BaseController
 
             if ($user) {
                 // Setelah login atau registrasi berhasil, atur sesi pengguna atau tindakan lainnya
-                // ...
-
-                return redirect()->to('dashboard');
+                return redirect()->to('user/home/Kategori2');
             } else {
                 return redirect()->to('login')->with('error', 'Failed to process Apple login or registration.');
             }
@@ -41,6 +43,20 @@ class AppleAuthController extends BaseController
             return redirect()->to('login')->with('error', 'Invalid authorization code or state.');
         }
     }
+
+    // Metode untuk memulai proses login dengan Apple
+    public function initiateAppleLogin()
+    {
+        // Generate state parameter dan simpan di sesi
+        $state = bin2hex(random_bytes(16));
+        $this->session->set('apple_oauth_state', $state);
+
+        // Redirect pengguna ke endpoint login Apple dengan menyertakan state parameter
+        $redirectURI = base_url('callback-apple'); // Sesuaikan dengan URI callback Anda
+        $appleLoginURL = "https://appleid.apple.com/auth/authorize?client_id=com.javasuperfood.ssayomartappready&redirect_uri={$redirectURI}&response_type=code&scope=name%20email&state={$state}";
+        return redirect()->to($appleLoginURL);
+    }
+
 
     private function getAppleTokenInfo($authorizationCode)
     {
@@ -51,8 +67,8 @@ class AppleAuthController extends BaseController
         // Contoh sederhana (tidak digunakan di lingkungan produksi)
         $appleTokenEndpoint = 'https://appleid.apple.com/auth/token';
         $clientID = 'com.javasuperfood.ssayomartappready';
-        $clientSecret = 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgS1qD8Va17RW9V/hWX03epgnywCNyLORLw6czCfmNIH2gCgYIKoZIzj0DAQehRANCAATGklWQ21dME3qG4biJGPrD3qV4PhScANaWlH4gGqhrfHWfOXWCIqfGVTU1h4i9T16AyBLroThTdwppze7ujvyU';
-        $redirectURI = 'https://apps.ssayomart.com/apple-login-callback';
+        $clientSecret = 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgfxhHs5FLfkY3dZAvVdKYMq63xubAPW6VvoNN+XItD3SgCgYIKoZIzj0DAQehRANCAAQMWT1vwcu/XDS+U/4lhbR/kjqEdBWIejFfd/KfPzqZMlHj4KNfOVvRa+z5kdKMs7T7jvHzop0sQRludLMKTvQC';
+        $redirectURI = 'https://apps.ssayomart.com/callback-apple';
 
         $data = [
             'client_id' => $clientID,
@@ -96,22 +112,33 @@ class AppleAuthController extends BaseController
 
     private function processAppleLoginOrRegistration($appleUserInfo)
     {
-        // Implementasi proses login atau registrasi pengguna
-        // Sesuaikan dengan kebutuhan dan struktur pengguna di sistem Anda
-        // ...
-
-        // Contoh sederhana (hanya untuk tujuan ilustrasi)
         $userModel = new UsersModel();
+
+        // Cari pengguna berdasarkan email di tabel users
         $user = $userModel->findUserByEmail($appleUserInfo->email);
 
         if ($user) {
             // Pengguna sudah terdaftar, lakukan proses login
+            // Sesuaikan dengan logika login Anda, misalnya, atur sesi
             // ...
+
+            return $user; // Return objek pengguna
         } else {
             // Pengguna belum terdaftar, lakukan proses registrasi
-            // ...
-        }
 
-        return $user; // Return objek pengguna
+            // Simpan pengguna ke tabel users dan auth_identities
+            $userId = $userModel->saveUserFromAppleID($appleUserInfo);
+
+            if ($userId) {
+                // Registrasi berhasil, lakukan proses login
+                // Sesuaikan dengan logika login Anda, misalnya, atur sesi
+                // ...
+
+                return $userModel->find($userId); // Return objek pengguna yang baru didaftarkan
+            } else {
+                // Gagal menyimpan pengguna, tangani sesuai kebutuhan Anda
+                return null;
+            }
+        }
     }
 }

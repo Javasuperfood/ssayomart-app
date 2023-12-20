@@ -109,7 +109,7 @@ $error = session('error'); ?>
     AppleID.auth.init({
         clientId: 'com.javasuperfood.ssayomartappready',
         scope: 'name email',
-        redirectURI: 'https://apps.ssayomart.com/callback-apple',
+        redirectURI: 'https://apps.ssayomart.com',
     });
 
     // Listen for authorization success.
