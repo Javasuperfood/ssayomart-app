@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container pt-3">
-            <form action="<?= base_url('checkout-cart/bayar'); ?>" method="post">
+            <form onsubmit="playPreloaderEvent(false)" action="<?= base_url('checkout-cart/bayar'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <?php foreach ($cart_id as $c) : ?>
                     <input type="hidden" value="<?= $c; ?>" name="produkCart[]">
