@@ -67,7 +67,9 @@ class Autoload extends AutoloadConfig
      *
      * @var array<string, string>
      */
-    public $classmap = [];
+    public $classmap = [
+        'FirebaseJWT' => FCPATH . 'vendor/firebase/php-jwt/src/JWT.php',
+    ];
 
     /**
      * -------------------------------------------------------------------
