@@ -5,6 +5,28 @@
   padding: 1rem;
 } */
 
+.sold-out-overlay {
+  position: absolute;
+  top: 48px;
+  left: 57px;
+  width: 50%;
+  height: 36%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
+
+.sold-out-text {
+  color: white;
+  font-weight: bold;
+  font-size: 9px;
+}
+
+.gambar-kecil {
+  display: flex;
+  filter: brightness(80%);
+}
+
 /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
 @media screen and (max-width: 280px) {
   .gambar-kecil {
