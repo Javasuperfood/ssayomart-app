@@ -9,6 +9,7 @@
                 <p class="d-block my-2 text-center fw-bold" style="color:#7e0204; font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
                 <hr class="border-darker mt-0 mb-3" style="border-color: #fb0408;border-width:3px;">
                 <div class="row row-cols-3 me-0" id="product-unggulan-container">
+
                     <!-- Featured Products -->
                     <?php foreach ($featuredProducts as $fp) : ?>
                         <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
@@ -20,7 +21,7 @@
                                         </div>
                                     </a>
                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                        <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 65px;">
+                                        <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 75px;">
                                             <p class=" text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($fp['nama'], 0, 80); ?></p>
                                         </div>
                                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
@@ -53,6 +54,7 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+
                 </div>
             </div>
         <?php endif; ?>
@@ -70,6 +72,7 @@
         }
         ?>
         <div class="row row-cols-3 me-0" id="product-container">
+
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
                 <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
@@ -81,7 +84,7 @@
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 65px;">
+                                <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 75px;">
                                     <p class=" text-center text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 80); ?></p>
                                 </div>
                                 <p class="text-secondary" style="font-size: 8px; margin: 0;">
@@ -114,6 +117,7 @@
                     </div>
                 </div>
             <?php endforeach; ?>
+
         </div>
     </div>
 
