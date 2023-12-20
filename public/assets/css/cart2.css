@@ -8,9 +8,9 @@
 .sold-out-overlay {
   position: absolute;
   top: 48px;
-  left: 57px;
-  width: 50%;
-  height: 36%;
+  left: 53px;
+  width: 55%;
+  height: 32%;
   background-color: rgba(0, 0, 0, 0.7); 
   border-radius: 50%;
   display: none;
@@ -255,6 +255,7 @@
 
 /* Untuk layar dengan lebar antara 1024px dan 1366px */
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
+
   .input-group.grup-masukan {
     justify-content: center;
   }
@@ -268,9 +269,33 @@
   .form-masuk {
     max-width: 40px;
   }
+
+  .sold-out-overlay {
+    position: absolute;
+    top: 44px;
+    left: 119px;
+    width: 21%;
+    height: 42%;
+    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+    border-radius: 50%;
+    display: none;
+  }
 }
 
+
 @media screen and (min-width: 320px) and (max-width: 932px) {
+
+  .sold-out-overlay {
+    position: absolute;
+    top: 48px;
+    left: 62px;
+    width: 45%;
+    height: 32%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    border-radius: 50%;
+    display: none;
+  }
+
   .btn-dash, .btn-plus {
   width: 30px; 
   height: 30px; 
@@ -361,7 +386,18 @@
 
 /* untuk ipad  */
 
-@media screen and (min-width: 768px) and (max-width: 1366px) {
+@media screen and (min-width: 768px) and (max-width: 768px) {
+
+  .sold-out-overlay {
+    position: absolute;
+    top: 44px;
+    left: 119px;
+    width: 21%;
+    height: 32%;
+    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+    border-radius: 50%;
+    display: none;
+  }
   
     .input-group.grup-masukan {
     justify-content: end;
