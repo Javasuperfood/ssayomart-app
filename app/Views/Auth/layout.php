@@ -65,6 +65,22 @@
         preloader.style.zIndex = '9999';
       }
     }
+
+    function buttonApple() {
+      var preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.position = 'fixed';
+        preloader.style.top = '0';
+        preloader.style.left = '0';
+        preloader.style.width = '100%';
+        preloader.style.height = '100%';
+        preloader.style.backgroundColor = '#ffffffb9';
+        preloader.style.display = 'flex';
+        preloader.style.justifyContent = 'center';
+        preloader.style.alignItems = 'center';
+        preloader.style.zIndex = '9999';
+      }
+    }
     // Menunggu halaman selesai dimuat
     window.addEventListener('load', function() {
       // Menghilangkan preloader

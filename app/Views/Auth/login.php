@@ -109,22 +109,19 @@ $error = session('error'); ?>
     AppleID.auth.init({
         clientId: 'com.javasuperfood.ssayomartappready',
         scope: 'email',
-        // redirectURI: 'https://apps.ssayomart.com/apple-sign-in-callback',
         redirectURI: 'https://apps.ssayomart.com',
-        state: "initial"
-        // usePopup: true
     });
 
     // Listen for authorization success.
     document.addEventListener('AppleIDSignInOnSuccess', (event) => {
         // Handle successful response.
-        console.log(event.detail.data);
+        console.log('Apple Sign In Success:', event.detail.data);
     });
 
     // Listen for authorization failures.
     document.addEventListener('AppleIDSignInOnFailure', (event) => {
         // Handle error.
-        console.log(event.detail.error);
+        console.log('Apple Sign In Failure:', event.detail.error);
     });
 
     function loginWithApple() {
