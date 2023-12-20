@@ -37,7 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 $routes->get('/', 'KategoriController::index');
-$routes->post('/', 'KategoriController::index');
+// $routes->post('/', 'KategoriController::index');
 $routes->get('lang/{locale}', 'Language::index');
 $routes->get('/search', 'ProdukController::search');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');

@@ -24,6 +24,11 @@ class AppleAuthController extends BaseController
             // Hapus state dari sesi setelah validasi
             $this->session->remove('apple_oauth_state');
 
+            // Validasi CSRF token
+            if (!$this->validate(['csrf' => 'csrf'])) {
+                return redirect()->to('login')->with('error', 'CSRF token validation failed.');
+            }
+
             // Panggil API Apple untuk mendapatkan ID token dan informasi pengguna
             $appleTokenInfo = $this->getAppleTokenInfo($authorizationCode);
 
@@ -56,7 +61,6 @@ class AppleAuthController extends BaseController
         $appleLoginURL = "https://appleid.apple.com/auth/authorize?client_id=com.javasuperfood.ssayomartappready&redirect_uri={$redirectURI}&response_type=code&scope=name%20email&state={$state}";
         return redirect()->to($appleLoginURL);
     }
-
 
     private function getAppleTokenInfo($authorizationCode)
     {
