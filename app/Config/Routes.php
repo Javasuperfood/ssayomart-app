@@ -37,7 +37,6 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 $routes->get('/', 'KategoriController::index');
-$routes->post('/', 'KategoriController::index');
 $routes->get('lang/{locale}', 'Language::index');
 $routes->get('/search', 'ProdukController::search');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
@@ -62,7 +61,6 @@ $routes->post('/status/ordering/update/(:segment)', 'StatusGosendController::upd
 $routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
 
 $routes->get('callback-apple', 'AppleAuthController::handleAppleLoginCallback');
-$routes->post('callback-apple', 'AppleAuthController::handleAppleLoginCallback');
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/wishlist', 'WishlistController::index');
