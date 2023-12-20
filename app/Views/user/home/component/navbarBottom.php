@@ -34,6 +34,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <!-- styling hover active -->
     <style>
+        .navbar {
+            border-top: 1.7px solid #f2f1ed;
+            border-radius: 10px;
+        }
+
         .nav-item a:hover {
             background-color: #0000;
             color: #333;
