@@ -48,10 +48,7 @@ $routes->get('/content-banner-promotion/(:segment)', 'BannerContentController::c
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
-$routes->get('/virtual-account', 'Payment::virtualAccount');
-$routes->get('/qriss', 'Payment::qriss');
-$routes->get('/ccard', 'Payment::ccard');
-$routes->get('/ewallet', 'Payment::ewallet');
+
 $routes->get('/all-category', 'KategoriController::allKategori');
 // app/Config/Routes.php
 $routes->get('/show-notification', 'WebhookController::showNotification');
@@ -71,10 +68,9 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 
     $routes->get('/buy/(:segment)', 'BuyController::index/$1');
-    $routes->get('/buy2/(:segment)', 'BuyController::index2/$1');
     $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
-    $routes->post('/store2/(:segment)', 'BuyController::storeData2/$1');
     $routes->post('/new-payment', 'BuyController::getNewPayment');
+
 
     // $routes->get('/cart', 'CartController::cart');
     $routes->get('/cart', 'CartController::cart2');
@@ -379,7 +375,6 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     });
 });
 
-$routes->get('/maps', 'MapsController::maps');
 
 
 $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($routes) {
@@ -391,6 +386,20 @@ $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($rout
     $routes->post('/', 'NotifController::sendOrderNotification');
     $routes->post('for_warehouse_notification', 'NotifController::warehouseGosendNotification');
 });
+
+
+// Route disable
+
+// Custom core UI Midtrans 
+// $routes->get('/buy2/(:segment)', 'BuyController::index2/$1');
+// $routes->post('/store2/(:segment)', 'BuyController::storeData2/$1');
+// $routes->get('/virtual-account', 'Payment::virtualAccount');
+// $routes->get('/qriss', 'Payment::qriss');
+// $routes->get('/ccard', 'Payment::ccard');
+// $routes->get('/ewallet', 'Payment::ewallet');
+
+// $routes->get('/maps', 'MapsController::maps');
+
 
 /*
  * --------------------------------------------------------------------
