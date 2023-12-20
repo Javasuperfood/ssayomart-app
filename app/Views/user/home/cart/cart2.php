@@ -41,9 +41,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center position-relative">
                                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1 img-small gambar-kecil" alt="Product" style="width:140px; height:140px; object-fit: contain; object-position: 20% 10%; ">
-                                            <div class="sold-out-overlay d-flex justify-content-center align-items-center">
-                                                <span class="sold-out-text">HABIS</span>
-                                            </div>
+                                            <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
+                                                <div class="sold-out-overlay d-flex justify-content-center align-items-center">
+                                                    <span class="sold-out-text">Kosong</span>
+                                                </div>
+                                            <?php endif; ?>
                                         </a>
                                     </div>
 
