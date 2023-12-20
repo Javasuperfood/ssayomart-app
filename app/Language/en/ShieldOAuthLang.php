@@ -1,6 +1,10 @@
 <?php 
 
 return [
+    'AppleLogin' => [
+        'not_allow' => 'Now you can\'t login or register with AppleLogin!',
+        'applelogin' => 'AppleLogin',
+    ],
     'Glogin' => [
         'not_allow' => 'Now you can\'t login or register with Glogin!',
         'glogin' => 'Glogin',
