@@ -74,4 +74,13 @@ class StockModel extends Model
 
         return $data;
     }
+
+    public function getSingleStockVarian($id_varian, $id_toko)
+    {
+        $query = $this->select('stok')
+            ->where('id_variasi_item', $id_varian)
+            ->where('id_toko', $id_toko)->first();
+
+        return $query;
+    }
 }

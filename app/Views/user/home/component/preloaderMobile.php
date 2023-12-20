@@ -31,7 +31,7 @@ $preloader = (isset($preloader)) ? $preloader : true;
         </script>
     <?php endif; ?>
     <script>
-        function playPreloaderEvent() {
+        function playPreloaderEvent(time = true) {
             var preloader = document.getElementById('preloader');
             if (preloader) {
                 preloader.style.position = 'fixed';
@@ -45,9 +45,11 @@ $preloader = (isset($preloader)) ? $preloader : true;
                 preloader.style.zIndex = '9999';
 
                 // Set a timeout to hide the preloader after 5 seconds
-                setTimeout(function() {
-                    preloader.style.display = 'none';
-                }, 3000);
+                if (time) {
+                    setTimeout(function() {
+                        preloader.style.display = 'none';
+                    }, 3000);
+                }
             }
         }
     </script>

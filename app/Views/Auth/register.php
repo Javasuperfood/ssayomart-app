@@ -28,21 +28,15 @@ if (session('errors')) {
                         <path fill="#FBBC05" d="M56.281 156.37c-2.756-8.123-4.351-16.827-4.351-25.82 0-8.994 1.595-17.697 4.206-25.82l-.073-1.73L15.26 71.312l-1.335.635C5.077 89.644 0 109.517 0 130.55s5.077 40.905 13.925 58.602l42.356-32.782"></path>
                         <path fill="#EB4335" d="M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251"></path>
                     </svg>
-                    Daftar Dengan Google
+                    <?= lang('Text.login_google') ?>
                 </a>
 
-                <a id="btn-login-apple" class="button justify-content-center align-items-center mb-4" style="border: 1px solid #000000;">
+                <a id="btn-login-apple" class="button justify-content-center align-items-center my-3" style="border: 1px solid #000000;">
                     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 300 320">
                         <path d="M213.803 167.03c.442 47.58 41.74 63.413 42.197 63.615c-.35 1.116-6.599 22.563-21.757 44.716c-13.104 19.153-26.705 38.235-48.13 38.63c-21.05.388-27.82-12.483-51.888-12.483c-24.061 0-31.582 12.088-51.51 12.871c-20.68.783-36.428-20.71-49.64-39.793c-27-39.033-47.633-110.3-19.928-158.406c13.763-23.89 38.36-39.017 65.056-39.405c20.307-.387 39.475 13.662 51.889 13.662c12.406 0 35.699-16.895 60.186-14.414c10.25.427 39.026 4.14 57.503 31.186c-1.49.923-34.335 20.044-33.978 59.822M174.24 50.199c10.98-13.29 18.369-31.79 16.353-50.199c-15.826.636-34.962 10.546-46.314 23.828c-10.173 11.763-19.082 30.589-16.678 48.633c17.64 1.365 35.66-8.964 46.64-22.262" />
                     </svg>
                     <?= lang('Text.login_apple') ?>
                 </a>
-                <!-- <a href="<?= base_url('oauth/apple-login'); ?>" class="button justify-content-center align-items-center my-3" style="border: 1px solid #000000;">
-                    <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" viewBox="0 0 300 320">
-                        <path d="M213.803 167.03c.442 47.58 41.74 63.413 42.197 63.615c-.35 1.116-6.599 22.563-21.757 44.716c-13.104 19.153-26.705 38.235-48.13 38.63c-21.05.388-27.82-12.483-51.888-12.483c-24.061 0-31.582 12.088-51.51 12.871c-20.68.783-36.428-20.71-49.64-39.793c-27-39.033-47.633-110.3-19.928-158.406c13.763-23.89 38.36-39.017 65.056-39.405c20.307-.387 39.475 13.662 51.889 13.662c12.406 0 35.699-16.895 60.186-14.414c10.25.427 39.026 4.14 57.503 31.186c-1.49.923-34.335 20.044-33.978 59.822M174.24 50.199c10.98-13.29 18.369-31.79 16.353-50.199c-15.826.636-34.962 10.546-46.314 23.828c-10.173 11.763-19.082 30.589-16.678 48.633c17.64 1.365 35.66-8.964 46.64-22.262" />
-                    </svg>
-                    Daftar dengan Apple
-                </a> -->
 
                 <div class="divider align-items-center mb-3">
                     <p class="text-center fw-medium mb-0 small" style="font-size: 12px;"><?= lang('Text.atau') ?></p>
@@ -107,6 +101,35 @@ if (session('errors')) {
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+
+<script>
+    AppleID.auth.init({
+        clientId: 'com.javasuperfood.ssayomartappready',
+        scope: 'email',
+        redirectURI: 'https://apps.ssayomart.com',
+    });
+
+    // Listen for authorization success.
+    document.addEventListener('AppleIDSignInOnSuccess', (event) => {
+        // Handle successful response.
+        console.log('Apple Sign In Success:', event.detail.data);
+    });
+
+    // Listen for authorization failures.
+    document.addEventListener('AppleIDSignInOnFailure', (event) => {
+        // Handle error.
+        console.log('Apple Sign In Failure:', event.detail.error);
+    });
+
+    function loginWithApple() {
+        AppleID.auth.signIn();
+    }
+
+    // Kemudian terapkan event listener pada tombol Anda
+    document.getElementById('btn-login-apple').addEventListener('click', loginWithApple);
+</script>
 
 <style>
     .button {

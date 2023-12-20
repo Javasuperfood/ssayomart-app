@@ -46,7 +46,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="tab-pane fade show active" id="tab-content-1" role="tabpanel" aria-labelledby="tab-1">
                         <!-- Privacy Policy-->
                         <div class="container">
-                            <h4>Privacy policy <span class="text-danger">SsayoMart</span></h4>
+                            <h4 class="text-center">Privacy policy <span class="text-danger">SsayoMart</span></h4>
                             <div class="card border-0 shadow-sm p-3 m-2 mt-3">
                                 <p><strong>Efektif sejak: 01/11/2023</strong></p>
 
@@ -65,7 +65,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                         <!-- Delivery Policy -->
                         <div class="container mt-3">
-                            <h4>Delivery policy <span class="text-danger">SsayoMart</span></h4>
+                            <h4 class="text-center">Delivery policy <span class="text-danger">SsayoMart</span></h4>
                             <div class="card border-0 shadow-sm p-3 m-2 mt-3">
                                 <p><strong>Efektif sejak: 01/11/2023</strong></p>
 
@@ -89,7 +89,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="tab-pane fade" id="tab-content-2" role="tabpanel" aria-labelledby="tab-2">
                         <!-- Refund Policy-->
                         <div class="container">
-                            <h4>Refund policy <span class="text-danger">SsayoMart</span></h4>
+                            <h4 class="text-center">Refund policy <span class="text-danger">SsayoMart</span></h4>
                             <div class="card border-0 shadow-sm p-3 m-2 mt-3">
                                 <p><strong>Efektif sejak: 01/11/2023</strong></p>
 
@@ -113,7 +113,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="tab-pane fade" id="tab-content-3" role="tabpanel" aria-labelledby="tab-3">
                         <!-- T & C -->
                         <div class="container">
-                            <h4>Terms and Conditions <span class="text-danger">SsayoMart</span></h4>
+                            <h4 class="text-center">Terms and Conditions <span class="text-danger">SsayoMart</span></h4>
                             <div class="card border-0 shadow-sm p-3 m-2 mt-3">
                                 <p><strong>Harap baca dengan seksama sebelum menggunakan layanan kami.</strong></p>
 

@@ -10,6 +10,7 @@
     "codeigniter4/shield": "dev-develop",
     "datamweb/shield-oauth": "dev-develop",
     "dompdf/dompdf": "^2.0",
+    "firebase/php-jwt": "^6.10",
     "midtrans/midtrans-php": "^2.5",
     "onesignal/onesignal-php-api": "dev-main",
     "tecnickcom/tcpdf": "^6.6"

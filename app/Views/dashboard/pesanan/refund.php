@@ -15,7 +15,7 @@
             <div class="row row-cols-2 row-cols-md-4">
                 <?php foreach ($orders as $o) : ?>
                     <div class="col mb-3">
-                        <div class="card">
+                        <div class="card border-0 shadow-sm">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="<?= base_url('assets/img/produk/main/' . $o['img']); ?>" class="img-fluid rounded-start" alt="...">

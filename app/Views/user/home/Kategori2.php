@@ -160,7 +160,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </a>
                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                        <div class="d-flex align-items-start justify-content-center" style=" height: 65px;">
+                                        <div class="d-flex align-items-start justify-content-center" style=" height: 75px;">
                                             <p class=" text-center text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                                         </div>
                                         <p class="text-secondary" style="font-size: 8px; margin: 0;">

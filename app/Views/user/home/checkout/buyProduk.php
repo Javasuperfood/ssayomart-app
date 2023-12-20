@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container pt-3">
-            <form action="<?= base_url('store/' . $produk['slug']); ?>" method="post" onsubmit="playPreloaderEvent()">
+            <form onsubmit="playPreloaderEvent(false)" action="<?= base_url('store/' . $produk['slug']); ?>" method="post">
                 <?= csrf_field(); ?>
                 <?php if (!$alamat_list) : ?>
                     <div class="alert alert-danger">

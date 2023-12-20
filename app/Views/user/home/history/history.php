@@ -322,9 +322,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         @media (max-width: 280px) {
 
             /* Styles for screens with a width of 280px or less */
-            .d-flex i {
-                font-size: 10px;
-            }
+           
 
             i.bi-exclamation-diamond-fill {
                 font-size: 25px !important;
