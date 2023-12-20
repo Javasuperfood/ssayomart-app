@@ -10,6 +10,11 @@ use Firebase\JWT\JWT;
 
 class AppleAuthController extends BaseController
 {
+    // Properti untuk konfigurasi CSRF protection
+    protected $CSRFProtectOptions = [
+        'handleAppleLoginCallback' => ['except' => ['post']],
+    ];
+
     public function handleAppleLoginCallback()
     {
         $authorizationCode = $this->request->getGet('code');
