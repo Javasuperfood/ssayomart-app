@@ -24,7 +24,10 @@ class AppleAuthController extends BaseController
             // Hapus state dari sesi setelah validasi
             $this->session->remove('apple_oauth_state');
 
-            // Validasi CSRF token
+            // Nonaktifkan validasi CSRF untuk metode handleAppleLoginCallback
+            $this->request->setMethod('post');
+
+            // Validasi CSRF token secara manual
             if (!$this->validate(['csrf' => 'csrf'])) {
                 return redirect()->to('login')->with('error', 'CSRF token validation failed.');
             }
