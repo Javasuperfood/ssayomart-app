@@ -11,7 +11,7 @@
   left: 57px;
   width: 50%;
   height: 36%;
-  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  background-color: rgba(0, 0, 0, 0.7); 
   border-radius: 50%;
   display: none;
 }
@@ -28,7 +28,20 @@
 }
 
 /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
-@media screen and (max-width: 280px) {
+
+@media screen  and (max-width: 280px) {
+/* stok habis overlay */
+.sold-out-overlay {
+  position: absolute;
+  top: 49px;
+  left: 47px;
+  width: 54%;
+  height: 33%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
+
   .gambar-kecil {
     max-height: 100px !important;
     /* Sesuaikan tinggi maksimum yang Anda inginkan */
@@ -149,6 +162,53 @@
   }
 
   /* Add specific CSS styles for the delete button if needed */
+}
+/* Media query untuk layar galaxy-fold dengan lebar maksimum 653px dan tinggi maksimum 280px */
+@media screen and (max-width: 653px) and (max-height: 280px) {
+ /* stok habis overlay */
+.sold-out-overlay {
+  position: absolute;
+  top: 44px;
+  left: 77px;
+  width: 42%;
+  height: 45%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
+
+}
+
+/* Media query untuk layar galaxy-fold dengan lebar maksimum 512px dan tinggi maksimum 717px */
+
+@media screen and (min-width: 512px) and (max-width: 512px) {
+
+  .sold-out-overlay {
+    position: absolute;
+    top: 48px;
+    left: 80px;
+    width: 35%;
+    height: 36%;
+    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+    border-radius: 50%;
+    display: none;
+  }
+}
+
+/* Media query untuk layar galaxy-fold dengan lebar maksimum 717px dan tinggi maksimum 512px */
+@media screen and (max-width: 717px) and (max-height: 512px) {
+ /* stok habis overlay */
+.sold-out-overlay {
+  position: absolute;
+  top: 44px;
+  left: 77px;
+  width: 42%;
+  height: 45%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
+
 }
 
 /* CSS untuk tombol Scroll Up */
