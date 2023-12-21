@@ -110,6 +110,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
                             </div>
                         </div>
+
                         <?php if (isset($paymentStatus->va_numbers[0])) : ?>
                             <div class="row">
                                 <div class="col-10">
@@ -117,6 +118,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                                 <div class="col-2">
                                     <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-10">
+                                    <p>Resi <?= $status->resi; ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->resi; ?>')"></i>
                                 </div>
                             </div>
                             <div class="row">
