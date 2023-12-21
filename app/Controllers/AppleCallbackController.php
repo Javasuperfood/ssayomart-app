@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-
 use App\Models\UsersModel;
 use App\Models\AuthIdentitesModel;
 use App\Models\AuthGroupUsersModel;
@@ -15,7 +13,7 @@ class AppleCallbackController extends BaseController
         $appleUserData = $this->request->getPost();
 
         // Your logic to verify Apple ID data, check signature, etc.
-
+        // ...
         $userId = $this->processAppleIDData($appleUserData);
 
         if ($userId) {
@@ -24,7 +22,6 @@ class AppleCallbackController extends BaseController
             $this->saveUserRole($userId, 'user');
 
             // You can add more custom logic here as needed
-
             return redirect()->to('/');
         } else {
             return redirect()->to('/login')->with('error', 'Failed to process Apple ID login');
@@ -35,22 +32,19 @@ class AppleCallbackController extends BaseController
     {
         // Your logic to verify Apple ID data, check signature, etc.
 
-        $authIdentitiesModel = new AuthIdentitesModel();
-        $user = $authIdentitiesModel->where('secret', $appleUserData['email'])->first();
+        $usersModel = new UsersModel();
+        $user = $usersModel->where('secret', $appleUserData['email'])->first();
 
         if ($user) {
             return $user['id'];
         } else {
-            // Handle the case where user is not found, create a new user, etc.
-
-            // Example: Create a new user in the database
             $newUserData = [
                 'username' => $appleUserData['username'],
                 'fullname' => $appleUserData['fullname'],
-                'secret'    => $appleUserData['secret'],
+                'secret'    => $appleUserData['email'],
             ];
 
-            $userId = $authIdentitiesModel->insert($newUserData);
+            $userId = $usersModel->insert($newUserData);
 
             return $userId;
         }
@@ -61,7 +55,7 @@ class AppleCallbackController extends BaseController
         $authIdentitiesModel = new AuthIdentitesModel();
         $authIdentitiesModel->insert([
             'user_id' => $userId,
-            'type'    => 'secret',
+            'type'    => 'email',
             'name'    => 'apple',
             'secret'  => $email,
         ]);
