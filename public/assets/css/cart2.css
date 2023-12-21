@@ -25,7 +25,7 @@
 
 .gambar-kecil {
   display: flex;
-  filter: brightness(80%);
+  filter: brightness(95%);
 }
 
 /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
@@ -241,7 +241,7 @@
 }
 
 
-.form-check-input[type="radio"] {
+.button-klik[type="radio"] {
   border-radius: 50%;
 }
 
