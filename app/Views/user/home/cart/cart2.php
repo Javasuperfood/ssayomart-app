@@ -131,7 +131,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="card-body">
                                                 <div class="d-flex flex-row align-items-center justify-content-between">
                                                     <div class="form-check" style="font-size: 20px; margin: 0;">
-                                                        <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                                        <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input button-klik border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                                     </div>
                                                     <div class="d-flex">
                                                         <div class="row">
