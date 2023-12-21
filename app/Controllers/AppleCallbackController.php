@@ -8,75 +8,130 @@ use App\Models\AuthGroupUsersModel;
 
 class AppleCallbackController extends BaseController
 {
+    // public function index()
+    // {
+    //     $appleUserData = $this->request->getPost();
+
+    //     // Your logic to verify Apple ID data, check signature, etc.
+    //     // ...
+    //     $userId = $this->processAppleIDData($appleUserData);
+    //     var_dump($appleUserData); // Tampilkan isi $appleUserData untuk debugging
+
+    //     if ($userId) {
+    //         $this->saveUserEmail($userId, $appleUserData['secret']);
+    //         $this->saveUserData($userId, $appleUserData);
+    //         $this->saveUserRole($userId, 'user');
+
+    //         // You can add more custom logic here as needed
+    //         return redirect()->to('/');
+    //     } else {
+    //         return redirect()->to('/login')->with('error', 'Failed to process Apple ID login');
+    //     }
+    // }
+
+    // protected function processAppleIDData($appleUserData)
+    // {
+    //     // Your logic to verify Apple ID data, check signature, etc.
+
+    //     $authIdentitiesModel = new AuthIdentitesModel();
+    //     $user = $authIdentitiesModel->where('secret', $appleUserData['secret'])->first();
+
+    //     if ($user) {
+    //         return $user['id'];
+    //     } else {
+    //         $newUserData = [
+    //             'secret'    => $appleUserData['secret'],
+    //         ];
+
+    //         $userId = $authIdentitiesModel->insert($newUserData);
+
+    //         return $userId;
+    //     }
+    // }
+
+    // protected function saveUserEmail($userId, $email)
+    // {
+    //     $authIdentitiesModel = new AuthIdentitesModel();
+    //     $authIdentitiesModel->insert([
+    //         'user_id' => $userId,
+    //         'type'    => 'email_password',
+    //         'name'    => 'apple_account',
+    //         'secret'  => $email,
+    //     ]);
+    // }
+
+    // protected function saveUserData()
+    // {
+    //     $usersModel = new UsersModel();
+    //     $usersModel->insert([
+    //         // 'user_id' => $userId,
+    //         'username'    => 'default_username',
+    //         'fullname'    => 'default_name',
+    //         'img'         => 'default.png',
+    //     ]);
+    // }
+
+    // protected function saveUserRole($userId, $role)
+    // {
+    //     $authGroupUsersModel = new AuthGroupUsersModel();
+    //     $authGroupUsersModel->insert([
+    //         'user_id' => $userId,
+    //         'group'   => $role,
+    //     ]);
+    // }
+
     public function index()
     {
-        $appleUserData = $this->request->getPost();
+        $payload = file_get_contents('php://input');
 
-        // Your logic to verify Apple ID data, check signature, etc.
-        // ...
-        $userId = $this->processAppleIDData($appleUserData);
-        var_dump($appleUserData); // Tampilkan isi $appleUserData untuk debugging
+        $logger = service('logger');
+        $logger->info('Received Apple Notification', ['payload' => $payload]);
 
-        if ($userId) {
-            $this->saveUserEmail($userId, $appleUserData['secret']);
-            $this->saveUserData($userId, $appleUserData);
-            $this->saveUserRole($userId, 'user');
+        // Dapatkan informasi pengguna dari notifikasi Apple
+        $appleUserInfo = json_decode($payload, true); // Pastikan payload dapat di-decode
 
-            // You can add more custom logic here as needed
-            return redirect()->to('/');
+        // Cek apakah pengguna sudah terdaftar
+        $userModel = new UsersModel();
+        $existingUser = $userModel->getUserInfo($appleUserInfo['sub']);
+
+        if ($existingUser) {
+            // Pengguna sudah terdaftar, lakukan login
+            $userSession = \Config\Services::session();
+
+            $userSession->set('user_id', $existingUser['id']);
+            $userSession->set('username', $existingUser['username']);
+
+            return redirect()->to(base_url()); // Ganti dengan URL tujuan setelah login
         } else {
-            return redirect()->to('/login')->with('error', 'Failed to process Apple ID login');
-        }
-    }
-
-    protected function processAppleIDData($appleUserData)
-    {
-        // Your logic to verify Apple ID data, check signature, etc.
-
-        $authIdentitiesModel = new AuthIdentitesModel();
-        $user = $authIdentitiesModel->where('secret', $appleUserData['secret'])->first();
-
-        if ($user) {
-            return $user['id'];
-        } else {
+            // Pengguna belum terdaftar, buat pengguna baru
             $newUserData = [
-                'secret'    => $appleUserData['secret'],
+                'username' => $appleUserInfo['email'],
+                'fullname' => $appleUserInfo['name'],
+                'uuid' => $appleUserInfo['sub'],
             ];
 
-            $userId = $authIdentitiesModel->insert($newUserData);
+            $userId = $userModel->insert($newUserData);
 
-            return $userId;
+            $authIdentitiesModel = new AuthIdentitesModel();
+            $authIdentitiesModel->insert([
+                'user_id' => $userId,
+                'type' => 'email', // Sesuaikan dengan tipe identitas yang sesuai
+                'name' => 'apple_account',
+                'secret' => $appleUserInfo['email'],
+                'expires' => null,  // Sesuaikan dengan kebutuhan Anda
+                'extra' => '',
+                'force_reset' => 0,
+                'last_used_at' => null,
+            ]);
+
+            // Set data pengguna ke dalam sesi
+            $userSession = \Config\Services::session();
+            $userSession->set('user_id', $userId);
+            $userSession->set('username', $appleUserInfo['email']);
+
+            return redirect()->to(base_url()); // Ganti dengan URL tujuan setelah login
         }
-    }
-
-    protected function saveUserEmail($userId, $email)
-    {
-        $authIdentitiesModel = new AuthIdentitesModel();
-        $authIdentitiesModel->insert([
-            'user_id' => $userId,
-            'type'    => 'email_password',
-            'name'    => 'apple_account',
-            'secret'  => $email,
-        ]);
-    }
-
-    protected function saveUserData()
-    {
-        $usersModel = new UsersModel();
-        $usersModel->insert([
-            // 'user_id' => $userId,
-            'username'    => 'default_username',
-            'fullname'    => 'default_name',
-            'img'         => 'default.png',
-        ]);
-    }
-
-    protected function saveUserRole($userId, $role)
-    {
-        $authGroupUsersModel = new AuthGroupUsersModel();
-        $authGroupUsersModel->insert([
-            'user_id' => $userId,
-            'group'   => $role,
-        ]);
+        // Respon ke Apple untuk konfirmasi penerimaan notifikasi
+        echo json_encode(['status' => 'success']);
     }
 }
