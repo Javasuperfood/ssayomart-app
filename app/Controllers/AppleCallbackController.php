@@ -98,39 +98,43 @@ class AppleCallbackController extends BaseController
             $existingUser = $userModel->getUserInfo($appleUserInfo['sub']);
         }
 
-        if ($existingUser) {
+        if ($existingUser && isset($existingUser['id']) && isset($existingUser['username'])) {
             // Pengguna sudah terdaftar, lakukan login
             $userSession = \Config\Services::session();
 
             $userSession->set('user_id', $existingUser['id']);
             $userSession->set('username', $existingUser['username']);
 
+            // Respon ke Apple untuk konfirmasi penerimaan notifikasi
+            echo json_encode(['status' => 'success']);
+
             return redirect()->to(base_url()); // Ganti dengan URL tujuan setelah login
         } else {
             // Pengguna belum terdaftar, buat pengguna baru
             $newUserData = [
-                'username' => $appleUserInfo['email'],
-                'fullname' => $appleUserInfo['name'],
-                'uuid' => $appleUserInfo['sub'],
+                'username' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '',
+                'fullname' => isset($appleUserInfo['name']) ? $appleUserInfo['name'] : '',
+                'uuid' => isset($appleUserInfo['sub']) ? $appleUserInfo['sub'] : '',
             ];
 
+            $userModel = new UsersModel();
             $userId = $userModel->insert($newUserData);
 
             $authIdentitiesModel = new AuthIdentitesModel();
             $authIdentitiesModel->insert([
                 'user_id' => $userId,
-                'secret' => $appleUserInfo['email'],
+                'secret' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '',
             ]);
 
             // Set data pengguna ke dalam sesi
             $userSession = \Config\Services::session();
             $userSession->set('user_id', $userId);
-            $userSession->set('username', $appleUserInfo['email']);
+            $userSession->set('username', isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '');
+
+            // Respon ke Apple untuk konfirmasi penerimaan notifikasi
+            echo json_encode(['status' => 'success']);
 
             return redirect()->to(base_url()); // Ganti dengan URL tujuan setelah login
         }
-
-        // Respon ke Apple untuk konfirmasi penerimaan notifikasi
-        echo json_encode(['status' => 'success']);
     }
 }
