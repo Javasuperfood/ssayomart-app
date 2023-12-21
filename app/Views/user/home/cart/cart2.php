@@ -52,7 +52,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="col-8">
                                         <div class="card-body">
                                             <div class="mt-4 text-position">
-                                                <p class="card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
+                                                <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
                                                 <br>
                                                 <p class="card-title fw-bold text-danger float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                             </div>
@@ -142,7 +142,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                             <div class="col-9">
                                                                 <div class="ms-3">
-                                                                    <h4 class="product_name">
+                                                                    <h4 class="fw-bold product_name">
                                                                         <a href="<?= base_url('produk/' . $p['slug']); ?>" class="link-underline link-underline-opacity-0 link-dark">
                                                                             <?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>
                                                                             <?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '' : ''; ?>
@@ -156,7 +156,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="d-flex align-items-center justify-content-between" style="padding-left: 15px;">
                                                         <div class="d-flex flex-column">
                                                             <div class=" me-5 pb-2" style="margin-top: 10px;">
-                                                                <h5 class="mb-0" style="font-size: 20px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
+                                                                <h5 class="fw-bold mb-0" style="font-size: 20px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
                                                             </div>
                                                             <div class="d-flex align-items-center me-5">
                                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
@@ -165,7 +165,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                         </div>
                                                         <?= csrf_field(); ?>
-                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn rounded-circle float-start"><i class="bi bi-trash text-danger"></i></button>
+                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn-lg btn rounded-circle float-start"><i class="bi bi-trash text-danger"></i></button>
                                                     </div>
                                                 </div>
                                             </div>

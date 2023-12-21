@@ -258,7 +258,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2 " style="font-family:cursive;">
                 <h1>ABOUT US</h1>
-                <p>PT Ssayomart Indonesia </p>
+                <h3>PT Ssayomart Indonesia </h3>
             </div>
         </div>
 
@@ -275,59 +275,43 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
 
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-12 col-md-6 ">
-                    <!-- Konten Kolom Kedua -->
 
-                    <h3>Dokumentasi SSayomart Live</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-
-                </div>
-                <div class="col-12 col-md-6">
-                    <!-- Konten Kolom Pertama -->
-                    <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="container mt-3 d-none d-md-block">
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4 ">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
             </div>
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
-                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
+                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid rounded-4">
                 </div>
             </div>
         </div>
 
         <!-- Slider card  -->
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col">
                     <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
@@ -386,7 +370,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Akhir Slider Card -->
 
         <!-- Sistem Grid Desktop -->
