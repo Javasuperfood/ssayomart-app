@@ -32,19 +32,17 @@ class AppleCallbackController extends BaseController
     {
         // Your logic to verify Apple ID data, check signature, etc.
 
-        $usersModel = new UsersModel();
-        $user = $usersModel->where('secret', $appleUserData['email'])->first();
+        $authIdentitiesModel = new AuthIdentitesModel();
+        $user = $authIdentitiesModel->where('secret', $appleUserData['email'])->first();
 
         if ($user) {
             return $user['id'];
         } else {
             $newUserData = [
-                'username' => $appleUserData['username'],
-                'fullname' => $appleUserData['fullname'],
                 'secret'    => $appleUserData['email'],
             ];
 
-            $userId = $usersModel->insert($newUserData);
+            $userId = $authIdentitiesModel->insert($newUserData);
 
             return $userId;
         }
@@ -55,16 +53,21 @@ class AppleCallbackController extends BaseController
         $authIdentitiesModel = new AuthIdentitesModel();
         $authIdentitiesModel->insert([
             'user_id' => $userId,
-            'type'    => 'email',
-            'name'    => 'apple',
+            'type'    => 'email_password',
+            'name'    => 'apple_account',
             'secret'  => $email,
         ]);
     }
 
-    protected function saveUserData($userId, $appleUserData)
+    protected function saveUserData()
     {
         $usersModel = new UsersModel();
-        // Your logic to update user data in the database based on Apple ID callback
+        $usersModel->insert([
+            // 'user_id' => $userId,
+            'username'    => 'default_username',
+            'fullname'    => 'default_name',
+            'img'         => 'default.png',
+        ]);
     }
 
     protected function saveUserRole($userId, $role)
