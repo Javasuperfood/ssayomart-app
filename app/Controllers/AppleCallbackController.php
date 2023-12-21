@@ -91,8 +91,12 @@ class AppleCallbackController extends BaseController
         $appleUserInfo = json_decode($payload, true); // Pastikan payload dapat di-decode
 
         // Cek apakah pengguna sudah terdaftar
-        $userModel = new UsersModel();
-        $existingUser = $userModel->getUserInfo($appleUserInfo['sub']);
+        $existingUser = null;
+
+        if (isset($appleUserInfo['sub'])) {
+            $userModel = new UsersModel();
+            $existingUser = $userModel->getUserInfo($appleUserInfo['sub']);
+        }
 
         if ($existingUser) {
             // Pengguna sudah terdaftar, lakukan login
@@ -115,13 +119,7 @@ class AppleCallbackController extends BaseController
             $authIdentitiesModel = new AuthIdentitesModel();
             $authIdentitiesModel->insert([
                 'user_id' => $userId,
-                'type' => 'email', // Sesuaikan dengan tipe identitas yang sesuai
-                'name' => 'apple_account',
                 'secret' => $appleUserInfo['email'],
-                'expires' => null,  // Sesuaikan dengan kebutuhan Anda
-                'extra' => '',
-                'force_reset' => 0,
-                'last_used_at' => null,
             ]);
 
             // Set data pengguna ke dalam sesi
@@ -131,6 +129,7 @@ class AppleCallbackController extends BaseController
 
             return redirect()->to(base_url()); // Ganti dengan URL tujuan setelah login
         }
+
         // Respon ke Apple untuk konfirmasi penerimaan notifikasi
         echo json_encode(['status' => 'success']);
     }
