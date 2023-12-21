@@ -17,7 +17,7 @@ class AppleCallbackController extends BaseController
 
         // Dapatkan informasi pengguna dari notifikasi Apple
         $appleUserInfo = json_decode($payload, true);
-        dd($appleUserInfo);
+        // dd($appleUserInfo);
 
         // Cek apakah pengguna sudah terdaftar
         $existingUser = null;
