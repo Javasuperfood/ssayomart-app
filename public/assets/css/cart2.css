@@ -8,9 +8,9 @@
 
   .sold-out-overlay {
     position: absolute;
-    top: 48px;
+    top: 44px;
     left: 62px;
-    width: 45%;
+    width: 42%;
     height: 32%;
     background-color: rgba(0, 0, 0, 0.7); 
     border-radius: 50%;
