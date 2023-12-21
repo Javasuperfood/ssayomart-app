@@ -10,7 +10,7 @@ if (session('errors')) {
 <div class="box shadow-sm border-0" style="height: 800px; overflow-y: scroll">
     <div class="inner-box">
         <div class="forms-wrap ">
-            <form onsubmit="playPreloaderEvent()" action="<?= url_to('register') ?>" method="post">
+            <form action="<?= url_to('register') ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="logo d-md-none d-lg-none">
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />
@@ -66,7 +66,7 @@ if (session('errors')) {
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-4" id="togglePassword2"></i>
                     </div>
 
-                    <button type="submit" value="Daftar" class="sign-btn" id="btn-register"><?= lang('Text.btn_daftar') ?></button>
+                    <button type="submit" value="Daftar" class="sign-btn" id="btn-register" onclick="clickSubmitEvent(this)"><?= lang('Text.btn_daftar') ?></button>
 
                     <p class="text mb-5 text-center">
                         Dengan mendaftarkan diri, berarti anda menyetujui

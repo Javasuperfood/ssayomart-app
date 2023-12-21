@@ -14,7 +14,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container pb-3">
             <div class="row justify-content-center">
                 <div class="card border-0 shadow-sm py-4 rounded-2">
-                    <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data" onsubmit="playPreloaderEvent()">
+                    <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data">
                         <div class="row g-3 px-3">
                             <div class="card border-0 shadow-sm py-4 mb-2 rounded-5 ">
                                 <div class="row g-3 px-3">
@@ -62,7 +62,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="py-3 px-3">
                                 <div class="col text-center">
-                                    <button type="submit" class="mt-1 btn btn-md btn-danger rounded-2" style="color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                                    <button type="submit" class="mt-1 btn btn-md btn-danger rounded-2" onclick="clickSubmitEvent(this)" style="color: #fff;"><?= lang('Text.btn_simpan') ?></button>
                                 </div>
                             </div>
                         </div>

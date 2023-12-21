@@ -52,5 +52,12 @@ $preloader = (isset($preloader)) ? $preloader : true;
                 }
             }
         }
+
+        function clickSubmitEvent(e) {
+            $(e).prop('disabled', true);
+            $(e).html('<div class="spinner-border spinner-border-sm mx-2" role="status"><span class="visually-hidden">Loading...</span></div>Loading...');
+
+            $(e).closest('form').submit();
+        }
     </script>
 <?php endif; ?>

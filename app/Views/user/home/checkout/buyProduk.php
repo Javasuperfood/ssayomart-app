@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container pt-3">
-            <form onsubmit="playPreloaderEvent(false)" action="<?= base_url('store/' . $produk['slug']); ?>" method="post">
+            <form action="<?= base_url('store/' . $produk['slug']); ?>" method="post">
                 <?= csrf_field(); ?>
                 <?php if (!$alamat_list) : ?>
                     <div class="alert alert-danger">
@@ -274,7 +274,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </table>
                     </div>
                     <div class="col p-3 px-4">
-                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
+                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" onclick="clickSubmitEvent(this)" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
                     </div>
                 </div>
             </form>
