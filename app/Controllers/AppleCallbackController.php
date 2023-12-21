@@ -101,12 +101,16 @@ class AppleCallbackController extends BaseController
         if ($existingUser && isset($existingUser['id']) && isset($existingUser['username'])) {
             // Pengguna sudah terdaftar, lakukan login
             $userSession = \Config\Services::session();
+            var_dump($userSession->get());
 
             $userSession->set('user_id', $existingUser['id']);
             $userSession->set('username', $existingUser['username']);
 
             // Respon ke Apple untuk konfirmasi penerimaan notifikasi
             echo json_encode(['status' => 'success']);
+
+            // Tambahkan pernyataan logging di sini
+            $logger->info('User logged in successfully', ['user_id' => $existingUser['id'], 'username' => $existingUser['username']]);
 
             return redirect()->to(base_url()); // Ganti dengan URL tujuan setelah login
         } else {
@@ -128,6 +132,8 @@ class AppleCallbackController extends BaseController
 
             // Set data pengguna ke dalam sesi
             $userSession = \Config\Services::session();
+            var_dump($userSession->get());
+
             $userSession->set('user_id', $userId);
             $userSession->set('username', isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '');
 
