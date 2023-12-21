@@ -4,20 +4,81 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
+use App\Models\UsersModel;
+use App\Models\AuthIdentitesModel;
+use App\Models\AuthGroupUsersModel;
+
 class AppleCallbackController extends BaseController
 {
     public function index()
     {
-        // Tangani notifikasi dari Apple di sini
-        $payload = file_get_contents('php://input');
+        $appleUserData = $this->request->getPost();
 
-        // Log pesan untuk keperluan debugging
-        $logger = service('logger');
-        $logger->info('Received Apple Notification', ['payload' => $payload]);
+        // Your logic to verify Apple ID data, check signature, etc.
 
-        // Lakukan pemrosesan notifikasi sesuai kebutuhan Anda
+        $userId = $this->processAppleIDData($appleUserData);
 
-        // Respon ke Apple untuk konfirmasi penerimaan notifikasi
-        echo json_encode(['status' => 'success']);
+        if ($userId) {
+            $this->saveUserEmail($userId, $appleUserData['email']);
+            $this->saveUserData($userId, $appleUserData);
+            $this->saveUserRole($userId, 'user');
+
+            // You can add more custom logic here as needed
+
+            return redirect()->to('/');
+        } else {
+            return redirect()->to('/login')->with('error', 'Failed to process Apple ID login');
+        }
+    }
+
+    protected function processAppleIDData($appleUserData)
+    {
+        // Your logic to verify Apple ID data, check signature, etc.
+
+        $usersModel = new UsersModel();
+        $user = $usersModel->where('email', $appleUserData['email'])->first();
+
+        if ($user) {
+            return $user['id'];
+        } else {
+            // Handle the case where user is not found, create a new user, etc.
+
+            // Example: Create a new user in the database
+            $newUserData = [
+                'username' => $appleUserData['username'],
+                'fullname' => $appleUserData['fullname'],
+                'email'    => $appleUserData['email'],
+            ];
+
+            $userId = $usersModel->insert($newUserData);
+
+            return $userId;
+        }
+    }
+
+    protected function saveUserEmail($userId, $email)
+    {
+        $authIdentitiesModel = new AuthIdentitesModel();
+        $authIdentitiesModel->insert([
+            'user_id' => $userId,
+            'type'    => 'email',
+            'name'    => 'apple',
+            'secret'  => $email,
+        ]);
+    }
+
+    protected function saveUserData($userId, $appleUserData)
+    {
+        $usersModel = new UsersModel();
+        // Your logic to update user data in the database based on Apple ID callback
+    }
+
+    protected function saveUserRole($userId, $role)
+    {
+        $authGroupUsersModel = new AuthGroupUsersModel();
+        $authGroupUsersModel->insert([
+            'user_id' => $userId,
+            'group'   => $role,
+        ]);
     }
 }

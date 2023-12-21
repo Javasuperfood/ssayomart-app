@@ -58,9 +58,4 @@ class AuthIdentitesModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function findUserByEmail($email)
-    {
-        return $this->where('secret', $email)->first();
-    }
 }

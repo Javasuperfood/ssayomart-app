@@ -193,34 +193,4 @@ class UsersModel extends Model
             return false;
         }
     }
-
-    public function saveUserFromAppleID($userData)
-    {
-        $userToSave = [
-            'username' => $userData['username'] ?? '',
-            'fullname' => $userData['fullname'] ?? '',
-            'telp' => $userData['telp'] ?? '',
-            'img' => $userData['img'] ?? '',
-            'email' => $userData['email'], // Tambahkan email
-            'uuid' => $userData['uuid'] ?? '',
-        ];
-
-        $result = $this->insert($userToSave);
-
-        if ($result) {
-            $userId = $this->getInsertID();
-            $authIdentitiesModel = new AuthIdentitesModel();
-            $identityData = [
-                'user_id' => $userId,
-                'type' => 'email',
-                'name' => 'email',
-                'secret' => $userData['email'],
-            ];
-
-            $authIdentitiesModel->insert($identityData);
-
-            return $userId;
-        }
-        return false;
-    }
 }
