@@ -102,7 +102,7 @@ class UsersModel extends Model
     {
         $db = \Config\Database::connect();
         $query = $db->table('users')
-            ->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret AS email') // Include email from auth_identities
+            ->select('users.id, users.username, users.fullname, users.telp, users.img, auth_identities.secret AS email') // Include email from auth_identities
             ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
             ->where('users.id', $id)
             ->get();
