@@ -46,9 +46,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row px-5">
                         <div class="col">
                             <div class="input-group mb-3 d-flex justify-content-center">
-                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                                    <button class="btn btn-outline-danger rounded-circle " type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                                 <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
-                                <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                               <button class="btn btn-outline-danger rounded-circle" type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='increaseCount(event, this)'>
+  <i class="bi bi-plus"></i>
+</button>
+
                             </div>
                         </div>
                     </div>
