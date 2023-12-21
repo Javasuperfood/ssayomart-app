@@ -212,7 +212,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- form dan maps -->
         <div class="container mb-5">
-            <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About As <span class="text-danger">Ssayomart</span></h2>
+            <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About Us <span class="text-danger">Ssayomart</span></h2>
             <div class="row">
                 <!-- Kolom 1: Peta -->
                 <div class="col-md-6 col-lg-6" style="display:flex; text-align:center !important; flex-wrap:wrap; justify-content:center;">
@@ -460,7 +460,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- form dan maps -->
         <div class="container mb-5">
             <div class="row">
-                <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About As <span class="text-danger">Ssayomart</span></h2>
+                <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About Us <span class="text-danger">Ssayomart</span></h2>
                 <!-- Kolom 1: Peta -->
                 <div class="col-md-6">
                     <iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d588.8346382611838!2d106.6190360362805!3d-6.224009368681214!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fdd1b4844f71%3A0x7a215719bcf3a770!2sSsayo%20Mart%20Indonesia!5e1!3m2!1sen!2sid!4v1700099064396!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

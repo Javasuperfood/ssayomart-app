@@ -7,7 +7,7 @@ $error = session('error'); ?>
 <div class="box shadow-sm" style="height: 800px">
     <div class="inner-box">
         <div class="forms-wrap">
-            <form action="<?= url_to('login') ?>" method="post" onsubmit="playPreloaderEvent()">
+            <form action="<?= url_to('login') ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="logo d-md-none d-lg-none">
                     <img src="<?= base_url(); ?>assets/img/auth/logo.png" alt="easyclass" />
@@ -39,7 +39,7 @@ $error = session('error'); ?>
                         </div>
                     <?php endif; ?>
 
-                    <button type="submit" value="Masuk" class="sign-btn" id="btn-login"><?= lang('Text.btn_login') ?></button>
+                    <button type="submit" value="Masuk" class="sign-btn" id="btn-login" onclick="clickSubmitEvent(this)"><?= lang('Text.btn_login') ?></button>
 
                     <div class="divider align-items-center mb-4">
                         <p class="text-center fw-medium mb-0"><?= lang('Text.atau') ?></p>
