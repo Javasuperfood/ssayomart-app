@@ -22,22 +22,17 @@ class AppleCallbackController extends BaseController
         // Cek apakah pengguna sudah terdaftar
         $existingUser = null;
 
-        if (isset($appleUserInfo['sub'])) {
+        if (isset($appleUserInfo['id'])) {
             $userModel = new UsersModel();
             $existingUser = $userModel->getUserInfo($appleUserInfo['id']);
         }
 
-        if ($existingUser && isset($existingUser['id']) && isset($existingUser['username'])) {
+        if ($existingUser && isset($existingUser['id']) && isset($existingUser['email'])) {
             // Pengguna sudah terdaftar, lakukan login
-            $userSession = \Config\Services::session();
-            var_dump($userSession->get());
+            session()->set('id', $existingUser['id']);
+            session()->set('email', $existingUser['email']);
 
-            $userSession->set('user_id', $existingUser['id']);
-            $userSession->set('username', $existingUser['username']);
-
-            echo json_encode(['status' => 'success']);
-
-            $logger->info('User logged in successfully', ['user_id' => $existingUser['id'], 'email' => $existingUser['email']]);
+            $logger->info('User berhasil login : ', ['id' => $existingUser['id'], 'email' => $existingUser['email']]);
 
             return redirect()->to(base_url());
         } else {
@@ -55,12 +50,8 @@ class AppleCallbackController extends BaseController
                 'secret' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '',
             ]);
 
-            session();
-
             session()->set('user_id', $userId);
             session()->set('email', isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '');
-
-            echo json_encode(['status' => 'success']);
 
             return redirect()->to(base_url());
         }
