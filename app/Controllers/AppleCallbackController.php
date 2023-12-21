@@ -24,7 +24,7 @@ class AppleCallbackController extends BaseController
 
         if (isset($appleUserInfo['sub'])) {
             $userModel = new UsersModel();
-            $existingUser = $userModel->getUserInfo($appleUserInfo['sub']);
+            $existingUser = $userModel->getUserInfo($appleUserInfo['id']);
         }
 
         if ($existingUser && isset($existingUser['id']) && isset($existingUser['username'])) {
@@ -35,38 +35,31 @@ class AppleCallbackController extends BaseController
             $userSession->set('user_id', $existingUser['id']);
             $userSession->set('username', $existingUser['username']);
 
-            // Respon ke Apple untuk konfirmasi penerimaan notifikasi
             echo json_encode(['status' => 'success']);
 
-            // Tambahkan pernyataan logging di sini
-            $logger->info('User logged in successfully', ['user_id' => $existingUser['id'], 'username' => $existingUser['username']]);
+            $logger->info('User logged in successfully', ['user_id' => $existingUser['id'], 'email' => $existingUser['email']]);
 
-            return redirect()->to(base_url()); // Ganti dengan URL tujuan setelah login
+            return redirect()->to(base_url());
         } else {
             // Pengguna belum terdaftar, buat pengguna baru
             $newUserData = [
-                'username' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '',
-                'fullname' => isset($appleUserInfo['name']) ? $appleUserInfo['name'] : '',
-                'uuid' => isset($appleUserInfo['sub']) ? $appleUserInfo['sub'] : '',
+                'email' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : ''
             ];
 
             $userModel = new UsersModel();
-            $userId = $userModel->insert($newUserData);
+            $userId = $userModel->save($newUserData);
 
             $authIdentitiesModel = new AuthIdentitesModel();
-            $authIdentitiesModel->insert([
+            $authIdentitiesModel->save([
                 'user_id' => $userId,
                 'secret' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '',
             ]);
 
-            // Set data pengguna ke dalam sesi
-            $userSession = \Config\Services::session();
-            var_dump($userSession->get());
+            session();
 
-            $userSession->set('user_id', $userId);
-            $userSession->set('username', isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '');
+            session()->set('user_id', $userId);
+            session()->set('email', isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '');
 
-            // Respon ke Apple untuk konfirmasi penerimaan notifikasi
             echo json_encode(['status' => 'success']);
 
             return redirect()->to(base_url());
