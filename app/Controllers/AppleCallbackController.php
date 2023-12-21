@@ -17,7 +17,7 @@ class AppleCallbackController extends BaseController
         $userId = $this->processAppleIDData($appleUserData);
 
         if ($userId) {
-            $this->saveUserEmail($userId, $appleUserData['email']);
+            $this->saveUserEmail($userId, $appleUserData['secret']);
             $this->saveUserData($userId, $appleUserData);
             $this->saveUserRole($userId, 'user');
 
@@ -33,13 +33,13 @@ class AppleCallbackController extends BaseController
         // Your logic to verify Apple ID data, check signature, etc.
 
         $authIdentitiesModel = new AuthIdentitesModel();
-        $user = $authIdentitiesModel->where('secret', $appleUserData['email'])->first();
+        $user = $authIdentitiesModel->where('secret', $appleUserData['secret'])->first();
 
         if ($user) {
             return $user['id'];
         } else {
             $newUserData = [
-                'secret'    => $appleUserData['email'],
+                'secret'    => $appleUserData['secret'],
             ];
 
             $userId = $authIdentitiesModel->insert($newUserData);
