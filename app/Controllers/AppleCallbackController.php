@@ -15,6 +15,7 @@ class AppleCallbackController extends BaseController
         // Your logic to verify Apple ID data, check signature, etc.
         // ...
         $userId = $this->processAppleIDData($appleUserData);
+        var_dump($appleUserData); // Tampilkan isi $appleUserData untuk debugging
 
         if ($userId) {
             $this->saveUserEmail($userId, $appleUserData['secret']);
