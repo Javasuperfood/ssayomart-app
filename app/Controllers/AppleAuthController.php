@@ -10,7 +10,6 @@ use Firebase\JWT\JWT;
 
 class AppleAuthController extends BaseController
 {
-    // Properti untuk konfigurasi CSRF protection
     protected $CSRFProtectOptions = [
         'handleAppleLoginCallback' => ['except' => ['post']],
     ];
@@ -18,22 +17,19 @@ class AppleAuthController extends BaseController
     public function handleAppleLoginCallback()
     {
         $authorizationCode = $this->request->getGet('code');
-        $state = $this->request->getGet('state');
-        $nonce = $this->request->getGet('nonce');
+        $state = $this->session->get('apple_oauth_state');
+        $nonce = $this->session->get('apple_oauth_nonce');
 
-        // Periksa apakah state dan nonce sesuai dengan yang disimpan pada sisi klien
+        // Debugging
+        dd($state, $nonce, $authorizationCode);
+
         if ($authorizationCode && $state && $nonce) {
-            // Panggil API Apple untuk mendapatkan ID token dan informasi pengguna
             $appleTokenInfo = $this->getAppleTokenInfo($authorizationCode);
 
-            // Ambil informasi pengguna dari ID token
             $appleUserInfo = $this->decodeAppleIdToken($appleTokenInfo['id_token']);
-
-            // Lakukan proses login atau registrasi pengguna
             $user = $this->processAppleLoginOrRegistration($appleUserInfo);
 
             if ($user) {
-                // Setelah login atau registrasi berhasil, atur sesi pengguna atau tindakan lainnya
                 return redirect()->to('user/home/Kategori2');
             } else {
                 return redirect()->to('login')->with('error', 'Failed to process Apple login or registration.');
@@ -46,13 +42,14 @@ class AppleAuthController extends BaseController
 
     public function initiateAppleLogin()
     {
-        // Generate state dan nonce parameter, dan simpan di sesi
         $state = bin2hex(random_bytes(16));
         $nonce = bin2hex(random_bytes(16));
+
         $this->session->set('apple_oauth_state', $state);
         $this->session->set('apple_oauth_nonce', $nonce);
 
-        $redirectURI = base_url('callback-apple'); // Sesuaikan dengan URI callback Anda
+        $redirectURI = base_url('callback-apple');
+
         $appleLoginURL = "https://appleid.apple.com/auth/authorize?client_id=com.javasuperfood.ssayomartappready&redirect_uri={$redirectURI}&response_type=code&scope=name%20email&state={$state}&nonce={$nonce}";
         return redirect()->to($appleLoginURL);
     }
@@ -63,7 +60,8 @@ class AppleAuthController extends BaseController
         $clientID = 'com.javasuperfood.ssayomartappready';
         $clientSecret = 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgfxhHs5FLfkY3dZAvVdKYMq63xubAPW6VvoNN+XItD3SgCgYIKoZIzj0DAQehRANCAAQMWT1vwcu/XDS+U/4lhbR/kjqEdBWIejFfd/KfPzqZMlHj4KNfOVvRa+z5kdKMs7T7jvHzop0sQRludLMKTvQC';
         $redirectURI = 'https://apps.ssayomart.com/callback-apple';
-        $_SESSION['state'] = bin2hex(random_bytes(5));
+        $state = bin2hex(random_bytes(16));
+        $nonce = bin2hex(random_bytes(16));
 
         $data = [
             'client_id' => $clientID,
@@ -71,7 +69,8 @@ class AppleAuthController extends BaseController
             'response_type' => 'code',
             'grant_type' => 'authorization_code',
             'redirect_uri' => $redirectURI,
-            'state' => $this->session->get('state'),
+            'state' => $state,
+            'nonce' => $nonce
         ];
 
         $response = $this->callAppleApi($appleTokenEndpoint, $data);
@@ -90,7 +89,15 @@ class AppleAuthController extends BaseController
         ]);
 
         $response = curl_exec($ch);
+        if (curl_errno($ch)) {
+            // Tangani kesalahan curl
+        }
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
+
+        if ($httpCode != 200) {
+            // Tangani kesalahan HTTP
+        }
 
         return $response;
     }
@@ -100,7 +107,7 @@ class AppleAuthController extends BaseController
         try {
             $decodedToken = JWT::decode($idToken, '', null);
         } catch (\Exception $e) {
-            // Tangani kesalahan dekripsi
+            log_message('error', 'Error decoding Apple ID token: ' . $e->getMessage());
         }
         return $decodedToken;
     }
@@ -112,12 +119,12 @@ class AppleAuthController extends BaseController
         $user = $authIdentities->findUserByEmail($appleUserInfo->secret);
 
         if ($user) {
-            return $user; // Return objek pengguna
+            return $user;
         } else {
             $userId = $authIdentities->saveUserFromAppleID($appleUserInfo);
 
             if ($userId) {
-                return $authIdentities->find($userId); // Return objek pengguna yang baru didaftarkan
+                return $authIdentities->find($userId);
             } else {
                 return null;
             }
