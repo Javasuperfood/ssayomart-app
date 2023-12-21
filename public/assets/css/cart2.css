@@ -23,11 +23,6 @@
   font-size: 9px;
 }
 
-.gambar-kecil {
-  display: flex;
-  filter: brightness(95%);
-}
-
 /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
 
 @media screen  and (max-width: 280px) {
