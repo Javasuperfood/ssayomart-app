@@ -15,6 +15,15 @@ class ContactController extends BaseController
         $name = $this->request->getVar('name');
         $message = $this->request->getVar('message');
         $subject = $this->request->getVar('subject');
+        if ($email == null || $name == null || $message == null || $subject == null) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Mohon lengkapi semua kolom'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->back()->withInput();
+        }
 
         $to = 'ptssayomartaplikasi@gmail.com';
         $cc = ['kiki@ssayomart.com', 'kikioffice0111@gmail.com'];
