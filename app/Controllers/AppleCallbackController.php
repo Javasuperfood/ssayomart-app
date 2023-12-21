@@ -19,7 +19,7 @@ class AppleCallbackController extends BaseController
 
         // Cek apakah pengguna sudah terdaftar
         $userModel = new UsersModel();
-        $existingUser = $userModel->getUserInfo($appleUserInfo['id']);
+        $existingUser = $userModel->getUserInfo($appleUserInfo->id);
 
         if ($existingUser && isset($existingUser['id']) && isset($existingUser['email'])) {
             // Pengguna sudah terdaftar, lakukan login
