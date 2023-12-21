@@ -60,7 +60,7 @@ $routes->post('/status/ordering/update/(:segment)', 'StatusGosendController::upd
 
 $routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
 
-$routes->get('callback-apple', 'AppleCallbackController::index');
+// $routes->get('callback-apple', 'AppleCallbackController::index');
 $routes->post('callback-apple', 'AppleCallbackController::index');
 
 

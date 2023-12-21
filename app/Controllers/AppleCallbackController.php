@@ -39,7 +39,7 @@ class AppleCallbackController extends BaseController
 
             $logger->info('User logged in successfully', ['user_id' => $existingUser['id'], 'email' => $existingUser['email']]);
 
-            return redirect()->to(base_url('callback-apple'));
+            return redirect()->to(base_url());
         } else {
             // Pengguna belum terdaftar, buat pengguna baru
             $newUserData = [
@@ -62,7 +62,7 @@ class AppleCallbackController extends BaseController
 
             echo json_encode(['status' => 'success']);
 
-            return redirect()->to(base_url('callback-apple'));
+            return redirect()->to(base_url());
         }
     }
 }
