@@ -131,30 +131,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <div class="container">
-            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#modalFormEmail">
                 <i class="bi bi-chat-dots fs-6"></i>
             </button>
 
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalFormEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title fw-bold-sm" style="font-size: 14px;">Welcome, Chat me!</h5>
+                            <h5 class="modal-title fw-bold-sm" style="font-size: 14px;">Welcome, Contact me!</h5>
                             <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle" style="position: absolute; top:7px; right:10px; cursor:pointer; z-index:999; color:#fff; font-size:20px; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;"></i></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="<?= base_url('contact/send/email/v1'); ?>" method="post">
+                                <?= csrf_field(); ?>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Name" style="font-size: 12px;">
+                                    <input type="text" class="form-control" name="name" placeholder="Name" value="<?= $user['fullname']; ?>" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email" style="font-size: 12px;">
+                                    <input type="text" class="form-control" name="email" placeholder="Email" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
+                                    <input list="subjectList" type="text" name="subject" class="form-control" placeholder="Subject" style="font-size: 12px;">
+                                    <datalist id="subjectList">
+                                        <option value="[Ask × <?= $user['username']; ?>]"></option>
+                                        <option value="[Help × <?= $user['username']; ?>]"></option>
+                                        <option value="[Report × <?= $user['username']; ?>]"></option>
+                                    </datalist>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="message" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-block text-white border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
+                                    <button onclick="clickSubmitEvent(this)" type="submit" class="btn btn-block text-white border-0 d-flex justify-content-center" style="width: 100%; background-color: #ec2614; font-size: 12px;">
+                                        Submit
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -266,11 +277,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <div class="container">
-            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#modalFormEmail">
                 <i class="bi bi-chat-dots"></i>
             </button>
 
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalFormEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -278,18 +289,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle" style="position: absolute; top:7px; right:10px; cursor:pointer; z-index:999; color:#fff; font-size:20px; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;"></i></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="<?= base_url('contact/send/email/v1'); ?>" method="post">
+                                <?= csrf_field(); ?>
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Name" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email" style="font-size: 12px;">
+                                    <input type="email" class="form-control" placeholder="Email" style="font-size: 12px;">
+                                </div>
+                                <div class="mb-3">
+                                    <input list="subjectList" type="text" class="form-control" placeholder="Subject" style="font-size: 12px;">
+                                    <datalist id="subjectList">
+                                        <option value="[Ask × <?= $user['username']; ?>]"></option>
+                                        <option value="[Help × <?= $user['username']; ?>]"></option>
+                                        <option value="[Report × <?= $user['username']; ?>]"></option>
+                                    </datalist>
                                 </div>
                                 <div class="mb-3">
                                     <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger btn-block border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
+                                    <button type="button" onclick="clickSubmitEvent(this)" class="btn btn-danger btn-block border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -300,7 +320,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php endif; ?>
 <!-- end Desktop -->
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
+</script>
 <!-- Modal setting  -->
 <?= $this->include('user/component/modalSetting'); ?>
 <?php if (session()->getFlashdata('success')) : ?>
