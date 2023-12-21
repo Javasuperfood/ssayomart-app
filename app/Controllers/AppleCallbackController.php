@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\UsersModel;
 use App\Models\AuthIdentitesModel;
-use App\Models\AuthGroupUsersModel;
 
 class AppleCallbackController extends BaseController
 {
@@ -17,43 +16,52 @@ class AppleCallbackController extends BaseController
 
         // Dapatkan informasi pengguna dari notifikasi Apple
         $appleUserInfo = json_decode($payload, true);
-        // dd($appleUserInfo);
 
         // Cek apakah pengguna sudah terdaftar
-        $existingUser = null;
-
-        if (isset($appleUserInfo['id'])) {
-            $userModel = new UsersModel();
-            $existingUser = $userModel->getUserInfo($appleUserInfo['id']);
-        }
+        $userModel = new UsersModel();
+        $existingUser = $userModel->getUserInfo($appleUserInfo['id']);
 
         if ($existingUser && isset($existingUser['id']) && isset($existingUser['email'])) {
             // Pengguna sudah terdaftar, lakukan login
-            session()->set('id', $existingUser['id']);
-            session()->set('email', $existingUser['email']);
-
-            $logger->info('User berhasil login : ', ['id' => $existingUser['id'], 'email' => $existingUser['email']]);
-
-            return redirect()->to(base_url());
+            $this->handleLogin($existingUser);
         } else {
             // Pengguna belum terdaftar, buat pengguna baru
-            $newUserData = [
-                'email' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : ''
-            ];
-
-            $userModel = new UsersModel();
-            $userId = $userModel->save($newUserData);
-
-            $authIdentitiesModel = new AuthIdentitesModel();
-            $authIdentitiesModel->save([
-                'user_id' => $userId,
-                'secret' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '',
-            ]);
-
-            session()->set('user_id', $userId);
-            session()->set('email', isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '');
-
-            return redirect()->to(base_url());
+            $this->handleNewUser($appleUserInfo);
         }
+    }
+
+    private function handleLogin($existingUser)
+    {
+        // Set session untuk pengguna yang sudah terdaftar
+        session()->set('id', $existingUser['id']);
+        session()->set('email', $existingUser['email']);
+
+        $logger = service('logger');
+        $logger->info('User berhasil login : ', ['id' => $existingUser['id'], 'email' => $existingUser['email']]);
+
+        return redirect()->to(base_url());
+    }
+
+    private function handleNewUser($appleUserInfo)
+    {
+        // Pengguna belum terdaftar, buat pengguna baru
+        $newUserData = [
+            'email' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : ''
+        ];
+
+        $userModel = new UsersModel();
+        $userId = $userModel->save($newUserData);
+
+        $authIdentitiesModel = new AuthIdentitesModel();
+        $authIdentitiesModel->save([
+            'user_id' => $userId,
+            'secret' => isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '',
+        ]);
+
+        // Set session untuk pengguna baru
+        session()->set('user_id', $userId);
+        session()->set('email', isset($appleUserInfo['email']) ? $appleUserInfo['email'] : '');
+
+        return redirect()->to(base_url());
     }
 }
