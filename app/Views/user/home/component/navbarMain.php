@@ -11,8 +11,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
                 <nav class="navbar fixed-top navbar-main top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff; height: 60px;">
-                    <div class="container-fluid mt-2">
-                        <div class="col text-center position-relative d-flex justify-content-center align-items-center pt-4">
+                    <div class="container-fluid mt-4">
+                        <div class="col text-center position-relative d-flex justify-content-center align-items-center">
                             <?php if (isset($back)) : ?>
                                 <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title; ?>
                                 <span onclick="location.href='<?= base_url(); ?><?= $back; ?>'" class="position-absolute top-50 start-0 translate-middle-y"><i class="bi bi-chevron-left navbar-brand"></i></span>
