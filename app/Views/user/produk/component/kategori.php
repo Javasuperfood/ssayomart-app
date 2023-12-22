@@ -16,7 +16,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- tampilan Desktop -->
     <div id="desktopContent">
-        <div class="container-fluid d-none d-lg-block">
+        <div class="container-fluid ">
             <div class="mb-2">
                 <div class="row">
                     <div class="col-3 kolom-kiri">
