@@ -19,8 +19,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Footer Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style="height:65px;background-color:#fff">
-            <ul class="navbar-nav nav-justified w-100">
+        <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style= background-color:#fff">
+            <ul class="navbar-nav nav-justified w-100 justify-content-around">
+
                 <li class="nav-item">
                     <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
                 </li>
