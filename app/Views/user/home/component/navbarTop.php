@@ -7,7 +7,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom: 20px;">
+    <div id="mobileContent" style="margin-bottom: 120px;">
         <div class="container">
             <div class="row">
                   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -15,7 +15,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         top: 0;
         width: 100%;
         z-index: 1000;">
-                    <div class="container-fluid mx-1">
+                    <div class="container-fluid mx-1 mt-3">
                         <div class="col-9 col-md-10">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
                                 <div class="input-group mb-3">
