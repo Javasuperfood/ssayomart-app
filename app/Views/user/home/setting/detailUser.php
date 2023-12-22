@@ -34,30 +34,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             </div>
                             <?= csrf_field() ?>
-                            <div class="col-12">
+                            <div class="col-12 mt-3">
+                                <label for="label" class="form-label mb-0 mx-1" style="font-size: 12px;">Username<span class="text-danger" style="font-size: 13px;"> *</span></label>
                                 <div class="input-group has-validation">
-                                    <span class="input-group-text bg-white border-0 shadow-sm-sm bg-light">@</span>
+                                    <span class="input-group-text bg-white border-0 shadow-sm bg-light">@</span>
                                     <input type="text" class="form-control input-teks form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>" style="font-size: 14px;">
                                     <div class="invalid-feedback"><?= validation_show_error('username'); ?></div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 mt-3">
+                                <label for="label" class="form-label mb-0 mx-1" style="font-size: 12px;">Nama Lengkap<span class="text-danger" style="font-size: 13px;"> *</span></label>
                                 <input type="text" class="form-control input-teks form-control-lg <?= (validation_show_error('fullname')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>" style="font-size: 14px;">
                                 <div class="invalid-feedback"><?= validation_show_error('fullname'); ?></div>
                             </div>
-                            <div class=" col-12">
+                            <div class=" col-12 mt-3">
+                                <label for="label" class="form-label mb-0 mx-1" style="font-size: 12px;">No. Telp<span class="text-danger" style="font-size: 13px;"> *</span></label>
                                 <input type="text" class="form-control input-teks form-control-lg <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event)" oninput="validateInput(this);" style="font-size: 14px;">
                                 <div class="invalid-feedback"><?= validation_show_error('telp'); ?></div>
                             </div>
 
-                            <div class="col-12">
-                                <input type="email" class="form-control input-teks form-control-lg border-0 shadow-sm" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" style="font-size: 14px;" disabled>
+                            <div class="col-12 mt-3">
+                                <label for="label" class="form-label mb-0 mx-1" style="font-size: 12px;">Email<span class="text-danger" style="font-size: 13px;"> *</span></label>
+                                <input type="email" class="form-control input-teks form-control-lg border-0 shadow-sm bg-light" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" style="font-size: 14px;" disabled>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 mt-3">
+                                <label for="label" class="form-label mb-0 mx-1" style="font-size: 12px;">Foto Pofil<span class="text-danger" style="font-size: 13px;"> *</span></label>
                                 <input type="file" style="border: none; font-size: 14px;" class="form-control input-teks form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
                                 <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-12 mt-3">
                                 <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
                             </div>
                             <div class="py-3 px-3">

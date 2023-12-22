@@ -10,7 +10,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent" style="margin-bottom: 100px;">
         <div class="container">
             <div class="row">
-                <nav class="navbar px-md-1 mx-md-1 top-0 fixed-top rounded-bottom-4 shadow-sm" style="background-color : #ffff;position: fixed;
+                <nav class="navbar px-md-1 mx-md-1 top-0 fixed-top rounded-bottom-4 shadow-sm" style="background-color : #ffff; position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;">
@@ -47,6 +47,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
     <style>
+        /* style navbar */
+        nav.navbar {
+            border-radius: 0 !important;
+            border-bottom-left-radius: 15px !important;
+            border-bottom-right-radius: 15px !important;
+            border-top: 0 !important;
+        }
+
         /* CSS untuk mengatur panel dropdown */
         .dropdown-menu {
             padding: 0;
@@ -163,8 +171,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <a class="nav-link" href="<?= base_url() ?>cart">
                                     <i class="bi bi-cart-fill fs-4 text-danger position-relative">
                                         <?php if (session()->get('countCart') > 0) : ?>
-                                            <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle text-danger"></i>
-                                            <span class="position-absolute top-0 start-100 translate-middle text-white" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                            <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger"></i>
+                                            <span class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                                         <?php endif ?>
                                     </i>
                                 </a>
