@@ -168,11 +168,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- end mobile -->
     <!-- dekstop -->
     <div id="desktopContent" style="margin-top:100px;">
-        <div class="container d-none d-md-block">
+        <div class="container">
             <div class="card px-3 py-3 border-0 shadow">
                 <figure class="text-center">
                     <blockquote class="blockquote">
-                        <p><?= lang('Text.title_alamat') ?></p>
+                        <p class="fw-bold"><?= lang('Text.title_alamat') ?></p>
                     </blockquote>
                     <figcaption class="blockquote-footer">
                         <?= lang('Text.subtitle_alamat') ?>

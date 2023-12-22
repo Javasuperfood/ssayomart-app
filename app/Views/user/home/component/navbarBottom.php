@@ -92,7 +92,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="row gy-3">
                     <div class="col-lg-3 col-md-6 d-flex">
-                        <i class="bi bi-geo-alt-fill icon"></i>
+                        <i class="bi bi-geo-alt-fill icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.alamat") ?></h4>
                             <p>
@@ -105,7 +105,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
-                        <i class="bi bi-telephone-fill icon"></i>
+                        <i class="bi bi-telephone-fill icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.kontak") ?></h4>
                             <p>
@@ -116,7 +116,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
-                        <i class="bi bi-headset icon"></i>
+                        <i class="bi bi-headset icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.layanan") ?></h4>
                             <p>
@@ -127,7 +127,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
-                        <i class="bi bi-bookmark-fill icon"></i>
+                        <i class="bi bi-bookmark-fill icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.follow") ?></h4>
                             <div class="social-links d-flex">
@@ -155,10 +155,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 color: rgba(255, 255, 255, 0.7);
             }
 
-            .footer .icon {
+            .footer .icon-footer {
                 margin-right: 15px;
                 font-size: 24px;
                 line-height: 0;
+                color: #fff;
             }
 
             .footer h4 {
