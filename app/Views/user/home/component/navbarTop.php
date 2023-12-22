@@ -10,7 +10,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent" style="margin-bottom: 120px;">
         <div class="container">
             <div class="row">
-                <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+                
                 <nav class="navbar px-md-1 mx-md-1 top-0 fixed-top rounded-bottom-4 shadow-sm" style="background-color : #ffff; position: fixed;
         top: 0;
         width: 100%;

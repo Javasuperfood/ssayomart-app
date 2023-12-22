@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title><?= $title; ?></title>
 <link rel="shortcut icon" type="image/png" href="<?= base_url() ?>/assets/img/logo.png" />
 <!-- Bootstrap CSS -->
