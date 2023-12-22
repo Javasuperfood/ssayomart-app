@@ -6,11 +6,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 ?>
 
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom:25px;">
+    <div id="mobileContent" style="margin-bottom:80px;">
         <div class="container" style="background-color:#fff;">
             <div class="row">
-                <nav class="navbar navbar-main top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff; height: 60px;">
-                    <div class="container-fluid">
+                <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+                <nav class="navbar fixed-top navbar-main top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff; height: 60px;">
+                    <div class="container-fluid mt-2">
                         <div class="col text-center position-relative d-flex justify-content-center align-items-center">
                             <?php if (isset($back)) : ?>
                                 <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title; ?>
