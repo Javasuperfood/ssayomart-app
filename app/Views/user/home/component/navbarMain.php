@@ -7,7 +7,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php if ($isMobile) : ?>
     <div id="mobileContent" style="margin-bottom:75px;">
-        <nav class="navbar pt-3 fixed-top top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff; position: fixed;
+        <nav class="navbar navbar-main bg-danger fixed-top top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff; position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;">
@@ -158,6 +158,14 @@ if ($isMobile) {
 <!-- navbar dekstop -->
 
 <style>
+
+nav.navbar-main {
+  border-radius: 0 !important;
+    border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+  border-top: 0 !important;
+}
+
     /* CSS untuk tampilan seluler standar */
     @media (max-width: 280px) {
         .col.text-center {

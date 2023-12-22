@@ -5,10 +5,22 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
+
+<style>
+                nav.navbar-bottom {
+  border-radius: 0 !important;
+    border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
+  border-bottom: 0 !important;
+
+
+}
+
+</style>
 <!-- Footer Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <nav class="navbar navbar-expand fixed-bottom shadow-sm rounded-top-4" style="height: 55px; background-color:#fff">
+        <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom bg-danger rounded-top-4" style="height: 55px; background-color:#fff">
             <ul class="navbar-nav nav-justified w-100 justify-content-around">
                 <li class="nav-item">
                     <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
@@ -148,6 +160,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </footer>
         <style>
+/* navabr bottom */
+
             .footer {
                 font-size: 14px;
                 background-color: #1f1f24;
