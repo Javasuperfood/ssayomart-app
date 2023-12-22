@@ -355,22 +355,24 @@ class Setting extends BaseController
                     'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Penerima tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
+
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/]+$/]',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, atau garis miring.'
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
                 ]
             ],
             'alamat_3' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/]+$/]',
+                'rules' => 'required|min_length[3]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
-                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, atau garis miring.'
+                    'min_length' => 'Alamat harus memiliki minimal 3 karakter.',
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
                 ]
             ],
+
             'id_province' => [
                 'rules' => 'required',
                 'errors' => [
@@ -509,12 +511,21 @@ class Setting extends BaseController
                     'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Penerima tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
+
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/]+$/]',
+                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, atau garis miring.'
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
+                ]
+            ],
+            'alamat_3' => [
+                'rules' => 'required|min_length[3]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
+                'errors' => [
+                    'required' => 'Alamat harus diisi.',
+                    'min_length' => 'Alamat harus memiliki minimal 3 karakter.',
+                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
                 ]
             ],
 
