@@ -7,13 +7,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom: 100px;">
+    <div id="mobileContent" style="margin-bottom: 100px;background-color : #ffff;">
         <div class="container">
             <div class="row">
-                <nav class="navbar bg-danger px-md-1 mx-md-1 top-0 fixed-top rounded-bottom-4 shadow-sm" style="background-color : #ffff; position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;">
+                <nav class="navbar fixed-top px-md-1 mx-md-1 top-0 rounded-bottom-4 shadow-sm" style="background-color : #ffff;height: 80px;">
                     <div class="container-fluid mx-1">
                         <div class="col-9 col-md-10">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
