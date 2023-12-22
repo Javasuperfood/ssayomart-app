@@ -6,7 +6,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 ?>
 
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom:80px;">
+    <div id="mobileContent" style="margin-bottom:100px;">
         <div class="container" style="background-color:#fff;">
             <div class="row">
                 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
