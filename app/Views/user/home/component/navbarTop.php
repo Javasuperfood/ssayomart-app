@@ -7,7 +7,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom: 100px;">
+    <div id="mobileContent" style="margin-bottom: 20px;">
         <div class="container">
             <div class="row">
                   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

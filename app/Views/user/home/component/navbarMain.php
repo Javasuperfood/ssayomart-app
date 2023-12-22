@@ -6,25 +6,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 ?>
 
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom:75px;">
-        <nav class="navbar navbar-main bg-danger fixed-top top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff; position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;">
-            <div class="container-fluid">
-                <div class="col text-center position-relative d-flex justify-content-center align-items-center">
-                    <?php if (isset($back)) : ?>
-                        <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title; ?>
-                        <span onclick="location.href='<?= base_url(); ?><?= $back; ?>'" class="position-absolute top-50 start-0 translate-middle-y"><i class="bi bi-chevron-left navbar-brand"></i></span>
-                        <span class="navbar-brand fw-bold" style="font-size: 12px; margin-left:30px;"><?= $displayTitle; ?></span>
-                    <?php elseif (!isset($back)) : ?>
-                        <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title; ?>
-                        <span onclick="history.back()" class="position-absolute top-50 start-0 translate-middle-y"><i class="bi bi-chevron-left navbar-brand"></i></span>
-                        <span class="navbar-brand fw-bold" style="font-size: 12px; margin-left:30px;"><?= $displayTitle; ?></span>
-                    <?php endif ?>
-                </div>
+    <div id="mobileContent" style="margin-bottom:25px;">
+        <div class="container" style="background-color:#fff;">
+            <div class="row">
+                <nav class="navbar navbar-main top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff; height: 60px;">
+                    <div class="container-fluid">
+                        <div class="col text-center position-relative d-flex justify-content-center align-items-center">
+                            <?php if (isset($back)) : ?>
+                                <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title; ?>
+                                <span onclick="location.href='<?= base_url(); ?><?= $back; ?>'" class="position-absolute top-50 start-0 translate-middle-y"><i class="bi bi-chevron-left navbar-brand"></i></span>
+                                <span class="navbar-brand fw-bold" style="font-size: 12px; margin-left:30px;"><?= $displayTitle; ?></span>
+                            <?php elseif (!isset($back)) : ?>
+                                <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title; ?>
+                                <span onclick="history.back()" class="position-absolute top-50 start-0 translate-middle-y"><i class="bi bi-chevron-left navbar-brand"></i></span>
+                                <span class="navbar-brand fw-bold" style="font-size: 12px; margin-left:30px;"><?= $displayTitle; ?></span>
+                            <?php endif ?>
+                        </div>
+                    </div>
+                </nav>
             </div>
-        </nav>
+        </div>
     </div>
 <?php else : ?>
     <!-- navbar Website -->
@@ -158,13 +159,12 @@ if ($isMobile) {
 <!-- navbar dekstop -->
 
 <style>
-
-nav.navbar-main {
-  border-radius: 0 !important;
-    border-bottom-left-radius: 15px !important;
-  border-bottom-right-radius: 15px !important;
-  border-top: 0 !important;
-}
+    nav.navbar-main {
+        border-radius: 0 !important;
+        border-bottom-left-radius: 15px !important;
+        border-bottom-right-radius: 15px !important;
+        border-top: 0 !important;
+    }
 
     /* CSS untuk tampilan seluler standar */
     @media (max-width: 280px) {
