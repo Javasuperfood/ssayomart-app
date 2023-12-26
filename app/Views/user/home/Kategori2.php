@@ -125,6 +125,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
 
+                    <hr class="mt-2" style="border-color: #9c2525; border-width: 3px;">
+
                     <div class="row mt-2 card-grup">
                         <?php
                         // Kategori2.php
@@ -148,7 +150,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </span>
                     </div>
                 </div>
-
+                <hr class="mt-2" style="border-color: #2e6e01; border-width: 3px;">
                 <div class="row row-cols-3 me-0 mt-2 agak-kekanan">
                     <?php if ($latest) : ?>
                         <?php foreach ($latest as $p) : ?>
