@@ -689,9 +689,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <!-- prroduk uunggulan  -->
             <section id="unggul">
                 <div class="container">
-                    <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">
+                    <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="color: #9c2525; background-color: #facaaf;">
                         <div class="card-warning">
-                            <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.spesial') ?></span>
+                            <span class="card-title fw-bold fs-2"><?= lang('Text.spesial') ?></span>
                         </div>
                     </div>
                     <div class="row">
@@ -722,9 +722,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="container py-3">
                     <div class="row mt-3">
                         <div class="col">
-                            <div class="card border-0 text-center font-family-poppins" style="background-color: #ccebbc;">
+                            <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
                                 <div class="card-danger">
-                                    <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.nama_produk') ?></h2>
+                                    <span class="card-title fw-bold fs-2"><?= lang('Text.nama_produk') ?></h2>
                                 </div>
                             </div>
                             <div class="mt-3 d-flex justify-content-center align-items-center swiper mySwing">
@@ -776,9 +776,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <!-- end card rekomendasi-->
                     <div class="container py-1">
-                        <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #ccebbc;">
+                        <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="color: #9c2525; background-color: #facaaf;">
                             <div class="card-success">
-                                <span class="card-title text-dark fw-bold fs-2 text-capitalize"><?= lang('Text.kategori') ?></span>
+                                <span class="card-title fw-bold fs-2 text-capitalize"><?= lang('Text.kategori') ?></span>
                             </div>
                         </div>
                         <div class="row text-center row-cols-3 py-3">
