@@ -1,7 +1,7 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
-            <h3 class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></h3>
+            <h3 class="d-block my-2 text-center fw-bold" style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></h3>
             <hr class="border-darker mt-0 mb-3">
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->

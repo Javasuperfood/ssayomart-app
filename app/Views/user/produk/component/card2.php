@@ -6,7 +6,7 @@
     <?php if (isset($featuredProducts)) : ?>
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
             <div class="container bg-white" id="product">
-                <p class="d-block my-2 text-center fw-bold" style="color:#7e0204; font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
+                <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1" style="color:#7e0204; background-color: #facaaf; font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
                 <hr class="border-darker mt-0 mb-3" style="border-color: #fb0408;border-width:3px;">
                 <div class="row row-cols-3 me-0" id="product-unggulan-container">
 
@@ -66,7 +66,7 @@
         if (!defined('IS_HOMEPAGE') || !IS_HOMEPAGE) {
             // Kodingan di card2.php hanya akan dijalankan jika bukan homepage
         ?>
-            <p class="d-block my-2 text-center fw-bold" style="color:#7e0204; font-size: medium; font-family: sans-serif;"><?= lang('Text.nama_produk') ?></p>
+            <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1" style="color:#7e0204; background-color: #facaaf; font-size: medium; font-family: sans-serif;"><?= lang('Text.nama_produk') ?></p>
             <hr class="border-darker mt-0 mb-3" style="border-color: #fb0408;border-width:3px;">
         <?php
         }
