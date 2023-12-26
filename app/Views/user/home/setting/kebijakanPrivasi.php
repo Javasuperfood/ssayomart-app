@@ -142,6 +142,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+            <!-- untuk otomatis ke mode baca -->
+            <script>
+                $(document).ready(function() {
+                    $('#myTabs a').on('click', function(e) {
+                        e.preventDefault();
+                        $(this).tab('show');
+                    });
+
+                    // Mengaktifkan efek slide
+                    $('#myTabs a').on('shown.bs.tab', function(e) {
+                        var targetTab = $(e.target).attr('href');
+                        $('html, body').animate({
+                            scrollTop: $(targetTab).offset().top
+                        }, 3100); // Mengatur kecepatan animasi slide (dalam milidetik)
+                    });
+                });
+            </script>
+            <!-- end -->
+
             <style>
                 /* Gaya untuk tab aktif (hanya garis bawah merah) */
                 .nav-link.active {
