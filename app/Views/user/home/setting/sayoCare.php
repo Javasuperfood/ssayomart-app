@@ -28,7 +28,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container-fluid p-0 position-relative">
-            <div class="bg-image">
+            <div class="bg-image rounded-bottom-4">
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="mask"></div>
             </div>
@@ -37,8 +37,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="img-overlay"></div>
             </div> -->
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-6 " style="font-family:cursive;">
-                <h3 class="tagline-1">ABOUT US</h3>
-                <span class="fw-bold tagline-2">PT Ssayomart Indonesia </span>
+
+                <h2 class="fw-bold tagline-2">PT Ssayomart Indonesia </h2>
             </div>
         </div>
 
@@ -112,7 +112,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- akhir galeri photos -->
         <!-- Galery Photos View Ipad -->
         <div class="container mt-3 d-none d-md-block">
-            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
+            <h2 class="fw-bold text-dark mt-4">Galeri Produk Recomendasi <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
                     <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
@@ -127,7 +127,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
                 </div>
             </div>
-            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
+            <h2 class="fw-bold text-dark mt-4">Galeri Produk Unggulan <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
                 <div class="col mb-4 zoom-in"> <!-- Tambahkan kelas zoom-in di sini -->
                     <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
@@ -252,7 +252,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="img-overlay"></div>
             </div> -->
-            <div class="bg-image">
+            <div class="bg-image rounded-bottom-5">
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="mask"></div>
             </div>
