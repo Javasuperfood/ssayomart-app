@@ -1,7 +1,7 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
-            <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
+            <h3 class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></h3>
             <hr class="border-darker mt-0 mb-3">
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
@@ -66,8 +66,8 @@
 <?php endif; ?>
 
 <div class="container bg-white" id="product">
-    <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
-    <hr class="border-darker mt-0 mb-3">
+    <h3 class="p-1 mt-1 rounded-top-3 d-block text-center fw-bold " style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></h3>
+    <hr class="border-darker mt-0 ">
     <div class="row row-cols-3" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>

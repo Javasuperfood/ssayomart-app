@@ -22,7 +22,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-3 kolom-kiri">
                         <div class="card-side card-samping">
                             <div class="card-body body-group">
-                                <h3 style="margin-top: 5px; margin-bottom: 5px;">Kategori</h3>
+                                <h3 class="p-1 rounded-top-3 fw-bold text-center" style="color: #9c2525; background-color: #facaaf; margin-top: 5px; margin-bottom: 5px;">Kategori</h3>
                                 <hr style="border-color: red; border-width: 3px; margin-top: 0; margin-bottom: 0;">
                                 <ul class="list-group-flush list-kategori">
                                     <?php foreach ($kategori as $k) : ?>
@@ -48,7 +48,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-                    <div class="col-9 kolom-kanan-produk">
+                    <div class="col-9 kolom-kanan-produk ">
                         <?= $this->include('user/produk/component/card') ?>
                     </div>
                 </div>
