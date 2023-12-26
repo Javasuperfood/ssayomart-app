@@ -42,7 +42,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center position-relative">
                                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-2 py-1 img-small gambar-kecil" alt="Product" style="width:120px; height:120px; object-fit: contain; object-position: 20% 10%; ">
                                             <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
-                                                <div class="sold-out-overlay d-flex justify-content-center align-items-center">
+                                                <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center">
                                                     <span class="sold-out-text">Kosong</span>
                                                 </div>
                                             <?php endif; ?>
@@ -138,6 +138,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <div class="col-3">
                                                                 <div>
                                                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" alt="Shopping item" class="img-fluid rounded-3" style="width: 100px;">
+                                                                    <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
+                                                                        <div class="sold-out-overlay item-kosong d-flex justify-content-center align-items-center">
+                                                                            <span class="sold-out-text">Kosong</span>
+                                                                        </div>
+                                                                    <?php endif; ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-9">
