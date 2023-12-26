@@ -5,17 +5,28 @@
   padding: 1rem;
 } */
 
-
-  .sold-out-overlay {
+/* untuk desktop */
+  .item-kosong {
     position: absolute;
     top: 44px;
-    left: 62px;
-    width: 42%;
+    left: 69px;
+    width: 6%;
     height: 32%;
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
-    display: none;
   }
+/* end deksstop */
+
+.item-item {
+  position: absolute;
+  top: 44px;
+  left: 62px;
+  width: 42%;
+  height: 32%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  border-radius: 50%;
+  display: none;
+}
 
 .sold-out-text {
   color: white;
@@ -27,7 +38,7 @@
 
 @media screen  and (max-width: 280px) {
 /* stok habis overlay */
-.sold-out-overlay {
+.item-item {
   position: absolute;
   top: 49px;
   left: 47px;
@@ -148,9 +159,6 @@
   margin-top: 2px; 
 }
 
-
-
-
   .button-sampah {
     font-size: 18px;
     left: 37%; 
@@ -162,7 +170,7 @@
 /* Media query untuk layar galaxy-fold dengan lebar maksimum 653px dan tinggi maksimum 280px */
 @media screen and (max-width: 653px) and (max-height: 280px) {
  /* stok habis overlay */
-.sold-out-overlay {
+.item-item {
   position: absolute;
   top: 44px;
   left: 77px;
@@ -179,7 +187,7 @@
 
 @media screen and (min-width: 512px) and (max-width: 512px) {
 
-  .sold-out-overlay {
+  .item-item {
     position: absolute;
     top: 48px;
     left: 80px;
@@ -266,7 +274,7 @@
     max-width: 40px;
   }
 
-  .sold-out-overlay {
+  .item-item {
     position: absolute;
     top: 44px;
     left: 119px;
@@ -275,6 +283,12 @@
     background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
     border-radius: 50%;
     display: none;
+  }
+
+  .button-sampah {
+    font-size: 18px;
+    left: 35%; 
+    margin-top: -34px; 
   }
 }
 
@@ -374,7 +388,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 768px) {
 
-  .sold-out-overlay {
+  .item-item {
     position: absolute;
     top: 44px;
     left: 119px;
