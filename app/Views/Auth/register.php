@@ -66,14 +66,9 @@ if (session('errors')) {
                         <i class="bi bi-eye-slash position-absolute top-50 start-100 translate-middle pe-4" id="togglePassword2"></i>
                     </div>
                     <div class="d-flex justifiy-content-center align-items-center gap-2">
-                          <input type="checkbox" id="item1">
-                          <p style="font-size: 10px; margin-top: 26px;" >Saya menyatakan telah menyetujui Kebijakan Privasi yang ada.</p>
-
-
+                        <input type="checkbox" id="knp" checked>
+                        <p style="font-size: 10px; margin-top: 26px;">Saya menyatakan telah menyetujui Kebijakan Privasi yang ada.</p>
                     </div>
-
- 
-
                     <button type="submit" value="Daftar" class="sign-btn" id="btn-register" onclick="clickSubmitEvent(this)"><?= lang('Text.btn_daftar') ?></button>
 
                     <p class="text mb-5 text-center">
@@ -88,8 +83,6 @@ if (session('errors')) {
         <div class="carousel">
             <div class="images-wrapper">
                 <img src="<?= base_url(); ?>assets/img/auth/banner.jpg" class="image img-1 show" alt="" />
-                <img src="<?= base_url(); ?>assets/img/auth/image2.png" class="image img-2" alt="" />
-                <img src="<?= base_url(); ?>assets/img/auth/image3.png" class="image img-3" alt="" />
             </div>
 
             <div class="text-slider">
@@ -110,7 +103,7 @@ if (session('errors')) {
     </div>
 </div>
 <div class="modal fade" id="modalGoogleRegister" tabindex="-1" aria-labelledby="modalGoogleRegisterLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered  modal-fullscreen modal-xl modal-dialog-scrollable">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down modal-xl modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="modalGoogleRegisterLabel">Kebijakan dan kondisi</h1>
@@ -208,15 +201,10 @@ if (session('errors')) {
                 </div>
             </div>
             <div class="modal-footer">
-                  <div class="d-flex justifiy-content-center align-items-center gap-2">
-                          <input type="checkbox" id="item1" style="margin-top: 20px">
-                          <p style="font-size: 10px; margin-top: 45px;" class="w-75">Saya menyatakan telah menyetujui Kebijakan Privasi yang ada.</p>
-                    </div>
-                    <div class="d-flex mx-auto gap-2"> <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <a onclick="buttonGoogle()" href="<?= base_url('oauth/glogin'); ?>" class="btn btn-danger">
                     <i class="bi bi-google"></i> Setuju dan Lanjutkan
-                </a></div>
-               
+                </a>
             </div>
         </div>
     </div>
