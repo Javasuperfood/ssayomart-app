@@ -5,7 +5,7 @@
 <div class="col px-0">
     <p>Berikut adalah data penjualan Ssayomart.</p>
     <?php if ($getCheckoutWithProduct != null && !empty($getCheckoutWithProduct)) : ?>
-        <a href="<?= site_url('dashboard/report/printpdf/' . $getCheckoutWithProduct[0]['id_checkout']) ?>" type="button" class="btn btn-danger mb-4">Download PDF</a>
+        <a href="<?= site_url("dashboard/report/print?startDate={$startDate}&endDate={$endDate}") ?>" type="button" class="btn btn-danger mb-4">Download PDF</a>
         <input type="hidden" name="id_checkout" id="id_checkout">
     <?php endif ?>
 </div>
@@ -20,13 +20,13 @@
     <div class="card-body mt-2">
         <div class="row">
             <form id="dateFilterForm" action="<?= base_url('dashboard/report') ?>" method="get">
-                <div class="col-md-3 mb-3">
-                    <input type="hidden" name="startDate" id="start_date" value="<?= $startDate ?>" />
-                    <input type="hidden" name="endDate" id="end_date" value="<?= $endDate ?>" />
-                    <!-- <?php echo $startDate ?>
-                    <?php echo $endDate ?> -->
-                    <i class="fa fa-calendar"></i>&nbsp;
-                    <input type="text" name="daterange" value="<?= $startDate ? date('m/d/Y', strtotime($startDate)) . ' - ' . date('m/d/Y', strtotime($endDate)) : '' ?>" placeholder="Select a date range" />
+                <div class="row">
+                    <div class="col d-flex justify-content-start align-items-center mb-4">
+                        <input type="hidden" name="startDate" id="start_date" value="<?= $startDate ?>" />
+                        <input type="hidden" name="endDate" id="end_date" value="<?= $endDate ?>" />
+                        <i class="bi bi-calendar-fill me-3"></i>
+                        <input type="text" class="form-control col-sm-2" name="daterange" value="<?= $startDate ? date('m/d/Y', strtotime($startDate)) . ' - ' . date('m/d/Y', strtotime($endDate)) : '' ?>" placeholder="Select a date range" />
+                    </div>
                 </div>
             </form>
             <div class="col col-sm-12">
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 <?php else : ?>
-                    <div class="alert alert-danger text-center mt-4" role="alert">
+                    <div class="alert alert-danger text-center mt-2" role="alert">
                         Data penjualan belum tersedia.
                     </div>
                 <?php endif; ?>
@@ -141,11 +141,14 @@
             }
         }
     });
+</script>
 
+<script type="text/javascript">
     $(function() {
         $('input[name="daterange"]').daterangepicker({
             opens: 'center',
-            autoUpdateInput: false
+            autoUpdateInput: false,
+            // autoApply: true
         }, function(start, end, label) {
             // When the user selects a date range, update the hidden input values
             $('#start_date').val(start.format('YYYY-MM-DD'));
@@ -156,5 +159,4 @@
         });
     });
 </script>
-
 <?= $this->endSection(); ?>

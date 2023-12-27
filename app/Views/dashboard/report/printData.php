@@ -111,27 +111,27 @@
 <!-- End of Content -->
 <table class="table table-border-bottom-0 table-striped" style="border-collapse: collapse; width: 100.015%; height: 100.18px;" border="1">
 <tbody>
-<tr style="height: 32.3264px;">
-<td style="height: 51.9097px; text-align: center; width: 2.51115%;" rowspan="2">No</td>
-<td style="height: 51.9097px; text-align: center; width: 7.82043%;" rowspan="2">Toko</td>
-<td style="height: 51.9097px; text-align: center; width: 14.4929%;" rowspan="2">INV</td>
-<td style="height: 32.3264px; text-align: center; width: 36.304%;" colspan="3">Produk</td>
-<td style="text-align: center; width: 20.4479%; height: 51.9097px;" rowspan="2">Nama</td>
-<td style="height: 51.9097px; text-align: center; width: 6.02676%;" rowspan="2">Total 1&nbsp;</td>
-<td style="height: 51.9097px; text-align: center; width: 6.0985%;" rowspan="2">Total 2</td>
-<td style="height: 51.9097px; text-align: center; width: 6.31374%;" rowspan="2">Tanggal</td>
+<tr style="height: 34.3229px;">
+<td style="height: 51.9097px; text-align: center; width: 2.54568%;" rowspan="2">No</td>
+<td style="height: 51.9097px; text-align: center; width: 7.78251%;" rowspan="2">Toko</td>
+<td style="height: 51.9097px; text-align: center; width: 9.52811%;" rowspan="2">INV</td>
+<td style="height: 32.3264px; text-align: center; width: 40.7309%;" colspan="3">Produk</td>
+<td style="text-align: center; width: 20.4479%; height: 44.3229px;" rowspan="2">Nama</td>
+<td style="height: 51.9097px; text-align: center; width: 6.76417%;" rowspan="2">Total 1&nbsp;</td>
+<td style="height: 51.9097px; text-align: center; width: 6.76429%;" rowspan="2">Total 2</td>
+<td style="height: 51.9097px; text-align: center; width: 8.21891%;" rowspan="2">Tanggal</td>
 </tr>
-<tr style="height: 19.5833px;">
-<td style="width: 25.3985%; text-align: center; height: 19.5833px;">Nama Produk</td>
-<td style="width: 7.1749%; text-align: center; height: 19.5833px;">SKU</td>
-<td style="width: 3.73066%; text-align: center; height: 19.5833px;">Qty</td>
+<tr style="height: 10px;">
+<td style="width: 29.8935%; text-align: center; height: 19.5833px;">Nama Produk</td>
+<td style="width: 7.1279%; text-align: center; height: 19.5833px;">SKU</td>
+<td style="width: 3.70942%; text-align: center; height: 19.5833px;">Qty</td>
 </tr>
 <?php foreach ($getCheckoutWithProduct as $p) : ?>
-<tr style="height: 48.86.7361px;">
-<td style="width: 2.51115%; height: 48.2708px;"><?= $iterasi++; ?></td>
-<td style="width: 7.82043%; height: 48.2708px;"><?= $p['lable']; ?></td>
-<td style="width: 14.4929%; height: 48.2708px;"><?= $p['invoice']; ?></td>
-<td style="width: 25.3985%; height: 48.2708px;">
+<tr style="height: 106.319px;">
+<td style="width: 2.54568%; height: 48.2708px;"><?= $iterasi++; ?></td>
+<td style="width: 7.78251%; height: 48.2708px;"><?= $p['lable']; ?></td>
+<td style="width: 9.52811%; height: 48.2708px;"><?= $p['invoice']; ?></td>
+<td style="width: 29.8935%; height: 48.2708px;">
 <p style="text-align: center;">
     <?php
     $namaProduk = '';

@@ -41,8 +41,8 @@ class ReportController extends BaseController
 
         $perPage = 10;
 
-        $startDate = $this->request->getVar('start_date');
-        $endDate = $this->request->getVar('end_date');
+        $startDate = $this->request->getGet('startDate');
+        $endDate = $this->request->getGet('endDate');
 
         $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage, $startDate, $endDate);
         foreach ($getCheckoutWithProduct as $key => $c) {
@@ -54,7 +54,7 @@ class ReportController extends BaseController
             'getCheckoutWithProduct' => $getCheckoutWithProduct,
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
-            'startDate' => $startDate, // Include the start date in the data array
+            'startDate' => $startDate,
             'endDate' => $endDate,
         ];
         // dd($data);
