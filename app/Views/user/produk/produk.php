@@ -437,7 +437,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row">
                         <div class="col">
 
-                            <p class="text-secondary  text-lg-start text-center fs-4">
+                            <p class="text-danger fw-bold text-lg-start text-center fs-2">
 
 
                                 <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
@@ -455,19 +455,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </a>
                         </div> -->
                     </div>
-                 <div class="row-5 mt-4">
-    <div class="col-12 col-md-4 d-md-flex justify-content-md-center">
-        <div class="input-group" style="flex-wrap: nowrap;">
-            <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
-                <i class="bi bi-dash"></i>
-            </button>
-            <input type="number" id="counterProduct" class="form-control form-control-sm text-center bg-white border-0" disabled value="1">
-            <button class="btn btn-outline-danger mr-4 rounded-circle" type="button" onClick="increaseCount(event, this)">
-                <i class="bi bi-plus"></i>
-            </button>
-        </div>
-    </div>
-</div>
+                    <div class="row-5 mt-4">
+                        <div class="col-12 col-md-4 d-md-flex justify-content-md-center">
+                            <div class="input-group" style="flex-wrap: nowrap;">
+                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <input type="number" id="counterProduct" class="form-control form-control-sm text-center bg-white border-0" disabled value="1">
+                                <button class="btn btn-outline-danger mr-4 rounded-circle" type="button" onClick="increaseCount(event, this)">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="d-sm-flex justify-content-sm-center d-lg-flex justify-content-lg-start">
                         <?php if ($varianItem > 1) : ?>
@@ -488,7 +488,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="row row-cols-1 my-4">
                         <div class="col-md-12">
-                            <h4 class="text-merah"> <?= lang('Text.deskripsi_produk') ?> </h4>
+                            <h4 class="text-merah fw-bold"> <?= lang('Text.deskripsi_produk') ?> </h4>
                             <p class="text-potong"><?= $produk['deskripsi']; ?></p>
                             <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                         </div>
