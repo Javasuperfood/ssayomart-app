@@ -36,7 +36,7 @@
 
                                         <div class="button-capsule" style="display: none;">
                                             <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
-                                            <input type="number" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
+                                            <input type="text" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
                                             <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                                         </div>
                                     </div>
