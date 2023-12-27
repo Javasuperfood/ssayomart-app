@@ -322,7 +322,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         @media (max-width: 280px) {
 
             /* Styles for screens with a width of 280px or less */
-           
+
 
             i.bi-exclamation-diamond-fill {
                 font-size: 25px !important;
@@ -396,19 +396,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Tampilan Desktop -->
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container py-5 d-none d-lg-block">
-            <div class="row">
-                <div class="col">
-                    <nav aria-label="breadcrumb" class="rounded-3 p-3 mb-4">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <h2><i class="bi bi-clock-history"></i>
-                                    <?= lang('Text.title_history') ?>
-                                </h2>
-                            </li>
-                        </ol>
-                    </nav>
+            <div class="row ">
+                <div class="col mb-5">
+                    <h2 class="fw-bold text-center"><i class="bi bi-clock-history"></i>
+                        <?= lang('Text.title_history') ?>
+                    </h2>
+                    <hr class="mb-3 border-danger" style="border-width: 3px;">
                 </div>
             </div>
+
 
             <div class="col">
                 <form action="<?= base_url('history'); ?>" method="get">
