@@ -2,7 +2,7 @@
     <div class="container bg-white" id="product">
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
             <h3 class="p-1 mt-1 rounded-top-3 d-block text-center fw-bold" style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></h3>
-            <hr class="mt-0 mb-3" style="border-color: #fb0408;border-width:3px;">
+            <hr class="mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
