@@ -63,10 +63,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
                                     <i class="bi bi-cart-fill fs-4 text-danger position-relative">
-                                        <?php if (session()->get('countCart') > 0) : ?>
+
+                                        <div id="cartItem_0">
                                             <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle border-danger"></i>
-                                            <span class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
-                                        <?php endif ?>
+                                            <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                        </div>
+
                                     </i>
                                 </a>
                             </li>
