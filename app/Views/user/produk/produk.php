@@ -433,10 +433,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 </div>
                 <div class="col-md-6">
-                    <p class="fw-bold fs-3"><?= $produk['nama']; ?></p>
+                    <p class="fw-bold fs-3 text-lg-start text-center"><?= $produk['nama']; ?></p>
                     <div class="row">
                         <div class="col">
-                            <p class="fw-bold text-danger fs-2">
+
+                            <p class="text-secondary  text-lg-start text-center fs-4">
+
+
                                 <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
                                     Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
@@ -452,20 +455,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </a>
                         </div> -->
                     </div>
-                    <div class="row-5 mt-4">
-                        <div class="col-4">
-                            <div class="input-group">
-                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
-                                    <i class="bi bi-dash"></i>
-                                </button>
-                                <input type="number" id="counterProduct" class="form-control form-control-sm text-center bg-white border-0" disabled value="1">
-                                <button class="btn btn-outline-danger mr-4 rounded-circle" type="button" onClick="increaseCount(event, this)">
-                                    <i class="bi bi-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
+                 <div class="row-5 mt-4">
+    <div class="col-12 col-md-4 d-md-flex justify-content-md-center">
+        <div class="input-group" style="flex-wrap: nowrap;">
+            <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
+                <i class="bi bi-dash"></i>
+            </button>
+            <input type="number" id="counterProduct" class="form-control form-control-sm text-center bg-white border-0" disabled value="1">
+            <button class="btn btn-outline-danger mr-4 rounded-circle" type="button" onClick="increaseCount(event, this)">
+                <i class="bi bi-plus"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+                    <div class="d-sm-flex justify-content-sm-center d-lg-flex justify-content-lg-start">
                         <?php if ($varianItem > 1) : ?>
                             <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
                             <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
@@ -572,14 +576,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 cursor: pointer;
             }
 
-            .input-group>.form-control,
+            /* .input-group>.form-control,
             .input-group>.form-floating,
             .input-group>.form-select {
                 position: relative;
                 flex: none;
                 width: 100px;
                 min-width: 0;
-            }
+            } */
         </style>
     </div>
 
