@@ -13,7 +13,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container pt-2">
             <div class="container">
-                <img src="<?= base_url() ?>assets/img/banner/content/<?= $banner_list['img_konten'] ?>" alt="Content Image" class="gambar img-fluid">
+                <img src="<?= base_url() ?>assets/img/banner/content/<?= $banner_list['img_konten'] ?>" alt="Content Image" class="gambar img-fluid rounded-3">
             </div>
             <div class="container pt-2 text-center">
                 <div class="row">
@@ -42,16 +42,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col">
                         <h3>Tentang Kami</h3>
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus eaque dolorum ab consequatur molestias aspernatur mollitia, quod eius atque quos inventore, harum quaerat tenetur. Consectetur ipsum fugiat illum nisi, modi nemo saepe tenetur, repellat, hic neque eligendi quos harum eaque commodi voluptatibus velit ullam iure?
+                            adalah sebuah supermarket yang mengkhususkan diri dalam menyediakan berbagai produk makanan dan kebutuhan sehari-hari dengan fokus pada makanan Korea dan Jepang. Dalam supermarket ini, pelanggan dapat menemukan berbagai macam produk seperti bahan makanan segar, makanan olahan, minuman, produk kesehatan, kecantikan, dan masih banyak lagi yang terkait dengan kedua budaya kuliner tersebut.
                         </p>
                         <p>
-                            Porro suscipit voluptatem rerum sunt non molestiae inventore iusto ad, provident ratione magnam nisi? Modi veniam iste animi eaque doloribus, odio vel! Atque ratione totam debitis. Facere corporis doloribus repellat distinctio.
+                            memprioritaskan kualitas produk, keberlanjutan, dan kepuasan pelanggan. Mereka menawarkan berbagai produk otentik dari Korea dan Jepang, sehingga pelanggan dapat merasakan dan menghadirkan cita rasa khas Asia dalam rumah mereka. Dengan staf yang ramah dan pengetahuan yang luas tentang produk, Ssayomart berusaha memberikan pengalaman belanja yang menyenangkan dan informatif bagi pelanggan yang ingin menjelajahi kuliner Asia.
                         </p>
                         <p>
-                            Facilis natus assumenda et, itaque inventore repellat officia culpa iste eaque, veniam laborum mollitia blanditiis dolorum ex provident sint consequuntur, ut dolorem? Sunt consequatur assumenda quod exercitationem quas amet quidem inventore soluta quibusdam velit?
+                            Ssayomart juga memiliki aplikasi mobile yang dapat diunduh di Google Play Store dan App Store. Aplikasi ini memungkinkan pelanggan untuk berbelanja secara online dan mengirimkan produk ke rumah mereka. Selain itu, pelanggan juga dapat menemukan berbagai resep dan tips memasak di aplikasi ini.
                         </p>
                         <p>
-                            Fugit cum in alias fugiat, quis eos sapiente voluptatum autem omnis possimus explicabo delectus natus aspernatur totam perspiciatis dolorem quaerat, dolor aliquam enim obcaecati at cupiditate quasi. Maiores eum perferendis nesciunt fugiat hic, saepe iste voluptates eaque quidem esse molestias?
+                            Ssayomart memiliki 3 cabang di Indonesia, yaitu di Jakarta, Bandung, dan Surabaya. Selain itu, Ssayomart juga memiliki toko online yang dapat diakses di apps.ssayomart.com. Ssayomart juga memiliki akun media sosial di Facebook, Instagram, dan Youtube.
                         </p>
                     </div>
 
@@ -70,77 +70,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <!-- right panel -->
                 <div class="col-sm-9">
-                    <div class="class py-4">
-                        <img src="<?= base_url() ?>assets/img/banner/Playstore-3.jpg" alt="Gambar Besar" class="gambar img-fluid">
+                    <div class="section">
+                        <img src="<?= base_url() ?>assets/img/banner/Playstore-3.jpg" alt="Gambar Besar" class="gambar img-fluid rounded-3">
                     </div>
                 </div>
             </div>
-
-
-            <!-- <div class="container mt-3">
-            <div class="row">
-                <div class="col">
-                  
-                    <h3 class="text-center mt-2">Tentang Ssayomart </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="container mt-3">
-            <div class="row">
-                <div class="col-12 col-md-6 ">
-                  
-
-                    <h3>Dokumentasi SSayomart Live</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, nulla! Est nobis deleniti quisquam! Ipsam vitae molestiae voluptatibus rem, itaque laboriosam eum ratione molestias. Eveniet inventore recusandae optio ullam voluptatem, in, a aut accusamus autem beatae doloremque perspiciatis quam quasi necessitatibus consectetur quae odit libero velit accusantium nihil adipisci eos.</p>
-
-                </div>
-                <div class="col-12 col-md-6">
-                    
-
-                    <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/vlDzYIIOYmM" title="YouTube video" allowfullscreen></iframe>
-                    </div>
-
-                </div>
-
-            </div>
-        </div> -->
-
-            <!-- <div class="container mt-3 d-none d-md-block">
-            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-2.png" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-3.png" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-            </div>
-            <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Landscape <span class="text-danger">Ssayomart</span></h2>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-5.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-6.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-                <div class="col mb-4 zoom-in">
-                    <img src="<?= base_url() ?>assets/img/about/menu-7.jpg" width="350px" height="200px" alt="" class="img-fluid">
-                </div>
-            </div>
-        </div> -->
         </div>
 
         <style>
