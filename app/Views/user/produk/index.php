@@ -23,7 +23,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?= $this->include('user/home/component/pagination2'); ?>
         </div>
         <!-- button Scroll Up -->
-        <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+        <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class="d-flex justify-content-center align-items-center bi bi-chevron-up"></i></button>
         <!-- Navbar Bottom -->
         <?= $this->include('user/home/component/navbarBottom') ?>
     </div>

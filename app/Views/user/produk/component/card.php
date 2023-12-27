@@ -1,8 +1,8 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
-            <h3 class="d-block my-2 text-center fw-bold" style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></h3>
-            <hr class="border-darker mt-0 mb-3">
+            <h3 class="p-1 mt-1 rounded-top-3 d-block text-center fw-bold" style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></h3>
+            <hr class="mt-0 mb-3" style="border-color: #fb0408;border-width:3px;">
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
@@ -67,7 +67,7 @@
 
 <div class="container bg-white" id="product">
     <h3 class="p-1 mt-1 rounded-top-3 d-block text-center fw-bold " style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></h3>
-    <hr class="border-darker mt-0 ">
+    <hr class="mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
     <div class="row row-cols-3" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
@@ -165,15 +165,6 @@
 <?php endif ?>
 
 <style>
-    .border-darker {
-        border-color: red;
-        /* Ubah warna garis menjadi merah */
-        border-width: 2px;
-        /* Sesuaikan ketebalan garis sesuai kebutuhan Anda */
-        font-weight: bold;
-        /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
-    }
-
     .horizontal-counter {
         display: flex;
         align-items: center;

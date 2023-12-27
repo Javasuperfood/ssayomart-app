@@ -23,7 +23,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="card-side card-samping">
                             <div class="card-body body-group">
                                 <h3 class="p-1 rounded-top-3 fw-bold text-center" style="color: #9c2525; background-color: #facaaf; margin-top: 5px; margin-bottom: 5px;">Kategori</h3>
-                                <hr style="border-color: red; border-width: 3px; margin-top: 0; margin-bottom: 0;">
+                                <hr style="border-color: #e36120; border-width: 3px; margin-top: 0; margin-bottom: 0;">
                                 <ul class="list-group-flush list-kategori">
                                     <?php foreach ($kategori as $k) : ?>
                                         <li class="list-group-item list-peritem">
