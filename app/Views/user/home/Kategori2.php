@@ -696,6 +696,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span class="card-title fw-bold fs-2"><?= lang('Text.spesial') ?></span>
                         </div>
                     </div>
+                    <hr class="mt-2" style="border-color: #e36120; border-width: 3px;">
                     <div class="row">
                         <div class="col">
                             <div class="swiper myBanner">
@@ -729,6 +730,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <span class="card-title fw-bold fs-2"><?= lang('Text.nama_produk') ?></h2>
                                 </div>
                             </div>
+                            <hr class="mt-3" style="border-color: #e36120; border-width: 3px;">
                             <div class="mt-3 d-flex justify-content-center align-items-center swiper mySwing">
                                 <div class="swiper-wrapper d-flex mb-3">
                                     <?php foreach ($randomProducts as $p) : ?>
@@ -783,6 +785,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <span class="card-title fw-bold fs-2 text-capitalize"><?= lang('Text.kategori') ?></span>
                             </div>
                         </div>
+                        <hr class="mt-3" style="border-color: #e36120; border-width: 3px;">
                         <div class="row text-center row-cols-3 py-3">
                             <?php foreach ($kategori as $k) : ?>
                                 <div class="col-4 col-md-4 col-lg-2">

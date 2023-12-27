@@ -9,6 +9,7 @@
             </span>
         </div>
     </div>
+    <hr class="mt-2" style="border-color: #2e6e01; border-width: 3px;">
     <div class="row text-center row-cols-3 mt-3">
         <?php foreach ($kategori as $k) : ?>
             <div class="col-4 col-md-4 col-lg-2">
