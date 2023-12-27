@@ -136,6 +136,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <table class="table table-borderless" style="font-size: small;">
                                     <tbody>
                                         <tr>
+                                            <td>INV</td>
+                                            <td>:</td>
+                                            <td><?= $inv ?></td>
+                                        </tr>
+                                        <tr>
                                             <td>Metode</td>
                                             <td>:</td>
                                             <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . ' ' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
@@ -591,6 +596,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-credit-card-2-front"></i> Pembayaran</p>
                                     <table class="table table-borderless" style="font-size: small;">
                                         <tbody>
+                                            <tr>
+                                                <td>INV</td>
+                                                <td>:</td>
+                                                <td><?= $inv ?></td>
+                                            </tr>
                                             <tr>
                                                 <td>Metode</td>
                                                 <td>:</td>
