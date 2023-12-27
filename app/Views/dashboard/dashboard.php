@@ -5,6 +5,8 @@
     <?= $this->include('dashboard/component/header'); ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?= $this->renderSection('custom_head'); ?>
+    <!-- Datepicker -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 </head>
 
 <body id="page-top">
@@ -97,7 +99,10 @@
     <!-- Page level custom scripts -->
     <script src="<?= base_url('assets/js/script-un-en.js'); ?>"></script>
 
-
+    <!-- jQuery datepicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 </body>
 
 </html>
