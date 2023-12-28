@@ -7,8 +7,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php if ($isMobile) : ?>
     <div id="mobileContent" style="margin-bottom:75px;">
-        <nav class="navbar fixed-top top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff;">
-            <div class=" container-fluid">
+        <nav class="navbar navbar-main fixed-top top-0 rounded-bottom-4 shadow-sm" style="background-color:#ffff;">
+            <div class=" container-fluid p-2">
                 <div class="col text-center position-relative d-flex justify-content-center align-items-center">
                     <?php if (isset($back)) : ?>
                         <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 40) . '...' : $title; ?>
@@ -157,6 +157,13 @@ if ($isMobile) {
 <!-- navbar dekstop -->
 
 <style>
+ .navbar-main {
+        border-radius: 0px !important;
+        border-bottom-left-radius: 15px !important;
+        border-bottom-right-radius: 15px !important;
+    }
+    
+
     /* CSS untuk tampilan seluler standar */
     @media (max-width: 280px) {
         .col.text-center {

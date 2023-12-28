@@ -10,7 +10,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container">
             <div class="row">
-                <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style="height: 55px; background-color:#fff">
+                <nav class="navbar  navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style="height: 55px; background-color:#fff">
                     <ul class="navbar-nav nav-justified w-100 justify-content-around">
                         <li class="nav-item">
                             <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
@@ -39,6 +39,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <!-- styling hover active -->
     <style>
+  .navbar-bottom {
+            border-radius: 0 !important;
+            border-top-left-radius: 15px !important;
+            border-top-right-radius: 15px !important;
+            border-top: 0 !important;
+        }
+
         .navbar {
             border-top: 1.7px solid #f2f1ed;
             border-radius: 10px;
