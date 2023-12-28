@@ -8,7 +8,7 @@
 <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
 <?= $this->endSection(); ?>
 
-<!-- Mian Conten  -->
+<!-- Main Conten  -->
 <?= $this->section('page-content') ?>
 
 <?php
@@ -64,19 +64,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <h2 class="fw-bold text-dark mt-4 text-center">Galeri Produk <span class="text-danger">Ssayomart</span></h2>
                     <div class="swiper telkom mt-3">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
+                            <div class="swiper-slide d-flex justify-content-center">
                                 <img src="<?= base_url() ?>assets/img/about/menu-1.jpg" alt="Gambar Besar" class="gambar img-fluid">
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide d-flex justify-content-center">
                                 <img src="<?= base_url() ?>assets/img/about/menu-2.png" alt="Gambar Besar" class="gambar img-fluid">
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide d-flex justify-content-center">
                                 <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide d-flex justify-content-center">
                                 <img src="<?= base_url() ?>assets/img/about/menu-3.png" alt="Gambar Besar" class="gambar img-fluid">
                             </div>
-                            <div class="swiper-slide">
+                            <div class="swiper-slide d-flex justify-content-center">
                                 <img src="<?= base_url() ?>assets/img/about/menu-4.jpg" alt="Gambar Besar" class="gambar img-fluid">
                             </div>
                             <div class="swiper-slide">
