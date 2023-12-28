@@ -108,9 +108,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div>
                             <h4><?= lang("Text.alamat") ?></h4>
                             <p>
-                                Ruko Cyber Park Jalan Gajah Mada Jalan Boulevard Jendral Sudirman No.2159/2161/2165<br>
-                                RT.001/RW.009, Panunggangan Barat,
-                                Kec. Cibodas, Kota Tangerang, Banten - 15139
+                                Blok I No. 20, Karawaci Office Park, Jl. Imam Bonjol, Panunggangan Bar., Kec. Cibodas, Kota Tangerang, Banten - 15139
                             </p>
                         </div>
 
@@ -121,7 +119,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div>
                             <h4><?= lang("Text.kontak") ?></h4>
                             <p>
-                                <strong>Phone:</strong> +62 1234 5678 89<br>
+                                <strong>Phone:</strong> 02135290000<br>
                                 <strong>Email:</strong> ssayomart@gmail.com<br>
                             </p>
                         </div>
