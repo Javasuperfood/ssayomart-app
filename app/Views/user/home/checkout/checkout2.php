@@ -204,7 +204,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <option value="" class="card-text text-secondary"></option>
                             </select>
                             <label for="service" id="serviceLabel">Pilih Layanan</label>
-                            <strong class="ps-2 time">Estimasi : <span id="estimasi"></span></strong>
+                            <span class="badge rounded-pill text-bg-danger"><strong class="time">Estimasi : <span id="estimasi"></span></strong></span>
                         </div>
                     </div>
                     <input type="hidden" name="serviceText" id="serviceText">
@@ -231,17 +231,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-3">
-                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                         </div>
-                                        <div class="col-5 keterangan position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title fs-6 pemilihan"><?= substr($p['nama'], 0, 10); ?>...</h5>
+                                        <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
+                                            <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
                                             <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
                                             </p>
                                         </div>
-                                        <div class="col-5 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                            <h5 class="text-secondary fs-6 pemilihan">Total</h5>
-                                            <p class="fw-bold fs-6 pemilihan">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                        <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                            <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
+                                            <p class="fw-bold pemilihan" style="font-size: 13px;">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -269,14 +270,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td class="fw-bold">Subtotal</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div style="background-color:#fff" class="fixed-bottom mb-5 col p-3 px-4">
-                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px">Bayar</button>
+                        <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" onclick="clickSubmitEvent(this)" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px">Bayar</button>
                     </div>
                 </div>
             </form>

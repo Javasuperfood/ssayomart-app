@@ -15,7 +15,7 @@
                 <form action="<?= base_url(); ?>dashboard/promo/tambah-promo/show-promo/edit/update/<?= $op['id_promo_item_batch'] ?>" onsubmit="return validasiPromoItem()" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id_promo_item_batch" value="<?= $op['id_promo_item_batch'] ?>">
-                    <input type="hidden" name="produk_id" id="produk_id">
+                    <input type="hidden" name="produk_id" id="produk_id" value="<?= $op['id_produk'] ?>">
                     <div class="mb-4">
                         <label for="promo" class="form-label">Pilih Promo Tersedia</label>
                         <select name="promo" id="promo" class="form-control border-1">
@@ -111,13 +111,13 @@
 
                     <div class="mb-4">
                         <label for="min" class="form-label">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." value="<?= $op['min']; ?>">
+                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk..." onkeypress="return isNumber(event);" value="<?= $op['min']; ?>">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
                         <label for="discount" class="form-label">Diskon (%)</label>
-                        <input type="text" class="form-control border-1" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon..." value="<?= $op['discount']; ?>">
+                        <input type="text" class="form-control border-1" id="discount" name="discount" onkeypress="return isNumber(event);" placeholder="Masukkan Jumlah Diskon..." value="<?= $op['discount']; ?>">
                         <span id="discountError" class="text-danger"></span>
                     </div>
 
@@ -182,6 +182,10 @@
             minField.classList.add('invalid-field');
             minError.textContent = 'Minimal pembelian harus diisi';
             isValid = false;
+        } else if (isNaN(minField.value)) {
+            minField.classList.add('invalid-add');
+            minError.textContent = 'Minimal pembelian harus berupa angka';
+            isValid = false;
         } else {
             minField.classList.remove('invalid-field');
         }
@@ -190,6 +194,9 @@
             discountField.classList.add('invalid-field');
             discountError.textContent = 'Diskon promo harus diisi';
             isValid = false;
+        } else if (isNaN(discountField.value)) {
+            discountField.classList.add('invalid-field');
+            discountError.textContent = 'Diskon promo harus berupa angka';
         } else {
             discountField.classList.remove('invalid-field');
         }

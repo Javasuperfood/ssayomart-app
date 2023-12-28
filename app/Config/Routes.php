@@ -20,10 +20,7 @@ $routes->get('/content-banner-promotion/(:segment)', 'BannerContentController::c
 $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
-$routes->get('/virtual-account', 'Payment::virtualAccount');
-$routes->get('/qriss', 'Payment::qriss');
-$routes->get('/ccard', 'Payment::ccard');
-$routes->get('/ewallet', 'Payment::ewallet');
+
 $routes->get('/all-category', 'KategoriController::allKategori');
 // app/Config/Routes.php
 $routes->get('/show-notification', 'WebhookController::showNotification');
@@ -33,14 +30,11 @@ $routes->post('/status/ordering/update/(:segment)', 'StatusGosendController::upd
 // $routes->get('/status-gosend', 'StatusGosendController::statusGosend');
 // $routes->post('/status-gosend/update/(:segment)', 'StatusGosendController::updateStatusGosend/$1');
 
-// Rute untuk AppleAuthController
-$routes->get('apple-login', 'AppleAuthController::appleLogin');
-
-// Rute untuk AppleCallbackController
-$routes->get('apple-callback', 'AppleCallbackController::appleCallback');
-
-
 $routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
+
+// $routes->get('callback-apple', 'AppleCallbackController::index');
+$routes->post('callback-apple', 'AppleCallbackController::index');
+
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/wishlist', 'WishlistController::index');
@@ -48,10 +42,9 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 
     $routes->get('/buy/(:segment)', 'BuyController::index/$1');
-    $routes->get('/buy2/(:segment)', 'BuyController::index2/$1');
     $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
-    $routes->post('/store2/(:segment)', 'BuyController::storeData2/$1');
     $routes->post('/new-payment', 'BuyController::getNewPayment');
+
 
     // $routes->get('/cart', 'CartController::cart');
     $routes->get('/cart', 'CartController::cart2');
@@ -99,10 +92,15 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->post('/status/update/(:segment)', 'UserStatusController::updateStatus/$1');
     $routes->get('/payment/(:segment)', 'PaymentController::index/$1');
     $routes->post('/payment/token', 'PaymentController::ajaxPay');
+
+    $routes->group('contact/', static function ($routes) {
+        $routes->post('send/email/v1', 'ContactController::storeData');
+    });
 });
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
+    $routes->get('panduan/panduan-aplikasi', 'Home::panduanAplikasi');
     $routes->group('order/', static function ($routes) {
         // $routes->get('/', 'AdminPesananController::index');
         // $routes->get('2', 'AdminPesananController::index2');
@@ -137,7 +135,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
     // Route Reporting File
     $routes->get('report/', 'ReportController::index');
-    $routes->get('report/printpdf/(:segment)', 'ReportController::print/$1');
+    $routes->get('report/print', 'ReportController::print');
 
     $routes->get('admin', 'Home::admin');
     $routes->get('input', 'AdminProduk::input');
@@ -212,14 +210,14 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('produk/delete-produk/(:segment)', 'AdminProduk::deleteProduk/$1');
     $routes->get('produk/update-produk/(:segment)', 'AdminProduk::updateProduk/$1');
     $routes->post('produk/update-produk/(:segment)', 'AdminProduk::saveUpdateProduk/$1');
-
     // Ubah Urutan Produk Routes
     $routes->get('produk/management-fetching-content', 'AdminProduk::managementFetching');
     $routes->get('produk/pilih-produk-rekomendasi', 'AdminProduk::pilihProdukRekomendasi');
     $routes->get('produk/pilih-produk-terbaru', 'AdminProduk::pilihProdukTerbaru');
     $routes->post('produk/pilih-produk-terbaru/save', 'AdminProduk::saveProdukTerbaru');
     $routes->post('produk/pilih-produk-rekomendasi/save', 'AdminProduk::savePilihProdukRekomendasi');
-    $routes->post('produk/urutan-produk-rekomendasi/save', 'AdminProduk::saveUrutanProdukRekomendasi');
+    $routes->post('produk/urutan-produk-rekomendasi/save-urutan', 'AdminProduk::saveUrutanProdukRekomendasi');
+    $routes->post('produk/urutan-produk-rekomendasi/delete/(:segment)', 'AdminProduk::deleteProdukRekomendasi/$1');
 
     // Kategori Produk Batch
     $routes->get('produk/produk-batch', 'AdminKategoriBatch::produkBatch');
@@ -269,16 +267,15 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::updatePromoItem/$1');
     $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
 
-
     // Promo Item Batch
     $routes->get('promo/tambah-promo/show-promo/(:segment)', 'AdminPromoController::show/$1');
-
     $routes->get('promo/tambah-promo-item-batch', 'AdminPromoController::create');
     $routes->post('promo/tambah-promo-item-batch/save', 'AdminPromoController::store');
-
     $routes->get('promo/tambah-promo/show-promo/edit/(:segment)', 'AdminPromoController::edit/$1');
     $routes->post('promo/tambah-promo/show-promo/edit/update/(:segment)', 'AdminPromoController::update/$1');
     $routes->post('promo/tambah-promo/show-promo/delete/(:segment)', 'AdminPromoController::delete/$1');
+    $routes->post('promo/tambah-promo/show-promo/delete-promo-batch/(:segment)', 'AdminPromoController::deleteBatch/$1');
+
 
     // CRUD KONTEN/BLOG/ARTIKEL
     $routes->get('blog/blog', 'AdminBlog::blog');
@@ -355,7 +352,6 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     });
 });
 
-$routes->get('/maps', 'MapsController::maps');
 
 
 $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($routes) {

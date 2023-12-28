@@ -8,33 +8,42 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Footer Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <nav class="navbar navbar-expand fixed-bottom" style="margin-top: 10%; height: 55px; background-color:#fff">
-            <ul class="navbar-nav nav-justified w-100">
-                <li class="nav-item">
-                    <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
-                        <i class="bi bi-cart-fill fw-bold fs-2 position-relative text-danger">
-                            <div id="cartItem_0" style="display: none;">
-                                <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger mt-2 mx-1"></i>
-                                <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial rounded-pill text-danger fw-bold mt-2 mx-1" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
-                            </div>
-                        </i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2 text-danger"></i></a>
-                </li>
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style="height: 55px; background-color:#fff">
+                    <ul class="navbar-nav nav-justified w-100 justify-content-around">
+                        <li class="nav-item">
+                            <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
+                        </li>
+                        <li class="nav-item me-5">
+                            <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
+                                <i class="bi bi-cart-fill fw-bold fs-2 position-absolute text-danger">
+                                    <div id="cartItem_0">
+                                        <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger mx-2 mt-2"></i>
+                                        <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial rounded-pill text-danger fw-bold mx-2 mt-2" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                    </div>
+                                </i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url(); ?>history" class="nav-link link-light"><i class="bi bi-file-text-fill fw-bold fs-2 text-danger"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2 text-danger"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
 
-                <li class="nav-item">
-                    <a href="<?= base_url(); ?>setting" class="nav-link link-light"><i class="bi bi-person-fill fw-bold fs-2 text-danger"></i></a>
-                </li>
-            </ul>
-        </nav>
     </div>
-
+    <!-- styling hover active -->
     <style>
+        .navbar {
+            border-top: 1.7px solid #f2f1ed;
+            border-radius: 10px;
+        }
+
         .nav-item a:hover {
             background-color: #0000;
             color: #333;
@@ -53,6 +62,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             color: #ffc107 !important;
         }
     </style>
+    <!-- styling hover active -->
+    <!-- Script hover active -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var navLinks = document.querySelectorAll(".nav-link");
@@ -77,6 +88,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             });
         });
     </script>
+    <!-- Script hover active -->
 <?php else : ?>
 
     <!-- Footer Desktop -->
@@ -85,7 +97,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="row gy-3">
                     <div class="col-lg-3 col-md-6 d-flex">
-                        <i class="bi bi-geo-alt-fill icon"></i>
+                        <i class="bi bi-geo-alt-fill icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.alamat") ?></h4>
                             <p>
@@ -98,7 +110,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
-                        <i class="bi bi-telephone-fill icon"></i>
+                        <i class="bi bi-telephone-fill icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.kontak") ?></h4>
                             <p>
@@ -109,7 +121,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
-                        <i class="bi bi-headset icon"></i>
+                        <i class="bi bi-headset icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.layanan") ?></h4>
                             <p>
@@ -120,7 +132,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <div class="col-lg-3 col-md-6 footer-links d-flex">
-                        <i class="bi bi-bookmark-fill icon"></i>
+                        <i class="bi bi-bookmark-fill icon-footer"></i>
                         <div>
                             <h4><?= lang("Text.follow") ?></h4>
                             <div class="social-links d-flex">
@@ -141,6 +153,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </footer>
         <style>
+            /* navabr bottom */
+
             .footer {
                 font-size: 14px;
                 background-color: #1f1f24;
@@ -148,10 +162,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 color: rgba(255, 255, 255, 0.7);
             }
 
-            .footer .icon {
+            .footer .icon-footer {
                 margin-right: 15px;
                 font-size: 24px;
                 line-height: 0;
+                color: #fff;
             }
 
             .footer h4 {

@@ -1,11 +1,11 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Pesanan Pelanggan</h1>
+<h1 class="h3 mt-4 text-gray-800">Pesanan Pelanggan</h1>
 <hr>
 <?php if (isset($toko)) : ?>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 mb-4">
             Anda adalah Admin dari
             <?php foreach ($toko as $t) : ?>
                 <span class="fw-bold">| <?= $t; ?> |</span>

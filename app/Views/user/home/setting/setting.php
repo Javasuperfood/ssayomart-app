@@ -15,12 +15,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center mt-3 ">
+                    <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                         <div class="col-6 d-flex justify-content-start align-items-start">
-                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 me-2" style="font-size: 12px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
+                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 alamatt-list" style="font-size: 12px;"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
                         <div class="col-6 d-flex justify-content-end align-items-end">
-                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 ms-2" style="font-size: 12px;"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
                         </div>
                     </div>
 
@@ -52,12 +52,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="card-body">
                             <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-3 d-flex justify-content-center align-items-center">
                                         <img src="<?= base_url(); ?>assets/img/coupon.png" alt="Kupon" class="card-img img-fluid" style="width: 20; height: 50;">
                                     </div>
-                                    <div class="col">
-                                        <h5 class="card-title text-dark d-flex text-center justify-content-center align-items-center" style="font-size: 14px;"><?= lang('Text.judul_kupon') ?></h5>
-                                        <p class="card-text text-secondary d-flex text-center justify-content-center align-items-center" style="font-size: 14px;"><?= lang('Text.isi_kupon') ?></p>
+                                    <div class="col d-flex justify-content-center align-items-center">
+                                        <p class="fw-bold card-title text-dark teks-kupon" style="font-size: 14px;"><?= lang('Text.judul_kupon') ?>
+                                            <br><?= lang('Text.isi_kupon') ?>
+                                        </p>
                                     </div>
                                 </div>
                             </a>
@@ -107,20 +108,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
 
                         </a>
-                        <a role="button" data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold">
+                        <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-box-arrow-right pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.logout') ?> </span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                        </a>
+                        </span>
                         <div class="container mb-3">
                             <div class="row justify-content-center mt-4">
                                 <div class="text-center"> <!-- Tambahkan class text-center untuk membuatnya berada di tengah horizontal -->
                                     <p class="mb-3 fw-bold"><?= lang('Text.ikuti_kami') ?> :</p>
-                                    <div class="social-links d-flex justify-content-center">
-                                        <a href="#" class="youtube btn btn-danger mx-2 rounded-circle"><i class="bi bi-youtube"></i></a>
-                                        <a href="#" class="facebook btn btn-danger mx-2 rounded-circle"><i class="bi bi-facebook"></i></a>
-                                        <a href="#" class="instagram btn btn-danger mx-2 rounded-circle"><i class="bi bi-instagram"></i></a>
-                                        <a href="#" class="tiktok btn btn-danger mx-2 rounded-circle"><i class="bi bi-tiktok"></i></a>
+                                    <div class="social-links d-flex justify-content-center ">
+                                        <a href="#" class="youtube btn btn-danger mx-2 social-icon"><i class="bi bi-youtube"></i></a>
+                                        <a href="#" class="facebook btn btn-danger mx-2 social-icon"><i class="bi bi-facebook"></i></a>
+                                        <a href="#" class="instagram btn btn-danger mx-2 social-icon"><i class="bi bi-instagram"></i></a>
+                                        <a href="#" class="tiktok btn btn-danger mx-2 social-icon"><i class="bi bi-tiktok"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -130,30 +131,41 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <div class="container">
-            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#myModal">
-                <i class="bi bi-chat-dots"></i>
+            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#modalFormEmail">
+                <i class="bi bi-chat-dots fs-6"></i>
             </button>
 
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalFormEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title fw-bold-sm" style="font-size: 14px;">Welcome, Chat me!</h5>
+                            <h5 class="modal-title fw-bold-sm" style="font-size: 14px;">Welcome, Contact me!</h5>
                             <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle" style="position: absolute; top:7px; right:10px; cursor:pointer; z-index:999; color:#fff; font-size:20px; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;"></i></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="<?= base_url('contact/send/email/v1'); ?>" method="post">
+                                <?= csrf_field(); ?>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Name" style="font-size: 12px;">
+                                    <input type="text" class="form-control" name="name" placeholder="Name" value="<?= $user['fullname']; ?>" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email" style="font-size: 12px;">
+                                    <input type="text" class="form-control" name="email" placeholder="Email" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
+                                    <input list="subjectList" type="text" name="subject" class="form-control" placeholder="Subject" style="font-size: 12px;">
+                                    <datalist id="subjectList">
+                                        <option value="[Ask × <?= $user['username']; ?>]"></option>
+                                        <option value="[Help × <?= $user['username']; ?>]"></option>
+                                        <option value="[Report × <?= $user['username']; ?>]"></option>
+                                    </datalist>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" name="message" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-block text-white border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
+                                    <button onclick="clickSubmitEvent(this)" type="submit" class="btn btn-block text-white border-0 d-flex justify-content-center" style="width: 100%; background-color: #ec2614; font-size: 12px;">
+                                        Submit
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -162,123 +174,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
-
-    <style>
-        /* CSS untuk chat button yang memunculkan modal */
-        .chat-btn {
-            position: fixed;
-            right: 20px;
-            bottom: 67px;
-            cursor: pointer;
-            z-index: 999;
-            border-radius: 50%;
-            background-color: #ec2614;
-            color: #fff;
-            font-size: 22px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.5s ease;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        /* CSS tambahan untuk modal content */
-        .modal-content {
-            background-color: #fff;
-            border-radius: 5px;
-        }
-
-        /* CSS untuk header dalam modal */
-        .modal-header {
-            background-color: #ec2614;
-            color: #fff;
-            border-radius: 5px 5px 0px 0px;
-            padding: 13px;
-        }
-
-        /* CSS untuk teks dalam modal */
-        .modal-body {
-            padding: 15px;
-        }
-
-        /* CSS untuk tombol "Submit" dalam modal */
-        .modal-body .btn-danger {
-            font-size: 12px;
-        }
-
-        .modal-body .form-control {
-            border: 1px solid #DEE2E6;
-        }
-    </style>
-
-    <style>
-        /* Default styling for larger screens */
-        .list-group-item {
-            padding: 15px;
-        }
-
-        /* Responsive styling for smaller screens (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
-
-            h3.fw-bold.py-3.fs-5 {
-                font-size: 15px !important;
-            }
-
-            i.bi-heart-pulse-fill {
-                font-size: 25px !important;
-
-            }
-
-            .col-10 {
-                margin-left: 50px;
-                font-size: 10px !important;
-            }
-
-            .list-group-item {
-                padding: 10px 5px !important;
-                font-size: 12px !important;
-            }
-
-            .social-links {
-                margin-top: 10px;
-            }
-
-            img.img-thumbnail {
-                width: 50px !important;
-                height: 50px !important;
-                margin-top: 15px !important;
-            }
-
-            h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                font-size: 9px !important;
-            }
-
-            p.card-text.text-secondary.d-flex.text-center.justify-content-center.align-items-center {
-                font-size: 9px !important;
-            }
-
-            .link-underline-opacity-0 {
-                display: flex;
-            }
-
-            @media screen and (min-width: 768px) {
-                h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                    font-size: 20px !important;
-                    margin-top: 50px !important;
-                }
-            }
-
-            @media screen and (min-width: 820px) and (max-width: 1024px) {
-                h5.card-title.text-dark.d-flex.text-center.justify-content-center.align-items-center {
-                    font-size: 24px !important;
-                    margin-top: 80px !important;
-                }
-            }
-    </style>
-
-
 <?php else : ?>
     <!-- end mobile&ipad -->
 
@@ -382,11 +277,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <div class="container">
-            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#myModal">
+            <button class="chat-btn border-0" data-bs-toggle="modal" data-bs-target="#modalFormEmail">
                 <i class="bi bi-chat-dots"></i>
             </button>
 
-            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="modalFormEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -394,18 +289,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-circle" style="position: absolute; top:7px; right:10px; cursor:pointer; z-index:999; color:#fff; font-size:20px; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; transition: all 0.3s ease;"></i></button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form action="<?= base_url('contact/send/email/v1'); ?>" method="post">
+                                <?= csrf_field(); ?>
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Name" style="font-size: 12px;">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Email" style="font-size: 12px;">
+                                    <input type="email" class="form-control" placeholder="Email" style="font-size: 12px;">
+                                </div>
+                                <div class="mb-3">
+                                    <input list="subjectList" type="text" class="form-control" placeholder="Subject" style="font-size: 12px;">
+                                    <datalist id="subjectList">
+                                        <option value="[Ask × <?= $user['username']; ?>]"></option>
+                                        <option value="[Help × <?= $user['username']; ?>]"></option>
+                                        <option value="[Report × <?= $user['username']; ?>]"></option>
+                                    </datalist>
                                 </div>
                                 <div class="mb-3">
                                     <textarea class="form-control" placeholder="Your Text Message" style="font-size: 12px;"></textarea>
                                 </div>
                                 <div class="d-flex justify-content-center">
-                                    <button type="button" class="btn btn-danger btn-block border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
+                                    <button type="button" onclick="clickSubmitEvent(this)" class="btn btn-danger btn-block border-0" style="width: 100%; background-color: #ec2614; font-size: 12px;">Submit</button>
                                 </div>
                             </form>
                         </div>
@@ -414,65 +318,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
-
-    <!-- style button modal dialog -->
-
-    <style>
-        /* CSS untuk chat button yang memunculkan modal */
-        .chat-btn {
-            position: fixed;
-            right: 20px;
-            bottom: 130px;
-            cursor: pointer;
-            z-index: 999;
-            border-radius: 50%;
-            background-color: #ec2614;
-            color: #fff;
-            font-size: 22px;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.5s ease;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-        }
-
-        /* CSS tambahan untuk modal content */
-        .modal-content {
-            background-color: #fff;
-            border-radius: 5px;
-        }
-
-        /* CSS untuk header dalam modal */
-        .modal-header {
-            background-color: #ec2614;
-            color: #fff;
-            border-radius: 5px 5px 0px 0px;
-            padding: 13px;
-        }
-
-        /* CSS untuk teks dalam modal */
-        .modal-body {
-            padding: 15px;
-        }
-
-        /* CSS untuk tombol "Submit" dalam modal */
-        .modal-body .btn-danger {
-            font-size: 12px;
-        }
-
-        .modal-body .form-control {
-            border: 1px solid #DEE2E6;
-        }
-    </style>
-
 <?php endif; ?>
 <!-- end Desktop -->
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if (session()->has('alert')) : ?>
+            var alertData = <?= json_encode(session('alert')) ?>;
+            Swal.fire({
+                icon: alertData.type,
+                title: alertData.title,
+                text: alertData.message
+            });
+        <?php endif; ?>
+    });
+</script>
 <!-- Modal setting  -->
 <?= $this->include('user/component/modalSetting'); ?>
-
 <?php if (session()->getFlashdata('success')) : ?>
     <script type="module">
         Swal.fire({

@@ -16,7 +16,7 @@
             <div class="row row-cols-2 row-cols-md-4">
                 <?php foreach ($orders as $o) : ?>
                     <div class="col mb-3">
-                        <div class="card">
+                        <div class="card border-0 shadow-sm">
                             <div class="row g-0">
                                 <div class="col-md-4">
                                     <img src="<?= base_url('assets/img/produk/main/' . $o['img']); ?>" class="img-fluid rounded-start" alt="...">
@@ -71,17 +71,35 @@
                             <div class="col">
                                 <button type="submit" form="updateStatus" class="btn btn-outline-danger py-3">Update</button>
                                 <?php if ($order['id_status_pesan'] == 3 && $status_transaction == 0) : ?>
-                                    <form method="post" action="<?= base_url('dashboard/order/update-booking/update-status/save/') . $inv ?>" class="d-inline">
-                                        <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-outline-success py-3">Selesai</button>
-                                    </form>
+
+                                    <button type="submit" class="btn btn-outline-success py-3" data-bs-toggle="modal" data-bs-target="#selesaitringer">Selesai</button>
+
+                                    <div class="modal fade" id="selesaitringer" tabindex="-1" aria-labelledby="selesaitringerLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="selesaitringerLabel">Selesaikan Pesanan</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Selesaikan pesanan ini ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <form method="post" action="<?= base_url('dashboard/order/update-booking/update-status/save/') . $inv ?>" class="d-inline">
+                                                        <?= csrf_field(); ?>
+                                                        <button type="submit" class="btn btn-danger">Selesai</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <?php endif; ?>
                             </div>
                         </div>
                     </div>
-                    Detail :
-                    </p>
-                    <table class="table border-1">
+
+                    <table class="card card-body table table-borderless">
                         <tbody>
                             <tr>
                                 <td>Penerima</td>
@@ -117,7 +135,7 @@
                     </table>
                     <div class="row row-cols-1">
                         <div class="col my-3">
-                            <div class="card border-1 border-left-danger px-2 pt-2">
+                            <div class="card border-0 shadow-sm px-2 pt-2">
                                 <div class="col font-weight-bold">
                                     <p class="fw-bold fs-5">Transaksi </p>
                                 </div>
@@ -153,7 +171,7 @@
                 <div class="col-md-6">
                     <div class="card border-1" style="height: 100%;">
                         <div class="card-body">
-                            <div class="card-header bg-white border-1 py-3">
+                            <div class="card-header bg-white py-3">
                                 <div class="row">
                                     <div class="col">
                                         <h6 class="m-0 font-weight-bold text-danger">GoSend Update</h6>
@@ -169,7 +187,7 @@
                             </div>
                             <?php if ($gosendStatus) : ?>
                                 <div class="col-12 my-3">
-                                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                    <div class="row g-0 border-0 rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                         <div class="col p-4 d-flex flex-column position-static">
                                             <table class="table table-borderless">
                                                 <tbody>
@@ -197,8 +215,19 @@
                                             </table>
                                         </div>
                                         <div class="col-auto d-none d-lg-block">
-                                            <img class="img-fluid" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="">
-                                            <!-- <img class="img-fluid" src="https://source.unsplash.com/200x250" alt="Driver IMG" srcset=""> -->
+                                            <img class="img-fluid rounded-3" width="100px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                            <!-- <img class="img-fluid" src="https://source.unsplash.com/200x250" alt="Driver IMG" srcset="" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"> -->
+                                        </div>
+                                    </div>
+                                    <!-- Show img modal -->
+                                    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content border-0 bg-transparent">
+                                                <div class="modal-body d-flex justify-content-center align-items-center">
+                                                    <img class="img-fluid" width="300px" height="350px" src="<?= $gosendStatus['driverPhoto']; ?>" alt="Driver IMG" srcset="">
+                                                    <!-- <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" style="margin-top: 80%; font-size: 15px;" aria-label="Close"></button> -->
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -329,15 +358,21 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Apakah anda yakin ingin membatalkan pesanan ini?</p>
+                                                    <?php if (in_array($gosendStatus['status'], ['Finding Driver'])) : ?>
+                                                        <p>Apakah anda yakin ingin membatalkan pesanan ini?</p>
+                                                    <?php else : ?>
+                                                        <p>Maaf pesanan ini tidak dapat dibatalkan karena status saat ini <?= $gosendStatus['status']; ?></p>
+                                                    <?php endif; ?>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <form action="<?= base_url('dashboard/order/update-booking/' . $gosendStatus['orderNo'] . '/cancel'); ?>" method="post">
-                                                        <?= csrf_field(); ?>
-                                                        <input type="hidden" name="orderNo" value="<?= $gosendStatus['orderNo']; ?>">
-                                                        <button type="submit" class="btn btn-danger">Cancel</button>
-                                                    </form>
+                                                    <?php if (in_array($gosendStatus['status'], ['Finding Driver'])) : ?>
+                                                        <form action="<?= base_url('dashboard/order/update-booking/' . $gosendStatus['orderNo'] . '/cancel'); ?>" method="post">
+                                                            <?= csrf_field(); ?>
+                                                            <input type="hidden" name="orderNo" value="<?= $gosendStatus['orderNo']; ?>">
+                                                            <button type="submit" class="btn btn-danger">Cancel</button>
+                                                        </form>
+                                                    <?php endif ?>
                                                 </div>
                                             </div>
                                         </div>

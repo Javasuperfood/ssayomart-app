@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use App\Models\AuthIdentitesModel;
 
 class UsersModel extends Model
 {
@@ -97,13 +98,13 @@ class UsersModel extends Model
         return $result;
     }
 
-    public function getUserInfo($id)
+    public function getUserInfo($sub)
     {
         $db = \Config\Database::connect();
         $query = $db->table('users')
-            ->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret AS email') // Include email from auth_identities
+            ->select('users.id, users.username, users.fullname, users.telp, users.img, auth_identities.secret AS email') // Include email from auth_identities
             ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
-            ->where('users.id', $id)
+            ->where('auth_identities.secret', $sub)
             ->get();
 
         $result = $query->getRowArray();
@@ -140,7 +141,7 @@ class UsersModel extends Model
 
     public function getAdminEmails()
     {
-        $userModel = new \App\Models\UsersModel();
+        $userModel = new UsersModel();
         $adminEmails = [];
         $admins = $userModel->getUserWithRole();
 

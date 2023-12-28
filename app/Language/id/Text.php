@@ -17,6 +17,10 @@ return [
     'saran_masak' => '오늘 이 요리 어때요? / SARAN MASAK',
     'dashboard' => '계기반 / Administrator',
     'selengkapnya' => '더 완벽해 / Selengkapnya',
+    'produk_rekomendasi' => '추천상품 / Produk Rekomendasi',
+    'produk_terbaru' => '새로운 제품 / Produk Terbaru',
+    'go_to_kategori_kr' => '모든 카테고리 보기',
+    'go_to_kategori_id_en' => 'Ketuk untuk melihat semua kategori',
 
     // SETTING PAGE
     'setting' => '환경 / Sunting',
@@ -96,7 +100,7 @@ return [
     'sku_produk2' => '재고 보관 장치를 확보하지 못했습니다. / Gagal mengambil data sku',
     // PRODUK COMPONENT CARD
     'produk_unggulan' => '특별 상품 / Produk Unggulan',
-    'nama_produk' => '제품 / Produk',
+    'nama_produk' => '제품 / PRODUK',
 
     // RIWAYAT TRANSAKSI
     'alert_history' => '찾으시는 거래내역을 찾을 수 없습니다 / Riwayat Transaksi yang Anda cari tidak ditemukan.',

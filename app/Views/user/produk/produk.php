@@ -30,7 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <div class="col mt-4 mx-1 text-center">
-                <h4><?= $produk['nama']; ?></h4>
+                <h4 class="fw-bold"><?= $produk['nama']; ?></h4>
                 <div class="row">
                     <div class="col text-center">
                         <p class="fs-2 text-danger price fw-bold">
@@ -46,9 +46,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row px-5">
                         <div class="col">
                             <div class="input-group mb-3 d-flex justify-content-center">
-                                <button class="btn btn-outline-danger rounded-circle" type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                                <button class="btn btn-outline-danger rounded-circle " type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
                                 <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
-                                <button class=" btn btn-outline-danger rounded-circle" type="button" onClick='increaseCount(event, this)'><i class="bi bi-plus"></i></button>
+                                <button class="btn btn-outline-danger rounded-circle" type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='increaseCount(event, this)'>
+                                    <i class="bi bi-plus"></i>
+                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -60,8 +63,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <button class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                     <?php elseif ($varianItem == 1) : ?>
                         <?php if ($useStock) : ?>
-                            <button class="btn btn-white text-danger border-danger mt-4 d-inline" onclick="alertNoStcok()"><i class="bi bi-cart-fill"></i></button>
-                            <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                            <!-- <button class="btn btn-white text-danger border-danger mt-4 d-inline" onclick="alertNoStcok()"><i class="bi bi-cart-fill"></i></button>
+                            <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a> -->
+                            <button type="button" class="btn btn-secondary text-white mt-4" disabled>Stok Tidak Tersedia</button>
                         <?php else : ?>
                             <input type="hidden" id="qty" name="qty" value="1">
                             <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
@@ -75,7 +79,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row mt-4 mb-5">
                 <div class="col">
-                    <h2 class="text-merah"> <?= lang('Text.deskripsi_produk') ?> </h2>
+                    <h2 class="fw-bold text-merah"> <?= lang('Text.deskripsi_produk') ?> </h2>
                     <p class="text-potong "><?= $produk['deskripsi']; ?></p>
                     <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                 </div>
@@ -429,10 +433,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 </div>
                 <div class="col-md-6">
-                    <p class="fw-bold fs-3"><?= $produk['nama']; ?></p>
+                    <p class="fw-bold fs-3 text-lg-start text-center"><?= $produk['nama']; ?></p>
                     <div class="row">
                         <div class="col">
-                            <p class="text-secondary fs-4">
+
+                            <p class="text-danger fw-bold text-lg-start text-center fs-2">
+
+
                                 <?php if ($produk['harga_min'] == $produk['harga_max']) : ?>
                                     Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
@@ -449,8 +456,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div> -->
                     </div>
                     <div class="row-5 mt-4">
-                        <div class="col-4">
-                            <div class="input-group">
+                        <div class="col-12 col-md-4 d-md-flex justify-content-md-center">
+                            <div class="input-group" style="flex-wrap: nowrap;">
                                 <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
                                     <i class="bi bi-dash"></i>
                                 </button>
@@ -461,14 +468,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-                    <div>
+
+                    <div class="d-sm-flex justify-content-sm-center d-lg-flex justify-content-lg-start">
                         <?php if ($varianItem > 1) : ?>
                             <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
                             <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                         <?php elseif ($varianItem == 1) : ?>
                             <?php if ($useStock) : ?>
-                                <button onclick="alertNoStcok()" class="btn btn-white text-danger border-danger mt-4 d-inline"><i class=" bi bi-cart-fill"></i></button>
-                                <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                                <!-- <button onclick="alertNoStcok()" class="btn btn-white text-danger border-danger mt-4 d-inline"><i class=" bi bi-cart-fill"></i></button>
+                                <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a> -->
+                                <button type="button" class="btn btn-secondary text-white mt-4" disabled>Stok Tidak Tersedia</button>
                             <?php else : ?>
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
@@ -479,7 +488,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class="row row-cols-1 my-4">
                         <div class="col-md-12">
-                            <h4 class="text-merah"> <?= lang('Text.deskripsi_produk') ?> </h4>
+                            <h4 class="text-merah fw-bold"> <?= lang('Text.deskripsi_produk') ?> </h4>
                             <p class="text-potong"><?= $produk['deskripsi']; ?></p>
                             <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
                         </div>
@@ -567,14 +576,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 cursor: pointer;
             }
 
-            .input-group>.form-control,
+            /* .input-group>.form-control,
             .input-group>.form-floating,
             .input-group>.form-select {
                 position: relative;
                 flex: none;
                 width: 100px;
                 min-width: 0;
-            }
+            } */
         </style>
     </div>
 

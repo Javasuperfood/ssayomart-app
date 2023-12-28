@@ -51,4 +51,48 @@ class ProdukRekomendasiModel extends Model
             ->limit($limit)
             ->findAll();
     }
+
+    public function isProductInRecommendations($productId)
+    {
+        return $this->where('id_produk', $productId)->countAllResults() > 0;
+    }
+
+    public function validasiProduk($produkId)
+    {
+        $totalRekomendasi = $this->countAllResults();
+
+        foreach ($produkId as $index => $produkId) {
+            if ($this->isProductInRecommendations($produkId)) {
+                return [
+                    'type' => 'error',
+                    'message' => 'Produk sudah ditambahkan sebelumnya.'
+                ];
+            }
+
+            if ($totalRekomendasi + 1 > 6) {
+                return [
+                    'type' => 'error',
+                    'message' => 'Item maksimal 6 saja.'
+                ];
+            }
+
+            $this->insert([
+                'id_produk' => $produkId,
+                'short'     => $index + 1,
+                'created_at' => date('Y-m-d H:i:s')
+            ]);
+
+            $totalRekomendasi++;
+        }
+
+        return [
+            'type' => 'success',
+            'message' => 'Produk Rekomendasi berhasil disimpan.'
+        ];
+    }
+
+    public function getById($id)
+    {
+        return $this->find($id);
+    }
 }

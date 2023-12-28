@@ -158,7 +158,13 @@ class AdminProduk extends BaseController
                 'errors' => [
                     'required' => 'Deskripsi wajib diisi.',
                 ],
-            ]
+            ],
+            // 'parent_kategori_id'    => [
+            //     'rules'  => 'required',
+            //     'errors' => [
+            //         'required' => 'Kategori wajib diisi.',
+            //     ],
+            // ]
         ];
         if (!$this->validateData($data, $ruleData) || !$this->validateData($data2, $variasItemiModel->validationRules)) {
             return redirect()->to('dashboard/produk/tambah-produk')->withInput();
@@ -502,12 +508,23 @@ class AdminProduk extends BaseController
         return view('dashboard/produk/produkContent/pilihProdukRekomendasi', $data);
     }
 
-
     public function savePilihProdukRekomendasi()
     {
         if ($this->request->getMethod() === 'post') {
+            // Mendapatkan data produk yang dipilih dari form
             $produkIds = $this->request->getPost('produk_id');
 
+            // Memastikan setidaknya satu produk dipilih
+            if (empty($produkIds)) {
+                // Menampilkan pesan error jika tidak ada produk yang dipilih
+                return redirect()->to('dashboard/produk/pilih-produk-rekomendasi')->withInput()->with('alert', [
+                    'type'    => 'error',
+                    'title'   => 'Error',
+                    'message' => 'Pilih Produk Terlebih Dahulu!'
+                ]);
+            }
+
+            // Menyimpan produk rekomendasi jika sudah memilih setidaknya satu produk
             $this->saveRekomendasiProduk($produkIds);
 
             return redirect()->to('dashboard/produk/pilih-produk-rekomendasi')->with('alert', [
@@ -520,35 +537,47 @@ class AdminProduk extends BaseController
         return redirect()->back();
     }
 
-    public function saveRekomendasiProduk($produkIds)
+    public function saveRekomendasiProduk($produkId)
     {
         $rekomendasiModel = new ProdukRekomendasiModel();
 
-        foreach ($produkIds as $index => $produkId) {
+        $validationResult = $rekomendasiModel->validasiProduk($produkId);
 
-            $rekomendasiModel->insert([
-                'id_produk' => $produkId,
-                'short'     => $index + 1,
-                'created_at' => date('Y-m-d H:i:s')
-            ]);
+        if ($validationResult['type'] === 'error') {
+            // If there's an error, show an error message
+            $alert = [
+                'type' => 'error',
+                'title' => 'Gagal',
+                'message' => $validationResult['message']
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
         }
+
+        // If validation is successful, show success message
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => $validationResult['message']
+        ];
+        session()->setFlashdata('alert', $alert);
+        return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
     }
+
     public function saveUrutanProdukRekomendasi()
     {
-        $produkRekmendasiModel = new ProdukRekomendasiModel();
-        $idProduk = $this->request->getVar('id_rekomendasi');
-        // dd($idProduk);
-        $originalOrder = $this->request->getVar('original_order');
-
+        $produkRekomendasiModel = new ProdukRekomendasiModel();
+        $idRekomendasi = $this->request->getVar('id_rekomendasi');
+        // dd($idRekomendasi);
         // Memulai transaksi
-        $produkRekmendasiModel->transStart();
+        $produkRekomendasiModel->transStart();
 
         try {
-            foreach ($idProduk as $key => $id) {
-                $produkRekmendasiModel->update($id, ['short' => $key + 1]);
+            foreach ($idRekomendasi as $key => $id) {
+                $produkRekomendasiModel->update($id, ['short' => $key + 1]);
             }
 
-            $produkRekmendasiModel->transComplete();
+            $produkRekomendasiModel->transComplete();
 
             $alert = [
                 'type' => 'success',
@@ -556,7 +585,7 @@ class AdminProduk extends BaseController
                 'message' => 'Urutan Produk berhasil diubah.'
             ];
         } catch (\Exception $e) {
-            $produkRekmendasiModel->transRollback();
+            $produkRekomendasiModel->transRollback();
 
             $alert = [
                 'type' => 'error',
@@ -566,6 +595,30 @@ class AdminProduk extends BaseController
         }
 
         session()->setFlashdata('alert', $alert);
+        return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
+    }
+
+    // delete
+    public function deleteProdukRekomendasi($id)
+    {
+        $rekomendasiModel = new ProdukRekomendasiModel();
+
+        if ($rekomendasiModel->delete($id)) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Produk rekomendasi berhasil dihapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terjadi kesalahan pada penghapusan produk rekomendasi.'
+            ];
+            session()->setFlashdata('alert', $alert);
+        }
+
         return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
     }
 }

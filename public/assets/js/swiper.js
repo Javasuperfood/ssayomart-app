@@ -1,11 +1,52 @@
-// Slider Banner Promosi Homepage All Device
+// Slider Banner Awal Promosi Homepage All Device
 var swiper = new Swiper(".mySwiper", {
   slidesPerView: 2, // Mengatur agar selalu ada 2 slide yang terlihat
   centeredSlides: true,
   spaceBetween: 10,
   grabCursor: true,
+  loop: true,
   autoplay: {
-    delay: 2500,
+    delay: 2000,
+    disableOnInteraction: true,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    // Tampilan iPad (lebar >= 768px)
+    1280: {
+      slidesPerView: 2, // 3 card per tampilan
+
+    },
+    // Tampilan iPad (lebar >= 768px)
+    768: {
+      slidesPerView: 1, // 3 card per tampilan
+    },
+    // Tampilan Mobile (lebar < 768px)
+    375: {
+      slidesPerView: 1, // 2 card per tampilan
+    },
+    280: {
+      slidesPerView: 1, // 2 card per tampilan
+    },
+  },
+  navigation: {
+    nextEl: '.button-next',
+    prevEl: '.button-prev',
+},
+
+  });
+
+  // Slider Banner ke 2 Promosi All Produk 
+var swiper = new Swiper(".myBanner", {
+  slidesPerView: 2, // Mengatur agar selalu ada 2 slide yang terlihat
+  centeredSlides: false,
+  spaceBetween: 10,
+  grabCursor: true,
+  loop: true,
+  autoplay: {
+    delay: 2000,
     disableOnInteraction: true,
   },
   pagination: {
@@ -78,7 +119,7 @@ var swiper = new Swiper(".mySwing", {
     },
     // Tampilan iPad (lebar >= 768px)
     768: {
-      slidesPerView: 4, // 4 card per tampilan
+      slidesPerView: 6, // 4 card per tampilan
     },
     717: {
       slidesPerView: 3, // 2 card per tampilan

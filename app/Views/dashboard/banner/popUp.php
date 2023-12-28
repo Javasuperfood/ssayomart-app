@@ -1,10 +1,15 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
+<style>
+  .breadcrumb-item a:hover {
+    text-decoration: none; /* Remove underline on hover */
+  }
+</style>
 
 <h1 class="h3 mb-2 text-gray-800">Management Pop Up</h1>
 <ul class="breadcrumb bg-light px-0">
     <li class="breadcrumb-item"><a href="<?= base_url() ?>dashboard/banner/list-banner" class="text-dark">Management Banner</a></li>
-    <li class="breadcrumb-item active text-danger text-decoration-underline">Pop Up Homepage</li>
+    <li class="breadcrumb-item active text-danger text-decoration-underline-none">Pop Up Homepage</li>
 </ul>
 <p class="mb-4">Anda dapat mengatur pop up yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>

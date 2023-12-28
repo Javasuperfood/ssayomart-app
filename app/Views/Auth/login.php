@@ -39,7 +39,7 @@ $error = session('error'); ?>
                         </div>
                     <?php endif; ?>
 
-                    <button type="submit" value="Masuk" class="sign-btn" id="btn-login"><?= lang('Text.btn_login') ?></button>
+                    <button type="submit" value="Masuk" class="sign-btn" id="btn-login" onclick="clickSubmitEvent(this)"><?= lang('Text.btn_login') ?></button>
 
                     <div class="divider align-items-center mb-4">
                         <p class="text-center fw-medium mb-0"><?= lang('Text.atau') ?></p>
@@ -81,8 +81,8 @@ $error = session('error'); ?>
         <div class="carousel">
             <div class="images-wrapper">
                 <img src="<?= base_url(); ?>assets/img/auth/banner.jpg" class="image img-1 show" alt="" />
-                <img src="<?= base_url(); ?>assets/img/auth/image2.png" class="image img-2" alt="" />
-                <img src="<?= base_url(); ?>assets/img/auth/image3.png" class="image img-3" alt="" />
+                <!-- <img src="<?= base_url(); ?>assets/img/auth/image2.png" class="image img-2" alt="" />
+                <img src="<?= base_url(); ?>assets/img/auth/image3.png" class="image img-3" alt="" /> -->
             </div>
 
             <div class="text-slider">
@@ -106,23 +106,25 @@ $error = session('error'); ?>
 <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
 
 <script>
+    const state = Math.random().toString(36).substring(7);
+    const nonce = Math.random().toString(36).substring(7);
+
     AppleID.auth.init({
         clientId: 'com.javasuperfood.ssayomartappready',
-        scope: 'email',
-        redirectURI: 'https://apps.ssayomart.com',
+        scope: 'name email',
+        redirectURI: 'https://apps.ssayomart.com/callback-apple',
+        state: state,
+        nonce: nonce
     });
 
-    // Listen for authorization success.
     document.addEventListener('AppleIDSignInOnSuccess', (event) => {
-        // Handle successful response.
-        console.log(event.detail.data);
+        console.log('Apple Sign In Success:', event.detail.data);
     });
 
-    // Listen for authorization failures.
     document.addEventListener('AppleIDSignInOnFailure', (event) => {
-        // Handle error.
-        console.log(event.detail.error);
+        console.log('Apple Sign In Failure:', event.detail.error);
     });
+
 
     function loginWithApple() {
         AppleID.auth.signIn();

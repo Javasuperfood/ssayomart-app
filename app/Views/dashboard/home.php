@@ -1,9 +1,10 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-3 text-gray-800">Dashboard</h1>
+<h1 class="h3 mb-3 text-gray-800">Stok Produk Ssayomart</h1>
+<p>Berikut adalah data stok produk-produk Ssayomart.</p>
 
-<div class="card border-1 shadow-sm mb-5">
+<div class="card border-0 shadow-sm mb-5">
 	<div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
 		<i class="bi bi-file-text-fill"></i>
 		<h6 class="m-0 fw-bold px-2">List Stok Produk</h6>
@@ -31,13 +32,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($getStockWithToko as $checkout) : ?>
+							<?php foreach ($getStockWithProduct as $stock) : ?>
 								<tr>
 									<td class="align-middle"><?= $iterasi++; ?></td>
-									<td class="align-middle"><?= $checkout['lable']; ?></td>
-									<td class="align-middle"><?= $checkout['nama']; ?></td>
-									<td class="align-middle"><?= $checkout['value_item']; ?></td>
-									<td class="align-middle"><?= $checkout['stok']; ?></td>
+									<td class="align-middle"><?= $stock['lable']; ?></td>
+									<td class="align-middle"><?= $stock['nama']; ?></td>
+									<td class="align-middle"><?= $stock['value_item']; ?></td>
+									<td class="align-middle"><?= $stock['stok']; ?></td>
 								</tr>
 							<?php endforeach ?>
 						</tbody>
@@ -48,6 +49,7 @@
 
 			<!-- Chart -->
 			<div class="card-body col-sm-6">
+				<p class="fw-bold">Stok Produk Ssayomart Per Bulan</p>
 				<canvas id="myChart"></canvas>
 			</div>
 		</div>
@@ -60,8 +62,8 @@
 	const ctx = document.getElementById('myChart');
 	const filterSelect = document.getElementById('filter');
 
-	const quantityData = <?= json_encode(array_column($getStockWithToko, 'stok')); ?>;
-	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct', 'Nov', 'Des'];
+	const quantityData = <?= json_encode(array_column($getStockWithProduct, 'stok')); ?>;
+	const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct'];
 
 	const initialChartData = {
 		labels: months,

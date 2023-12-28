@@ -179,8 +179,7 @@ class App extends BaseConfig
     public bool $CSPEnabled = false;
 
     public $aliases = [
-        // ...
-        'Hybridauth' => \Hybridauth\Hybridauth::class,
         'webhook' => \Config\WebHook::class,
+
     ];
 }

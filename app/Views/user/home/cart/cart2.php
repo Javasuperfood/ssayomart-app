@@ -22,7 +22,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="col-9 totalbarang d-flex justify-content-start align-items-center">
                                 <p class="mt-0 mb-0"><?= lang('Text.total_cart') ?></p>
-                                <p class="mt-0 mb-0 fw-bold" id="textTotal"></p>
+                                <p class="mt-0 mb-0 fw-bold mx-2" id="textTotal"></p>
                                 <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
                             </div>
                         </div>
@@ -30,30 +30,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
-                <div class="row text-center row-cols-2">
+                <div class="row row-cols-2">
                     <?php foreach ($produk as $p) : ?>
                         <div class="col-12 pt-3">
-                            <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+                            <div class="card border-0 shadow-sm " style="width: auto; height: 100%;">
                                 <div class="row">
-                                    <div class="col">
-                                        <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px;">
-                                            <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                    <div class="col-4">
+                                        <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px; z-index: 1000;">
+                                            <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                         </div>
-                                        <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-1 py-1 img-small gambar-kecil" alt="Product" style="width:140px; height:140px; object-fit: contain; object-position: 20% 10%;">
+                                        <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center position-relative">
+                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-2 py-1 img-small gambar-kecil" alt="Product" style="width:120px; height:120px; object-fit: contain; object-position: 20% 10%; ">
+                                            <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
+                                                <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center">
+                                                    <span class="sold-out-text">Kosong</span>
+                                                </div>
+                                            <?php endif; ?>
                                         </a>
                                     </div>
 
-                                    <div class="col">
+                                    <div class="col-8">
                                         <div class="card-body">
-                                            <p class="card-text text-secondary" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 25); ?></p>
-                                            <p class="card-title fw-bold text-danger" style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
-                                            <div class="input-group grup-masukan mt-2">
-                                                <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash" style="font-size: 12px;"></i></button>
-                                                <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
-                                                <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus" style="font-size: 12px;"></i></button>
+                                            <div class="mt-4 mx-2 text-position">
+                                                <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
+                                                <br>
+                                                <p class="card-title fw-bold text-danger float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                             </div>
-                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class=" mt-1 btn btn-sm button-sampah position-absolute end-0 mx-2"><i class="bi bi-trash text-danger"></i></button>
+
+                                            <div class="input-group grup-masukan button-group">
+                                                <button class="btn btn-outline-danger btn-dash rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
+                                                <input type="text" class="form-control  form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
+                                                <button class="btn btn-outline-danger btn-plus rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
+                                            </div>
+                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="border-0 btn btn-sm button-sampah position-absolute mx-2"><i class="bi bi-trash text-danger"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -62,9 +71,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <?php endforeach; ?>
                 </div>
-                <div style="background-color:#fff" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
-                    <div class="col">
-                        <button id="btnCheckout" type="submit" form="formCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 100%; font-size: 14px"><?= lang('Text.btn_checkout') ?></button>
+                <div style="background-color: #ffff; z-index:100" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
+                    <div class="col d-flex justify-content-center">
+                        <button id="btnCheckout" type="submit" form="formCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 60%; font-size: 13px"><?= lang('Text.btn_checkout') ?></button>
                     </div>
                 </div>
             </form>
@@ -122,32 +131,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="card-body">
                                                 <div class="d-flex flex-row align-items-center justify-content-between">
                                                     <div class="form-check" style="font-size: 20px; margin: 0;">
-                                                        <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                                        <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input button-klik border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                                     </div>
                                                     <div class="d-flex">
                                                         <div class="row">
                                                             <div class="col-3">
                                                                 <div>
                                                                     <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" alt="Shopping item" class="img-fluid rounded-3" style="width: 100px;">
+                                                                    <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
+                                                                        <div class="sold-out-overlay item-kosong d-flex justify-content-center align-items-center">
+                                                                            <span class="sold-out-text">Kosong</span>
+                                                                        </div>
+                                                                    <?php endif; ?>
                                                                 </div>
                                                             </div>
                                                             <div class="col-9">
                                                                 <div class="ms-3">
-                                                                    <h4 class="product_name">
+                                                                    <h4 class=" product_name">
                                                                         <a href="<?= base_url('produk/' . $p['slug']); ?>" class="link-underline link-underline-opacity-0 link-dark">
                                                                             <?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>
                                                                             <?= (strlen($p['nama'] . '(' . $p['value_item'] . ')') > 15) ? '' : ''; ?>
                                                                         </a>
                                                                     </h4>
-                                                                    <p class="mb-0"><?= substr($p['deskripsi'], 0, 80); ?></p>
+                                                                    <p class="mb-0 text-secondary"><?= substr($p['deskripsi'], 0, 80); ?></p>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="d-flex align-items-center justify-content-between" style="padding-left: 15px;">
                                                         <div class="d-flex flex-column">
-                                                            <div class="text-center me-5 pb-2" style="margin-top: 10px;">
-                                                                <h5 class="mb-0" style="font-size: 20px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
+                                                            <div class=" me-5 pb-2" style="margin-top: 10px;">
+                                                                <h5 class="mx-2 mb-4" style="font-size: 20px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></h5>
                                                             </div>
                                                             <div class="d-flex align-items-center me-5">
                                                                 <button class="btn btn-outline-danger btn-sm rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
@@ -156,7 +170,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                         </div>
                                                         <?= csrf_field(); ?>
-                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn rounded-circle"><i class="bi bi-trash text-danger"></i></button>
+                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn-lg btn rounded-circle float-start"><i class="bi bi-trash text-danger"></i></button>
                                                     </div>
                                                 </div>
                                             </div>

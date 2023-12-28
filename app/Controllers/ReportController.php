@@ -7,13 +7,17 @@ use App\Models\CheckoutProdukModel;
 
 class ReportController extends BaseController
 {
+
     public function index()
     {
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
         $perPage = 10;
 
-        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage);
+        $startDate = $this->request->getVar('startDate');
+        $endDate = $this->request->getVar('endDate');
+
+        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage, $startDate, $endDate);
         foreach ($getCheckoutWithProduct as $key => $c) {
             $getCheckoutWithProduct[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -23,20 +27,24 @@ class ReportController extends BaseController
             'getCheckoutWithProduct' => $getCheckoutWithProduct,
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
         ];
         // dd($data);
         return view('dashboard/report/report', $data);
     }
 
-    public function print($id)
+    public function print()
     {
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
 
         $perPage = 10;
-        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage);
 
-        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage);
+        $startDate = $this->request->getGet('startDate');
+        $endDate = $this->request->getGet('endDate');
+
+        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage, $startDate, $endDate);
         foreach ($getCheckoutWithProduct as $key => $c) {
             $getCheckoutWithProduct[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -46,6 +54,8 @@ class ReportController extends BaseController
             'getCheckoutWithProduct' => $getCheckoutWithProduct,
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
         ];
         // dd($data);
 

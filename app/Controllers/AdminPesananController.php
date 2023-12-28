@@ -239,16 +239,28 @@ class AdminPesananController extends BaseController
     {
         $checkoutProdModel = new CheckoutProdukModel();
         $statusPesanModel = new StatusPesanModel();
+        $alamatUserModel = new AlamatUserModel();
+        $checkoutModel = new CheckoutModel();
+
         $order = $checkoutProdModel->getTransaksi($inv);
+        $t = $checkoutModel->where('gosend', 1)->like('id_checkout', $inv)->orLike('invoice', $inv)->orderBy('id_checkout')->first();
+        $destination = $alamatUserModel->find($t['id_destination']);
+
         $data = [
             'inv' => $inv,
             'orders' => $order,
             'order' => $order[0],
             'statusPesan' => $statusPesanModel->findAll()
         ];
+
+        if ($order[0]['id_destination']) {
+            $alamatUserModel = new AlamatUserModel();
+            $data['destination'] = $alamatUserModel->find($order[0]['id_destination']);
+        }
         // dd($data);
         return view('dashboard/pesanan/detail', $data);
     }
+
 
     // =============================================== Store Data =================================================
     public function updateStatus($id)

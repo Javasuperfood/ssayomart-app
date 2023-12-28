@@ -1,120 +1,428 @@
 /* cart 2 */
 
-
 /* Common styles for both mobile and desktop */
-        .card-body {
-            padding: 1rem;
-        }
+/* .card-body {
+  padding: 1rem;
+} */
 
-        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
+/* untuk desktop */
+  .item-kosong {
+    position: absolute;
+    top: 44px;
+    left: 69px;
+    width: 6%;
+    height: 32%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+  }
+/* end deksstop */
 
-            .gambar-kecil {
-                max-height: 100px !important;
-                /* Sesuaikan tinggi maksimum yang Anda inginkan */
-                max-width: 100px !important;
-                /* Biarkan lebar gambar menyesuaikan */
-                margin: 25px 0 25px auto !important;
-                /* Geser gambar ke tengah kanan */
-            }
+.item-item {
+  position: absolute;
+  top: 44px;
+  left: 62px;
+  width: 42%;
+  height: 32%;
+  background-color: rgba(0, 0, 0, 0.7); 
+  border-radius: 50%;
+  display: none;
+}
 
-            .grup-masukan {
-                position: relative;
-                display: flex;
-                align-items: stretch;
-                max-width: 280px;
-                width: 100%;
-                margin: 0 auto;
-                flex-wrap: nowrap;
-            }
+.sold-out-text {
+  color: white;
+  font-weight: bold;
+  font-size: 9px;
+}
 
-            .form-masuk {
-                width: 20px;
-                padding: 0;
-                margin-bottom: 25px;
-            }
+/* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
 
-            button.posisi-mutlak {
-                bottom: 5px;
-                right: 10px;
-            }
+@media screen  and (max-width: 280px) {
+/* stok habis overlay */
+.item-item {
+  position: absolute;
+  top: 49px;
+  left: 47px;
+  width: 54%;
+  height: 33%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
 
-
-            .button-sampah {
-                font-size: 15px;
-                bottom: 0.5rem !important;
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle {
-                padding: 0;
-                width: 20px;
-                height: 20px;
-
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle i {
-                font-size: 10px;
-
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
-                margin-left: -2px;
-                display: flex;
-                justify-content: center;
-            }
-
-            .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
-                margin-left: -1px;
-                display: flex;
-                justify-content: center;
-            }
-
-            .totalbarang p {
-                font-size: 14px !important;
-                margin: 3px;
-            }
-
-            /* Add specific CSS styles for the delete button if needed */
-        }
-
-        /* CSS untuk tombol Scroll Up */
-        #buttonAtas {
-            display: none;
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            width: 30px;
-            height: 40px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 99;
-        }
-
-        /* button pilih objek radio */
-    .form-check-input:focus {
-        border-color: #ec2614;
-        outline: 0;
-        box-shadow: 0 0 0 0;
-    }
-
-    .form-check-input:checked {
-        background-color: #ec2614;
-        border-color: #ec2614
-    }
-
-    .form-check-input[type=radio] {
-        border-radius: 50%
-    }
-
-    .form-check-input:active {
-        filter: brightness(90%)
-    }
-
-    .form-check-input[type=checkbox]:indeterminate {
-        background-color: #ec2614;
-        border-color: #ec2614;
-    }
-
+  .gambar-kecil {
+    max-height: 100px !important;
+    /* Sesuaikan tinggi maksimum yang Anda inginkan */
+    max-width: 100px !important;
+    /* Biarkan lebar gambar menyesuaikan */
+    margin-top: 20px !important;
+    margin-left: 60px !important;
     
+    /* margin: 25px 0 25px auto !important; */
+    /* Geser gambar ke tengah kanan */
+  }
+
+  /* .grup-masukan {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    max-width: 280px;
+    width: 100%;
+    margin: 0 auto;
+    flex-wrap: nowrap;
+  }
+
+  .form-masuk {
+    width: 20px;
+    padding: 0;
+    margin-bottom: 25px;
+  }
+
+  button.posisi-mutlak {
+    bottom: 5px;
+    right: 10px;
+  }
+
+  .button-sampah {
+    font-size: 15px;
+    bottom: 0.5rem !important;
+  }
+
+  .btn.btn-outline-danger.btn-sm.rounded-circle {
+    padding: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .btn.btn-outline-danger.btn-sm.rounded-circle i {
+    font-size: 10px;
+  }
+
+  .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-dash {
+    margin-left: -2px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn.btn-outline-danger.btn-sm.rounded-circle i.bi-plus {
+    margin-left: -1px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .totalbarang p {
+    font-size: 14px !important;
+    margin: 3px;
+  } */
+
+  .nama-pesanan{
+    font-size: 10px !important;
+  }
+
+  .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+    
+  }
+  .grup-masukan {
+    margin-top: 29px; 
+    
+
+  }
+  .form-check-input{
+  padding: 10px 10px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+   
+  }
+.btn-dash, .btn-plus {
+  width: 25px; 
+  height: 25px; 
+  border-radius: 50%;
+  background-color: transparent; 
+  color: #dc3545; 
+  border: 1px solid #dc3545; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+ 
+
+.btn-dash i, .btn-plus i {
+  margin-top: 2px; 
+}
+
+  .button-sampah {
+    font-size: 18px;
+    left: 37%; 
+    margin-top: -34px; 
+  }
+
+  /* Add specific CSS styles for the delete button if needed */
+}
+/* Media query untuk layar galaxy-fold dengan lebar maksimum 653px dan tinggi maksimum 280px */
+@media screen and (max-width: 653px) and (max-height: 280px) {
+ /* stok habis overlay */
+.item-item {
+  position: absolute;
+  top: 44px;
+  left: 77px;
+  width: 42%;
+  height: 45%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
+
+}
+
+/* Media query untuk layar galaxy-fold dengan lebar maksimum 512px dan tinggi maksimum 717px */
+
+@media screen and (min-width: 512px) and (max-width: 512px) {
+
+  .item-item {
+    position: absolute;
+    top: 48px;
+    left: 80px;
+    width: 35%;
+    height: 36%;
+    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+    border-radius: 50%;
+    display: none;
+  }
+}
+
+/* Media query untuk layar galaxy-fold dengan lebar maksimum 717px dan tinggi maksimum 512px */
+@media screen and (max-width: 717px) and (max-height: 512px) {
+ /* stok habis overlay */
+.sold-out-overlay {
+  position: absolute;
+  top: 44px;
+  left: 77px;
+  width: 42%;
+  height: 45%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
+
+}
+
+/* CSS untuk tombol Scroll Up */
+#buttonAtas {
+  display: none;
+  position: fixed;
+  bottom: 61px;
+  right: 20px;
+  width: 20px;
+  height: 40px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 200;
+  background-color: #ec2614;
+}
+
+/* button pilih objek radio */
+.form-check-input:focus {
+  border-color: #ec2614;
+  outline: 0;
+  box-shadow: 0 0 0 0;
+}
+
+.form-check-input:checked {
+  background-color: #ec2614;
+  border-color: #ec2614;
+}
+
+
+.button-klik[type="radio"] {
+  border-radius: 50%;
+}
+
+.form-check-input:active {
+  filter: brightness(90%);
+}
+
+.form-check-input[type="checkbox"]:indeterminate {
+  background-color: #ec2614;
+  border-color: #ec2614;
+}
+
+/* Untuk layar dengan lebar antara 1024px dan 1366px */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+
+  .input-group.grup-masukan {
+    justify-content: center;
+  }
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
+
+  .form-masuk {
+    max-width: 40px;
+  }
+
+  .item-item {
+    position: absolute;
+    top: 44px;
+    left: 119px;
+    width: 21%;
+    height: 42%;
+    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+    border-radius: 50%;
+    display: none;
+  }
+
+  .button-sampah {
+    font-size: 18px;
+    left: 35%; 
+    margin-top: -34px; 
+  }
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 932px) {
+
+
+  .btn-dash, .btn-plus {
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%;
+  background-color: transparent; 
+  color: #dc3545; 
+  border: 1px solid #dc3545; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+  .gambar-kecil {
+    margin-left: 65px !important;
+  }
+    .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+  }
+  .grup-masukan {
+    margin-top: 29px; /
+  
+  }
+  .form-check-input{
+  padding: 10px 10px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
+
+  .button-sampah {
+    font-size: 24px;
+    left: 37%; 
+    margin-top: -34px; 
+  }
+}
+
+/* untuk samsung galaxy s8 */
+@media screen and (min-width: 360px) and (max-width: 740px) {
+    .gambar-kecil {
+    margin-left: 65px !important;
+  }
+  .btn-dash, .btn-plus {
+  width: 30px; 
+  height: 30px; 
+  border-radius: 50%;
+  background-color: transparent; 
+  color: #dc3545; 
+  border: 1px solid #dc3545; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+    .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+  }
+  .grup-masukan {
+    margin-top: 29px; /
+  
+  }
+  .form-check-input{
+  padding: 9px 9px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
+
+  .button-sampah {
+    font-size: 20px;
+    left: 37%; 
+    margin-top: -34px; 
+  }
+}
+
+/* untuk ipad  */
+
+@media screen and (min-width: 768px) and (max-width: 768px) {
+
+  .item-item {
+    position: absolute;
+    top: 44px;
+    left: 119px;
+    width: 21%;
+    height: 32%;
+    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+    border-radius: 50%;
+    display: none;
+  }
+  
+    .input-group.grup-masukan {
+    justify-content: end;
+  }
+ 
+ .form-masuk {
+    max-width: 40px;
+  }
+  .grup-masukan {
+    margin-top: 29px; /
+  
+  }
+  .form-check-input{
+  padding: 10px 10px;
+}
+
+  .btn-dash,
+  .btn-plus,
+  .form-masuk {
+    margin: 0;
+  }
+
+  .button-sampah {
+    font-size: 24px;
+    left: 37%; 
+    margin-top: -34px; 
+  }
+}

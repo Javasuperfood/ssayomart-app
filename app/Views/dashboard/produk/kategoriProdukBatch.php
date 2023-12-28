@@ -108,7 +108,7 @@
                     <div class="mb-4">
                         <label for="produk" class="form-label text-secondary">Pilih Sub Kategori</label>
                         <button type="button" class="btn form-control border-1 border-left-danger text-left view-product text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal_sub" id="btnChooseSubCategory" style="border: 1px solid #d1d3e2" disabled>
-                            Tekan Untuk Memilih Sub Kategori
+                            <span class="text-dark">Tekan Untuk Memilih Sub Kategori</span> (Sorry, we have disabled this form)
                         </button>
 
                     </div>

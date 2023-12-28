@@ -31,8 +31,8 @@ class PromoBatchModel extends Model
     protected $validationRules      = [
         'id_promo' => 'required',
         'id_produk' => 'required',
-        'discount' => 'required',
-        'min' => 'required'
+        'discount' => 'required|decimal',
+        'min' => 'required|integer'
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

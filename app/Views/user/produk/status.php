@@ -59,13 +59,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
                                         </div>
                                         <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?></h5>
-                                            <p class="card-text text-secondary fs-6"><?= $p->qty; ?> <?= $p->value_item; ?>
+                                            <h5 class="card-title " style="font-size: 12px;"><?= substr($p->nama, 0, 10); ?></h5>
+                                            <p class="card-text text-secondary " style="font-size: 12px;"><?= $p->qty; ?> <?= $p->value_item; ?>
                                             </p>
                                         </div>
                                         <div class="col-5 position-absolute top-50 end-0 mt-2 translate-middle-y ps-4">
-                                            <h5 class="text-secondary fs-6">Total</h5>
-                                            <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
+                                            <h5 class="text-secondary " style="font-size: 13px;">Total</h5>
+                                            <p class="fw-bold" style="font-size: 13px;">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col mt-3">
                 <div class="card border-0">
                     <div class="card form-control form-control-md border-0 shadow-sm">
-                        <h2 class="fs-5">Pesanan kamu</h2>
+                        <h2 class="fs-5">Pesanan Kamu</h2>
                         <div class="row">
                             <div class="col-10">
                                 <p><?= $status->invoice; ?></p>
@@ -110,6 +110,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
                             </div>
                         </div>
+
                         <?php if (isset($paymentStatus->va_numbers[0])) : ?>
                             <div class="row">
                                 <div class="col-10">
@@ -117,6 +118,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                                 <div class="col-2">
                                     <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-10">
+                                    <p>Resi <?= $status->resi; ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->resi; ?>')"></i>
                                 </div>
                             </div>
                             <div class="row">
@@ -184,7 +193,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <form action="<?= base_url('status/update/' . $inv) ?>" method="post">
                                                     <?= csrf_field(); ?>
                                                     <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                                                        <button type="submit" class="btn btn-lg btn-success">Selesai</button>
+                                                        <button type="submit" onclick="clickSubmitEvent(this)" class="btn btn-lg btn-success">Selesai</button>
                                                         <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
                                                     </div>
                                                 </form>
@@ -552,7 +561,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="text-center mb-3 mt-3">
                                             <img src="<?= base_url() ?>assets/img/logopanjang.png" alt="" class="card-img-top" style="width: 100px; height: 30px; margin: 0 auto;">
                                         </div>
-                                        <h2 class="text-center mb-4">Pesanan kamu</h2>
+                                        <h2 class="text-center mb-4">Pesanan Kamu</h2>
                                         <div class="row mb-3">
                                             <div class="col-10">
                                                 <p>Invoice: <?= $status->invoice; ?></p>
@@ -568,6 +577,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                                 <div class="col-2 text-end">
                                                     <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-10">
+                                                    <p>Resi <?= $status->resi; ?></p>
+                                                </div>
+                                                <div class="col-2 text-end">
+                                                    <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->resi; ?>')"></i>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -659,11 +676,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <div class="card mb-4 shadow-sm" style="border-left: 4px solid red; border-right: 0px; border-top: 0px; border-bottom: 0px;">
                                                             <div class=" row">
                                                                 <div class="col-3">
-                                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
+                                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img" style="width: 150px; height: 100%; padding: 8px; object-fit: contain; object-position: 20% 10%;">
                                                                 </div>
                                                                 <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                                                    <h5 class="card-title fs-6"><?= substr($p->nama, 0, 10); ?>...</h5>
-                                                                    <p class="card-text text-secondary fs-6"><?= $p->qty; ?></p>
+                                                                    <h5 class="card-title fs-6"><?= substr($p->nama, 0, 40); ?>...</h5>
+                                                                    <p class="card-text text-secondary fs-6"><?= $p->qty; ?> Produk</p>
                                                                 </div>
                                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                                     <h5 class="text-secondary fs-6">Total</h5>

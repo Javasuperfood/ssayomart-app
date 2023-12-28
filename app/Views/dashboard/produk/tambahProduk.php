@@ -38,12 +38,13 @@
             </div>
             <div class="mb-4">
                 <label for="parent_kategori_id">Kategori Induk</label>
-                <select class="form-control border-1" id="kategori" name="parent_kategori_id">
+                <select class="form-control border-1 <?= (validation_show_error('parent_kategori_id')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" name="parent_kategori_id">
                     <option value="">Pilih Kategori</option>
                     <?php foreach ($kategori as $km) : ?>
                         <option value="<?= $km['id_kategori']; ?>"><?= $km['nama_kategori']; ?></option>
                     <?php endforeach; ?>
                 </select>
+                <div class="invalid-feedback"><?= validation_show_error('parent_kategori_id'); ?></div>
             </div>
             <div class="mb-4">
                 <label for="parent_kategori_id">Sub Kategori</label>

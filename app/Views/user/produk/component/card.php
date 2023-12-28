@@ -1,12 +1,12 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
-            <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
-            <hr class="border-darker mt-0 mb-3">
+            <h3 class="p-1 mt-1 rounded-top-3 d-block text-center fw-bold" style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></h3>
+            <hr class="mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
-                    <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0 text-center">
+                    <div class="col-6 col-md-4 col-lg-2 mb-2 mx-0 text-center">
                         <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -15,13 +15,13 @@
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                                    <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($fp['nama'], 0, 50); ?></p>
+                                    <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($fp['nama'], 0, 50); ?></p>
                                 </div>
                                 <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                 </p>
 
-                                <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                                     <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                         Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>
@@ -29,7 +29,21 @@
                                     <?php endif ?>
                                 </h1>
 
-                                <div class="container mt-2">
+                                <!-- button Animasi -->
+                                <div class="button-container" id="button-container-<?= $fp['id_produk']; ?>">
+                                    <div class="button" onclick="changeToCapsule(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)">
+                                        <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                                    </div>
+
+                                    <div class="button-capsule" style="display: none;">
+                                        <i class="icon bi bi-dash" onclick="decreaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
+                                        <input type="text" class="input border-0" value="1" id="counter-<?= $fp['id_produk']; ?>">
+                                        <i class="icon bi bi-plus" onclick="increaseValue(<?= $fp['id_produk']; ?>, <?= $fp['id_variasi_item']; ?>)"></i>
+                                    </div>
+                                </div>
+                                <!-- akhir button animasi -->
+
+                                <!-- <div class="container mt-2">
                                     <div class="row justify-items-center">
                                         <div class="col">
                                             <div class="horizontal-counter">
@@ -56,7 +70,7 @@
                                         </button>
                                         <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                                     </form>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -66,13 +80,13 @@
 <?php endif; ?>
 
 <div class="container bg-white" id="product">
-    <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
-    <hr class="border-darker mt-0 mb-3">
+    <h3 class="p-1 mt-1 rounded-top-3 d-block text-center fw-bold " style="color: #9c2525; background-color: #facaaf; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></h3>
+    <hr class="mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
     <div class="row row-cols-3" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
-            <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
-                <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+            <div class="col-6 col-md-4 col-lg-2 mb-2 mx-0">
+                <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
@@ -80,13 +94,13 @@
                     </a>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                            <p class=" text-secondary fw-bold " style=" font-size: 11px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                            <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
                         </div>
                         <p class="text-secondary" style="font-size: 10px; margin: 0;">
                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                         </p>
 
-                        <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                             <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                 Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                             <?php else : ?>
@@ -94,7 +108,21 @@
                             <?php endif ?>
                         </h1>
 
-                        <div class="container mt-2">
+                        <!-- button Animasi -->
+                        <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
+                            <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">
+                                <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                            </div>
+
+                            <div class="button-capsule" style="display: none;">
+                                <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
+                                <input type="text" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
+                                <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
+                            </div>
+                        </div>
+                        <!-- akhir button animasi -->
+
+                        <!-- <div class="container mt-2">
                             <div class="row justify-items-center">
                                 <div class="col">
                                     <div class="horizontal-counter">
@@ -121,14 +149,133 @@
                                 </button>
                                 <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </div>
-<script type="text/javascript">
+
+<!-- SCRRIPT DECRERASE INCREASE -->
+<script>
+    function changeToCapsule(c, v) {
+        $(`#button-container-${c} .button`).css('display', 'none');
+        $(`#button-container-${c} .button-capsule`).css('display', 'flex');
+        addToCartProductList(c, v, 1)
+        cartItemShow('plus'); // cart script
+        let im_produk = document.querySelectorAll('.im_produk_' + c + '_');
+        im_produk.forEach(function(e) {
+            e.classList.add('animate__animated', 'animate__tada');
+            e.addEventListener('animationend', () => {
+                e.classList.remove('animate__animated', 'animate__tada');
+            });
+        });
+
+        let cartcart = document.querySelector('.a_cart_link_0');
+        cartcart.classList.add('animate__animated', 'animate__shakeY');
+        cartcart.addEventListener('animationend', () => {
+            cartcart.classList.remove('animate__animated', 'animate__shakeY');
+        });
+    }
+
+    function decreaseValue(c, v) {
+        var counter = document.querySelectorAll(`#counter-${c}`);;
+        let q = 1;
+        let ss = true
+        counter.forEach(function(e) {
+            if (parseInt(e.value) > 0) {
+                e.value = (parseInt(e.value) - 1);
+                if (parseInt(e.value) < 1) {
+                    e.value = 1;
+                    if (ss) {
+                        ss = changeToCircle(c);
+                    }
+                }
+            }
+        });
+        if (ss) {
+            addToCartProductList(c, v, q)
+        }
+    }
+
+    function increaseValue(c, v) {
+        var counter = document.querySelectorAll(`#counter-${c}`);
+        let q = 1
+        counter.forEach(function(e) {
+            e.value = (parseInt(e.value) + 1);
+            q = e.value;
+        });
+        addToCartProductList(c, v, q)
+        let cartcart = document.querySelector('.a_cart_link_0');
+        cartcart.classList.add('animate__animated', 'animate__shakeY');
+        cartcart.addEventListener('animationend', () => {
+            cartcart.classList.remove('animate__animated', 'animate__shakeY');
+        });
+    }
+
+    function changeToCircle(c) {
+        $(`#button-container-${c} .button`).css('display', 'flex');
+        $(`#button-container-${c} .button-capsule`).css('display', 'none');
+        cartDeleteProdukList(c)
+    }
+
+
+    function addToCartProductList(c, v, q) {
+        var produk = c;
+        var varian = v;
+        var qty = q;
+        // console.log(produk, varian, qty)
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('api/add-to-cart'); ?>",
+            dataType: "json",
+            data: {
+                id_produk: produk,
+                id_varian: varian,
+                qty: qty
+            },
+            success: function(response) {
+                if (response.success) {
+                    // console.log(response.message)
+                    return true
+                } else {
+                    // console.log(response.message)
+                    return false
+                }
+            },
+            error: function(error) {
+                console.error("Error:", error);
+                <?php if (!auth()->loggedIn()) : ?>
+                    location.href = '<?= base_url(); ?>login'
+                <?php endif ?>
+                return false
+            }
+        });
+    }
+
+    function cartDeleteProdukList(produk) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('api/delete-cart-product'); ?>",
+            dataType: "json",
+            data: {
+                produk: produk,
+            },
+            success: function(response) {
+                cartItemShow('minus'); // cart script
+            },
+            error: function(error) {
+                console.error("Error:", error);
+                <?php if (!auth()->loggedIn()) : ?>
+                    location.href = '<?= base_url(); ?>login'
+                <?php endif ?>
+            }
+        });
+    }
+</script>
+
+<!-- <script type="text/javascript">
     function increaseCount(b, id) {
         var input = b.previousElementSibling;
         console.log(input);
@@ -152,7 +299,7 @@
 
         }
     }
-</script>
+</script> -->
 <?php else : ?>
     <div class="container px-5 my-5 align-middle">
         <div class="card border-0 text-center rounded shadow-sm">
@@ -164,16 +311,7 @@
     </div>
 <?php endif ?>
 
-<style>
-    .border-darker {
-        border-color: red;
-        /* Ubah warna garis menjadi merah */
-        border-width: 2px;
-        /* Sesuaikan ketebalan garis sesuai kebutuhan Anda */
-        font-weight: bold;
-        /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
-    }
-
+<!-- <style>
     .horizontal-counter {
         display: flex;
         align-items: center;
@@ -230,10 +368,10 @@
             /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
         }
     }
-</style>
+</style> -->
 
 <!-- samsung galaxy fold tonggle dual screen mode gak sreg hapus aja gak usah cacicu -->
-<style>
+<!-- <style>
     @media screen and (min-width: 717px) and (max-width: 717px) {
 
         .col-lg-3,
@@ -271,5 +409,5 @@
             margin-left: 5%;
         }
     }
-</style>
+</style> -->
 <!-- end samsung galaxy fold tonggle dual screen mode 717 -->

@@ -38,11 +38,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <p class="mt-4 mb-1" style="font-size: 16px;">Booking ID</p>
                                 <span class="fw-bold"><?= $gosendStatus['orderNo']; ?></span>
                                 <hr>
-                                <p class="mt-4 mb-1" style="font-size: 16px;">status</p>
+                                <p class="mt-4 mb-1" style="font-size: 16px;">Status</p>
                                 <span class="fw-bold"><?= $gosendStatus['status']; ?></span>
                                 <hr>
                                 <?php if ($gosendStatus['cancelDescription']) : ?>
-                                    <p class="mt-4 mb-1" style="font-size: 16px;">cancelDescription</p>
+                                    <p class="mt-4 mb-1" style="font-size: 16px;">Cancel Description</p>
                                     <span class="fw-bold"><?= $gosendStatus['cancelDescription']; ?></span>
                                     <hr>
                                 <?php endif; ?>
@@ -61,21 +61,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
 
-            <!-- tracking lama horizontal-->
-            <!-- <div class="row">
-                <div class="col">
-                    <div class="track">
-                        <div class="step active"> <span class="icon"> <i class="bi bi-check2-circle"></i> </span> <span class="text" style="font-size: smaller;">Order confirmed</span> </div>
-                        <?php if ($gosendStatus) : ?>
-                            <?php foreach ($status as $s) :  ?>
-                                <div class="step active"> <span class="icon"> <i class="bi <?= ($s == 'Completed') ? 'bi-check2-circle' : 'bi-truck'; ?>"></i> </span> <span class="text" style="font-size: smaller;"> <?= $s; ?> </span> </div>
-                            <?php endforeach ?>
-                        <?php endif ?>
-                    </div>
-                </div>
-            </div> -->
-            <!-- end tracking lama -->
-
             <!-- tracking baru vertical -->
             <div class="row">
                 <div class="col-md-12 col-lg-12">
@@ -88,7 +73,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
                                     </svg>
                                 </div>
-                                <div class="tracking-date"><i class="bi bi-truck" class="img-responsive" style="font-size: 30px;" alt="order-placed" /></i></div>
+                                <div class="tracking-date"><i class="bi bi-truck" class="img-responsive" style="font-size: 30px;" alt="order-placed"></i></div>
                                 <div class="tracking-content"><?= $s; ?></div>
                             </div>
                         <?php endforeach ?>
@@ -151,9 +136,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <table class="table table-borderless" style="font-size: small;">
                                     <tbody>
                                         <tr>
+                                            <td>INV</td>
+                                            <td>:</td>
+                                            <td><?= $inv ?></td>
+                                        </tr>
+                                        <tr>
                                             <td>Metode</td>
                                             <td>:</td>
-                                            <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . '-' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
+                                            <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . ' ' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
                                         </tr>
                                         <tr>
                                             <td>Total</td>
@@ -206,7 +196,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <form action="<?= base_url('status/ordering/update/' . $inv) ?>" method="post">
                                     <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
                                         <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-success">Selesai</button>
+                                        <button type="submit" class="btn btn-lg btn-success" onclick="clickSubmitEvent(this)">Selesai</button>
                                         <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
                                     </div>
                                 </form>
@@ -443,100 +433,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
 
-    <!-- style tracking horizontal -->
-    <!-- <style>
-        .card {
-            border-radius: 20px;
-            /* Sudut bulat pada seluruh kartu */
-            overflow: hidden;
-        }
-
-        .card img {
-            width: 100%;
-            /* Agar gambar mengisi seluruh lebar kartu */
-            height: auto;
-            /* Mengatur ketinggian gambar sesuai aspek ratio */
-        }
-
-        .border-darker {
-            border-color: red;
-            /* Ubah warna garis menjadi merah */
-            border-width: 2px;
-            /* Sesuaikan ketebalan garis sesuai kebutuhan Anda */
-            font-weight: bold;
-            /* Tambahkan ketebalan teks sesuai kebutuhan Anda */
-        }
-
-        /* Style Tracking  */
-        .track {
-            position: relative;
-            background-color: #ddd;
-            height: 5px;
-            /* Mengurangi tinggi tracking */
-            display: flex;
-            margin-bottom: 40px;
-            /* Mengurangi margin bottom */
-            margin-top: 30px;
-            /* Mengurangi margin top */
-        }
-
-        .track .step {
-            flex-grow: 1;
-            width: 20%;
-            /* Mengurangi lebar setiap langkah */
-            margin-top: -14px;
-            /* Mengurangi margin top */
-            text-align: center;
-            position: relative;
-        }
-
-        .track .step.active:before {
-            background: #cf240a;
-        }
-
-        .track .step::before {
-            height: 5px;
-            /* Mengurangi tinggi garis tracking */
-            position: absolute;
-            content: "";
-            width: 100%;
-            left: 0;
-            top: 14px;
-            /* Mengurangi top position */
-        }
-
-        .track .step.active .icon {
-            background: #cf240a;
-            color: #fff;
-        }
-
-        .track .icon {
-            display: inline-block;
-            width: 30px;
-            /* Mengurangi lebar ikon */
-            height: 30px;
-            /* Mengurangi tinggi ikon */
-            line-height: 30px;
-            /* Mengurangi line-height ikon */
-            position: relative;
-            border-radius: 100%;
-            background: #ddd;
-        }
-
-        .track .step.active .text {
-            font-weight: 400;
-            color: #000;
-        }
-
-        .track .text {
-            display: block;
-            margin-top: 5px;
-            /* Mengurangi margin top */
-            font-size: smaller;
-            /* Mengubah ukuran font ke smaller */
-        }
-    </style> -->
-
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:100px;">
@@ -584,11 +480,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <p class="mt-4 mb-1" style="font-size: 16px;">Booking ID</p>
                                     <span class="fw-bold"><?= $gosendStatus['orderNo']; ?></span>
                                     <hr>
-                                    <p class="mt-4 mb-1" style="font-size: 16px;">status</p>
+                                    <p class="mt-4 mb-1" style="font-size: 16px;">Status</p>
                                     <span class="fw-bold"><?= $gosendStatus['status']; ?></span>
                                     <hr>
                                     <?php if ($gosendStatus['cancelDescription']) : ?>
-                                        <p class="mt-4 mb-1" style="font-size: 16px;">cancelDescription</p>
+                                        <p class="mt-4 mb-1" style="font-size: 16px;">Cancel Description</p>
                                         <span class="fw-bold"><?= $gosendStatus['cancelDescription']; ?></span>
                                         <hr>
                                     <?php endif; ?>
@@ -701,9 +597,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <table class="table table-borderless" style="font-size: small;">
                                         <tbody>
                                             <tr>
+                                                <td>INV</td>
+                                                <td>:</td>
+                                                <td><?= $inv ?></td>
+                                            </tr>
+                                            <tr>
                                                 <td>Metode</td>
                                                 <td>:</td>
-                                                <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . '-' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
+                                                <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . ' ' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
                                             </tr>
                                             <tr>
                                                 <td>Total</td>

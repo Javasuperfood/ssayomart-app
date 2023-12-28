@@ -23,12 +23,6 @@ class GloginOAuth extends AbstractOAuth
     protected string $client_secret;
     protected string $callback_url;
 
-    /**
-     * Class construct
-     *
-     * @see https://github.com/datamweb/shield-oauth/blob/develop/docs/add_other_oauth.md#writing-class-yahoo-oauth
-     * @param string $token
-     */
     public function __construct(string $token = '')
     {
         $this->token  = $token;
@@ -40,26 +34,11 @@ class GloginOAuth extends AbstractOAuth
         $this->client_secret = $this->config->oauthConfigs['glogin']['client_secret'];
     }
 
-    /**
-     * Create a link to transfer the user to the new provider.
-     *
-     * @see https://github.com/datamweb/shield-oauth/blob/develop/docs/add_other_oauth.md#writing-class-yahoo-oauth
-     * @param string $state
-     * @return string
-     */
     public function makeGoLink(string $state): string
     {
         return self::$API_CODE_URL . "?response_type=code&client_id={$this->client_id}&scope=openid%20email%20profile&redirect_uri={$this->callback_url}&state={$state}";
     }
 
-    /**
-     * Try to get the value of `access_token` according to the code
-     * received from the `makeGoLink()` method.
-     *
-     * @see https://github.com/datamweb/shield-oauth/blob/develop/docs/add_other_oauth.md#writing-class-yahoo-oauth
-     * @param array $allGet
-     * @return void
-     */
     public function fetchAccessTokenWithAuthCode(array $allGet): void
     {
         try {
@@ -85,18 +64,8 @@ class GloginOAuth extends AbstractOAuth
         $this->setToken($token);
     }
 
-    /**
-     * Try to receive user information (including first name,
-     * last name, email, etc) according to the token code set
-     * in the previous step.
-     *
-     * @see https://github.com/datamweb/shield-oauth/blob/develop/docs/add_other_oauth.md#writing-class-yahoo-oauth
-     * @return object
-     */
     public function fetchUserInfoWithToken(): object
     {
-        // Your code here
-        // send request to API URL
         try {
             $response = $this->client->request('POST', self::$API_USER_INFO_URL, [
                 'headers' => [
@@ -113,15 +82,6 @@ class GloginOAuth extends AbstractOAuth
         return json_decode($response->getBody());
     }
 
-    /**
-     * Set the fields received from each service OAuth to be recorded
-     * in each column of the table.
-     *
-     * @see https://github.com/datamweb/shield-oauth/blob/develop/docs/add_other_oauth.md#writing-class-yahoo-oauth
-     * @param string $nameOfProcess
-     * @param object $userInfo
-     * @return array
-     */
     public function setColumnsName(string $nameOfProcess, object $userInfo): array
     {
         if ($nameOfProcess === 'syncingUserInfo') {

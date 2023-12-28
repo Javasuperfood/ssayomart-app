@@ -29,11 +29,11 @@
             }
 
             .keterangan h5 {
-                font-size: 14px !important
+                font-size: 10px !important
             }
 
-            .keterangan p {
-                font-size: 12px !important;
+            .keterangan  {
+                font-size: 11px !important;
             }
 
             .btn-bayar {
@@ -45,7 +45,7 @@
             }
 
             .pemilihan {
-                font-size: 0.7rem !important;
+                font-size: 0.6rem !important;
             }
 
         }

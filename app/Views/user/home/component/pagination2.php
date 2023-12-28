@@ -19,9 +19,9 @@ $countProduk = count($produk);
         keyword = urlParams.get('produk');
     }
     var productContainer = $("#product-container");
-    var cardLoader = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0" id="cardLoader">
+    var cardLoader = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card" id="cardLoader">
     <div class="susunan-card">
-                <div class="card .card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
+                <div class="card .card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                     <div class="d-flex justify-content-center align-items-center">
                         <svg class="bd-placeholder-img card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" width="100px" height="100px object-fit: contain; object-position: 20% 10%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
@@ -29,7 +29,7 @@ $countProduk = count($produk);
                         </svg>
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                    <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                    <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 75px;">
                     <p class=" text-secondary fw-bold" style="font-size: 8px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
@@ -44,13 +44,13 @@ $countProduk = count($produk);
                         
                         <div class="button-container">
                             <div class="button">
-                                <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
+                                <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
                             </div>
  
                             <div class="button-capsule" style="display: none;">
-                                <i class="icon fas fa-minus"></i>
+                                <i class="icon bi bi-dash"></i>
                                 <input type="number" class="input border-0" value="1">
-                                <i class="icon fas fa-plus"></i>
+                                <i class="icon bi bi-plus"></i>
                             </div>
                          </div>
     
@@ -79,19 +79,19 @@ $countProduk = count($produk);
                             hargaText = ("Rp. " + formatRupiah(p.harga_min) + "-" + formatRupiah(p.harga_max)).substring(0, 13) + "...";
                         }
 
-                        var html = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0">
-                        <div class="susunan-card">
-                    <div class="card card-produk border-0 shadow-sm text-center" style="width: 100px; height: 100%; padding: 5px;">
+                        var html = `<div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                        <div class="">
+                    <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                         <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_${p.id_produk}_" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_${p.id_produk}_" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                        <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
+                        <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 75px;">
                         
                         <p class=" text-secondary fw-bold" style="font-size: 8px; margin: 0;">
-                            ${p.nama.length > 40 ? p.nama.slice(0, 40) + '' : p.nama}
+                            ${p.nama.length > 80 ? p.nama.slice(0, 80) + '' : p.nama}
                         </p>
                         </div>
                         <p class="text-secondary" style="font-size: 8px; margin: 0;">
@@ -103,13 +103,13 @@ $countProduk = count($produk);
 
                             <div class="button-container" id="button-container-${p.id_produk}">
                                     <div class="button" onclick="changeToCapsule(${p.id_produk}, ${p.id_variasi_item})">
-                                        <i class="icon fas fa-plus d-flex justify-content-center align-items-center"></i>
+                                        <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
                                     </div>
 
                                     <div class="button-capsule" style="display: none;">
-                                        <i class="icon fas fa-minus" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+                                        <i class="icon bi bi-dash" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                         <input type="number" class="input border-0" value="1" id="counter-${p.id_produk}">
-                                        <i class="icon fas fa-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+                                        <i class="icon bi bi-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                     </div>
                                 </div>
                             
@@ -214,7 +214,7 @@ $countProduk = count($produk);
     }
 
     .icon {
-        font-size: 12px;
+        font-size: 14px;
         color: #e83b2e;
         transition: all 0.3s ease;
         cursor: pointer;
@@ -328,14 +328,14 @@ $countProduk = count($produk);
         #product-container {
             width: 100%;
             height: auto;
-            margin-left: 0%;
+            margin-left: 3.5%;
 
         }
 
         #product-unggulan-container {
             width: 100%;
             height: auto;
-            margin-left: 0%;
+            margin-left: 3.5%;
 
         }
     }
@@ -353,11 +353,31 @@ $countProduk = count($produk);
         }
     }
 
-    @media (max-width: 320px) {
+    @media (min-width: 360px) and (max-width: 360px) {
 
         .card-produk {
-            width: 85px !important;
+            width: 100px !important;
             /* Mengisi lebar parent container */
         }
+
+        .panjang-card {
+            height: 75px !important;
+
+        }
+
+    }
+
+    @media (min-width: 320px) and (max-width: 320px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
     }
 </style>

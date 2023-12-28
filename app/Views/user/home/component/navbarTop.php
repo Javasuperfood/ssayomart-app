@@ -7,10 +7,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
-    <div id="mobileContent" style="margin-bottom: 100px;">
+    <div id="mobileContent" style="margin-bottom: 25px;">
         <div class="container">
             <div class="row">
-                <nav class="navbar px-md-1 mx-md-1 fixed-top rounded-bottom-4 shadow-sm" style="background-color : #ffff;">
+                <nav class="navbar px-md-1 mx-md-1 top-0 rounded-bottom-4 shadow-sm" style="background-color : #ffff;">
                     <div class="container-fluid mx-1">
                         <div class="col-9 col-md-10">
                             <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
@@ -44,6 +44,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
     <style>
+        /* style navbar */
+        nav.navbar {
+            border-radius: 0 !important;
+            border-bottom-left-radius: 15px !important;
+            border-bottom-right-radius: 15px !important;
+            border-top: 0 !important;
+        }
+
         /* CSS untuk mengatur panel dropdown */
         .dropdown-menu {
             padding: 0;
@@ -159,10 +167,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
                                     <i class="bi bi-cart-fill fs-4 text-danger position-relative">
-                                        <?php if (session()->get('countCart') > 0) : ?>
-                                            <i class="bi bi-chat-fill position-absolute top-0 start-100 translate-middle text-danger"></i>
-                                            <span class="position-absolute top-0 start-100 translate-middle text-white" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
-                                        <?php endif ?>
+
+                                        <div id="cartItem_0">
+                                            <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger"></i>
+                                            <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
+                                        </div>
+
                                     </i>
                                 </a>
                             </li>
@@ -190,9 +200,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <li>
                                             <a class="dropdown-item" href="<?= base_url(); ?>logout"><?= lang('Text.logout') ?></a>
                                         </li>
-
-
-
                                     </ul>
                                 </li>
                             <?php else : ?>

@@ -109,7 +109,7 @@ class AdminMarketplaceController extends BaseController
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada input kupon'
+                'message' => 'Terdapat kesalahan pada input toko'
             ];
             session()->setFlashdata('alert', $alert);
 
@@ -131,7 +131,7 @@ class AdminMarketplaceController extends BaseController
             'provinsi' => json_decode($provinsi)->rajaongkir->results,
             'back' => 'dashboard/marketplace'
         ];
-
+        // dd($data);
         return view('dashboard/marketplace/edit', $data);
     }
 

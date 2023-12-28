@@ -23,8 +23,8 @@
 <!-- Tambah Produk Rekomendasi -->
 <div class="row">
     <div class="col mb-5">
-        <div class="card border-1 shadow-sm position-relative">
-            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+        <div class="card border-0 shadow-sm shadow-sm position-relative">
+            <div class="card-header d-flex justify-content-start align-items-center border-0 shadow-sm py-3">
                 <i class="bi bi-pencil-square"></i>
                 <h6 class="m-0 fw-bold px-2">Tambah Produk Rekomendasi</h6>
             </div>
@@ -44,7 +44,7 @@
                             <!-- Button Pilih Produk -->
                             <div class="mb-4">
                                 <label for="produk" class="form-label text-secondary">Pilih Produk Rekomendasi</label>
-                                <button type="button" class="btn form-control text-left border-0 view-product border-left-danger text-danger fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid #d1d3e2">
+                                <button type="button" class="btn form-control text-left border-0 shadow-sm view-product border-left-danger text-danger fw-bold <?= (validation_show_error('short')) ? 'is-invalid' : 'border-1'; ?>" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: 1px solid #d1d3e2">
                                     Tekan Untuk Memilih Produk Rekomendasi
                                 </button>
                             </div>
@@ -60,10 +60,10 @@
                                         <div class="modal-body">
                                             <!-- Input pencarian -->
                                             <div class="input-group mt-2 mb-4">
-                                                <input type="text" id="searchProduk" class="form-control border-1" placeholder="Cari Produk...">
+                                                <input type="text" id="searchProduk" class="form-control border-0 shadow-sm" placeholder="Cari Produk...">
                                                 <span class="input-group-text border-0 bg-danger" id="basic-addon1"><i class="bi bi-search text-white"></i></span>
                                             </div>
-                                            <div class="row" id="kategoriList">
+                                            <div class="row" id="produkList">
                                                 <?php foreach ($produkTerbaru as $p) : ?>
                                                     <div class="col-6 py-1 px-4">
                                                         <div class="card border-0">
@@ -133,7 +133,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6">
-                        <form action="<?= base_url('dashboard/produk/urutan-produk-rekomendasi/save'); ?>" method="post">
+                        <form action="<?= base_url('dashboard/produk/urutan-produk-rekomendasi/save-urutan'); ?>" method="post">
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
                                     <div class="col-md-8">Shorting Produk Rekomendasi</div>
@@ -143,14 +143,19 @@
                             <?= csrf_field(); ?>
                             <ul id="sortable-list">
                                 <?php foreach (array_slice($produkRekomendasi, 0, 6) as $produk) : ?>
-                                    <li draggable="true" ondragstart="dragStart(event, <?= $produk['id_produk']; ?>)" ondrop="dragDrop(event, <?= $produk['id_produk']; ?>)">
+                                    <li draggable="true" ondragstart="dragStart(event, <?= $produk['id_produk']; ?>)" ondrop="dragDrop(event, <?= $produk['id_produk']; ?>)" class="border-0 shadow-sm mb-3 d-flex align-items-center">
                                         <?php
                                         $produkDetail = $produkModel->getProdukById($produk['id_produk']);
                                         ?>
                                         <img src="<?= base_url('assets/img/produk/main/' . $produkDetail['img']); ?>" class="img-fluid rounded-2" width="80" height="80">
-                                        <strong><?= $produkDetail['nama']; ?></strong>
-                                        <input type="hidden" name="id_rekomendasi[]" value="<?= $produk['id_rekomendasi']; ?>">
-                                        <input type="hidden" name="original_order[]" value="<?= $produk['short']; ?>">
+                                        <span class="fw-bold mr-2"><?= $produkDetail['nama']; ?></span>
+                                        <div class="ml-auto">
+                                            <form action="<?= base_url() ?>dashboard/produk/urutan-produk-rekomendasi/delete/<?= $produk['id_rekomendasi']; ?>" method="post">
+                                                <?= csrf_field() ?>
+                                                <input type="hidden" name="id_rekomendasi" value="<?= $produk['id_rekomendasi']; ?>">
+                                                <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
+                                            </form>
+                                        </div>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
@@ -274,6 +279,35 @@
                     }
                 }
             });
+        });
+    });
+
+    // SEARCH PRODUCT
+    document.addEventListener("DOMContentLoaded", function() {
+        var produkList = document.getElementById("produkList");
+        var noProductAlert = document.getElementById("noProductAlert");
+        var searchInput = document.getElementById("searchProduk");
+        var originalProducts = Array.from(produkList.children);
+
+        searchInput.addEventListener("input", function() {
+            var searchValue = searchInput.value.toLowerCase();
+            var filteredProducts = originalProducts.filter(function(product) {
+                var productName = product.querySelector(".fs-5").innerText.toLowerCase();
+                return productName.includes(searchValue);
+            });
+
+            if (filteredProducts.length > 0) {
+                noProductAlert.style.display = "none";
+                produkList.innerHTML = "";
+                filteredProducts.forEach(function(product) {
+                    produkList.appendChild(product.cloneNode(true));
+                });
+            } else {
+                noProductAlert.style.display = "block";
+                produkList.innerHTML = "";
+            }
+
+            updateProdukBadge();
         });
     });
 </script>

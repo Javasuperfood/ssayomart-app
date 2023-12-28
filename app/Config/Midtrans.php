@@ -14,7 +14,8 @@ class Midtrans extends BaseConfig
     public $urlMidtrans;
     public function __construct()
     {
-        $isP = getenv('MIDTRANS_MODE');
+        // $isP = getenv('MIDTRANS_MODE');
+        $isP = getenv('CI_ENVIRONMENT');
         if ($isP == 'production') {
             $this->isProduction = true;
             $this->serverKey = 'Mid-server-aLZoDj1cUy1D4vxBdOwA3E9e';

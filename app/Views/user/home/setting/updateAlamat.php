@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container">
-            <form action="<?= base_url() ?>setting/update-alamat/edit-alamat/<?= $au['id_alamat_users']; ?>" method="post" class="pt-3">
+            <form onsubmit="playPreloaderEvent()" action="<?= base_url() ?>setting/update-alamat/edit-alamat/<?= $au['id_alamat_users']; ?>" method="post" class="pt-3">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_user" value="<?= $au['id_user']; ?>">
 
@@ -113,10 +113,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row">
                         <div class="col-12" style="font-size: 12px;">
                             <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger" style="font-size: 9px;"> (Lokasi maps *)</span></label>
-                            <input class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>" readonly>
+                            <div class="input-group">
+                                <input list="alamat_3_option" class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>">
+                                <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
+                            </div>
                             <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
                             <input type="hidden" id="latitude" name="latitude" value="<?= $au['latitude']; ?>">
                             <input type="hidden" id="longitude" name="longitude" value="<?= $au['longitude']; ?>">
+                            <datalist id="alamat_3_option">
+                                <!-- this option -->
+                            </datalist>
                         </div>
                     </div>
                 </div>
@@ -135,34 +141,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         </div>
     </div>
-    <!-- style untuk samsung galaxy fold -->
-    <style>
-        /* Common styles for all screen sizes */
-        .container {
-            max-width: 100%;
-            padding: 0 15px;
-        }
-
-        /* Responsive styles for screens with a maximum width of 280 pixels (Samsung Galaxy Fold) */
-        @media (max-width: 280px) {
-
-            #map {
-                height: 400px;
-                width: 100%;
-            }
-
-            .leaflet-control-attribution {
-                display: none;
-            }
-
-            .button-container {
-                position: absolute;
-                margin-left: 10px;
-                z-index: 1000;
-                top: 1200px !important;
-            }
-        }
-    </style>
     <!-- style maps -->
     <style>
         #map {
@@ -179,7 +157,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-right: 10px;
             margin-left: 10px;
             z-index: 1000;
-            bottom: 50px;
+            top: -50px;
         }
 
         #getLocationBtn {
@@ -282,9 +260,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-12">
                         <div class="form-group mb-3 mt-2">
                             <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
-                            <input class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" readonly>
+                            <div class="input-group">
+                                <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" aria-describedby="button_alamat_3">
+                                <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
+                            </div>
                             <input type="hidden" id="latitude" pattern="-?\d+(\.\d{1,6})?" name="latitude">
                             <input type="hidden" id="longitude" pattern="-?\d+(\.\d{1,6})?" name="longitude">
+                            <datalist id="alamat_3_option">
+                                <!-- this option -->
+                            </datalist>
                         </div>
                         <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
                     </div>
@@ -313,7 +297,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         .button-container {
             position: absolute;
-            margin-left: 10px;
+            margin-left: 320px;
             z-index: 1000;
             border-radius: 50% !important;
             /* Mengatur elemen menjadi bentuk bulat */
@@ -358,12 +342,43 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <?php endif; ?>
 
+    function getLatLongOnEvent() {
+        var alamat = $('#alamat_3').val();
+        if (alamat.length > 3) {
+            fetch(`https://nominatim.openstreetmap.org/search?q=${alamat}&format=jsonv2`)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    $('#alamat_3_option').empty();
+                    data.forEach(e => {
+                        $('#alamat_3_option').append('<option value="' + e.display_name + '">' + e.display_name + '</option>');
+                    });
+                    $('#alamat_3').focus();
+                    updateMap(data[0].lat, data[0].lon, 15, 'event');
+                })
+                .catch(error => console.error('Error fetching address:', error));
+        }
+    }
+
     function showPosition(position) {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
         console.log('Latitude:', lat);
         console.log('Longitude:', lon);
 
+        updateMap(lat, lon)
+    }
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+        var lat = e.latlng.lat.toFixed(7);
+        var lon = e.latlng.lng.toFixed(7);
+        updateMap(lat, lon);
+    }
+
+    function updateMap(lat, lon, zoom = null, from = null) {
         // Clear all previous markers
         map.eachLayer(function(layer) {
             if (layer instanceof L.Marker) {
@@ -380,57 +395,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             .then(response => response.json())
             .then(data => {
                 var address = data.display_name;
+
                 // Update the popup with the full address
                 map.eachLayer(function(layer) {
                     if (layer instanceof L.Marker) {
                         layer.getPopup().setContent('You are here: ' + address).openPopup();
-                        $("#alamat_3").val(address);
-                        $("#latitude").val(lat);
-                        $("#longitude").val(lon);
+                        if (from == 'event') {
+
+                        } else {
+                            $("#alamat_3").val(address);
+                            $("#latitude").val(lat);
+                            $("#longitude").val(lon);
+                        }
                     }
                 });
             })
             .catch(error => console.error('Error fetching address:', error));
-
-        map.setView([lat, lon], 20);
+        if (zoom != null) {
+            map.setView([lat, lon], zoom);
+        } else {
+            map.setView([lat, lon], 18);
+        }
     }
-
-    var popup = L.popup();
-
-    function onMapClick(e) {
-        var lat = e.latlng.lat.toFixed(7);
-        var lon = e.latlng.lng.toFixed(7);
-        console.log('Latitude:', lat);
-        console.log('Longitude:', lon);
-        // Clear all previous markers
-        map.eachLayer(function(layer) {
-            if (layer instanceof L.Marker) {
-                map.removeLayer(layer);
-            }
-        });
-
-        // Add a new marker with a popup showing the full address
-        L.marker(e.latlng).addTo(map)
-            .bindPopup('Loading address...').openPopup();
-
-        // Perform reverse geocoding to get the full address
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${e.latlng.lat}&lon=${e.latlng.lng}`)
-            .then(response => response.json())
-            .then(data => {
-                var address = data.display_name;
-                // Update the popup with the full address
-                map.eachLayer(function(layer) {
-                    if (layer instanceof L.Marker) {
-                        layer.getPopup().setContent('You clicked here: ' + address).openPopup();
-                        $("#alamat_3").val(address);
-                        $("#latitude").val(e.latlng.lat);
-                        $("#longitude").val(e.latlng.lng);
-                    }
-                });
-            })
-            .catch(error => console.error('Error fetching address:', error));
-    }
-
     map.on('click', onMapClick);
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -449,5 +435,4 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?= $this->section('custom_head') ?>
 <link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />
 <script src="<?= base_url(); ?>assets/maps/leaflet.js"></script>
-
 <?= $this->endSection(); ?>

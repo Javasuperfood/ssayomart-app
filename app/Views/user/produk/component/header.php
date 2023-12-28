@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="<?= base_url() ?>assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 <link rel="shortcut icon" type="image/png" href="<?= base_url() ?>/assets/img/logo.png" />
 
 <!-- Link Swiper's CSS -->
@@ -16,8 +16,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <!-- Font Inter -->
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/inter.css">
-<!-- css card -->
-<link rel="stylesheet" href="<?= base_url('assets/css/card2.css') ?>">
+
 <style>
     body {
         font-family: 'Inter', sans-serif;

@@ -23,16 +23,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
         <?php else : ?>
-            <!-- <div class="col-12 d-flex justify-content-center">
-                <nav aria-label="breadcrumb" class="rounded-3 p-2">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item">
-                            <h2 class="mb-0"><?= lang('Text.title_alamat') ?></h2>
-                            <hr class="border border-danger">
-                        </li>
-                    </ol>
-                </nav>
-            </div> -->
             <div class="container">
                 <?php foreach ($alamat_user_model as $au) : ?>
                     <div class="row row-cols-1">
@@ -43,7 +33,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card-header border-0 bg-white">
                                             <span class="fw-bold fs-5"><?= $au['label']; ?></span>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body detail-penerima">
                                             <p class="fw-bold"><?= $au['penerima']; ?> - <?= $au['telp']; ?></p>
                                             <p class="text-secondary"><?= $au['province'] ?> - <?= $au['city'] ?></p>
                                             <p class="text-secondary"><?= substr($au['alamat_1'], 0, 40); ?>...</p>
@@ -58,7 +48,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                                 <div class="col d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
                                                     <div class="form-check form-switch">
-                                                        <input class="form-check-input fs-3" type="checkbox" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
+                                                        <input class="form-check-input fs-3" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
                                                     </div>
                                                 </div>
                                             </div>
@@ -86,7 +76,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 <?php endforeach; ?>
             </div>
-            <form action="<?= base_url('setting/select-alamat'); ?>" method="post">
+            <form action="<?= base_url('setting/select-alamat'); ?>" method="post" onsubmit="playPreloaderEvent()">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="alamat" id="alamatField">
                 <button type="submit" id="selectAddress" class="btn btn-danger btn-lg addresCircle position-fixed"><i class="bi bi-check"></i></button>
@@ -96,39 +86,40 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <!-- style untuk samsung galaxy fold 280 -->
     <style>
-
         /* style for button create alamat */
         .addresCircle {
-      width: 40px; 
-      height: 40px; 
-      border-radius: 50%; 
-      background-color: #dc3545;
-      color: #fff; 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      margin-left: -100px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #dc3545;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            margin-left: -100px;
         }
-        /*  */
+
+        /*style 280 pixel samsung galaxy fold*/
 
         @media screen and (max-width: 280px) {
+
             .card-body {
-                font-size: 13px;
+                font-size: 11px;
                 flex: 1 1 auto;
                 padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
                 color: var(--bs-card-color);
             }
 
             .border-0 {
-                font-size: 12px;
+                font-size: 11px;
                 border: 0 !important;
             }
 
             .alert-danger {
-                font-size: 13px;
+                font-size: 11px;
             }
 
 
@@ -165,8 +156,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <nav aria-label="breadcrumb" class="rounded-3 p-2">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item">
-                                <h2 class="mb-0"><?= lang('Text.title_alamat') ?></h2>
-                                <hr class="border border-danger">
+                                <h2 class="mb-0 fw-bold"><?= lang('Text.title_alamat') ?></h2>
+                                <hr class="border-danger" style="border-width: 3px;">
                             </li>
                         </ol>
                     </nav>
