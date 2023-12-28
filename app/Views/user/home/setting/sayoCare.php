@@ -1,4 +1,14 @@
 <?= $this->extend('user/home/layout2') ?>
+
+<!-- custom head  -->
+<?= $this->section('custom_head'); ?>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.css">
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
+<?= $this->endSection(); ?>
+
+<!-- Mian Conten  -->
 <?= $this->section('page-content') ?>
 
 <?php
@@ -8,22 +18,6 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="shortcut icon" type="image/png" href="<?= base_url() ?>/assets/img/logo.png" />
-
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.css">
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.3.1/dist/aos.js"></script>
-
-    <title>Ssayomart Blog Page</title>
-</head>
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -240,9 +234,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-        <!-- akhir form dan maps -->
-
-
     </div>
 <?php else : ?>
     <!-- Desktop View -->
@@ -442,58 +433,38 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Akhir sistem grid Destop -->
 
         <!-- form dan maps -->
- <div class="container">
-	<div class="row">
-		<h2 class="fw-bold text-dark mt-4 mb-4 text-center">About Us <span class="text-danger">Ssayomart</span></h2>
-        <!-- kolom 1 untuk maps -->
-		<div class="col-lg-6 col-md-12">
-			<iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d588.8346382611838!2d106.6190360362805!3d-6.224009368681214!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fdd1b4844f71%3A0x7a215719bcf3a770!2sSsayo%20Mart%20Indonesia!5e1!3m2!1sen!2sid!4v1700099064396!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-			</iframe>
-		</div>
+        <div class="container">
+            <div class="row">
+                <h2 class="fw-bold text-dark mt-4 mb-4 text-center">About Us <span class="text-danger">Ssayomart</span></h2>
+                <!-- kolom 1 untuk maps -->
+                <div class="col-lg-6 col-md-12">
+                    <iframe class="maps rounded-4" src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d588.8346382611838!2d106.6190360362805!3d-6.224009368681214!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fdd1b4844f71%3A0x7a215719bcf3a770!2sSsayo%20Mart%20Indonesia!5e1!3m2!1sen!2sid!4v1700099064396!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
 
-        <!-- kolom 2 form -->
-		<div class="col-lg-6 col-md-12">
-			<form>
-				<div class="form-group">
-					<label for="name">Name:</label>
-					<input type="text" class="form-control" id="name" placeholder="Enter your name"></div>
-				<div class="form-group">
-					<label for="email">Email:</label>
-					<input type="email" class="form-control" id="email" placeholder="Enter your email"></div>
-				<div class="form-group">
-					<label for="message">Message:</label>
-					<textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
-				</div>
-				<button type="submit" class="mt-3 btn btn-danger">Submit</button>
-			</form>
-		</div>
-	</div>
-</div>
+                <!-- kolom 2 form -->
+                <div class="col-lg-6 col-md-12">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="mt-3 btn btn-danger">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- akhir form dan maps -->
-
-
-
-
-
     </div>
 <?php endif; ?>
-<!-- End Desktop View -->
-<?php
-if ($isMobile) {
-
-    echo '<div id="mobileContent">';
-
-    echo '</div>';
-} else {
-
-    echo '<div id="desktopContent">';
-
-    echo '</div>';
-}
-?>
-
-
-
 
 <script>
     AOS.init();
@@ -562,12 +533,6 @@ if ($isMobile) {
             },
         },
 
-        // autoplay: {
-        //   delay: 1500,
-        //   disableOnInteraction: false,
-        // },
-
-
     });
 
     function tampilkanSelengkapnya(button) {
@@ -582,7 +547,6 @@ if ($isMobile) {
             readMoreButton.textContent = 'Read More';
         }
     }
-
     // Mencari semua tombol "Read More" pada halaman
     var readMoreButtons = document.querySelectorAll('.btn.btn-danger');
 
@@ -594,7 +558,4 @@ if ($isMobile) {
         });
     }
 </script>
-
-
-
 <?= $this->endSection(); ?>

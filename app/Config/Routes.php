@@ -2,8 +2,6 @@
 
 namespace Config;
 
-use App\Controllers\GoSendController;
-use App\Controllers\Kategori;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
