@@ -1,3 +1,5 @@
+
+
 <?= $this->extend('user/home/layout') ?>
 <?= $this->section('page-content') ?>
 <?= $this->include('user/home/component/navbarTop') ?>
@@ -790,13 +792,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="row text-center row-cols-3 py-3">
                             <?php foreach ($kategori as $k) : ?>
                                 <div class="col-4 col-md-4 col-lg-2">
+                                    <div class="card-kategori">
                                     <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                                        <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
+                                        <div class="card text-bg-light mb-3 bg-white  border-0 shadow-sm">
                                             <div class="card-body">
                                                 <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="" class="py-0 px-0 mx-0 my-0 card-img-top">
                                             </div>
                                         </div>
                                     </a>
+                            </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -926,6 +930,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
+
+/* start animation */
+    .card-kategori {
+         transition: transform 0.3s ease-in-out;
+
+    }
+
+    .card-kategori:hover {
+        transform: scale(1.1);
+    }
+    /* end animation */
+
         /* Ganti warna tombol close menjadi putih */
         .btn-close {
             background-color: #ffff;
