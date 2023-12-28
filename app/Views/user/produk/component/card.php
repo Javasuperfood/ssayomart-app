@@ -304,12 +304,15 @@
     <div class="container px-5 my-5 align-middle">
         <div class="card border-0 text-center rounded shadow-sm">
             <div class="card-body mx-3 my-3">
-                <h5 class="card-title" style="font-size: 16px">Produk tidak ditemukan atau belum tersedia</h5>
+                <h5 class="fw-bold card-title" style="font-size: 16px">Produk tidak ditemukan atau belum tersedia</h5>
                 <a href="/" class="btn btn-danger border-0 rounded mt-2" style="font-size: 14px">Kembali</a>
             </div>
         </div>
     </div>
 <?php endif ?>
+
+
+
 
 <!-- <style>
     .horizontal-counter {
