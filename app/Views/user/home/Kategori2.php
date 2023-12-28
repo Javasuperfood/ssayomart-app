@@ -1,5 +1,3 @@
-
-
 <?= $this->extend('user/home/layout') ?>
 <?= $this->section('page-content') ?>
 <?= $this->include('user/home/component/navbarTop') ?>
@@ -157,7 +155,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php if ($latest) : ?>
                         <?php foreach ($latest as $p) : ?>
                             <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
-                                <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
+                                <div class="card card-zoom card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                         <div class="d-flex justify-content-center align-items-center">
                                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
@@ -363,6 +361,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- style all device css card -->
         <style>
+            /* animasi zoom card  */
+            .card-zoom {
+                transition: transform 0.3s ease-in-out;
+            }
+
+            .card-zoom:hover {
+                transform: scale(1.1);
+            }
+
+            /* end animasi zoom card  */
             @media screen and (min-width: 400px) and (max-width: 450px) {
                 .card-produk {
                     width: 120px !important;
@@ -793,14 +801,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($kategori as $k) : ?>
                                 <div class="col-4 col-md-4 col-lg-2">
                                     <div class="card-kategori">
-                                    <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                                        <div class="card text-bg-light mb-3 bg-white  border-0 shadow-sm">
-                                            <div class="card-body">
-                                                <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="" class="py-0 px-0 mx-0 my-0 card-img-top">
+                                        <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
+                                            <div class="card text-bg-light mb-3 bg-white  border-0 shadow-sm">
+                                                <div class="card-body">
+                                                    <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="" class="py-0 px-0 mx-0 my-0 card-img-top">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -930,17 +938,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
+        /* start animation */
+        .card-kategori {
+            transition: transform 0.3s ease-in-out;
 
-/* start animation */
-    .card-kategori {
-         transition: transform 0.3s ease-in-out;
+        }
 
-    }
+        .card-kategori:hover {
+            transform: scale(1.1);
+        }
 
-    .card-kategori:hover {
-        transform: scale(1.1);
-    }
-    /* end animation */
+        /* end animation */
 
         /* Ganti warna tombol close menjadi putih */
         .btn-close {
