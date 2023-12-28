@@ -15,17 +15,17 @@ $countProduk = count($produk);
         keyword = urlParams.get('produk');
     }
     var productContainer = $("#product-container");
-    var cardLoader = `<div class="col-6 col-md-4 col-lg-3 mb-2 mx-0" id="cardLoader">
-                <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+    var cardLoader = `<div class="col-6 col-md-4 col-lg-2 mb-2 mx-0" id="cardLoader">
+                <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
                     <div class="d-flex justify-content-center align-items-center">
-                        <svg class="bd-placeholder-img card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" width="150%" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <svg class="bd-placeholder-img card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
                             <rect width="150%" height="150%" fill="#868e96"></rect>
                         </svg>
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                     <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                    <p class=" text-secondary fw-bold" style="font-size: 11px; margin: 0;">
+                    <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
                     </div>
@@ -33,30 +33,22 @@ $countProduk = count($produk);
                         <span class="placeholder col-6"></span>
                     </p>
  
-                        <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                             <span class="placeholder col-6"></span>
                         </h1>
                         
-                        <div class="container mt-2">
-                            <div class="row justify-items-center">
-                                <div class="col">
-                                    <div class="horizontal-counter">
-                                        <span class="btn btn-sm btn-outline-secondary rounded-circle"><i class="bi bi-dash"></i></span>
-                                        <input type="text" id="counter" class="form-control form-control-sm border-0 text-center text-secondary" value="0" readonly>
-                                        <span class="btn btn-sm btn-outline-secondary rounded-circle" type="button"><i class="bi bi-plus"></i></span>
-                                    </div>
-                                </div>
+                        <div class="button-container">
+                            <div class="button" onclick="changeToCapsule">
+                                <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                            </div>
+
+                            <div class="button-capsule" style="display: none;">
+                                <i class="icon bi bi-dash" onclick="decreaseValue"></i>
+                                <input type="text" class="input border-0" value="1">
+                                <i class="icon bi bi-plus" onclick="increaseValue"></i>
                             </div>
                         </div>
-                        <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                            <span type="submit" class="btn btn-secondary mx-1 mt-2 fw-bold">
-                                <i class="fas fa-shopping-cart text-white fa-sm"></i>
-                            </span>
-                            <span type="submit" class="btn btn-secondary mx-1 mt-2">
-                                Beli
-                            </span>
-                            <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                        </div>
+                        
                     </div>
                 </div>
             </div>`
@@ -80,79 +72,74 @@ $countProduk = count($produk);
                         } else {
                             hargaText = ("Rp. " + formatRupiah(p.harga_min) + "-" + formatRupiah(p.harga_max)).substring(0, 13) + "...";
                         }
-                        var html = '<div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">' +
-                            '<div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">' +
+                        var html = '<div class="col-6 col-md-4 col-lg-2 mb-2 mx-0">' +
+                            '<div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">' +
                             ` <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                             <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                            <p class=" text-secondary fw-bold" style="font-size: 11px; margin: 0;">
+                            <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                                 ${p.nama.length > 50 ? p.nama.slice(0, 50) + '' : p.nama}
                             </p>
                             </div
                             <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                 <del>Rp. ${formatRupiah(p.harga_min)}</del>
                             </p>
-                                <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                                    ${hargaText}
                                 </h1>
-                                <p class=" text-center">
-                                    <a href="<?= base_url('produk/'); ?>${p.slug}?add-to-cart=show" class="btn btn-white"> <i class=" fas fa-shopping-cart text-danger fa-lg"></i></a>
-                                </p>
+
+                                <div class="button-container" id="button-container-${p.id_produk}">
+                                    <div class="button" onclick="changeToCapsule(${p.id_produk}, ${p.id_variasi_item})">
+                                        <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                                    </div>
+
+                                    <div class="button-capsule" style="display: none;">
+                                        <i class="icon bi bi-dash" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+                                        <input type="text" class="input border-0" value="1" id="counter-${p.id_produk}">
+                                        <i class="icon bi bi-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+                                    </div>
+                                </div>
+                                
                             </div>` +
                             '</div>' +
                             '</div>';
-                        var html = `<div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
-                    <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+                        var html = `<div class="col-6 col-md-4 col-lg-2 mb-2 mx-0">
+                    <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
                         <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px;">
+                                <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
                         
-                        <p class=" text-secondary fw-bold" style="font-size: 11px; margin: 0;">
+                        <p class=" text-secondary fw-bold" style="font-size: 12px; margin: 0;">
                             ${p.nama.length > 50 ? p.nama.slice(0, 50) + '' : p.nama}
                         </p>
                         </div>
                         <p class="text-secondary" style="font-size: 10px; margin: 0;">
                             <del>Rp. ${formatRupiah(p.harga_min)}</del>
                         </p>
-                            <h1 class="text-danger fs-bold mt-1" style="font-size: 14px; margin: 0;">
+                            <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                             ${hargaText}
                             </h1>
-                            <div class="container mt-2">
-                                <div class="row justify-items-center">
-                                    <div class="col">
-                                        <div class="horizontal-counter">
-                                            <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, ${p.id_produk})"><i class="bi bi-dash"></i></button>
-                                            <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" readonly>
-                                            <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="increaseCount(this, ${p.id_produk})"><i class="bi bi-plus"></i></button>
-                                        </div>
+                            
+                            <div class="button-container" id="button-container-${p.id_produk}">
+                                    <div class="button" onclick="changeToCapsule(${p.id_produk}, ${p.id_variasi_item})">
+                                        <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                                    </div>
+
+                                    <div class="button-capsule" style="display: none;">
+                                        <i class="icon bi bi-dash" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+                                        <input type="text" class="input border-0" value="1" id="counter-${p.id_produk}">
+                                        <i class="icon bi bi-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                <form action="<?= base_url('produk/'); ?>${p.slug}">
-                                    <input type="hidden" name="add-to-cart" value="show">
-                                    <input type="hidden" name="qty" id="Cqty${p.id_produk}" value="1" value="show">
-                                    <button type="submit" class="btn btn-danger mx-1 mt-2 fw-bold">
-                                        <i class="fas fa-shopping-cart text-white fa-sm"></i>
-                                    </button>
-                                </form>
-                                <form action="<?= base_url('produk/'); ?>${p.slug}">
-                                    <input type="hidden" name="buy" value="show">
-                                    <input type="hidden" name="qty" id="Bqty${p.id_produk}" value="1" value="show">
-                                    <button type="submit" class="btn btn-danger mx-1 mt-2">
-                                        Beli
-                                    </button>
-                                    <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                                </form>
-                            </div>
+
                         </div>
                     </div>
                 </div>`
@@ -203,3 +190,219 @@ $countProduk = count($produk);
         return formatter.format(angka);
     }
 </script>
+
+<!-- style button counter -->
+<style>
+    .button-container {
+        position: absolute;
+        top: 5px;
+        /* Jarak dari atas */
+        left: 5px;
+        /* Jarak dari kiri */
+        display: flex;
+        gap: 5px;
+        /* Jarak antar tombol */
+    }
+
+    .button {
+        width: 25px;
+        /* Ukuran tombol yang lebih kecil */
+        height: 25px;
+        /* Ukuran tombol yang lebih kecil */
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        outline: 1px solid #e83b2e;
+        background-color: #fff;
+    }
+
+    .button-capsule {
+        width: 60px;
+        /* Ukuran capsule yang lebih kecil */
+        height: 25px;
+        /* Ukuran capsule yang lebih kecil */
+        border-radius: 15px;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 5px;
+        /* Padding yang lebih kecil */
+        transition: all 0.3s ease;
+        outline: 1px solid #e83b2e;
+        background-color: #fff;
+    }
+
+    .icon {
+        font-size: 14px;
+        color: #e83b2e;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .input {
+        width: 20px;
+        /* Ukuran input yang lebih kecil */
+        height: 15px;
+        /* Ukuran input yang lebih kecil */
+        text-align: center;
+        margin: 0 3px;
+        /* Margin yang lebih kecil */
+        color: #000;
+        font-size: 8px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        border: none;
+        outline: none;
+    }
+
+    @media screen and (min-width: 400px) and (max-width: 450px) {
+        .card-produk {
+            width: 120px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
+
+    @media screen and (min-width: 717px) and (max-width: 717px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 20px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container {
+            width: 100%;
+            height: auto;
+            margin-left: 4.5%;
+
+        }
+
+        #product-unggulan-container {
+            width: 100%;
+            height: auto;
+            margin-left: 4.5%;
+
+        }
+    }
+
+    /* samsung galfold dual mode screen 512 */
+    @media screen and (min-width: 512px) and (max-width: 512px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 20px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container {
+            width: 100%;
+            height: auto;
+            margin-left: 3.5%;
+
+        }
+
+        #product-unggulan-container {
+            width: 100%;
+            height: auto;
+            margin-left: 3.5%;
+
+        }
+    }
+
+    @media (max-width: 280px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+        }
+
+        .card-produk {
+            width: 110px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
+
+    @media (min-width: 360px) and (max-width: 360px) {
+
+        .card-produk {
+            width: 100px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .panjang-card {
+            height: 75px !important;
+
+        }
+
+    }
+
+    @media (min-width: 320px) and (max-width: 320px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
+</style>

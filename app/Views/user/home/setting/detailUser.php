@@ -145,12 +145,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="card border-0 shadow-sm rounded-3">
                             <div class="card-body text-center">
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
-                                <p class="fs-5 text-secondary"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
+                                <p class="text-secondary mt-2" style="font-size: 14px;"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
                                 <!-- Button trigger modal -->
                                 <div class="text-center mt-2">
                                     <?php if (!$deleteRequestExists) : ?>
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            <i class="bi bi-trash"></i> Hapus Akun
+                                        <button type="button" class="btn btn-sm btn-danger p-2 fw-bold rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="bi bi-trash mx-2"></i> Hapus akun
                                         </button>
                                     <?php endif; ?>
                                 </div>
@@ -166,7 +166,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.username') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>">
+                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>" style="font-size: 16px;">
                                         <div class="invalid-feedback"><?= validation_show_error('username'); ?></div>
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.nama_lengkap') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('fullname')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>">
+                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('fullname')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="fullname" name="fullname" placeholder="<?= lang('Text.nama_lengkap') ?>" value="<?= $du['fullname']; ?>" style="font-size: 16px;">
                                         <div class="invalid-feedback"><?= validation_show_error('fullname'); ?></div>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.telp') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);">
+                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('telp')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="telp" placeholder="<?= lang('Text.telp') ?>" value="<?= $du['telp']; ?>" onkeypress="return isNumber(event);" style="font-size: 16px;">
                                         <div class="invalid-feedback"><?= validation_show_error('telp'); ?></div>
                                     </div>
                                 </div>
@@ -196,7 +196,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.email') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="email" class="form-control form-control-lg bg-white border-0 shadow-sm" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" disabled>
+                                        <input type="email" class="form-control form-control-lg bg-white border-0 shadow-sm" id="email" name="email" placeholder="<?= lang('Text.email') ?>" value="<?= $results[0]->secret; ?>" style="font-size: 16px;" disabled>
                                     </div>
                                 </div>
                                 <hr class="border-0">
@@ -205,7 +205,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <p class="mb-0"><?= lang('Text.profil') ?></p>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="file" class="form-control form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>">
+                                        <input type="file" class="form-control form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>" style="font-size: 14px;">
                                         <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
                                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                                     </div>
