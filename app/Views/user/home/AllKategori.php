@@ -13,13 +13,16 @@
     <div class="row text-center row-cols-3 mt-3">
         <?php foreach ($kategori as $k) : ?>
             <div class="col-4 col-md-4 col-lg-2">
-                <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                    <div class="text-bg-light mb-3 bg-white border-0">
-                        <div class="px-0 py-0 mx-0 my-0">
-                            <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
+                <div class="zoom-in">
+                    <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
+                        <div class="text-bg-light mb-3 bg-white border-0">
+                            <div class="px-0 py-0 mx-0 my-0">
+                                <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+
             </div>
         <?php endforeach; ?>
     </div>
@@ -29,5 +32,20 @@
     </div>
 </div>
 <!-- All Kategori -->
+
+
+
+<style>
+    /* animasi zoom card  */
+    .zoom-in {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .zoom-in:hover {
+        transform: scale(1.1);
+    }
+
+    /* end animasi zoom card  */
+</style>
 
 <?= $this->endSection(); ?>
