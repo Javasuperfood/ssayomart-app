@@ -615,6 +615,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <td>-Rp. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
                                                             </tr>
                                                         <?php endif; ?>
+
+                                                        <tr>
+                                                            <td>Diskon (Promo)</td>
+                                                            <td><span id="diskonPromo"><?= (isset($produk['promo']['discount']) ? 'Rp. ' . number_format((float)($total) * (float)($produk['promo']['discount']), 0, ',', '.') : '') ?></span></td>
+                                                        </tr>
+
                                                         <tr>
                                                             <td>Total Ongkos Kirim :</td>
                                                             <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>

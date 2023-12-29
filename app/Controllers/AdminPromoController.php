@@ -404,7 +404,7 @@ class AdminPromoController extends BaseController
             $data = [
                 'id_promo' => $this->request->getVar('promo'),
                 'id_produk' => $productId,
-                'discount' => $this->request->getVar('discount'),
+                'discount' => (int)($this->request->getVar('discount')) / 100,
                 'min' => $this->request->getVar('min')
             ];
 

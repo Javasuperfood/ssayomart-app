@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
+use App\Models\AdminTokoModel;
 
 class ReportController extends BaseController
 {
@@ -12,12 +13,20 @@ class ReportController extends BaseController
     {
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
+        $adminTokoModel = new AdminTokoModel();
         $perPage = 10;
 
         $startDate = $this->request->getVar('startDate');
         $endDate = $this->request->getVar('endDate');
 
-        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage, $startDate, $endDate);
+        $adminToko = $adminTokoModel->getAdminToko(user_id());
+        if (empty($adminToko)) {
+            return view('dashboard/adminNotlisted');
+        }
+
+        $id_toko = $adminToko[0]['id_toko'];
+
+        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($id_toko, $perPage, $startDate, $endDate);
         foreach ($getCheckoutWithProduct as $key => $c) {
             $getCheckoutWithProduct[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -29,6 +38,7 @@ class ReportController extends BaseController
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'startDate' => $startDate,
             'endDate' => $endDate,
+            'market' => $adminToko,
         ];
         // dd($data);
         return view('dashboard/report/report', $data);
