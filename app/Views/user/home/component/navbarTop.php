@@ -130,9 +130,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- navbar Website -->
     <div id="desktopContent">
-        <div class="container mb-5">
-            <nav class="navbar navbar-expand fixed-top shadow-sm" style="background-color: #ffff;">
-                <div class="container">
+        <div class="container-fluid fixed-top gx-0 mb-5">
+           <div class="bg-danger d-flex justify-content-center align-items-center w-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quia.</div>  
+            <nav class="navbar navbar-expand  shadow-sm" style="background-color: #ffff;">
+             
+            <div class="container">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="Logo Ssayomart" class="image-fluid">
                     </a>
