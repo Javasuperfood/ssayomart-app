@@ -40,9 +40,9 @@
 /* stok habis overlay */
 .item-item {
   position: absolute;
-  top: 49px;
-  left: 47px;
-  width: 54%;
+  top: 50px;
+  left: 49px;
+  width: 57%;
   height: 33%;
   background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
   border-radius: 50%;
@@ -50,12 +50,12 @@
 }
 
   .gambar-kecil {
-    max-height: 100px !important;
+    max-height: 90px !important;
     /* Sesuaikan tinggi maksimum yang Anda inginkan */
-    max-width: 100px !important;
+    max-width: 90px !important;
     /* Biarkan lebar gambar menyesuaikan */
-    margin-top: 20px !important;
-    margin-left: 60px !important;
+    margin-top: 27px !important;
+    margin-left: 68px !important;
     
     /* margin: 25px 0 25px auto !important; */
     /* Geser gambar ke tengah kanan */
@@ -115,7 +115,11 @@
   } */
 
   .nama-pesanan{
-    font-size: 10px !important;
+    font-size: 8.5px !important;
+  }
+
+  .harga-pesanan{
+    font-size: 11px !important;
   }
 
   .input-group.grup-masukan {
@@ -161,8 +165,8 @@
 
   .button-sampah {
     font-size: 18px;
-    left: 37%; 
-    margin-top: -34px; 
+    left: 38%; 
+    margin-top: -30px; 
   }
 
   /* Add specific CSS styles for the delete button if needed */
