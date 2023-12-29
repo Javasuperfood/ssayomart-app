@@ -745,7 +745,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="swiper-wrapper d-flex mb-3">
                                     <?php foreach ($randomProducts as $p) : ?>
                                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
-                                            <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
+                                            <div class="produk-zoom card border-0 shadow-sm" style="width: auto; height: 100%;">
                                                 <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                                     <div class="d-flex justify-content-center align-items-center">
                                                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
@@ -938,10 +938,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
+        /* card zoom slider */
+        .produk-zoom {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .produk-zoom:hover {
+            transform: scale(1.03);
+        }
+
+        /* end card zoom slider */
+
         /* start animation */
         .card-kategori {
             transition: transform 0.3s ease-in-out;
-
         }
 
         .card-kategori:hover {
