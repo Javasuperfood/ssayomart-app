@@ -6,7 +6,7 @@
                 <div class="swiper-wrapper d-flex">
                     <?php foreach ($randomProducts as $p) : ?>
                         <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 mb-5">
-                            <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+                            <div class="zoom-slider card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                                 <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                     <div class="d-flex justify-content-center align-items-center">
                                         <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
@@ -51,6 +51,15 @@
     </div>
 </div>
 
+<style>
+    .zoom-slider {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .zoom-slider:hover {
+        transform: scale(1.1);
+    }
+</style>
 <!-- script button counter animasi -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
