@@ -12,6 +12,7 @@ use App\Models\KuponModel;
 use App\Models\ProdukModel;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
+use App\Models\PromoBatchModel;
 use Midtrans\Config as MidtransConfig;
 use OneSignal\OneSignal;
 
@@ -273,6 +274,7 @@ class CheckoutController extends BaseController
         $cartProdukModel = new CartProdukModel();
         $userModel = new UsersModel();
         $tokoModel = new TokoModel();
+        $promoBatchModel = new PromoBatchModel();
         $checkedId = $this->request->getVar('check');
         if (!$checkedId) {
             return redirect()->to(base_url('cart2'));
@@ -305,16 +307,26 @@ class CheckoutController extends BaseController
                 ->find($id);
             $data['cart_id'][$key] = $id;
         }
+
         $totalAkhir = 0;
         $beratTotal = 0;
-        foreach ($data['produk'] as $produk) {
+        $totalDiscount = 0;
+        foreach ($data['produk'] as $key => $produk) {
             $rowTotal = $produk['qty'] * $produk['harga_item'];
             $totalAkhir += $rowTotal;
             $rowBerat = $produk['berat'] * $produk['qty'];
             $beratTotal += $rowBerat;
+            $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+            if (count($promoDetails) > 0) {
+                $data['produk'][$key]['promo'] = $promoDetails[0];
+                $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
+                $totalDiscount += $data['produk'][$key]['promo']['total'];
+            }
         }
         $data['total'] = $totalAkhir;
         $data['beratTotal'] = $beratTotal;
+        $data['totalDiscount'] = $totalDiscount;
+
         // dd($data);
         return view('user/home/checkout/checkout2', $data);
     }
@@ -340,6 +352,7 @@ class CheckoutController extends BaseController
         $cartProdukModel = new CartProdukModel();
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
+        $promoBatchModel = new PromoBatchModel();
 
         $email = $userModel->getEmail(user_id());
         $serviceText = $this->request->getVar('serviceText');
@@ -366,6 +379,8 @@ class CheckoutController extends BaseController
         }
         $totalAkhir = 0;
         $beratTotal = 0;
+        $totalDiscount = 0;
+
         foreach ($data['produk'] as $key => $produk) {
             $rowTotal = $produk['qty'] * $produk['harga_item'];
             $totalAkhir += $rowTotal;
@@ -377,6 +392,22 @@ class CheckoutController extends BaseController
                 'quantity' => $produk['qty'],
                 'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
             ];
+
+            $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+            if (count($promoDetails) > 0) {
+                $data['produk'][$key]['promo'] = $promoDetails[0];
+                $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
+                $totalDiscount += $data['produk'][$key]['promo']['total'];
+            }
+        }
+        if ($totalDiscount > 0) {
+            $totalAkhir = $totalAkhir - $totalDiscount;
+            $cekProduk[] = [
+                'id' => 'diskonPromo',
+                'price' => -$totalDiscount,
+                'quantity' => 1,
+                'name' => 'Total Diskon Promo',
+            ];
         }
         $data['total'] = $totalAkhir;
         $data['beratTotal'] = $totalAkhir;
@@ -386,9 +417,10 @@ class CheckoutController extends BaseController
             'kupon' => ''
         ];
 
-
         $total_2 = floatval($data['total']);
         $total_2 = $service + $total_2;
+
+
 
         if ($kode != '') {
             $kuponModel = new KuponModel();
@@ -562,30 +594,30 @@ class CheckoutController extends BaseController
     // }
     // Fungsi untuk mengirim notifikasi menggunakan OneSignal
 
-    private function sendNotification($userId, $message)
-    {
-        // Ambil device token pengguna dari database (sesuaikan dengan struktur tabel Anda)
-        $userModel = new UsersModel();
-        $deviceToken = $userModel->getDeviceToken($userId); // Sesuaikan dengan metode yang sesuai
+    // private function sendNotification($userId, $message)
+    // {
+    //     // Ambil device token pengguna dari database (sesuaikan dengan struktur tabel Anda)
+    //     $userModel = new UsersModel();
+    //     $deviceToken = $userModel->getDeviceToken($userId); // Sesuaikan dengan metode yang sesuai
 
-        // Konfigurasi OneSignal
-        $config = [
-            'app_id' => $this->APP_ID,
-            'rest_api_key' => $this->APP_KEY_TOKEN,
-            'user_auth_key' => $this->USER_KEY_TOKEN,
-        ];
+    //     // Konfigurasi OneSignal
+    //     $config = [
+    //         'app_id' => $this->APP_ID,
+    //         'rest_api_key' => $this->APP_KEY_TOKEN,
+    //         'user_auth_key' => $this->USER_KEY_TOKEN,
+    //     ];
 
-        // Inisialisasi OneSignal
-        $oneSignal = new OneSignal($config);
+    //     // Inisialisasi OneSignal
+    //     $oneSignal = new OneSignal($config);
 
-        // Kirim notifikasi
-        $oneSignal->sendNotificationToUser(
-            $message,
-            $deviceToken,
-            $url = null,
-            $data = null,
-            $buttons = null,
-            $schedule = null
-        );
-    }
+    //     // Kirim notifikasi
+    //     $oneSignal->sendNotificationToUser(
+    //         $message,
+    //         $deviceToken,
+    //         $url = null,
+    //         $data = null,
+    //         $buttons = null,
+    //         $schedule = null
+    //     );
+    // }
 }

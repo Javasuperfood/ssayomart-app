@@ -8,7 +8,15 @@
         ['label', null],
         ['originLatLong', $("#mpOrigin").attr('originLatLong')],
         ['destinationLatLong', $("#mpDestination").attr('destinationLatLong')],
-        ['diskonPromo', <?= (isset($produk['promo']['discount'])) ? ((float)($total) * (float)($produk['promo']['discount'])) : 0; ?>]
+        ['diskonPromo', <?= (
+                            (isset($produk['promo']['discount']))
+                            ? ((float)($total) * (float)($produk['promo']['discount']))
+                            : (
+                                (isset($totalDiscount))
+                                ? $totalDiscount
+                                : 0
+                            )
+                        ); ?>]
     ]);
     if (getD.get('diskonPromo') > 0) {
         total = total - getD.get('diskonPromo');

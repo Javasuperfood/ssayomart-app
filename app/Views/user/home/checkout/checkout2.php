@@ -266,6 +266,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="diskon"></span></td>
                                 </tr>
                                 <tr>
+                                    <td>Diskon (Promo)</td>
+                                    <td><span id="diskonTotal"><?= (isset($totalDiscount) ? '-Rp. ' . number_format($totalDiscount, 0, ',', '.') : '') ?></span></td>
+                                </tr>
+                                <tr>
                                     <td>Total Ongkos Kirim</td>
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
@@ -326,6 +330,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <tr>
                                     <td>Potongan Harga (Kupon)</td>
                                     <td><span id="diskon"></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Diskon (Promo)</td>
+                                    <td><span id="diskonTotal"><?= (isset($totalDiscount) ? '-Rp. ' . number_format($totalDiscount, 0, ',', '.') : '') ?></span></td>
                                 </tr>
                                 <tr>
                                     <td>Total Ongkos Kirim</td>
@@ -574,7 +582,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                     <h5>Total Harga</h5>
-                                                    <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                    <?php if (isset(($p['promo']['total']))) : ?>
+                                                        <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                    <?php else : ?>
+                                                        <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                    <?php endif; ?>
+                                                    <?php if (isset(($p['promo']['total']))) : ?>
+                                                        <p>Rp. <?= number_format($p['promo']['total'], 0, ',', '.'); ?></p>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>

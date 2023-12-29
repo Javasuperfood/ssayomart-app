@@ -151,7 +151,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Total Harga</td>
+                                        <td>Subtotal</td>
                                         <td>Rp. <?= number_format($status->total_1, 0, ',', '.'); ?></td>
                                     </tr>
                                     <?php if ($status->kupon) : ?>
@@ -165,7 +165,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <td>Rp. <?= number_format($status->harga_service, 0, ',', '.'); ?></td>
                                     </tr>
                                     <tr>
-                                        <td>Subtotal</td>
+                                        <td>Total Harga</td>
                                         <td>Rp. <?= number_format($status->total_2, 0, ',', '.'); ?></td>
                                     </tr>
                                 </tbody>
@@ -606,7 +606,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <table class="table">
                                                     <tbody>
                                                         <tr>
-                                                            <td>Total Harga :</td>
+                                                            <td>Subtotal :</td>
                                                             <td>Rp. <?= number_format($status->total_1, 2, ',', '.'); ?></td>
                                                         </tr>
                                                         <?php if ($status->kupon) : ?>
@@ -615,18 +615,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <td>-Rp. <?= number_format(($status->discount * $status->total_1), 2, ',', '.'); ?></td>
                                                             </tr>
                                                         <?php endif; ?>
-
-                                                        <tr>
-                                                            <td>Diskon (Promo)</td>
-                                                            <td><span id="diskonPromo"><?= (isset($produk['promo']['discount']) ? 'Rp. ' . number_format((float)($total) * (float)($produk['promo']['discount']), 0, ',', '.') : '') ?></span></td>
-                                                        </tr>
-
                                                         <tr>
                                                             <td>Total Ongkos Kirim :</td>
                                                             <td>Rp. <?= number_format($status->harga_service, 2, ',', '.'); ?></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>Subtotal :</td>
+                                                            <td>Total Harga :</td>
                                                             <td>
                                                                 <span class="fw-bold">Rp. <?= number_format($status->total_2, 2, ',', '.'); ?></span>
                                                             </td>
