@@ -7,8 +7,13 @@
         ['courier', null],
         ['label', null],
         ['originLatLong', $("#mpOrigin").attr('originLatLong')],
-        ['destinationLatLong', $("#mpDestination").attr('destinationLatLong')]
+        ['destinationLatLong', $("#mpDestination").attr('destinationLatLong')],
+        ['diskonPromo', <?= (isset($produk['promo']['discount'])) ? ((float)($total) * (float)($produk['promo']['discount'])) : 0; ?>]
     ]);
+    if (getD.get('diskonPromo') > 0) {
+        total = total - getD.get('diskonPromo');
+        console.log(total);
+    }
 
     function selectMarket(i, label, origin, originLatLong) {
         $('#market' + i).prop('checked', true);
@@ -102,6 +107,7 @@
                     $("#serviceText").val(results[0]["description"] + "(" + results[0]["service"] + ")");
                     var estimasi = results[0]["cost"][0]["etd"];
                     ongkir = parseInt(results[0]["cost"][0]["value"]);
+                    console.log(ongkir + total);
                     $("#ongkir").val(ongkir);
                     $("#ongkirText").html(formatRupiah(ongkir));
                     $("#estimasi").html(estimasi + " Hari");
@@ -142,27 +148,7 @@
                                 std: method,
                                 price: shipment.price.total_price
                             }));
-                            // Access properties
-                            // for each shipment method
-                            // console.log(`Shipment Method: ${shipment.shipment_method}`);
-                            // console.log(`Description: ${shipment.shipment_method_description}`);
-                            // console.log(`Serviceable: ${shipment.serviceable}`);
-                            // console.log(`Active: ${shipment.active}`);
-                            // console.log(`Distance: ${shipment.distance}`);
-                            // console.log(`Route Polyline: ${shipment.route_polyline}`);
-                            // console.log(`Decode Route Polyline:`);
-                            // console.log(decodePolyline(shipment.route_polyline));
 
-                            // // Access pricing details
-                            // console.log("Pricing:");
-                            // console.log(`  Total Price: ${shipment.price.total_price}`);
-                            // console.log(`  Go Pay Total Price: ${shipment.price.go_pay_total_price}`);
-                            // console.log(`  Go Pay Discount: ${shipment.price.go_pay_discount}`);
-                            // console.log(`  Voucher Discount: ${shipment.price.voucher_discount}`);
-                            // console.log(`  Total Price with Voucher: ${shipment.price.total_price_with_voucher}`);
-
-                            // // Add additional properties as needed
-                            // console.log("\n"); // Separate each shipment method for clarity
                         }
                     });
                     if (!data['Instant'].serviceable && !data['Instant'].serviceable) {
@@ -264,7 +250,7 @@
 
     function updateDiscount() {
         var selectedCoupon = $("#kupon").val();
-        var totalHarga = <?= $total; ?>;
+        var totalHarga = total;
         var diskon = 0;
 
         <?php foreach ($kupon as $k) : ?>

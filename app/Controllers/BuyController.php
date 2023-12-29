@@ -10,10 +10,12 @@ use App\Models\CheckoutResponseModel;
 use App\Models\KategoriModel;
 use App\Models\KuponModel;
 use App\Models\ProdukModel;
+use App\Models\PromoBatchModel;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use App\Models\WishlistModel;
 use App\Models\WishlistProdukModel;
+use App\Models\PromoModel;
 use Midtrans\Config as MidtransConfig;
 
 
@@ -24,6 +26,9 @@ class BuyController extends BaseController
     {
         $this->key = "15139";;
     }
+
+
+
     public function index($slug)
     {
         $kategori = new KategoriModel();
@@ -32,6 +37,8 @@ class BuyController extends BaseController
         $produkModel = new ProdukModel();
         $tokoModel = new TokoModel();
         $userModel = new UsersModel();
+        $promoBatchModel = new PromoBatchModel();
+
         $id_varian = $this->request->getVar('varian');
         $qty = $this->request->getVar('qty');
         $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
@@ -40,6 +47,13 @@ class BuyController extends BaseController
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
         $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
         $beratTotal = $produk['berat'] * $qty;
+        // dd($produk);
+
+        $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+        if (count($promoDetails) > 0) {
+            $produk['promo'] = $promoDetails[0];
+        }
+
         // if ($userModel->find(user_id())['market_selected']) {
         //     $market =  $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'];
         // } else {
@@ -74,6 +88,7 @@ class BuyController extends BaseController
         $userModel = new UsersModel();
         $wishlistModel = new WishlistModel();
         $wishlistProdModel = new WishlistProdukModel();
+        $promoBatchModel = new PromoBatchModel();
         // $kuponModel = new KuponModel();
         // $kuponList = $kuponModel->find($id);
 
@@ -93,7 +108,7 @@ class BuyController extends BaseController
 
         $email = $userModel->getEmail(user_id());
         $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
-
+        $discount = '';
         $wishlist = $wishlistModel->where('id_user', user_id())->first();
         $wishlistItem = $wishlistProdModel->where('id_wishlist', $wishlist['id_wishlist'])->where('id_produk', $produk['id_produk'])->first();
         $id_alamat = $this->request->getVar('alamatD');
@@ -115,6 +130,23 @@ class BuyController extends BaseController
 
         $total_1 = floatval($produk['harga_item']) * $qty;
         $total_2 = $total_1 + $service;
+
+        $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+        if (count($promoDetails) > 0) {
+            $produk['promo'] = $promoDetails[0];
+            $diskonPromo = (float)($total_1 * ($promoDetails[0]['discount']));
+            $total_2 = floatval($total_1);
+            $total_2 = $total_2 - $diskonPromo;
+            $total_2 = $service + $total_2;
+            $cekProduk[] = [
+                'id' => 'diskonPromo',
+                'price' => -$diskonPromo,
+                'quantity' => 1,
+                'name' => 'Diskon Promo',
+            ];
+            $discount = $promoDetails[0]['discount'];
+        }
+        // dd($diskonPromo);
         $kupon = [
             'discount' => '',
             'kupon' => ''
@@ -144,7 +176,9 @@ class BuyController extends BaseController
                 'quantity' => 1,
                 'name' => 'Diskon',
             ];
+            $discount = $cekKupon['discount'];
         }
+
         $cekProduk[] = [
             'id' => 'Service',
             'price' => $service,
@@ -152,6 +186,7 @@ class BuyController extends BaseController
             'name' => $servicetext,
         ];
         $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
+
 
 
         $params = [
@@ -207,7 +242,7 @@ class BuyController extends BaseController
             'city' => $alamat['city'],
             'zip_code' => $alamat['zip_code'],
             'telp' => $alamat['telp'],
-            'discount' => $kupon['discount'],
+            'discount' => $discount,
             'kupon' => $kupon['kupon'],
             'snap_token' => $snapToken
         ];

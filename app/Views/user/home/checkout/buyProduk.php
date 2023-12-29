@@ -420,6 +420,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="diskon"></span></td>
                                 </tr>
                                 <tr>
+                                    <td>Diskon (Promo)</td>
+                                    <td><span id="diskonPromo"><?= (isset($produk['promo']['discount']) ? 'Rp. ' . number_format((float)($total) * (float)($produk['promo']['discount']), 0, ',', '.') : '') ?></span></td>
+                                </tr>
+                                <tr>
                                     <td>Total Ongkos Kirim</td>
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
