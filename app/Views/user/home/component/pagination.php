@@ -85,9 +85,7 @@ $countProduk = count($produk);
                                 ${p.nama.length > 50 ? p.nama.slice(0, 50) + '' : p.nama}
                             </p>
                             </div
-                            <p class="text-secondary" style="font-size: 10px; margin: 0;">
-                                <del>Rp. ${formatRupiah(p.harga_min)}</del>
-                            </p>
+                            
                                 <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                                    ${hargaText}
                                 </h1>
@@ -121,9 +119,8 @@ $countProduk = count($produk);
                             ${p.nama.length > 50 ? p.nama.slice(0, 50) + '' : p.nama}
                         </p>
                         </div>
-                        <p class="text-secondary" style="font-size: 10px; margin: 0;">
-                            <del>Rp. ${formatRupiah(p.harga_min)}</del>
-                        </p>
+                        
+                        
                             <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                             ${hargaText}
                             </h1>

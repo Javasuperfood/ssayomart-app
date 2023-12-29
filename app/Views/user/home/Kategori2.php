@@ -165,9 +165,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="d-flex align-items-start justify-content-center" style=" height: 75px;">
                                             <p class=" text-center text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                                         </div>
-                                        <p class="text-secondary" style="font-size: 8px; margin: 0;">
+                                        <!-- <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
-                                        </p>
+                                        </p> -->
 
                                         <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                                             <?php if ($p['harga_min'] == $p['harga_max']) : ?>
@@ -755,9 +755,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <div class="d-flex text-center align-items-center justify-content-center" style="height: 65px;">
                                                         <p class=" text-secondary fw-bold " style=" font-size: 13px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                                                     </div>
-                                                    <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
+                                                    <!-- <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
                                                         <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
-                                                    </p>
+                                                    </p> -->
 
                                                     <h1 class="mb-4 text-danger fw-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
                                                         <?php if ($p['harga_min'] == $p['harga_max']) : ?>
