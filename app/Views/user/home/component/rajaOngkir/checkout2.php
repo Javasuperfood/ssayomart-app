@@ -12,7 +12,6 @@
     ]);
     if (getD.get('diskonPromo') > 0) {
         total = total - getD.get('diskonPromo');
-        console.log(total);
     }
 
     function selectMarket(i, label, origin, originLatLong) {
@@ -92,7 +91,6 @@
                 },
                 dataType: 'json',
                 success: function(data) {
-                    console.log(data);
                     var results = data["rajaongkir"]["results"][0]["costs"];
                     for (var i = 0; i < results.length; i++) {
                         var text = results[i]["description"] + "(" + results[i]["service"] + ")";
@@ -107,7 +105,6 @@
                     $("#serviceText").val(results[0]["description"] + "(" + results[0]["service"] + ")");
                     var estimasi = results[0]["cost"][0]["etd"];
                     ongkir = parseInt(results[0]["cost"][0]["value"]);
-                    console.log(ongkir + total);
                     $("#ongkir").val(ongkir);
                     $("#ongkirText").html(formatRupiah(ongkir));
                     $("#estimasi").html(estimasi + " Hari");
