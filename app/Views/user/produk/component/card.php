@@ -17,9 +17,9 @@
                                 <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
                                     <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($fp['nama'], 0, 50); ?></p>
                                 </div>
-                                <p class="text-secondary" style="font-size: 10px; margin: 0;">
+                                <!-- <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                     <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
-                                </p>
+                                </p> -->
 
                                 <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                                     <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
@@ -96,9 +96,9 @@
                         <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
                             <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
                         </div>
-                        <p class="text-secondary" style="font-size: 10px; margin: 0;">
+                        <!-- <p class="text-secondary" style="font-size: 10px; margin: 0;">
                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
-                        </p>
+                        </p> -->
 
                         <h1 class="text-danger fs-bold mt-1 mb-2 fw-bold" style="font-size: 14px; margin: 0;">
                             <?php if ($p['harga_min'] == $p['harga_max']) : ?>
@@ -161,15 +161,16 @@
 <!-- style css -->
 
 <style>
-/* start animation */
+    /* start animation */
     .card-desktop {
-         transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
 
     }
 
     .card-desktop:hover {
         transform: scale(1.1);
     }
+
     /* end animation */
 </style>
 
