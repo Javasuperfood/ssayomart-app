@@ -9,7 +9,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container mt-3">
             <!-- Tabs navs -->
-            <ul class="nav nav-tabs mb-3" id="myTabs" role="tablist">
+            <ul class="nav nav-tabs mb-3 font-custom fw-bold d-flex justify-content-center" id="myTabs" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab-content-1" aria-controls="tab-content-1" aria-selected="true">Privacy policy</a>
                 </li>
@@ -140,6 +140,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- end -->
 
         <style>
+/* samsung galaxy s8+ & huawei P30 PRO kebijakan privasi */
+         @media screen and (min-width: 360px) and (max-width: 360px) {
+.font-custom {
+    font-size: 0.8em;
+
+}
+}
+
+
+
             /* Gaya untuk tab aktif (hanya garis bawah merah) */
             .nav-link.active {
                 border: none;
@@ -318,6 +328,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <style>
+
+            
             /* Gaya untuk tab aktif (hanya garis bawah merah) */
             .nav-link.active {
                 border: none;
