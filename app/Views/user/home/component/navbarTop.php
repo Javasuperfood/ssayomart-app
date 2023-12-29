@@ -131,10 +131,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- navbar Website -->
     <div id="desktopContent">
         <div class="container-fluid fixed-top gx-0 mb-5">
-           <div class="bg-danger d-flex justify-content-center align-items-center w-100">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, quia.</div>  
+            <div class="w-100">
+                <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
+                    <div class="headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px;">
+                        <i class="bi bi-phone"></i>
+                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="headerc__label label--hover mx-2 text-decoration-none text-dark">Download Ssayomart Playstore</a>
+                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="headerc__label label--hover mx-2 text-decoration-none text-dark">Download Ssayomart App Store</a>
+                    </div>
+                    <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
+                        <a href="<?= base_url(); ?>setting/sayo-care" class="headerc__label label--hover text-decoration-none text-dark">Tentang Ssayomart</a>
+                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="headerc__label label--hover text-decoration-none text-dark">Kebijakan Kami</a>
+                        <a href="https://ssayomart.com/" class="headerc__label label--hover text-decoration-none text-dark" target="_blank">Company Profile</a>
+                    </div>
+                </div>
+            </div>
             <nav class="navbar navbar-expand  shadow-sm" style="background-color: #ffff;">
-             
-            <div class="container">
+
+                <div class="container">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="Logo Ssayomart" class="image-fluid">
                     </a>
@@ -243,6 +256,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </nav>
         </div>
     </div>
+
+    <style>
+        .headerc__right a:not(:first-child) {
+            margin-left: 10px
+        }
+
+        .label--hover:hover {
+            color: #ce2614;
+            cursor: pointer;
+        }
+
+        .headerc__label {
+            margin-bottom: 0;
+        }
+    </style>
 
 <?php endif; ?>
 <!-- end Nav Desk -->
