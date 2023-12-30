@@ -258,7 +258,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Subtotal</td>
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
@@ -274,7 +274,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold">Subtotal</td>
+                                    <td class="fw-bold">Grand Total</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
@@ -324,7 +324,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Subtotal</td>
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
@@ -340,7 +340,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td>Grand Total</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
