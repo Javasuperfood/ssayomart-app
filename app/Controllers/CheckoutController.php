@@ -317,7 +317,7 @@ class CheckoutController extends BaseController
             $rowBerat = $produk['berat'] * $produk['qty'];
             $beratTotal += $rowBerat;
             $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
-            if (count($promoDetails) > 0) {
+            if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
                 $data['produk'][$key]['promo'] = $promoDetails[0];
                 $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
                 $totalDiscount += $data['produk'][$key]['promo']['total'];
@@ -394,12 +394,13 @@ class CheckoutController extends BaseController
             ];
 
             $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
-            if (count($promoDetails) > 0) {
+            if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
                 $data['produk'][$key]['promo'] = $promoDetails[0];
                 $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
                 $totalDiscount += $data['produk'][$key]['promo']['total'];
             }
         }
+
         if ($totalDiscount > 0) {
             $totalAkhir = $totalAkhir - $totalDiscount;
             $cekProduk[] = [
@@ -409,6 +410,8 @@ class CheckoutController extends BaseController
                 'name' => 'Total Diskon Promo',
             ];
         }
+        // dd($totalDiscount);
+
         $data['total'] = $totalAkhir;
         $data['beratTotal'] = $totalAkhir;
 
@@ -419,8 +422,6 @@ class CheckoutController extends BaseController
 
         $total_2 = floatval($data['total']);
         $total_2 = $service + $total_2;
-
-
 
         if ($kode != '') {
             $kuponModel = new KuponModel();
