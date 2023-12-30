@@ -50,9 +50,10 @@ class BuyController extends BaseController
         // dd($produk);
 
         $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
-        if (count($promoDetails) > 0) {
+        if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
         }
+        // dd($promoDetails);
 
         // if ($userModel->find(user_id())['market_selected']) {
         //     $market =  $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'];
@@ -132,7 +133,7 @@ class BuyController extends BaseController
         $total_2 = $total_1 + $service;
 
         $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
-        if (count($promoDetails) > 0) {
+        if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
             $diskonPromo = (float)($total_1 * ($promoDetails[0]['discount']));
             $total_2 = floatval($total_1);

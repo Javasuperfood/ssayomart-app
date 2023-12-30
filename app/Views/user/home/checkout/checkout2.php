@@ -240,7 +240,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                         <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
                                             <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
-                                            <p class="fw-bold pemilihan" style="font-size: 13px;">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                            <?php if (isset(($p['promo']['total']))) : ?>
+                                                <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                            <?php else : ?>
+                                                <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                            <?php endif; ?>
+                                            <?php if (isset(($p['promo']['total']))) : ?>
+                                                <p>Rp. <?= number_format($p['promo']['total'], 0, ',', '.'); ?></p>
+                                            <?php endif; ?>
                                         </div>
 
                                     </div>
