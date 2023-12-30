@@ -147,6 +147,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 }
 }
+/* iphone se (2016) dan iphone 5 */
+         @media screen and (min-width: 320px) and (max-width: 320px) {
+.font-custom {
+    font-size: 0.8em;
+
+}
+}
 
 
 
@@ -213,6 +220,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- Desktop View -->
+   
+    <!--start cdn buat bugs tabs di desktop view gak jalan -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- end cdn buat bugs tabs di desktop view gak jalan -->
+
     <div id="desktopContent" style="margin-top:100px;">
         <div class="container">
             <!-- Tabs navs -->
@@ -341,6 +357,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 background-color: transparent;
                 /* Latar belakang transparan */
             }
+
+            /* css remove efek hover buat tabs desktop view */
+              #myTabs .nav-link:hover {
+            color: black !important;
+           }
+            /* css remove efek hover buat tabs desktop view */
 
             /* Gaya untuk tab non-aktif */
             .nav-link {
