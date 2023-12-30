@@ -1,8 +1,12 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
-
-<h1 class="h3 mb-3 text-gray-800">Stok Produk Ssayomart</h1>
+<?php if (!empty($getStockWithProduct)) : ?>
+	<h1 class="h3 mb-3 text-gray-800">Stok Produk Ssayomart - <?= $getStockWithProduct[0]['lable'] ?></h1>
+<?php else : ?>
+	<h1 class="h3 mb-3 text-gray-800">Stok Produk Ssayomart</h1>
+<?php endif; ?>
 <p>Berikut adalah data stok produk-produk Ssayomart.</p>
+
 
 <div class="card border-0 shadow-sm mb-5">
 	<div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
@@ -25,7 +29,6 @@
 						<thead>
 							<tr>
 								<th>No.</th>
-								<th>Toko</th>
 								<th>Nama Produk</th>
 								<th>Variasi Item</th>
 								<th>Stok</th>
@@ -35,7 +38,6 @@
 							<?php foreach ($getStockWithProduct as $stock) : ?>
 								<tr>
 									<td class="align-middle"><?= $iterasi++; ?></td>
-									<td class="align-middle"><?= $stock['lable']; ?></td>
 									<td class="align-middle"><?= $stock['nama']; ?></td>
 									<td class="align-middle"><?= $stock['value_item']; ?></td>
 									<td class="align-middle"><?= $stock['stok']; ?></td>

@@ -26,7 +26,7 @@ class ReportController extends BaseController
 
         $id_toko = $adminToko[0]['id_toko'];
 
-        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($id_toko, $perPage, $startDate, $endDate);
+        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage, $startDate, $endDate, $id_toko);
         foreach ($getCheckoutWithProduct as $key => $c) {
             $getCheckoutWithProduct[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -48,13 +48,21 @@ class ReportController extends BaseController
     {
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
+        $adminTokoModel = new AdminTokoModel();
 
         $perPage = 10;
 
         $startDate = $this->request->getGet('startDate');
         $endDate = $this->request->getGet('endDate');
 
-        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage, $startDate, $endDate);
+        $adminToko = $adminTokoModel->getAdminToko(user_id());
+        if (empty($adminToko)) {
+            return view('dashboard/adminNotlisted');
+        }
+
+        $id_toko = $adminToko[0]['id_toko'];
+
+        $getCheckoutWithProduct = $checkoutModel->getCheckoutWithProduct($perPage, $startDate, $endDate, $id_toko);
         foreach ($getCheckoutWithProduct as $key => $c) {
             $getCheckoutWithProduct[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }

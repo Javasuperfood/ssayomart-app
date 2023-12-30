@@ -107,13 +107,12 @@
 
 <textarea id="open-source-plugins">
 <!-- Content -->
-<h1 style="text-align: center;"><span style="text-decoration: underline;">Report Penjualan Aplikasi Ssayomart</span></h1>
+<h1 style="text-align: center;"><span style="text-decoration: underline;">Data Penjualan Aplikasi Ssayomart - <?= $getCheckoutWithProduct[0]['lable'] ?></span></h1>
 <!-- End of Content -->
 <table class="table table-border-bottom-0 table-striped" style="border-collapse: collapse; width: 100.015%; height: 100.18px;" border="1">
 <tbody>
 <tr style="height: 34.3229px;">
 <td style="height: 51.9097px; text-align: center; width: 2.54568%;" rowspan="2">No</td>
-<td style="height: 51.9097px; text-align: center; width: 7.78251%;" rowspan="2">Toko</td>
 <td style="height: 51.9097px; text-align: center; width: 9.52811%;" rowspan="2">INV</td>
 <td style="height: 32.3264px; text-align: center; width: 40.7309%;" colspan="3">Produk</td>
 <td style="text-align: center; width: 20.4479%; height: 44.3229px;" rowspan="2">Nama</td>
@@ -129,7 +128,6 @@
 <?php foreach ($getCheckoutWithProduct as $p) : ?>
 <tr style="height: 106.319px;">
 <td style="width: 2.54568%; height: 48.2708px;"><?= $iterasi++; ?></td>
-<td style="width: 7.78251%; height: 48.2708px;"><?= $p['lable']; ?></td>
 <td style="width: 9.52811%; height: 48.2708px;"><?= $p['invoice']; ?></td>
 <td style="width: 29.8935%; height: 48.2708px;">
 <p style="text-align: center;">

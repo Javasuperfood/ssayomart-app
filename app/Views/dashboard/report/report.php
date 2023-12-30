@@ -1,7 +1,11 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-3 text-gray-800">Data Penjualan Ssayomart</h1>
+<?php if (!empty($getCheckoutWithProduct)) : ?>
+    <h1 class="h3 mb-3 text-gray-800">Data Penjualan Aplikasi Ssayomart - <?= $getCheckoutWithProduct[0]['lable'] ?></h1>
+<?php else : ?>
+    <h1 class="h3 mb-3 text-gray-800">Data Penjualan Ssayomart</h1>
+<?php endif; ?>
 <div class="col px-0">
     <p>Berikut adalah data penjualan Ssayomart.</p>
     <?php if ($getCheckoutWithProduct != null && !empty($getCheckoutWithProduct)) : ?>
@@ -36,7 +40,6 @@
                             <thead>
                                 <tr>
                                     <th rowspan="2">No</th>
-                                    <th rowspan="2">Toko</th>
                                     <th rowspan="2">INV</th>
                                     <th class="text-center" colspan="3" scope="colgroup">Produk</th>
                                     <th rowspan="2">Nama</th>
@@ -54,7 +57,6 @@
                                 <?php foreach ($getCheckoutWithProduct as $p) : ?>
                                     <tr>
                                         <td><?= $iterasi++; ?></td>
-                                        <td><?= $p['lable']; ?></td>
                                         <td><?= $p['invoice']; ?></td>
                                         <td scope="colgroup">
                                             <?php
