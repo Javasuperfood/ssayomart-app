@@ -344,7 +344,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <style>
-                   /* style tabs untuk dimensi layar desktop */
+                   /* style tabs untuk dimensi layar desktop width 417px - 1199px */
             @media screen and (min-width: 417px) and (max-width: 1199px) {
   
     .tabs-margin {
