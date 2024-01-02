@@ -274,5 +274,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <!-- end navbar header -->
+
+    <style>
+        /* efek garis bawah menu navbar dan hover */
+        .navbar-nav .nav-item .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-item .nav-link::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ce2614;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out 0s;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+    </style>
 <?php endif; ?>
 <!-- end Nav Desk -->

@@ -29,7 +29,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
                         </div>
                         <div class="col-3 text-center">
-                            <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>">
+                            <a href="<?= base_url(); ?>setting/detail-user">
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
                             </a>
                         </div>
@@ -70,7 +70,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <h3><?= lang('Text.setting') ?></h3>
                     <ul class="list-group list-group-flush">
-                        <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-person-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.detail_akun') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -118,10 +118,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="text-center"> <!-- Tambahkan class text-center untuk membuatnya berada di tengah horizontal -->
                                     <p class="mb-3 fw-bold"><?= lang('Text.ikuti_kami') ?> :</p>
                                     <div class="social-links d-flex justify-content-center ">
-                                        <a href="#" class="youtube btn btn-danger mx-2 social-icon"><i class="bi bi-youtube"></i></a>
-                                        <a href="#" class="facebook btn btn-danger mx-2 social-icon"><i class="bi bi-facebook"></i></a>
-                                        <a href="#" class="instagram btn btn-danger mx-2 social-icon"><i class="bi bi-instagram"></i></a>
-                                        <a href="#" class="tiktok btn btn-danger mx-2 social-icon"><i class="bi bi-tiktok"></i></a>
+                                        <a href="https://www.youtube.com/channel/UCiaJvoHqRRlxxHERP7q11Bw" target="__blank" class="youtube btn btn-danger mx-2 social-icon"><i class="bi bi-youtube"></i></a>
+                                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" target="__blank" class="facebook btn btn-danger mx-2 social-icon"><i class="bi bi-facebook"></i></a>
+                                        <a href="https://www.instagram.com/ssayomart.id/" target="__blank" class="instagram btn btn-danger mx-2 social-icon"><i class="bi bi-instagram"></i></a>
+                                        <a href="https://www.tiktok.com/@ssayomart.id" target="__blank" class="tiktok btn btn-danger mx-2 social-icon"><i class="bi bi-tiktok"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -237,7 +237,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <h3><?= lang('Text.setting') ?>
                                     </h3>
                                     <ul class="list-group list-group-flush">
-                                        <a href="<?= base_url(); ?>setting/detail-user/<?= $user['id']; ?>" class="list-group-item pb-3 fw-bold">
+                                        <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
                                         <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
