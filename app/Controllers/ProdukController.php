@@ -126,7 +126,7 @@ class ProdukController extends BaseController
 
         $data = [
             'title' => $produk['nama'],
-            'img_meta' => $produk['img'],
+            'img_meta' => base_url() . 'assets/img/produk/main/' . $produk['img'],
             'description_meta' => $produk['deskripsi'],
             'kategori' => $kategoriModel->findAll(),
             'produk' => $produk,
