@@ -58,12 +58,13 @@ class Setting extends BaseController
         return view('user/home/setting/setting', $data);
     }
     // USER DETAIL
-    public function detailUser($id): string
+    public function detailUser()
     {
         $kategori = new KategoriModel();
         $usersModel = new UsersModel();
         $deleteReq = new DeleteRequestUsersModel();
-        $existingRequest = $deleteReq->where('id_user', user_id())->first();
+        $id = user_id();
+        $existingRequest = $deleteReq->where('id_user', $id)->first();
         $query = $usersModel->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret')
             ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
             ->where('users.id', $id)
@@ -144,11 +145,11 @@ class Setting extends BaseController
         }
     }
 
-    public function updateDetailUser($id)
+    public function updateDetailUser()
     {
+        $id = user_id();
         $usersModel = new UsersModel();
         $image = $this->request->getFile('img');
-
         //data yang di ambil dari form
         $data = [
             'id' => $id,
