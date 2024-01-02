@@ -153,7 +153,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="container">
                 <div class="copyright">
-                    2023 &copy; Copyright <strong><span>Ssayomart Supermarket</span></strong>. All Rights Reserved
+                    2024 &copy; Copyright <strong><span>Ssayomart Supermarket</span></strong>. All Rights Reserved
                 </div>
             </div>
         </footer>
