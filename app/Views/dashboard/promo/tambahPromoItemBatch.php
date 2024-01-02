@@ -60,7 +60,7 @@
                                                                     <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid" style="width:100px; height:100px; object-fit: contain; object-position: 20% 10%;">
                                                                 </div>
                                                                 <div class="col-8">
-                                                                    <p class="nama-produk" style="font-size: 18px;"><?= $item['nama']; ?></p>
+                                                                    <p class="fs-4 nama-produk" style="font-size: 18px;"><?= $item['nama']; ?></p>
                                                                     <?php foreach ($variasi as $v) : ?>
                                                                         <?php if ($v['id_variasi_item'] == $item['id_produk']) : ?>
                                                                             <p class="harga" style="font-size: 14px;">Harga: Rp. <?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
