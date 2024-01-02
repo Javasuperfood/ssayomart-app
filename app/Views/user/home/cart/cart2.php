@@ -170,7 +170,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                         </div>
                                                         <?= csrf_field(); ?>
-                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn-lg btn rounded-circle float-start"><i class="bi bi-trash text-danger"></i></button>
+                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn-lg btn rounded-circle float-start" style="margin-top: 55px;"><i class="bi bi-trash text-danger"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
