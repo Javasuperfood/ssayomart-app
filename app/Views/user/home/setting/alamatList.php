@@ -139,7 +139,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End View Mobile -->
 
     <!-- View Desktop -->
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top:150px;">
         <div class="container pt-3 d-none d-md-block">
             <?php if (empty($alamat_user_model)) : ?>
                 <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->

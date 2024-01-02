@@ -258,6 +258,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
+    <!-- Style navbar header -->
     <style>
         .headerc__right a:not(:first-child) {
             margin-left: 10px
@@ -272,6 +273,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-bottom: 0;
         }
     </style>
-
+    <!-- end navbar header -->
 <?php endif; ?>
 <!-- end Nav Desk -->

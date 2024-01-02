@@ -237,7 +237,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- Desktop View -->
-    <div id="desktopContent" style="margin-top:50px;">
+    <div id="desktopContent" style="margin-top: 110px;">
         <div class="container-fluid p-0 position-relative">
             <!-- <div class="img-container">
                 <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
