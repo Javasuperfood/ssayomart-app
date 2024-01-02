@@ -694,12 +694,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                     <h5 class="text-secondary fs-6">Total</h5>
                                                                     <?php $total = $p->harga_item * $p->qty ?>
                                                                     <?php if (isset(($p->promo))) : ?>
-                                                                        <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
+                                                                        <p class="fw-bold text-decoration-line-through" style="font-size: 12px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
                                                                     <?php else : ?>
                                                                         <p class="fw-bold">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
                                                                     <?php endif; ?>
                                                                     <?php if (isset(($p->promo))) : ?>
-                                                                        <p class=" fs-6">Rp. <?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
+                                                                        <p class="fw-bold">Rp. <?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
                                                                     <?php endif; ?>
                                                                 </div>
                                                             </div>

@@ -106,7 +106,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                             <div class="col-5 position-absolute top-50 end-0 mt-2 translate-middle-y ps-4">
                                                                 <h5 class="text-secondary fs-6">Total</h5>
-                                                                <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
+                                                                <?php $total = $p->harga_item * $p->qty ?>
+                                                                <?php if (isset(($p->promo))) : ?>
+                                                                    <p class="fw-bold text-decoration-line-through" style="font-size: 11px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
+                                                                <?php else : ?>
+                                                                    <p class="fw-bold" style="font-size: 13px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
+                                                                <?php endif; ?>
+                                                                <?php if (isset(($p->promo))) : ?>
+                                                                    <p class="fw-bold" style="font-size: 13px;">Rp. <?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
+                                                                <?php endif; ?>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -567,7 +575,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 </div>
                                                                 <div class="col-5 position-absolute top-50 end-0 mt-2 translate-middle-y ps-4">
                                                                     <h5 class="text-secondary fs-6">Total</h5>
-                                                                    <p class="fw-bold fs-6">Rp. <?= number_format(($p->harga_item * $p->qty), 0, ',', '.'); ?></p>
+                                                                    <?php $total = $p->harga_item * $p->qty ?>
+                                                                    <?php if (isset(($p->promo))) : ?>
+                                                                        <p class="fw-bold text-decoration-line-through" style="font-size: 12px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
+                                                                    <?php else : ?>
+                                                                        <p class="fw-bold">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
+                                                                    <?php endif; ?>
+                                                                    <?php if (isset(($p->promo))) : ?>
+                                                                        <p class="fw-bold">Rp. <?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
+                                                                    <?php endif; ?>
                                                                 </div>
                                                             </div>
                                                         </div>

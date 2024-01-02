@@ -10,8 +10,7 @@ use App\Models\KategoriModel;
 use App\Models\UsersModel;
 use App\Models\StatusPesanModel;
 use Midtrans\Config as MidtransConfig;
-
-
+use App\Models\PromoBatchModel;
 
 class StatusGosendController extends BaseController
 {
@@ -20,6 +19,7 @@ class StatusGosendController extends BaseController
         $kategori = new KategoriModel();
         $checkoutProdModel = new CheckoutProdukModel();
         $userModel = new UsersModel();
+        $promoBatchModel = new PromoBatchModel();
         $id = $this->request->getVar('order_id');
         $order = $checkoutProdModel->getTransaksi($id);
         $GoSendStatus = $this->getStatusGosend($id);
@@ -31,6 +31,13 @@ class StatusGosendController extends BaseController
         }
 
         $cekProduk = $userModel->getTransaksi($id);
+
+        foreach ($cekProduk as $key => $product) {
+            $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($product->id_produk);
+            if (count($promoDetails) > 0) {
+                $cekProduk[$key]->promo = $promoDetails[0];
+            }
+        }
 
         if ($GoSendStatus['cancelDescription']) {
             $GoSendStatus['cancelDescription'] = $this->stringRemoveStripTags($GoSendStatus['cancelDescription']);

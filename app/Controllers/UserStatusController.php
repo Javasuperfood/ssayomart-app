@@ -7,6 +7,7 @@ use App\Models\StatusPesanModel;
 use App\Models\UsersModel;
 use App\Models\KategoriModel;
 use Midtrans\Config as MidtransConfig;
+use App\Models\PromoBatchModel;
 
 
 class UserStatusController extends BaseController
@@ -29,6 +30,7 @@ class UserStatusController extends BaseController
         $userModel = new UsersModel();
         $checkoutModel = new CheckoutModel();
         $kategori = new KategoriModel();
+        $promoBatchModel = new PromoBatchModel();
         $order_id = $this->request->getGet('order_id');
         $status_code = $this->request->getGet('status_code');
         $transaction_status = $this->request->getGet('transaction_status');
@@ -43,6 +45,13 @@ class UserStatusController extends BaseController
         }
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
+
+        foreach ($cekProduk as $key => $product) {
+            $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($product->id_produk);
+            if (count($promoDetails) > 0) {
+                $cekProduk[$key]->promo = $promoDetails[0];
+            }
+        }
 
         $data = [
             'inv' => $order_id,
