@@ -409,7 +409,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- Akhir view mobile -->
     <!-- View Desktop -->
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top: 150px">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">

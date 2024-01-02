@@ -126,7 +126,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- end Mobile -->
 
     <!-- dekstop -->
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top:130px;">
         <div class="container py-5 px-5 d-none d-md-block">
             <div class="col-12 d-flex justify-content-center">
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">

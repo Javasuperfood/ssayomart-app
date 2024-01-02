@@ -394,7 +394,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Tampilan mobile dan Ipad -->
 
     <!-- Tampilan Desktop -->
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top:130px;">
         <div class="container py-5 d-none d-lg-block">
             <div class="row ">
                 <div class="col mb-5">
