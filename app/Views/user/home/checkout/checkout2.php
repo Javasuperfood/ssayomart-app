@@ -245,8 +245,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php else : ?>
                                                 <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                             <?php endif; ?>
-                                            <?php if (isset(($p['promo']['total']))) : ?>
-                                                <p>Rp. <?= number_format($p['promo']['total'], 0, ',', '.'); ?></p>
+                                            <?php if (isset($p['promo']['total'])) : ?>
+                                                <?php
+                                                $discountedTotal = ($p['harga_item'] * $p['qty']) - ($p['promo']['total']);
+                                                ?>
+                                                <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
                                             <?php endif; ?>
                                         </div>
 
@@ -594,8 +597,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php else : ?>
                                                         <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                                     <?php endif; ?>
-                                                    <?php if (isset(($p['promo']['total']))) : ?>
-                                                        <p>Rp. <?= number_format($p['promo']['total'], 0, ',', '.'); ?></p>
+                                                    <?php if (isset($p['promo']['total'])) : ?>
+                                                        <?php
+                                                        $discountedTotal = ($p['harga_item'] * $p['qty']) - ($p['promo']['total']);
+                                                        ?>
+                                                        <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
