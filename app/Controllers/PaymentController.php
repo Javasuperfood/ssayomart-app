@@ -7,6 +7,7 @@ use App\Models\CheckoutModel;
 use App\Models\KategoriModel;
 use App\Models\StatusPesanModel;
 use App\Models\UsersModel;
+use App\Models\PromoBatchModel;
 use Midtrans\Config as MidtransConfig;
 
 class PaymentController extends BaseController
@@ -28,6 +29,7 @@ class PaymentController extends BaseController
         $userModel = new UsersModel();
         $checkoutModel = new CheckoutModel();
         $kategori = new KategoriModel();
+        $promoBatchModel = new PromoBatchModel();
         $order_id = $inv;
         $status_code = $this->request->getGet('status_code');
         $transaction_status = $this->request->getGet('transaction_status');
@@ -36,6 +38,14 @@ class PaymentController extends BaseController
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
         // dd($cekProduk);
+
+        foreach ($cekProduk as $key => $product) {
+            $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($product->id_produk);
+            if (count($promoDetails) > 0) {
+                $cekProduk[$key]->promo = $promoDetails[0];
+            }
+        }
+
         $data = [
             'title'                     => 'Status Pesanan',
             'getstatus'                 => $status,
@@ -46,7 +56,6 @@ class PaymentController extends BaseController
             'order_id' => $order_id,
             'back' => 'history',
             'kategori' => $kategori->findAll()
-
         ];
         // dd($data);
         // ==================================================================
