@@ -395,7 +395,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Tampilan Desktop -->
     <div id="desktopContent" style="margin-top:130px;">
-        <div class="container py-5 d-none d-lg-block">
+        <div class="container py-5">
             <div class="row ">
                 <div class="col mb-5">
                     <h2 class="fw-bold text-center"><i class="bi bi-clock-history"></i>

@@ -407,7 +407,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
 
     <!-- dekstop -->
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top:150px;">
         <div class="container">
             <div class="text-center">
                 <h2>Checkout</h2>
