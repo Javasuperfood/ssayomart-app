@@ -88,7 +88,9 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->group('setting/', static function ($routes) {
         // Get
         $routes->get('/', 'Setting::setting');
-        $routes->get('detail-user/(:any)', 'Setting::detailUser/$1');
+        $routes->get('detail-user', 'Setting::detailUser');
+        $routes->get('detail-user/change-password', 'PasswordUserController::changePassword');
+        $routes->post('detail-user/change-password/store', 'PasswordUserController::storeChangePassword');
         $routes->post('detail-user/delete-account/(:segment)', 'Setting::submitDeleteRequest/$1');
         $routes->get('pembayaran', 'Setting::pembayaran');
         $routes->get('alamat-list', 'Setting::alamatList');
@@ -100,7 +102,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
         // Post
         $routes->post('select-alamat', 'Setting::storeDataAlamat');
-        $routes->post('detail-user/(:segment)', 'Setting::updateDetailUser/$1');
+        $routes->post('detail-user/store', 'Setting::updateDetailUser');
         $routes->post('delete-alamat/(:segment)', 'Setting::deleteAlamat/$1');
         $routes->post('create-alamat/save-alamat', 'Setting::saveAlamat');
         $routes->post('update-alamat/edit-alamat/(:segment)', 'Setting::editAlamat/$1');

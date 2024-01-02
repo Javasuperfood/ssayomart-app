@@ -14,7 +14,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container pb-3">
             <div class="row justify-content-center">
                 <div class="card border-0 shadow-sm py-4 rounded-2">
-                    <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?= base_url() ?>setting/detail-user/store" method="post" enctype="multipart/form-data">
                         <div class="row g-3 px-3">
                             <div class="card border-0 shadow-sm py-4 mb-2 rounded-5 ">
                                 <div class="row g-3 px-3">
@@ -30,6 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <i class="bi bi-trash"></i> Hapus Akun
                                         </button>
                                     <?php endif; ?>
+                                    <a class="btn btn-sm btn-primary rounded-3 d-none" href="<?= base_url('setting/detail-user/change-password'); ?>">Change Password</a>
                                 </div>
 
                             </div>
@@ -138,7 +139,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </ol>
                 </nav>
             </div>
-            <form action="<?= base_url() ?>setting/detail-user/<?= user_id() ?>" method="post" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>setting/detail-user/store" method="post" enctype="multipart/form-data">
                 <?= csrf_field() ?>
                 <div class="row">
                     <div class="col-lg-4">
