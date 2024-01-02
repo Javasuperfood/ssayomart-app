@@ -25,7 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- navbar Website -->
-    <div id="desktopContent" style="margin-bottom: 110px;">
+    <div id="desktopContent" style="margin-bottom: 105px;">
         <div class="container-fluid fixed-top gx-0 mb-5">
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">

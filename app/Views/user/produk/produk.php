@@ -481,8 +481,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php else : ?>
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-                                <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn me-2" produk="<?= $produk['id_produk']; ?>"><i class=" bi bi-cart-fill"></i></button>
-                                <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                                <button class="btn btn-white border-danger mt-4 d-inline add-to-cart-btn me-2" produk="<?= $produk['id_produk']; ?>"><i class=" bi bi-cart-fill"></i></button>
+                                <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white beli-langsung border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                             <?php endif ?>
                         <?php endif ?>
                     </div>
@@ -541,6 +541,53 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
         <style>
+            /* hover beli langsung */
+            .beli-langsung {
+                /* Gaya tombol saat tidak di-hover */
+                color: #cf362b;
+                /* warna teks */
+                background-color: white;
+                /* warna latar belakang */
+                border-color: #cf362b;
+                /* warna border */
+
+                /* Efek transisi untuk perubahan */
+                transition: all 0.3s ease;
+            }
+
+            .beli-langsung:hover {
+                /* Gaya tombol saat di-hover */
+                color: white;
+                /* warna teks saat di-hover */
+                background-color: #cf362b;
+                /* warna latar belakang saat di-hover */
+            }
+
+            /* end beli langsung */
+
+            /* hover cart */
+            .add-to-cart-btn {
+                /* Gaya tombol saat tidak di-hover */
+                color: #cf362b;
+                /* warna teks */
+                background-color: white;
+                /* warna latar belakang */
+                border-color: #cf362b;
+                /* warna border */
+
+                /* Efek transisi untuk perubahan */
+                transition: all 0.3s ease;
+            }
+
+            .add-to-cart-btn:hover {
+                /* Gaya tombol saat di-hover */
+                color: white;
+                /* warna teks saat di-hover */
+                background-color: #cf362b;
+                /* warna latar belakang saat di-hover */
+            }
+
+            /* end hover cart */
             /* Ganti warna tombol close menjadi putih */
             .btn-close {
                 background-color: #ffff;
