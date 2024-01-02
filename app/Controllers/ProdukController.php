@@ -126,6 +126,8 @@ class ProdukController extends BaseController
 
         $data = [
             'title' => $produk['nama'],
+            'img_meta' => $produk['img'],
+            'description_meta' => $produk['deskripsi'],
             'kategori' => $kategoriModel->findAll(),
             'produk' => $produk,
             'varian' => $varianItem,
