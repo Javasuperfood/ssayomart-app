@@ -141,10 +141,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div>
                             <h4><?= lang("Text.follow") ?></h4>
                             <div class="social-links d-flex">
-                                <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
-                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="tiktok"><i class="bi bi-tiktok"></i></a>
+                                <a href="https://www.youtube.com/channel/UCiaJvoHqRRlxxHERP7q11Bw" target="__blank" class="youtube"><i class="bi bi-youtube"></i></a>
+                                <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" target="__blank" class="facebook"><i class="bi bi-facebook"></i></a>
+                                <a href="https://www.instagram.com/ssayomart.id/" target="__blank" class="instagram"><i class="bi bi-instagram"></i></a>
+                                <a href="https://www.tiktok.com/@ssayomart.id" target="__blank" class="tiktok"><i class="bi bi-tiktok"></i></a>
                             </div>
                         </div>
                     </div>
