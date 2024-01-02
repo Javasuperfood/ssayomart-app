@@ -222,17 +222,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Desktop View -->
    
     <!--start cdn buat bugs tabs di desktop view gak jalan -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- end cdn buat bugs tabs di desktop view gak jalan -->
 
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top:150px;">
         <div class="container">
             <!-- Tabs navs -->
-            <ul class="nav nav-justified nav-tabs mb-3" id="myTabs" role="tablist">
+            <ul class="nav nav-justified nav-tabs tabs-margin mb-3" id="myTabs" role="tablist">
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="tab-1" data-toggle="tab" href="#tab-content-1" aria-controls="tab-content-1" aria-selected="true">Privacy policy</a>
                 </li>
@@ -344,7 +344,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <style>
+                   /* style tabs untuk dimensi layar desktop */
+            @media screen and (min-width: 417px) and (max-width: 1199px) {
+  
+    .tabs-margin {
+        margin-top: 170px;
 
+    }
+}
+  /*akhir style tabs untuk dimensi layar desktop */
             
             /* Gaya untuk tab aktif (hanya garis bawah merah) */
             .nav-link.active {
