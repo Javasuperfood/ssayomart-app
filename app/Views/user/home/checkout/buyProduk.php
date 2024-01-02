@@ -244,7 +244,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
                                         <?php endif; ?>
                                         <?php if (isset(($produk['promo']))) : ?>
-                                            <p>Rp. <?= number_format(($produk['harga_item'] * $qty) * $produk['promo']['discount'], 0, ',', '.'); ?></p>
+                                            <?php
+                                            $discountedTotal = $total - ($total * $produk['promo']['discount']);
+                                            ?>
+                                            <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -262,7 +265,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Subtotal</td>
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
@@ -278,7 +281,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td>Total Harga</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
@@ -423,7 +426,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Subtotal</td>
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
@@ -439,7 +442,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td>Total Harga</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
@@ -686,7 +689,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
                                                 <?php endif; ?>
                                                 <?php if (isset(($produk['promo']))) : ?>
-                                                    <p>Rp. <?= number_format(($produk['harga_item'] * $qty) * $produk['promo']['discount'], 0, ',', '.'); ?></p>
+                                                    <?php
+                                                    $discountedTotal = $total - ($total * $produk['promo']['discount']);
+                                                    ?>
+                                                    <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
