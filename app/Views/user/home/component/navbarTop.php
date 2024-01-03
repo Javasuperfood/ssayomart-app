@@ -133,28 +133,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container-fluid fixed-top gx-0 mb-5">
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
-                    <div class="headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px;">
-                        <i class="bi bi-phone"></i>
-                        <div class="headerc__label label--hover mx-2 text-decoration-none text-dark">Download App on Playstore & Appstore</div>
-                        <!-- Barcode Popup -->
+                    <div class=" headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px; margin-left: 30px;">
+                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore</a>
                         <div class="barcode-popup">
-                            <!-- Place your barcode image or content here -->
-                            <img src="<?= base_url() ?>assets/img/playstore.png" class="download-apk" style="width: 300px;" alt="Barcode">
+                            <img src="<?= base_url() ?>assets/img/playstore.png" class="download-apk shadow-sm" style="width: 300px;" alt="Barcode">
                         </div>
-                        <style>
-                            .barcode-popup {
-                                display: none;
-                                position: absolute;
-                                top: 40px;
-                                left: 30px;
-                                padding: 10px;
-                                z-index: 999;
-                            }
 
-                            .headerc__label:hover+.barcode-popup {
-                                display: block;
-                            }
-                        </style>
+                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="headerc__label label--hover text-decoration-none text-dark mx-4"><i class="bi bi-apple mx-2"></i>Download Ssayomart App Store</a>
+                        <div class="barcode-apps">
+                            <img src="<?= base_url() ?>assets/img/appstore.png" class="download-apk shadow-sm" style="width: 300px;" alt="Barcode">
+                        </div>
                     </div>
                     <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
                         <a href="<?= base_url(); ?>setting/sayo-care" class="headerc__label label--hover text-decoration-none text-dark">Tentang Ssayomart</a>
@@ -278,7 +266,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Style navbar header -->
     <style>
         .headerc__right a:not(:first-child) {
-            margin-left: 10px
+            margin-left: 30px
         }
 
         .label--hover:hover {
@@ -291,6 +279,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <!-- end navbar header -->
+
+    <!-- pop up navhead -->
+    <style>
+        /* playstore */
+        .barcode-popup {
+            display: none;
+            position: absolute;
+            top: 25px;
+            left: 10px;
+            padding: 10px;
+            z-index: 999;
+        }
+
+        .headerc__label:hover+.barcode-popup {
+            display: block;
+        }
+
+        /* ios */
+        .barcode-apps {
+            display: none;
+            position: absolute;
+            top: 25px;
+            left: 240px;
+            padding: 10px;
+            z-index: 999;
+        }
+
+        .headerc__label:hover+.barcode-apps {
+            display: block;
+        }
+    </style>
 
     <style>
         /* efek garis bawah menu navbar dan hover */
