@@ -30,7 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <i class="bi bi-trash"></i> Hapus Akun
                                         </button>
                                     <?php endif; ?>
-                                    <a class="btn btn-sm btn-primary rounded-3 d-none" href="<?= base_url('setting/detail-user/change-password'); ?>">Change Password</a>
+                                    <a class="btn btn-sm btn-primary rounded-3" href="<?= base_url('setting/detail-user/change-password'); ?>">Change Password</a>
                                 </div>
 
                             </div>

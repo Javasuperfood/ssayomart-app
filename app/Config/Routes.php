@@ -124,6 +124,10 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
     $routes->group('contact/', static function ($routes) {
         $routes->post('send/email/v1', 'ContactController::storeData');
     });
+
+    $routes->get('password-reset', 'PasswordUserController::magicLink');
+    $routes->post('password-reset/storeMagicLink', 'PasswordUserController::storeMagicLink');
+    $routes->post('password-reset/login-without-change-password', 'PasswordUserController::loginWithoutChangePassword');
 });
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {

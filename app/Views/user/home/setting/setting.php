@@ -106,8 +106,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-lock pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.kebijakan_privasi') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-
                         </a>
+
                         <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-box-arrow-right pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.logout') ?> </span>

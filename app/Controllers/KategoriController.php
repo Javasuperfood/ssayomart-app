@@ -19,6 +19,9 @@ class KategoriController extends BaseController
 {
     public function index()
     {
+        if (session('magicLogin')) {
+            return redirect()->to(base_url('password-reset'));
+        }
         // ================ INI PENTING ==================
         $lang = $this->session->get('lang');
         if (!$lang) {

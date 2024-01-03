@@ -98,10 +98,72 @@ class PasswordUserController extends BaseController
     }
     public function magicLink()
     {
-        //
+        if (!session('magicLogin')) {
+            return view('404', ['title' => '404']);
+        }
+
+        $kategoriModel = new KategoriModel();
+
+        return view('user/home/setting/changePassword/magicLink', [
+            'title' => 'Create new password',
+            'kategori' => $kategoriModel->findAll(),
+        ]);
     }
     public function storeMagicLink()
     {
-        //
+        if (!session('magicLogin')) {
+            return view('404', ['title' => '404']);
+        }
+        $newPass = $this->request->getVar('newPass');
+        $reNewPass = $this->request->getVar('reNewPass');
+        $data = [
+            'newPass' => $newPass,
+            'reNewPass' => $reNewPass,
+        ];
+
+        if (!$this->validateData($data, [
+            'newPass' => [
+                'label' => 'New Password',
+                'rules' => 'required|min_length[8]',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'min_length' => '{field} minimal 8 karakter',
+                ]
+            ],
+            'reNewPass' => [
+                'label' => 'Re New Password',
+                'rules' => 'required|matches[newPass]',
+                'errors' => [
+                    'required' => '{field} harus diisi',
+                    'matches' => '{field} tidak sama dengan password baru',
+                ]
+            ],
+        ])) {
+            session()->setFlashdata('_ci_validation_errors', $this->validator->getErrors());
+            return redirect()->back();
+        }
+        $hashPass = password_hash($newPass, PASSWORD_DEFAULT);
+        $AuthIdentitesModel = new AuthIdentitesModel();
+        $id_AI = $AuthIdentitesModel->find(user_id())['id'];
+        $AuthIdentitesModel->save([
+            'id' => $id_AI,
+            'secret2' => $hashPass,
+        ]);
+        session()->setFlashdata('alert', [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Password Berhasil diubah',
+        ]);
+        session()->removeTempdata('magicLogin');
+        return redirect()->to(base_url('/setting'));
+    }
+
+    public function loginWithoutChangePassword()
+    {
+        if (!session('magicLogin')) {
+            return view('404', ['title' => '404']);
+        }
+        session()->removeTempdata('magicLogin');
+        return redirect()->to(base_url());
     }
 }
