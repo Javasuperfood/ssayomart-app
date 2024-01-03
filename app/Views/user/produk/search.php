@@ -38,7 +38,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <?= $this->include('user/home/component/pagination'); ?>
 
-        <button class="btn btn-danger" id="scrollUpButton" title="Scroll to top"><i class=" d-flex justify-content-center align-items-center bi bi-chevron-up"></i></button>
+        <button class="shadow-sm btn btn-light" id="scrollUpButton" title="Scroll to top"><i class=" d-flex justify-content-center align-items-center bi bi-chevron-up"></i></button>
         <!-- fotter -->
         <div class="footer-search" id="navbarBottom" style="position: relative; bottom: 0; width: 100%;">
             <?= $this->include('user/home/component/navbarBottom') ?>

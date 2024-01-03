@@ -210,7 +210,7 @@ if ($isMobile) {
 <!-- Style navbar header -->
 <style>
     .headerc__right a:not(:first-child) {
-        margin-left: 10px
+        margin-left: 30px
     }
 
     .label--hover:hover {
