@@ -48,7 +48,7 @@ class UserStatusController extends BaseController
 
         foreach ($cekProduk as $key => $product) {
             $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($product->id_produk);
-            if (count($promoDetails) > 0) {
+            if (count($promoDetails) > 0 && $product->qty >= $promoDetails[0]['min']) {
                 $cekProduk[$key]->promo = $promoDetails[0];
             }
         }

@@ -357,7 +357,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </table>
                         <strong>Estimasi : <span id="estimasi"></span></strong>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
+                            <button type="submit" class="btn btn-lg fw-bold rounded mt-3 btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar</button>
                         </div>
                     </div>
                     <!-- Left Panel -->
