@@ -47,7 +47,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-expand shadow-sm" style="background-color: #ffff;">
+            <nav class="navbar navbar-expand rounded-bottom-4 shadow-sm" style="background-color: #ffff;">
                 <div class="container">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="Logo Ssayomart" class="image-fluid">

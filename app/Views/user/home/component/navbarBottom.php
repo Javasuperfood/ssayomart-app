@@ -100,7 +100,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Footer Desktop -->
     <div id="desktopContent">
-        <footer id="footer" class="footer" style="background-color: #ce2614">
+        <footer id="footer" class="rounded-top-5 footer" style="box-shadow: 0px -1px 3px rgba(143, 140, 140, 0.2) !important;   background-color: #ce2614">
             <div class="container">
                 <div class="row gy-3">
                     <div class="col-lg-3 col-md-6 d-flex">
