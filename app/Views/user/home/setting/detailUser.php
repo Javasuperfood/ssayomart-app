@@ -24,13 +24,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                                 <!-- Button trigger modal -->
-                                <div class="text-center mt-2">
+                                <div class="text-center mt-2 d-grid gap-2">
                                     <?php if (!$deleteRequestExists) : ?>
                                         <button type="button" class="btn btn-sm btn-danger rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <i class="bi bi-trash"></i> Hapus Akun
                                         </button>
                                     <?php endif; ?>
-                                    <a class="btn btn-sm btn-primary rounded-3" href="<?= base_url('setting/detail-user/change-password'); ?>">Change Password</a>
+                                    <a class="btn btn-sm btn-danger rounded-3" href="<?= base_url('setting/detail-user/change-password'); ?>"><i class="bi bi-key"></i> Change Password</a>
                                 </div>
 
                             </div>
@@ -148,12 +148,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
                                 <p class="text-secondary mt-2" style="font-size: 14px;"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
                                 <!-- Button trigger modal -->
-                                <div class="text-center mt-2">
+                                <div class="d-grid gap-2 text-center mt-2">
                                     <?php if (!$deleteRequestExists) : ?>
                                         <button type="button" class="btn btn-sm btn-danger p-2 fw-bold rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <i class="bi bi-trash mx-2"></i> Hapus akun
                                         </button>
                                     <?php endif; ?>
+                                    <a href="<?= base_url('setting/detail-user/change-password'); ?>" class=" btn btn-sm btn-danger p-2 fw-bold rounded-3">
+                                        <i class="bi bi-key mx-2"></i> Change Password
+                                    </a>
                                 </div>
 
                             </div>

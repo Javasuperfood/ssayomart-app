@@ -27,7 +27,7 @@
         </div>
         <div class="row pt-3">
             <div class="col-12 d-flex justify-content-center">
-                <button form="changePassword" type="submit" class="btn btn-primary" onclick="clickSubmitEvent(this)">Change Password</button>
+                <button form="changePassword" type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"><i class="bi bi-key"></i> Change Password</button>
             </div>
         </div>
     </form>
@@ -35,7 +35,7 @@
         <div class="col-12 d-flex justify-content-center">
             <form action="<?= base_url('password-reset/login-without-change-password'); ?>" method="post">
                 <?= csrf_field(); ?>
-                <button type="submit" class="btn btn-primary" onclick="clickSubmitEvent(this)">Login Tanpa ubah password</button>
+                <button type="submit" class="btn btn-secondary" onclick="clickSubmitEvent(this)"><i class="bi bi-box-arrow-in-right"></i> Login Tanpa ubah password</button>
             </form>
         </div>
     </div>
