@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <button form="changePassword" type="submit" class="btn btn-primary" onclick="clickSubmitEvent(this)">Change Password</button>
+                <button form="changePassword" type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"><i class="bi bi-key"></i> Change Password</button>
             </div>
         </div>
     </form>
