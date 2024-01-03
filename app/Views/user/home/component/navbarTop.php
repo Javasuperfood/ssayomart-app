@@ -134,10 +134,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
                     <div class="headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px;">
-                        <i class="bi bi-google-play"></i>
-                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="headerc__label label--hover mx-2 text-decoration-none text-dark">Download Ssayomart Playstore</a>
-                        <i class="bi bi-apple"></i>
-                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="headerc__label label--hover mx-2 text-decoration-none text-dark">Download Ssayomart App Store</a>
+                        <i class="bi bi-phone"></i>
+                        <div class="headerc__label label--hover mx-2 text-decoration-none text-dark">Download App on Playstore & Appstore</div>
+                        <!-- Barcode Popup -->
+                        <div class="barcode-popup">
+                            <!-- Place your barcode image or content here -->
+                            <img src="<?= base_url() ?>assets/img/playstore.png" class="download-apk" style="width: 300px;" alt="Barcode">
+                        </div>
+                        <style>
+                            .barcode-popup {
+                                display: none;
+                                position: absolute;
+                                top: 40px;
+                                left: 30px;
+                                padding: 10px;
+                                z-index: 999;
+                            }
+
+                            .headerc__label:hover+.barcode-popup {
+                                display: block;
+                            }
+                        </style>
                     </div>
                     <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
                         <a href="<?= base_url(); ?>setting/sayo-care" class="headerc__label label--hover text-decoration-none text-dark">Tentang Ssayomart</a>
