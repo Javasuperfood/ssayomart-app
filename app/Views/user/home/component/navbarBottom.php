@@ -153,7 +153,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="container">
                 <div class="copyright">
-                    <span id="currentYear"></span> &copy; Copyright <strong><span>Ssayomart Supermarket</span></strong>. All Rights Reserved
+                    <span id="currentYear"></span> &copy; Copyright <span class="fw-bold">PT. Ssayo Mart Indonesia</span>. All Rights Reserved
                 </div>
             </div>
         </footer>
