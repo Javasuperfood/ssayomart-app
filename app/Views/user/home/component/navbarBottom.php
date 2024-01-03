@@ -119,7 +119,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div>
                             <h4><?= lang("Text.kontak") ?></h4>
                             <p>
-                                <strong>Phone:</strong> 02135290000<br>
+                                <strong>Telephone:</strong> (021)3529-0000<br>
                                 <strong>Email:</strong> ssayomart@gmail.com<br>
                             </p>
                         </div>
@@ -153,10 +153,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="container">
                 <div class="copyright">
-                    2024 &copy; Copyright <strong><span>Ssayomart Supermarket</span></strong>. All Rights Reserved
+                    <span id="currentYear"></span> &copy; Copyright <strong><span>Ssayomart Supermarket</span></strong>. All Rights Reserved
                 </div>
             </div>
         </footer>
+        <script>
+            document.getElementById("currentYear").innerHTML = new Date().getFullYear();
+        </script>
         <style>
             /* navabr bottom */
 
