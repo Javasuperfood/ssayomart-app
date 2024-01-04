@@ -118,7 +118,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div class="container h-100" style="padding-top : 120px;">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
-                <div class="card border-0 shadow rounded-4">
+                <div class="card border-0 shadow-sm rounded-4">
                     <div class="card-body p-4">
                         <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
                             <?= csrf_field(); ?>

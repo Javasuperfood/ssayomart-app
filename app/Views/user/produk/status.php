@@ -85,7 +85,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col mt-3">
                 <div class="card form-control form-control-md border-0 shadow-sm">
                     <div class="card border-0">
-                        <h2 class="fs-5">Lokasi Tujuan</h2>
+                        <h2 class="fs-5 fw-bold">Lokasi Tujuan</h2>
                         <div class="mb-0 mx-0 my-0">
                             <div class="row row-cols-1">
                                 <div class="col">
@@ -109,7 +109,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col mt-3">
                 <div class="card border-0">
                     <div class="card form-control form-control-md border-0 shadow-sm">
-                        <h2 class="fs-5">Pesanan Kamu</h2>
+                        <h2 class="fs-5 fw-bold">Pesanan Kamu</h2>
                         <div class="row">
                             <div class="col-10">
                                 <p><?= $status->invoice; ?></p>
@@ -507,8 +507,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <h2 class="mb-0"><?= $title; ?></h2>
-                            <hr class="text-danger">
+                            <h2 class="fw-bold mb-0"><?= $title; ?></h2>
+                            <hr class="mb-3 border-danger" style="border-width: 3px;">
                         </li>
                     </ol>
                 </nav>
