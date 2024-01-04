@@ -698,7 +698,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
             </script>
 
-            <!-- prroduk uunggulan  -->
+            <!-- PROMO  -->
             <section id="unggul">
                 <div class="container">
                     <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="color: #9c2525; background-color: #facaaf;">
@@ -730,7 +730,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </section>
 
 
-            <!-- swipper card tampilan web -->
+            <!-- swipper card PRODUK -->
             <section id="unggul">
                 <div class="container py-3">
                     <div class="row mt-3">
@@ -789,7 +789,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
 
-                    <!-- end card rekomendasi-->
+
+                    <!-- KATEGORI -->
                     <div class="container py-1">
                         <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="color: #9c2525; background-color: #facaaf;">
                             <div class="card-success">
