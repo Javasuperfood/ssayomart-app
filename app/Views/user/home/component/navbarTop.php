@@ -316,6 +316,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         .navbar-nav .nav-item .nav-link {
             position: relative;
             transition: all 0.3s ease;
+
         }
 
         .navbar-nav .nav-item .nav-link::before {
@@ -329,6 +330,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             visibility: hidden;
             transform: scaleX(0);
             transition: all 0.3s ease-in-out 0s;
+
         }
 
         .navbar-nav .nav-item .nav-link:hover::before {
