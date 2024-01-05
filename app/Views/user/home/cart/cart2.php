@@ -124,7 +124,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?= csrf_field(); ?>
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h4 class="fw-bold mb-3 text-center"><i class="bi bi-cart-plus"></i> <?= lang('Text.title_cart') ?></h4>
+                                    <h3 class="fw-bold mb-3 text-center"><i class="fs-1 bi bi-bag-heart text-danger"></i> <?= lang('Text.title_cart') ?></h3>
                                     <hr class="mb-3 border-danger" style="border-width: 3px;">
                                     <?php foreach ($produk as $p) : ?>
                                         <div class="card border-0 shadow-sm rounded-3 mb-3">

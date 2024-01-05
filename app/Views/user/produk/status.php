@@ -507,7 +507,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <h2 class="fw-bold mb-0"><?= $title; ?></h2>
+                            <h3 class="fw-bold mb-0"><i class="fs-1 text-danger bi bi-receipt-cutoff"></i> <?= $title; ?></h3>
                             <hr class="mb-3 border-danger" style="border-width: 3px;">
                         </li>
                     </ol>

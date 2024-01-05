@@ -398,9 +398,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container py-5">
             <div class="row ">
                 <div class="col mb-5">
-                    <h2 class="fw-bold text-center"><i class="bi bi-clock-history"></i>
+                    <h3 class="fw-bold text-center"><i class="fs-1 text-danger bi bi-clock-history"></i>
                         <?= lang('Text.title_history') ?>
-                    </h2>
+                    </h3>
                     <hr class="mb-3 border-danger" style="border-width: 3px;">
                 </div>
             </div>

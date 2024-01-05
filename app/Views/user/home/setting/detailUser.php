@@ -133,7 +133,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <h2 class="fw-bold mb-0 " style="color: #b81212;"><i class="bi bi-person-circle me-1"></i> <?= lang('Text.title') ?></h2>
+                            <h3 class="fw-bold mb-0 "><i class="text-danger fs-1 bi bi-person-circle me-1"></i> <?= lang('Text.title') ?></h3>
                             <hr class="border-danger" style="border-width: 3px;">
                         </li>
                     </ol>
