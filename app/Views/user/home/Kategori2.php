@@ -450,10 +450,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     justify-content: center;
                 }
 
-                .agak-kekanan {
+            .agak-kekanan {
                     justify-content: center;
-                    margin-right: 0%;
-                    margin-left: 0%;
+                    margin-right: 2%;
+                    margin-left: -2%;
                 }
 
             }
