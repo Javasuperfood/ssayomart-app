@@ -73,7 +73,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 <?php else : ?>
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top:150px;">
         <div class="container">
             <h3 class="text-center mb-4 pb-2 text-dark fw-bold">FAQ</h3>
             <p class="text-center mb-5">

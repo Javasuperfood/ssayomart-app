@@ -160,6 +160,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <a href="https://www.tiktok.com/@ssayomart.id" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-tiktok"></i></i></a>
                         <a href="https://www.instagram.com/ssayomart.id/" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-instagram"></i></i></a>
                         <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" class="headerc__label label--hover text-decoration-none text-dark mx-2"><i class="bi bi-facebook"></i></a>
+                        <a href="<?= base_url(); ?>/pusat-bantuan" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-question-circle"></i> Pusat Bantuan</a>
                         <a href="<?= base_url(); ?>setting/sayo-care" class="headerc__label label--hover text-decoration-none text-dark">Tentang Ssayomart</a>
                         <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="headerc__label label--hover text-decoration-none text-dark">Kebijakan Kami</a>
                         <a href="https://ssayomart.com/" class="headerc__label label--hover text-decoration-none text-dark" target="_blank">Company Profile</a>

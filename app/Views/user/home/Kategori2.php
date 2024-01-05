@@ -163,7 +163,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </a>
                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                         <div class="d-flex align-items-start justify-content-center" style=" height: 75px;">
-                                            <p class=" text-center text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
+                                            <p class=" text-center text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 80); ?></p>
                                         </div>
                                         <!-- <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                             <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
@@ -417,14 +417,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             @media screen and (min-width: 512px) and (max-width: 512px) {
                 .susunan-card {
-            flex: 0 0 100% !important;
-            max-width: 30%;
-        }
+                    flex: 0 0 100% !important;
+                    max-width: 30%;
+                }
 
-        .card-produk {
-            width: 135px !important;
-            /* Mengisi lebar parent container */
-        }
+                .card-produk {
+                    width: 135px !important;
+                    /* Mengisi lebar parent container */
+                }
 
                 .horizontal-counter {
                     display: flex;
@@ -447,7 +447,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     justify-content: center;
                 }
 
-            .agak-kekanan {
+                .agak-kekanan {
                     justify-content: center;
                     margin-right: 2%;
                     margin-left: -1%;
