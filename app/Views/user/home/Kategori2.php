@@ -417,17 +417,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             @media screen and (min-width: 512px) and (max-width: 512px) {
                 .susunan-card {
-                    justify-content: center;
-                    align-items: center;
-                    max-width: 31% !important;
-                    flex: 0 0 100% !important;
-                    /* width: 20% !important; */
-                }
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
 
-                .card-produk {
-                    width: 120px !important;
-                    /* Mengisi lebar parent container */
-                }
+        .card-produk {
+            width: 135px !important;
+            /* Mengisi lebar parent container */
+        }
 
                 .horizontal-counter {
                     display: flex;
@@ -453,7 +450,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             .agak-kekanan {
                     justify-content: center;
                     margin-right: 2%;
-                    margin-left: -2%;
+                    margin-left: -1%;
                 }
 
             }
