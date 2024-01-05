@@ -41,6 +41,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
+                        <a href="https://www.tiktok.com/@ssayomart.id" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-tiktok"></i></i></a>
+                        <a href="https://www.instagram.com/ssayomart.id/" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-instagram"></i></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" class="headerc__label label--hover text-decoration-none text-dark mx-2"><i class="bi bi-facebook"></i></a>
                         <a href="<?= base_url(); ?>setting/sayo-care" class="headerc__label label--hover text-decoration-none text-dark">Tentang Ssayomart</a>
                         <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="headerc__label label--hover text-decoration-none text-dark">Kebijakan Kami</a>
                         <a href="https://ssayomart.com/" class="headerc__label label--hover text-decoration-none text-dark" target="_blank">Company Profile</a>
@@ -235,13 +238,16 @@ if ($isMobile) {
 
 <!-- Style navbar header -->
 <style>
-    .headerc__right a:not(:first-child) {
-        margin-left: 30px
+    .headerc__label i:hover {
+        color: #ce2614;
     }
 
-    .label--hover:hover {
+    .headerc__right a:not(:first-child) {
+        margin-left: 10px
+    }
+
+    .headerc__label:hover {
         color: #ce2614;
-        cursor: pointer;
     }
 
     .headerc__label {
