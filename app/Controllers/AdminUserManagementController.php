@@ -34,13 +34,13 @@ class AdminUserManagementController extends BaseController
         //     $emails[$user['id']] = $email;
         // }
 
-        $totalUsers = $usersModel->countAllResults();
+        $totalUsers = $usersModel->select('users.id')->join('auth_groups_users', 'users.id = auth_groups_users.user_id')->findAll();
 
         $data = [
             'users' => $users['users'],
             'pager' => $users['pager'],
             'iterasi' => ($currentPage - 1) * $perPage + 1,
-            'totalUsers' => $totalUsers,
+            'totalUsers' => count($totalUsers),
             'marketAdmin' => $adminTokoModel->getAdminToko(),
             'delRequest' => $delRequestAll,
             'usersModel' => $usersModel,
@@ -119,7 +119,7 @@ class AdminUserManagementController extends BaseController
         $requestDeleteModel = new DeleteRequestUsersModel();
 
         // Retrieve user data
-        $userToDelete = $authIdentitiesModel->find($id);
+        $userToDelete = $authIdentitiesModel->getRequestDeleteId($id);
 
         if (!$userToDelete) {
             // Handle if data is not found
@@ -133,10 +133,10 @@ class AdminUserManagementController extends BaseController
         }
 
         // Delete from auth_identities table
-        $authIdentitiesDeleted = $authIdentitiesModel->delete($id);
-
-        if (!$authIdentitiesDeleted) {
-            // Handle deletion error
+        $authIdentitiesDeleted = $authIdentitiesModel->delete($userToDelete['id']);
+        if ($authIdentitiesDeleted) {
+            $authIdentitiesModel->delete($userToDelete['id']);
+        } else {
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',

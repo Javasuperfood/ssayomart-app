@@ -58,4 +58,15 @@ class AuthIdentitesModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getRequestDeleteId($id)
+    {
+        $query = $this->table('auth_identities')
+            ->select('auth_identities.*, jsf_request_delete.id_request_delete')
+            ->join('jsf_request_delete', 'auth_identities.user_id = jsf_request_delete.id_user', 'left')
+            ->where('jsf_request_delete.id_request_delete', $id)
+            ->first();
+
+        return $query;
+    }
 }
