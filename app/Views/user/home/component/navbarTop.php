@@ -145,6 +145,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
+                        <a href="https://www.tiktok.com/@ssayomart.id" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-tiktok"></i></i></a>
+                        <a href="https://www.instagram.com/ssayomart.id/" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-instagram"></i></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" class="headerc__label label--hover text-decoration-none text-dark mx-2"><i class="bi bi-facebook"></i></a>
                         <a href="<?= base_url(); ?>setting/sayo-care" class="headerc__label label--hover text-decoration-none text-dark">Tentang Ssayomart</a>
                         <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="headerc__label label--hover text-decoration-none text-dark">Kebijakan Kami</a>
                         <a href="https://ssayomart.com/" class="headerc__label label--hover text-decoration-none text-dark" target="_blank">Company Profile</a>
@@ -265,8 +268,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Style navbar header -->
     <style>
+        /* Mengubah warna ikon saat dihover */
+        .headerc__label i:hover {
+            color: #ce2614;
+        }
+
         .headerc__right a:not(:first-child) {
-            margin-left: 30px
+            margin-left: 10px
         }
 
         .label--hover:hover {
@@ -310,9 +318,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             display: block;
         }
     </style>
+    <!-- end -->
 
+    <!-- efek garis bawah menu navbar dan hover -->
     <style>
-        /* efek garis bawah menu navbar dan hover */
         .navbar-nav .nav-item .nav-link {
             position: relative;
             transition: all 0.3s ease;
