@@ -136,7 +136,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class=" headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px; margin-left: 30px;">
                         <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore</a>
                         <div class="barcode-popup">
-                            <img src="<?= base_url() ?>assets/img/playstore.png" class="download-apk shadow-sm" style="width: 300px;" alt="Barcode">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="<?= base_url('assets/img/qr/play-store.png'); ?>" class="" width="120px" alt="" srcset="">
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-dark">Download Ssayomart di playstore</p>
+                                            <img src="<?= base_url('assets/img/plays.png'); ?>" class="" width="120px" alt="" srcset="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="headerc__label label--hover text-decoration-none text-dark mx-4"><i class="bi bi-apple mx-2"></i>Download Ssayomart App Store</a>

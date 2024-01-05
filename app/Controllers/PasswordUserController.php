@@ -163,6 +163,12 @@ class PasswordUserController extends BaseController
         if (!session('magicLogin')) {
             return view('404', ['title' => '404']);
         }
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Login Berhasil',
+        ];
+        session()->setFlashdata('alert', $alert);
         session()->removeTempdata('magicLogin');
         return redirect()->to(base_url());
     }
