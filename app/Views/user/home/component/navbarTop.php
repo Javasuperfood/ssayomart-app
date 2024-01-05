@@ -131,10 +131,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- navbar Website -->
     <div id="desktopContent">
         <div class="container-fluid fixed-top gx-0 mb-5">
+            <!-- topbar -->
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
                     <div class=" headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px; margin-left: 30px;">
-                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore</a>
+                        <a href="javascript:void(0);" class="headerc__label label--hover text-decoration-none text-dark">
+                            <i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore
+                        </a>
                         <div class="barcode-popup">
                             <div class="card">
                                 <div class="card-body">
@@ -143,17 +146,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <img src="<?= base_url('assets/img/qr/play-store.png'); ?>" class="" width="120px" alt="" srcset="">
                                         </div>
                                         <div class="col">
-                                            <p class="text-dark">Download Ssayomart di playstore</p>
-                                            <img src="<?= base_url('assets/img/plays.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            <p class="text-dark">Download Ssayomart di Play Store</p>
+                                            <a href="https://play.google.com/store/apps/details?id=com.ssayomart" target="__blank">
+                                                <img src="<?= base_url('assets/img/plays.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="headerc__label label--hover text-decoration-none text-dark mx-4"><i class="bi bi-apple mx-2"></i>Download Ssayomart App Store</a>
+                        <a href="javascript:void(0);" class="headerc__label label--hover text-decoration-none text-dark mx-4">
+                            <i class="bi bi-apple mx-2"></i>Download Ssayomart App Store
+                        </a>
                         <div class="barcode-apps">
-                            <img src="<?= base_url() ?>assets/img/appstore.png" class="download-apk shadow-sm" style="width: 300px;" alt="Barcode">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="<?= base_url('assets/img/qr/apps-store.png'); ?>" class="" width="120px" alt="" srcset="">
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-dark">Download Ssayomart di App Store</p>
+                                            <a href="https://apps.apple.com/id/app/ssayomart/id6447356667" target="__blank">
+                                                <img src="<?= base_url('assets/img/Apps.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
@@ -166,8 +187,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-expand rounded-bottom-4 shadow-sm" style="background-color: #ffff;">
 
+            <!-- navbar -->
+            <nav class="navbar navbar-expand rounded-bottom-4 shadow-sm" style="background-color: #ffff;">
                 <div class="container">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="Logo Ssayomart" class="image-fluid">
@@ -298,7 +320,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-bottom: 0;
         }
     </style>
-    <!-- end navbar header -->
 
     <!-- pop up navhead -->
     <style>
@@ -330,7 +351,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             display: block;
         }
     </style>
-    <!-- end -->
 
     <!-- efek garis bawah menu navbar dan hover -->
     <style>
@@ -359,5 +379,36 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             transform: scaleX(1);
         }
     </style>
+
+    <script>
+        function handleHover(element, popup) {
+            element.addEventListener('mouseenter', function() {
+                popup.style.display = 'block';
+            });
+
+            element.addEventListener('mouseleave', function() {
+                popup.style.display = 'none';
+            });
+
+            popup.addEventListener('mouseenter', function() {
+                popup.style.display = 'block';
+            });
+
+            popup.addEventListener('mouseleave', function() {
+                popup.style.display = 'none';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var playstoreLabel = document.querySelector('.headerc__label:nth-child(1)');
+            var appStoreLabel = document.querySelector('.headerc__label:nth-child(3)');
+            var playstorePopup = document.querySelector('.barcode-popup');
+            var appStorePopup = document.querySelector('.barcode-apps');
+
+            handleHover(playstoreLabel, playstorePopup);
+            handleHover(appStoreLabel, appStorePopup);
+        });
+    </script>
+
 <?php endif; ?>
 <!-- end Nav Desk -->

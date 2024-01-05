@@ -29,29 +29,47 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container-fluid fixed-top gx-0 mb-5">
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
-                    <div class=" headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px; margin-left: 30px;">
-                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore</a>
+                    <div class="headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px; margin-left: 30px;">
+                        <a href="javascript:void(0);" class="headerc__label label--hover text-decoration-none text-dark">
+                            <i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore
+                        </a>
                         <div class="barcode-popup">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col d-flex justify-content-center">
-                                            <div class="border border-4 p-1 rounded-3 border-danger">
-                                                <img src="<?= base_url('assets/img/qr/play-store.png'); ?>" class="" width="120px" alt="" srcset="">
-                                            </div>
+                                        <div class="col">
+                                            <img src="<?= base_url('assets/img/qr/play-store.png'); ?>" class="" width="120px" alt="" srcset="">
                                         </div>
                                         <div class="col">
-                                            <p class="text-dark">Download Ssayomart di playstore</p>
-                                            <img src="<?= base_url('assets/img/plays.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            <p class="text-dark">Download Ssayomart di Play Store</p>
+                                            <a href="https://play.google.com/store/apps/details?id=com.ssayomart" target="__blank">
+                                                <img src="<?= base_url('assets/img/plays.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="headerc__label label--hover text-decoration-none text-dark mx-4"><i class="bi bi-apple mx-2"></i>Download Ssayomart App Store</a>
+                        <a href="javascript:void(0);" class="headerc__label label--hover text-decoration-none text-dark mx-4">
+                            <i class="bi bi-apple mx-2"></i>Download Ssayomart App Store
+                        </a>
                         <div class="barcode-apps">
-                            <img src="<?= base_url() ?>assets/img/appstore.png" class="download-apk shadow-sm" style="width: 300px;" alt="Barcode">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="<?= base_url('assets/img/qr/apps-store.png'); ?>" class="" width="120px" alt="" srcset="">
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-dark">Download Ssayomart di App Store</p>
+                                            <a href="https://apps.apple.com/id/app/ssayomart/id6447356667" target="__blank">
+                                                <img src="<?= base_url('assets/img/Apps.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
@@ -252,6 +270,7 @@ if ($isMobile) {
 
 <!-- Style navbar header -->
 <style>
+    /* Mengubah warna ikon saat dihover */
     .headerc__label i:hover {
         color: #ce2614;
     }
@@ -260,16 +279,15 @@ if ($isMobile) {
         margin-left: 10px
     }
 
-    .headerc__label:hover {
+    .label--hover:hover {
         color: #ce2614;
+        cursor: pointer;
     }
 
     .headerc__label {
         margin-bottom: 0;
     }
 </style>
-
-
 
 <!-- pop up navhead -->
 <style>
@@ -301,6 +319,35 @@ if ($isMobile) {
         display: block;
     }
 </style>
-<!-- end navbar header -->
+
+<script>
+    function handleHover(element, popup) {
+        element.addEventListener('mouseenter', function() {
+            popup.style.display = 'block';
+        });
+
+        element.addEventListener('mouseleave', function() {
+            popup.style.display = 'none';
+        });
+
+        popup.addEventListener('mouseenter', function() {
+            popup.style.display = 'block';
+        });
+
+        popup.addEventListener('mouseleave', function() {
+            popup.style.display = 'none';
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var playstoreLabel = document.querySelector('.headerc__label:nth-child(1)');
+        var appStoreLabel = document.querySelector('.headerc__label:nth-child(3)');
+        var playstorePopup = document.querySelector('.barcode-popup');
+        var appStorePopup = document.querySelector('.barcode-apps');
+
+        handleHover(playstoreLabel, playstorePopup);
+        handleHover(appStoreLabel, appStorePopup);
+    });
+</script>
 
 <!-- End Desktop View -->
