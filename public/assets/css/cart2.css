@@ -15,6 +15,16 @@
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 50%;
   }
+
+  .tombol-hapus__dekstop:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
+.tombol-hapus__dekstop:hover i {
+    color: #ce2614 !important;
+    transition: transform 0.3s ease-in-out;
+}
 /* end deksstop */
 
 .item-item {

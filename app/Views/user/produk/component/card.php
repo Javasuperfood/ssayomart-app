@@ -6,7 +6,7 @@
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
-                    <div class="col-6 col-md-4 col-lg-2 mb-2 mx-0 text-center">
+                    <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0 text-center">
                         <div class="card card-desktop border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
@@ -85,7 +85,7 @@
     <div class="row row-cols-3" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
-            <div class="col-6 col-md-4 col-lg-2 mb-2 mx-0">
+            <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
                 <div class="card card-desktop border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
