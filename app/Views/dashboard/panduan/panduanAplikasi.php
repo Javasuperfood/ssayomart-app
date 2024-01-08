@@ -268,8 +268,7 @@
             <div class="collapse" id="accordion-tab-3-content-6" aria-labelledby="accordion-tab-3-heading-6" data-parent="#accordion-tab-3">
               <div class="card-body">
                 <ul>
-                  <li>
-                    <p><strong>Menu Refund</strong></p>\
+                  <p><strong>Menu Refund</strong></p>
                   <li>digunakan untuk melihat pesanan mana saja yang akan mendapatkan kompensasi atau user yang minta di tukar barang ataupun dalam bentuk nominal uang pembelian</li>
                   </li>
                 </ul>
