@@ -1,11 +1,13 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<div class="card border-0 text-center bg-light mb-4 px-2 py-2">
+<!-- header -->
+<div class="card border-0 text-center bg-light py-2">
   <h1 class="h3 mb-2 text-dark fw-bold">Panduan Aplikasi</h1>
 </div>
 
-<div class="row">
+<!-- panel right -->
+<div class="row mb-4">
   <div class="col-lg-4">
     <div class="card border-0 bg-light">
       <h5 class=" mb-2 text-dark fw-bold">Menu</h5>
@@ -34,6 +36,8 @@
       </a>
     </div>
   </div>
+
+  <!-- panel left -->
   <div class="col-lg-8">
     <div class="card border-0 bg-light">
       <h5 class=" mb-2 text-dark fw-bold">Panduan</h5>
@@ -55,47 +59,9 @@
               </div>
             </div>
           </div>
-          <!-- <div class="card">
-            <div class="card-header" id="accordion-tab-1-heading-2">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-2" aria-expanded="false" aria-controls="accordion-tab-1-content-2">Bender, I didn't know you liked cooking?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-1-content-2" aria-labelledby="accordion-tab-1-heading-2" data-parent="#accordion-tab-1">
-              <div class="card-body">
-                <p>That's so cute. Can we have Bender Burgers again? Is the Space Pope reptilian!? I wish! It's a nickel. Bender! Ship! Stop bickering or I'm going to come back there and change your opinions manually!</p>
-                <p><strong>Example: </strong>Okay, I like a challenge. Is that a cooking show? No argument here.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="accordion-tab-1-heading-3">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-3" aria-expanded="false" aria-controls="accordion-tab-1-content-3">My fellow Earthicans?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-1-content-3" aria-labelledby="accordion-tab-1-heading-3" data-parent="#accordion-tab-1">
-              <div class="card-body">
-                <p>As I have explained in my book 'Earth in the Balance', and the much more popular 'Harry Potter and the Balance of Earth', we need to defend our planet against pollution. Also dark wizards. Fry, you can't just sit here in the dark listening to classical music.</p>
-                <p><strong>Example: </strong>Actually, that's still true. Well, let's just dump it in the sewer and say we delivered it.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="accordion-tab-1-heading-4">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-4" aria-expanded="false" aria-controls="accordion-tab-1-content-4">Who am I making this out to?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-1-content-4" aria-labelledby="accordion-tab-1-heading-4" data-parent="#accordion-tab-1">
-              <div class="card-body">
-                <p>Morbo can't understand his teleprompter because he forgot how you say that letter that's shaped like a man wearing a hat. Also Zoidberg. Can we have Bender Burgers again? Goodbye, cruel world. Goodbye, cruel lamp. Goodbye, cruel velvet drapes, lined with what would appear to be some sort of cruel muslin and the cute little pom-pom curtain pull cords.</p>
-                <p><strong>Example: </strong>Cruel though they may be...</p>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
+
       <!-- tab 2 -->
       <div class="tab-pane" id="tab2" role="tabpanel" aria-labelledby="tab2">
         <div class="accordion" id="accordion-tab-2">
@@ -118,47 +84,9 @@
               </div>
             </div>
           </div>
-          <!-- <div class="card">
-            <div class="card-header" id="accordion-tab-2-heading-2">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-2" aria-expanded="false" aria-controls="accordion-tab-2-content-2">This opera's as lousy as it is brilliant?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-2-content-2" aria-labelledby="accordion-tab-2-heading-2" data-parent="#accordion-tab-2">
-              <div class="card-body">
-                <p>Your lyrics lack subtlety. You can't just have your characters announce how they feel. That makes me feel angry! It's okay, Bender. I like cooking too. Interesting. No, wait, the other thing: tedious.</p>
-                <p><strong>Example: </strong>Of all the friends I've had… you're the first. But I know you in the future. I cleaned your poop. Then we'll go with that data file!</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="accordion-tab-2-heading-3">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-3" aria-expanded="false" aria-controls="accordion-tab-2-content-3">Who are you, my warranty?!</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-2-content-3" aria-labelledby="accordion-tab-2-heading-3" data-parent="#accordion-tab-2">
-              <div class="card-body">
-                <p>Oh, I think we should just stay friends. I'll tell them you went down prying the wedding ring off his cold, dead finger. Aww, it's true. I've been hiding it for so long. Say it in Russian! Then throw her in the laundry room, which will hereafter be referred to as "the brig".</p>
-                <p><strong>Example: </strong> We're rescuing ya. Robot 1-X, save my friends! And Zoidberg! <em>Then we'll go with that data file!</em> Okay, I like a challenge.</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="accordion-tab-2-heading-4">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-4" aria-expanded="false" aria-controls="accordion-tab-2-content-4">I haven't felt much of anything since my guinea pig died?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-2-content-4" aria-labelledby="accordion-tab-2-heading-4" data-parent="#accordion-tab-2">
-              <div class="card-body">
-                <p>And I'm his friend Jesus. Oh right. I forgot about the battle. OK, if everyone's finished being stupid. We'll need to have a look inside you with this camera. I'm just glad my fat, ugly mama isn't alive to see this day.</p>
-                <p><strong>Example: </strong> Isn't it true that you have been paid for your testimony? Quite possible.</p>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
+
       <!-- tab 3 -->
       <div class="tab-pane" id="tab3" role="tabpanel" aria-labelledby="tab3">
         <div class="accordion" id="accordion-tab-3">
@@ -277,6 +205,7 @@
           </div>
         </div>
       </div>
+
       <!-- tab 4 -->
       <div class="tab-pane" id="tab4" role="tabpanel" aria-labelledby="tab4">
         <div class="accordion" id="accordion-tab-4">
@@ -289,8 +218,7 @@
             <div class="collapse show" id="accordion-tab-4-content-1" aria-labelledby="accordion-tab-4-heading-1" data-parent="#accordion-tab-4">
               <div class="card-body">
                 <ul>
-                  <li>
-                    <p><strong>Menu List Produk</strong></p>
+                  <p><strong>Menu List Produk</strong></p>
                   <li>Menampilkan semua produk yang ada di ssayomart, Admin dapat melihat detail produk, seperti nama produk, harga, stok, dan Varian Stok. </li>
                   <li>Admin dapat merubah status produk melalui menu titik tiga pada bagian tabel "Aksi" disitu terdapat beberapa menu lainnya seperti "Edit", "Hapus", "Detail"</li>
                   <ul>
@@ -428,6 +356,7 @@
           </div>
         </div>
       </div>
+
       <!-- tab 5 -->
       <div class="tab-pane" id="tab5" role="tabpanel" aria-labelledby="tab5">
         <div class="accordion" id="accordion-tab-5">
@@ -484,21 +413,9 @@
               </div>
             </div>
           </div>
-          <!-- <div class="card">
-            <div class="card-header" id="accordion-tab-5-heading-4">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-4" aria-expanded="false" aria-controls="accordion-tab-5-content-4">And until then, I can never die?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-5-content-4" aria-labelledby="accordion-tab-5-heading-4" data-parent="#accordion-tab-5">
-              <div class="card-body">
-                <p>I don't know what you did, Fry, but once again, you screwed up! Now all the planets are gonna start cracking wise about our mamas. Well, let's just dump it in the sewer and say we delivered it.</p>
-                <p><strong>Example: </strong>Have you ever tried just turning off the TV, sitting down with your children, and hitting them? Hey, tell me something. You've got all this money. How come you always dress like you're doing your laundry?</p>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
+
       <!-- tab 6 -->
       <div class="tab-pane" id="tab6" role="tabpanel" aria-labelledby="tab6">
         <div class="accordion" id="accordion-tab-6">
@@ -536,34 +453,9 @@
               </div>
             </div>
           </div>
-          <!-- <div class="card">
-            <div class="card-header" id="accordion-tab-6-heading-3">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-3" aria-expanded="false" aria-controls="accordion-tab-6-content-3">Tell her you just want to talk?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-6-content-3" aria-labelledby="accordion-tab-6-heading-3" data-parent="#accordion-tab-6">
-              <div class="card-body">
-                <p>It has nothing to do with mating. Soon enough. There, now he's trapped in a book I wrote: a crummy world of plot holes and spelling errors! Daylight and everything. Hey! I'm a porno-dealing monster, what do I care what you think?</p>
-                <p><strong>Example: </strong>Is that a cooking show? It doesn't look so shiny to me. And why did 'I' have to take a cab?</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="accordion-tab-6-heading-4">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-4" aria-expanded="false" aria-controls="accordion-tab-6-content-4">Good man. Nixon's pro-war and pro-family?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-6-content-4" aria-labelledby="accordion-tab-6-heading-4" data-parent="#accordion-tab-6">
-              <div class="card-body">
-                <p>I don't 'need' to drink. I can quit anytime I want! THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN! There's one way and only one way to determine if an animal is intelligent. Dissect its brain!</p>
-                <p><strong>Example: </strong>Guess again. Yeah, I do that with my stupidness. And when we woke up, we had these bodies.</p>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
+
       <!-- tab 7 -->
       <div class="tab-pane" id="tab7" role="tabpanel" aria-labelledby="tab7">
         <div class="accordion" id="accordion-tab-7">
@@ -582,46 +474,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="card">
-            <div class="card-header" id="accordion-tab-7-heading-2">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-7-content-2" aria-expanded="false" aria-controls="accordion-tab-7-content-2">Artikel</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-7-content-2" aria-labelledby="accordion-tab-7-heading-2" data-parent="#accordion-tab-7">
-              <div class="card-body">
-                <ul>
-                  <p><strong>I'm Sorry this Content we have disable</strong></p>
-                </ul>
-              </div>
-            </div>
-          </div> -->
-          <!-- <div class="card">
-            <div class="card-header" id="accordion-tab-6-heading-3">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-3" aria-expanded="false" aria-controls="accordion-tab-6-content-3">Tell her you just want to talk?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-6-content-3" aria-labelledby="accordion-tab-6-heading-3" data-parent="#accordion-tab-6">
-              <div class="card-body">
-                <p>It has nothing to do with mating. Soon enough. There, now he's trapped in a book I wrote: a crummy world of plot holes and spelling errors! Daylight and everything. Hey! I'm a porno-dealing monster, what do I care what you think?</p>
-                <p><strong>Example: </strong>Is that a cooking show? It doesn't look so shiny to me. And why did 'I' have to take a cab?</p>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header" id="accordion-tab-6-heading-4">
-              <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-4" aria-expanded="false" aria-controls="accordion-tab-6-content-4">Good man. Nixon's pro-war and pro-family?</button>
-              </h5>
-            </div>
-            <div class="collapse" id="accordion-tab-6-content-4" aria-labelledby="accordion-tab-6-heading-4" data-parent="#accordion-tab-6">
-              <div class="card-body">
-                <p>I don't 'need' to drink. I can quit anytime I want! THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN! There's one way and only one way to determine if an animal is intelligent. Dissect its brain!</p>
-                <p><strong>Example: </strong>Guess again. Yeah, I do that with my stupidness. And when we woke up, we had these bodies.</p>
-              </div>
-            </div>
-          </div> -->
         </div>
       </div>
     </div>
