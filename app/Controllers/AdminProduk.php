@@ -564,41 +564,6 @@ class AdminProduk extends BaseController
         return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
     }
 
-    public function saveUrutanProdukRekomendasi()
-    {
-        $produkRekomendasiModel = new ProdukRekomendasiModel();
-        $idRekomendasi = $this->request->getVar('id_rekomendasi');
-        $originalOrder = $this->request->getVar('original_order');
-
-        // Memulai transaksi
-        $produkRekomendasiModel->transStart();
-
-        try {
-            foreach ($idRekomendasi as $key => $id) {
-                $produkRekomendasiModel->update($id, ['short' => $key + 1]); // Memperbarui 'short' berdasarkan urutan baru
-            }
-
-            $produkRekomendasiModel->transComplete();
-
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Urutan Produk berhasil diubah.'
-            ];
-        } catch (\Exception $e) {
-            $produkRekomendasiModel->transRollback();
-
-            $alert = [
-                'type' => 'error',
-                'title' => 'Gagal',
-                'message' => 'Terjadi kesalahan saat menyimpan urutan produk : ' . $e->getMessage()
-            ];
-        }
-
-        session()->setFlashdata('alert', $alert);
-        return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
-    }
-
     // delete
     public function deleteProdukRekomendasi($id)
     {
@@ -620,6 +585,28 @@ class AdminProduk extends BaseController
             session()->setFlashdata('alert', $alert);
         }
 
+        return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
+    }
+
+    public function saveUrutanProdukRekomendasi()
+    {
+        $produkRekomendasiModel = new ProdukRekomendasiModel();
+        $item = $this->request->getVar('id_rekomendasi');
+        $j = 1;
+        // dd($item);
+        foreach ($item as $i) {
+            $produkRekomendasiModel->save([
+                'id_rekomendasi' => $i,
+                'short' => $j++
+            ]);
+        }
+
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Urutan Produk Rekomendasi berhasil di ubah.'
+        ];
+        session()->setFlashdata('alert', $alert);
         return redirect()->to('dashboard/produk/pilih-produk-rekomendasi');
     }
 }

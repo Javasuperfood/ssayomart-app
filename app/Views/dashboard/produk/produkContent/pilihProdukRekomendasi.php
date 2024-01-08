@@ -142,7 +142,7 @@
                             </div>
                             <?= csrf_field(); ?>
                             <ul id="sortable-list">
-                                <?php foreach (array_slice($produkRekomendasi, 0, 6) as $produk) : ?>
+                                <?php foreach ($produkRekomendasi as $produk) : ?>
                                     <li draggable="true" ondragstart="dragStart(event, <?= $produk['id_produk']; ?>)" ondrop="dragDrop(event, <?= $produk['id_produk']; ?>)" class="border-0 shadow-sm mb-3 d-flex align-items-center">
                                         <?php
                                         $produkDetail = $produkModel->getProdukById($produk['id_produk']);
@@ -153,7 +153,12 @@
                                             <form action="<?= base_url() ?>dashboard/produk/urutan-produk-rekomendasi/delete/<?= $produk['id_rekomendasi']; ?>" method="post">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="id_rekomendasi[]" value="<?= $produk['id_rekomendasi']; ?>">
-                                                <input type="hidden" name="original_order[]" value="<?= $produk['short']; ?>">
+                                                <!-- Tambahkan pengecekan agar tidak terjadi akses offset pada null -->
+                                                <?php if (isset($newOrders[$produk['id_rekomendasi']])) : ?>
+                                                    <input type="hidden" name="new_order[]" value="<?= $newOrders[$produk['id_rekomendasi']]; ?>">
+                                                <?php else : ?>
+                                                    <input type="hidden" name="new_order[]" value="">
+                                                <?php endif; ?>
                                                 <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
                                             </form>
                                         </div>
@@ -161,6 +166,7 @@
                                 <?php endforeach; ?>
                             </ul>
                         </form>
+
                     </div>
                     <div class="col-md-6">
                         <p class="fw-bold fs-3 text-secondary text-center">Preview</p>
