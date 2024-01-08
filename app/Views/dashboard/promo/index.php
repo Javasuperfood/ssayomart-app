@@ -72,7 +72,7 @@
                                                     </a>
                                                     <form action="<?= base_url() ?>dashboard/promo/tambah-promo/show-promo/delete/<?= $p['id_promo_item_batch']; ?>" method="post">
                                                         <?= csrf_field() ?>
-                                                        <button type="submit" class="dropdown-item">
+                                                        <button type="submit" class="dropdown-item" onclick="clickSubmitEvent(this)">
                                                             <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                                             <span class="text-danger">Delete</span>
                                                         </button>
@@ -107,7 +107,7 @@
                             <input type="hidden" name="id_promo" value="<?= $ongoingPromoItems[0]['id_promo']; ?>">
                             <div id="fieldDelete">
                             </div>
-                            <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Delete</button>
                         </form>
                     </div>
                 </div>

@@ -76,7 +76,7 @@
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                                                     <form action="<?= base_url() ?>dashboard/kupon/delete-kupon/<?= $kp['id_kupon']; ?>" method="post">
                                                         <?= csrf_field() ?>
-                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Hapus</button>
                                                     </form>
                                                 </div>
                                             </div>

@@ -22,7 +22,7 @@
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-danger">Simpan</button>
+                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -65,7 +65,7 @@
                                             <div class="dropdown-divider"></div>
                                             <form action="<?= base_url() ?>dashboard/produk/tambah-variasi/delete-variasi/<?= $v['id_variasi']; ?>" method="post">
                                                 <?= csrf_field() ?>
-                                                <button type="submit" class="dropdown-item">
+                                                <button type="submit" class="dropdown-item" onclick="clickSubmitEvent(this)">
                                                     <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                                     <span class="text-danger">Hapus Variasi</span>
                                                 </button>

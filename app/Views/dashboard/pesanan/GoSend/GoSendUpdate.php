@@ -88,7 +88,7 @@
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                                     <form method="post" action="<?= base_url('dashboard/order/update-booking/update-status/save/') . $inv ?>" class="d-inline">
                                                         <?= csrf_field(); ?>
-                                                        <button type="submit" class="btn btn-danger">Selesai</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Selesai</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -243,7 +243,7 @@
                                             <label for="floatingTextarea2">Note For driver GoSend</label>
                                         </div>
                                         <div class="my-3 text-center">
-                                            <button type="submit" class="btn btn-danger btn-lg">Pickup</button>
+                                            <button type="submit" class="btn btn-danger btn-lg" onclick="clickSubmitEvent(this)">Pickup</button>
                                         </div>
                                     </form>
                                 <?php else : ?>
@@ -316,7 +316,7 @@
                                                     <label for="floatingTextarea2">Note For driver GoSend</label>
                                                 </div>
                                                 <div class="my-3 text-center">
-                                                    <button type="submit" class="btn btn-danger btn-lg">Retry Pick-up</button>
+                                                    <button type="submit" class="btn btn-danger btn-lg" onclick="clickSubmitEvent(this)">Retry Pick-up</button>
                                                 </div>
                                             </form>
                                         <?php elseif ($gosendStatus['status'] == 'Completed') : ?>

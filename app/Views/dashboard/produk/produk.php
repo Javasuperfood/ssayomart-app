@@ -163,7 +163,7 @@
                                                         <form action="<?= base_url() ?>dashboard/produk/delete-produk/<?= $km['id_produk']; ?>" method="post">
                                                             <?= csrf_field() ?>
                                                             <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
-                                                            <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                            <button type="submit" onclick="clickSubmitEvent(this)" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                         </form>
                                                     </div>
                                                 </div>

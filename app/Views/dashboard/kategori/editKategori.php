@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
         <!-- code -->
-        <form method="POST" name="formkategori" enctype="multipart/form-data" action="<?= base_url(); ?>dashboard/kategori/edit-kategori/update/<?= $kategori['id_kategori'] ?>" onsubmit="return validasiUpdateKategori()">
+        <form method="POST" name="formkategori" enctype="multipart/form-data" action="<?= base_url(); ?>dashboard/kategori/edit-kategori/update/<?= $kategori['id_kategori'] ?>">
             <?= csrf_field(); ?>
 
             <div class="mb-4">
@@ -40,7 +40,7 @@
 
             <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-danger">Simpan</button>
+                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button>
             </div>
         </form>
     </div>
@@ -58,60 +58,6 @@
             });
         <?php endif; ?>
     });
-
-    //Validasi Form
-    function validasiUpdateKategori() {
-        var isValid = true;
-
-        var namaKategoriField = document.getElementById('kategori');
-        var slugField = document.getElementById('slug');
-        var imgField = document.getElementById('img');
-        var deskripsiField = document.getElementById('deskripsi');
-
-        var namaKategoriError = document.getElementById('kategoriError');
-        var slugError = document.getElementById('slugError');
-        var imgError = document.getElementById('imgError');
-        var deskripsiError = document.getElementById('deskripsiError');
-
-        namaKategoriError.textContent = '';
-        slugError.textContent = '';
-        imgError.textContent = '';
-        deskripsiError.textContent = '';
-
-        if (namaKategoriField.value.trim() === '') {
-            namaKategoriField.classList.add('invalid-field');
-            namaKategoriError.textContent = 'Nama Kategori harus diisi';
-            isValid = false;
-        } else {
-            namaKategoriField.classList.remove('invalid-field');
-        }
-
-        if (slugField.value.trim() === '') {
-            slugField.classList.add('invalid-field');
-            slugError.textContent = 'Slug harus diisi';
-            isValid = false;
-        } else {
-            slugField.classList.remove('invalid-field');
-        }
-
-        if (imgField.value.trim() === '') {
-            imgField.classList.add('invalid-field');
-            imgError.textContent = 'Gambar harus diisi';
-            isValid = false;
-        } else {
-            imgField.classList.remove('invalid-field');
-        }
-
-        if (deskripsiField.value.trim() === '') {
-            deskripsiField.classList.add('invalid-field');
-            deskripsiError.textContent = 'Deskripsi harus diisi';
-            isValid = false;
-        } else {
-            deskripsiField.classList.remove('invalid-field');
-        }
-
-        return isValid;
-    }
 </script>
 
 <?= $this->endSection(); ?>

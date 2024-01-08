@@ -13,11 +13,11 @@
         cursor: pointer;
     }
 </style>
-<h1 class="h3 mb-2 text-gray-800">Update Shorting</h1>
+<h1 class="h3 mb-2 text-gray-800">Update Sorting</h1>
 <ul class="breadcrumb bg-light px-0">
     <li class="breadcrumb-item text-secondary">Dashboard</li>
     <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">Kategori</a></li>
-    <li class="breadcrumb-item text-danger active text-decoration-underline"><a class="text-danger" href="<?= base_url(); ?>dashboard/kategori/shorting">Update Shorting</a></li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline"><a class="text-danger" href="<?= base_url(); ?>dashboard/kategori/shorting">Update Sorting</a></li>
 </ul>
 <div class="row">
     <div class="col mb-5">
@@ -33,8 +33,8 @@
                         <form action="<?= base_url('dashboard/kategori/shorting/save'); ?>" method="post">
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
-                                    <div class="col-md-6">Shorting Kategori</div>
-                                    <div class="col-md-6 text-end"><button type="submit" class="btn btn-danger text rounded-0">Update</button></div>
+                                    <div class="col-md-6">Sorting Kategori</div>
+                                    <div class="col-md-6 text-end"><button type="submit" class="btn btn-danger text rounded-0" onclick="clickSubmitEvent(this)">Update</button></div>
                                 </div>
                             </div>
                             <?= csrf_field(); ?>

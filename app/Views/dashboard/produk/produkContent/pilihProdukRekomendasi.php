@@ -37,7 +37,7 @@
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
                                     <div class="col-md-8">Tambah Produk Rekomendasi</div>
-                                    <div class="col-md-4 text-end"><button type="submit" class="btn btn-danger text rounded-3">Tambahkan Produk Rekomendasi</button></div>
+                                    <div class="col-md-4 text-end"><button type="submit" class="btn btn-danger text rounded-3" onclick="clickSubmitEvent(this)">Tambahkan Produk Rekomendasi</button></div>
                                 </div>
                             </div>
 
@@ -137,7 +137,7 @@
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
                                     <div class="col-md-8">Shorting Produk Rekomendasi</div>
-                                    <div class="col-md-4 text-end"><button type="submit" class="btn btn-danger text rounded-3">Update</button></div>
+                                    <div class="col-md-4 text-end"><button type="submit" class="btn btn-danger text rounded-3" onclick="clickSubmitEvent(this)">Update</button></div>
                                 </div>
                             </div>
                             <?= csrf_field(); ?>
@@ -153,7 +153,7 @@
                                             <form action="<?= base_url() ?>dashboard/produk/urutan-produk-rekomendasi/delete/<?= $produk['id_rekomendasi']; ?>" method="post">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="id_rekomendasi" value="<?= $produk['id_rekomendasi']; ?>">
-                                                <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
+                                                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Hapus</button>
                                             </form>
                                         </div>
                                     </li>

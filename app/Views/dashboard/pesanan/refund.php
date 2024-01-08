@@ -141,7 +141,7 @@
                                             <p class="ls-1">Refund transaction is supported only for <span class="badge text-bg-info">credit_card</span> , <span class="badge text-bg-info">gopay</span>, <span class="badge text-bg-info">shopeepay</span> and <span class="badge text-bg-info">QRIS</span> payment methods.</p>
                                         </div>
                                         <div class="pt-4" align="center">
-                                            <button type="submit" class="btn btn-danger">Refund</button>
+                                            <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Refund</button>
                                         </div>
                                     </form>
                                 <?php elseif ($order['id_status_pesan'] == 1) : ?>

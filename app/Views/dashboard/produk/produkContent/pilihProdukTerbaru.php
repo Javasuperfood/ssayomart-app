@@ -36,7 +36,7 @@
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
                                     <div class="col-md-6">Shorting Produk Terbaru</div>
-                                    <div class="col-md-6 text-end"><button type="submit" class="btn btn-danger text rounded-3">Update</button></div>
+                                    <div class="col-md-6 text-end"><button type="submit" class="btn btn-danger text rounded-3" onclick="clickSubmitEvent(this)">Update</button></div>
                                 </div>
                             </div>
                             <?= csrf_field(); ?>

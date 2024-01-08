@@ -87,7 +87,7 @@
             </div>
             <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-danger">Simpan</button>
+                <button type="submit" onclick="clickSubmitEvent(this)" class="btn btn-danger">Simpan</button>
             </div>
         </form>
     </div>
@@ -128,6 +128,15 @@
             });
         <?php endif; ?>
     });
+
+    function clickSubmitEvent(e) {
+        $('#preloader').show();
+
+        $(e).prop('disabled', true);
+        $(e).html('<div class="spinner-border spinner-border-sm mx-2" role="status"><span class="visually-hidden">Loading...</span></div>Loading...');
+
+        $(e).closest('form').submit();
+    }
 </script>
 
 <?= $this->endSection(); ?>

@@ -23,7 +23,7 @@
                 <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
             </div>
             <div>
-                <button type="submit" class="btn btn-danger">Simpan</button>
+                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button>
             </div>
         </form>
     </div>
