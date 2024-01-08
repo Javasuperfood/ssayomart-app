@@ -152,7 +152,8 @@
                                         <div class="ml-auto">
                                             <form action="<?= base_url() ?>dashboard/produk/urutan-produk-rekomendasi/delete/<?= $produk['id_rekomendasi']; ?>" method="post">
                                                 <?= csrf_field() ?>
-                                                <input type="hidden" name="id_rekomendasi" value="<?= $produk['id_rekomendasi']; ?>">
+                                                <input type="hidden" name="id_rekomendasi[]" value="<?= $produk['id_rekomendasi']; ?>">
+                                                <input type="hidden" name="original_order[]" value="<?= $produk['short']; ?>">
                                                 <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Hapus</button>
                                             </form>
                                         </div>

@@ -50,8 +50,6 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-
-
                         </form>
                     </div>
                     <div class="col-md-6">
