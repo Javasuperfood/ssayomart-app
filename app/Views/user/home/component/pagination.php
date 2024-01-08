@@ -359,20 +359,6 @@ $countProduk = count($produk);
             display: flex;
             justify-content: center;
         }
-
-        #product-container {
-            width: 100%;
-            height: auto;
-            margin-left: 3.5%;
-
-        }
-
-        #product-unggulan-container {
-            width: 100%;
-            height: auto;
-            margin-left: 3.5%;
-
-        }
     }
 
     @media (max-width: 280px) {

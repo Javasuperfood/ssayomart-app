@@ -151,10 +151,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                     <hr class="mt-2" style="border-color: #2e6e01; border-width: 3px;">
-                    <div class="row row-cols-3 me-1 mt-2 agak-kekanan">
+                    <div class="row row-cols-3 mt-2">
                         <?php if ($latest) : ?>
                             <?php foreach ($latest as $p) : ?>
-                                <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                                <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
                                     <div class="card card-zoom card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                             <div class="d-flex justify-content-center align-items-center">

@@ -8,11 +8,11 @@
             <div class="container bg-white" id="product">
                 <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1" style="color:#7e0204; background-color: #facaaf; font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
                 <hr class="border-darker mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
-                <div class="row row-cols-3 me-0" id="product-unggulan-container">
+                <div class="row row-cols-3" id="product-unggulan-container">
 
                     <!-- Featured Products -->
                     <?php foreach ($featuredProducts as $fp) : ?>
-                        <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                        <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
                             <div class="">
                                 <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%;padding: 5px;">
                                     <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
@@ -71,11 +71,11 @@
         <?php
         }
         ?>
-        <div class="row row-cols-3 me-0" id="product-container">
+        <div class="row row-cols-3" id="product-container">
 
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
-                <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
                     <div class="">
                         <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
@@ -381,6 +381,8 @@
         .susunan-card {
             flex: 0 0 100% !important;
             max-width: 30%;
+            margin-left: 5%;
+            margin-right: -6%;
         }
 
         .card-produk {
@@ -409,19 +411,6 @@
             justify-content: center;
         }
 
-        #product-container {
-            width: 100%;
-            height: auto;
-            margin-left: 3.5%;
-
-        }
-
-        #product-unggulan-container {
-            width: 100%;
-            height: auto;
-            margin-left: 3.5%;
-
-        }
     }
 
     /* samsung galfold dual mode screen 280 dan SE 320 */
