@@ -568,13 +568,14 @@ class AdminProduk extends BaseController
     {
         $produkRekomendasiModel = new ProdukRekomendasiModel();
         $idRekomendasi = $this->request->getVar('id_rekomendasi');
-        // dd($idRekomendasi);
+        $originalOrder = $this->request->getVar('original_order');
+
         // Memulai transaksi
         $produkRekomendasiModel->transStart();
 
         try {
             foreach ($idRekomendasi as $key => $id) {
-                $produkRekomendasiModel->update($id, ['short' => $key + 1]);
+                $produkRekomendasiModel->update($id, ['short' => $key + 1]); // Memperbarui 'short' berdasarkan urutan baru
             }
 
             $produkRekomendasiModel->transComplete();
@@ -590,7 +591,7 @@ class AdminProduk extends BaseController
             $alert = [
                 'type' => 'error',
                 'title' => 'Gagal',
-                'message' => 'Terjadi kesalahan saat menyimpan urutan produk.'
+                'message' => 'Terjadi kesalahan saat menyimpan urutan produk : ' . $e->getMessage()
             ];
         }
 
