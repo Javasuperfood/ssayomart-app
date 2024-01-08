@@ -75,7 +75,7 @@
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                     <form action="<?= base_url() ?>dashboard/kategori/delete-kategori/<?= $km['id_kategori']; ?>" method="post">
                                                         <?= csrf_field() ?>
-                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -130,7 +130,7 @@
                                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                             <form action="<?= base_url() ?>dashboard/kategori/delete-sub-kategori/<?= $ks['id_sub_kategori']; ?>" method="post">
                                                                 <?= csrf_field() ?>
-                                                                <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                             </form>
                                                         </div>
                                                     </div>

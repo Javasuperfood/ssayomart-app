@@ -1,9 +1,10 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 <style>
-  .breadcrumb-item a:hover {
-    text-decoration: none; /* Remove underline on hover */
-  }
+    .breadcrumb-item a:hover {
+        text-decoration: none;
+        /* Remove underline on hover */
+    }
 </style>
 <h1 class="h3 mb-2 text-gray-800">Management Banner Homepage</h1>
 <ul class="breadcrumb bg-light ps-0">
@@ -48,7 +49,7 @@
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-danger">Simpan</button>
+                        <button type="submit" onclick="clickSubmitEvent(this)" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -141,7 +142,7 @@
                                                     <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
                                                         <?= csrf_field() ?>
                                                         <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
-                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                     </form>
                                                 </div>
                                             </div>

@@ -55,7 +55,7 @@
             </div>
             <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-danger">Simpan</button>
+                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button>
             </div>
         </form>
     </div>

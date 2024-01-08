@@ -156,7 +156,7 @@
                                     <textarea class="form-control border-1" placeholder="Nomor Resi" name="resi" id="deskripsi" style="height: 100px"><?= old('deskripsi'); ?></textarea>
                                     <span id="deskripsiError" class="text-danger"></span>
                                     <div class="pt-4" align="center">
-                                        <button type="submit" class="btn btn-danger">Update</button>
+                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Update</button>
                                     </div>
                                 </form>
                             <?php else : ?>

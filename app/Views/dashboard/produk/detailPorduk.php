@@ -186,7 +186,7 @@
                                                                 <form action="<?= base_url() ?>dashboard/produk/detail-varian/delete-varian/<?= $v['id_variasi_item']; ?>" method="post">
                                                                     <?= csrf_field() ?>
                                                                     <input type="hidden" name="slug" value="<?= $produk['slug']; ?>">
-                                                                    <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                                    <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                                 </form>
                                                             </div>
                                                         </div>
@@ -257,7 +257,7 @@
                                     <input type="price" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-1'; ?>" id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
                                     <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
                                 </div>
-                                <button type="submit" class="btn btn-danger">Simpan</button><a role="button" id="btnBatal" class="btn btn-warning mx-2">Batal</a>
+                                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button><a role="button" id="btnBatal" class="btn btn-warning mx-2">Batal</a>
                             </form>
                         </div>
                     </div>
@@ -297,7 +297,7 @@
                                     <input type="price" id="updateHarga" class="form-control <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-1'; ?>" <?= old('harga') ?> id="harga" name="harga" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
                                     <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
                                 </div>
-                                <button type="submit" class="btn btn-danger">Simpan</button><a role="button" id="btnBatalUpdate" class="btn btn-warning mx-2">Batal</a>
+                                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button><a role="button" id="btnBatalUpdate" class="btn btn-warning mx-2">Batal</a>
                             </form>
                         <?php endif ?>
                     </div>

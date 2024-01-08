@@ -43,7 +43,7 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-danger mt-3">Simpan</button>
+                <button type="submit" class="btn btn-danger mt-3" onclick="clickSubmitEvent(this)">Simpan</button>
             </div>
         </form>
     </div>

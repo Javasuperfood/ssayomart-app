@@ -58,7 +58,7 @@
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-danger fw-bold">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-danger fw-bold" onclick="clickSubmitEvent(this)">Simpan Perubahan</button>
                     </div>
                 </form>
             </div>
@@ -142,7 +142,7 @@
                                             <form action="<?= base_url() ?>dashboard/banner/tambah-banner/delete/<?= $bl['id_banner']; ?>" method="post">
                                                 <?= csrf_field() ?>
                                                 <input type="hidden" name="pager" value="<?= (isset($_GET['page_produk']) ? $_GET['page_produk'] : '1'); ?>">
-                                                <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Delete</button>
                                             </form>
                                         </div>
                                     </div>

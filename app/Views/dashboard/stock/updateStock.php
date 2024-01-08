@@ -160,7 +160,7 @@
                             </div>
                             <div class="col">
                                 <div class="my-3 d-flex justify-content-center">
-                                    <button type="submit" class="btn btn-danger" id="btnUpdateStock">Update Stok</button>
+                                    <button type="submit" class="btn btn-danger" id="btnUpdateStock" onclick="clickSubmitEvent(this)">Update Stok</button>
                                 </div>
                             </div>
                         </div>
