@@ -115,7 +115,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Mobile View -->
 
     <!-- Desktop View -->
-    <div class="container h-100" style="padding-top : 120px;">
+    <div class="container h-100" style="padding-top : 75px;">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
                 <div class="card border-0 shadow-sm rounded-4">
@@ -124,8 +124,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?= csrf_field(); ?>
                             <div class="row">
                                 <div class="col-lg-7">
-                                    <h4 class="mb-3 text-center"><?= lang('Text.title_cart') ?></h4>
-                                    <hr class="text-danger">
+                                    <h3 class="fw-bold mb-3 text-center"><i class="fs-1 bi bi-bag-heart text-danger"></i> <?= lang('Text.title_cart') ?></h3>
+                                    <hr class="mb-3 border-danger" style="border-width: 3px;">
                                     <?php foreach ($produk as $p) : ?>
                                         <div class="card border-0 shadow-sm rounded-3 mb-3">
                                             <div class="card-body">
@@ -170,7 +170,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             </div>
                                                         </div>
                                                         <?= csrf_field(); ?>
-                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn-lg btn rounded-circle float-start" style="margin-top: 55px;"><i class="bi bi-trash text-danger"></i></button>
+                                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="btn-lg btn tombol-hapus__dekstop rounded-circle float-start" style="margin-top: 55px;"><i class="bi bi-trash text-danger"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -180,7 +180,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <!-- right side div -->
                                 <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
                                     <div class="right_side p-3 borde-0 shadow-sm rounded-3 bg-white">
-                                        <h5 class="mb-5 text-center"><?= lang('Text.title_cart') ?></h5>
+                                        <h5 class="fw-bold mb-5 text-center"><?= lang('Text.title_cart') ?></h5>
                                         <div class="d-flex justify-content-between">
                                             <table class="table table-borderless text-center" id="tablePoint">
                                             </table>

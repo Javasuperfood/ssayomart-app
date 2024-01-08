@@ -8,16 +8,16 @@
             <div class="container bg-white" id="product">
                 <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1" style="color:#7e0204; background-color: #facaaf; font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
                 <hr class="border-darker mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
-                <div class="row row-cols-3 me-0" id="product-unggulan-container">
+                <div class="row row-cols-3" id="product-unggulan-container">
 
                     <!-- Featured Products -->
                     <?php foreach ($featuredProducts as $fp) : ?>
-                        <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                        <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
                             <div class="">
                                 <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%;padding: 5px;">
                                     <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                         <div class="d-flex justify-content-center align-items-center">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_<?= $fp['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
+                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-1 text-center py-0 px-0 mx-0 my-0 im_produk_<?= $fp['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain;">
                                         </div>
                                     </a>
                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -71,16 +71,16 @@
         <?php
         }
         ?>
-        <div class="row row-cols-3 me-0" id="product-container">
+        <div class="row row-cols-3" id="product-container">
 
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
-                <div class="col-4 col-md-2 col-lg-2 mb-3 mx-0 susunan-card">
+                <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
                     <div class="">
                         <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain; object-position: 20% 10%;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -381,6 +381,8 @@
         .susunan-card {
             flex: 0 0 100% !important;
             max-width: 30%;
+            margin-left: 5%;
+            margin-right: -6%;
         }
 
         .card-produk {
@@ -409,19 +411,6 @@
             justify-content: center;
         }
 
-        #product-container {
-            width: 100%;
-            height: auto;
-            margin-left: 3.5%;
-
-        }
-
-        #product-unggulan-container {
-            width: 100%;
-            height: auto;
-            margin-left: 3.5%;
-
-        }
     }
 
     /* samsung galfold dual mode screen 280 dan SE 320 */

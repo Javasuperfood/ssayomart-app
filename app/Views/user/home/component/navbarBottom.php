@@ -133,6 +133,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?= lang('Text.jadwal_pelayanan') ?><br>
                                 <?= lang('Text.jadwal_pelayanan_2') ?>
                             </p>
+                            <p>
+                                <a href="<?= base_url(); ?>/pusat-bantuan" class="text-decoration-none text-white"><strong><i class="bi bi-question-circle"></i> Pusat Bantuan</strong></a>
+                            </p>
                         </div>
                     </div>
 

@@ -106,8 +106,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 <div class="card-body form-check form-switch">
                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                     <p class="fw-bold"> <?= $a['label']; ?></p>
-                                                                    <p><?= $m['alamat_1']; ?></p>
-                                                                    <p><?= $m['telp']; ?></p>
+                                                                    <p><?= $a['alamat_1']; ?></p>
+                                                                    <p><?= $a['telp']; ?></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -230,15 +230,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="" class="card-img">
                                     </div>
                                     <div class="col-5 position-absolute top-50 start-50 translate-middle mt-2">
-                                        <p class="card-title pemilihan " style="font-size:12px;"><?= substr($produk['nama'], 0, 15); ?></p>
-                                        <p class="card-text text-secondary" style="font-size: 12px;"><?= $qty; ?> pcs
+                                        <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?></h5>
+                                        <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
                                         </p>
                                         <input type="hidden" name="qty" value="<?= $qty; ?>">
                                         <input type="hidden" name="varian" value="<?= $varian; ?>">
                                     </div>
                                     <div class="col-5 position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                        <h5 class="text-secondary" style="font-size: 12px;">Total</h5>
-                                        <p class="fw-bold" style="font-size: 13px;">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
+                                        <h5 class="text-secondary fs-6">Total</h5>
+                                        <?php if (isset(($produk['promo']))) : ?>
+                                            <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
+                                        <?php else : ?>
+                                            <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
+                                        <?php endif; ?>
+                                        <?php if (isset(($produk['promo']))) : ?>
+                                            <?php
+                                            $discountedTotal = $total - ($total * $produk['promo']['discount']);
+                                            ?>
+                                            <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -255,7 +265,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Subtotal</td>
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
@@ -263,11 +273,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="diskon"></span></td>
                                 </tr>
                                 <tr>
+                                    <td>Diskon (Promo)</td>
+                                    <td><span id="diskonPromo"><?= (isset($produk['promo']['discount']) ? '-Rp. ' . number_format((float)($total) * (float)($produk['promo']['discount']), 0, ',', '.') : '') ?></span></td>
+                                </tr>
+                                <tr>
                                     <td>Total Ongkos Kirim</td>
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td>Total Harga</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
@@ -388,7 +402,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <hr class="mb-4">
                             </div>
                             <div class="modal-footer d-flex justify-content-center text-center align-items-center">
-                                <button type="submit" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar Sekarang</button>
+                                <button onclick="clickSubmitEvent(this)" type="button" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar Sekarang</button>
                             </div>
                         </div>
                     </div>
@@ -398,7 +412,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <div class="pb-5"></div>
 
-    <style>
+    <!-- <style>
         @media (max-width: 280px) {
             .col-5.position-absolute.top-50.start-50.translate-middle-y {
                 font-size: 12px !important;
@@ -451,12 +465,65 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
         }
+    </style> -->
+
+    <style>
+        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
+        @media screen and (max-width: 280px) {
+
+            .modal-body img {
+                width: 80px !important;
+            }
+
+            .modal-body button {
+                font-size: 10px !important;
+            }
+
+            .modal-content {
+                font-size: 13px;
+            }
+
+            .input-group .btn {
+                font-size: 9px;
+            }
+
+            .form-control {
+                font-size: 12px;
+                /* Ukuran font input sesuai kebutuhan */
+            }
+
+            .ps-2 {
+                font-size: 12px;
+                padding-left: 0.5rem !important;
+            }
+
+            .col-5 h5 {
+                font-size: 14px !important
+            }
+
+            .col-5 p {
+                font-size: 12px !important;
+            }
+
+            .btn-bayar {
+                font-size: 12px !important;
+            }
+
+            tr {
+                font-size: 12px;
+            }
+
+            .fs-6 {
+                font-size: 0.7rem !important;
+            }
+
+        }
     </style>
     <!-- end mobile -->
 <?php else : ?>
 
     <!-- dekstop -->
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id="desktopContent" style="margin-top:150px;">
         <div class="container">
             <div class="text-center">
                 <h2>Checkout</h2>
@@ -475,7 +542,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Subtotal</td>
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
@@ -483,11 +550,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td><span id="diskon"></span></td>
                                 </tr>
                                 <tr>
+                                    <td>Diskon (Promo)</td>
+                                    <td><span id="diskonPromo"><?= (isset($produk['promo']['discount']) ? '-Rp. ' . number_format((float)($total) * (float)($produk['promo']['discount']), 0, ',', '.') : '') ?></span></td>
+                                </tr>
+                                <tr>
                                     <td>Total Ongkos Kirim</td>
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td>Total Harga</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
@@ -728,7 +799,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                             <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
                                                 <h5 class="text-secondary fs-6">Total</h5>
-                                                <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
+                                                <?php if (isset(($produk['promo']))) : ?>
+                                                    <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
+                                                <?php else : ?>
+                                                    <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
+                                                <?php endif; ?>
+                                                <?php if (isset(($produk['promo']))) : ?>
+                                                    <?php
+                                                    $discountedTotal = $total - ($total * $produk['promo']['discount']);
+                                                    ?>
+                                                    <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
@@ -739,7 +820,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
                 <div class="modal fade" id="metode-pembayaran-modal" tabindex="-1" aria-labelledby="metode-pembayaran-modalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-fullscreen-lg-down">
+                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h1 class="modal-title fs-5" id="metode-pembayaran-modalLabel">Metode Pemabayaran</h1>

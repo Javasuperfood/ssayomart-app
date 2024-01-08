@@ -133,18 +133,54 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container-fluid fixed-top gx-0 mb-5">
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
-                    <div class=" headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px; margin-left: 30px;">
-                        <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore</a>
+                    <div class="headerc__left" style="display: flex; float: left; align-items: center; margin-right: auto; font-size: 12px; margin-left: 30px;">
+                        <a href="javascript:void(0);" class="headerc__label label--hover text-decoration-none text-dark">
+                            <i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore
+                        </a>
                         <div class="barcode-popup">
-                            <img src="<?= base_url() ?>assets/img/playstore.png" class="download-apk shadow-sm" style="width: 300px;" alt="Barcode">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="<?= base_url('assets/img/qr/play-store.png'); ?>" class="" width="120px" alt="" srcset="">
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-dark">Download Ssayomart di Play Store</p>
+                                            <a href="https://play.google.com/store/apps/details?id=com.ssayomart" target="__blank">
+                                                <img src="<?= base_url('assets/img/plays.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <a href="https://apps.apple.com/id/app/ssayomart/id6458099585" class="headerc__label label--hover text-decoration-none text-dark mx-4"><i class="bi bi-apple mx-2"></i>Download Ssayomart App Store</a>
+                        <a href="javascript:void(0);" class="headerc__label label--hover text-decoration-none text-dark mx-4">
+                            <i class="bi bi-apple mx-2"></i>Download Ssayomart App Store
+                        </a>
                         <div class="barcode-apps">
-                            <img src="<?= base_url() ?>assets/img/appstore.png" class="download-apk shadow-sm" style="width: 300px;" alt="Barcode">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <img src="<?= base_url('assets/img/qr/apps-store.png'); ?>" class="" width="120px" alt="" srcset="">
+                                        </div>
+                                        <div class="col">
+                                            <p class="text-dark">Download Ssayomart di App Store</p>
+                                            <a href="https://apps.apple.com/id/app/ssayomart/id6447356667" target="__blank">
+                                                <img src="<?= base_url('assets/img/Apps.png'); ?>" class="" width="120px" alt="" srcset="">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="headerc__right" style="display: flex; justify-content: space-around; font-size: 12px;">
+                        <a href="https://www.tiktok.com/@ssayomart.id" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-tiktok"></i></i></a>
+                        <a href="https://www.instagram.com/ssayomart.id/" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-instagram"></i></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" class="headerc__label label--hover text-decoration-none text-dark mx-2"><i class="bi bi-facebook"></i></a>
+                        <a href="<?= base_url(); ?>/pusat-bantuan" class="headerc__label label--hover text-decoration-none text-dark"><i class="bi bi-question-circle"></i> Pusat Bantuan</a>
                         <a href="<?= base_url(); ?>setting/sayo-care" class="headerc__label label--hover text-decoration-none text-dark">Tentang Ssayomart</a>
                         <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="headerc__label label--hover text-decoration-none text-dark">Kebijakan Kami</a>
                         <a href="https://ssayomart.com/" class="headerc__label label--hover text-decoration-none text-dark" target="_blank">Company Profile</a>
@@ -183,7 +219,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control border-danger" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                             <button type="submit" class="btn btn-danger text-white mx-2" id="basic-addon1"><i class="bi bi-search text-white"></i></button>
                         </form>
-                        <ul class="navbar-nav d-flex flex-row mx-3">
+                        <ul class="navbar-nav d-flex flex-row mx-3" data-toggle="tooltip" data-placement="bottom" title="cart">
                             <!-- Icons -->
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
@@ -200,7 +236,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             <?php if (auth()->loggedIn()) : ?>
                                 <li class="nav-item me-3 me-lg-0 dropdown">
-                                    <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="tooltip" data-placement="bottom" title="Profil">
                                         <i class="bi bi-person-circle fs-4 text-danger"></i>
                                     </a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
@@ -232,9 +268,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php endif ?>
                         </ul>
                         <!-- bahasa -->
-                        <nav class="navbar navbar-expand-lg navbar-danger">
+                        <nav class="navbar navbar-expand-lg navbar-danger" data-toggle="tooltip" data-placement="bottom" title="Language">
                             <div class="container-fluid">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
@@ -265,8 +301,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Style navbar header -->
     <style>
+        /* Mengubah warna ikon saat dihover */
+        .headerc__label i:hover {
+            color: #ce2614;
+        }
+
         .headerc__right a:not(:first-child) {
-            margin-left: 30px
+            margin-left: 10px
         }
 
         .label--hover:hover {
@@ -310,9 +351,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             display: block;
         }
     </style>
+    <!-- end -->
 
+    <!-- efek garis bawah menu navbar dan hover -->
     <style>
-        /* efek garis bawah menu navbar dan hover */
         .navbar-nav .nav-item .nav-link {
             position: relative;
             transition: all 0.3s ease;
@@ -338,5 +380,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             transform: scaleX(1);
         }
     </style>
+
+    <script>
+        function handleHover(element, popup) {
+            element.addEventListener('mouseenter', function() {
+                popup.style.display = 'block';
+            });
+
+            element.addEventListener('mouseleave', function() {
+                popup.style.display = 'none';
+            });
+
+            popup.addEventListener('mouseenter', function() {
+                popup.style.display = 'block';
+            });
+
+            popup.addEventListener('mouseleave', function() {
+                popup.style.display = 'none';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var playstoreLabel = document.querySelector('.headerc__label:nth-child(1)');
+            var appStoreLabel = document.querySelector('.headerc__label:nth-child(3)');
+            var playstorePopup = document.querySelector('.barcode-popup');
+            var appStorePopup = document.querySelector('.barcode-apps');
+
+            handleHover(playstoreLabel, playstorePopup);
+            handleHover(appStoreLabel, appStorePopup);
+        });
+    </script>
 <?php endif; ?>
 <!-- end Nav Desk -->

@@ -6,11 +6,11 @@
             <div class="row row-cols-3" id="product-unggulan-container">
                 <!-- Featured Products -->
                 <?php foreach ($featuredProducts as $fp) : ?>
-                    <div class="col-6 col-md-4 col-lg-2 mb-2 mx-0 text-center">
+                    <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0 text-center">
                         <div class="card card-desktop border-0 shadow-sm text-center" style="width: auto; height: 100%;">
                             <a href="<?= base_url() ?>produk/<?= $fp['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
@@ -85,11 +85,11 @@
     <div class="row row-cols-3" id="product-container">
         <!-- All Produk -->
         <?php foreach ($produk as $p) : ?>
-            <div class="col-6 col-md-4 col-lg-2 mb-2 mx-0">
+            <div class="col-6 col-md-4 col-lg-3 mb-2 mx-0">
                 <div class="card card-desktop border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                         <div class="d-flex justify-content-center align-items-center">
-                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
+                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain;">
                         </div>
                     </a>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">

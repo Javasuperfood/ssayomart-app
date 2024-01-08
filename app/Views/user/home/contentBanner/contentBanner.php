@@ -89,7 +89,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 height: 100%;
             }
 
-            .card {
+            /* .card {
                 width: 400px;
                 border: none;
                 background-color: #313131;
@@ -98,7 +98,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 justify-content: center;
                 align-items: center;
                 border-radius: 15px;
-            }
+            } */
 
             .app-button {
 

@@ -450,6 +450,8 @@ class BuyController extends BaseController
         $produkModel = new ProdukModel();
         $tokoModel = new TokoModel();
         $userModel = new UsersModel();
+        $promoBatchModel = new PromoBatchModel();
+
         $id_varian = $this->request->getVar('varian');
         $qty = $this->request->getVar('qty');
         $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
@@ -458,6 +460,12 @@ class BuyController extends BaseController
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
         $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
         $beratTotal = $produk['berat'] * $qty;
+
+        $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+        if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
+            $produk['promo'] = $promoDetails[0];
+        }
+
         // if ($userModel->find(user_id())['market_selected']) {
         //     $market =  $tokoModel->find($userModel->find(user_id())['market_selected'])['id_city'];
         // } else {
@@ -511,7 +519,6 @@ class BuyController extends BaseController
         MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
         // Set 3DS transaction for credit card to true
         MidtransConfig::$is3ds = $midtransConfig->is3ds;
-
 
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
         $id_varian = $this->request->getVar('varian');
@@ -677,18 +684,29 @@ class BuyController extends BaseController
 
         // dd($params);
         // return response()->setJSON($params);
-        $carger = \Midtrans\CoreApi::charge($params);
-        return response()->setJSON($carger);
-        // $snapToken = \Midtrans\Snap::getSnapToken($params);
-        // return response()->setJSON($snapToken);
-
-        if ($carger->status_code != 201) {
-            return redirect()->back();
+        $response = [];
+        $snapToken = null;
+        if ($params['payment_type'] == 'bank_transfer' || $params['payment_type'] == 'echannel' || $params['payment_type'] == 'permata') {
+            $carger = \Midtrans\CoreApi::charge($params);
+            // return response()->setJSON($carger);
+            if ($carger->status_code != 201) {
+                return redirect()->back();
+            }
+            $response = [
+                'request' => $params,
+                'response' => $carger
+            ];
+        } else {
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            $response = [
+                'request' => $params,
+                'response' => [
+                    'snap_token' => $snapToken
+                ]
+            ];
+            // return response()->setJSON($snapToken);
         }
-        $response = [
-            'request' => $params,
-            'response' => $carger
-        ];
+
         $dbStore = [
             'id_user' => user_id(),
             'id_toko' => $this->request->getVar('market'),
@@ -708,7 +726,7 @@ class BuyController extends BaseController
             'telp' => $alamat['telp'],
             'discount' => $kupon['discount'],
             'kupon' => $kupon['kupon'],
-            'snap_token' => null
+            'snap_token' => $snapToken,
         ];
         // dd($dbStore);
         $chechkoutId = $checkoutModel->insert($dbStore);
@@ -750,6 +768,9 @@ class BuyController extends BaseController
                 'title' => '404'
             ]);
         }
+        if ($payment_type == 'qris' || $payment_type == 'shopeepay' || $payment_type == 'gopay') {
+            return redirect()->to(base_url('payment/' . $inv . '?payment_type=' . $payment_type));
+        }
         $checkoutModel = new CheckoutModel();
         $checkoutResponseModel = new CheckoutResponseModel();
         $kategoriModel = new KategoriModel();
@@ -770,10 +791,7 @@ class BuyController extends BaseController
             'pay' => $paymentResponse['response']
         ];
         // dd($data);
-        if ($payment_type == 'bank_transfer') {
-            return $this->bank_transfer($data);
-        }
-        if ($payment_type == 'bank_transfer') {
+        if ($payment_type == 'bank_transfer' || $payment_type == 'echannel') {
             return $this->bank_transfer($data);
         }
         return response()->setJSON($data);
@@ -795,12 +813,13 @@ class BuyController extends BaseController
 
         $statusPesan = $data['order']['id_status_pesan'];
         $id_cehckout = $data['order']['id_checkout'];
+        // dd($data);
         try {
             // dd($id_cehckout);
             /**
              * @var object $paymentStatus
              */
-            $paymentStatus = \Midtrans\Transaction::status($data['pay']['response']['transaction_id']);
+            $paymentStatus = \Midtrans\Transaction::status($data['pay']['response']['order_id']);
             if ($paymentStatus->transaction_status == "settlement" && $statusPesan == '1') {
                 $checkoutModel->save([
                     'id_checkout' => $id_cehckout,
@@ -834,6 +853,21 @@ class BuyController extends BaseController
 
             $data['paymentStatus'] = $paymentStatus;
             $data['pay']['status'] = $paymentStatus;
+            if ($data['pay']['response']['payment_type'] == 'bank_transfer') {
+                $data['bank_transfer'] = [
+                    'bank' => $data['pay']['response']['va_numbers'][0]['bank'],
+                    'company_code' => null,
+                    'account_number' => $data['pay']['response']['va_numbers'][0]['va_number']
+                ];
+            }
+            if ($data['pay']['response']['payment_type'] == 'echannel') {
+                $data['bank_transfer'] = [
+                    'bank' => 'Mandiri',
+                    'company_code' => $data['pay']['response']['biller_code'],
+                    'account_number' => $data['pay']['response']['bill_key']
+                ];
+            }
+            // dd($data);
             if ($paymentStatus->transaction_status == "settlement" && $statusPesan != '1') {
                 return redirect()->to(base_url('status?order_id=' . $paymentStatus->order_id));
             }
@@ -849,9 +883,10 @@ class BuyController extends BaseController
                     'id_status_pesan' => 5
                 ]);
             }
+            return dd($e);
         }
-        $data['pay']['status'] = $paymentStatus;
-        return redirect()->to(base_url('status?order_id=' . $paymentStatus->order_id));
+        // $data['pay']['status'] = $paymentStatus;
+        // return redirect()->to(base_url('status?order_id=' . $paymentStatus->order_id));
     }
 
     function eMoney()
