@@ -16,17 +16,56 @@
 </style>
 <div class="custom-margin">
     <div class="container pt-5 mb-4">
-        <div class="row">
-            <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
-            <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
-            <div class="col-12 text-center fw-bold fs-4"><?= $pay['response']['va_numbers'][0]['bank']; ?></div>
-            <div class="col-8 text-end fw-bold fs-2">
-                <u><?= $pay['response']['va_numbers'][0]['va_number']; ?></u>
+        <?php
+        //  Q : Kenapa comment pake php ?
+        //  A : Biar gak keliatan userside
+        // 'elemet di bawah untuk bank BCA, BRI, BNI';
+        ?>
+        <?php if ($bank_transfer['company_code'] == null) : ?>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" width="170px" alt="" srcset="">
+                </div>
+                <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
+                <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
+                <div class="col-12 text-end d-flex justify-content-center align-items-center">
+                    <input id="va_number" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $pay['response']['va_numbers'][0]['va_number']; ?>" readonly>
+                    <button class="btn btn-danger" id="copyButton" onclick="copyButton()">Copy</button>
+                </div>
             </div>
-            <div class="col-4">
-                <button class="btn btn-danger p-1" id="copyButton">Copy</button>
+        <?php endif; ?>
+        <?php
+        // 'elemet di bawah untuk bank MANDIRI';
+        ?>
+        <?php if ($bank_transfer['company_code'] != null && $bank_transfer['bank'] == 'Mandiri') : ?>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" width="170px" alt="" srcset="">
+                </div>
+                <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
+                <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
+                <div class="col-12">
+                    <table class="table text-center">
+                        <tbody>
+                            <tr>
+                                <td>Company Code</td>
+                                <td><input id="company_code" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $bank_transfer['company_code']; ?>" readonly id="company_code"></td>
+                                <td><button class="btn btn-danger" id="copyButton" onclick="copyButton2()">Copy</button></td>
+                            </tr>
+                            <tr>
+                                <td>Virtual Number</td>
+                                <td><input id="va_number" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $bank_transfer['account_number']; ?>" readonly></td>
+                                <td>
+                                    <button class="btn btn-danger" id="copyButton" onclick="copyButton()">Copy</button>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
+
+        <?php endif; ?>
     </div>
     <div class="container py-3">
         <div class="row">
@@ -100,26 +139,38 @@
     }
 
     countdown();
-
-    const copyButton = document.getElementById('copyButton');
-    copyButton.addEventListener('click', () => {
-        const vaNumber = '<?= $pay['response']['va_numbers'][0]['va_number']; ?>';
-        navigator.clipboard.writeText(vaNumber)
-            .then(() => {
-                swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil!',
-                    text: 'Nomor Virtual Account telah disalin!',
-                })
-            })
-            .catch((error) => {
-                swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Nomor Virtual Account gagal disalin!',
-                })
-            });
-    });
 </script>
 
+<script>
+    function copyButton() {
+        var copyText = document.getElementById("va_number");
+
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+
+        navigator.clipboard.writeText(copyText.value);
+
+        swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: `Nomor Virtual Account ${copyText.value} telah disalin!`,
+        })
+    }
+</script>
+<script>
+    function copyButton2() {
+        var copyText = document.getElementById("company_code");
+
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+
+        navigator.clipboard.writeText(copyText.value);
+
+        swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: `Company Code ${copyText.value} telah disalin!`,
+        })
+    }
+</script>
 <?= $this->endSection(); ?>
