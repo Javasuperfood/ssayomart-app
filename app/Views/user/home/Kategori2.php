@@ -704,7 +704,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                         <hr class="mt-2" style="border-color: #e36120; border-width: 3px;">
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col">
                                 <div class="swiper myBanner">
                                     <div class="swiper-wrapper d-flex justify-content-center align-items-center">
@@ -722,10 +722,79 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </section>
 
+
+                <!-- Carousel Banner Promosi -->
+                <div class="container text-center">
+                    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                        <div class="carousel-inner">
+                            <?php for ($i = 0; $i < count($promo); $i += 2) : ?>
+                                <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
+                                    <div class="text-bg-light mb-3 bg-white">
+                                        <div class="card-body ">
+                                            <?php for ($j = $i; $j <= $i + 1 && $j < count($promo); $j++) : ?>
+                                                <a href="<?= base_url('promo/' . $promo[$j]['slug']) ?>">
+                                                    <!-- Menampilkan dua gambar pada satu slide -->
+                                                    <img style="width: 620px;" src="<?= base_url() ?>assets/img/promo/<?= $promo[$j]['img']; ?>" alt="<?= $promo[$j]['title']; ?>" class="img-fluid">
+                                                </a>
+                                            <?php endfor ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endfor ?>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+
+                <style>
+                    /* Gaya tambahan untuk menampilkan dua gambar pada satu slide */
+                    .carousel-inner {
+                        display: flex;
+                        justify-content: space-between;
+                        transition: transform 0.5s ease-in-out !important;
+                        /* Efek transisi smooth */
+                    }
+
+                    .carousel-item {
+                        width: 100%;
+                    }
+
+                    .carousel-item img {
+                        width: 100%;
+                        /* Lebar gambar mengisi seluruh lebar slide */
+                        height: auto;
+                        /* Menjaga rasio aspek gambar */
+                        border-radius: 10px;
+                        /* Memberikan efek rounded pada ujung gambar */
+                        object-fit: cover;
+                        /* Membuat gambar mengisi area dengan mempertahankan rasio aspek */
+                    }
+                </style>
+
+                <script>
+                    // Menangani perubahan slide untuk efek transisi yang lebih halus
+                    document.getElementById('myCarousel').addEventListener('slide.bs.carousel', function() {
+                        document.querySelector('.carousel-inner').style.transition = 'transform 0.5s ease-in-out';
+                    });
+
+                    // Menangani akhir transisi untuk menonaktifkan efek setelah transisi selesai
+                    document.getElementById('myCarousel').addEventListener('slid.bs.carousel', function() {
+                        document.querySelector('.carousel-inner').style.transition = '';
+                    });
+                </script>
+
+                <!-- End Carousel Banner -->
 
                 <!-- swipper card PRODUK -->
                 <section id="unggul">
