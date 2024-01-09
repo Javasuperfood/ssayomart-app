@@ -69,7 +69,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Banner Desktop -->
     <div id="desktopContent" style="margin-top: 120px;">
-        <div class="container">
+
+        <!-- Swiper Js -->
+        <!-- <div class="container">
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper d-flex justify-content-center align-items-center">
                     <?php foreach ($banner as $b) : ?>
@@ -113,7 +115,96 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     },
                 },
             });
-        </script>
+        </script> -->
+        <!--end Swiper Js -->
+
+        <!-- Carousel -->
+        <style>
+            .carousel-inner {
+                display: flex;
+                justify-content: space-between;
+                transition: transform 0.5s ease-in-out !important;
+                /* Efek transisi smooth */
+
+            }
+
+
+            .carousel-item {
+                width: 100%;
+
+
+            }
+
+            .carousel-item img {
+                width: 100%;
+                /* Lebar gambar mengisi seluruh lebar slide */
+                height: auto;
+                /* Menjaga rasio aspek gambar */
+
+                object-fit: cover;
+                /* Membuat gambar mengisi area dengan mempertahankan rasio aspek */
+
+            }
+
+            .custom-prev,
+            .custom-next {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
+
+            .custom-prev {
+                left: 64px;
+            }
+
+            .custom-next {
+                right: 64px;
+            }
+        </style>
+
+        <div class="container">
+            <div id="myCarousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+                <div class="carousel-inner">
+                    <?php $count = 0; ?>
+                    <?php foreach ($banner as $b) : ?>
+                        <?php if ($count % 2 == 0) : ?>
+                            <div class="carousel-item<?= $count == 0 ? ' active' : ''; ?>">
+                                <div class="text-bg-light bg-white">
+                                    <div class="card-body">
+                                        <div class="row">
+                                        <?php endif; ?>
+
+                                        <div class="col-md-6">
+                                            <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
+                                                <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="rounded-4 d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
+                                            </a>
+                                        </div>
+
+                                        <?php if ($count % 2 != 0 || ($count == count($banner) - 1)) : ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php $count++; ?>
+                    <?php endforeach ?>
+                </div>
+                <button class="custom-prev" type="button" data-bs-target="#myCarousel1" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="custom-next" type="button" data-bs-target="#myCarousel1" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- End Carousel -->
     </div>
 
     <!-- End Footer Desktop -->

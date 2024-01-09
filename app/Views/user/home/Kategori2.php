@@ -738,7 +738,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php for ($j = $i; $j <= $i + 1 && $j < count($promo); $j++) : ?>
                                                 <a href="<?= base_url('promo/' . $promo[$j]['slug']) ?>">
                                                     <!-- Menampilkan dua gambar pada satu slide -->
-                                                    <img style="width: 620px;" src="<?= base_url() ?>assets/img/promo/<?= $promo[$j]['img']; ?>" alt="<?= $promo[$j]['title']; ?>" class="img-fluid">
+                                                    <img style="width: 640px; height: 265px;" src="<?= base_url() ?>assets/img/promo/<?= $promo[$j]['img']; ?>" alt="<?= $promo[$j]['title']; ?>" class="img-fluid rounded-4">
                                                 </a>
                                             <?php endfor ?>
                                         </div>
@@ -768,6 +768,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     .carousel-item {
                         width: 100%;
+
                     }
 
                     .carousel-item img {
@@ -775,10 +776,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         /* Lebar gambar mengisi seluruh lebar slide */
                         height: auto;
                         /* Menjaga rasio aspek gambar */
-                        border-radius: 10px;
-                        /* Memberikan efek rounded pada ujung gambar */
+
                         object-fit: cover;
                         /* Membuat gambar mengisi area dengan mempertahankan rasio aspek */
+                        padding: 0 5px;
+
                     }
                 </style>
 
