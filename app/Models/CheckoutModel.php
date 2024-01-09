@@ -101,7 +101,7 @@ class CheckoutModel extends Model
                 ->where('jsf_checkout.created_at <', $endDate . ' 23:59:59');
         }
         $data = $query->paginate($perPage, 'checkout');
-        dd($data);
+        // dd($data);
         return $data;
     }
 
