@@ -7,15 +7,59 @@
         /* Menghilangkan margin atas dan bawah */
     }
 
+    .logoleft {
+        width: 80%;
+    }
+
+    .logoright {
+        width: 70%;
+    }
+
     @media only screen and (min-width: 768px) {
         .custom-margin {
             margin-left: 20%;
             margin-right: 20%;
         }
+
+        .logoleft {
+            width: 50%;
+        }
+
+        .logoright {
+            width: 40%;
+        }
     }
 </style>
 <div class="custom-margin">
     <div class="container pt-5 mb-4">
+        <div class="row">
+            <div class="col-6 d-flex justify-content-start align-items-center">
+                <img class="logoleft" src="<?= base_url('assets/img/logopanjang.png'); ?>" alt="" srcset="">
+            </div>
+            <div class="col-6 d-flex justify-content-end align-items-center">
+                <img class="logoright" src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" alt="" srcset="">
+            </div>
+            <div class="col-12">
+                <p class="fw-bold fs-4 fs-md-6 fw-bold text-secondary mt-2 ms-1">#<?= $pay['response']['order_id']; ?></p>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-6 text-start">
+                <p class="text-muted fw-bold h8">Invoice To</p>
+                <p class="text-muted h7"><?= $penerima['nama']; ?></p>
+                <p class="text-muted h8"><?= $penerima['alamat']; ?></p>
+                <p class="text-muted h8"><?= $penerima['telp']; ?></p>
+            </div>
+            <div class="col-6 text-end">
+                <p class="text-muted fw-bold h8">Pay To</p>
+                <p class="text-muted h7"><?= $origin['lable']; ?></p>
+                <p class="text-muted h8"><?= $origin['alamat_1']; ?></p>
+                <p class="text-muted h8"><?= $origin['telp']; ?></p>
+            </div>
+        </div>
         <?php
         //  Q : Kenapa comment pake php ?
         //  A : Biar gak keliatan userside
@@ -23,9 +67,6 @@
         ?>
         <?php if ($bank_transfer['company_code'] == null) : ?>
             <div class="row">
-                <div class="col-12 text-center">
-                    <img src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" width="170px" alt="" srcset="">
-                </div>
                 <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
                 <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
                 <div class="col-12 text-end d-flex justify-content-center align-items-center">
@@ -39,9 +80,6 @@
         ?>
         <?php if ($bank_transfer['company_code'] != null && $bank_transfer['bank'] == 'Mandiri') : ?>
             <div class="row">
-                <div class="col-12 text-center">
-                    <img src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" width="170px" alt="" srcset="">
-                </div>
                 <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
                 <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
                 <div class="col-12">
@@ -66,16 +104,6 @@
             </div>
 
         <?php endif; ?>
-    </div>
-    <div class="container py-3">
-        <div class="row">
-            <div class="col-md-6">
-                <p class="text-muted fw-bold h8"><?= $pay['response']['order_id']; ?></p>
-                <p class="text-muted h7"><?= $penerima['nama']; ?></p>
-                <p class="text-muted h8"><?= $penerima['alamat']; ?></p>
-                <p class="text-muted h8"><?= $penerima['telp']; ?></p>
-            </div>
-        </div>
         <div class="row pt-3">
             <div class="col">
                 <table class="table border table-responsive">
@@ -91,7 +119,7 @@
                     <tbody class="text-center">
                         <?php foreach ($pay['request']['item_details'] as $key => $i) : ?>
                             <tr>
-                                <td>1</td>
+                                <td><?= $key + 1; ?></td>
                                 <td><?= $i['name']; ?></td>
                                 <td><?= number_format($i['quantity'], 0, ',', '.'); ?></td>
                                 <td><?= number_format($i['price'], 0, ',', '.'); ?></td>
@@ -100,6 +128,14 @@
                         <?php endforeach ?>
                         <tr>
                             <td colspan="5"> </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-end fw-bold">Subtotal</td>
+                            <td class="text-end"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-end fw-bold">Credit</td>
+                            <td class="text-end">0</td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-end fw-bold">Total</td>
