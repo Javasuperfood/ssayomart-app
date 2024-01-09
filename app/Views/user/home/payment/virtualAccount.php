@@ -17,10 +17,6 @@
 
 
     /* @media only screen and (min-width: 768px) {
-        .custom-margin {
-            margin-left: 20%;
-            margin-right: 20%;
-        }
 
         .logoleft {
             width: 50%;
@@ -30,224 +26,215 @@
             width: 40%;
         }
     } */
-/* galaxy fold 280px */
+    /* galaxy fold 280px */
     @media (width: 280px) {
         .card {
             margin-top: -5px;
         }
-         .font-custom{
-    font-size: 12px;
-    
-  }
-  .no-padding {
-    padding: 0px 0px !important;
-  }
-  .card-title {
-    font-size:14px;
-  }
-.button-fold {
-    padding: 2px 10px !important;
-}
+
+        .font-custom {
+            font-size: 12px;
+
+        }
+
+        .no-padding {
+            padding: 0px 0px !important;
+        }
+
+        .card-title {
+            font-size: 14px;
+        }
+
+        .button-fold {
+            padding: 2px 10px !important;
+        }
     }
-  /* akhir galaxy fold 280 px */
+
+    /* akhir galaxy fold 280 px */
 
     @media (min-width: 350px) and (max-width: 575.98px) {
-  /* Add your styles for XS here */
-  .font-custom{
-    font-size: 18px;
-    
-  }
-  .no-padding {
-    padding: 0px 0px !important;
-  }
-}
 
-/* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-  /* Add your styles for SM here */
-    .font-custom{
-    font-size: 18px;
-    
-  }
-  .no-padding {
-    padding: 0px 0px !important;
-  }
-}
+        /* Add your styles for XS here */
+        .font-custom {
+            font-size: 18px;
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-  /* Add your styles for MD here */
-    .no-padding {
-    padding: 0px 0px !important;
-  }
-}
+        }
 
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  /* Add your styles for LG here */
-    .no-padding {
-    padding: 0px 0px !important;
-  }
-}
+        .no-padding {
+            padding: 0px 0px !important;
+        }
+    }
 
-@media (min-width: 1400px) {
-  /* Add your styles for XXL here */
-    .card {
+    /* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+
+        /* Add your styles for SM here */
+        .font-custom {
+            font-size: 18px;
+
+        }
+
+        .no-padding {
+            padding: 0px 0px !important;
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+
+        /* Add your styles for MD here */
+        .no-padding {
+            padding: 0px 0px !important;
+        }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+
+        /* Add your styles for LG here */
+        .no-padding {
+            padding: 0px 0px !important;
+        }
+    }
+
+    @media (min-width: 1400px) {
+
+        /* Add your styles for XXL here */
+        .card {
             margin-top: 30px;
         }
-   .no-padding {
-    padding: 0px 0px !important;
-  }
-}
+
+        .no-padding {
+            padding: 0px 0px !important;
+        }
+    }
 </style>
-<div class="custom-margin">
-    <div class="container  mb-4">
+<div class="container">
+    <div class="row d-none d-md-block">
+        <div class="col-12 py-5"></div>
+    </div>
+    <?php
+    //  Q : Kenapa comment pake php ?
+    //  A : Biar gak keliatan userside
+    // 'elemet di bawah untuk bank BCA, BRI, BNI';
+    ?>
+    <?php if ($bank_transfer['company_code'] == null) : ?>
         <div class="row">
             <div class="col-xs-12 col-lg-8 mx-auto">
-                <!-- awal card -->
-<div class="card bg-light border border-dark-subtle rounded-2">
-  <div class="d-flex justify-content-between p-2">
-    <img class="logoleft ms-1" src="<?= base_url('assets/img/logopanjang.png'); ?>" alt="" srcset="">
-    <img class="logoright me-1" src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" alt="" srcset="">
-  </div>
-  <div class="card-body card-content">
-    <h5 class="card-title">Invoice</h5>
-    <p class="fw-bold font-custom fw-bold text-secondary mt-2 w-full">#<?= $pay['response']['order_id']; ?></p>
-   
-    <h5 class="card-title">Code Virtual Account</h5>
-    <div class="d-flex justify-content-evenly align-items-center">
-      <input id="va_number" type="text" class="form-control no-padding form-control-lg bg-light text-secondary font-custom fw-bold border-0" value="<?= $pay['response']['va_numbers'][0]['va_number']; ?>" readonly>
-      <button class="btn button-fold " id="copyButton" onclick="copyButton()"><i class="bi bi-copy text-danger fw-bold fs-5"></i></button>
-    </div>
-  </div>
-</div>
+                <div class="card bg-light border border-dark-subtle rounded-2">
+                    <div class="d-flex justify-content-between p-2">
+                        <img class="logoleft ms-1" src="<?= base_url('assets/img/logopanjang.png'); ?>" alt="" srcset="">
+                        <img class="logoright me-1" src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" alt="" srcset="">
+                    </div>
+                    <div class="card-body card-content">
+                        <h5 class="card-title">Invoice</h5>
+                        <p class="fw-bold font-custom fw-bold text-secondary mt-2 w-full">#<?= $pay['response']['order_id']; ?></p>
 
-<!-- akhir card -->
-  <h4 class="ms-2 mt-2 fs-5 fw-bold">Waktu Pembayaran: <span class="badge bg-danger" id="expire_time"></span></h4>
-</div>
-
-            <!-- <div class="col-6 d-flex justify-content-start align-items-center">
-                <img class="logoleft" src="<?= base_url('assets/img/logopanjang.png'); ?>" alt="" srcset="">
+                        <h5 class="card-title">Code Virtual Account</h5>
+                        <div class="d-flex justify-content-evenly align-items-center">
+                            <input id="va_number" type="text" class="form-control no-padding form-control-lg bg-light text-secondary font-custom fw-bold border-0" value="<?= $pay['response']['va_numbers'][0]['va_number']; ?>" readonly>
+                            <button class="btn button-fold " id="copyButton" onclick="copyButton()"><i class="bi bi-copy text-danger fw-bold fs-5"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <h4 class="ms-2 mt-2 fs-5 fw-bold">Waktu Pembayaran: <span class="badge bg-danger" id="expire_time"></span></h4>
             </div>
-            <div class="col-6 d-flex justify-content-end align-items-center">
-                <img class="logoright" src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" alt="" srcset="">
-            </div> -->
-            <!-- <div class="col-12">
-                <p class="fw-bold fs-4 fs-md-6 fw-bold text-secondary mt-2 ms-1">#<?= $pay['response']['order_id']; ?></p>
-                <hr>
-            </div> -->
         </div>
-    </div>
-    <div class="container ">
+    <?php endif; ?>
+    <?php
+    // 'elemet di bawah untuk bank MANDIRI';
+    ?>
+    <?php if ($bank_transfer['company_code'] != null && $bank_transfer['bank'] == 'Mandiri') : ?>
         <div class="row">
-            <div class="col-lg-6 col-xs-12  ">
-                <p class="text-muted fw-bold h8">Invoice To</p>
-                <p class="text-muted h7"><?= $penerima['nama']; ?></p>
-                <p class="text-muted h8"><?= $penerima['alamat']; ?></p>
-                <p class="text-muted h8"><?= $penerima['telp']; ?></p>
-            </div>
-            <div class="col-lg-6 col-xs-12 ">
-                <p class="text-muted fw-bold h8">Pay To</p>
-                <p class="text-muted h7"><?= $origin['lable']; ?></p>
-                <p class="text-muted h8"><?= $origin['alamat_1']; ?></p>
-                <p class="text-muted h8"><?= $origin['telp']; ?></p>
-            </div>
-        </div>
-        <?php
-        //  Q : Kenapa comment pake php ?
-        //  A : Biar gak keliatan userside
-        // 'elemet di bawah untuk bank BCA, BRI, BNI';
-        ?>
-        <?php if ($bank_transfer['company_code'] == null) : ?>
-            <!-- <div class="row">
-                <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
-                <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
-                <div class="col-12 text-end d-flex justify-content-center align-items-center">
-                    <input id="va_number" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $pay['response']['va_numbers'][0]['va_number']; ?>" readonly>
-                    <button class="btn btn-danger" id="copyButton" onclick="copyButton()">Copy</button>
-                </div>
-            </div> -->
-        <?php endif; ?>
-        <?php
-        // 'elemet di bawah untuk bank MANDIRI';
-        ?>
-        <?php if ($bank_transfer['company_code'] != null && $bank_transfer['bank'] == 'Mandiri') : ?>
-            <div class="row">
-                <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
-                <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
-                <div class="col-12">
-                    <table class="table text-center">
-                        <tbody>
-                            <tr>
-                                <td>Company Code</td>
-                                <td><input id="company_code" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $bank_transfer['company_code']; ?>" readonly id="company_code"></td>
-                                <td><button class="btn btn-danger" id="copyButton" onclick="copyButton2()">Copy</button></td>
-                            </tr>
-                            <tr>
-                                <td>Virtual Number</td>
-                                <td><input id="va_number" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $bank_transfer['account_number']; ?>" readonly></td>
-                                <td>
-                                    <button class="btn btn-danger" id="copyButton" onclick="copyButton()">Copy</button>
+            <div class="col-12 text-center fs-4"><span class="badge bg-danger" id="expire_time"></span></div>
+            <div class="col-12 text-center fw-bold fs-4">Pembayaran Virtual Account</div>
+            <div class="col-12">
+                <table class="table text-center">
+                    <tbody>
+                        <tr>
+                            <td>Company Code</td>
+                            <td><input id="company_code" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $bank_transfer['company_code']; ?>" readonly id="company_code"></td>
+                            <td><button class="btn btn-danger" id="copyButton" onclick="copyButton2()">Copy</button></td>
+                        </tr>
+                        <tr>
+                            <td>Virtual Number</td>
+                            <td><input id="va_number" type="text" class="form-control form-control-lg text-center fw-bold border-0" value="<?= $bank_transfer['account_number']; ?>" readonly></td>
+                            <td>
+                                <button class="btn btn-danger" id="copyButton" onclick="copyButton()">Copy</button>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        <?php endif; ?>
-        <div class="row pt-3">
-            <div class="col">
-                <table class="table border table-responsive">
-                    <thead class="text-center table-danger">
-                        <tr>
-                            <th>No.</th>
-                            <td>Item</td>
-                            <td>Qty</td>
-                            <td>Harga</td>
-                            <td class="text-end">Total</td>
-                        </tr>
-                    </thead>
-                    <tbody class="text-center">
-                        <?php foreach ($pay['request']['item_details'] as $key => $i) : ?>
-                            <tr>
-                                <td><?= $key + 1; ?></td>
-                                <td><?= $i['name']; ?></td>
-                                <td><?= number_format($i['quantity'], 0, ',', '.'); ?></td>
-                                <td><?= number_format($i['price'], 0, ',', '.'); ?></td>
-                                <td class="text-end"><?= number_format(((int) ($i['price'] * $i['quantity'])), 0, ',', '.'); ?></td>
-                            </tr>
-                        <?php endforeach ?>
-                        <tr>
-                            <td colspan="5"> </td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="text-end fw-bold">Subtotal</td>
-                            <td class="text-start"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="text-end fw-bold">Credit</td>
-                            <td class="text-start">0</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4" class="text-end fw-bold">Total</td>
-                            <td class="text-start"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 ">
-                <i class="bi bi-info-circle"></i> Info
-                <p class="text-muted h7">Refresh untuk melihat pembharuan pembayaran anda.   <button class="btn btn-danger " onclick="location.reload()"><i class="bi bi-arrow-clockwise "></i></button>
-            </div>
-            <div class="col-12 text-center pt-4">
-                <!-- <button class="btn btn-danger btn-lg" onclick="location.reload()"><i class="bi bi-arrow-clockwise fs-1"></i></button> -->
-            </div>
-        </div>
 
+    <?php endif; ?>
+
+    <div class="row">
+        <div class="col-lg-6 col-xs-12  ">
+            <p class="text-muted fw-bold h8">Invoice To</p>
+            <p class="text-muted h7"><?= $penerima['nama']; ?></p>
+            <p class="text-muted h8"><?= $penerima['alamat']; ?></p>
+            <p class="text-muted h8"><?= $penerima['telp']; ?></p>
+        </div>
+        <div class="col-lg-6 col-xs-12 ">
+            <p class="text-muted fw-bold h8">Pay To</p>
+            <p class="text-muted h7"><?= $origin['lable']; ?></p>
+            <p class="text-muted h8"><?= $origin['alamat_1']; ?></p>
+            <p class="text-muted h8"><?= $origin['telp']; ?></p>
+        </div>
     </div>
+    <div class="row pt-3">
+        <div class="col">
+            <table class="table border table-responsive">
+                <thead class="text-center table-danger">
+                    <tr>
+                        <th>No.</th>
+                        <td>Item</td>
+                        <td>Qty</td>
+                        <td>Harga</td>
+                        <td class="text-end">Total</td>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <?php foreach ($pay['request']['item_details'] as $key => $i) : ?>
+                        <tr>
+                            <td><?= $key + 1; ?></td>
+                            <td><?= $i['name']; ?></td>
+                            <td><?= number_format($i['quantity'], 0, ',', '.'); ?></td>
+                            <td><?= number_format($i['price'], 0, ',', '.'); ?></td>
+                            <td class="text-end"><?= number_format(((int) ($i['price'] * $i['quantity'])), 0, ',', '.'); ?></td>
+                        </tr>
+                    <?php endforeach ?>
+                    <tr>
+                        <td colspan="5"> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-end fw-bold">Subtotal</td>
+                        <td class="text-start"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-end fw-bold">Credit</td>
+                        <td class="text-start">0</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="text-end fw-bold">Total</td>
+                        <td class="text-start"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 ">
+            <i class="bi bi-info-circle"></i> Info
+            <p class="text-muted h7">Refresh untuk melihat pembharuan pembayaran anda. <button class="btn btn-danger " onclick="location.reload()"><i class="bi bi-arrow-clockwise "></i></button>
+        </div>
+        <div class="col-12 text-center pt-4">
+            <!-- <button class="btn btn-danger btn-lg" onclick="location.reload()"><i class="bi bi-arrow-clockwise fs-1"></i></button> -->
+        </div>
+    </div>
+
 </div>
 <script>
     var expiryTime = new Date('<?= $pay['response']['expiry_time']; ?>').getTime();
