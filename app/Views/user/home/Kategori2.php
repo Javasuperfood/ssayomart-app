@@ -730,15 +730,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <!-- Carousel Banner Promosi -->
                 <div class="container text-center">
                     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-                        <div class="carousel-inner">
+                        <div class="carousel-inner carousel-usel">
                             <?php for ($i = 0; $i < count($promo); $i += 2) : ?>
-                                <div class="carousel-item <?= $i === 0 ? 'active' : '' ?>">
-                                    <div class="text-bg-light mb-3 bg-white">
+                                <div class="carousel-item carousel-meti <?= $i === 0 ? 'active' : '' ?>">
+                                    <div class="text-bg-light bg-white">
                                         <div class="card-body ">
                                             <?php for ($j = $i; $j <= $i + 1 && $j < count($promo); $j++) : ?>
                                                 <a href="<?= base_url('promo/' . $promo[$j]['slug']) ?>">
                                                     <!-- Menampilkan dua gambar pada satu slide -->
-                                                    <img style="width: 640px; height: 265px;" src="<?= base_url() ?>assets/img/promo/<?= $promo[$j]['img']; ?>" alt="<?= $promo[$j]['title']; ?>" class="img-fluid rounded-4">
+                                                    <img style="padding: 0 0 10px 10px; width: 640px; height: 265px;" src="<?= base_url() ?>assets/img/promo/<?= $promo[$j]['img']; ?>" alt="<?= $promo[$j]['title']; ?>" class="rounded-4">
                                                 </a>
                                             <?php endfor ?>
                                         </div>
@@ -759,27 +759,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <style>
                     /* Gaya tambahan untuk menampilkan dua gambar pada satu slide */
-                    .carousel-inner {
+                    .carousel-usel {
                         display: flex;
                         justify-content: space-between;
                         transition: transform 0.5s ease-in-out !important;
                         /* Efek transisi smooth */
                     }
 
-                    .carousel-item {
+                    .carousel-meti {
                         width: 100%;
 
                     }
 
-                    .carousel-item img {
-                        width: 100%;
-                        /* Lebar gambar mengisi seluruh lebar slide */
-                        height: auto;
+                    .carousel-meti img {
                         /* Menjaga rasio aspek gambar */
-
                         object-fit: cover;
-                        /* Membuat gambar mengisi area dengan mempertahankan rasio aspek */
-                        padding: 0 5px;
 
                     }
                 </style>

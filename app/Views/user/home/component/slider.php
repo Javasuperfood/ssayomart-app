@@ -120,7 +120,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         <!-- Carousel -->
         <style>
-            .carousel-inner {
+            .carousel-slider {
                 display: flex;
                 justify-content: space-between;
                 transition: transform 0.5s ease-in-out !important;
@@ -129,21 +129,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
 
-            .carousel-item {
+            .carousel-promo {
                 width: 100%;
-
-
             }
 
-            .carousel-item img {
-                width: 100%;
-                /* Lebar gambar mengisi seluruh lebar slide */
-                height: auto;
-                /* Menjaga rasio aspek gambar */
-
+            .carousel-promo img {
                 object-fit: cover;
-                /* Membuat gambar mengisi area dengan mempertahankan rasio aspek */
 
+                /* Membuat gambar mengisi area dengan mempertahankan rasio aspek */
             }
 
             .custom-prev,
@@ -166,13 +159,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         </style>
 
-        <div class="container">
+        <div class="container text-center">
             <div id="myCarousel1" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
-                <div class="carousel-inner">
+                <div class="carousel-inner carousel-slider">
                     <?php $count = 0; ?>
                     <?php foreach ($banner as $b) : ?>
                         <?php if ($count % 2 == 0) : ?>
-                            <div class="carousel-item<?= $count == 0 ? ' active' : ''; ?>">
+                            <div class="carousel-item carousel-promo<?= $count == 0 ? ' active' : ''; ?>">
                                 <div class="text-bg-light bg-white">
                                     <div class="card-body">
                                         <div class="row">
@@ -180,7 +173,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                         <div class="col-md-6">
                                             <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
-                                                <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="rounded-4 d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
+                                                <img style="width: 645px; height: 265px;" src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="rounded-4" alt="<?= $b['title']; ?>">
                                             </a>
                                         </div>
 
