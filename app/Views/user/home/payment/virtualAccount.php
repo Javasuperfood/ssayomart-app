@@ -120,7 +120,7 @@
     <?php if ($bank_transfer['company_code'] == null) : ?>
         <div class="row">
             <div class="col-xs-12 col-lg-8 mx-auto">
-                <div class="card bg-light border border-dark-subtle rounded-2">
+                <div class="card bg-light border-0 shadow-sm border-dark-subtle rounded-2">
                     <div class="d-flex justify-content-between p-2">
                         <img class="logoleft ms-1" src="<?= base_url('assets/img/logopanjang.png'); ?>" alt="" srcset="">
                         <img class="logoright me-1" src="<?= base_url('assets/img/checkout/bank/' . $bank_transfer['bank'] . '.png'); ?>" alt="" srcset="">
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                <h4 class="ms-2 mt-2 fs-5 fw-bold">Waktu Pembayaran: <span class="badge bg-danger" id="expire_time"></span></h4>
+                <h4 class="ms-2 mt-2 fs-5 fw-bold text-center mt-3">Waktu Pembayaran: <span class="badge bg-danger" id="expire_time"></span></h4>
             </div>
         </div>
     <?php endif; ?>
@@ -171,22 +171,26 @@
     <?php endif; ?>
 
     <div class="row">
-        <div class="col-lg-6 col-xs-12  ">
-            <p class="text-muted fw-bold h8">Invoice To</p>
-            <p class="text-muted h7"><?= $penerima['nama']; ?></p>
-            <p class="text-muted h8"><?= $penerima['alamat']; ?></p>
-            <p class="text-muted h8"><?= $penerima['telp']; ?></p>
+        <div class="col-lg-6 col-xs-12">
+            <div class="card border-0 shadow-sm p-2">
+                <p class=" text-muted fw-bold h8">Invoice To</p>
+                <p class="text-muted h7"><?= $penerima['nama']; ?></p>
+                <p class="text-muted h8"><?= $penerima['alamat']; ?></p>
+                <p class="text-muted h8"><?= $penerima['telp']; ?></p>
+            </div>
         </div>
         <div class="col-lg-6 col-xs-12 ">
-            <p class="text-muted fw-bold h8">Pay To</p>
-            <p class="text-muted h7"><?= $origin['lable']; ?></p>
-            <p class="text-muted h8"><?= $origin['alamat_1']; ?></p>
-            <p class="text-muted h8"><?= $origin['telp']; ?></p>
+            <div class="card border-0 shadow-sm p-2">
+                <p class="text-muted fw-bold h8">Pay To</p>
+                <p class="text-muted h7"><?= $origin['lable']; ?></p>
+                <p class="text-muted h8"><?= $origin['alamat_1']; ?></p>
+                <p class="text-muted h8"><?= $origin['telp']; ?></p>
+            </div>
         </div>
     </div>
     <div class="row pt-3">
         <div class="col">
-            <table class="table border table-responsive">
+            <table class="table border table-striped">
                 <thead class="text-center table-danger">
                     <tr>
                         <th>No.</th>

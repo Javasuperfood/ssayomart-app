@@ -296,13 +296,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="modal-dialog modal-fullscreen-lg-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="metode-pembayaran-modalLabel">Metode Pemabayaran</h1>
+                                <h1 class="modal-title fs-5 fw-bold" id="metode-pembayaran-modalLabel">Metode Pembayaran</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div id="payment-options">
                                     <hr class="mb-4">
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="cc_radio" type="radio" value="cc" name="paymentType"> Credit
@@ -317,7 +317,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </div>
 
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="bcava_radio" type="radio" value="bca_va" name="paymentType"> BCA Virtual Account</h6>
@@ -327,7 +327,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="mandiriva_radio" type="radio" value="mandiri_va" name="paymentType"> Mandiri Virtual Account</h6>
@@ -337,7 +337,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="bniva_radio" type="radio" value="bni_va" name="paymentType"> BNI Virtual Account</h6>
@@ -347,7 +347,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="permatava_radio" type="radio" value="permata_va" name="paymentType"> Permata Virtual Account</h6>
@@ -357,7 +357,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="briva_radio" type="radio" value="bri_va" name="paymentType"> BRI Virtual Account</h6>
@@ -367,7 +367,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="gopay_online_radio" type="radio" value="gopay_online" name="paymentType"> Gopay Regular
@@ -378,7 +378,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="qris_online_radio" type="radio" value="qris_online" name="paymentType"> QRIS</h6>
@@ -388,7 +388,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="shopeepay_radio" type="radio" value="shopeepay" name="paymentType"> Shopee Pay</h6>
@@ -399,7 +399,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="mb-4">
+
                             </div>
                             <div class="modal-footer d-flex justify-content-center text-center align-items-center">
                                 <button onclick="clickSubmitEvent(this)" type="button" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar Sekarang</button>
@@ -823,13 +823,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="metode-pembayaran-modalLabel">Metode Pemabayaran</h1>
+                                <h1 class="modal-title fs-5" id="metode-pembayaran-modalLabel">Metode Pembayaran</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div id="payment-options">
                                     <hr class="mb-4">
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="cc_radio" type="radio" value="cc" name="paymentType"> Credit
@@ -844,7 +844,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </div>
 
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="bcava_radio" type="radio" value="bca_va" name="paymentType"> BCA Virtual Account</h6>
@@ -854,7 +854,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="mandiriva_radio" type="radio" value="mandiri_va" name="paymentType"> Mandiri Virtual Account</h6>
@@ -864,7 +864,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="bniva_radio" type="radio" value="bni_va" name="paymentType"> BNI Virtual Account</h6>
@@ -874,7 +874,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="permatava_radio" type="radio" value="permata_va" name="paymentType"> Permata Virtual Account</h6>
@@ -884,7 +884,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="briva_radio" type="radio" value="bri_va" name="paymentType"> BRI Virtual Account</h6>
@@ -894,7 +894,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="gopay_online_radio" type="radio" value="gopay_online" name="paymentType"> Gopay Regular
@@ -905,7 +905,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="qris_online_radio" type="radio" value="qris_online" name="paymentType"> QRIS</h6>
@@ -915,7 +915,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card rounded-0 mb-3">
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="shopeepay_radio" type="radio" value="shopeepay" name="paymentType"> Shopee Pay</h6>
