@@ -775,6 +775,7 @@ class BuyController extends BaseController
         $checkoutResponseModel = new CheckoutResponseModel();
         $kategoriModel = new KategoriModel();
         $alamatUserModel = new AlamatUserModel();
+        $tokoModel = new TokoModel();
 
         $order = $checkoutModel->where('invoice', $inv)->first();
 
@@ -785,6 +786,7 @@ class BuyController extends BaseController
         $data = [
             'title' => 'Payment',
             'kategori' => $kategoriModel->findAll(),
+            'origin' => $tokoModel->find($order['id_toko']),
             'order' => $order,
             'destination' => $alamatUserModel->where('id_alamat_users', $order['id_destination'])->first(),
             'penerima' => $this->getInfoPenerima($order['kirim']),
