@@ -90,18 +90,18 @@ class CheckoutModel extends Model
             ->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('users', 'users.id = jsf_checkout.id_user')
             ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
-            ->groupBy('jsf_checkout_produk.id_checkout,')
+            ->groupBy('jsf_checkout.id_checkout')
             ->orderBy('created_at', 'DESC')
             ->orderBy('jsf_status_pesan.id_status_pesan')
             ->where('jsf_checkout.id_toko', $id_toko)
-            ->where('jsf_status_pesan.id_status_pesan', 4);
+            ->whereNotIn('jsf_status_pesan.id_status_pesan', [1, 5]);
 
         if ($startDate && $endDate) {
             $query->where('jsf_checkout.created_at >=', $startDate . ' 00:00:00')
                 ->where('jsf_checkout.created_at <', $endDate . ' 23:59:59');
         }
         $data = $query->paginate($perPage, 'checkout');
-        // dd($data);
+        dd($data);
         return $data;
     }
 
