@@ -97,7 +97,7 @@ class StockModel extends Model
             ->first();
 
         if ($currentStock !== null) {
-            $newStock =  ($currentStock['stok'] - $qty);
+            $newStock = ($currentStock['stok'] - $qty);
             $this->where('id_produk', $id_produk)
                 ->where('id_variasi_item', $id_variasi_item)
                 ->where('id_toko', $id_toko)
