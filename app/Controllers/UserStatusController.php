@@ -8,6 +8,8 @@ use App\Models\UsersModel;
 use App\Models\KategoriModel;
 use Midtrans\Config as MidtransConfig;
 use App\Models\PromoBatchModel;
+use App\Models\StockModel;
+use App\Models\AdminTokoModel;
 
 
 class UserStatusController extends BaseController
@@ -31,12 +33,23 @@ class UserStatusController extends BaseController
         $checkoutModel = new CheckoutModel();
         $kategori = new KategoriModel();
         $promoBatchModel = new PromoBatchModel();
+        $stockModel = new StockModel();
+        $adminTokoModel = new AdminTokoModel();
         $order_id = $this->request->getGet('order_id');
         $status_code = $this->request->getGet('status_code');
         $transaction_status = $this->request->getGet('transaction_status');
         $userSatus = $userModel->getStatus($order_id);
         $status_transaction = false;
         $id_status_pesan = $this->request->getVar('id_status_pesan');
+
+
+        $adminToko = $adminTokoModel->getAdminToko(user_id());
+        if (empty($adminToko)) {
+            return view('dashboard/adminNotlisted');
+        }
+
+        $id_toko = $adminToko[0]['id_toko'];
+
         if ($userSatus->gosend == 1 && $userSatus->id_status_pesan != '1') {
             $gosendStatus = $this->getStatusGosend($order_id);
             if ($gosendStatus) {
@@ -45,12 +58,13 @@ class UserStatusController extends BaseController
         }
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
-
+        // dd($cekProduk);
         foreach ($cekProduk as $key => $product) {
             $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($product->id_produk);
             if (count($promoDetails) > 0 && $product->qty >= $promoDetails[0]['min']) {
                 $cekProduk[$key]->promo = $promoDetails[0];
             }
+            $stockModel->reduceStock($product->id_produk, $product->id_variasi_item, $product->qty, $id_toko);
         }
 
         $data = [

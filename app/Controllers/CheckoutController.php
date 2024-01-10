@@ -355,8 +355,6 @@ class CheckoutController extends BaseController
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
         $promoBatchModel = new PromoBatchModel();
-        $stockModel = new StockModel();
-        $adminTokoModel = new AdminTokoModel();
 
         $email = $userModel->getEmail(user_id());
         $serviceText = $this->request->getVar('serviceText');
@@ -373,13 +371,6 @@ class CheckoutController extends BaseController
 
         $alamat = $alamatUserModel->find($alamatId);
         $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
-
-        $adminToko = $adminTokoModel->getAdminToko(user_id());
-        if (empty($adminToko)) {
-            return view('dashboard/adminNotlisted');
-        }
-
-        $id_toko = $adminToko[0]['id_toko'];
 
         foreach ($checkedId as $key => $id) {
             $data['produk'][$key] = $cartProdukModel->select('*, jsf_variasi_item.harga_item')
@@ -529,8 +520,6 @@ class CheckoutController extends BaseController
             ];
             $checkoutProdukModel->insert($checkoutItemData);
             $cartProdukModel->delete($item['id_cart_produk']); //delete from cart
-
-            $stockModel->reduceStock($item['id_produk'], $item['id_variasi_item'], $item['qty'], $id_toko); // reduce stock
         }
 
         return redirect()->to(base_url('payment/' . $inv));
