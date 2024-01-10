@@ -115,7 +115,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- End Mobile View -->
 
     <!-- Desktop View -->
-    <div class="container h-100" style="padding-top : 75px;">
+    <div class="container h-100" style="padding-top : 175px;">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
                 <div class="card border-0 shadow-sm rounded-4">
@@ -131,7 +131,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="card-body">
                                                 <div class="d-flex flex-row align-items-center justify-content-between">
                                                     <div class="form-check" style="font-size: 20px; margin: 0;">
-                                                        <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input button-klik border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                                        <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="ceklis-tombol form-check-input button-klik border-danger rounded-circle" type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                                     </div>
                                                     <div class="d-flex">
                                                         <div class="row">

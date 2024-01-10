@@ -16,6 +16,11 @@
     border-radius: 50%;
   }
 
+  .ceklis-tombol:hover {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.1);
+}
+
   .tombol-hapus__dekstop:hover {
     transition: transform 0.3s ease-in-out;
     transform: scale(1.1);
