@@ -165,7 +165,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form action="<?= base_url('dashboard/order/in-proccess/update-resi/' . $c['id_checkout']); ?>" method="post">
+                                            <form action="<?= base_url('dashboard/order/in-proccess/update-status/' . $c['id_checkout']); ?>" method="post">
                                                 <?= csrf_field(); ?>
                                                 <input type="hidden" name="page" value="<?= (isset($_GET['page_order']) != null) ? $_GET['page_order'] : '1'; ?>">
                                                 <div class="modal-body">

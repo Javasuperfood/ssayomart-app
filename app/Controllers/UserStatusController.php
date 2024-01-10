@@ -9,7 +9,6 @@ use App\Models\KategoriModel;
 use Midtrans\Config as MidtransConfig;
 use App\Models\PromoBatchModel;
 
-
 class UserStatusController extends BaseController
 {
     public function status()
@@ -37,6 +36,7 @@ class UserStatusController extends BaseController
         $userSatus = $userModel->getStatus($order_id);
         $status_transaction = false;
         $id_status_pesan = $this->request->getVar('id_status_pesan');
+
         if ($userSatus->gosend == 1 && $userSatus->id_status_pesan != '1') {
             $gosendStatus = $this->getStatusGosend($order_id);
             if ($gosendStatus) {
@@ -45,7 +45,7 @@ class UserStatusController extends BaseController
         }
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
-
+        // dd($cekProduk);
         foreach ($cekProduk as $key => $product) {
             $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($product->id_produk);
             if (count($promoDetails) > 0 && $product->qty >= $promoDetails[0]['min']) {

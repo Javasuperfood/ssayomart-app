@@ -269,34 +269,31 @@ class AdminPesananController extends BaseController
         $checkoutModel = new CheckoutModel();
         $stokModel = new StockModel();
         $checkoutProdModel = new CheckoutProdukModel();
+        $adminTokoModel = new AdminTokoModel();
 
         $checkout = $checkoutModel->find($id);
 
         $produk = $checkoutProdModel->getProdukByIdCheckout($id);
 
-        if ($checkout['id_status_pesan'] == 2) {
-            $id_toko = $checkout['id_toko'];
-            foreach ($produk as $p) {
-                $id_variasi_item = $p['id_variasi_item'];
-                $id_produk = $p['id_produk'];
-                $stok = $stokModel->where('id_toko', $id_toko)->where('id_produk', $id_produk)->where('id_variasi_item', $id_variasi_item)->first();
-                if ($stok) {
-                    if ($stok['stok'] > $p['qty']) {
-                        $stokModel->save([
-                            'id_stock' => $stok['id_stock'],
-                            'stok' => $stok['stok'] - $p['qty'],
-                        ]);
-                    } else {
-                        return redirect()->to(base_url('dashboard/order/in-proccess?' . $page))->withInput();
-                    }
-                }
-            }
+        $adminToko = $adminTokoModel->getAdminToko(user_id());
+        if (empty($adminToko)) {
+            return view('dashboard/adminNotlisted');
         }
-        $url = base_url() . 'dashboard/order/';
+
+        $id_toko = $adminToko[0]['id_toko'];
+
         if (!$checkoutModel->save(['id_checkout' => $id, 'id_status_pesan' => $this->request->getVar('status')])) {
             return 'gagal update';
             return redirect()->to(base_url('dashboard/order/in-proccess'))->withInput();
         }
+
+        foreach ($produk as $p) {
+            if ($this->request->getVar('status') == 3) {
+                $stokModel->reduceStock($p['id_produk'], $p['id_variasi_item'], $p['qty'], $id_toko);
+            }
+        }
+
+        $url = base_url() . 'dashboard/order/';
         return redirect()->to($url . $page);
     }
     // =============================================== Store Data Resi =================================================

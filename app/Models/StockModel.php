@@ -93,11 +93,11 @@ class StockModel extends Model
             ->where('jsf_stock.id_produk', $id_produk)
             ->where('jsf_stock.id_variasi_item', $id_variasi_item)
             ->where('jsf_stock.id_toko', $id_toko)
-            ->where('c.id_status_pesan', 1)
             ->first();
 
         if ($currentStock !== null) {
             $newStock = ($currentStock['stok'] - $qty);
+            // dd($currentStock, $newStock);
             $this->where('id_produk', $id_produk)
                 ->where('id_variasi_item', $id_variasi_item)
                 ->where('id_toko', $id_toko)
@@ -106,6 +106,7 @@ class StockModel extends Model
 
             return true;
         }
+
         return false;
     }
 }
