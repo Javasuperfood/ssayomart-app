@@ -11,16 +11,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container">
             <h3 class="text-center mb-4 pb-2 text-dark fw-bold">FAQ</h3>
-            <p class="text-center mb-5">
+            <p class="text-center mb-4">
                 Temukan jawaban atas pertanyaan yang paling sering diajukan di bawah ini
             </p>
 
-            <div class="row">
+            <div class="row" style="font-size: 14px;">
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-danger"><i class="bi bi-question-circle text-danger pe-2"></i><strong> Bagaimana Cara Memesan Produk di Sayomart? </strong></h6>
-                    <p>
-                        <strong><u>Untuk memesan produk di Sayomart, cukup ikuti langkah-langkah berikut:</u></strong>
-                    </p>
+                    <h6 class="mb-3 text-danger d-flex align-items-center"><i class="bi bi-question-circle text-danger pe-2"></i><strong> Bagaimana Cara Memesan Produk di Sayomart? </strong></h6>
+                    <ul class="me-2">
+                        <p>
+                            <strong><u>Untuk memesan produk di Sayomart, cukup ikuti langkah-langkah berikut:</u></strong>
+                        </p>
+                    </ul>
                     <ul>
                         <li> Telusuri katalog produk kami.</li>
                         <li> Pilih produk yang diinginkan dan tambahkan ke keranjang belanja.</li>
@@ -63,10 +65,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-danger"><i class="bi bi-question-circle text-danger pe-2"></i><strong> Bagaimana Jika Produk Yang Diterima Rusak atau Tidak Sesuai? </strong></h6>
-                    <ul>
-                        <li> Jika produk yang Anda terima rusak atau tidak sesuai, silakan hubungi layanan pelanggan kami dalam waktu 7 hari setelah penerimaan produk untuk mendapatkan bantuan lebih lanjut.
-                        </li>
+                    <h6 class="mb-3 text-danger d-flex align-items-center"><i class="bi bi-question-circle text-danger me-3"></i><strong> Bagaimana Jika Produk Yang Diterima Rusak atau Tidak Sesuai? </strong></h6>
+                    <ul class="mb-0">
+                        <li>Jika produk yang Anda terima rusak atau tidak sesuai, silakan hubungi layanan pelanggan kami dalam waktu 7 hari setelah penerimaan produk untuk mendapatkan bantuan lebih lanjut.</li>
                     </ul>
                 </div>
             </div>
@@ -80,12 +81,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 Temukan jawaban atas pertanyaan yang paling sering diajukan di bawah ini
             </p>
 
-            <div class="row">
+            <div class="row" style="font-size: 15px;">
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-danger"><i class="bi bi-question-circle text-danger pe-2"></i><strong> Bagaimana Cara Memesan Produk di Sayomart? </strong></h6>
-                    <p>
-                        <strong><u>Untuk memesan produk di Sayomart, cukup ikuti langkah-langkah berikut:</u></strong>
-                    </p>
+                    <h6 class="mb-3 text-danger d-flex align-items-center"><i class="bi bi-question-circle text-danger pe-2"></i><strong> Bagaimana Cara Memesan Produk di Sayomart? </strong></h6>
+                    <ul class="me-2">
+                        <p>
+                            <strong><u>Untuk memesan produk di Sayomart, cukup ikuti langkah-langkah berikut:</u></strong>
+                        </p>
+                    </ul>
                     <ul>
                         <li> Telusuri katalog produk kami.</li>
                         <li> Pilih produk yang diinginkan dan tambahkan ke keranjang belanja.</li>
@@ -128,12 +131,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
 
                 <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-danger"><i class="bi bi-question-circle text-danger pe-2"></i><strong> Bagaimana Jika Produk Yang Diterima Rusak atau Tidak Sesuai? </strong></h6>
-                    <ul>
-                        <li> Jika produk yang Anda terima rusak atau tidak sesuai, silakan hubungi layanan pelanggan kami dalam waktu 7 hari setelah penerimaan produk untuk mendapatkan bantuan lebih lanjut.
-                        </li>
+                    <h6 class="mb-3 text-danger d-flex align-items-center"><i class="bi bi-question-circle text-danger me-3"></i><strong> Bagaimana Jika Produk Yang Diterima Rusak atau Tidak Sesuai? </strong></h6>
+                    <ul class="mb-0">
+                        <li>Jika produk yang Anda terima rusak atau tidak sesuai, silakan hubungi layanan pelanggan kami dalam waktu 7 hari setelah penerimaan produk untuk mendapatkan bantuan lebih lanjut.</li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </div>
