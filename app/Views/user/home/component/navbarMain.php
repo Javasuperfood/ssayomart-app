@@ -25,7 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- navbar Website -->
-    <div id="desktopContent" style="margin-bottom: 105px;">
+   <div id="desktopContent">
         <div class="container-fluid fixed-top gx-0 mb-5">
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
@@ -84,6 +84,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <nav class="navbar navbar-expand rounded-bottom-4 shadow-sm" style="background-color: #ffff;">
+
                 <div class="container">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url() ?>assets/img/logo.png" width="50" height="50" alt="Logo Ssayomart" class="image-fluid">
@@ -94,11 +95,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" aria-current="page" href="<?= base_url() ?>"><?= lang('Text.beranda'); ?></a>
+                                <a class="nav-link " aria-current="page" href="<?= base_url() ?>"><?= lang('Text.beranda'); ?></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link text-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <?= lang('Text.kategori'); ?>
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <?= lang('Text.kategori') ?>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <?php foreach ($kategori as $k) : ?>
@@ -107,21 +108,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </ul>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-secondary" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download'); ?></a>
+                                <a class="nav-link" aria-current="page" href="https://download.ssayomart.com"><?= lang('Text.download') ?></a>
                             </li>
                         </ul>
-                        <form class="d-flex" onsubmit="searchValidate()" role="search" action="<?= base_url('search'); ?>" method="get">
-                            <input id="search" value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control border-danger" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                        <form class="d-flex" role="search" action="<?= base_url('search'); ?>" method="get">
+                            <input value="<?= (isset($_GET['produk'])) ? $_GET['produk'] : ''; ?>" type="text" name="produk" class="form-control border-danger" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                             <button type="submit" class="btn btn-danger text-white mx-2" id="basic-addon1"><i class="bi bi-search text-white"></i></button>
                         </form>
-                        <ul class="navbar-nav d-flex flex-row mx-3">
+                        <ul class="navbar-nav d-flex flex-row mx-3" data-toggle="tooltip" data-placement="bottom" title="cart">
                             <!-- Icons -->
                             <li class="nav-item me-3 me-lg-0">
                                 <a class="nav-link" href="<?= base_url() ?>cart">
                                     <i class="bi bi-cart-fill fs-4 text-danger position-relative">
 
                                         <div id="cartItem_0">
-                                            <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle border-danger"></i>
+                                            <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger"></i>
                                             <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle text-danger" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
                                         </div>
 
@@ -131,7 +132,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             <?php if (auth()->loggedIn()) : ?>
                                 <li class="nav-item me-3 me-lg-0 dropdown">
-                                    <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle text-danger" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-toggle="tooltip" data-placement="bottom" title="Profil">
                                         <i class="bi bi-person-circle fs-4 text-danger"></i>
                                     </a>
                                     <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
@@ -141,16 +142,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </li>
                                         <?php endif; ?>
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>setting"><?= lang('Text.setting'); ?></a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>setting"><?= lang('Text.setting') ?></a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>setting/alamat-list"><?= lang('Text.alamat'); ?></a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>setting/alamat-list"><?= lang('Text.alamat_tersimpan') ?></a>
                                         </li>
                                         <li>
                                             <hr class="dropdown-divider" />
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="<?= base_url(); ?>logout"><?= lang('Text.logout'); ?></a>
+                                            <a class="dropdown-item" href="<?= base_url(); ?>logout"><?= lang('Text.logout') ?></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -158,15 +159,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <li class="nav-item me-3 me-lg-0">
                                     <a class="nav-link" href="<?= base_url() ?>login">
                                         <i class="bi bi-person-fill-lock fs-4 text-danger"></i>
-
                                     </a>
                                 </li>
                             <?php endif ?>
                         </ul>
                         <!-- bahasa -->
-                        <nav class="navbar navbar-expand-lg navbar-danger">
+                        <nav class="navbar navbar-expand-lg navbar-danger" data-toggle="tooltip" data-placement="bottom" title="Language">
                             <div class="container-fluid">
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
@@ -182,7 +182,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <ul class="dropdown-menu dropdown-menu-white">
                                                 <a href="<?= site_url('lang/id'); ?>" class="dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korin.png" width="30px" alt="" class="flag-icon"> ID/KR</a>
                                                 <a href="<?= site_url('lang/en'); ?>" class="dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"> EN</a>
-
                                             </ul>
                                         </li>
                                     </ul>
