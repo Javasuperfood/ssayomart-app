@@ -13,8 +13,6 @@ use App\Models\ProdukModel;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use App\Models\PromoBatchModel;
-use App\Models\StockModel;
-use App\Models\AdminTokoModel;
 use Midtrans\Config as MidtransConfig;
 use OneSignal\OneSignal;
 
