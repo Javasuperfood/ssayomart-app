@@ -807,21 +807,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="swiper-wrapper d-flex mb-3">
                                         <?php foreach ($randomProducts as $p) : ?>
                                             <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
-                                                <div class="produk-zoom card border-0 shadow-sm" style="width: auto; height: 100%;">
+                                                <div class="produk-zoom card border-0 shadow-sm" style="width: 195px; height: 100%; padding: 5px;">
                                                     <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                                         <div class="d-flex justify-content-center align-items-center">
-                                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain;">
+                                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
                                                         </div>
                                                     </a>
                                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                                        <div class="d-flex text-center align-items-center justify-content-center" style="height: 65px;">
+                                                        <div class="d-flex text-center align-items-center justify-content-center" style="height: 75px;">
                                                             <p class=" text-secondary fw-bold " style=" font-size: 13px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                                                         </div>
                                                         <!-- <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
                                                         <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                                     </p> -->
 
-                                                        <h1 class="mb-4 text-danger fw-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
+                                                        <h1 class="mb-3 text-danger fw-bold mt-4 text-center" style="font-size: 15px; margin: 0;">
                                                             <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                                 Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                             <?php else : ?>
