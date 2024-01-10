@@ -172,7 +172,7 @@
 
     <div class="row">
         <div class="col-lg-6 col-xs-12">
-            <div class="card border-0 shadow-sm p-2">
+            <div class="card border-0 shadow-sm p-2 mt-5">
                 <p class=" text-muted fw-bold h8">Invoice To</p>
                 <p class="text-muted h7"><?= $penerima['nama']; ?></p>
                 <p class="text-muted h8"><?= $penerima['alamat']; ?></p>
@@ -180,7 +180,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-xs-12 ">
-            <div class="card border-0 shadow-sm p-2">
+            <div class="card border-0 shadow-sm p-2 mt-5">
                 <p class="text-muted fw-bold h8">Pay To</p>
                 <p class="text-muted h7"><?= $origin['lable']; ?></p>
                 <p class="text-muted h8"><?= $origin['alamat_1']; ?></p>
@@ -190,7 +190,7 @@
     </div>
     <div class="row pt-3">
         <div class="col">
-            <table class="table border table-striped">
+            <table class="table table-borderless">
                 <thead class="text-center table-danger">
                     <tr>
                         <th>No.</th>
