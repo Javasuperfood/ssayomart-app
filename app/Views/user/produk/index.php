@@ -31,7 +31,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php else : ?>
     <!-- tampilan Desktop -->
-    <div class="container">
+    <div class="container"style="padding-top: 70px;">
         <!-- Button Kategori -->
         <?= $this->include('user/produk/component/kategori') ?>
         <!-- button Scroll Up -->
