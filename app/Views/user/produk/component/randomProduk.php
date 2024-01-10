@@ -200,7 +200,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper-wrapper p-3 d-flex">
                             <?php foreach ($randomProducts as $p) : ?>
                                 <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 mb-5">
-                                    <div class="zoom-slider  card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
+                                    <div class="zoom-slider  card border-0 shadow-sm text-center" style="width: 185px; height: 100%; padding: 5px;">
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                             <div class="d-flex justify-content-center align-items-center">
                                                 <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 150px; height: 150px; object-fit: contain; object-position: 20% 10%;">
@@ -214,7 +214,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                     </p> -->
 
-                                            <h1 class="mb-4 text-danger fw-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
+                                            <h1 class="mb-4 text-danger fw-bold mt-1 text-center" style="font-size: 15px; margin: 0;">
                                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                                 <?php else : ?>
