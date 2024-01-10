@@ -48,7 +48,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-1-heading-1">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">Apa fungsi menu Dahsboard?</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-1-content-1" aria-expanded="false" aria-controls="accordion-tab-1-content-1">Apa fungsi menu Dahsboard?</button>
               </h5>
             </div>
             <div class="collapse show" id="accordion-tab-1-content-1" aria-labelledby="accordion-tab-1-heading-1" data-parent="#accordion-tab-1">
@@ -68,7 +68,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-2-heading-1">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Fungsi Menu Report?</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-2-content-1" aria-expanded="false" aria-controls="accordion-tab-2-content-1">Fungsi Menu Report?</button>
               </h5>
             </div>
             <div class="collapse show" id="accordion-tab-2-content-1" aria-labelledby="accordion-tab-2-heading-1" data-parent="#accordion-tab-2">
@@ -93,7 +93,9 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-3-heading-1">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-1" aria-expanded="false" aria-controls="accordion-tab-3-content-1">Panduan Menu Pesanan</button>
+                <button class="text-decoration-none btn" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-1" aria-expanded="false" aria-controls="accordion-tab-3-content-1">
+                  Panduan Menu Pesanan
+                </button>
               </h5>
             </div>
             <div class="collapse show" id="accordion-tab-3-content-1" aria-labelledby="accordion-tab-3-heading-1" data-parent="#accordion-tab-3">
@@ -119,7 +121,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-3-heading-2">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-2" aria-expanded="false" aria-controls="accordion-tab-3-content-2">Panduan Menunggu Pembayaran</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-2" aria-expanded="false" aria-controls="accordion-tab-3-content-2">Panduan Menunggu Pembayaran</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-3-content-2" aria-labelledby="accordion-tab-3-heading-2" data-parent="#accordion-tab-3">
@@ -136,7 +138,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-3-heading-3">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-3" aria-expanded="false" aria-controls="accordion-tab-3-content-3">Panduan Menu dalam Proses</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-3" aria-expanded="false" aria-controls="accordion-tab-3-content-3">Panduan Menu dalam Proses</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-3-content-3" aria-labelledby="accordion-tab-3-heading-3" data-parent="#accordion-tab-3">
@@ -154,7 +156,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-3-heading-4">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-4" aria-expanded="false" aria-controls="accordion-tab-3-content-4">Panduan Menu Dalam Perjalanan</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-4" aria-expanded="false" aria-controls="accordion-tab-3-content-4">Panduan Menu Dalam Perjalanan</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-3-content-4" aria-labelledby="accordion-tab-3-heading-4" data-parent="#accordion-tab-3">
@@ -172,7 +174,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-3-heading-5">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-5" aria-expanded="false" aria-controls="accordion-tab-3-content-5">Panduan Menu Pesanan Terkirim</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-5" aria-expanded="false" aria-controls="accordion-tab-3-content-5">Panduan Menu Pesanan Terkirim</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-3-content-5" aria-labelledby="accordion-tab-3-heading-5" data-parent="#accordion-tab-3">
@@ -190,7 +192,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-3-heading-6">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-6" aria-expanded="false" aria-controls="accordion-tab-3-content-6">Panduan Menu Refund</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-3-content-6" aria-expanded="false" aria-controls="accordion-tab-3-content-6">Panduan Menu Refund</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-3-content-6" aria-labelledby="accordion-tab-3-heading-6" data-parent="#accordion-tab-3">
@@ -212,7 +214,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-1">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-1" aria-expanded="false" aria-controls="accordion-tab-4-content-1">Menu List Produk</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-1" aria-expanded="false" aria-controls="accordion-tab-4-content-1">Menu List Produk</button>
               </h5>
             </div>
             <div class="collapse show" id="accordion-tab-4-content-1" aria-labelledby="accordion-tab-4-heading-1" data-parent="#accordion-tab-4">
@@ -235,7 +237,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-2">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-2" aria-expanded="false" aria-controls="accordion-tab-4-content-2">Menu Tambah Produk</button>
+                <button class=" text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-2" aria-expanded="false" aria-controls="accordion-tab-4-content-2">Menu Tambah Produk</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-4-content-2" aria-labelledby="accordion-tab-4-heading-2" data-parent="#accordion-tab-4">
@@ -252,7 +254,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-3">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-3" aria-expanded="false" aria-controls="accordion-tab-4-content-3">Menu Tambah Produk Kategori Batch</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-3" aria-expanded="false" aria-controls="accordion-tab-4-content-3">Menu Tambah Produk Kategori Batch</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-4-content-3" aria-labelledby="accordion-tab-4-heading-3" data-parent="#accordion-tab-4">
@@ -269,7 +271,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-4">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-4" aria-expanded="false" aria-controls="accordion-tab-4-content-4">Menu Tambah Variasi</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-4" aria-expanded="false" aria-controls="accordion-tab-4-content-4">Menu Tambah Variasi</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-4-content-4" aria-labelledby="accordion-tab-4-heading-4" data-parent="#accordion-tab-4">
@@ -286,7 +288,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-5">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-5" aria-expanded="false" aria-controls="accordion-tab-4-content-5">Fetching Produk</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-5" aria-expanded="false" aria-controls="accordion-tab-4-content-5">Fetching Produk</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-4-content-5" aria-labelledby="accordion-tab-4-heading-5" data-parent="#accordion-tab-4">
@@ -307,7 +309,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-6">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-6" aria-expanded="false" aria-controls="accordion-tab-4-content-6">Buat Promosi</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-6" aria-expanded="false" aria-controls="accordion-tab-4-content-6">Buat Promosi</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-4-content-6" aria-labelledby="accordion-tab-4-heading-6" data-parent="#accordion-tab-4">
@@ -323,7 +325,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-7">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-7" aria-expanded="false" aria-controls="accordion-tab-4-content-7">Tambah Promosi Produk</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-7" aria-expanded="false" aria-controls="accordion-tab-4-content-7">Tambah Promosi Produk</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-4-content-7" aria-labelledby="accordion-tab-4-heading-7" data-parent="#accordion-tab-4">
@@ -340,7 +342,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-4-heading-8">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-8" aria-expanded="false" aria-controls="accordion-tab-4-content-8">Tambah Promosi Produk - Batch</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-4-content-8" aria-expanded="false" aria-controls="accordion-tab-4-content-8">Tambah Promosi Produk - Batch</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-4-content-8" aria-labelledby="accordion-tab-4-heading-8" data-parent="#accordion-tab-4">
@@ -363,7 +365,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-5-heading-1">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-1" aria-expanded="false" aria-controls="accordion-tab-5-content-1">Menu List Kategori</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-1" aria-expanded="false" aria-controls="accordion-tab-5-content-1">Menu List Kategori</button>
               </h5>
             </div>
             <div class="collapse show" id="accordion-tab-5-content-1" aria-labelledby="accordion-tab-5-heading-1" data-parent="#accordion-tab-5">
@@ -386,7 +388,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-5-heading-2">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-2" aria-expanded="false" aria-controls="accordion-tab-5-content-2">Tambah Kategori</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-2" aria-expanded="false" aria-controls="accordion-tab-5-content-2">Tambah Kategori</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-5-content-2" aria-labelledby="accordion-tab-5-heading-2" data-parent="#accordion-tab-5">
@@ -401,7 +403,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-5-heading-3">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-3" aria-expanded="false" aria-controls="accordion-tab-5-content-3">Ubah Urutan Kategori</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-5-content-3" aria-expanded="false" aria-controls="accordion-tab-5-content-3">Ubah Urutan Kategori</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-5-content-3" aria-labelledby="accordion-tab-5-heading-3" data-parent="#accordion-tab-5">
@@ -422,7 +424,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-6-heading-1">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-1" aria-expanded="false" aria-controls="accordion-tab-6-content-1">Banner</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-1" aria-expanded="false" aria-controls="accordion-tab-6-content-1">Banner</button>
               </h5>
             </div>
             <div class="collapse show" id="accordion-tab-6-content-1" aria-labelledby="accordion-tab-6-heading-1" data-parent="#accordion-tab-6">
@@ -442,7 +444,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-6-heading-2">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-2" aria-expanded="false" aria-controls="accordion-tab-6-content-2">Artikel</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-6-content-2" aria-expanded="false" aria-controls="accordion-tab-6-content-2">Artikel</button>
               </h5>
             </div>
             <div class="collapse" id="accordion-tab-6-content-2" aria-labelledby="accordion-tab-6-heading-2" data-parent="#accordion-tab-6">
@@ -462,7 +464,7 @@
           <div class="card">
             <div class="card-header" id="accordion-tab-7-heading-1">
               <h5>
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-7-content-1" aria-expanded="false" aria-controls="accordion-tab-7-content-1">Menu Kupon</button>
+                <button class="text-decoration-none btn btn-link" type="button" data-toggle="collapse" data-target="#accordion-tab-7-content-1" aria-expanded="false" aria-controls="accordion-tab-7-content-1">Menu Kupon</button>
               </h5>
             </div>
             <div class="collapse show" id="accordion-tab-7-content-1" aria-labelledby="accordion-tab-7-heading-1" data-parent="#accordion-tab-7">
@@ -575,6 +577,22 @@
 
   .collapse.show .card-body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  }
+
+  /* BTN LINK DAN BORDER BIRU HILANG */
+  .button-unlink.btn:focus {
+    outline: none !important;
+    border: none !important;
+    text-decoration: none;
+  }
+</style>
+
+<style>
+  /* Menyembunyikan border biru pada fokus tombol */
+  .btn:focus,
+  .btn.focus {
+    outline: none !important;
+    box-shadow: none !important;
   }
 </style>
 <?= $this->endSection(); ?>
