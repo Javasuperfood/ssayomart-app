@@ -578,13 +578,6 @@
   .collapse.show .card-body {
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
   }
-
-  /* BTN LINK DAN BORDER BIRU HILANG */
-  .button-unlink.btn:focus {
-    outline: none !important;
-    border: none !important;
-    text-decoration: none;
-  }
 </style>
 
 <style>
@@ -593,6 +586,11 @@
   .btn.focus {
     outline: none !important;
     box-shadow: none !important;
+  }
+
+  .btn:active,
+  .btn.active {
+    color: #fff !important;
   }
 </style>
 <?= $this->endSection(); ?>
