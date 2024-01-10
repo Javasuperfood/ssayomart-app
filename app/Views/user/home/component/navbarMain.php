@@ -25,7 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- navbar Website -->
-   <div id="desktopContent">
+    <div id="desktopContent">
         <div class="container-fluid fixed-top gx-0 mb-5">
             <div class="w-100">
                 <div class="headerc" style="display: flex; justify-content: flex-end; padding: .4em 32px; margin-bottom: 0px; background: rgb(243, 244, 245);">
@@ -220,6 +220,35 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             transform: scaleX(1);
         }
     </style>
+    <script>
+        function handleHover(element, popup) {
+            element.addEventListener('mouseenter', function() {
+                popup.style.display = 'block';
+            });
+
+            element.addEventListener('mouseleave', function() {
+                popup.style.display = 'none';
+            });
+
+            popup.addEventListener('mouseenter', function() {
+                popup.style.display = 'block';
+            });
+
+            popup.addEventListener('mouseleave', function() {
+                popup.style.display = 'none';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var playstoreLabel = document.querySelector('.headerc__label:nth-child(1)');
+            var appStoreLabel = document.querySelector('.headerc__label:nth-child(3)');
+            var playstorePopup = document.querySelector('.barcode-popup');
+            var appStorePopup = document.querySelector('.barcode-apps');
+
+            handleHover(playstoreLabel, playstorePopup);
+            handleHover(appStoreLabel, appStorePopup);
+        });
+    </script>
 <?php endif; ?>
 <?php
 if ($isMobile) {
@@ -320,34 +349,6 @@ if ($isMobile) {
     }
 </style>
 
-<script>
-    function handleHover(element, popup) {
-        element.addEventListener('mouseenter', function() {
-            popup.style.display = 'block';
-        });
 
-        element.addEventListener('mouseleave', function() {
-            popup.style.display = 'none';
-        });
-
-        popup.addEventListener('mouseenter', function() {
-            popup.style.display = 'block';
-        });
-
-        popup.addEventListener('mouseleave', function() {
-            popup.style.display = 'none';
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-        var playstoreLabel = document.querySelector('.headerc__label:nth-child(1)');
-        var appStoreLabel = document.querySelector('.headerc__label:nth-child(3)');
-        var playstorePopup = document.querySelector('.barcode-popup');
-        var appStorePopup = document.querySelector('.barcode-apps');
-
-        handleHover(playstoreLabel, playstorePopup);
-        handleHover(appStoreLabel, appStorePopup);
-    });
-</script>
 
 <!-- End Desktop View -->
