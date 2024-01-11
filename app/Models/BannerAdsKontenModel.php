@@ -36,7 +36,7 @@ class BannerAdsKontenModel extends Model
             'rules' => 'max_size[img,3124]',
             'errors' => [
                 'max_size' => 'Ukuran gambar terlalu besar.',
-                'mime_in' => 'Format gambar tidak sesuai. iamge/jpg/jpeg/png',
+                'mime_in' => 'Format gambar tidak sesuai. image/jpg/jpeg/png',
             ]
         ]
     ];

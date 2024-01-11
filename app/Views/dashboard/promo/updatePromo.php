@@ -9,14 +9,13 @@
         <h6 class="m-0 fw-bold px-2">Edit Promo</h6>
     </div>
     <div class="card-body">
-        <!-- code -->
-        <form action="<?= base_url(); ?>dashboard/promo/update-promo/edit-promo/<?= $promo['id_promo']; ?>" method="POST" enctype="multipart/form-data" onsubmit="return validasiPromo()">
+        <form action="<?= base_url(); ?>dashboard/promo/update-promo/edit-promo/<?= $promo['id_promo']; ?>" method="POST" enctype="multipart/form-data">
             <?= csrf_field(); ?>
-            <input type="hidden" class="form-control border-1" id="id_promo" name="id_promo" value="<?= $promo['id_promo'] ?>">
+            <input type="hidden" class="form-control" id="id_promo" value="<?= $promo['id_promo'] ?>">
             <div class="mb-4">
-                <label for="value" class="form-label">Judul Promosi <span class="text-secondary">(Cth : Promo Lebaran, Promo Natal Promo Nyepi, dll)</span></label>
-                <input type="text" class="form-control border-1" id="title" name="title" placeholder="Judul Promosi Anda..." value="<?= $promo['title']; ?>">
-                <span id="titleError" class="text-danger"></span>
+                <label for="title" class="form-label">Judul Promosi <span class="text-secondary">(Cth : Promo Lebaran, Promo Natal Promo Nyepi, dll)</span></label>
+                <input type="text" class="form-control border-0 shadow-sm  <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" placeholder="Judul Promosi Anda..." value="<?= $promo['title']; ?>">
+                <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
             </div>
 
             <div class="mb-4">
@@ -24,24 +23,24 @@
                 <div class="alert alert-danger text-center border-1 shadow-sm mb-4" role="alert">
                     <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Judul Promo.</b>
                 </div>
-                <input type="text" class="form-control border-1" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $promo['slug']; ?>">
+                <input type="text" class="form-control border-0 shadow-sm" placeholder="Masukan nama slug" name="slug" value="<?= $promo['slug']; ?>">
             </div>
 
             <div class="mb-4">
                 <label for="started" class="form-label">Waktu Mulai Promo</label>
-                <input type="datetime-local" class="form-control border-1" name="started" id="started" value="<?= $promo['start_at']; ?>">
-                <span id="startedError" class="text-danger"></span>
+                <input type="datetime-local" class="form-control border-0 shadow-sm  <?= (validation_show_error('started')) ? 'is-invalid' : 'border-1'; ?>" name="started" value="<?= $promo['start_at']; ?>">
+                <div class="invalid-feedback"><?= validation_show_error('started'); ?></div>
             </div>
 
             <div class="mb-4">
                 <label for="ended" class="form-label">Waktu Berakhir Promo</label>
-                <input type="datetime-local" class="form-control border-1" name="ended" id="ended" value="<?= $promo['end_at']; ?>">
-                <span id="endedError" class="text-danger"></span>
+                <input type="datetime-local" class="form-control border-0 shadow-sm <?= (validation_show_error('ended')) ? 'is-invalid' : 'border-1'; ?>" name="ended" value="<?= $promo['end_at']; ?>">
+                <div class="invalid-feedback"><?= validation_show_error('ended'); ?></div>
             </div>
 
             <div class="mb-4">
                 <label for="deskripsi" class="form-label">Deskripsi Promo (Optional)</label>
-                <input type="textarea" class="form-control border-1" name="deskripsi" id="deskripsi" style="height: 100px;" value="<?= $promo['deskripsi']; ?>">
+                <input type="textarea" class="form-control border-0 shadow-sm" name="deskripsi" style="height: 100px;" value="<?= $promo['deskripsi']; ?>">
             </div>
 
             <div class="mb-4">
@@ -49,13 +48,13 @@
                     <b>Dimensi foto harus berbentuk persegi! (Cth: 256px x 256px atau 512px x 512px)</b>
                 </div>
                 <label for="img" class="form-label">Gambar Promo</label>
-                <input type="file" class="form-control border-1" id="img" name="img" value="<?= $promo['img'] ?>">
+                <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" name="img" value="<?= $promo['img'] ?>">
+                <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                 <input type="hidden" name="imageLama" value="<?= $promo['img']; ?>">
-                <!-- <span id="imgError" class="text-danger"></span> -->
             </div>
             <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
             <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button>
+                <button type="submit" class="btn btn-danger">Simpan</button>
             </div>
         </form>
     </div>
@@ -71,59 +70,5 @@
             });
         <?php endif; ?>
     });
-
-    //Validasi Form
-    function validasiPromo() {
-        var isValid = true;
-
-        var titleField = document.getElementById('title');
-        var startedField = document.getElementById('started');
-        var endedField = document.getElementById('ended');
-        var imgField = document.getElementById('img');
-
-        var titleError = document.getElementById('titleError');
-        var startedError = document.getElementById('startedError');
-        var endedError = document.getElementById('endedError');
-        // var imgError = document.getElementById('imgError');
-
-        titleError.textContent = '';
-        startedError.textContent = '';
-        endedError.textContent = '';
-        // imgError.textContent = '';
-
-        if (titleField.value.trim() === '') {
-            titleField.classList.add('invalid-field');
-            titleError.textContent = 'Judul promosi harus diisi';
-            isValid = false;
-        } else {
-            titleField.classList.remove('invalid-field');
-        }
-
-        if (startedField.value.trim() === '') {
-            startedField.classList.add('invalid-field');
-            startedError.textContent = 'Waktu mulai promosi harus diisi';
-            isValid = false;
-        } else {
-            startedField.classList.remove('invalid-field');
-        }
-
-        if (endedField.value.trim() === '') {
-            endedField.classList.add('invalid-field');
-            endedError.textContent = 'Waktu berakhir promosi harus diisi';
-            isValid = false;
-        } else {
-            endedField.classList.remove('invalid-field');
-        }
-
-        // if (imgField.value.trim() === '') {
-        //     imgField.classList.add('invalid-field');
-        //     imgError.textContent = 'Gambar atau Foto promosi harus diisi';
-        //     isValid = false;
-        // } else {
-        //     imgField.classList.remove('invalid-field');
-        // }
-
-        return isValid;
-    }
 </script>
 <?= $this->endSection(); ?>

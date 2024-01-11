@@ -110,8 +110,6 @@ class AdminPromoController extends BaseController
     // Update
     public function updatePromo($id)
     {
-        session();
-
         $promoModel = new PromoModel();
 
         $promo = $promoModel->find($id);
@@ -146,6 +144,10 @@ class AdminPromoController extends BaseController
             }
         }
         $slug = url_title($this->request->getVar('title'), '-', true);
+        $cekSlug = $promoModel->where('slug', $slug)->first();
+        if ($cekSlug != null) {
+            $slug = $slug . '-' . time();
+        }
 
         $data = [
             'id_promo' => $id,
@@ -157,28 +159,7 @@ class AdminPromoController extends BaseController
             'deskripsi' => $this->request->getVar('deskripsi')
         ];
 
-        // Validation
-        $this->validation->setRules([
-            'title' => 'required',
-            'slug' => 'required',
-            'img' => 'uploaded[img]|mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,1024]',
-            'start_at' => 'required',
-            'end_at' => 'required',
-            'deskripsi' => 'required',
-        ]);
-
-        if (!$this->validation->withRequest($this->request)->run()) {
-
-            $errors = $this->validation->getErrors();
-            $alert = [
-                'type'    => 'error',
-                'title'   => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
-            ];
-            session()->setFlashdata('alert', $alert);
-
-            return redirect()->to('dashboard/promo/update-promo/' . $id)->withInput();
-        }
+        // dd($data);
 
         if ($promoModel->save($data)) {
             session()->setFlashdata('success', 'Gambar banner berhasil diubah.');
