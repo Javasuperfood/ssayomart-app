@@ -85,7 +85,7 @@ class StockModel extends Model
         return $query;
     }
 
-    public function reduceStock($id_produk, $id_variasi_item, $qty, $id_toko)
+    public function updateStock($id_produk, $id_variasi_item, $qty, $id_toko, $status)
     {
         $currentStock = $this->select('jsf_stock.stok, cp.qty')
             ->join('jsf_checkout_produk AS cp', 'jsf_stock.id_produk = cp.id_produk', 'left')
@@ -96,8 +96,7 @@ class StockModel extends Model
             ->first();
 
         if ($currentStock !== null) {
-            $newStock = ($currentStock['stok'] - $qty);
-            // dd($currentStock, $newStock);
+            $newStock = ($status == 3) ? ($currentStock['stok'] - $qty) : (($status == 5) ? ($currentStock['stok'] + $qty) : 0);
             $this->where('id_produk', $id_produk)
                 ->where('id_variasi_item', $id_variasi_item)
                 ->where('id_toko', $id_toko)
@@ -106,7 +105,6 @@ class StockModel extends Model
 
             return true;
         }
-
         return false;
     }
 }
