@@ -139,7 +139,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class=" mb-3 mx-3 my-3">
-                                    <button type="submit" class="btn btn-danger form-control border-0 shadow-sm">Simpan</button>
+                                    <button type="submit" class="btn btn-danger form-control border-0 shadow-sm" onclick="clickSubmitEvent(this)">Simpan</button>
                                 </div>
                             </div>
                         </div>

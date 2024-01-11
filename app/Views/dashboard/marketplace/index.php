@@ -38,8 +38,8 @@
                     foreach ($toko as $t) : ?>
                         <tr>
                             <td><?= $i++; ?></td>
-                            <td>Ssyaomart <?= $t['city']; ?> - <?= $t['zip_code']; ?></td>
-                            <td>Ssyaomart <?= $t['alamat_1']; ?></td>
+                            <td>Ssayomart <?= $t['city']; ?> - <?= $t['zip_code']; ?></td>
+                            <td>Ssayomart <?= $t['alamat_1']; ?></td>
                             <td class="text-center">
                                 <div class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,7 +59,7 @@
                                         <form method="post" action="<?= base_url('dashboard/marketplace/delete/' . $t['id_toko']); ?>">
                                             <?= csrf_field() ?>
                                             <input type="hidden" name="method" value="DELETE">
-                                            <button type="submit" class="dropdown-item">
+                                            <button type="submit" class="dropdown-item" onclick="clickSubmitEvent(this)">
                                                 <i class="bi bi-trash-fill fa-sm fa-fw mr-2 text-danger"></i>
                                                 <span class="text-danger">Delete</span>
                                             </button>
