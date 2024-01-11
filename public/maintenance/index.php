@@ -82,7 +82,7 @@
         const startTime = new Date().toLocaleString('en-US', {
             timeZone: 'Asia/Jakarta'
         });
-        const endTime = new Date('2024-02-20 15:40:00').toLocaleString('en-US', {
+        const endTime = new Date('<?= $endTime; ?>').toLocaleString('en-US', {
             timeZone: 'Asia/Jakarta'
         });
 
