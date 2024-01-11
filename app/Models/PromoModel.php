@@ -31,9 +31,21 @@ class PromoModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'title'      => 'required',
+        'title' => [
+            'rules' => 'required|min_length[2]|max_length[50]',
+            'errors' => [
+                'required' => 'Judul banner wajib diisi.',
+                'min_length' => 'Judul banner minimal 2 karakter.',
+                'max_length' => 'Judul banner maksimal 50 karakter.',
+            ],
+        ],
+        'img' => [
+            'rules' => 'required|max_size[img, 1024]',
+            'errors' => [
+                'max_size' => 'Ukuran gambar terlalu besar.',
+            ]
+        ],
         'slug'       => 'required',
-        'img'        => 'required',
         'start_at'   => 'required',
         'end_at'     => 'required',
     ];
