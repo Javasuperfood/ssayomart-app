@@ -35,6 +35,8 @@ return [
     'alert' => '죄송합니다. 귀하의 지역은 아직 당사 서비스를 이용할 수 없습니다.',
     'alert_btn' => '문자 보내',
     'ikuti_kami' => '이쿠티 카미',
+    'pusat_bantuan' => '도움말 센터',
+
 
     // DETAIL USER
     'title' => '사용자 세부정보',
