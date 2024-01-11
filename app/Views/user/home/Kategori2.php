@@ -359,8 +359,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php endif ?>
 
 
-            <!-- style all device css card -->
             <style>
+                /* Animasi Button Kategori */
+                #goToCategories:hover+.bi-grid-3x3-gap-fill {
+                    transform: scale(1.5) rotate(720deg);
+                    transition: transform 0.5s ease-in-out;
+                }
+
+                /* End Animasi Button Kategori */
+
                 /* animasi zoom card  */
                 .card-zoom {
                     transition: transform 0.3s ease-in-out;
@@ -371,6 +378,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
 
                 /* end animasi zoom card  */
+            </style>
+            <!-- style all device css card -->
+            <style>
                 @media screen and (min-width: 400px) and (max-width: 450px) {
                     .card-produk {
                         width: 120px !important;
