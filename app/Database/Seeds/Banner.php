@@ -24,12 +24,12 @@ class Banner extends Seeder
                 'title' => 'Banner 3',
                 'img'    => 'banner-3.png',
                 'img_konten'    => 'content-3.jpg',
-            ],
-            [
-                'title' => 'Banner 4',
-                'img'    => 'banner-5.jpg',
-                'img_konten'    => 'content-4.jpg',
             ]
+            // [
+            //     'title' => 'Banner 4',
+            //     'img'    => 'banner-5.jpg',
+            //     'img_konten'    => 'content-4.jpg',
+            // ]
         ];
 
         $this->db->table('jsf_banner')->insertBatch($data);
