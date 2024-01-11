@@ -122,7 +122,7 @@
                             </div>
                             <div class="col">
                                 <?php if ($order['id_status_pesan'] != 1 && !isset($status['refunds'])) : ?>
-                                    <form action="<?= base_url('dashboard/order/refund/' . $o['invoice']); ?>" onsubmit="return validasiUpdateResi()" method="post" enctype="multipart/form-data">
+                                    <form action="<?= base_url('dashboard/order/refund/' . $o['invoice']); ?>" method="post" enctype="multipart/form-data">
                                         <?= csrf_field(); ?>
                                         <div class="form-floating mb-3">
                                             <textarea class="form-control <?= (validation_show_error('refund_note')) ? 'is-invalid' : ''; ?>" placeholder="Refund Note" name="refund_note" id="refundTextarea" style="height: 100px"></textarea>
@@ -140,7 +140,7 @@
                                         <div class="alert alert-info" role="alert">
                                             <p class="ls-1">Refund transaction is supported only for <span class="badge text-bg-info">credit_card</span> , <span class="badge text-bg-info">gopay</span>, <span class="badge text-bg-info">shopeepay</span> and <span class="badge text-bg-info">QRIS</span> payment methods.</p>
                                         </div>
-                                        <div class="pt-4" align="center">
+                                        <div class="pt-4 text-center">
                                             <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Refund</button>
                                         </div>
                                     </form>
