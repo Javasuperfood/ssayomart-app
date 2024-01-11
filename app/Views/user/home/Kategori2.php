@@ -86,9 +86,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Banner Promosi Item -->
         <div class="class" style="position: relative; top: -15px;">
             <section id="rekomendasi" style="background-color: #f3f5df;">
-                <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
+                <div class="card " style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
                     <div class="container mb-0 mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
+                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class=" card-img-top responsive-image" style="width: 340px;">
                     </div>
                 </div>
 
@@ -101,7 +101,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         ?>
                                 <div class="col-6 py-1 px-1">
                                     <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                        <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="rounded-3 card-img-top">
+                                        <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-zoom rounded-3 card-img-top">
                                     </a>
                                 </div>
                         <?php
