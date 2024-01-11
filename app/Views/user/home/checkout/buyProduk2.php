@@ -350,16 +350,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="permatava_radio" type="radio" value="permata_va" name="paymentType"> Permata Virtual Account</h6>
-                                                <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>permata_bank.png" width="60">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="briva_radio" type="radio" value="bri_va" name="paymentType"> BRI Virtual Account</h6>
                                                 <div class="icons">
                                                     <img src="<?= base_url('assets/img/checkout/bank/'); ?>bri.png" width="50">
@@ -870,16 +860,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <h6 class="my-0"><input id="bniva_radio" type="radio" value="bni_va" name="paymentType"> BNI Virtual Account</h6>
                                                 <div class="icons">
                                                     <img src="<?= base_url('assets/img/checkout/bank/'); ?>bni.png" width="60">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="permatava_radio" type="radio" value="permata_va" name="paymentType"> Permata Virtual Account</h6>
-                                                <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>permata_bank.png" width="60">
                                                 </div>
                                             </div>
                                         </div>
