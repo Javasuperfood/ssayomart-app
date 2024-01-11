@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\StockModel;
 use App\Models\AdminTokoModel;
+use App\Models\ProdukModel;
 
 class Home extends BaseController
 {
@@ -11,6 +12,7 @@ class Home extends BaseController
     {
         $stockModel = new StockModel();
         $adminTokoModel = new AdminTokoModel();
+        $produkModel = new ProdukModel();
         $perPage = 10;
 
         $adminToko = $adminTokoModel->getAdminToko(user_id());
@@ -23,11 +25,14 @@ class Home extends BaseController
         $getStockWithProduct = $stockModel->getStockWithProduct($perPage, $id_toko);
         $currentPage = $this->request->getVar('page_stock') ? $this->request->getVar('page_stock') : 1;
 
+        $getFeaturedProducts = $produkModel->getFeaturedProducts();
+
         $data = [
             'getStockWithProduct' => $getStockWithProduct,
             'pager' => $stockModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'market' => $adminToko,
+            'getFeaturedProducts' => $getFeaturedProducts
         ];
 
         return view('dashboard/home', $data);

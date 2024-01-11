@@ -7,52 +7,77 @@
 <?php endif; ?>
 <p>Berikut adalah data stok produk-produk Ssayomart.</p>
 
-
-<div class="card border-0 shadow-sm mb-5">
-	<div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-		<i class="bi bi-file-text-fill"></i>
-		<h6 class="m-0 fw-bold px-2">List Stok Produk</h6>
-	</div>
-
-	<div class="card-body">
-		<div class="mb-4 row">
-			<label for="filter" class="form-label col-sm-2 d-flex align-items-center">Urutkan berdasarkan:</label>
-			<select id="filter" class="form-select mb-3 col-sm-10" aria-label="Select">
-				<option selected value="monthly">Bulan</option>
-				<option value="yearly">Tahun</option>
-			</select>
+<div class="d-flex justify-content-between">
+	<div class="card shadow-sm p-3 mb-5 bg-body rounded mb-5 col-sm-8">
+		<div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+			<i class="bi bi-file-text-fill"></i>
+			<h6 class="m-0 fw-bold px-2">List Stok Produk</h6>
 		</div>
-		<div class="row">
-			<div class="col col-sm-6">
-				<div class="table-responsive">
-					<table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
-						<thead>
-							<tr>
-								<th>No.</th>
-								<th>Nama Produk</th>
-								<th>Variasi Item</th>
-								<th>Stok</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach ($getStockWithProduct as $stock) : ?>
+
+		<div class="card-body">
+			<div class="mb-4 row">
+				<label for="filter" class="form-label col-sm-2 d-flex align-items-center">Urutkan berdasarkan:</label>
+				<select id="filter" class="form-select mb-3 col-sm-10" aria-label="Select">
+					<option selected value="monthly">Bulan</option>
+					<option value="yearly">Tahun</option>
+				</select>
+			</div>
+			<div class="row">
+				<div class="col ">
+					<div class="table-responsive table-sm">
+						<table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
+							<thead>
 								<tr>
-									<td class="align-middle"><?= $iterasi++; ?></td>
-									<td class="align-middle"><?= $stock['nama']; ?></td>
-									<td class="align-middle"><?= $stock['value_item']; ?></td>
-									<td class="align-middle"><?= $stock['stok']; ?></td>
+									<th>No</th>
+									<th class="text-start">Nama Produk</th>
+									<th class="text-start">Variasi Item</th>
+									<th class="text-end">Stok</th>
 								</tr>
-							<?php endforeach ?>
-						</tbody>
-					</table>
-					<?= $pager->links('stock', 'pagerS') ?>
+							</thead>
+							<tbody>
+								<?php foreach ($getStockWithProduct as $stock) : ?>
+									<tr>
+										<td class="align-middle"><?= $iterasi++; ?></td>
+										<td class="text-start"><?= $stock['nama']; ?></td>
+										<td class="text-start"><?= $stock['value_item']; ?></td>
+										<td class="text-end"><?= $stock['stok']; ?></td>
+									</tr>
+								<?php endforeach ?>
+							</tbody>
+						</table>
+						<?= $pager->links('stock', 'pagerS') ?>
+					</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
-			<!-- Chart -->
-			<div class="card-body col-sm-6">
-				<p class="fw-bold">Stok Produk Ssayomart Per Bulan</p>
-				<canvas id="myChart"></canvas>
+	<!-- Chart -->
+	<div class="border-0 col-sm-4 ms-3">
+		<div class="card mb-3 shadow-sm p-3 bg-body rounded">
+			<div class="card-body">
+				<p class="fw-bold">Stok Produk Ssayomart</p>
+				<canvas id="myChart" style="background-color: #f7f7f7;"></canvas>
+			</div>
+		</div>
+		<div class="card shadow-sm p-3 mb-5 bg-body rounded">
+			<div class="card-body">
+				<p class="fw-bold">Most Loved Products</p>
+				<?php foreach ($getFeaturedProducts as $fp) : ?>
+					<div class="card mb-3">
+						<div class="d-flex align-items-center">
+							<div>
+								<img src="<?= base_url() ?>assets/img/produk/main/<?= $fp['img']; ?>" width="100" alt="">
+							</div>
+							<div>
+								<p class="align-middle fw-semibold"><?= $fp['nama']; ?></p>
+								<i class="bi bi-star-fill" style="color: #ec261f;"></i>
+								<i class="bi bi-star-fill" style="color: #ec261f;"></i>
+								<i class="bi bi-star-half" style="color: #ec261f;"></i>
+							</div>
+						</div>
+					</div>
+				<?php endforeach ?>
 			</div>
 		</div>
 	</div>
@@ -72,7 +97,8 @@
 		datasets: [{
 			label: 'Stok',
 			data: quantityData,
-			borderWidth: 1
+			borderWidth: 1,
+			borderColor: '#ec261f',
 		}]
 	};
 
