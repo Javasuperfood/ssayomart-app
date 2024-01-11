@@ -112,11 +112,11 @@
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="userModalLabel<?= $user['id'] ?>">Are you sure you want to change the role, <?= $user['username'] ?>?</h1>
+                                                                    <h1 class="modal-title fs-5" id="userModalLabel<?= $user['id'] ?>">Apa kamu yakin ingin mengganti role, <?= $user['username'] ?>?</h1>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro optio recusandae aperiam sunt saepe ab fuga ipsam reiciendis</p>
+                                                                    <p>Jika Anda yakin, silakan klik Update Role. Jika tidak, klik Cancel untuk membatalkan.</p>
                                                                     <select class="form-select" name="newRole" aria-label="Default select example">
                                                                         <option value="admin" selected>Admin</option>
                                                                         <option value="user">User</option>
@@ -125,7 +125,7 @@
                                                                 <div class="modal-footer">
                                                                     <div class="modal-footer">
                                                                         <button class="btn btn-secondary" type="button" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-                                                                        <button type="submit" class="btn btn-danger">Update Role</button>
+                                                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Update Role</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

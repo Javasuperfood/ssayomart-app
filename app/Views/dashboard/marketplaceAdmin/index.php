@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="card position-relative border-0 shadow-sm">
             <div class="card-header border-0 py-3">
-                <h6 class="m-0 font-weight-medium">Masukan Masukan Admin</h6>
+                <h6 class="m-0 font-weight-medium">Masukan Admin</h6>
             </div>
             <div class="card-body">
                 <form action="<?= base_url('dashboard/admin-market/save'); ?>" method="post">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="pt-3">
-                        <button type="submit" class="btn btn-danger">Simpan</button>
+                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -102,13 +102,13 @@
                                         <div class="modal-dialog text-start text-secondary" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="updatearkert <?= $u['id']; ?>">Update Admin ?</h5>
+                                                    <h5 class="modal-title" id="updatearkert <?= $u['id']; ?>">Update Admin?</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">×</span>
                                                     </button>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <form id="updateChakedMarket<?= $u['id']; ?>" action="<?= base_url('dashboard/admin-market/update/' . $u['id']); ?>" method="post">
+                                                <form id="updateChakedMarket<?= $u['id']; ?>" action="<?= base_url('dashboard/admin-market/update/' . $u['id']); ?>" method="post">
+                                                    <div class="modal-body">
                                                         <?= csrf_field() ?>
                                                         <?php foreach ($marketAdmin as $m) : ?>
                                                             <?php if ($m['id_user'] == $u['id']) : ?>
@@ -120,13 +120,13 @@
                                                                 </div>
                                                             <?php endif; ?>
                                                         <?php endforeach ?>
-                                                    </form>
 
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                    <button form="updateChakedMarket<?= $u['id']; ?>" type="submit" class="btn btn-danger"> <i class="bi bi-pen-fill"></i> Update Admin</button>
-                                                </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                        <button form="updateChakedMarket<?= $u['id']; ?>" type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-pen-fill"></i> Update Admin</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +155,7 @@
                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                                     <form action="<?= base_url() ?>dashboard/admin-market/delete/<?= $u['id'];; ?>" method="post">
                                                         <?= csrf_field() ?>
-                                                        <button type="submit" class="btn btn-danger"> <i class="bi bi-trash-fill"></i> Delete</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Delete</button>
                                                     </form>
                                                 </div>
                                             </div>

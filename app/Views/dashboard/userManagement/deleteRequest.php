@@ -65,7 +65,7 @@
                                                     <form action="<?= base_url('dashboard/user-management/delete-account/delete/' . $del['id_request_delete']) ?>" method="post" enctype="multipart/form-data">
                                                         <?= csrf_field() ?>
                                                         <input type="hidden" name="id" value="<?= $del['id_request_delete']; ?>">
-                                                        <button type="submit" class="btn btn-danger">Ya, Yakin</button>
+                                                        <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)">Ya, Yakin</button>
                                                     </form>
                                                 </div>
                                             </div>
