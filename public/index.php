@@ -1,5 +1,19 @@
 <?php
 
+/*
+ *---------------------------------------------------------------
+ * EXAMPLE END TIME
+ *---------------------------------------------------------------
+ * String format: YYYY-MM-DD HH:MM:SS
+ * $endTime = '2023-01-11 15:40:00';
+ */
+
+$maintenanceMode = false;
+$endTime = '2024-01-11 15:40:00';
+if ($maintenanceMode) {
+    return require_once('maintenance/index.php');
+}
+
 // Check PHP version.
 $minPhpVersion = '7.4'; // If you update this, don't forget to update `spark`.
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
