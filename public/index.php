@@ -8,8 +8,8 @@
  * $endTime = '2023-01-11 15:40:00';
  */
 
-$maintenanceMode = false;
-$endTime = '2024-01-11 15:40:00';
+$maintenanceMode = true;
+$endTime = '2024-01-16 15:40:00';
 if ($maintenanceMode) {
     return require_once('maintenance/index.php');
 }

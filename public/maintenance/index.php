@@ -17,6 +17,7 @@
             }
         }
     </style>
+    <link rel="shortcut icon" href="https://apps.ssayomart.com/assets/img/logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
                     <h1 class="display-1 fw-bold">Sorry, we are under maintenance</h1>
                 </div>
                 <div class="col-12">
-                    <p class="lead">Please check back later <span class="badge text-bg-danger" id="countdown"></span></p>
+                    <p class="lead">Please check back later <span id="countdown"></span></p>
                 </div>
             </div>
         </div>
@@ -56,13 +57,16 @@
                 const timeDifference = endTime - currentTime;
 
                 if (timeDifference <= 0) {
-                    countdownElement.textContent = `00:00:00`;
+                    countdownElement.innerHTML = `<span class="badge text-bg-danger">00:00:00</span>`;
                 } else {
+                    const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
                     const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-                    countdownElement.textContent = `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+                    const hoursDifference = Math.floor((timeDifference / (1000 * 60 * 60) * 24) / 60);
+
+                    countdownElement.innerHTML = `in <span class="badge text-bg-danger">${padZero(hoursDifference)}:${padZero(minutes)}:${padZero(seconds)}</span>`;
 
                     setTimeout(updateCountdown, 1000);
                 }
@@ -78,12 +82,14 @@
         const startTime = new Date().toLocaleString('en-US', {
             timeZone: 'Asia/Jakarta'
         });
-        const endTime = new Date('<?= $endTime; ?>').toLocaleString('en-US', {
+        const endTime = new Date('2024-02-20 15:40:00').toLocaleString('en-US', {
             timeZone: 'Asia/Jakarta'
         });
 
         startCountdown(new Date(startTime).getTime(), new Date(endTime).getTime());
     </script>
+
+
 </body>
 
 </html>
