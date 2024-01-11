@@ -288,8 +288,8 @@ class AdminPesananController extends BaseController
         }
 
         foreach ($produk as $p) {
-            if ($this->request->getVar('status') == 3) {
-                $stokModel->reduceStock($p['id_produk'], $p['id_variasi_item'], $p['qty'], $id_toko);
+            if ($this->request->getVar('status') == 3 || $this->request->getVar('status') == 5) {
+                $stokModel->updateStock($p['id_produk'], $p['id_variasi_item'], $p['qty'], $id_toko, $this->request->getVar('status'));
             }
         }
 
