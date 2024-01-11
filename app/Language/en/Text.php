@@ -39,6 +39,7 @@ return [
     'alert' => 'Sorry, your area is not yet covered by our services.',
     'alert_btn' => 'Send Message',
     'ikuti_kami' => 'Follow Us',
+    'pusat_bantuan' => 'Help Center',
 
     // DETAIL USER
     'title' => 'User Detail',
