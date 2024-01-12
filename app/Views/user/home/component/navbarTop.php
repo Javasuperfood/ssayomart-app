@@ -147,7 +147,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col">
                                             <p class="text-dark">Download Ssayomart di Play Store</p>
                                             <a href="https://play.google.com/store/apps/details?id=com.ssayomart" target="__blank">
-                                                <img src="<?= base_url('assets/img/plays.png'); ?>" class="" width="120px" alt="" srcset="">
+                                                <img src="<?= base_url('assets/img/plays.png'); ?>" class="icon-zoom" width="120px" alt="" srcset="">
                                             </a>
                                         </div>
                                     </div>
@@ -168,7 +168,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="col">
                                             <p class="text-dark">Download Ssayomart di App Store</p>
                                             <a href="https://apps.apple.com/id/app/ssayomart/id6447356667" target="__blank">
-                                                <img src="<?= base_url('assets/img/Apps.png'); ?>" class="" width="120px" alt="" srcset="">
+                                                <img src="<?= base_url('assets/img/Apps.png'); ?>" class="icon-zoom" width="120px" alt="" srcset="">
                                             </a>
                                         </div>
                                     </div>
@@ -301,6 +301,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- Style navbar header -->
     <style>
+        .icon-zoom {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .icon-zoom:hover {
+            transform: scale(1.1);
+        }
+
+        /* end card zoom slider */
+        zoom slider */
+
         /* Mengubah warna ikon saat dihover */
         .headerc__label i:hover {
             color: #ce2614;
