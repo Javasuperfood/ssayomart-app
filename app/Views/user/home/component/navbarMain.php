@@ -34,7 +34,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-google-play mx-2"></i>Download Ssayomart Playstore
                         </a>
                         <div class="barcode-popup">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
@@ -55,7 +55,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-apple mx-2"></i>Download Ssayomart App Store
                         </a>
                         <div class="barcode-apps">
-                            <div class="card">
+                            <div class="card border-0 shadow-sm">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col">
