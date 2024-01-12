@@ -16,7 +16,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-4">
                         <label for="promo" class="form-label">Pilih Promo Tersedia</label>
-                        <select name="promo" id="promo" class="form-control border-1">
+                        <select name="promo" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih promo produk yang anda inputkan" id="promo" class="form-control border-1">
                             <?php foreach ($promo as $item) : ?>
                                 <option value="<?= $item['id_promo']; ?>"><?= $item['title']; ?></option>
                             <?php endforeach; ?>
@@ -26,7 +26,7 @@
 
                     <div class="mb-4">
                         <label for="produk" class="form-label">Pilih Produk Yang Akan Diberikan Promo</label>
-                        <button type="button" class="btn form-control border-left-danger text-left view-product fw-bold text-danger shadow-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-width: 0px; border-color: #d1d3e2; border-style: solid;">
+                        <button type="button" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih produk yang akan di berikan promo" class="btn form-control border-left-danger text-left view-product fw-bold text-danger shadow-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border-width: 0px; border-color: #d1d3e2; border-style: solid;">
                             Tekan Untuk Memilih Produk
                         </button>
                     </div>
@@ -96,24 +96,24 @@
 
                     <div class="mb-4">
                         <label for="produk" class="form-label">Produk Terpilih</label>
-                        <input type="text" class="form-control border-1 bg-white" id="produkTerpilih" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
+                        <input type="text" class="form-control border-1 bg-white" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="produk yang di pilih" id="produkTerpilih" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
                         <span id="produkError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
                         <label for="min" class="form-label">Minimal Pembelian Produk</label>
-                        <input type="text" class="form-control border-1" id="min" name="min" placeholder="Masukkan Minimal Pembelian Produk...">
+                        <input type="text" class="form-control border-1" id="min" name="min" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Harap isi persyaratan pembelian" placeholder="Masukkan Minimal Pembelian Produk...">
                         <span id="minError" class="text-danger"></span>
                     </div>
 
                     <div class="mb-4">
                         <label for="discount" class="form-label">Diskon (%)</label>
-                        <input type="text" class="form-control border-1" id="discount" name="discount" placeholder="Masukkan Jumlah Diskon...">
+                        <input type="text" class="form-control border-1" id="discount" name="discount" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Harap isi jumlah diskon" placeholder="Masukkan Jumlah Diskon...">
                         <span id="discountError" class="text-danger"></span>
                     </div>
 
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
-                    <div class="d-flex justify-content-end">
+                    <div class="d-flex justify-content-end" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Klik untuk melihat perubahan">
                         <button type="submit" class="btn btn-danger">Simpan</button>
                     </div>
                 </form>
