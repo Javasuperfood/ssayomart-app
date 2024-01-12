@@ -469,4 +469,19 @@
         }
 
     }
+      /* ipad pro width (1024px) */
+     /* ipad pro width (1024px) */
+        @media (min-width: 540px) and (max-width: 540px) {
+
+        .susunan-card {
+            flex: 0 0  !important;
+            max-width: 100%;
+        }
+
+        .card-produk {
+            width: 145px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
 </style>
