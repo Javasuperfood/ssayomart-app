@@ -804,7 +804,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 <!-- swipper card PRODUK -->
                 <section id="unggul">
-                    <div class="container py-3">
+                    <div class="container">
                         <div class="row mt-3">
                             <div class="col">
                                 <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
