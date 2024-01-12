@@ -17,7 +17,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="value" class="form-label">Nama Variasi <span class="text-secondary">(contoh : Rasa, dan lain-lain)</span></label>
-                        <input type="text" class="form-control <?= (validation_show_error('nama_varian')) ? 'is-invalid' : 'border-1'; ?>" id="value" name="nama_varian" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
+                        <input type="text" class="form-control <?= (validation_show_error('nama_varian')) ? 'is-invalid' : 'border-1'; ?>" id="value" name="nama_varian" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Harap isi variasi yang ingin di tampilkan" placeholder="Nama Variasi Produk Anda..." value="<?= old('value') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('nama_varian'); ?></div>
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
