@@ -98,8 +98,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <nav aria-label="breadcrumb" class="rounded-3 p-2">
                     <ol class="breadcrumb mb-0">
                         <li class="breadcrumb-item">
-                            <h2 class="mb-0"><?= $title; ?></h2>
-                            <hr class="text-danger">
+                            <h2 class="mb-0 fw-bold"><i class="text-danger bi bi-box2-heart"></i> <?= $title; ?></h2>
+                            <hr class="mb-3 border-danger" style="border-width: 5px;">
                         </li>
                     </ol>
                 </nav>
@@ -109,7 +109,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col pb-3">
                         <div class="card border-0 shadow-sm bg-white">
                             <img src="<?= base_url() ?>assets/img/promo/Clipped.png" class="card-img-top border-0 img-fluid img-thumbnail rounded-4" alt="...">
-                            <div class="card-body border-0 bg-white text-center">
+                            <div class="card-body border-0 bg-white text-center ">
                                 <p class="fs-5"><?= $km['nama']; ?></p>
                                 <p class="text-secondary fs-6"><?= $km['kode']; ?></p>
                                 <p class="text-secondary fs-6">Kupon Tersedia : <?= $km['available_kupon']; ?></p>
