@@ -377,13 +377,13 @@ class CheckoutController extends BaseController
                 ->find($id);
             $data['cart_id'][$key] = $id;
         }
-        $totalAkhir = 0;
+        $total_1 = 0;
         $beratTotal = 0;
         $totalDiscount = 0;
 
         foreach ($data['produk'] as $key => $produk) {
             $rowTotal = $produk['qty'] * $produk['harga_item'];
-            $totalAkhir += $rowTotal;
+            $total_1 += $rowTotal;
             $rowBerat = $produk['qty'] * $produk['berat'];
             $beratTotal += $rowBerat;
             $cekProduk[$key] = [
@@ -402,7 +402,6 @@ class CheckoutController extends BaseController
         }
 
         if ($totalDiscount > 0) {
-            $totalAkhir = $totalAkhir - $totalDiscount;
             $cekProduk[] = [
                 'id' => 'diskonPromo',
                 'price' => -$totalDiscount,
@@ -410,10 +409,9 @@ class CheckoutController extends BaseController
                 'name' => 'Total Diskon Promo',
             ];
         }
-        // dd($totalDiscount);
+        // dd($total_1, $totalDiscount);
 
-        $data['total'] = $totalAkhir;
-        $data['beratTotal'] = $totalAkhir;
+        $data['total'] = $total_1 - $totalDiscount;
 
         $kupon = [
             'discount' => '',
@@ -421,12 +419,10 @@ class CheckoutController extends BaseController
         ];
 
         $total_2 = floatval($data['total']);
-        $total_2 = $service + $total_2;
 
         if ($kode != '') {
             $kuponModel = new KuponModel();
             $cekKupon = $kuponModel->getKupon($kode);
-            $total_2 = floatval($data['total']);
             $discount = floatval($cekKupon['discount']);
             $total_2 = $total_2 - ($total_2 * $discount);
             $getDiscount = floatval($data['total']) - $total_2;
@@ -442,6 +438,7 @@ class CheckoutController extends BaseController
                 'name' => 'Diskon',
             ];
         }
+        // dd($getDiscount);
         $cekProduk[] = [
             'id' => 'Service',
             'price' => $service,
@@ -491,7 +488,7 @@ class CheckoutController extends BaseController
             'id_status_pesan' => 1,
             'id_status_kirim' => 1,
             'invoice' => $inv,
-            'total_1' => $totalAkhir,
+            'total_1' => $total_1,
             'total_2' => $total_2,
             'service' => $serviceText,
             'harga_service' => $service,
