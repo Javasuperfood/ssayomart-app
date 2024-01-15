@@ -27,7 +27,7 @@
                         <th>Deskripsi</th>
                         <th>Diskon</th>
                         <th>Total Pembelian</th>
-                        <th>Masa Berlaku</th>
+                        <!-- <th>Masa Berlaku</th> -->
                         <th>Dibuat Oleh</th>
                         <th>Aksi</th>
                     </tr>
@@ -41,7 +41,7 @@
                             <td class="align-middle"><?= $kp['deskripsi']; ?></td>
                             <td class="align-middle"><?= $kp['discount']; ?></td>
                             <td class="align-middle"><?= 'Rp ' . number_format($kp['total_buy'], 0, ',', '.'); ?></td>
-                            <td class="align-middle"><?= date("d-m-Y", strtotime($kp['is_active'])); ?></td>
+                            <!-- <td class="align-middle"><?= date("d-m-Y", strtotime($kp['is_active'])); ?></td> -->
                             <td class="align-middle"><?= $kp['username']; ?></td>
                             <td class="text-center">
                                 <div class="nav-item dropdown no-arrow">
