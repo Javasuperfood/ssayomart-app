@@ -131,7 +131,7 @@ class BuyController extends BaseController
 
         $total_1 = floatval($produk['harga_item']) * $qty;
         $total_2 = $total_1 + $service;
-
+        $totalDiskon = 0;
         $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
         if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
@@ -147,6 +147,7 @@ class BuyController extends BaseController
             $discount = $promoDetails[0]['discount'];
         }
         // dd($diskonPromo);
+        $totalDiskon = $total_1 - $diskonPromo;
         $kupon = [
             'discount' => '',
             'kupon' => ''
@@ -163,7 +164,7 @@ class BuyController extends BaseController
             $idKupon = $kuponModel->getKuponId($kode);
             $discount = floatval($cekKupon['discount']);
             $total_2 = $total_2 - ($total_2 * $discount);
-            $getDiscount = $total_2;
+            $getDiscount = floatval($totalDiskon) - $total_2;
             $total_2 = $service + $total_2;
             $kupon = [
                 'discount' => $cekKupon['discount'],
