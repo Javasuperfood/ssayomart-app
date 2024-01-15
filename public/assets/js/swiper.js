@@ -103,10 +103,11 @@ var swiper = new Swiper(".mySwung", {
 
 // Slider card produk detail (All Device) dan slider Homepage (Desktop)
 var swiper = new Swiper(".mySwing", {
-  slidesPerView: 3,
+  slidesPerView: 6,
   centeredSlides: false,
   spaceBetween: 10,
   grabCursor: true,
+  loop: true,
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
