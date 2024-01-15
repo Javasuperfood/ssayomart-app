@@ -484,4 +484,33 @@
         }
 
     }
+
+      /* microsoft surface duo lebar screen 1114px */
+        @media (min-width: 1114px) and (max-width: 1114px) {
+
+        .susunan-card {
+            flex: 0 0  !important;
+            max-width: 100%;
+        }
+
+        .card-produk {
+            width: 145px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
+      /* microsoft surface duo lebar screen 720px */
+        @media (min-width: 720px) and (max-width: 720px) {
+
+        .susunan-card {
+            flex: 0 0  !important;
+            max-width: 100%;
+        }
+
+        .card-produk {
+            width: 145px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
 </style>
