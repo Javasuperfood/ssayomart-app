@@ -16,7 +16,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <img src="<?= base_url() ?>assets/img/banner/content/<?= $banner_list['img_konten'] ?>" alt="Content Image" class="gambar img-fluid rounded-3">
             </div>
             <div class="container pt-2 text-center">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col">
                         <a href="market://details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="btn btn-block" style="width: 112%;">
                             <img src="<?= base_url() ?>assets/img/plays.png" alt="Gambar Besar" class="gambar img-fluid">
@@ -27,7 +27,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <img src="<?= base_url() ?>assets/img/Apps.png" alt="Gambar Besar" class="gambar img-fluid">
                         </a>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </p>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col">
                             <a href="https://play.google.com/store/apps/details?id=com.javasuperfood.ssayomart&pcampaignid=web_share" class="btn btn-block" style="width: 112%;">
                                 <img src="<?= base_url() ?>assets/img/plays.png" alt="Gambar Besar" class="gambar img-fluid">
@@ -66,7 +66,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/Apps.png" alt="Gambar Besar" class="gambar img-fluid">
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- right panel -->
                 <div class="col-sm-9">
