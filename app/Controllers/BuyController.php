@@ -138,7 +138,6 @@ class BuyController extends BaseController
             $diskonPromo = (float)($total_1 * ($promoDetails[0]['discount']));
             $total_2 = floatval($total_1);
             $total_2 = $total_2 - $diskonPromo;
-            $total_2 = $service + $total_2;
             $cekProduk[] = [
                 'id' => 'diskonPromo',
                 'price' => -$diskonPromo,
@@ -162,24 +161,23 @@ class BuyController extends BaseController
             $kuponModel = new KuponModel();
             $cekKupon = $kuponModel->getKupon($kode);
             $idKupon = $kuponModel->getKuponId($kode);
-            $total_2 = floatval($total_1);
             $discount = floatval($cekKupon['discount']);
             $total_2 = $total_2 - ($total_2 * $discount);
-            $getDiscount = floatval($total_1) - $total_2;
+            $getDiscount = $total_2;
             $total_2 = $service + $total_2;
             $kupon = [
                 'discount' => $cekKupon['discount'],
                 'kupon' => $cekKupon['kode']
             ];
             $cekProduk[] = [
-                'id' => 'Diskon',
+                'id' => 'diskonKupon',
                 'price' => -$getDiscount,
                 'quantity' => 1,
-                'name' => 'Diskon',
+                'name' => 'Diskon Kupon',
             ];
             $discount = $cekKupon['discount'];
         }
-
+        // dd($getDiscount);
         $cekProduk[] = [
             'id' => 'Service',
             'price' => $service,
