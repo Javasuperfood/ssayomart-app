@@ -22,13 +22,13 @@
                                     </a>
                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                         <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 75px;">
-                                            <p class=" text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($fp['nama'], 0, 80); ?></p>
+                                            <p class=" text-secondary  fw-bold " style=" font-size: 10px; margin: 0;"><?= substr($fp['nama'], 0, 80); ?></p>
                                         </div>
                                         <!-- <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                             <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                         </p> -->
 
-                                        <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
+                                        <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 11px; margin: 0;">
                                             <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                                 Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                             <?php else : ?>
@@ -85,13 +85,13 @@
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 75px;">
-                                    <p class=" text-center text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 80); ?></p>
+                                    <p class=" text-center text-secondary fw-bold  " style=" font-size: 10px; margin: 0;"><?= substr($p['nama'], 0, 80); ?></p>
                                 </div>
                                 <!-- <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                 </p> -->
 
-                                <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
+                                <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 11px; margin: 0;">
                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>

@@ -30,7 +30,7 @@ $countProduk = count($produk);
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                     <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 75px;">
-                    <p class=" text-secondary fw-bold" style="font-size: 8px; margin: 0;">
+                    <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
                     </div>
@@ -38,7 +38,7 @@ $countProduk = count($produk);
                         <span class="placeholder col-6"></span>
                     </p>
  
-                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
                             <span class="placeholder col-6"></span>
                         </h1>
                         
@@ -90,12 +90,12 @@ $countProduk = count($produk);
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                         <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 75px;">
                         
-                        <p class=" text-secondary fw-bold" style="font-size: 8px; margin: 0;">
+                        <p class=" text-secondary fw-bold" style="font-size: 10px; margin: 0;">
                             ${p.nama.length > 80 ? p.nama.slice(0, 80) + '' : p.nama}
                         </p>
                         </div>
                         
-                            <h1 class="text-danger fw-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                            <h1 class="text-danger fw-bold mt-1 mb-1" style="font-size: 11px; margin: 0;">
                             ${hargaText}
                             </h1>
 
