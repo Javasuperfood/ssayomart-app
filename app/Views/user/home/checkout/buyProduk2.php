@@ -302,16 +302,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="modal-body">
                                 <div id="payment-options">
                                     <hr class="mb-4">
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="cc_radio" type="radio" value="cc" name="paymentType"> Credit
-                                                    Card</h6>
+                                                <h6 class="my-0"><input id="gopay_online_radio" type="radio" value="gopay_online" name="paymentType"> Gopay Regular
+                                                </h6>
                                                 <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>visa.png" width="40">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>mastercard.png" width="40">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>jcb.png" width="40">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>american_express.png" width="30">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>gopay_landscape.png" width="80">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="my-0"><input id="shopeepay_radio" type="radio" value="shopeepay" name="paymentType"> Shopee Pay</h6>
+                                                <div class="icons">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>shopeepay.png" width="60">
                                                 </div>
                                             </div>
                                         </div>
@@ -327,6 +336,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -337,6 +347,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -347,6 +358,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -357,33 +369,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="gopay_online_radio" type="radio" value="gopay_online" name="paymentType"> Gopay Regular
-                                                </h6>
+                                                <h6 class="my-0"><input id="cc_radio" type="radio" value="cc_snap" name="paymentType"> Credit
+                                                    Card</h6>
                                                 <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>gopay_landscape.png" width="80">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="qris_online_radio" type="radio" value="qris_online" name="paymentType"> QRIS</h6>
-                                                <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>/qris.png" width="80">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="shopeepay_radio" type="radio" value="shopeepay" name="paymentType"> Shopee Pay</h6>
-                                                <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>shopeepay.png" width="60">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>visa.png" width="40">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>mastercard.png" width="40">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>jcb.png" width="40">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>american_express.png" width="30">
                                                 </div>
                                             </div>
                                         </div>
@@ -819,16 +815,37 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="modal-body">
                                 <div id="payment-options">
                                     <hr class="mb-4">
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="cc_radio" type="radio" value="cc" name="paymentType"> Credit
-                                                    Card</h6>
+                                                <h6 class="my-0"><input id="qris_online_radio" type="radio" value="qris_online" name="paymentType"> QRIS</h6>
                                                 <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>visa.png" width="40">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>mastercard.png" width="40">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>jcb.png" width="40">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>american_express.png" width="30">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>/qris.png" width="80">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="my-0"><input id="gopay_online_radio" type="radio" value="gopay_online" name="paymentType"> Gopay Regular
+                                                </h6>
+                                                <div class="icons">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>gopay_landscape.png" width="80">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="my-0"><input id="shopeepay_radio" type="radio" value="shopeepay" name="paymentType"> Shopee Pay</h6>
+                                                <div class="icons">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>shopeepay.png" width="60">
                                                 </div>
                                             </div>
                                         </div>
@@ -844,6 +861,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -854,6 +872,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -864,6 +883,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -874,37 +894,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="gopay_online_radio" type="radio" value="gopay_online" name="paymentType"> Gopay Regular
-                                                </h6>
+                                                <h6 class="my-0"><input id="cc_radio" type="radio" value="cc" name="paymentType"> Credit
+                                                    Card</h6>
                                                 <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>gopay_landscape.png" width="80">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>visa.png" width="40">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>mastercard.png" width="40">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>jcb.png" width="40">
+                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>american_express.png" width="30">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="qris_online_radio" type="radio" value="qris_online" name="paymentType"> QRIS</h6>
-                                                <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>/qris.png" width="80">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
-                                        <div class="card-body">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="my-0"><input id="shopeepay_radio" type="radio" value="shopeepay" name="paymentType"> Shopee Pay</h6>
-                                                <div class="icons">
-                                                    <img src="<?= base_url('assets/img/checkout/bank/'); ?>shopeepay.png" width="60">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                                 <hr class="mb-4">
                             </div>
