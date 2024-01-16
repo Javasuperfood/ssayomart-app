@@ -474,7 +474,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class=" bi bi-cart-fill"></i></button>
                             <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                         <?php elseif ($varianItem == 1) : ?>
-                            <?php if ($useStock) : ?>
+                            <?php if ($useStock || $stok[0]['stok'] == 0) : ?>
                                 <!-- <button onclick="alertNoStcok()" class="btn btn-white text-danger border-danger mt-4 d-inline"><i class=" bi bi-cart-fill"></i></button>
                                 <a onclick="alertNoStcok()" id="buyButton_1" href="#" role="button" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a> -->
                                 <button type="button" class="btn btn-secondary text-white  mt-4" style="padding: 5px 30px;" disabled>Stok Tidak Tersedia</button>
