@@ -195,7 +195,7 @@
                     <?php foreach ($pay['request']['item_details'] as $key => $i) : ?>
                         <tr>
                             <td><?= $key + 1; ?></td>
-                            <td><?= $i['name']; ?></td>
+                            <td class="text-start"><?= $i['name']; ?></td>
                             <td><?= number_format($i['quantity'], 0, ',', '.'); ?></td>
                             <td><?= number_format($i['price'], 0, ',', '.'); ?></td>
                             <td class="text-end"><?= number_format(((int) ($i['price'] * $i['quantity'])), 0, ',', '.'); ?></td>
@@ -205,16 +205,8 @@
                         <td colspan="5"> </td>
                     </tr>
                     <tr>
-                        <td colspan="4" class="text-end fw-bold">Subtotal</td>
-                        <td class="text-start"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" class="text-end fw-bold">Credit</td>
-                        <td class="text-start">0</td>
-                    </tr>
-                    <tr>
                         <td colspan="4" class="text-end fw-bold">Total</td>
-                        <td class="text-start"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
+                        <td class="text-end"><?= number_format($pay['response']['gross_amount'], 0, ',', '.'); ?></td>
                     </tr>
                 </tbody>
             </table>

@@ -508,6 +508,7 @@ class BuyController extends BaseController
         $wishlistProdModel = new WishlistProdukModel();
         $checkoutResponseModel = new CheckoutResponseModel();
         $promoBatchModel = new PromoBatchModel();
+        $kuponModel = new KuponModel();
 
         // $kuponModel = new KuponModel();
         // $kuponList = $kuponModel->find($id);
@@ -549,7 +550,7 @@ class BuyController extends BaseController
         // start:  jika tidak ada promo atau kupon maka total hanya akan rumus dibawah 
 
         $total_1 = floatval($produk['harga_item']) * $qty;
-        $total_2 = $total_1 + $service;
+        $total_2 = $total_1;
         // end  Default
 
         $cekProduk[] = [
@@ -558,29 +559,23 @@ class BuyController extends BaseController
             'quantity' => $qty,
             'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
         ];
-        $cekProduk[] = [
-            'id' => 'Service',
-            'price' => $service,
-            'quantity' => 1,
-            'name' => $servicetext,
-        ];
+
 
         // jika ada ada promo maka total akan rumus dibawah 
         $totalDiskon = 0;
+        $diskonPromo = 0;
         $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
         if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
             $diskonPromo = (float)($total_1 * ($promoDetails[0]['discount']));
             $total_2 = floatval($total_1);
             $total_2 = $total_2 - $diskonPromo;
-            $total_2 = $service + $total_2;
             $cekProduk[] = [
                 'id' => 'diskonPromo',
                 'price' => -$diskonPromo,
                 'quantity' => 1,
                 'name' => 'Diskon Promo',
             ];
-            $discount = $promoDetails[0]['discount'];
         }
         $totalDiskon = $total_1 - $diskonPromo;
         $kupon = [
@@ -591,27 +586,32 @@ class BuyController extends BaseController
 
         // Start : Promo kupon 
         if ($kode != '') {
-            $kuponModel = new KuponModel();
             $cekKupon = $kuponModel->getKupon($kode);
             $idKupon = $kuponModel->getKuponId($kode);
             $discount = floatval($cekKupon['discount']);
-            $total_2 = $total_2 - ($total_2 * $discount);
-            $getDiscount = floatval($totalDiskon) - $total_2;
-            $total_2 = $service + $total_2;
+            $getDiscount = $totalDiskon * $discount;
+            $total_2 = $total_2 - $getDiscount;
             $kupon = [
                 'discount' => $cekKupon['discount'],
                 'kupon' => $cekKupon['kode']
             ];
+            // dd($total_1, $discount, $getDiscount);
             $cekProduk[] = [
-                'id' => 'Diskon',
+                'id' => 'diskonKupon',
                 'price' => -$getDiscount,
                 'quantity' => 1,
-                'name' => 'Diskon',
+                'name' => 'Diskon Kupon',
             ];
             $discount = $cekKupon['discount'];
         }
         // end promo kupon
-
+        $total_2 = $service + $total_2;
+        $cekProduk[] = [
+            'id' => 'Service',
+            'price' => $service,
+            'quantity' => 1,
+            'name' => $servicetext,
+        ];
         $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
 
 
@@ -648,7 +648,11 @@ class BuyController extends BaseController
             ],
             "item_details" => $cekProduk,
         ];
+        // dd($params);
         switch ($metode_pemabayaran) {
+            case 'cc_snap':
+                $params['payment_type'] = "cc_snap";
+                break;
             case 'cc':
                 $params['payment_type'] = "credit_card";
                 $params["credit_card"] = [
@@ -780,9 +784,7 @@ class BuyController extends BaseController
         if (!empty($kode)) {
             $idKupon = $kuponModel->getKuponId($kode);
             if ($idKupon) {
-                if ($kuponModel->useCoupon($idKupon)) {
-                    return redirect()->to(base_url('payment/' . $inv))->with('success', 'Your order has been placed successfully.');
-                }
+                $kuponModel->useCoupon($idKupon);
             }
         }
 
@@ -798,7 +800,7 @@ class BuyController extends BaseController
                 'title' => '404'
             ]);
         }
-        if ($payment_type == 'qris' || $payment_type == 'shopeepay' || $payment_type == 'gopay') {
+        if ($payment_type == 'qris' || $payment_type == 'shopeepay' || $payment_type == 'gopay' || $payment_type == 'cc_snap') {
             return redirect()->to(base_url('payment/' . $inv . '?payment_type=' . $payment_type));
         }
         $checkoutModel = new CheckoutModel();
@@ -915,6 +917,7 @@ class BuyController extends BaseController
                     'id_status_pesan' => 5
                 ]);
             }
+            return view('404', ['title' => '404']);
             return dd($e);
         }
         // $data['pay']['status'] = $paymentStatus;
