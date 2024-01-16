@@ -385,7 +385,7 @@ class AdminPromoController extends BaseController
             $data = [
                 'id_promo' => $this->request->getVar('promo'),
                 'id_produk' => $productId,
-                'discount' => (int)($this->request->getVar('discount')) / 100,
+                'discount' => floatval($this->request->getVar('discount')),
                 'min' => $this->request->getVar('min')
             ];
 
@@ -453,7 +453,7 @@ class AdminPromoController extends BaseController
             'id_promo_item_batch' => $id,
             'id_promo' => $this->request->getVar('promo'),
             'id_produk' => $this->request->getVar('produk_id'),
-            'discount' => $this->request->getVar('discount'),
+            'discount' => floatval($this->request->getVar('discount')),
             'min' => $this->request->getVar('min'),
         ];
         // dd($data);
