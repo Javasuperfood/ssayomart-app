@@ -128,10 +128,12 @@ class BuyController extends BaseController
 
         $kode = $this->request->getVar('kupon');
         $qty =  intval($this->request->getVar('qty'));
-
+        // jika tidak ada promo atau kupon maka total hanya akan rumus dibawah 
         $total_1 = floatval($produk['harga_item']) * $qty;
         $total_2 = $total_1 + $service;
+
         $totalDiskon = 0;
+        $diskonPromo = 0;
         $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
         if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
@@ -544,10 +546,27 @@ class BuyController extends BaseController
 
         $kode = $this->request->getVar('kupon');
         $qty =  intval($this->request->getVar('qty'));
+        // start:  jika tidak ada promo atau kupon maka total hanya akan rumus dibawah 
 
         $total_1 = floatval($produk['harga_item']) * $qty;
         $total_2 = $total_1 + $service;
+        // end  Default
 
+        $cekProduk[] = [
+            'id' => $produk['id_produk'],
+            'price' => $produk['harga_item'],
+            'quantity' => $qty,
+            'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
+        ];
+        $cekProduk[] = [
+            'id' => 'Service',
+            'price' => $service,
+            'quantity' => 1,
+            'name' => $servicetext,
+        ];
+
+        // jika ada ada promo maka total akan rumus dibawah 
+        $totalDiskon = 0;
         $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
         if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
@@ -563,25 +582,21 @@ class BuyController extends BaseController
             ];
             $discount = $promoDetails[0]['discount'];
         }
-
+        $totalDiskon = $total_1 - $diskonPromo;
         $kupon = [
             'discount' => '',
             'kupon' => ''
         ];
-        $cekProduk[] = [
-            'id' => $produk['id_produk'],
-            'price' => $produk['harga_item'],
-            'quantity' => $qty,
-            'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
-        ];
+        // end Promo
+
+        // Start : Promo kupon 
         if ($kode != '') {
             $kuponModel = new KuponModel();
             $cekKupon = $kuponModel->getKupon($kode);
             $idKupon = $kuponModel->getKuponId($kode);
-            $total_2 = floatval($total_1);
             $discount = floatval($cekKupon['discount']);
             $total_2 = $total_2 - ($total_2 * $discount);
-            $getDiscount = floatval($total_1) - $total_2;
+            $getDiscount = floatval($totalDiskon) - $total_2;
             $total_2 = $service + $total_2;
             $kupon = [
                 'discount' => $cekKupon['discount'],
@@ -595,12 +610,8 @@ class BuyController extends BaseController
             ];
             $discount = $cekKupon['discount'];
         }
-        $cekProduk[] = [
-            'id' => 'Service',
-            'price' => $service,
-            'quantity' => 1,
-            'name' => $servicetext,
-        ];
+        // end promo kupon
+
         $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
 
 
