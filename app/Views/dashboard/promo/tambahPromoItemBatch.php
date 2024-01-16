@@ -110,7 +110,12 @@
 
                     <div class="mb-4">
                         <label for="discount" class="form-label">Diskon (%)</label>
-                        <input type="text" class="form-control border-1" id="discount" name="discount" data-toggle="tooltip" data-placement="bottom" title="Harap isi jumlah diskon" onkeypress="return isNumber(event);" placeholder="Masukkan Jumlah Diskon...">
+                        <select class="form-select border-1" name="discount" id="discount">
+                            <option value="" selected>Pilih diskon</option>
+                            <?php for ($i = 5; $i <= 100; $i += 5) : ?>
+                                <option value="<?= $i / 100; ?>" <?= (old('discount') == $i / 100) ? 'selected' : ''; ?>><?= $i; ?>%</option>
+                            <?php endfor; ?>
+                        </select>
                         <span id="discountError" class="text-danger"></span>
                     </div>
 
