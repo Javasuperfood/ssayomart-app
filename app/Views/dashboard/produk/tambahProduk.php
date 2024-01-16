@@ -75,35 +75,29 @@
                                 <span aria-hidden="true">×</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body d-flex justify-content-center align-items-center">
                             <div class="img-container">
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <img id="image" src="https://avatars0.githubusercontent.com/u/3456749" class="img-fluid">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h5>Hasil Crop</h5>
-                                        <img id="croppedResult" class="img-fluid">
+                                        <img id="image" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="crop">Crop</button>
-                            <button type="button" class="btn btn-secondary" id="zoomIn">Zoom In</button>
-                            <button type="button" class="btn btn-secondary" id="zoomOut">Zoom Out</button>
+                            <button type="button" class="btn btn-danger rounded-3" id="crop"><i class="bi bi-crop me-2"></i> Potong</button>
+                            <button type="button" class="btn btn-danger rounded-3" id="zoomIn"><i class="bi bi-zoom-in"></i></button>
+                            <button type="button" class="btn btn-danger rounded-3" id="zoomOut"><i class="bi bi-zoom-out"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="mb-4">
-                <label for="hasil_crop" class="form-label">Hasil Cropping</label>
+                <h6 for="img" class="form-label">Hasil Gambar</h6>
                 <img id="hasil_crop" class="img-fluid">
             </div>
-
 
             <div class="mb-4">
                 <div class="row">
