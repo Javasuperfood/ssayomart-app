@@ -34,7 +34,7 @@
                             <div class="fw-bold fs-3 text-secondary mb-3">
                                 <div class="row">
                                     <div class="col-md-6">Sorting Kategori</div>
-                                    <div class="col-md-6 text-end"><button type="submit" class="btn btn-danger text rounded-0" onclick="clickSubmitEvent(this)">Update</button></div>
+                                    <div class="col-md-6 text-end"><button type="submit" data-toggle="tooltip" data-placement="bottom" title="Klik untuk melihat perubahan" class="btn btn-danger text rounded-2" onclick="clickSubmitEvent(this)">Update</button></div>
                                 </div>
                             </div>
                             <?= csrf_field(); ?>

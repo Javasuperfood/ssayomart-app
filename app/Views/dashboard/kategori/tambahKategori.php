@@ -16,7 +16,7 @@
                     <?= csrf_field(); ?>
                     <div class=" mb-4">
                         <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori</label>
-                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
+                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
                     </div>
                     <!-- <div class="mb-3">
@@ -30,7 +30,7 @@
                         <b>Isi Kategori Induk jika anda ingin menambahkan item sebagai SUB KATEGORI. Kosongkan jika anda ingin menambahkan item sebagai KATEGORI</b>
                     </div>
                     <label for="parent_kategori_id">Kategori Induk</label>
-                    <select class="form-control border-1" id="parent_kategori_id" name="parent_kategori_id">
+                    <select class="form-control border-1" id="parent_kategori_id" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Harap Kosongkan apabila kategori utama">
                         <option value="">Pilih Kategori Induk (kosongkan jika untuk kategori utama)</option>
                         <?php foreach ($kategori as $k) : ?>
                             <option value="<?= $k['id_kategori']; ?>"><?= $k['nama_kategori']; ?></option>
@@ -41,14 +41,14 @@
                             <b>Dimensi foto harus berbentuk persegi! (Cth: 256px x 256px atau 512px x 512px)</b>
                             <b>Jika anda menambahkan SUB KATEGORI, tidak memerlukan mengisi gambar</b>
                         </div>
-                        <label for="img" class="form-label">Masukan Gambar</label>
+                        <label for="img" class="form-label" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan gambar kategori">Masukan Gambar</label>
                         <input type="file" class="form-control <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" accept="image/*">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
 
                     <div class="mb-4">
                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                        <textarea type="text" class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" rows="3" placeholder="Masukan deskripsi kategori atau sub kategori" name="deskripsi"><?= old('deskripsi') ?></textarea>
+                        <textarea type="text" class="form-control <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Deskripsi" rows="3" placeholder="Masukan deskripsi kategori atau sub kategori" name="deskripsi"><?= old('deskripsi') ?></textarea>
                         <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
                     </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">

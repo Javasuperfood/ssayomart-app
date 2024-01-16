@@ -9,9 +9,9 @@
 </ul>
 <div class="row">
     <div class="col mb-4">
-        <a class="btn btn-danger mb-4" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
+        <a class="btn btn-danger mb-4" data-toggle="tooltip" data-placement="bottom" title="Klik untuk menambah kategori" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
         </a>
-        <a class="btn btn-danger mb-4 ms-2" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah urutan kategori
+        <a class="btn btn-danger mb-4 ms-2" data-toggle="tooltip" data-placement="bottom" title="Klik untuk mengubah urutan Kategori" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah urutan kategori
         </a>
         <div class="card border-1 shadow-sm position-relative">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
