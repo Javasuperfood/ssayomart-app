@@ -52,12 +52,10 @@ class NotifMidtransController extends BaseController
             }
         }
         if ($data->transaction_status == 'expire') {
-            if ($transaksi['id_status_pesan'] == 1) {
-                $checkoutModel->save([
-                    'id_checkout' => $transaksi['id_checkout'],
-                    'id_status_pesan' => 5
-                ]);
-            }
+            $checkoutModel->save([
+                'id_checkout' => $transaksi['id_checkout'],
+                'id_status_pesan' => 5
+            ]);
             $string = $data->order_id . ' ' . ' dengan ' . $total . ' dengan metode ' . $data->payment_type . ' telah kadalwarsa';
         }
         $usersModel = new UsersModel();
