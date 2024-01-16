@@ -100,6 +100,7 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
         $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
         $routes->get('sayo-care', 'Setting::sayoCare');
+        $routes->get('cropper', 'Setting::cropper');
 
         // Post
         $routes->post('select-alamat', 'Setting::storeDataAlamat');
