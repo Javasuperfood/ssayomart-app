@@ -786,4 +786,15 @@ class Setting extends BaseController
         }
         return view('user/home/setting/kebijakanPrivasi', $data);
     }
+
+    // Cropper Image
+    public function cropper()
+    {
+        $kategori = new KategoriModel();
+        $data = [
+            'title' => 'Sayomart Care',
+            'kategori' => $kategori->findAll()
+        ];
+        return view('user/home/setting/cropper', $data);
+    }
 }
