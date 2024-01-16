@@ -138,10 +138,12 @@
                                                     <i class="bi bi-printer fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Print
                                                 </a>
-                                                <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#modalUpdateStatus<?= $c['id_checkout']; ?>">
-                                                    <i class="bi bi-pencil-fill fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                    Update Status
-                                                </a>
+                                                <?php if ((int)$c['id_status_pesan'] != 5) : ?>
+                                                    <a class="dropdown-item" href="#" role="button" data-toggle="modal" data-target="#modalUpdateStatus<?= $c['id_checkout']; ?>">
+                                                        <i class="bi bi-pencil-fill fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                        Update Status
+                                                    </a>
+                                                <?php endif ?>
                                                 <a class="dropdown-item" href="<?= base_url('dashboard/order/refund/' . $c['invoice']); ?>">
                                                     <i class="bi bi-pencil-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Refund
