@@ -1,6 +1,15 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
+<meta name="_token" content="{{ csrf_token() }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.6/cropper.js"></script>
+
+
 <h1 class="h3 mb-2 text-gray-800">Manajemen Produk</h1>
 <p class="mb-4">Anda dapat mengatur produk yang akan di tampilkan kepada pengguna aplikasi/calon pembeli.
 </p>
@@ -54,8 +63,48 @@
             </div>
             <div class="mb-4">
                 <label for="img" class="form-label">Gambar/Foto Produk</label>
-                <input type="file" accept="image/*" class="form-control border-1" id="img" name="img" placeholder="Masukan Gambar Produk" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Klik untuk menginputkan gambar produk">
+                <input type="file" accept="image/*" class="form-control border-1 img" id="img" name="img" placeholder="Masukan Gambar Produk" data-toggle="tooltip" data-placement="bottom" title="Klik untuk menginputkan gambar produk">
             </div>
+
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">Cropping Gambar</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="img-container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <img id="image" src="https://avatars0.githubusercontent.com/u/3456749" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h5>Hasil Crop</h5>
+                                        <img id="croppedResult" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                            <button type="button" class="btn btn-secondary" id="zoomIn">Zoom In</button>
+                            <button type="button" class="btn btn-secondary" id="zoomOut">Zoom Out</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="hasil_crop" class="form-label">Hasil Cropping</label>
+                <img id="hasil_crop" class="img-fluid">
+            </div>
+
+
             <div class="mb-4">
                 <div class="row">
                     <div class="col-md-6">
@@ -74,7 +123,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="mb-4">
                 <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
                 <input type="price" class="form-control <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-1'; ?>" id="berat" name="berat" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Harap masukan berat isi produk yang anda inputkan" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
@@ -136,6 +184,84 @@
         $(e).html('<div class="spinner-border spinner-border-sm mx-2" role="status"><span class="visually-hidden">Loading...</span></div>Loading...');
 
         $(e).closest('form').submit();
+    }
+</script>
+
+<script>
+    var $modal = $('#modal');
+    var image = document.getElementById('image');
+    var cropper;
+
+    $("body").on("change", ".img", function(e) {
+        var files = e.target.files;
+        var done = function(url) {
+            image.src = url;
+            $modal.modal('show');
+        };
+        var reader;
+        var file;
+        var url;
+
+        if (files && files.length > 0) {
+            file = files[0];
+            if (URL) {
+                done(URL.createObjectURL(file));
+            } else if (FileReader) {
+                reader = new FileReader();
+                reader.onload = function(e) {
+                    done(reader.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    });
+
+    $modal.on('shown.bs.modal', function() {
+        cropper = new Cropper(image, {
+            aspectRatio: 1,
+            preview: '#croppedResult', // Tambahkan preview di sini
+            zoomable: true,
+            zoomOnWheel: true,
+        });
+
+        $("#zoomIn").click(function() {
+            cropper.zoom(0.1);
+        });
+
+        $("#zoomOut").click(function() {
+            cropper.zoom(-0.1);
+        });
+    }).on('hidden.bs.modal', function() {
+        cropper.destroy();
+        cropper = null;
+    });
+
+    $("#crop").click(function() {
+        // Mengambil dimensi gambar yang di-crop
+        var cropWidth = 500;
+        var cropHeight = 500;
+
+        canvas = cropper.getCroppedCanvas({
+            width: cropWidth,
+            height: cropHeight,
+        });
+
+        // Mengubah canvas ke data URL
+        var croppedImageDataURL = canvas.toDataURL("image/png");
+
+        // Simpan gambar atau lakukan tindakan lain sesuai kebutuhan
+        saveCroppedImage(croppedImageDataURL);
+
+        // Menutup modal setelah simpan
+        $modal.modal('hide');
+    });
+
+    // Fungsi untuk menyimpan gambar (ganti sesuai kebutuhan)
+    function saveCroppedImage(dataURL) {
+        console.log("Simpan gambar:", dataURL);
+
+        // Menampilkan hasil cropping di elemen gambar
+        $("#hasil_crop").attr("src", dataURL);
     }
 </script>
 
