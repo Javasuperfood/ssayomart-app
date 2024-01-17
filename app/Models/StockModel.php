@@ -95,7 +95,7 @@ class StockModel extends Model
             ->where('jsf_stock.id_toko', $id_toko)
             ->first();
 
-        if ($currentStock !== null) {
+        if ($currentStock !== null && $currentStock['stok'] > $currentStock['qty']) {
             $newStock = ($status == 3) ? ($currentStock['stok'] - $qty) : (($status == 5) ? ($currentStock['stok'] + $qty) : 0);
             $this->where('id_produk', $id_produk)
                 ->where('id_variasi_item', $id_variasi_item)

@@ -179,6 +179,8 @@ class BuyController extends BaseController
                 'name' => 'Diskon Kupon',
             ];
             $discount = $cekKupon['discount'];
+        } else {
+            $total_2 = $total_2 + $service;
         }
         // dd($getDiscount);
         $cekProduk[] = [
@@ -188,8 +190,6 @@ class BuyController extends BaseController
             'name' => $servicetext,
         ];
         $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
-
-
 
         $params = [
             'transaction_details' => [
