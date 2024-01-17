@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <div class="row ">
+            <!-- <div class="row ">
                 <div class="col">
                     <div class="alert alert-danger rounded border-0" role="alert">
                         <div class="row">
@@ -45,8 +45,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mb-2">
+            </div> -->
+            <div class="row mb-2 mt-3">
                 <div class="col">
                     <div class="card text-bg-light mb-4 shadow-sm border-0 rounded">
                         <div class="card-body">
