@@ -513,4 +513,19 @@
         }
 
     }
+        /* galaxy fold lebar screen 653px */
+         @media (min-width: 653px) and (max-width: 653px) {
+
+        .susunan-card {
+             display: flex;
+      justify-content:center;
+      
+        }
+
+        .card-produk {
+            width: 155px !important;
+            /* Mengisi lebar parent container */
+        }
+
+    }
 </style>
