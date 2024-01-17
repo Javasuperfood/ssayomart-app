@@ -514,13 +514,6 @@ class AdminPromoController extends BaseController
 
         foreach ($item as $promoId) {
             $promo = $promoBatchModel->find($promoId);
-
-            // if ($promo['img'] != 'default.png') {
-            //     $gambarLamaPath = 'assets/img/produk/main/' . $promo['img'];
-            //     if (file_exists($gambarLamaPath)) {
-            //         unlink($gambarLamaPath);
-            //     }
-            // }
             $deleted = $promoBatchModel->delete($promoId);
         }
 
@@ -528,7 +521,7 @@ class AdminPromoController extends BaseController
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Produk berhasil dihapus.'
+                'message' => 'Produk promo berhasil dihapus.'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $this->request->getVar('id_promo'))->withInput();
