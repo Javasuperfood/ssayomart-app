@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="card border-0 shadow-sm " style="width: auto; height: 100%;">
                                 <div class="row">
                                     <div class="col-4">
-                                      
+
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center position-relative">
                                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-2 py-1 img-small gambar-kecil" alt="Product" style="width:120px; height:120px; object-fit: contain; object-position: 20% 10%; ">
                                             <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
@@ -49,9 +49,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                     <div class="col-8">
                                         <div class="card-body">
-                                              <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px;  margin-top: 53px;">
-                                            <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
-                                        </div>
+                                            <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px;  margin-top: 53px;">
+                                                <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                            </div>
                                             <div class="mt-4 mx-2 text-position">
                                                 <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
                                                 <br>
@@ -180,6 +180,29 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                                 <!-- right side div -->
                                 <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
+                                    <div class="right-side p-3 border-0 shadow-sm rounded-3 bg-white">
+                                        <h5 class="fw-bold mb-5 text-center"><?= lang('Text.title_cart') ?></h5>
+
+                                        <div class="d-flex justify-content-between">
+                                            <table class="table table-borderless" id="tablePoint">
+                                                <!-- Table content here -->
+                                            </table>
+                                        </div>
+
+                                        <hr />
+
+                                        <div class="total-amt d-flex justify-content-between fw-bold me-2">
+                                            <p><?= lang('Text.total_cart') ?></p>
+                                            <p id="textTotal">Rp. 0</p>
+                                        </div>
+
+                                        <div class="d-flex justify-content-center <?= (!$produk) ? 'd-none' : ''; ?>">
+                                            <button id="btnCheckout" class="btn btn-danger text-uppercase" type="submit" form="formCheckout"><?= lang('Text.btn_checkout') ?></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
                                     <div class="right_side p-3 borde-0 shadow-sm rounded-3 bg-white">
                                         <h5 class="fw-bold mb-5 text-center"><?= lang('Text.title_cart') ?></h5>
                                         <div class="d-flex justify-content-between">
@@ -195,7 +218,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <button id="btnCheckout" class="btn btn-danger text-uppercase" type="submit" form="formCheckout"><?= lang('Text.btn_checkout') ?></button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </form>
                     </div>
