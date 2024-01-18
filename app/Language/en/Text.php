@@ -23,6 +23,7 @@ return [
     'go_to_kategori_id_en' => 'Click here to see All Categories',
 
     // SETTING PAGE
+    'title_setting' => 'Setting',
     'setting' => 'Setting',
     'logout' => 'Logout',
     'welcome_setting' => 'Welcome, ',
