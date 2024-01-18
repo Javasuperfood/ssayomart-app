@@ -23,6 +23,7 @@ return [
     'go_to_kategori_id_en' => 'Ketuk untuk melihat semua kategori',
 
     // SETTING PAGE
+    'title_setting' => '설정 / Pengaturan',
     'setting' => '환경 / Sunting',
     'logout' => '로그 아웃 / Keluar',
     'welcome_setting' => '환영,/ Selamat Datang, ',

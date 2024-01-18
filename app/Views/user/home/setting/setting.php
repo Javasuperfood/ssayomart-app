@@ -186,6 +186,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Tampilan Desktop -->
     <div id="desktopContent" style="margin-top:130px;">
         <div class="container py-5 ">
+            <div class="row ">
+                <div class="col mb-5">
+                    <h3 class="fw-bold text-center"><i class="fs-1 text-danger fw-bold bi bi-gear"></i>
+                        <?= lang('Text.title_setting') ?>
+                    </h3>
+                    <hr class="mb-3 border-danger" style="border-width: 3px;">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-sm mb-4">
