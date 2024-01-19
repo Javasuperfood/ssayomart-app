@@ -2,10 +2,22 @@
 <?= $this->section('page-content') ?>
 
 <style>
-    /* .text-muted {
-        margin: 0;
-       
-    } */
+    /* CDN Font Montserrat */
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,400italic,500italic,600italic,700italic,800italic&subset=latin,latin-ext);
+    @import url(https://fonts.googleapis.com/css?family=Darker+Grotesque:600,700,800,900&subset=latin,latin-ext);
+
+    .fs-montserrat {
+        font-family: 'Montserrat', sans-serif !important;
+    }
+
+    .fs-darker {
+        font-family: 'Darker Grotesque', sans-serif !important;
+    }
+
+    .invoice-content {
+        font-family: 'Darker Grotesque', sans-serif !important;
+        font-weight: 700;
+    }
 
     .logoleft {
         width: 25%;
@@ -108,12 +120,13 @@
         }
     }
 </style>
-<div class="container">
+<div class="container invoice-content">
     <div class="row d-none d-md-block">
+        <div class="col-12 py-5"></div>
         <div class="col-12 py-5"></div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-lg-8 mx-auto">
+        <div class="col-12 mx-auto">
             <div class="card bg-light border-0 shadow-sm border-dark-subtle rounded-2">
                 <div class="d-flex justify-content-between p-2">
                     <img class="logoleft ms-1" src="<?= base_url('assets/img/logopanjang.png'); ?>" alt="" srcset="">
@@ -131,7 +144,7 @@
 
                         <h5 class="card-title">Code Virtual Account</h5>
                         <div class="d-flex justify-content-evenly align-items-center">
-                            <input id="va_number" type="text" class="form-control no-padding form-control-lg bg-light text-secondary font-custom fw-bold border-0" value="<?= $pay['response']['va_numbers'][0]['va_number']; ?>" readonly>
+                            <input id="va_number" type="text" class="fs-montserrat form-control no-padding form-control-lg bg-light font-custom fw-bold border-0" value="<?= $pay['response']['va_numbers'][0]['va_number']; ?>" readonly>
                             <button class="btn button-fold " id="copyButton" onclick="copyButton()"><i class="bi bi-copy text-danger fw-bold fs-5"></i></button>
                         </div>
                     </div>
@@ -147,12 +160,12 @@
 
                         <h5 class="card-title">Company Code</h5>
                         <div class="d-flex justify-content-evenly align-items-center">
-                            <input id="company_code" type="text" class="form-control no-padding form-control-lg bg-light text-secondary font-custom fw-bold border-0" value="<?= $bank_transfer['company_code']; ?>" readonly>
+                            <input id="company_code" type="text" class="fs-montserrat form-control no-padding form-control-lg bg-light text-secondary font-custom fw-bold border-0" value="<?= $bank_transfer['company_code']; ?>" readonly>
                             <button class="btn button-fold " onclick="copyButton2()"><i class="bi bi-copy text-danger fw-bold fs-5"></i></button>
                         </div>
                         <h5 class="card-title">Code Virtual Account</h5>
                         <div class="d-flex justify-content-evenly align-items-center">
-                            <input id="va_number" type="text" class="form-control no-padding form-control-lg bg-light text-secondary font-custom fw-bold border-0" value="<?= $bank_transfer['account_number']; ?>" readonly>
+                            <input id="va_number" type="text" class="fs-montserrat form-control no-padding form-control-lg bg-light text-secondary font-custom fw-bold border-0" value="<?= $bank_transfer['account_number']; ?>" readonly>
                             <button class="btn button-fold " onclick="copyButton()"><i class="bi bi-copy text-danger fw-bold fs-5"></i></button>
                         </div>
                     </div>
@@ -162,7 +175,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 col-xs-12">
+        <div class="col-md-6">
             <div class="card border-0 shadow-sm p-2 mt-5">
                 <p class=" text-muted fw-bold h8">Invoice To</p>
                 <p class="text-muted h7"><?= $penerima['nama']; ?></p>
@@ -170,7 +183,7 @@
                 <p class="text-muted h8"><?= $penerima['telp']; ?></p>
             </div>
         </div>
-        <div class="col-lg-6 col-xs-12 ">
+        <div class="col-md-6 ">
             <div class="card border-0 shadow-sm p-2 mt-5">
                 <p class="text-muted fw-bold h8">Pay To</p>
                 <p class="text-muted h7"><?= $origin['lable']; ?></p>
@@ -180,8 +193,8 @@
         </div>
     </div>
     <div class="row pt-3">
-        <div class="col">
-            <table class="table table-borderless">
+        <div class="col-12">
+            <table class="table table-borderless" style="font-size: smaller;">
                 <thead class="text-center table-danger">
                     <tr>
                         <th>No.</th>
@@ -221,7 +234,6 @@
             <!-- <button class="btn btn-danger btn-lg" onclick="location.reload()"><i class="bi bi-arrow-clockwise fs-1"></i></button> -->
         </div>
     </div>
-
 </div>
 <script>
     var expiryTime = new Date('<?= $pay['response']['expiry_time']; ?>').getTime();
