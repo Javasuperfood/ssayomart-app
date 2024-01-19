@@ -868,5 +868,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php endif; ?>
     });
 </script>
-<?= $this->include('user/home/component/rajaOngkir/checkout2'); ?>
+<?= $this->include('transaction/script/checkoutMain'); ?>
 <?= $this->endSection(); ?>

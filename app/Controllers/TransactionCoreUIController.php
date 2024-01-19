@@ -31,6 +31,16 @@ class TransactionCoreUIController extends BaseController
     }
     public function checkout()
     {
+        /**
+         * Checkout function for processing the checkout process.
+         * *
+         * Paramenter untuk checkout Beli Langsung : base_url('checkout2?slug={SLUG}&varian={ID_VARIASI_ITEM}&qty={QTY}')
+         * 
+         * Parameter untul checkout Cart : base_url('heckout2?cart=true&check%5B%5D={ID_CART_Produk}&check%5B%5D={ID_CART_Produk}')
+         * 
+         * QQ
+         */
+
         // dd($this->request->getVar('cart') == 'true');
         $kuponModel = new KuponModel();
         $alamatModel = new AlamatUserModel();
@@ -100,7 +110,7 @@ class TransactionCoreUIController extends BaseController
         $data['totalDiscount'] = $totalDiscount;
 
         // dd($data);
-        return view('user/home/checkout/checkout3', $data);
+        return view('transaction/midtarnsCoreUI/checkout', $data);
     }
 
     public function storeData()
@@ -123,9 +133,6 @@ class TransactionCoreUIController extends BaseController
         $variasiItemModel = new VariasiItemModel();
         $cartModel = new CartModel();
         $cartProdukModel = new CartProdukModel();
-
-        // $kuponModel = new KuponModel();
-        // $kuponList = $kuponModel->find($id);
 
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
@@ -492,7 +499,6 @@ class TransactionCoreUIController extends BaseController
         $id_cehckout = $data['order']['id_checkout'];
         // dd($data);
         try {
-            // dd($id_cehckout);
             /**
              * @var object $paymentStatus
              */
@@ -548,7 +554,7 @@ class TransactionCoreUIController extends BaseController
             if ($paymentStatus->transaction_status == "settlement" && $statusPesan != '1') {
                 return redirect()->to(base_url('status?order_id=' . $paymentStatus->order_id));
             }
-            return view('user/home/payment/virtualAccount', $data);
+            return view('transaction/midtarnsCoreUI/virtualAccount', $data);
         } catch (\Exception $e) {
             // echo "An error occurred: " . $e->getMessage();
             $currentTimestamp = time(); // Get the current timestamp
