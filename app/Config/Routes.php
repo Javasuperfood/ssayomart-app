@@ -404,10 +404,12 @@ $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($rout
 
 // $routes->get('/maps', 'MapsController::maps');
 
-// Marge Buy $ Checkout Cart
-
-// $routes->get('/checkout2', 'TransactionCoreUIController::checkout');
-// $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
+// Development ROUTES ONLY
+$isP = getenv('CI_ENVIRONMENT');
+if ($isP != 'production') {
+    $routes->get('/checkout2', 'TransactionCoreUIController::checkout');
+    $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
+}
 
 
 
