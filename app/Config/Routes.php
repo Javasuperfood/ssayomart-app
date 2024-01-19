@@ -402,15 +402,13 @@ $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($rout
 
 // Route disable
 
-// Custom core UI Midtrans 
-// $routes->get('/buy2/(:segment)', 'BuyController::index2/$1');
-// $routes->post('/store2/(:segment)', 'BuyController::storeData2/$1');
-// $routes->get('/virtual-account', 'Payment::virtualAccount');
-// $routes->get('/qriss', 'Payment::qriss');
-// $routes->get('/ccard', 'Payment::ccard');
-// $routes->get('/ewallet', 'Payment::ewallet');
-
 // $routes->get('/maps', 'MapsController::maps');
+
+// Marge Buy $ Checkout Cart
+
+// $routes->get('/checkout2', 'TransactionCoreUIController::checkout');
+// $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
+
 
 
 /*
