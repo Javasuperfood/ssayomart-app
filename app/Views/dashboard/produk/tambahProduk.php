@@ -65,7 +65,7 @@
                 <input type="file" accept="image/*" class="form-control shadow-sm border-0 img" id="img" name="img" placeholder="Masukan Gambar Produk" data-toggle="tooltip" data-placement="bottom" title="Klik untuk menginputkan gambar produk">
             </div>
 
-            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -91,12 +91,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="mb-4">
+            <!-- <div class="mb-4">
                 <h6 for="img" class="form-label">Hasil Gambar</h6>
                 <img id="hasil_crop" class="img-fluid rounded-3">
-            </div>
+            </div> -->
 
             <div class="mb-4">
                 <div class="row">
