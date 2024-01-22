@@ -93,7 +93,7 @@
                                                 $kategoriNama = $k['nama_kategori'];
                                                 if ($km['id_sub_kategori'] != null) {
                                                     foreach ($subKategori as $s) {
-                                                        if ($s['id_sub_kategori'] == $km['id_sub_kategori']) {
+                                                        if ($s['id_sub_kategori'] == $km['id_sub_kategori'] && !null) {
                                                             $subKategoriNama = $s['nama_kategori'];
                                                             break;
                                                         }
