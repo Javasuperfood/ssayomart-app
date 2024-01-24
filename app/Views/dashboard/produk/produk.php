@@ -93,6 +93,7 @@
                                                 $kategoriNama = $k['nama_kategori'];
                                                 if ($km['id_sub_kategori'] != null) {
                                                     foreach ($subKategori as $s) {
+                                                        //need handle if admin input sub kategori null
                                                         if ($s['id_sub_kategori'] == $km['id_sub_kategori'] && $s['id_sub_kategori'] != null) {
                                                             $subKategoriNama = $s['nama_kategori'];
                                                             break;
