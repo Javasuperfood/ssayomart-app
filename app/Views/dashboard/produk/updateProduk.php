@@ -50,9 +50,9 @@
             <div class="mb-4">
                 <label for="selectVariant">Pilih Variant</label>
                 <select class="form-control border-1" name="selectVariant" id="selectVariant">
-                    <option value="" selected>Pilih</option>
+                    <option value="">Pilih</option>
                     <?php foreach ($variasi as $v) : ?>
-                        <option value="<?= $v['id_variasi']; ?>" selected><?= $v['nama_varian']; ?></option>
+                        <option value="<?= $v['id_variasi']; ?>" <?= ($variasiItem['id_variasi'] == $v['id_variasi']) ? 'selected' : ''; ?>><?= $v['nama_varian']; ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
