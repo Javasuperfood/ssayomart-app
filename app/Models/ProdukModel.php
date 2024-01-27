@@ -247,8 +247,12 @@ class ProdukModel extends Model
         }
         if ($short == 'produk_terbaru') {
             $getProduk->groupBy('jsf_produk.id_produk, jsf_produk.nama, vi.id_variasi_item')
-                ->orderBy('jsf_produk.id_produk', 'desc')->limit(6);
+                ->orderBy('jsf_produk.id_produk', 'ASC')->limit(6);
         }
+        // if ($short == 'kimchi') {
+        //     $getProduk->groupBy('jsf_produk.id_produk, jsf_produk.nama, vi.id_variasi_item')
+        //         ->orderBy('jsf_produk.id_produk', 'desc')->limit(6);
+        // }
         $result = $getProduk->get()->getResultArray();
         return $result;
     }
