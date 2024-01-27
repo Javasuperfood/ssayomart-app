@@ -7,18 +7,18 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
+
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container pt-3">
-            <form action="<?= base_url('store2/' . $produk['slug']); ?>" method="post">
+            <form action="<?= base_url('checkout2/pay'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <?php if (!$alamat_list) : ?>
                     <div class="alert alert-danger">
                         Tidak ada alamat yang tersedia. Silakan tambahkan alamat terlebih dahulu. <a href="<?= base_url('setting/alamat-list'); ?>" class="link-dark fw-bold">Disini</a>
                     </div>
                 <?php endif ?>
-
                 <div class="row row-cols-1 <?= (!$alamat_list) ? 'd-none' : ''; ?>">
                     <div class="col">
                         <div class="input-group mb-3">
@@ -28,22 +28,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="form-floating">
                                 <?php foreach ($market_list as $key => $m) : ?>
                                     <?php if ($m['id_toko'] == $marketSelected) : ?>
-                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                        <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                     <?php elseif (!$marketSelected) : ?>
                                         <?php if ($key == 0) : ?>
-                                            <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                            <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
                                 <label for="mpOrigin">Market</label>
                             </div>
-                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                                <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6" id="modal-pilih-originLabel">Pilih Market</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-originLabel">Pilih Market Terdekat</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -51,8 +51,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row row-cols-1">
                                                     <?php foreach ($market_list as $key => $m) : ?>
-                                                        <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>', '<?= $m['latitude']; ?>,<?= $m['longitude']; ?>')">
-                                                            <div class="card shadow-sm border-0">
+                                                        <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>','<?= $m['latitude']; ?>,<?= $m['longitude']; ?>')">
+                                                            <div class="card border-0 shadow-sm">
                                                                 <div class="card-body form-check form-switch">
                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                     <p class="fw-bold">Ssayomart <?= $m['lable']; ?></p>
@@ -73,27 +73,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col">
                         <div class="input-group mb-3">
                             <span class="input-group-text">
-                                <i class="bi bi-house"></i>
+                                <i class="bi bi-house fw-bold"></i>
                             </span>
                             <div class="form-floating">
                                 <?php foreach ($alamat_list as $key => $al) : ?>
                                     <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
-                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                        <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                     <?php elseif (!$addressSelected) : ?>
                                         <?php if ($key == 0) : ?>
-                                            <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                            <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
                                 <label for="mpDestination">Alamat</label>
                             </div>
-                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                                <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -102,12 +102,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <div class="row row-cols-1">
                                                     <?php foreach ($alamat_list as $key => $a) : ?>
                                                         <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $a['latitude']; ?>,<?= $a['longitude']; ?>')">
-                                                            <div class="card shadow-sm border-0">
+                                                            <div class="card border-0 shadow-sm">
                                                                 <div class="card-body form-check form-switch">
                                                                     <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                     <p class="fw-bold"> <?= $a['label']; ?></p>
-                                                                    <p><?= $a['alamat_1']; ?></p>
-                                                                    <p><?= $a['telp']; ?></p>
+                                                                    <p><?= $m['alamat_1']; ?></p>
+                                                                    <p><?= $m['telp']; ?></p>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,19 +123,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col">
                         <div class="input-group mb-3">
                             <span class="input-group-text">
-                                <i class="bi bi-truck"></i>
+                                <i class="bi bi-truck fw-bold"></i>
                             </span>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
-                                <label for="mpkirim">Metode Pengiriman</label>
+                                <input type="text" class="form-control masukan-kata fs-6 pemilihan" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
+                                <label for="mpkirim" style="font-size: 16px">Metode Pengiriman</label>
                             </div>
-                            <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
                         </div>
                         <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
+                                <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -194,20 +194,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
+
                     <div class="col">
                         <div class="form-floating mb-2">
-                            <select class="form-control border-0 shadow-sm" id="service" name="service">
+                            <select class="form-control masukan-kata border-0 shadow-sm" id="service" name="service">
                                 <option value="" class="card-text text-secondary"></option>
                             </select>
                             <label for="service" id="serviceLabel">Pilih Layanan</label>
-                            <span class="badge rounded-pill text-bg-danger ps-2"><strong class="time">Estimasi : <span id="estimasi"></span></strong></span>
+                            <span class="badge rounded-pill text-bg-danger"><strong class="time">Estimasi : <span id="estimasi"></span></strong></span>
                         </div>
-                        <input type="hidden" name="serviceText" id="serviceText">
                     </div>
+                    <input type="hidden" name="serviceText" id="serviceText">
                     <?php if ($kupon) : ?>
                         <div class="col">
                             <div class="form-floating mb-2">
-                                <select class="form-control border-0 shadow-sm" id="kupon" name="kupon">
+                                <select class="form-control masukan-kata border-0 shadow-sm" id="kupon" name="kupon">
                                     <option selected value="" class="card-text text-secondary">
                                         Pilih Kupon
                                     </option>
@@ -221,42 +222,44 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endif ?>
+                    <?php foreach ($produk as $p) : ?>
+                        <div class="col pt-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                        </div>
+                                        <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
+                                            <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
+                                            <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
+                                            </p>
+                                        </div>
+                                        <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                            <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
+                                            <?php if (isset(($p['promo']['total']))) : ?>
+                                                <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                            <?php else : ?>
+                                                <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                            <?php endif; ?>
+                                            <?php if (isset($p['promo']['total'])) : ?>
+                                                <?php
+                                                $discountedTotal = ($p['harga_item'] * $p['qty']) - ($p['promo']['total']);
+                                                ?>
+                                                <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
+                                            <?php endif; ?>
+                                        </div>
 
-                    <div class="col pt-3">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="" class="card-img">
-                                    </div>
-                                    <div class="col-5 position-absolute top-50 start-50 translate-middle mt-2">
-                                        <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?></h5>
-                                        <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
-                                        </p>
-                                        <input type="hidden" name="qty" value="<?= $qty; ?>">
-                                        <input type="hidden" name="varian" value="<?= $varian; ?>">
-                                    </div>
-                                    <div class="col-5 position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                        <h5 class="text-secondary fs-6">Total</h5>
-                                        <?php if (isset(($produk['promo']))) : ?>
-                                            <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
-                                        <?php else : ?>
-                                            <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
-                                        <?php endif; ?>
-                                        <?php if (isset(($produk['promo']))) : ?>
-                                            <?php
-                                            $discountedTotal = $total - ($total * $produk['promo']['discount']);
-                                            ?>
-                                            <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
-                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" name="idProduk[]" value="<?= $p['id_produk']; ?>">
+                            <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
+                            <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
                         </div>
-                    </div>
-
+                    <?php endforeach ?>
                     <div class="col py-3 px-3">
-                        <table class="table fs-6 lh-1">
+                        <table class="table fs-6 pemilihan lh-1" style="font-size: smaller !important;">
                             <thead>
                                 <tr>
                                     <th scope="col">Ringkasan Belanja</th>
@@ -269,29 +272,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Potongan Harga (Kupon)</td>
-                                    <td><span id="diskon"></span></td>
+                                    <td>Diskon (Promo)</td>
+                                    <td><span id="diskonTotal"><?= (isset($totalDiscount) ? '-Rp. ' . number_format($totalDiscount, 0, ',', '.') : '') ?></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Diskon (Promo)</td>
-                                    <td><span id="diskonPromo"><?= (isset($produk['promo']['discount']) ? '-Rp. ' . number_format((float)($total) * (float)($produk['promo']['discount']), 0, ',', '.') : '') ?></span></td>
+                                    <td>Potongan Harga (Kupon)</td>
+                                    <td><span id="diskon"></span></td>
                                 </tr>
                                 <tr>
                                     <td>Total Ongkos Kirim</td>
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td class="fw-bold">Grand Total</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col p-3 px-4">
-                        <button type="button" class="btn btn-lg fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;" data-bs-toggle="modal" data-bs-target="#metode-pembayaran-modal">Pilih Metode Pembayaran</button>
+                        <button type="button" class="btn fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;" data-bs-toggle="modal" data-bs-target="#metode-pembayaran-modal">Pilih Metode Pembayaran</button>
                     </div>
                 </div>
-
                 <div class="modal fade" id="metode-pembayaran-modal" tabindex="-1" aria-labelledby="metode-pembayaran-modalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-fullscreen-lg-down">
                         <div class="modal-content">
@@ -396,130 +398,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
         </div>
     </div>
-    <div class="pb-5"></div>
-
-    <!-- <style>
-        @media (max-width: 280px) {
-            .col-5.position-absolute.top-50.start-50.translate-middle-y {
-                font-size: 12px !important;
-            }
-
-            .table.fs-6 {
-                font-size: 12px !important;
-                /* Atur ukuran font sesuai kebutuhan */
-            }
-
-            .tbody.td {
-                font-size: 12px !important;
-            }
-
-            h5.card-title.fs-6.p.card-text.text-secondary {
-                font-size: 12px;
-            }
-
-            .form-control {
-                font-size: 12px;
-                /* Ukuran font input sesuai kebutuhan */
-            }
-
-            .card-title {
-                font-size: 12px;
-                /* Ukuran font judul kartu sesuai kebutuhan */
-            }
-
-            .card-text {
-                font-size: 12px;
-                /* Ukuran font teks kartu sesuai kebutuhan */
-            }
-
-            .ps-2 {
-                font-size: 12px;
-                padding-left: 0.5rem !important;
-            }
-
-            .btn-bayar {
-                font-size: 12px;
-                padding: 0.5rem !important;
-            }
-
-            .col-5 h5 {
-                font-size: 14px !important
-            }
-
-            .col-5 p {
-                font-size: 12px !important;
-            }
-
-        }
-    </style> -->
-
-    <style>
-        /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
-        @media screen and (max-width: 280px) {
-
-            .modal-body img {
-                width: 80px !important;
-            }
-
-            .modal-body button {
-                font-size: 10px !important;
-            }
-
-            .modal-content {
-                font-size: 13px;
-            }
-
-            .input-group .btn {
-                font-size: 9px;
-            }
-
-            .form-control {
-                font-size: 12px;
-                /* Ukuran font input sesuai kebutuhan */
-            }
-
-            .ps-2 {
-                font-size: 12px;
-                padding-left: 0.5rem !important;
-            }
-
-            .col-5 h5 {
-                font-size: 14px !important
-            }
-
-            .col-5 p {
-                font-size: 12px !important;
-            }
-
-            .btn-bayar {
-                font-size: 12px !important;
-            }
-
-            tr {
-                font-size: 12px;
-            }
-
-            .fs-6 {
-                font-size: 0.7rem !important;
-            }
-
-        }
-    </style>
-    <!-- end mobile -->
+    <div class="pb-5">
+    </div>
 <?php else : ?>
+    <!-- end mobile -->
 
     <!-- dekstop -->
     <div id="desktopContent" style="margin-top:150px;">
         <div class="container">
-            <div class="text-center">
-                <h2>Checkout</h2>
+            <div class="col-12 d-flex justify-content-center">
+                <nav aria-label="breadcrumb" class="rounded-3 p-2">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <h2 class="fw-bold text-center mb-0"><i class="text-danger bi bi-credit-card"></i> <?= $title; ?></h2>
+                            <hr class="mb-3 border-danger" style="border-width: 3px;">
+                        </li>
+                    </ol>
+                </nav>
             </div>
-            <hr>
-            <form action="<?= base_url('store2/' . $produk['slug']); ?>" method="post">
-                <?= csrf_field(); ?>
+            <form action="<?= base_url('checkout2/pay'); ?>" method="post">
                 <div class="row">
                     <div class="col-md-4 order-md-2 mb-4">
-                        <table class="table fs-6 lh-1 shadow-sm">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <!-- Right Panel -->
+                            <span class="badge badge-secondary badge-pill">3</span>
+                        </h4>
+                        <table class="table fs-6 pemilihan lh-1 shadow-sm">
                             <thead>
                                 <tr>
                                     <th scope="col">Ringkasan Belanja</th>
@@ -532,19 +436,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Potongan Harga (Kupon)</td>
-                                    <td><span id="diskon"></span></td>
+                                    <td>Diskon (Promo)</td>
+                                    <td><span id="diskonTotal"><?= (isset($totalDiscount) ? '-Rp. ' . number_format($totalDiscount, 0, ',', '.') : '') ?></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Diskon (Promo)</td>
-                                    <td><span id="diskonPromo"><?= (isset($produk['promo']['discount']) ? '-Rp. ' . number_format((float)($total) * (float)($produk['promo']['discount']), 0, ',', '.') : '') ?></span></td>
+                                    <td>Potongan Harga (Kupon)</td>
+                                    <td><span id="diskon"></span></td>
                                 </tr>
                                 <tr>
                                     <td>Total Ongkos Kirim</td>
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Total Harga</td>
+                                    <td>Grand Total</td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
@@ -557,6 +461,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <!-- Left Panel -->
                     <div class="col-md-8 order-md-1">
                         <h4 class="mb-3">Pemesanan</h4>
+
+                        <?= csrf_field(); ?>
+
                         <?php if (!$alamat_list) : ?>
                             <div class="alert alert-danger">
                                 Tidak ada alamat yang tersedia. Silakan tambahkan alamat terlebih dahulu. <a href="<?= base_url('setting/create-alamat'); ?>" class="link-dark fw-bold">Disini</a>
@@ -573,20 +480,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="form-floating">
                                             <?php foreach ($market_list as $key => $m) : ?>
                                                 <?php if ($m['id_toko'] == $marketSelected) : ?>
-                                                    <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                                    <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                                 <?php elseif (!$marketSelected) : ?>
                                                     <?php if ($key == 0) : ?>
-                                                        <input type="text" class="form-control" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
+                                                        <input type="text" class="form-control masukan-kata" id="mpOrigin" placeholder="Market" value="<?= $m['lable']; ?>" origin="<?= $m['id_city']; ?>" originLatLong="<?= $m['latitude']; ?>,<?= $m['longitude']; ?>" readonly>
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                             <label for="mpOrigin">Market</label>
                                         </div>
-                                        <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                                        <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
+                                            <div class="modal-content pilih-cara">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="modal-pilih-originLabel">Pilih Market</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -597,7 +504,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <div class="row row-cols-1">
                                                                 <?php foreach ($market_list as $key => $m) : ?>
                                                                     <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>, '<?= $m['lable']; ?>', '<?= $m['id_city']; ?>','<?= $m['latitude']; ?>,<?= $m['longitude']; ?>')">
-                                                                        <div class="card shadow-sm border-0">
+                                                                        <div class="card border-0 shadow-sm">
                                                                             <div class="card-body form-check form-switch">
                                                                                 <input class="form-check-input d-none" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($marketSelected == $m['id_toko']) ? 'checked' : ''; ?><?= (!$marketSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                                 <p class="fw-bold">Ssayomart <?= $m['lable']; ?></p>
@@ -626,20 +533,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="form-floating">
                                             <?php foreach ($alamat_list as $key => $al) : ?>
                                                 <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
-                                                    <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                                    <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                                 <?php elseif (!$addressSelected) : ?>
                                                     <?php if ($key == 0) : ?>
-                                                        <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
+                                                        <input type="text" class="form-control masukan-kata" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
                                                     <?php endif ?>
                                                 <?php endif ?>
                                             <?php endforeach ?>
                                             <label for="mpDestination">Alamat</label>
                                         </div>
-                                        <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                                        <button class="btn btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
+                                            <div class="modal-content pilih-cara">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -650,7 +557,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                             <div class="row row-cols-1">
                                                                 <?php foreach ($alamat_list as $key => $a) : ?>
                                                                     <div class="col py-2" onclick="selectAlamat(<?= $a['id_alamat_users']; ?>, '<?= $a['label']; ?> - <?= $a['alamat_1']; ?>', <?= $a['id_city']; ?>, '<?= $a['latitude']; ?>,<?= $a['longitude']; ?>')">
-                                                                        <div class="card shadow-sm border-0">
+                                                                        <div class="card border-0 shadow-sm">
                                                                             <div class="card-body form-check form-switch">
                                                                                 <input class="form-check-input d-none" type="radio" role="switch" id="alamatD<?= $a['id_alamat_users']; ?>" name="alamatD" value="<?= $a['id_alamat_users']; ?>" <?= ($addressSelected == $a['id_alamat_users']) ? 'checked' : ''; ?><?= (!$addressSelected && $key == 0) ? 'checked' : ''; ?>>
                                                                                 <p class="fw-bold"> <?= $a['label']; ?></p>
@@ -677,19 +584,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <i class="bi bi-truck"></i>
                                         </span>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
+                                            <input type="text" class="form-control masukan-kata" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
                                             <label for="mpkirim">Metode Pengiriman</label>
                                         </div>
-                                        <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                                        <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
+                                            <div class="modal-content pilih-cara">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
-                                                <div class="modal-body">
+                                                <div class="modal-body gambar-pengiriman">
                                                     <div class="row row-cols-1">
                                                         <div class="col">
                                                             <div class="row">
@@ -769,42 +676,44 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             <?php endif ?>
 
-                            <div class="col-md-12 mt-3">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $produk['img']; ?>" alt="Foto Produk" class="card-img">
-                                            </div>
-                                            <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                                <h5 class="card-title fs-6"><?= substr($produk['nama'], 0, 10); ?>...</h5>
-                                                <p class="card-text text-secondary fs-6"><?= $qty; ?> pcs
-                                                </p>
-                                                <input type="hidden" name="qty" value="<?= $qty; ?>">
-                                                <input type="hidden" name="varian" value="<?= $varian; ?>">
-                                            </div>
-                                            <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                <h5 class="text-secondary fs-6">Total</h5>
-                                                <?php if (isset(($produk['promo']))) : ?>
-                                                    <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
-                                                <?php else : ?>
-                                                    <p class="fw-bold fs-6">Rp. <?= number_format(($produk['harga_item'] * $qty), 0, ',', '.'); ?></p>
-                                                <?php endif; ?>
-                                                <?php if (isset(($produk['promo']))) : ?>
-                                                    <?php
-                                                    $discountedTotal = $total - ($total * $produk['promo']['discount']);
-                                                    ?>
-                                                    <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
-                                                <?php endif; ?>
+                            <?php foreach ($produk as $p) : ?>
+                                <div class="col-md-12 mt-3">
+                                    <div class="card border-0 shadow-sm">
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img">
+                                                </div>
+                                                <div class="col-5 keterangan position-absolute top-50 start-50 translate-middle">
+                                                    <h5><?= substr($p['nama'], 0, 10); ?>...</h5>
+                                                    <p class="card-text text-secondary"><?= $p['qty']; ?> pcs</p>
+                                                </div>
+                                                <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
+                                                    <h5>Total Harga</h5>
+                                                    <?php if (isset(($p['promo']['total']))) : ?>
+                                                        <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                    <?php else : ?>
+                                                        <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                    <?php endif; ?>
+                                                    <?php if (isset($p['promo']['total'])) : ?>
+                                                        <?php
+                                                        $discountedTotal = ($p['harga_item'] * $p['qty']) - ($p['promo']['total']);
+                                                        ?>
+                                                        <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
+                                                    <?php endif; ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <input type="hidden" name="idProduk[]" value="<?= $p['id_produk']; ?>">
+                                    <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
+                                    <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
                                 </div>
-                            </div>
-
+                            <?php endforeach ?>
                         </div>
                     </div>
                 </div>
+
                 <div class="modal fade" id="metode-pembayaran-modal" tabindex="-1" aria-labelledby="metode-pembayaran-modalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
                         <div class="modal-content">
@@ -923,13 +832,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 <?php endif; ?>
-<!-- end desktop -->
 
 <style>
     .form-control[readonly] {
         border: 1px solid #DEE2E6;
     }
 </style>
+
+
+<!-- end desktop -->
 
 <script>
     $('document').ready(function() {
@@ -957,5 +868,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php endif; ?>
     });
 </script>
-<?= $this->include('user/home/component/rajaOngkir/checkout2'); ?>
+<?= $this->include('transaction/script/checkoutMain'); ?>
 <?= $this->endSection(); ?>

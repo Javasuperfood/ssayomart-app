@@ -148,7 +148,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $du['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 150px; height: 150px;" alt="...">
                                 <p class="text-secondary mt-2" style="font-size: 14px;"><?= lang('Text.welcome_detail') ?><?= $du['username']; ?></p>
                                 <!-- Button trigger modal -->
-                                <div class="d-grid gap-2 text-center mt-2">
+                                <div class="gap-2 text-center mt-2">
                                     <?php if (!$deleteRequestExists) : ?>
                                         <button type="button" class="btn btn-sm btn-danger p-2 fw-bold rounded-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             <i class="bi bi-trash mx-2"></i> Hapus akun
@@ -214,9 +214,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                                     </div>
                                 </div>
-                                <div class="py-3 px-3">
-                                    <div class="col text-center">
-                                        <button type="submit" class="mt-5 btn btn-sm btn-danger rounded-2" style="color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                                <div class="py-3">
+                                    <div class="col text-end">
+                                        <button type="submit" class="mt-3 btn btn-sm btn-danger p-2 fw-bold rounded-3" style="color: #fff; font-size: 13px;"><?= lang('Text.btn_simpan') ?></button>
                                     </div>
                                 </div>
                             </div>

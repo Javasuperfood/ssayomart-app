@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <div class="row ">
+            <!-- <div class="row ">
                 <div class="col">
                     <div class="alert alert-danger rounded border-0" role="alert">
                         <div class="row">
@@ -45,8 +45,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row mb-2">
+            </div> -->
+            <div class="row mb-2 mt-3">
                 <div class="col">
                     <div class="card text-bg-light mb-4 shadow-sm border-0 rounded">
                         <div class="card-body">
@@ -186,6 +186,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Tampilan Desktop -->
     <div id="desktopContent" style="margin-top:130px;">
         <div class="container py-5 ">
+            <div class="row ">
+                <div class="col mb-5">
+                    <h3 class="fw-bold text-center"><i class="fs-1 text-danger fw-bold bi bi-gear"></i>
+                        <?= lang('Text.title_setting') ?>
+                    </h3>
+                    <hr class="mb-3 border-danger" style="border-width: 3px;">
+                </div>
+            </div>
             <div class="row">
                 <div class="col-lg-4">
                     <div class="card border-0 shadow-sm mb-4">
@@ -208,12 +216,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <div class="alert alert-danger rounded border-0" role="alert">
+                                    <!-- <div class="alert alert-danger rounded border-0" role="alert">
                                         <div class="row">
                                             <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-4"></i></div>
                                             <div class="col-9 text-secondary fs-6"><?= lang('Text.alert') ?></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="row">
