@@ -102,7 +102,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="selectVariant">Pilih Variant</label>
-                        <select class="form-control shadow-sm border-0" name="selectVariant" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih varian produk yang anda inputkan" id="selectVariant">
+                        <select class="form-control border-1" name="selectVariant" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih varian produk yang anda inputkan" id="selectVariant">
                             <option value="">Pilih</option>
                             <?php foreach ($variasi as $v) : ?>
                                 <option value="<?= $v['id_variasi']; ?>" <?= (old('selectVariant') == $v['id_variasi']) ? 'selected' : ''; ?>><?= $v['nama_varian']; ?></option>

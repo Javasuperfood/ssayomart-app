@@ -359,17 +359,42 @@ class AdminPromoController extends BaseController
         $variasiList = $variasiItemModel->findAll();
         $produkList = $produkModel->findAll();
 
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->adminProdukSearch($keyword);
+        } else {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
+        }
+
+
         $ongoingPromoItems = $promoBatchModel->getOngoingPromo();
 
         $data = [
             'promo' => $promoList,
             'promoBatch' => $promoBatchModel->findAll(),
-            'produk' => $produkList,
+            'produk' => $produk,
             'variasi' => $variasiList,
             'ongoingPromoItems' => $ongoingPromoItems
         ];
         // dd($data);
         return view('dashboard/promo/tambahPromoItemBatch', $data);
+    }
+
+    public function getproductjson()
+    {
+        $produkModel = new ProdukModel();
+        $data = $this->request->getVar();
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->where('deleted_at', null)->like('nama', '%' . $keyword . '%')->orLike('sku', '%' . $keyword . '%')->findAll();
+        } else {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
+        }
+        return $this->response->setJSON([
+            'request' => $data,
+            'response' => $produk,
+
+        ]);
     }
 
     public function store()

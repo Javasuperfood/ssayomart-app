@@ -182,6 +182,7 @@ class AdminProduk extends BaseController
         ];
 
         $varian = $variasItemiModel->insert($data2);
+        // dd($data2);
 
         // swet alert
         if ($produk && $varian) {

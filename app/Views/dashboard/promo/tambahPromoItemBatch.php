@@ -40,10 +40,16 @@
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">List Produk Tersedia</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
+
                                 <div class="modal-body">
                                     <!-- Input pencarian -->
                                     <div class="mb-3">
-                                        <input type="text" id="searchProduct" class="form-control" placeholder="Cari produk berdasarkan nama...">
+                                        <input type="text" id="searchProduct" oninput="searchProduk(this)" class="form-control" placeholder="Cari produk berdasarkan nama...">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div id="inputproduk"></div>
+                                        </div>
                                     </div>
                                     <div class="row" id="productList">
                                         <!-- Daftar produk akan ditampilkan di sini -->
@@ -101,6 +107,7 @@
                         <div id="selectedProds"></div>
                         <span id="produkError" data-toggle="tooltip" data-placement="bottom" title="produk yang di pilih" class="text-danger"></span>
                     </div>
+
 
                     <div class="mb-4">
                         <label for="min" class="form-label">Minimal Pembelian Produk</label>
@@ -168,13 +175,13 @@
             promoField.classList.remove('invalid-field');
         }
 
-        if (produkField.textContent.trim() === '') {
-            produkField.classList.add('invalid-field');
-            produkError.textContent = 'Produk yang akan diberikan promo harus diisi';
-            isValid = false;
-        } else {
-            produkField.classList.remove('invalid-field');
-        }
+        // if (produkField.textContent.trim() === '') {
+        //     produkField.classList.add('invalid-field');
+        //     produkError.textContent = 'Produk yang akan diberikan promo harus diisi';
+        //     isValid = false;
+        // } else {
+        //     produkField.classList.remove('invalid-field');
+        // }
 
         if (minField.value.trim() === '') {
             minField.classList.add('invalid-field');
@@ -270,36 +277,106 @@
         var produkIdInput = document.getElementById('produk_id');
         produkIdInput.value = selectedProductsId.join(',');
     }
+</script>
 
-    // Fungsi untuk menangani pencarian produk
-    document.addEventListener('DOMContentLoaded', function() {
-        const searchInput = document.getElementById('searchProduct');
-        const productList = document.getElementById('productList').children;
-        const noProductAlert = document.getElementById('noProductAlert');
+<script>
+    var arrayProduk = [];
 
-        searchInput.addEventListener('input', function() {
-            const searchTerm = searchInput.value.trim().toLowerCase();
-            let productsFound = false;
+    // Function to add a value to the array
+    function addValue(value) {
+        arrayProduk.push(value);
+        console.log("Array after adding:", arrayProduk);
+    }
 
-            for (let i = 0; i < productList.length; i++) {
-                const productName = productList[i].querySelector('.fs-4').textContent.toLowerCase();
+    // Function to remove a value from the array
+    function removeValue(value) {
+        var index = arrayProduk.indexOf(value);
+        if (index !== -1) {
+            arrayProduk.splice(index, 1);
+            console.log("Array after removing:", arrayProduk);
+        } else {
+            console.log("Value not found in the array");
+        }
+    }
 
-                if (productName.includes(searchTerm)) {
-                    productList[i].style.display = 'block';
-                    productsFound = true;
-                } else {
-                    productList[i].style.display = 'none';
+    function selectCheck(e) {
+        const produkChecked = e.value;
+        console.log(arrayProduk);
+
+        if (arrayProduk.length > 0) {
+            addValue(produkChecked);
+            arrayProduk.forEach(function(val) {
+                if (val == produkChecked) {
+                    removeValue(val);
+                    return false;
                 }
-            }
+            });
+        } else {
+            addValue(produkChecked);
+        }
 
-            // Tampilkan atau sembunyikan alert "Produk tidak tersedia"
-            if (!productsFound) {
-                noProductAlert.style.display = 'block';
-            } else {
-                noProductAlert.style.display = 'none';
+        // Clear the input field before appending
+        $('#inputproduk').empty();
+
+        // arrayProduk.forEach(function(p) {
+        //     $('#inputproduk').append(`
+        //     <input type="text" name="produk_id[]" value="${p}">
+        // `);
+        // });
+    }
+
+    function searchProduk(e) {
+        // console.log(this.value);
+        const keyword = e.value;
+
+        if (keyword.length > 2) {
+            request(keyword);
+        } else if (keyword.length == 0) {
+            request()
+        }
+    }
+
+    function request(keyword = null) {
+        $.ajax({
+            type: "GET",
+            url: "<?= base_url(); ?>api/getproduct",
+            contentType: "application/json",
+            data: {
+                search: keyword
+            },
+            success: function(responseData) {
+                console.log("Success:", responseData);
+                $(`#productList`).empty();
+                responseData.response.forEach(function(p) {
+                    console.log(p.nama);
+                    $('#productList').append(`
+                         <div class="col-6 mb-3 px-3 p${p.id_produk}">
+                            <div class="card border-0">
+                                <div class="row g-0">
+                                    <div class="card-body border-0 shadow-sm">
+                                        <div class="row">
+                                            <div class="col-1 d-flex justify-content-center">
+                                                <input onchange="selectCheck(this)" type="checkbox" id="produkCheckbox${p.id_produk}" name="produk_id[]" value="${p.id_produk}" data-nama="${p.nama}" class="border-0" style="width: 30px;">
+                                            </div>
+                                            <div class="col-3">
+                                                <img src="<?= base_url('assets/img/produk/main/'); ?>${p.img}" alt="${p.nama}" class="img-fluid" style="width:100px; height:100px; object-fit: contain; object-position: 20% 10%;">
+                                            </div>
+                                            <div class="col-8">
+                                                <p class="fs-4 nama-produk" style="font-size: 18px;">${p.nama}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                        `)
+                })
+            },
+            error: function(error) {
+                console.error("Error:", error);
             }
         });
-    });
+    }
 </script>
 
 <?= $this->endSection(); ?>
