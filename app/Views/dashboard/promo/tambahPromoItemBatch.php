@@ -49,6 +49,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div id="inputproduk"></div>
+                                            <div id="selectedProds2"></div>
                                         </div>
                                     </div>
                                     <div class="row" id="productList">
@@ -60,7 +61,7 @@
                                                         <div class="card-body border-0 shadow-sm">
                                                             <div class="row">
                                                                 <div class="col-1 d-flex justify-content-center">
-                                                                    <input onchange="selectCheck(this)" type="checkbox" id="produkCheckbox<?= $item['id_produk']; ?>" name="produk_id[]" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0" style="width: 30px;">
+                                                                    <input onchange="selectCheck(this, '<?= $item['nama']; ?>')" type="checkbox" id="produkCheckbox<?= $item['id_produk']; ?>" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0" style="width: 30px;">
                                                                 </div>
                                                                 <div class="col-3">
                                                                     <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid" style="width:100px; height:100px; object-fit: contain; object-position: 20% 10%;">
@@ -104,7 +105,7 @@
                     <!-- Span Badge Produk Terpilih -->
                     <div class="mb-4">
                         <label for="produk" class="form-label">Produk-Produk Terpilih</label>
-                        <div id="selectedProds"></div>
+                        <div id="selectedProds1"></div>
                         <span id="produkError" data-toggle="tooltip" data-placement="bottom" title="produk yang di pilih" class="text-danger"></span>
                     </div>
 
@@ -119,7 +120,7 @@
                         <label for="discount" class="form-label">Diskon (%)</label>
                         <select class="form-select border-1" name="discount" id="discount">
                             <option value="" selected>Pilih diskon</option>
-                            <?php for ($i = 5; $i <= 100; $i += 5) : ?>
+                            <?php for ($i = 0; $i <= 100; $i += 5) : ?>
                                 <option value="<?= $i / 100; ?>" <?= (old('discount') == $i / 100) ? 'selected' : ''; ?>><?= $i; ?>%</option>
                             <?php endfor; ?>
                         </select>
@@ -128,7 +129,7 @@
 
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                     <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Klik untuk melihat perubahan" onclick="clickSubmitEvent(this)">Simpan</button>
+                        <button type="submit" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Klik untuk melihat perubahan">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -153,7 +154,7 @@
         var isValid = true;
 
         var promoField = document.getElementById('promo');
-        var produkField = document.getElementById('selectedProds'); // Ganti ID menjadi "produkTerpilih"
+        var produkField = document.getElementById('selectedProds1'); // Ganti ID menjadi "produkTerpilih"
         var minField = document.getElementById('min');
         var discountField = document.getElementById('discount');
 
@@ -208,122 +209,49 @@
 
         return isValid;
     }
-
-    // Get Nama Produk ke Input Text Disabled
-    // var produkRadios = document.querySelectorAll('input[type=radio][name=produk_id]');
-    // produkRadios.forEach(function(radio) {
-    //     radio.addEventListener('change', function() {
-    //         var selectedProduk = this.dataset.nama;
-    //         var produkField = document.getElementById('produkTerpilih');
-    //         produkField.value = selectedProduk;
-    //     });
-    // });
-
-    // Inisialisasi array untuk produk terpilih
-    var selectedProducts = [];
-    var productContainer = document.getElementById('selectedProds');
-
-    // Mendapatkan semua checkbox kategori dan subkategori
-    var productCheckboxes = document.querySelectorAll('input[type="checkbox"][name="produk_id[]"]');
-
-    // Menambahkan event listener untuk perubahan pada checkbox produk
-    productCheckboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {
-            var selectedProduk = this.dataset.nama;
-
-            if (this.checked) {
-                // Tambahkan produk yang dipilih ke dalam daftar
-                selectedProducts.push({
-                    id_produk: this.value,
-                    nama: selectedProduk
-                });
-
-                // Buat elemen <span> baru untuk setiap produk yang dipilih
-                var produkSpan = document.createElement('span');
-                produkSpan.className = 'badge rounded-pill text-bg-danger px-2 py-2 mx-1';
-                produkSpan.textContent = selectedProduk;
-
-                // Tambahkan elemen <span> ke dalam container
-                productContainer.appendChild(produkSpan);
-            } else {
-                // Hapus produk yang tidak dipilih dari daftar
-                var produkId = this.value;
-                selectedProducts = selectedProducts.filter(function(product) {
-                    return product.id_produk !== produkId;
-                });
-
-                // Hapus elemen <span> yang sesuai dari container
-                var spans = productContainer.getElementsByTagName('span');
-                for (var i = 0; i < spans.length; i++) {
-                    if (spans[i].textContent === selectedProduk) {
-                        productContainer.removeChild(spans[i]);
-                        break;
-                    }
-                }
-            }
-
-            // Perbarui pilihan produk terpilih
-            updatedProducts(selectedProducts);
-        });
-    });
-
-    var selectedProductsGlobal = [];
-
-    function updatedProducts(selectedProducts) {
-        var selectedProductsId = selectedProducts.map(function(product) {
-            return product.id_produk;
-        });
-
-        var produkIdInput = document.getElementById('produk_id');
-        produkIdInput.value = selectedProductsId.join(',');
-    }
 </script>
 
 <script>
     var arrayProduk = [];
 
-    // Function to add a value to the array
-    function addValue(value) {
-        arrayProduk.push(value);
-        console.log("Array after adding:", arrayProduk);
+    function selectCheck(e, nameProduk) {
+        const produkChecked = e.value;
+        console.log(produkChecked)
+        console.log(arrayProduk)
+        const isAlreadyChecked = arrayProduk.some(ap => ap[0] === produkChecked);
+        if (!e.checked || isAlreadyChecked) {
+            arrayProduk = arrayProduk.filter(ap => ap[0] !== produkChecked);
+        } else {
+            addValue(produkChecked, nameProduk);
+        }
+
+        const $inputProduk = $('#inputproduk');
+        const $selectedProds1 = $('#selectedProds1');
+        const $selectedProds2 = $('#selectedProds2');
+        $inputProduk.empty();
+        $selectedProds1.empty();
+        $selectedProds2.empty();
+        arrayProduk.forEach(function([value, nama]) {
+            $inputProduk.append(`<input type="hidden" name="produk_id[]" value="${value}">`);
+            $selectedProds1.append(`<span class="badge rounded-pill text-bg-danger fs-6">${nama}</span>`);
+            $selectedProds2.append(`<span class="badge rounded-pill text-bg-danger fs-6">${nama}</span>`);
+        });
+
     }
 
-    // Function to remove a value from the array
-    function removeValue(value) {
-        var index = arrayProduk.indexOf(value);
+    function addValue(value, nama) {
+        arrayProduk.push([value, nama]);
+    }
+
+    function removeValue(value, nama) {
+        const index = arrayProduk.findIndex(ap => ap[0] === value && ap[1] === nama);
         if (index !== -1) {
             arrayProduk.splice(index, 1);
-            console.log("Array after removing:", arrayProduk);
-        } else {
-            console.log("Value not found in the array");
         }
     }
 
-    function selectCheck(e) {
-        const produkChecked = e.value;
-        console.log(arrayProduk);
 
-        if (arrayProduk.length > 0) {
-            addValue(produkChecked);
-            arrayProduk.forEach(function(val) {
-                if (val == produkChecked) {
-                    removeValue(val);
-                    return false;
-                }
-            });
-        } else {
-            addValue(produkChecked);
-        }
 
-        // Clear the input field before appending
-        $('#inputproduk').empty();
-
-        // arrayProduk.forEach(function(p) {
-        //     $('#inputproduk').append(`
-        //     <input type="text" name="produk_id[]" value="${p}">
-        // `);
-        // });
-    }
 
     function searchProduk(e) {
         // console.log(this.value);
@@ -345,10 +273,9 @@
                 search: keyword
             },
             success: function(responseData) {
-                console.log("Success:", responseData);
                 $(`#productList`).empty();
                 responseData.response.forEach(function(p) {
-                    console.log(p.nama);
+                    let checked = arrayProduk.find(ap => p.id_produk === ap[0]) !== undefined;
                     $('#productList').append(`
                          <div class="col-6 mb-3 px-3 p${p.id_produk}">
                             <div class="card border-0">
@@ -356,7 +283,7 @@
                                     <div class="card-body border-0 shadow-sm">
                                         <div class="row">
                                             <div class="col-1 d-flex justify-content-center">
-                                                <input onchange="selectCheck(this)" type="checkbox" id="produkCheckbox${p.id_produk}" name="produk_id[]" value="${p.id_produk}" data-nama="${p.nama}" class="border-0" style="width: 30px;">
+                                                <input ${(checked) ? 'checked' : ''} onchange="selectCheck(this, '${p.nama}')" type="checkbox" id="produkCheckbox${p.id_produk}" value="${p.id_produk}" data-nama="${p.nama}" class="border-0" style="width: 30px;">
                                             </div>
                                             <div class="col-3">
                                                 <img src="<?= base_url('assets/img/produk/main/'); ?>${p.img}" alt="${p.nama}" class="img-fluid" style="width:100px; height:100px; object-fit: contain; object-position: 20% 10%;">

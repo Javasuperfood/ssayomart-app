@@ -295,11 +295,11 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('promo/update-promo/edit-promo/(:segment)', 'AdminPromoController::editPromo/$1');
 
     // Promo Item
-    $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
-    $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');
-    $routes->get('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::editPromoItem/$1');
-    $routes->post('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::updatePromoItem/$1');
-    $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
+    // $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
+    // $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');
+    // $routes->get('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::editPromoItem/$1');
+    // $routes->post('promo/tambah-promo-item/edit-promo-item/(:segment)', 'AdminPromoController::updatePromoItem/$1');
+    // $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
 
     // Promo Item Batch
     $routes->get('promo/tambah-promo/show-promo/(:segment)', 'AdminPromoController::show/$1');
