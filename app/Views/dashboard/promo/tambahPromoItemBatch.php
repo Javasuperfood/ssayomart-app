@@ -216,8 +216,8 @@
 
     function selectCheck(e, nameProduk) {
         const produkChecked = e.value;
-        console.log(produkChecked)
-        console.log(arrayProduk)
+        // console.log(produkChecked)
+        // console.log(arrayProduk)
         const isAlreadyChecked = arrayProduk.some(ap => ap[0] === produkChecked);
         if (!e.checked || isAlreadyChecked) {
             arrayProduk = arrayProduk.filter(ap => ap[0] !== produkChecked);
