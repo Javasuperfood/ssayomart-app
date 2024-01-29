@@ -105,7 +105,7 @@
                         <select class="form-control border-1" name="selectVariant" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih varian produk yang anda inputkan" id="selectVariant">
                             <option value="">Pilih</option>
                             <?php foreach ($variasi as $v) : ?>
-                                <option value="<?= $v['id_variasi']; ?>" <?= (old('selectVariant') == $v['id_variasi']) ? 'selected' : ''; ?>><?= $v['nama_varian']; ?></option>
+                                <option value="<?= $v['id_variasi']; ?>"><?= $v['nama_varian']; ?></option>
                             <?php endforeach ?>
                         </select>
                     </div>
