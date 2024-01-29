@@ -428,7 +428,7 @@ class AdminPromoController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $this->request->getVar('promo'))->withInput();
+            return redirect()->to('dashboard/promo/tambah-promo/show-promo/' . $this->request->getVar('promo'));
         } else {
             $alert = [
                 'type' => 'error',

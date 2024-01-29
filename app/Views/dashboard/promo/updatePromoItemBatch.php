@@ -27,83 +27,6 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="produk" class="form-label">Pilih Produk Yang Akan Diberikan Promo</label>
-                        <button type="button" class="btn form-control border-left-danger text-left view-product" data-bs-toggle="modal" data-bs-target="#exampleModal" id="btnChooseProducts" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
-                            Tekan Untuk Memilih Produk
-                        </button>
-                    </div>
-
-                    <!-- Modal Box Produk -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">List Produk Tersedia</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <!-- Input pencarian -->
-                                    <div class="mb-3">
-                                        <input type="text" id="searchProduct" class="form-control" placeholder="Cari produk berdasarkan nama...">
-                                    </div>
-                                    <div class="row" id="productList">
-                                        <!-- Daftar produk akan ditampilkan di sini -->
-                                        <?php foreach ($produk as $item) : ?>
-                                            <div class="col-6 mb-3 px-3">
-                                                <div class="card border-0">
-                                                    <div class="row g-0">
-                                                        <div class="card-body border-0 shadow-sm">
-                                                            <div class="row">
-                                                                <div class="col-1 d-flex justify-content-center">
-                                                                    <input onchange="selectCheck(this)" type="radio" id="produkCheckbox<?= $item['id_produk']; ?>" name="produk_id" value="<?= $item['id_produk']; ?>" data-nama="<?= $item['nama']; ?>" class="border-0">
-                                                                </div>
-                                                                <div class="col-3">
-                                                                    <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid">
-                                                                </div>
-                                                                <div class="col-8">
-                                                                    <p class="fs-4"><?= $item['nama']; ?></p>
-                                                                    <?php foreach ($variasi as $v) : ?>
-                                                                        <?php if ($v['id_variasi_item'] == $item['id_produk']) : ?>
-                                                                            <p class="fs-5">Harga: Rp. <?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
-                                                                        <?php endif; ?>
-                                                                    <?php endforeach; ?>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    </div>
-
-                                    <!-- Pesan "Produk tidak tersedia" -->
-                                    <div id="noProductAlert" class="alert alert-danger rounded border-0" style="display: none;">
-                                        <div class="row">
-                                            <div class="col-1">
-                                                <i class="bi bi-exclamation-triangle-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-2"></i>
-                                            </div>
-                                            <div class="col-10 text-center">
-                                                <span class="fs-6">Produk tidak tersedia!</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger text-center" data-bs-dismiss="modal">Simpan</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Span Badge Produk Terpilih -->
-                    <!-- <div class="mb-4">
-                        <label for="produk" class="form-label">Produk-Produk Terpilih</label>
-                        <br>
-                        <div id="selectedProds"></div>
-                    </div> -->
-
-                    <div class="mb-4">
                         <label for="produk" class="form-label">Produk Terpilih</label>
                         <input type="text" class="form-control border-1 bg-white" id="produkTerpilih" value="<?= $op['produk_nama']; ?>" name="produk" placeholder="Pilih Produk Terlebih Dahulu..." disabled>
                         <span id="produkError" class="text-danger"></span>
@@ -118,7 +41,7 @@
                     <div class="mb-4">
                         <label for="discount" class="form-label">Diskon (%)</label>
                         <select class="form-select border-1" name="discount" id="discount">
-                            <?php for ($i = 5; $i <= 100; $i += 5) : ?>
+                            <?php for ($i = 0; $i <= 100; $i += 5) : ?>
                                 <option value="<?= $i / 100; ?>" <?= (old('discount') == $i / 100) ? 'selected' : (($op['discount'] == $i / 100) ? 'selected' : ''); ?>><?= $i; ?>%</option>
                             <?php endfor; ?>
                         </select>

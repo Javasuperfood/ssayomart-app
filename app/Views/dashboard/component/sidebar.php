@@ -103,7 +103,7 @@
                 <!-- Section Promo -->
                 <h6 class="collapse-header text-danger">Menu Promosi:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo">Buat Promosi</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item">Tambah Promosi Produk</a>
+                <!-- <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item">Tambah Promosi Produk</a> -->
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item-batch">Tambah Promosi Produk-Batch</a>
             </div>
         </div>
