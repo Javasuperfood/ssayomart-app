@@ -30,59 +30,60 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </section>
-    <?php else : ?>
-        <!-- end mobile -->
-        <!-- desktop -->
-        <div id="desktopContent" style="margin-top:100px;">
-            <section class="py-2">
-                <div class="container d-none d-md-block">
-                    <div class="row text-center">
-                        <div class="col">
-                            <div class="swiper button-swiper">
-                                <div class="swiper-wrapper">
-                                    <?php foreach ($produk as $kp) : ?>
-                                        <div class="swiper-slide">
-                                            <p><?= $kp['title']; ?></p>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
+    </div>
+<?php else : ?>
+    <!-- end mobile -->
+    <!-- desktop -->
+    <div id="desktopContent" style="margin-top:150px;">
+        <section class="py-2">
+            <div class="container d-none d-md-block">
+                <div class="row text-center">
+                    <div class="col">
+                        <div class="swiper button-swiper">
+                            <div class="swiper-wrapper">
+                                <?php foreach ($produk as $kp) : ?>
+                                    <div class="swiper-slide">
+                                        <p><?= $kp['title']; ?></p>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        <?php endif; ?>
-        <!-- end Desktop -->
+            </div>
+        </section>
+    <?php endif; ?>
+    <!-- end Desktop -->
 
-        <?php
-        if ($isMobile) {
+    <?php
+    if ($isMobile) {
 
-            echo '<div id="mobileContent">';
+        echo '<div id="mobileContent">';
 
-            echo '</div>';
-        } else {
+        echo '</div>';
+    } else {
 
-            echo '<div id="desktopContent">';
+        echo '<div id="desktopContent">';
 
-            echo '</div>';
-        }
-        ?>
-        <!-- desktop -->
-        <style>
-            @media (max-width: 280px) {
-                .swiper-slide {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    /* Atur elemen swiper-slide di tengah-tengah tampilan Samsung Galaxy Fold */
-                }
-
-                .btn-custom-rounded {
-                    /* Jika perlu, sesuaikan gaya tombol agar berada di tengah-tengah */
-                    margin: 0 auto;
-                    /* Ini akan mengatur margin secara horizontal agar tombol berada di tengah */
-                }
+        echo '</div>';
+    }
+    ?>
+    <!-- desktop -->
+    <style>
+        @media (max-width: 280px) {
+            .swiper-slide {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* Atur elemen swiper-slide di tengah-tengah tampilan Samsung Galaxy Fold */
             }
-        </style>
-        <?= $this->include('user/produk/component/cardProduk') ?>
-        <?= $this->endSection(); ?>
+
+            .btn-custom-rounded {
+                /* Jika perlu, sesuaikan gaya tombol agar berada di tengah-tengah */
+                margin: 0 auto;
+                /* Ini akan mengatur margin secara horizontal agar tombol berada di tengah */
+            }
+        }
+    </style>
+    <?= $this->include('user/produk/component/cardProduk') ?>
+    <?= $this->endSection(); ?>
