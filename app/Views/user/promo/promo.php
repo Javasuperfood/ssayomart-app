@@ -31,6 +31,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </section>
     </div>
+    <?= $this->include('user/home/component/navbarBottom') ?>
 <?php else : ?>
     <!-- end mobile -->
     <!-- desktop -->
