@@ -87,7 +87,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <i class="bi bi-house"></i>
                             </span>
                             <div class="form-floating">
-                                <input type="text" class="form-control" id="mpDestination" name="alamat" placeholder="Alamat Pengiriman" readonly>
                                 <?php foreach ($alamat_list as $key => $al) : ?>
                                     <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
                                         <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
@@ -534,7 +533,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <i class="bi bi-house"></i>
                                         </span>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="mpDestination" name="alamat" placeholder="Alamat Pengiriman" readonly>
                                             <?php foreach ($alamat_list as $key => $al) : ?>
                                                 <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
                                                     <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
