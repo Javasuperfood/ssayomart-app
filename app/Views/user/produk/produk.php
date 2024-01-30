@@ -57,7 +57,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
 
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <?php if ($varianItem > 1) : ?>
                         <?php if (isset($showCartAndBuyButtons) && $showCartAndBuyButtons) : ?>
                             <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
@@ -73,9 +73,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                         <?php endif ?>
                     <?php endif ?>
-                </div>
+                </div> -->
 
-                <!-- <div class="text-center">
+                <div class="text-center">
                     <?php if ($varianItem > 1) : ?>
                         <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
 
@@ -92,7 +92,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                         <?php endif ?>
                     <?php endif ?>
-                </div> -->
+                </div>
             </div>
             <div class="row mt-4 mb-5">
                 <div class="col">
@@ -488,21 +488,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                     <div class="d-sm-flex justify-content-sm-center d-lg-flex justify-content-lg-start">
                         <?php if ($varianItem > 1) : ?>
-                            <?php if (isset($showCartAndBuyButtons) && $showCartAndBuyButtons) : ?>
-                                <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
-                                <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
-                            <?php endif ?>
+                            <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
+
+                            <button class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                         <?php elseif ($varianItem == 1) : ?>
-                            <?php if (isset($isStockAvailable) && !$isStockAvailable) : ?>
-                                <button type="button" class="btn btn-secondary text-white mt-4" style="padding: 5px 30px;" disabled>Stok Tidak Tersedia</button>
-                            <?php elseif (isset($showCartAndBuyButtons) && $showCartAndBuyButtons) : ?>
+                            <?php if ($useStock) : ?>
+                                <button type="button" class="btn btn-secondary text-white mt-4" disabled>Stok Tidak Tersedia</button>
+                            <?php else : ?>
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-                                <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative" produk="<?= $produk['id_produk']; ?>"><i class="bi bi-cart-fill"></i></button>
+                                <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative me-2" produk="<?= $produk['id_produk']; ?>">
+                                    <i class="bi bi-cart-fill"></i>
+                                </button>
                                 <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                             <?php endif ?>
                         <?php endif ?>
                     </div>
+
                 </div>
 
                 <div class="row row-cols-1 my-4">
