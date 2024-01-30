@@ -14,12 +14,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php if (empty($alamat_user_model)) : ?>
             <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
             <div class="container mt-4">
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                    <i class="bi bi-house-add mr-2" style="font-size: 25px;"></i>
-                    <div style="margin-left: 18px;"> <!-- Menambahkan margin kiri -->
-                        <?= lang('Text.alert_alamat') ?>
+                <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" style="text-decoration: none;">
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <i class="bi bi-house-add mr-2" style="font-size: 25px;"></i>
+                        <div style="margin-left: 18px;">
+                            <?= lang('Text.alert_alamat') ?>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
         <?php else : ?>
@@ -88,8 +90,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <style>
         /* style for button create alamat */
         .addresCircle {
-            width: 40px;
-            height: 40px;
+            width: 51px;
+            height: 51px;
             border-radius: 50%;
             background-color: #dc3545;
             color: #fff;
