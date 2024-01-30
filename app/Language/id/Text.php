@@ -6,7 +6,7 @@ return [
     'beranda' => '홈페이지 / Beranda',
     'download' => '사사요마트 다운로드 / Unduh Ssayomart',
     'spesial' => '금주 행사상품 / PROMOSI',
-    'kategori' => '카테고리 / KATEGORI',
+    'kategori' => '카테고리 / Kategori',
     'alamat' => '주소 / Alamat',
     'layanan' => '고객 서비스 / Layanan Pelanggan',
     'kontak' => '문의하기 / Hubungi Kami',
