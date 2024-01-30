@@ -172,7 +172,7 @@ class ProdukModel extends Model
             $getProduk->like('nama', $search);
         }
 
-        $getProduk->orderBy('CASE WHEN s.stok >= 30 THEN 0 ELSE 1 END', 'ASC', false);
+        $getProduk->orderBy('CASE WHEN s.stok >= 50 THEN 0 ELSE 1 END', 'ASC', false);
 
         // $getProduk->orderBy('s.stok', '>=', 100);
 
