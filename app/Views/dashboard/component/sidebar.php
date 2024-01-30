@@ -68,7 +68,7 @@
             <span>Pesanan</span>
         </a>
         <div id="pesanan" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
+            <div class="bg-white py-2 collapse-inner rounded" style="font-size: 12px;">
                 <h6 class="collapse-header text-danger">Menu Pesanan:</h6>
                 <a class="collapse-item <?= (isset($pages) && $pages == '') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order'); ?>">Semua Pesanan</a>
                 <a class="collapse-item <?= (isset($pages) && $pages == 'awaiting-payment') ? 'fw-bold text-danger' : ''; ?>" href="<?= base_url('dashboard/order/awaiting-payment'); ?>">Menunggu Pembayaran</a>
@@ -93,7 +93,7 @@
             <span>Produk Menu</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
+            <div class="bg-white py-2 collapse-inner rounded" style="font-size: 11.5px;">
                 <h6 class="collapse-header text-danger">Menu Produk:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk">List Produk</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a>
@@ -117,7 +117,7 @@
             <span>Kategori menu</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
+            <div class="bg-white py-2 collapse-inner rounded" style="font-size: 12px;">
                 <h6 class="collapse-header text-danger">Kategori :</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
@@ -133,7 +133,7 @@
             <span>Management Konten</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
+            <div class="bg-white py-2 collapse-inner rounded" style="font-size: 12px;">
                 <h6 class="collapse-header text-danger">Menu Banner:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/banner/list-banner">Banner</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/blog/blog">Artikel</a>
