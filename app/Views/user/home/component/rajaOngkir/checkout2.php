@@ -144,7 +144,6 @@
                 },
                 dataType: 'json',
                 success: function(data) {
-
                     Object.keys(data).forEach(method => {
                         const shipment = data[method];
                         if (shipment.serviceable) {
@@ -185,9 +184,9 @@
                     updateDiscount();
                 },
                 error: function(data) {
-                    return Swal.fire({
+                    Swal.fire({
                         title: "Error",
-                        text: "Alamat yang anda pilih belum menentukan titik lokasi pengantaran!\n Silahkan pilih kembali atau update lokasi pengantaran di edit alamat. Atau jarak anda melebihi jarak maksimal!",
+                        text: "Titik alamat belum ditentukan untuk pengantaran. Harap pilih atau perbarui titik lokasi pengantaran. Jarak melebihi batas maksimal atau server sedang bermasalah.",
                         icon: "error",
                         footer: '<a class="link-underline link-underline-opacity-0" href="<?= base_url('setting/alamat-list'); ?>">Update Alamat? klik disini.</a>'
                     });
