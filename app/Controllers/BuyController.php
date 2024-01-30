@@ -180,7 +180,7 @@ class BuyController extends BaseController
             ];
             $discount = $cekKupon['discount'];
         } else {
-            $total_2 = $total_2 + $service;
+            $total_2 = $totalDiskon + $service;
         }
         // dd($getDiscount);
         $cekProduk[] = [

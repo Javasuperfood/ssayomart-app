@@ -438,7 +438,7 @@ class CheckoutController extends BaseController
                 'name' => 'Diskon',
             ];
         } else {
-            $total_2 = $total_2 + $service;
+            $total_2 = $data['total'] + $service;
         }
         // dd($getDiscount);
         $cekProduk[] = [
