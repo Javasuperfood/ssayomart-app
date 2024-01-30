@@ -70,12 +70,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
+
+                    <div class="container">
+                        <div class="alert alert-danger d-flex align-items-center border-0" role="alert">
+                            <i class="bi bi-exclamation-octagon-fill mr-2" style="font-size: 20px; color:#a6251c;"></i>
+                            <div style="margin-left: 18px;">
+                                <h6 class="alert-heading fw-bold" style="font-size: 10px;">Pada Alamat Pengiriman</h6>
+                                <p class="mb-0 fw-bold" style="font-size: 10px;">Mohon lebih teliti dalam pengisian alamat, agar tidak terjadi hal yang tidak diinginkan</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col">
                         <div class="input-group mb-3">
                             <span class="input-group-text">
                                 <i class="bi bi-house"></i>
                             </span>
                             <div class="form-floating">
+                                <input type="text" class="form-control" id="mpDestination" name="alamat" placeholder="Alamat Pengiriman" readonly>
                                 <?php foreach ($alamat_list as $key => $al) : ?>
                                     <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
                                         <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
@@ -517,11 +529,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             <div class="col-md-6 mb-3">
                                 <div class="col">
-                                    <div class="input-group mb-3">
+                                    <div class="input-group mb-2">
                                         <span class="input-group-text">
                                             <i class="bi bi-house"></i>
                                         </span>
                                         <div class="form-floating">
+                                            <input type="text" class="form-control" id="mpDestination" name="alamat" placeholder="Alamat Pengiriman" readonly>
                                             <?php foreach ($alamat_list as $key => $al) : ?>
                                                 <?php if ($al['id_alamat_users'] == $addressSelected) : ?>
                                                     <input type="text" class="form-control" id="mpDestination" placeholder="Market" value="<?= $al['label'] . ' - ' . $al['alamat_1']; ?>" destination="<?= $al['id_city']; ?>" destinationLatLong="<?= $al['latitude']; ?>,<?= $al['longitude']; ?>" readonly>
@@ -534,6 +547,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <label for="mpDestination">Alamat</label>
                                         </div>
                                         <button class="btn input-group-text btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                                    </div>
+                                    <div style="color:#ec2614;">
+                                        <h6 class="alert-heading fw-bold" style="font-size: 10px;">Pada Alamat Pengiriman *</h6>
+                                        <h6 class="fw-bold" style="font-size: 10px;">Mohon lebih teliti dalam pengisian alamat, agar tidak terjadi hal yang tidak diinginkan</h6>
                                     </div>
                                     <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
