@@ -149,7 +149,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             <?php elseif ($t->id_status_pesan == 5) : ?>
                                                 <div class="col-4 position-absolute top-50 end-0 translate-middle-y">
-                                                    <a href="<?= (!$t->gosend) ? base_url('status?order_id=' . $t->invoice) : base_url('status/ordering?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger custom-btn">
+                                                    <a href="<?= base_url('status?order_id=' . $t->invoice); ?>" class="btn btn-outline-danger custom-btn">
                                                         <?= lang('Text.transaksi_5') ?>
                                                     </a>
                                                 </div>
