@@ -141,8 +141,8 @@ class ProdukController extends BaseController
         if (auth()->loggedIn()) {
             $marketSelected = $userModel->find(user_id())['market_selected'];
             $stok = $stokModel->getStock($produk['id_produk'], $marketSelected);
-            $data['isStockAvailable'] = (isset($stok[0]['stok']) && $stok[0]['stok'] >= 50);
-            $data['showCartAndBuyButtons'] = (isset($stok[0]['stok']) && $stok[0]['stok'] > 50);
+            $data['isStockAvailable'] = (isset($stok[0]['stok']) && $stok[0]['stok'] >= 30);
+            $data['showCartAndBuyButtons'] = (isset($stok[0]['stok']) && $stok[0]['stok'] > 30);
 
             if (isset($stok[0]['stok'])) {
                 $data['stok'] = $stok;
