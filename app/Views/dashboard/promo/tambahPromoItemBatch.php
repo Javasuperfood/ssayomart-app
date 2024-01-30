@@ -49,7 +49,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <div id="inputproduk"></div>
-                                            <div id="selectedProds2"></div>
+                                            <div id="selectedProds2" style="font-size: 13px;"></div>
                                         </div>
                                     </div>
                                     <div class="row" id="productList">
@@ -67,7 +67,7 @@
                                                                     <img src="<?= base_url('assets/img/produk/main/' . $item['img']); ?>" alt="<?= $item['nama']; ?>" class="img-fluid" style="width:100px; height:100px; object-fit: contain; object-position: 20% 10%;">
                                                                 </div>
                                                                 <div class="col-8">
-                                                                    <p class="fs-4 nama-produk" style="font-size: 18px;"><?= $item['nama']; ?></p>
+                                                                    <p class="nama-produk" style="font-size: 12px;"><?= $item['nama']; ?></p>
                                                                     <?php foreach ($variasi as $v) : ?>
                                                                         <?php if ($v['id_variasi_item'] == $item['id_produk']) : ?>
                                                                             <p class="harga" style="font-size: 14px;">Harga: Rp. <?= number_format($v['harga_item'], 0, ',', '.'); ?></p>
@@ -105,7 +105,7 @@
                     <!-- Span Badge Produk Terpilih -->
                     <div class="mb-4">
                         <label for="produk" class="form-label">Produk-Produk Terpilih</label>
-                        <div id="selectedProds1"></div>
+                        <div id="selectedProds1" style="font-size: 13px;"></div>
                         <span id="produkError" data-toggle="tooltip" data-placement="bottom" title="produk yang di pilih" class="text-danger"></span>
                     </div>
 
@@ -233,8 +233,8 @@
         $selectedProds2.empty();
         arrayProduk.forEach(function([value, nama]) {
             $inputProduk.append(`<input type="hidden" name="produk_id[]" value="${value}">`);
-            $selectedProds1.append(`<span class="badge rounded-pill text-bg-danger fs-6">${nama}</span>`);
-            $selectedProds2.append(`<span class="badge rounded-pill text-bg-danger fs-6">${nama}</span>`);
+            $selectedProds1.append(`<span class="badge rounded-pill text-bg-danger mb-2 px-2 py-2 mx-1">${nama}</span>`);
+            $selectedProds2.append(`<span class="badge rounded-pill text-bg-danger mb-2 px-2 py-2 mx-1">${nama}</span>`);
         });
 
     }
