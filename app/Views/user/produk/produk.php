@@ -64,7 +64,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                         <?php endif ?>
                     <?php elseif ($varianItem == 1) : ?>
-                        <?php if (!$isStockAvailable) : ?>
+                        <?php if (isset($isStockAvailable) && !$isStockAvailable) : ?>
                             <button type="button" class="btn btn-secondary text-white mt-4" style="padding: 5px 30px;" disabled>Stok Tidak Tersedia</button>
                         <?php elseif (isset($showCartAndBuyButtons) && $showCartAndBuyButtons) : ?>
                             <input type="hidden" id="qty" name="qty" value="1">
@@ -493,155 +493,156 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <button type="submit" class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                             <?php endif ?>
                         <?php elseif ($varianItem == 1) : ?>
-                            <?php if (!$isStockAvailable) : ?>
+                            <?php if (isset($isStockAvailable) && !$isStockAvailable) : ?>
                                 <button type="button" class="btn btn-secondary text-white mt-4" style="padding: 5px 30px;" disabled>Stok Tidak Tersedia</button>
                             <?php elseif (isset($showCartAndBuyButtons) && $showCartAndBuyButtons) : ?>
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-                                <button class="btn btn-white border-danger mt-4 d-inline add-to-cart-btn me-2" produk="<?= $produk['id_produk']; ?>"><i class="bi bi-cart-fill"></i></button>
-                                <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white beli-langsung border-danger mt-4 w-25 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                                <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative" produk="<?= $produk['id_produk']; ?>"><i class="bi bi-cart-fill"></i></button>
+                                <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                             <?php endif ?>
                         <?php endif ?>
                     </div>
+                </div>
 
-                    <div class="row row-cols-1 my-4">
-                        <div class="col-md-12">
-                            <h4 class="text-merah fw-bold"> <?= lang('Text.deskripsi_produk') ?> </h4>
-                            <p class="text-potong"><?= $produk['deskripsi']; ?></p>
-                            <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mx-1">
-                                <div class="badge-container mb-2">
-                                    <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
-                                    <br>
-                                    <?php if (!empty($kategoriProduk)) : ?>
-                                        <span class="badge text-bg-danger rounded-5 text-uppercase fs-8"><?= $kategoriProduk['nama_kategori']; ?></span>
-                                    <?php endif ?>
-                                </div>
-                                <div class="badge-container ">
-                                    <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
-                                    <br>
-                                    <?php if (!empty($subKategoriProduk)) : ?>
-                                        <span class="badge text-bg-warning rounded-5 text-uppercase fs-8"><?= $subKategoriProduk['nama_kategori']; ?></span>
-                                    <?php endif ?>
-                                </div>
+                <div class="row row-cols-1 my-4">
+                    <div class="col-md-12">
+                        <h4 class="text-merah fw-bold"> <?= lang('Text.deskripsi_produk') ?> </h4>
+                        <p class="text-potong"><?= $produk['deskripsi']; ?></p>
+                        <!-- <button class="btn btn-danger mb-5" onclick="myFunction()" id="myBtn">Read more</button> -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mx-1">
+                            <div class="badge-container mb-2">
+                                <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
+                                <br>
+                                <?php if (!empty($kategoriProduk)) : ?>
+                                    <span class="badge text-bg-danger rounded-5 text-uppercase fs-8"><?= $kategoriProduk['nama_kategori']; ?></span>
+                                <?php endif ?>
+                            </div>
+                            <div class="badge-container ">
+                                <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
+                                <br>
+                                <?php if (!empty($subKategoriProduk)) : ?>
+                                    <span class="badge text-bg-warning rounded-5 text-uppercase fs-8"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                                <?php endif ?>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="mx-1">
-                                <div class="badge-container mb-2">
-                                    <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>
-                                    <?php if (isset($stok)) : ?>
-                                        <?php foreach ($stok as $s) : ?>
-                                            <p class="badge text-bg-primary rounded-5 text-uppercase fs-8 my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
-                                        <?php endforeach ?>
-                                        <?php if (count($stok) < 1) : ?>
-                                            <p class="text-secondary py-0 my-0"><?= lang('Text.stock2') ?></p>
-                                        <?php endif ?>
-                                    <?php else : ?>
-                                        <?= lang('Text.stock3') ?>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mx-1">
+                            <div class="badge-container mb-2">
+                                <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>
+                                <?php if (isset($stok)) : ?>
+                                    <?php foreach ($stok as $s) : ?>
+                                        <p class="badge text-bg-primary rounded-5 text-uppercase fs-8 my-0"><?= $s['value_item']; ?> : <?= $s['stok'] ?></p>
+                                    <?php endforeach ?>
+                                    <?php if (count($stok) < 1) : ?>
+                                        <p class="text-secondary py-0 my-0"><?= lang('Text.stock2') ?></p>
                                     <?php endif ?>
-                                </div>
-                                <div class="badge-container mb-2">
-                                    <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
-                                    <?php if (!empty($produk)) : ?>
-                                        <span class="badge text-bg-success rounded-5 text-uppercase fs-8"><?= $produk['sku']; ?></span>
-                                    <?php endif ?>
-                                </div>
+                                <?php else : ?>
+                                    <?= lang('Text.stock3') ?>
+                                <?php endif ?>
+                            </div>
+                            <div class="badge-container mb-2">
+                                <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
+                                <?php if (!empty($produk)) : ?>
+                                    <span class="badge text-bg-success rounded-5 text-uppercase fs-8"><?= $produk['sku']; ?></span>
+                                <?php endif ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container d-none d-lg-block">
-                <?= $this->include('user/produk/component/randomProduk'); ?>
-            </div>
         </div>
-        <style>
-            /* hover beli langsung */
-            .beli-langsung {
-                /* Gaya tombol saat tidak di-hover */
-                color: #cf362b;
-                /* warna teks */
-                background-color: white;
-                /* warna latar belakang */
-                border-color: #cf362b;
-                /* warna border */
+        <div class="container d-none d-lg-block">
+            <?= $this->include('user/produk/component/randomProduk'); ?>
+        </div>
+    </div>
+    <style>
+        /* hover beli langsung */
+        .beli-langsung {
+            /* Gaya tombol saat tidak di-hover */
+            color: #cf362b;
+            /* warna teks */
+            background-color: white;
+            /* warna latar belakang */
+            border-color: #cf362b;
+            /* warna border */
 
-                /* Efek transisi untuk perubahan */
-                transition: all 0.3s ease;
-            }
+            /* Efek transisi untuk perubahan */
+            transition: all 0.3s ease;
+        }
 
-            .beli-langsung:hover {
-                /* Gaya tombol saat di-hover */
-                color: white;
-                /* warna teks saat di-hover */
-                background-color: #cf362b;
-                /* warna latar belakang saat di-hover */
-            }
+        .beli-langsung:hover {
+            /* Gaya tombol saat di-hover */
+            color: white;
+            /* warna teks saat di-hover */
+            background-color: #cf362b;
+            /* warna latar belakang saat di-hover */
+        }
 
-            /* end beli langsung */
+        /* end beli langsung */
 
-            /* hover cart */
-            .add-to-cart-btn {
-                /* Gaya tombol saat tidak di-hover */
-                color: #cf362b;
-                /* warna teks */
-                background-color: white;
-                /* warna latar belakang */
-                border-color: #cf362b;
-                /* warna border */
+        /* hover cart */
+        .add-to-cart-btn {
+            /* Gaya tombol saat tidak di-hover */
+            color: #cf362b;
+            /* warna teks */
+            background-color: white;
+            /* warna latar belakang */
+            border-color: #cf362b;
+            /* warna border */
 
-                /* Efek transisi untuk perubahan */
-                transition: all 0.3s ease;
-            }
+            /* Efek transisi untuk perubahan */
+            transition: all 0.3s ease;
+        }
 
-            .add-to-cart-btn:hover {
-                /* Gaya tombol saat di-hover */
-                color: white;
-                /* warna teks saat di-hover */
-                background-color: #cf362b;
-                /* warna latar belakang saat di-hover */
-            }
+        .add-to-cart-btn:hover {
+            /* Gaya tombol saat di-hover */
+            color: white;
+            /* warna teks saat di-hover */
+            background-color: #cf362b;
+            /* warna latar belakang saat di-hover */
+        }
 
-            /* end hover cart */
-            /* Ganti warna tombol close menjadi putih */
-            .btn-close {
-                background-color: #ffff;
-                color: #000;
-                font-size: 10px;
-                margin-left: 75%;
-                margin-bottom: 75%;
+        /* end hover cart */
+        /* Ganti warna tombol close menjadi putih */
+        .btn-close {
+            background-color: #ffff;
+            color: #000;
+            font-size: 10px;
+            margin-left: 75%;
+            margin-bottom: 75%;
 
-                /* atau warna lain sesuai kebutuhan */
-            }
+            /* atau warna lain sesuai kebutuhan */
+        }
 
-            /* Membuat tombol close berbentuk lingkaran */
-            .btn-close {
-                border-radius: 50%;
-                width: 20px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
-                height: 20px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
-            }
+        /* Membuat tombol close berbentuk lingkaran */
+        .btn-close {
+            border-radius: 50%;
+            width: 20px;
+            /* Sesuaikan ukuran sesuai kebutuhan */
+            height: 20px;
+            /* Sesuaikan ukuran sesuai kebutuhan */
+        }
 
-            /* CSS untuk mengatur tata letak galeri */
-            .gallery {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                margin: 20px;
-            }
+        /* CSS untuk mengatur tata letak galeri */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px;
+        }
 
-            .gallery img {
-                width: 100%;
-                height: auto;
-                margin: 10px;
-                cursor: pointer;
-            }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            margin: 10px;
+            cursor: pointer;
+        }
 
-            /* .input-group>.form-control,
+        /* .input-group>.form-control,
             .input-group>.form-floating,
             .input-group>.form-select {
                 position: relative;
@@ -649,7 +650,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 width: 100px;
                 min-width: 0;
             } */
-        </style>
+    </style>
     </div>
 
     <?php if ($varianItem > 1) : ?>

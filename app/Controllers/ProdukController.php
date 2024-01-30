@@ -137,6 +137,7 @@ class ProdukController extends BaseController
             'subKategoriProduk' => $subKategoriProduk, // Menambahkan kategori produk
             'useStock' => false
         ];
+        // dd($data);
 
         if (auth()->loggedIn()) {
             $marketSelected = $userModel->find(user_id())['market_selected'];
