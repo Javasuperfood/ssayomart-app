@@ -131,8 +131,10 @@
                     text: "Alamat yang anda pilih belum menentukan titik lokasi pengantaran!\n Silahkan pilih kembali atau update lokasi pengantaran di edit alamat.",
                     icon: "error",
                     footer: '<a class="link-underline link-underline-opacity-0" href="<?= base_url('setting/alamat-list'); ?>">Update Alamat? klik disini.</a>'
-                });;
+                });
             }
+            // console.log(originLatLong);
+            // console.log(destinationLatLong);
             $.ajax({
                 url: "<?= base_url('api/gosend/getcost') ?>",
                 type: 'POST',
@@ -142,6 +144,7 @@
                 },
                 dataType: 'json',
                 success: function(data) {
+
                     Object.keys(data).forEach(method => {
                         const shipment = data[method];
                         if (shipment.serviceable) {
@@ -181,6 +184,14 @@
                     $('.btn-bayar').show();
                     updateDiscount();
                 },
+                error: function(data) {
+                    return Swal.fire({
+                        title: "Error",
+                        text: "Alamat yang anda pilih belum menentukan titik lokasi pengantaran!\n Silahkan pilih kembali atau update lokasi pengantaran di edit alamat. Atau jarak anda melebihi jarak maksimal!",
+                        icon: "error",
+                        footer: '<a class="link-underline link-underline-opacity-0" href="<?= base_url('setting/alamat-list'); ?>">Update Alamat? klik disini.</a>'
+                    });
+                }
             });
         }
     }

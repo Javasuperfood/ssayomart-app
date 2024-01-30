@@ -128,6 +128,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
                 <!-- maps -->
                 <div class="mb-3 mx-3 my-3">
+                    <p class="text-center text-danger">*Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend)</p>
                     <div id="map"></div>
                     <div class="button-container">
                         <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
@@ -273,6 +274,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
                     </div>
                     <div class="col-12">
+                        <p class="text-center text-danger">*Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend)</p>
                         <div id="map"></div>
                         <div class="button-container">
                             <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>

@@ -92,7 +92,7 @@ class GoSendAPIController extends BaseController
 
         // Check for cURL errors
         if (curl_errno($ch)) {
-            echo 'Curl error: ' . curl_error($ch);
+            return curl_error($ch);
         }
 
         // Close cURL session
