@@ -156,6 +156,7 @@ class ProdukModel extends Model
         $getProduk = $this->db->table('jsf_produk p')
             ->select('p.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
+            ->join('jsf_stock s', 'p.id_produk = s.id_produk', 'left')
             ->groupBy('p.id_produk, p.nama, vi.id_variasi_item')  // Include 'vi.id_variasi_item' in the GROUP BY clause
             ->where('p.deleted_at', null);
 
@@ -171,7 +172,11 @@ class ProdukModel extends Model
             $getProduk->like('nama', $search);
         }
 
-        $getProduk->orderBy('created_at', 'ASC'); // Order by the created_at column in ascending order
+        $getProduk->orderBy('CASE WHEN s.stok >= 30 THEN 0 ELSE 1 END', 'ASC', false);
+
+        // $getProduk->orderBy('s.stok', '>=', 100);
+
+        // $getProduk->orderBy('created_at', 'ASC'); 
 
         $getProduk->limit($limit, $offset);
 
