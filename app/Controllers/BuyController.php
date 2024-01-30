@@ -305,6 +305,12 @@ class BuyController extends BaseController
                 'name' => $item['nama'] . '(' . $item['value_item'] . ')',
             ];
         }
+        $cekProduk[] = [
+            'id' => 'Service',
+            'price' => $checkout['harga_service'],
+            'quantity' => 1,
+            'name' => $checkout['service'],
+        ];
         $newInvoice = $this->generateNewInvoice($checkout['invoice']);
         $penerima = $this->getInfoPenerima($checkout['kirim']);
         $params = [
