@@ -276,7 +276,7 @@
 
         $("#diskon").text("-" + formatRupiah(Math.round(diskon)));
         totalHarga -= diskon;
-        $("#totalText").text(formatRupiah(Math.round(ongkir + totalHarga)));
+        $("#totalText").text(formatRupiah(Math.floor(ongkir + totalHarga)));
         $("#field_subtotal").val(ongkir + total);
     }
 

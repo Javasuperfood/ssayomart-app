@@ -440,7 +440,7 @@ class CheckoutController extends BaseController
         } else {
             $total_2 = $data['total'] + $service;
         }
-        $total_2 = round($total_2);
+        $total_2 = floor($total_2);
         // dd($total_2);
         // dd($getDiscount);
         $cekProduk[] = [
