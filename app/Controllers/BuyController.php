@@ -142,7 +142,7 @@ class BuyController extends BaseController
             $total_2 = $total_2 - $diskonPromo;
             $cekProduk[] = [
                 'id' => 'diskonPromo',
-                'price' => -$diskonPromo,
+                'price' => -round($diskonPromo),
                 'quantity' => 1,
                 'name' => 'Diskon Promo',
             ];
@@ -156,7 +156,7 @@ class BuyController extends BaseController
         ];
         $cekProduk[] = [
             'id' => $produk['id_produk'],
-            'price' => $produk['harga_item'],
+            'price' => round($produk['harga_item']),
             'quantity' => $qty,
             'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
         ];
@@ -174,7 +174,7 @@ class BuyController extends BaseController
             ];
             $cekProduk[] = [
                 'id' => 'diskonKupon',
-                'price' => -$getDiscount,
+                'price' => - (round($getDiscount)),
                 'quantity' => 1,
                 'name' => 'Diskon Kupon',
             ];
@@ -182,6 +182,8 @@ class BuyController extends BaseController
         } else {
             $total_2 = $totalDiskon + $service;
         }
+        $total_2 = round($total_2);
+        // dd($total_2);
         // dd($getDiscount);
         $cekProduk[] = [
             'id' => 'Service',

@@ -388,7 +388,7 @@ class CheckoutController extends BaseController
             $beratTotal += $rowBerat;
             $cekProduk[$key] = [
                 'id' => $produk['id_produk'],
-                'price' => $produk['harga_item'],
+                'price' => round($produk['harga_item']),
                 'quantity' => $produk['qty'],
                 'name' => $produk['nama'] . '(' . $produk['value_item'] . ')',
             ];
@@ -404,7 +404,7 @@ class CheckoutController extends BaseController
         if ($totalDiscount > 0) {
             $cekProduk[] = [
                 'id' => 'diskonPromo',
-                'price' => -$totalDiscount,
+                'price' => - (round($totalDiscount)),
                 'quantity' => 1,
                 'name' => 'Total Diskon Promo',
             ];
@@ -433,13 +433,15 @@ class CheckoutController extends BaseController
             ];
             $cekProduk[] = [
                 'id' => 'Diskon',
-                'price' => -$getDiscount,
+                'price' => - (round($getDiscount)),
                 'quantity' => 1,
                 'name' => 'Diskon',
             ];
         } else {
             $total_2 = $data['total'] + $service;
         }
+        $total_2 = round($total_2);
+        // dd($total_2);
         // dd($getDiscount);
         $cekProduk[] = [
             'id' => 'Service',

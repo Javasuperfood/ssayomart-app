@@ -117,7 +117,7 @@
                     $("#ongkirText").html(formatRupiah(ongkir));
                     $("#estimasi").html(estimasi + " Hari");
                     $("#total").val(total);
-                    $("#totalText").html(formatRupiah(ongkir + total));
+                    $("#totalText").html(formatRupiah(Math.round(ongkir + total)));
                     $("#field_subtotal").val(ongkir + total);
                     $('.btn-bayar').show();
                     updateDiscount();
@@ -178,7 +178,7 @@
                     $("#ongkirText").html(formatRupiah(ongkir));
                     $("#estimasi").html(methodS.shipment_method_description);
                     $("#total").val(total);
-                    $("#totalText").html(formatRupiah(ongkir + total));
+                    $("#totalText").html(formatRupiah(Math.round(ongkir + total)));
                     $("#field_subtotal").val(ongkir + total);
                     $('.btn-bayar').show();
                     updateDiscount();
@@ -207,7 +207,7 @@
         $("#total").val(total);
         $("#field_subtotal").val(ongkir + total);
         $("#serviceText").val($("#service option:selected").attr('std'));
-        $("#totalText").html(formatRupiah(ongkir + total));
+        $("#totalText").html(formatRupiah(Math.round(ongkir + total)));
         updateDiscount();
         if (getD.get('courier') != 'gosend') {
             $('.btn-bayar').show();
@@ -274,9 +274,9 @@
             }
         <?php endforeach; ?>
 
-        $("#diskon").text("-" + formatRupiah(diskon));
+        $("#diskon").text("-" + formatRupiah(Math.round(diskon)));
         totalHarga -= diskon;
-        $("#totalText").text(formatRupiah(ongkir + totalHarga));
+        $("#totalText").text(formatRupiah(Math.round(ongkir + totalHarga)));
         $("#field_subtotal").val(ongkir + total);
     }
 
