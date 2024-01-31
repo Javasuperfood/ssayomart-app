@@ -182,7 +182,7 @@ class BuyController extends BaseController
         } else {
             $total_2 = $totalDiskon + $service;
         }
-        $total_2 = round($total_2);
+        $total_2 = floor($total_2);
         // dd($total_2);
         // dd($getDiscount);
         $cekProduk[] = [
