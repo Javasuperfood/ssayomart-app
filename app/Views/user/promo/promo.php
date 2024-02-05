@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <section class="mt-2 ">
+        <section class="">
             <div class="container d-md-none">
                 <div class="row text-center">
                     <div class="col">
@@ -20,8 +20,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($produk as $k) : ?>
                                     <div class="swiper-slide">
                                         <a href="<?= base_url('promo/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded">
-                                            <p><?= $k['title']; ?></p>
+                                            <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                                <div class="card-danger">
+                                                    <h3 class="fw-bold mt-2"><?= $k['title']; ?></h3>
+                                                </div>
+                                            </div>
                                         </a>
+                                        <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -44,7 +49,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="swiper-wrapper">
                                 <?php foreach ($produk as $kp) : ?>
                                     <div class="swiper-slide">
-                                        <p><?= $kp['title']; ?></p>
+                                        <a href="<?= base_url('promo/' . $kp['slug']); ?>" class="btn border-0 btn-custom-rounded">
+                                            <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                                <div class="card-danger">
+                                                    <h3 class="fw-bold mt-2"><?= $kp['title']; ?></h3>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
                                     </div>
                                 <?php endforeach; ?>
                             </div>

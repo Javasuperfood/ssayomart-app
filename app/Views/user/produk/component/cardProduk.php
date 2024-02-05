@@ -1,8 +1,11 @@
 <?php if ($produk) : ?>
     <div class="container bg-white" id="product">
-        <p class="d-block my-2 text-center fw-bold" style="font-size:medium; font-family:sans-serif;"><?= lang('Text.nama_produk') ?></p>
+        <!-- <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+            <div class="card-danger">
+                <span class="card-title fw-bold fs-2"><?= lang('Text.nama_produk') ?></h2>
+            </div>
+        </div> -->
 
-        <hr class="mb-3 border-danger" style="border-width: 3px;">
         <div class="row" id="product-container" style="margin-bottom: 55px;">
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
@@ -41,7 +44,6 @@
                                 </div>
                             </div>
                             <!-- akhir button animasi -->
-
                         </div>
                     </div>
                 </div>
