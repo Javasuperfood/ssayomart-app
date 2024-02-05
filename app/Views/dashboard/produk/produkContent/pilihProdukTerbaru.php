@@ -57,24 +57,24 @@
                         <div class="row text-center mt-3 border">
                             <?php foreach (array_slice($produkTerbaru, 0, 6) as $produk) : ?>
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                                    <div class="mb-3 border">
+                                    <div class="mb-3 border d-flex flex-column align-items-center">
                                         <!-- Frame smartphone -->
                                         <div class="phone-frame">
-                                            <a href="<?= base_url() ?>produk/<?= $produk['slug']; ?>">
-                                                <div class="text-bg-light bg-white border-0">
-                                                    <div class="px-0 py-0 mx-0 my-0">
-                                                        <img src="<?= base_url('assets/img/produk/main/' . $produk['img']); ?>" alt="<?= $produk['nama']; ?>" class="card-img-top">
-                                                    </div>
+                                            <div class="text-bg-light bg-white border-0">
+                                                <div class="px-0 py-0 mx-0 my-0">
+                                                    <a href="<?= base_url() ?>produk/<?= $produk['slug']; ?>">
+                                                        <img src="<?= base_url('assets/img/produk/main/' . $produk['img']); ?>" alt="<?= $produk['nama']; ?>" class="card-img-top" style="width:200px; height:200px; object-fit: contain; object-position: 20% 10%;">
                                                 </div>
+                                            </div>
                                             </a>
                                         </div>
                                         <!-- Informasi produk -->
-                                        <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+                                        <div class="fs-2 mt-2" style="padding: 0 10px">
                                             <div class="d-flex align-items-start justify-content-center" style=" height: 65px;">
-                                                <p class="text-center text-secondary fw-bold " style="font-size: 10px; margin: 0;"><?= substr($produk['nama'], 0, 25); ?></p>
+                                                <p class="text-center text-secondary fw-bold " style="font-size: 12px; margin: 0;"><?= substr($produk['nama'], 0, 25); ?></p>
                                             </div>
                                             <?php if (isset($produk['harga_min'])) : ?>
-                                                <p class="text-secondary" style="font-size: 8px; margin: 0;">
+                                                <p class="text-secondary" style="font-size: 12px; margin: 0;">
                                                     <del>Rp. <?= number_format($produk['harga_min'], 0, ',', '.'); ?></del>
                                                 </p>
                                             <?php endif; ?>
