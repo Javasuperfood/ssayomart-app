@@ -69,13 +69,13 @@
                                                         <div class="card border-0">
                                                             <div class="row g-0">
                                                                 <div class="card-body border-0 shadow-sm py-2 px-2 mb-3">
-                                                                    <div class="row">
-                                                                        <div class="col-2 text-center py-3" style="font-size: 20px; margin: 0;">
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-2 text-center d-flex justify-content-center">
                                                                             <input onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle" type="checkbox" id="produkCheckbox<?= $p['id_produk']; ?>" name="produk_id[]" value="<?= $p['id_produk']; ?>" data-nama="<?= $p['nama']; ?>" class="border-0 rounded-circle" data-parent-kategori="<?= $p['id_produk']; ?>">
                                                                         </div>
                                                                         <div class="col-10 py-3">
-                                                                            <p class="fs-5 m-0">
-                                                                                <img src="<?= base_url('assets/img/produk/main/' . $p['img']); ?>" class="img-fluid rounded-2" width="80" height="80">
+                                                                            <p class="m-0 d-flex align-items-center" style="font-size: 13px;">
+                                                                                <img src="<?= base_url('assets/img/produk/main/' . $p['img']); ?>" class="img-fluid rounded-2 me-2" width="80" height="80" alt="<?= $p['nama']; ?>">
                                                                                 <?= $p['nama']; ?>
                                                                             </p>
                                                                         </div>
@@ -147,11 +147,11 @@
                                         <?php
                                         $produkDetail = $produkModel->getProdukById($produk['id_produk']);
                                         ?>
-                                        <img src="<?= base_url('assets/img/produk/main/' . $produkDetail['img']); ?>" class="img-fluid rounded-2" width="80" height="80">
-                                        <span class="fw-bold mr-2"><?= $produkDetail['nama']; ?></span>
+                                        <img src="<?= base_url('assets/img/produk/main/' . $produkDetail['img']); ?>" class="img-fluid rounded-2" style="width:80px; height:80px; object-fit: contain; object-position: 20% 10%;">
+                                        <span class="fw-bold mr-2" style="font-size: 12px;"><?= $produkDetail['nama']; ?></span>
                                         <div class="ml-auto">
                                             <form action="<?= base_url() ?>dashboard/produk/urutan-produk-rekomendasi/delete/<?= $produk['id_rekomendasi']; ?>" method="post">
-                                                <?= csrf_field() ?>   
+                                                <?= csrf_field() ?>
                                                 <input type="hidden" name="id_rekomendasi[]" value="<?= $produk['id_rekomendasi']; ?>">
                                                 <!-- Tambahkan pengecekan agar tidak terjadi akses offset pada null -->
                                                 <?php if (isset($newOrders[$produk['id_rekomendasi']])) : ?>
@@ -159,7 +159,7 @@
                                                 <?php else : ?>
                                                     <input type="hidden" name="new_order[]" value="">
                                                 <?php endif; ?>
-                                                 <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Hapus</button>
+                                                <button type="submit" class="btn btn-danger" onclick="clickSubmitEvent(this)"> <i class="bi bi-trash-fill"></i> Hapus</button>
                                             </form>
                                         </div>
                                     </li>
@@ -173,7 +173,7 @@
                         <div class="row text-center mt-3 border">
                             <?php foreach (array_slice($produkRekomendasi, 0, 6) as $produk) : ?>
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-4">
-                                    <div class="mb-3 border">
+                                    <div class="mb-3 border d-flex flex-column align-items-center">
                                         <!-- Frame smartphone -->
                                         <div class="phone-frame">
                                             <div class="text-bg-light bg-white border-0">
@@ -181,18 +181,19 @@
                                                     <?php
                                                     $produkDetail = $produkModel->getProdukById($produk['id_produk']);
                                                     ?>
-                                                    <img src="<?= base_url('assets/img/produk/main/' . $produkDetail['img']); ?>" alt="<?= $produkDetail['nama']; ?>" class="card-img-top">
+                                                    <img src="<?= base_url('assets/img/produk/main/' . $produkDetail['img']); ?>" alt="<?= $produkDetail['nama']; ?>" class="card-img-top" style="width:200px; height:200px; object-fit: contain; object-position: 20% 10%;">
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Informasi produk -->
-                                        <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                                            <div class="d-flex align-items-start justify-content-center" style=" height: 65px;">
-                                                <p class="text-center text-secondary fw-bold " style="font-size: 10px; margin: 0;"><?= substr($produkDetail['nama'], 0, 25); ?></p>
+                                        <div class="fs-2 mt-2" style="padding: 0 10px;">
+                                            <div class="d-flex align-items-center justify-content-center" style="height: 65px;">
+                                                <p class="text-center text-secondary fw-bold" style="font-size: 12px; margin: 0;"><?= substr($produkDetail['nama'], 0, 25); ?></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             <?php endforeach; ?>
                         </div>
                     </div>
