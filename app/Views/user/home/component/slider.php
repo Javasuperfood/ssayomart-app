@@ -8,8 +8,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Banner Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container">
-            <div class="swiper mySwiper" style="position: relative; margin-bottom:32px;">
+        <!-- <div class="container"> -->
+        <!-- <div class="swiper mySwiper" style="position: relative; margin-bottom:32px;">
                 <div class="swiper-wrapper d-flex">
                     <?php foreach ($banner as $b) : ?>
                         <div class="swiper-slide">
@@ -18,23 +18,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </a>
                         </div>
                     <?php endforeach; ?>
-                </div>
+                </div> -->
 
-                <!-- Previous button centered within the image -->
-                <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+        <!-- Previous button centered within the image -->
+        <!-- <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                     <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
                         <i class="bi bi-chevron-left"></i>
                     </button>
-                </div>
+                </div> -->
 
-                <!-- Next button centered within the image -->
-                <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
+        <!-- Next button centered within the image -->
+        <!-- <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
                     <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
                         <i class="bi bi-chevron-right"></i>
                     </button>
-                </div>
-            </div>
-        </div>
+                </div> -->
+        <!-- </div> -->
+    </div>
     </div>
     <style>
         .swiper-container {
