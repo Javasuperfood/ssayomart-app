@@ -6,25 +6,26 @@
             </div>
         </div> -->
 
-        <div class="row" id="product-container" style="margin-bottom: 55px;">
+        <div class="row mt-3" id="product-container">
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
-                <div class="col-4 col-md-4 col-lg-2  mb-3 mx-0">
-                    <div class="card border-0 shadow-sm text-center" style="width: auto; height: 100%;">
+                <div class="col-4 col-md-4 col-lg-2 mb-3" style="display: flex;
+      justify-content:center;">
+                    <div class="card border-0 shadow-sm text-center" style="width: 100% !important; height: 100%;">
                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                             <div class="d-flex justify-content-center align-items-center">
                                 <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 120px; height: 120px; object-fit: contain;">
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <div class="d-flex align-items-start justify-content-center" style="height: 80px;">
-                                <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                            <div class="d-flex align-items-start justify-content-center" style="height: 75px;">
+                                <p class="nama-produk text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 80); ?></p>
                             </div>
                             <!-- <p class="text-secondary" style="font-size: 10px; margin: 0;">
                                 <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                             </p> -->
 
-                            <h1 class="text-danger fs-bold mt-1 mb-3 fw-bold" style="font-size: 14px; margin: 0;">
+                            <h1 class="text-danger fs-bold mt-1 mb-3 fw-bold" style="font-size: 10px; margin: 0;">
                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                 <?php else : ?>
@@ -197,34 +198,9 @@
     }
 
     /* Media query for Samsung Galaxy Fold */
-    @media (max-width: 280px) {
-        .horizontal-counter .btn {
-            padding: 0.15rem 0.3rem;
-
-        }
-
-        .horizontal-counter input {
-            width: 30px;
-            text-align: center;
-        }
-
-        .custom-button .btn {
-            padding: 0.15rem 0.3rem;
-            font-size: 0.9rem;
-
-        }
-
-        img.card-img-top {
-            width: 100px !important;
-            height: 100px !important;
-        }
-
-        p.text-secondary {
-            font-size: 9px !important;
-        }
-
-        h1.text-danger {
-            font-size: 12px !important;
+    @media only screen and (max-width: 280px) {
+        .col-4 {
+            width: 50%;
         }
     }
 </style>
