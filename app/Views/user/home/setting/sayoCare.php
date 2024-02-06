@@ -23,7 +23,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container-fluid p-0 position-relative">
             <div class="bg-image rounded-bottom-4">
-                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
+                <img src="<?= base_url() ?>assets/img/about/bg1.jpg" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="mask"></div>
             </div>
             <!-- <div class="img-container">
@@ -244,7 +244,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="img-overlay"></div>
             </div> -->
             <div class="bg-image rounded-bottom-5">
-                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
+                <img src="<?= base_url() ?>assets/img/about/bg1.jpg" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="mask"></div>
             </div>
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-2 " style="font-family:cursive;">
