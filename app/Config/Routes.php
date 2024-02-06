@@ -116,7 +116,6 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
     $routes->get('/kupon', 'Kupon::kupon');
 
-    // $routes->get('/pay', 'BuyController::pay');
 
     $routes->get('/status', 'UserStatusController::status');
     $routes->post('/status/update/(:segment)', 'UserStatusController::updateStatus/$1');
@@ -410,6 +409,7 @@ $isP = getenv('CI_ENVIRONMENT');
 if ($isP != 'production') {
     $routes->get('/checkout2', 'TransactionCoreUIController::checkout');
     $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
+    $routes->get('/pay', 'TransactionCoreUIController::pay');
 }
 
 
