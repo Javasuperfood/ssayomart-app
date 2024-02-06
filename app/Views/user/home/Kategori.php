@@ -196,48 +196,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </section> -->
             <!-- Akhir SSayo Resto -->
 
-            <!-- Banner Promotion -->
-            <section class="mt-3" id="unggul" style="background-color: #f7f0eb;">
-                <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f7f0eb;">
-                    <div class="container mb-2 mt-2" style="background-color: #f7f0eb;">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-PROMOSI-SSAYOMART-2.png" alt="Deskripsi Gambar" class="mt-2 card-img-top responsive-image" style="width: 247px;">
-                    </div>
-                </div>
-                <div class="container" style="background-color: #f7f0eb;">
-                    <div class="swiper mySwiper" style="position: relative;">
-                        <div class="swiper-wrapper d-flex">
-                            <?php foreach ($banner_promotion as $p) : ?>
-                                <div class="swiper-slide">
-                                    <div class="shadow-sm">
-                                        <a href="<?= base_url() ?>content-banner-promotion/<?= $p['id_banner_promotion']; ?>">
-                                            <img src="<?= base_url() ?>assets/img/banner/promotion/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top">
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php endforeach ?>
-                        </div>
 
-                        <!-- Previous button centered within the image -->
-                        <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-chevron-left"></i>
-                            </button>
-                        </div>
-
-                        <!-- Next button centered within the image -->
-                        <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-chevron-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Akhir Banner Promotion -->
 
             <!-- Banner Promosi Item -->
-            <section id="rekomendasi" style="background-color: #f3f5df;">
-                <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
+            <section id="rekomendasi">
+                <div class="card border-0">
                     <div class="container mb-0 mt-3">
                         <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
                     </div>
@@ -248,7 +211,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?php
                         $iteration = 0; // Inisialisasi variabel iterasi
                         foreach ($promo as $p) :
-                            if ($iteration < 4) : // Batasan 4 iterasi
+                            if ($iteration < 2) : // Batasan 4 iterasi
                         ?>
                                 <div class="col-6 py-1 px-1">
                                     <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
@@ -260,19 +223,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             endif;
                         endforeach
                         ?>
-                    </div>
-
-                    <div class="row px-2">
-                        <div class="col-6 py-1 px-1">
-                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
-                            </a>
-                        </div>
-                        <div class="col-6 py-1 px-1">
-                            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                <img src="<?= base_url() ?>assets/img/maintenance.jpg" class="card-img-top">
-                            </a>
-                        </div>
                     </div>
                 </div>
             </section>
