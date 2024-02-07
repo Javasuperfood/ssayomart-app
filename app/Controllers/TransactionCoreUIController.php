@@ -208,7 +208,7 @@ class TransactionCoreUIController extends BaseController
         if ($totalDiscount > 0) {
             $cekProduk[] = [
                 'id' => 'diskonPromo',
-                'price' => -$totalDiscount,
+                'price' => -round($totalDiscount),
                 'quantity' => 1,
                 'name' => 'Total Diskon Promo',
             ];
@@ -237,7 +237,7 @@ class TransactionCoreUIController extends BaseController
             ];
             $cekProduk[] = [
                 'id' => 'diskonKupon',
-                'price' => -$getDiscount,
+                'price' => -round($getDiscount),
                 'quantity' => 1,
                 'name' => 'Diskon Kupon',
             ];
@@ -260,7 +260,7 @@ class TransactionCoreUIController extends BaseController
         $params = [
             'transaction_details' => [
                 'order_id' => $inv,
-                'gross_amount' => $total_2,
+                'gross_amount' => (int)floor($total_2),
             ],
             'customer_details' => [
                 'first_name' => $alamat['penerima'],
@@ -391,7 +391,7 @@ class TransactionCoreUIController extends BaseController
             'id_status_kirim' => 1,
             'invoice' => $inv,
             'total_1' => $total_1,
-            'total_2' => $total_2,
+            'total_2' => (int)floor($total_2),
             'service' => $servicetext,
             'harga_service' => $service,
             'gosend' => $GoSend,
