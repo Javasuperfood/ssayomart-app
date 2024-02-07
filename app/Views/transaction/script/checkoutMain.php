@@ -264,9 +264,9 @@
             }
         <?php endforeach; ?>
 
-        $("#diskon").text("-" + formatRupiah(diskon));
+        $("#diskon").text("-" + formatRupiah(Math.round(diskon)));
         totalHarga -= diskon;
-        $("#totalText").text(formatRupiah(ongkir + totalHarga));
+        $("#totalText").text(formatRupiah(Math.floor(ongkir + totalHarga)));
         $("#field_subtotal").val(ongkir + total);
     }
 
