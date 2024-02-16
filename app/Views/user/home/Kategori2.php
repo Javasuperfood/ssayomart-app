@@ -12,7 +12,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <!-- Modal  Homepage-->
-        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
             <?php foreach ($banner_pop_up as $pop) : ?>
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 bg-transparent">
@@ -23,10 +23,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endforeach ?>
-        </div>
+        </div> -->
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
-        <script>
+        <!-- <script>
             $(document).ready(function() {
                 // Fungsi untuk menampilkan modal
                 function showModal() {
@@ -80,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
                 return null;
             }
-        </script>
+        </script> -->
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
         <!-- Banner Promosi Item -->
@@ -635,7 +635,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div id="desktopContent" style="margin-top:15px;">
 
                 <!-- Modal  Homepage-->
-                <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                <!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
                     <?php foreach ($banner_pop_up as $pop) : ?>
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content border-0 bg-transparent">
@@ -646,10 +646,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endforeach ?>
-                </div>
+                </div> -->
                 <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
-                <script>
+                <!-- <script>
                     $(document).ready(function() {
                         // Fungsi untuk menampilkan modal
                         function showModal() {
@@ -703,7 +703,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         }
                         return null;
                     }
-                </script>
+                </script> -->
 
                 <!-- PROMO  -->
                 <section id="unggul">
