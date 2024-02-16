@@ -5,10 +5,10 @@ var swiper = new Swiper(".mySwiper", {
   spaceBetween: 10,
   grabCursor: true,
   loop: true,
-  autoplay: {
-    delay: 2000,
-    disableOnInteraction: true,
-  },
+  // autoplay: {
+  //   delay: 2000,
+  //   disableOnInteraction: true,
+  // },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
