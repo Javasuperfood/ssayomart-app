@@ -26,7 +26,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             </div>
                                         </a>
-                                        <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
+                                        <hr class="mt-5" style="border-width: 3px; border-color:#db6327;">
                                     </div>
                                 <?php endforeach; ?>
                             </div>
