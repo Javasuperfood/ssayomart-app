@@ -16,7 +16,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <!-- Modal  Homepage-->
-        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
             <?php foreach ($banner_pop_up as $pop) : ?>
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 bg-transparent">
@@ -27,9 +27,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endforeach ?>
-        </div>
+        </div> -->
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
-        <script>
+        <!-- <script>
             $(document).ready(function() {
                 // Fungsi untuk menampilkan modal
                 function showModal() {
@@ -83,10 +83,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
                 return null;
             }
-        </script>
+        </script> -->
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
-        <style>
+        <!-- <style>
             /* Ganti warna tombol close menjadi putih */
             .btn-close {
                 background-color: #ffff;
@@ -182,7 +182,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
 
             }
-        </style>
+        </style> -->
         <!-- Akhir Modal  Homepage-->
 
         <div class="class" style="position: relative; top: -15px;">
@@ -200,12 +200,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <!-- Banner Promosi Item -->
             <section id="rekomendasi">
-                <div class="card border-0">
-                    <div class="container mb-0 mt-3">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
-                    </div>
-                </div>
-
                 <div class="container">
                     <div class="row px-2">
                         <?php
@@ -213,7 +207,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         foreach ($promo as $p) :
                             if ($iteration < 2) : // Batasan 4 iterasi
                         ?>
-                                <div class="col-6 py-1 px-1">
+                                <div class="col-6 px-1">
                                     <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
                                         <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top rounded-2">
                                     </a>
