@@ -98,9 +98,9 @@ class ProdukController extends BaseController
                 'back' => '/' . '#ktr',
                 'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2)
             ];
-            if ($this->request->getUserAgent()->isMobile()) {
-                $data['back'] = 'all-category';
-            }
+            // if ($this->request->getUserAgent()->isMobile()) {
+            //     $data['back'] = '-categoallry';
+            // }
             // dd($data);
             return view('user/produk/index', $data);
         }
