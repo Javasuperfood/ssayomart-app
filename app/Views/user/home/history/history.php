@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col">
                     <form action="<?= base_url('history'); ?>" method="get">
                         <input type="hidden" name="filter" value="<?= ($filter) ? $filter : ''; ?>">
@@ -21,7 +21,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> -->
             <div class="container">
                 <div class="row text-center">
                     <div class="col position-relative">
@@ -406,7 +406,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
 
 
-            <div class="col">
+            <!-- <div class="col">
                 <form action="<?= base_url('history'); ?>" method="get">
                     <input type="hidden" name="filter" value="<?= ($filter) ? $filter : ''; ?>">
                     <div class="input-group mb-3">
@@ -414,7 +414,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <button class="btn btn-lg btn-danger border-0" type="submit"><i class="bi bi-search"></i></button>
                     </div>
                 </form>
-            </div>
+            </div> -->
             <div class="container my-5">
                 <div class="row text-center">
                     <div class="col position-relative">
