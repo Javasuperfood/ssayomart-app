@@ -275,7 +275,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="card border-0 text-center font-family-poppins" style="background-color: #dcf7d0;">
                     <div class="card-warning">
-                        <span class="card-title text-dark fw-medium fs-3 text-capitalize" style="font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
+                        <span class="card-title fw-medium fs-3 text-capitalize" style="color:#2d6e20; font-family: 'Noto Sans KR', sans-serif;"><strong><?= lang('Text.kategori'); ?></strong></h2>
                         </span>
                     </div>
                 </div>
@@ -307,7 +307,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="desktopContent" style="margin-top:15px;">
 
         <!-- Modal  Homepage-->
-        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
             <?php foreach ($banner_pop_up as $pop) : ?>
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content border-0 bg-transparent">
@@ -318,9 +318,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endforeach ?>
-        </div>
+        </div> -->
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
-        <script>
+        <!-- <script>
             $(document).ready(function() {
                 // Fungsi untuk menampilkan modal
                 function showModal() {
@@ -374,8 +374,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
                 return null;
             }
-        </script>
-        <style>
+        </script> -->
+        <!-- <style>
             /* Ganti warna tombol close menjadi putih */
             .btn-close {
                 background-color: #ffff;
@@ -394,7 +394,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 height: 20px;
                 /* Sesuaikan ukuran sesuai kebutuhan */
             }
-        </style>
+        </style> -->
         <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
 
         <section id="unggul">
