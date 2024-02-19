@@ -8,14 +8,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container d-md-block">
-            <!-- <div class="row text-center flex-nowrap">
+            <div class="row text-center flex-nowrap">
                 <div class="col-2 col-md-1 my-1 col-samsung-fold">
                     <div class="card mb-2 border-0 shadow-sm rounded-circle">
-                        
+
                         <button type="button" class="btn d-flex align-items-center justify-content-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="bi bi-list-check" style="margin-top: 2px;"></i>
                         </button>
-                        
+
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -54,7 +54,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
             <div class="row text-center">
                 <!-- Tombol Navigasi Kiri dan Kanan -->
