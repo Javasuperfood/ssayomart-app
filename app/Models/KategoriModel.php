@@ -81,6 +81,12 @@ class KategoriModel extends Model
             ->first();
     }
 
+    public function getKategoriSwiper($id)
+    {
+        return $this->select('jsf_kategori.slug as slugK, jsf_kategori.nama_kategori')
+        ->where('jsf_kategori.id_kategori', $id)->findAll();
+    }
+
     public function getGambarKategori($slug)
     {
         return $this->where(['slug' => $slug])->select('img')->first();

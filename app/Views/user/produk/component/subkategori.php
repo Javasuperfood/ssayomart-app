@@ -8,6 +8,36 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container d-md-block">
+            <div class="row text-center">
+                <!-- Tombol Navigasi Kiri dan Kanan -->
+                <div class="col position-relative my-3">
+                    <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                        <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left"></i></button>
+                    </div>
+                    <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                        <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <!-- Button Kategori -->
+                    <div class="col">
+                        <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
+                            <div class="swiper-wrapper " style="height:40px">
+                                <?php foreach ($getKategori as $s) : ?>
+                                    <div class="swiper-slide my-1">
+                                        <div class="card border-0 shadow-sm text-uppercase" style="width: auto;">
+                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
+                                                <?= $s['nama_kategori']; ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row text-center flex-nowrap">
                 <div class="col-2 col-md-1 my-1 col-samsung-fold">
                     <div class="card mb-2 border-0 shadow-sm rounded-circle">
@@ -39,13 +69,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-                <div class="col-10">
-                    <div class="swiper buttonSwiper d-flex flex-wrap">
+                <div class="col-10 ">
+                    <div class="swiper buttonSwiper d-flex flex-wrap ">
                         <div class="swiper-wrapper">
                             <?php foreach ($subKategori as $s) : ?>
-                                <div class="swiper-slide my-3">
+                                <div class="swiper-slide my-3 ">
                                     <div class="card border-0 shadow-sm text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
-                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none" style="font-size:10px; color:#000;">
+                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none" style="font-size:9px; color:#000;">
                                             <?= $s['nama_kategori']; ?>
                                         </a>
                                     </div>
@@ -56,41 +86,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
 
-            <div class="row text-center">
-                <!-- Tombol Navigasi Kiri dan Kanan -->
-                <div class="col position-relative my-3">
-                    <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
-                        <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left"></i></button>
-                    </div>
-                    <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
-                        <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                            <i class="bi bi-arrow-right"></i>
-                        </button>
-                    </div>
 
-                    <!-- Button Kategori -->
-                    <div class="col">
-                        <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
-                            <div class="swiper-wrapper " style="height:40px">
-                                <?php foreach ($subKategori as $s) : ?>
-                                    <div class="swiper-slide my-1">
-                                        <div class="card border-0 shadow-sm text-uppercase" style="width: auto;">
-                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none custom-button btn <?= ($s['slugS'] == $sk) ? 'active' : ''; ?>" data-slug="<?= $s['slugS']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
-                                                <?= $s['nama_kategori']; ?>
-                                            </a>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-
-
-
 
 <?php else : ?>
     <!-- Akhir tampilan mobile & ipad -->
