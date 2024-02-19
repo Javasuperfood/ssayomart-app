@@ -14,6 +14,8 @@ use App\Models\WishlistModel;
 use App\Models\ProdukModel;
 use App\Models\UsersModel;
 use App\Models\BlogModel;
+use App\Models\TokoModel;
+use App\Models\AlamatUserModel;
 
 class KategoriController extends BaseController
 {
@@ -67,9 +69,27 @@ class KategoriController extends BaseController
         $blogModel = new BlogModel();
         $userModel = new UsersModel();
         $blog_detail = $blogModel->getAllBlog();
+        $alamatUserModel = new AlamatUserModel();
+        $marketModel = new TokoModel();
+        $user = $userModel->where('id', user_id())->first();
 
         $randomProducts = $produkModel->getRandomProducts();
         $bannerList = $bannerModel->findAll();
+
+        $marketSelected = null;
+        if ($user['market_selected']) {
+            $getCity = isset($marketModel->find($user['market_selected'])['city']);
+            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : 'Pilih Lokasi Market';
+        } else {
+            $marketSelected = 'Pilih Lokasi abang';
+        }
+        $addressSelected = null;
+        if ($user['address_selected']) {
+            $getLabel = isset($alamatUserModel->find($user['address_selected'])['city']);
+            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Lokasi Pengataran';
+        } else {
+            $addressSelected = 'Pilih Alamat';
+        }
 
         $data = [
             'title' => 'Ssayomart',
@@ -83,6 +103,9 @@ class KategoriController extends BaseController
             'content' => $bannerList,
             'produk' => $produkModel->getProdukHome('rekomendasi'),
             'latest' => $produkModel->getProdukHome('produk_terbaru'),
+            'alamat' => $addressSelected,
+            'market' => $marketModel->findAll(),
+            'marketSelected' => $marketSelected,
         ];
         // dd($data);
 
