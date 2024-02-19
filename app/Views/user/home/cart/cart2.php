@@ -30,22 +30,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
+            <?php if ($produk == null) : ?>
             <div class="row text-center d-flex align-items-center  ">
                 <div class="col">
                      <p class="fs-5 my-3">Wah keranjang kamu kosong nih</p>
                     <div class="d-flex justify-content-center">
-                        
                          <img src="assets/img/cart2/cart-2.png" class="img-fluid" style="width:230px ;" alt="...">
                     </div>
-                    
                     <div class="mx-auto text-center">
-                      
                          <a href="<?= base_url() ?>" class="btn btn-outline-danger" >Belanja Yuk</a>
                     </div>
-                       
                 </div>
-                  
             </div>
+            <?php endif; ?>
             <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
                 <div class="row row-cols-2">
                     <?php foreach ($produk as $p) : ?>
