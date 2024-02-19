@@ -22,7 +22,7 @@
                                     </a>
                                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                         <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 85px;">
-                                            <p class=" text-secondary  fw-bold " style=" font-size: 9px; margin: 0;"><?= substr($fp['nama'], 0, 80); ?></p>
+                                            <p class=" text-secondary  fw-bold " style=" font-size: 9px; margin: 0;"><?= substr($fp['nama'], 0, 75); ?></p>
                                         </div>
                                         <!-- <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                             <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
@@ -85,7 +85,7 @@
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 85px;">
-                                    <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p['nama'], 0, 80); ?></p>
+                                    <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p['nama'], 0, 75); ?></p>
                                 </div>
                                 <!-- <p class="text-secondary" style="font-size: 8px; margin: 0;">
                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
@@ -515,13 +515,14 @@
         }
 
     }
-        /* galaxy fold lebar screen 653px */
-         @media (min-width: 653px) and (max-width: 653px) {
+
+    /* galaxy fold lebar screen 653px */
+    @media (min-width: 653px) and (max-width: 653px) {
 
         .susunan-card {
-             display: flex;
-      justify-content:center;
-      
+            display: flex;
+            justify-content: center;
+
         }
 
         .card-produk {

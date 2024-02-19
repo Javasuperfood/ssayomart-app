@@ -25,8 +25,6 @@ class ProdukController extends BaseController
         return view('user/produk/index', $data);
     }
 
-
-
     public function getProduk($slug1, $slug2)
     {
         $kategoriModel = new KategoriModel();
@@ -37,6 +35,7 @@ class ProdukController extends BaseController
         $promoModel = new PromoModel();
 
         $subKategori = new SubKategoriModel();
+        $katResult = $kategoriModel->getKategori();
         $subResult = $subKategori->getSubKategoriByKategoriId($katSub['id_kategori']);
         $subSlug = $subKategori->getSubKategori($slug2);
         $kategori = $kategoriModel->findAll();
@@ -93,14 +92,15 @@ class ProdukController extends BaseController
                 'kategori_single' => $kategori,
                 'produk' => $getProduk,
                 'subKategori' => $subResult,
+                'getKategori' => $katResult,
                 'sk' => $slug2,
                 'kategori_promo' => $promo,
                 'back' => '/' . '#ktr',
                 'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2)
             ];
-            if ($this->request->getUserAgent()->isMobile()) {
-                $data['back'] = 'all-category';
-            }
+            // if ($this->request->getUserAgent()->isMobile()) {
+            //     $data['back'] = '-categoallry';
+            // }
             // dd($data);
             return view('user/produk/index', $data);
         }

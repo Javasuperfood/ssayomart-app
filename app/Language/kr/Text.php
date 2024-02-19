@@ -12,7 +12,7 @@ return [
     'layanan' => '고객 서비스',
     'kontak' => '문의하기',
     'follow' => '우리를 따르라',
-    'cari_produk' => '여기서 제품을 찾아보세요...',
+    'cari_produk' => '검색어를 입력해주세요',
     'jadwal_pelayanan' => '월요일~토요일',
     'jadwal_pelayanan_2' => '일요일 : 휴무',
     'rekomendasi' => '우리의 추천',

@@ -1,6 +1,6 @@
 // Slider Button SubKategori
 var swiper = new Swiper(".buttonSwiper", {
-    slidesPerView: 3,
+    slidesPerView: 2,
     centeredSlides: true,
     spaceBetween: 5,
     grabCursor: true,
@@ -20,7 +20,7 @@ var swiper = new Swiper(".buttonSwiper", {
       },
       // Tampilan Mobile (lebar < 768px)
       375: {
-        slidesPerView: 3, // 3 card per tampilan
+        slidesPerView: 2, // 3 card per tampilan
       },
       280: {
         slidesPerView: 2, // Samsung galaxy fold

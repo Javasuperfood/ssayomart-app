@@ -5,10 +5,10 @@ var swiper = new Swiper(".mySwiper", {
   spaceBetween: 10,
   grabCursor: true,
   loop: true,
-  autoplay: {
-    delay: 2000,
-    disableOnInteraction: true,
-  },
+  // autoplay: {
+  //   delay: 2000,
+  //   disableOnInteraction: true,
+  // },
   pagination: {
     el: ".swiper-pagination",
     clickable: true,
@@ -171,7 +171,7 @@ var swiper = new Swiper(".mySweety", {
 
 // Slider kategori view Mobile
 var swiper = new Swiper(".btn-sub", {
-  slidesPerView: "auto",
+  slidesPerView: 2,
   spaceBetween: 10,
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
