@@ -31,10 +31,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <?php if ($produk == null) : ?>
-            <div class="row text-center d-flex align-items-center  ">
+            <div class="row text-center d-flex align-items-center  " style="height:65vh">
                 <div class="col">
                      <p class="fs-5 my-3">Wah keranjang kamu kosong nih</p>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center align-items-center">
                          <img src="assets/img/cart2/cart-2.png" class="img-fluid" style="width:230px ;" alt="...">
                     </div>
                     <div class="mx-auto text-center">
