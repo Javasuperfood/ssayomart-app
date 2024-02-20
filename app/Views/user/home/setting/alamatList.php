@@ -27,7 +27,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php else : ?>
             <div class="container">
                 <?php foreach ($alamat_user_model as $au) : ?>
-                    <div class="row row-cols-1">
+                    <div class="row row-cols-1 d-flex justify-content-center align-items-center" style="height: 70vh;">
                         <div class="col">
                             <ul class="list-group list-group-flush">
                                 <div class="position-relative">

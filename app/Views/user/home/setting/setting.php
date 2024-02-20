@@ -16,14 +16,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row">
                 <div class="col">
                     <div class="row mt-4">
-                        <div class="col-9">
+                        <div class="col-12 text-center">
                             <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['fullname']; ?></h3>
                         </div>
-                        <div class="col-3 text-center">
+                        <!-- <div class="col-3 text-center">
                             <a href="<?= base_url(); ?>setting/detail-user">
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
