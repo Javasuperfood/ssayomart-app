@@ -1,7 +1,7 @@
 // Slider Button SubKategori
 var swiper = new Swiper(".buttonSwiper", {
     slidesPerView: 2,
-    centeredSlides: true,
+    centeredSlides: false,
     spaceBetween: 5,
     grabCursor: true,
     pagination: {
