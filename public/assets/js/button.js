@@ -1,32 +1,32 @@
 // Slider Button SubKategori
 var swiper = new Swiper(".buttonSwiper", {
-    slidesPerView: 2,
-    centeredSlides: false,
-    spaceBetween: 5,
-    grabCursor: true,
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
+  slidesPerView: 2,
+  centeredSlides: false,
+  spaceBetween: 5,
+  grabCursor: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  effect: "slide", // Menambahkan efek slide untuk sentuhan yang lebih halus
+  initialSlide: 1, // Posisi slide center lur pada awalnya
+  breakpoints: {
+    // Tampilan iPad (lebar >= 768px)
+    1280: {
+      slidesPerView: 6, // 6 card per tampilan
     },
-    initialSlide: 1, // Posisi slide center lur pada awalnya
-    breakpoints: {
-      // Tampilan iPad (lebar >= 768px)
-      1280: {
-        slidesPerView: 6, // 6 card per tampilan
-      },
-      // Tampilan iPad (lebar >= 768px)
-      768: {
-        slidesPerView: 4, // 4 card per tampilan
-      },
-      // Tampilan Mobile (lebar < 768px)
-      375: {
-        slidesPerView: 2, // 3 card per tampilan
-      },
-      280: {
-        slidesPerView: 2, // Samsung galaxy fold
-      },
+    // Tampilan iPad (lebar >= 768px)
+    768: {
+      slidesPerView: 4, // 4 card per tampilan
     },
-
+    // Tampilan Mobile (lebar < 768px)
+    375: {
+      slidesPerView: 2, // 3 card per tampilan
+    },
+    280: {
+      slidesPerView: 2, // Samsung galaxy fold
+    },
+  },
 });
 
 // tombol Scroll Up
