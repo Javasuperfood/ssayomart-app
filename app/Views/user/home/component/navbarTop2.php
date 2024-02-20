@@ -8,48 +8,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container position-absolute top-0 start-50 translate-middle-x rounded-bottom-4" style="background-color:aquamarine; height:23%;">
+        <div class="container position-absolute top-0 start-50 translate-middle-x rounded-bottom-4" style="background: rgb(2,0,36);
+background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 41%, rgba(255,239,0,1) 100%); height:23%;">
             <div class="row">
                 <div class="d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                     <?php if (auth()->loggedIn()) : ?>
                         <div class="col-6 d-flex justify-content-start align-items-start">
-                            <i class="bi bi-pin-map pt-2 text-secondary" style="font-size: 12px;"></i>&nbsp<a href=" <?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 alamatt-list" style="font-size: 12px;"><?= $alamat ?? 'Pilih Alamat'; ?></a>
+                            <i class="bi bi-pin-map pt-2 text-secondary" style="font-size: 12px;"></i>&nbsp<a href=" <?= base_url(); ?>setting/alamat-list" class="text-white pt-2 link-underline link-underline-opacity-0 alamatt-list" style="font-size: 12px;"><?= $alamat ?? 'Pilih Alamat'; ?></a>
                         </div>
                         <div class="col-6 d-flex justify-content-end align-items-end">
-                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;"><?= $marketSelected ?? 'Pilih Cabang'; ?> <i class="bi bi-geo-alt"> </i></a>
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="text-white pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;"><?= $marketSelected ?? 'Pilih Cabang'; ?> <i class="bi bi-geo-alt"> </i></a>
                         </div>
                     <?php else : ?>
                         <div class="col-12 text-center">
-                            <a href="<?= base_url(); ?>login" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 12px;"><?= lang('Text.login_market') ?></a>
+                            <a href="<?= base_url(); ?>login" class="text-white pt-2 link-underline link-underline-opacity-0" style="font-size: 12px;"><?= lang('Text.login_market') ?></a>
                         </div>
                     <?php endif; ?>
                 </div>
             </div>
             <!-- searchbar -->
-            <div class="row align-items-center justify-content-center w-100">
-                <div class="col-9 col-md-10">
-                    <form class="border-0 mt-3" role="search" action="<?= base_url('search'); ?>" method="get">
+            <div class="row">
+                <div class="col-12 p-2 align-items-center justify-content-center">
+                    <form class="border-0 mt-3 mx-2" role="search" action="<?= base_url('search'); ?>" method="get">
                         <div class="input-group mb-3">
                             <button type="submit" class="input-group-text btn border-0 rounded-start-5 bg-white"><i class="bi bi-search"></i></button>
                             <input type="text" name="produk" class="form-control bg-white rounded-end-5" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
                         </div>
                     </form>
-                </div>
-                <div class="col-3 col-md-2" style="flex: 0 0 0 !important;">
-                    <?php
-                    $lang = session()->get('lang');
-                    $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
-                    ?>
-                    <div class="dropdown">
-                        <button class="btn btn-transparent text-danger dropdown-toggle fs-6 border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="40px" alt="" class="flag-icon">
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-white border-0" style="background-color: transparent;" aria-labelledby="languageDropdown">
-                            <a href="<?= site_url('lang/id'); ?>" class="dropdown-item d-flex justify-content-end align-items-end <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="30px" alt="" class="flag-icon"></a>
-                            <a href="<?= site_url('lang/kr'); ?>" class="dropdown-item d-flex justify-content-end align-items-end <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="30px" alt="" class="flag-icon"></a>
-                            <a href="<?= site_url('lang/en'); ?>" class="dropdown-item d-flex justify-content-end align-items-end<?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="30px" alt="" class="flag-icon"></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
