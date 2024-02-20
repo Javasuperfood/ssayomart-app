@@ -181,16 +181,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- Akhir Modal  Homepage-->
 
         <div class="class" style="position: relative; top: -15px;">
-            <!-- ssayo Resto -->
-            <!-- <section>
-                <div class="container d-flex justify-content-between align-items-center">
-                    <a href="<?= base_url(); ?>sayo-resto">
-                        <img src="<?= base_url() ?>assets/img/ssayoresto/btnsayoresto.jpg" class="d-block w-100 rounded-3">
-                    </a>
-                </div>
-            </section> -->
-            <!-- Akhir SSayo Resto -->
-
             <!-- Banner Promosi Item -->
             <section id="rekomendasi">
                 <div class="container">
@@ -290,8 +280,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-        <!-- All Kategori -->
-
     </div>
     <!-- End Mobile View -->
 <?php else : ?>

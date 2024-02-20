@@ -9,7 +9,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container-fluid">
-            <div class="swiper mySwiper" style="position: relative; margin-bottom:27px; margin-top:105px; z-index:2;">
+            <div class="swiper mySwiper" style="position: relative; margin-bottom:27px; margin-top:105px;">
                 <div class="swiper-wrapper d-flex">
                     <?php foreach ($banner as $b) : ?>
                         <div class="swiper-slide">
