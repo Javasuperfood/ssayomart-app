@@ -35,10 +35,73 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 <?php endforeach ?>
             </div>
+            <?php if ($kupon_model == null) : ?>
+            <div class="row " >
+                <div class="col">
+                    <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
+                  <img src="assets/img/coupon.png" class="img-coupon coupon-opacity"  alt="...">
+                    <h5 class="coupon-opacity fs-kupon">Kupon Belum Tersedia</h5>
+                    </div>
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
+<style>
+     .coupon-opacity {
+            opacity: 0.6;
+        }
+       
+    /* Ekstra Kecil (xs) */
+@media only screen and (max-width: 575.98px) {
+ 
+  .img-coupon {
+    width: 130px;
+  }
+}
+
+/* Kecil (sm) */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+ .img-coupon {
+    width: 190px;
+  }
+}
+
+/* Menengah (md) */
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .img-coupon {
+    width: 200px;
+  }
+  .fs-kupon {
+    font-size: 50px;
+  }
+}
+
+/* Besar (lg) */
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+    .img-coupon {
+    width: 250px;
+  }
+  .fs-kupon {
+    font-size: 65px;
+  }
+}
+
+/* Sangat Besar (xl) */
+@media only screen and (min-width: 1200px) {
+  /* Aturan CSS untuk layar sangat besar di sini */
+    .img-coupon {
+    width: 290px;
+  }
+  .fs-kupon {
+    font-size: 75px;
+  }
+}
+
+</style>
 
     <style>
+       
         /* Untuk layar yang lebih kecil, seperti Samsung Galaxy Fold (lebar 280px) */
         @media (max-width: 280px) {
             .coupon {
