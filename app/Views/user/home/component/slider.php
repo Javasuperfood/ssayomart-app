@@ -8,13 +8,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Banner Mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container">
-            <div class="swiper mySwiper" style="position: relative; margin-bottom:32px;">
+        <div class="container-fluid">
+            <div class="swiper mySwiper" style="position: relative; margin-bottom:27px; margin-top:105px; z-index:2;">
                 <div class="swiper-wrapper d-flex">
                     <?php foreach ($banner as $b) : ?>
                         <div class="swiper-slide">
                             <a href="<?= base_url(); ?>content-banner/<?= $b['id_banner']; ?>">
-                                <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 rounded-3" alt="<?= $b['title']; ?>">
+                                <img src="<?= base_url() ?>assets/img/banner/<?= $b['img']; ?>" class="d-block w-100 h-100 rounded-4" alt="<?= $b['title']; ?>">
                             </a>
                         </div>
                     <?php endforeach; ?>
