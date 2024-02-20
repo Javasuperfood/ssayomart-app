@@ -84,9 +84,9 @@
     color: gold;
 }
 
-.swiper-slide img {
+/* .swiper-slide img {
     border-radius: 15px;
-}
+} */
 
 .swiper-slide button {
     padding-left: 10px;
@@ -206,10 +206,10 @@
 }
 
 @media (max-width: 480px) {
-    .swiper-slide img {
+    /* .swiper-slide img {
         border-radius: 10px;
         
-    }
+    } */
 
     /* .card {
         margin-top: 2rem;
