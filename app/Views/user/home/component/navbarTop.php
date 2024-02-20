@@ -25,6 +25,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php endif; ?>
                 </div>
                 <!-- Modal Select Market -->
+                <?php if (auth()->loggedIn()) : ?>
                 <div class="modal fade" id="selectMarket" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
                         <form class="modal-content" action="<?= base_url(); ?>setting/update-market" method="post">
@@ -82,6 +83,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         });
                     <?php endif ?>
                 </script>
+                <?php endif; ?>
             </div>
         </div>
         <nav class="navbar px-md-1 navbar-top mx-md-1 top-0 rounded-bottom-4 shadow-sm" style="background-color : #ffff;">
