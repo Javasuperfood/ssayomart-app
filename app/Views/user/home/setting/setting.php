@@ -65,7 +65,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <h3><?= lang('Text.setting') ?></h3>
                     <ul class="list-group list-group-flush">
-                        <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold mb-2">
                             <i class="bi bi-person-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.detail_akun') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -73,7 +73,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a> -->
-                        <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item mb-3 fw-bold">
                             <i class="bi bi-cursor pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"> <?= lang('Text.alamat_tersimpan') ?> </span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -86,7 +86,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <h3><?= lang('Text.bantuan') ?></h3>
                     <ul class="list-group list-group-flush">
-                        <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold mb-2">
                             <i class="bi bi-question-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.tentang') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -97,19 +97,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a> -->
 
-                        <a href="<?= base_url(); ?>/pusat-bantuan" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>/pusat-bantuan" class="list-group-item pb-3 fw-bold mb-2">
                             <i class="bi bi-universal-access-circle pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.pusat_bantuan') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
 
-                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold mb-2">
                             <i class="bi bi-lock pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.kebijakan_privasi') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
 
-                        <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold">
+                        <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold mb-2">
                             <i class="bi bi-box-arrow-right pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.logout') ?> </span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -119,10 +119,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="text-center"> <!-- Tambahkan class text-center untuk membuatnya berada di tengah horizontal -->
                                     <p class="mb-3 fw-bold"><?= lang('Text.ikuti_kami') ?> :</p>
                                     <div class="social-links d-flex justify-content-center ">
-                                        <a href="https://www.youtube.com/channel/UCiaJvoHqRRlxxHERP7q11Bw" target="__blank" class="youtube btn btn-danger mx-2 social-icon"><i class="bi bi-youtube"></i></a>
-                                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" target="__blank" class="facebook btn btn-danger mx-2 social-icon"><i class="bi bi-facebook"></i></a>
-                                        <a href="https://www.instagram.com/ssayomart.id/" target="__blank" class="instagram btn btn-danger mx-2 social-icon"><i class="bi bi-instagram"></i></a>
-                                        <a href="https://www.tiktok.com/@ssayomart.id" target="__blank" class="tiktok btn btn-danger mx-2 social-icon"><i class="bi bi-tiktok"></i></a>
+                                        <a href="https://www.youtube.com/channel/UCiaJvoHqRRlxxHERP7q11Bw" target="__blank" class="youtube btn btn-outline-danger mx-2 social-icon"><i class="bi bi-youtube"></i></a>
+                                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" target="__blank" class="facebook btn btn-outline-danger mx-2 social-icon"><i class="bi bi-facebook"></i></a>
+                                        <a href="https://www.instagram.com/ssayomart.id/" target="__blank" class="instagram btn btn-outline-danger mx-2 social-icon"><i class="bi bi-instagram"></i></a>
+                                        <a href="https://www.tiktok.com/@ssayomart.id" target="__blank" class="tiktok btn btn-outline-danger mx-2 social-icon"><i class="bi bi-tiktok"></i></a>
                                     </div>
                                 </div>
                             </div>
