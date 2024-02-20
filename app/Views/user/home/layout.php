@@ -18,7 +18,7 @@
     <?= $this->include('user/home/cart/scriptCart/cartScriptInit'); ?>
 </head>
 
-<body>
+<body class="bg-light">
     <?= $this->include('user/home/component/preloader') ?>
     <?= $this->renderSection('page-content') ?>
     <div class="pb-5"></div>
