@@ -21,6 +21,7 @@ return [
     'produk_terbaru' => 'New Products',
     'go_to_kategori_kr' => '모든 카테고리 보기',
     'go_to_kategori_id_en' => 'Click here to see All Categories',
+    'login_market' => 'Please Login First',
 
     // SETTING PAGE
     'title_setting' => 'Setting',
@@ -58,6 +59,7 @@ return [
     'btn_hapus' => 'Delete',
     'btn_tambah' => 'Add New Address',
     'alert_alamat' => 'You have not filled in the address.',
+
     // FORM TAMBAH ALAMAT
     'title_alamat' => 'Shipping Address',
     'subtitle_alamat' => 'Enter Your Address',
@@ -68,7 +70,7 @@ return [
     'provinsi' => 'Province',
     'kab_kota' => 'Regency/City',
     'detail_alamat' => 'Address Details',
-    'patokan_alamat' => 'Address Marking',
+    'patokan_alamat' => 'Notes',
     'zipcode' => 'Zip Code',
     'optional' => '(Optional)',
 
@@ -76,6 +78,8 @@ return [
     'title_cart' => 'Shopping Cart',
     'total_cart' => 'Total Payment',
     'btn_checkout' => 'CHECKOUT',
+    'notif_cart' => 'No! Your cart is empty',
+    'btn_belanja' => 'Lets shop now!',
 
     // HISTORY
     'title_history' => 'Transaction History',

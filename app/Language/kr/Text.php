@@ -1,4 +1,3 @@
-
 <?php
 return [
     // KOREA TEXT
@@ -6,20 +5,25 @@ return [
     // HOME PAGE
     'beranda' => '홈페이지',
     'download' => '사사요마트 다운로드',
-    'spesial' => '싸요마트 프로모션',
-    'kategori' => '범주',
+    'spesial' => '금주 행사상품',
+    'kategori' => '싸요마트 카테고리 선정!',
     'alamat' => '주소',
     'layanan' => '고객 서비스',
     'kontak' => '문의하기',
-    'follow' => '우리를 따르라',
-    'cari_produk' => '검색어를 입력해주세요',
+    'follow' => '우리를',
+    'cari_produk' => '그냥 먼저 찾아보세요',
     'jadwal_pelayanan' => '월요일~토요일',
     'jadwal_pelayanan_2' => '일요일 : 휴무',
-    'rekomendasi' => '우리의 추천',
+    'saran_masak' => '오늘 이 요리 어때요?',
     'dashboard' => '계기반',
+    'selengkapnya' => '더 완벽해',
+    'produk_rekomendasi' => '추천상품',
+    'produk_terbaru' => '새로운 제품',
+    'login_market' => '자, 먼저 로그인하세요!',
 
     // SETTING PAGE
-    'setting' => '환경',
+    // 'title_setting' => '설정 / Pengaturan',
+    'setting' => '설정',
     'logout' => '로그 아웃',
     'welcome_setting' => '환영, ',
     'detail_akun' => '계정 세부정보',
@@ -29,7 +33,7 @@ return [
     'riwayat' => '거래 내역',
     'tentang' => '싸요마트 소개',
     'ssayomart_care' => '싸요마트 서비스',
-    'kebijakan_privasi' => '개인 정보 정책',
+    'kebijakan_privasi' => '우리의 정책',
     'judul_kupon' => '할인 쿠폰 사용 가능!',
     'isi_kupon' => '싸요마트 신규유저를 위한',
     'alert' => '죄송합니다. 귀하의 지역은 아직 당사 서비스를 이용할 수 없습니다.',
@@ -37,10 +41,8 @@ return [
     'ikuti_kami' => '이쿠티 카미',
     'pusat_bantuan' => '도움말 센터',
 
-
     // DETAIL USER
     'title' => '사용자 세부정보',
-    'welcome_detail' => '좋아 보인다!, ',
     'username' => '사용자 이름',
     'nama_lengkap' => '이름',
     'telp' => '전화 번호',
@@ -54,11 +56,13 @@ return [
     'btn_hapus' => '삭제',
     'btn_tambah' => '새 주소 추가',
     'alert_alamat' => '주소를 입력하지 않으셨습니다.',
+
     // FORM TAMBAH ALAMAT
     'title_alamat' => '배송 주소',
     'subtitle_alamat' => '주소를 입력하세요',
     'label_alamat' => '주소 라벨',
     'no_telp_alamat' => '수신자 휴대폰 번호',
+    'no_telp_alamat2' => '대체 휴대폰 번호',
     'nama_penerima' => '수신자 이름',
     'provinsi' => '주',
     'kab_kota' => '리젠시/시',
@@ -70,14 +74,66 @@ return [
     // KERANJANG
     'title_cart' => '쇼핑 카트',
     'total_cart' => '총 결제금액',
-    'btn_checkout' => '점검',
+    'btn_checkout' => 'B점검',
+    'notif_cart' => '와, 바구니가 비어 있어요!',
+    'btn_belanja' => '지금 쇼핑하자!',
 
     // HISTORY
     'title_history' => '거래 내역',
     'transaksi_1' => '보류 중인 거래',
-    'transaksi_2' => '세부정보(처리 중)',
+    'transaksi_2' => '세부정보(처리 중))',
     'transaksi_3' => '세부정보(전송됨)',
     'transaksi_4' => '세부사항(완료)',
     'transaksi_5' => '세부정보(실패)',
     'transaksi_6' => '쇼핑을 계속',
+
+    // ARTIKEL
+    'saran_masak' => '싸요마트의 다른 요리 제안',
+
+    // PRODUK SINGLE
+    'deskripsi_produk' => '설명',
+    'produk_lainnya' => '다른 제품들',
+    'btn_beli' => '구입하다',
+    'badge_kategori' => '범주',
+    'badge_subkategori' => '하위 카테고리',
+    'stock' => '재고 있음 / Stok Tersedia',
+    'stock2' => '주식 데이터를 검색하지 못했습니다.',
+    'stock3' => '로그인 후 시장 위치를 ​​선택하세요.',
+    'sku_produk' => '재고 유지 단위 / SKU Produk',
+    'sku_produk2' => '재고 보관 장치를 확보하지 못했습니다.',
+    // PRODUK COMPONENT CARD
+    'produk_unggulan' => '특별 상품',
+    'nama_produk' => '제품',
+
+    // RIWAYAT TRANSAKSI
+    'alert_history' => '찾으시는 거래내역을 찾을 수 없습니다',
+
+    // MIDTRANS RESPONSE SWAL
+    // ON CLOSE //
+    'onclose_title' => '결제를 완료하기 전에 결제를 종료하시겠습니까?',
+    'onclose_cnfrm_btn' => '물론이지',
+    'onclose_cancel_btn' => '반품',
+    'onclose_title2' => '성공하다!',
+    // ON ERROR //
+    'onerror_title' => '결제 실패!',
+    // ON PENDING //
+    'onpending_title' => '결제를 기다리는 중',
+    'onpending_deskripsi' => '이 알림은 자동으로 닫힙니다.',
+
+    // LOGIN & REGISTER
+    'username' => '귀하의 사용자 이름',
+    'email' => '귀하의 이메일',
+    'password' => '너의 비밀번호',
+    'konfirm_password' => '암호를 확인 ',
+    'btn_login' => '로그인',
+    'btn_daftar' => '목록',
+    'lihat_barang' => '로그인하지 않고 항목 보기',
+    'lupa_password' => '비밀번호를 잊으 셨나요?',
+    'klik_disini' => '여기를 누르세요',
+    'atau' => '또는',
+    'login_apple' => 'Login With Apple',
+    'login_google' => 'Login With Google',
+    'belum_punya_akun' => '아직 계정이 없나요?',
+    'sudah_punya_akun' => '이미 계정이 있나요?'
+
 ];

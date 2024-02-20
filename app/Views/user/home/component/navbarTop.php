@@ -10,79 +10,79 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent" style="margin-bottom: 25px;">
         <div class="container">
             <div class="row">
-                <div class="row row-cols-2 d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
+                <div class="d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                     <?php if (auth()->loggedIn()) : ?>
                         <div class="col-6 d-flex justify-content-start align-items-start">
-                            <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 alamatt-list" style="font-size: 12px;"><?= $alamat ?? 'Pilih Alamat'; ?> <i class="bi bi-chevron-down"></i></a>
+                            <i class="bi bi-pin-map pt-2 text-secondary" style="font-size: 12px;"></i>&nbsp<a href=" <?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 alamatt-list" style="font-size: 12px;"><?= $alamat ?? 'Pilih Alamat'; ?></a>
                         </div>
                         <div class="col-6 d-flex justify-content-end align-items-end">
-                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;"><?= $marketSelected ?? 'Pilih Cabang'; ?> <i class="bi bi-chevron-down"></i></a>
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;"><?= $marketSelected ?? 'Pilih Cabang'; ?> <i class="bi bi-geo-alt"> </i></a>
                         </div>
                     <?php else : ?>
                         <div class="col-12 text-center">
-                            <a href="<?= base_url(); ?>login" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 12px;">Login</a>
+                            <a href="<?= base_url(); ?>login" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0" style="font-size: 12px;"><?= lang('Text.login_market') ?></a>
                         </div>
                     <?php endif; ?>
                 </div>
                 <!-- Modal Select Market -->
                 <?php if (auth()->loggedIn()) : ?>
-                <div class="modal fade" id="selectMarket" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
-                        <form class="modal-content" action="<?= base_url(); ?>setting/update-market" method="post">
-                            <?= csrf_field(); ?>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <p class="fw-bold fs-5">Pilih Lokasi Market</p>
+                    <div class="modal fade" id="selectMarket" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
+                            <form class="modal-content" action="<?= base_url(); ?>setting/update-market" method="post">
+                                <?= csrf_field(); ?>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="fw-bold fs-5">Pilih Lokasi Market</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row row-cols-1">
-                                    <?php foreach ($market as $m) : ?>
-                                        <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>)">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($user['market_selected'] == $m['id_toko']) ? 'checked' : ''; ?>>
+                                    <div class="row row-cols-1">
+                                        <?php foreach ($market as $m) : ?>
+                                            <div class="col py-2" onclick="selectMarket(<?= $m['id_toko']; ?>)">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="form-check form-switch">
+                                                            <input class="form-check-input" type="radio" role="switch" id="market<?= $m['id_toko']; ?>" name="market" value="<?= $m['id_toko']; ?>" <?= ($user['market_selected'] == $m['id_toko']) ? 'checked' : ''; ?>>
+                                                        </div>
+                                                        <p class="fw-bold">Ssayomart <?= $m['lable']; ?> <i class="fw-bold text-danger" id="marketSelected<?= $m['id_toko']; ?>"> <?= ($user['market_selected'] == $m['id_toko']) ? 'Selected' : ''; ?></i></p>
+                                                        <p><?= $m['alamat_1']; ?></p>
+                                                        <p><?= $m['telp']; ?></p>
                                                     </div>
-                                                    <p class="fw-bold">Ssayomart <?= $m['lable']; ?> <i class="fw-bold text-danger" id="marketSelected<?= $m['id_toko']; ?>"> <?= ($user['market_selected'] == $m['id_toko']) ? 'Selected' : ''; ?></i></p>
-                                                    <p><?= $m['alamat_1']; ?></p>
-                                                    <p><?= $m['telp']; ?></p>
                                                 </div>
                                             </div>
-                                        </div>
-                                    <?php endforeach; ?>
+                                        <?php endforeach; ?>
+                                    </div>
+
                                 </div>
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary close-modal-marker" <?= (!$user['market_selected']) ? '' : 'data-bs-dismiss="modal"' ?>>Close</button>
-                                <button type="submit" class="btn btn-danger"><?= (!$user['market_selected']) ? 'Simpan' : 'Update'; ?> Lokasi Market</button>
-                            </div>
-                        </form>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary close-modal-marker" <?= (!$user['market_selected']) ? '' : 'data-bs-dismiss="modal"' ?>>Close</button>
+                                    <button type="submit" class="btn btn-danger"><?= (!$user['market_selected']) ? 'Simpan' : 'Update'; ?> Lokasi Market</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <script>
-                    function selectMarket(i) {
-                        $('#market' + i).prop('checked', true);
-                    }
+                    <script>
+                        function selectMarket(i) {
+                            $('#market' + i).prop('checked', true);
+                        }
 
-                    <?php if ($user && $user['market_selected']) : ?>
-                        $(".close-modal-marker").click(function() {
-                            $('#market<?= $user['market_selected']; ?>').prop('checked', true);
-                        });
-                    <?php endif; ?>
-                </script>
+                        <?php if ($user && $user['market_selected']) : ?>
+                            $(".close-modal-marker").click(function() {
+                                $('#market<?= $user['market_selected']; ?>').prop('checked', true);
+                            });
+                        <?php endif; ?>
+                    </script>
 
-                <script>
-                    function selectMarket(i) {
-                        $('#market' + i).prop('checked', true);
-                    }
-                    <?php if ($user['market_selected']) :  ?>
-                        $(".close-modal-marker").click(function() {
-                            $('#market' + <?= $user['market_selected']; ?>).prop('checked', true);
-                        });
-                    <?php endif ?>
-                </script>
+                    <script>
+                        function selectMarket(i) {
+                            $('#market' + i).prop('checked', true);
+                        }
+                        <?php if ($user['market_selected']) :  ?>
+                            $(".close-modal-marker").click(function() {
+                                $('#market' + <?= $user['market_selected']; ?>).prop('checked', true);
+                            });
+                        <?php endif ?>
+                    </script>
                 <?php endif; ?>
             </div>
         </div>

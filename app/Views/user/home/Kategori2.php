@@ -736,7 +736,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </section>
 
-
                 <!-- Carousel Banner Promosi -->
                 <div class="container text-center">
                     <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
