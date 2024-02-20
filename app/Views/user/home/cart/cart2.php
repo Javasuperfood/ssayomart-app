@@ -33,12 +33,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php if ($produk == null) : ?>
                 <div class="row text-center d-flex align-items-center" style="height:65vh">
                     <div class="col">
-                        <p class="fs-5 my-3">Wah keranjang kamu kosong nih!</p>
+                        <p class="fs-5 my-3"><?= lang('Text.notif_cart') ?></p>
                         <div class="d-flex justify-content-center align-items-center">
                             <img src="assets/img/cart2/cart-2.png" class="img-fluid" style="width:230px ;" alt="...">
                         </div>
                         <div class="mx-auto text-center">
-                            <a href="<?= base_url() ?>" class="btn btn-outline-danger">Belanja sekarang yuk!</a>
+                            <a href="<?= base_url() ?>" class="btn btn-outline-danger"><?= lang('Text.btn_belanja') ?></a>
                         </div>
                     </div>
                 </div>
