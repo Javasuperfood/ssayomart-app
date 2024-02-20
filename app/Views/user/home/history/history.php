@@ -216,9 +216,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?= lang('Text.alert_history') ?>
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>

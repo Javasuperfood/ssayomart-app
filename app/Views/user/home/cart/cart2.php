@@ -50,7 +50,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="card border-0 shadow-sm " style="width: auto; height: 100%;">
                                 <div class="row">
                                     <div class="col-4">
-
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center position-relative">
                                             <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-2 py-1 img-small gambar-kecil" alt="Product" style="width:120px; height:120px; object-fit: contain; object-position: 20% 10%; ">
                                             <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>

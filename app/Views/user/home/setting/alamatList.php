@@ -15,10 +15,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
             <div class="container mt-4">
                 <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" style="text-decoration: none;">
-                    <div class="alert alert-danger d-flex align-items-center" role="alert">
-                        <i class="bi bi-house-add mr-2" style="font-size: 25px;"></i>
-                        <div style="margin-left: 18px;">
-                            <?= lang('Text.alert_alamat') ?>
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-danger rounded border-0" role="alert">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="bi bi-house-add text-danger position-absolute top-50 start-0 translate-middle-y px-4" style="font-size: 35px;"></i>
+                                    </div>
+                                    <div class="col-10">
+                                        <div class="text-secondary" style="font-size: 15px;">
+                                            <span style="font-size:14px" class="text-secondary"><?= lang('Text.alert_alamat') ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </a>

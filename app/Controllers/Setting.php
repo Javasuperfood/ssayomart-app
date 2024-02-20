@@ -76,7 +76,8 @@ class Setting extends BaseController
             'du' => $du[0],
             'kategori' => $kategori->findAll(),
             'results' => $query->getResult(),
-            'deleteRequestExists' => $existingRequest !== null
+            'deleteRequestExists' => $existingRequest !== null,
+            'back'  => 'setting'
         ];
         return view('user/home/setting/detailUser', $data);
     }
@@ -277,7 +278,7 @@ class Setting extends BaseController
             'alamat_user_model' => $alamat_list,
             'kategori' => $kategori->findAll(),
             'user' => $user,
-            'back'  => 'setting'
+            'back'  => '/'
         ];
         // dd($data);
         return view('user/home/setting/alamatList', $data);

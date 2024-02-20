@@ -20,6 +20,8 @@ return [
     'produk_rekomendasi' => 'Produk Rekomendasi',
     'produk_terbaru' => 'Produk Terbaru',
     'login_market' => 'Login dulu yuk!',
+    'pilih_alamat' => 'Pilih Alamat Anda',
+    'pilih_alamat_cabang' => 'Pilih Ssayomart Terdekat',
 
     // SETTING PAGE
     // 'title_setting' => '설정 / Pengaturan',
@@ -55,7 +57,7 @@ return [
     'btn_ubah' => 'Ubah',
     'btn_hapus' => 'Hapus',
     'btn_tambah' => 'Tambahkan Alamat',
-    'alert_alamat' => 'Anda belum memiliki alamat.',
+    'alert_alamat' => 'Anda belum memiliki alamat. Klik disini untuk menambahkan alamat baru.',
 
     // FORM TAMBAH ALAMAT
     'title_alamat' => 'Alamat Pengiriman',
@@ -67,9 +69,11 @@ return [
     'provinsi' => 'Provinsi',
     'kab_kota' => 'Kabupaten/Kota',
     'detail_alamat' => 'Detail Alamat',
+    'detail_alamat_2' => 'Pin Alamat',
     'patokan_alamat' => 'Catatan Pengirim',
     'zipcode' => 'Kode Pos',
     'optional' => '(Opsional)',
+    'info_alamat' => '* Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend) atau bisa menekan tombol Pin Alamat di bagian bawah maps.',
 
     // KERANJANG 
     'title_cart' => 'Keranjang Belanja',

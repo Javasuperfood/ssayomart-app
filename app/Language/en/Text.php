@@ -22,6 +22,8 @@ return [
     'go_to_kategori_kr' => '모든 카테고리 보기',
     'go_to_kategori_id_en' => 'Click here to see All Categories',
     'login_market' => 'Please Login First',
+    'pilih_alamat' => 'Choose Your Address',
+    'pilih_alamat_cabang' => 'Select Nearest Ssayomart',
 
     // SETTING PAGE
     'title_setting' => 'Setting',
@@ -58,7 +60,7 @@ return [
     'btn_ubah' => 'Change',
     'btn_hapus' => 'Delete',
     'btn_tambah' => 'Add New Address',
-    'alert_alamat' => 'You have not filled in the address.',
+    'alert_alamat' => 'You dont have an address yet. Click here to add a new address.',
 
     // FORM TAMBAH ALAMAT
     'title_alamat' => 'Shipping Address',
@@ -70,9 +72,11 @@ return [
     'provinsi' => 'Province',
     'kab_kota' => 'Regency/City',
     'detail_alamat' => 'Address Details',
+    'detail_alamat_2' => 'Address Marker',
     'patokan_alamat' => 'Notes',
     'zipcode' => 'Zip Code',
     'optional' => '(Optional)',
+    'info_alamat' => '* Make sure the location point matches the indicated point. (required for delivery via GoSend) or you can press the Pin Address button at the bottom of the maps',
 
     // KERANJANG
     'title_cart' => 'Shopping Cart',

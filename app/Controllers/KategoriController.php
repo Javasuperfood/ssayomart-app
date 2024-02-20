@@ -81,14 +81,14 @@ class KategoriController extends BaseController
         $marketSelected = null;
         if (auth()->loggedIn() && $user['market_selected']) {
             $getCity = isset($marketModel->find($user['market_selected'])['city']);
-            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : 'Pilih Lokasi Cabang';
+            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : lang('Text.pilih_alamat_cabang');
         } else {
             $marketSelected = 'Pilih Lokasi Cabang';
         }
         $addressSelected = null;
         if (auth()->loggedIn() && $user['address_selected']) {
             $getLabel = isset($alamatUserModel->find($user['address_selected'])['city']);
-            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Alamat';
+            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : lang('Text.pilih_alamat');
         } else {
             $addressSelected = 'Pilih Alamat';
         }

@@ -6,8 +6,8 @@
     <?php if (isset($featuredProducts)) : ?>
         <?php if ($featuredProducts != null && !empty($featuredProducts)) : ?>
             <div class="container bg-white" id="product">
-                <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1" style="color:#7e0204; background-color: #facaaf; font-size:medium; font-family:sans-serif;"><?= lang('Text.produk_unggulan') ?></p>
-                <hr class="border-darker mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
+                <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1"><?= lang('Text.produk_unggulan') ?></p>
+                <hr class="border-darker mt-0 mb-3" style="border-color: #000;border-width:2px;">
                 <div class="row row-cols-3" id="product-unggulan-container">
 
                     <!-- Featured Products -->
@@ -28,7 +28,7 @@
                                             <del>Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?></del>
                                         </p> -->
 
-                                        <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
+                                        <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                                             <?php if ($fp['harga_min'] == $fp['harga_max']) : ?>
                                                 Rp. <?= number_format($fp['harga_min'], 0, ',', '.'); ?>
                                             <?php else : ?>
@@ -66,8 +66,8 @@
         if (!defined('IS_HOMEPAGE') || !IS_HOMEPAGE) {
             // Kodingan di card2.php hanya akan dijalankan jika bukan homepage
         ?>
-            <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1" style="color:#7e0204; background-color: #facaaf; font-size: medium; font-family: sans-serif;"><?= lang('Text.nama_produk') ?></p>
-            <hr class="border-darker mt-0 mb-3" style="border-color: #e36120;border-width:3px;">
+            <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1"><?= lang('Text.nama_produk') ?></p>
+            <hr class="border-darker mt-0 mb-3" style="border-color: #000;border-width:2px;">
         <?php
         }
         ?>
@@ -91,7 +91,7 @@
                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                 </p> -->
 
-                                <h1 class="text-danger fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
+                                <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
                                     <?php else : ?>

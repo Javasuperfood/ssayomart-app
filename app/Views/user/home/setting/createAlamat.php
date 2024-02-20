@@ -110,7 +110,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
+                                    <label for=" floatingInput"><?= lang('Text.detail_alamat_2') ?><span class="text-danger fs-5"> *</span></label>
                                     <div class="input-group ">
                                         <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" aria-describedby="button_alamat_3">
                                         <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
@@ -125,16 +125,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                             <div class="col-12">
-                                <p class="text-center text-danger">*Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend)</p>
+                                <p class="text-danger" style="font-size: 11px;"><?= lang('Text.info_alamat') ?></p>
                                 <div id="map"></div>
                                 <div class="button-container">
-                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
+                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-crosshair"></i></button>
                                 </div>
                             </div>
                         </div>
                         <div class="row p-3 px-4">
-                            <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 16px"><?= lang('Text.btn_simpan') ?></button>
+                            <button type="submit" class="btn fw-bold btn-outline-danger d-flex align-items-center">
+                                <i class="bi bi-save"></i>
+                                <span class="text-center mx-auto" style="font-size: 16px;"><?= lang('Text.btn_simpan') ?></span>
+                            </button>
                         </div>
+
                 </form>
             </div>
         </div>
@@ -168,7 +172,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- end mobile -->
     <!-- dekstop -->
-    <div id="desktopContent" style="margin-top:100px;">
+    <div id=" desktopContent" style="margin-top:100px;">
         <div class="container">
             <div class="card px-3 py-3 border-0 shadow">
                 <figure class="text-center">
@@ -243,7 +247,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3 mt-2">
-                                <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger"> *</span></label>
+                                <label for=" floatingInput"><?= lang('Text.detail_alamat_2') ?><span class="text-danger"> *</span></label>
                                 <div class="input-group">
                                     <input type="text" list="alamat_3_option" class="mt-2 form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" aria-describedby="button_alamat_3">
                                     <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
@@ -257,10 +261,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
                         </div>
                         <div class="col-12">
-                            <p class="text-center text-danger">*Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend)</p>
+                            <span style="font-size:14px" class="text-secondary"><?= lang('Text.alert_alamat') ?></span>
                             <div id="map"></div>
                             <div class="button-container">
-                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
+                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-crosshair"></i></button>
                             </div>
                         </div>
                     </div>

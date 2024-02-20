@@ -20,6 +20,8 @@ return [
     'produk_rekomendasi' => '추천상품',
     'produk_terbaru' => '새로운 제품',
     'login_market' => '자, 먼저 로그인하세요!',
+    'pilih_alamat' => '주소를 선택하세요',
+    'pilih_alamat_cabang' => '가장 가까운 싸요마트를 선택하세요',
 
     // SETTING PAGE
     // 'title_setting' => '설정 / Pengaturan',
@@ -55,7 +57,7 @@ return [
     'btn_ubah' => '변화',
     'btn_hapus' => '삭제',
     'btn_tambah' => '새 주소 추가',
-    'alert_alamat' => '주소를 입력하지 않으셨습니다.',
+    'alert_alamat' => '아직 주소가 없습니다. 새 주소를 추가하려면 여기를 클릭하세요.',
 
     // FORM TAMBAH ALAMAT
     'title_alamat' => '배송 주소',
@@ -67,9 +69,11 @@ return [
     'provinsi' => '주',
     'kab_kota' => '리젠시/시',
     'detail_alamat' => '주소 세부정보',
+    'detail_alamat_2' => '주소 표시자',
     'patokan_alamat' => '주소 표시',
     'zipcode' => '우편 번호',
     'optional' => '(선택 과목)',
+    'info_alamat' => '* 위치 지점이 표시된 지점과 일치하는지 확인하십시오. (GoSend를 통한 배송에 필요) 또는 지도 하단의 핀 주소 버튼을 누를 수도 있습니다.',
 
     // KERANJANG
     'title_cart' => '쇼핑 카트',
