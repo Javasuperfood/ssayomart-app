@@ -179,7 +179,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         </style> -->
         <!-- Akhir Modal  Homepage-->
-        <div class="class bg-light" style="position: relative; top: -15px;">
+        <div class="" style="position: relative; top: -15px;">
             <!-- Banner Promosi Item -->
             <section id="rekomendasi">
                 <div class="container">
