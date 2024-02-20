@@ -84,7 +84,7 @@ return [
 
     // HISTORY
     'title_history' => 'Riwayat Transaksi',
-    'transaksi_1' => 'ransaksi Tertunda',
+    'transaksi_1' => 'Transaksi Tertunda',
     'transaksi_2' => 'Detail (Diproses)',
     'transaksi_3' => 'Detail (Dikirim)',
     'transaksi_4' => 'Detail (Selesai)',
