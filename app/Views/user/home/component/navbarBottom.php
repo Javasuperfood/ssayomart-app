@@ -11,17 +11,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style="height: 55px; background-color:#fff; box-shadow: 0px -1px 3px rgba(143, 140, 140, 0.2) !important;">
-                    <ul class="navbar-nav nav-justified w-100 justify-content-around">
+                    <ul class="navbar-nav nav-justified w-100 d-flex justify-content-evenly">
                         <li class="nav-item">
                             <a href="<?= base_url() ?>" class="nav-link link-light"><i class="bi bi-house-door-fill fw-bold fs-2 text-danger"></i></a>
                         </li>
                         <li class="nav-item me-5">
                             <a href="<?= base_url(); ?>cart" class="nav-link link-light a_cart_link_0">
                                 <i class="bi bi-cart-fill fw-bold fs-2 position-absolute text-danger">
-                                    <div id="cartItem_0">
+                                    <!-- <div id="cartItem_0"> -->
                                         <i class="bi bi-app-indicator position-absolute top-0 start-100 translate-middle text-danger mx-2 mt-2"></i>
                                         <span id="cartItem_1" class="position-absolute top-0 start-100 translate-middle badge badge-initial rounded-pill text-danger fw-bold mx-2 mt-2" style="font-size: 0.75rem;"><?= session()->get('countCart'); ?></span>
-                                    </div>
+                                    <!-- </div> -->
                                 </i>
                             </a>
                         </li>
@@ -38,7 +38,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     </div>
     <!-- styling hover active -->
-    <style>
+    <style>.nav-justified .nav-item {
+        flex-grow: 0;
+    }
         .navbar-bottom {
             border-radius: 0 !important;
             border-top-left-radius: 15px !important;
