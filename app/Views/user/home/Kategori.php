@@ -7,11 +7,6 @@
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
-
-<!-- Font Noto Sans Korean -->
-<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Korean:400,700&display=swap"> -->
-
-
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -195,8 +190,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </section> -->
             <!-- Akhir SSayo Resto -->
-
-
 
             <!-- Banner Promosi Item -->
             <section id="rekomendasi">
@@ -798,6 +791,4 @@ if ($isMobile) {
         }
     }
 </script>
-
-
 <?= $this->endSection(); ?>

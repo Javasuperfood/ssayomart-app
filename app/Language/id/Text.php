@@ -23,10 +23,10 @@ return [
     'go_to_kategori_id_en' => 'Ketuk untuk melihat semua kategori',
 
     // SETTING PAGE
-    'title_setting' => '설정 / Pengaturan',
-    'setting' => '환경 / Sunting',
+    // 'title_setting' => '설정 / Pengaturan',
+    'setting' => '설정 / Pengaturan',
     'logout' => '로그 아웃 / Keluar',
-    'welcome_setting' => '환영,/ Selamat Datang, ',
+    'welcome_setting' => 'Selamat Datang, ',
     'detail_akun' => '계정 세부정보 / Detail Akun',
     'favorit' => '위시리스트 / Favorit',
     'alamat_tersimpan' => '저장된 주소 / Alamat Tersimpan',

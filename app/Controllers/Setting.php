@@ -34,16 +34,16 @@ class Setting extends BaseController
         $marketSelected = null;
         if ($user['market_selected']) {
             $getCity = isset($marketModel->find($user['market_selected'])['city']);
-            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : 'Pilih Lokasi Market';
+            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : 'Pilih Lokasi Cabang';
         } else {
-            $marketSelected = 'Pilih Lokasi Market';
+            $marketSelected = 'Pilih Lokasi Cabang';
         }
         $addressSelected = null;
         if ($user['address_selected']) {
             $getLabel = isset($alamatUserModel->find($user['address_selected'])['city']);
-            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Lokasi Pengataran';
+            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Alamat';
         } else {
-            $addressSelected = 'Pilih Lokasi Pengataran';
+            $addressSelected = 'Pilih Alamat';
         }
         $data = [
             'title' => lang('Text.setting'),
@@ -160,15 +160,15 @@ class Setting extends BaseController
         ];
 
         if (!$this->validateData($data, [
-            'username' => [
-                'rules' => 'required|is_unique[users.username,users.id, ' . $id . ']|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
-                'errors' => [
-                    'required' => 'Username harus diisi.',
-                    'is_unique' => 'Username sudah digunakan.',
-                    'regex_match' => 'Username hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Username tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
-                ]
-            ],
+            // 'username' => [
+            //     'rules' => 'required|is_unique[users.username,users.id, ' . $id . ']|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+            //     'errors' => [
+            //         'required' => 'Username harus diisi.',
+            //         'is_unique' => 'Username sudah digunakan.',
+            //         'regex_match' => 'Username hanya boleh mengandung huruf, angka, atau spasi.',
+            //         'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Username tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+            //     ]
+            // ],
             'fullname' => [
                 'label' => 'Nama lengkap',
                 'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
@@ -188,13 +188,13 @@ class Setting extends BaseController
                     'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ],
-            'img' => [
-                'rules' => 'mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]',
-                'errors' => [
-                    'mime_in' => 'Format gambar tidak sesuai.',
-                    'max_size' => 'Ukuran gambar terlalu besar.'
-                ]
-            ]
+            // 'img' => [
+            //     'rules' => 'mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]',
+            //     'errors' => [
+            //         'mime_in' => 'Format gambar tidak sesuai.',
+            //         'max_size' => 'Ukuran gambar terlalu besar.'
+            //     ]
+            // ]
         ])) {
             $alert = [
                 'type' => 'error',
@@ -208,29 +208,29 @@ class Setting extends BaseController
         // Jika validasi berhasil atau tidak ada gambar yang diunggah, lanjutkan pembaruan data
         $namaUserImage = $this->request->getVar('imageLama'); // Tetapkan nama gambar lama sebagai nilai awal
 
-        if ($image->getError() != 4) { // Jika ada file gambar yang diunggah, proses unggahan gambar
-            $produk = $usersModel->find($id);
+        // if ($image->getError() != 4) { // Jika ada file gambar yang diunggah, proses unggahan gambar
+        //     $produk = $usersModel->find($id);
 
-            if ($produk['img'] == 'default.png') {
-                $namaUserImage = $image->getRandomName();
-                $image->move('assets/img/pic', $namaUserImage);
-            } else {
-                $namaUserImage = $image->getRandomName();
-                $image->move('assets/img/pic', $namaUserImage);
-                $gambarLamaPath = 'assets/img/pic/' . $this->request->getVar('imageLama');
-                if (file_exists($gambarLamaPath)) {
-                    unlink($gambarLamaPath);
-                }
-            }
-        }
+        //     if ($produk['img'] == 'default.png') {
+        //         $namaUserImage = $image->getRandomName();
+        //         $image->move('assets/img/pic', $namaUserImage);
+        //     } else {
+        //         $namaUserImage = $image->getRandomName();
+        //         $image->move('assets/img/pic', $namaUserImage);
+        //         $gambarLamaPath = 'assets/img/pic/' . $this->request->getVar('imageLama');
+        //         if (file_exists($gambarLamaPath)) {
+        //             unlink($gambarLamaPath);
+        //         }
+        //     }
+        // }
 
         //repalce data
         $data = [
             'id' => $id,
-            'username' => $this->request->getVar('username'),
+            // 'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'telp' => $this->request->getVar('telp'),
-            'img' => $namaUserImage
+            // 'img' => $namaUserImage
         ];
 
         if ($usersModel->save($data)) {
@@ -282,6 +282,7 @@ class Setting extends BaseController
         // dd($data);
         return view('user/home/setting/alamatList', $data);
     }
+
     public function createAlamat(): string
     {
         session();
@@ -300,6 +301,7 @@ class Setting extends BaseController
         }
         return view('user/home/setting/createAlamat', $data);
     }
+
     public function saveAlamat()
     {
         $alamatModel = new AlamatUserModel();
@@ -457,6 +459,7 @@ class Setting extends BaseController
         // dd($data);
         return view('user/home/setting/updateAlamat', $data);
     }
+
     public function editAlamat($id)
     {
         $alamatModel = new AlamatUserModel();
@@ -631,8 +634,8 @@ class Setting extends BaseController
         ])) {
             $alert = [
                 'type' => 'success',
-                'title' => 'berhasil',
-                'message' => 'Berhasi memilih alamat'
+                'title' => 'Berhasil',
+                'message' => 'Alamat berhasil di pilih'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting');

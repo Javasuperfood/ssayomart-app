@@ -57,6 +57,7 @@ class KategoriController extends BaseController
             }
             $this->session->set(['countCart' => $this->countCart()]);
         }
+
         // ================================================
 
         $now = date('Y-m-d H:i:s');
@@ -71,50 +72,50 @@ class KategoriController extends BaseController
         $blog_detail = $blogModel->getAllBlog();
         $alamatUserModel = new AlamatUserModel();
         $marketModel = new TokoModel();
-        $user = $userModel->where('id', user_id())->first();
+
+        $user = auth()->loggedIn() ? $userModel->where('id', user_id())->first() : null;
 
         $randomProducts = $produkModel->getRandomProducts();
         $bannerList = $bannerModel->findAll();
 
         $marketSelected = null;
-        if ($user['market_selected']) {
+        if (auth()->loggedIn() && $user['market_selected']) {
             $getCity = isset($marketModel->find($user['market_selected'])['city']);
-            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : 'Pilih Lokasi Market';
+            $marketSelected =  ($getCity) ? $marketModel->find($user['market_selected'])['lable'] : 'Pilih Lokasi Cabang';
         } else {
-            $marketSelected = 'Pilih Lokasi abang';
+            $marketSelected = 'Pilih Lokasi Cabang';
         }
         $addressSelected = null;
-        if ($user['address_selected']) {
+        if (auth()->loggedIn() && $user['address_selected']) {
             $getLabel = isset($alamatUserModel->find($user['address_selected'])['city']);
-            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Lokasi Pengataran';
+            $addressSelected =  ($getLabel) ?  $alamatUserModel->find($user['address_selected'])['label'] : 'Pilih Alamat';
         } else {
             $addressSelected = 'Pilih Alamat';
         }
 
         $data = [
             'title' => 'Ssayomart',
+            'user' => $user,
+            'alamat' => $addressSelected,
+            // 'market' => $marketSelected,
+            'market' => auth()->loggedIn() ? $marketModel->findAll() : [],
+            'marketSelected' => $marketSelected,
             'promo' => $promoModel->getPromo($now),
             'kategori' => $kategoriModel->orderBy('short', SORT_ASC)->findAll(),
             'banner' => $bannerModel->find(),
-            'banner_pop_up' => $bannerPopupModel->find(),
-            'banner_promotion' => $bannerPromotionModel->find(),
             'randomProducts' => $randomProducts,
             'blog_detail' => $blog_detail,
             'content' => $bannerList,
-            'produk' => $produkModel->getProdukHome('rekomendasi'),
-            'latest' => $produkModel->getProdukHome('produk_terbaru'),
-            'alamat' => $addressSelected,
-            'market' => $marketModel->findAll(),
-            'marketSelected' => $marketSelected,
+            'banner_promotion' => $bannerPromotionModel->find(),
+            'banner_pop_up' => $bannerPopupModel->find(),
+            // 'produk' => $produkModel->getProdukHome('rekomendasi'),
+            // 'latest' => $produkModel->getProdukHome('produk_terbaru'),
         ];
-        // dd($data);
 
-        // return view('user/home/Kategori', $data);
         return view('user/home/Kategori', $data);
     }
 
     // ================ All Kategori ==============================
-
     public function allKategori()
     {
         $kategori = new KategoriModel();

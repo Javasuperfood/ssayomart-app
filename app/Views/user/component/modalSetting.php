@@ -15,8 +15,7 @@
     </div>
 
     <!-- Modal -->
-
-    <div class="modal fade" id="selectMarket" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="selectMarket" tabindex="-1" data-bs-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-md-down">
             <form class="modal-content" action="<?= base_url(); ?>setting/update-market" method="post">
                 <?= csrf_field(); ?>
@@ -50,11 +49,10 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <style>
-    
     /* Media query for Samsung Galaxy Fold */
     @media (max-width: 280px) {
 
@@ -66,16 +64,15 @@
             font-size: 14px;
         }
     }
-
 </style>
 
 <script>
-    function selectMarket(i) {
-        $('#market' + i).prop('checked', true);
-    }
-    <?php if ($user['market_selected']) :  ?>
-        $(".close-modal-marker").click(function() {
-            $('#market' + <?= $user['market_selected']; ?>).prop('checked', true);
-        });
-    <?php endif ?>
+    // function selectMarket(i) {
+    //     $('#market' + i).prop('checked', true);
+    // }
+    // <?php if ($user['market_selected']) :  ?>
+    //     $(".close-modal-marker").click(function() {
+    //         $('#market' + <?= $user['market_selected']; ?>).prop('checked', true);
+    //     });
+    // <?php endif ?>
 </script>

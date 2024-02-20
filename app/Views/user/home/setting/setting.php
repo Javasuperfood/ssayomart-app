@@ -15,11 +15,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <div class="col">
-
-
                     <div class="row mt-4">
                         <div class="col-9">
-                            <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
+                            <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['fullname']; ?></h3>
                         </div>
                         <div class="col-3 text-center">
                             <a href="<?= base_url(); ?>setting/detail-user">
