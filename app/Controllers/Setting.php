@@ -202,7 +202,7 @@ class Setting extends BaseController
                 'message' => $this->validator->listErrors()
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('setting/detail-user/' . $id)->withInput();
+            return redirect()->to('setting/detail-user')->withInput();
         }
 
         // Jika validasi berhasil atau tidak ada gambar yang diunggah, lanjutkan pembaruan data
