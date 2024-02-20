@@ -15,15 +15,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="row mt-0">
-                        <div class="col-12 text-center">
-                            <div class="card text-bg-white mb-4 shadow-sm border-0 rounded-4">
-                                <div class="card-body">
-                                    <h3 class="fw-bold fs-5">
-                                        <?= lang('Text.welcome_setting') ?>
-                                        <br>
-                                        <?= $user['fullname']; ?>
-                                    </h3>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-between">
+                                <h3 class="fw-bold fs-5">
+                                    <?= lang('Text.welcome_setting') ?>
+                                    <br>
+                                    <?= $user['fullname']; ?>
+                                </h3>
+                                <div class="" style="flex: 0 0 0 !important;">
+                                    <!-- bahasa -->
+                                    <?php
+                                    $lang = session()->get('lang');
+                                    $flag = ($lang == 'en') ? 'inggris.png' : (($lang == 'kr') ? 'korea.png' : 'indonesia.png');
+                                    ?>
+                                    <div class="dropdown mx-md-3" style="margin-top: -10px;">
+                                        <button class="btn btn-transparent text-danger dropdown-toggle fs-6 border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="30px" alt="" class="flag-icon">
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-white border-0" style="background-color: transparent;" aria-labelledby="languageDropdown">
+                                            <a href="<?= site_url('lang/id'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="25px" alt="" class="flag-icon"></a>
+                                            <a href="<?= site_url('lang/kr'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="25px" alt="" class="flag-icon"></a>
+                                            <a href="<?= site_url('lang/en'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="25px" alt="" class="flag-icon"></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -45,9 +60,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div> -->
-            <div class="row mb-2 mt-1">
+            <div class="row mb-2 mt-3">
                 <div class="col">
-                    <div class="card text-bg-white mb-4 shadow border-0 rounded-4">
+                    <div class="card text-bg-light mb-4 shadow border-0 rounded">
                         <div class="card-body">
                             <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
                                 <div class="row">
