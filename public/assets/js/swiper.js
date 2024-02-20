@@ -173,6 +173,7 @@ var swiper = new Swiper(".mySweety", {
 var swiper = new Swiper(".btn-sub", {
   slidesPerView: 2,
   spaceBetween: 10,
+  effect: "slide", // Menambahkan efek slide untuk sentuhan yang lebih halus
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
     1280: {
