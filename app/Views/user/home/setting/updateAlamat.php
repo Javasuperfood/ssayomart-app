@@ -127,14 +127,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
                 <!-- maps -->
-                <div class="mb-3 mx-3 my-3">
-                    <p class="text-center text-danger">*Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend)</p>
+                <div class="mx-3">
+                    <p class="text-center text-danger mt-2">*Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend)</p>
                     <div id="map"></div>
                     <div class="button-container">
                         <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
                     </div>
                 </div>
-                <div class="row p-3 px-4">
+                <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 16px">Simpan Data</button>
                     </div>
