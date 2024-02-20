@@ -70,7 +70,7 @@ return [
     'provinsi' => 'Province',
     'kab_kota' => 'Regency/City',
     'detail_alamat' => 'Address Details',
-    'patokan_alamat' => 'Address Marking',
+    'patokan_alamat' => 'Notes',
     'zipcode' => 'Zip Code',
     'optional' => '(Optional)',
 

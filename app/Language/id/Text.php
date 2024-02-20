@@ -67,7 +67,7 @@ return [
     'provinsi' => 'Provinsi',
     'kab_kota' => 'Kabupaten/Kota',
     'detail_alamat' => 'Detail Alamat',
-    'patokan_alamat' => 'Patokan Alamat',
+    'patokan_alamat' => 'Catatan Pengirim',
     'zipcode' => 'Kode Pos',
     'optional' => '(Opsional)',
 

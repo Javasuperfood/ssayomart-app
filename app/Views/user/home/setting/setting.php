@@ -15,9 +15,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <div class="row mt-4">
+                    <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <h3 class="fw-bold py-3 fs-5"><?= lang('Text.welcome_setting') ?><?= $user['fullname']; ?></h3>
+                            <h3 class="fw-bold fs-5">
+                                <?= lang('Text.welcome_setting') ?>
+                                <br>
+                                <?= $user['fullname']; ?>
+                            </h3>
                         </div>
                         <!-- <div class="col-3 text-center">
                             <a href="<?= base_url(); ?>setting/detail-user">
@@ -39,7 +43,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div> -->
             <div class="row mb-2 mt-3">
                 <div class="col">
-                    <div class="card text-bg-light mb-4 shadow-sm border-0 rounded">
+                    <div class="card text-bg-light mb-4 shadow border-0 rounded">
                         <div class="card-body">
                             <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
                                 <div class="row">
@@ -187,7 +191,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card border-0 shadow-sm mb-4">
+                    <div class="card border-0 shadow mb-4">
                         <div class="card-body text-center" style="height: 325px;">
                             <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" alt="profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
                             <h3 class="fw-bold  fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
@@ -203,7 +207,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
                 <div class="col-lg-8">
-                    <div class="card border-0 shadow-sm mb-4">
+                    <div class="card border-0 shadow mb-4">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
@@ -237,7 +241,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                     <div class=" row">
                         <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-4 mb-md-0">
+                            <div class="card border-0 shadow mb-4 mb-md-0">
                                 <div class="card-body">
                                     <h3><?= lang('Text.setting') ?>
                                     </h3>
@@ -259,7 +263,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="card border-0 shadow-sm mb-4 mb-md-0">
+                            <div class="card border-0 shadow mb-4 mb-md-0">
                                 <div class="card-body">
                                     <h3><?= lang('Text.bantuan') ?></h3>
                                     <ul class="list-group list-group-flush">
