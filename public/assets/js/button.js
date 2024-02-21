@@ -1,15 +1,10 @@
 // Slider Button SubKategori
 var swiper = new Swiper(".buttonSwiper", {
   slidesPerView: 2,
-  centeredSlides: false,
-  spaceBetween: 5,
-  grabCursor: true,
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  effect: "slide", // Menambahkan efek slide untuk sentuhan yang lebih halus
-  initialSlide: 1, // Posisi slide center lur pada awalnya
+  spaceBetween: 10,
+  effect: "slide", // Efek slide untuk gerakan yang halus
+  speed: 600, // Kecepatan animasi (milidetik), disesuaikan untuk efek yang lebih halus
+  grabCursor: true, // Mengganti kursor saat menyentuh slide
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
     1280: {
@@ -21,11 +16,26 @@ var swiper = new Swiper(".buttonSwiper", {
     },
     // Tampilan Mobile (lebar < 768px)
     375: {
-      slidesPerView: 2, // 3 card per tampilan
+      slidesPerView: 2, // 2 card per tampilan
     },
     280: {
-      slidesPerView: 2, // Samsung galaxy fold
+      slidesPerView: 2, // tampilan galaxo fold
     },
+  },
+  navigation: {
+    nextEl: ".button-next",
+    prevEl: ".button-prev",
+  },
+  grabCursor: true, // Mengganti kursor saat menyentuh slide
+  mousewheel: true, // Aktifkan geser mouse
+  keyboard: true, // Aktifkan navigasi keyboard
+  autoplay: {
+    delay: 50000, // Delay antara setiap geser (milidetik)
+    disableOnInteraction: true, // Nonaktifkan autoplay saat interaksi pengguna
+  },
+  pagination: {
+    el: ".swiper-pagination", // Lokasi pagination
+    clickable: true, // Mengaktifkan navigasi pagination yang bisa diklik
   },
 });
 

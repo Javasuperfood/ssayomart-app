@@ -8,8 +8,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- NAVBAR Mobile-->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container position-absolute top-0 start-50 translate-middle-x rounded-bottom-4" style="background: rgb(2,0,36);
-background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(121,9,9,1) 41%, rgba(255,239,0,1) 100%); height:23%;">
+        <div class="container position-absolute top-0 start-50 translate-middle-x rounded-bottom-4" style="background: rgb(204,16,34);
+background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%); height:23%;">
             <div class="row">
                 <div class="d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                     <?php if (auth()->loggedIn()) : ?>
