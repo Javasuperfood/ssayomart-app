@@ -10,11 +10,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container position-absolute top-0 start-50 translate-middle-x rounded-bottom-4" style="background: rgb(204,16,34);
 background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%); height:23%;">
+            <style>
+                @media screen and (max-width: 280px) {
+
+                    .alamat-list,
+                    .market-list,
+                    i.bi-pin-map {
+                        font-size: 11px !important;
+                        margin-top: 4px !important;
+                        /* Sesuaikan dengan ukuran yang Anda inginkan */
+                    }
+                }
+            </style>
             <div class="row">
                 <div class="d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                     <?php if (auth()->loggedIn()) : ?>
                         <div class="col-6 d-flex justify-content-start align-items-start">
-                            <i class="bi bi-pin-map pt-2 text-white" style="font-size: 12px;"></i>&nbsp<a href=" <?= base_url(); ?>setting/alamat-list" class="text-white pt-2 link-underline link-underline-opacity-0 alamatt-list" style="font-size: 12px;"><?= $alamat ?? 'Pilih Alamat'; ?></a>
+                            <i class="bi bi-pin-map pt-2 text-white" style="font-size: 12px;"></i>&nbsp<a href=" <?= base_url(); ?>setting/alamat-list" class="text-white pt-2 link-underline link-underline-opacity-0 alamat-list" style="font-size: 12px;"><?= $alamat ?? 'Pilih Alamat'; ?></a>
                         </div>
                         <div class="col-6 d-flex justify-content-end align-items-end">
                             <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="text-white pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;"><?= $marketSelected ?? 'Pilih Cabang'; ?> <i class="bi bi-geo-alt"> </i></a>
