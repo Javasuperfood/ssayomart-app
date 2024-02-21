@@ -200,10 +200,10 @@ var swiper = new Swiper(".btn-sub", {
   grabCursor: true, // Mengganti kursor saat menyentuh slide
   mousewheel: true, // Aktifkan geser mouse
   keyboard: true, // Aktifkan navigasi keyboard
-  autoplay: {
-    delay: 5000, // Delay antara setiap geser (milidetik)
-    disableOnInteraction: true, // Nonaktifkan autoplay saat interaksi pengguna
-  },
+  // autoplay: {
+  //   delay: 5000, // Delay antara setiap geser (milidetik)
+  //   disableOnInteraction: true, // Nonaktifkan autoplay saat interaksi pengguna
+  // },
   pagination: {
     el: ".swiper-pagination", // Lokasi pagination
     clickable: true, // Mengaktifkan navigasi pagination yang bisa diklik
