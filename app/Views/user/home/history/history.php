@@ -221,9 +221,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endif ?>
-            <div class="row pb-5">
-                <div class="col"></div>
-            </div>
+    <?php if (empty($transaksi)) : ?>
+         <div class="row pb-5 text-center">
+        <div class="col">
+                    <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
+                  <img src="assets/img/history/history.jpeg" class="img-history coupon-opacity"  alt="...">
+                    <h5 class="coupon-opacity fs-kupon">Transaksi anda kosong</h5>
+                    </div>
+                </div>
+    </div>
+        <?php endif; ?>
+   
+
+
+         
         </div>
 
     </div>
@@ -231,6 +242,53 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
     <!-- style slider -->
     <style>
+        .img-history {
+            opacity: 0.6;
+        }
+        @media only screen and (max-width: 575.98px) {
+ 
+  .img-history {
+    width: 130px;
+  }
+}
+
+/* Kecil (sm) */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+ .img-history {
+    width: 190px;
+  }
+}
+
+/* Menengah (md) */
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .img-history {
+    width: 200px;
+  }
+  .fs-kupon {
+    font-size: 50px;
+  }
+}
+
+/* Besar (lg) */
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+    .img-history {
+    width: 250px;
+  }
+  .fs-kupon {
+    font-size: 65px;
+  }
+}
+
+/* Sangat Besar (xl) */
+@media only screen and (min-width: 1200px) {
+  /* Aturan CSS untuk layar sangat besar di sini */
+    .img-coupon {
+    width: 290px;
+  }
+  .fs-kupon {
+    font-size: 75px;
+  }
+}
         /* Gaya saat card dipilih */
         .card-selected {
             background-color: #dc3545;
