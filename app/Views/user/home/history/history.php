@@ -226,7 +226,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="col">
                     <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
                   <img src="assets/img/history/history.jpeg" class="img-history coupon-opacity"  alt="...">
-                    <h5 class="coupon-opacity fs-kupon">Kupon Belum Tersedia</h5>
+                    <h5 class="coupon-opacity fs-kupon">Transaksi anda kosong</h5>
                     </div>
                 </div>
     </div>
