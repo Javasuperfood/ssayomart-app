@@ -84,15 +84,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <h3><?= lang('Text.setting') ?></h3>
                     <ul class="list-group list-group-flush">
-                        <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold mb-2">
+                        <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
                             <i class="bi bi-person-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.detail_akun') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
+
                         <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
                             <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a> -->
-                        <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item mb-3 fw-bold">
+                        <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item mb-3 fw-bold shadow-sm rounded-3">
                             <i class="bi bi-cursor pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"> <?= lang('Text.alamat_tersimpan') ?> </span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -101,11 +102,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                 </div>
             </div>
-            <div class="row row-cols-1 pb-5">
+            <div class="row row-cols-1 pb-3">
                 <div class="col">
                     <h3><?= lang('Text.bantuan') ?></h3>
                     <ul class="list-group list-group-flush">
-                        <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold mb-2">
+                        <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
                             <i class="bi bi-question-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.tentang') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
@@ -115,24 +116,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.ssayomart_care') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a> -->
-
-                        <a href="<?= base_url(); ?>/pusat-bantuan" class="list-group-item pb-3 fw-bold mb-2">
+                        <a href="<?= base_url(); ?>/pusat-bantuan" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
                             <i class="bi bi-universal-access-circle pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.pusat_bantuan') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
 
-                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold mb-2">
+                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
                             <i class="bi bi-lock pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.kebijakan_privasi') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
 
-                        <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold mb-2">
+                        <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
                             <i class="bi bi-box-arrow-right pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.logout') ?> </span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </span>
+
                         <div class="container mb-3">
                             <div class="row justify-content-center mt-4">
                                 <div class="text-center"> <!-- Tambahkan class text-center untuk membuatnya berada di tengah horizontal -->
@@ -146,6 +147,24 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
+
+                        <?php if (!$deleteRequestExists) : ?>
+                            <a type="button" class="fw-bold rounded-3 link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <div class="alert alert-danger rounded border-0 shadow-sm" role="alert">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <i class="bi bi-trash text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-4"></i>
+                                        </div>
+                                        <div class="col-8">
+                                            <div class="text-secondary" style="font-size: 16px;">
+                                                <span class=""> Hapus Akun</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        <?php endif; ?>
+
                     </ul>
                 </div>
             </div>
@@ -186,6 +205,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <button onclick="clickSubmitEvent(this)" type="submit" class="btn btn-block text-white border-0 d-flex justify-content-center" style="width: 100%; background-color: #ec2614; font-size: 12px;">
                                         Submit
                                     </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel"><?= lang('Text.card_title_hapus_akun') ?></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?= base_url() ?>setting/detail-user/delete-account/<?= user_id() ?>" method="post" enctype="multipart/form-data">
+                                <?= csrf_field() ?>
+                                <div class="alert alert-danger border-0">
+                                    <div class="col-auto text-center mb-2" style="font-size:50px;">
+                                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                                    </div>
+                                    <div class="col text-center text-secondary">
+                                        <p><strong><?= lang('Text.card_body_hapus_akun') ?></strong></p>
+                                        <p><?= lang('Text.card_body2_hapus_akun') ?></p>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control form-control <?= (validation_show_error('alasan')) ? 'is-invalid' : 'border-0'; ?>" id="alasan" name="alasan" placeholder="<?= lang('Text.card_placeholder_hapus_akun') ?>" value="<?= old('alasan'); ?>">
+                                            <div class="invalid-feedback"><?= validation_show_error('alasan'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"><?= lang('Text.card_button_hapus_akun') ?></button>
                                 </div>
                             </form>
                         </div>

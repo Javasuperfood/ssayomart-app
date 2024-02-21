@@ -42,6 +42,13 @@ return [
     'alert_btn' => 'Kirim Pesan',
     'ikuti_kami' => 'Ikuti Kami',
     'pusat_bantuan' => 'Pusat Bantuan',
+    // MODAL HAPUS AKUN
+    'card_title_hapus_akun' => 'Konfirmasi Penghapusan Akun',
+    'card_body_hapus_akun' => 'Akun anda akan dihapus oleh Admin',
+    'card_body2_hapus_akun' => 'Apakah anda yakin untuk mengajukan penghapusan akun?',
+    'card_placeholder_hapus_akun' => 'Alasan penghapusan akun',
+    'card_button_hapus_akun' => 'Yakin',
+
 
     // DETAIL USER
     'title' => 'Detail Pengguna',

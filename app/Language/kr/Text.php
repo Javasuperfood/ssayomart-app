@@ -42,6 +42,12 @@ return [
     'alert_btn' => '문자 보내',
     'ikuti_kami' => '이쿠티 카미',
     'pusat_bantuan' => '도움말 센터',
+    // MODAL HAPUS AKUN
+    'card_title_hapus_akun' => '계정 삭제 확인',
+    'card_body_hapus_akun' => '귀하의 계정은 관리자에 의해 삭제됩니다',
+    'card_body2_hapus_akun' => '정말로 계정 삭제를 요청하시겠습니까?',
+    'card_placeholder_hapus_akun' => '계정 삭제 이유',
+    'card_button_hapus_akun' => '확실한',
 
     // DETAIL USER
     'title' => '사용자 세부정보',

@@ -255,10 +255,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <!-- All Kategori -->
             <div class="container">
-                <div class="font-family-poppins">
-                    <div class="fs-4 text-dark text-center">
-                        <span><?= lang('Text.kategori'); ?></span>
-                    </div>
+                <div class="fs-4 text-dark text-center">
+                    <span><?= lang('Text.kategori'); ?></span>
                 </div>
                 <div class="row text-center row-cols-3 mt-3">
                     <?php foreach ($kategori as $k) : ?>
@@ -274,7 +272,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php endforeach; ?>
                 </div>
                 <div class="row">
-                    <div class="col pb-5">
+                    <div class="col pb-3">
                     </div>
                 </div>
             </div>

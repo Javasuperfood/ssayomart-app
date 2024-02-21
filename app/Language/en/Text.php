@@ -44,6 +44,12 @@ return [
     'alert_btn' => 'Send Message',
     'ikuti_kami' => 'Follow Us',
     'pusat_bantuan' => 'Help Center',
+    // MODAL HAPUS AKUN
+    'card_title_hapus_akun' => 'Confirmation Account Deletion',
+    'card_body_hapus_akun' => 'Your account will be deleted by the Admin',
+    'card_body2_hapus_akun' => 'Are you sure you want to request account deletion?',
+    'card_placeholder_hapus_akun' => 'Reason for account deletion',
+    'card_button_hapus_akun' => 'Yes',
 
     // DETAIL USER
     'title' => 'User Detail',

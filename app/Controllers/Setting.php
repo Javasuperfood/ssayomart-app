@@ -29,7 +29,16 @@ class Setting extends BaseController
         $kategori = new KategoriModel();
         $alamatUserModel = new AlamatUserModel();
         $marketModel = new TokoModel();
+        $deleteReq = new DeleteRequestUsersModel();
         $user = $userModel->where('id', user_id())->first();
+        $id = user_id();
+        $existingRequest = $deleteReq->where('id_user', $id)->first();
+        $query = $userModel->select('users.username, users.fullname, users.telp, users.img, auth_identities.secret')
+            ->join('auth_identities', 'auth_identities.user_id = users.id', 'inner')
+            ->where('users.id', $id)
+            ->get();
+
+        $du = $userModel->find([$id]);
 
         $marketSelected = null;
         if ($user['market_selected']) {
@@ -52,6 +61,7 @@ class Setting extends BaseController
             'alamat' => $addressSelected,
             'market' => $marketModel->findAll(),
             'marketSelected' => $marketSelected,
+            'deleteRequestExists' => $existingRequest !== null,
             'back'  => '/'
         ];
         // dd($data);
@@ -107,23 +117,7 @@ class Setting extends BaseController
         ];
 
         //validation
-        if (!$this->validateData($data, [
-            'alasan' => [
-                'rules' => 'required|regex_match[/^[A-Za-z0-9\s,.\&!]+$/]',
-                'errors' => [
-                    'required' => 'Alasan hapus akun harus diisi.',
-                    'regex_match' => 'Alasan hapus akun hanya boleh mengandung huruf, angka, spasi, koma, titik, tanda seru, atau ampersand.',
-                ],
-            ],
-        ])) {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => $this->validator->listErrors()
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('setting')->withInput();
-        }
+
         if ($deleteReq->save($data)) {
             session()->setFlashdata('success', 'Permintaan penghapusan akun berhasil diajukan.');
             $alert = [
