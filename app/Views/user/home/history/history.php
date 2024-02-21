@@ -34,55 +34,53 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </button>
                         </div>
 
-
                         <div class="col">
                             <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
                                 <div class="swiper-wrapper">
-
                                     <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                        <div class="card border-2 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Semua Transaksi
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                        <div class="card border-2 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Menunggu Pembayaran
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                        <div class="card border-2 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Diproses
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                        <div class="card border-2 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Dikirim
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                        <div class="card border-2 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Diterima
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                        <div class="card border-2 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Dibatalkan
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
-                                        <div class="card border-0 shadow-sm text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
+                                        <div class="card border-2 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
                                                 Gagal
                                             </a>
@@ -203,40 +201,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?php endif ?>
                 <?php $idTransaksi = $t->id_checkout ?>
             <?php endforeach; ?>
-            <?php if (!$transaksi) : ?>
-                <div class="row pt-3">
+            <?php if (empty($transaksi)) : ?>
+                <div class="row pb-5 text-center">
                     <div class="col">
-                        <div class="alert alert-danger rounded border-0" role="alert">
-                            <div class="row">
-                                <div class="col-2">
-                                    <i class="bi bi-exclamation-diamond-fill text-danger fs-1 position-absolute top-50 start-0 translate-middle-y px-4"></i>
-                                </div>
-                                <div class="col-10">
-                                    <div class="text-secondary" style="font-size: 15px;">
-                                        <?= lang('Text.alert_history') ?>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
+                            <img src="assets/img/history/history.jpeg" class="img-history coupon-opacity" alt="...">
+                            <h5 class="coupon-opacity fs-kupon">Transaksi anda kosong</h5>
                         </div>
                     </div>
                 </div>
-            <?php endif ?>
-    <?php if (empty($transaksi)) : ?>
-         <div class="row pb-5 text-center">
-        <div class="col">
-                    <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
-                  <img src="assets/img/history/history.jpeg" class="img-history coupon-opacity"  alt="...">
-                    <h5 class="coupon-opacity fs-kupon">Transaksi anda kosong</h5>
-                    </div>
-                </div>
-    </div>
-        <?php endif; ?>
-   
-
-
-         
+            <?php endif; ?>
         </div>
-
     </div>
 
 
@@ -245,50 +220,56 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         .img-history {
             opacity: 0.6;
         }
+
         @media only screen and (max-width: 575.98px) {
- 
-  .img-history {
-    width: 130px;
-  }
-}
 
-/* Kecil (sm) */
-@media only screen and (min-width: 576px) and (max-width: 767.98px) {
- .img-history {
-    width: 190px;
-  }
-}
+            .img-history {
+                width: 130px;
+            }
+        }
 
-/* Menengah (md) */
-@media only screen and (min-width: 768px) and (max-width: 991.98px) {
-  .img-history {
-    width: 200px;
-  }
-  .fs-kupon {
-    font-size: 50px;
-  }
-}
+        /* Kecil (sm) */
+        @media only screen and (min-width: 576px) and (max-width: 767.98px) {
+            .img-history {
+                width: 190px;
+            }
+        }
 
-/* Besar (lg) */
-@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-    .img-history {
-    width: 250px;
-  }
-  .fs-kupon {
-    font-size: 65px;
-  }
-}
+        /* Menengah (md) */
+        @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+            .img-history {
+                width: 200px;
+            }
 
-/* Sangat Besar (xl) */
-@media only screen and (min-width: 1200px) {
-  /* Aturan CSS untuk layar sangat besar di sini */
-    .img-coupon {
-    width: 290px;
-  }
-  .fs-kupon {
-    font-size: 75px;
-  }
-}
+            .fs-kupon {
+                font-size: 50px;
+            }
+        }
+
+        /* Besar (lg) */
+        @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+            .img-history {
+                width: 250px;
+            }
+
+            .fs-kupon {
+                font-size: 65px;
+            }
+        }
+
+        /* Sangat Besar (xl) */
+        @media only screen and (min-width: 1200px) {
+
+            /* Aturan CSS untuk layar sangat besar di sini */
+            .img-coupon {
+                width: 290px;
+            }
+
+            .fs-kupon {
+                font-size: 75px;
+            }
+        }
+
         /* Gaya saat card dipilih */
         .card-selected {
             background-color: #dc3545;
