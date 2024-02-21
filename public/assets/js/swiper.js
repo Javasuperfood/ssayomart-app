@@ -173,15 +173,17 @@ var swiper = new Swiper(".mySweety", {
 var swiper = new Swiper(".btn-sub", {
   slidesPerView: 2,
   spaceBetween: 10,
-  effect: "slide", // Menambahkan efek slide untuk sentuhan yang lebih halus
+  effect: "slide", // Efek slide untuk gerakan yang halus
+  speed: 600, // Kecepatan animasi (milidetik), disesuaikan untuk efek yang lebih halus
+  grabCursor: true, // Mengganti kursor saat menyentuh slide
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
     1280: {
-      slidesPerView: 6, // 3 card per tampilan
+      slidesPerView: 6, // 6 card per tampilan
     },
     // Tampilan iPad (lebar >= 768px)
     768: {
-      slidesPerView: 4, // 3 card per tampilan
+      slidesPerView: 4, // 4 card per tampilan
     },
     // Tampilan Mobile (lebar < 768px)
     375: {
@@ -194,5 +196,16 @@ var swiper = new Swiper(".btn-sub", {
   navigation: {
     nextEl: ".button-next",
     prevEl: ".button-prev",
+  },
+  grabCursor: true, // Mengganti kursor saat menyentuh slide
+  mousewheel: true, // Aktifkan geser mouse
+  keyboard: true, // Aktifkan navigasi keyboard
+  autoplay: {
+    delay: 5000, // Delay antara setiap geser (milidetik)
+    disableOnInteraction: true, // Nonaktifkan autoplay saat interaksi pengguna
+  },
+  pagination: {
+    el: ".swiper-pagination", // Lokasi pagination
+    clickable: true, // Mengaktifkan navigasi pagination yang bisa diklik
   },
 });
