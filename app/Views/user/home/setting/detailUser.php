@@ -12,10 +12,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container pb-3">
-            <div class="row d-flex justify-content-center align-items-center" style="height: 70vh;">
-                <div class="py-4 mt-3">
+            <div class="row">
+                <div class="">
                     <form action="<?= base_url() ?>setting/detail-user/store" method="post" enctype="multipart/form-data">
-                        <div class="card border-0 shadow-sm  py-4 ">
+                        <div class="card border-0  ">
                             <div class="row p-4 ">
                                 <?= csrf_field() ?>
                                 <div class="col-12 ">
