@@ -10,141 +10,158 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php if ($isMobile) : ?>
     <div id="mobileContent" style="width: 100%;">
-        <div class="container pt-3 pb-4">
+        <div class="container pb-4">
             <div class="col">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card border-0 shadow-sm mb-2">
                             <div class="card-body">
-                                <div class="track">
-                                    <?php
-                                    $count = 0;
-                                    if ($status->pesan_status == 5) {
-                                        $count = 3;
-                                    }
-                                    foreach ($getstatus as $gs) :
-                                        if ($count >= $status->pesan_status || $count == 4) {
-                                            break;
-                                        }
-                                    ?>
-                                        <div class="step active">
-                                            <span class="icon"><i class="bi bi-credit-card"></i></span>
-                                            <span class="text"><?= $gs['status']; ?></span>
-                                        </div>
-
-                                    <?php
-                                        $count++;
-                                    endforeach;
-                                    ?>
-                                    <?php if ($status->pesan_status == 5) : ?>
-                                        <div class="step active">
-                                            <span class="icon"><i class="bi bi-credit-card"></i></span>
-                                            <span class="text"><?= $getstatus[4]['status']; ?></span>
-                                        </div>
-                                    <?php endif ?>
-                                </div>
+                                <span class="text-secondary" style="font-size: 13px;">Pilihan Kurir</span>
+                                <br>
+                                <span class="fw-bold" style="font-size: 14px;"><?= $status->kurir; ?> (Rp. <?= number_format($status->harga_service, 0, ',', '.'); ?>)</span>
+                                <br>
+                                <span class="text-secondary" style="font-size: 14px;">Total</span>
+                                <br>
+                                <span class="fw-bold" style="font-size: 14px;">Rp. <?= number_format($status->total_2, 0, ',', '.'); ?></span>
+                                <p class="card-text text-secondary"><?= $status->kirim; ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <?php foreach ($produk as $p) : ?>
-                <div class="row pt-3">
-                    <div class="col">
-                        <a href="<?= base_url('produk/' . $p->slug); ?>">
-                            <div class="card border-0 shadow-sm">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
-                                        </div>
-                                        <div class="col-5 position-absolute top-50 start-50 translate-middle">
-                                            <h5 class="card-title " style="font-size: 12px;"><?= substr($p->nama, 0, 10); ?></h5>
-                                            <p class="card-text text-secondary " style="font-size: 12px;"><?= $p->qty; ?> <?= $p->value_item; ?>
-                                            </p>
-                                        </div>
-                                        <div class="col-5 position-absolute top-50 end-0 mt-2 translate-middle-y ps-4">
-                                            <h5 class="text-secondary" style="font-size: 13px;">Total</h5>
-                                            <?php $total = $p->harga_item * $p->qty ?>
-                                            <?php if (isset(($p->promo))) : ?>
-                                                <p class="fw-bold text-decoration-line-through" style="font-size: 11px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
-                                            <?php else : ?>
-                                                <p class="fw-bold" style="font-size: 13px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
-                                            <?php endif; ?>
-                                            <?php if (isset(($p->promo))) : ?>
-                                                <p class="fw-bold" style="font-size: 13px;">Rp. <?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
-                                            <?php endif; ?>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="product-card card border-0 shadow-sm mb-2">
+                    <a class="text-decoration-none" href="<?= base_url('produk/' . $p->slug); ?>">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="col-3 p-0 img-container">
+                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
                             </div>
-                        </a>
-                    </div>
-                </div>
-            <?php endforeach ?>
-            <div class="col mt-3">
-                <div class="card form-control form-control-md border-0 shadow-sm">
-                    <div class="card border-0">
-                        <h2 class="fs-5 fw-bold">Detail Pesanan</h2>
-                        <div class="mb-0 mx-0 my-0">
-                            <div class="row row-cols-1">
-                                <div class="col">
-                                    <ul class="list-group list-group-flush">
-                                        <span class="list-group-item pb-3 border-0">
-                                            <span class="text-secondary">Invoice</span>
-                                            <div class="d-flex justify-content-between">
-                                                <p class="fw-bold"><?= $status->invoice; ?></p>
-                                                <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->invoice; ?>')"></i>
-                                            </div>
-                                            <?php if (isset($paymentStatus->va_numbers[0])) : ?>
-                                                <div class="row mb-3">
-                                                    <span class="text-secondary">Nomor VA</span>
-                                                    <div class="col-10">
-                                                        <p class="fw-bold"><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
-                                                    </div>
-                                                    <div class="col-2 text-end">
-                                                        <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <span class="text-secondary">Resi</span>
-                                                    <div class="col-10">
-                                                        <p class="fw-bold">Resi <?= $status->resi; ?></p>
-                                                    </div>
-                                                    <div class="col-2 text-end">
-                                                        <i class="bi bi-clipboard-fill fs-5 text-danger" onclick="copyBtn('<?= $status->resi; ?>')"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <table class="table table-sm">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col">Metode Pembayaran</th>
-                                                                    <th scope="col"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?></th>
-                                                                </tr>
-                                                            </thead>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            <?php endif; ?>
-                                            <span class="text-secondary">Pilihan Kurir</span>
-                                            <br>
-                                            <span class="fw-bold"><?= $status->kurir; ?> (Rp. <?= number_format($status->harga_service, 0, ',', '.'); ?>)</span>
-                                            <br>
-                                            <span class="text-secondary">Total</span>
-                                            <br>
-                                            <span class="fw-bold">Rp. <?= number_format($status->total_2, 0, ',', '.'); ?></span>
-                                            <p class="card-text text-secondary"><?= $status->kirim; ?></p>
-                                        </span>
-                                    </ul>
+                            <div class="col-9 pl-3">
+                                <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->nama, 0, 50); ?>...</label>
+                                <p class="card-text text-secondary " style="font-size: 12px;"><?= $p->qty; ?> <?= $p->value_item; ?></p>
+                                <div class="price-info d-flex gap-2">
+                                    <label for="total" class="text-secondary m-0 text-dark" style="font-size: 13px;">Total:</label>
+                                    <?php $total = $p->harga_item * $p->qty ?>
+                                    <?php if (isset(($p->promo))) : ?>
+                                        <p class="fw-bold m-0 text-dark text-decoration-line-through" style="font-size: 13px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
+                                        <p class="fw-bold m-0 text-dark" style="font-size: 12px;">Rp. <?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
+                                    <?php else : ?>
+                                        <p class="fw-bold m-0 text-dark" style="font-size: 12px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
+                    </a>
+                </div>
+            <?php endforeach ?>
+            <div class="col mb-2">
+                <div class="card form-control form-control-md border-0 shadow-sm">
+                    <div class="card-body">
+                        <h2 class="fs-5 fw-bold mb-3">Informasi Pembayaran</h2>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item border-0 p-0">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <span class="text-secondary">Invoice</span>
+                                        <p class="fw-bold"><?= $status->invoice; ?></p>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button class="btn btn-light btn-sm" onclick="copyBtn('<?= $status->invoice; ?>')">
+                                            <i class="bi bi-clipboard-fill text-danger"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                            <?php if (isset($paymentStatus->va_numbers[0])) : ?>
+                                <li class="list-group-item border-0 p-0">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <span class="text-secondary">Nomor VA</span>
+                                            <p class="fw-bold"><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-light btn-sm" onclick="copyBtn('<?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?>')">
+                                                <i class="bi bi-clipboard-fill text-danger"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 p-0">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <span class="text-secondary">Resi</span>
+                                            <p class="fw-bold">Resi <?= $status->resi; ?></p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-light btn-sm" onclick="copyBtn('<?= $status->resi; ?>')">
+                                                <i class="bi bi-clipboard-fill text-danger"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item border-0 p-0">
+                                    <div class="row">
+                                        <div class="col">
+                                            <span class="text-secondary">Metode Pembayaran</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p class="fw-bold"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            <?php endif; ?>
+                        </ul>
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12">
+                    <div id="tracking-pre"></div>
+                    <div id="tracking">
+                        <div class="tracking-list">
+                            <?php
+                            $count = 0;
+                            if ($status->pesan_status == 5) {
+                                $count = 3;
+                            }
+                            foreach ($getstatus as $gs) :
+                                if ($count >= $status->pesan_status || $count == 4) {
+                                    break;
+                                }
+                            ?>
+                                <div class="tracking-item">
+                                    <div class="tracking-icon status-intransit">
+                                        <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                            <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="tracking-date" class="img-responsive" alt="order-placed" /><i class="bi bi-rocket-takeoff fs-1"></i>
+                                </div>
+                                <div class="tracking-content"><?= $gs['status']; ?><span></div>
+                        </div>
+
+                    <?php
+                                $count++;
+                            endforeach;
+                    ?>
+                    <?php if ($status->pesan_status == 5) : ?>
+                        <div class="tracking-item-pending">
+                            <div class="tracking-icon status-intransit">
+                                <svg class="svg-inline--fa fa-circle fa-w-16" aria-hidden="true" data-prefix="fas" data-icon="circle" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                                    <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path>
+                                </svg>
+                            </div>
+                            <div class="tracking-date" class="img-responsive" alt="order-placed" /><i class="bi bi-heartbreak fs-1"></i>
+                        </div>
+                        <div class="tracking-content"><?= $getstatus[4]['status']; ?><span></div>
+                    </div>
+                <?php endif ?>
+                </div>
+            </div>
         </div>
+    </div>
+
+    </div>
     </div>
 
     <?php   // =====================    PRNTING  =================================
@@ -288,61 +305,206 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </script>
 
     <style>
-        /* timeline  style di semua tampilan*/
-        .track {
-            position: relative;
-            background-color: #ddd;
-            height: 7px;
-            display: flex;
-            margin-bottom: 50px;
-            margin-top: 50px;
+        #tracking {
+            background: #fff
         }
 
-        .track .step {
-            flex-grow: 1;
-            width: 25%;
-            margin-top: -18px;
+        .tracking-detail {
+            padding: 3rem 0;
+        }
+
+        #tracking {
+            margin-bottom: 1rem;
+        }
+
+        [class*="tracking-status-"] p {
+            margin: 0;
+            font-size: 1.1rem;
+            color: #fff;
+            text-transform: uppercase;
             text-align: center;
+        }
+
+        [class*="tracking-status-"] {
+            padding: 1.6rem 0;
+        }
+
+        .tracking-list {
+            border: 1px solid #e5e5e5;
+        }
+
+        .tracking-item {
+            border-left: 4px solid #fcc603;
             position: relative;
+            padding: 2rem 1.5rem 0.5rem 2.5rem;
+            font-size: 0.9rem;
+            margin-left: 3rem;
+            min-height: 5rem;
         }
 
-        .track .step.active:before {
-            background: #FF5722;
+        .tracking-item:last-child {
+            padding-bottom: 4rem;
         }
 
-        .track .step::before {
-            height: 7px;
+        .tracking-item .tracking-date {
+            margin-bottom: 0.5rem;
+        }
+
+        .tracking-item .tracking-date span {
+            color: #888;
+            font-size: 85%;
+            padding-left: 0.4rem;
+        }
+
+        .tracking-item .tracking-content {
+            padding: 0.5rem 0.8rem;
+            background-color: #f4f4f4;
+            border-radius: 0.5rem;
+        }
+
+        .tracking-item .tracking-content span {
+            display: block;
+            color: #767676;
+            font-size: 13px;
+        }
+
+        .tracking-item .tracking-icon {
             position: absolute;
-            content: "";
-            width: 100%;
-            left: 0;
-            top: 18px;
-        }
-
-        .track .step.active .icon {
-            background: #ee5435;
+            left: -0.7rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            background-color: #fff;
             color: #fff;
         }
 
-        .track .icon {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
+        .tracking-item-pending {
+            border-left: 4px solid #d6d6d6;
             position: relative;
-            border-radius: 100%;
-            background: #ddd;
+            padding: 2rem 1.5rem 0.5rem 2.5rem;
+            font-size: 0.9rem;
+            margin-left: 3rem;
+            min-height: 5rem;
         }
 
-        .track .step.active .text {
-            font-weight: 500;
-            color: #000;
-            font-size: 10px;
+        .tracking-item-pending:last-child {
+            padding-bottom: 4rem;
         }
 
-        .track .text {
+        .tracking-item-pending .tracking-date {
+            margin-bottom: 0.5rem;
+        }
+
+        .tracking-item-pending .tracking-date span {
+            color: #888;
+            font-size: 85%;
+            padding-left: 0.4rem;
+        }
+
+        .tracking-item-pending .tracking-content {
+            padding: 0.5rem 0.8rem;
+            background-color: #f4f4f4;
+            border-radius: 0.5rem;
+        }
+
+        .tracking-item-pending .tracking-content span {
             display: block;
-            margin-top: 7px;
+            color: #767676;
+            font-size: 13px;
+        }
+
+        .tracking-item-pending .tracking-icon {
+            line-height: 2.6rem;
+            position: absolute;
+            left: -0.7rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            color: #d6d6d6;
+        }
+
+        .tracking-item-pending .tracking-content {
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .tracking-item .tracking-icon.status-current {
+            width: 1.9rem;
+            height: 1.9rem;
+            left: -1.1rem;
+        }
+
+        .tracking-item .tracking-icon.status-intransit {
+            color: #fcc603;
+            font-size: 0.6rem;
+        }
+
+        .tracking-item .tracking-icon.status-current {
+            color: #fcc603;
+            font-size: 0.6rem;
+        }
+
+        @media (min-width: 992px) {
+            .tracking-item {
+                margin-left: 10rem;
+            }
+
+            .tracking-item .tracking-date {
+                position: absolute;
+                left: -10rem;
+                width: 7.5rem;
+                text-align: right;
+            }
+
+            .tracking-item .tracking-date span {
+                display: block;
+            }
+
+            .tracking-item .tracking-content {
+                padding: 0;
+                background-color: transparent;
+            }
+
+            .tracking-item-pending {
+                margin-left: 10rem;
+            }
+
+            .tracking-item-pending .tracking-date {
+                position: absolute;
+                left: -10rem;
+                width: 7.5rem;
+                text-align: right;
+            }
+
+            .tracking-item-pending .tracking-date span {
+                display: block;
+            }
+
+            .tracking-item-pending .tracking-content {
+                padding: 0;
+                background-color: transparent;
+            }
+        }
+
+        .tracking-item .tracking-content {
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .blinker {
+            border: 7px solid #e9f8ea;
+            animation: blink 1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: #fff;
+            }
         }
     </style>
 
