@@ -37,10 +37,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
                                 </div>
                                 <div class=" mt-2 px-3">
-                                    <div class="text-end mt-0 ">
-                                        <p style="font-size: small;">
-                                            <a class="text-secondary link-offset-2 link-underline link-underline-opacity-0" style="font-weight: bolder;" href="<?= base_url('setting/detail-user/change-password'); ?>"><i class="bi bi-key"></i> Change Password</a>
-                                        </p>
+                                    <div class="col d-flex">
+                                        <div class="col-6">
+                                            <p style="font-size: small;">
+                                                <?php if (!$deleteRequestExists) : ?>
+                                                    <a class="text-danger link-offset-2 link-underline link-underline-opacity-0" data-bs-toggle="modal" data-bs-target="#exampleModal" style="font-weight: bolder;" href="<?= base_url('setting/detail-user/change-password'); ?>"><i class="bi bi-trash text-danger"></i> <?= lang('Text.hapus_akun') ?></a>
+                                                <?php endif; ?>
+                                            </p>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <p style="font-size: small;">
+                                                <a class="text-secondary link-offset-2 link-underline link-underline-opacity-0" style="font-weight: bolder;" href="<?= base_url('setting/detail-user/change-password'); ?>"><i class="bi bi-key"></i> <?= lang('Text.ganti_password') ?></a>
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="col text-center">
                                         <button type="submit" class=" btn btn-outline-danger rounded-2" onclick="clickSubmitEvent(this)"><?= lang('Text.btn_simpan') ?></button>
@@ -49,6 +58,38 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel"><?= lang('Text.card_title_hapus_akun') ?></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?= base_url() ?>setting/detail-user/delete-account/<?= user_id() ?>" method="post" enctype="multipart/form-data">
+                                <?= csrf_field() ?>
+                                <div class="alert alert-danger border-0">
+                                    <div class="col-auto text-center mb-2" style="font-size:50px;">
+                                        <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+                                    </div>
+                                    <div class="col text-center text-secondary">
+                                        <p><strong><?= lang('Text.card_body_hapus_akun') ?></strong></p>
+                                        <p><?= lang('Text.card_body2_hapus_akun') ?></p>
+                                        <div class="col-12">
+                                            <input type="text" class="form-control form-control <?= (validation_show_error('alasan')) ? 'is-invalid' : 'border-0'; ?>" id="alasan" name="alasan" placeholder="<?= lang('Text.card_placeholder_hapus_akun') ?>" value="<?= old('alasan'); ?>">
+                                            <div class="invalid-feedback"><?= validation_show_error('alasan'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal"><?= lang('Text.card_button_hapus_akun') ?></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

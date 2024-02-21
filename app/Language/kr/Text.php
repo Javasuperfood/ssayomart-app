@@ -47,6 +47,7 @@ return [
     'card_body_hapus_akun' => '귀하의 계정은 관리자에 의해 삭제됩니다',
     'card_body2_hapus_akun' => '정말로 계정 삭제를 요청하시겠습니까?',
     'card_placeholder_hapus_akun' => '계정 삭제 이유',
+    'hapus_akun' => '계정 삭제',
     'card_button_hapus_akun' => '확실한',
 
     // DETAIL USER
@@ -58,6 +59,7 @@ return [
     'profil' => '프로필 사진',
     'btn_simpan' => '구하다',
     'validasi' => '채워져야 한다',
+    'ganti_password' => '비밀번호 변경',
 
     // DETAIL ALAMAT
     'btn_ubah' => '변화',

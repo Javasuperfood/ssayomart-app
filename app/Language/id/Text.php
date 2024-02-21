@@ -47,8 +47,8 @@ return [
     'card_body_hapus_akun' => 'Akun anda akan dihapus oleh Admin',
     'card_body2_hapus_akun' => 'Apakah anda yakin untuk mengajukan penghapusan akun?',
     'card_placeholder_hapus_akun' => 'Alasan penghapusan akun',
+    'hapus_akun' => 'Hapus Akun',
     'card_button_hapus_akun' => 'Yakin',
-
 
     // DETAIL USER
     'title' => 'Detail Pengguna',
@@ -59,6 +59,7 @@ return [
     'profil' => 'Foto Profil',
     'btn_simpan' => 'Simpan',
     'validasi' => 'harus dilengkapi',
+    'ganti_password' => 'Ubah Password',
 
     // DETAIL ALAMAT
     'btn_ubah' => 'Ubah',
