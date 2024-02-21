@@ -56,6 +56,10 @@
     font-size: 25px !important;
   }
 
+  i.bi-pin-map{
+    font-size: 9px !important;
+  }
+
   .col-10 {
     margin-left: 50px;
     font-size: 10px !important;
