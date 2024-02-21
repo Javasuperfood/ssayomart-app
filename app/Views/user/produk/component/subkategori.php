@@ -26,7 +26,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper-wrapper " style="height:40px">
                             <?php foreach ($getKategori as $s) : ?>
                                 <div class="swiper-slide my-1">
-                                    <div class="card border-0 shadow-sm text-uppercase" style="width: auto;">
+                                    <div class="card border-bottom-1 text-uppercase" style="width: auto;">
                                         <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
                                             <?= $s['nama_kategori']; ?>
                                         </a>
@@ -68,7 +68,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <div class="row text-center flex-nowrap align-items-center">
             <div class="col-2 col-md-1 my-1 col-samsung-fold">
-                <div class="card mb-2 border-0 shadow-sm rounded-circle">
+                <div class="d-flex justify-content-center card mb-2 border-1 rounded-circle">
 
                     <button type="button" class="btn d-flex align-items-center justify-content-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="bi bi-list-check" style="margin-top: 2px;"></i>
@@ -102,7 +102,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="swiper-wrapper">
                         <?php foreach ($subKategori as $s) : ?>
                             <div class="swiper-slide my-3 ">
-                                <div class="card border-0 shadow-sm text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
+                                <div class="card border-1 text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
                                     <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none" style="font-size:9px; color:#000;">
                                         <?= $s['nama_kategori']; ?>
                                     </a>
