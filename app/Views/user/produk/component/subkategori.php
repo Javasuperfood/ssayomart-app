@@ -27,9 +27,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($getKategori as $s) : ?>
                                     <div class="swiper-slide my-1">
                                         <div class="card border-0 text-uppercase">
-                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat" data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
+                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat w-75 text-decoration-none " data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
                                                 <?= $s['nama_kategori']; ?>
+                                             <hr  style="border-width:1px;"/>
                                             </a>
+                                           
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
