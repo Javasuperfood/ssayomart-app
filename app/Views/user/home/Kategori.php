@@ -257,9 +257,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container">
                 <div class="d-flex align-items-center justify-content-center">
                     <div class="fs-4 text-dark text-center">
-                        <span><?= lang('Text.kategori'); ?></span>
+                        <span class="teks-kategori"><?= lang('Text.kategori'); ?></span>
                     </div>
-                    <img src="<?= base_url('assets/img/shopping-cart.png') ?>" alt="Deskripsi Gambar" style="width: 30px; height: auto; margin-left:10px; margin-bottom:5px;">
+                    <img src="<?= base_url('assets/img/shopping-cart.png') ?>" class="gambar-anime" alt="Deskripsi Gambar" style="width: 25px; height: auto; margin-left:10px; margin-bottom:5px;">
                 </div>
 
                 <div class="row text-center row-cols-3 mt-3">
@@ -282,6 +282,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
         </div>
     </div>
+    <style>
+        @media only screen and (max-width: 280px) {
+            .teks-kategori {
+                font-size: 14px;
+                /* Mengurangi ukuran font untuk tampilan yang lebih kecil */
+            }
+        }
+    </style>
     <!-- End Mobile View -->
 <?php else : ?>
     <!-- Desktop View -->
