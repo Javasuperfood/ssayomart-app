@@ -91,7 +91,7 @@ $countProduk = count($produk);
                         <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 85px;">
                         
                         <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
-                            ${p.nama.length > 80 ? p.nama.slice(0, 75) + '' : p.nama}
+                            ${p.nama.length > 70 ? p.nama.slice(0, 70) + '' : p.nama}
                         </p>
                         </div>
                         
