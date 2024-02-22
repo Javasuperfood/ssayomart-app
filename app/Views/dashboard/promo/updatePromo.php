@@ -23,7 +23,7 @@
                 <div class="alert alert-danger text-center border-1 shadow-sm mb-4" role="alert">
                     <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Judul Promo.</b>
                 </div>
-                <input type="text" class="form-control border-0 shadow-sm" placeholder="Masukan nama slug" name="slug" value="<?= $promo['slug']; ?>">
+                <input type="text" class="form-control border-0 shadow-sm" placeholder="Masukan nama slug" name="slug">
             </div>
 
             <div class="mb-4">

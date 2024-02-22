@@ -164,7 +164,7 @@ class AdminPromoController extends BaseController
             // A new file has been uploaded
             $namaPromoImage2 = $image2->getRandomName();
             $image2->move('assets/img/promo', $namaPromoImage2);
-       
+
             // Remove the old file
             $gambarLamaPath = 'assets/img/promo/' . $this->request->getVar('imageLama2');
             if (is_file($gambarLamaPath)) { // Check if it's a file before unlinking
@@ -178,7 +178,7 @@ class AdminPromoController extends BaseController
         $slug = url_title($this->request->getVar('title'), '-', true);
         $cekSlug = $promoModel->where('slug', $slug)->first();
         if ($cekSlug != null) {
-            $slug = $slug . '-' . time();
+            $slug = $slug;
         }
 
         $data = [
