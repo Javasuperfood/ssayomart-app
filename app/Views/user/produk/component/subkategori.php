@@ -103,7 +103,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($subKategori as $s) : ?>
                                 <div class="swiper-slide my-3 ">
                                     <div class="card border-1 text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
-                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none" style="font-size:9px; color:#000;">
+                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none card-link" style="font-size:9px; color:#000;">
                                             <?= $s['nama_kategori']; ?>
                                         </a>
                                     </div>
@@ -170,4 +170,46 @@ if ($isMobile) {
         background-color: #dc3545 !important;
         color: white !important;
     }
+
+
+    /* Gaya saat card dipilih */
+        .card-selected {
+            background-color: #dc3545;
+            color: white !important;
+        }
+
+        .card-selected a {
+            color: white !important;
+        }
 </style>
+
+<script>
+$(document).ready(function () {
+
+    const urlLink = window.location.href;
+
+    // Check if there's a selected card in local storage
+    const selectedCardLink = localStorage.getItem('selectedCardLink');
+
+    $(".card-link").each(function () {
+        if ($(this).attr("href") === selectedCardLink) {
+            $(this).closest(".card").addClass("card-selected").removeClass("card-default");
+        }
+    });
+
+    $(".card-link").click(function (e) {
+        e.preventDefault();
+        $(".swiper-slide .card").removeClass("card-selected").addClass("card-default");
+        $(this).closest(".card").addClass("card-selected").removeClass("card-default");
+
+        // Save selected card link to local storage
+        localStorage.setItem('selectedCardLink', $(this).attr("href"));
+
+        // Handle link redirection
+        window.location = $(this).attr("href");
+    });
+});
+
+
+
+</script>
