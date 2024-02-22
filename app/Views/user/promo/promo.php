@@ -17,19 +17,19 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col">
                         <div class="swiper button-swiper">
                             <div class="swiper-wrapper">
+                                <?php if (isset($k['img_2'])) : ?>
+                                    <div class="mx-auto">
+                                        <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="promo-cuy">
+                                    </div>
+                                <?php else : ?>
+                                    <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                        <div class="card-danger">
+                                            <h3 class="fw-bold mt-2"><?= $k['title']; ?></h3>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <hr class="mt-5" style="border-width: 3px; border-color:#db6327;">
                                 <?php foreach ($produk as $k) : ?>
-                                        <?php if (isset($k['img_2'])): ?>
-                                            <div class="mx-auto">
-                                                <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="promo-cuy" >
-                                            </div>
-                                        <?php else: ?>
-                                            <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                                <div class="card-danger">
-                                                    <h3 class="fw-bold mt-2"><?= $k['title']; ?></h3>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                        <hr class="mt-5" style="border-width: 3px; border-color:#db6327;">
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -50,16 +50,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper button-swiper">
                             <div class="swiper-wrapper">
                                 <?php foreach ($produk as $kp) : ?>
-                                    <?php if (isset($kp['img_2'])): ?>
+                                    <?php if (isset($kp['img_2'])) : ?>
                                         <div class="mx-auto">
                                             <img src="<?= base_url() ?>assets/img/promo/<?= $kp['img_2']; ?>" alt="<?= $kp['title']; ?>" class="promo-cuy">
                                         </div>
-                                    <?php else: ?>
+                                    <?php else : ?>
                                         <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
                                             <div class="card-danger">
                                                 <h3 class="fw-bold mt-2"><?= $kp['title']; ?></h3>
                                             </div>
-                                    </div>
+                                        </div>
                                     <?php endif; ?>
                                     <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
                                 <?php endforeach; ?>
@@ -104,55 +104,59 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </style>
 
     <style>
-         .coupon-opacity {
+        .coupon-opacity {
             opacity: 0.6;
         }
-       
-    /* Ekstra Kecil (xs) */
-@media only screen and (max-width: 575.98px) {
- 
-  .promo-cuy {
-    width: 130px;
-  }
-}
 
-/* Kecil (sm) */
-@media only screen and (min-width: 576px) and (max-width: 767.98px) {
- .promo-cuy {
-    width: 190px;
-  }
-}
+        /* Ekstra Kecil (xs) */
+        @media only screen and (max-width: 575.98px) {
 
-/* Menengah (md) */
-@media only screen and (min-width: 768px) and (max-width: 991.98px) {
-  .promo-cuy {
-    width: 200px;
-  }
-  .fs-kupon {
-    font-size: 50px;
-  }
-}
+            .promo-cuy {
+                width: 130px;
+            }
+        }
 
-/* Besar (lg) */
-@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-    .promo-cuy {
-    width: 250px;
-  }
-  .fs-kupon {
-    font-size: 65px;
-  }
-}
+        /* Kecil (sm) */
+        @media only screen and (min-width: 576px) and (max-width: 767.98px) {
+            .promo-cuy {
+                width: 190px;
+            }
+        }
 
-/* Sangat Besar (xl) */
-@media only screen and (min-width: 1200px) {
-  /* Aturan CSS untuk layar sangat besar di sini */
-    .promo-cuy {
-    width: 290px;
-  }
-  .fs-kupon {
-    font-size: 75px;
-  }
-}
+        /* Menengah (md) */
+        @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+            .promo-cuy {
+                width: 200px;
+            }
+
+            .fs-kupon {
+                font-size: 50px;
+            }
+        }
+
+        /* Besar (lg) */
+        @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+            .promo-cuy {
+                width: 250px;
+            }
+
+            .fs-kupon {
+                font-size: 65px;
+            }
+        }
+
+        /* Sangat Besar (xl) */
+        @media only screen and (min-width: 1200px) {
+
+            /* Aturan CSS untuk layar sangat besar di sini */
+            .promo-cuy {
+                width: 290px;
+            }
+
+            .fs-kupon {
+                font-size: 75px;
+            }
+        }
     </style>
     <?= $this->include('user/produk/component/cardProduk') ?>
     <?= $this->endSection(); ?>
