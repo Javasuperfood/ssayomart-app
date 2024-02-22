@@ -30,6 +30,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
+
+            <div class="row mt-3">
+                <div class="col-12 d-flex gap-2">
+                    <button class="btn btn-3d btn-outline-danger btn-sm btn-icon">
+                        <i class="bi bi-check-circle"></i> Pilih Semua
+                    </button>
+                    <button class="btn btn-3d btn-outline-danger btn-sm btn-icon">
+                        <i class="bi bi-trash"></i> Hapus
+                    </button>
+                </div>
+            </div>
+
+            <style>
+                .btn-3d {
+                    border-radius: 10px;
+                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
+                    transition: all 0.3s ease;
+                }
+
+                .btn-3d:hover {
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.10);
+                }
+            </style>
+
+
             <?php if ($produk == null) : ?>
                 <div class="row text-center d-flex align-items-center" style="height:65vh">
                     <div class="col">
