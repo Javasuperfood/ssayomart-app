@@ -25,7 +25,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <p class="mt-0 mb-0 fw-bold mx-2" id="textTotal"></p>
                                 <input type="hidden" name="total" id="totalField" value="<?= $total; ?>">
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -33,27 +32,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <div class="row mt-3">
                 <div class="col-12 d-flex gap-2">
-                    <button class="btn btn-3d btn-outline-danger btn-sm btn-icon">
+                    <!-- <button class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
+                        <i class="bi bi-check-circle"></i> Pilih Semua
+                    </button> -->
+                    <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
                         <i class="bi bi-check-circle"></i> Pilih Semua
                     </button>
-                    <button class="btn btn-3d btn-outline-danger btn-sm btn-icon">
+
+                    <button class="btn btn-outline-danger btn-sm btn-icon shadow-sm">
                         <i class="bi bi-trash"></i> Hapus
                     </button>
                 </div>
             </div>
-
-            <style>
-                .btn-3d {
-                    border-radius: 10px;
-                    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.10), 0 3px 6px rgba(0, 0, 0, 0.10);
-                    transition: all 0.3s ease;
-                }
-
-                .btn-3d:hover {
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.10);
-                }
-            </style>
-
 
             <?php if ($produk == null) : ?>
                 <div class="row text-center d-flex align-items-center" style="height:65vh">
@@ -68,6 +58,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             <?php endif; ?>
+
             <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
                 <div class="row row-cols-2">
                     <?php foreach ($produk as $p) : ?>
@@ -116,6 +107,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </form>
+
             <?php foreach ($produk as $p) : ?>
                 <form id="formdelete<?= $p['id_cart_produk']; ?>" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
                     <?= csrf_field(); ?>
@@ -125,14 +117,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
     </div>
 
-    <!-- button scrooll up -->
+    <!-- button scroll up -->
     <button class="btn btn-danger button-atas" id="buttonAtas" title="Scroll to top"><i class="bi bi-chevron-up d-flex justify-content-center align-items-center fs-6"></i></button>
-    <!-- end scroll up -->
     <script>
-        // tombol Scroll Up
         var buttonAtas = document.getElementById("buttonAtas");
-
-        // Tampilkan tombol Scroll Up ketika pengguna menggulir ke bawah
         window.addEventListener("scroll", function() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 buttonAtas.style.display = "block";
@@ -140,14 +128,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 buttonAtas.style.display = "none";
             }
         });
-
-        // Scroll kembali ke atas saat tombol Scroll Up diklik
         buttonAtas.addEventListener("click", function() {
-            document.body.scrollTop = 0; // Untuk browser Safari
-            document.documentElement.scrollTop = 0; // Untuk browser lainnya
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         });
     </script>
-
     <!-- end button scroll -->
 
 <?php else : ?>
@@ -276,12 +261,27 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     var produkSelected = {};
 
     $(document).ready(function() {
-        // Ketika halaman dimuat, cek apakah ada input yang dicek
         checkInputs();
-
-        // Saat ada perubahan pada input yang dicek, panggil fungsi checkInputs kembali
         $('input[name="check[]"]').change(function() {
             checkInputs();
+        });
+
+        $('#selectAll').click(function() {
+            if ($(this).text().trim() === 'Pilih Semua') {
+                $('input[name="check[]"]').each(function() {
+                    if (!$(this).is(':disabled')) {
+                        $(this).prop('checked', true);
+                        $(this).trigger('change'); // Trigger change event
+                    }
+                });
+                $(this).text('Batal Pilih Semua');
+            } else {
+                $('input[name="check[]"]').prop('checked', false);
+                produkSelected = {};
+                totalA(produkSelected);
+                checkInputs(); // Manually trigger checkInputs
+                $(this).text('Pilih Semua');
+            }
         });
     });
 
@@ -347,18 +347,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         if (checkbox.checked) {
             produkSelected[checkbox.value] = harga;
             $("#tablePoint").append(`
-            <tr id="tr${checkbox.value}">
-                <td>
-                    <p>${produk}</p>
-                </td>
-                <td>
-                    <p id="textQty${checkbox.value}">${qty}</p>
-                </td>
-                <td>
-                    <p id="textHargaItem${checkbox.value}">${formatRupiah(harga)}</p>
-                </td>
-            </tr>
-        `)
+    <tr id="tr${checkbox.value}">
+        <td>
+            <p>${produk}</p>
+        </td>
+        <td>
+            <p id="textQty${checkbox.value}">${qty}</p>
+        </td>
+        <td>
+            <p id="textHargaItem${checkbox.value}">${formatRupiah(harga)}</p>
+        </td>
+    </tr>
+    `)
         } else {
             $("#tr" + checkbox.value).remove();
             delete produkSelected[checkbox.value];
@@ -378,11 +378,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     function checkInputs() {
         var checked = $('input[name="check[]"]:checked').length;
         if (checked == 0) {
-            // Jika tidak ada input yang dicek, sembunyikan elemen dengan ID 'divCheckout'
             $('#btnCheckout').hide();
             $('#textTotal').hide();
         } else {
-            // Jika ada input yang dicek, tampilkan elemen dengan ID 'divCheckout'
             $('#btnCheckout').show();
             $('#textTotal').show();
         }
