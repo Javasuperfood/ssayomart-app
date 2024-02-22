@@ -255,9 +255,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <!-- All Kategori -->
             <div class="container">
-                <div class="fs-4 text-dark text-center">
-                    <span><?= lang('Text.kategori'); ?></span>
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="fs-4 text-dark text-center">
+                        <span><?= lang('Text.kategori'); ?></span>
+                    </div>
+                    <img src="<?= base_url('assets/img/shopping-cart.png') ?>" alt="Deskripsi Gambar" style="width: 30px; height: auto; margin-left:10px; margin-bottom:5px;">
                 </div>
+
                 <div class="row text-center row-cols-3 mt-3">
                     <?php foreach ($kategori as $k) : ?>
                         <div class="col-4 col-md-4 col-lg-2">
