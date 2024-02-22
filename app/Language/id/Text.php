@@ -6,7 +6,7 @@ return [
     'beranda' => 'Beranda',
     'download' => 'Unduh Ssayomart',
     'spesial' => 'PROMOSI',
-    'kategori' => 'Pilihan Kategori Ssayomart!',
+    'kategori' => 'Semua Kategori Ssayomart!',
     'alamat' => 'Alamat',
     'layanan' => 'Layanan Pelanggan',
     'kontak' => 'Hubungi Kami',
