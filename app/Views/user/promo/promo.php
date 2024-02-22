@@ -18,11 +18,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper button-swiper">
                             <div class="swiper-wrapper">
                                 <?php foreach ($produk as $k) : ?>
-                                    <div class="swiper-slide">
-                                        <a href="<?= base_url('promo/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded">
                                         <?php if (isset($k['img_2'])): ?>
-                                            <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                                <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="card-img-top rounded-2">
+                                            <div class="mx-auto">
+                                                <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="img-fluid" width="250">
                                             </div>
                                         <?php else: ?>
                                             <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
@@ -31,9 +29,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             </div>
                                         <?php endif; ?>
-                                        </a>
                                         <hr class="mt-5" style="border-width: 3px; border-color:#db6327;">
-                                    </div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
@@ -54,22 +50,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="swiper button-swiper">
                             <div class="swiper-wrapper">
                                 <?php foreach ($produk as $kp) : ?>
-                                    <div class="swiper-slide">
-                                        <a href="<?= base_url('promo/' . $kp['slug']); ?>" class="btn border-0 btn-custom-rounded">
-                                            <?php if (isset($kp['img_2'])): ?>
-                                                <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                                    <img src="<?= base_url() ?>assets/img/promo/<?= $kp['img_2']; ?>" alt="<?= $kp['title']; ?>" class="card-img-top rounded-2">
-                                                </div>
-                                            <?php else: ?>
-                                                <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                                    <div class="card-danger">
-                                                        <h3 class="fw-bold mt-2"><?= $kp['title']; ?></h3>
-                                                    </div>
+                                    <?php if (isset($kp['img_2'])): ?>
+                                        <div class="mx-auto">
+                                            <img src="<?= base_url() ?>assets/img/promo/<?= $kp['img_2']; ?>" alt="<?= $kp['title']; ?>" width="300">
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                            <div class="card-danger">
+                                                <h3 class="fw-bold mt-2"><?= $kp['title']; ?></h3>
                                             </div>
-                                            <?php endif; ?>
-                                        </a>
-                                        <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
                                     </div>
+                                    <?php endif; ?>
+                                    <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
                                 <?php endforeach; ?>
                             </div>
                         </div>
