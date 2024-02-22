@@ -271,7 +271,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 $('input[name="check[]"]').each(function() {
                     if (!$(this).is(':disabled')) {
                         $(this).prop('checked', true);
-                        $(this).trigger('change'); // Trigger change event
+                        $(this).trigger('change');
                     }
                 });
                 $(this).text('Batal Pilih Semua');
@@ -279,7 +279,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 $('input[name="check[]"]').prop('checked', false);
                 produkSelected = {};
                 totalA(produkSelected);
-                checkInputs(); // Manually trigger checkInputs
+                checkInputs();
                 $(this).text('Pilih Semua');
             }
         });

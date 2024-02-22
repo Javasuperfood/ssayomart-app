@@ -26,8 +26,8 @@
 
 <div class="row">
     <div class="col">
-        <a class="btn btn-danger mb-4" href="<?= base_url(); ?>dashboard/produk/tambah-produk"><i class="bi bi-plus-square"></i> Tambah Produk</a>
-        <a class="btn btn-danger mb-4" href="#" data-toggle="modal" data-target="#deleteBatchModal" id="btnDelete" style="display: none;">
+        <a class="btn btn-outline-danger mb-4" href="<?= base_url(); ?>dashboard/produk/tambah-produk"><i class="bi bi-plus-square"></i> Tambah Produk</a>
+        <a class="btn btn-outline-danger mb-4" href="#" data-toggle="modal" data-target="#deleteBatchModal" id="btnDelete" style="display: none;">
             <i class="bi bi-trash-fill"></i>
             Delete
         </a>
@@ -35,8 +35,8 @@
     <div class="col text-end">
         <form action="<?= base_url('dashboard/produk'); ?>" method="get">
             <div class="input-group mb-4">
-                <input type="text" class="form-control" placeholder="search (nama produk)" aria-label="search" name="search" aria-describedby="search">
-                <button class="btn btn-danger" type="submit" id="search">Search</button>
+                <input type="text" class="form-control" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search" aria-describedby="search">
+                <button class="btn btn-outline-danger" type="submit" id="search"><i class="bi bi-search"></i></button>
             </div>
         </form>
     </div>
