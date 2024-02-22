@@ -12,7 +12,6 @@ class AlterPromo extends Migration
             'img_2' => [
                 'type'          => 'varchar',
                 'constraint'    => '225',
-                // 'null'          => true,
                 'after'         => 'img',
             ],
         ];

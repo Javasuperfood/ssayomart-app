@@ -81,7 +81,6 @@ class AdminPromoController extends BaseController
     public function deletePromo($id)
     {
         $promoModel = new PromoModel();
-        $promoItemModel = new PromoItemModel();
         $promoBatchModel = new PromoBatchModel();
 
         $promo = $promoModel->find($id);
@@ -95,12 +94,11 @@ class AdminPromoController extends BaseController
 
         if ($promo['img_2'] != 'default.png') {
             $gambarLamaPath = 'assets/img/promo/' . $promo['img_2'];
-            if (file_exists($gambarLamaPath)) {
+            if (is_file($gambarLamaPath) && file_exists($gambarLamaPath)) {
                 unlink($gambarLamaPath);
             }
         }
 
-        $promoItemModel->where('id_promo', $id)->delete();
         $promoBatchModel->where('id_promo', $id)->delete();
 
         $deleted = $promoModel->delete($id);
