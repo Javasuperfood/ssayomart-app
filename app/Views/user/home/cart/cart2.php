@@ -32,16 +32,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
             <div class="row mt-3">
                 <div class="col-12 d-flex gap-2">
-                    <!-- <button class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
-                        <i class="bi bi-check-circle"></i> Pilih Semua
-                    </button> -->
                     <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
                         <i class="bi bi-check-circle"></i> Pilih Semua
                     </button>
 
-                    <button class="btn btn-outline-danger btn-sm btn-icon shadow-sm">
+                    <!-- <button class="btn btn-outline-danger btn-sm btn-icon shadow-sm">
                         <i class="bi bi-trash"></i> Hapus
-                    </button>
+                    </button> -->
                 </div>
             </div>
 
