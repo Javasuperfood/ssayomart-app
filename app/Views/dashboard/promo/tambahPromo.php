@@ -17,7 +17,7 @@
                     <?= csrf_field(); ?>
                     <div class="mb-4">
                         <label for="title" class="form-label">Judul Promosi <span class=" text-secondary">(Cth : Promo Lebaran, Promo Natal Promo Nyepi, dll)</span></label>
-                        <input type="text" class="form-control border-0 shadow-sm  <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" placeholder="Judul Promosi Anda..." value="<?= old('value') ?>">
+                        <input type="text" class="form-control border-0 shadow-sm  <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" placeholder="Judul Promosi Anda..." value="<?= old('title') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
 
@@ -54,6 +54,11 @@
                         <input type="file" class="form-control border-0 shadow-sm  <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" placeholder="Masukan Gambar Promosi">
                         <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                     </div>
+                    <div class="mb-4">
+                        <label for="img" class="form-label">Masukan Gambar/Foto/Icon Promo (Opsional)</label>
+                            <input type="file" class="form-control border-0 shadow-sm  <?= (validation_show_error('img_2')) ? 'is-invalid' : 'border-1'; ?>" id="img_2" name="img_2">
+                            <div class="invalid-feedback"><?= validation_show_error('img_2'); ?></div>
+                        </div>
                     <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-danger">Simpan</button>

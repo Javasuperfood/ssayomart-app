@@ -52,6 +52,14 @@
                 <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
                 <input type="hidden" name="imageLama" value="<?= $promo['img']; ?>">
             </div>
+
+            <div class="mb-4">
+                <label for="img_2" class="form-label">Gambar Promo (Opsional)</label>
+                <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img_2')) ? 'is-invalid' : 'border-1'; ?>" name="img_2" value="<?= $promo['img_2'] ?>">
+                <div class="invalid-feedback"><?= validation_show_error('img_2'); ?></div>
+                <input type="hidden" name="imageLama2" value="<?= $promo['img_2']; ?>">
+            </div>
+
             <hr class="my-4" style="border-width: 1px; border-color: #d1d3e2; border-style: solid;">
             <div class="d-flex justify-content-end">
                 <button type="submit" class="btn btn-danger">Simpan</button>

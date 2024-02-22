@@ -17,6 +17,7 @@ class PromoModel extends Model
         'title',
         'slug',
         'img',
+        'img_2',
         'start_at',
         'end_at',
         'deskripsi'

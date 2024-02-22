@@ -27,6 +27,8 @@ class AdminPromoController extends BaseController
         // ambil gambar
         $promoModel = new PromoModel();
         $fotoPromo = $this->request->getFile('img');
+        $fotoPromo2 = $this->request->getFile('img_2');
+        $namaPromo2 = null;
 
         if ($fotoPromo->getError() == 4) {
             $namaPromo = 'default.png';
@@ -35,11 +37,18 @@ class AdminPromoController extends BaseController
             $fotoPromo->move('assets/img/promo/', $namaPromo);
         }
 
+        if ($fotoPromo2->getError() !== UPLOAD_ERR_NO_FILE) {
+            // A file has been uploaded
+            $namaPromo2 = $fotoPromo2->getRandomName();
+            $fotoPromo2->move('assets/img/promo/', $namaPromo2);
+        }
+
         $slug = url_title($this->request->getVar('title'), '-', true);
         $data = [
             'title' => $this->request->getVar('title'),
             'slug' => $slug,
             'img' => $namaPromo,
+            'img_2' => $namaPromo2,
             'start_at' => $this->request->getVar('started'),
             'end_at' => $this->request->getVar('ended'),
             'deskripsi' => $this->request->getVar('deskripsi')
@@ -79,6 +88,13 @@ class AdminPromoController extends BaseController
 
         if ($promo['img'] != 'default.png') {
             $gambarLamaPath = 'assets/img/promo/' . $promo['img'];
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+        }
+
+        if ($promo['img_2'] != 'default.png') {
+            $gambarLamaPath = 'assets/img/promo/' . $promo['img_2'];
             if (file_exists($gambarLamaPath)) {
                 unlink($gambarLamaPath);
             }
@@ -125,6 +141,8 @@ class AdminPromoController extends BaseController
     {
         $promoModel = new PromoModel();
         $image = $this->request->getFile('img');
+        $image2 = $this->request->getFile('img_2');
+        $namaPromoImage2 = null;
 
         if ($image->getError() == 4) {
             $namaPromoImage = $this->request->getVar('imageLama');
@@ -143,6 +161,22 @@ class AdminPromoController extends BaseController
                 }
             }
         }
+
+        if ($image2->getError() !== UPLOAD_ERR_NO_FILE) {
+            // A new file has been uploaded
+            $namaPromoImage2 = $image2->getRandomName();
+            $image2->move('assets/img/promo', $namaPromoImage2);
+       
+            // Remove the old file
+            $gambarLamaPath = 'assets/img/promo/' . $this->request->getVar('imageLama2');
+            if (is_file($gambarLamaPath)) { // Check if it's a file before unlinking
+                unlink($gambarLamaPath);
+            }
+        } else {
+            // No new file uploaded, keep the existing value
+            $namaPromoImage2 = null;
+        }
+
         $slug = url_title($this->request->getVar('title'), '-', true);
         $cekSlug = $promoModel->where('slug', $slug)->first();
         if ($cekSlug != null) {
@@ -154,6 +188,7 @@ class AdminPromoController extends BaseController
             'title' => $this->request->getVar('title'),
             'slug' => $slug,
             'img' => $namaPromoImage,
+            'img_2' => $namaPromoImage2,
             'start_at' => $this->request->getVar('started'),
             'end_at' => $this->request->getVar('ended'),
             'deskripsi' => $this->request->getVar('deskripsi')
