@@ -254,5 +254,58 @@ $(document).ready(function() {
   }
 });
 
+// Slider Hsitori view Mobile
+$(document).ready(function() {
+  var swiper = new Swiper(".btn-his", {
+      slidesPerView: 2,
+      effect: "slide",
+      speed: 1000,
+      grabCursor: true,
+      breakpoints: {
+          1280: { slidesPerView: 6 },
+          768: { slidesPerView: 4 },
+          375: { slidesPerView: 3 },
+          280: { slidesPerView: 2 },
+      },
+      navigation: {
+          nextEl: ".button-next",
+          prevEl: ".button-prev",
+      },
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+      on: {
+          init: function () {
+              // Memindahkan slide yang dipilih ke tengah slider saat inisialisasi
+              var selectedSlideIndex = localStorage.getItem('selectedSlideIndex');
+              if (selectedSlideIndex !== null) {
+                  this.slideTo(selectedSlideIndex);
+              }
+          },
+          slideChange: function () {
+              // Menyimpan indeks slide yang dipilih ke dalam local storage
+              var currentIndex = this.activeIndex;
+              localStorage.setItem('selectedSlideIndex', currentIndex);
+          },
+      }
+  });
+
+  $(".card-linkkat").click(function(e) {
+      e.preventDefault(); 
+      var categoryUrl = $(this).attr("href");
+      var slideIndex = $(this).closest(".swiper-slide").index();
+      
+      // Menggunakan metode slideTo dengan efek easing untuk perpindahan yang lebih mulus
+      swiper.slideTo(slideIndex, 1000, false);
+
+      // Simpan indeks slide yang dipilih di local storage
+      localStorage.setItem('selectedSlideIndex', slideIndex);
+      
+      // Handle link redirection
+      window.history.pushState(null, null, categoryUrl);
+  });
+});
+
 
 
