@@ -29,9 +29,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card border-0 text-uppercase">
                                             <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat w-75 text-decoration-none " data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
                                                 <?= $s['nama_kategori']; ?>
-                                             <hr  style="border-width:1px;"/>
+                                                <hr class="mt-2" style="border-width:2px;" />
                                             </a>
-                                           
+
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
