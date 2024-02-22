@@ -20,11 +20,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($produk as $k) : ?>
                                     <div class="swiper-slide">
                                         <a href="<?= base_url('promo/' . $k['slug']); ?>" class="btn border-0 btn-custom-rounded">
+                                        <?php if (isset($k['img_2'])): ?>
+                                            <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                                <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="card-img-top rounded-2">
+                                            </div>
+                                        <?php else: ?>
                                             <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
                                                 <div class="card-danger">
                                                     <h3 class="fw-bold mt-2"><?= $k['title']; ?></h3>
                                                 </div>
                                             </div>
+                                        <?php endif; ?>
                                         </a>
                                         <hr class="mt-5" style="border-width: 3px; border-color:#db6327;">
                                     </div>
@@ -50,11 +56,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($produk as $kp) : ?>
                                     <div class="swiper-slide">
                                         <a href="<?= base_url('promo/' . $kp['slug']); ?>" class="btn border-0 btn-custom-rounded">
-                                            <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                                <div class="card-danger">
-                                                    <h3 class="fw-bold mt-2"><?= $kp['title']; ?></h3>
+                                            <?php if (isset($kp['img_2'])): ?>
+                                                <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                                    <img src="<?= base_url() ?>assets/img/promo/<?= $kp['img_2']; ?>" alt="<?= $kp['title']; ?>" class="card-img-top rounded-2">
                                                 </div>
+                                            <?php else: ?>
+                                                <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                                    <div class="card-danger">
+                                                        <h3 class="fw-bold mt-2"><?= $kp['title']; ?></h3>
+                                                    </div>
                                             </div>
+                                            <?php endif; ?>
                                         </a>
                                         <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
                                     </div>

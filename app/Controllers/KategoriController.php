@@ -111,6 +111,7 @@ class KategoriController extends BaseController
             // 'produk' => $produkModel->getProdukHome('rekomendasi'),
             // 'latest' => $produkModel->getProdukHome('produk_terbaru'),
         ];
+        // dd($data);
 
         return view('user/home/Kategori', $data);
     }

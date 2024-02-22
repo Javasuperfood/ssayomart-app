@@ -101,7 +101,7 @@ class CheckoutProdukModel extends Model
     //     return $result;
     // }
 
-    public function getAllTransaksi($toko = null, $perPage, $currentPage)
+    public function getAllTransaksi($perPage, $currentPage, $toko = null)
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_checkout_produk')
@@ -129,7 +129,7 @@ class CheckoutProdukModel extends Model
 
         return $paginatedResults;
     }
-    public function getAllTransaksiWithStatus($toko = null, $perPage, $currentPage, $status = null)
+    public function getAllTransaksiWithStatus($perPage, $currentPage, $toko = null, $status = null)
     {
         $db = \Config\Database::connect();
 
@@ -162,7 +162,7 @@ class CheckoutProdukModel extends Model
 
         return $paginatedResults;
     }
-    public function getAllPrint($toko = null)
+    public function getAllPrint($perPage, $currentPage, $toko = null)
     {
         $db = \Config\Database::connect();
 
