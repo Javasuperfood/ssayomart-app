@@ -31,19 +31,23 @@ class AdminProduk extends BaseController
         if (isset($admin[0]['id_toko'])) {
             $getStok = true;
         }
-
         $perPage = 10;
-
         $currentPage = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
 
         $keyword = $this->request->getVar('search');
-        if ($keyword) {
+        $categoryKeyword = $this->request->getVar('category_search'); // Add this line
+
+        if ($categoryKeyword) {
+            // Perform category search
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->adminProdukCategorySearch($categoryKeyword);
+        } elseif ($keyword) {
+            // Perform SKU and product name search
             $produk = $produkModel->orderBy('id_produk', 'DESC')->adminProdukSearch($keyword);
         } else {
             $produk = $produkModel->orderBy('id_produk', 'DESC');
         }
         $produk_list = $produk->paginate($perPage, 'produk');
-        //optimasi agar hanya mengamnil data dari 1 halaman
+
         $pa['kategori'] = [];
         $pa['sub_kategori'] = [];
         $pa['variasi_item'] = [];
@@ -58,7 +62,7 @@ class AdminProduk extends BaseController
                 $pa['stok'][$key] = $stokModel->getStockOnly($p['id_produk'], $admin[0]['id_toko']);
             }
         }
-        // dd($pa);
+
         $data = [
             'title' => 'Daftar Produk',
             'produk' => $produk_list,
@@ -70,10 +74,10 @@ class AdminProduk extends BaseController
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'totalProduk' => $totalProduk,
         ];
-        // dd($data['stok'][0][0]);
-        // dd($data);
+
         return view('dashboard/produk/produk', $data);
     }
+
 
     public function tambahProduk()
     {

@@ -193,6 +193,14 @@ class ProdukModel extends Model
         return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', '%' . $keyword . '%')->orLike('sku', '%' . $keyword . '%');
     }
 
+    public function adminProdukCategorySearch($categoryKeyword)
+    {
+        return $this->table('jsf_produk')
+            ->where('deleted_at', null)
+            ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_produk.id_kategori')
+            ->like('jsf_kategori.nama_kategori', '%' . $categoryKeyword . '%');
+    }
+
     public function insertCategoryAssociation($productId, $categoryId)
     {
         $data = [

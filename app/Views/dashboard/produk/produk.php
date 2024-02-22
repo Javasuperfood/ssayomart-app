@@ -36,6 +36,8 @@
         <form action="<?= base_url('dashboard/produk'); ?>" method="get">
             <div class="input-group mb-4">
                 <input type="text" class="form-control" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search" aria-describedby="search">
+                <!-- Add category search input -->
+                <input type="text" class="form-control" placeholder="Cari berdasarkan Kategori" aria-label="category_search" name="category_search" aria-describedby="category_search">
                 <button class="btn btn-outline-danger" type="submit" id="search"><i class="bi bi-search"></i></button>
             </div>
         </form>
