@@ -20,7 +20,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($produk as $k) : ?>
                                         <?php if (isset($k['img_2'])): ?>
                                             <div class="mx-auto">
-                                                <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="img-fluid" width="250">
+                                                <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="promo-cuy" >
                                             </div>
                                         <?php else: ?>
                                             <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
@@ -52,7 +52,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($produk as $kp) : ?>
                                     <?php if (isset($kp['img_2'])): ?>
                                         <div class="mx-auto">
-                                            <img src="<?= base_url() ?>assets/img/promo/<?= $kp['img_2']; ?>" alt="<?= $kp['title']; ?>" width="300">
+                                            <img src="<?= base_url() ?>assets/img/promo/<?= $kp['img_2']; ?>" alt="<?= $kp['title']; ?>" class="promo-cuy">
                                         </div>
                                     <?php else: ?>
                                         <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
@@ -101,6 +101,58 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 /* Ini akan mengatur margin secara horizontal agar tombol berada di tengah */
             }
         }
+    </style>
+
+    <style>
+         .coupon-opacity {
+            opacity: 0.6;
+        }
+       
+    /* Ekstra Kecil (xs) */
+@media only screen and (max-width: 575.98px) {
+ 
+  .promo-cuy {
+    width: 130px;
+  }
+}
+
+/* Kecil (sm) */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+ .promo-cuy {
+    width: 190px;
+  }
+}
+
+/* Menengah (md) */
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+  .promo-cuy {
+    width: 200px;
+  }
+  .fs-kupon {
+    font-size: 50px;
+  }
+}
+
+/* Besar (lg) */
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+    .promo-cuy {
+    width: 250px;
+  }
+  .fs-kupon {
+    font-size: 65px;
+  }
+}
+
+/* Sangat Besar (xl) */
+@media only screen and (min-width: 1200px) {
+  /* Aturan CSS untuk layar sangat besar di sini */
+    .promo-cuy {
+    width: 290px;
+  }
+  .fs-kupon {
+    font-size: 75px;
+  }
+}
     </style>
     <?= $this->include('user/produk/component/cardProduk') ?>
     <?= $this->endSection(); ?>
