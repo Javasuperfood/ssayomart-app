@@ -170,42 +170,89 @@ var swiper = new Swiper(".mySweety", {
 });
 
 // Slider kategori view Mobile
-var swiper = new Swiper(".btn-sub", {
-  slidesPerView: 2,
-  spaceBetween: 10,
-  effect: "slide", // Efek slide untuk gerakan yang halus
-  speed: 600, // Kecepatan animasi (milidetik), disesuaikan untuk efek yang lebih halus
-  grabCursor: true, // Mengganti kursor saat menyentuh slide
-  breakpoints: {
-    // Tampilan iPad (lebar >= 768px)
-    1280: {
-      slidesPerView: 6, // 6 card per tampilan
-    },
-    // Tampilan iPad (lebar >= 768px)
-    768: {
-      slidesPerView: 4, // 4 card per tampilan
-    },
-    // Tampilan Mobile (lebar < 768px)
-    375: {
-      slidesPerView: 2, // 2 card per tampilan
-    },
-    280: {
-      slidesPerView: 2, // tampilan galaxo fold
-    },
-  },
-  navigation: {
-    nextEl: ".button-next",
-    prevEl: ".button-prev",
-  },
-  grabCursor: true, // Mengganti kursor saat menyentuh slide
-  mousewheel: true, // Aktifkan geser mouse
-  keyboard: true, // Aktifkan navigasi keyboard
-  // autoplay: {
-  //   delay: 5000, // Delay antara setiap geser (milidetik)
-  //   disableOnInteraction: true, // Nonaktifkan autoplay saat interaksi pengguna
-  // },
-  pagination: {
-    el: ".swiper-pagination", // Lokasi pagination
-    clickable: true, // Mengaktifkan navigasi pagination yang bisa diklik
-  },
+$(document).ready(function() {
+  var swiper = new Swiper(".btn-sub", {
+      slidesPerView: 2,
+      effect: "slide",
+      speed: 1000, // Mengatur kecepatan transisi menjadi 1000 milidetik (1 detik)
+      grabCursor: true,
+      breakpoints: {
+          1280: {
+              slidesPerView: 6,
+          },
+          768: {
+              slidesPerView: 4,
+          },
+          375: {
+              slidesPerView: 3,
+          },
+          280: {
+              slidesPerView: 2,
+          },
+      },
+      navigation: {
+          nextEl: ".button-next",
+          prevEl: ".button-prev",
+      },
+      grabCursor: true,
+      mousewheel: true,
+      keyboard: true,
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+      // Menyesuaikan efek transisi untuk perpindahan yang lebih halus
+      effectOptions: {
+          slideShadows: true,
+          fadeEffect: {
+              crossFade: true
+          },
+          cubeEffect: {
+              shadow: true,
+              slideShadows: true,
+              shadowOffset: 20,
+              shadowScale: 0.94
+          },
+          flipEffect: {
+              slideShadows: true,
+              limitRotation: true
+          },
+          coverflowEffect: {
+              rotate: 30,
+              stretch: 10,
+              depth: 60,
+              modifier: 2,
+              slideShadows: true
+          },
+          cubeEffect: {
+              shadow: true,
+              slideShadows: true,
+              shadowOffset: 20,
+              shadowScale: 0.94
+          }
+      }
+  });
+
+  $(".card-linkkat").click(function(e) {
+      e.preventDefault(); 
+
+      var categoryUrl = $(this).attr("href"); 
+      window.history.pushState(null, null, categoryUrl);
+      var slideIndex = $(this).closest(".swiper-slide").index();
+      
+      // Menggunakan metode slideTo dengan efek easing untuk perpindahan yang lebih mulus
+      swiper.slideTo(slideIndex, 1000, false); // Kecepatan transisi 1000 milidetik (1 detik), dengan efek easing false
+
+      // Simpan indeks slide yang dipilih di local storage
+      localStorage.setItem('selectedSlideIndex', slideIndex);
+  });
+
+  // Ambil indeks slide yang dipilih dari local storage setelah halaman dimuat
+  var selectedSlideIndex = localStorage.getItem('selectedSlideIndex');
+  if (selectedSlideIndex !== null) {
+      swiper.slideTo(selectedSlideIndex, 1000, false); // Kecepatan transisi 1000 milidetik (1 detik), dengan efek easing false
+  }
 });
+
+
+

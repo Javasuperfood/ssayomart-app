@@ -26,8 +26,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="swiper-wrapper " style="height:40px">
                                 <?php foreach ($getKategori as $s) : ?>
                                     <div class="swiper-slide my-1">
-                                        <div class="card border-bottom-1 text-uppercase" style="width: auto;">
-                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
+                                        <div class="card border-0 text-uppercase">
+                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat" data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
                                                 <?= $s['nama_kategori']; ?>
                                             </a>
                                         </div>
@@ -103,7 +103,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($subKategori as $s) : ?>
                                 <div class="swiper-slide my-3 ">
                                     <div class="card border-1 text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
-                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="mt-1 text-decoration-none card-link" style="font-size:9px; color:#000;">
+                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="fw-bold mt-1 text-decoration-none card-link" style="font-size:8px; color:#000;">
                                             <?= $s['nama_kategori']; ?>
                                         </a>
                                     </div>
@@ -159,6 +159,63 @@ if ($isMobile) {
 
 <!-- tampilan Destop -->
 
+<!-- Hover Kategori -->
+
+<style>
+    .custom-buttonkat {
+        background-color: white;
+        color: black;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .custom-buttonkat.active {
+
+        color: white !important;
+    }
+
+
+    /* Gaya saat card dipilih */
+    .card-selectedkat {
+
+        color: #dc3545 !important;
+    }
+
+    .card-selectedkat a {
+        color: #dc3545 !important;
+    }
+</style>
+
+<script>
+    $(document).ready(function() {
+
+        const urlLink = window.location.href;
+
+        // Check if there's a selected card in local storage
+        const selectedCardLink = localStorage.getItem('selectedCardLinkkat');
+
+        $(".card-linkkat").each(function() {
+            if ($(this).attr("href") === selectedCardLink) {
+                $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat");
+            }
+        });
+
+        $(".card-linkkat").click(function(e) {
+            e.preventDefault();
+            $(".swiper-slide .card").removeClass("card-selectedkat").addClass("card-defaultkat");
+            $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat");
+
+            // Save selected card link to local storage
+            localStorage.setItem('selectedCardLinkkat', $(this).attr("href"));
+
+            // Handle link redirection
+            window.location = $(this).attr("href");
+        });
+    });
+</script>
+<!-- Hover Subkategori -->
+<!-- Hover kategori -->
+
+<!-- Hover Subkategori -->
 <style>
     .custom-button {
         background-color: white;
@@ -173,43 +230,41 @@ if ($isMobile) {
 
 
     /* Gaya saat card dipilih */
-        .card-selected {
-            background-color: #dc3545;
-            color: white !important;
-        }
+    .card-selected {
+        background-color: #dc3545;
+        color: white !important;
+    }
 
-        .card-selected a {
-            color: white !important;
-        }
+    .card-selected a {
+        color: white !important;
+    }
 </style>
 
 <script>
-$(document).ready(function () {
+    $(document).ready(function() {
 
-    const urlLink = window.location.href;
+        const urlLink = window.location.href;
 
-    // Check if there's a selected card in local storage
-    const selectedCardLink = localStorage.getItem('selectedCardLink');
+        // Check if there's a selected card in local storage
+        const selectedCardLink = localStorage.getItem('selectedCardLink');
 
-    $(".card-link").each(function () {
-        if ($(this).attr("href") === selectedCardLink) {
+        $(".card-link").each(function() {
+            if ($(this).attr("href") === selectedCardLink) {
+                $(this).closest(".card").addClass("card-selected").removeClass("card-default");
+            }
+        });
+
+        $(".card-link").click(function(e) {
+            e.preventDefault();
+            $(".swiper-slide .card").removeClass("card-selected").addClass("card-default");
             $(this).closest(".card").addClass("card-selected").removeClass("card-default");
-        }
+
+            // Save selected card link to local storage
+            localStorage.setItem('selectedCardLink', $(this).attr("href"));
+
+            // Handle link redirection
+            window.location = $(this).attr("href");
+        });
     });
-
-    $(".card-link").click(function (e) {
-        e.preventDefault();
-        $(".swiper-slide .card").removeClass("card-selected").addClass("card-default");
-        $(this).closest(".card").addClass("card-selected").removeClass("card-default");
-
-        // Save selected card link to local storage
-        localStorage.setItem('selectedCardLink', $(this).attr("href"));
-
-        // Handle link redirection
-        window.location = $(this).attr("href");
-    });
-});
-
-
-
 </script>
+<!-- Hover Subkategori -->

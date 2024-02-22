@@ -22,10 +22,7 @@ var swiper = new Swiper(".buttonSwiper", {
       slidesPerView: 2, // tampilan galaxo fold
     },
   },
-  navigation: {
-    nextEl: ".button-next",
-    prevEl: ".button-prev",
-  },
+  
   grabCursor: true, // Mengganti kursor saat menyentuh slide
   mousewheel: true, // Aktifkan geser mouse
   keyboard: true, // Aktifkan navigasi keyboard

@@ -1,6 +1,7 @@
 <?= $this->extend('user/home/layout') ?>
 <?= $this->section('page-content') ?>
 <?= $this->include('user/home/component/navbarMain') ?>
+<link rel="stylesheet" href="<?= base_url('assets/css/setting.css') ?>">
 
 <?php
 // Mendeteksi User-Agent
