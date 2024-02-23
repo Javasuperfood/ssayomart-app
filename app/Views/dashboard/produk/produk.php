@@ -66,7 +66,8 @@
                                 </th>
                                 <th>Gambar</th>
                                 <th>Nama Produk</th>
-                                <th>Kategori/Subkategori</th>
+                                <th>Kategori Produk</th>
+                                <th>Sub Kategori</th>
                                 <th>Varian & Stok Produk</th>
                                 <th>Aksi</th>
                             </tr>
@@ -89,22 +90,29 @@
                                     <td class="align-middle">
                                         <?php
                                         $kategoriNama = '';
-                                        $subKategoriNama = '';
                                         foreach ($kategori as $k) {
                                             if ($k['id_kategori'] == $km['id_kategori']) {
                                                 $kategoriNama = $k['nama_kategori'];
-                                                // Perbaiki bagian ini
-                                                if (isset($pa['sub_kategori'][$key])) {
-                                                    $subKategoriNama = $pa['sub_kategori'][$key]['nama_sub_kategori'];
-                                                } else {
-                                                    $subKategoriNama = 'Sub kategori Tidak Ditemukan';
-                                                }
                                             }
                                         }
-                                        echo ($kategoriNama !== '' ? $kategoriNama . ($subKategoriNama !== '' ? '<br>(' . $subKategoriNama . ')' : '') : 'Kategori Tidak Ditemukan');
-                                        // echo ($kategoriNama !== '') ? $kategoriNama . '<br>(' . $subKategoriNama . ')' : 'Kategori Tidak Ditemukan';
+                                        echo ($kategoriNama !== '' ? $kategoriNama : 'Kategori Tidak Ditemukan');
                                         ?>
                                     </td>
+                                    <td class="align-middle">
+                                        <?php
+                                        $subKategoriNama = '';
+
+                                        foreach ($pa['sub_kategori'] as $sub_kategori_item) {
+                                            if ($sub_kategori_item['id_sub_kategori'] == $km['id_sub_kategori']) {
+                                                $subKategoriNama = $sub_kategori_item['nama_kategori'];
+                                            }
+                                        }
+
+                                        echo ($subKategoriNama !== '' ? $subKategoriNama : 'Sub Kategori Tidak Ditemukan');
+                                        ?>
+                                    </td>
+
+
                                     <td class="align-middle">
                                         <?php foreach ($variasiItem as $keyv => $v) : ?>
                                             <?php if ($key == $keyv) : ?>

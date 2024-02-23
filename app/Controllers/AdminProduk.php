@@ -73,6 +73,7 @@ class AdminProduk extends BaseController
             'pager' => $produkModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'totalProduk' => $totalProduk,
+            'pa' => $pa
         ];
 
         return view('dashboard/produk/produk', $data);
