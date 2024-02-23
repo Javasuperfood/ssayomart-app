@@ -15,20 +15,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="container d-md-none">
                 <div class="row text-center">
                     <div class="col">
-                        <?php foreach ($produk as $k) : ?>
-                            <?php if (isset($k['img_2'])) : ?>
-                                <div class="mx-auto">
-                                    <img src="<?= base_url() ?>assets/img/promo/<?= $k['img_2']; ?>" alt="<?= $k['title']; ?>" class="promo-cuy">
-                                </div>
-                            <?php else : ?>
-                                <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                    <div class="card-danger">
-                                        <h3 class="fw-bold mt-2"><?= $k['title']; ?></h3>
+                        <div class="swiper button-swiper">
+                            <div class="swiper-wrapper">
+                                <?php if (isset($produk[0]['img_2'])) : ?>
+                                    <div class="mx-auto">
+                                        <img src="<?= base_url() ?>assets/img/promo/<?= $produk[0]['img_2']; ?>" alt="<?= $produk[0]['title']; ?>" class="promo-cuy">
                                     </div>
-                                </div>
-                            <?php endif; ?>
-                            <hr class="mt-5" style="border-width: 3px; border-color:#db6327;">
-                        <?php endforeach; ?>
+                                <?php else : ?>
+                                    <div class=" card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                        <div class="card-danger">
+                                            <h3 class="fw-bold mt-2"><?= $produk[0]['title']; ?></h3>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <hr class="mt-5" style="border-width: 3px; border-color:#db6327;">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,22 +46,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="row text-center">
                     <div class="col">
                         <div class="swiper button-swiper">
-                            <div class="swiper-wrapper">
-                                <?php foreach ($produk as $kp) : ?>
-                                    <?php if (isset($kp['img_2'])) : ?>
-                                        <div class="mx-auto">
-                                            <img src="<?= base_url() ?>assets/img/promo/<?= $kp['img_2']; ?>" alt="<?= $kp['title']; ?>" class="promo-cuy">
-                                        </div>
-                                    <?php else : ?>
-                                        <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                            <div class="card-danger">
-                                                <h3 class="fw-bold mt-2"><?= $kp['title']; ?></h3>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                    <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
-                                <?php endforeach; ?>
-                            </div>
+                            <?php if (isset($produk[0]['img_2'])) : ?>
+                                <div class="mx-auto">
+                                    <img src="<?= base_url() ?>assets/img/promo/<?= $produk[0]['img_2']; ?>" alt="<?= $produk[0]['title']; ?>" class="promo-cuy">
+                                </div>
+                            <?php else : ?>
+                                <div class="card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                    <div class="card-danger">
+                                        <h3 class="fw-bold mt-2"><?= $produk[0]['title']; ?></h3>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                                <hr class="mt-4" style="border-width: 3px; border-color:#db6327;">
                         </div>
                     </div>
                 </div>
