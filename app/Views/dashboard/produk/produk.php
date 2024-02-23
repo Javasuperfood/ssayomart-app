@@ -129,10 +129,10 @@
                                             </a>
                                             <!-- Dropdown - User Information -->
                                             <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                                <a class="dropdown-item" href="<?= base_url() ?>produk/<?= $km['slug']; ?>">
+                                                <!-- <a class="dropdown-item" href="<?= base_url() ?>produk/<?= $km['slug']; ?>">
                                                     <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Lihat Produk
-                                                </a>
+                                                </a> -->
                                                 <a class="dropdown-item" href="<?= base_url() ?>dashboard/produk/detail-varian/<?= $km['slug']; ?>">
                                                     <i class="bi bi-eye-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                     Detail Varian
