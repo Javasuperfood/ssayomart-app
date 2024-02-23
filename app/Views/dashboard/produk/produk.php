@@ -93,16 +93,12 @@
                                         foreach ($kategori as $k) {
                                             if ($k['id_kategori'] == $km['id_kategori']) {
                                                 $kategoriNama = $k['nama_kategori'];
-                                                if ($km['id_sub_kategori'] != null) {
-                                                    foreach ($subKategori as $s) {
-                                                        //need handle if admin input sub kategori null
-                                                        if ($s['id_sub_kategori'] == $km['id_sub_kategori'] && $s['id_sub_kategori'] != null) {
-                                                            $subKategoriNama = $s['nama_kategori'];
-                                                            break;
-                                                        }
-                                                    }
+                                                // Perbaiki bagian ini
+                                                if (isset($pa['sub_kategori'][$key])) {
+                                                    $subKategoriNama = $pa['sub_kategori'][$key]['nama_sub_kategori'];
+                                                } else {
+                                                    $subKategoriNama = 'Sub kategori Tidak Ditemukan';
                                                 }
-                                                break;
                                             }
                                         }
                                         echo ($kategoriNama !== '' ? $kategoriNama . ($subKategoriNama !== '' ? '<br>(' . $subKategoriNama . ')' : '') : 'Kategori Tidak Ditemukan');

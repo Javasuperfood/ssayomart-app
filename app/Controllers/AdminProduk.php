@@ -78,7 +78,6 @@ class AdminProduk extends BaseController
         return view('dashboard/produk/produk', $data);
     }
 
-
     public function tambahProduk()
     {
         $produkModel = new ProdukModel();
