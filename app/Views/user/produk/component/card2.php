@@ -13,11 +13,10 @@
         }
         ?>
         <div class="row row-cols-3" id="product-container">
-
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
                 <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
-                    <div class="">
+                    <div>
                         <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
