@@ -219,21 +219,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 
     <style>
-        /* .modal-body img {
-            width: 350px !important;
-            height: 350px !important;
-        } */
-
         .modal-body img {
             width: 100%;
-            /* Ubah nilai sesuai kebutuhan desain Anda */
             height: auto;
-            /* Atau sesuaikan dengan proporsi gambar Anda */
             max-width: fit-content;
-            /* Sesuaikan dengan kebutuhan Anda */
         }
 
-        /* Ganti warna tombol close menjadi putih */
         .btn-close {
             background-color: #ffff;
             color: #000;
@@ -241,12 +232,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-left: 85%;
             border-radius: 50%;
             width: 20px;
-            /* Sesuaikan ukuran sesuai kebutuhan */
+
             height: 20px;
-            /* Sesuaikan ukuran sesuai kebutuhan */
         }
 
-        /* CSS untuk mengatur tata letak Gambar Produk */
         .gallery {
             display: flex;
             flex-wrap: wrap;
@@ -254,41 +243,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin: 20px;
         }
 
-        /* CSS untuk Gambar Produk */
         .gallery img {
             width: 350px;
             height: 350px;
             object-fit: contain;
-            /* object-position: 20% 10%; */
         }
 
         #counterProduct {
             padding: 0.10rem 0.3rem;
             width: 30%;
-            /* Sesuaikan lebar sesuai kebutuhan Anda */
             max-width: 100px;
-            /* Batasi lebar maksimum jika diperlukan */
         }
 
-
         @media (max-width: 280px) {
-
             .gallery img {
                 width: 100%;
                 height: auto;
                 margin: 10px;
                 cursor: pointer;
                 object-fit: contain;
-                /* object-position: 20% 10%; */
             }
 
             .modal-body img {
                 width: 100%;
-                /* Ubah nilai sesuai kebutuhan desain Anda */
                 height: auto;
-                /* Atau sesuaikan dengan proporsi gambar Anda */
                 max-width: fit-content;
-                /* Sesuaikan dengan kebutuhan Anda */
             }
 
             .btn-close {
@@ -298,12 +277,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 margin-left: 90%;
                 border-radius: 50%;
                 width: 20px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
                 height: 20px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
             }
 
-            /* CSS edit inputan counter*/
             .d-flex {
                 display: flex;
                 flex-direction: row;
@@ -378,20 +354,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
         }
 
-
-
         @media (min-width: 768px) and (max-width: 1024px) {
 
             .price {
                 font-size: 35px !important;
             }
 
-            /* CSS edit inputan counter*/
             #counterProduct {
                 width: 32%;
-                /* Sesuaikan lebar sesuai kebutuhan Anda */
                 max-width: 100px;
-                /* Batasi lebar maksimum jika diperlukan */
             }
 
             .modal-body img {
@@ -406,9 +377,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 margin-left: 95%;
                 border-radius: 50%;
                 width: 40px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
                 height: 40px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
             }
         }
     </style>
@@ -778,131 +747,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     }
 </script>
 
-<!-- <style>
-    .horizontal-counter {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .horizontal-counter .btn {
-        padding: 0.25rem 0.5rem;
-        font-size: 12px;
-    }
-
-    .horizontal-counter input {
-        width: 40px;
-        text-align: center;
-    }
-</style> -->
-
 <style>
-    /* Atur gaya untuk tampilan Samsung Galaxy S9+ atau layar yang lebih kecil */
-    /* Atur gaya untuk tampilan dengan lebar layar sekitar 320px */
     @media (max-width: 320px) {
 
         .row-cols-3 .col {
             flex: 0 0 100%;
-            /* Mengatur lebar kolom menjadi 100% */
             max-width: 100%;
         }
 
         .card {
             margin-bottom: 10px;
             margin-top: 10px;
-            /* Menambah jarak antara kartu */
         }
 
         .modal-body {
             padding: 10px;
-            /* Mengurangi padding modal body */
         }
 
         .card-title {
             font-size: 12px;
-            /* Sesuaikan ukuran teks judul kartu */
         }
 
         p.text-secondary.fs-6 {
             font-size: 12px;
-            /* Sesuaikan ukuran teks harga */
         }
     }
 </style>
-
-<!-- <style>
-    /* Atur gaya untuk tampilan Samsung Galaxy Fold atau layar yang lebih kecil */
-    /* Atur gaya untuk tampilan dengan lebar layar sekitar 280px */
-    @media (max-width: 280px) {
-
-        .horizontal-counter {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .horizontal-counter .btn {
-            padding: 0.25rem 0.5rem;
-            font-size: 12px;
-        }
-
-        .horizontal-counter input {
-            width: 40px;
-            text-align: center;
-        }
-
-        .col.mt-4.text-center h5 {
-            /* Sesuaikan ukuran font sesuai kebutuhan Anda */
-            font-size: 20px;
-            /* Misalnya, ubah ukuran font menjadi 16px */
-        }
-
-        .col.mt-4.text-center p {
-            /* Sesuaikan ukuran font pada elemen paragraf */
-            font-size: 18px;
-            margin-left: 50px;
-            margin-right: 50px;
-            display: block;
-            /* Misalnya, ubah ukuran font pada paragraf menjadi 12px */
-        }
-
-        .row-cols-3 .col {
-            flex: 0 0 100%;
-            /* Mengatur lebar kolom menjadi 100% */
-            max-width: 100%;
-        }
-
-        .card {
-            margin-bottom: 10px;
-            /* Menambah jarak antara kartu */
-        }
-
-        .modal-body {
-            padding: 5px;
-            /* Mengurangi padding modal body */
-        }
-
-        .card-title {
-            font-size: 12px;
-            /* Sesuaikan ukuran teks judul kartu */
-        }
-
-        p.text-secondary.fs-6 {
-            font-size: 12px;
-            /* Sesuaikan ukuran teks harga */
-        }
-
-        .form-check {
-            margin-top: 5px;
-            /* Menambah jarak antara elemen form-check */
-        }
-
-        .modal-footer {
-            padding: 5px;
-            /* Mengurangi padding modal footer */
-        }
-    }
-</style> -->
 
 <script type="text/javascript">
     function increaseCount(a, b) {
