@@ -174,8 +174,14 @@ $(document).ready(function() {
   var swiper = new Swiper(".btn-sub", {
       slidesPerView: 2,
       effect: "slide",
-      speed: 1000, // Mengatur kecepatan transisi menjadi 1000 milidetik (1 detik)
+      speed: 600,
       grabCursor: true,
+      touchRatio: 1, // Touch sensitivity
+      longSwipesRatio: 0.3, // Ratio to trigger swipe to next/previous slide
+      longSwipesMs: 300, // Minimum duration (in ms) to trigger swipe to next/previous slide
+      freeMode: true, // Enables free mode for a smoother drag experience
+      freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
+      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum
       breakpoints: {
           1280: {
               slidesPerView: 6,
