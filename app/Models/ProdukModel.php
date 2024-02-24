@@ -219,13 +219,13 @@ class ProdukModel extends Model
 
     public function getProductWithRange($k = false, $sk = false, $search = false, $page = 1, $limit = 10)
     {
-        $offset = ($page - 1) * $limit; // Hitung offset berdasarkan halaman
+        $offset = ($page - 1) * $limit;
 
         $getProduk = $this->db->table('jsf_produk p')
             ->select('p.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_variasi_item vi', 'p.id_produk = vi.id_produk', 'left')
             ->join('jsf_stock s', 'p.id_produk = s.id_produk', 'left')
-            ->groupBy('p.id_produk, p.nama, vi.id_variasi_item')  // Sertakan 'vi.id_variasi_item' dalam klausa GROUP BY
+            ->groupBy('p.id_produk, p.nama, vi.id_variasi_item')
             ->where('p.deleted_at', null);
 
         if ($k != false) {
@@ -240,10 +240,7 @@ class ProdukModel extends Model
             $getProduk->like('nama', $search);
         }
 
-        // Tambahkan klausa orderBy untuk mengurutkan berdasarkan urutan angka dalam nama produk
         $getProduk->orderBy("CAST(SUBSTRING(p.nama FROM 1 FOR 5) AS UNSIGNED)", 'ASC');
-        // Mengasumsikan bahwa angka dalam nama produk tidak melebihi panjang 5 karakter. Sesuaikan sesuai kebutuhan.
-
         $getProduk->orderBy('CASE WHEN s.stok >= 50 THEN 0 ELSE 1 END', 'ASC', false);
         $getProduk->limit($limit, $offset);
 
