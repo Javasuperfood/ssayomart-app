@@ -181,7 +181,8 @@ $(document).ready(function() {
       longSwipesMs: 300, // Minimum duration (in ms) to trigger swipe to next/previous slide
       freeMode: true, // Enables free mode for a smoother drag experience
       freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
-      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum
+      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum      
+      touchAngle: 315,  // Adjusting touch angle for smoother diagonal swipe //Change this value according to your preference
       breakpoints: {
           1280: {
               slidesPerView: 6,
@@ -236,7 +237,8 @@ $(document).ready(function() {
               shadowOffset: 20,
               shadowScale: 0.94
           }
-      }
+      },
+           
   });
 
   $(".card-linkkat").click(function(e) {
@@ -259,6 +261,13 @@ $(document).ready(function() {
       swiper.slideTo(selectedSlideIndex, 1000, false); // Kecepatan transisi 1000 milidetik (1 detik), dengan efek easing false
   }
 });
+
+
+
+
+
+
+
 
 // Slider Hsitori view Mobile
 $(document).ready(function() {

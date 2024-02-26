@@ -11,6 +11,13 @@ $(document).ready(function() {
       effect: "slide",
       speed: 600,
       grabCursor: true,
+      touchRatio: 1, // Touch sensitivity
+      longSwipesRatio: 0.3, // Ratio to trigger swipe to next/previous slide
+      longSwipesMs: 300, // Minimum duration (in ms) to trigger swipe to next/previous slide
+      freeMode: true, // Enables free mode for a smoother drag experience
+      freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
+      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum
+      touchAngle: 315,// Adjusting touch angle for smoother diagonal swipe // Change this value according to your preference
       breakpoints: {
           1280: {
               slidesPerView: 6,
@@ -25,10 +32,46 @@ $(document).ready(function() {
               slidesPerView: 2,
           },
       },
+      
       pagination: {
           el: ".swiper-pagination",
           clickable: true,
       },
+
+    // Menyesuaikan efek transisi untuk perpindahan yang lebih halus
+    effectOptions: {
+    slideShadows: true,
+    fadeEffect: {
+        crossFade: true
+    },
+    cubeEffect: {
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 20,
+        shadowScale: 0.94
+    },
+    flipEffect: {
+        slideShadows: true,
+        limitRotation: true
+    },
+    coverflowEffect: {
+        rotate: 30,
+        stretch: 10,
+        depth: 60,
+        modifier: 2,
+        slideShadows: true
+    },
+    cubeEffect: {
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 20,
+        shadowScale: 0.94
+    }
+},
+
+
+
+
       on: {
           init: function () {
               // Set slide index based on selected category
@@ -42,6 +85,7 @@ $(document).ready(function() {
               localStorage.setItem('selectedSlideIndexkat', currentIndex);
           },
       },
+        
   });
 
   $(".card-linkkat").click(function(e) {
