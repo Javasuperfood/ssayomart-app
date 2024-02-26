@@ -54,24 +54,24 @@ class Promo extends Seeder
         $data2 = [
             [
                 'id_promo' => 1,
-                'id_produk' => 1,
+                'id_produk' => 100,
                 'discount' => 0.1,
                 'min' => 1,
             ],
             [
                 'id_promo' => 1,
-                'id_produk' => 2,
+                'id_produk' => 99,
                 'discount' => 0.1,
                 'min' => 1,
             ],
             [
                 'id_promo' => 1,
-                'id_produk' => 1,
+                'id_produk' => 98,
                 'discount' => 0.1,
                 'min' => 1,
             ],
         ];
 
-        $this->db->table('jsf_promo_item')->insertBatch($data2);
+        $this->db->table('jsf_promo_batch')->insertBatch($data2);
     }
 }

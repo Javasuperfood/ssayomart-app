@@ -34,14 +34,13 @@
                             </h1>
                             <!-- button Animasi -->
                             <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
-                                <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>">
-                                    <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                                <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
+                                    <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>
                                 </div>
-
-                                <div class="button-capsule" style="display: none;">
-                                    <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>"></i>
-                                    <input type="number" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
-                                    <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>"></i>
+                                <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
+                                    <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>)">-</div>
+                                    <input type="text" id="counter-<?= $p['id_produk']; ?>" class="input" value="1" disabled>
+                                    <div class="icon" onClick="increaseValue(<?= $p['id_produk']; ?>)">+</div>
                                 </div>
                             </div>
                             <!-- akhir button animasi -->
@@ -204,3 +203,39 @@
         }
     }
 </style>
+
+<script>
+        function changeToCapsule(productId) {
+            document.querySelector(`#button-container-${productId} .button`).style.display = 'none';
+            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'flex';
+        }
+
+        function decreaseValue(productId) {
+            var counter = document.getElementById(`counter-${productId}`);
+            if (parseInt(counter.value) > 0) {
+                counter.value = parseInt(counter.value) - 1;
+            }
+            validateCounter(productId);
+        }
+
+        function increaseValue(productId) {
+            var counter = document.getElementById(`counter-${productId}`);
+            counter.value = parseInt(counter.value) + 1;
+            validateCounter(productId);
+        }
+
+        function changeToCircle(productId) {
+            document.querySelector(`#button-container-${productId} .button`).style.display = 'flex';
+            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'none';
+        }
+
+        function validateCounter(productId) {
+            var counter = document.getElementById(`counter-${productId}`);
+            if (parseInt(counter.value) <= 1) {
+                counter.value = 1;
+                changeToCircle(productId);
+            }
+        }
+    </script>
+
+    
