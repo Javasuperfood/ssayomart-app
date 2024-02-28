@@ -9,7 +9,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="mt-2">
-            <div class="container d-md-block d-lg-none">
+            <div class="container-fluid d-md-block d-lg-none">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <form class="border-0 mt-1 mx-auto" role="search" action="<?= base_url('search'); ?>" method="get">
+                            <div class="input-group mb-3 w-100">
+                                <button type="submit" class="input-group-text btn border-light-subtle border-white rounded-start-5 "><i class="bi bi-search"></i></button>
+                                <input type="text" name="produk" class="form-control  rounded-end-5" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
