@@ -6,48 +6,51 @@
             </div>
         </div> -->
 
-        <div class="row mt-3" id="product-container">
+        <div class="row row-cols-3" id="product-container">
             <!-- All Produk -->
             <?php foreach ($produk as $p) : ?>
-                <div class="col-4 col-md-4 col-lg-2 mb-3" style="display: flex;
-      justify-content:center;">
-                    <div class="card border-0 shadow-sm text-center" style="width: 100% !important; height: 100%;">
-                        <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
-                            <div class="d-flex justify-content-center align-items-center">
-                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 120px; height: 120px; object-fit: contain;">
-                            </div>
-                        </a>
-                        <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <div class="d-flex align-items-start justify-content-center" style="height: 75px;">
-                                <p class="nama-produk text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 75); ?></p>
-                            </div>
-                            <!-- <p class="text-secondary" style="font-size: 10px; margin: 0;">
-                                <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
-                            </p> -->
+                <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
+                    <div>
+                        <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
+                            <a href="<?= base_url() ?>produk/<?= $p['slug'] ?? ''; ?>" class="link-underline link-underline-opacity-0">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img'] ?? ''; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk'] ?? ''; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain;">
+                                </div>
+                            </a>
+                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+                                <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 90px;">
+                                    <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p['nama'] ?? '', 0, 70); ?></p>
+                                </div>
+                                <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
+                                    <?php if (isset($p['harga_min']) && isset($p['harga_max'])) : ?>
+                                        <?php if ($p['harga_min'] == $p['harga_max']) : ?>
+                                            Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
+                                        <?php else : ?>
+                                            <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>
+                                        <?php endif ?>
+                                    <?php endif ?>
+                                </h1>
+                                <!-- button Animasi -->
+                                <div class="button-container" id="button-container-<?= $p['id_produk'] ?? ''; ?>">
+                                    <?php if (isset($p['id_produk'])) : ?>
+                                        <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item'] ?? ''; ?>)">
+                                            <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+                                        </div>
 
-                            <h1 class="text-danger fs-bold mt-1 mb-3 fw-bold" style="font-size: 10px; margin: 0;">
-                                <?php if ($p['harga_min'] == $p['harga_max']) : ?>
-                                    Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
-                                <?php else : ?>
-                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>
-                                <?php endif ?>
-                            </h1>
-                            <!-- button Animasi -->
-                            <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
-                                <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
-                                    <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>
+                                        <div class="button-capsule" style="display: none;">
+                                            <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item'] ?? ''; ?>)"></i>
+                                            <input type="number" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
+                                            <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item'] ?? ''; ?>)"></i>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                                <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
-                                    <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>)">-</div>
-                                    <input type="text" id="counter-<?= $p['id_produk']; ?>" class="input" value="1" disabled>
-                                    <div class="icon" onClick="increaseValue(<?= $p['id_produk']; ?>)">+</div>
-                                </div>
+                                <!-- akhir button animasi -->
                             </div>
-                            <!-- akhir button animasi -->
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
+
         </div>
     </div>
 
@@ -147,6 +150,7 @@
             });
         }
 
+
         function cartDeleteProdukList(produk) {
             $.ajax({
                 type: "POST",
@@ -167,6 +171,7 @@
             });
         }
     </script>
+
 
 <?php else : ?>
     <div class="container px-5 my-5 align-middle">
@@ -203,39 +208,3 @@
         }
     }
 </style>
-
-<script>
-        function changeToCapsule(productId) {
-            document.querySelector(`#button-container-${productId} .button`).style.display = 'none';
-            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'flex';
-        }
-
-        function decreaseValue(productId) {
-            var counter = document.getElementById(`counter-${productId}`);
-            if (parseInt(counter.value) > 0) {
-                counter.value = parseInt(counter.value) - 1;
-            }
-            validateCounter(productId);
-        }
-
-        function increaseValue(productId) {
-            var counter = document.getElementById(`counter-${productId}`);
-            counter.value = parseInt(counter.value) + 1;
-            validateCounter(productId);
-        }
-
-        function changeToCircle(productId) {
-            document.querySelector(`#button-container-${productId} .button`).style.display = 'flex';
-            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'none';
-        }
-
-        function validateCounter(productId) {
-            var counter = document.getElementById(`counter-${productId}`);
-            if (parseInt(counter.value) <= 1) {
-                counter.value = 1;
-                changeToCircle(productId);
-            }
-        }
-    </script>
-
-    
