@@ -47,6 +47,8 @@ $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/pusat-bantuan', 'MenuResto::pusatBantuan');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
+$routes->get('bahasa', 'BahasaApp::bahasa');
+
 
 $routes->get('/all-category', 'KategoriController::allKategori');
 // app/Config/Routes.php
