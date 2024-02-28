@@ -22,6 +22,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </nav>
+       <form class="border-0 mt-3 mx-2" role="search" action="<?= base_url('search'); ?>" method="get">
+    <div class="input-group mb-3">
+         <button type="submit" class="input-group-text btn border-light-subtle border-white rounded-start-5 "><i class="bi bi-search"></i></button>
+        <input type="text" name="produk" class="form-control  rounded-end-5 " placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+    </div>
+</form>
+
     </div>
 <?php else : ?>
     <!-- navbar Website -->
