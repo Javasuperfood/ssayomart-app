@@ -12,10 +12,12 @@ class NamaProdukEn extends Migration
             'nama_en' => [
                 'type'           => 'varchar',
                 'constraint'     => 255,
+                'after'          => 'nama'
             ],
             'nama_kr' => [
                 'type'           => 'varchar',
                 'constraint'     => 255,
+                'after'          => 'nama_en'
             ],
         ];
         $this->forge->addColumn('jsf_produk', $fields);
