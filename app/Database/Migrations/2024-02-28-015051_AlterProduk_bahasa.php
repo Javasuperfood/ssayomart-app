@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class NamaProdukEn extends Migration
+class AlterProduk_bahasa extends Migration
 {
     public function up()
     {
@@ -25,6 +25,6 @@ class NamaProdukEn extends Migration
 
     public function down()
     {
-        $this->forge->dropColumn('jsf_produk', ['nama_produk_en', 'nama_produk_kr']);
+        $this->forge->dropColumn('jsf_produk', ['nama_en', 'nama_kr']);
     }
 }
