@@ -260,6 +260,7 @@ class ProdukModel extends Model
     public function adminProdukCategorySearch($categoryKeyword)
     {
         return $this->table('jsf_produk')
+            ->select('jsf_produk.*, jsf_kategori.img as kategori_img')
             ->where('deleted_at', null)
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_produk.id_kategori')
             ->like('jsf_kategori.nama_kategori', '%' . $categoryKeyword . '%');

@@ -35,7 +35,7 @@ class AdminProduk extends BaseController
         $currentPage = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
 
         $keyword = $this->request->getVar('search');
-        $categoryKeyword = $this->request->getVar('category_search'); // Add this line
+        $categoryKeyword = $this->request->getVar('category_search'); 
 
         if ($categoryKeyword) {
             // Perform category search
@@ -53,6 +53,10 @@ class AdminProduk extends BaseController
         $pa['variasi_item'] = [];
         $pa['stok'] = [];
         foreach ($produk_list as $key => $p) {
+            // image from jsf_produk
+            $pa['img'][$key] = $p['img'];
+            // image from jsf_kategori
+            $pa['kategori_img'][$key] = isset($p['kategori_img']) ? $p['kategori_img'] : null;
             $pa['kategori'][$key] = $kategoriModel->find($p['id_kategori']);
             $pa['sub_kategori'][$key] = $subKategoriModel->find($p['id_sub_kategori']);
             $pa['variasi_item'][$key] = $variasiItemModel->select('*')
@@ -63,10 +67,18 @@ class AdminProduk extends BaseController
             }
         }
 
+        $kat = $kategoriModel->select('jsf_kategori.*')
+                ->join('jsf_produk', 'jsf_kategori.id_kategori = jsf_produk.id_kategori')
+                ->where('jsf_produk.deleted_at', null)
+                ->groupBy('jsf_kategori.id_kategori')
+                ->get()
+                ->getResultArray();
+
         $data = [
             'title' => 'Daftar Produk',
             'produk' => $produk_list,
             'kategori' => $pa['kategori'],
+            'kat' => $kat,
             'subKategori' => $pa['sub_kategori'],
             'variasiItem' => $pa['variasi_item'],
             'stok' => $pa['stok'],
@@ -75,7 +87,7 @@ class AdminProduk extends BaseController
             'totalProduk' => $totalProduk,
             'pa' => $pa
         ];
-
+    
         return view('dashboard/produk/produk', $data);
     }
 
