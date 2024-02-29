@@ -187,34 +187,7 @@ if ($isMobile) {
     }
 </style>
 
-<script>
-    $(document).ready(function() {
 
-        const urlLink = window.location.href;
-
-        // Check if there's a selected card in local storage
-        const selectedCardLink = localStorage.getItem('selectedCardLinkkat');
-
-        $(".card-linkkat").each(function() {
-            if ($(this).attr("href") === selectedCardLink) {
-                $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat");
-            }
-        });
-
-        $(".card-linkkat").click(function(e) {
-            e.preventDefault();
-            $(".swiper-slide .card").removeClass("card-selectedkat").addClass("card-defaultkat");
-            $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat");
-
-            // Save selected card link to local storage
-            localStorage.setItem('selectedCardLinkkat', $(this).attr("href"));
-
-            // Handle link redirection
-            window.location = $(this).attr("href");
-        });
-    });
-</script>
-<!-- Hover Subkategori -->
 <!-- Hover kategori -->
 
 <!-- Hover Subkategori -->
