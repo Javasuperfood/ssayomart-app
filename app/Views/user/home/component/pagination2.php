@@ -20,8 +20,8 @@ $countProduk = count($produk);
     }
     var productContainer = $("#product-container");
     var cardLoader = `<div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card" id="cardLoader">
-    <div class="susunan-card">
-                <div class="card .card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
+    <div class="">
+                <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
                     <div class="d-flex justify-content-center align-items-center">
                         <svg class="bd-placeholder-img card-img-top mt-1 text-center py-0 px-0 mx-0 my-0" width="100px" height="100px object-fit: contain; object-position: 20% 10%;" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
                             <title>Placeholder</title>
@@ -29,7 +29,7 @@ $countProduk = count($produk);
                         </svg>
                     </div>
                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                    <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 85px;">
+                    <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 90px;">
                     <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
                         <span class="placeholder col-6"></span>
                     </p>
@@ -38,7 +38,7 @@ $countProduk = count($produk);
                         <span class="placeholder col-6"></span>
                     </p>
  
-                        <h1 class="text-danger fs-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                        <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                             <span class="placeholder col-6"></span>
                         </h1>
                         
@@ -88,14 +88,14 @@ $countProduk = count($produk);
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                        <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 85px;">
+                        <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 90px;">
                         
                         <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
                             ${p.nama.length > 70 ? p.nama.slice(0, 70) + '' : p.nama}
                         </p>
                         </div>
                         
-                            <h1 class="text-danger fw-bold mt-1 mb-1" style="font-size: 10px; margin: 0;">
+                            <h1 class="text-dark fw-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                             ${hargaText}
                             </h1>
 
