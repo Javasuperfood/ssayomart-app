@@ -171,6 +171,39 @@ var swiper = new Swiper(".mySweety", {
 
 // Slider kategori view Mobile
 $(document).ready(function() {
+  const urlLink = window.location.href;
+
+  // Function to sync hover status with selected category and slide to center
+  function syncHoverAndSlideToCenter() {
+      const selectedCategory = decodeURIComponent(urlLink.split("/").pop()); // Get the last part of the URL which is the category
+      $(".card-linkkat").each(function() {
+          if ($(this).attr("href").includes(selectedCategory)) {
+              $(".card-linkkat").closest(".card").removeClass("card-selectedkat").addClass("card-defaultkat"); // Remove active class from all categories
+              $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat"); // Add active class to selected category
+
+              // Slide to center
+              const slideIndex = $(this).closest(".swiper-slide").index();
+              const slideWidth = $(".swiper-slide").outerWidth();
+              const swiperWidth = $(".swiper-wrapper").outerWidth();
+              const wrapperOffset = (swiperWidth - slideWidth) / 2;
+              const scrollTo = slideIndex * slideWidth - wrapperOffset;
+              $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+
+              // Save selected category to local storage
+              localStorage.setItem('selectedCategory', selectedCategory);
+          }
+      });
+  }
+
+  // Initial sync on page load
+  syncHoverAndSlideToCenter();
+
+  // Sync hover with category and slide to center on URL change (if using AJAX or similar)
+  $(window).on('popstate', function() {
+      syncHoverAndSlideToCenter();
+  });
+
+  // Initialize Swiper
   var swiper = new Swiper(".btn-sub", {
       slidesPerView: 2,
       effect: "slide",
@@ -207,7 +240,7 @@ $(document).ready(function() {
           el: ".swiper-pagination",
           clickable: true,
       },
-      // Menyesuaikan efek transisi untuk perpindahan yang lebih halus
+      // Adjust transition effect for smoother transition
       effectOptions: {
           slideShadows: true,
           fadeEffect: {
@@ -236,89 +269,129 @@ $(document).ready(function() {
               shadowOffset: 20,
               shadowScale: 0.94
           }
-      },  
+      },
+      on: {
+          init: function () {
+              // Set slide index based on selected category
+              var selectedSlideIndex = localStorage.getItem('selectedSlideIndexkat');
+              if (selectedSlideIndex !== null) {
+                  this.slideTo(selectedSlideIndex);
+              }
+          },
+          slideChange: function () {
+              // Save selected slide index to local storage
+              var currentIndex = this.activeIndex;
+              localStorage.setItem('selectedSlideIndexkat', currentIndex);
+          },
+      }
+  });
+
+  // Sync hover with category when a card is clicked
+  $(".card-linkkat").click(function(e) {
+      e.preventDefault();
+      $(".swiper-slide .card").removeClass("card-selectedkat").addClass("card-defaultkat");
+      $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat");
+
+      // Save selected card link to local storage
+      localStorage.setItem('selectedCardLinkkat', $(this).attr("href"));
+
+      // Save selected category to local storage
+      const selectedCategory = decodeURIComponent($(this).attr("href").split("/").pop());
+      localStorage.setItem('selectedCategory', selectedCategory);
+
+      // Handle link redirection
+      window.location = $(this).attr("href");
+  });
+
+  // Retrieve selected category from local storage after page load
+  var selectedCategory = localStorage.getItem('selectedCategory');
+  if (selectedCategory !== null) {
+      $(".card-linkkat").each(function() {
+          if ($(this).attr("href").includes(selectedCategory)) {
+              $(".card-linkkat").closest(".card").removeClass("card-selectedkat").addClass("card-defaultkat"); // Remove active class from all categories
+              $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat"); // Add active class to selected category
+
+              // Slide to center
+              const slideIndex = $(this).closest(".swiper-slide").index();
+              const slideWidth = $(".swiper-slide").outerWidth();
+              const swiperWidth = $(".swiper-wrapper").outerWidth();
+              const wrapperOffset = (swiperWidth - slideWidth) / 2;
+              const scrollTo = slideIndex * slideWidth - wrapperOffset;
+              $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+          }
+      });
+  }
+
+  // Add hover effect for category to slide to center
+  $(".card-linkkat").hover(function() {
+      const slideIndex = $(this).closest(".swiper-slide").index();
+      const slideWidth = $(".swiper-slide").outerWidth();
+      const swiperWidth = $(".swiper-wrapper").outerWidth();
+      const wrapperOffset = (swiperWidth - slideWidth) / 2;
+      const scrollTo = slideIndex * slideWidth - wrapperOffset;
+      $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+  }, function() {
+      // On hover out, maintain the current position
+      var selectedSlideIndex = localStorage.getItem('selectedSlideIndexkat');
+      var slideWidth = $(".swiper-slide").outerWidth();
+      var scrollTo = selectedSlideIndex * slideWidth;
+      $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+  });
+});
+
+
+// Slider Hsitori view Mobile
+$(document).ready(function() {
+  var swiper = new Swiper(".btn-his", {
+      slidesPerView: 2,
+      effect: "slide",
+      speed: 1000,
+      grabCursor: true,
+      breakpoints: {
+          1280: { slidesPerView: 6 },
+          768: { slidesPerView: 4 },
+          375: { slidesPerView: 3 },
+          280: { slidesPerView: 2 },
+      },
+      navigation: {
+          nextEl: ".button-next",
+          prevEl: ".button-prev",
+      },
+      pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+      },
+      on: {
+          init: function () {
+              // Memindahkan slide yang dipilih ke tengah slider saat inisialisasi
+              var selectedSlideIndex = localStorage.getItem('selectedSlideIndex');
+              if (selectedSlideIndex !== null) {
+                  this.slideTo(selectedSlideIndex);
+              }
+          },
+          slideChange: function () {
+              // Menyimpan indeks slide yang dipilih ke dalam local storage
+              var currentIndex = this.activeIndex;
+              localStorage.setItem('selectedSlideIndex', currentIndex);
+          },
+      }
   });
 
   $(".card-linkkat").click(function(e) {
       e.preventDefault(); 
-
-      var categoryUrl = $(this).attr("href"); 
-      window.history.pushState(null, null, categoryUrl);
+      var categoryUrl = $(this).attr("href");
       var slideIndex = $(this).closest(".swiper-slide").index();
       
       // Menggunakan metode slideTo dengan efek easing untuk perpindahan yang lebih mulus
-      swiper.slideTo(slideIndex, 1000, false); // Kecepatan transisi 1000 milidetik (1 detik), dengan efek easing false
+      swiper.slideTo(slideIndex, 1000, false);
 
       // Simpan indeks slide yang dipilih di local storage
       localStorage.setItem('selectedSlideIndex', slideIndex);
+      
+      // Handle link redirection
+      window.history.pushState(null, null, categoryUrl);
   });
-
-  // Ambil indeks slide yang dipilih dari local storage setelah halaman dimuat
-  var selectedSlideIndex = localStorage.getItem('selectedSlideIndex');
-  if (selectedSlideIndex !== null) {
-      swiper.slideTo(selectedSlideIndex, 1000, false); // Kecepatan transisi 1000 milidetik (1 detik), dengan efek easing false
-  }
 });
-
-
-
-
-
-
-
-
-// Slider Hsitori view Mobile
-// $(document).ready(function() {
-//   var swiper = new Swiper(".btn-his", {
-//       slidesPerView: 2,
-//       effect: "slide",
-//       speed: 1000,
-//       grabCursor: true,
-//       breakpoints: {
-//           1280: { slidesPerView: 6 },
-//           768: { slidesPerView: 4 },
-//           375: { slidesPerView: 3 },
-//           280: { slidesPerView: 2 },
-//       },
-//       navigation: {
-//           nextEl: ".button-next",
-//           prevEl: ".button-prev",
-//       },
-//       pagination: {
-//           el: ".swiper-pagination",
-//           clickable: true,
-//       },
-//       on: {
-//           init: function () {
-//               // Memindahkan slide yang dipilih ke tengah slider saat inisialisasi
-//               var selectedSlideIndex = localStorage.getItem('selectedSlideIndex');
-//               if (selectedSlideIndex !== null) {
-//                   this.slideTo(selectedSlideIndex);
-//               }
-//           },
-//           slideChange: function () {
-//               // Menyimpan indeks slide yang dipilih ke dalam local storage
-//               var currentIndex = this.activeIndex;
-//               localStorage.setItem('selectedSlideIndex', currentIndex);
-//           },
-//       }
-//   });
-
-//   $(".card-linkkat").click(function(e) {
-//       e.preventDefault(); 
-//       var categoryUrl = $(this).attr("href");
-//       var slideIndex = $(this).closest(".swiper-slide").index();
-      
-//       // Menggunakan metode slideTo dengan efek easing untuk perpindahan yang lebih mulus
-//       swiper.slideTo(slideIndex, 1000, false);
-
-//       // Simpan indeks slide yang dipilih di local storage
-//       localStorage.setItem('selectedSlideIndex', slideIndex);
-      
-//       // Handle link redirection
-//       window.history.pushState(null, null, categoryUrl);
-//   });
-// });
 
 
 
