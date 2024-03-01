@@ -16,9 +16,9 @@ class ProdukModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'id_kategori',
-        'nama_indonesia',
-        'nama_inggris',
-        'nama_korea',
+        'nama',
+        'nama_en',
+        'nama_kr',
         'slug',
         'sku',
         // 'stok',
@@ -42,7 +42,19 @@ class ProdukModel extends Model
         'nama' => [
             'rules'  => 'required',
             'errors' => [
-                'required' => 'Nama produk wajib diisi.',
+                'required' => 'Nama produk dalam bahasa Indonesia wajib diisi.',
+            ],
+        ],
+        'nama_en' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama produk dalam bahasa Inggris wajib diisi.',
+            ],
+        ],
+        'nama_kr' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama produk dalam bahasa Korea wajib diisi.',
             ],
         ],
         'sku'    => [
@@ -60,7 +72,13 @@ class ProdukModel extends Model
     ];
     protected $validationMessages   = [
         'nama' => [
-            'required' => 'Nama produk wajib diisi.',
+            'required' => 'Nama produk dalam bahasa Indonesia wajib diisi.',
+        ],
+        'nama_en' => [
+            'required' => 'Nama produk dalam bahasa Inggris wajib diisi.',
+        ],
+        'nam_kr' => [
+            'required' => 'Nama produk dalam bahasa Korea wajib diisi.',
         ],
         'sku' => [
             'required' => 'SKU wajib diisi.',

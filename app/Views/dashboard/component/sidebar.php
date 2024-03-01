@@ -1,21 +1,32 @@
-<!-- Sidebar - Brand -->
-
 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
     <div class="sidebar-brand-icon">
         <img class="logo" id="logo-icon" src="<?= base_url() ?>assets/img/logo.png" alt="Logo Ssayomart" width="50px" height="50px">
     </div>
 </a>
 
-
-<!-- Divider -->
 <hr class="sidebar-divider">
 <div class="sidebar-heading">
     Role
     <?= (auth()->user()->inGroup('superadmin')) ? 'Superadmin' : 'Admin' ?>
-
 </div>
 <hr class="sidebar-divider">
 <?php if (auth()->user()->inGroup('superadmin')) : ?>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard">
+            <i class="bi bi-speedometer2"></i>
+            <span>Dashboard</span></a>
+    </li>
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        Report
+    </div>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/report">
+            <i class="bi bi-file-text-fill"></i>
+            <span>Report</span></a>
+    </li>
+
     <hr class="sidebar-divider">
 
     <li class="nav-item">
@@ -35,7 +46,7 @@
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard/marketplace">
             <i class="bi bi-shop"></i>
-            <span>Market</span></a>
+            <span>Setting Cabang</span></a>
     </li>
 <?php endif; ?>
 <?php if (auth()->user()->inGroup('admin')) : ?>
@@ -86,7 +97,7 @@
         Produk
     </div>
 
-    <!-- Input Produk Admin Produk -->
+    <!-- Produk -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
             <i class="bi bi-box2-fill"></i>
@@ -97,20 +108,19 @@
                 <h6 class="collapse-header text-danger">Menu Produk:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk">List Produk</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-produk">Tambah Produk</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/produk-batch">Produk-Kategori Batch</a>
+                <!-- <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/produk-batch">Produk-Kategori Batch</a> -->
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/tambah-variasi">Tambah Variasi</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/management-fetching-content">Fetching Produk</a>
+                <!-- <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/management-fetching-content">Fetching Produk</a> -->
                 <!-- Section Promo -->
                 <h6 class="collapse-header text-danger">Menu Promosi:</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo">Buat Promosi</a>
                 <!-- <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item">Tambah Promosi Produk</a> -->
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item-batch">Tambah Promosi Produk-Batch</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item-batch">Tambah Promosi Produk</a>
             </div>
         </div>
     </li>
 
     <!-- Kategori -->
-    <!-- Input Admin Kategori -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-table"></i>
@@ -120,7 +130,7 @@
             <div class="bg-white py-2 collapse-inner rounded" style="font-size: 12px;">
                 <h6 class="collapse-header text-danger">Kategori :</h6>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori</a>
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah Urutan Kategori</a>
             </div>
         </div>
@@ -141,7 +151,7 @@
         </div>
     </li>
 
-    <!-- kupon -->
+    <!-- Kupon -->
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url(); ?>dashboard/kupon">
             <i class="fas fa-fw fa-folder"></i>
