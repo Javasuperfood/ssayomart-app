@@ -72,13 +72,21 @@ $countProduk = count($produk);
                 },
                 success: function(data) {
                     data.forEach(function(p) {
+                        var bahasa = <?php echo json_encode(session()->get('lang')); ?>;
+                        var kolomNama, kolomNamaKat;
+                        if (bahasa === 'id') {
+                            kolomNama = 'nama';
+                            kolomNamaKat = 'nama_kategori';
+                        } else {
+                            kolomNama = 'nama_' + bahasa;
+                            kolomNamaKat = 'nama_kategori_' + bahasa;
+                        }
                         var hargaText;
                         if (p.harga_min == p.harga_max) {
                             hargaText = "Rp. " + formatRupiah(p.harga_min);
                         } else {
                             hargaText = ("Rp. " + formatRupiah(p.harga_min) + "-" + formatRupiah(p.harga_max)).substring(0, 13) + "...";
                         }
-
                         var html = `<div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
                         <div class="">
                     <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
@@ -88,12 +96,13 @@ $countProduk = count($produk);
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                        <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 90px;">
-                        
-                        <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
-                            ${p.nama.length > 70 ? p.nama.slice(0, 70) + '' : p.nama}
-                        </p>
-                        </div>
+                            <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 90px;">
+                            
+                                <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
+                                    ${p[kolomNama].length > 70 ? p[kolomNama].slice(0, 70) + '' : p[kolomNama]}
+                                </p>
+
+                            </div>
                         
                             <h1 class="text-dark fw-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                             ${hargaText}
@@ -110,11 +119,10 @@ $countProduk = count($produk);
                                         <i class="icon bi bi-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
                                     </div>
                                 </div>
-                            
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>`
+                </div>`;
                         // $("#cardLoader").remove()
                         productContainer.append(html);
                         // productContainer.append(cardLoader);
