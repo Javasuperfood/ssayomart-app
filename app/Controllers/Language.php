@@ -15,4 +15,23 @@ class Language extends BaseController
         $url = base_url();
         return redirect()->to($url);
     }
+    public function pilihBahasa($bahasa)
+    {
+        $session = session();
+        $url = base_url();
+
+        // Set bahasa ke dalam session
+        $session->set('bahasa', $bahasa);
+
+        // Jika ini adalah pemilihan bahasa pertama kali, alihkan ke beranda
+        if (!$session->get('first_language_selection')) {
+            $session->set('first_language_selection', true);
+        }
+
+        // Jika pengguna sudah memilih bahasa sebelumnya, tampilkan halaman bahasa
+        $data = [
+            'title' => 'Pilih Bahasa',
+        ];
+        return redirect()->to($url);
+    }
 }
