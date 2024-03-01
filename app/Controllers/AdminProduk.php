@@ -35,7 +35,7 @@ class AdminProduk extends BaseController
         $currentPage = $this->request->getVar('page_produk') ? $this->request->getVar('page_produk') : 1;
 
         $keyword = $this->request->getVar('search');
-        $categoryKeyword = $this->request->getVar('category_search'); 
+        $categoryKeyword = $this->request->getVar('category_search');
 
         if ($categoryKeyword) {
             // Perform category search
@@ -68,11 +68,11 @@ class AdminProduk extends BaseController
         }
 
         $kat = $kategoriModel->select('jsf_kategori.*')
-                ->join('jsf_produk', 'jsf_kategori.id_kategori = jsf_produk.id_kategori')
-                ->where('jsf_produk.deleted_at', null)
-                ->groupBy('jsf_kategori.id_kategori')
-                ->get()
-                ->getResultArray();
+            ->join('jsf_produk', 'jsf_kategori.id_kategori = jsf_produk.id_kategori')
+            ->where('jsf_produk.deleted_at', null)
+            ->groupBy('jsf_kategori.id_kategori')
+            ->get()
+            ->getResultArray();
 
         $data = [
             'title' => 'Daftar Produk',
@@ -87,7 +87,7 @@ class AdminProduk extends BaseController
             'totalProduk' => $totalProduk,
             'pa' => $pa
         ];
-    
+
         return view('dashboard/produk/produk', $data);
     }
 
@@ -135,6 +135,8 @@ class AdminProduk extends BaseController
         $data = [
             'slug' => $slug,
             'nama' => $this->request->getVar('nama'),
+            'nama_kr' => $this->request->getVar('nama_kr'),
+            'nama_en' => $this->request->getVar('nama_en'),
             'sku' => $this->request->getVar('sku'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaProduk,
@@ -302,6 +304,8 @@ class AdminProduk extends BaseController
             'id_produk' => $id,
             'slug' => $slug,
             'nama' => $this->request->getVar('nama'),
+            'nama_kr' => $this->request->getVar('nama_kr'),
+            'nama_en' => $this->request->getVar('nama_en'),
             'sku' => $this->request->getVar('sku'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaProdukImage,
