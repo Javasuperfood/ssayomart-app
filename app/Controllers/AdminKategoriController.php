@@ -183,11 +183,13 @@ class AdminkategoriController extends BaseController
     public function updateKategori($id)
     {
         $kategoriModel = new KategoriModel();
-        $slug = url_title($this->request->getVar('kategori'), '-', true);
+        $slug = url_title($this->request->getVar('nama_kategori'), '-', true);
         $image = $this->request->getFile('img');
         $data = [
             'id_kategori' => $id,
-            'nama_kategori' => $this->request->getVar('kategori'),
+            'nama_kategori' => $this->request->getVar('nama_kategori'),
+            'nama_kategori_en' => $this->request->getVar('nama_kategori_en'),
+            'nama_kategori_kr' => $this->request->getVar('nama_kategori_kr'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'slug' => $slug,
             'img' => $image
@@ -218,7 +220,9 @@ class AdminkategoriController extends BaseController
 
         $data = [
             'id_kategori' => $id,
-            'nama_kategori' => $this->request->getVar('kategori'),
+            'nama_kategori' => $this->request->getVar('nama_kategori'),
+            'nama_kategori_en' => $this->request->getVar('nama_kategori_en'),
+            'nama_kategori_kr' => $this->request->getVar('nama_kategori_kr'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'slug' => $slug,
             'img' => $namaKategoriImage
@@ -334,7 +338,9 @@ class AdminkategoriController extends BaseController
         $data = [
             'id_kategori' => $parentKategoriId,
             'id_sub_kategori' => $id,
-            'nama_kategori' => $this->request->getVar('kategori'),
+            'nama_kategori' => $this->request->getVar('nama_kategori'),
+            'nama_kategori_en' => $this->request->getVar('nama_kategori_en'),
+            'nama_kategori_kr' => $this->request->getVar('nama_kategori_kr'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $image,
         ];
@@ -361,12 +367,14 @@ class AdminkategoriController extends BaseController
                 }
             }
         }
-        $slug = url_title($this->request->getVar('kategori'), '-', true);
+        $slug = url_title($this->request->getVar('nama_kategori'), '-', true);
         // Replace Data
         $data = [
             'id_kategori' => $parentKategoriId,
             'id_sub_kategori' => $id,
-            'nama_kategori' => $this->request->getVar('kategori'),
+            'nama_kategori' => $this->request->getVar('nama_kategori'),
+            'nama_kategori_en' => $this->request->getVar('nama_kategori_en'),
+            'nama_kategori_kr' => $this->request->getVar('nama_kategori_kr'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'slug' => $slug,
             'img' => $namaSubKategoriImage
