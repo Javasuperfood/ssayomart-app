@@ -81,5 +81,6 @@
             });
         <?php endif; ?>
     });
+</script>
 
 <?= $this->endSection(); ?>

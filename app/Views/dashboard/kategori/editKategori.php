@@ -14,19 +14,19 @@
             <?= csrf_field(); ?>
 
             <div class="mb-4">
-                <label for="kategori" class="form-label">Nama Kategori dalam bahasa Indonesia</label>
-                <input type="text" class="form-control border-1" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
+                <label for="nama_kategori" class="form-label">Nama Kategori dalam bahasa Indonesia</label>
+                <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" placeholder="Masukan nama kategori" name="nama_kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
                 <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="kategori" class="form-label">Nama Kategori dalam bahasa Korea</label>
-                <input type="text" class="form-control border-1" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="" pattern="[0-9]{0}{3}">
-                <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+                <label for="nama_kategori_kr" class="form-label">Nama Kategori dalam bahasa Korea</label>
+                <input type="text" class="form-control <?= (validation_show_error('nama_kategori_en')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" placeholder="Masukan nama kategori" name="nama_kategori_en" value="<?= $kategori['nama_kategori_en'] ?>" pattern="[0-9]{0}{3}">
+                <div class="invalid-feedback"><?= validation_show_error('nama_kategori_en'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="kategori" class="form-label">Nama Kategori dalam bahasa Inggris</label>
-                <input type="text" class="form-control border-1" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="" pattern="[0-9]{0}{3}">
-                <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+                <label for="nama_kategori_kr" class="form-label">Nama Kategori dalam bahasa Inggris</label>
+                <input type="text" class="form-control <?= (validation_show_error('nama_kategori_kr')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" placeholder="Masukan nama kategori" name="nama_kategori_kr" value="<?= $kategori['nama_kategori_kr'] ?>" pattern="[0-9]{0}{3}">
+                <div class="invalid-feedback"><?= validation_show_error('nama_kategori_kr'); ?></div>
             </div>
 
             <div class="mb-4">
