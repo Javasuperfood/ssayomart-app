@@ -30,22 +30,32 @@
         <form action="<?= base_url(); ?>dashboard/produk/tambah-produk/save" method="post" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <div class="mb-4">
-                <label for="nama" class="form-label">Nama Produk</label>
-                <input type="text" class="form-control shadow-sm <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-0'; ?>" id="nama" name="nama" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan nama produk" placeholder="Nama Produk Anda..." value="<?= old('nama') ?>">
+                <label for="nama" class="form-label">Nama Produk dalam <strong>Bahasa Indonesia</strong><span style="color: red;"> *</span></label>
+                <input type="text" class="form-control shadow-sm <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-0'; ?>" id="nama" name="nama" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan nama produk" placeholder="Nama Produk Anda dalam bahasa Indonesia..." value="<?= old('nama') ?>">
                 <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="sku" class="form-label">Stock Keeping Unit (SKU)</label>
+                <label for="nama" class="form-label">Nama Produk dalam <strong>Bahasa Korea</strong><span style="color: red;"> *</span></label>
+                <input type="text" class="form-control shadow-sm border-0" id="nama" name="nama" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan nama produk" placeholder="Nama Produk Anda dalam Bahasa korea..." value="">
+                <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
+            </div>
+            <div class="mb-4">
+                <label for="nama" class="form-label">Nama Produk dalam <strong>Bahasa Inggris</strong><span style="color: red;"> *</span></label>
+                <input type="text" class="form-control shadow-sm border-0" id="nama" name="nama" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan nama produk" placeholder="Nama Produk Anda dalam bahasa inggris..." value="">
+                <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
+            </div>
+            <div class="mb-4">
+                <label for="sku" class="form-label">Stock Keeping Unit (SKU) <span style="color: red;">*</span></label>
                 <input type="text" class="form-control shadow-sm <?= (validation_show_error('sku')) ? 'is-invalid' : 'border-0'; ?>" id="sku" name="sku" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan SKU Produk" placeholder="SKU Produk Anda..." value="<?= old('sku') ?>" onkeypress="return isNumber(event);">
                 <div class="invalid-feedback"><?= validation_show_error('sku'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="deskripsi" class="form-label">Deskripsi Produk</label>
+                <label for="deskripsi" class="form-label">Deskripsi Produk <span style="color:red;">*</span></label>
                 <textarea class="form-control shadow-sm <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-0'; ?>" id="deskripsi" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Deskripsi Produk" name="deskripsi" placeholder="Deskripsi Produk Anda .."><?= old('deskripsi') ?></textarea>
                 <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="parent_kategori_id">Kategori Induk</label>
+                <label for="parent_kategori_id">Kategori Induk <span style="color: red;">*</span></label>
                 <select class="form-control shadow-sm border-0 <?= (validation_show_error('parent_kategori_id')) ? 'is-invalid' : 'border-0'; ?>" id="kategori" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih kategori produk yang anda inputkan">
                     <option value="">Pilih Kategori</option>
                     <?php foreach ($kategori as $km) : ?>
@@ -55,7 +65,7 @@
                 <div class="invalid-feedback"><?= validation_show_error('parent_kategori_id'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="parent_kategori_id">Sub Kategori</label>
+                <label for="parent_kategori_id">Sub Kategori <span style="color: red;">*</span></label>
                 <select class="form-control shadow-sm border-0" id="sub_kategori" name="sub_kategori" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih sub-kategori produk yang anda inputkan">
                     <option value="">Pilih Kategori</option>
                 </select>
@@ -101,7 +111,7 @@
             <div class="mb-4">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="selectVariant">Pilih Variant</label>
+                        <label for="selectVariant">Pilih Variant <span style="color: red;">*</span></label>
                         <select class="form-control border-1" name="selectVariant" data-toggle="tooltip" data-placement="bottom" title="Klik untuk memilih varian produk yang anda inputkan" id="selectVariant">
                             <option value="">Pilih</option>
                             <?php foreach ($variasi as $v) : ?>
@@ -117,12 +127,12 @@
                 </div>
             </div>
             <div class="mb-4">
-                <label for="berat" class="form-label">Berat Produk <span class="text-secondary">(* Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
+                <label for="berat" class="form-label">Berat Produk <span style="color: red;">*</span><span class="text-secondary">( Harus Dalam Satuan Gram e.g : 1kg = 1000)</span></label>
                 <input type="price" class="form-control shadow-sm <?= (validation_show_error('berat')) ? 'is-invalid' : 'border-0'; ?>" id="berat" name="berat" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Harap masukan berat isi produk yang anda inputkan" placeholder="Berat Produk Anda..." value="<?= old('berat') ?>" onkeypress="return isNumber(event);">
                 <div class="invalid-feedback"><?= validation_show_error('berat'); ?></div>
             </div>
             <div class="mb-4">
-                <label for="harga" class="form-label">Harga Produk</label>
+                <label for="harga" class="form-label">Harga Produk <span style="color: red;">*</span></label>
                 <input type="price" class="form-control shadow-sm <?= (validation_show_error('harga_item')) ? 'is-invalid' : 'border-0'; ?>" id="harga" name="harga" name="parent_kategori_id" data-toggle="tooltip" data-placement="bottom" title="Harap masukan harga produk yang akan di jual" placeholder="Harga Produk Anda..." value="<?= old('harga') ?>" onkeypress="return isNumber(event);">
                 <div class="invalid-feedback"><?= validation_show_error('harga_item'); ?></div>
             </div>

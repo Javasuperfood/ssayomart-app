@@ -11,8 +11,18 @@
             <?= csrf_field(); ?>
             <input type="hidden" name="id_sub_kategori" value="<?= $subkategori['id_sub_kategori']; ?>">
             <div class="mb-3">
-                <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori</label>
+                <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori dalam bahasa Indonesia</label>
                 <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $subkategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
+                <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+            </div>
+            <div class="mb-3">
+                <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori dalam bahasa Korea</label>
+                <input type="text" class="form-control border-0 shadow-sm" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="" pattern="[0-9]{0}{3}">
+                <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+            </div>
+            <div class="mb-3">
+                <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori dalam bahasa Inggris</label>
+                <input type="text" class="form-control border-0 shadow-sm" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="" pattern="[0-9]{0}{3}">
                 <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
             </div>
 
