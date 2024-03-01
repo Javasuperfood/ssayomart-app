@@ -61,6 +61,8 @@ class UserPromoController extends BaseController
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
 
+        $bahasa = session()->get('lang');
+
         $promoItem = $promoBatchModel->getPromo($slug);
         if ($promoItem) {
             $filteredPromoItems = [];
@@ -83,6 +85,12 @@ class UserPromoController extends BaseController
         }
         // dd($promoItem);
 
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+        }
+
         $title = (!$promoItem) ? 'Promo' : $promoItem[0]['title'];
 
         $data = [
@@ -90,6 +98,7 @@ class UserPromoController extends BaseController
             'produk' => $promoItem,
             'kategori_promo' => $promo,
             'kategori' => $kategori->findAll(),
+            'kolomNama' => $kolomNama,
             'back' => ''
         ];
         // dd($data);

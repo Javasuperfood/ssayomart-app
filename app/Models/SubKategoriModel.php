@@ -16,6 +16,8 @@ class SubKategoriModel extends Model
     protected $allowedFields    = [
         'id_kategori',
         'nama_kategori',
+        'nama_kategori_en',
+        'nama_kategori_kr',
         'deskripsi',
         'slug',
         'img',
@@ -75,14 +77,14 @@ class SubKategoriModel extends Model
 
     public function getSubKategoriByKategoriId($id)
     {
-        return $this->select('jsf_kategori.slug as slugK, jsf_sub_kategori.slug as slugS , jsf_sub_kategori.nama_kategori')
+        return $this->select('jsf_kategori.slug as slugK, jsf_sub_kategori.slug as slugS , jsf_sub_kategori.nama_kategori, jsf_sub_kategori.nama_kategori_en, jsf_sub_kategori.nama_kategori_kr')
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_sub_kategori.id_kategori', 'inner')
             ->where('jsf_sub_kategori.id_kategori', $id)->findAll();
     }
     
     public function getSubKategoriByProdukId($id_produk)
     {
-        return $this->select('nama_kategori')
+        return $this->select('nama_kategori, nama_kategori_en, nama_kategori_kr')
             ->join('jsf_produk', 'jsf_produk.id_sub_kategori = jsf_sub_kategori.id_sub_kategori')
             ->where('jsf_produk.id_produk', $id_produk)
             ->first();

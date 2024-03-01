@@ -30,7 +30,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
             <div class="col mt-4 mx-1 text-center">
-                <h4 class="fw-bold"><?= $produk['nama']; ?></h4>
+                <h4 class="fw-bold"><?= $produk[$kolomNama]; ?></h4>
                 <div class="row">
                     <div class="col text-center">
                         <p class="fs-2 text-danger price fw-bold">
@@ -106,14 +106,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
                             <br>
                             <?php if (!empty($kategoriProduk)) : ?>
-                                <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
+                                <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk[$kolomNamaKat]; ?></span>
                             <?php endif ?>
                         </div>
                         <div class="badge-container mb-2">
                             <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
                             <br>
                             <?php if (!empty($subKategoriProduk)) : ?>
-                                <span class="badge text-bg-warning rounded-5 text-uppercase"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                                <span class="badge text-bg-warning rounded-5 text-uppercase"><?= $subKategoriProduk[$kolomNamaKat]; ?></span>
                             <?php endif ?>
                         </div>
                         <div class="badge-container mb-2">
@@ -488,14 +488,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
                                 <br>
                                 <?php if (!empty($kategoriProduk)) : ?>
-                                    <span class="badge text-bg-danger rounded-5 text-uppercase fs-8"><?= $kategoriProduk['nama_kategori']; ?></span>
+                                    <span class="badge text-bg-danger rounded-5 text-uppercase fs-8"><?= $kategoriProduk[$kolomNamaKat]; ?></span>
                                 <?php endif ?>
                             </div>
                             <div class="badge-container ">
                                 <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
                                 <br>
                                 <?php if (!empty($subKategoriProduk)) : ?>
-                                    <span class="badge text-bg-warning rounded-5 text-uppercase fs-8"><?= $subKategoriProduk['nama_kategori']; ?></span>
+                                    <span class="badge text-bg-warning rounded-5 text-uppercase fs-8"><?= $subKategoriProduk[$kolomNamaKat]; ?></span>
                                 <?php endif ?>
                             </div>
                         </div>

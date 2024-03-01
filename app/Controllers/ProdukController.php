@@ -90,12 +90,14 @@ class ProdukController extends BaseController
 
             if ($bahasa == 'id') {
                 $kolomNama = 'nama';
+                $kolomNamaKat = 'nama_kategori';
             } else {
                 $kolomNama = 'nama_' . $bahasa;
+                $kolomNamaKat = 'nama_kategori_' . $bahasa;
             }
 
             $data = [
-                'title' => $katSub['nama_kategori'],
+                'title' => $katSub[$kolomNamaKat],
                 'kategori' => $kategori,
                 'kategori_single' => $kategori,
                 'produk' => $getProduk,
@@ -106,7 +108,9 @@ class ProdukController extends BaseController
                 'back' => '#ktr',
                 'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2),
                 'kolomNama' => $kolomNama,
+                'kolomNamaKat' => $kolomNamaKat,
             ];
+            // dd($data);
             return view('user/produk/index', $data);
         }
     }
@@ -121,6 +125,8 @@ class ProdukController extends BaseController
         $userModel = new UsersModel();
         $stokModel = new StockModel();
 
+        $bahasa = session()->get('lang');
+
         $produk = $produkModel->getProduk($slug);
         $varianItem = $varianModel->getByIdProduk($produk['id_produk']);
 
@@ -129,8 +135,16 @@ class ProdukController extends BaseController
         $kategoriProduk = $kategoriModel->getKategoriByProdukId($produk['id_produk']);
         $subKategoriProduk = $subKategori->getSubKategoriByProdukId($produk['id_produk']);
 
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+            $kolomNamaKat = 'nama_kategori_';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+            $kolomNamaKat = 'nama_kategori_' . $bahasa;
+        }
+
         $data = [
-            'title' => $produk['nama'],
+            'title' => $produk[$kolomNama],
             'img_meta' => base_url() . 'assets/img/produk/main/' . $produk['img'],
             'description_meta' => $produk['deskripsi'],
             'kategori' => $kategoriModel->findAll(),
@@ -140,7 +154,9 @@ class ProdukController extends BaseController
             'randomProducts' => $randomProducts,
             'kategoriProduk' => $kategoriProduk, // Menambahkan kategori produk
             'subKategoriProduk' => $subKategoriProduk, // Menambahkan kategori produk
-            'useStock' => false
+            'useStock' => false,
+            'kolomNama' => $kolomNama,
+            'kolomNamaKat' => $kolomNamaKat,
         ];
         // dd($data);
 

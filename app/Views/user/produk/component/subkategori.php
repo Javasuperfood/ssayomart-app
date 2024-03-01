@@ -27,8 +27,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php foreach ($getKategori as $s) : ?>
                                     <div class="swiper-slide my-1">
                                         <div class="card border-0 text-uppercase">
-                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat w-75 text-decoration-none " data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s['nama_kategori']; ?>">
-                                                <?= $s['nama_kategori']; ?>
+                                            <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat w-75 text-decoration-none " data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s[$kolomNamaKat]; ?>">
+                                                <?= $s[$kolomNamaKat]; ?>
                                                 <hr class="mt-2" style="border-width:2px;" />
                                             </a>
 
@@ -47,8 +47,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php for ($j = $i * 2; $j < min(count($getKategori), ($i + 1) * 2); $j++) : ?>
                                             <div class="col">
                                                 <div class="card border-0 shadow-sm text-uppercase" style="width: auto;">
-                                                    <a href="<?= base_url(); ?>produk/kategori/<?= $getKategori[$j]['slug']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $getKategori[$j]['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $getKategori[$j]['nama_kategori']; ?>">
-                                                        <?= $getKategori[$j]['nama_kategori']; ?>
+                                                    <a href="<?= base_url(); ?>produk/kategori/<?= $getKategori[$j]['slug']; ?>" class="text-decoration-none custom-button btn" data-slug="<?= $getKategori[$j]['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $getKategori[$j][$kolomNamaKat]; ?>">
+                                                        <?= $getKategori[$j][$kolomNamaKat]; ?>
                                                     </a>
                                                 </div>
                                             </div>
@@ -88,7 +88,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="swiper-slide my-3">
                                                 <div class="card border-0 shadow-sm  text-uppercase d-flex justify-content-center" style="height: 25px; width:auto;">
                                                     <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none" style="font-size:10px; color:#000;">
-                                                        <?= $s['nama_kategori']; ?>
+                                                        <?= $s[$kolomNamaKat]; ?>
                                                     </a>
                                                 </div>
                                             </div>
@@ -106,7 +106,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="swiper-slide my-3 ">
                                     <div class="card border-1 text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
                                         <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="fw-bold mt-1 text-decoration-none card-link" style="font-size:8px; color:#000;">
-                                            <?= $s['nama_kategori']; ?>
+                                            <?= $s[$kolomNamaKat]; ?>
                                         </a>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($subKategori as $s) : ?>
                                 <div class="swiper-slide mx-3">
                                     <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="btn border-0 btn-custom-rounded text-danger " style="width: 200px;">
-                                        <?= $s['nama_kategori']; ?>
+                                        <?= $s[$kolomNamaKat]; ?>
                                     </a>
                                 </div>
                             <?php endforeach; ?>
