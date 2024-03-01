@@ -38,7 +38,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <?php foreach ($kategori as $k) : ?>
                                         <li class="list-group-item list-peritem">
                                             <a href="<?= base_url('produk/kategori/' . $k['slug']); ?>" class="link-offset-2 link-underline link-underline-opacity-0 link-white list-group-item-link fw-bold" data-slug="<?= $k['slug'] ?>">
-                                                <?= $k['nama_kategori']; ?>
+                                                <?= $k[$kolomNamaKat]; ?>
                                                 <i id="icon-<?= $k['slug'] ?>" class="bi bi-caret-right arrow-icon"></i>
                                             </a>
                                             <ul class="list-group-flush mx-1">
@@ -46,7 +46,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <?php if ($sub['slugK'] == $k['slug']) : ?>
                                                         <li class="list-group-item">
                                                             <a href="<?= base_url('produk/kategori/' . $k['slug'] . '/' . $sub['slugS']); ?>" class="link-white list-group-item-link">
-                                                                <?= $sub['nama_kategori']; ?>
+                                                                <?= $sub[$kolomNamaKat]; ?>
                                                             </a>
                                                         </li>
                                                 <?php endif;

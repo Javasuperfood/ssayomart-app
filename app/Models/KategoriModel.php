@@ -15,6 +15,8 @@ class KategoriModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'nama_kategori',
+        'nama_kategori_en',
+        'nama_kategori_kr',
         'deskripsi',
         'slug',
         'img',
@@ -75,7 +77,7 @@ class KategoriModel extends Model
 
     public function getKategoriByProdukId($id_produk)
     {
-        return $this->select('nama_kategori')
+        return $this->select('nama_kategori, nama_kategori_en, nama_kategori_kr')
             ->join('jsf_produk', 'jsf_produk.id_kategori = jsf_kategori.id_kategori')
             ->where('jsf_produk.id_produk', $id_produk)
             ->first();
