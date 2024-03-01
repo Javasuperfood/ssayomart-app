@@ -63,7 +63,7 @@ class Produk extends Seeder
             '2' => '1500',
             '3' => '2000',
         ];
-        for ($i = 1; $i <= 100; $i++) {
+        for ($i = 1; $i <= 300; $i++) {
             $idK = mt_rand(1, 16);
             $idS = null;
             if ($idK == 1) {
@@ -119,7 +119,9 @@ class Produk extends Seeder
             // $slug = url_title($nama, '-', true);
 
             $data = [
-                'nama' => 'Produk ' . $i,
+                'nama' => 'Produk Indo ' . $i,
+                'nama_en' => 'Produk Inggris ' . $i,
+                'nama_kr' => 'Produk Korea ' . $i,
                 'slug'    => url_title('Produk ' . $i, '-', true),
                 'sku'    => $faker->numberBetween(1000000, 9000000),
                 // 'harga'    => $harga[mt_rand(1, 3)],
