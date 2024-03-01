@@ -41,22 +41,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col">
                             <ul class="list-group list-group-flush">
                                 <div class="position-relative">
-                                    <div class="card border-0 shadow-sm mb-3">
-                                        <div class="card-header border-0 bg-white">
-                                            <span class="fw-bold fs-5"><?= $au['label']; ?></span>
-                                        </div>
-                                        <div class="card-body detail-penerima">
-                                            <p class="fw-bold"><?= $au['penerima']; ?> - <?= $au['telp']; ?></p>
-                                            <p class="text-secondary"><?= $au['province'] ?> - <?= $au['city'] ?></p>
-                                            <p class="text-secondary"><?= substr($au['alamat_1'], 0, 40); ?>...</p>
-                                        </div>
-                                        <div class="card-footer bg-white">
-                                            <div class="row row-cols-3">
-                                                <div class="col">
-                                                    <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0"><?= lang('Text.btn_ubah') ?></a>
-                                                </div>
-                                                <div class="col">
-                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $au['id_alamat_users']; ?>" class="btn border-0 text-danger m-0"><?= lang('Text.btn_hapus') ?></button>
+                                    <div class="card border-0 mb-3">
+                                        <div class="card">
+                                            <div class="card-header border-0 bg-white mt-1">
+                                                <span class="fw-bold fs-5"><?= $au['label']; ?></span>
+                                            </div>
+                                            <div class="card-body detail-penerima">
+                                                <p class="fw-bold mb-2" style="font-size: 12px;"><?= $au['penerima']; ?> - <?= $au['telp']; ?></p>
+                                                <p class="text-secondary mb-2" style="font-size: 12px;"><?= $au['province'] ?> - <?= $au['city'] ?></p>
+                                                <p class="text-secondary mb-2" style="font-size: 12px;"><?= substr($au['alamat_1'], 0, 150); ?></p>
+                                            </div>
+                                            <div class="card-footer bg-light d-flex justify-content-between p-2">
+                                                <div>
+                                                    <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn btn-sm btn-outline-danger"><?= lang('Text.btn_ubah') ?></a>
+                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $au['id_alamat_users']; ?>" class="btn btn-sm btn-outline-danger"><?= lang('Text.btn_hapus') ?></button>
                                                 </div>
                                                 <div class="col d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
                                                     <div class="form-check form-switch">
@@ -118,6 +116,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         @media screen and (max-width: 280px) {
 
+            .addresCircle {
+                width: 41px;
+                height: 41px;
+                border-radius: 50%;
+                background-color: #dc3545;
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                margin-left: -100px;
+            }
+
             .card-body {
                 font-size: 11px;
                 flex: 1 1 auto;
@@ -133,18 +146,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             .alert-danger {
                 font-size: 11px;
             }
-
-
         }
     </style>
 
     <style>
         .position-fixed {
             position: fixed;
-            bottom: 70px;
-            /* Atur jarak dari bawah sesuai kebutuhan */
+            bottom: 66px;
             right: 10px;
-            /* Atur jarak dari kanan sesuai kebutuhan */
         }
     </style>
 <?php else : ?>
