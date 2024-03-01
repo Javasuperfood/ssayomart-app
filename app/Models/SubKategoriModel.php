@@ -39,6 +39,18 @@ class SubKategoriModel extends Model
                 'required' => 'Nama kategori wajib diisi.',
             ],
         ],
+        'nama_kategori_en' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama kategori wajib diisi.',
+            ],
+        ],
+        'nama_kategori_kr' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Nama kategori wajib diisi.',
+            ],
+        ],
         'deskripsi' => [
             'rules'  => 'required',
             'errors' => [

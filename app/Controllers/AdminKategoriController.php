@@ -84,16 +84,18 @@ class AdminkategoriController extends BaseController
         // ambil gambar
         $kategoriModel = new KategoriModel();
         $subKategoriModel = new SubKategoriModel();
-        $slug = url_title($this->request->getVar('kategori'), '-', true);
+        $slug = url_title($this->request->getVar('nama_kategori'), '-', true);
         $parentKategoriId = $this->request->getVar('parent_kategori_id');
         $data = [
-            'nama_kategori' => $this->request->getVar('kategori'),
+            'nama_kategori' => $this->request->getVar('nama_kategori'),
+            'nama_kategori_en' => $this->request->getVar('nama_kategori_en'),
+            'nama_kategori_kr' => $this->request->getVar('nama_kategori_kr'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $this->request->getFile('img'),
             'slug' => $slug,
             'id_kategori' => $parentKategoriId,
         ];
-        //validate
+        // validate
         if (!$this->validateData($data, $kategoriModel->validationRules)) {
             return redirect()->to('dashboard/kategori/tambah-kategori')->withInput();
         }
@@ -107,9 +109,11 @@ class AdminkategoriController extends BaseController
             $fotoKategori->move('assets/img/kategori/', $namaKategori);
         }
 
-        //replace data value
+        // replace data value
         $data = [
-            'nama_kategori' => $this->request->getVar('kategori'),
+            'nama_kategori' => $this->request->getVar('nama_kategori'),
+            'nama_kategori_en' => $this->request->getVar('nama_kategori_en'),
+            'nama_kategori_kr' => $this->request->getVar('nama_kategori_kr'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaKategori,
             'slug' => $slug,
@@ -123,7 +127,7 @@ class AdminkategoriController extends BaseController
                 $alert = [
                     'type' => 'success',
                     'title' => 'Berhasil',
-                    'message' => 'Kategori berhasil disimpan.'
+                    'message' => 'Sub kategori berhasil disimpan.'
                 ];
                 session()->setFlashdata('alert', $alert);
 
@@ -139,7 +143,7 @@ class AdminkategoriController extends BaseController
                 return redirect()->to('dashboard/kategori/tambah-kategori')->withInput();
             }
         }
-        // Save perent kategori
+        // Save parent kategori
         if ($kategoriModel->save($data)) {
             session()->setFlashdata('success', 'Kategori berhasil disimpan.');
             $alert = [

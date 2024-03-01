@@ -15,19 +15,19 @@
                 <form action="<?= base_url(); ?>dashboard/kategori/tambah-kategori/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class=" mb-4">
-                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori Bahasa Indonesia</label>
-                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Indonesia" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
+                        <label for="nama_kategori" class="form-label">Nama Kategori atau Sub Kategori Bahasa Indonesia</label>
+                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Indonesia" placeholder="Masukan nama kategori atau sub kategori" name="nama_kategori" value="<?= old('nama_kategori') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
                     </div>
                     <div class=" mb-4">
-                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori Bahasa Korea</label>
-                        <input type="text" class="form-control border-1" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Korea" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="">
-                        <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+                        <label for="nama_kategori_en" class="form-label">Nama Kategori atau Sub Kategori Bahasa Inggris</label>
+                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori_en')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Inggris" placeholder="Masukan nama kategori atau sub kategori" name="nama_kategori_en" value="<?= old('nama_kategori_en') ?>">
+                        <div class="invalid-feedback"><?= validation_show_error('nama_kategori_en'); ?></div>
                     </div>
                     <div class=" mb-4">
-                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori Bahasa Inggris</label>
-                        <input type="text" class="form-control border-1" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Inggris" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="">
-                        <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+                        <label for="nama_kategori_kr" class="form-label">Nama Kategori atau Sub Kategori Bahasa Korea</label>
+                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori_kr')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Korea" placeholder="Masukan nama kategori atau sub kategori" name="nama_kategori_kr" value="<?= old('nama_kategori_kr') ?>">
+                        <div class="invalid-feedback"><?= validation_show_error('nama_kategori_kr'); ?></div>
                     </div>
                     <!-- <div class="mb-3">
                         <label for="slug" class="form-label">Slug</label>
@@ -81,39 +81,5 @@
             });
         <?php endif; ?>
     });
-
-    //Validasi Form
-    function validasiTambahKategori() {
-        var isValid = true;
-
-        var namaKategoriField = document.getElementById('kategori');
-        var imgField = document.getElementById('img');
-        var deskripsiField = document.getElementById('deskripsi');
-
-        var namaKategoriError = document.getElementById('kategoriError');
-        var deskripsiError = document.getElementById('deskripsiError');
-
-        namaKategoriError.textContent = '';
-        imgError.textContent = '';
-        deskripsiError.textContent = '';
-
-        if (namaKategoriField.value.trim() === '') {
-            namaKategoriField.classList.add('invalid-field');
-            namaKategoriError.textContent = 'Nama Kategori harus diisi';
-            isValid = false;
-        } else {
-            namaKategoriField.classList.remove('invalid-field');
-        }
-
-        if (deskripsiField.value.trim() === '') {
-            deskripsiField.classList.add('invalid-field');
-            deskripsiError.textContent = 'Deskripsi harus diisi';
-            isValid = false;
-        } else {
-            deskripsiField.classList.remove('invalid-field');
-        }
-        return isValid;
-    }
-</script>
 
 <?= $this->endSection(); ?>
