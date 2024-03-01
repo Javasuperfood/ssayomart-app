@@ -53,7 +53,7 @@ class PromoBatchModel extends Model
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_promo_batch')
-            ->select('jsf_promo_batch.*, jsf_promo.*, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
+            ->select('jsf_promo_batch.*, jsf_promo.*, vi.id_variasi_item, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
             ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
             ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
