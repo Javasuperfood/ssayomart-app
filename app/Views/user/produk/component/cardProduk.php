@@ -12,14 +12,14 @@
                 <div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
                     <div>
                         <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
-                            <a href="<?= base_url() ?>produk/<?= $p['slug'] ?? ''; ?>" class="link-underline link-underline-opacity-0">
+                            <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                 <div class="d-flex justify-content-center align-items-center">
-                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img'] ?? ''; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk'] ?? ''; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain;">
+                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_<?= $p['id_produk']; ?>_" alt="..." style=" width: 100px; height: 100px; object-fit: contain;">
                                 </div>
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 90px;">
-                                    <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p['nama'] ?? '', 0, 70); ?></p>
+                                    <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p['nama'], 0, 70); ?></p>
                                 </div>
                                 <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                                     <?php if (isset($p['harga_min']) && isset($p['harga_max'])) : ?>
@@ -31,16 +31,16 @@
                                     <?php endif ?>
                                 </h1>
                                 <!-- button Animasi -->
-                                <div class="button-container" id="button-container-<?= $p['id_produk'] ?? ''; ?>">
+                                <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
                                     <?php if (isset($p['id_produk'])) : ?>
-                                        <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item'] ?? ''; ?>)">
+                                        <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">
                                             <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
                                         </div>
 
                                         <div class="button-capsule" style="display: none;">
-                                            <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item'] ?? ''; ?>)"></i>
+                                            <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                                             <input type="number" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
-                                            <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item'] ?? ''; ?>)"></i>
+                                            <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                                         </div>
                                     <?php endif; ?>
                                 </div>
