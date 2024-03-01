@@ -17,8 +17,18 @@
             <input type="text" class="form-control border-0 shadow-sm d-none" name="id_produk" value="<?= $p['id_produk'] ?>">
             <input type="hidden" name="id_variasi_item" value="<?= $variasiItem['id_variasi_item']; ?>">
             <div class="mb-4">
-                <label for="nama" class="form-label">Nama Produk</label>
-                <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-1'; ?>" id="nama" name="nama" placeholder="Nama Produk Anda..." value="<?= (old('nama')) ? old('nama') : $p['nama'] ?>">
+                <label for="nama" class="form-label">Nama Produk Bahasa Indonesia</label>
+                <input type="text" class="form-control <?= (validation_show_error('nama')) ? 'is-invalid' : 'border-1'; ?>" id="nama" name="nama" placeholder="Nama Produk Anda dalam bahasa Indonesia..." value="<?= (old('nama')) ? old('nama') : $p['nama'] ?>">
+                <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
+            </div>
+            <div class="mb-4">
+                <label for="nama" class="form-label">Nama Produk Bahasa Korea</label>
+                <input type="text" class="form-control border-1" id="nama" name="nama" placeholder="Nama Produk Anda dalam bahasa Korea..." value="">
+                <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
+            </div>
+            <div class="mb-4">
+                <label for="nama" class="form-label">Nama Produk Bahasa Inggris</label>
+                <input type="text" class="form-control border-1" id="nama" name="nama" placeholder="Nama Produk Anda dalam bahasa Inggris..." value="">
                 <div class="invalid-feedback"><?= validation_show_error('nama'); ?></div>
             </div>
             <div class="mb-4">

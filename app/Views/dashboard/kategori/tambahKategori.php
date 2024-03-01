@@ -15,8 +15,18 @@
                 <form action="<?= base_url(); ?>dashboard/kategori/tambah-kategori/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class=" mb-4">
-                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori</label>
-                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
+                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori Bahasa Indonesia</label>
+                        <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Indonesia" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="<?= old('kategori') ?>">
+                        <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+                    </div>
+                    <div class=" mb-4">
+                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori Bahasa Korea</label>
+                        <input type="text" class="form-control border-1" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Korea" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="">
+                        <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+                    </div>
+                    <div class=" mb-4">
+                        <label for="kategori" class="form-label">Nama Kategori atau Sub Kategori Bahasa Inggris</label>
+                        <input type="text" class="form-control border-1" id="kategori" data-toggle="tooltip" data-placement="bottom" title="Harap isi bidang ini dengan Nama Kategori atau Sub-Kategori dalam bahasa Inggris" placeholder="Masukan nama kategori atau sub kategori" name="kategori" value="">
                         <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
                     </div>
                     <!-- <div class="mb-3">

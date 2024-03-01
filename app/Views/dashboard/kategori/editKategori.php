@@ -14,8 +14,18 @@
             <?= csrf_field(); ?>
 
             <div class="mb-4">
-                <label for="kategori" class="form-label">Nama Kategori</label>
-                <input type="text" class="form-control <?= (validation_show_error('nama_kategori')) ? 'is-invalid' : 'border-1'; ?>" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
+                <label for="kategori" class="form-label">Nama Kategori dalam bahasa Indonesia</label>
+                <input type="text" class="form-control border-1" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="<?= $kategori['nama_kategori'] ?>" pattern="[0-9]{0}{3}">
+                <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+            </div>
+            <div class="mb-4">
+                <label for="kategori" class="form-label">Nama Kategori dalam bahasa Korea</label>
+                <input type="text" class="form-control border-1" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="" pattern="[0-9]{0}{3}">
+                <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
+            </div>
+            <div class="mb-4">
+                <label for="kategori" class="form-label">Nama Kategori dalam bahasa Inggris</label>
+                <input type="text" class="form-control border-1" id="kategori" placeholder="Masukan nama kategori" name="kategori" value="" pattern="[0-9]{0}{3}">
                 <div class="invalid-feedback"><?= validation_show_error('nama_kategori'); ?></div>
             </div>
 
