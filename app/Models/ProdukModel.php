@@ -16,7 +16,9 @@ class ProdukModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'id_kategori',
-        'nama',
+        'nama_indonesia',
+        'nama_inggris',
+        'nama_korea',
         'slug',
         'sku',
         // 'stok',
@@ -284,20 +286,40 @@ class ProdukModel extends Model
         return $this->db->table('jsf_sub_kategori_produk')->insert($data);
     }
 
+    // App/Models/ProdukModel.php
+
+    public function getProductNameByLanguage($product, $language)
+    {
+        switch ($language) {
+            case 'nama_kr':
+                return $product['nama_kr'];
+            case 'nama_en':
+                return $product['nama_en'];
+            default:
+                return $product['nama'];
+        }
+    }
+
+    public function getProductName($languageColumn, $productId)
+    {
+        return $this->db->table('jsf_produk')->where('id_produk', $productId)->get()->getRowObject()->$languageColumn;
+    }
+
+
     // jika parameter yang akan dibuat kondisi wajib mempunya value null di setiap parameter
     public function getFeaturedProductsByCategory($slug1 = null, $slug2 = null)
     {
-
-        $query = $this->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, SUM(p.qty) AS total_qty')
+        $query = $this->db->table('jsf_produk')
+            ->select('jsf_produk.*, vi.id_variasi_item, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, SUM(p.qty) AS total_qty')
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_produk.id_kategori', 'left')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
             ->join('jsf_checkout_produk p', 'jsf_produk.id_produk = p.id_produk', 'left');
 
-        if ($slug1 != null) {
+        if ($slug1 !== null) {
             $query->where('jsf_kategori.slug', $slug1);
         }
 
-        if ($slug2 != null) {
+        if ($slug2 !== null) {
             $query->join('jsf_sub_kategori', 'jsf_sub_kategori.id_sub_kategori = jsf_produk.id_sub_kategori', 'left');
             $query->where('jsf_sub_kategori.slug', $slug2);
         }
@@ -308,10 +330,12 @@ class ProdukModel extends Model
         $query->groupBy('jsf_produk.id_produk, vi.id_variasi_item')
             ->orderBy('total_qty', 'DESC')
             ->limit(3);
+
         $result = $query->get()->getResultArray();
-        // dd($result);
+
         return $result;
     }
+
 
     public function getProdukHome($short = null)
     {

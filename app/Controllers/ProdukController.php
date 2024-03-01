@@ -42,6 +42,9 @@ class ProdukController extends BaseController
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
         $promoItem = $promoItemModel->getPromo($slug1);
+
+        $bahasa = session()->get('lang');
+
         if ($promoItem) {
             $filteredPromoItems = [];
 
@@ -62,8 +65,6 @@ class ProdukController extends BaseController
             $promoItem = $filteredPromoItems;
         }
 
-
-        $produkModel = new ProdukModel();
         if ($this->request->isAJAX()) {
             $page = $this->request->getVar('page') ? $this->request->getVar('page') : 1;
             if (!$slug2) {
@@ -79,11 +80,18 @@ class ProdukController extends BaseController
 
             if (!$slug2) {
                 $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], false, false);
-                // if ($getProduk[0]['id_kategori']==)
-                // return redirect()->to(base_url('produk/kategori/' . $slug1 . '/' . ''));
             }
             if ($slug1 && $slug2) {
                 $getProduk = $produkModel->getProductWithRange($katSub['id_kategori'], $subSlug['id_sub_kategori'], false);
+            }
+
+            // Tentukan kolom nama sesuai dengan pilihan bahasa
+            // $kolomNama = 'nama_' . $bahasa;
+
+            if ($bahasa == 'id') {
+                $kolomNama = 'nama';
+            } else {
+                $kolomNama = 'nama_' . $bahasa;
             }
 
             $data = [
@@ -95,10 +103,10 @@ class ProdukController extends BaseController
                 'getKategori' => $katResult,
                 'sk' => $slug2,
                 'kategori_promo' => $promo,
-                'back' => '/' . '#ktr',
-                'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2)
+                'back' => '#ktr',
+                'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2),
+                'kolomNama' => $kolomNama,
             ];
-
             return view('user/produk/index', $data);
         }
     }

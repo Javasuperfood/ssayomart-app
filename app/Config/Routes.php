@@ -36,6 +36,7 @@ $routes->set404Override();
 
 $routes->get('/', 'KategoriController::index');
 $routes->get('lang/{locale}', 'Language::index');
+$routes->get('lang/(:any)', 'Language::pilihBahasa/$1');
 $routes->get('/search', 'ProdukController::search');
 $routes->get('/produk/kategori/(:any)', 'ProdukController::getProduk/$1/$2');
 $routes->get('/produk/kategori/(:any)/(:any)', 'ProdukController::getProduk/$1/$2');
@@ -47,7 +48,7 @@ $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/pusat-bantuan', 'MenuResto::pusatBantuan');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
-$routes->get('bahasa', 'BahasaApp::bahasa');
+
 
 
 $routes->get('/all-category', 'KategoriController::allKategori');

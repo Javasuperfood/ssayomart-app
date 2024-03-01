@@ -32,13 +32,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     ?>
                                     <div class="dropdown mx-md-3" style="margin-top: -10px;">
                                         <button class="btn btn-transparent text-danger dropdown-toggle fs-6 border-0" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="30px" alt="" class="flag-icon">
+                                            <img src="<?= base_url() ?>assets/img/bahasa/<?= $flag; ?>" width="50px" alt="" class="flag-icon">
                                         </button>
-                                        <div class="dropdown-menu dropdown-menu-white border-0" style="background-color: transparent;" aria-labelledby="languageDropdown">
-                                            <a href="<?= site_url('lang/id'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="25px" alt="" class="flag-icon"></a>
-                                            <a href="<?= site_url('lang/kr'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="25px" alt="" class="flag-icon"></a>
-                                            <a href="<?= site_url('lang/en'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="25px" alt="" class="flag-icon"></a>
+                                        <div class="dropdown-menu dropdown-menu-white border-0" style="background-color: white;" aria-labelledby="languageDropdown">
+                                            <a href="<?= site_url('lang/id'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="50px" alt="" class="flag-icon"></a>
+                                            <a href="<?= site_url('lang/kr'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="50px" alt="" class="flag-icon"></a>
+                                            <a href="<?= site_url('lang/en'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="50px" alt="" class="flag-icon"></a>
+
+                                            <!-- Divider
+                                            <div class="dropdown-divider"></div>
+
+                                            <span class="dropdown-item-text">Pilihan Bahasa Untuk Produk :</span>
+
+                                            <a href="<?= site_url('lang/id'); ?>" class="d-flex justify-content-end align-items-end dropdown-item"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="50px" alt="" class="flag-icon"></a>
+                                            <a href="<?= site_url('lang/en'); ?>" class="d-flex justify-content-end align-items-end dropdown-item"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="50px" alt="" class="flag-icon"></a>
+                                            <a href="<?= site_url('lang/kr'); ?>" class="d-flex justify-content-end align-items-end dropdown-item"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="50px" alt="" class="flag-icon"></a> -->
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
