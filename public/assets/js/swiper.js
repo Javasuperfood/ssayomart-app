@@ -182,12 +182,12 @@ $(document).ready(function() {
               $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat"); // Add active class to selected category
 
               // Slide to center
-              const slideIndex = $(this).closest(".swiper-slide").index();
-              const slideWidth = $(".swiper-slide").outerWidth();
-              const swiperWidth = $(".swiper-wrapper").outerWidth();
+              const slideIndex = $(this).closest(".ss").index();
+              const slideWidth = $(".ss").outerWidth();
+              const swiperWidth = $(".contsw").outerWidth();
               const wrapperOffset = (swiperWidth - slideWidth) / 2;
               const scrollTo = slideIndex * slideWidth - wrapperOffset;
-              $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+              $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
 
               // Save selected category to local storage
               localStorage.setItem('selectedCategory', selectedCategory);
@@ -289,7 +289,7 @@ $(document).ready(function() {
   // Sync hover with category when a card is clicked
   $(".card-linkkat").click(function(e) {
       e.preventDefault();
-      $(".swiper-slide .card").removeClass("card-selectedkat").addClass("card-defaultkat");
+      $(".ss .card").removeClass("card-selectedkat").addClass("card-defaultkat");
       $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat");
 
       // Save selected card link to local storage
@@ -312,30 +312,30 @@ $(document).ready(function() {
               $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat"); // Add active class to selected category
 
               // Slide to center
-              const slideIndex = $(this).closest(".swiper-slide").index();
-              const slideWidth = $(".swiper-slide").outerWidth();
-              const swiperWidth = $(".swiper-wrapper").outerWidth();
+              const slideIndex = $(this).closest(".ss").index();
+              const slideWidth = $(".ss").outerWidth();
+              const swiperWidth = $(".contsw").outerWidth();
               const wrapperOffset = (swiperWidth - slideWidth) / 2;
               const scrollTo = slideIndex * slideWidth - wrapperOffset;
-              $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+              $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
           }
       });
   }
 
   // Add hover effect for category to slide to center
   $(".card-linkkat").hover(function() {
-      const slideIndex = $(this).closest(".swiper-slide").index();
-      const slideWidth = $(".swiper-slide").outerWidth();
-      const swiperWidth = $(".swiper-wrapper").outerWidth();
+      const slideIndex = $(this).closest(".ss").index();
+      const slideWidth = $(".ss").outerWidth();
+      const swiperWidth = $(".contsw").outerWidth();
       const wrapperOffset = (swiperWidth - slideWidth) / 2;
       const scrollTo = slideIndex * slideWidth - wrapperOffset;
-      $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+      $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
   }, function() {
       // On hover out, maintain the current position
       var selectedSlideIndex = localStorage.getItem('selectedSlideIndexkat');
-      var slideWidth = $(".swiper-slide").outerWidth();
+      var slideWidth = $(".ss").outerWidth();
       var scrollTo = selectedSlideIndex * slideWidth;
-      $(".swiper-wrapper").css("transform", `translateX(-${scrollTo}px)`);
+      $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
   });
 });
 
@@ -380,7 +380,7 @@ $(document).ready(function() {
   $(".card-linkkat").click(function(e) {
       e.preventDefault(); 
       var categoryUrl = $(this).attr("href");
-      var slideIndex = $(this).closest(".swiper-slide").index();
+      var slideIndex = $(this).closest(".ss").index();
       
       // Menggunakan metode slideTo dengan efek easing untuk perpindahan yang lebih mulus
       swiper.slideTo(slideIndex, 1000, false);

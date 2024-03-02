@@ -11,7 +11,7 @@ $(document).ready(function() {
       effect: "slide",
       speed: 800,
       grabCursor: true,
-      touchRatio: 0.5, // Touch sensitivity
+      touchRatio: 1, // Touch sensitivity
       longSwipesRatio: 1, // Ratio to trigger swipe to next/previous slide
       longSwipesMs: 600, // Minimum duration (in ms) to trigger swipe to next/previous slide
       freeMode: true, // Enables free mode for a smoother drag experience

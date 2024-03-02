@@ -23,9 +23,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <!-- Button Kategori  swiper JS-->
                     <div class="col">
                         <div class="swiper btn-sub text-center" style="position: relative; z-index: 1;">
-                            <div class="swiper-wrapper " style="height:40px">
+                            <div class="swiper-wrapper contsw" style="height:40px">
                                 <?php foreach ($getKategori as $s) : ?>
-                                    <div class="swiper-slide my-1">
+                                    <div class="swiper-slide ss my-1">
                                         <div class="card border-0 text-uppercase">
                                             <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat w-75 text-decoration-none " data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s[$kolomNamaKat]; ?>">
                                                 <?= $s[$kolomNamaKat]; ?>
@@ -105,7 +105,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <?php foreach ($subKategori as $s) : ?>
                                 <div class="swiper-slide my-3 ">
                                     <div class="card border-1 text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
-                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="fw-bold mt-1 text-decoration-none card-link" style="font-size:8px; color:#000;">
+                                        <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="fw-bold mt-1 text-decoration-none card-link" style="font-size:8px; color:#000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                             <?= $s[$kolomNamaKat]; ?>
                                         </a>
                                     </div>
