@@ -33,56 +33,55 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <i class="bi bi-arrow-right"></i>
                             </button>
                         </div>
-
                         <div class="col">
                             <div class="swiper btn-his text-center" style="position: relative; z-index: 1;">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-1 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=all'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
-                                                Semua Transaksi
+                                                <?= lang('Text.history_1') ?>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-1 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=waiting-payment'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
-                                                Menunggu Pembayaran
+                                                <?= lang('Text.history_2') ?>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-1 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=on-process'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
-                                                Diproses
+                                                <?= lang('Text.history_3') ?>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-1 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=delivered'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
-                                                Dikirim
+                                                <?= lang('Text.history_4') ?>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-1 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=complited'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
-                                                Diterima
+                                                <?= lang('Text.history_5') ?>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-1 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=canceled'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
-                                                Dibatalkan
+                                                <?= lang('Text.history_6') ?>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide mb-2">
                                         <div class="card border-1 rounded-pill text-uppercase mx-auto d-flex justify-content-center" style="height: 30px;">
                                             <a href="<?= base_url('history?filter=failed'); ?><?= ($search) ? '&search=' . $search : '' ?>" class="fw-bold my-1 text-decoration-none card-link">
-                                                Gagal
+                                                <?= lang('Text.history_7') ?>
                                             </a>
                                         </div>
                                     </div>
@@ -112,7 +111,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                         <div class="deskripsi col-5 position-absolute top-50 start-50 translate-middle">
                                             <h5 class="card-title mt-3" style="font-size: 12px;">
-                                                <?= substr($t->nama, 0, 30); ?>
+                                                <?= substr($t->$kolomNama, 0, 30); ?>
                                             </h5>
                                             <p class="text-secondary" style="font-size: 11px;">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
@@ -185,7 +184,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                                 <div class=" col-5 position-absolute top-50 start-50 translate-middle">
                                                     <h5 class="card-title " style="font-size: 12px;">
-                                                        <?= substr($c->nama, 0, 10); ?>
+                                                        <?= substr($c->$kolomNama, 0, 10); ?>
                                                     </h5>
                                                     <p class="text-secondary fs-6" style="font-size: 11px;">Rp.
                                                         <?= number_format($c->harga, 0, ',', '.'); ?>

@@ -16,11 +16,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-md-12">
                         <div class="card border-0 shadow-sm mb-2">
                             <div class="card-body">
-                                <span class="text-secondary" style="font-size: 13px;">Pilihan Kurir</span>
+                                <span class="text-secondary" style="font-size: 13px;"><?= lang('Text.pilihan_kurir') ?></span>
                                 <br>
                                 <span class="fw-bold" style="font-size: 14px;"><?= $status->kurir; ?> (Rp. <?= number_format($status->harga_service, 0, ',', '.'); ?>)</span>
                                 <br>
-                                <span class="text-secondary" style="font-size: 14px;">Total</span>
+                                <span class="text-secondary" style="font-size: 14px;"><?= lang('Text.total_status') ?></span>
                                 <br>
                                 <span class="fw-bold" style="font-size: 14px;">Rp. <?= number_format($status->total_2, 0, ',', '.'); ?></span>
                                 <p class="card-text text-secondary"><?= $status->kirim; ?></p>
@@ -37,7 +37,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
                             </div>
                             <div class="col-9 pl-3">
-                                <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->nama, 0, 50); ?>...</label>
+                                <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->$kolomNama, 0, 50); ?>...</label>
                                 <p class="card-text text-secondary " style="font-size: 12px;"><?= $p->qty; ?> <?= $p->value_item; ?></p>
                                 <div class="price-info d-flex gap-2">
                                     <label for="total" class="text-secondary m-0 text-dark" style="font-size: 13px;">Total:</label>
@@ -57,12 +57,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col mb-2">
                 <div class="card form-control form-control-md border-0 shadow-sm">
                     <div class="card-body">
-                        <h2 class="fs-5 fw-bold mb-3">Informasi Pembayaran</h2>
+                        <h2 class="fs-5 fw-bold mb-3"><?= lang('Text.informasi_pembayaran') ?></h2>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item border-0 p-0">
                                 <div class="row align-items-center">
                                     <div class="col">
-                                        <span class="text-secondary">Invoice</span>
+                                        <span class="text-secondary"><?= lang('Text.inv_status') ?></span>
                                         <p class="fw-bold"><?= $status->invoice; ?></p>
                                     </div>
                                     <div class="col-auto">
@@ -76,7 +76,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <li class="list-group-item border-0 p-0">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <span class="text-secondary">Nomor VA</span>
+                                            <span class="text-secondary"><?= lang('Text.no_va') ?></span>
                                             <p class="fw-bold"><?= strtoupper($paymentStatus->va_numbers[0]->bank) . ' ' . $paymentStatus->va_numbers[0]->va_number; ?></p>
                                         </div>
                                         <div class="col-auto">
@@ -89,8 +89,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <li class="list-group-item border-0 p-0">
                                     <div class="row align-items-center">
                                         <div class="col">
-                                            <span class="text-secondary">Resi</span>
-                                            <p class="fw-bold">Resi <?= $status->resi; ?></p>
+                                            <span class="text-secondary"><?= lang('Text.resi') ?></span>
+                                            <p class="fw-bold"><?= $status->resi; ?></p>
                                         </div>
                                         <div class="col-auto">
                                             <button class="btn btn-light btn-sm" onclick="copyBtn('<?= $status->resi; ?>')">
@@ -102,7 +102,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <li class="list-group-item border-0 p-0">
                                     <div class="row">
                                         <div class="col">
-                                            <span class="text-secondary">Metode Pembayaran</span>
+                                            <span class="text-secondary"><?= lang('Text.metode_pembayaran') ?></span>
                                         </div>
                                         <div class="col-auto">
                                             <p class="fw-bold"><?= ucwords(str_replace("_", " ", $paymentStatus->payment_type)); ?></p>
@@ -137,7 +137,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                     <div class="tracking-date" class="img-responsive" alt="order-placed" /><i class="bi bi-rocket-takeoff fs-1"></i>
                                 </div>
-                                <div class="tracking-content"><?= $gs['status']; ?><span></div>
+                                <div class="tracking-content"><?= $gs[$kolomStatus]; ?><span></div>
                         </div>
 
                     <?php
@@ -153,7 +153,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="tracking-date" class="img-responsive" alt="order-placed" /><i class="bi bi-heartbreak fs-1"></i>
                         </div>
-                        <div class="tracking-content"><?= $getstatus[4]['status']; ?><span></div>
+                        <div class="tracking-content"><?= $getstatus[4][$kolomStatus]; ?><span></div>
                     </div>
                 <?php endif ?>
                 </div>
@@ -168,11 +168,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     if ($status->id_status_pesan == 1) : ?>
         <script type="text/javascript" src="<?= $urlMidtrans; ?>" data-client-key="<?= $key; ?>"></script>
         <div class="d-flex align-items-center justify-content-center w-100 h-100" style="left: 0; right: 0;">
-            <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 14px; width: 90%">Buka Pembayaran</button>
+            <button id="pay-button" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 14px; width: 90%"><?= lang('Text.btn_pembayaran') ?></button>
         </div>
         <div class="py-3"></div>
         <div class="d-flex align-items-center justify-content-center w-100 h-100" style="left: 0; right: 0;">
-            <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; display: none; font-size: 14px; width: 90%">Ubah Metode Pembayaran</button>
+            <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; display: none; font-size: 14px; width: 90%"><?= lang('Text.btn_ubah_metode_pembayaran') ?></button>
         </div>
 
         <!-- Modal Change Payment -->
@@ -180,19 +180,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="changePaymentMethodLabel">Ubah Metode Pembayaran</h1>
+                        <h1 class="modal-title fs-5" id="changePaymentMethodLabel"><?= lang('Text.btn_ubah_metode_pembayaran') ?></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>결제 방법을 변경하면 이 거래가 취소되고 새 거래가 생성됩니다.</p>
-                        <p>Dengan mengubah metode pembayaran anda akan membatakan transaksi ini dan membuat transaksi baru.</p>
+                        <p><?= lang('Text.alert_pembayaran') ?></p>
                         <form id="changePayment" action="<?= base_url('new-payment'); ?>" method="post">
                             <?= csrf_field(); ?>
                             <input type="hidden" name="invoice" value="<?= $status->invoice; ?>">
                         </form>
                     </div>
                     <div class="modal-footer d-flex justify-content-center align-items-center">
-                        <button type="submit" form="changePayment" class="btn btn-danger">Ubah Metode Pembayaran</button>
+                        <button type="submit" form="changePayment" class="btn btn-danger"><?= lang('Text.btn_ubah_metode_pembayaran') ?></button>
                     </div>
                 </div>
             </div>
@@ -218,7 +217,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         title: 'Pembayaran berhasil',
                                         showConfirmButton: false,
                                         timer: 1500,
-                                        text: response.message,
+                                        // text: response.message,
                                     })
                                 }
                                 location.reload();
@@ -276,7 +275,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     }
                 })
             }
-
 
             var payButton = document.getElementById('pay-button');
             payButton.addEventListener('click', function() {

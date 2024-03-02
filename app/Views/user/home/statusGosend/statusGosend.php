@@ -17,16 +17,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <!-- Konten kartu -->
                     <div class="card p-4 rounded-top-4 rounded-bottom-0 border-0 shadow-sm">
                         <div class="card-body">
-                            <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1">Data Status Pengiriman</p>
+                            <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1"><?= lang('Text.data_status_gosend') ?></p>
                             <hr class="border-darker mt-0 mb-3">
                             </p>
                             <?php if ($gosendStatus) : ?>
-                                <p class="mt-4 mb-1" style="font-size: 16px;">Nama Driver</p>
+                                <p class="mt-4 mb-1" style="font-size: 16px;"><?= lang('Text.nama_driver') ?></p>
                                 <span class="fw-bold"><?= $gosendStatus['driverName']; ?></span>
                                 <hr>
                                 <div class="row">
                                     <div class="col-8">
-                                        <p class="driver-phone" style="font-size: 16px;">Driver Phone</p>
+                                        <p class="driver-phone" style="font-size: 16px;"><?= lang('Text.no_telp_driver') ?></p>
                                         <span class="fw-bold mt-3"><?= $gosendStatus['driverPhone']; ?></span>
                                     </div>
                                     <div class="col-4 text-end">
@@ -35,18 +35,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
 
                                 <hr>
-                                <p class="mt-4 mb-1" style="font-size: 16px;">Booking ID</p>
+                                <p class="mt-4 mb-1" style="font-size: 16px;"><?= lang('Text.booking_id') ?></p>
                                 <span class="fw-bold"><?= $gosendStatus['orderNo']; ?></span>
                                 <hr>
-                                <p class="mt-4 mb-1" style="font-size: 16px;">Status</p>
+                                <p class="mt-4 mb-1" style="font-size: 16px;"><?= lang('Text.status_gosend') ?></p>
                                 <span class="fw-bold"><?= $gosendStatus['status']; ?></span>
                                 <hr>
                                 <?php if ($gosendStatus['cancelDescription']) : ?>
-                                    <p class="mt-4 mb-1" style="font-size: 16px;">Cancel Description</p>
+                                    <p class="mt-4 mb-1" style="font-size: 16px;"><?= lang('Text.cancel_desc') ?></p>
                                     <span class="fw-bold"><?= $gosendStatus['cancelDescription']; ?></span>
                                     <hr>
                                 <?php endif; ?>
-                                <p class="mt-4 mb-1" style="font-size: 16px;">Nama Penerima</p>
+                                <p class="mt-4 mb-1" style="font-size: 16px;"><?= lang('Text.nama_penerima') ?></p>
                                 <span class="fw-bold"><?= $gosendStatus['receiverName']; ?></span>
                             <?php endif ?>
                         </div>
@@ -56,7 +56,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row mt-4">
                 <div class="col">
-                    <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1">Status Pengiriman</p>
+                    <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1"><?= lang('Text.status_pengiriman') ?></p>
                     <hr class="border-darker mt-0 mb-2">
                 </div>
             </div>
@@ -86,7 +86,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <div class="mt-2 card mb-4 mb-md-0 border-0 shadow-sm">
                         <div class="card-body">
-                            <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1">Rincian</p>
+                            <p class="mb-2 text-center"><span class="fs-5 fw-bold text-dark font-italic me-1"><?= lang('Text.rincian_gosend') ?></p>
                             <hr class="border-darker mt-0 mb-2">
                             <div class="col">
                                 <?php foreach ($produk as $p) : ?>
@@ -105,7 +105,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                                 </p>
                                                             </div>
                                                             <div class="col-5 position-absolute top-50 end-0 mt-2 translate-middle-y ps-4">
-                                                                <h5 class="text-secondary fs-6">Total</h5>
+                                                                <h5 class="text-secondary fs-6"><?= lang('Text.total_cart') ?></h5>
                                                                 <?php $total = $p->harga_item * $p->qty ?>
                                                                 <?php if (isset(($p->promo))) : ?>
                                                                     <p class="fw-bold text-decoration-line-through" style="font-size: 11px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
@@ -127,34 +127,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <?php if ($gosendStatus) : ?>
                                 <div class="col">
-                                    <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-send fw-bold"></i> Pengirim</p>
+                                    <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-send fw-bold"></i> <?= lang('Text.pengirim_gosend') ?></p>
                                     <span class="fw-bold ms-4"><?= $gosendStatus['sellerAddressName']; ?></span>
                                     <p class="ms-4 text-secondary"><?= $gosendStatus['sellerAddressDetail']; ?></p>
                                     <hr>
                                 </div>
                                 <div class="col">
-                                    <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-house"></i> Penerima</p>
+                                    <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-house"></i> <?= lang('Text.penerima_gosend') ?></p>
                                     <span class="fw-bold ms-4"><?= $gosendStatus['buyerAddressName']; ?></span>
                                     <p class="ms-4 text-secondary"><?= $gosendStatus['buyerAddressDetail']; ?></p>
                                     <hr>
                                 </div>
                             <?php endif ?>
                             <div class="col">
-                                <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-credit-card-2-front"></i> Pembayaran</p>
+                                <p class="mt-4 mb-2 fw-bold" style="font-size: 16px;"><i class="bi bi-credit-card-2-front"></i> <?= lang('Text.pembayaran_gosend') ?></p>
                                 <table class="table table-borderless" style="font-size: small;">
                                     <tbody>
                                         <tr>
-                                            <td>INV</td>
+                                            <td><?= lang('Text.inv_gosend') ?></td>
                                             <td>:</td>
                                             <td><?= $inv ?></td>
                                         </tr>
                                         <tr>
-                                            <td>Metode</td>
+                                            <td><?= lang('Text.methode_pembayaran_gosend') ?></td>
                                             <td>:</td>
                                             <td><?= $payment['payment_type']; ?> (<?= (isset($payment['issuer'])) ? $payment['issuer'] : ((isset($payment['va_numbers'])) ? $payment['va_numbers'][0]->bank . ' ' . $payment['va_numbers'][0]->va_number : ''); ?>)</td>
                                         </tr>
                                         <tr>
-                                            <td>Total</td>
+                                            <td><?= lang('Text.total_cart') ?></td>
                                             <td>:</td>
                                             <td> Rp. <?= number_format($payment['gross_amount'], 0, ',', '.'); ?></td>
                                         </tr>
@@ -196,16 +196,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             <div class="modal-content rounded-4 shadow">
                                 <div class="modal-header border-bottom-0 text-center">
-                                    <h1 class="modal-title fs-5 fw-bold">Selesaikan Pesanan</h1>
+                                    <h1 class="modal-title fs-5 fw-bold"><?= lang('Text.modal_gosend') ?></h1>
                                 </div>
                                 <div class="modal-body py-0">
-                                    <p>Pastikan pesanan anda telah diterima.</p>
+                                    <p class="fw-bold"><span class="text-danger fs-5">*</span> <?= lang('Text.modal_gosend2') ?></p>
                                 </div>
                                 <form action="<?= base_url('status/ordering/update/' . $inv) ?>" method="post">
                                     <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
                                         <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-success" onclick="clickSubmitEvent(this)">Selesai</button>
-                                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Keluar</button>
+                                        <button type="submit" class="btn btn-lg btn-success" onclick="clickSubmitEvent(this)"><?= lang('Text.modal_gosend3') ?></button>
+                                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal"><?= lang('Text.modal_gosend4') ?></button>
                                     </div>
                                 </form>
                             </div>
@@ -216,7 +216,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="modal-dialog modal-fullscreen">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="liveTarckingLabel">Live Tracking</h1>
+                                    <h1 class="modal-title fs-5" id="liveTarckingLabel"><?= lang('Text.btn_status_gosend') ?></h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <?php if ($gosendStatus) : ?>

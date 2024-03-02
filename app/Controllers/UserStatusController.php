@@ -13,7 +13,6 @@ class UserStatusController extends BaseController
 {
     public function status()
     {
-
         $midtransConfig = new \Config\Midtrans();
 
         // Set the Midtrans API credentials
@@ -53,6 +52,18 @@ class UserStatusController extends BaseController
             }
         }
 
+        // Tentukan kolom nama sesuai dengan pilihan bahasa
+        $bahasa = session()->get('lang');
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+            $kolomNamaKat = 'nama_kategori';
+            $kolomStatus = 'status';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+            $kolomNamaKat = 'nama_kategori_' . $bahasa;
+            $kolomStatus = 'status_' . $bahasa;
+        }
+
         $data = [
             'inv' => $order_id,
             'title'                     => 'Status Pesanan',
@@ -65,8 +76,10 @@ class UserStatusController extends BaseController
             'urlMidtrans' => $midtransConfig->urlMidtrans,
             'order_id' => $order_id,
             'kategori' => $kategori->findAll(),
-            'back' => 'history'
-
+            'back' => 'history',
+            'kolomNama' => $kolomNama,
+            'kolomNamaKat' => $kolomNamaKat,
+            'kolomStatus' => $kolomStatus,
         ];
         // dd($data);
         // ==================================================================

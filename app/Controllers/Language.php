@@ -27,11 +27,6 @@ class Language extends BaseController
         if (!$session->get('first_language_selection')) {
             $session->set('first_language_selection', true);
         }
-
-        // Jika pengguna sudah memilih bahasa sebelumnya, tampilkan halaman bahasa
-        $data = [
-            'title' => 'Pilih Bahasa',
-        ];
         return redirect()->to($url);
     }
 }

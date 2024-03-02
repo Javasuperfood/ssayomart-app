@@ -169,13 +169,26 @@ class CartController extends BaseController
             $stok = $stockModel->getSingleStockVarian($produk['id_variasi_item'], $marketSelected);
             $cekCartProduk[$key]['stok'] = ($stok) ? $stok['stok'] : 0;
         }
+
+        // Tentukan kolom nama sesuai dengan pilihan bahasa
+        $bahasa = session()->get('lang');
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+            $kolomNamaKat = 'nama_kategori';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+            $kolomNamaKat = 'nama_kategori_' . $bahasa;
+        }
+
         $data = [
             'title'     => lang('Text.title_cart'),
             'produk' => $cekCartProduk,
             'total' => $totalAkhir,
             'kategori' => $kategori->findAll(),
             'marketSelected' => $marketSelected,
-            'back' => ''
+            'back' => '',
+            'kolomNama' => $kolomNama,
+            'kolomNamaKat' => $kolomNamaKat,
         ];
         // dd($data);
         return view('user/home/cart/cart2', $data);
