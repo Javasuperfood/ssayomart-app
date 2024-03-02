@@ -32,13 +32,25 @@ class HistoryTransaksiController extends BaseController
         $filter = $this->request->getVar('filter');
         $cekTransaksi = $checkoutProdModel->getHistoryTransaksi(user_id(), $keyword, $filter);
 
+        // Tentukan kolom nama sesuai dengan pilihan bahasa
+        $bahasa = session()->get('lang');
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+            $kolomNamaKat = 'nama_kategori';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+            $kolomNamaKat = 'nama_kategori_' . $bahasa;
+        }
+
         $data = [
             'title' => lang('Text.title_history'),
             'transaksi' => $cekTransaksi,
             'back' => '',
             'kategori' => $kategori->findAll(),
             'search' => $keyword,
-            'filter' => $filter
+            'filter' => $filter,
+            'kolomNama' => $kolomNama,
+            'kolomNamaKat' => $kolomNamaKat,
             // 'pager' => $produkModel->pager,
             // 'produk' => $filteredProduk
         ];

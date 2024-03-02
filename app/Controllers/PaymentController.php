@@ -46,16 +46,34 @@ class PaymentController extends BaseController
             }
         }
 
+        // Tentukan kolom nama sesuai dengan pilihan bahasa
+        $bahasa = session()->get('lang');
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+            $kolomNamaKat = 'nama_kategori';
+            $kolomNamaSubKat = 'nama_kategori';
+            $kolomStatus = 'status';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+            $kolomNamaKat = 'nama_kategori_' . $bahasa;
+            $kolomNamaSubKat = 'nama_kategori_' . $bahasa;
+            $kolomStatus = 'status_' . $bahasa;
+        }
+
         $data = [
             'title'                     => 'Status Pesanan',
             'getstatus'                 => $status,
-            'status' => $userSatus,
-            'produk' => $cekProduk,
-            'key' => $midtransConfig->clientKey,
-            'urlMidtrans' => $midtransConfig->urlMidtrans,
-            'order_id' => $order_id,
-            'back' => 'history',
-            'kategori' => $kategori->findAll()
+            'status'                    => $userSatus,
+            'produk'                    => $cekProduk,
+            'key'                       => $midtransConfig->clientKey,
+            'urlMidtrans'               => $midtransConfig->urlMidtrans,
+            'order_id'                  => $order_id,
+            'back'                      => 'history',
+            'kategori'                  => $kategori->findAll(),
+            'kolomNama'                 => $kolomNama,
+            'kolomNamaKat'              => $kolomNamaKat,
+            'kolomNamaSubKat'           => $kolomNamaSubKat,
+            'kolomStatus'               => $kolomStatus
         ];
         // dd($data);
         // ==================================================================

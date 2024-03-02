@@ -98,6 +98,13 @@ return [
     'transaksi_4' => '세부사항(완료)',
     'transaksi_5' => '세부정보(실패)',
     'transaksi_6' => '쇼핑을 계속',
+    'history_1' => '모든 거래 창구',
+    'history_2' => '결제 대기 중',
+    'history_3' => '처리됨',
+    'history_4' => '전송된',
+    'history_5' => '수락됨',
+    'history_6' => '취소 된',
+    'history_7' => '실패하다',
 
     // ARTIKEL
     'saran_masak' => '싸요마트의 다른 요리 제안',
@@ -108,10 +115,10 @@ return [
     'btn_beli' => '구입하다',
     'badge_kategori' => '범주',
     'badge_subkategori' => '하위 카테고리',
-    'stock' => '재고 있음 / Stok Tersedia',
+    'stock' => '재고 있음',
     'stock2' => '주식 데이터를 검색하지 못했습니다.',
     'stock3' => '로그인 후 시장 위치를 ​​선택하세요.',
-    'sku_produk' => '재고 유지 단위 / SKU Produk',
+    'sku_produk' => '재고 유지 단위',
     'sku_produk2' => '재고 보관 장치를 확보하지 못했습니다.',
     // PRODUK COMPONENT CARD
     'produk_unggulan' => '특별 상품',
@@ -146,6 +153,40 @@ return [
     'login_apple' => 'Login With Apple',
     'login_google' => 'Login With Google',
     'belum_punya_akun' => '아직 계정이 없나요?',
-    'sudah_punya_akun' => '이미 계정이 있나요?'
+    'sudah_punya_akun' => '이미 계정이 있나요?',
+
+    // STATUS ORDER
+    'pilihan_kurir' => '택배원',
+    'total_status' => '총 지불액',
+    'informasi_pembayaran' => '결제 정보',
+    'inv_status' => '송장',
+    'no_va' => '가상계좌번호',
+    'resi' => '영수증 번호',
+    'metode_pembayaran' => '결제수단',
+    'btn_pembayaran' => '결제 열기',
+    'btn_ubah_pembayaran' => '결제 방법 변경',
+    'alert_pembayaran' => '결제 방법을 변경하면 이 거래를 평준화하고 새 거래를 생성하게 됩니다.',
+    'alert_pembayaran2' => '결제 성공!',
+
+    // STATUS GOSEND
+    'nama_driver' => '운전자 이름',
+    'no_telp_driver' => '운전자 전화번호',
+    'booking_id' => '예약 ID',
+    'status_gosend' => '상태',
+    'nama_penerima' => '수신자 이름',
+    'rincian_gosend' => '세부 정보',
+    'cancel_desc' => '취소',
+    'btn_status_gosend' => '드라이버 추적',
+    'pembayaran_gosend' => '결제',
+    'inv_gosend' => '인보이스',
+    'methode_pembayaran_gosend' => '결제 방법',
+    'status_pengiriman' => '배송 상태',
+    'penerima_gosend' => '수신자',
+    'pengirim_gosend' => '발신자',
+    'data_status_gosend' => '드라이버 데이터 설명',
+    'modal_gosend' => '주문 완료',
+    'modal_gosend2' => '주문이 접수되었는지 확인',
+    'modal_gosend3' => '완료',
+    'modal_gosend4' => '뒤로',
 
 ];

@@ -86,14 +86,14 @@ class ProdukController extends BaseController
             }
 
             // Tentukan kolom nama sesuai dengan pilihan bahasa
-            // $kolomNama = 'nama_' . $bahasa;
-
             if ($bahasa == 'id') {
                 $kolomNama = 'nama';
                 $kolomNamaKat = 'nama_kategori';
+                $kolomNamaSubKat = 'nama_kategori';
             } else {
                 $kolomNama = 'nama_' . $bahasa;
                 $kolomNamaKat = 'nama_kategori_' . $bahasa;
+                $kolomNamaSubKat = 'nama_kategori_' . $bahasa;
             }
 
             $data = [
@@ -109,6 +109,7 @@ class ProdukController extends BaseController
                 'featuredProducts' => $produkModel->getFeaturedProductsByCategory($slug1, $slug2),
                 'kolomNama' => $kolomNama,
                 'kolomNamaKat' => $kolomNamaKat,
+                'kolomNamaSubKat' => $kolomNamaSubKat,
             ];
             // dd($data);
             return view('user/produk/index', $data);
@@ -137,7 +138,7 @@ class ProdukController extends BaseController
 
         if ($bahasa == 'id') {
             $kolomNama = 'nama';
-            $kolomNamaKat = 'nama_kategori_';
+            $kolomNamaKat = 'nama_kategori';
         } else {
             $kolomNama = 'nama_' . $bahasa;
             $kolomNamaKat = 'nama_kategori_' . $bahasa;
