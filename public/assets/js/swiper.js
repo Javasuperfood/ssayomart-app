@@ -348,6 +348,12 @@ $(document).ready(function() {
       speed: 1000,
       spaceBetween: 10,
       grabCursor: true,
+      touchRatio: 1, // Touch sensitivity
+      longSwipesRatio: 1, // Ratio to trigger swipe to next/previous slide
+      longSwipesMs: 600, // Minimum duration (in ms) to trigger swipe to next/previous slide
+      freeMode: true, // Enables free mode for a smoother drag experience
+      freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
+      freeModeMomentumVelocityRatio: 0.5, // Higher numbers increase momentum
       breakpoints: {
           1280: { slidesPerView: 6 },
           768: { slidesPerView: 4 },
@@ -361,6 +367,37 @@ $(document).ready(function() {
       pagination: {
           el: ".swiper-pagination",
           clickable: true,
+      },
+
+      // Menyesuaikan efek transisi untuk perpindahan yang lebih halus
+    effectOptions: {
+      slideShadows: true,
+      fadeEffect: {
+          crossFade: true
+      },
+      cubeEffect: {
+          shadow: true,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94
+      },
+      flipEffect: {
+          slideShadows: true,
+          limitRotation: true
+      },
+      coverflowEffect: {
+          rotate: 30,
+          stretch: 10,
+          depth: 60,
+          modifier: 2,
+          slideShadows: true
+      },
+      cubeEffect: {
+          shadow: true,
+          slideShadows: true,
+          shadowOffset: 20,
+          shadowScale: 0.94
+      }
       },
       on: {
           init: function () {
