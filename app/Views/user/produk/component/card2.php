@@ -28,7 +28,9 @@
                                     <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
 
                                     <!-- Fungsi Multi Language -->
-                                    <!-- <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p[$kolomNama], 0, 70); ?></p> -->
+                                    <!-- <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;">
+                                        //substr($p[$kolomNama], 0, 70);
+                                    </p> -->
                                 </div>
 
                                 <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
