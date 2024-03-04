@@ -70,11 +70,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </div>
             <div class="row text-center flex-nowrap align-items-center">
                 <div class="col-2 col-md-1 my-1 col-samsung-fold">
-                    <div class="d-flex justify-content-center card mb-2 border-1 rounded-circle">
+                    <div class="d-flex justify-content-center  mb-2">
 
-                        <button type="button" class="btn d-flex align-items-center justify-content-center rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" class="ms-3 border-1 btn btn-white rounded-circle" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 40px; height: 40px; border: 2px solid #c4c2bb; ">
                             <i class="bi bi-list-check" style="margin-top: 2px;"></i>
                         </button>
+
 
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
