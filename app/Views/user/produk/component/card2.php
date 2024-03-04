@@ -25,7 +25,7 @@
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 90px;">
-                                    <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                                    <p class="text-secondary fw-bold" style=" font-size: 9px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
 
                                     <!-- Fungsi Multi Language -->
                                     <!-- <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;">
