@@ -28,7 +28,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="swiper-slide ss my-1">
                                         <div class="card border-0 text-uppercase">
                                             <a href="<?= base_url(); ?>produk/kategori/<?= $s['slug']; ?>" class="card-linkkat w-75 text-decoration-none " data-slug="<?= $s['slug']; ?>" style="font-size: 10px; color: black; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" data-toggle="tooltip" data-placement="top" title="<?= $s[$kolomNamaKat]; ?>">
-                                                <?= $s[$kolomNamaKat]; ?>
+                                                <!-- <?= $s[$kolomNamaKat]; ?> -->
+                                                <?= $s['nama_kategori']; ?>
                                                 <hr class="mt-2" style="border-width:2px;" />
                                             </a>
 
@@ -107,7 +108,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="swiper-slide my-3 ">
                                     <div class="card border-1 text-uppercase d-flex justify-items-center" style="height: 25px; width:auto;">
                                         <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="fw-bold mt-1 text-decoration-none card-link" style="font-size:8px; color:#000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                            <?= $s[$kolomNamaKat]; ?>
+                                            <!-- <?= $s[$kolomNamaKat]; ?> -->
+                                            <?= $s['nama_kategori']; ?>
                                         </a>
                                     </div>
                                 </div>
