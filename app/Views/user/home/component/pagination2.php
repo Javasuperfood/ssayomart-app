@@ -72,15 +72,6 @@ $countProduk = count($produk);
                 },
                 success: function(data) {
                     data.forEach(function(p) {
-                        var bahasa = <?php echo json_encode(session()->get('lang')); ?>;
-                        var kolomNama, kolomNamaKat;
-                        if (bahasa === 'id') {
-                            kolomNama = 'nama';
-                            kolomNamaKat = 'nama_kategori';
-                        } else {
-                            kolomNama = 'nama_' + bahasa;
-                            kolomNamaKat = 'nama_kategori_' + bahasa;
-                        }
                         var hargaText;
                         if (p.harga_min == p.harga_max) {
                             hargaText = "Rp. " + formatRupiah(p.harga_min);
@@ -96,14 +87,11 @@ $countProduk = count($produk);
                             </div>
                         </a>
                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
-                            <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 90px;">
-                            
-                                <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
-                                    ${p[kolomNama].length > 70 ? p[kolomNama].slice(0, 70) + '' : p[kolomNama]}
-                                </p>
-
-                            </div>
-                        
+                        <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 90px;">
+                            <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
+                                ${p.nama.length > 70 ? p.nama.slice(0, 70) + '' : p.nama}
+                            </p>
+                        </div>
                             <h1 class="text-dark fw-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
                             ${hargaText}
                             </h1>
@@ -140,6 +128,89 @@ $countProduk = count($produk);
             $("#cardLoader").remove()
         }
     }
+
+    // HIDUPKAN FUNCTION DI BAWAH INI UNTUK MENGAKTIFKAN FITUR MULTI BAHASA DAN HAPUS FUNCTION loadMoreData() DIATAS!!!
+    // function loadMoreData() {
+    //     if (!isLoading) {
+    //         isLoading = true;
+    //         page++;
+    //         $.ajax({
+    //             url: window.location,
+    //             type: 'GET',
+    //             data: {
+    //                 produk: keyword,
+    //                 page: page
+    //             },
+    //             success: function(data) {
+    //                 data.forEach(function(p) {
+    //                     var bahasa = <?php echo json_encode(session()->get('lang')); ?>;
+    //                     var kolomNama, kolomNamaKat;
+    //                     if (bahasa === 'id') {
+    //                         kolomNama = 'nama';
+    //                         kolomNamaKat = 'nama_kategori';
+    //                     } else {
+    //                         kolomNama = 'nama_' + bahasa;
+    //                         kolomNamaKat = 'nama_kategori_' + bahasa;
+    //                     }
+    //                     var hargaText;
+    //                     if (p.harga_min == p.harga_max) {
+    //                         hargaText = "Rp. " + formatRupiah(p.harga_min);
+    //                     } else {
+    //                         hargaText = ("Rp. " + formatRupiah(p.harga_min) + "-" + formatRupiah(p.harga_max)).substring(0, 13) + "...";
+    //                     }
+    //                     var html = `<div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card">
+    //                     <div class="">
+    //                 <div class="card card-produk border-0 shadow-sm text-center" style="width: 105px; height: 100%; padding: 5px;">
+    //                     <a href="<?= base_url() ?>produk/${p.slug}" class="link-underline link-underline-opacity-0">
+    //                         <div class="d-flex justify-content-center align-items-center">
+    //                             <img src="<?= base_url() ?>assets/img/produk/main/${p.img}" class="card-img-top text-center py-0 px-0 mx-0 my-0 im_produk_${p.id_produk}_" alt="..." style="width: 100px; height: 100px; object-fit: contain;">
+    //                         </div>
+    //                     </a>
+    //                     <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+    //                         <div class="d-flex align-items-start panjang-card justify-content-center" style="height: 90px;">
+
+    //                             <p class=" text-secondary fw-bold" style="font-size: 9px; margin: 0;">
+    //                                 ${p[kolomNama].length > 70 ? p[kolomNama].slice(0, 70) + '' : p[kolomNama]}
+    //                             </p>
+
+    //                         </div>
+
+    //                         <h1 class="text-dark fw-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
+    //                         ${hargaText}
+    //                         </h1>
+
+    //                         <div class="button-container" id="button-container-${p.id_produk}">
+    //                                 <div class="button" onclick="changeToCapsule(${p.id_produk}, ${p.id_variasi_item})">
+    //                                     <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
+    //                                 </div>
+
+    //                                 <div class="button-capsule" style="display: none;">
+    //                                     <i class="icon bi bi-dash" onclick="decreaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+    //                                     <input type="number" class="input border-0" value="1" id="counter-${p.id_produk}">
+    //                                     <i class="icon bi bi-plus" onclick="increaseValue(${p.id_produk}, ${p.id_variasi_item})"></i>
+    //                                 </div>
+    //                             </div>
+    //                         </div>
+    //                     </div>
+    //                 </div>
+    //             </div>`;
+    //                     // $("#cardLoader").remove()
+    //                     productContainer.append(html);
+    //                     // productContainer.append(cardLoader);
+    //                 });
+    //                 isLoading = false;
+    //             },
+    //             error: function(error) {
+    //                 console.log(error);
+    //                 isLoading = false;
+    //             }
+    //         });
+
+    //     }
+    //     if (isLoading == true) {
+    //         $("#cardLoader").remove()
+    //     }
+    // }
 
     // Tambahkan deteksi scroll untuk memanggil loadMoreData() saat mencapai akhir konten
     var canLoadMore = true;

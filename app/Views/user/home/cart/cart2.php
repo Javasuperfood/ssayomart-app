@@ -81,7 +81,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
                                             </div>
                                             <div class="mt-4 mx-2 text-position">
-                                                <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p[$kolomNama] . '(' . $p['value_item'] . ')', 0, 30); ?></p>
+                                                <p class="card-text text-secondary" style="margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
+                                                <!-- Fungsi Multi Language -->
+                                                <!-- <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p[$kolomNama] . '(' . $p['value_item'] . ')', 0, 30); ?></p> -->
                                                 <br>
                                                 <p class="card-title fw-bold text-danger harga-pesanan float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                             </div>
