@@ -346,6 +346,7 @@ $(document).ready(function() {
       slidesPerView: 2,
       effect: "slide",
       speed: 1000,
+      spaceBetween: 10,
       grabCursor: true,
       breakpoints: {
           1280: { slidesPerView: 6 },
