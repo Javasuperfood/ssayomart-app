@@ -25,8 +25,10 @@
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 90px;">
-                                    <!-- Menggunakan kolom nama yang sesuai dengan bahasa -->
-                                    <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p[$kolomNama], 0, 70); ?></p>
+                                    <p class=" text-secondary fw-bold " style=" font-size: 12px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+
+                                    <!-- Fungsi Multi Language -->
+                                    <!-- <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;"><?= substr($p[$kolomNama], 0, 70); ?></p> -->
                                 </div>
 
                                 <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">

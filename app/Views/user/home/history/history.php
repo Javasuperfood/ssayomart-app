@@ -111,7 +111,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                         <div class="deskripsi col-5 position-absolute top-50 start-50 translate-middle">
                                             <h5 class="card-title mt-3" style="font-size: 12px;">
-                                                <?= substr($t->$kolomNama, 0, 30); ?>
+                                                <?= substr($t->nama, 0, 20); ?>
+
+                                                <!-- Fungsi Multi Language -->
+                                                <!-- <?= substr($t->$kolomNama, 0, 30); ?> -->
                                             </h5>
                                             <p class="text-secondary" style="font-size: 11px;">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
@@ -440,7 +443,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <hr class="mb-3 border-danger" style="border-width: 3px;">
                 </div>
             </div>
-
 
             <!-- <div class="col">
                 <form action="<?= base_url('history'); ?>" method="get">

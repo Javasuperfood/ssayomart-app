@@ -139,9 +139,11 @@ class ProdukController extends BaseController
         if ($bahasa == 'id') {
             $kolomNama = 'nama';
             $kolomNamaKat = 'nama_kategori';
+            $kolomNamaSubKat = 'nama_kategori';
         } else {
             $kolomNama = 'nama_' . $bahasa;
             $kolomNamaKat = 'nama_kategori_' . $bahasa;
+            $kolomNamaSubKat = 'nama_kategori_' . $bahasa;
         }
 
         $data = [
@@ -158,6 +160,7 @@ class ProdukController extends BaseController
             'useStock' => false,
             'kolomNama' => $kolomNama,
             'kolomNamaKat' => $kolomNamaKat,
+            'kolomNamaSubKat' => $kolomNamaSubKat,
         ];
         // dd($data);
 

@@ -37,7 +37,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
                             </div>
                             <div class="col-9 pl-3">
-                                <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->$kolomNama, 0, 50); ?>...</label>
+                                <!-- Fungsi Multi Language -->
+                                <!-- <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->$kolomNama, 0, 50); ?>...</label> -->
+                                <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->nama, 0, 50); ?>...</label>
                                 <p class="card-text text-secondary " style="font-size: 12px;"><?= $p->qty; ?> <?= $p->value_item; ?></p>
                                 <div class="price-info d-flex gap-2">
                                     <label for="total" class="text-secondary m-0 text-dark" style="font-size: 13px;">Total:</label>
