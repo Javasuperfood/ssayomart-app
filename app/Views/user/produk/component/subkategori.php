@@ -90,7 +90,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="swiper-slide my-3">
                                                 <div class="card border-0 shadow-sm  text-uppercase d-flex justify-content-center" style="height: 25px; width:auto;">
                                                     <a href="<?= base_url(); ?>produk/kategori/<?= $s['slugK']; ?>/<?= $s['slugS']; ?>" class="text-decoration-none" style="font-size:10px; color:#000;">
-                                                        <?= $s[$kolomNamaKat]; ?>
+                                                        <!-- <?= $s[$kolomNamaKat]; ?> -->
+                                                        <?= $s['nama_kategori']; ?>
                                                     </a>
                                                 </div>
                                             </div>
