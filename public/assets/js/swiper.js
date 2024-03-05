@@ -207,14 +207,14 @@ $(document).ready(function() {
   var swiper = new Swiper(".btn-sub", {
       slidesPerView: 2,
       effect: "slide",
-      speed: 800,
+      speed: 600,
       grabCursor: true,
       touchRatio: 1, // Touch sensitivity
-      longSwipesRatio: 1, // Ratio to trigger swipe to next/previous slide
-      longSwipesMs: 600, // Minimum duration (in ms) to trigger swipe to next/previous slide
+      longSwipesRatio: 0.5, // Ratio to trigger swipe to next/previous slide
+      longSwipesMs: 400, // Minimum duration (in ms) to trigger swipe to next/previous slide
       freeMode: true, // Enables free mode for a smoother drag experience
       freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
-      freeModeMomentumVelocityRatio: 0.5, // Higher numbers increase momentum      
+      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum      
       breakpoints: {
           1280: {
               slidesPerView: 6,
@@ -345,15 +345,15 @@ $(document).ready(function() {
   var swiper = new Swiper(".btn-his", {
       slidesPerView: 2,
       effect: "slide",
-      speed: 1000,
+      speed: 600,
       spaceBetween: 10,
       grabCursor: true,
       touchRatio: 1, // Touch sensitivity
       longSwipesRatio: 1, // Ratio to trigger swipe to next/previous slide
-      longSwipesMs: 600, // Minimum duration (in ms) to trigger swipe to next/previous slide
+      longSwipesMs: 400, // Minimum duration (in ms) to trigger swipe to next/previous slide
       freeMode: true, // Enables free mode for a smoother drag experience
       freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
-      freeModeMomentumVelocityRatio: 0.5, // Higher numbers increase momentum
+      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum
       breakpoints: {
           1280: { slidesPerView: 6 },
           768: { slidesPerView: 4 },

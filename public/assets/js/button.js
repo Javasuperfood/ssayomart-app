@@ -12,11 +12,11 @@ $(document).ready(function() {
       speed: 800,
       grabCursor: true,
       touchRatio: 1, // Touch sensitivity
-      longSwipesRatio: 1, // Ratio to trigger swipe to next/previous slide
-      longSwipesMs: 600, // Minimum duration (in ms) to trigger swipe to next/previous slide
+      longSwipesRatio: 0.5, // Ratio to trigger swipe to next/previous slide
+      longSwipesMs: 400, // Minimum duration (in ms) to trigger swipe to next/previous slide
       freeMode: true, // Enables free mode for a smoother drag experience
       freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
-      freeModeMomentumVelocityRatio: 0.5, // Higher numbers increase momentum
+      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum
     //   touchAngle: 315,// Adjusting touch angle for smoother diagonal swipe // Change this value according to your preference
       breakpoints: {
           1280: {
