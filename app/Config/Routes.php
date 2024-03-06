@@ -48,6 +48,7 @@ $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
 $routes->get('/pusat-bantuan', 'MenuResto::pusatBantuan');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
+$routes->get('/all-promo', 'AllPromoController::AllPromo');
 
 
 
