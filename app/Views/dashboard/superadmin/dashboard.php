@@ -32,11 +32,11 @@
             <div class="row">
                 <div class="col ">
                     <div class="table-responsive table-sm">
-                        <table class="table table-bordered text-center fs-6" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered text-center fs-6" width="100%" cellspacing="0">
                             <tbody>
                                 <?php if ($getSuperAdminReport != null && !empty($getSuperAdminReport)) : ?>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                                        <table class="table table-bordered text-center" width="100%" cellspacing="0">
                                             <thead>
                                                 <tr>
                                                     <th rowspan="2">No</th>
@@ -53,7 +53,7 @@
                                                     <th scope="colgroup">Jumlah</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="salesDataBody">
                                                 <?php foreach ($getSuperAdminReport as $p) : ?>
                                                     <tr>
                                                         <td><?= $iterasi++; ?></td>
@@ -193,5 +193,70 @@
             <?php endif; ?>
         });
     </script>
+
+    <script>
+        var branches = <?= json_encode($market); ?>;
+    
+        function updateMarket() {
+        var selectedMarket = $('#branchFilter').val();
+        var filteredData = <?= json_encode($getSuperAdminReport); ?>; // Assuming $getSuperAdminReport is available in your script
+
+        // Filter data based on the selected branch
+        var filteredSalesData = filteredData.filter(function (data) {
+            return data.id_toko == selectedMarket;
+        });
+
+        // Update the table body with the filtered data
+        updateTableBody(filteredSalesData);
+        }
+
+        function updateTableBody(data) {
+        var tableBody = $('#salesDataBody');
+        tableBody.empty();
+
+        function formatNumber(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
+        }
+
+        if (data.length > 0) {
+            data.forEach(function (p, index) {
+                var namaProduk = '';
+                var skuProduk = '';
+                var jumlahProduk = '';
+
+                // Loop through products in the sales data
+                p['produk'].forEach(function (pr) {
+                    namaProduk += pr['nama'] + ' (' + pr['value_item'] + ')<br>';
+                    skuProduk += pr['sku'] + '<br>';
+                    jumlahProduk += pr['qty'] + '<br>';
+                });
+
+                var row = '<tr>' +
+                    '<td>' + (index + 1) + '</td>' +
+                    '<td>' + p['invoice'] + '</td>' +
+                    '<td>' + p['produk'][0]['nama'] + '</td>' +
+                    '<td>' + p['produk'][0]['sku'] + '</td>' +
+                    '<td>' + p['qty'] + '</td>' +
+                    '<td>' + p['fullname'] + '</td>' +
+                    '<td>' + formatNumber(p['total_1']) + '</td>' +
+                    '<td>' + formatNumber(p['total_2']) + '</td>' +
+                    '<td>' + p['created_at'] + '</td>' +
+                    '</tr>';
+                tableBody.append(row);
+            });
+        } else {
+            // Display a message if no data is available
+            var noDataMessage = '<tr><td colspan="9" class="text-center">Data penjualan untuk cabang ini belum tersedia.</td></tr>';
+            tableBody.append(noDataMessage);
+            }
+        }
+
+        // Initial update when the page loads
+        updateMarket();
+
+        // Bind the change event to the branch filter
+        $('#branchFilter').change(updateMarket);
+    </script>
+
 
     <?= $this->endSection(); ?>
