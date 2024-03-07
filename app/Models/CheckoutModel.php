@@ -158,4 +158,65 @@ class CheckoutModel extends Model
     //         ->get()
     //         ->getRowArray();
     // }
+    public function getSalesReportByBranch($branchId, $filter = 'monthly', $perPage = null, $startDate = null, $endDate = null)
+    {
+        $db = db_connect();
+        $builder = $db->table('jsf_checkout');
+
+        $builder->select([
+            'jsf_checkout.id_checkout',
+            'jsf_checkout.invoice',
+            'jsf_produk.nama as product_name',
+            'users.fullname as buyer_name',
+            'jsf_checkout.total_1 as sub_total',
+            'jsf_checkout.total_2 as grand_total',
+            'jsf_checkout.created_at as purchase_date'
+        ]);
+
+        $builder->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout');
+        $builder->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk');
+        $builder->join('users', 'jsf_checkout.id_user = users.id');
+        $builder->where('jsf_checkout.id_toko', $branchId);
+
+        // Adjust the filter based on your needs
+        if ($filter == 'monthly') {
+            $builder->where('MONTH(jsf_checkout.created_at)', date('m'));
+        } elseif ($filter == 'yearly') {
+            $builder->where('YEAR(jsf_checkout.created_at)', date('Y'));
+        }
+
+        if ($startDate && $endDate) {
+            $builder->where('jsf_checkout.created_at >=', $startDate . ' 00:00:00')
+                ->where('jsf_checkout.created_at <', $endDate . ' 23:59:59');
+        }
+
+        return $builder->get()->getResultArray();
+    }
+
+
+    public function getSuperAdminReport($perPage = null, $startDate = null, $endDate = null)
+    {
+        $query = $this->select('jsf_checkout.id_checkout, jsf_checkout_produk.id_checkout_produk, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.total_2, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.lable, users.fullname, jsf_status_pesan.id_status_pesan')
+            ->join('jsf_toko', 'jsf_toko.id_toko = jsf_checkout.id_toko')
+            ->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
+            ->join('users', 'users.id = jsf_checkout.id_user')
+            ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
+            ->groupBy('jsf_checkout.id_checkout')
+            ->orderBy('created_at', 'DESC')
+            ->orderBy('jsf_status_pesan.id_status_pesan')
+            ->whereNotIn('jsf_status_pesan.id_status_pesan', [1, 5]);
+
+        if ($startDate && $endDate) {
+            $query->where('jsf_checkout.created_at >=', $startDate . ' 00:00:00')
+                ->where('jsf_checkout.created_at <', $endDate . ' 23:59:59');
+        }
+
+        $data = $query->paginate($perPage, 'checkout');
+        return $data;
+    }
+
+    public function getBranches()
+    {
+        return $this->db->table('jsf_toko')->get()->getResultArray();
+    }
 }

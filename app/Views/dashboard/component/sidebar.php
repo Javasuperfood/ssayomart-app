@@ -12,9 +12,9 @@
 <hr class="sidebar-divider">
 <?php if (auth()->user()->inGroup('superadmin')) : ?>
     <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/dashboard-super-admin">
             <i class="bi bi-speedometer2"></i>
-            <span>Dashboard</span></a>
+            <span>Dashboard Super Admin</span></a>
     </li>
     <hr class="sidebar-divider">
 
