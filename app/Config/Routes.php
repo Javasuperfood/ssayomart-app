@@ -49,8 +49,6 @@ $routes->get('/pusat-bantuan', 'MenuResto::pusatBantuan');
 $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
 
-
-
 $routes->get('/all-category', 'KategoriController::allKategori');
 // app/Config/Routes.php
 $routes->get('/show-notification', 'WebhookController::showNotification');
@@ -136,10 +134,9 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
+    $routes->get('dashboard-super-admin', 'SuperAdminDashboard::index');
     $routes->get('panduan/panduan-aplikasi', 'Home::panduanAplikasi');
     $routes->group('order/', static function ($routes) {
-        // $routes->get('/', 'AdminPesananController::index');
-        // $routes->get('2', 'AdminPesananController::index2');
         $routes->get('/', 'AdminPesananController::index2');
         $routes->get('awaiting-payment', 'AdminPesananController::awaitingPayment');
         $routes->get('in-proccess', 'AdminPesananController::inProccess');
@@ -155,18 +152,11 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
         $routes->post('refund/(:segment)', 'AdminPesananController::refundStore/$1');
 
         // gosend
-
         $routes->get('update-booking/(:segment)', 'GoSendController::gosendUpdate/$1');
         $routes->post('update-booking/update-status/(:segment)', 'GoSendController::updateStatusOrder/$1');
         $routes->post('update-booking/update-status/save/(:segment)', 'GoSendController::orderSucceed/$1');
         $routes->post('update-booking/(:segment)/pickup', 'GoSendController::pickUp/$1');
         $routes->post('update-booking/(:segment)/cancel', 'GoSendController::gosendCancel/$1');
-
-        // $routes->get('gosend-update/(:segment)', 'GoSendController::gosendUpdate/$1');
-        // $routes->post('gosend-update/update-status/(:segment)', 'GoSendController::updateStatusOrder/$1');
-        // $routes->post('gosend-update/update-status/save/(:segment)', 'GoSendController::orderSucceed/$1');
-        // $routes->post('gosend-update/(:segment)/pickup', 'GoSendController::pickUp/$1');
-        // $routes->post('gosend-update/(:segment)/cancel', 'GoSendController::gosendCancel/$1');
     });
 
     // Route Reporting File
@@ -312,7 +302,6 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('promo/tambah-promo/show-promo/delete/(:segment)', 'AdminPromoController::delete/$1');
     $routes->post('promo/tambah-promo/show-promo/delete-promo-batch/(:segment)', 'AdminPromoController::deleteBatch/$1');
 
-
     // CRUD KONTEN/BLOG/ARTIKEL
     $routes->get('blog/blog', 'AdminBlog::blog');
     $routes->get('blog/tambah-konten', 'AdminBlog::tambahKonten');
@@ -389,8 +378,6 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
         $routes->post('get-order/gosend', 'WebhookController::updateSingleOrder');
     });
 });
-
-
 
 $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($routes) {
     $routes->get('/', 'WebhookController::index');
