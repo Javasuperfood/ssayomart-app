@@ -21,7 +21,7 @@ class SuperAdminDashboard extends BaseController
 
         // Tambahkan fungsi untuk mendapatkan daftar cabang
         $branches = $checkoutModel->getBranches();
-        $adminToko = $adminTokoModel->getAdminToko(user_id());
+        $adminToko = $checkoutModel->getSuperAdminReport($perPage, $startDate, $endDate);
 
         $getSuperAdminReport = $checkoutModel->getSuperAdminReport($perPage, $startDate, $endDate);
         foreach ($getSuperAdminReport as $key => $c) {
@@ -39,7 +39,7 @@ class SuperAdminDashboard extends BaseController
             'branches' => $branches, // Sertakan daftar cabang
         ];
         $data['penjualan'] = $checkoutModel->getSalesReportByBranch(1);
-
+        // dd($data);
         return view('dashboard/superadmin/dashboard', $data);
     }
 

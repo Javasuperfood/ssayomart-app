@@ -196,7 +196,7 @@ class CheckoutModel extends Model
 
     public function getSuperAdminReport($perPage = null, $startDate = null, $endDate = null)
     {
-        $query = $this->select('jsf_checkout.id_checkout, jsf_checkout_produk.id_checkout_produk, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.total_2, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.lable, users.fullname, jsf_status_pesan.id_status_pesan')
+        $query = $this->select('jsf_checkout.id_checkout, jsf_checkout_produk.id_checkout_produk, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.total_2, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.id_toko, jsf_toko.lable, users.fullname, jsf_status_pesan.id_status_pesan')
             ->join('jsf_toko', 'jsf_toko.id_toko = jsf_checkout.id_toko')
             ->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
             ->join('users', 'users.id = jsf_checkout.id_user')
