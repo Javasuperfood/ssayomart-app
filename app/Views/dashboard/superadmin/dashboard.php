@@ -5,8 +5,8 @@
 <p>Berikut ini adalah data penjual di setiap cabang Ssayomart.</p>
 
 <div class="d-flex justify-content-between">
-    <div class="card shadow-sm p-3 mb-5 bg-body rounded mb-5 col-sm-12">
-        <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+    <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-8">
+        <div class="card-header bg-white d-flex justify-content-start align-items-center border-1 py-3">
             <i class="bi bi-file-text-fill"></i>
             <h6 class="m-0 fw-bold px-2">Data Penjualan Setiap Cabang Ssayomart</h6>
         </div>
@@ -59,7 +59,9 @@
                                                 <?php foreach ($getSuperAdminReport as $p) : ?>
                                                     <tr>
                                                         <td><?= $iterasi++; ?></td>
-                                                        <td><?= $p['invoice']; ?></td>
+                                                        <td>
+                                                            <?= $p['invoice']; ?>
+                                                        </td>
                                                         <td scope="colgroup">
                                                             <?php
                                                             $namaProduk = '';
@@ -146,10 +148,39 @@
             // Populate month and year options based on the filtered data
             populateMonthYearOptions(filteredSalesData);
 
+    <script>
+        var branches = <?= json_encode($market); ?>;
+
+        function updateMarket() {
+            var selectedMarket = $('#branchFilter').val();
+            var filteredData = <?= json_encode($getSuperAdminReport); ?>; // Assuming $getSuperAdminReport is available in your script
+
+            // Filter data based on the selected branch
+            var filteredSalesData = filteredData.filter(function(data) {
+                return data.id_toko == selectedMarket;
+            });
             // Update the table body with the filtered data
             updateTableBody(filteredSalesData);
         }
+        function updateTableBody(data) {
+            var tableBody = $('#salesDataBody');
+            tableBody.empty();
 
+            function formatNumber(number) {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(number);
+            }
+
+            if (data.length > 0) {
+                data.forEach(function(p, index) {
+                    var namaProduk = '';
+                    var skuProduk = '';
+                    var jumlahProduk = '';
+
+                    // Loop through products in the sales data
+                    p['produk'].forEach(function(pr) {
         function populateMonthYearOptions(data) {
             var uniqueMonthsYears = [...new Set(data.map(item => item.created_at.substring(0, 7)))];
             var monthYearFilter = $('#monthYearFilter');
@@ -183,10 +214,13 @@
                         skuProduk += pr['sku'] + '<br>';
                         jumlahProduk += pr['qty'] + '<br>';
                     });
-
                     var row = '<tr>' +
                         '<td>' + (index + 1) + '</td>' +
-                        '<td>' + p['invoice'] + '</td>' +
+                        '<td>' +
+                        '<a href="<?= base_url(); ?>dashboard/dashboard-detail-inv/' + p['user_id'] + '">' +
+                        p['invoice'] +
+                        '</a>' +
+                        '</td>' +
                         '<td>' + p['produk'][0]['nama'] + '</td>' +
                         '<td>' + p['produk'][0]['sku'] + '</td>' +
                         '<td>' + p['qty'] + '</td>' +

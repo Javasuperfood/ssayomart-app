@@ -194,18 +194,28 @@ class CheckoutModel extends Model
     }
 
 
-    public function getSuperAdminReport($perPage = null)
+
+    public function getSuperAdminReport($perPage = null, $startDate = null, $endDate = null, $user_id = null)
     {
-        $query = $this->select('jsf_checkout.id_checkout, jsf_checkout_produk.id_checkout_produk, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.total_2, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.id_toko, jsf_toko.lable, users.fullname, jsf_status_pesan.id_status_pesan')
+        $query = $this->select('jsf_checkout.id_checkout, jsf_checkout_produk.id_checkout_produk, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.total_2, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.id_toko, jsf_toko.lable, users.id as user_id, users.fullname, jsf_status_pesan.id_status_pesan')
             ->join('jsf_toko', 'jsf_toko.id_toko = jsf_checkout.id_toko')
             ->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout')
-            ->join('users', 'users.id = jsf_checkout.id_user')
+            ->join('users', 'users.id = jsf_checkout.id_user') // Tambahkan join dengan tabel users
             ->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan')
             ->groupBy('jsf_checkout.id_checkout')
             ->orderBy('created_at', 'DESC')
             ->orderBy('jsf_status_pesan.id_status_pesan')
             ->whereNotIn('jsf_status_pesan.id_status_pesan', [1, 5]);
 
+        // Menambahkan kondisi where berdasarkan user_id jika diberikan
+        if ($user_id) {
+            $query->where('users.id', $user_id);
+        }
+
+        if ($startDate && $endDate) {
+            $query->where('jsf_checkout.created_at >=', $startDate . ' 00:00:00')
+                ->where('jsf_checkout.created_at <', $endDate . ' 23:59:59');
+        }
 
         $data = $query->paginate($perPage, 'checkout');
         return $data;
