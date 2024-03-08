@@ -194,7 +194,7 @@ class CheckoutModel extends Model
     }
 
 
-    public function getSuperAdminReport($perPage = null, $startDate = null, $endDate = null)
+    public function getSuperAdminReport($perPage = null)
     {
         $query = $this->select('jsf_checkout.id_checkout, jsf_checkout_produk.id_checkout_produk, jsf_checkout.invoice, jsf_checkout.total_1, jsf_checkout.total_2, jsf_checkout.created_at, jsf_checkout_produk.qty, jsf_toko.id_toko, jsf_toko.lable, users.fullname, jsf_status_pesan.id_status_pesan')
             ->join('jsf_toko', 'jsf_toko.id_toko = jsf_checkout.id_toko')
@@ -206,10 +206,6 @@ class CheckoutModel extends Model
             ->orderBy('jsf_status_pesan.id_status_pesan')
             ->whereNotIn('jsf_status_pesan.id_status_pesan', [1, 5]);
 
-        if ($startDate && $endDate) {
-            $query->where('jsf_checkout.created_at >=', $startDate . ' 00:00:00')
-                ->where('jsf_checkout.created_at <', $endDate . ' 23:59:59');
-        }
 
         $data = $query->paginate($perPage, 'checkout');
         return $data;
