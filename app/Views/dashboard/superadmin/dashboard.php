@@ -5,8 +5,8 @@
 <p>Berikut ini adalah data penjual di setiap cabang Ssayomart.</p>
 
 <div class="d-flex justify-content-between">
-    <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-8">
-        <div class="card-header bg-white d-flex justify-content-start align-items-center border-1 py-3">
+    <div class="card shadow-sm p-3 mb-5 bg-body rounded mb-5 col-sm-12">
+        <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
             <i class="bi bi-file-text-fill"></i>
             <h6 class="m-0 fw-bold px-2">Data Penjualan Setiap Cabang Ssayomart</h6>
         </div>
@@ -135,7 +135,7 @@
         function updateMarket() {
             var selectedMarket = $('#branchFilter').val();
             var filteredData = <?= json_encode($getSuperAdminReport); ?>;
-            var filteredSalesData = filteredData.filter(function (data) {
+            var filteredSalesData = filteredData.filter(function(data) {
                 return data.id_toko == selectedMarket;
             });
 
@@ -148,30 +148,31 @@
             // Populate month and year options based on the filtered data
             populateMonthYearOptions(filteredSalesData);
 
-    <script>
-        var branches = <?= json_encode($market); ?>;
-
-        function updateMarket() {
-            var selectedMarket = $('#branchFilter').val();
-            var filteredData = <?= json_encode($getSuperAdminReport); ?>; // Assuming $getSuperAdminReport is available in your script
-
-            // Filter data based on the selected branch
-            var filteredSalesData = filteredData.filter(function(data) {
-                return data.id_toko == selectedMarket;
-            });
             // Update the table body with the filtered data
             updateTableBody(filteredSalesData);
         }
+
+        function populateMonthYearOptions(data) {
+            var uniqueMonthsYears = [...new Set(data.map(item => item.created_at.substring(0, 7)))];
+            var monthYearFilter = $('#monthYearFilter');
+            monthYearFilter.empty();
+            monthYearFilter.append('<option value="">-- Pilih Bulan & Tahun --</option>');
+            uniqueMonthsYears.forEach(function(monthYear) {
+                monthYearFilter.append('<option value="' + monthYear + '">' + monthYear + '</option>');
+            });
+        }
+
+        function formatNumber(number) {
+            // Remove commas and convert to a number
+            const numericValue = parseFloat(number.replace(/,/g, ''));
+
+            // Format the number with "Rp" prefix and commas
+            return 'Rp ' + numericValue.toLocaleString('id-ID');
+        }
+
         function updateTableBody(data) {
             var tableBody = $('#salesDataBody');
             tableBody.empty();
-
-            function formatNumber(number) {
-                return new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR'
-                }).format(number);
-            }
 
             if (data.length > 0) {
                 data.forEach(function(p, index) {
@@ -179,41 +180,12 @@
                     var skuProduk = '';
                     var jumlahProduk = '';
 
-                    // Loop through products in the sales data
                     p['produk'].forEach(function(pr) {
-        function populateMonthYearOptions(data) {
-            var uniqueMonthsYears = [...new Set(data.map(item => item.created_at.substring(0, 7)))];
-            var monthYearFilter = $('#monthYearFilter');
-            monthYearFilter.empty();
-            monthYearFilter.append('<option value="">-- Pilih Bulan & Tahun --</option>');
-            uniqueMonthsYears.forEach(function (monthYear) {
-                monthYearFilter.append('<option value="' + monthYear + '">' + monthYear + '</option>');
-            });
-        }
-
-        function formatNumber(number) {
-        // Remove commas and convert to a number
-        const numericValue = parseFloat(number.replace(/,/g, ''));
-
-        // Format the number with "Rp" prefix and commas
-        return 'Rp ' + numericValue.toLocaleString('id-ID');
-        }
-        
-        function updateTableBody(data) {
-            var tableBody = $('#salesDataBody');
-            tableBody.empty();
-
-            if (data.length > 0) {
-                data.forEach(function (p, index) {
-                    var namaProduk = '';
-                    var skuProduk = '';
-                    var jumlahProduk = '';
-
-                    p['produk'].forEach(function (pr) {
                         namaProduk += pr['nama'] + ' (' + pr['value_item'] + ')<br>';
                         skuProduk += pr['sku'] + '<br>';
                         jumlahProduk += pr['qty'] + '<br>';
                     });
+
                     var row = '<tr>' +
                         '<td>' + (index + 1) + '</td>' +
                         '<td>' +
@@ -241,11 +213,11 @@
 
         $('#branchFilter').change(updateMarket);
 
-        $('#monthYearFilter').change(function () {
+        $('#monthYearFilter').change(function() {
             var selectedMonthYear = $(this).val();
             var selectedMarket = $('#branchFilter').val();
             var filteredData = <?= json_encode($getSuperAdminReport); ?>;
-            var filteredSalesData = filteredData.filter(function (data) {
+            var filteredSalesData = filteredData.filter(function(data) {
                 return data.id_toko == selectedMarket && data.created_at.substring(0, 7) == selectedMonthYear;
             });
 
@@ -253,5 +225,5 @@
         });
     </script>
 
-    
+
     <?= $this->endSection(); ?>
