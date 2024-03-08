@@ -5,8 +5,8 @@
 <p>Berikut ini adalah data penjual di setiap cabang Ssayomart</p>
 
 <div class="d-flex justify-content-between">
-    <div class="card shadow-sm p-3 mb-5 bg-body rounded mb-5 col-sm-8">
-        <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+    <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-8">
+        <div class="card-header bg-white d-flex justify-content-start align-items-center border-1 py-3">
             <i class="bi bi-file-text-fill"></i>
             <h6 class="m-0 fw-bold px-2">Data Penjualan Setiap Cabang Ssayomart</h6>
         </div>
@@ -57,7 +57,9 @@
                                                 <?php foreach ($getSuperAdminReport as $p) : ?>
                                                     <tr>
                                                         <td><?= $iterasi++; ?></td>
-                                                        <td><?= $p['invoice']; ?></td>
+                                                        <td>
+                                                            <?= $p['invoice']; ?>
+                                                        </td>
                                                         <td scope="colgroup">
                                                             <?php
                                                             $namaProduk = '';
@@ -196,58 +198,66 @@
 
     <script>
         var branches = <?= json_encode($market); ?>;
-    
+
         function updateMarket() {
-        var selectedMarket = $('#branchFilter').val();
-        var filteredData = <?= json_encode($getSuperAdminReport); ?>; // Assuming $getSuperAdminReport is available in your script
+            var selectedMarket = $('#branchFilter').val();
+            var filteredData = <?= json_encode($getSuperAdminReport); ?>; // Assuming $getSuperAdminReport is available in your script
 
-        // Filter data based on the selected branch
-        var filteredSalesData = filteredData.filter(function (data) {
-            return data.id_toko == selectedMarket;
-        });
+            // Filter data based on the selected branch
+            var filteredSalesData = filteredData.filter(function(data) {
+                return data.id_toko == selectedMarket;
+            });
 
-        // Update the table body with the filtered data
-        updateTableBody(filteredSalesData);
+            // Update the table body with the filtered data
+            updateTableBody(filteredSalesData);
         }
 
         function updateTableBody(data) {
-        var tableBody = $('#salesDataBody');
-        tableBody.empty();
+            var tableBody = $('#salesDataBody');
+            tableBody.empty();
 
-        function formatNumber(number) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(number);
-        }
+            function formatNumber(number) {
+                return new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(number);
+            }
 
-        if (data.length > 0) {
-            data.forEach(function (p, index) {
-                var namaProduk = '';
-                var skuProduk = '';
-                var jumlahProduk = '';
+            if (data.length > 0) {
+                data.forEach(function(p, index) {
+                    var namaProduk = '';
+                    var skuProduk = '';
+                    var jumlahProduk = '';
 
-                // Loop through products in the sales data
-                p['produk'].forEach(function (pr) {
-                    namaProduk += pr['nama'] + ' (' + pr['value_item'] + ')<br>';
-                    skuProduk += pr['sku'] + '<br>';
-                    jumlahProduk += pr['qty'] + '<br>';
+                    // Loop through products in the sales data
+                    p['produk'].forEach(function(pr) {
+                        namaProduk += pr['nama'] + ' (' + pr['value_item'] + ')<br>';
+                        skuProduk += pr['sku'] + '<br>';
+                        jumlahProduk += pr['qty'] + '<br>';
+                    });
+                    // + p['invoice']
+                    var row = '<tr>' +
+                        '<td>' + (index + 1) + '</td>' +
+                        '<td>' +
+                        '<a href="<?= base_url(); ?>dashboard/dashboard-detail-inv/' + p['user_id'] + '">' +
+                        p['invoice'] +
+                        '</a>' +
+                        '</td>' +
+                        '<td>' + p['produk'][0]['nama'] + '</td>' +
+                        '<td>' + p['produk'][0]['sku'] + '</td>' +
+                        '<td>' + p['qty'] + '</td>' +
+                        '<td>' + p['fullname'] + '</td>' +
+                        '<td>' + formatNumber(p['total_1']) + '</td>' +
+                        '<td>' + formatNumber(p['total_2']) + '</td>' +
+                        '<td>' + p['created_at'] + '</td>' +
+                        '</tr>';
+                    tableBody.append(row);
+                    console.log(p['user_id'])
                 });
-
-                var row = '<tr>' +
-                    '<td>' + (index + 1) + '</td>' +
-                    '<td>' + p['invoice'] + '</td>' +
-                    '<td>' + p['produk'][0]['nama'] + '</td>' +
-                    '<td>' + p['produk'][0]['sku'] + '</td>' +
-                    '<td>' + p['qty'] + '</td>' +
-                    '<td>' + p['fullname'] + '</td>' +
-                    '<td>' + formatNumber(p['total_1']) + '</td>' +
-                    '<td>' + formatNumber(p['total_2']) + '</td>' +
-                    '<td>' + p['created_at'] + '</td>' +
-                    '</tr>';
-                tableBody.append(row);
-            });
-        } else {
-            // Display a message if no data is available
-            var noDataMessage = '<tr><td colspan="9" class="text-center">Data penjualan untuk cabang ini belum tersedia.</td></tr>';
-            tableBody.append(noDataMessage);
+            } else {
+                // Display a message if no data is available
+                var noDataMessage = '<tr><td colspan="9" class="text-center">Data penjualan untuk cabang ini belum tersedia.</td></tr>';
+                tableBody.append(noDataMessage);
             }
         }
 
