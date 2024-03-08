@@ -2,7 +2,7 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-3 text-gray-800">Report Penjualan Cabang Ssayomart</h1>
-<p>Berikut ini adalah data penjual di setiap cabang Ssayomart</p>
+<p>Berikut ini adalah data penjual di setiap cabang Ssayomart.</p>
 
 <div class="d-flex justify-content-between">
     <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-8">
@@ -22,11 +22,13 @@
                 </select>
             </div>
             <div class="mb-4 row">
-                <label for="filter" class="form-label col-sm-2 d-flex align-items-center">Urutkan berdasarkan :</label>
-                <select id="filter" class="form-select mb-3 col-sm-10" aria-label="Select">
-                    <option selected value="monthly">Bulan</option>
-                    <option value="yearly">Tahun</option>
+                <label for="monthYearFilter" class="form-label col-sm-2 d-flex align-items-center">Pilih Bulan & Tahun :</label>
+                <select id="monthYearFilter" class="form-select mb-3 col-sm-10" aria-label="Select">
                 </select>
+            </div>
+
+            <div class="mb-4 row">
+                <h4 id="market-text" class="text-center fw-bold"></h4>
             </div>
             <!-- Tabel Penjualan -->
             <div class="row">
@@ -114,87 +116,37 @@
         </div>
 
         <!-- Chart -->
-        <div class="border-0 col-sm-4 ms-3">
+        <!-- <div class="border-0 col-sm-4 ms-3">
             <div class="card mb-3 shadow-sm p-3 bg-body rounded">
                 <div class="card-body">
                     <p class="fw-bold">Data Penjualan Ssayomart</p>
                     <canvas id="myChart" style="background-color: #f7f7f7;"></canvas>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-        const ctx = document.getElementById('myChart');
-        const branchFilter = document.getElementById('branchFilter');
-        const filterSelect = document.getElementById('filter');
+        var branches = <?= json_encode($market); ?>;
 
-        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ag', 'Sep', 'Oct'];
+        function updateMarket() {
+            var selectedMarket = $('#branchFilter').val();
+            var filteredData = <?= json_encode($getSuperAdminReport); ?>;
+            var filteredSalesData = filteredData.filter(function (data) {
+                return data.id_toko == selectedMarket;
+            });
 
-        // Data yang diterima dari controller
-        const penjualanData = <?= json_encode($penjualan) ?>;
-        // Sesuaikan dengan kebutuhan grafik
-        const monthlyData = penjualanData.monthlyData;
-        const yearlyData = penjualanData.yearlyData;
+            // Get the label from the first element (assuming it's the same for all)
+            var marketLabel = filteredSalesData.length > 0 ? filteredSalesData[0].lable : '';
 
-        const initialChartData = {
-            labels: months,
-            datasets: [{
-                label: 'Penjualan Ssayomart',
-                data: monthlyData,
-                borderWidth: 1,
-                borderColor: '#ec261f',
-            }]
-        };
+            // Update the market text
+            $('#market-text').text('Report Penjualan Ssayomart - Cabang ' + marketLabel);
 
-        const myChart = new Chart(ctx, {
-            type: 'line',
-            data: initialChartData,
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const initialSelectedFilter = filterSelect.value;
-        filterSelect.value = '';
-        filterSelect.value = initialSelectedFilter;
-
-        // filter
-        branchFilter.addEventListener('change', function() {
-            const selectedBranch = branchFilter.value;
-            const filteredData = penjualanData.find(item => item.id_toko == selectedBranch);
-
-            if (filterSelect.value === 'monthly') {
-                myChart.data.labels = months;
-                myChart.data.datasets[0].data = filteredData.monthlyData;
-            } else if (filterSelect.value === 'yearly') {
-                myChart.data.labels = ['2021', '2022', '2023', '2024'];
-                myChart.data.datasets[0].data = filteredData.yearlyData;
-            }
-
-            myChart.update();
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            <?php if (session()->has('alert')) : ?>
-                var alertData = <?= json_encode(session('alert')) ?>;
-                Swal.fire({
-                    icon: alertData.type,
-                    title: alertData.title,
-                    text: alertData.message
-                });
-            <?php endif; ?>
-        });
-    </script>
+            // Populate month and year options based on the filtered data
+            populateMonthYearOptions(filteredSalesData);
 
     <script>
         var branches = <?= json_encode($market); ?>;
@@ -207,11 +159,9 @@
             var filteredSalesData = filteredData.filter(function(data) {
                 return data.id_toko == selectedMarket;
             });
-
             // Update the table body with the filtered data
             updateTableBody(filteredSalesData);
         }
-
         function updateTableBody(data) {
             var tableBody = $('#salesDataBody');
             tableBody.empty();
@@ -231,11 +181,39 @@
 
                     // Loop through products in the sales data
                     p['produk'].forEach(function(pr) {
+        function populateMonthYearOptions(data) {
+            var uniqueMonthsYears = [...new Set(data.map(item => item.created_at.substring(0, 7)))];
+            var monthYearFilter = $('#monthYearFilter');
+            monthYearFilter.empty();
+            monthYearFilter.append('<option value="">-- Pilih Bulan & Tahun --</option>');
+            uniqueMonthsYears.forEach(function (monthYear) {
+                monthYearFilter.append('<option value="' + monthYear + '">' + monthYear + '</option>');
+            });
+        }
+
+        function formatNumber(number) {
+        // Remove commas and convert to a number
+        const numericValue = parseFloat(number.replace(/,/g, ''));
+
+        // Format the number with "Rp" prefix and commas
+        return 'Rp ' + numericValue.toLocaleString('id-ID');
+        }
+        
+        function updateTableBody(data) {
+            var tableBody = $('#salesDataBody');
+            tableBody.empty();
+
+            if (data.length > 0) {
+                data.forEach(function (p, index) {
+                    var namaProduk = '';
+                    var skuProduk = '';
+                    var jumlahProduk = '';
+
+                    p['produk'].forEach(function (pr) {
                         namaProduk += pr['nama'] + ' (' + pr['value_item'] + ')<br>';
                         skuProduk += pr['sku'] + '<br>';
                         jumlahProduk += pr['qty'] + '<br>';
                     });
-                    // + p['invoice']
                     var row = '<tr>' +
                         '<td>' + (index + 1) + '</td>' +
                         '<td>' +
@@ -252,21 +230,28 @@
                         '<td>' + p['created_at'] + '</td>' +
                         '</tr>';
                     tableBody.append(row);
-                    console.log(p['user_id'])
                 });
             } else {
-                // Display a message if no data is available
                 var noDataMessage = '<tr><td colspan="9" class="text-center">Data penjualan untuk cabang ini belum tersedia.</td></tr>';
                 tableBody.append(noDataMessage);
             }
         }
 
-        // Initial update when the page loads
         updateMarket();
 
-        // Bind the change event to the branch filter
         $('#branchFilter').change(updateMarket);
+
+        $('#monthYearFilter').change(function () {
+            var selectedMonthYear = $(this).val();
+            var selectedMarket = $('#branchFilter').val();
+            var filteredData = <?= json_encode($getSuperAdminReport); ?>;
+            var filteredSalesData = filteredData.filter(function (data) {
+                return data.id_toko == selectedMarket && data.created_at.substring(0, 7) == selectedMonthYear;
+            });
+
+            updateTableBody(filteredSalesData);
+        });
     </script>
 
-
+    
     <?= $this->endSection(); ?>

@@ -14,17 +14,14 @@ class SuperAdminDashboard extends BaseController
     {
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
-        $adminTokoModel = new AdminTokoModel();
         $perPage = 10;
-
-        $startDate = $this->request->getVar('startDate');
-        $endDate = $this->request->getVar('endDate');
 
         // Tambahkan fungsi untuk mendapatkan daftar cabang
         $branches = $checkoutModel->getBranches();
+
         $adminToko = $adminTokoModel->getAdminToko(user_id());
 
-        $getSuperAdminReport = $checkoutModel->getSuperAdminReport($perPage, $startDate, $endDate);
+        $getSuperAdminReport = $checkoutModel->getSuperAdminReport($perPage);
         foreach ($getSuperAdminReport as $key => $c) {
             $getSuperAdminReport[$key]['produk'] = $checkoutProdModel->getProdukByIdCheckout($c['id_checkout']);
         }
@@ -34,8 +31,6 @@ class SuperAdminDashboard extends BaseController
             'getSuperAdminReport' => $getSuperAdminReport,
             'pager' => $checkoutModel->pager,
             'iterasi' => ($currentPage - 1) * $perPage + 1,
-            'startDate' => $startDate,
-            'endDate' => $endDate,
             'market' => $adminToko,
             'branches' => $branches, // Sertakan daftar cabang
         ];
