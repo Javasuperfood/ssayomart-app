@@ -113,4 +113,11 @@ class SuperAdminDashboard extends BaseController
 
 
     // REPORT PENJUALAN PER-DAERAH (KECAMATAN ATAU KABUAPTEN)
+    public function regionReport()
+    {
+        $kategoriModel = new KategoriModel();
+        $data['categories'] = $kategoriModel->findAll();
+
+        return view('dashboard/superadmin/regionReport', $data);
+    }
 }

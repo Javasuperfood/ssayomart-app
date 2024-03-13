@@ -141,6 +141,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('category-report', 'SuperAdminDashboard::categoryReport');
     $routes->get('sub-category-report/(:num)', 'SuperAdminDashboard::subCategoryReport/$1');
     $routes->get('filter-report/(:num)', 'SuperAdminDashboard::filterReport/$1');
+    $routes->get('region-report', 'SuperAdminDashboard::regionReport');
 
 
     $routes->get('panduan/panduan-aplikasi', 'Home::panduanAplikasi');
