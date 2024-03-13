@@ -274,7 +274,18 @@ class ProdukModel extends Model
 
     public function adminProdukSearch($keyword)
     {
-        return $this->table('jsf_produk')->where('deleted_at', null)->like('nama', '%' . $keyword . '%')->orLike('sku', '%' . $keyword . '%');
+        return $this->table('jsf_produk')
+            ->where('deleted_at', null)
+            ->like('nama', '%' . $keyword . '%')
+            ->orLike('sku', '%' . $keyword . '%');
+    }
+
+    public function adminProdukSearch2($keywords)
+    {
+        return $this->table('jsf_produk')
+            ->where('deleted_at', null)
+            ->like('nama', '%' . $keywords . '%')
+            ->orLike('sku', '%' . $keywords . '%');
     }
 
     public function adminProdukCategorySearch($categoryKeyword)

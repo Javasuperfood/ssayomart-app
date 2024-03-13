@@ -34,7 +34,7 @@
                                 </thead>
                                 <?php $counter = 1; ?>
                                 <tbody>
-                                    <?php foreach($produk as $p): ?>
+                                    <?php foreach($produkSearch as $p): ?>
                                     <tr>
                                         <td><?= $counter++; ?></td>
                                         <td>

@@ -652,12 +652,20 @@ class AdminPromoController extends BaseController
             $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
         }
 
+        $keywords = $this->request->getVar('search_product');
+        if ($keywords) {
+            $produkSearch = $produkModel->orderBy('id_produk', 'DESC')->adminProdukSearch2($keywords);
+        } else {
+            $produkSearch = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
+        }
+
         $getOngoingPromoItems = $promoProdukModel->getOngoingPromoItems($id);
 
         $data = [
             'promo' => $promoList,
             'ongoingPromoItems' => $getOngoingPromoItems,
             'produk' => $produk,
+            'produkSearch' => $produkSearch,
             'variasi' => $variasiList
         ];
         // dd($data);
