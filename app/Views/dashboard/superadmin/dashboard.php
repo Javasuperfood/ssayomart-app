@@ -11,12 +11,12 @@
                 <a href="<?= base_url() ?>dashboard/category-report" target="__blank">
                     <div class="card-body d-flex">
                         <div class="col-10 text-center">
-                            <span class="text-secondary fs-6 position-absolute top-50 start-50 translate-middle">
+                            <span class="text-secondary fs-6 position-absolute top-50 start-50 translate-middle fw-bold">
                                 Penjualan Per-Kategori
                             </span>
                         </div>
                         <div class="col-2 text-center">
-                            <i class="bi bi-diagram-3-fill fs-1 text-secondary"></i>
+                            <i class="bi bi-diagram-3-fill fs-1 text-danger"></i>
                         </div>
                     </div>
                 </a>
@@ -29,12 +29,12 @@
                 <a href="#" target="__blank">
                     <div class="card-body d-flex">
                         <div class="col-10 text-center">
-                            <span class="text-secondary fs-6 position-absolute top-50 start-50 translate-middle">
+                            <span class="text-secondary fs-6 position-absolute top-50 start-50 translate-middle fw-bold">
                                 Penjualan Per-Daerah
                             </span>
                         </div>
                         <div class="col-2 text-center">
-                            <i class="bi bi-compass-fill fs-1 text-secondary"></i>
+                            <i class="bi bi-compass-fill fs-1 text-danger"></i>
                         </div>
                     </div>
                 </a>
@@ -44,10 +44,10 @@
 </div>
 
 <div class="d-flex justify-content-between">
-    <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-12">
+    <div class="card shadow-sm p-3 mb-3 rounded-3 col-sm-12">
         <div class="card-header d-flex justify-content-start align-items-center border-1 py-3 bg-white">
-            <i class="bi bi-file-text-fill"></i>
-            <h6 class="m-0 fw-bold px-2">Data Penjualan Setiap Cabang Ssayomart</h6>
+            <i class="bi bi-file-text-fill text-danger"></i>
+            <h6 class="m-0 fw-bold px-2 text-secondary">Data Penjualan Setiap Cabang Ssayomart</h6>
         </div>
 
         <div class="row">
@@ -73,7 +73,7 @@
                     </div>
                     <!-- Tabel Penjualan -->
                     <div class="row">
-                        <div class="col ">
+                        <div class="col">
                             <div class="table-responsive table-sm">
                                 <table class="table table-bordered text-center fs-6" width="100%" cellspacing="0">
                                     <tbody>
@@ -142,7 +142,6 @@
                                                 <div class="d-flex justify-content-center align-items-center">
                                                     <?= $pager->links('checkout', 'pagerS') ?>
                                                 </div>
-
                                             </div>
                                         <?php else : ?>
                                             <div class="alert alert-danger text-center mt-2" role="alert">
@@ -157,19 +156,23 @@
                 </div>
             </div>
         </div>
-
-        <!-- Chart -->
-        <!-- <div class="border-0 col-sm-4 ms-3">
-            <div class="card mb-3 shadow-sm p-3 bg-body rounded">
-                <div class="card-body">
-                    <p class="fw-bold">Data Penjualan Ssayomart</p>
-                    <canvas id="myChart" style="background-color: #f7f7f7;"></canvas>
-                </div>
-            </div>
-        </div> -->
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CHART -->
+    <!-- <div class="card shadow-sm p-3 mb-5 rounded-3 col-sm-12">
+        <div class="card-header d-flex justify-content-start align-items-center border-1 py-3 bg-white">
+            <i class="bi bi-file-text-fill text-danger"></i>
+            <h6 class="m-0 fw-bold px-2 text-secondary">Chart Report Penjualan Ssayomart</h6>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+
     <script>
         var branches = <?= json_encode($market); ?>;
 
@@ -267,4 +270,3 @@
     </script>
 
     <?= $this->endSection(); ?>
-</div>
