@@ -4,6 +4,44 @@
 
 <h1 class="h3 mb-3 text-gray-800">Region Report</h1>
 <p>Berikut ini adalah data laporan Penjualan per Regional</p>
+<div class="row">
+    <div class="col-4">
+        <div class="card border-0 shadow-sm border-left-danger mb-4">
+            <div class="row">
+                <a href="<?= base_url() ?>dashboard/dashboard-super-admin" target="__blank">
+                    <div class="card-body d-flex">
+                        <div class="col-10 text-center">
+                            <span class="text-secondary fs-6 position-absolute top-50 start-50 translate-middle fw-bold">
+                                Penjualan Per-Invoice
+                            </span>
+                        </div>
+                        <div class="col-2 text-center">
+                            <i class="bi bi-clipboard-data-fill fs-1 text-danger"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card border-0 shadow-sm border-left-danger mb-4">
+            <div class="row">
+                <a href="<?= base_url() ?>dashboard/category-report" target="__blank">
+                    <div class="card-body d-flex">
+                        <div class="col-10 text-center">
+                            <span class="text-secondary fs-6 position-absolute top-50 start-50 translate-middle fw-bold">
+                                Penjualan Per-Kategori
+                            </span>
+                        </div>
+                        <div class="col-2 text-center">
+                            <i class="bi bi-diagram-3-fill fs-1 text-danger"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="row">
     <!-- Left Panel -->
