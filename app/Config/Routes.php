@@ -282,6 +282,8 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->post('admin-market/delete/(:segment)', 'AdminMarketpalceAdminController::deleteAllAdminMarket/$1');
 
     // CRUD Promo
+    $routes->get('promo', 'AdminPromoController::index');
+    $routes->get('promo/tambah-promo/tambah-promo-produk/(:segment)', 'AdminPromoController::tambahPromoProduk/$1');
     $routes->get('promo/tambah-promo', 'AdminPromoController::tambahPromo');
     $routes->post('promo/tambah-promo/save', 'AdminPromoController::savePromo');
     $routes->post('promo/tambah-promo/delete-promo/(:segment)', 'AdminPromoController::deletePromo/$1');
@@ -296,13 +298,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     // $routes->post('promo/tambah-promo-item/delete-promo-item/(:segment)', 'AdminPromoController::deletePromoItem/$1');
 
     // Promo Item Batch
-    $routes->get('promo/tambah-promo/show-promo/(:segment)', 'AdminPromoController::show/$1');
     $routes->get('promo/tambah-promo-item-batch', 'AdminPromoController::create');
-    $routes->post('promo/tambah-promo-item-batch/save', 'AdminPromoController::store');
-    $routes->get('promo/tambah-promo/show-promo/edit/(:segment)', 'AdminPromoController::edit/$1');
-    $routes->post('promo/tambah-promo/show-promo/edit/update/(:segment)', 'AdminPromoController::update/$1');
-    $routes->post('promo/tambah-promo/show-promo/delete/(:segment)', 'AdminPromoController::delete/$1');
-    $routes->post('promo/tambah-promo/show-promo/delete-promo-batch/(:segment)', 'AdminPromoController::deleteBatch/$1');
+    // $routes->post('promo/tambah-promo-item-batch/save', 'AdminPromoController::store');
+    // $routes->get('promo/tambah-promo/show-promo/edit/(:segment)', 'AdminPromoController::edit/$1');
+    // $routes->post('promo/tambah-promo/show-promo/edit/update/(:segment)', 'AdminPromoController::update/$1');
+    // $routes->post('promo/tambah-promo/show-promo/delete/(:segment)', 'AdminPromoController::delete/$1');
+    // $routes->post('promo/tambah-promo/show-promo/delete-promo-batch/(:segment)', 'AdminPromoController::deleteBatch/$1');
 
     // CRUD KONTEN/BLOG/ARTIKEL
     $routes->get('blog/blog', 'AdminBlog::blog');

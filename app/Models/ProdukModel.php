@@ -77,7 +77,7 @@ class ProdukModel extends Model
         'nama_en' => [
             'required' => 'Nama produk dalam bahasa Inggris wajib diisi.',
         ],
-        'nam_kr' => [
+        'nama_kr' => [
             'required' => 'Nama produk dalam bahasa Korea wajib diisi.',
         ],
         'sku' => [
