@@ -236,4 +236,32 @@ class CheckoutProdukModel extends Model
 
         return $query->findAll();
     }
+    public function getHargaByIdProduk($id_produk)
+    {
+        $query = $this->select('harga')
+            ->where('id_produk', $id_produk)
+            ->get();
+
+        $result = $query->getRow();
+        return $result->harga ?? 0;
+    }
+
+    public function getHargaByIdVariasiItem($id_variasi_item)
+    {
+        $query = $this->select('harga')
+            ->where('id_variasi_item', $id_variasi_item)
+            ->get();
+
+        $result = $query->getRow();
+        return $result->harga ?? 0;
+    }
+    public function getTotalQtyTerjualByIdProduk($id_produk)
+    {
+        $query = $this->selectSum('qty', 'total_qty')
+            ->where('id_produk', $id_produk)
+            ->get();
+
+        $result = $query->getRow();
+        return $result->total_qty ?? 0;
+    }
 }

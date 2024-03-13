@@ -8,8 +8,8 @@
 <p>Berikut adalah data stok produk-produk Ssayomart.</p>
 
 <div class="d-flex justify-content-between">
-	<div class="card shadow-sm p-3 mb-5 bg-body rounded mb-5 col-sm-8">
-		<div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+	<div class="card shadow-sm p-3 mb-5 bg-white rounded mb-5 col-sm-8">
+		<div class="card-header d-flex justify-content-start bg-white align-items-center border-1 py-3">
 			<i class="bi bi-file-text-fill"></i>
 			<h6 class="m-0 fw-bold px-2">List Stok Produk</h6>
 		</div>
