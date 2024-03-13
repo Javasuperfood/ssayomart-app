@@ -93,7 +93,7 @@ class SubKategoriModel extends Model
             ->join('jsf_kategori', 'jsf_kategori.id_kategori = jsf_sub_kategori.id_kategori', 'inner')
             ->where('jsf_sub_kategori.id_kategori', $id)->findAll();
     }
-    
+
     public function getSubKategoriByProdukId($id_produk)
     {
         return $this->select('nama_kategori, nama_kategori_en, nama_kategori_kr')
@@ -128,5 +128,9 @@ class SubKategoriModel extends Model
         $builder->where('id_sub_kategori', $id);
         $builder->update(['id_sub_kategori' => null]);
         return  $this->delete($id);
+    }
+    public function getSubcategoriesByCategoryId($categoryId)
+    {
+        return $this->where(['id_kategori' => $categoryId])->findAll();
     }
 }

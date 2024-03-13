@@ -135,8 +135,14 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
 
 $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static function ($routes) {
     $routes->get('/', 'Home::dashboard');
+    // REPORT SUPER ADMIN
     $routes->get('dashboard-super-admin', 'SuperAdminDashboard::index');
     $routes->get('dashboard-detail-inv/(:segment)', 'SuperAdminDashboard::detailinv/$1');
+    $routes->get('category-report', 'SuperAdminDashboard::categoryReport');
+    $routes->get('sub-category-report/(:num)', 'SuperAdminDashboard::subCategoryReport/$1');
+    $routes->get('filter-report/(:num)', 'SuperAdminDashboard::filterReport/$1');
+
+
     $routes->get('panduan/panduan-aplikasi', 'Home::panduanAplikasi');
     $routes->group('order/', static function ($routes) {
         $routes->get('/', 'AdminPesananController::index2');

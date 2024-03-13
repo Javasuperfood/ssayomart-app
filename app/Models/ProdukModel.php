@@ -408,4 +408,8 @@ class ProdukModel extends Model
         // dd($result);
         return $result;
     }
+    public function getProductsBySubcategoryId($subcategoryId)
+    {
+        return $this->where(['id_sub_kategori' => $subcategoryId])->findAll();
+    }
 }

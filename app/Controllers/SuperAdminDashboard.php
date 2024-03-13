@@ -5,11 +5,15 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
-use App\Models\AdminTokoModel;
 use App\Models\UsersModel;
+use App\Models\KategoriModel;
+use App\Models\SubKategoriModel;
+use App\Models\ProdukModel;
+use App\Models\VariasiItemModel;
 
 class SuperAdminDashboard extends BaseController
 {
+    // REPORT PENJUALAN PER-CABANG SSAYOMART
     public function index()
     {
         $checkoutModel = new CheckoutModel();
@@ -37,7 +41,6 @@ class SuperAdminDashboard extends BaseController
         // dd($data);
         return view('dashboard/superadmin/dashboard', $data);
     }
-
 
     public function detailinv($id)
     {
@@ -75,4 +78,39 @@ class SuperAdminDashboard extends BaseController
 
         return view('dashboard/superadmin/detailInv', $data);
     }
+
+    // REPORT PENJUALAN PER-KATEGORI->SUB KATEGORI->PRODUK
+    public function categoryReport()
+    {
+        $kategoriModel = new KategoriModel();
+        $data['categories'] = $kategoriModel->findAll();
+
+        return view('dashboard/superadmin/categoryReport', $data);
+    }
+    public function subCategoryReport($categoryId)
+    {
+        $subKategoriModel = new SubKategoriModel();
+        $data['subcategories'] = $subKategoriModel->getSubcategoriesByCategoryId($categoryId);
+
+        return view('dashboard/superadmin/subCategoryReport', $data);
+    }
+
+    public function filterReport($subcategoryId)
+    {
+        $produkModel = new ProdukModel();
+        $checkoutProdukModel = new CheckoutProdukModel();
+
+        $data['products'] = $produkModel->getProductsBySubcategoryId($subcategoryId);
+
+        foreach ($data['products'] as &$product) {
+            $product['terjual'] = $checkoutProdukModel->getTotalQtyTerjualByIdProduk($product['id_produk']);
+            $product['harga'] = $checkoutProdukModel->getHargaByIdProduk($product['id_produk']);
+        }
+
+        return view('dashboard/superadmin/filterReport', $data);
+    }
+
+
+
+    // REPORT PENJUALAN PER-DAERAH (KECAMATAN ATAU KABUAPTEN)
 }
