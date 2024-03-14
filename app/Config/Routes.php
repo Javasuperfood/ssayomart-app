@@ -290,6 +290,14 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('promo/update-promo/(:segment)', 'AdminPromoController::updatePromo/$1');
     $routes->post('promo/update-promo/edit-promo/(:segment)', 'AdminPromoController::editPromo/$1');
 
+    // CRUD Promo Produk
+    $routes->post('promo/tambah-promo/save-promo', 'AdminPromoController::save');
+    $routes->post('promo/tambah-promo/delete-promo-produk/(:segment)', 'AdminPromoController::deletePromoProduk/$1');
+
+    // CRUD Produk Bundle
+    $routes->post('promo/tambah-promo/save-produk-bundle', 'AdminPromoController::saveProdukBundle');
+    $routes->post('promo/tambah-promo/delete-promo-produk-bundle/(:segment)', 'AdminPromoController::deletePromoProdukBundle/$1');
+
     // Promo Item
     // $routes->get('promo/tambah-promo-item', 'AdminPromoController::tambahPromoItem');
     // $routes->post('promo/tambah-promo-item/save-promo-item', 'AdminPromoController::savePromoItem');

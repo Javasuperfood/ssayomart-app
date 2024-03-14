@@ -285,7 +285,9 @@ class ProdukModel extends Model
         return $this->table('jsf_produk')
             ->where('deleted_at', null)
             ->like('nama', '%' . $keywords . '%')
-            ->orLike('sku', '%' . $keywords . '%');
+            ->orLike('sku', '%' . $keywords . '%')
+            ->get()
+            ->getResultArray();
     }
 
     public function adminProdukCategorySearch($categoryKeyword)

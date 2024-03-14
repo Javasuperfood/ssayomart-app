@@ -69,5 +69,17 @@ class PromoProduk extends Model
 
         return $query->getResultArray();
     }
+
+    public function promoProduk()
+    {
+        $query = $this->table('jsf_promo_produk')
+            ->select('jsf_promo_produk.*, jsf_promo.title as promo_title, jsf_produk.*')
+            ->join('jsf_promo', 'jsf_promo_produk.id_promo = jsf_promo.id_promo')
+            ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk')
+            ->orderBy('jsf_promo_produk.id_produk', 'ASC')
+            ->get();
+
+        return $query->getResultArray();
+    }
 }
 
