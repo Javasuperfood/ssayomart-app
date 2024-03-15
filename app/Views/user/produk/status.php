@@ -174,7 +174,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
         <div class="py-3"></div>
         <div class="d-flex align-items-center justify-content-center w-100 h-100" style="left: 0; right: 0;">
-            <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; display: none; font-size: 14px; width: 90%"><?= lang('Text.btn_ubah_metode_pembayaran') ?></button>
+            <button id="cahnge-pay-button" data-bs-toggle="modal" data-bs-target="#changePaymentMethod" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; display: none; font-size: 14px; width: 90%"><?= lang('Text.btn_ubah_pembayaran') ?></button>
         </div>
 
         <!-- Modal Change Payment -->
@@ -182,7 +182,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="changePaymentMethodLabel"><?= lang('Text.btn_ubah_metode_pembayaran') ?></h1>
+                        <h1 class="modal-title fs-5" id="changePaymentMethodLabel"><?= lang('Text.btn_ubah_pembayaran') ?></h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -193,7 +193,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </form>
                     </div>
                     <div class="modal-footer d-flex justify-content-center align-items-center">
-                        <button type="submit" form="changePayment" class="btn btn-danger"><?= lang('Text.btn_ubah_metode_pembayaran') ?></button>
+                        <button type="submit" form="changePayment" class="btn btn-danger"><?= lang('Text.btn_ubah_pembayaran') ?></button>
                     </div>
                 </div>
             </div>

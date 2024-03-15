@@ -87,4 +87,12 @@ class PromoProduk extends Model
 
         return $query->getResultArray();
     }
+
+    public function getPromoDetailsByIdProduk($id)
+    {
+        $query = $this->select('*')
+            ->where('id_produk', $id)->findAll();
+
+        return $query;
+    }
 }
