@@ -337,6 +337,7 @@ class AdminPromoController extends BaseController
         $promoProdukId = $this->request->getVar('id_promo_produk');
         $produkId = $this->request->getVar('id_produk');
         $selectedProducts = $this->request->getVar('produk_id');
+        $promoId = $this->request->getVar('id_promo');
 
         $batchData = [];
 
@@ -372,7 +373,7 @@ class AdminPromoController extends BaseController
         ];
         session()->setFlashdata('alert', $alert);
 
-        return redirect()->to('dashboard/promo/bundle-promo/' . $this->request->getVar('id_promo'))->withInput();
+        return redirect()->to('dashboard/promo/bundle-promo/' . $promoId);
     }
 
     // Delete Promo Produk
