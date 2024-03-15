@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PromoProdukBundle extends Model
+class ProdukBundleModel extends Model
 {
     protected $DBGroup          = 'default';
     protected $table            = 'jsf_promo_produk_bundle';

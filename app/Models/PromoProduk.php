@@ -52,6 +52,25 @@ class PromoProduk extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function getPromo($slug)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_promo_produk')
+            ->select('jsf_promo_produk.*, jsf_promo.*, vi.id_variasi_item, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, pb.*')
+            ->join('jsf_promo', 'jsf_promo_produk.id_promo = jsf_promo.id_promo')
+            ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+            ->join('jsf_promo_produk_bundle pb', 'jsf_promo_produk.id = pb.id_promo_produk')
+            ->where('jsf_produk.deleted_at', null)
+            ->where(['jsf_promo.slug' => $slug])
+            ->orderBy('jsf_promo_produk.created_at', 'DESC')
+            ->get();
+
+        $result = $query->getResultArray();
+        // dd($result);
+        return $result;
+    }
+
     public function promoProduk($id)
     {
         $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini

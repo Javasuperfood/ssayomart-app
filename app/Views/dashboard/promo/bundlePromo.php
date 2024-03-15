@@ -4,7 +4,7 @@
 <div class="col-lg-6 mb-4">
     <div class="card position-relative border-1 shadow-sm">
         <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-            <h6 class="m-0 fw-bold px-2">List Promo Produk Ssayomart</h6>
+            <h6 class="m-0 fw-bold px-2">List Produk Bundle</h6>
             <a href="<?= base_url() ?>dashboard/promo/tambah-promo" class="btn btn-danger ms-2">Tambah Promo Produk</a>
         </div>
 

@@ -7,7 +7,7 @@ use App\Models\PromoModel;
 use App\Models\ProdukModel;
 use App\Models\VariasiItemModel;
 use App\Models\PromoProduk;
-use App\Models\PromoProdukBundle;
+use App\Models\ProdukBundleModel;
 
 class AdminPromoController extends BaseController
 {
@@ -250,13 +250,11 @@ class AdminPromoController extends BaseController
     // Bundle Promo
     public function show($id)
     {
-        $promoModel = new PromoModel();
         $produkModel = new ProdukModel();
         $variasiItemModel = new VariasiItemModel();
         $promoProdukModel = new PromoProduk();
-        $produkBundle = new PromoProdukBundle();
+        $produkBundle = new ProdukBundleModel();
 
-        $promoList = $promoModel->findAll();
         $variasiList = $variasiItemModel->findAll();
         $promoProduk = $promoProdukModel->promoProduk($id);
         $produkBundleList = $produkBundle->getProdukBundle();
@@ -269,7 +267,6 @@ class AdminPromoController extends BaseController
         }
 
         $data = [
-            'promo' => $promoList,
             'produk' => $produk,
             'promoProduk' => $promoProduk,
             'produkBundle' => $produkBundleList,
@@ -333,7 +330,7 @@ class AdminPromoController extends BaseController
     // Save Produk Bundle
     public function saveProdukBundle()
     {
-        $promoProdukBundleModel = new PromoProdukBundle();
+        $produkBundle = new ProdukBundleModel();
         $promoProdukId = $this->request->getVar('id_promo_produk');
         $produkId = $this->request->getVar('id_produk');
         $selectedProducts = $this->request->getVar('produk_id');
@@ -343,7 +340,7 @@ class AdminPromoController extends BaseController
 
         foreach ($selectedProducts as $productId) {
             // Check if the record already exists
-            $existingRecord = $promoProdukBundleModel
+            $existingRecord = $produkBundle
                 ->where('id_promo_produk', $promoProdukId)
                 ->where('id_main_produk', $produkId)
                 ->where('id_produk_bundle', $productId)
@@ -361,7 +358,7 @@ class AdminPromoController extends BaseController
 
         // Insert all the data at once
         if (!empty($batchData)) {
-            $promoProdukBundleModel->insertBatch($batchData);
+            $produkBundle->insertBatch($batchData);
         }
         // dd($batchData);
 

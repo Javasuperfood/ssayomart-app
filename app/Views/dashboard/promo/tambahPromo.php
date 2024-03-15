@@ -75,7 +75,7 @@ use CodeIgniter\Filters\CSRF;
         <div class="card position-relative border-1 shadow-sm">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
                 <i class="bi bi-file-text-fill"></i>
-                <h6 class="m-0 fw-bold px-2">List Promo Produk Ssayomart</h6>
+                <h6 class="m-0 fw-bold px-2">Buat Promo Produk</h6>
             </div>
 
             <div class="card-body">

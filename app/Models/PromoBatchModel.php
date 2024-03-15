@@ -49,61 +49,53 @@ class PromoBatchModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getPromo($slug)
-    {
-        $db = \Config\Database::connect();
-        $query = $db->table('jsf_promo_batch')
-            ->select('jsf_promo_batch.*, jsf_promo.*, vi.id_variasi_item, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
-            ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
-            ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
-            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
-            ->groupBy('jsf_promo_batch.id_promo_item_batch')
-            ->where('jsf_produk.deleted_at', null)
-            ->where(['jsf_promo.slug' => $slug])
-            ->orderBy('jsf_promo_batch.created_at', 'DESC')
-            ->get();
+    // public function getPromo($slug)
+    // {
+    //     $db = \Config\Database::connect();
+    //     $query = $db->table('jsf_promo_batch')
+    //         ->select('jsf_promo_batch.*, jsf_promo.*, vi.id_variasi_item, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
+    //         ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
+    //         ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
+    //         ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+    //         ->groupBy('jsf_promo_batch.id_promo_item_batch')
+    //         ->where('jsf_produk.deleted_at', null)
+    //         ->where(['jsf_promo.slug' => $slug])
+    //         ->orderBy('jsf_promo_batch.created_at', 'DESC')
+    //         ->get();
 
-        $result = $query->getResultArray();
-        return $result;
-    }
+    //     $result = $query->getResultArray();
+    //     return $result;
+    // }
 
-    public function getOngoingPromoItems($id)
-    {
-        $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
+    // public function getOngoingPromoItems($id)
+    // {
+    //     $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
 
-        $query = $this->table('jsf_promo_batch')
-            ->select('jsf_promo_batch.*, jsf_promo.title as promo_title, jsf_produk.*')
-            ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
-            ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
-            ->orderBy('jsf_promo_batch.id_produk', 'ASC')
-            ->where('jsf_promo_batch.id_promo', $id)
-            ->where('jsf_promo.start_at <=', $currentDate)
-            ->where('jsf_promo.end_at >=', $currentDate)
-            ->get();
-        // dd($query);
+    //     $query = $this->table('jsf_promo_batch')
+    //         ->select('jsf_promo_batch.*, jsf_promo.title as promo_title, jsf_produk.*')
+    //         ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
+    //         ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
+    //         ->orderBy('jsf_promo_batch.id_produk', 'ASC')
+    //         ->where('jsf_promo_batch.id_promo', $id)
+    //         ->where('jsf_promo.start_at <=', $currentDate)
+    //         ->where('jsf_promo.end_at >=', $currentDate)
+    //         ->get();
+    //     // dd($query);
 
-        return $query->getResultArray();
-    }
+    //     return $query->getResultArray();
+    // }
 
-    public function getOngoingPromo()
-    {
-        $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
+    // public function getOngoingPromo()
+    // {
+    //     $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
 
-        $query = $this->table('jsf_promo_batch')
-            ->select('jsf_promo_batch.*, jsf_promo.title as promo_title, jsf_produk.*')
-            ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
-            ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
-            ->orderBy('jsf_promo_batch.created_at', 'DESC')
-            ->get();
+    //     $query = $this->table('jsf_promo_batch')
+    //         ->select('jsf_promo_batch.*, jsf_promo.title as promo_title, jsf_produk.*')
+    //         ->join('jsf_promo', 'jsf_promo_batch.id_promo = jsf_promo.id_promo')
+    //         ->join('jsf_produk', 'jsf_promo_batch.id_produk = jsf_produk.id_produk')
+    //         ->orderBy('jsf_promo_batch.created_at', 'DESC')
+    //         ->get();
 
-        return $query->getResultArray();
-    }
-
-    public function getPromoDetailsByIdProduk($id)
-    {
-        $query = $this->select('*')
-            ->where('id_produk', $id)->findAll();
-
-        return $query;
-    }
+    //     return $query->getResultArray();
+    // }
 }
