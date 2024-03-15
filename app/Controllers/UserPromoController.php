@@ -3,10 +3,9 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\PromoItemModel;
 use App\Models\KategoriModel;
 use App\Models\PromoModel;
-use App\Models\PromoBatchModel;
+use App\Models\PromoProduk;
 
 class UserPromoController extends BaseController
 {
@@ -56,14 +55,14 @@ class UserPromoController extends BaseController
     public function index($slug)
     {
         $kategori = new KategoriModel();
-        $promoBatchModel = new PromoBatchModel();
+        $promoProduk = new PromoProduk();
         $promoModel = new PromoModel();
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
 
         $bahasa = session()->get('lang');
 
-        $promoItem = $promoBatchModel->getPromo($slug);
+        $promoItem = $promoProduk->getPromo($slug);
         if ($promoItem) {
             $filteredPromoItems = [];
 
