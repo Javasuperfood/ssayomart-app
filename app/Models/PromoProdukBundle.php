@@ -43,7 +43,7 @@ class PromoProdukBundle extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getOngoingPromoItems()
+    public function getProdukBundle()
     {
         $query = $this->db->table('jsf_promo_produk_bundle')
             ->select('jsf_promo_produk_bundle.*, main_produk.*, bundle_produk.nama as nama_produk')
