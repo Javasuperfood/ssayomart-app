@@ -10,7 +10,7 @@ use App\Models\CheckoutResponseModel;
 use App\Models\KategoriModel;
 use App\Models\KuponModel;
 use App\Models\ProdukModel;
-use App\Models\PromoBatchModel;
+use App\Models\PromoProduk;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use App\Models\WishlistModel;
@@ -37,7 +37,7 @@ class BuyController extends BaseController
         $produkModel = new ProdukModel();
         $tokoModel = new TokoModel();
         $userModel = new UsersModel();
-        $promoBatchModel = new PromoBatchModel();
+        $promoProduk = new PromoProduk();
 
         $id_varian = $this->request->getVar('varian');
         $qty = $this->request->getVar('qty');
@@ -49,7 +49,7 @@ class BuyController extends BaseController
         $beratTotal = $produk['berat'] * $qty;
         // dd($produk);
 
-        $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+        $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
         if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
         }
@@ -89,7 +89,7 @@ class BuyController extends BaseController
         $userModel = new UsersModel();
         $wishlistModel = new WishlistModel();
         $wishlistProdModel = new WishlistProdukModel();
-        $promoBatchModel = new PromoBatchModel();
+        $promoProduk = new PromoProduk();
         // $kuponModel = new KuponModel();
         // $kuponList = $kuponModel->find($id);
 
@@ -134,7 +134,7 @@ class BuyController extends BaseController
 
         $totalDiskon = 0;
         $diskonPromo = 0;
-        $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+        $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
         if (count($promoDetails) > 0 && $qty >= $promoDetails[0]['min']) {
             $produk['promo'] = $promoDetails[0];
             $diskonPromo = (float)($total_1 * ($promoDetails[0]['discount']));
