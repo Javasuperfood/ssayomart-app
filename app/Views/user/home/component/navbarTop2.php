@@ -16,8 +16,8 @@ background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%
                     .alamat-list,
                     .market-list,
                     i.bi-pin-map {
-                        font-size: 11px !important;
-                        margin-top: 4px !important;
+                        font-size: 9px !important;
+                        margin-top: 5px !important;
                         /* Sesuaikan dengan ukuran yang Anda inginkan */
                     }
                 }
@@ -26,11 +26,25 @@ background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%
                 <div class="d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                     <?php if (auth()->loggedIn()) : ?>
                         <div class="col-6 d-flex justify-content-start align-items-start">
-                            <i class="bi bi-pin-map pt-2 text-white" style="font-size: 12px;"></i>&nbsp<a href=" <?= base_url(); ?>setting/alamat-list" class="text-white pt-2 link-underline link-underline-opacity-0 alamat-list" style="font-size: 12px;"><?= $alamat ?? 'Pilih Alamat'; ?></a>
+                            <i class="bi bi-pin-map pt-2 text-white" style="font-size: 12px;"></i>&nbsp;
+                            <a href="<?= base_url(); ?>setting/alamat-list" class="text-white pt-2 link-underline link-underline-opacity-0 alamat-list" style="font-size: 12px;">
+                                <?php
+                                $alamat = $alamat ?? 'Pilih Alamat';
+                                echo substr($alamat, 0, 29); // Mengambil 10 karakter pertama
+                                ?>
+                            </a>
                         </div>
+
                         <div class="col-6 d-flex justify-content-end align-items-end">
-                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="text-white pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;"><?= $marketSelected ?? 'Pilih Cabang'; ?> <i class="bi bi-geo-alt"> </i></a>
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="text-white pt-2 link-underline link-underline-opacity-0 market-list" style="font-size: 12px;">
+                                <?php
+                                $marketSelected = $marketSelected ?? 'Pilih Cabang';
+                                echo substr($marketSelected, 0, 29); // Mengambil 10 karakter pertama
+                                ?>
+                                <i class="bi bi-geo-alt"> </i>
+                            </a>
                         </div>
+
                     <?php else : ?>
                         <div class="col-12 text-center">
                             <a href="<?= base_url(); ?>login" class="text-white pt-2 link-underline link-underline-opacity-0" style="font-size: 12px;"><?= lang('Text.login_market') ?></a>
