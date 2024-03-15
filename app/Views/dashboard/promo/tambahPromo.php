@@ -160,8 +160,8 @@ use CodeIgniter\Filters\CSRF;
                         <input type="hidden" name="id_promo_produk" value="<?= $pp['id']; ?>">
                         <input type="hidden" name="id_produk" value="<?= $pp['id_produk']; ?>">
                         <input type="hidden" name="produk_id" value="">
-                        <div class="card-body mt-2">
-                            <table class="table table-bordered align-middle">
+                        <div class="mt-2">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -183,7 +183,7 @@ use CodeIgniter\Filters\CSRF;
                                         <td>
                                             <div class="d-flex flex-column align-items-end">
 
-                                                <button type="button" class="btn btn-outline-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $pp['id_produk']; ?>" id="btnChooseProducts" data-idproduk="<?= $pp['id_produk']; ?>">Create Bundle</button>
+                                                <button type="button" class="btn btn-outline-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $pp['id_produk']; ?>" id="btnChooseProducts">Create Bundle</button>
                                                 <!-- Modal Box Produk -->
                                                 <div class="modal fade" id="exampleModal<?= $pp['id_produk']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -253,10 +253,6 @@ use CodeIgniter\Filters\CSRF;
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <form action="<?= base_url() ?>dashboard/promo/tambah-promo/delete-promo-produk/<?= $pp['id']; ?>" method="post" class="d-block">
-                                                    <?= csrf_field(); ?>
-                                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                                </form>
                                             </div>
                                         </td>
                                     </tr>
@@ -265,7 +261,7 @@ use CodeIgniter\Filters\CSRF;
                                             <!-- Span Badge Produk Terpilih -->
                                             <div class="mb-4">
                                                 <!-- <label for="produk" class="form-label">Produk-Produk Terpilih</label> -->
-                                                <div id="selectedProds1" style="font-size: 13px;"></div>
+                                                <div id="selectedProds1<?= $pp['id_produk']; ?>" style="font-size: 13px;"></div>
                                                 <span id="produkError" data-toggle="tooltip" data-placement="bottom" title="produk yang di pilih" class="text-danger"></span>
                                             </div>
                                         </td>
@@ -276,9 +272,9 @@ use CodeIgniter\Filters\CSRF;
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
+                                                        <th>Image</th>
                                                         <th>Nama</th>
                                                         <th>SKU</th>
-                                                        <th>Aksi</th>
                                                     </tr>
                                                 </thead>
                                                 <?php $i = 1; ?>
@@ -286,14 +282,11 @@ use CodeIgniter\Filters\CSRF;
                                                     <?php if ($pb['id_main_produk'] == $pp['id_produk']) : ?>
                                                         <tr>
                                                             <td><?= $i++; ?></td>
-                                                            <td><?= $pb['id_produk_bundle']; ?></td>
-                                                            <td><?= $pb['sku']; ?></td>
                                                             <td>
-                                                                <form action="<?= base_url() ?>dashboard/promo/tambah-promo/delete-promo-produk-bundle/<?= $pb['id']; ?>" method="post" class="d-block">
-                                                                    <?= csrf_field(); ?>
-                                                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
-                                                                </form>
+                                                                <img src="<?= base_url('assets/img/produk/main/' . ($p['img'])); ?>" class="img-fluid" alt="" width="50" height="50">
                                                             </td>
+                                                            <td><?= $pb['nama_produk']; ?></td>
+                                                            <td><?= $pb['sku']; ?></td>
                                                         </tr>
                                                     <?php endif; ?>
                                                 <?php endforeach; ?>
@@ -303,6 +296,10 @@ use CodeIgniter\Filters\CSRF;
                                 </tbody>
                             </table>
                         </div>
+                    </form>
+                    <form action="<?= base_url() ?>dashboard/promo/tambah-promo/delete-promo-produk/<?= $pp['id']; ?>" method="post" class="d-block my-3">
+                        <?= csrf_field(); ?>
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
                     </form>
                 <?php endforeach; ?>
             </div>
