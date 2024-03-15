@@ -52,7 +52,7 @@ class PromoProduk extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getOngoingPromoItems($id)
+    public function promoProduk($id)
     {
         $currentDate = date('Y-m-d H:i:s'); // Waktu saat ini
 
@@ -65,21 +65,7 @@ class PromoProduk extends Model
             ->where('jsf_promo.start_at <=', $currentDate)
             ->where('jsf_promo.end_at >=', $currentDate)
             ->get();
-        // dd($query);
-
-        return $query->getResultArray();
-    }
-
-    public function promoProduk()
-    {
-        $query = $this->table('jsf_promo_produk')
-            ->select('jsf_promo_produk.*, jsf_promo.title as promo_title, jsf_produk.*')
-            ->join('jsf_promo', 'jsf_promo_produk.id_promo = jsf_promo.id_promo')
-            ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk')
-            ->orderBy('jsf_promo_produk.id_produk', 'ASC')
-            ->get();
 
         return $query->getResultArray();
     }
 }
-

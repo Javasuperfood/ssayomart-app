@@ -290,7 +290,7 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
 
     // CRUD Promo
     $routes->get('promo', 'AdminPromoController::index');
-    // $routes->get('promo/detail-promo/(:segment)', 'AdminPromoController::show/$1');
+    $routes->get('promo/bundle-promo/(:segment)', 'AdminPromoController::show/$1');
     $routes->get('promo/tambah-promo', 'AdminPromoController::tambahPromo');
     $routes->post('promo/tambah-promo/save', 'AdminPromoController::savePromo');
     $routes->get('promo/update-promo/(:segment)', 'AdminPromoController::updatePromo/$1');

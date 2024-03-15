@@ -113,9 +113,8 @@
                 <!-- <a class="collapse-item" href="<?= base_url(); ?>dashboard/produk/management-fetching-content">Fetching Produk</a> -->
                 <!-- Section Promo -->
                 <h6 class="collapse-header text-danger">Menu Promosi:</h6>
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo">Buat Promosi</a>
-                <!-- <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo-item">Tambah Promosi Produk</a> -->
-                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo">Tambah Promosi Produk</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo">Tambah Promo</a>
+                <a class="collapse-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo">Tambah Promo Produk</a>
             </div>
         </div>
     </li>

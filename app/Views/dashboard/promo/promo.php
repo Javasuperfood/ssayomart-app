@@ -40,10 +40,10 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <!-- <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/detail-promo/<?= $p['id_promo']; ?>">
+                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/bundle-promo/<?= $p['id_promo']; ?>">
                                                 <i class="bi bi-eye fa-sm fa-fw mr-2 text-gray-400"></i>
-                                                Detail Promo
-                                            </a> -->
+                                                Bundle Promo
+                                            </a>
                                             <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/update-promo/<?= $p['id_promo']; ?>">
                                                 <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Update Promo

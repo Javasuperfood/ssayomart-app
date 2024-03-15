@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PromoModel;
-use App\Models\PromoItemModel;
 use App\Models\ProdukModel;
 use App\Models\VariasiItemModel;
 use App\Models\PromoProduk;
@@ -12,6 +11,7 @@ use App\Models\PromoProdukBundle;
 
 class AdminPromoController extends BaseController
 {
+    // Promo
     public function index()
     {
         $promoModel = new PromoModel();
@@ -22,42 +22,15 @@ class AdminPromoController extends BaseController
         return view('dashboard/promo/promo', $data);
     }
 
-    public function getproductjson()
-    {
-        $produkModel = new ProdukModel();
-        $data = $this->request->getVar();
-        $keyword = $this->request->getVar('search');
-        if ($keyword) {
-            $produk = $produkModel->orderBy('id_produk', 'DESC')->where('deleted_at', null)->like('nama', '%' . $keyword . '%')->orLike('sku', '%' . $keyword . '%')->findAll();
-        } else {
-            $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
-        }
-        return $this->response->setJSON([
-            'request' => $data,
-            'response' => $produk,
-
-        ]);
-    }
-
+    // Tambah Promo
     public function tambahPromo()
     {
         $promoModel = new PromoModel();
         $produkModel = new ProdukModel();
         $variasiItemModel = new VariasiItemModel();
-        $promoProdukModel = new PromoProduk();
-        $produkBundle = new PromoProdukBundle();
 
         $promoList = $promoModel->findAll();
         $variasiList = $variasiItemModel->findAll();
-        $promoProduk = $promoProdukModel->promoProduk();
-        $produkBundleList = $produkBundle->getOngoingPromoItems();
-
-        $keyword = $this->request->getVar('search');
-        if ($keyword) {
-            $produk = $produkModel->orderBy('id_produk', 'DESC')->adminProdukSearch($keyword);
-        } else {
-            $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
-        }
 
         $keywords = $this->request->getVar('search_product');
         if ($keywords) {
@@ -68,95 +41,14 @@ class AdminPromoController extends BaseController
 
         $data = [
             'promo' => $promoList,
-            'produk' => $produk,
             'produkSearch' => $produkSearch,
-            'promoProduk' => $promoProduk,
-            'produkBundle' => $produkBundleList,
             'variasi' => $variasiList
         ];
         // dd($data);
         return view('dashboard/promo/tambahPromo', $data);
     }
 
-    // Save Promo Produk
-    public function save()
-    {
-        $promoProdukModel = new PromoProduk();
-        $selectedPromo = $this->request->getVar('id_promo');
-        $selectedProduct = $this->request->getVar('id_produk');
-
-        $data = [
-            'id_promo' => $selectedPromo,
-            'id_produk' => $selectedProduct
-        ];
-        // dd($data);
-
-        if ($promoProdukModel->save($data)) {
-            session()->setFlashdata('success', 'Promosi terbaru berhasil disimpan.');
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Promosi terbaru berhasil disimpan.'
-            ];
-            session()->setFlashdata('alert', $alert);
-
-            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
-        } else {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
-        }
-    }
-
-    // Save Produk Bundle
-    public function saveProdukBundle()
-    {
-        $promoProdukBundleModel = new PromoProdukBundle();
-        $promoProdukId = $this->request->getVar('id_promo_produk');
-        $produkId = $this->request->getVar('id_produk');
-        $selectedProducts = $this->request->getVar('produk_id');
-
-        $batchData = [];
-
-        foreach ($selectedProducts as $productId) {
-            // Check if the record already exists
-            $existingRecord = $promoProdukBundleModel
-                ->where('id_promo_produk', $promoProdukId)
-                ->where('id_main_produk', $produkId)
-                ->where('id_produk_bundle', $productId)
-                ->first();
-
-            if (!$existingRecord) {
-                // Record doesn't exist, insert it
-                $batchData[] = [
-                    'id_promo_produk' => $promoProdukId,
-                    'id_main_produk' => $produkId,
-                    'id_produk_bundle' => $productId
-                ];
-            }
-        }
-
-        // Insert all the data at once
-        if (!empty($batchData)) {
-            $promoProdukBundleModel->insertBatch($batchData);
-        }
-        // dd($batchData);
-
-        session()->setFlashdata('success', 'Promosi terbaru berhasil disimpan.');
-        $alert = [
-            'type' => 'success',
-            'title' => 'Berhasil',
-            'message' => 'Promosi terbaru berhasil disimpan.'
-        ];
-        session()->setFlashdata('alert', $alert);
-
-        return redirect()->to('dashboard/promo/tambah-promo')->withInput();
-    }
-
+    // Save Promo
     public function savePromo()
     {
         // ambil gambar
@@ -190,7 +82,6 @@ class AdminPromoController extends BaseController
         ];
         // dd($data);
 
-        // swet alert
         if ($promoModel->save($data)) {
             session()->setFlashdata('success', 'Promosi terbaru berhasil disimpan.');
             $alert = [
@@ -200,38 +91,12 @@ class AdminPromoController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+            return redirect()->to('dashboard/promo')->withInput();
         } else {
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
                 'message' => 'Terdapat kesalahan pada pengisian formulir'
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
-        }
-    }
-
-    // Delete Promo Produk
-    public function deletePromoProduk($id)
-    {
-        // dd($this->request->getVar());
-        $promoProdukModel = new PromoProduk();
-        $deleted = $promoProdukModel->delete($id);
-
-        if ($deleted) {
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Data promo berhasil di hapus.'
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo');
-        } else {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada penghapusan promo'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/promo/tambah-promo')->withInput();
@@ -270,7 +135,7 @@ class AdminPromoController extends BaseController
                 'message' => 'Data promo berhasil di hapus.'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo');
+            return redirect()->to('dashboard/promo');
         } else {
             $alert = [
                 'type' => 'error',
@@ -278,7 +143,7 @@ class AdminPromoController extends BaseController
                 'message' => 'Terdapat kesalahan pada penghapusan promo'
             ];
             session()->setFlashdata('alert', $alert);
-            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+            return redirect()->to('dashboard/promo')->withInput();
         }
     }
 
@@ -295,6 +160,7 @@ class AdminPromoController extends BaseController
         ];
         return view('dashboard/promo/updatePromo', $data);
     }
+
     // Update Action
     public function editPromo($id)
     {
@@ -364,7 +230,7 @@ class AdminPromoController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+            return redirect()->to('dashboard/promo')->withInput();
         } else {
             $alert = [
                 'type' => 'error',
@@ -374,6 +240,164 @@ class AdminPromoController extends BaseController
             session()->setFlashdata('alert', $alert);
 
             return redirect()->to('dashboard/promo/update-promo/' . $id)->withInput();
+        }
+    }
+
+    // ======================================================
+    //             PROMO PRODUK & PROMO BUNDLE
+    // ======================================================
+
+    // Bundle Promo
+    public function show($id)
+    {
+        $promoModel = new PromoModel();
+        $produkModel = new ProdukModel();
+        $variasiItemModel = new VariasiItemModel();
+        $promoProdukModel = new PromoProduk();
+        $produkBundle = new PromoProdukBundle();
+
+        $promoList = $promoModel->findAll();
+        $variasiList = $variasiItemModel->findAll();
+        $promoProduk = $promoProdukModel->promoProduk($id);
+        $produkBundleList = $produkBundle->getProdukBundle();
+
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->adminProdukSearch($keyword);
+        } else {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
+        }
+
+        $data = [
+            'promo' => $promoList,
+            'produk' => $produk,
+            'promoProduk' => $promoProduk,
+            'produkBundle' => $produkBundleList,
+            'variasi' => $variasiList
+        ];
+        // dd($data);
+        return view('dashboard/promo/bundlePromo', $data);
+    }
+
+    public function getproductjson()
+    {
+        $produkModel = new ProdukModel();
+        $data = $this->request->getVar();
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->where('deleted_at', null)->like('nama', '%' . $keyword . '%')->orLike('sku', '%' . $keyword . '%')->findAll();
+        } else {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
+        }
+        return $this->response->setJSON([
+            'request' => $data,
+            'response' => $produk,
+
+        ]);
+    }
+
+    // Save Promo Produk
+    public function save()
+    {
+        $promoProdukModel = new PromoProduk();
+        $selectedPromo = $this->request->getVar('id_promo');
+        $selectedProduct = $this->request->getVar('id_produk');
+
+        $data = [
+            'id_promo' => $selectedPromo,
+            'id_produk' => $selectedProduct
+        ];
+        // dd($data);
+
+        if ($promoProdukModel->save($data)) {
+            session()->setFlashdata('success', 'Promosi terbaru berhasil disimpan.');
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Promosi terbaru berhasil disimpan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+
+            return redirect()->to('dashboard/promo/detail-promo/' . $this->request->getVar('id_promo'))->withInput();
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada pengisian formulir'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+        }
+    }
+
+    // Save Produk Bundle
+    public function saveProdukBundle()
+    {
+        $promoProdukBundleModel = new PromoProdukBundle();
+        $promoProdukId = $this->request->getVar('id_promo_produk');
+        $produkId = $this->request->getVar('id_produk');
+        $selectedProducts = $this->request->getVar('produk_id');
+
+        $batchData = [];
+
+        foreach ($selectedProducts as $productId) {
+            // Check if the record already exists
+            $existingRecord = $promoProdukBundleModel
+                ->where('id_promo_produk', $promoProdukId)
+                ->where('id_main_produk', $produkId)
+                ->where('id_produk_bundle', $productId)
+                ->first();
+
+            if (!$existingRecord) {
+                // Record doesn't exist, insert it
+                $batchData[] = [
+                    'id_promo_produk' => $promoProdukId,
+                    'id_main_produk' => $produkId,
+                    'id_produk_bundle' => $productId
+                ];
+            }
+        }
+
+        // Insert all the data at once
+        if (!empty($batchData)) {
+            $promoProdukBundleModel->insertBatch($batchData);
+        }
+        // dd($batchData);
+
+        session()->setFlashdata('success', 'Promosi terbaru berhasil disimpan.');
+        $alert = [
+            'type' => 'success',
+            'title' => 'Berhasil',
+            'message' => 'Promosi terbaru berhasil disimpan.'
+        ];
+        session()->setFlashdata('alert', $alert);
+
+        return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+    }
+
+    // Delete Promo Produk
+    public function deletePromoProduk($id)
+    {
+        // dd($this->request->getVar());
+        $promoProdukModel = new PromoProduk();
+        $deleted = $promoProdukModel->delete($id);
+
+        if ($deleted) {
+            $alert = [
+                'type' => 'success',
+                'title' => 'Berhasil',
+                'message' => 'Data promo berhasil di hapus.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo');
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terdapat kesalahan pada penghapusan promo'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo')->withInput();
         }
     }
 }
