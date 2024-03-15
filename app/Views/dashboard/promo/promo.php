@@ -5,7 +5,7 @@
 <a href="<?= base_url() ?>dashboard/promo/tambah-promo" class="btn btn-danger mb-4">Tambah Promo</a>
 <!-- <a href="<?= base_url() ?>dashboard/promo/tambah-promo-bundling" class="btn btn-danger mb-4">Tambah Promo Produk</a> -->
 <div class="row">
-   
+
 
     <!-- Right Panel -->
     <div class="col-lg-6 mb-5">
@@ -40,10 +40,10 @@
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/tambah-promo/tambah-promo-produk/<?= $p['id_promo']; ?>">
+                                            <!-- <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/detail-promo/<?= $p['id_promo']; ?>">
                                                 <i class="bi bi-eye fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Detail Promo
-                                            </a>
+                                            </a> -->
                                             <a class="dropdown-item" href="<?= base_url(); ?>dashboard/promo/update-promo/<?= $p['id_promo']; ?>">
                                                 <i class="bi bi-pen-fill fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Update Promo

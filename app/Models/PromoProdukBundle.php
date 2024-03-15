@@ -43,27 +43,14 @@ class PromoProdukBundle extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    // public function getBundlingProduct()
-    // {
-    //     $query = $this->table('jsf_promo_produk_bundle')
-    //         ->select('jsf_promo_produk_bundle.*, jsf_produk.*')
-    //         ->join('jsf_produk', 'jsf_promo_produk_bundle.id_produk = jsf_produk.id_produk')
-    //         ->join('jsf_promo_produk', 'jsf_promo_produk_bundle.id_promo_produk = jsf_promo_produk.id')
-    //         ->orderBy('jsf_promo_produk_bundle.id_produk', 'ASC')
-    //         ->get();
-    //     // dd($query);
-
-    //     return $query->getResultArray();
-    // }
-
     public function getOngoingPromoItems()
     {
-        $query = $this->table('jsf_promo_produk_bundle')
-            ->select('jsf_promo_produk_bundle.*, jsf_produk.*')
-            ->join('jsf_produk', 'jsf_promo_produk_bundle.id_main_produk = jsf_produk.id_produk')
+        $query = $this->db->table('jsf_promo_produk_bundle')
+            ->select('jsf_promo_produk_bundle.*, main_produk.*, bundle_produk.nama as nama_produk')
+            ->join('jsf_produk as main_produk', 'jsf_promo_produk_bundle.id_main_produk = main_produk.id_produk')
+            ->join('jsf_produk as bundle_produk', 'jsf_promo_produk_bundle.id_produk_bundle = bundle_produk.id_produk')
             ->join('jsf_promo_produk', 'jsf_promo_produk_bundle.id_promo_produk = jsf_promo_produk.id')
             ->get();
-        // dd($query);
 
         return $query->getResultArray();
     }
