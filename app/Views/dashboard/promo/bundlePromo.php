@@ -12,6 +12,7 @@
             <?php foreach ($promoProduk as $pp) : ?>
                 <form action="<?= base_url('dashboard/promo/tambah-promo/save-produk-bundle') ?>" method="post">
                     <?= csrf_field(); ?>
+                    <input type="hidden" name="id_promo" value="<?= $promo[0]['id_promo']; ?>">
                     <input type="hidden" name="id_promo_produk" value="<?= $pp['id']; ?>">
                     <input type="hidden" name="id_produk" value="<?= $pp['id_produk']; ?>">
                     <input type="hidden" name="produk_id" value="">

@@ -318,7 +318,7 @@ class AdminPromoController extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('dashboard/promo/detail-promo/' . $this->request->getVar('id_promo'))->withInput();
+            return redirect()->to('dashboard/promo/bundle-promo/' . $this->request->getVar('id_promo'))->withInput();
         } else {
             $alert = [
                 'type' => 'error',
@@ -372,7 +372,7 @@ class AdminPromoController extends BaseController
         ];
         session()->setFlashdata('alert', $alert);
 
-        return redirect()->to('dashboard/promo/tambah-promo')->withInput();
+        return redirect()->to('dashboard/promo/bundle-promo/' . $this->request->getVar('id_promo'))->withInput();
     }
 
     // Delete Promo Produk
