@@ -444,13 +444,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endif ?>
                             </p>
                         </div>
-                        <!-- <div class="text mt-2">
-                            <a role="button" type="submit" class="add-to-wishlist-btn fw-bold link-underline link-underline-opacity-0 link-dark" produk="<?= $produk['id_produk']; ?>">
-                                <i class="bi bi-heart-fill text-danger">
-                                    <span class="text-secondary">Add to Wishlist</span>
-                                </i>
-                            </a>
-                        </div> -->
                     </div>
                     <div class="row-5 mt-4">
                         <div class="col-12 col-md-4 d-md-flex justify-content-md-center">
@@ -824,6 +817,5 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 </script>
 
 <?= $this->include('user/component/scriptAddToCart'); ?>
-<?= $this->include('user/component/scriptAddToWishlist'); ?>
 
 <?= $this->endSection(); ?>

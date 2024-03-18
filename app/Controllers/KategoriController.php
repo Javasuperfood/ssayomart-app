@@ -10,7 +10,6 @@ use App\Models\BannerPromotionModel;
 use App\Models\CartModel;
 use App\Models\CartProdukModel;
 use App\Models\PromoModel;
-use App\Models\WishlistModel;
 use App\Models\ProdukModel;
 use App\Models\UsersModel;
 use App\Models\BlogModel;
@@ -32,8 +31,6 @@ class KategoriController extends BaseController
         if (auth()->loggedIn()) {
             $cart = new CartModel();
             $result1 = $cart->where(['id_user' => user_id()])->first();
-            $wishlist = new WishlistModel();
-            $result2 = $wishlist->where(['id_user' => user_id()])->first();
             if (!$result1) {
                 $dbCart = [
                     'id_user' => user_id(),
@@ -42,16 +39,6 @@ class KategoriController extends BaseController
                 $cart->save($dbCart);
                 $setData = [
                     'cart'  => true,
-                ];
-                $this->session->set($setData);
-            }
-            if (!$result2) {
-                $dbWishlist = [
-                    'id_user' => user_id(),
-                ];
-                $wishlist->save($dbWishlist);
-                $setData = [
-                    'wishlist'  => true,
                 ];
                 $this->session->set($setData);
             }

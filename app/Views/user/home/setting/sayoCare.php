@@ -26,10 +26,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <img src="<?= base_url() ?>assets/img/about/bg1.jpg" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="mask"></div>
             </div>
-            <!-- <div class="img-container">
-                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
-                <div class="img-overlay"></div>
-            </div> -->
             <div class="position-absolute top-50 start-50 translate-middle text-center text-white fs-6 " style="font-family:cursive;">
 
                 <h2 class="fw-bold tagline-2">PT Ssayomart Indonesia </h2>
@@ -39,13 +35,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <!-- tentang ssayomart -->
         <div class="container mt-3">
             <div class="row">
-                <!-- Konten Kolom Pertama -->
-                <!-- <div class="col-12 col-md-6">
-                    <div class="img-container">
-                        <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid rounded-4">
-                        <div class="img-overlay"></div>
-                    </div>
-                </div> -->
                 <div class="col">
                     <div data-aos="fade-down" data-aos-delay="500">
                         <!-- Konten Kolom Kedua -->
@@ -239,10 +228,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top: 110px;">
         <div class="container-fluid p-0 position-relative">
-            <!-- <div class="img-container">
-                <img src="<?= base_url() ?>assets/img/about/bg1.png" width="650px" height="350px" alt="" class="img-fluid">
-                <div class="img-overlay"></div>
-            </div> -->
             <div class="bg-image rounded-bottom-5">
                 <img src="<?= base_url() ?>assets/img/about/bg1.jpg" width="650px" height="350px" alt="" class="img-fluid">
                 <div class="mask"></div>
@@ -252,7 +237,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <h3>PT Ssayomart Indonesia </h3>
             </div>
         </div>
-
         <div class="container mt-3">
             <div class="row">
 
@@ -265,9 +249,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-
-
-
         <div class="container mt-3 d-none d-md-block">
             <h2 class="fw-bold text-dark mt-4">Galeri Kami gambar Potrait <span class="text-danger">Ssayomart</span></h2>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 mt-4">
@@ -300,138 +281,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-
-        <!-- Slider card  -->
-        <!-- <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2 class="fw-bold text-dark mt-4">Our Perfect Team in <span class="text-danger">Ssayomart</span></h2>
-                    <div class="swiper card-swiper mt-3">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
-
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
-
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
-
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
-
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
-
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
-
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="swiper-slide col-md-4 mx-md-2 mb-md-2 mb-3">
-                                <div class="card border-0 shadow-sm">
-                                    <img src="<?= base_url() ?>assets/img/sampel.jpg" class="card-img-top img-fluid rounded-circle mx-auto mt-3" alt="product" style="width: 100px; height: 100px;">
-
-                                    <h5 class="menu-title text-dark text-center mt-2">John Due</h5>
-                                    <h5 class="menu-title text-muted small text-center">CEO</h5>
-
-                                    <p class="text-secondary text-center mt-2 mx-3">
-                                        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus quos veniam repudiandae numquam deleniti saepe".
-                                    </p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Akhir Slider Card -->
-
-        <!-- Sistem Grid Desktop -->
-        <!-- <div class="container d-none d-md-block mt-3">
-            <div class="row"> -->
-        <!-- Kolom Kiri -->
-        <!-- <div class="col-md-3">
-                    <div data-aos="fade-right">
-
-                        <div class="mb-4">
-                            <span class="font-weight-bold display-4">Berbagai <strong>Penghargaan</strong> dan <strong>Pencapaian</strong> yang diperoleh dari tahun 2015 smapai saat ini</span>
-                        </div>
-                    </div>
-                </div> -->
-
-        <!-- Kolom Kanan -->
-        <!-- <div class="col-md-9">
-                    <div class="row"> -->
-        <!-- Kolom Atas Kanan -->
-        <!-- <div class="col-md-6">
-                            <div data-aos="fade-left">
-                                <div class="mb-4">
-                                    <div class="img-container">
-                                        <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                        <div class="img-overlay"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div> -->
-
-        <!-- Kolom Atas Kiri -->
-        <!-- <div class="col-md-6">
-                            <div data-aos="fade-left">
-                                <div class="mb-4">
-                                    <div class="img-container">
-                                        <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                        <div class="img-overlay"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-        <!-- Kolom Bawah Kanan -->
-        <!-- <div class="col-md-6">
-                            <div data-aos="fade-left">
-                                <div class="mb-4">
-                                    <div class="img-container">
-                                        <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                        <div class="img-overlay"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-
-        <!-- Kolom Bawah Kiri -->
-        <!-- <div class="col-md-6">
-                            <div class="mb-4">
-                                <div class="img-container">
-                                    <img src="<?= base_url() ?>assets/img/kfood.jpg" width="650px" height="350px" alt="" class="img-fluid">
-                                    <div class="img-overlay"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Akhir sistem grid Destop -->
-
         <!-- form dan maps -->
         <div class="container">
             <div class="row">

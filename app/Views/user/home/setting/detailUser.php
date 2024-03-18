@@ -150,16 +150,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-3">
-                                        <p class="mb-0"><?= lang('Text.username') ?></p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control form-control-lg <?= (validation_show_error('username')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="username" name="username" placeholder="<?= lang('Text.username') ?>" value="<?= $du['username']; ?>" style="font-size: 16px;">
-                                        <div class="invalid-feedback"><?= validation_show_error('username'); ?></div>
-                                    </div>
-                                </div>
-                                <hr class="border-0">
-                                <div class="row">
-                                    <div class="col-sm-3">
                                         <p class="mb-0"><?= lang('Text.nama_lengkap') ?></p>
                                     </div>
                                     <div class="col-sm-9">
@@ -187,16 +177,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                                 <hr class="border-0">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <p class="mb-0"><?= lang('Text.profil') ?></p>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <input type="file" class="form-control form-control-lg <?= (validation_show_error('img')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="img" name="img" accept="image/*" value="<?= $du['img'] ?>" style="font-size: 14px;">
-                                        <input type="hidden" name="imageLama" value="<?= $du['img']; ?>">
-                                        <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
-                                    </div>
-                                </div>
                                 <div class="py-3">
                                     <div class="col text-end">
                                         <button type="submit" class="mt-3 btn btn-sm btn-danger p-2 fw-bold rounded-3" style="color: #fff; font-size: 13px;"><?= lang('Text.btn_simpan') ?></button>
