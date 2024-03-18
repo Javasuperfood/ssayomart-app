@@ -10,283 +10,65 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Mobile View  -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <!-- Modal  Homepage-->
-        <!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
-            <?php foreach ($banner_pop_up as $pop) : ?>
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content border-0 bg-transparent">
-                        <div class="modal-body d-flex justify-content-center align-items-center">
-                            <img src="<?= base_url() ?>assets/img/banner/popup/<?= $pop['img'] ?>" class="img-fluid" alt="<?= $pop['title']; ?>">
-                            <button type="button" class="btn-close position-absolute btn rounded-circle" data-bs-dismiss="modal" aria-label="Close" style="background-color: white; opacity: 1;"></button>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach ?>
-        </div> -->
-        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
-        <!-- <script>
-            $(document).ready(function() {
-                // Fungsi untuk menampilkan modal
-                function showModal() {
-                    $('#imageModal').modal('show');
-                }
-
-                // Cek apakah modal sudah ditampilkan sebelumnya dalam sesi ini
-                var modalShownThisSession = sessionStorage.getItem('modalShown');
-
-                if (modalShownThisSession !== 'true') {
-                    // Tampilkan modal setelah 1 detik pertama
-                    setTimeout(function() {
-                        showModal();
-                        sessionStorage.setItem('modalShown', 'true');
-                    }, 1 * 1000);
-                } else {
-                    // Setelah 1 detik pertama, tampilkan modal setiap 24 jam
-                    setInterval(function() {
-                        showModal();
-                    }, 86400 * 1000); // 24 jam dalam milidetik
-                }
-
-                // Cek apakah modal pernah ditampilkan dengan cookie
-                var modalShownBefore = getCookie('modalShown');
-
-                if (modalShownBefore !== 'true') {
-                    showModal();
-                    setCookie('modalShown', 'true', 365); // Setel cookie untuk menandai modal sudah ditampilkan
-                }
-            });
-
-            // Fungsi untuk mengatur cookie
-            function setCookie(name, value, days) {
-                var expires = "";
-                if (days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + value + expires + "; path=/";
-            }
-
-            // Fungsi untuk mendapatkan nilai cookie
-            function getCookie(name) {
-                var nameEQ = name + "=";
-                var ca = document.cookie.split(';');
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
-            }
-        </script> -->
-        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
-
-        <!-- <style>
-            /* Ganti warna tombol close menjadi putih */
-            .btn-close {
-                background-color: #ffff;
-                color: #000;
-                font-size: 10px;
-                /* margin-right: 4%; */
-                margin-top: 123%;
-
-                /* atau warna lain sesuai kebutuhan */
-            }
-
-            /* Membuat tombol close berbentuk lingkaran */
-            .btn-close {
-                border-radius: 50%;
-                width: 25px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
-                height: 25px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
-            }
-
-            /*samsung galaxy fold dual mode*/
-            @media screen and (min-width: 717px) and (max-width: 717px) {
-
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-
-                    margin-top: 60%;
-
-                    /* atau warna lain sesuai kebutuhan */
-                }
-
-                /* Membuat tombol close berbentuk lingkaran */
-                .btn-close {
-                    border-radius: 50%;
-                    width: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                    height: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                }
-
-                .img-fluid {
-                    width: 200px;
-                    max-width: 100%;
-                    height: auto;
-                }
-            }
-
-            /* Ipad */
-            @media screen and (min-width: 768px) and (max-width: 1024px) {
-
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-                    margin-left: 7%;
-                    margin-top: 87%;
-
-                    /* atau warna lain sesuai kebutuhan */
-                }
-
-                /* Membuat tombol close berbentuk lingkaran */
-                .btn-close {
-                    margin-right: 5%;
-                    width: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                    height: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                }
-
-            }
-
-            /* samsung galaxy fold lipat */
-            @media (max-width: 280px) {
-
-                .btn-close {
-                    background-color: #ffff;
-                    color: #000;
-                    font-size: 10px;
-                    margin-top: 125%;
-
-                    /* atau warna lain sesuai kebutuhan */
-                }
-
-                /* Membuat tombol close berbentuk lingkaran */
-                .btn-close {
-                    border-radius: 50%;
-                    width: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                    height: 25px;
-                    /* Sesuaikan ukuran sesuai kebutuhan */
-                }
-
-            }
-        </style> -->
-        <!-- Akhir Modal  Homepage-->
         <div class="" style="position: relative; top: -15px;">
-            <!-- Banner Promosi Item -->
+            <!--  NEW PROMOTION SECTION -->
             <section id="rekomendasi">
                 <div class="container">
                     <div class="row px-2">
-                        <?php
-                        $iteration = 0; // Inisialisasi variabel iterasi
-                        foreach ($promo as $p) :
-                            if ($iteration < 2) : // Batasan 4 iterasi
-                        ?>
-                                <div class="col-6 px-1">
-                                    <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                                        <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" alt="<?= $p['title']; ?>" class="card-img-top rounded-2">
-                                    </a>
-                                </div>
-                        <?php
-                                $iteration++; // Tingkatkan variabel iterasi
-                            endif;
-                        endforeach
-                        ?>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Akhir Banner Promosi Item -->
-
-            <!-- rekomendasi -->
-            <!-- <section id="rekomendasi" style="background-color: #f3f5df;">
-                <div class="card" style="border: none; font-family: 'Poppins'; position: relative;background-color: #f3f5df; ">
-                    <div class="container mb-2 mt-2">
-                        <img src="<?= base_url() ?>assets/img/text/TEXT-SARAN-MASAK-2.png" alt="Deskripsi Gambar" class="card-img-top responsive-image" style="width: 340px;">
-                    </div>
-                </div>
-
-                <div class="container">
-                    <div class="swiper mySweety" style="position: relative;">
-                        <div class="swiper-wrapper d-flex">
-                            <?php foreach ($blog_detail as $bd) : ?>
-                                <div class="swiper-slide">
-                                    <div class="shadow-sm">
-                                        <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" class="card-img-top" alt="Thumbnail Artikel">
-                                        <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger" style="position: absolute; bottom: 5px; right: 5px; font-size: 9px; padding: 0 3px;">
-                                            <span class="d-flex align-items-center" style="white-space: nowrap;"> View More <i class="bi bi-arrow-right-circle-fill fs-6" style="margin-left: 4px;"></i></span>
-                                        </a>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-
-
-                        <div class="position-absolute start-0 top-50 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-chevron-left"></i>
-                            </button>
-                        </div>
-
-
-                        <div class="position-absolute end-0 top-50 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 30px; height: 30px;">
-                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
-                                <i class="bi bi-chevron-right"></i>
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </section> -->
-            <!-- end rekomendasi -->
-            <div id="ktr" class="container">
-                <div class="row">
-                    <div class="col text-white">
-                        <p class="px-0 py-0"></p>
-                    </div>
-                </div>
-            </div>
-            <!-- All Kategori -->
-            <div class="container">
-                <div class="d-flex align-items-center justify-content-center">
-                    <div class="fs-4 text-dark text-center">
-                        <span class="teks-kategori"><?= lang('Text.kategori'); ?></span>
-                    </div>
-                    <img src="<?= base_url('assets/img/shopping-cart.png') ?>" class="gambar-anime" alt="Deskripsi Gambar" style="width: 25px; height: auto; margin-left:10px; margin-bottom:5px;">
-                </div>
-
-                <div class="row text-center row-cols-3 mt-3">
-                    <?php foreach ($kategori as $k) : ?>
-                        <div class="col-4 col-md-4 col-lg-2">
-                            <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                                <div class="shadow rounded-4 text-bg-light mb-3 bg-white border-0">
-                                    <div class="px-0 py-0 mx-0 my-0">
-                                        <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
-                                    </div>
-                                </div>
+                        <div class="col-6 px-1">
+                            <a href="<?= base_url() ?>all-promo-bundle">
+                                <img src="<?= base_url() ?>assets/img/promo/Clipped.png" class="card-img-top rounded-2">
                             </a>
                         </div>
-                    <?php endforeach; ?>
-                </div>
-                <div class="row">
-                    <div class="col pb-3">
+                        <div class="col-6 px-1">
+                            <a href="<?= base_url() ?>all-promo-discount">
+                                <img src="<?= base_url() ?>assets/img/promo/Clipped.png" class="card-img-top rounded-2">
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <!-- END NEW PROMOTION SECTION -->
+
+                <div id="ktr" class="container">
+                    <div class="row">
+                        <div class="col text-white">
+                            <p class="px-0 py-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- All Kategori -->
+                <div class="container">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <div class="fs-4 text-dark text-center">
+                            <span class="teks-kategori"><?= lang('Text.kategori'); ?></span>
+                        </div>
+                        <img src="<?= base_url('assets/img/shopping-cart.png') ?>" class="gambar-anime" alt="Deskripsi Gambar" style="width: 25px; height: auto; margin-left:10px; margin-bottom:5px;">
+                    </div>
+
+                    <div class="row text-center row-cols-3 mt-3">
+                        <?php foreach ($kategori as $k) : ?>
+                            <div class="col-4 col-md-4 col-lg-2">
+                                <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
+                                    <div class="shadow rounded-4 text-bg-light mb-3 bg-white border-0">
+                                        <div class="px-0 py-0 mx-0 my-0">
+                                            <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="row">
+                        <div class="col pb-3">
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
     <style>
         @media only screen and (max-width: 280px) {
             .teks-kategori {
                 font-size: 14px;
-                /* Mengurangi ukuran font untuk tampilan yang lebih kecil */
             }
         }
     </style>
@@ -294,98 +76,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:15px;">
-
-        <!-- Modal  Homepage-->
-        <!-- <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true" data-bs-backdrop="static">
-            <?php foreach ($banner_pop_up as $pop) : ?>
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content border-0 bg-transparent">
-                        <div class="modal-body d-flex justify-content-center align-items-center">
-                            <img src="<?= base_url() ?>assets/img/banner/popup/<?= $pop['img'] ?>" class="img-fluid" alt="<?= $pop['title']; ?>">
-                            <button type="button" class="btn-close position-absolute btn btn-light rounded-circle" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach ?>
-        </div> -->
-        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
-        <!-- <script>
-            $(document).ready(function() {
-                // Fungsi untuk menampilkan modal
-                function showModal() {
-                    $('#imageModal').modal('show');
-                }
-
-                // Cek apakah modal sudah ditampilkan sebelumnya dalam sesi ini
-                var modalShownThisSession = sessionStorage.getItem('modalShown');
-
-                if (modalShownThisSession !== 'true') {
-                    // Tampilkan modal setelah 1 detik pertama
-                    setTimeout(function() {
-                        showModal();
-                        sessionStorage.setItem('modalShown', 'true');
-                    }, 1 * 1000);
-                } else {
-                    // Setelah 1 detik pertama, tampilkan modal setiap 24 jam
-                    setInterval(function() {
-                        showModal();
-                    }, 86400 * 1000); // 24 jam dalam milidetik
-                }
-
-                // Cek apakah modal pernah ditampilkan dengan cookie
-                var modalShownBefore = getCookie('modalShown');
-
-                if (modalShownBefore !== 'true') {
-                    showModal();
-                    setCookie('modalShown', 'true', 365); // Setel cookie untuk menandai modal sudah ditampilkan
-                }
-            });
-
-            // Fungsi untuk mengatur cookie
-            function setCookie(name, value, days) {
-                var expires = "";
-                if (days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + value + expires + "; path=/";
-            }
-
-            // Fungsi untuk mendapatkan nilai cookie
-            function getCookie(name) {
-                var nameEQ = name + "=";
-                var ca = document.cookie.split(';');
-                for (var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-                    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-                }
-                return null;
-            }
-        </script> -->
-        <!-- <style>
-            /* Ganti warna tombol close menjadi putih */
-            .btn-close {
-                background-color: #ffff;
-                color: #000;
-                font-size: 10px;
-                margin-top: 85%;
-
-                /* atau warna lain sesuai kebutuhan */
-            }
-
-            /* Membuat tombol close berbentuk lingkaran */
-            .btn-close {
-                border-radius: 50%;
-                width: 20px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
-                height: 20px;
-                /* Sesuaikan ukuran sesuai kebutuhan */
-            }
-        </style> -->
-        <!-- tampil modal only first time dan update 24 jam  JANGAN DIOTAK ATIK-->
-
         <section id="unggul">
             <div class="container">
                 <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">
@@ -414,16 +104,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </section>
-        <!-- ssayo Resto -->
-        <!-- <section>
-            <div class="container d-flex justify-content-between align-items-center">
-                <a href="<?= base_url(); ?>sayo-resto">
-                    <img src="<?= base_url() ?>assets/img/ssayoresto/btnsayoresto.jpg" class="d-block w-100 rounded-3">
-                </a>
-            </div>
-        </section> -->
-        <!-- Akhir SSayo Resto -->
-        <!-- swipper card tampilan web -->
         <section id="unggul">
             <div class="container py-3">
                 <div class="row mt-3">
@@ -458,30 +138,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                                     <?php endif ?>
                                                 </h1>
-
-                                                <!-- <div class="container mt-2 mb-4">
-                                                    <div class="row justify-items-center">
-                                                        <div class="col">
-                                                            <div class="horizontal-counter">
-                                                                <button class="btn btn-sm btn-outline-danger rounded-circle" type="button" onclick="decreaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-dash"></i></button>
-                                                                <input type="text" id="counter" class="form-control form-control-sm border-0 text-center bg-white" value="1" disabled>
-                                                                <button class="btn btn-sm btn-outline-danger mr-4 rounded-circle" type="button" onclick="increaseCount(this, <?= $p['id_produk']; ?>)"><i class="bi bi-plus"></i></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> -->
-                                                <!-- <div class="text-center custom-button pb-3" style="display: flex; justify-content: center;">
-                                                    <form action="<?= base_url('produk/' . $p['slug']); ?>" method="GET">
-                                                        <input type="hidden" name="buy" value="show">
-                                                        <input type="hidden" name="qty" id="Bqty<?= $p['id_produk']; ?>" value="1" value="show">
-                                                        <button type="submit" class="btn btn-danger mx-1 mt-2">
-                                                            Buy Now
-                                                        </button>
-                                                        <span class="badge text-bg-success position-absolute start-0 top-0" style="font-size: 12px; padding: 2px 4px;">10%</span>
-                                                    </form>
-                                                </div> -->
-
-                                                <!-- button Animasi -->
                                                 <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
                                                     <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
                                                         <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>

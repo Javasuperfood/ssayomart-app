@@ -77,6 +77,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     ?>
     <!-- desktop -->
     <style>
+        /* animasi zoom card  */
+        .card-produk {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card-produk:hover {
+            transform: scale(1.1);
+        }
+
+        /* end animasi zoom card  */
         @media (max-width: 280px) {
             .swiper-slide {
                 display: flex;

@@ -9,7 +9,7 @@
  */
 
 $maintenanceMode = false;
-$endTime = '2024-01-16 15:40:00';
+$endTime = '2024-03-24 00:00:00';
 if ($maintenanceMode) {
     return require_once('maintenance/index.php');
 }

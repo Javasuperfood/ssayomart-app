@@ -38,39 +38,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <a href="<?= site_url('lang/id'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'id') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="40px" alt="" class="flag-icon"></a>
                                             <a href="<?= site_url('lang/kr'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'kr') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="40px" alt="" class="flag-icon"></a>
                                             <a href="<?= site_url('lang/en'); ?>" class="d-flex justify-content-end align-items-end dropdown-item <?= ($lang == 'en') ? 'd-none' : ''; ?>"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="40px" alt="" class="flag-icon"></a>
-
-                                            <!-- Divider
-                                            <div class="dropdown-divider"></div>
-
-                                            <span class="dropdown-item-text">Pilihan Bahasa Untuk Produk :</span>
-
-                                            <a href="<?= site_url('lang/id'); ?>" class="d-flex justify-content-end align-items-end dropdown-item"><img src="<?= base_url() ?>assets/img/bahasa/indonesia.png" width="50px" alt="" class="flag-icon"></a>
-                                            <a href="<?= site_url('lang/en'); ?>" class="d-flex justify-content-end align-items-end dropdown-item"><img src="<?= base_url() ?>assets/img/bahasa/inggris.png" width="50px" alt="" class="flag-icon"></a>
-                                            <a href="<?= site_url('lang/kr'); ?>" class="d-flex justify-content-end align-items-end dropdown-item"><img src="<?= base_url() ?>assets/img/bahasa/korea.png" width="50px" alt="" class="flag-icon"></a> -->
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-3 text-center">
-                            <a href="<?= base_url(); ?>setting/detail-user">
-                                <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" class="img-thumbnail rounded-circle border-0" style="width: 80px; height: 80px;" alt="...">
-                            </a>
-                        </div> -->
                     </div>
                 </div>
             </div>
-            <!-- <div class="row ">
-                <div class="col">
-                    <div class="alert alert-danger rounded border-0" role="alert">
-                        <div class="row">
-                            <div class="col-2"><i class="bi bi-heart-pulse-fill text-danger fs-1 position-absolute top-50 start-0 translate-middle-y px-4"></i></div>
-                            <div class="col-10 text-secondary" style="font-size: 14px;"><?= lang('Text.alert') ?></div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="row mb-2 mt-3">
                 <div class="col">
                     <div class="card text-bg-light mb-4 shadow border-0 rounded">
@@ -100,10 +75,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.detail_akun') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-
-                        <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                        </a> -->
                         <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item mb-3 fw-bold shadow-sm rounded-3">
                             <i class="bi bi-cursor pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"> <?= lang('Text.alamat_tersimpan') ?> </span>
@@ -122,11 +93,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.tentang') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                        <!-- <a href="<?= base_url(); ?>setting#" class="list-group-item pb-3 fw-bold">
-                            <i class="bi bi-headset pe-2 text-secondary"></i>
-                            <span class="py-0 my-0 text-secondary"><?= lang('Text.ssayomart_care') ?></span>
-                            <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                        </a> -->
                         <a href="<?= base_url(); ?>/pusat-bantuan" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
                             <i class="bi bi-universal-access-circle pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.pusat_bantuan') ?></span>
@@ -280,9 +246,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>
-                                        <!-- <a href="<?= base_url(); ?>wishlist" class="list-group-item pb-3 fw-bold">
-                                            <i class="bi bi-heart pe-2 text-secondary"></i> <?= lang('Text.favorit') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                        </a> -->
                                         <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
                                             <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                                         </a>

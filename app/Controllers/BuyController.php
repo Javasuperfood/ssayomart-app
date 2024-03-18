@@ -13,8 +13,6 @@ use App\Models\ProdukModel;
 use App\Models\PromoProduk;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
-use App\Models\WishlistModel;
-use App\Models\WishlistProdukModel;
 use App\Models\PromoModel;
 use Midtrans\Config as MidtransConfig;
 
@@ -26,8 +24,6 @@ class BuyController extends BaseController
     {
         $this->key = "15139";;
     }
-
-
 
     public function index($slug)
     {
@@ -87,8 +83,6 @@ class BuyController extends BaseController
         $midtransConfig = new \Config\Midtrans();
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
-        $wishlistModel = new WishlistModel();
-        $wishlistProdModel = new WishlistProdukModel();
         $promoProduk = new PromoProduk();
         // $kuponModel = new KuponModel();
         // $kuponList = $kuponModel->find($id);
@@ -110,8 +104,6 @@ class BuyController extends BaseController
         $email = $userModel->getEmail(user_id());
         $produk = $produkModel->getProdukWithVarianBySlug($slug, $id_varian);
         $discount = '';
-        $wishlist = $wishlistModel->where('id_user', user_id())->first();
-        $wishlistItem = $wishlistProdModel->where('id_wishlist', $wishlist['id_wishlist'])->where('id_produk', $produk['id_produk'])->first();
         $id_alamat = $this->request->getVar('alamatD');
         $alamat = $alamatUserModel->find($id_alamat);
         $service = $this->request->getVar('service');
@@ -261,9 +253,6 @@ class BuyController extends BaseController
             'harga' => $produk['harga_item'],
         ];
         $checkoutProdukModel->insert($checkoutProdukData);
-        if ($wishlistItem) {
-            $wishlistProdModel->delete($wishlistItem['id_wishlist_produk']);
-        }
 
         if (!empty($kode)) {
             $idKupon = $kuponModel->getKuponId($kode);

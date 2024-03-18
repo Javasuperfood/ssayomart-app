@@ -148,22 +148,11 @@ class Setting extends BaseController
         //data yang di ambil dari form
         $data = [
             'id' => $id,
-            'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'telp' => $this->request->getVar('telp'),
-            'img' => $image
         ];
 
         if (!$this->validateData($data, [
-            // 'username' => [
-            //     'rules' => 'required|is_unique[users.username,users.id, ' . $id . ']|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
-            //     'errors' => [
-            //         'required' => 'Username harus diisi.',
-            //         'is_unique' => 'Username sudah digunakan.',
-            //         'regex_match' => 'Username hanya boleh mengandung huruf, angka, atau spasi.',
-            //         'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Username tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
-            //     ]
-            // ],
             'fullname' => [
                 'label' => 'Nama lengkap',
                 'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
@@ -183,13 +172,6 @@ class Setting extends BaseController
                     'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ],
-            // 'img' => [
-            //     'rules' => 'mime_in[img,image/jpg,image/jpeg,image/png]|max_size[img,2048]',
-            //     'errors' => [
-            //         'mime_in' => 'Format gambar tidak sesuai.',
-            //         'max_size' => 'Ukuran gambar terlalu besar.'
-            //     ]
-            // ]
         ])) {
             $alert = [
                 'type' => 'error',
@@ -200,32 +182,11 @@ class Setting extends BaseController
             return redirect()->to('setting/detail-user')->withInput();
         }
 
-        // Jika validasi berhasil atau tidak ada gambar yang diunggah, lanjutkan pembaruan data
-        $namaUserImage = $this->request->getVar('imageLama'); // Tetapkan nama gambar lama sebagai nilai awal
-
-        // if ($image->getError() != 4) { // Jika ada file gambar yang diunggah, proses unggahan gambar
-        //     $produk = $usersModel->find($id);
-
-        //     if ($produk['img'] == 'default.png') {
-        //         $namaUserImage = $image->getRandomName();
-        //         $image->move('assets/img/pic', $namaUserImage);
-        //     } else {
-        //         $namaUserImage = $image->getRandomName();
-        //         $image->move('assets/img/pic', $namaUserImage);
-        //         $gambarLamaPath = 'assets/img/pic/' . $this->request->getVar('imageLama');
-        //         if (file_exists($gambarLamaPath)) {
-        //             unlink($gambarLamaPath);
-        //         }
-        //     }
-        // }
-
         //repalce data
         $data = [
             'id' => $id,
-            // 'username' => $this->request->getVar('username'),
             'fullname' => $this->request->getVar('fullname'),
             'telp' => $this->request->getVar('telp'),
-            // 'img' => $namaUserImage
         ];
 
         if ($usersModel->save($data)) {

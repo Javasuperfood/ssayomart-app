@@ -21,8 +21,8 @@
 </head>
 
 <body>
-    <main>
-        <div class="container">
+    <main class="mt-5">
+        <div class="container text-center">
             <div class="row">
                 <div class="col-12 text-center">
                     <img class="main-logo" src="https://apps.ssayomart.com/assets/img/logopanjang.png" alt="" srcset="">
@@ -34,10 +34,11 @@
                     <img src="/maintenance/m.png" class="img-fluid" alt="...">
                 </div>
                 <div class="col-12">
-                    <h1 class="display-1 fw-bold">Sorry, we are under maintenance</h1>
+                    <h3 class="display-1">Sorry, we are under maintenance</h3>
                 </div>
                 <div class="col-12">
-                    <p class="lead">Please check back later <span id="countdown"></span></p>
+                    <p class="lead text-secondary">Please check back later</p>
+                    <span id="countdown"></span>
                 </div>
             </div>
         </div>
@@ -66,7 +67,7 @@
 
                     const hoursDifference = Math.floor((timeDifference / (1000 * 60 * 60) * 24) / 60);
 
-                    countdownElement.innerHTML = `in <span class="badge text-bg-danger">${padZero(hoursDifference)}:${padZero(minutes)}:${padZero(seconds)}</span>`;
+                    countdownElement.innerHTML = `<span class="badge text-bg-danger">${padZero(hoursDifference)}:${padZero(minutes)}:${padZero(seconds)}</span>`;
 
                     setTimeout(updateCountdown, 1000);
                 }
