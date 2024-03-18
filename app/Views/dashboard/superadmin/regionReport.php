@@ -1,7 +1,6 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-
 <h1 class="h3 mb-3 text-gray-800">Region Report</h1>
 <p>Berikut ini adalah data laporan Penjualan per Regional</p>
 <div class="row">
@@ -47,9 +46,9 @@
     <!-- Left Panel -->
     <div class="col-lg-6">
         <div class="card position-relative border-1 shadow-sm">
-            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-                <i class="bi bi-file-earmark-plus-fill"></i>
-                <h6 class="m-0 font-weight-bold px-2">Form DataTabel Region</h6>
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3 bg-white">
+                <i class="bi bi-file-earmark-plus-fill text-danger"></i>
+                <h6 class="m-0 px-2 text-secondary fw-bold">Form Data Tabel Region</h6>
             </div>
             <div class="card-body">
                 <form>
@@ -57,22 +56,29 @@
                         <legend>Report Data Produk Per Region</legend>
 
                         <div class="mb-3">
-                            <label for="disabledSelect" class="form-label">Pilih Kecamatan / Kab.</label>
-                            <select id="disabledSelect" class="form-select">
-                                <option>Tigaraksa</option>
-                                <option>Kelapa Dua</option>
-                                <option>Cibodas</option>
-                                <option>Cikokol</option>
-                            </select>
+                            <div class="form-group mb-3">
+                                <label for="province" class="form-label">Pilih Provinsi</label>
+                                <select class="form-select" id="provinsi" name="id_provinsi">
+                                    <option selected>Pilih Provinsi</option>
+                                    <?php foreach ($provinsi as $p) : ?>
+                                        <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
+
                         <div class="mb-3">
-                            <label for="disabledSelect" class="form-label">Pilih Bulan / Tahun</label>
-                            <select id="disabledSelect" class="form-select">
-                                <option>Januari</option>
-                                <option>Februari</option>
-                                <option>Maret</option>
-                                <option>April</option>
-                            </select>
+                            <div class="form-group mb-3">
+                                <label for="kabupaten" class="form-label">Pilih Kabupaten/Kota</label>
+                                <select class="form-select" id="kabupaten" name="id_kabupaten">
+                                    <option selected>Pilih Kabupaten/Kota</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Pilih Tanggal</label>
+                            <input type="date" id="date" class="form-select">
                         </div>
                     </fieldset>
                 </form>
@@ -90,25 +96,33 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Makaroni Pedas</td>
-                                        <td>Aming</td>
-                                        <td>25 Pcs</td>
-                                        <td>Rp. 30.000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Makaroni Manis</td>
-                                        <td>Aming</td>
-                                        <td>25 Pcs</td>
-                                        <td>Rp. 25.000</td>
-                                    </tr>
+                                    <?php if (!empty($salesData)) : ?>
+                                        <?php foreach ($salesData as $index => $checkout) : ?>
+                                            <tr>
+                                                <td><?= $index + 1 ?></td>
+                                                <td><?= $checkout['product_name'] ?></td>
+                                                <td><?= $checkout['buyer_name'] ?></td>
+                                                <td><?= $checkout['quantity'] ?></td>
+                                                <td>Rp. <?= number_format($checkout['price'], 0, ',', '.') ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else : ?>
+                                        <tr>
+                                            <td colspan="5">
+                                                <div class="alert alert-danger text-center" role="alert">
+                                                    <span class="fw-bold">
+                                                        Tidak ada data penjualan yang ditemukan
+                                                    </span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -116,13 +130,13 @@
     <!-- Right Panel -->
     <div class="col-lg-6 mb-5">
         <div class="card position-relative border-1 shadow-sm">
-            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-                <i class="bi bi-pie-chart"></i>
-                <h6 class="m-0 fw-bold px-2">Pie Chart Report Region</h6>
+            <div class="card-header d-flex justify-content-start align-items-center border-1 py-3 bg-white">
+                <i class="bi bi-pie-chart-fill text-danger"></i>
+                <h6 class="m-0 fw-bold px-2 text-secondary">Pie Chart Report Region</h6>
             </div>
             <div class="card-body d-flex justify-content-center align-items-center">
                 <!-- Canvas element for the pie chart -->
-                <canvas id="pieChart" width="500"></canvas>
+                <canvas id="reportRegionChart" width="500"></canvas>
             </div>
         </div>
     </div>
@@ -131,13 +145,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    var ctx = document.getElementById('pieChart').getContext('2d');
+    var salesData = <?= json_encode($salesData) ?>;
+
+    var labels = [];
+    var data = [];
+
+    salesData.forEach(function(item) {
+        labels.push(item.city);
+        data.push(item.total);
+    });
+
+    var ctx = document.getElementById('reportRegionChart').getContext('2d');
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
-            labels: ['Region A', 'Region B', 'Region C'],
+            labels: labels,
             datasets: [{
-                data: [10, 20, 30],
+                data: data,
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -158,5 +182,36 @@
     });
 </script>
 
+<script>
+    $('document').ready(function() {
+        var jumlah = 1;
+        $("#provinsi").on('change', function() {
+            const provinsiDropdown = document.getElementById('provinsi');
+            const kabupatenDropdown = document.getElementById('kabupaten');
+
+            kabupatenDropdown.innerHTML = '<option selected></option>';
+            $("#kabupaten").empty();
+            var id_province = $(this).val();
+            $.ajax({
+                url: "<?= base_url('api/getcity') ?>",
+                type: 'GET',
+                data: {
+                    'id_province': id_province,
+                },
+                dataType: 'json',
+                success: function(data) {
+                    console.log(data);
+                    var results = data["rajaongkir"]["results"];
+                    for (var i = 0; i < results.length; i++) {
+                        $("#kabupaten").append($('<option>', {
+                            value: results[i]["city_id"],
+                            text: results[i]["type"] + ' ' + results[i]["city_name"]
+                        }));
+                    }
+                }
+            });
+        });
+    });
+</script>
 
 <?= $this->endSection(); ?>
