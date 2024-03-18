@@ -91,7 +91,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative" produk="<?= $produk['id_produk']; ?>">
                                 <i class="bi bi-cart-fill"></i>
                             </button>
-                            <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                            <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                         <?php endif ?>
                     <?php endif ?>
                 </div>
@@ -480,7 +480,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative me-2" produk="<?= $produk['id_produk']; ?>">
                                     <i class="bi bi-cart-fill"></i>
                                 </button>
-                                <a id="buyButton_1" href="<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+                                <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                             <?php endif ?>
                         <?php endif ?>
                     </div>
@@ -794,7 +794,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         input.value = value;
         $("#qty").val(value);
         <?php if ($varianItem == 1) : ?>
-            var link = `<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+            var link = `<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
             $("#buyButton_1").attr("href", link);
         <?php endif ?>
     }
@@ -808,7 +808,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             input.value = value;
             $("#qty").val(value);
             <?php if ($varianItem == 1) : ?>
-                var link = `<?= base_url('buy/' . $produk['slug'] . '?varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+                var link = `<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
                 $("#buyButton_1").attr("href", link);
             <?php endif ?>
         }
