@@ -93,7 +93,7 @@
                                                         <tr class="text-center">
                                                             <th scope="colgroup">Nama Produk</th>
                                                             <th scope="colgroup">SKU</th>
-                                                            <th scope="colgroup">Jumlah</th>
+                                                            <th scope="colgroup">Qty</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="salesDataBody">
@@ -134,7 +134,7 @@
                                                                 <td><?= $p['fullname']; ?></td>
                                                                 <td><?= number_format($p['total_1'], 0, ',', '.'); ?></td>
                                                                 <td><?= number_format($p['total_2'], 0, ',', '.'); ?></td>
-                                                                <td><?= date("d-m-Y", strtotime($p['created_at'])); ?></td>
+                                                                <td><?= date("d F Y", strtotime($p['created_at'])); ?>kjhkljh</td>
                                                             </tr>
                                                         <?php endforeach ?>
                                                     </tbody>
