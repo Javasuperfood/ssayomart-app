@@ -72,12 +72,14 @@ $routes->post('callback-apple', 'AppleCallbackController::index');
 
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
+    $routes->get('/checkout2', 'TransactionCoreUIController::checkout');
+    $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
+    $routes->get('/pay', 'TransactionCoreUIController::pay');
+
     $routes->get('/buy/(:segment)', 'BuyController::index/$1');
     $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
     $routes->post('/new-payment', 'BuyController::getNewPayment');
 
-
-    // $routes->get('/cart', 'CartController::cart');
     $routes->get('/cart', 'CartController::cart2');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
 
@@ -413,17 +415,6 @@ $routes->group('/webhook', ['filter' => 'webhookFilter'], static function ($rout
 // Route disable
 
 // $routes->get('/maps', 'MapsController::maps');
-
-// Development ROUTES ONLY
-$isP = getenv('CI_ENVIRONMENT');
-if ($isP != 'production') {
-    $routes->get('/checkout2', 'TransactionCoreUIController::checkout');
-    $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
-    $routes->get('/pay', 'TransactionCoreUIController::pay');
-}
-
-
-
 /*
  * --------------------------------------------------------------------
  * Additional Routing
