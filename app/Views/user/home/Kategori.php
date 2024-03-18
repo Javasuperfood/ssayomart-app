@@ -263,17 +263,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
 
                 <div class="row text-center row-cols-3 mt-3">
-                    <?php foreach ($kategori as $k) : ?>
-                        <div class="col-4 col-md-4 col-lg-2">
-                            <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
-                                <div class="shadow rounded-4 text-bg-light mb-3 bg-white border-0">
-                                    <div class="px-0 py-0 mx-0 my-0">
-                                        <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="Kategori" class="card-img-top">
-                                    </div>
+                    <?php foreach ($banner_pop_up as $pop) : ?>
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 bg-transparent">
+                                <div class="modal-body d-flex justify-content-center align-items-center">
+                                    <img src="<?= base_url() ?>assets/img/banner/popup/<?= $pop['img'] ?>" class="img-fluid" alt="<?= $pop['title']; ?>">
+                                    <button type="button" class="btn-close position-absolute btn rounded-circle" data-bs-dismiss="modal" aria-label="Close" style="background-color: white; opacity: 1;"></button>
                                 </div>
-                            </a>
+                            </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endforeach ?>
                 </div>
                 <div class="row">
                     <div class="col pb-3">
