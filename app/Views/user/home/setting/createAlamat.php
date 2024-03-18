@@ -210,7 +210,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-12">
                         <div class="form-group">
                             <label for="provinsi"><?= lang('Text.provinsi') ?><span style="color: red"> *</span></label>
-                            <select class="mt-2 form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi">
+                            <select class="mt-2 form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="provinsi" name="id_provinsi">
                                 <option selected></option>
                                 <?php foreach ($provinsi as $p) : ?>
                                     <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
@@ -223,7 +223,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-12">
                         <div class="form-group">
                             <label for="kabupaten"><?= lang('Text.kab_kota') ?><span style="color: red"> *</span></label>
-                            <select class="mt-2 form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten">
+                            <select class="mt-2 form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kabupaten" name="id_kabupaten">
                                 <option selected></option>
                             </select>
                             <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
