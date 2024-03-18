@@ -356,6 +356,7 @@ $routes->group('api', static function ($routes) { //nanti tambahkan filter auth 
     // $routes->resource('kupon');
     // $routes->resource('arsip');
     $routes->get('getproduct', 'AdminPromoController::getproductjson');
+    $routes->get('getproducts', 'AdminPromoController::getproducts');
     $routes->post('add-to-cart', 'CartController::ajaxAdd', ['filter' => 'group:user, admin, superadmin']);
     $routes->post('delete-cart-product', 'CartController::ajaxDeleteProduk', ['filter' => 'group:user, admin, superadmin']);
     $routes->post('change-cart-qty', 'CartController::ajaxChangeQty', ['filter' => 'group:user, admin, superadmin']);

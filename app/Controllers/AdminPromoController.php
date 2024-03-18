@@ -293,6 +293,23 @@ class AdminPromoController extends BaseController
         ]);
     }
 
+    public function getproducts()
+    {
+        $produkModel = new ProdukModel();
+        $data = $this->request->getVar();
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->where('deleted_at', null)->like('nama', '%' . $keyword . '%')->orLike('sku', '%' . $keyword . '%')->findAll();
+        } else {
+            $produk = $produkModel->orderBy('id_produk', 'DESC')->limit(10)->find();
+        }
+        return $this->response->setJSON([
+            'request' => $data,
+            'response' => $produk,
+
+        ]);
+    }
+
     // Save Promo Produk
     public function save()
     {
