@@ -29,6 +29,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="container-fluid p-4 rounded-top-5 shadow-sm border-0" style="box-shadow: 0px -1px 3px rgba(143, 140, 140, 0.2) !important;">
             <div class="col mt-4 mx-1 text-center">
                 <!-- Fungsi Multi Language -->
                 <!-- <h4 class="fw-bold"><?= $produk[$kolomNama]; ?></h4> -->
@@ -150,8 +153,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             </div>
         </div>
-
         <?= $this->include('user/produk/component/randomProduk'); ?>
+
+
 
         <?php if ($varianItem > 1) : ?>
             <!-- Modal Varian Buy -->
