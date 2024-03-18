@@ -111,7 +111,7 @@ use CodeIgniter\Filters\CSRF;
                                 <div class="modal-body">
                                     <!-- Search Form -->
                                     <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search_product" id="search_product" onkeyup="liveSearch()">
+                                        <input type="text" class="form-control" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search_product" oninput="searchProduk(this)" id="search">
                                     </div>
                                     <!-- Search Results -->
                                     <table class="table" id="productTable">
@@ -129,7 +129,7 @@ use CodeIgniter\Filters\CSRF;
                                                 <tr>
                                                     <td>
                                                         <div class="d-flex">
-                                                            <input type="radio" value="<?= $p['id_produk']; ?>" name="selected_product" onclick="selectProduct(this)">
+                                                            <input onchange="selectProduct(this, '<?= $p['nama']; ?>')" type="radio" id="produkCheckbox<?= $p['id_produk']; ?>" value="<?= $p['id_produk']; ?>" data-nama="<?= $p['nama']; ?>">
                                                             <div class="ms-2"><?= $counter++; ?></div>
                                                         </div>
                                                     </td>
@@ -188,24 +188,70 @@ use CodeIgniter\Filters\CSRF;
 </script>
 
 <script>
-    function liveSearch() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("search_product");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("productTable");
-        tr = table.getElementsByTagName("tr");
+    var productsArray = [];
 
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[2]; // Index 2 corresponds to the column containing product name
-            if (td) {
-                txtValue = td.textContent || td.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                } else {
-                    tr[i].style.display = "none";
-                }
-            }
+    function isChecked(e, productName) {
+        const checkedProduct = e.value;
+        if (checkedProduct) {
+            insertValue(checkedProduct, nama);
         }
+        console.log(checkedProduct);
+    }
+
+    function insertValue(value, nama) {
+        productsArray.push([value, nama]);
+    }
+
+    function searchProduk(e) {
+        // console.log(e.value);
+        const keyword = e.value;
+
+        if (keyword.length > 2) {
+            request(keyword);
+        } else if (keyword.length == 0) {
+            request();
+        }
+    }
+
+    function request(keyword) {
+        // console.log("Keyword:", keyword);
+        $.ajax({
+            type: 'GET',
+            url: "<?= base_url(); ?>api/getproducts",
+            data: {
+                search: keyword
+            },
+            success: function(response) {
+                // console.log("Response:", response);
+                displayProducts(response.response);
+            },
+            error: function(error) {
+                console.error("Error:", error);
+            }
+        });
+    }
+
+
+    function displayProducts(products) {
+        const productList = $('#productTable tbody');
+        productList.empty();
+
+        $.each(products, function(index, product) {
+            const productRow = `
+            <tr>
+                <td>
+                    <div class="d-flex">
+                        <input onchange="selectProduct(this, '${product.nama}')" type="radio" id="produkCheckbox${product.id_produk}" value="${product.id_produk}" data-nama="${product.nama}">
+                        <div class="ms-2">${index + 1}</div>
+                    </div>
+                </td>
+                <td><img src="<?= base_url('assets/img/produk/main/'); ?>${product.img}" class="img-fluid" alt="" width="50" height="50"></td>
+                <td>${product.nama}</td>
+                <td>${product.sku}</td>
+            </tr>
+        `;
+            productList.append(productRow);
+        });
     }
 </script>
 
