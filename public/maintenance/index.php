@@ -36,9 +36,9 @@
                 <div class="col-12">
                     <h1 class="display-1 fw-bold">Sorry, we are under maintenance</h1>
                 </div>
-                <div class="col-12">
+                <!-- <div class="col-12">
                     <p class="lead">Please check back later <span id="countdown"></span></p>
-                </div>
+                </div> -->
             </div>
         </div>
     </main>
