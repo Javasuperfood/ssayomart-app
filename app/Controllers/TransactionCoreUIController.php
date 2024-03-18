@@ -16,8 +16,6 @@ use App\Models\PromoBatchModel;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use App\Models\VariasiItemModel;
-use App\Models\WishlistModel;
-use App\Models\WishlistProdukModel;
 use Midtrans\Config as MidtransConfig;
 
 

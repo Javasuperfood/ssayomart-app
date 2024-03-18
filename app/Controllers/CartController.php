@@ -9,8 +9,6 @@ use App\Models\CheckoutProdukModel;
 use App\Models\KategoriModel;
 use App\Models\StockModel;
 use App\Models\UsersModel;
-use App\Models\WishlistModel;
-use App\Models\WishlistProdukModel;
 
 class CartController extends BaseController
 {
@@ -72,14 +70,10 @@ class CartController extends BaseController
     {
         $cartModel = new CartModel();
         $cartProdModel = new CartProdukModel();
-        $wishlistModel = new WishlistModel();
-        $wishlistProdModel = new WishlistProdukModel();
         $qty = $this->request->getVar('qty');
         $harga = $this->request->getVar('harga');
         $id_produk = $this->request->getVar('id_produk');
         $id_varian = $this->request->getVar('id_varian');
-        $wishlist = $wishlistModel->where('id_user', user_id())->first();
-        $wishlistItem = $wishlistProdModel->where('id_wishlist', $wishlist['id_wishlist'])->where('id_produk', $id_produk)->first();
 
         //=================== nanti ubah 
         $total = $harga * $qty;
@@ -119,9 +113,6 @@ class CartController extends BaseController
             return $this->response->setJSON($response);
         }
         $this->session->set(['countCart' => $this->countCart()]);
-        if ($wishlistItem) {
-            $wishlistProdModel->delete($wishlistItem['id_wishlist_produk']);
-        }
         $response = [
             'success' => true,
             'message' => 'Berhasil menambahkan produk dalam cart.'
