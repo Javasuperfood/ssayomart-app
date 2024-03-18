@@ -12,7 +12,7 @@ use App\Models\CheckoutResponseModel;
 use App\Models\KategoriModel;
 use App\Models\KuponModel;
 use App\Models\ProdukModel;
-use App\Models\PromoBatchModel;
+use App\Models\PromoProduk;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use App\Models\VariasiItemModel;
@@ -46,7 +46,7 @@ class TransactionCoreUIController extends BaseController
         $cartProdukModel = new CartProdukModel();
         $userModel = new UsersModel();
         $tokoModel = new TokoModel();
-        $promoBatchModel = new PromoBatchModel();
+        $promoProduk = new PromoProduk();
         $produkModel = new ProdukModel();
         $variasiItemModel = new VariasiItemModel();
 
@@ -96,7 +96,7 @@ class TransactionCoreUIController extends BaseController
             $totalAkhir += $rowTotal;
             $rowBerat = $produk['berat'] * $produk['qty'];
             $beratTotal += $rowBerat;
-            $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk['id_produk']);
+            $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
             if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
                 $data['produk'][$key]['promo'] = $promoDetails[0];
                 $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
@@ -126,7 +126,7 @@ class TransactionCoreUIController extends BaseController
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
         $checkoutResponseModel = new CheckoutResponseModel();
-        $promoBatchModel = new PromoBatchModel();
+        $promoProduk = new PromoProduk();
         $kuponModel = new KuponModel();
         $variasiItemModel = new VariasiItemModel();
         $cartModel = new CartModel();
@@ -170,7 +170,7 @@ class TransactionCoreUIController extends BaseController
 
 
             // jika ada ada promo maka total akan rumus dibawah 
-            $promoDetails = $promoBatchModel->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
+            $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
             if (count($promoDetails) > 0 && $produk[$key]['qty'] >= $promoDetails[0]['min']) {
                 $produk[$key]['promo'] = $promoDetails[0];
                 $produk[$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
