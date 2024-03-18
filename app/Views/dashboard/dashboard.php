@@ -4,10 +4,12 @@
 <head>
     <?= $this->include('dashboard/component/header'); ?>
     <?= $this->include('user/home/component/preloader'); ?>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <?= $this->renderSection('custom_head'); ?>
     <!-- Datepicker -->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 </head>
 
 <body id="page-top">

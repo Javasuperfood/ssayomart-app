@@ -264,4 +264,32 @@ class CheckoutProdukModel extends Model
         $result = $query->getRow();
         return $result->total_qty ?? 0;
     }
+    public function getSalesDataByRegion($provinceId, $regionId, $date)
+    {
+        $db = db_connect();
+        $builder = $db->table('jsf_checkout');
+
+        $builder->select([
+            'jsf_produk.nama as product_name',
+            'users.fullname as buyer_name',
+            'jsf_checkout_produk.qty as quantity',
+            'jsf_checkout_produk.harga as price',
+            'jsf_checkout.created_at as purchase_date'
+        ]);
+
+        $builder->join('jsf_checkout_produk', 'jsf_checkout_produk.id_checkout = jsf_checkout.id_checkout');
+        $builder->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk');
+        $builder->join('users', 'jsf_checkout.id_user = users.id');
+        $builder->join('jsf_status_pesan', 'jsf_status_pesan.id_status_pesan = jsf_checkout.id_status_pesan');
+        $builder->join('jsf_alamat_users', 'jsf_alamat_users.id_alamat_users = jsf_checkout.id_destination');
+
+        // Tambahkan kondisi where berdasarkan provinceId dan regionId
+        $builder->where('jsf_alamat_users.id_province', $provinceId);
+        $builder->where('jsf_alamat_users.id_city', $regionId);
+
+        // Tambahkan kondisi where berdasarkan tanggal
+        $builder->where('DATE(jsf_checkout.created_at)', $date);
+
+        return $builder->get()->getResultArray();
+    }
 }
