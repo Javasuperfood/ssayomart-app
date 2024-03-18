@@ -37,10 +37,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-check-circle"></i> Pilih Semua
                         </button>
                     <?php endif; ?>
-
-                    <!-- <button class="btn btn-outline-danger btn-sm btn-icon shadow-sm">
-                        <i class="bi bi-trash"></i> Hapus
-                    </button> -->
                 </div>
             </div>
 
@@ -58,7 +54,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
             <?php endif; ?>
 
-            <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
+            <form id="formCheckout" action="<?= base_url('checkout2'); ?>" method="GET">
                 <div class="row row-cols-2">
                     <?php foreach ($produk as $p) : ?>
                         <div class="col-12 pt-3">
