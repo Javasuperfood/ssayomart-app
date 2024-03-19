@@ -91,4 +91,17 @@ class VariasiItemModel extends Model
         // dd($results);
         return $results;
     }
+    public function getHargaByProdukId($id_produk)
+    {
+        // Misalkan Anda ingin mengambil harga dari variasi item yang terkait dengan produk tertentu
+        $query = $this->select('harga_item')
+            ->where('id_produk', $id_produk)
+            ->first(); // Kita hanya perlu satu hasil, karena satu produk mungkin memiliki satu harga utama
+
+        if ($query) {
+            return $query['harga_item']; // Mengembalikan harga jika ditemukan
+        } else {
+            return 0; // Mengembalikan 0 jika tidak ada harga yang ditemukan
+        }
+    }
 }

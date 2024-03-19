@@ -26,7 +26,7 @@
     <div class="col-4">
         <div class="card border-0 shadow-sm border-left-danger mb-4">
             <div class="row">
-                <a href="#" target="__blank">
+                <a href="<?= base_url() ?>dashboard/region-report" target="__blank">
                     <div class="card-body d-flex">
                         <div class="col-10 text-center">
                             <span class="text-secondary fs-6 position-absolute top-50 start-50 translate-middle fw-bold">
@@ -46,8 +46,8 @@
 <div class="d-flex justify-content-between">
     <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-12">
         <div class="card-header d-flex justify-content-start align-items-center border-1 py-3 bg-white">
-            <i class="bi bi-file-text-fill"></i>
-            <h6 class="m-0 fw-bold px-2">Data Penjualan Per-Kategori Ssayomart</h6>
+            <i class="bi bi-file-text-fill text-danger"></i>
+            <h6 class="m-0 fw-bold px-2 text-secondary">Data Penjualan Per-Kategori Ssayomart</h6>
         </div>
         <div class="card-body mb-4">
             <!-- Filter Tahun -->
@@ -73,16 +73,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- LOOPING PRODUK -->
                                     <?php foreach ($products as $key => $product) : ?>
                                         <tr>
                                             <td><?= $key + 1 ?></td>
                                             <td scope="colgroup"><?= $product['nama'] ?></td>
-                                            <td><?= $product['harga']; ?></td>
+                                            <td><?= 'Rp ' . number_format($product['harga'], 0, ',', '.'); ?></td>
                                             <td><?= $product['terjual'] ?></td>
                                         </tr>
                                     <?php endforeach; ?>
-                                    <!-- END LOOPING PRODUK -->
                                 </tbody>
                             </table>
                         <?php else : ?>
@@ -97,5 +95,39 @@
         </div>
     </div>
 </div>
+
+<div class="d-flex justify-content-between">
+    <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-12">
+        <div class="card-header d-flex justify-content-start align-items-center border-1 py-3 bg-white">
+            <i class="bi bi-file-text-fill text-danger"></i>
+            <h6 class="m-0 fw-bold px-2 text-secondary">Produk Terlaris</h6>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body mt-2 mb-3">
+                    <div class="row">
+                        <?php if (!empty($products)) : ?>
+                            <?php foreach ($products as $product) : ?>
+                                <div class="col-12 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="me-3"><?= $product['nama'] ?></div>
+                                        <div class="progress flex-grow-1">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: <?= ($product['total_terjual'] * 10) ?>%;" aria-valuenow="<?= $product['total_terjual'] ?>" aria-valuemin="0" aria-valuemax="10000"><?= $product['total_terjual'] ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <div class="col-12">
+                                Data produk tidak tersedia.
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <?= $this->endSection(); ?>
