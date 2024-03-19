@@ -14,9 +14,6 @@
         </div>
     <?php endforeach; ?>
 </div>
-
-
-
 </div>
 
 <?= $this->endSection(); ?>

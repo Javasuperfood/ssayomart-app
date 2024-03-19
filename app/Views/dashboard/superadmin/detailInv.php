@@ -20,7 +20,16 @@
                 <div class="card-body text-center mt-5">
                     <img src="<?= base_url() ?>assets/img/pic/default.png" alt="profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
                     <h6 class="text-secondary fw-bold">Nama Customer</h6>
-                    <h3 class="fw-bold"><?= $user_id['fullname'] ?></h3>
+                    <?php $namaCustomer = empty($user_id['fullname']) ? "[Nama Lengkap Belum Diisi]" : $user_id['fullname']; ?>
+                    <h5 class="fw-bold text-dark"><?= $namaCustomer ?></h5>
+                    <h6 class="text-secondary fw-bold">Email Customer</h6>
+                    <h5 class="fw-bold text-dark">
+                        <?php foreach ($auth_user as $auth) : ?>
+                            <?php if ($auth['user_id'] == $user_id['id']) : ?>
+                                <?= $auth['secret'] ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </h5>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\AuthIdentitesModel;
 use App\Models\CheckoutModel;
 use App\Models\CheckoutProdukModel;
 use App\Models\UsersModel;
@@ -29,7 +30,11 @@ class SuperAdminDashboard extends BaseController
     {
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
+        $authModel = new AuthIdentitesModel();
+        $userModel = new UsersModel();
+
         $perPage = 10;
+        $auth = $authModel->findAll();
 
         // Tambahkan fungsi untuk mendapatkan daftar cabang
         $branches = $checkoutModel->getBranches();
@@ -47,6 +52,7 @@ class SuperAdminDashboard extends BaseController
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'market' => $adminToko,
             'branches' => $branches, // Sertakan daftar cabang
+            'auth_user' => $auth,
         ];
         $data['penjualan'] = $checkoutModel->getSalesReportByBranch(1);
         // dd($data);
@@ -58,12 +64,14 @@ class SuperAdminDashboard extends BaseController
         $checkoutModel = new CheckoutModel();
         $checkoutProdModel = new CheckoutProdukModel();
         $userModel = new UsersModel();
+        $authModel = new AuthIdentitesModel();
         $perPage = 10;
 
         $startDate = $this->request->getVar('startDate');
         $endDate = $this->request->getVar('endDate');
 
         $user = $userModel->find($id);
+        $auth = $authModel->findAll();
 
         $getSuperAdminReport = $checkoutModel->getSuperAdminReport($perPage, $startDate, $endDate, $id);
 
@@ -81,7 +89,8 @@ class SuperAdminDashboard extends BaseController
             'iterasi' => ($currentPage - 1) * $perPage + 1,
             'startDate' => $startDate,
             'endDate' => $endDate,
-            'user_id' => $user
+            'user_id' => $user,
+            'auth_user' => $auth,
         ];
 
         $data['penjualan'] = $checkoutModel->getSalesReportByBranch(1);
