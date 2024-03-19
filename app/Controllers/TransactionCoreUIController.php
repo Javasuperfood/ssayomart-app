@@ -34,7 +34,7 @@ class TransactionCoreUIController extends BaseController
          * *
          * Paramenter untuk checkout Beli Langsung : base_url('checkout2?slug={SLUG}&varian={ID_VARIASI_ITEM}&qty={QTY}')
          * 
-         * Parameter untuk checkout Cart : base_url('checkout2?cart=true&check%5B%5D={ID_CART_Produk}&check%5B%5D={ID_CART_Produk}')
+         * Parameter untul checkout Cart : base_url('checkout2?cart=true&check%5B%5D={ID_CART_Produk}&check%5B%5D={ID_CART_Produk}')
          * 
          * QQ
          */

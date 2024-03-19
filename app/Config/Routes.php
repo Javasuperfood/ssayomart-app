@@ -51,6 +51,7 @@ $routes->get('/sayo-resto', 'MenuResto::sayoResto');
 
 $routes->get('/all-promo', 'AllPromoController::AllPromo');
 $routes->get('/detail-promo-bundle', 'DetailPromoBundle::detailPromoBundle');
+$routes->get('/detail-promo-bundle/(:segment)', 'AllPromoController::show/$1');
 
 $routes->get('/all-promo-bundle', 'AllPromoController::promoBundle');
 $routes->get('/all-promo-discount', 'AllPromoController::promoDiscount');
@@ -65,7 +66,7 @@ $routes->post('/status/ordering/update/(:segment)', 'StatusGosendController::upd
 // $routes->get('/status-gosend', 'StatusGosendController::statusGosend');
 // $routes->post('/status-gosend/update/(:segment)', 'StatusGosendController::updateStatusGosend/$1');
 
-$routes->get('/promo/(:segment)', 'UserPromoController::index/$1');
+$routes->get('/promo/(:segment)', 'AllPromoController::index/$1');
 
 // $routes->get('callback-apple', 'AppleCallbackController::index');
 $routes->post('callback-apple', 'AppleCallbackController::index');

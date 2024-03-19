@@ -14,62 +14,89 @@
     <div class="col-12 mt-4 text-center">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
+                <div class="row-5 mt-4">
+                    <div class="col-12 col-md-4 d-md-flex justify-content-md-center">
+                        <div class="input-group" style="flex-wrap: nowrap;">
+                            <button class="btn btn-outline-danger rounded-circle" type="button" onClick="decreaseCount(event, this)">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <input type="number" id="counterProduct" class="form-control form-control-sm ms-3 text-center bg-white border-0" disabled value="1">
+                            <button class="btn btn-outline-danger mr-4 rounded-circle me-1" type="button" onClick="increaseCount(event, this)">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <input type="hidden" id="qty" name="qty" value="1">
-                    <input checked class="form-check-input d-none" type="radio" value="#" name="varian" id="#">
-                    <button class="btn btn-white text-danger border-danger d-inline add-to-cart-btn position-relative" produk="#">
+                    <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
+                    <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative" produk="<?= $promoProduk['id_produk']; ?>">
                         <i class="bi bi-cart-fill"></i>
                     </button>
-                    <a id="#" href="#" class="btn btn-white text-danger border-danger fw-bold">Beli</a>
+                    <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                 </div>
-                <h4 class="fw-bold mt-4">Nama Promo</h4>
+
+                <h4 class="fw-bold mt-4"><?= $promoProduk['title']; ?></h4>
                 <div class="row">
                     <hr class="w-100">
                     <div class="col">
-                        <p class="fs-2 text-danger fw-bold">Produk A + Produk B</p>
+                        <?php
+                        $concatenatedNames = '';
+                        $concatenatedNames .= $promoProduk['nama'];
+                        foreach ($promoProduk['produk'] as $pa) {
+                            $concatenatedNames .= ' + ' . $pa['nama'];
+                        }
+                        echo "<p class='fs-2 text-danger fw-bold'>" . $concatenatedNames . "</p>";
+                        ?>
                     </div>
                     <hr class="w-100">
                     <div class="col">
-                        <p class="fs-2 text-danger fw-bold">Rp. 100.000</p>
+                        <p class="fs-2 text-danger fw-bold">
+                            Rp. <?= number_format($promoProduk['harga_item'], 0, ',', '.'); ?>
+                        </p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mx-0 mt-4 mb-5">
-        <div class="col">
-            <h2 class="fw-bold text-merah">Deskripsi</h2>
-            <p class="text-potong">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex cumque velit, nemo dolor, maiores nulla, nihil facere necessitatibus iste asperiores debitis omnis. Quibusdam, minus in perferendis omnis ut nisi iure?</p>
-        </div>
-        <div class="d-flex">
-            <div class="mx-1">
-                <div class="badge-container mb-2">
-                    <span class="text-secondary py-0 my-0">kategori</span>
-                    <br>
-                    <span class="badge text-bg-danger rounded-5 text-uppercase">Kategori</span>
-                </div>
-                <div class="badge-container mb-2">
-                    <span class="text-secondary py-0 my-0">subkategori</span>
-                    <br>
-                    <span class="badge text-bg-warning rounded-5 text-uppercase">nama kategori</span>
-                    <!-- Fungsi Multi Bahasa -->
-                    <br>
-                </div>
-                <div class="badge-container mb-2">
-                    <p class="text-secondary py-0 my-0">stok : </p>
-                    <p class="badge text-bg-primary rounded-5 text-uppercase my-0">1</p>
-                </div>
-                <div class="badge-container mb-0">
-                    <p class="text-secondary py-0 my-0">SKU : </p>
-                    <span class="badge text-bg-success rounded-5 text-uppercase">12345</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<script type="text/javascript">
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+        $("#qty").val(value);
+        <?php if ($varianItem == 1) : ?>
+            var link = `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+            $("#buyButton_1").attr("href", link);
+        <?php endif ?>
+    }
 
+    function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+            $("#qty").val(value);
+            <?php if ($varianItem == 1) : ?>
+                var link = `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+                $("#buyButton_1").attr("href", link);
+            <?php endif ?>
+        }
+    }
 
+    function alertNoStcok() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Stok tidak tersedia!'
+        })
+    }
+</script>
 
 <?= $this->endSection(); ?>
