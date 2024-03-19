@@ -54,4 +54,18 @@ class ProdukBundleModel extends Model
 
         return $query->getResultArray();
     }
+
+    public function getProdukByIdPromoProduk($id)
+    {
+        $db = \Config\Database::connect();
+        $query = $db->table('jsf_promo_produk_bundle')
+            ->select('*')
+            ->join('jsf_promo_produk', 'jsf_promo_produk.id = jsf_promo_produk_bundle.id_promo_produk', 'inner')
+            ->join('jsf_produk', 'jsf_promo_produk_bundle.id_produk_bundle = jsf_produk.id_produk')
+            ->where('jsf_promo_produk_bundle.id_promo_produk', $id)
+            ->get();
+
+        $result = $query->getResultArray();
+        return $result;
+    }
 }

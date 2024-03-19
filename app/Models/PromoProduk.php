@@ -56,7 +56,7 @@ class PromoProduk extends Model
     {
         $db = \Config\Database::connect();
         $query = $db->table('jsf_promo_produk')
-            ->select('jsf_promo_produk.*, jsf_promo.*, vi.id_variasi_item, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, pb.*')
+            ->select('jsf_promo_produk.*, jsf_promo.*, vi.*, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, pb.id_promo_produk')
             ->join('jsf_promo', 'jsf_promo_produk.id_promo = jsf_promo.id_promo')
             ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
@@ -69,6 +69,25 @@ class PromoProduk extends Model
         $result = $query->getResultArray();
         // dd($result);
         return $result;
+    }
+
+    public function getDetailProduct($id)
+    {
+        $query = $this->table('jsf_promo_produk')
+            ->select('jsf_promo_produk.*, jsf_promo.*, vi.*, jsf_produk.*, jsf_promo.title as title, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, pb.id_promo_produk')
+            ->join('jsf_promo', 'jsf_promo_produk.id_promo = jsf_promo.id_promo')
+            ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+            ->join('jsf_promo_produk_bundle pb', 'jsf_promo_produk.id = pb.id_promo_produk')
+            ->where('jsf_produk.deleted_at', null)
+            ->where('jsf_promo_produk.id', $id)
+            ->orderBy('jsf_promo_produk.created_at', 'DESC')
+            ->first();
+
+        // $result = $query->getResultArray();
+
+        // dd($result);
+        return $query;
     }
 
     public function promoProduk($id)

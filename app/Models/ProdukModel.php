@@ -112,6 +112,13 @@ class ProdukModel extends Model
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->where(['slug' => $slug1])->first();
     }
 
+    public function getSingleProduct()
+    {
+        return $this->select('jsf_produk.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
+            ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
+            ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->first();
+    }
+
     public function getSubKategoriByKategori($kategoriId)
     {
         return $this->db->table('jsf_subkategori')

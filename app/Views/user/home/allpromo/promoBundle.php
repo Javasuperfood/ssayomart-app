@@ -2,25 +2,21 @@
 <?= $this->section('page-content') ?>
 
 <div class="container">
-    <div class="card mb-3 shadow-sm border-0">
-        <?php
-        $iteration = 0;
-        foreach ($promo as $p) :
-            if ($iteration < 1) : // Batasan 4 iterasi
-        ?>
-                <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>">
-                    <img src="<?= base_url() ?>assets/img/promo/1701760476_754480444146dd2fdb1f.jpg" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold m-0 text-decoration-none text-dark">Promo asik-asik</h5>
-                        <p class="card-text text-dark">ini adalah promo murah yang ada di ssayomart</p>
-                    </div>
-                </a>
-        <?php
-                $iteration++;
-            endif;
-        endforeach
-        ?>
-    </div>
+    <?php foreach ($promo as $p) : ?>
+        <div class="card mb-4 shadow-sm border-0">
+            <a href="<?= base_url() ?>promo/<?= $p['slug']; ?>" class="text-decoration-none">
+                <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title fw-bold m-0 text-decoration-none text-dark"><?= $p['title']; ?></h5>
+                    <p class="card-text text-dark"><?= $p['deskripsi']; ?></p>
+                </div>
+            </a>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+
+
 </div>
 
 <?= $this->endSection(); ?>

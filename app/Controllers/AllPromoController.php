@@ -8,13 +8,14 @@ use App\Models\BannerModel;
 use App\Models\BannerPopupModel;
 use App\Models\BannerPromotionModel;
 use App\Models\CartModel;
-use App\Models\CartProdukModel;
 use App\Models\PromoModel;
 use App\Models\ProdukModel;
+use App\Models\VariasiItemModel;
 use App\Models\UsersModel;
 use App\Models\BlogModel;
 use App\Models\TokoModel;
-use App\Models\AlamatUserModel;
+use App\Models\PromoProduk;
+use App\Models\ProdukBundleModel;
 
 class AllPromoController extends BaseController
 {
@@ -82,6 +83,128 @@ class AllPromoController extends BaseController
         ];
         // dd($data);
         return view('user/home/allpromo/promoBundle', $data);
+    }
+
+    public function index($slug)
+    {
+        $kategori = new KategoriModel();
+        $promoProduk = new PromoProduk();
+        $promoModel = new PromoModel();
+        $produkBundle = new ProdukBundleModel();
+        $now = date('Y-m-d H:i:s');
+        $promo = $promoModel->getPromo($now);
+
+        $bahasa = session()->get('lang');
+
+        $promoItem = $promoProduk->getPromo($slug);
+        if ($promoItem) {
+            $filteredPromoItems = [];
+
+            foreach ($promoItem as $item) {
+                $idPromoProduk = $item['id_promo'];
+
+                $idPromoKategoriCocok = false;
+                foreach ($promo as $kategoriItem) {
+                    if ($kategoriItem['id_promo'] === $idPromoProduk) {
+                        $idPromoKategoriCocok = true;
+                        break;
+                    }
+                }
+                if ($idPromoKategoriCocok) {
+                    $filteredPromoItems[] = $item;
+                }
+            }
+            $promoItem = $filteredPromoItems;
+        }
+        // dd($promoItem);
+
+        foreach ($promoItem as $key => $c) {
+            $promoItem[$key]['produk'] = $produkBundle->getProdukByIdPromoProduk($c['id_promo_produk']);
+        }
+        // dd($promoItem);
+
+
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+        }
+
+        $title = (!$promoItem) ? 'Promo' : $promoItem[0]['title'];
+
+        $data = [
+            'title' => $title,
+            'produk' => $promoItem,
+            'kategori_promo' => $promo,
+            'kategori' => $kategori->findAll(),
+            'kolomNama' => $kolomNama,
+            'back' => ''
+        ];
+        // dd($data);
+        return view('user/promo/promo', $data);
+    }
+
+    public function show($id)
+    {
+        $kategori = new KategoriModel();
+        $promoProduk = new PromoProduk();
+        $promoModel = new PromoModel();
+        $produkBundle = new ProdukBundleModel();
+        $produkModel = new ProdukModel();
+        $varianModel = new VariasiItemModel();
+        $now = date('Y-m-d H:i:s');
+        $promo = $promoModel->getPromo($now);
+
+        $bahasa = session()->get('lang');
+
+        $produk = $produkModel->getSingleProduct();
+        $varianItem = $varianModel->getByIdProduk($produk['id_produk']);
+
+        $promoItem = $promoProduk->getDetailProduct($id);
+        // dd($promoItem);
+        // if ($promoItem) {
+        //     $filteredPromoItems = [];
+
+        //     foreach ($promoItem as $item) {
+        //         $idPromoProduk = $item['id_promo'];
+
+        //         $idPromoKategoriCocok = false;
+        //         foreach ($promo as $kategoriItem) {
+        //             if ($kategoriItem['id_promo'] === $idPromoProduk) {
+        //                 $idPromoKategoriCocok = true;
+        //                 break;
+        //             }
+        //         }
+        //         if ($idPromoKategoriCocok) {
+        //             $filteredPromoItems[] = $item;
+        //         }
+        //     }
+        //     $promoItem = $filteredPromoItems;
+        // }
+
+        $promoItem['produk'] = $produkBundle->getProdukByIdPromoProduk($promoItem['id_promo_produk']);
+        // dd($promoItem);
+
+        if ($bahasa == 'id') {
+            $kolomNama = 'nama';
+        } else {
+            $kolomNama = 'nama_' . $bahasa;
+        }
+
+        $title = (!$promoItem) ? 'Promo' : $promoItem['title'];
+
+        $data = [
+            'title' => $title,
+            'promoProduk' => $promoItem,
+            'kategori_promo' => $promo,
+            'kategori' => $kategori->findAll(),
+            'varian' => $varianItem,
+            'varianItem' => count($varianItem),
+            'kolomNama' => $kolomNama,
+            'back' => ''
+        ];
+        // dd($data);
+        return view('user/home/allpromo/detailPromoBundle', $data);
     }
 
     public function promoDiscount()
