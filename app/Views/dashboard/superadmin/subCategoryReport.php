@@ -63,4 +63,44 @@
     </div>
 </div>
 
+<div class="d-flex justify-content-between">
+    <div class="card shadow-sm p-3 mb-5 rounded mb-5 col-sm-12">
+        <div class="card-header d-flex justify-content-start align-items-center border-1 py-3 bg-white">
+            <i class="bi bi-file-text-fill text-danger"></i>
+            <h6 class="m-0 fw-bold px-2 text-secondary">Sub Kategori Terlaris</h6>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card-body mt-2 mb-3">
+                    <div class="row">
+                        <?php
+                        $salesData = [];
+                        foreach ($subcategories as $subcategory) {
+                            $totalSales = 0;
+                            foreach ($subcategory['products'] as $product) {
+                                $totalSales += $product['qty'];
+                            }
+                            $salesData[$subcategory['nama_kategori']] = $totalSales;
+                        }
+
+                        arsort($salesData);
+
+                        foreach ($salesData as $subcategoryName => $totalSales) {
+                            echo '<div class="col-12 mb-3">';
+                            echo '<div class="d-flex align-items-center">';
+                            echo '<div class="me-3">' . $subcategoryName . '</div>';
+                            echo '<div class="progress flex-grow-1">';
+                            echo '<div class="progress-bar bg-danger" role="progressbar" style="width: ' . ($totalSales * 10) . '%;" aria-valuenow="' . $totalSales . '" aria-valuemin="0" aria-valuemax="10000">' . $totalSales . '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                            echo '</div>';
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?= $this->endSection(); ?>

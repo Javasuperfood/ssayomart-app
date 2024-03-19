@@ -292,4 +292,46 @@ class CheckoutProdukModel extends Model
 
         return $builder->get()->getResultArray();
     }
+
+    public function getProdukDetailByIdCategory($kategori_id)
+    {
+        $query = $this->select('jsf_checkout_produk.id_produk, jsf_checkout_produk.id_variasi_item, jsf_checkout_produk.qty, jsf_checkout_produk.harga, jsf_produk.nama AS produk_nama')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->where('jsf_produk.id_kategori', $kategori_id);
+
+        $result = $query->findAll();
+
+        return $result;
+    }
+
+    public function getProdukDetailBySubcategoryId($subkategori_id)
+    {
+        $query = $this->select('jsf_checkout_produk.id_produk, jsf_checkout_produk.id_variasi_item, jsf_checkout_produk.qty, jsf_checkout_produk.harga, jsf_produk.nama AS produk_nama')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->where('jsf_produk.id_sub_kategori', $subkategori_id);
+
+        $result = $query->findAll();
+
+        return $result;
+    }
+
+    public function getProductsBySubcategoryId($subkategori_id)
+    {
+        $query = $this->select('jsf_produk.id_produk, jsf_produk.nama, jsf_produk.id_sub_kategori, jsf_produk.harga, jsf_produk.deskripsi, jsf_produk.gambar, jsf_produk.slug')
+            ->join('jsf_sub_kategori', 'jsf_produk.id_sub_kategori = jsf_sub_kategori.id_sub_kategori')
+            ->where('jsf_sub_kategori.id_sub_kategori', $subkategori_id);
+
+        return $query->findAll();
+    }
+
+    public function getProdukDetail($produk_id)
+    {
+        $query = $this->select('jsf_checkout_produk.id_produk, jsf_checkout_produk.id_variasi_item, jsf_checkout_produk.qty, jsf_checkout_produk.harga, jsf_produk.nama AS produk_nama')
+            ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
+            ->where('jsf_checkout_produk.id_produk', $produk_id);
+
+        $result = $query->findAll();
+
+        return $result;
+    }
 }
