@@ -26,7 +26,7 @@
 
 <div class="row">
     <div class="col">
-        <a class="btn btn-outline-danger mb-4" href="<?= base_url(); ?>dashboard/produk/tambah-produk"><i class="bi bi-plus-square"></i> Tambah Produk</a>
+        <a class="btn btn-outline-danger mb-4" href="<?= base_url(); ?>dashboard/produk/tambah-produk"><i class="bi bi-plus-circle"></i> Tambah Produk</a>
         <a class="btn btn-outline-danger mb-4" href="#" data-toggle="modal" data-target="#deleteBatchModal" id="btnDelete" style="display: none;">
             <i class="bi bi-trash-fill"></i>
             Delete
@@ -37,7 +37,7 @@
             <div class="input-group mb-4">
                 <!-- Add category search input -->
                 <select class="form-select" aria-label="category_search" name="category_search">
-                    <?php foreach($kat as $k): ?>
+                    <?php foreach ($kat as $k) : ?>
                         <option value="<?= $k['nama_kategori']; ?>" <?= ($k['id_kategori'] == $produk[0]['id_kategori']) ? 'selected' : ''; ?>><?= $k['nama_kategori']; ?></option>
                     <?php endforeach; ?>
                 </select>
@@ -50,8 +50,8 @@
 
 <div class="card border-1 shadow-sm mb-5">
     <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-        <i class="bi bi-file-text-fill"></i>
-        <h6 class="m-0 fw-bold px-2">List Produk</h6>
+        <i class="bi bi-box-seam-fill fs-5 text-danger"></i>
+        <h6 class="m-0 fw-bold px-2 text-dark">List Produk</h6>
     </div>
     <div class="card-body ">
         <div class="row">

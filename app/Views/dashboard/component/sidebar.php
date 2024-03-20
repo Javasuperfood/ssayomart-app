@@ -135,6 +135,14 @@
         </div>
     </li>
 
+    <!-- Kupon -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard/kupon">
+            <i class="bi bi-tags-fill"></i>
+            <span>Kupon</span></a>
+    </li>
+
+
     <!-- Banner -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="<?= base_url(); ?>" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -148,13 +156,6 @@
                 <a class="collapse-item" href="<?= base_url(); ?>dashboard/blog/blog">Artikel</a>
             </div>
         </div>
-    </li>
-
-    <!-- Kupon -->
-    <li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard/kupon">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Kupon</span></a>
     </li>
 
     <!-- Divider -->

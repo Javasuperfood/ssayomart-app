@@ -5,18 +5,18 @@
 <h1 class="h3 mb-2 text-gray-800">Kategori Produk</h1>
 <ul class="breadcrumb bg-light px-0">
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item text-danger active text-decoration-underline"><a class="text-danger" href="<?= base_url(); ?>dashboard/kategori">Kategori</a></li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline"><a class="text-danger" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a></li>
 </ul>
 <div class="row">
     <div class="col mb-4">
-        <a class="btn btn-danger mb-4" data-toggle="tooltip" data-placement="bottom" title="Klik untuk menambah kategori" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
+        <a class="btn btn-outline-danger mb-4" data-toggle="tooltip" data-placement="bottom" title="Klik untuk menambah kategori" href="<?= base_url(); ?>dashboard/kategori/tambah-kategori">Tambah Kategori & Sub Kategori
         </a>
-        <a class="btn btn-danger mb-4 ms-2" data-toggle="tooltip" data-placement="bottom" title="Klik untuk mengubah urutan Kategori" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah urutan kategori
+        <a class="btn btn-outline-danger mb-4 ms-2" data-toggle="tooltip" data-placement="bottom" title="Klik untuk mengubah urutan Kategori" href="<?= base_url(); ?>dashboard/kategori/shorting">Ubah urutan kategori
         </a>
         <div class="card border-1 shadow-sm position-relative">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-                <i class="bi bi-file-text-fill"></i>
-                <h6 class="m-0 fw-bold px-2">List Kategori dan Sub Kategori Produk</h6>
+                <i class="bi bi-diagram-3-fill text-danger fs-5"></i>
+                <h6 class="m-0 fw-bold px-2 text-dark">List Kategori dan Sub Kategori Produk</h6>
             </div>
             <div class="card-body mt-2">
                 <table class="table table-hover" id="dataTable" cellspacing="0">

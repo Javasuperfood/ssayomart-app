@@ -5,13 +5,20 @@ use CodeIgniter\Filters\CSRF;
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
+<h1 class="h3 mb-3 text-gray-800">Tambah Promosi Ssayomart</h1>
+<ul class="breadcrumb bg-light px-0">
+    <li class="breadcrumb-item">Dashboard</li>
+    <li class="breadcrumb-item"><a class="text-danger" href="<?= base_url(); ?>dashboard/promo">List Promo</a></li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline">Tambah Promo</li>
+</ul>
+
 <div class="d-flex">
     <!-- Left Panel -->
     <div class="col-lg-6 mb-5">
         <div class="card border-1 shadow-sm position-relative">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-                <i class="bi bi-file-earmark-plus-fill"></i>
-                <h6 class="m-0 fw-bold px-2">Buat Promo</h6>
+                <i class="bi bi-percent text-danger fs-5"></i>
+                <h6 class="m-0 fw-bold px-2 text-dark">Buat Promo</h6>
             </div>
             <div class="card-body">
                 <!-- code -->
@@ -74,8 +81,8 @@ use CodeIgniter\Filters\CSRF;
     <div class="col-lg-6 mb-5">
         <div class="card position-relative border-1 shadow-sm">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-                <i class="bi bi-file-text-fill"></i>
-                <h6 class="m-0 fw-bold px-2">Buat Promo Produk</h6>
+                <i class="bi bi-patch-check-fill text-danger fs-5"></i>
+                <h6 class="m-0 fw-bold px-2 text-dark">Buat Promo Produk</h6>
             </div>
 
             <div class="card-body">

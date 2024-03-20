@@ -2,17 +2,20 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-3 text-gray-800">Promosi Ssayomart</h1>
-<a href="<?= base_url() ?>dashboard/promo/tambah-promo" class="btn btn-danger mb-4">Tambah Promo</a>
+<ul class="breadcrumb bg-light px-0">
+    <li class="breadcrumb-item">Dashboard</li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline"><a class="text-danger" href="<?= base_url(); ?>dashboard/promo">List Promo</a></li>
+</ul>
+<a href="<?= base_url() ?>dashboard/promo/tambah-promo" class="btn btn-outline-danger mb-4"><i class="bi bi-plus-circle text-danger"></i>&nbsp;Tambah Promo</a>
 <!-- <a href="<?= base_url() ?>dashboard/promo/tambah-promo-bundling" class="btn btn-danger mb-4">Tambah Promo Produk</a> -->
 <div class="row">
 
-
     <!-- Right Panel -->
-    <div class="col-lg-6 mb-5">
+    <div class="col-lg-12 mb-5">
         <div class="card position-relative border-1 shadow-sm">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-                <i class="bi bi-file-text-fill"></i>
-                <h6 class="m-0 fw-bold px-2">List Promosi Ssayomart</h6>
+                <i class="bi bi-file-text-fill text-danger fs-5"></i>
+                <h6 class="m-0 fw-bold px-2 text-dark">List Promosi Ssayomart</h6>
             </div>
             <div class="card-body mt-2">
                 <table class="table text-center">

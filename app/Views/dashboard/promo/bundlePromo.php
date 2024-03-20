@@ -1,11 +1,17 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
-
-<div class="col-lg-6 mb-4">
+<h1 class="h3 mb-3 text-gray-800">Tambah Promosi Bundle</h1>
+<ul class="breadcrumb bg-light px-0">
+    <li class="breadcrumb-item">Dashboard</li>
+    <li class="breadcrumb-item"><a class="text-danger" href="<?= base_url(); ?>dashboard/promo">List Promo</a></li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline">Tambah Promosi Bundle</li>
+</ul>
+<div class="col-lg-12 mb-4">
     <div class="card position-relative border-1 shadow-sm">
         <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-            <h6 class="m-0 fw-bold px-2">List Produk Bundle</h6>
-            <a href="<?= base_url() ?>dashboard/promo/tambah-promo" class="btn btn-danger ms-2">Tambah Promo Produk</a>
+            <i class="bi bi-tags-fill text-danger fs-5"></i>
+            <h6 class="m-0 fw-bold px-2 text-dark">List Produk Bundle</h6>
+            <a href="<?= base_url() ?>dashboard/promo/tambah-promo" class="btn btn-outline-danger ms-2"><i class="bi bi-plus-circle text-danger"></i>&nbsp;Tambah Promo Produk</a>
         </div>
 
         <div class="card-body">
@@ -39,7 +45,7 @@
                                     <td>
                                         <div class="d-flex flex-column align-items-end">
 
-                                            <button type="button" class="btn btn-outline-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $pp['id_produk']; ?>" id="btnChooseProducts">Create Bundle</button>
+                                            <button type="button" class="btn btn-outline-danger mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $pp['id_produk']; ?>" id="btnChooseProducts"><i class="bi bi-plus-circle text-danger"></i>&nbsp;Produk Bundling</button>
                                             <!-- Modal Box Produk -->
                                             <div class="modal fade" id="exampleModal<?= $pp['id_produk']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -155,7 +161,7 @@
                 </form>
                 <form action="<?= base_url() ?>dashboard/promo/tambah-promo/delete-promo-produk/<?= $pp['id']; ?>" method="post" class="d-block my-3">
                     <?= csrf_field(); ?>
-                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    <button type="submit" class="btn btn-outline-danger"><i class="bi bi-trash-fill text-danger"></i>&nbsp;Delete</button>
                 </form>
             <?php endforeach; ?>
         </div>

@@ -2,11 +2,16 @@
 <?= $this->section('page-content') ?>
 
 <h1 class="h3 mb-3 text-gray-800">Edit Promo</h1>
+<ul class="breadcrumb bg-light px-0">
+    <li class="breadcrumb-item">Dashboard</li>
+    <li class="breadcrumb-item"><a class="text-danger" href="<?= base_url(); ?>dashboard/promo">List Promo</a></li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline">Edit Promo</li>
+</ul>
 
 <div class="card border-1 shadow-sm position-relative mb-5">
     <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-        <i class="bi bi-pencil-square"></i>
-        <h6 class="m-0 fw-bold px-2">Edit Promo</h6>
+        <i class="bi bi-pencil-square fs-5 text-danger"></i>
+        <h6 class="m-0 fw-bold px-2 text-dark">Edit Promo</h6>
     </div>
     <div class="card-body">
         <form action="<?= base_url(); ?>dashboard/promo/update-promo/edit-promo/<?= $promo['id_promo']; ?>" method="POST" enctype="multipart/form-data">

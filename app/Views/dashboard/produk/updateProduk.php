@@ -13,8 +13,8 @@
 
 <div class="card border-1 shadow-sm position-relative mb-5">
     <div class="card-header d-flex align-items-center justify-content-start border-1 py-3">
-        <i class="bi bi-pencil-square text-danger"></i>
-        <h6 class="m-0 fw-bold px-2">Edit Produk</h6>
+        <i class="bi bi-pencil-square text-danger fs-5"></i>
+        <h6 class="m-0 fw-bold px-2 text-dark">Edit Produk</h6>
     </div>
     <div class="card-body">
         <!-- code -->

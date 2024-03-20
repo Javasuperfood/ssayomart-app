@@ -8,13 +8,13 @@
     <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon">Tambah Kupon</a></li>
 </ul>
 
-<a class="btn btn-danger mb-4" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon"><i class="bi bi-plus-circle me-2"></i>Tambah kupon</a>
+<a class="btn btn-outline-danger mb-4" href="<?= base_url(); ?>dashboard/kupon/tambah-kupon"><i class="bi bi-plus-circle me-2"></i>Tambah kupon</a>
 
 <!-- DataTales Example -->
 <div class="card border-1 shadow-sm mb-5">
     <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-        <i class="bi bi-file-text-fill"></i>
-        <h6 class="m-0 font-weight-bold px-2">List Kupon</h6>
+        <i class="bi bi-tags-fill text-danger fs-5"></i>
+        <h6 class="m-0 font-weight-bold px-2 text-dark">List Kupon</h6>
     </div>
     <div class="card-body mt-2">
         <div class="table-responsive">

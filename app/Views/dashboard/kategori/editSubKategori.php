@@ -1,9 +1,15 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
-
+<h1 class="h3 mb-3 text-gray-800">Sub Kategori Produk</h1>
+<ul class="breadcrumb bg-light px-0">
+    <li class="breadcrumb-item">Dashboard</li>
+    <li class="breadcrumb-item"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a></li>
+    <li class="breadcrumb-item text-danger active text-decoration-underline">Tambah Sub Kategori</li>
+</ul>
 <div class="card border-0 shadow-sm position-relative">
-    <div class="card-header border-0 py-3">
-        <h6 class="m-0 font-weight-bold text-danger">Form Edit Sub Kategori</h6>
+    <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
+        <i class="bi bi-pencil-square text-danger fs-5"></i>
+        <h6 class="m-0 fw-bold px-2 text-dark">Form Edit Sub Kategori</h6>
     </div>
     <div class="card-body">
         <!-- code -->
@@ -31,7 +37,7 @@
                 <input required type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukan nama slug" name="slug" value="<?= $subkategori['slug'] ?>">
                 <span id="slugError" class="text-danger"></span>
             </div> -->
-            
+
             <div class="mb-3">
                 <label for="parent_kategori_id">Kategori Induk</label>
                 <select class="form-control border-0 shadow-sm" id="parent_kategori_id" name="parent_kategori_id">

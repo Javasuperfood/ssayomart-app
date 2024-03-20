@@ -13,18 +13,18 @@
         cursor: pointer;
     }
 </style>
-<h1 class="h3 mb-2 text-gray-800">Update Sorting</h1>
+<h1 class="h3 mb-2 text-gray-800">Ubah Urutan Kategori</h1>
 <ul class="breadcrumb bg-light px-0">
     <li class="breadcrumb-item text-secondary">Dashboard</li>
-    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">Kategori</a></li>
+    <li class="breadcrumb-item text-danger"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a></li>
     <li class="breadcrumb-item text-danger active text-decoration-underline"><a class="text-danger" href="<?= base_url(); ?>dashboard/kategori/shorting">Update Sorting</a></li>
 </ul>
 <div class="row">
     <div class="col mb-5">
         <div class="card border-1 shadow-sm position-relative">
             <div class="card-header d-flex justify-content-start align-items-center border-1 py-3">
-                <i class="bi bi-pencil-square"></i>
-                <h6 class="m-0 fw-bold px-2">Edit urutan katgori</h6>
+                <i class="bi bi-pencil-square text-danger fs-5"></i>
+                <h6 class="m-0 fw-bold px-2 text-dark">Edit urutan katgori</h6>
             </div>
             <div class="card-body">
                 <div class="row">
