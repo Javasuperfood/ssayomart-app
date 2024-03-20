@@ -182,8 +182,24 @@ use CodeIgniter\Filters\CSRF;
         }
     });
 
-    function selectProduct(radio) {
+    function selectProduct(radio, productName) {
+        // Uncheck other radio buttons
+        uncheckOtherRadios(radio);
+
+        // Set the selected product value
         document.getElementById('selectedProductId').value = radio.value;
+    }
+
+    function uncheckOtherRadios(radio) {
+        // Retrieve all radio buttons
+        const radioButtons = document.querySelectorAll('input[type=radio]');
+
+        // Uncheck all other radio buttons except the one selected
+        radioButtons.forEach(function(radioButton) {
+            if (radioButton !== radio) {
+                radioButton.checked = false;
+            }
+        });
     }
 </script>
 
