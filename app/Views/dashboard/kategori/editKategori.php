@@ -4,7 +4,7 @@
 <h1 class="h3 mb-3 text-gray-800">Edit Kategori</h1>
 <ul class="breadcrumb bg-light px-0">
     <li class="breadcrumb-item">Dashboard</li>
-    <li class="breadcrumb-item"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">Kategori</a></li>
+    <li class="breadcrumb-item"><a class="text-secondary" href="<?= base_url(); ?>dashboard/kategori">List Kategori</a></li>
     <li class="breadcrumb-item text-danger active text-decoration-underline">Edit Kategori</li>
 </ul>
 

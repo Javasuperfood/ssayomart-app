@@ -272,7 +272,7 @@ class AdminPromoController extends BaseController
             'produkBundle' => $produkBundleList,
             'variasi' => $variasiList
         ];
-        // dd($data);
+        dd($data);
         return view('dashboard/promo/bundlePromo', $data);
     }
 
@@ -316,10 +316,20 @@ class AdminPromoController extends BaseController
         $promoProdukModel = new PromoProduk();
         $selectedPromo = $this->request->getVar('id_promo');
         $selectedProduct = $this->request->getVar('id_produk');
+        $imgPromoProduk = $this->request->getFile('img');
+
+        if ($imgPromoProduk->getError() == 4) {
+            $namePromoProduk = 'default.png';
+        } else {
+            $namePromoProduk = $imgPromoProduk->getRandomName();
+            $imgPromoProduk->move('assets/img/promo/bundle/', $namePromoProduk);
+        }
 
         $data = [
             'id_promo' => $selectedPromo,
-            'id_produk' => $selectedProduct
+            'id_produk' => $selectedProduct,
+            'img' => $namePromoProduk,
+            'deskripsi' => $this->request->getVar('deskripsi')
         ];
         // dd($data);
 
@@ -396,6 +406,13 @@ class AdminPromoController extends BaseController
         // dd($this->request->getVar());
         $promoProdukModel = new PromoProduk();
         $deleted = $promoProdukModel->delete($id);
+
+        if ($deleted['img'] != 'default.png') {
+            $gambarLamaPath = 'assets/img/promo/bundle/' . $deleted['img'];
+            if (file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+        }
 
         if ($deleted) {
             $alert = [

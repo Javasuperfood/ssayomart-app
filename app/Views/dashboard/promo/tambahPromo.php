@@ -25,7 +25,8 @@ use CodeIgniter\Filters\CSRF;
                 <form action="<?= base_url(); ?>dashboard/promo/tambah-promo/save" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-4">
-                        <label for="title" class="form-label">Judul Promosi <span class=" text-secondary">(Cth : Promo Lebaran, Promo Natal Promo Nyepi, dll)</span></label>
+                        <label for="title" class="form-label">Judul Promosi <span class=" text-secondary">(Cth : Promo
+                                Lebaran, Promo Natal Promo Nyepi, dll)</span></label>
                         <input type="text" class="form-control border-0 shadow-sm  <?= (validation_show_error('title')) ? 'is-invalid' : 'border-1'; ?>" id="title" name="title" placeholder="Judul Promosi Anda..." value="<?= old('title') ?>">
                         <div class="invalid-feedback"><?= validation_show_error('title'); ?></div>
                     </div>
@@ -33,7 +34,8 @@ use CodeIgniter\Filters\CSRF;
                     <div class="mb-4">
                         <label for="slug" class="form-label">Slug</label>
                         <div class="alert alert-danger text-center border-1 shadow-sm mb-4" role="alert">
-                            <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Judul Promo.</b>
+                            <b>Untuk pengisian Slug bisa dikosongkan karena Slug akan otomatis menyesuaikan dengan Judul
+                                Promo.</b>
                         </div>
                         <input type="text" class="form-control border-0 shadow-sm" id="slug" placeholder="Masukkan Slug... (Boleh Kosong)" name="slug" value="<?= old('slug') ?>">
                     </div>
@@ -86,7 +88,7 @@ use CodeIgniter\Filters\CSRF;
             </div>
 
             <div class="card-body">
-                <form action="<?= base_url('dashboard/promo/tambah-promo/save-promo') ?>" method="post" id="mainForm">
+                <form action="<?= base_url('dashboard/promo/tambah-promo/save-promo') ?>" method="post" id="mainForm" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <input type="hidden" name="id_produk" id="selectedProductId" value="">
                     <input type="hidden" name="id_promo" id="selectedPromoId" value="">
@@ -101,8 +103,8 @@ use CodeIgniter\Filters\CSRF;
                     </div>
                     <div class="mb-4">
                         <label>Pilih Promo Produk</label>
-                        <button type="button" class="btn btn-outline-dark d-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                            Select a product
+                        <button type="button" class="btn btn-outline-danger d-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Pilih Produk
                         </button>
                     </div>
 
@@ -111,14 +113,16 @@ use CodeIgniter\Filters\CSRF;
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">List Promo Produk Ssayomart</h1>
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">List Promo Produk Ssayomart
+                                    </h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
                                 <div class="modal-body">
                                     <!-- Search Form -->
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search_product" oninput="searchProduk(this)" id="search">
+                                    <div class="input-group mb-3">
+                                        <button type="submit" class="input-group-text border-0 rounded-3 bg-danger shadow-sm mx-0"><i class="text-white bi bi-search"></i></button>
+                                        <input type="text" class="mx-2 form-control border-1 border-danger rounded-3" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search_product" oninput="searchProduk(this)" id="search">
                                     </div>
                                     <!-- Search Results -->
                                     <table class="table" id="productTable">
@@ -141,7 +145,7 @@ use CodeIgniter\Filters\CSRF;
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <img src="<?= base_url('assets/img/produk/main/' . ($p['img'])); ?>" class="img-fluid" alt="" width="50" height="50">
+                                                        <img src="<?= base_url('assets/img/promo/bundle/' . ($p['img'])); ?>" class="img-fluid" alt="" width="50" height="50">
                                                     </td>
                                                     <td><?= $p['nama']; ?></td>
                                                     <td><?= $p['sku']; ?></td>
@@ -149,10 +153,21 @@ use CodeIgniter\Filters\CSRF;
                                             <?php endforeach; ?>
                                         </tbody>
                                     </table>
+                                    <div class="mb-3">
+                                        <label for="img" class="form-label" data-toggle="tooltip" data-placement="bottom">Masukan Gambar<span class="text-danger">
+                                                *</span></label>
+                                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" accept="image/*">
+                                        <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="deskripsi" class="form-label">Deskripsi Promo<span class="text-danger"> *</span></label>
+                                        <textarea type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" data-toggle="tooltip" data-placement="bottom" rows="3" placeholder="Masukan deskripsi promo" name="deskripsi"><?= old('deskripsi') ?></textarea>
+                                        <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-danger">Save</button>
+                                    <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Tutup</button>
+                                    <button type="submit" class="btn btn-outline-danger">Simpan</button>
                                 </div>
                             </div>
                         </div>
