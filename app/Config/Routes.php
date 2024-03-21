@@ -50,7 +50,6 @@ $routes->get('/menu-resto', 'MenuResto::menuResto');
 $routes->get('/sayo-resto', 'MenuResto::sayoResto');
 
 $routes->get('/all-promo', 'AllPromoController::AllPromo');
-$routes->get('/detail-promo-bundle', 'DetailPromoBundle::detailPromoBundle');
 $routes->get('/detail-promo-bundle/(:segment)', 'AllPromoController::show/$1');
 
 $routes->get('/all-promo-bundle', 'AllPromoController::promoBundle');

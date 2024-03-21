@@ -9,12 +9,12 @@ class AlterPromoProduk extends Migration
     public function up()
     {
         $fields = [
-            'img' => [
+            'promo_img' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'after'          => 'id_produk'
             ],
-            'deskripsi' => [
+            'promo_deskripsi' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
                 'after'          => 'img'
@@ -25,6 +25,6 @@ class AlterPromoProduk extends Migration
 
     public function down()
     {
-        $this->forge->dropColumn('jsf_promo_produk', ['img', 'deskripsi']);
+        $this->forge->dropColumn('jsf_promo_produk', ['promo_img', 'promo_deskripsi']);
     }
 }
