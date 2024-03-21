@@ -161,27 +161,6 @@ class AllPromoController extends BaseController
         $varianItem = $varianModel->getByIdProduk($produk['id_produk']);
 
         $promoItem = $promoProduk->getDetailProduct($id);
-        // dd($promoItem);
-        // if ($promoItem) {
-        //     $filteredPromoItems = [];
-
-        //     foreach ($promoItem as $item) {
-        //         $idPromoProduk = $item['id_promo'];
-
-        //         $idPromoKategoriCocok = false;
-        //         foreach ($promo as $kategoriItem) {
-        //             if ($kategoriItem['id_promo'] === $idPromoProduk) {
-        //                 $idPromoKategoriCocok = true;
-        //                 break;
-        //             }
-        //         }
-        //         if ($idPromoKategoriCocok) {
-        //             $filteredPromoItems[] = $item;
-        //         }
-        //     }
-        //     $promoItem = $filteredPromoItems;
-        // }
-
         $promoItem['produk'] = $produkBundle->getProdukByIdPromoProduk($promoItem['id_promo_produk']);
         // dd($promoItem);
 

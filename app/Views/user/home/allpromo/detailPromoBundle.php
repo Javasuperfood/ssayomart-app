@@ -5,7 +5,7 @@
     <div class="col text-center">
         <div class="container">
             <div class="gallery">
-                <img src="<?= base_url() ?>assets/img/produk\main/default.png" class="img-fluid toss-add-to-cart" alt="#" onclick="">
+                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $promoProduk['img']; ?>" class="img-fluid" alt="Promotion Image">
             </div>
         </div>
     </div>
@@ -14,35 +14,20 @@
     <div class="row mt-4 text-center">
         <div class="col-12 justify-content-center">
             <div class=" text-center">
-                <!-- <div class=" mt-4">
-                    
-                        <div class="input-group d-flex justify-content-center gap-2">
-                            <button class="btn btn-outline-danger py-2 px-2 rounded-circle" type="button" onClick="decreaseCount(event, this)">
-                                <i class="bi bi-dash"></i>
-                            </button>
-                            <input type="number" id="counterProduct" class="w-25  text-center bg-white border-0" disabled value="1">
-                            <button class="btn btn-outline-danger py-2 px-2 rounded-circle" type="button" onClick="increaseCount(event, this)">
-                                <i class="bi bi-plus"></i>
-                            </button>
-                        </div> 
-                </div> -->
-                
-                <h4 class="fw-bold mt-4"><?= $promoProduk['title']; ?></h4>
-                 <p class="fs-2 text-danger fw-bold">
+                <div class="row">
+                    <div class="col-6">
+                        <h4 class="fw-bold mt-4" style="color:#81271f;"><?= $promoProduk['title']; ?></h4>
+                        <p class="fs-4 text-dark fw-bold">
                             Rp. <?= number_format($promoProduk['harga_item'], 0, ',', '.'); ?>
                         </p>
-                <div class="mb-3">
-                    <input type="hidden" id="qty" name="qty" value="1">
-                    <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-                    <button class="btn btn-white text-danger border-danger  d-inline add-to-cart-btn position-relative" produk="<?= $promoProduk['id_produk']; ?>">
-                        <i class="bi bi-cart-fill"></i>
-                    </button>
-                    <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger fw-bold"><?= lang('Text.btn_beli') ?></a>
+                    </div>
+                    <div class="col-6 mt-5">
+                        <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger fw-bold"><?= lang('Text.btn_beli') ?></a>
+                    </div>
                 </div>
-
                 <div class="row">
                     <div class="col-12 p-4">
-                        <h3 class="text-start fw-bold" style="color:#81271f;">Produk Bundle:</h3>
+                        <h3 class="text-start fw-bold" style="color:#81271f;">Produk Bundle</h3>
                         <?php
                         $concatenatedNames = '';
                         $concatenatedNames .= $promoProduk['nama'];
@@ -51,11 +36,14 @@
                         }
                         echo "<p class='text-start text-dark'>" . $concatenatedNames . "</p>";
                         ?>
-                         <h3 class="text-start fw-bold" style="color:#81271f;">Description:</h3>
+                        <h3 class="text-start fw-bold" style="color:#81271f;">Deskripsi Promo</h3>
+                        <span>
+                            <?= $promoProduk['deskripsi']; ?>
+                        </span>
                     </div>
-                   
+
                     <div class="col">
-                       
+
                     </div>
                 </div>
             </div>
@@ -72,7 +60,9 @@
         input.value = value;
         $("#qty").val(value);
         <?php if ($varianItem == 1) : ?>
-            var link = `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+            var link =
+                `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` +
+                value;
             $("#buyButton_1").attr("href", link);
         <?php endif ?>
     }
@@ -86,7 +76,9 @@
             input.value = value;
             $("#qty").val(value);
             <?php if ($varianItem == 1) : ?>
-                var link = `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+                var link =
+                    `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` +
+                    value;
                 $("#buyButton_1").attr("href", link);
             <?php endif ?>
         }
