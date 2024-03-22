@@ -127,24 +127,32 @@ class SuperAdminDashboard extends BaseController
         return view('dashboard/superadmin/categoryReport', $data);
     }
 
-
     public function subCategoryReport($categoryId)
     {
         $subKategoriModel = new SubKategoriModel();
+        $subcategories = $subKategoriModel->getSubcategoriesByCategoryId($categoryId);
+        $startDate = $this->request->getVar('startDate');
+        $endDate = $this->request->getVar('endDate');
+        $subcategoriesId = $this->request->getVar('subcategoriesId');
+
+        $subcategoriesId = $subcategories[0]['id_kategori'];
+
         $data = [
-            'subcategories' => $subKategoriModel->getSubcategoriesByCategoryId($categoryId),
+            'subcategories' => $subcategories,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+            'subcategoriesId' => $subcategoriesId,
         ];
 
         $checkoutProdukModel = new CheckoutProdukModel();
         foreach ($data['subcategories'] as &$subcategory) {
             $totalTerjual = 0;
-            $subcategory['products'] = $checkoutProdukModel->getProdukDetailBySubcategoryId($subcategory['id_sub_kategori']);
+            $subcategory['products'] = $checkoutProdukModel->getProdukDetailBySubcategoryId($subcategory['id_sub_kategori'], $startDate, $endDate);
             foreach ($subcategory['products'] as $product) {
                 $totalTerjual += $product['qty'];
             }
             $subcategory['total_terjual'] = $totalTerjual;
         }
-
         return view('dashboard/superadmin/subCategoryReport', $data);
     }
 
