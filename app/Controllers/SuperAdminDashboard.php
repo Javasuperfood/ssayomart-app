@@ -131,7 +131,9 @@ class SuperAdminDashboard extends BaseController
     public function subCategoryReport($categoryId)
     {
         $subKategoriModel = new SubKategoriModel();
-        $data['subcategories'] = $subKategoriModel->getSubcategoriesByCategoryId($categoryId);
+        $data = [
+            'subcategories' => $subKategoriModel->getSubcategoriesByCategoryId($categoryId),
+        ];
 
         $checkoutProdukModel = new CheckoutProdukModel();
         foreach ($data['subcategories'] as &$subcategory) {

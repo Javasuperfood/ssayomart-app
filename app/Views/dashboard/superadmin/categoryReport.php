@@ -89,13 +89,11 @@
             <h6 class="m-0 fw-bold px-2 text-secondary">Kategori Terlaris</h6>
         </div>
         <form id="dateFilterForm" action="<?= base_url('dashboard/category-report') ?>" method="get">
-            <div class="row">
-                <div class="col d-flex justify-content-start align-items-center my-4">
-                    <input type="hidden" name="startDate" id="start_date" value="<?= $startDate ?>" />
-                    <input type="hidden" name="endDate" id="end_date" value="<?= $endDate ?>" />
-                    <i class="bi bi-calendar-fill me-3"></i>
-                    <input type="text" class="form-control col-sm-2" name="daterange" value="<?= $startDate ? date('m/d/Y', strtotime($startDate)) . ' - ' . date('m/d/Y', strtotime($endDate)) : '' ?>" placeholder="Select a date range" />
-                </div>
+            <div class="justify-content-start align-items-center my-4">
+                <input type="hidden" name="startDate" id="start_date" value="<?= $startDate ?>" />
+                <input type="hidden" name="endDate" id="end_date" value="<?= $endDate ?>" />
+                <label for="daterange"> Pilih Range Tanggal :</label>
+                <input type="text" class="form-control" name="daterange" value="<?= $startDate ? date('m/d/Y', strtotime($startDate)) . ' - ' . date('m/d/Y', strtotime($endDate)) : '' ?>" placeholder="Select a date range" />
             </div>
         </form>
         <div class="row">
