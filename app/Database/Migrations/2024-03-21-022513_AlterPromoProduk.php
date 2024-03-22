@@ -12,12 +12,13 @@ class AlterPromoProduk extends Migration
             'promo_img' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
-                'after'          => 'id_produk'
+                'after'          => 'id_produk',
+                'default'        => 'default.png'
             ],
             'promo_deskripsi' => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255',
-                'after'          => 'img'
+                'after'          => 'promo_img'
             ],
         ];
         $this->forge->addColumn('jsf_promo_produk', $fields);
