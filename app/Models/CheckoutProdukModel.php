@@ -293,11 +293,17 @@ class CheckoutProdukModel extends Model
         return $builder->get()->getResultArray();
     }
 
-    public function getProdukDetailByIdCategory($kategori_id)
+    public function getProdukDetailByIdCategory($kategori_id, $startDate = null, $endDate = null)
     {
         $query = $this->select('jsf_checkout_produk.id_produk, jsf_checkout_produk.id_variasi_item, jsf_checkout_produk.qty, jsf_checkout_produk.harga, jsf_produk.nama AS produk_nama')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->where('jsf_produk.id_kategori', $kategori_id);
+
+        // Tambahkan kondisi WHERE jika startDate dan endDate tidak kosong
+        if ($startDate && $endDate) {
+            $query->where('jsf_checkout_produk.created_at >=', $startDate)
+                ->where('jsf_checkout_produk.created_at <=', $endDate);
+        }
 
         $result = $query->findAll();
 
