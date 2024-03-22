@@ -272,7 +272,7 @@ class AdminPromoController extends BaseController
             'produkBundle' => $produkBundleList,
             'variasi' => $variasiList
         ];
-        dd($data);
+        // dd($data);
         return view('dashboard/promo/bundlePromo', $data);
     }
 
@@ -316,7 +316,7 @@ class AdminPromoController extends BaseController
         $promoProdukModel = new PromoProduk();
         $selectedPromo = $this->request->getVar('id_promo');
         $selectedProduct = $this->request->getVar('id_produk');
-        $imgPromoProduk = $this->request->getFile('img');
+        $imgPromoProduk = $this->request->getFile('promo_img');
 
         if ($imgPromoProduk->getError() == 4) {
             $namePromoProduk = 'default.png';
@@ -328,8 +328,8 @@ class AdminPromoController extends BaseController
         $data = [
             'id_promo' => $selectedPromo,
             'id_produk' => $selectedProduct,
-            'img' => $namePromoProduk,
-            'deskripsi' => $this->request->getVar('deskripsi')
+            'promo_img' => $namePromoProduk,
+            'promo_deskripsi' => $this->request->getVar('promo_deskripsi')
         ];
         // dd($data);
 
@@ -405,20 +405,30 @@ class AdminPromoController extends BaseController
     {
         // dd($this->request->getVar());
         $promoProdukModel = new PromoProduk();
-        $deleted = $promoProdukModel->delete($id);
+        $promoProduk = $promoProdukModel->find($id);
 
-        if ($deleted['img'] != 'default.png') {
-            $gambarLamaPath = 'assets/img/promo/bundle/' . $deleted['img'];
-            if (file_exists($gambarLamaPath)) {
-                unlink($gambarLamaPath);
-            }
+        if (!$promoProduk) {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Data promo tidak ditemukan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('dashboard/promo/tambah-promo');
         }
 
+        $deleted = $promoProdukModel->delete($id);
+
         if ($deleted) {
+            $gambarLamaPath = 'assets/img/promo/bundle/' . $promoProduk['promo_img'];
+            if ($promoProduk['promo_img'] != 'default.png' && file_exists($gambarLamaPath)) {
+                unlink($gambarLamaPath);
+            }
+
             $alert = [
                 'type' => 'success',
                 'title' => 'Berhasil',
-                'message' => 'Data promo berhasil di hapus.'
+                'message' => 'Data promo berhasil dihapus.'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/promo/tambah-promo');
@@ -426,7 +436,7 @@ class AdminPromoController extends BaseController
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada penghapusan promo'
+                'message' => 'Terdapat kesalahan pada penghapusan promo.'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('dashboard/promo/tambah-promo')->withInput();

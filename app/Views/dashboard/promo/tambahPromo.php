@@ -154,15 +154,15 @@ use CodeIgniter\Filters\CSRF;
                                         </tbody>
                                     </table>
                                     <div class="mb-3">
-                                        <label for="img" class="form-label" data-toggle="tooltip" data-placement="bottom">Masukan Gambar<span class="text-danger">
+                                        <label for="promo_img" class="form-label" data-toggle="tooltip" data-placement="bottom">Masukan Gambar<span class="text-danger">
                                                 *</span></label>
-                                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('img')) ? 'is-invalid' : 'border-1'; ?>" id="img" name="img" accept="image/*">
-                                        <div class="invalid-feedback"><?= validation_show_error('img'); ?></div>
+                                        <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('promo_img')) ? 'is-invalid' : 'border-1'; ?>" id="promo_img" name="promo_img" accept="image/*">
+                                        <div class="invalid-feedback"><?= validation_show_error('promo_img'); ?></div>
                                     </div>
                                     <div class="mb-4">
-                                        <label for="deskripsi" class="form-label">Deskripsi Promo<span class="text-danger"> *</span></label>
-                                        <textarea type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="deskripsi" data-toggle="tooltip" data-placement="bottom" rows="3" placeholder="Masukan deskripsi promo" name="deskripsi"><?= old('deskripsi') ?></textarea>
-                                        <div class="invalid-feedback"><?= validation_show_error('deskripsi'); ?></div>
+                                        <label for="promo_deskripsi" class="form-label">Deskripsi Promo<span class="text-danger"> *</span></label>
+                                        <textarea type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('promo_deskripsi')) ? 'is-invalid' : 'border-1'; ?>" id="promo_deskripsi" data-toggle="tooltip" data-placement="bottom" rows="3" placeholder="Masukan deskripsi promo" name="promo_deskripsi"><?= old('promo_deskripsi') ?></textarea>
+                                        <div class="invalid-feedback"><?= validation_show_error('promo_deskripsi'); ?></div>
                                     </div>
                                 </div>
                                 <div class="modal-footer">

@@ -5,7 +5,7 @@
     <div class="col text-center">
         <div class="container">
             <div class="gallery">
-                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $promoProduk['img']; ?>" class="img-fluid" alt="Promotion Image">
+                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $promoProduk['promo_img']; ?>" class="img-fluid" alt="Promotion Image">
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                         ?>
                         <h3 class="text-start fw-bold" style="color:#81271f;">Deskripsi Promo</h3>
                         <span>
-                            <?= $promoProduk['deskripsi']; ?>
+                            <?= $promoProduk['promo_deskripsi']; ?>
                         </span>
                     </div>
 

@@ -16,8 +16,8 @@ class PromoProduk extends Model
     protected $allowedFields    = [
         'id_promo',
         'id_produk',
-        'img',
-        'deskripsi'
+        'promo_img',
+        'promo_deskripsi'
     ];
 
     // Dates
@@ -31,8 +31,8 @@ class PromoProduk extends Model
     protected $validationRules      = [
         'id_promo' => 'required',
         'id_produk' => 'required',
-        'img' => 'required',
-        'deskripsi' => 'required',
+        'promo_img' => 'required',
+        'promo_deskripsi' => 'required',
     ];
     protected $validationMessages   = [
         'id_promo' => [
@@ -41,10 +41,10 @@ class PromoProduk extends Model
         'id_produk' => [
             'required' => 'Produk wajib diisi.',
         ],
-        'img' => [
+        'promo_img' => [
             'required' => 'Foto Promo wajib diisi.',
         ],
-        'deskripsi' => [
+        'promo_deskripsi' => [
             'rules'  => 'required',
             'errors' => [
                 'required' => 'Deskripsi promosi bundling wajib diisi.',
