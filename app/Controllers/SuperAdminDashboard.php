@@ -103,12 +103,21 @@ class SuperAdminDashboard extends BaseController
     public function categoryReport()
     {
         $kategoriModel = new KategoriModel();
-        $data['categories'] = $kategoriModel->findAll();
+
+        $startDate = $this->request->getVar('startDate');
+        $endDate = $this->request->getVar('endDate');
+
+        $data = [
+            'categories' => $kategoriModel->findAll(),
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+        ];
 
         $checkoutProdukModel = new CheckoutProdukModel();
         foreach ($data['categories'] as &$category) {
             $totalTerjual = 0;
-            $category['products'] = $checkoutProdukModel->getProdukDetailByIdCategory($category['id_kategori']);
+            // Tambahkan kondisi untuk mengambil data penjualan sesuai rentang tanggal
+            $category['products'] = $checkoutProdukModel->getProdukDetailByIdCategory($category['id_kategori'], $startDate, $endDate);
             foreach ($category['products'] as $product) {
                 $totalTerjual += $product['qty'];
             }
@@ -117,6 +126,7 @@ class SuperAdminDashboard extends BaseController
 
         return view('dashboard/superadmin/categoryReport', $data);
     }
+
 
     public function subCategoryReport($categoryId)
     {
