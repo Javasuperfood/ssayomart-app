@@ -50,11 +50,6 @@
             <h6 class="m-0 fw-bold px-2 text-secondary">Data Penjualan Per-Kategori Ssayomart</h6>
         </div>
         <div class="card-body mb-4">
-            <!-- Filter Tahun -->
-            <div class="mb-1 row">
-                <label for="yearFilter" class="form-label col-sm-2 d-flex align-items-center">Pilih Tahun :</label>
-                <input type="date" id="yearFilter" class="form-control col-sm-10 mb-3" name="year">
-            </div>
             <!-- Tabel Penjualan -->
             <div class="row">
                 <div class="col">
@@ -102,6 +97,15 @@
             <i class="bi bi-file-text-fill text-danger"></i>
             <h6 class="m-0 fw-bold px-2 text-secondary">Produk Terlaris</h6>
         </div>
+        <form id="dateFilterForm" action="<?= base_url('dashboard/filter-report/' . $productId) ?>" method="get">
+            <div class="justify-content-start align-items-center my-4">
+                <input type="hidden" name="productId" value="<?= $productId ?>">
+                <input type="hidden" name="startDate" id="start_date" value="<?= $startDate ?>" />
+                <input type="hidden" name="endDate" id="end_date" value="<?= $endDate ?>" />
+                <label for="daterange"> Pilih Range Tanggal :</label>
+                <input type="text" class="form-control" name="daterange" value="<?= $startDate ? date('m/d/Y', strtotime($startDate)) . ' - ' . date('m/d/Y', strtotime($endDate)) : '' ?>" placeholder="Select a date range" />
+            </div>
+        </form>
         <div class="row">
             <div class="col-12">
                 <div class="card-body mt-2 mb-3">
@@ -129,5 +133,21 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'center',
+            autoUpdateInput: false,
+            // autoApply: true
+        }, function(start, end, label) {
+            // When the user selects a date range, update the hidden input values
+            $('#start_date').val(start.format('YYYY-MM-DD'));
+            $('#end_date').val(end.format('YYYY-MM-DD'));
+
+            // Trigger the form submission to update the data
+            $('#dateFilterForm').submit();
+        });
+    });
+</script>
 
 <?= $this->endSection(); ?>
