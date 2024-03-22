@@ -69,6 +69,15 @@
             <i class="bi bi-file-text-fill text-danger"></i>
             <h6 class="m-0 fw-bold px-2 text-secondary">Sub Kategori Terlaris</h6>
         </div>
+        <form id="dateFilterForm" action="<?= base_url('dashboard/sub-category-report/' . $subcategoriesId) ?>" method="get">
+            <div class="justify-content-start align-items-center my-4">
+                <input type="hidden" name="subcategoriesId" value="<?= $subcategoriesId ?>">
+                <input type="hidden" name="startDate" id="start_date" value="<?= $startDate ?>" />
+                <input type="hidden" name="endDate" id="end_date" value="<?= $endDate ?>" />
+                <label for="daterange"> Pilih Range Tanggal :</label>
+                <input type="text" class="form-control" name="daterange" value="<?= $startDate ? date('m/d/Y', strtotime($startDate)) . ' - ' . date('m/d/Y', strtotime($endDate)) : '' ?>" placeholder="Select a date range" />
+            </div>
+        </form>
         <div class="row">
             <div class="col-12">
                 <div class="card-body mt-2 mb-3">
@@ -102,5 +111,22 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        $('input[name="daterange"]').daterangepicker({
+            opens: 'center',
+            autoUpdateInput: false,
+            // autoApply: true
+        }, function(start, end, label) {
+            // When the user selects a date range, update the hidden input values
+            $('#start_date').val(start.format('YYYY-MM-DD'));
+            $('#end_date').val(end.format('YYYY-MM-DD'));
+
+            // Trigger the form submission to update the data
+            $('#dateFilterForm').submit();
+        });
+    });
+</script>
 
 <?= $this->endSection(); ?>

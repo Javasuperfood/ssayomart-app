@@ -309,11 +309,16 @@ class CheckoutProdukModel extends Model
         return $result;
     }
 
-    public function getProdukDetailBySubcategoryId($subkategori_id)
+    public function getProdukDetailBySubcategoryId($subkategori_id, $startDate = null, $endDate = null)
     {
         $query = $this->select('jsf_checkout_produk.id_produk, jsf_checkout_produk.id_variasi_item, jsf_checkout_produk.qty, jsf_checkout_produk.harga, jsf_produk.nama AS produk_nama')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->where('jsf_produk.id_sub_kategori', $subkategori_id);
+
+        if ($startDate && $endDate) {
+            $query->where('jsf_checkout_produk.created_at >=', $startDate)
+                ->where('jsf_checkout_produk.created_at <=', $endDate);
+        }
 
         $result = $query->findAll();
 
