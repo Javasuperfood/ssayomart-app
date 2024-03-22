@@ -334,11 +334,16 @@ class CheckoutProdukModel extends Model
         return $query->findAll();
     }
 
-    public function getProdukDetail($produk_id)
+    public function getProdukDetail($produk_id, $startDate = null, $endDate = null)
     {
         $query = $this->select('jsf_checkout_produk.id_produk, jsf_checkout_produk.id_variasi_item, jsf_checkout_produk.qty, jsf_checkout_produk.harga, jsf_produk.nama AS produk_nama')
             ->join('jsf_produk', 'jsf_checkout_produk.id_produk = jsf_produk.id_produk')
             ->where('jsf_checkout_produk.id_produk', $produk_id);
+
+        if ($startDate && $endDate) {
+            $query->where('jsf_checkout_produk.created_at >=', $startDate)
+                ->where('jsf_checkout_produk.created_at <=', $endDate);
+        }
 
         $result = $query->findAll();
 

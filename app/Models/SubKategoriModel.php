@@ -133,9 +133,4 @@ class SubKategoriModel extends Model
     {
         return $this->where(['id_kategori' => $categoryId])->findAll();
     }
-
-    public function getSubKategoriId($id)
-    {
-        return $this->where(['id_sub_kategori' => $id])->findAll();
-    }
 }

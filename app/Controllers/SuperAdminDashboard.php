@@ -133,7 +133,6 @@ class SuperAdminDashboard extends BaseController
         $subcategories = $subKategoriModel->getSubcategoriesByCategoryId($categoryId);
         $startDate = $this->request->getVar('startDate');
         $endDate = $this->request->getVar('endDate');
-        $subcategoriesId = $this->request->getVar('subcategoriesId');
 
         $subcategoriesId = $subcategories[0]['id_kategori'];
 
@@ -162,27 +161,33 @@ class SuperAdminDashboard extends BaseController
         $checkoutProdukModel = new CheckoutProdukModel();
         $variasiItemModel = new VariasiItemModel();
 
-        // Mendapatkan data produk berdasarkan subkategori
-        $data['products'] = $produkModel->getProductsBySubcategoryId($subcategoryId);
+        $product = $produkModel->getProductsBySubcategoryId($subcategoryId);
 
-        // Mendapatkan detail penjualan untuk setiap produk
+        $startDate = $this->request->getVar('startDate');
+        $endDate = $this->request->getVar('endDate');
+
+        $productId = $product[0]['id_sub_kategori'];
+
+        $data = [
+            'products' => $product,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+            'productId' => $productId,
+        ];
+
         foreach ($data['products'] as &$product) {
-            // Mendapatkan total terjual berdasarkan produk_id
             $product['terjual'] = $checkoutProdukModel->getTotalQtyTerjualByIdProduk($product['id_produk']);
 
-            // Mendapatkan harga dari variasi item untuk produk tertentu
             $product['harga'] = $variasiItemModel->getHargaByProdukId($product['id_produk']);
 
-            // Menghitung total terjual untuk produk tertentu
             $totalTerjual = 0;
-            $produkDetail = $checkoutProdukModel->getProdukDetail($product['id_produk']);
+            $produkDetail = $checkoutProdukModel->getProdukDetail($product['id_produk'], $startDate, $endDate);
             foreach ($produkDetail as $detail) {
                 $totalTerjual += $detail['qty'];
             }
             $product['total_terjual'] = $totalTerjual;
         }
 
-        // Mengirimkan data produk ke view
         return view('dashboard/superadmin/filterReport', $data);
     }
 
