@@ -76,6 +76,7 @@ class PromoProduk extends Model
             ->join('jsf_promo_produk_bundle pb', 'jsf_promo_produk.id = pb.id_promo_produk')
             ->where('jsf_produk.deleted_at', null)
             ->where(['jsf_promo.slug' => $slug])
+            ->groupBy('jsf_promo_produk.id')
             ->orderBy('jsf_promo_produk.created_at', 'DESC')
             ->get();
 
@@ -96,9 +97,6 @@ class PromoProduk extends Model
             ->where('jsf_promo_produk.id', $id)
             ->orderBy('jsf_promo_produk.created_at', 'DESC')
             ->first();
-
-        // $result = $query->getResultArray();
-
         // dd($result);
         return $query;
     }
@@ -111,7 +109,7 @@ class PromoProduk extends Model
             ->select('jsf_promo_produk.*, jsf_promo.title as promo_title, jsf_produk.*')
             ->join('jsf_promo', 'jsf_promo_produk.id_promo = jsf_promo.id_promo')
             ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk')
-            ->orderBy('jsf_promo_produk.id_produk', 'ASC')
+            ->orderBy('jsf_promo_produk.created_at', 'DESC')
             ->where('jsf_promo_produk.id_promo', $id)
             ->where('jsf_promo.start_at <=', $currentDate)
             ->where('jsf_promo.end_at >=', $currentDate)
@@ -124,7 +122,6 @@ class PromoProduk extends Model
     {
         $query = $this->select('*')
             ->where('id_produk', $id)->findAll();
-
         return $query;
     }
 }

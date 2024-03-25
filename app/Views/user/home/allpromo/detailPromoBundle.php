@@ -41,10 +41,6 @@
                             <?= $promoProduk['promo_deskripsi']; ?>
                         </span>
                     </div>
-
-                    <div class="col">
-
-                    </div>
                 </div>
             </div>
         </div>
