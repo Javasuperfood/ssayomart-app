@@ -17,12 +17,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row px-2">
                         <div class="col-6 px-1">
                             <a href="<?= base_url() ?>all-promo-bundle">
-                                <img src="<?= base_url() ?>assets/img/promo/Clipped.png" class="card-img-top rounded-2">
+                                <img src="<?= base_url() ?>assets/img/promo/promo1.jpeg" class="card-img-top rounded-2">
                             </a>
                         </div>
                         <div class="col-6 px-1">
-                            <a href="<?= base_url() ?>all-promo-discount">
-                                <img src="<?= base_url() ?>assets/img/promo/Clipped.png" class="card-img-top rounded-2">
+                            <a href="<?= base_url() ?>kupon">
+                                <img src="<?= base_url() ?>assets/img/promo/promo2.jpeg" class="card-img-top rounded-2">
                             </a>
                         </div>
                     </div>
