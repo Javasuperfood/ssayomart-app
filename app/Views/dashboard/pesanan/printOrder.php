@@ -1,6 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/grb00a88uywpwh1b18cwhz3s4hja33mu2z3d1q3o3zmt7t9p/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
 <style>
     /* For other boilerplate styles, see: /docs/general-configuration-guide/boilerplate-content-css/ */
     /*
