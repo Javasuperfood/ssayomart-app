@@ -106,7 +106,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div style="background-color: #ffff; z-index:100" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
                 <div class="col d-flex justify-content-center">
                     <a href="<?= base_url('checkout2?cart=true'); ?>&<?php foreach ($produk as $p) {
-                                                                            echo 'check%5B%5D=' . $p['id_cart_produk'] . '&';
+                                                                            if ($p['stok'] > 0) {
+                                                                                echo 'check%5B%5D=' . $p['id_cart_produk'] . '&';
+                                                                            }
                                                                         } ?>" id="btnCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 60%; font-size: 13px"><?= lang('Text.btn_checkout') ?></a>
                 </div>
             </div>
