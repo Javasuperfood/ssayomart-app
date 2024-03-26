@@ -91,6 +91,7 @@ class AllPromoController extends BaseController
         $promoProduk = new PromoProduk();
         $promoModel = new PromoModel();
         $produkBundle = new ProdukBundleModel();
+
         $now = date('Y-m-d H:i:s');
         $promo = $promoModel->getPromo($now);
 
@@ -157,11 +158,9 @@ class AllPromoController extends BaseController
 
         $bahasa = session()->get('lang');
 
-        $produk = $produkModel->getSingleProduct();
-        $varianItem = $varianModel->getByIdProduk($produk['id_produk']);
-
         $promoItem = $promoProduk->getDetailProduct($id);
         $promoItem['produk'] = $produkBundle->getProdukByIdPromoProduk($promoItem['id_promo_produk']);
+        $varianItem = $varianModel->getByIdProduk($promoItem['id_produk']);
         // dd($promoItem);
 
         if ($bahasa == 'id') {

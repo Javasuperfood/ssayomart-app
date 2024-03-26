@@ -17,7 +17,8 @@ class PromoProduk extends Model
         'id_promo',
         'id_produk',
         'promo_img',
-        'promo_deskripsi'
+        'promo_deskripsi',
+        'required_quantity'
     ];
 
     // Dates
@@ -33,6 +34,7 @@ class PromoProduk extends Model
         'id_produk' => 'required',
         'promo_img' => 'required',
         'promo_deskripsi' => 'required',
+        'required_quantity' => 'required',
     ];
     protected $validationMessages   = [
         'id_promo' => [
@@ -49,6 +51,9 @@ class PromoProduk extends Model
             'errors' => [
                 'required' => 'Deskripsi promosi bundling wajib diisi.',
             ],
+        ],
+        'required_quantity' => [
+            'required' => 'Jumlah produk wajib diisi.',
         ],
     ];
     protected $skipValidation       = false;

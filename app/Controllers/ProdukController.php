@@ -122,7 +122,6 @@ class ProdukController extends BaseController
         $subKategori = new SubKategoriModel();
         $produkModel = new ProdukModel();
         $varianModel = new VariasiItemModel();
-        $varianModel = new VariasiItemModel();
         $userModel = new UsersModel();
         $stokModel = new StockModel();
 
