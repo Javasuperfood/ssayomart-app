@@ -17,8 +17,8 @@
                 <div class="row">
                     <div class="col-6">
                         <h4 class="fw-bold mt-4" style="color:#81271f;"><?= $promoProduk['title']; ?></h4>
-                        <p class="fs-4 text-dark fw-bold">
-                            Rp. <?= number_format($promoProduk['harga_item'], 0, ',', '.'); ?>
+                        <p class="fs-6 text-dark fw-bold">
+                            Rp. <?= number_format($promoProduk['harga_item'], 0, ',', '.'); ?> / Pcs
                         </p>
                     </div>
                     <div class="col-6 mt-5">
@@ -34,12 +34,12 @@
                         foreach ($promoProduk['produk'] as $pa) {
                             $concatenatedNames .= ' + ' . $pa['nama'];
                         }
-                        echo "<p class='text-start text-dark'>" . $concatenatedNames . "</p>";
+                        echo "<p class='text-start text-dark fs-6'>" . $concatenatedNames . "</p>";
                         ?>
                         <h3 class="text-start fw-bold" style="color:#81271f;">Deskripsi Promo</h3>
-                        <span>
+                        <p class="text-start fs-6">
                             <?= $promoProduk['promo_deskripsi']; ?>
-                        </span>
+                        </p>
                     </div>
                 </div>
             </div>

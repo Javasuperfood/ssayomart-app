@@ -317,6 +317,7 @@ class AdminPromoController extends BaseController
         $selectedPromo = $this->request->getVar('id_promo');
         $selectedProduct = $this->request->getVar('id_produk');
         $imgPromoProduk = $this->request->getFile('promo_img');
+        $requiredQuantity = $this->request->getVar('required_quantity');
         $deskripsi = $this->request->getVar('promo_deskripsi');
 
         if ($imgPromoProduk->getError() == 4) {
@@ -330,6 +331,7 @@ class AdminPromoController extends BaseController
             'id_promo' => $selectedPromo,
             'id_produk' => $selectedProduct,
             'promo_img' => $namePromoProduk,
+            'required_quantity' => $requiredQuantity,
             'promo_deskripsi' => $deskripsi
         ];
         // dd($data);
