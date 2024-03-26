@@ -96,12 +96,12 @@ class TransactionCoreUIController extends BaseController
             $totalAkhir += $rowTotal;
             $rowBerat = $produk['berat'] * $produk['qty'];
             $beratTotal += $rowBerat;
-            $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
-            if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
-                $data['produk'][$key]['promo'] = $promoDetails[0];
-                $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
-                $totalDiscount += $data['produk'][$key]['promo']['total'];
-            }
+            // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
+            // if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
+            //     $data['produk'][$key]['promo'] = $promoDetails[0];
+            //     $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
+            //     $totalDiscount += $data['produk'][$key]['promo']['total'];
+            // }
         }
         $data['total'] = $totalAkhir;
         $data['beratTotal'] = $beratTotal;
