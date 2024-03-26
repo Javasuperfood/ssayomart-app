@@ -129,4 +129,17 @@ class PromoProduk extends Model
             ->where('id_produk', $id)->findAll();
         return $query;
     }
+
+    public function getRequiredQuantity($id_produk)
+    {
+        $query = $this->select('required_quantity')
+            ->where('id_produk', $id_produk)
+            ->first();
+
+        if ($query) {
+            return $query['required_quantity'];
+        } else {
+            return 1;
+        }
+    }
 }
