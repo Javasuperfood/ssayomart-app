@@ -92,7 +92,13 @@ class TransactionCoreUIController extends BaseController
         $beratTotal = 0;
         $totalDiscount = 0;
         foreach ($data['produk'] as $key => $produk) {
-            $rowTotal = $produk['qty'] * $produk['harga_item'];
+            $requiredQuantity = $promoProduk->getRequiredQuantity($produk['id_produk']);
+            // Mengalikan harga produk dengan required_quantity jika required_quantity tersedia
+            if ($requiredQuantity > 0) {
+                $rowTotal = $produk['qty'] * $produk['harga_item'] * $requiredQuantity;
+            } else {
+                $rowTotal = $produk['qty'] * $produk['harga_item'];
+            }
             $totalAkhir += $rowTotal;
             $rowBerat = $produk['berat'] * $produk['qty'];
             $beratTotal += $rowBerat;
@@ -107,7 +113,7 @@ class TransactionCoreUIController extends BaseController
         $data['beratTotal'] = $beratTotal;
         $data['totalDiscount'] = $totalDiscount;
 
-        // dd($data);
+        // dd($requiredQuantity);
         return view('transaction/midtarnsCoreUI/checkout', $data);
     }
 
