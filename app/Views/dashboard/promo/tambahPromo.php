@@ -154,6 +154,12 @@ use CodeIgniter\Filters\CSRF;
                                         </tbody>
                                     </table>
                                     <div class="mb-3">
+                                        <label for="required_quantity" class="form-label" data-toggle="tooltip" data-placement="bottom">Masukan Jumlah Produk<span class="text-danger">
+                                                *</span></label>
+                                        <input type="number" class="form-control border-0 shadow-sm <?= (validation_show_error('required_quantity')) ? 'is-invalid' : 'border-1'; ?>" id="required_quantity" name="required_quantity">
+                                        <div class="invalid-feedback"><?= validation_show_error('required_quantity'); ?></div>
+                                    </div>
+                                    <div class="mb-3">
                                         <label for="promo_img" class="form-label" data-toggle="tooltip" data-placement="bottom">Masukan Gambar<span class="text-danger">
                                                 *</span></label>
                                         <input type="file" class="form-control border-0 shadow-sm <?= (validation_show_error('promo_img')) ? 'is-invalid' : 'border-1'; ?>" id="promo_img" name="promo_img" accept="image/*">
