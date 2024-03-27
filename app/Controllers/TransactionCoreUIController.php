@@ -309,7 +309,7 @@ class TransactionCoreUIController extends BaseController
             'item_details' => [
                 [
                     'id' => $produk[0]['id_produk'],
-                    'price' => $total_1, // adjust the price to match $total_1
+                    'price' => $total_1,
                     'quantity' => $produk[0]['qty'],
                     'name' => $produk[0]['nama'] . ' ' . $produk[0]['value_item'],
                 ],
@@ -466,9 +466,6 @@ class TransactionCoreUIController extends BaseController
                 $kuponModel->useCoupon($idKupon);
             }
         }
-
-
-
 
         return redirect()->to(base_url('pay?order_id=' . $inv . '&payment_type=' . $params['payment_type']));
     }

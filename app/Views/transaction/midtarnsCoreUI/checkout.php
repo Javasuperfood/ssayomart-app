@@ -372,7 +372,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                     </div>
 
-                                    <div class="card border-0 shadow-sm rounded-2 mb-3">
+                                    <!-- <div class="card border-0 shadow-sm rounded-2 mb-3">
                                         <div class="card-body">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <h6 class="my-0"><input id="cc_radio" type="radio" value="cc_snap" name="paymentType"> Credit
@@ -385,7 +385,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                             </div>
