@@ -26,10 +26,12 @@ class JsfPromoProduk extends Migration
                 'unsigned'       => true,
             ],
             'created_at' => [
-                'type'        => 'timestamp',
+                'type'          => 'timestamp',
+                'null'          => true
             ],
             'updated_at' => [
-                'type'   => 'timestamp',
+                'type'          => 'timestamp',
+                'null'          => true
             ]
         ]);
         $this->forge->addKey('id', true);
