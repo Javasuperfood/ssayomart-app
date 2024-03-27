@@ -165,23 +165,39 @@ class TransactionCoreUIController extends BaseController
                 ->where('jsf_variasi_item.id_variasi_item', $varianProduk[$key])
                 ->where('jsf_produk.id_produk', $p)->first();
             $produk[$key]['qty'] = $qtyProduk[$key];
-            $cekProduk[] = [
-                'id' => $p,
-                'price' => $produk[$key]['harga_item'],
-                'quantity' => $produk[$key]['qty'],
-                'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
-            ];
-            $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+            $requiredQuantity = $promoProduk->getRequiredQuantity($produk[$key]['id_produk']);
+            if ($requiredQuantity > 1) {
+                // Apply requiredQuantity if available
+                $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'] * $requiredQuantity;
+                $cekProduk[] = [
+                    'id' => $p,
+                    'price' => $produk[$key]['harga_item'] * $requiredQuantity,
+                    'quantity' => $produk[$key]['qty'] * $requiredQuantity,
+                    'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
+                ];
+            } else {
+                $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+                $cekProduk[] = [
+                    'id' => $p,
+                    'price' => $produk[$key]['harga_item'],
+                    'quantity' => $produk[$key]['qty'],
+                    'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
+                ];
+            }
+
             $total_1 += $rowTotal;
 
+            // dd($cekProduk);
+            $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+            // $total_1 += $rowTotal;
 
             // jika ada ada promo maka total akan rumus dibawah 
-            $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
-            if (count($promoDetails) > 0 && $produk[$key]['qty'] >= $promoDetails[0]['min']) {
-                $produk[$key]['promo'] = $promoDetails[0];
-                $produk[$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
-                $totalDiscount += $produk[$key]['promo']['total'];
-            }
+            // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
+            // if (count($promoDetails) > 0 && $produk[$key]['qty'] >= $promoDetails[0]['min']) {
+            //     $produk[$key]['promo'] = $promoDetails[0];
+            //     $produk[$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
+            //     $totalDiscount += $produk[$key]['promo']['total'];
+            // }
         }
 
         $total_2 = $total_1;
