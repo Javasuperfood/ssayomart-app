@@ -1,7 +1,7 @@
 <?= $this->extend('dashboard/dashboard') ?>
 <?= $this->section('page-content') ?>
 
-<h1 class="h3 mb-2 text-gray-800">Produk</h1>
+<h2 class="h3 mb-2 text-gray-800">Produk</h2>
 <p class="mb-3">Halaman ini dapat menampilkan produk dari ssayomart market disini anda sebagai admin dapat mengatur dan menglola produk yang akan tampil pada halaman user berikan produk terbaikmu
 </p>
 
