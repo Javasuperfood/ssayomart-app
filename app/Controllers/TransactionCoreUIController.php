@@ -166,7 +166,7 @@ class TransactionCoreUIController extends BaseController
                 ->where('jsf_produk.id_produk', $p)->first();
             $produk[$key]['qty'] = $qtyProduk[$key];
             $requiredQuantity = $promoProduk->getRequiredQuantity($produk[$key]['id_produk']);
-            if ($requiredQuantity > 1) {
+            if ($requiredQuantity > 0) {
                 // Apply requiredQuantity if available
                 $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'] * $requiredQuantity;
                 $cekProduk[] = [
@@ -184,12 +184,9 @@ class TransactionCoreUIController extends BaseController
                     'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
                 ];
             }
-
             $total_1 += $rowTotal;
 
-            // dd($cekProduk);
             $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
-            // $total_1 += $rowTotal;
 
             // jika ada ada promo maka total akan rumus dibawah 
             // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
@@ -308,9 +305,24 @@ class TransactionCoreUIController extends BaseController
                     "country_code" => "IDN"
                 ],
             ],
-            "item_details" => $cekProduk,
+            // 'item_details' => $cekProduk,
+            'item_details' => [
+                [
+                    'id' => $produk[0]['id_produk'],
+                    'price' => $total_1, // adjust the price to match $total_1
+                    'quantity' => $produk[0]['qty'],
+                    'name' => $produk[0]['nama'] . ' ' . $produk[0]['value_item'],
+                ],
+                [
+                    'id' => 'Service',
+                    'price' => $service,
+                    'quantity' => 1,
+                    'name' => $servicetext,
+                ],
+            ],
         ];
         // dd($total_1, $total_2, $totalDiscount, $getDiscount, $cekProduk, $params);
+        // dd($total_1, $total_2, $cekProduk, $params);
         switch ($metode_pemabayaran) {
             case 'cc_snap':
                 $params['payment_type'] = "cc_snap";

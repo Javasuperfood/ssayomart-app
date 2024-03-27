@@ -45,12 +45,12 @@ class UserStatusController extends BaseController
         $status = $statusModel->findAll();
         $cekProduk = $userModel->getTransaksi($order_id);
         // dd($cekProduk);
-        foreach ($cekProduk as $key => $product) {
-            $promoDetails = $promoProduk->getPromoDetailsByIdProduk($product->id_produk);
-            if (count($promoDetails) > 0 && $product->qty >= $promoDetails[0]['min']) {
-                $cekProduk[$key]->promo = $promoDetails[0];
-            }
-        }
+        // foreach ($cekProduk as $key => $product) {
+        //     $promoDetails = $promoProduk->getPromoDetailsByIdProduk($product->id_produk);
+        //     if (count($promoDetails) > 0 && $product->qty >= $promoDetails[0]['min']) {
+        //         $cekProduk[$key]->promo = $promoDetails[0];
+        //     }
+        // }
 
         // Tentukan kolom nama sesuai dengan pilihan bahasa
         $bahasa = session()->get('lang');
