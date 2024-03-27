@@ -11,24 +11,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <section class="">
+        <section>
             <div class="container d-md-none">
-                <div class="row text-center">
-                    <div class="col">
-                        <?php if (isset($produk[0]['img_2'])) : ?>
-                            <div class="mx-auto">
-                                <img src="<?= base_url() ?>assets/img/promo/<?= $produk[0]['img_2']; ?>" alt="<?= $produk[0]['title']; ?>" class="promo-cuy">
-                            </div>
-                        <?php else : ?>
-                            <div class=" d-flex justify-content-center card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
-                                <div class="card-danger">
-                                    <h3 class="fw-bold mt-2"><?= $produk[0]['title']; ?></h3>
+                <?php if ($produk) : ?>
+                    <div class="row text-center">
+                        <div class="col">
+                            <?php if (isset($produk[0]['img_2'])) : ?>
+                                <div class="mx-auto">
+                                    <img src="<?= base_url() ?>assets/img/promo/<?= $produk[0]['img_2']; ?>" alt="<?= $produk[0]['title']; ?>" class="promo-cuy">
                                 </div>
-                            </div>
-                        <?php endif; ?>
-                        <hr class="" style="border-width: 3px; border-color:#db6327;">
+                            <?php else : ?>
+                                <div class=" d-flex justify-content-center card border-0 text-center font-family-poppins" style="color: #9c2525; background-color: #facaaf;">
+                                    <div class="card-danger">
+                                        <h3 class="fw-bold mt-2"><?= $produk[0]['title']; ?></h3>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                            <hr class="" style="border-width: 3px; border-color:#db6327;">
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </section>
     </div>
