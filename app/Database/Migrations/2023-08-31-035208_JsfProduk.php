@@ -60,7 +60,8 @@ class JsfProduk extends Migration
             'created_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
-            ], 'updated_at' => [
+            ],
+            'updated_at' => [
                 'type'          => 'timestamp',
                 'null'          => true
             ],

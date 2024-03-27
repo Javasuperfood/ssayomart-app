@@ -14,7 +14,7 @@
                         <span class="text-secondary fs-5 position-absolute top-50 start-50 translate-middle">
                             Total Produk: <?= $totalProduk; ?>
                         </span>
-                    </div>
+                    </div>   
                     <div class="col-3 text-center">
                         <i class="bi bi-box-seam fs-1 text-secondary"></i>
                     </div>
@@ -41,10 +41,15 @@
                         <option value="<?= $k['nama_kategori']; ?>" <?= ($k['id_kategori'] == $produk[0]['id_kategori']) ? 'selected' : ''; ?>><?= $k['nama_kategori']; ?></option>
                     <?php endforeach; ?>
                 </select>
+                <button class="btn btn-outline-danger" type="submit" id="search"><i class="bi bi-search"></i></button>
+            </div> 
+        </form>
+        <form action="<?= base_url('dashboard/produk'); ?>" method="get">
+            <div class="input-group mb-4">
                 <input type="text" class="form-control" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search" aria-describedby="search">
                 <button class="btn btn-outline-danger" type="submit" id="search"><i class="bi bi-search"></i></button>
             </div>
-        </form>
+        </form>  
     </div>
 </div>
 
