@@ -1,5 +1,15 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
+<script>
+    $(document).ready(function() {
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Sorry, we're under maintenance.",
+            showConfirmButton: true
+        });
+    });
+</script>
 <?php
 // Mendeteksi User-Agent
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
