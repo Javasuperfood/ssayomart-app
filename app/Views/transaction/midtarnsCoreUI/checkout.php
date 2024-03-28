@@ -233,32 +233,29 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endif ?>
-                    <?php if ($promoProduk) : ?>
-                        <?php foreach ($promoProduk as $p) : ?>
-                            <div class="col pt-3">
-                                <div class="card border-0 shadow-sm">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-3">
-                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
-                                            </div>
-                                            <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
-                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
-                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
-                                                </p>
-                                            </div>
-                                            <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                                <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
-                                                <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
-                                            </div>
+                    <?php if (!empty($promoProduk)) : ?>
+                        <div class="col pt-3">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $promoProduk['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                        </div>
+                                        <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
+                                            <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($promoProduk['nama'], 0, 15); ?></p>
+                                            <p class="card-text text-secondary fs-6 pemilihan"><?= $promoProduk['qty']; ?> pcs
+                                            </p>
+                                        </div>
+                                        <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                            <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
+                                            <p class="fw-bold">Rp. <?= number_format(($promoProduk['harga_item'] * $promoProduk['qty']), 0, ',', '.'); ?></p>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="idPromoProduk[]" value="<?= $p['id_promo_produk']; ?>">
-                                <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
-                                <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
                             </div>
-                        <?php endforeach; ?>
+                            <input type="hidden" name="varianProduk[]" value="<?= $promoProduk['id_variasi_item']; ?>">
+                            <input type="hidden" name="qtyProduk[]" value="<?= $promoProduk['qty']; ?>">
+                        </div>
                     <?php else : ?>
                         <?php foreach ($produk as $p) : ?>
                             <div class="col pt-3">
@@ -287,7 +284,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
                                                 <?php endif; ?>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
