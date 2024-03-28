@@ -53,12 +53,14 @@ class TransactionCoreUIController extends BaseController
         $alamat_list = $alamatModel->where('id_user', user_id())->findAll();
 
         $kuponList = $kuponModel->where('available_kupon >', 0)->where('is_active', 1)->findAll();
+        $idPromoProduk = $this->request->getVar('id_promo_produk');
 
         $data = [
             'title' => 'Checkout',
             'alamat_list' => $alamat_list,
             'kupon' => $kuponList,
             'kategori' => $kategoriModel->findAll(),
+            'promoProduk' => $promoProduk->findAll(),
             'market_list' => $tokoModel->findAll(),
             'marketSelected' => $userModel->find(user_id())['market_selected'],
             'addressSelected' => $userModel->find(user_id())['address_selected'],
@@ -78,7 +80,6 @@ class TransactionCoreUIController extends BaseController
                     ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'inner')
                     ->find($id);
             }
-            // dd($data['produk']);
         } else {
             // Not buy from cart
             $data['produk'][0] = $variasiItemModel->select('jsf_variasi_item.*, jsf_produk.*')
@@ -88,34 +89,56 @@ class TransactionCoreUIController extends BaseController
             $data['produk'][0]['qty'] = $this->request->getVar('qty');
         }
 
+        // Checkout Promo
+        $data['promoProduk'] = $promoProduk
+            ->select('jsf_promo_produk.*, jsf_promo.*, jsf_variasi_item.*, jsf_produk.*')
+            ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'inner')
+            ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk', 'inner')
+            ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_promo_produk.id_produk', 'inner')
+            ->where('jsf_promo_produk.id', $idPromoProduk)
+            ->first();
+        // dd($data['promoProduk']);
+
         $totalAkhir = 0;
         $beratTotal = 0;
         $totalDiscount = 0;
-        foreach ($data['produk'] as $key => $produk) {
-            $requiredQuantity = $promoProduk->getRequiredQuantity($produk['id_produk']);
-            // Mengalikan harga produk dengan required_quantity jika required_quantity tersedia
-            if ($requiredQuantity > 0) {
-                $rowTotal = $produk['qty'] * $produk['harga_item'] * $requiredQuantity;
+        if (!empty($data['produk'])) {
+            foreach ($data['produk'] as $key => $produk) {
+                $rowTotal = $produk['qty'] * $produk['harga_item'];
+                $totalAkhir += $rowTotal;
+                $rowBerat = $produk['berat'] * $produk['qty'];
+                $beratTotal += $rowBerat;
+                // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
+                // if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
+                //     $data['produk'][$key]['promo'] = $promoDetails[0];
+                //     $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
+                //     $totalDiscount += $data['produk'][$key]['promo']['total'];
+                // }
+            }
+        }
+
+        // Checkout Promo
+        $qty = 1;
+        foreach ($data['promoProduk'] as $key => &$produk) {
+            $produk['qty'] = $qty;
+            // dd($produk);
+            if ($produk['required_quantity'] > 0) {
+                $rowTotal = $produk['qty'] * $produk['harga_item'] * $produk['required_quantity'];
             } else {
                 $rowTotal = $produk['qty'] * $produk['harga_item'];
             }
             $totalAkhir += $rowTotal;
             $rowBerat = $produk['berat'] * $produk['qty'];
             $beratTotal += $rowBerat;
-            $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
-            // if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
-            //     $data['produk'][$key]['promo'] = $promoDetails[0];
-            //     $data['produk'][$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
-            //     $totalDiscount += $data['produk'][$key]['promo']['total'];
-            // }
         }
+
         $data['total'] = $totalAkhir;
         $data['beratTotal'] = $beratTotal;
         $data['totalDiscount'] = $totalDiscount;
-
-        // dd($requiredQuantity);
+        // dd($data['promoProduk']);
         return view('transaction/midtarnsCoreUI/checkout', $data);
     }
+
 
     public function storeData()
     {

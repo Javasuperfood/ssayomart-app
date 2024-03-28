@@ -1,6 +1,6 @@
 <?= $this->extend('user/home/layout2') ?>
 <?= $this->section('page-content') ?>
-<script>
+<!-- <script>
     $(document).ready(function() {
         Swal.fire({
             icon: "error",
@@ -9,7 +9,7 @@
             showConfirmButton: true
         });
     });
-</script>
+</script> -->
 
 <?php
 // Mendeteksi User-Agent
@@ -233,42 +233,70 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endif ?>
-                    <?php foreach ($produk as $p) : ?>
-                        <div class="col pt-3">
-                            <div class="card border-0 shadow-sm">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
-                                        </div>
-                                        <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
-                                            <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
-                                            <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
-                                            </p>
-                                        </div>
-                                        <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                            <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
-                                            <?php if (isset(($p['promo']['total']))) : ?>
-                                                <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
-                                            <?php else : ?>
+                    <?php if ($promoProduk) : ?>
+                        <?php foreach ($promoProduk as $p) : ?>
+                            <div class="col pt-3">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                            </div>
+                                            <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
+                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
+                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
+                                                </p>
+                                            </div>
+                                            <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                                <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
                                                 <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
-                                            <?php endif; ?>
-                                            <?php if (isset($p['promo']['total'])) : ?>
-                                                <?php
-                                                $discountedTotal = ($p['harga_item'] * $p['qty']) - ($p['promo']['total']);
-                                                ?>
-                                                <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
-                                            <?php endif; ?>
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
+                                <input type="hidden" name="idPromoProduk[]" value="<?= $p['id_promo_produk']; ?>">
+                                <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
+                                <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
                             </div>
-                            <input type="hidden" name="idProduk[]" value="<?= $p['id_produk']; ?>">
-                            <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
-                            <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
-                        </div>
-                    <?php endforeach ?>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <?php foreach ($produk as $p) : ?>
+                            <div class="col pt-3">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                            </div>
+                                            <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
+                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
+                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
+                                                </p>
+                                            </div>
+                                            <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                                <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
+                                                <?php if (isset(($p['promo']['total']))) : ?>
+                                                    <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                <?php else : ?>
+                                                    <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                <?php endif; ?>
+                                                <?php if (isset($p['promo']['total'])) : ?>
+                                                    <?php
+                                                    $discountedTotal = ($p['harga_item'] * $p['qty']) - ($p['promo']['total']);
+                                                    ?>
+                                                    <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
+                                                <?php endif; ?>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="idProduk[]" value="<?= $p['id_produk']; ?>">
+                                <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
+                                <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
+                            </div>
+                        <?php endforeach ?>
+                    <?php endif; ?>
                     <div class="col py-3 px-3">
                         <table class="table fs-6 pemilihan lh-1" style="font-size: smaller !important;">
                             <thead>
