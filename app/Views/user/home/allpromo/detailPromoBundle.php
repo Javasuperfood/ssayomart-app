@@ -23,7 +23,7 @@
                     </div>
                     <form action="<?= base_url('checkout2') ?>" method="get">
                         <div class="col-6 mt-5">
-                            <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger fw-bold"><?= lang('Text.btn_beli') ?></a>
+                            <a id="buyButton_1" href="<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id_promo_produk'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger fw-bold"><?= lang('Text.btn_beli') ?></a>
                             <input type="hidden" name="id_promo_produk" value="<?= $promoProduk['id_promo_produk'] ?>">
                         </div>
                     </form>
