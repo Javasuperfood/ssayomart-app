@@ -73,21 +73,21 @@ $routes->post('callback-apple', 'AppleCallbackController::index');
 
 $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static function ($routes) {
     $routes->get('/checkout2', 'TransactionCoreUIController::checkout');
-    // $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
-    // $routes->get('/pay', 'TransactionCoreUIController::pay');
+    $routes->post('/checkout2/pay', 'TransactionCoreUIController::storeData');
+    $routes->get('/pay', 'TransactionCoreUIController::pay');
 
-    // $routes->get('/buy/(:segment)', 'BuyController::index/$1');
-    // $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
-    // $routes->post('/new-payment', 'BuyController::getNewPayment');
+    $routes->get('/buy/(:segment)', 'BuyController::index/$1');
+    $routes->post('/store/(:segment)', 'BuyController::storeData/$1');
+    $routes->post('/new-payment', 'BuyController::getNewPayment');
 
     $routes->get('/cart', 'CartController::cart2');
     $routes->post('/cart/delete/(:num)', 'CartController::deleteProduk/$1');
 
-    // $routes->post('/checkout', 'CheckoutController::storeData');
-    // $routes->get('/checkout/(:any)', 'CheckoutController::checkout/$1');
-    // $routes->post('/checkout/(:any)/bayar', 'CheckoutController::bayar/$1');
-    // $routes->get('/checkout-cart', 'CheckoutController::checkoutCart');
-    // $routes->post('/checkout-cart/bayar', 'CheckoutController::checkoutCartBayar');
+    $routes->post('/checkout', 'CheckoutController::storeData');
+    $routes->get('/checkout/(:any)', 'CheckoutController::checkout/$1');
+    $routes->post('/checkout/(:any)/bayar', 'CheckoutController::bayar/$1');
+    $routes->get('/checkout-cart', 'CheckoutController::checkoutCart');
+    $routes->post('/checkout-cart/bayar', 'CheckoutController::checkoutCartBayar');
 
     $routes->get('/select-alamat', 'SelectAlamat::selectAlamat');
 
