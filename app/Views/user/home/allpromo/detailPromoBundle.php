@@ -21,9 +21,12 @@
                             Rp. <?= number_format($promoProduk['harga_item'], 0, ',', '.'); ?> / Pcs
                         </p>
                     </div>
-                    <div class="col-6 mt-5">
-                        <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger fw-bold"><?= lang('Text.btn_beli') ?></a>
-                    </div>
+                    <form action="<?= base_url('checkout2') ?>" method="get">
+                        <div class="col-6 mt-5">
+                            <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger fw-bold"><?= lang('Text.btn_beli') ?></a>
+                            <input type="hidden" name="id_promo_produk" value="<?= $promoProduk['id_promo_produk'] ?>">
+                        </div>
+                    </form>
                 </div>
                 <div class="row">
                     <div class="col-12 p-4">
@@ -46,47 +49,5 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    function increaseCount(a, b) {
-        var input = b.previousElementSibling;
-        var value = parseInt(input.value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-        input.value = value;
-        $("#qty").val(value);
-        <?php if ($varianItem == 1) : ?>
-            var link =
-                `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` +
-                value;
-            $("#buyButton_1").attr("href", link);
-        <?php endif ?>
-    }
-
-    function decreaseCount(a, b) {
-        var input = b.nextElementSibling;
-        var value = parseInt(input.value, 10);
-        if (value > 1) {
-            value = isNaN(value) ? 0 : value;
-            value--;
-            input.value = value;
-            $("#qty").val(value);
-            <?php if ($varianItem == 1) : ?>
-                var link =
-                    `<?= base_url('checkout2?slug=' . $promoProduk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` +
-                    value;
-                $("#buyButton_1").attr("href", link);
-            <?php endif ?>
-        }
-    }
-
-    function alertNoStcok() {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Stok tidak tersedia!'
-        })
-    }
-</script>
 
 <?= $this->endSection(); ?>
