@@ -5,7 +5,7 @@
     <div class="col text-center">
         <div class="container">
             <div class="gallery">
-                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $promoProduk['promo_img']; ?>" class="img-fluid" alt="Promotion Image">
+                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $promoProduk['promo_img']; ?>" class="img-fluid rounded-2" alt="Promotion Image">
             </div>
         </div>
     </div>
