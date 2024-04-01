@@ -253,6 +253,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                             </div>
+                            <input type="hidden" name="idPromoProduk" value="<?= $promoProduk['id']; ?>">
                             <input type="hidden" name="varianProduk[]" value="<?= $promoProduk['id_variasi_item']; ?>">
                             <input type="hidden" name="qtyProduk[]" value="<?= $promoProduk['qty']; ?>">
                         </div>
