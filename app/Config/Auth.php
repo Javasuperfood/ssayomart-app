@@ -460,7 +460,7 @@ class Auth extends ShieldAuth
     {
         $session = session();
         // $url     = $session->getTempdata('beforeLoginUrl') ?? setting('Auth.redirects')['login'];
-        $url     =  auth()->user()->inGroup('superadmin') || auth()->user()->inGroup('admin')  ? '/dashboard' : '/' ?? setting('Auth.redirects')['login'];
+        $url = auth()->user()->inGroup('superadmin') ? '/dashboard/dashboard-super-admin' : (auth()->user()->inGroup('admin') ? '/dashboard' : (setting('Auth.redirects')['login'] ?? '/'));
 
         return $this->getUrl($url);
     }
