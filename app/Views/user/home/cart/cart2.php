@@ -105,11 +105,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             </form>
             <div style="background-color: #ffff; z-index:100" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
                 <div class="col d-flex justify-content-center">
-                    <a href="<?= base_url('checkout2?cart=true'); ?>&<?php foreach ($produk as $p) {
-                                                                            if ($p['stok'] > 0) {
-                                                                                echo 'check%5B%5D=' . $p['id_cart_produk'] . '&';
-                                                                            }
-                                                                        } ?>" id="btnCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 60%; font-size: 13px"><?= lang('Text.btn_checkout') ?></a>
+                    <button id="btnCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 60%; font-size: 13px"><?= lang('Text.btn_checkout') ?></button>
                 </div>
             </div>
 
@@ -288,6 +284,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 checkInputs();
                 $(this).text('Pilih Semua');
             }
+        });
+    });
+
+    // Generate URL for checkout
+    $(document).ready(function() {
+        $('#btnCheckout').click(function() {
+            var selectedProducts = $('input[type="checkbox"]:checked');
+            var checkoutUrl = '<?= base_url('checkout2?cart=true'); ?>';
+            selectedProducts.each(function() {
+                checkoutUrl += '&check%5B%5D=' + encodeURIComponent($(this).val());
+            });
+            window.location.href = checkoutUrl;
         });
     });
 
