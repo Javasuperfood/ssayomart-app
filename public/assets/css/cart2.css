@@ -67,7 +67,7 @@
     max-width: 90px !important;
     /* Biarkan lebar gambar menyesuaikan */
     margin-top: 27px !important;
-    margin-left: 68px !important;
+    /* margin-left: 68px !important; */
     
     /* margin: 25px 0 25px auto !important; */
     /* Geser gambar ke tengah kanan */
@@ -375,8 +375,8 @@
 
 
   .btn-dash, .btn-plus {
-  width: 30px; 
-  height: 30px; 
+  /* width: 30px; 
+    height: 30px;  */
   border-radius: 50%;
   background-color: transparent; 
   color: #dc3545; 
@@ -386,9 +386,9 @@
   align-items: center; 
   justify-content: center; 
 }
-  .gambar-kecil {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /* .gambar-kecil {
     margin-left: 65px !important;
-  }
+  */
     .input-group.grup-masukan {
     justify-content: end;
   }
@@ -419,12 +419,12 @@
 
 /* untuk samsung galaxy s8 */
 @media screen and (min-width: 360px) and (max-width: 740px) {
-    .gambar-kecil {
+    /* .gambar-kecil {
     margin-left: 65px !important;
-  }
+  */
   .btn-dash, .btn-plus {
-  width: 30px; 
-  height: 30px; 
+  /* width: 15px;
+        height: 15px; */
   border-radius: 50%;
   background-color: transparent; 
   color: #dc3545; 
