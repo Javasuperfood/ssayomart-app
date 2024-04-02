@@ -18,9 +18,21 @@
                 Rp. <?= number_format($promoProduk['harga_item'], 0, ',', '.'); ?> / Pcs
             </p>
         </div>
+        <div class="input-group mb-3 d-flex justify-content-center">
+            <button class="btn btn-outline-danger rounded-circle " type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+            <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
+            <button class="btn btn-outline-danger rounded-circle" type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='increaseCount(event, this)'>
+                <i class="bi bi-plus"></i>
+            </button>
+
+        </div>
         <div class="col-6 mt-5 text-end">
+            <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
+            <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative" promoProduk="<?= $promoProduk['id']; ?>">
+                <i class="bi bi-cart-fill"></i>
+            </button>
             <form action="<?= base_url('checkout2') ?>" method="get">
-                <a id="buyButton_1" href="<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id_promo_produk'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger"><i class="bi bi-cart-fill me-2"></i><?= lang('Text.btn_beli') ?></a>
+                <a id="buyButton_1" href="<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id_promo_produk'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger"><?= lang('Text.btn_beli') ?></a>
                 <input type="hidden" name="id_promo_produk" value="<?= $promoProduk['id_promo_produk'] ?>">
             </form>
         </div>
@@ -43,5 +55,43 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function increaseCount(a, b) {
+        var input = b.previousElementSibling;
+        var value = parseInt(input.value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        input.value = value;
+        $("#qty").val(value);
+        <?php if ($varianItem == 1) : ?>
+            var link = `<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+            $("#buyButton_1").attr("href", link);
+        <?php endif ?>
+    }
+
+    function decreaseCount(a, b) {
+        var input = b.nextElementSibling;
+        var value = parseInt(input.value, 10);
+        if (value > 1) {
+            value = isNaN(value) ? 0 : value;
+            value--;
+            input.value = value;
+            $("#qty").val(value);
+            <?php if ($varianItem == 1) : ?>
+                var link = `<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty='); ?>` + value;
+                $("#buyButton_1").attr("href", link);
+            <?php endif ?>
+        }
+    }
+
+    function alertNoStcok() {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Stok tidak tersedia!'
+        })
+    }
+</script>
 
 <?= $this->endSection(); ?>
