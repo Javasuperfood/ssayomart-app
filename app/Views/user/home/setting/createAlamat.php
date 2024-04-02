@@ -17,6 +17,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="container text-secondary" style="font-size: 12px;">
                         <div class="row">
                             <div class="col-12">
+                                <div id="map" class="rounded-3"></div>
+                                <div class="button-container">
+                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger rounded-3"><i class="bi bi-crosshair"></i> Get Location</button>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group mb-3">
+                                    <p class="text-danger" style="font-size: 11px;"><?= lang('Text.info_alamat') ?></p>
+                                    <label for=" floatingInput">
+                                        <?= lang('Text.detail_alamat_2') ?><span class="text-danger fs-5"> *</span>
+                                    </label>
+                                    <div class="input-group ">
+                                        <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" aria-describedby="button_alamat_3" readonly>
+                                        <!-- <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button> -->
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <?= validation_show_error('alamat_3') ?>
+                                    </div>
+                                    <input type="hidden" id="latitude" name="latitude">
+                                    <input type="hidden" id="longitude" name="longitude">
+                                    <datalist id="alamat_3_option">
+                                        <!-- this option -->
+                                    </datalist>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="label" class="form-label"><?= lang('Text.label_alamat') ?><span class="text-danger fs-5"> *</span></label>
                                     <input class="form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('label')) ? 'is-invalid' : '' ?>" name="label" id="label_alamat" style="font-size: 14px;" value="<?= old('label') ?>">
@@ -51,11 +79,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
+                                    <label for=" floatingInput"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
+                                    <input class="form-control <?= (validation_show_error('provinsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('provinsi')) ? 'is-invalid' : '' ?>" name="provinsi" id="provinsi" style="font-size: 14px;" value="<?= old('provinsi') ?>" readonly>
+                                    <div class="invalid-feed"><?= validation_show_error('provinsi') ?></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-3">
+                                    <label for=" floatingInput"><?= lang('Text.kab_kota') ?><span class="text-danger fs-5"> *</span></label>
+                                    <input class="form-control <?= (validation_show_error('kabupaten')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('kabupaten')) ? 'is-invalid' : '' ?>" name="kabupaten" id="kabupaten" style="font-size: 14px;" value="<?= old('kabupaten') ?>" readonly>
+                                    <div class="invalid-feed"><?= validation_show_error('kabupaten') ?></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GET ALAMAT RAJAONGKIR DON'T DELETE! -->
+                        <!-- <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-3">
                                     <label for="provinsi"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
-                                    <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi" style="font-size: 14px;">
+                                    <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="provinsi" name="id_provinsi" style="font-size: 14px;">
                                         <option selected></option>
                                         <?php foreach ($provinsi as $p) : ?>
                                             <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
@@ -69,7 +119,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="kabupaten"><?= lang('Text.kab_kota') ?><span class="text-danger fs-5"> *</span></label>
-                                    <select class="form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten" style="font-size: 14px;">
+                                    <select class="form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kabupaten" name="id_kabupaten" style="font-size: 14px;">
                                         <option selected></option>
                                     </select>
                                     <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
@@ -77,7 +127,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                         <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi">
-                        <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten">
+                        <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten"> -->
+                        <!-- END -->
 
                         <div class="row">
                             <div class="col-12">
@@ -107,31 +158,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group mb-3">
-                                    <label for=" floatingInput"><?= lang('Text.detail_alamat_2') ?><span class="text-danger fs-5"> *</span></label>
-                                    <div class="input-group ">
-                                        <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" aria-describedby="button_alamat_3">
-                                        <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
-                                    </div>
-                                    <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?>
-                                    </div>
-                                    <input type="hidden" id="latitude" name="latitude">
-                                    <input type="hidden" id="longitude" name="longitude">
-                                    <datalist id="alamat_3_option">
-                                        <!-- this option -->
-                                    </datalist>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <p class="text-danger" style="font-size: 11px;"><?= lang('Text.info_alamat') ?></p>
-                                <div id="map"></div>
-                                <div class="button-container">
-                                    <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-crosshair"></i></button>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="row p-3 px-4">
                             <button type="submit" class="btn fw-bold btn-outline-danger d-flex align-items-center">
                                 <i class="bi bi-save"></i>
@@ -145,7 +172,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
     <style>
         #map {
-            height: 400px;
+            height: 250px;
             width: 100%;
         }
 
@@ -157,15 +184,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             position: relative;
             margin-left: 10px;
             z-index: 1000;
-            border-radius: 50% !important;
-            /* Mengatur elemen menjadi bentuk bulat */
             top: -50px !important;
-
-        }
-
-        #getLocationBtn {
-            border-radius: 50%;
-            /* Mengatur tombol menjadi bentuk bulat */
 
         }
     </style>
@@ -303,7 +322,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php endif; ?>
 <!-- end desktop -->
 
-
 <script>
     function getLocation() {
         if (navigator.geolocation) {
@@ -369,18 +387,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             .then(response => response.json())
             .then(data => {
                 var address = data.display_name;
+                var addressComponents = data.address;
 
-                // Update the popup with the full address
+                // Ekstrak informasi provinsi, kabupaten/kota, dan kode pos
+                var province = addressComponents.state;
+                var idProvince = addressComponents.state;
+                var city = addressComponents.city || addressComponents.county;
+                var postalCode = addressComponents.postcode;
+                var detailAddress = addressComponents.road;
+
+                // Mengisi otomatis kolom provinsi, kabupaten/kota, dan kode pos
+                $("#provinsi").val(province);
+                $("#id_province").val(idProvince);
+
+                $("#kabupaten").val(city);
+                $("#zip_code").val(postalCode);
+                $("#alamat_1").val(detailAddress);
+
+                // Update popup dengan alamat lengkap
                 map.eachLayer(function(layer) {
                     if (layer instanceof L.Marker) {
                         layer.getPopup().setContent('You are here: ' + address).openPopup();
-                        if (from == 'event') {
-
-                        } else {
-                            $("#alamat_3").val(address);
-                            $("#latitude").val(lat);
-                            $("#longitude").val(lon);
-                        }
+                        $("#alamat_3").val(address);
+                        $("#latitude").val(lat);
+                        $("#longitude").val(lon);
                     }
                 });
             })
@@ -394,6 +424,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
     map.on('click', onMapClick);
+
     document.addEventListener('DOMContentLoaded', function() {
         <?php if (session()->has('alert')) : ?>
             var alertData = <?= json_encode(session('alert')) ?>;
@@ -405,6 +436,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <?php endif; ?>
     });
 </script>
+
 <?= $this->endSection(); ?>
 <?= $this->section('custom_head') ?>
 <link rel="stylesheet" href="<?= base_url(); ?>assets/maps/leaflet.css" />

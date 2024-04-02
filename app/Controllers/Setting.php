@@ -269,17 +269,18 @@ class Setting extends BaseController
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
             'alamat_3' => $this->request->getVar('alamat_3'),
-            'id_province' => $this->request->getVar('id_provinsi'),
             'province' => $this->request->getVar('provinsi'),
-            'id_city' => $this->request->getVar('id_kabupaten'),
             'city' => $this->request->getVar('kabupaten'),
+            // 'id_province' => $this->request->getVar('id_provinsi'),
+            // 'province' => $this->request->getVar('provinsi'),
+            // 'id_city' => $this->request->getVar('id_kabupaten'),
+            // 'city' => $this->request->getVar('kabupaten'),
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2'),
             'latitude' => $this->request->getVar('latitude'),
             'longitude' => $this->request->getVar('longitude'),
         ];
-        // dd($data);
         // SWAL
         if ($data['telp2'] == null) {
             $ruleTelp2 = [];
@@ -324,26 +325,25 @@ class Setting extends BaseController
                 ]
             ],
             'alamat_3' => [
-                'rules' => 'required|min_length[3]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
+                'rules' => 'required|min_length[3]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 3 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
                 ]
             ],
 
-            'id_province' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Provinsi harus dipilih.'
-                ]
-            ],
-            'id_city' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Kabupaten harus dipilih.'
-                ]
-            ],
+            // 'id_province' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Provinsi harus dipilih.'
+            //     ]
+            // ],
+            // 'id_city' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Kabupaten harus dipilih.'
+            //     ]
+            // ],
             'zip_code' => [
                 'rules' => 'required|numeric|exact_length[5]',
                 'errors' => [
@@ -428,9 +428,9 @@ class Setting extends BaseController
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
             'alamat_3' => $this->request->getVar('alamat_3'),
-            'id_province' => $this->request->getVar('id_provinsi'),
+            // 'id_province' => $this->request->getVar('id_provinsi'),
+            // 'id_city' => $this->request->getVar('id_kabupaten'),
             'province' => $this->request->getVar('provinsi'),
-            'id_city' => $this->request->getVar('id_kabupaten'),
             'city' => $this->request->getVar('kabupaten'),
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
@@ -488,19 +488,18 @@ class Setting extends BaseController
                     'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
                 ]
             ],
-
-            'id_province' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Provinsi harus dipilih.'
-                ]
-            ],
-            'id_city' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Kabupaten harus dipilih.'
-                ]
-            ],
+            // 'id_province' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Provinsi harus dipilih.'
+            //     ]
+            // ],
+            // 'id_city' => [
+            //     'rules' => 'required',
+            //     'errors' => [
+            //         'required' => 'Kabupaten harus dipilih.'
+            //     ]
+            // ],
             'zip_code' => [
                 'rules' => 'required|numeric|exact_length[5]',
                 'errors' => [
@@ -744,16 +743,5 @@ class Setting extends BaseController
             $data['preloader'] = false;
         }
         return view('user/home/setting/kebijakanPrivasi', $data);
-    }
-
-    // Cropper Image
-    public function cropper()
-    {
-        $kategori = new KategoriModel();
-        $data = [
-            'title' => 'Sayomart Care',
-            'kategori' => $kategori->findAll()
-        ];
-        return view('user/home/setting/cropper', $data);
     }
 }
