@@ -11,35 +11,54 @@
     </div>
 </div>
 <div class="container overflow-hidden p-1 mt-3 rounded-top-5" style="background-color:#fff; box-shadow: 0px -1px 3px rgba(143, 140, 140, 0.2) !important;">
-    <section class="container d-flex">
-        <div class="col-6 mt-5">
-            <h4 class="fw-bold" style="color:#81271f;"><?= $promoProduk['title']; ?></h4>
+    <section class="row">
+         <div class="col-12 mt-5">
+            <div class=" text-center mx-auto">
+                 <h4 class="fw-bold" style="color:#81271f;"><?= $promoProduk['title']; ?></h4>
             <p class="text-dark fw-bold" style="font-size: 13px;">
                 Rp. <?= number_format($promoProduk['harga_item'], 0, ',', '.'); ?> / Pcs
             </p>
+            </div>
+           
         </div>
-        <div class="input-group mb-3 d-flex justify-content-center">
+        <div class="col-12">
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-outline-danger rounded-circle " type="button" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
+                <input type="number" id="counterProduct" class="form-control text-center bg-white border-0 w-25" disabled value="1">
+                 <button class="btn btn-outline-danger rounded-circle" type="button"  onClick='increaseCount(event, this)'>
+                <i class="bi bi-plus"></i>
+            </button>
+        </div>
+       
+        <!-- <div class="input-group mb-3 d-flex justify-content-center">
             <button class="btn btn-outline-danger rounded-circle " type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='decreaseCount(event, this)'><i class="bi bi-dash"></i></button>
             <input type="number" id="counterProduct" class="form-control text-center bg-white border-0" disabled value="1">
             <button class="btn btn-outline-danger rounded-circle" type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='increaseCount(event, this)'>
                 <i class="bi bi-plus"></i>
             </button>
 
+        </div> -->
+        
+
         </div>
-        <div class="col-6 mt-5 text-end">
-            <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-            <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative" promoProduk="<?= $promoProduk['id']; ?>">
+        <div class="col-12 ">
+            <div class="d-flex justify-content-center gap-2 mt-4">
+                  <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
+            <button class="btn btn-white text-danger border-danger  d-inline add-to-cart-btn position-relative" promoProduk="<?= $promoProduk['id']; ?>">
                 <i class="bi bi-cart-fill"></i>
             </button>
             <form action="<?= base_url('checkout2') ?>" method="get">
                 <a id="buyButton_1" href="<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id_promo_produk'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger"><?= lang('Text.btn_beli') ?></a>
                 <input type="hidden" name="id_promo_produk" value="<?= $promoProduk['id_promo_produk'] ?>">
             </form>
+            </div>
+          
         </div>
     </section>
     <div class="row">
         <div class="col-12 p-4">
-            <h3 class="text-start fw-bold" style="color:#81271f;">Produk Bundle</h3>
+            <div>
+                  <h3 class="text-start fw-bold" style="color:#81271f;">Produk Bundle</h3>
             <?php
             $concatenatedNames = '';
             $concatenatedNames .= $promoProduk['nama'];
@@ -48,10 +67,28 @@
             }
             echo "<p class='text-start text-dark fs-8 fst-italic'>" . $concatenatedNames . "</p>";
             ?>
+            </div>
+          <div>
             <h3 class="text-start fw-bold" style="color:#81271f;">Deskripsi Promo</h3>
             <p class="text-start fs-8 fst-italic">
                 <?= $promoProduk['promo_deskripsi']; ?>
             </p>
+          </div>
+         
+          <div>
+            <h5>Kategori: </h5>
+            <span class="text-uppercase bg-danger text-white rounded-3 px-3 ">snack</span>
+          </div>
+
+           <div class="mt-4">
+            <h5>Sub Kategori: </h5>
+            <span class="text-uppercase bg-warning text-white rounded-3 px-3 ">snack</span>
+          </div>
+
+           <div class="mt-4">
+            <h5>Stok Tersedia: </h5>
+            <span class="text-uppercase bg-primary text-white rounded-3 px-3">snack</span>
+          </div>
         </div>
     </div>
 </div>
