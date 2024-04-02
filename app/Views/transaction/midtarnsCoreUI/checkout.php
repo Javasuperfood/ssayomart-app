@@ -166,11 +166,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col d-flex align-items-center">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 100px;">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/jne.png" alt="Jne" srcset="" style="width: 90px; filter: grayscale(100%);">
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
-                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)">
-                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault2">Pilih</label>
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)" disabled>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault2">Comming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -178,11 +178,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col d-flex align-items-center">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 100px;">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/tiki.svg" alt="Tiki" srcset="" style="width: 100px; filter: grayscale(100%);">
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
-                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)">
-                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault3">Pilih</label>
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)" disabled>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -190,11 +190,47 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <div class="col">
                                                 <div class="row">
                                                     <div class="col d-flex align-items-center">
-                                                        <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 100px;">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/lalamove.png" alt="Lalamove" srcset="" style="width: 100px; filter: grayscale(100%);">
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end">
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="lalamove" brand="Lalamove" onclick="selectCourier(this)" disabled>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col d-flex align-items-center">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/maxim.png" alt="maxim" srcset="" style="width: 100px; filter: grayscale(100%);">
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end">
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="maxim" brand="maxim" onclick="selectCourier(this)" disabled>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col d-flex align-items-center">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/grab.png" alt="grab" srcset="" style="width: 100px; filter: grayscale(100%);">
+                                                    </div>
+                                                    <div class="col d-flex justify-content-end">
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="grab" brand="grab" onclick="selectCourier(this)" disabled>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col d-flex align-items-center">
+                                                        <img src="<?= base_url(); ?>assets/img/checkout/pos.png" alt="Pos" srcset="" style="width: 85px; filter: grayscale(100%);">
                                                     </div>
                                                     <div class="col d-flex justify-content-end align-items-center">
-                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)">
-                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault4">Pilih</label>
+                                                        <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)" disabled>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault4">Comming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
