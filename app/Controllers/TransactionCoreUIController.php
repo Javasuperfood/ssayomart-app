@@ -91,15 +91,15 @@ class TransactionCoreUIController extends BaseController
             if (!empty($id_promo_produk)) {
                 // Fetch data for the specified promo product
                 $data['promoProduk'] = $promoProduk
-                    ->select('jsf_promo_produk.*, jsf_promo.*, jsf_variasi_item.*, jsf_produk.*')
+                    ->select('jsf_promo_produk.*, jsf_promo.*, jsf_variasi_item.*, jsf_produk.*, cp.qty')
                     ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'inner')
                     ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk', 'inner')
+                    ->join('jsf_checkout_produk cp', 'cp.id_produk = jsf_promo_produk.id_produk', 'left')
                     ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_promo_produk.id_produk', 'inner')
-                    ->where('jsf_promo_produk.id', $id_promo_produk)
-                    ->first();
+                    ->groupBy('jsf_promo_produk.id', $id_promo_produk)
+                    ->get()->getResultArray();
             }
         }
-        // dd($checkoutFormCart);
 
         $totalAkhir = 0;
         $beratTotal = 0;
@@ -121,22 +121,18 @@ class TransactionCoreUIController extends BaseController
 
         // Checkout Promo
         if (!empty($data['promoProduk'])) {
-            $qty = 1;
-            $produk = &$data['promoProduk'];
-            $produk['qty'] = $qty;
-
-            if ($produk['required_quantity'] > 0) {
-                $rowTotal = $produk['qty'] * $produk['harga_item'] * $produk['required_quantity'];
-            } else {
-                $rowTotal = $produk['qty'] * $produk['harga_item'];
+            foreach ($data['promoProduk'] as $key => $produk) {
+                $rowTotal = 0;
+                $beratTotal = 0;
+                if ($produk['required_quantity']) {
+                    $rowTotal = $produk['qty'] * $produk['harga_item'];
+                    $produk['rowTotal'] = $rowTotal;
+                    $totalAkhir += $rowTotal;
+                    $rowBerat = $produk['berat'] * $produk['qty'];
+                    $produk['rowBerat'] = $rowBerat;
+                    $beratTotal += $rowBerat;
+                }
             }
-
-            $produk['rowTotal'] = $rowTotal;
-
-            $totalAkhir += $rowTotal;
-            $rowBerat = $produk['berat'] * $produk['qty'];
-            $produk['rowBerat'] = $rowBerat;
-            $beratTotal += $rowBerat;
         }
 
         $data['total'] = $totalAkhir;
