@@ -155,7 +155,11 @@ class CartController extends BaseController
 
         $totalAkhir = 0;
         foreach ($cekCartProduk as $key => $produk) {
-            $rowTotal = $produk['qty'] * $produk['harga_item'];
+            if ($produk['required_quantity'] !== null) {
+                $rowTotal = $produk['required_quantity'] * $produk['harga_item'] * $produk['qty'];
+            } else {
+                $rowTotal = $produk['qty'] * $produk['harga_item'];
+            }
             $totalAkhir += $rowTotal;
             $stok = $stockModel->getSingleStockVarian($produk['id_variasi_item'], $marketSelected);
             $cekCartProduk[$key]['stok'] = ($stok) ? $stok['stok'] : 0;
