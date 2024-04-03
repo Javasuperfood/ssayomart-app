@@ -21,11 +21,13 @@
 
 <body>
     <?= $this->include('user/home/component/preloader') ?>
-    <?= $this->include('user/home/component/navbarMain') ?>
+    <!-- navbar atas khusus pada detail produk -->
+    <?= $this->include('user/home/component/navbarLayout') ?>
     <?= $this->renderSection('page-content') ?>
     <!-- <div class="pb-5 mt-5"></div> -->
 
     <div class="footer-search" id="navbarBottom" style="position: relative; bottom: 0; width: 100%;">
+        <!-- navbar bawah khusus pada detail produk -->
         <?= $this->include('user/home/component/navbarBlank') ?>
     </div>
     <!-- Bootstrap JS -->
