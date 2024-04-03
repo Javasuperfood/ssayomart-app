@@ -46,7 +46,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
-            <div class="row mb-2 mt-3">
+            <!-- <div class="row mb-2 mt-3">
                 <div class="col">
                     <div class="card text-bg-light mb-4 shadow border-0 rounded">
                         <div class="card-body">
@@ -64,9 +64,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="row row-cols-1">
+                </div> 
+            </div> -->
+            <div class="row row-cols-1 mt-5">
                 <div class="col">
                     <h3><?= lang('Text.setting') ?></h3>
                     <ul class="list-group list-group-flush">
