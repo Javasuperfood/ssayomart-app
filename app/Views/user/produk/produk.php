@@ -1,4 +1,4 @@
-<?= $this->extend('user/home/layout2') ?>
+<?= $this->extend('user/home/layout3') ?>
 <?= $this->section('page-content') ?>
 
 <?php
@@ -47,7 +47,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </p>
                     </div>
                 </div>
-                <div class="container pt-3">
+                <!-- <div class="container pt-3">
                     <div class="row px-5">
                         <div class="col">
                             <div class="input-group mb-3 d-flex justify-content-center">
@@ -60,7 +60,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- <div class="text-center">
                     <?php if ($varianItem > 1) : ?>
@@ -80,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php endif ?>
                 </div> -->
 
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <?php if ($varianItem > 1) : ?>
                         <button class="btn btn-white text-danger border-danger mt-4 d-inline" data-bs-toggle="modal" data-bs-target="#modalVarian"><i class="bi bi-cart-fill"></i></button>
 
@@ -97,7 +97,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
                         <?php endif ?>
                     <?php endif ?>
-                </div>
+                </div> -->
             </div>
             <div class="row mt-4 mb-5">
                 <div class="col">
