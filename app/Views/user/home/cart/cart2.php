@@ -80,6 +80,38 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <?php endif; ?>
                                         </a>
                                     </div>
+
+                                    <div class="col-8">
+                                        <div class="card-body">
+                                            <?php if ($p['required_quantity']) : ?>
+                                                <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px;  margin-top: 53px;">
+                                                    <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" required_quantity="<?= $p['required_quantity']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['required_quantity']) * $p['qty']; ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="form-check form-check-lg position-absolute posisi-mutlak top-0 start-0 mx-2" style="font-size: 20px;  margin-top: 53px;">
+                                                    <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                                </div>
+                                            <?php endif; ?>
+                                            <div class="mt-4 mx-2 text-position">
+                                                <p class="card-text text-secondary" style="margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0, 15); ?>...</p>
+                                                <!-- Fungsi Multi Language -->
+                                                <!-- <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p[$kolomNama] . '(' . $p['value_item'] . ')', 0, 30); ?></p> -->
+                                                <br>
+                                                <?php if ($p['required_quantity']) : ?>
+                                                    <p class="card-title fw-bold text-danger harga-pesanan float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'] * $p['required_quantity'], 0, ',', '.'); ?></p>
+                                                <?php else : ?>
+                                                    <p class="card-title fw-bold text-danger harga-pesanan float-start " style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                                <?php endif; ?>
+                                            </div>
+
+                                            <div class="input-group grup-masukan button-group">
+                                                <button class="btn btn-outline-danger btn-dash rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= isset($p['required_quantity']) ? $p['required_quantity'] : 'null'; ?>)'><i class="bi bi-dash"></i></button>
+                                                <input type="text" class="form-control  form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
+                                                <button class="btn btn-outline-danger btn-plus rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= isset($p['required_quantity']) ? $p['required_quantity'] : 'null'; ?>)'><i class="bi bi-plus"></i></button>
+                                            </div>
+                                            <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="border-0 btn btn-sm button-sampah position-absolute mx-2"><i class="bi bi-trash text-danger"></i></button>
+                                        </div>
+
                                 </div>
                                 <div class="tengah py-2 ">
                                     <p class="text-secondary float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0,); ?></p>
@@ -87,7 +119,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <button style="width: 20px; height:22px; " class="btn-sm btn btn-outline-danger btn-dash rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
                                         <input type="text" class="form-control  form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
                                         <button style="width: 20px; height:22px;" class="btn-sm btn btn-outline-danger btn-plus rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
-                                        <!-- <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="border-0 btn btn-sm button-sampah position-absolute mx-2"><i class="bi bi-trash text-danger"></i></button> -->
+
                                     </div>
                                 </div>
                                 <div class="kanan">
@@ -106,7 +138,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <button id="btnCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 60%; font-size: 13px"><?= lang('Text.btn_checkout') ?></button>
                 </div>
             </div>
-
 
             <?php foreach ($produk as $p) : ?>
                 <form id="formdelete<?= $p['id_cart_produk']; ?>" action="<?= base_url(); ?>cart/delete/<?= $p['id_cart_produk']; ?>" method="post" class="d-inline">
@@ -307,25 +338,25 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     }
 
-    function increaseCount(cp, a, b, harga) {
+    function increaseCount(cp, a, b, harga, requiredQuantity) {
         var total_awal = parseInt($("#totalField").val(), 10);
         var input = b.previousElementSibling;
         var value = parseInt(input.value, 10);
         value = isNaN(value) ? 0 : value;
         value++;
         input.value = value;
-        var total = total_awal + harga;
+        var total = total_awal + (requiredQuantity !== null ? harga * requiredQuantity : harga);
 
         <?php if (!$isMobile) : ?>
             $("#textQty" + cp).text(value)
-            $("#textHargaItem" + cp).text(formatRupiah((harga * value)))
-        <?php endif ?>
+            $("#textHargaItem" + cp).text(formatRupiah(requiredQuantity !== null ? harga * requiredQuantity * value : harga * value));
+        <?php endif; ?>
 
-        setElemetCheck(cp, value, (harga * value));
+        setElemetCheck(cp, value, (requiredQuantity !== null ? harga * requiredQuantity * value : harga * value));
         changeQty(cp, value);
     }
 
-    function decreaseCount(cp, a, b, harga) {
+    function decreaseCount(cp, a, b, harga, requiredQuantity) {
         var total_awal = parseInt($("#totalField").val(), 10);
         var input = b.nextElementSibling;
         var value = parseInt(input.value, 10);
@@ -333,12 +364,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             value = isNaN(value) ? 0 : value;
             value--;
             input.value = value;
-            var total = total_awal - harga;
+            var total = total_awal - (requiredQuantity !== null ? harga * requiredQuantity : harga);
             <?php if (!$isMobile) : ?>
                 $("#textQty" + cp).text(value)
-                $("#textHargaItem" + cp).text(formatRupiah((harga * value)))
+                $("#textHargaItem" + cp).text(formatRupiah(requiredQuantity !== null ? harga * requiredQuantity * value : harga * value));
             <?php endif ?>
-            setElemetCheck(cp, value, (harga * value));
+
+            setElemetCheck(cp, value, (requiredQuantity !== null ? harga * requiredQuantity * value : harga * value));
             changeQty(cp, value);
         }
     }
@@ -355,6 +387,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     function selectCheck(checkbox) {
         var produk = checkbox.getAttribute('produk');
         var qty = checkbox.getAttribute('qty');
+        var required_quantity = checkbox.getAttribute('required_quantity');
         var harga = parseFloat(checkbox.getAttribute('harga'));
         if (checkbox.checked) {
             produkSelected[checkbox.value] = harga;
