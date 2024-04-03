@@ -92,12 +92,12 @@ if ($isMobile) {
             display: flex;
             flex-wrap: nowrap;
             align-items: stretch;
-            width: 103%;
+            width: 83%;
         }
 
     }
 
-    @media screen and (max-width: 375px) {
+    /* @media screen and (max-width: 375px) {
         #buyButton_1 {
             width: 94px !important;
         }
@@ -111,5 +111,5 @@ if ($isMobile) {
             width: 103%;
         }
 
-    }
+    } */
 </style>
