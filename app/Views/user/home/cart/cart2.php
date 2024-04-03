@@ -84,13 +84,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php else : ?>
                                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 position-relative ">
                                                 <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" width="65">
-                                            <?php endif; ?>
-                                            <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
-                                                <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="width:50px; height:50px; border-radius:50%;">
-                                                    <span class="sold-out-text ">Kosong</span>
-                                                </div>
+                                                <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
+                                                    <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="width:40px; height:40px; border-radius:50%;">
+                                                        <span class="sold-out-text ">Kosong</span>
+                                                    </div>
+                                                <?php endif; ?>
                                             </a>
                                         <?php endif; ?>
+
                                     </div>
                                 </div>
                                 <div class="tengah py-2 ">
