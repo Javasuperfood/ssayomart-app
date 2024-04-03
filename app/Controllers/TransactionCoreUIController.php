@@ -73,43 +73,54 @@ class TransactionCoreUIController extends BaseController
                 return redirect()->to(base_url('cart2'));
             }
             foreach ($checkedId as $key => $id) {
+                // dd($checkedId);
                 $data['produk'][$key] = $cartProdukModel->select('*')
-                    ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'inner')
-                    ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'inner')
+                    ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'left')
+                    ->join('jsf_promo_produk', 'jsf_promo_produk.id_produk = jsf_cart_produk.id_produk', 'left')
+                    ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'left')
+                    ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'left')
                     ->find($id);
             }
-        } elseif ($checkoutFormCart == 'false') {
-            // Not buy from cart
-            $data['produk'][0] = $variasiItemModel->select('jsf_variasi_item.*, jsf_produk.*')
-                ->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk', 'inner')
-                ->where('jsf_variasi_item.id_variasi_item', $this->request->getVar('varian'))
-                ->where('jsf_produk.slug', $this->request->getVar('slug'))->first();
-            $data['produk'][0]['qty'] = $this->request->getVar('qty');
-        } else {
-            $id_promo_produk = $this->request->getVar('id_promo_produk');
-            // dd($id_promo_produk);
-            if (!empty($id_promo_produk)) {
-                // Fetch data for the specified promo product
-                $data['promoProduk'] = $promoProduk
-                    ->select('jsf_promo_produk.*, jsf_promo.*, jsf_variasi_item.*, jsf_produk.*, cp.qty')
-                    ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'inner')
-                    ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk', 'inner')
-                    ->join('jsf_checkout_produk cp', 'cp.id_produk = jsf_promo_produk.id_produk', 'left')
-                    ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_promo_produk.id_produk', 'inner')
-                    ->groupBy('jsf_promo_produk.id', $id_promo_produk)
-                    ->get()->getResultArray();
-            }
+            // dd($data['produk']);
         }
+
+        // Buy Now
+        // } elseif ($checkoutFormCart == 'false') {
+        //     // Not buy from cart
+        //     $data['produk'][0] = $variasiItemModel->select('jsf_variasi_item.*, jsf_produk.*')
+        //         ->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk', 'inner')
+        //         ->where('jsf_variasi_item.id_variasi_item', $this->request->getVar('varian'))
+        //         ->where('jsf_produk.slug', $this->request->getVar('slug'))->first();
+        //     $data['produk'][0]['qty'] = $this->request->getVar('qty');
+        // }
+        // $id_promo_produk = $this->request->getVar('id_promo_produk');
+        //     // dd($id_promo_produk);
+        //     if (!empty($id_promo_produk)) {
+        //         // Fetch data for the specified promo product
+        //         $data['promoProduk'] = $promoProduk
+        //             ->select('jsf_promo_produk.*, jsf_promo.*, jsf_variasi_item.*, jsf_produk.*, cp.qty')
+        //             ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'inner')
+        //             ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk', 'inner')
+        //             ->join('jsf_checkout_produk cp', 'cp.id_produk = jsf_promo_produk.id_produk', 'left')
+        //             ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_promo_produk.id_produk', 'inner')
+        //             ->groupBy('jsf_promo_produk.id', $id_promo_produk)
+        //             ->get()->getResultArray();
+        //     }
 
         $totalAkhir = 0;
         $beratTotal = 0;
         $totalDiscount = 0;
         if (!empty($data['produk'])) {
             foreach ($data['produk'] as $key => $produk) {
-                $rowTotal = $produk['qty'] * $produk['harga_item'];
+                if ($produk['required_quantity']) {
+                    $rowTotal = $produk['qty'] * $produk['harga_item'] * $produk['required_quantity'];
+                } else {
+                    $rowTotal = $produk['qty'] * $produk['harga_item'];
+                }
                 $totalAkhir += $rowTotal;
                 $rowBerat = $produk['berat'] * $produk['qty'];
                 $beratTotal += $rowBerat;
+                // Promo Batch
                 // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk['id_produk']);
                 // if (count($promoDetails) > 0 && $produk['qty'] >= $promoDetails[0]['min']) {
                 //     $data['produk'][$key]['promo'] = $promoDetails[0];
@@ -119,26 +130,26 @@ class TransactionCoreUIController extends BaseController
             }
         }
 
-        // Checkout Promo
-        if (!empty($data['promoProduk'])) {
-            foreach ($data['promoProduk'] as $key => $produk) {
-                $rowTotal = 0;
-                $beratTotal = 0;
-                if ($produk['required_quantity']) {
-                    $rowTotal = $produk['qty'] * $produk['harga_item'];
-                    $produk['rowTotal'] = $rowTotal;
-                    $totalAkhir += $rowTotal;
-                    $rowBerat = $produk['berat'] * $produk['qty'];
-                    $produk['rowBerat'] = $rowBerat;
-                    $beratTotal += $rowBerat;
-                }
-            }
-        }
+        // Checkout Promo Buy Now
+        // if (!empty($data['promoProduk'])) {
+        //     foreach ($data['promoProduk'] as $key => $produk) {
+        //         $rowTotal = 0;
+        //         $beratTotal = 0;
+        //         if ($produk['required_quantity']) {
+        //             $rowTotal = $produk['qty'] * $produk['harga_item'];
+        //             $produk['rowTotal'] = $rowTotal;
+        //             $totalAkhir += $rowTotal;
+        //             $rowBerat = $produk['berat'] * $produk['qty'];
+        //             $produk['rowBerat'] = $rowBerat;
+        //             $beratTotal += $rowBerat;
+        //         }
+        //     }
+        // }
 
         $data['total'] = $totalAkhir;
         $data['beratTotal'] = $beratTotal;
         $data['totalDiscount'] = $totalDiscount;
-
+        // dd($data);
         return view('transaction/midtarnsCoreUI/checkout', $data);
     }
 
