@@ -79,7 +79,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                     <div class="icon-container position-absolute" style=" margin-top:-25px;">
                                         <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 position-relative ">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" width="65">
+                                            <?php if ($p['required_quantity']) : ?>
+                                                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" width="65">
+                                            <?php else : ?>
+                                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" width="65">
+                                            <?php endif; ?>
                                             <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
                                                 <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="width:50px; height:50px; border-radius:50%;">
                                                     <span class="sold-out-text ">Kosong</span>
@@ -91,7 +95,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="tengah py-2 ">
                                     <!-- Fungsi Multi Language -->
                                     <!-- <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p[$kolomNama] . '(' . $p['value_item'] . ')', 0, 30); ?></p> -->
-                                    <p class="text-secondary float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0,); ?></p>
+                                    <?php if ($p['required_quantity']) : ?>
+                                        <p class="text-secondary float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['title'] . '(' . $p['value_item'] . ')', 0,); ?></p>
+                                    <?php else : ?>
+                                        <p class="text-secondary float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0,); ?></p>
+                                    <?php endif; ?>
                                     <div class="input-group grup-masukan button-group" style="margin-top:5px; right: 45%;">
                                         <button class="btn-sm btn btn-outline-danger btn-dash rounded-circle" style="width: 20px; height:22px;" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= isset($p['required_quantity']) ? $p['required_quantity'] : 'null'; ?>)'><i class="bi bi-dash"></i></button>
                                         <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">

@@ -52,9 +52,10 @@ class CartProdukModel extends Model
 
     public function getCartProduk($id_cart)
     {
-        $query = $this->select('jsf_cart_produk.*, jsf_produk.nama, jsf_produk.nama_en, jsf_produk.nama_kr, jsf_produk.img, jsf_produk.slug, jsf_produk.deskripsi, jsf_produk.is_active, jsf_variasi_item.*, jsf_promo_produk.required_quantity')
+        $query = $this->select('jsf_cart_produk.*, jsf_produk.nama, jsf_produk.nama_en, jsf_produk.nama_kr, jsf_produk.img, jsf_produk.slug, jsf_produk.deskripsi, jsf_produk.is_active, jsf_variasi_item.*, jsf_promo_produk.required_quantity, jsf_promo.title')
             ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'left')
             ->join('jsf_promo_produk', 'jsf_promo_produk.id_produk = jsf_cart_produk.id_produk', 'left')
+            ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'left')
             ->join('jsf_variasi_item', 'jsf_variasi_item.id_variasi_item = jsf_cart_produk.id_variasi_item', 'left')
             ->where('jsf_cart_produk.id_cart', $id_cart);
 
