@@ -300,7 +300,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-3">
-                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img_produk']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                             </div>
                                             <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
                                                 <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>

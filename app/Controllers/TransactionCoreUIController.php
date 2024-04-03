@@ -74,7 +74,7 @@ class TransactionCoreUIController extends BaseController
             }
             foreach ($checkedId as $key => $id) {
                 // dd($checkedId);
-                $data['produk'][$key] = $cartProdukModel->select('*')
+                $data['produk'][$key] = $cartProdukModel->select('*, jsf_produk.img as img_produk')
                     ->join('jsf_produk', 'jsf_produk.id_produk = jsf_cart_produk.id_produk', 'left')
                     ->join('jsf_promo_produk', 'jsf_promo_produk.id_produk = jsf_cart_produk.id_produk', 'left')
                     ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'left')
