@@ -170,7 +170,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
                                                         <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" data-bs-dismiss="modal" aria-label="Close" value="jne" brand="JNE" onclick="selectCourier(this)" disabled>
-                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault2">Comming Soon</label>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault2">Coming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -182,7 +182,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
                                                         <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="tiki" brand="Tiki" onclick="selectCourier(this)" disabled>
-                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Coming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -194,7 +194,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
                                                         <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="lalamove" brand="Lalamove" onclick="selectCourier(this)" disabled>
-                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Coming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -206,7 +206,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
                                                         <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="maxim" brand="maxim" onclick="selectCourier(this)" disabled>
-                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Coming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -218,7 +218,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
                                                         <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault3" data-bs-dismiss="modal" aria-label="Close" value="grab" brand="grab" onclick="selectCourier(this)" disabled>
-                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Comming Soon</label>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault3">Coming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -230,7 +230,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="col d-flex justify-content-end align-items-center">
                                                         <input class="btn-check fs-3" type="radio" name="flexRadioDefault" id="flexRadioDefault4" data-bs-dismiss="modal" aria-label="Close" value="pos" brand="POS" onclick="selectCourier(this)" disabled>
-                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault4">Comming Soon</label>
+                                                        <label class="btn btn-light btn-lg disabled" for="flexRadioDefault4">Coming Soon</label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -269,33 +269,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endif ?>
-                    <?php if (!empty($promoProduk)) : ?>
-                        <?php foreach ($promoProduk as $pp) : ?>
+                    <?php foreach ($produk as $p) : ?>
+                        <?php if ($p['id']) : ?>
                             <div class="col pt-3">
                                 <div class="card border-0 shadow-sm">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-3">
-                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $pp['img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                                <img src="<?= base_url(); ?>assets/img/promo/bundle/<?= $p['promo_img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                             </div>
                                             <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
-                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($pp['nama'], 0, 15); ?></p>
-                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $pp['qty']; ?> pcs
+                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['title'], 0, 15); ?></p>
+                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['required_quantity']; ?> Pcs (Promo)
                                                 </p>
                                             </div>
                                             <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
                                                 <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
-                                                <p class="fw-bold">Rp. <?= number_format(($pp['harga_item'] * $pp['qty']), 0, ',', '.'); ?></p>
+                                                <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty'] * $p['required_quantity']), 0, ',', '.'); ?></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="idPromoProduk[]" value="<?= $pp['id']; ?>">
-                                <input type="hidden" name="varianProduk[]" value="<?= $pp['id_variasi_item']; ?>">
+                                <input type="hidden" name="idPromoProduk[]" value="<?= $p['id']; ?>">
+                                <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
+                                <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
                             </div>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <?php foreach ($produk as $p) : ?>
+                        <?php else : ?>
                             <div class="col pt-3">
                                 <div class="card border-0 shadow-sm">
                                     <div class="card-body">
@@ -305,22 +304,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                             <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
                                                 <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
-                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> pcs
+                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> Pcs
                                                 </p>
                                             </div>
                                             <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
                                                 <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
-                                                <?php if (isset(($p['promo']['total']))) : ?>
-                                                    <p class="fw-bold text-decoration-line-through">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
-                                                <?php else : ?>
-                                                    <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
-                                                <?php endif; ?>
-                                                <?php if (isset($p['promo']['total'])) : ?>
-                                                    <?php
-                                                    $discountedTotal = ($p['harga_item'] * $p['qty']) - ($p['promo']['total']);
-                                                    ?>
-                                                    <p>Rp. <?= number_format($discountedTotal, 0, ',', '.'); ?></p>
-                                                <?php endif; ?>
+                                                <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -329,8 +318,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input type="hidden" name="varianProduk[]" value="<?= $p['id_variasi_item']; ?>">
                                 <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
                             </div>
-                        <?php endforeach ?>
-                    <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endforeach ?>
+
                     <div class="col py-3 px-3">
                         <table class="table fs-6 pemilihan lh-1" style="font-size: smaller !important;">
                             <thead>
