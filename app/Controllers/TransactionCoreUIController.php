@@ -185,33 +185,25 @@ class TransactionCoreUIController extends BaseController
         MidtransConfig::$is3ds = $midtransConfig->is3ds;
 
         $idProduk = $this->request->getVar('idProduk');
+        $idPromoProduk = $this->request->getVar('idPromoProduk');
         $varianProduk = $this->request->getVar('varianProduk');
         $qtyProduk = $this->request->getVar('qtyProduk');
 
-        if (count($idProduk) != count($varianProduk) || count($idProduk) != count($qtyProduk)) {
-            return view('404', ['title' => '404']);
-        }
+        // if (count($idProduk) != count($varianProduk) || count($idProduk) != count($qtyProduk)) {
+        //     return view('404', ['title' => '404']);
+        // }
         // start:  jika tidak ada promo atau kupon maka total hanya akan rumus dibawah 
         $total_1 = 0;
         $totalDiscount = 0;
 
-        foreach ($idProduk as $key => $p) {
-            $produk[$key] = $variasiItemModel->select('jsf_variasi_item.*, jsf_produk.*')
-                ->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk', 'inner')
-                ->where('jsf_variasi_item.id_variasi_item', $varianProduk[$key])
-                ->where('jsf_produk.id_produk', $p)->first();
-            $produk[$key]['qty'] = $qtyProduk[$key];
-            $requiredQuantity = $promoProduk->getRequiredQuantity($produk[$key]['id_produk']);
-            if ($requiredQuantity > 0) {
-                // Apply requiredQuantity if available
-                $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'] * $requiredQuantity;
-                $cekProduk[] = [
-                    'id' => $p,
-                    'price' => $produk[$key]['harga_item'] * $requiredQuantity,
-                    'quantity' => $produk[$key]['qty'] * $requiredQuantity,
-                    'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
-                ];
-            } else {
+        if (!empty($idProduk)) {
+            foreach ($idProduk as $key => $p) {
+                $produk[$key] = $variasiItemModel->select('jsf_variasi_item.*, jsf_produk.*')
+                    ->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk', 'inner')
+                    ->where('jsf_variasi_item.id_variasi_item', $varianProduk[$key])
+                    ->where('jsf_produk.id_produk', $p)->first();
+                $produk[$key]['qty'] = $qtyProduk[$key];
+
                 $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
                 $cekProduk[] = [
                     'id' => $p,
@@ -219,22 +211,48 @@ class TransactionCoreUIController extends BaseController
                     'quantity' => $produk[$key]['qty'],
                     'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
                 ];
+                // dd($rowTotal);
+
+                $total_1 += $rowTotal;
+
+                $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+
+                // jika ada ada promo maka total akan rumus dibawah 
+                // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
+                // if (count($promoDetails) > 0 && $produk[$key]['qty'] >= $promoDetails[0]['min']) {
+                //     $produk[$key]['promo'] = $promoDetails[0];
+                //     $produk[$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
+                //     $totalDiscount += $produk[$key]['promo']['total'];
+                // }
             }
-            $total_1 += $rowTotal;
+        } else {
+            foreach ($idPromoProduk as $key => $p) {
+                $produk[$key] = $promoProduk
+                    ->select('jsf_promo_produk.*, jsf_promo.*, jsf_variasi_item.*, jsf_produk.*, cp.qty')
+                    ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'inner')
+                    ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk', 'inner')
+                    ->join('jsf_checkout_produk cp', 'cp.id_produk = jsf_promo_produk.id_produk', 'left')
+                    ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_promo_produk.id_produk', 'inner')
+                    ->where('jsf_promo_produk.id', $p)
+                    ->first();
 
-            $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+                foreach ($produk as $key => $p) {
+                    $rowTotal = $p['qty'] * $p['harga_item'];
+                    $cekProduk[] = [
+                        'id' => $produk[$key]['id_produk'],
+                        'price' => (int)$rowTotal,
+                        'quantity' => (int)$produk[$key]['qty'],
+                        'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
+                    ];
+                    $total_1 += $rowTotal;
 
-            // jika ada ada promo maka total akan rumus dibawah 
-            // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
-            // if (count($promoDetails) > 0 && $produk[$key]['qty'] >= $promoDetails[0]['min']) {
-            //     $produk[$key]['promo'] = $promoDetails[0];
-            //     $produk[$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
-            //     $totalDiscount += $produk[$key]['promo']['total'];
-            // }
+                    $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+                }
+            }
         }
 
         $total_2 = $total_1;
-        // dd($total_1, $total_2, $totalDiscount, $cekProduk);
+        // dd($total_1, $total_2, $cekProduk);
 
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
 
@@ -298,17 +316,15 @@ class TransactionCoreUIController extends BaseController
         }
         // dd($total_1, $total_2, $totalDiscount, $getDiscount, $cekProduk);
 
-
         // end promo kupon
         $total_2 = $service + $total_2;
         $cekProduk[] = [
             'id' => 'Service',
-            'price' => $service,
+            'price' => (int)$service,
             'quantity' => 1,
             'name' => $servicetext,
         ];
         $kirim = '<p><b>Nama</b> : ' . $alamat['penerima'] . '<br><b>Alamat</b> :<br>' . $alamat['alamat_1'] . ', ' . $alamat['city'] . ', '  . $alamat['province'] . '<br><b>Telp</b> :  ' . $alamat['telp'];
-
 
         $params = [
             'transaction_details' => [
@@ -341,21 +357,7 @@ class TransactionCoreUIController extends BaseController
                     "country_code" => "IDN"
                 ],
             ],
-            // 'item_details' => $cekProduk,
-            'item_details' => [
-                [
-                    'id' => $produk[0]['id_produk'],
-                    'price' => $total_1,
-                    'quantity' => $produk[0]['qty'],
-                    'name' => $produk[0]['nama'] . ' ' . $produk[0]['value_item'],
-                ],
-                [
-                    'id' => 'Service',
-                    'price' => $service,
-                    'quantity' => 1,
-                    'name' => $servicetext,
-                ],
-            ],
+            'item_details' => $cekProduk,
         ];
         // dd($total_1, $total_2, $totalDiscount, $getDiscount, $cekProduk, $params);
         // dd($total_1, $total_2, $cekProduk, $params);
@@ -461,7 +463,7 @@ class TransactionCoreUIController extends BaseController
             'total_1' => $total_1,
             'total_2' => (int)floor($total_2),
             'service' => $servicetext,
-            'harga_service' => $service,
+            'harga_service' => (int)$service,
             'gosend' => $GoSend,
             'kurir' => $kurir,
             'kirim' => $kirim,
@@ -495,7 +497,6 @@ class TransactionCoreUIController extends BaseController
             $cartProdukModel->where('id_cart', $cartid['id_cart'])->where('id_produk', $p['id_produk'])->where('id_variasi_item', $p['id_variasi_item'])->delete();
         }
 
-
         if (!empty($kode)) {
             $idKupon = $kuponModel->getKuponId($kode);
             if ($idKupon) {
@@ -505,6 +506,7 @@ class TransactionCoreUIController extends BaseController
 
         return redirect()->to(base_url('pay?order_id=' . $inv . '&payment_type=' . $params['payment_type']));
     }
+
 
     public function pay()
     {
