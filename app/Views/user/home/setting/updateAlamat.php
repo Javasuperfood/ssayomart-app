@@ -15,8 +15,31 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <form onsubmit="playPreloaderEvent()" action="<?= base_url() ?>setting/update-alamat/edit-alamat/<?= $au['id_alamat_users']; ?>" method="post" class="pt-3">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_user" value="<?= $au['id_user']; ?>">
-
                 <div class="container text-secondary" style="font-size: 12px;">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div id="map" class="rounded-3"></div>
+                            <div class="button-container">
+                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger rounded-3"><i class="bi bi-crosshair"></i> Get Location</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12" style="font-size: 12px;">
+                            <p class="text-danger" style="font-size: 11px;"><?= lang('Text.info_alamat') ?></p>
+                            <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger fs-5"> *</span></label>
+                            <div class="input-group">
+                                <input list="alamat_3_option" class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>" readonly>
+                                <!-- <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button> -->
+                            </div>
+                            <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
+                            <input type="hidden" id="latitude" name="latitude" value="<?= $au['latitude']; ?>">
+                            <input type="hidden" id="longitude" name="longitude" value="<?= $au['longitude']; ?>">
+                            <datalist id="alamat_3_option">
+                                <!-- this option -->
+                            </datalist>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3">
@@ -26,7 +49,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-
 
                     <div class="row">
                         <div class="col-12">
@@ -52,13 +74,34 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-12">
                             <div class="form-group mb-3">
                                 <label for="telp2" class="form-label"><?= lang('Text.no_telp_alamat2') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
-                                <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp2" style="font-size: 14px;" value="<?= $au['telp']; ?>" onkeypress="return isNumber(event);">
+                                <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp2" style="font-size: 14px;" value="<?= $au['telp2']; ?>" onkeypress="return isNumber(event);">
                                 <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="provinsi" class="form-label"><?= lang('Text.provinsi') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
+                                <input class="form-control floatingInput <?= (validation_show_error('provinsi')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="provinsi" name="provinsi" style="font-size: 14px;" value="<?= $au['province']; ?>" readonly>
+                                <div class="invalid-feedback"><?= validation_show_error('provinsi') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="kabupaten" class="form-label"><?= lang('Text.kab_kota') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
+                                <input class="form-control floatingInput <?= (validation_show_error('kabupaten')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kabupaten" name="kabupaten" style="font-size: 14px;" value="<?= $au['city']; ?>" readonly>
+                                <div class="invalid-feedback"><?= validation_show_error('kabupaten') ?></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GET ALAMAT RAJAONGKIR DON'T DELETE! -->
+                    <!-- <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3">
                                 <label for="provinsi"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
@@ -86,7 +129,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi" value="<?= $au['province']; ?>">
-                    <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>">
+                    <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>"> -->
 
                     <div class="row">
                         <div class="col-12">
@@ -108,32 +151,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
                 </div>
-                <!-- detail alamat maps -->
-                <div class="container mt-2">
-                    <div class="row">
-                        <div class="col-12" style="font-size: 12px;">
-                            <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger" style="font-size: 9px;"> (Lokasi maps *)</span></label>
-                            <div class="input-group">
-                                <input list="alamat_3_option" class="form-control floatingInput <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= $au['alamat_3']; ?>">
-                                <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
-                            </div>
-                            <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
-                            <input type="hidden" id="latitude" name="latitude" value="<?= $au['latitude']; ?>">
-                            <input type="hidden" id="longitude" name="longitude" value="<?= $au['longitude']; ?>">
-                            <datalist id="alamat_3_option">
-                                <!-- this option -->
-                            </datalist>
-                        </div>
-                    </div>
-                </div>
-                <!-- maps -->
-                <div class="mx-3">
-                    <p class="text-center text-danger mt-2">*Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend)</p>
-                    <div id="map"></div>
-                    <div class="button-container">
-                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-geo-alt-fill"></i></button>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         <button type="submit" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; font-size: 16px">Simpan Data</button>
@@ -145,7 +162,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- style maps -->
     <style>
         #map {
-            height: 400px;
+            height: 250px;
             width: 100%;
         }
 
@@ -159,10 +176,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-left: 10px;
             z-index: 1000;
             top: -50px;
-        }
-
-        #getLocationBtn {
-            border-radius: 50% !important;
         }
     </style>
 <?php else : ?>
@@ -397,6 +410,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             .then(response => response.json())
             .then(data => {
                 var address = data.display_name;
+                var addressComponents = data.address;
+
+                // Ekstrak informasi provinsi, kabupaten/kota, dan kode pos
+                var province = addressComponents.state;
+                var idProvince = addressComponents.state;
+                var city = addressComponents.city || addressComponents.county;
+                var postalCode = addressComponents.postcode;
+                var detailAddress = addressComponents.road;
+
+                // Mengisi otomatis kolom provinsi, kabupaten/kota, dan kode pos
+                $("#provinsi").val(province);
+                $("#id_province").val(idProvince);
+
+                $("#kabupaten").val(city);
+                $("#zip_code").val(postalCode);
+                $("#alamat_1").val(detailAddress);
 
                 // Update the popup with the full address
                 map.eachLayer(function(layer) {

@@ -12,10 +12,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- Mobile View -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
-        <div class="container pt-1">
+        <div class="container">
             <div class="row">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body">
+                <div class="card shadow-sm py-2 border-0">
+                    <div class="card-body p-0">
                         <div class="row">
                             <div class="col-3 text-center">
                                 <i class="bi bi-cash-stack fs-1 fw-bold text-success"></i>
@@ -37,8 +37,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <i class="bi bi-check-circle"></i> Pilih Semua
                         </button>
                     <?php endif; ?>
+
+                    <a href="" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Hapus</a>
                 </div>
             </div>
+
 
             <?php if ($produk == null) : ?>
                 <div class="row text-center d-flex align-items-center" style="height:65vh">
@@ -59,17 +62,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?php foreach ($produk as $p) : ?>
                     <input type="hidden" name="check[]" value="<?= $p['id_cart_produk']; ?>">
                 <?php endforeach; ?>
-                <div class="row row-cols-2">
+                <div class="row row-cols-2 py-3">
                     <?php foreach ($produk as $p) : ?>
-                        <div class="col-12 pt-3">
-                            <div class="card border-0 shadow-sm " style="width: auto; height: 100%;">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 d-flex justify-content-center align-items-center position-relative">
-                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="mx-1 px-1 my-2 py-1 img-small gambar-kecil" alt="Product" style="width:120px; height:120px; object-fit: contain; object-position: 20% 10%; ">
+                        <div class="col-12 mb-3">
+                            <div class="coupon bg-white rounded d-flex justify-content-between shadow-sm">
+                                <div class="kiri p-1">
+                                    <div class="form-check form-check-sm position-relative " style="z-index:999;left:10;">
+                                        <input <?= ($p['stok'] > 0 && $p['is_active'] == 1) ? '' : 'disabled'; ?> onchange="selectCheck(this)" class="form-check-input border-danger rounded-circle " type="checkbox" name="check[]" value="<?= $p['id_cart_produk']; ?>" produk="<?= $p['nama']; ?>" qty="<?= $p['qty']; ?>" harga="<?= ($p['harga_item'] * $p['qty']); ?>" id="cproduct<?= $p['id_cart_produk']; ?>">
+                                    </div>
+                                    <div class="icon-container position-absolute" style=" margin-top:-25px;">
+                                        <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 position-relative ">
+                                            <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" width="65">
                                             <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
-                                                <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center">
-                                                    <span class="sold-out-text">Kosong</span>
+                                                <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="width:50px; height:50px; border-radius:50%;">
+                                                    <span class="sold-out-text ">Kosong</span>
                                                 </div>
                                             <?php endif; ?>
                                         </a>
@@ -105,7 +111,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                             <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="border-0 btn btn-sm button-sampah position-absolute mx-2"><i class="bi bi-trash text-danger"></i></button>
                                         </div>
+
+                                </div>
+                                <div class="tengah py-2 ">
+                                    <p class="text-secondary float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0,); ?></p>
+                                    <div class="input-group grup-masukan button-group" style="margin-top:5px; right: 45%;">
+                                        <button style="width: 20px; height:22px; " class="btn-sm btn btn-outline-danger btn-dash rounded-circle" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-dash"></i></button>
+                                        <input type="text" class="form-control  form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
+                                        <button style="width: 20px; height:22px;" class="btn-sm btn btn-outline-danger btn-plus rounded-circle" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>)'><i class="bi bi-plus"></i></button>
+
                                     </div>
+                                </div>
+                                <div class="kanan">
+                                    <div class="my-3">
+                                        <p class="fw-bold text-danger mt-3 p-2" style="font-size: 13px; margin: 0;">Rp.<?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
