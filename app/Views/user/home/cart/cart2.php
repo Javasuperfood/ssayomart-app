@@ -105,13 +105,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
                                         <button class="btn-sm btn btn-outline-danger btn-plus rounded-circle" style="width: 20px; height:22px;" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= isset($p['required_quantity']) ? $p['required_quantity'] : 'null'; ?>)'><i class="bi bi-plus"></i></button>
                                     </div>
+                                    <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="end-0 border-0 btn btn-sm button-sampah position-absolute mx-2"><i class="bi bi-trash text-danger"></i></button>
                                 </div>
                                 <div class="kanan">
                                     <div class="my-3">
                                         <?php if ($p['required_quantity']) : ?>
-                                            <p class="fw-bold text-danger mt-3 p-2" style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'] * $p['required_quantity'], 0, ',', '.'); ?></p>
+                                            <p class="fw-bold text-danger mt-3 p-2" style="font-size: 13px; margin: 0;">Rp.<?= number_format($p['harga_item'] * $p['required_quantity'], 0, ',', '.'); ?></p>
                                         <?php else : ?>
-                                            <p class="fw-bold text-danger mt-3 p-2" style="font-size: 13px; margin: 0;">Rp. <?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
+                                            <p class="fw-bold text-danger mt-3 p-2" style="font-size: 13px; margin: 0;">Rp.<?= number_format($p['harga_item'], 0, ',', '.'); ?></p>
                                         <?php endif; ?>
                                     </div>
                                 </div>

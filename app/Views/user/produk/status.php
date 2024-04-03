@@ -32,26 +32,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php foreach ($produk as $p) : ?>
                 <div class="product-card card border-0 shadow-sm mb-2">
                     <a class="text-decoration-none" href="<?= base_url('produk/' . $p->slug); ?>">
-                        <div class="card-body d-flex align-items-center">
-                            <div class="col-3 p-0 img-container">
-                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img">
+                        <div class=" mt-2 d-flex align-items-center">
+                            <div class="col-2 p-0 img-container">
+                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p->img; ?>" alt="" class="card-img" style="width:65%; Height:65%; object-fit: contain; object-position: 20% 10%;">
                             </div>
-                            <div class="col-9 pl-3">
+                            <div class="col-9 ">
                                 <!-- Fungsi Multi Language -->
-                                <!-- <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->$kolomNama, 0, 50); ?>...</label> -->
-                                <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->nama, 0, 50); ?>...</label>
-                                <p class="card-text text-secondary " style="font-size: 12px;"><?= $p->qty; ?> <?= $p->value_item; ?></p>
-                                <div class="price-info d-flex gap-2">
-                                    <label for="total" class="text-secondary m-0 text-dark" style="font-size: 13px;">Total:</label>
-                                    <?php $total = $p->harga_item * $p->qty ?>
-                                    <?php if (isset(($p->promo))) : ?>
-                                        <p class="fw-bold m-0 text-dark text-decoration-line-through" style="font-size: 13px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
-                                        <p class="fw-bold m-0 text-dark" style="font-size: 12px;">Rp. <?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
-                                    <?php else : ?>
-                                        <p class="fw-bold m-0 text-dark" style="font-size: 12px;">Rp. <?= number_format(($total), 0, ',', '.'); ?></p>
-                                    <?php endif; ?>
+                                <!-- <label class="card-title mb-1 text-dark" style="font-size: 12px;"><?= substr($p->$kolomNama, 0,); ?>...</label> -->
+                                <label class="card-title text-dark" style="width:85%;font-size: 10px;"><?= substr($p->nama, 0,); ?></label>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text text-secondary " style="font-size: 9px;"><?= $p->qty; ?> <?= $p->value_item; ?></p>
+                                    <div class="price-info d-flex gap-2">
+                                        <label for="total" class=" fw-bold text-secondary text-dark" style="font-size: 10px;">Total:</label>
+                                        <?php $total = $p->harga_item * $p->qty ?>
+                                        <?php if (isset(($p->promo))) : ?>
+                                            <p class="fw-bold m-0 text-dark text-decoration-line-through" style="font-size: 10px;">Rp.<?= number_format(($total), 0, ',', '.'); ?></p>
+                                            <p class="fw-bold m-0 text-dark" style="font-size: 10px;">Rp.<?= number_format(($total - ($total * $p->promo['discount'])), 0, ',', '.'); ?></p>
+                                        <?php else : ?>
+                                            <p class="fw-bold m-0 text-dark" style="font-size: 10px;">Rp.<?= number_format(($total), 0, ',', '.'); ?></p>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
+
                             </div>
+
                         </div>
                     </a>
                 </div>
