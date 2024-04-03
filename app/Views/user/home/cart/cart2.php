@@ -36,8 +36,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
                             <i class="bi bi-check-circle"></i> Pilih Semua
                         </button>
+                        <a href="" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Hapus</a>
                     <?php endif; ?>
-                    <a href="" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Hapus</a>
                 </div>
             </div>
 
