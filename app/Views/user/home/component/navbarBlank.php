@@ -9,34 +9,39 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div class="container">
         <div class="row">
             <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style="height: 70px; background-color:#fff; box-shadow: 0px -1px 3px rgba(143, 140, 140, 0.2) !important;">
-                <div class="container">
+                <div class="container justify-content-between">
                     <?php if ($varianItem > 1) : ?>
-                        <div class=" col-6 d-flex justify-content-center align-items-center ms-3">
+                        <div class="col-md-6 d-flex align-items-center justify-content-center">
 
-                            <button class="btn btn-danger rounded-4" style="height: 50px;" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
+                            <button class="btn btn-danger rounded-4 me-2" style="height: 50px;" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
 
-
-                            <a href="#" class="">
+                            <a href="#">
                                 <button type="button" class="text-white btn input-group-text border-0 rounded-circle bg-danger shadow-sm" style="width: 45px; height: 45px;" data-bs-toggle="modal" data-bs-target="#modalVarian">
                                     <i class="bi bi-bag" style="font-size: 18px;"></i>
                                 </button>
                             </a>
 
-                        <?php elseif ($varianItem == 1) : ?>
-                            <?php if ($useStock) : ?>
-                                <button type="button" class="btn btn-secondary text-white p-2 mx-auto" disabled>Stok Tidak Tersedia</button>
-                            <?php else : ?>
+                        </div>
+                    <?php elseif ($varianItem == 1) : ?>
+                        <?php if ($useStock) : ?>
+
+                            <button type="button" class="btn btn-secondary text-white p-2 mx-auto" disabled>Stok Tidak Tersedia</button>
+
+                        <?php else : ?>
+                            <div class="col-md-6 d-flex align-items-center justify-content-center">
+
                                 <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger fw-bold" style="width: 150px;"><?= lang('Text.btn_beli') ?></a>
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-                                <button class="me-4 btn btn-white text-danger border-danger d-inline add-to-cart-btn position-relative" produk="<?= $produk['id_produk']; ?>">
+                                <button class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn position-relative" produk="<?= $produk['id_produk']; ?>">
                                     <i class="bi bi-cart-fill"></i>
                                 </button>
-                            <?php endif ?>
-                        </div>
+
+                            </div>
+                        <?php endif ?>
                     <?php endif ?>
                     <?php if (!$useStock) : ?>
-                        <div class="col-4 d-flex justify-content-center align-items-center me-3">
+                        <div class="col-md-6 d-flex align-items-center justify-content-center">
                             <div class="input-group">
                                 <button class="btn btn-outline-danger rounded-circle" type="button" style="width: 40px; height: 40px; padding: 0; display: flex; align-items: center; justify-content: center;" onClick='decreaseCount(event, this)'>
                                     <i class="bi bi-dash" style="font-size: 1rem;"></i>
@@ -48,11 +53,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     <?php endif; ?>
-
                 </div>
             </nav>
         </div>
     </div>
+
 
 <?php else : ?>
 
