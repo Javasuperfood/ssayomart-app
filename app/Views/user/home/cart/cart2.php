@@ -91,7 +91,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <?php endif; ?>
                                             </a>
                                         <?php endif; ?>
-
                                     </div>
                                 </div>
                                 <div class="tengah py-2 ">

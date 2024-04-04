@@ -237,22 +237,22 @@ class TransactionCoreUIController extends BaseController
                     ->first();
 
                 foreach ($produk as $key => $p) {
-                    $rowTotal = $p['qty'] * $p['harga_item'];
+                    $rowTotal = $p['required_quantity'] * $p['harga_item'];
                     $cekProduk[] = [
-                        'id' => $produk[$key]['id_produk'],
+                        'id' => $produk[$key]['id'],
                         'price' => (int)$rowTotal,
-                        'quantity' => (int)$produk[$key]['qty'],
-                        'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
+                        'quantity' => 1,
+                        'name' => $produk[$key]['promo_deskripsi']
                     ];
                     $total_1 += $rowTotal;
 
-                    $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+                    $rowTotal = $produk[$key]['required_quantity'] * $produk[$key]['harga_item'];
                 }
             }
         }
 
         $total_2 = $total_1;
-        // dd($total_1, $total_2, $cekProduk);
+        // dd($total_1, $total_2, $cekProduk, $rowTotal);
 
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
 
@@ -360,7 +360,7 @@ class TransactionCoreUIController extends BaseController
             'item_details' => $cekProduk,
         ];
         // dd($total_1, $total_2, $totalDiscount, $getDiscount, $cekProduk, $params);
-        // dd($total_1, $total_2, $cekProduk, $params);
+        // dd($total_1, $total_2, $cekProduk, $params, $rowTotal);
         switch ($metode_pemabayaran) {
             case 'cc_snap':
                 $params['payment_type'] = "cc_snap";
@@ -506,7 +506,6 @@ class TransactionCoreUIController extends BaseController
 
         return redirect()->to(base_url('pay?order_id=' . $inv . '&payment_type=' . $params['payment_type']));
     }
-
 
     public function pay()
     {

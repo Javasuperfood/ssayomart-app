@@ -35,7 +35,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="col mt-4 mx-1 text-center">
                 <!-- Fungsi Multi Language -->
                 <!-- <h4 class="fw-bold"><?= $produk[$kolomNama]; ?></h4> -->
-                <h4 class="fw-bold"><?= $produk['nama']; ?></h4>
+                <h4 class="fw-bold">
+                    <?= $produk['nama']; ?>
+                </h4>
                 <div class="row">
                     <div class="col text-center">
                         <p class="fs-2 text-danger price fw-bold">
@@ -110,25 +112,18 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="badge-container mb-2">
                             <span class="text-secondary py-0 my-0"><?= lang('Text.badge_kategori') ?> :</span>
                             <br>
-                            <?php if (!empty($kategoriProduk)) : ?>
-                                <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk['nama_kategori']; ?></span>
-                            <?php endif ?>
                             <!-- Fungsi Multi Bahasa -->
-                            <!-- <?php if (!empty($kategoriProduk)) : ?>
+                            <?php if (!empty($kategoriProduk)) : ?>
                                 <span class="badge text-bg-danger rounded-5 text-uppercase"><?= $kategoriProduk[$kolomNamaKat]; ?></span>
-                            <?php endif ?> -->
+                            <?php endif ?>
                         </div>
                         <div class="badge-container mb-2">
                             <span class="text-secondary py-0 my-0"><?= lang('Text.badge_subkategori') ?> : </span>
                             <br>
-                            <?php if (!empty($subKategoriProduk)) : ?>
-                                <span class="badge text-bg-warning rounded-5 text-uppercase"><?= $subKategoriProduk['nama_kategori']; ?></span>
-                            <?php endif ?>
                             <!-- Fungsi Multi Bahasa -->
-                            <br>
-                            <!-- <?php if (!empty($subKategoriProduk)) : ?>
+                            <?php if (!empty($subKategoriProduk)) : ?>
                                 <span class="badge text-bg-warning rounded-5 text-uppercase"><?= $subKategoriProduk[$kolomNamaSubKat]; ?></span>
-                            <?php endif ?> -->
+                            <?php endif ?>
                         </div>
                         <div class="badge-container mb-2">
                             <p class="text-secondary py-0 my-0"><?= lang('Text.stock') ?> : </p>

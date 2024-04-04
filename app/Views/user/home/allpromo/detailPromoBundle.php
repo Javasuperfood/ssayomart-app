@@ -37,9 +37,9 @@
         <input type="hidden" id="required_quantity" name="required_quantity" value="<?= $promoProduk['required_quantity']; ?>">
         <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
         <button class="btn btn-white text-danger border-danger  d-inline add-to-cart-btn position-relative" produk="<?= $promoProduk['id_produk']; ?>">
-            <i class="bi bi-cart-fill"></i>
+            <i class="bi bi-cart-fill"> Add to Cart</i>
         </button>
-        <a id="buyButton_1" href="<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger"><?= lang('Text.btn_beli') ?></a>
+        <!-- <a id="buyButton_1" href="<?= base_url('checkout2?id_promo_produk=' . $promoProduk['id'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-lg btn-outline-danger"><?= lang('Text.btn_beli') ?></a> -->
         <input type="hidden" name="id_promo_produk" value="<?= $promoProduk['id'] ?>">
     </div>
 </div>
