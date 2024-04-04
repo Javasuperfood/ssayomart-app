@@ -79,11 +79,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="icon-container position-absolute" style=" margin-top:-25px;">
                                         <?php if ($p['required_quantity']) : ?>
                                             <a href="<?= base_url() ?>detail-promo-bundle/<?= $p['id']; ?>" class="link-underline link-underline-opacity-0 position-relative ">
-                                                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $p['promo_img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" width="65">
+                                                <img src="<?= base_url() ?>assets/img/promo/bundle/<?= $p['promo_img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" style=" width: 65px; height: 65px; object-fit: contain;">
                                             </a>
                                         <?php else : ?>
                                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0 position-relative ">
-                                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" width="65">
+                                                <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" style=" width: 65px; height: 65px; object-fit: contain;">
                                                 <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
                                                     <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="width:40px; height:40px; border-radius:50%;">
                                                         <span class="sold-out-text ">Kosong</span>
