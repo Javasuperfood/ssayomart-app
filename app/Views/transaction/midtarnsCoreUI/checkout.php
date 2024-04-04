@@ -271,21 +271,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <?php endif ?>
                     <?php foreach ($produk as $p) : ?>
                         <?php if ($p['id']) : ?>
-                            <div class="col pt-3">
+                            <div class="col pt-1">
                                 <div class="card border-0 shadow-sm">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-3">
-                                                <img src="<?= base_url(); ?>assets/img/promo/bundle/<?= $p['promo_img']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                            <div class="col-1">
+                                                <img src="<?= base_url(); ?>assets/img/promo/bundle/<?= $p['promo_img']; ?>" alt="" class="card-img" style="width:35px; object-fit: contain; object-position: 20% 10%;">
                                             </div>
-                                            <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
-                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['title'], 0, 15); ?></p>
-                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['required_quantity']; ?> Pcs (Promo)
+                                            <div class="col-7 keterangan position-absolute top-50 start-50 translate-middle">
+                                                <p class="card-title pemilihan" style="font-size: 10px;"><?= substr($p['title'], 0,); ?></p>
+                                                <p class="card-text text-secondary pemilihan" style="font-size: 9px;"><?= $p['required_quantity']; ?> Pcs (Promo)
                                                 </p>
                                             </div>
-                                            <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                            <div class="col-3 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
                                                 <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
-                                                <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty'] * $p['required_quantity']), 0, ',', '.'); ?></p>
+                                                <p class="fw-bold" style="font-size: 10px;"><?= number_format(($p['harga_item'] * $p['qty'] * $p['required_quantity']), 0, ',', '.'); ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -295,21 +295,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input type="hidden" name="qtyProduk[]" value="<?= $p['qty']; ?>">
                             </div>
                         <?php else : ?>
-                            <div class="col pt-3">
+                            <div class="col pt-1">
                                 <div class="card border-0 shadow-sm">
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-3">
-                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img_produk']; ?>" alt="" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
+                                            <div class="col-1">
+                                                <img src="<?= base_url(); ?>assets/img/produk/main/<?= $p['img_produk']; ?>" alt="" class="card-img" style="width:35px; object-fit: contain; object-position: 20% 10%;">
                                             </div>
-                                            <div class="col-4 keterangan position-absolute top-50 start-50 translate-middle">
-                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['nama'], 0, 15); ?></p>
-                                                <p class="card-text text-secondary fs-6 pemilihan"><?= $p['qty']; ?> Pcs
+                                            <div class="col-7 keterangan position-absolute top-50 start-50 translate-middle">
+                                                <p class="card-title pemilihan" style="font-size: 10px;"><?= substr($p['nama'], 0,); ?></p>
+                                                <p class="card-text text-secondary pemilihan" style="font-size: 9px;"><?= $p['qty']; ?> Pcs
                                                 </p>
                                             </div>
-                                            <div class="col-4 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
+                                            <div class="col-3 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
                                                 <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
-                                                <p class="fw-bold">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
+                                                <p class="fw-bold" style="font-size: 10px;">Rp. <?= number_format(($p['harga_item'] * $p['qty']), 0, ',', '.'); ?></p>
                                             </div>
                                         </div>
                                     </div>
