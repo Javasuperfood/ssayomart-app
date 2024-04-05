@@ -14,10 +14,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="border-0 mt-lg-3 d-flex align-items-center justify-content-center">
                             <?php if (isset($back)) : ?>
                                 <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 16) . '...' : $title; ?>
-                                <span onclick="location.href='<?= base_url(); ?><?= $back; ?>'" class="position-absolute top-50 start-0 translate-middle-y ms-2"><i class="bi bi-chevron-left navbar-brand"></i></span>
-                                <span class="navbar-brand fw-bold" style="font-size: 12px; margin-left:30px;"><?= $displayTitle; ?></span>
-                            <?php elseif (!isset($back)) : ?>
-                                <?php $displayTitle = strlen($title) > 40 ? substr($title, 0, 16) . '...' : $title; ?>
                                 <span onclick="history.back()" class="position-absolute top-50 start-0 translate-middle-y ms-2"><i class="bi bi-chevron-left navbar-brand"></i></span>
                                 <span class="navbar-brand fw-bold start-50" style="font-size: 12px;"><?= $displayTitle; ?></span>
                             <?php endif ?>
