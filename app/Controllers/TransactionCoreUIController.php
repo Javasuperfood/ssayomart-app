@@ -188,10 +188,14 @@ class TransactionCoreUIController extends BaseController
         $idPromoProduk = $this->request->getVar('idPromoProduk');
         $varianProduk = $this->request->getVar('varianProduk');
         $qtyProduk = $this->request->getVar('qtyProduk');
+        $qtyPromo = $this->request->getVar('qtyPromo');
 
-        // if (count($idProduk) != count($varianProduk) || count($idProduk) != count($qtyProduk)) {
-        //     return view('404', ['title' => '404']);
-        // }
+        if (!empty($idProduk)) {
+            if (count($idProduk) != count($varianProduk) || count($idProduk) != count($qtyProduk)) {
+                return view('404', ['title' => '404']);
+            }
+        }
+
         // start:  jika tidak ada promo atau kupon maka total hanya akan rumus dibawah 
         $total_1 = 0;
         $totalDiscount = 0;
@@ -203,19 +207,19 @@ class TransactionCoreUIController extends BaseController
                     ->where('jsf_variasi_item.id_variasi_item', $varianProduk[$key])
                     ->where('jsf_produk.id_produk', $p)->first();
                 $produk[$key]['qty'] = $qtyProduk[$key];
-
-                $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+                // dd($produk);
+                $rowTotalProduk = $produk[$key]['qty'] * $produk[$key]['harga_item'];
                 $cekProduk[] = [
                     'id' => $p,
                     'price' => $produk[$key]['harga_item'],
                     'quantity' => $produk[$key]['qty'],
                     'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
                 ];
-                // dd($rowTotal);
 
-                $total_1 += $rowTotal;
+                $rowTotalProduk = $produk[$key]['qty'] * $produk[$key]['harga_item'];
 
-                $rowTotal = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+                $total_1 += $rowTotalProduk;
+
 
                 // jika ada ada promo maka total akan rumus dibawah 
                 // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
@@ -225,33 +229,42 @@ class TransactionCoreUIController extends BaseController
                 //     $totalDiscount += $produk[$key]['promo']['total'];
                 // }
             }
-        } else {
+        }
+
+        if (!empty($idPromoProduk)) {
             foreach ($idPromoProduk as $key => $p) {
                 $produk[$key] = $promoProduk
-                    ->select('jsf_promo_produk.*, jsf_promo.*, jsf_variasi_item.*, jsf_produk.*, cp.qty')
+                    ->select('jsf_promo_produk.*, jsf_promo.*, jsf_produk.*, jsf_variasi_item.*')
                     ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'inner')
                     ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk', 'inner')
-                    ->join('jsf_checkout_produk cp', 'cp.id_produk = jsf_promo_produk.id_produk', 'left')
                     ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_promo_produk.id_produk', 'inner')
                     ->where('jsf_promo_produk.id', $p)
                     ->first();
+                $produk[$key]['qty'] = $qtyPromo[$key];
+                // dd($produk);
 
                 foreach ($produk as $key => $p) {
-                    $rowTotal = $p['required_quantity'] * $p['harga_item'];
                     $cekProduk[] = [
                         'id' => $produk[$key]['id'],
-                        'price' => (int)$rowTotal,
-                        'quantity' => 1,
+                        'price' => $produk[$key]['harga_item'],
+                        'quantity' => $produk[$key]['qty'] * $produk[$key]['required_quantity'],
                         'name' => $produk[$key]['promo_deskripsi']
                     ];
-                    $total_1 += $rowTotal;
-
-                    $rowTotal = $produk[$key]['required_quantity'] * $produk[$key]['harga_item'];
                 }
             }
+            $rowTotalPromo = $produk[$key]['required_quantity'] * $produk[$key]['harga_item'] * $produk[$key]['qty'];
+            $total_1 += $rowTotalPromo;
         }
 
-        $total_2 = $total_1;
+        if ((!empty($idPromoProduk))) {
+            $rowTotal = $rowTotalPromo;
+        } else if (!empty(($idProduk))) {
+            $rowTotal = $rowTotalProduk;
+        } else {
+            $rowTotal = $rowTotalPromo + $rowTotalProduk;
+        }
+
+        $total_2 = $rowTotal;
         // dd($total_1, $total_2, $cekProduk, $rowTotal);
 
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
