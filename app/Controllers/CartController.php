@@ -54,6 +54,7 @@ class CartController extends BaseController
         $this->session->set(['countCart' => $this->countCart()]);
         return redirect()->to(base_url() . 'cart')->with('success', 'Berhasil Menghapus produk dalam cart.');
     }
+
     public function ajaxDeleteProduk()
     {
         $cartProdModel = new CartProdukModel();
