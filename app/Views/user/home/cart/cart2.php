@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
                             <i class="bi bi-check-circle"></i> Pilih Semua
                         </button>
-                        <a href="" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Hapus</a>
+                        <button type="button" class="btn btn-outline-danger" onclick="deleteProducts()"><i class="bi bi-trash"></i> Hapus</button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -408,6 +408,48 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         $("#textTotal").text(formatRupiah(total));
     }
 
+    function deleteProducts() {
+        var selectedProducts = $('input[name="check[]"]:checked');
+        var deletedProductIds = [];
+
+        if (selectedProducts.length === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500,
+                text: 'Produk harus dipilih terlebih dahulu.',
+            })
+            return;
+        }
+
+        selectedProducts.each(function() {
+            var productId = $(this).val();
+            // console.log("Deleted product ID:", productId);
+            deletedProductIds.push(productId);
+            $("#tr" + productId).remove();
+            delete produkSelected[productId];
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url('api/delete-cart-products'); ?>',
+            data: {
+                produk: deletedProductIds
+            },
+            success: function(response) {
+                if (response.success) {
+                    selectedProducts.closest('.row-cols-2').remove();
+                    totalA(produkSelected);
+                } else {
+                    console.error("Error deleting product:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error deleting product:", error);
+            }
+        });
+    }
 
     function checkInputs() {
         var checked = $('input[name="check[]"]:checked').length;
