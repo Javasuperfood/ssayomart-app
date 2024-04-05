@@ -47,7 +47,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endforeach ?>
                                 <label for="mpOrigin"><?= lang('Text.market') ?></label>
                             </div>
-                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin"><?= lang('text.pilih') ?></button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin"><?= lang('Text.pilih') ?></button>
                         </div>
                         <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -97,7 +97,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <?php endforeach ?>
                                 <label for="mpDestination"><?= lang('Text.alamat') ?></label>
                             </div>
-                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination"><?= lang('text.pilih') ?></button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination"><?= lang('Text.pilih') ?></button>
                         </div>
                         <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -139,7 +139,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input type="text" class="form-control masukan-kata fs-6 pemilihan" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
                                 <label for="mpkirim" style="font-size: 16px"><?= lang('Text.pengiriman') ?></label>
                             </div>
-                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir"><?= lang('text.pilih') ?></button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir"><?= lang('Text.pilih') ?></button>
                         </div>
                         <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
