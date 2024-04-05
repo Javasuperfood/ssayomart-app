@@ -33,10 +33,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row mt-3">
                 <div class="col-12 d-flex gap-2">
                     <?php if ($produk) : ?>
-                        <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
+                        <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon">
                             <i class="bi bi-check-circle"></i> Select
                         </button>
-                        <button type="button" class="btn btn-outline-danger" onclick="deleteProducts()"><i class="bi bi-trash"></i> Hapus</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteProducts()"><i class="bi bi-trash"></i> Hapus</button>
                     <?php endif; ?>
                 </div>
             </div>
