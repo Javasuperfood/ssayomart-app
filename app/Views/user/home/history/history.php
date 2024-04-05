@@ -98,10 +98,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="row pt-1" onclick="toggleHistory(<?= $t->id_checkout; ?>)">
                         <div class="col">
                             <div class="card border-0 shadow-sm">
-                                <div class="card-body">
+                                <div class="card-body card-fold">
                                     <div class="row" id="colsId<?= $t->id_checkout; ?>" data-bs-target="#history<?= $t->id_checkout; ?>" data-bs-toggle="collapse">
                                         <div class="col-3 d-flex justify-content-start align-items-center">
-                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width:75%; Height:65%; object-fit: contain; object-position: 20% 10%;">
+                                            <img src="<?= base_url(); ?>assets/img/produk/main/<?= $t->img; ?>" alt="Foto Produk" class="card-img" style="width:85%; Height:65%; object-fit: contain; object-position: 20% 10%;">
                                             <div class="position-absolute bottom-0 start-50 translate-middle-x">
                                                 <a class="link-secondary" role="button" id="arowDown<?= $t->id_checkout; ?>" style="display: none;">
                                                     <i class="bi bi-chevron-bar-down fs-6" style="font-weight: bold;"></i>
@@ -109,13 +109,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                         <div class="col-9 pt-1 deskripsi position-absolute top-50 start-50 translate-middle">
-                                            <p class="card-title mt-3" style="width:65%; text-align:justify; font-size: 8px;">
+                                            <p class="name mt-3" style="">
                                                 <?= substr($t->nama, 0,); ?>
 
                                                 <!-- Fungsi Multi Language -->
                                                 <!-- <?= substr($t->$kolomNama, 0, 0); ?> -->
                                             </p>
-                                            <p class="fw-bold text-danger" style="font-size: 10px;">Rp.
+                                            <p class="harga fw-bold text-danger" style="font-size: 10px;">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
                                             </p>
                                         </div>
@@ -214,6 +214,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php endif; ?>
         </div>
     </div>
+
+
 
 
     <!-- style slider -->
@@ -316,6 +318,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
     <style>
+        .name {
+            width: 65%;
+            text-align: justify;
+            font-size: 8px;
+            font-weight: bold;
+            color: #8d918e;
+        }
+
         @media screen and (max-width: 820px) {
             .btn.custom-btn {
                 font-size: 12px !important;
@@ -326,8 +336,32 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         @media screen and (max-width: 280px) {
             .btn.custom-btn {
-                font-size: 5px !important;
-                /* Ukuran font untuk iPad */
+                width: 110%;
+
+            }
+
+            .name {
+                top: 100px;
+                font-size: 7px;
+                width: 80%;
+                text-align: justify;
+                font-weight: bold;
+                color: #8d918e;
+
+            }
+
+            .card-img {
+                max-width: 50%;
+                margin-left: -10px;
+                padding: 0;
+            }
+
+            .card-fold {
+                height: 65px;
+            }
+
+            .harga {
+                margin-top: -15px;
             }
         }
 
