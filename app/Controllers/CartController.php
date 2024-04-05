@@ -55,6 +55,26 @@ class CartController extends BaseController
         return redirect()->to(base_url() . 'cart')->with('success', 'Berhasil Menghapus produk dalam cart.');
     }
 
+    publc function ajaxDeleteCartProd()
+    {
+        $cartProdModel = new CartProdukModel();
+        $cartModel = new CartModel();
+
+        $cartRecord = $cartModel->where('id_user', user_id())->first();
+        $id_cart = $cartRecord['id_cart'];
+
+        $cartProdukId = $this->request->getVar('produk');
+
+        $deleted = $cartProdModel->where('id_cart', $id_cart)->whereIn('id_cart_produk', $cartProdukId)->delete();
+
+        if (!$deleted) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete the product.']);
+        }
+
+        $this->session->set(['countCart' => $this->countCart()]);
+        return $this->response->setJSON(['success' => true, 'message' => 'Product successfully deleted from the cart.']);
+    }
+  
     public function ajaxDeleteProduk()
     {
         $cartProdModel = new CartProdukModel();

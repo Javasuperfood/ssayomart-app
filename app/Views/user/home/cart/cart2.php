@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
                             <i class="bi bi-check-circle"></i> Select
                         </button>
-                        <!-- <a href="#" class="btn btn-outline-danger" onclick="deleteSelectedProducts();"><i class="bi bi-trash"></i> Hapus</a> -->
+                        <button type="button" class="btn btn-outline-danger" onclick="deleteProducts()"><i class="bi bi-trash"></i> Hapus</button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -97,9 +97,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <!-- Fungsi Multi Language -->
                                     <!-- <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p[$kolomNama] . '(' . $p['value_item'] . ')', 0, 30); ?></p> -->
                                     <?php if ($p['required_quantity']) : ?>
-                                        <p class="text-secondary float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['title'] . '(' . $p['value_item'] . ')', 0,); ?></p>
+                                        <p class="text-secondary text-pixel float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['title'] . '(' . $p['value_item'] . ')', 0,); ?></p>
                                     <?php else : ?>
-                                        <p class="text-secondary float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0,); ?></p>
+                                        <p class="text-secondary text-pixel float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0,); ?></p>
                                     <?php endif; ?>
                                     <div class="input-group grup-masukan button-group" style="margin-top:5px; right: 45%;">
                                         <button class="btn-sm btn btn-outline-danger btn-dash rounded-circle" style="width: 20px; height:22px;" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= isset($p['required_quantity']) ? $p['required_quantity'] : 'null'; ?>)'><i class="bi bi-dash"></i></button>
@@ -408,6 +408,48 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         $("#textTotal").text(formatRupiah(total));
     }
 
+    function deleteProducts() {
+        var selectedProducts = $('input[name="check[]"]:checked');
+        var deletedProductIds = [];
+
+        if (selectedProducts.length === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                showConfirmButton: false,
+                timer: 1500,
+                text: 'Produk harus dipilih terlebih dahulu.',
+            })
+            return;
+        }
+
+        selectedProducts.each(function() {
+            var productId = $(this).val();
+            // console.log("Deleted product ID:", productId);
+            deletedProductIds.push(productId);
+            $("#tr" + productId).remove();
+            delete produkSelected[productId];
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url('api/delete-cart-products'); ?>',
+            data: {
+                produk: deletedProductIds
+            },
+            success: function(response) {
+                if (response.success) {
+                    selectedProducts.closest('.row-cols-2').remove();
+                    totalA(produkSelected);
+                } else {
+                    console.error("Error deleting product:", response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error("Error deleting product:", error);
+            }
+        });
+    }
 
     function checkInputs() {
         var checked = $('input[name="check[]"]:checked').length;
