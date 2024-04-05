@@ -18,7 +18,6 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'];
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
-
 <!-- mobile -->
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
@@ -27,7 +26,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?= csrf_field(); ?>
                 <?php if (!$alamat_list) : ?>
                     <div class="alert alert-danger">
-                        Tidak ada alamat yang tersedia. Silakan tambahkan alamat terlebih dahulu. <a href="<?= base_url('setting/alamat-list'); ?>" class="link-dark fw-bold">Disini</a>
+                        <?= lang('Text.alert_alamat') ?> <a href="<?= base_url('setting/alamat-list'); ?>" class="link-dark fw-bold"><?= lang('Text.alert_alamat2') ?></a>
                     </div>
                 <?php endif ?>
                 <div class="row row-cols-1 <?= (!$alamat_list) ? 'd-none' : ''; ?>">
@@ -46,15 +45,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
-                                <label for="mpOrigin">Market</label>
+                                <label for="mpOrigin"><?= lang('Text.market') ?></label>
                             </div>
-                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-origin"><?= lang('text.pilih') ?></button>
                         </div>
                         <div class="modal fade" id="modal-pilih-origin" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-originLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-originLabel">Pilih Market Terdekat</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-originLabel"><?= lang('Text.alert_alamat') ?></h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -96,15 +95,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <?php endif ?>
                                     <?php endif ?>
                                 <?php endforeach ?>
-                                <label for="mpDestination">Alamat</label>
+                                <label for="mpDestination"><?= lang('Text.alamat') ?></label>
                             </div>
-                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-destination"><?= lang('text.pilih') ?></button>
                         </div>
                         <div class="modal fade" id="modal-pilih-destination" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-destinationLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-destinationLabel">Pilih Alamat</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-destinationLabel"><?= lang('Text.alamat') ?></h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -138,15 +137,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </span>
                             <div class="form-floating">
                                 <input type="text" class="form-control masukan-kata fs-6 pemilihan" id="mpkirim" name="kurir" placeholder="Metode Pengiriman" readonly>
-                                <label for="mpkirim" style="font-size: 16px">Metode Pengiriman</label>
+                                <label for="mpkirim" style="font-size: 16px"><?= lang('Text.pengiriman') ?></label>
                             </div>
-                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir">Pilih</button>
+                            <button class="btn input-group-text masukan-tim btn-danger text-white" type="button" data-bs-toggle="modal" data-bs-target="#modal-pilih-kurir"><?= lang('text.pilih') ?></button>
                         </div>
                         <div class="modal fade" id="modal-pilih-kurir" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-pilih-kurirLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content pilih-cara">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-kurirLabel">Pilih Metode Pengiriman</h1>
+                                        <h1 class="modal-title fs-6 pemilihan" id="modal-pilih-kurirLabel"><?= lang('Text.pengiriman') ?></h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -158,7 +157,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     </div>
                                                     <div class="col d-flex justify-content-end">
                                                         <input class="fs-3 btn-check" type="radio" name="flexRadioDefault" id="flexRadioDefault1" data-bs-dismiss="modal" aria-label="Close" value="gosend" brand="GoSend" onclick="selectCourier(this)">
-                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault1">Pilih</label>
+                                                        <label class="btn btn-outline-danger btn-lg" for="flexRadioDefault1"><?= lang('Text.pilih') ?></label>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -247,8 +246,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <select class="form-control masukan-kata border-0 shadow-sm" id="service" name="service">
                                 <option value="" class="card-text text-secondary"></option>
                             </select>
-                            <label for="service" id="serviceLabel">Pilih Layanan</label>
-                            <span class="badge rounded-pill text-bg-danger"><strong class="time">Estimasi : <span id="estimasi"></span></strong></span>
+                            <label for="service" id="serviceLabel"><?= lang('Text.pelayanan_pengiriman') ?></label>
+                            <span class="badge rounded-pill text-bg-danger"><strong class="time"><?= lang('Text.estimasi') ?> : <span id="estimasi"></span></strong></span>
                         </div>
                     </div>
                     <input type="hidden" name="serviceText" id="serviceText">
@@ -257,15 +256,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="form-floating mb-2">
                                 <select class="form-control masukan-kata border-0 shadow-sm" id="kupon" name="kupon">
                                     <option selected value="" class="card-text text-secondary">
-                                        Pilih Kupon
+                                        <?= lang('Text.kupon') ?>
                                     </option>
                                     <?php foreach ($kupon as $k) : ?>
                                         <?php if ($total >= $k['total_buy']) : ?>
-                                            <option value="<?= $k['kode']; ?>">Diskon <?= ($k['discount'] * 100) . '%'; ?> : Minimal Beli Rp. <?= number_format($k['total_buy'], 0, ',', '.'); ?> </option>
+                                            <option value="<?= $k['kode']; ?>"><?= lang('Text.potongan_harga') ?> <?= ($k['discount'] * 100) . '%'; ?> : <?= lang('Text.min_beli') ?> Rp. <?= number_format($k['total_buy'], 0, ',', '.'); ?> </option>
                                         <?php endif ?>
                                     <?php endforeach ?>
                                 </select>
-                                <label for="kupon" id="floatingLabel">Makin Hemat Pakai Kupon</span></label>
+                                <label for="kupon" id="floatingLabel"><?= lang('Text.kupon') ?></span></label>
                             </div>
                         </div>
                     <?php endif ?>
@@ -279,12 +278,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <img src="<?= base_url(); ?>assets/img/promo/bundle/<?= $p['promo_img']; ?>" alt="" class="card-img" style="width:35px; object-fit: contain; object-position: 20% 10%;">
                                             </div>
                                             <div class="col-7 keterangan position-absolute top-50 start-50 translate-middle">
-                                                <p class="card-title pemilihan" style="font-size: 10px;"><?= substr($p['title'], 0,); ?></p>
-                                                <p class="card-text text-secondary pemilihan" style="font-size: 9px;"><?= $p['required_quantity']; ?> Pcs (Promo)
+                                                <p class="card-title pemilihan" style="font-size: 12px;"><?= substr($p['title'], 0,); ?></p>
+                                                <p class="card-text pemilihan" style="font-size: 10px;"><?= $p['required_quantity']; ?> Pcs (Promo)
                                                 </p>
                                             </div>
-                                            <div class="col-3 keterangan position-absolute top-50 end-0 translate-middle-y mt-2 ps-4">
-                                                <p class="text-secondary pemilihan" style="font-size: 12px;">Total</p>
+                                            <div class="col-3 keterangan position-absolute top-50 end-0 translate-middle-y ps-4">
+                                                <p class="pemilihan" style="font-size: 12px;">Total</p>
                                                 <p class="fw-bold" style="font-size: 10px;"><?= number_format(($p['harga_item'] * $p['qty'] * $p['required_quantity']), 0, ',', '.'); ?></p>
                                             </div>
                                         </div>
@@ -325,36 +324,36 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <table class="table fs-6 pemilihan lh-1" style="font-size: smaller !important;">
                             <thead>
                                 <tr>
-                                    <th scope="col">Ringkasan Belanja</th>
+                                    <th scope="col"><?= lang('Text.ringkasan_belanja') ?></th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Subtotal</td>
+                                    <td><?= lang('Text.subtotal') ?></td>
                                     <td>Rp. <?= number_format($total, 0, ',', '.'); ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Diskon (Promo)</td>
+                                    <td><?= lang('Text.diskon_promo') ?>)</td>
                                     <td><span id="diskonTotal"><?= (isset($totalDiscount) ? '-Rp. ' . number_format($totalDiscount, 0, ',', '.') : '') ?></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Potongan Harga (Kupon)</td>
+                                    <td><?= lang('Text.potongan_harga') ?></td>
                                     <td><span id="diskon"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Total Ongkos Kirim</td>
+                                    <td><?= lang('Text.total_ongkir') ?></td>
                                     <td><span id="ongkirText"></span></td>
                                 </tr>
                                 <tr>
-                                    <td class="fw-bold">Grand Total</td>
+                                    <td class="fw-bold"><?= lang('Text.grand_total') ?></td>
                                     <td class="fw-bold"><span id="totalText"></span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="col p-3 px-4">
-                        <button type="button" class="btn fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;" data-bs-toggle="modal" data-bs-target="#metode-pembayaran-modal">Pilih Metode Pembayaran</button>
+                        <button type="button" class="btn fw-bold rounded btn-bayar" style="background-color: #ec2614; color: #fff; width: 100%;" data-bs-toggle="modal" data-bs-target="#metode-pembayaran-modal"><?= lang('Text.metode_pembayaran') ?></button>
                     </div>
                 </div>
                 <div class="modal fade" id="metode-pembayaran-modal" tabindex="-1" aria-labelledby="metode-pembayaran-modalLabel" aria-hidden="true">
@@ -453,7 +452,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                             </div>
                             <div class="modal-footer d-flex justify-content-center text-center align-items-center">
-                                <button onclick="clickSubmitEvent(this)" type="button" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff; width: 100%;">Bayar Sekarang</button>
+                                <button onclick="clickSubmitEvent(this)" type="button" class="btn btn-lg fw-bold rounded" style="background-color: #ec2614; color: #fff; width: 100%;"><?= lang('Text.btn_checkout') ?></button>
                             </div>
                         </div>
                     </div>
@@ -901,9 +900,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         border: 1px solid #DEE2E6;
     }
 </style>
-
-
-<!-- end desktop -->
 
 <script>
     $('document').ready(function() {

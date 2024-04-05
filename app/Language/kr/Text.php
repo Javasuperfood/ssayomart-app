@@ -89,6 +89,8 @@ return [
     'btn_checkout' => 'B점검',
     'notif_cart' => '와, 바구니가 비어 있어요!',
     'btn_belanja' => '지금 쇼핑하자!',
+    'btn_pilih' => '모두 선택',
+    'btn_batal_pilih' => '선택 취소',
 
     // HISTORY
     'title_history' => '거래 내역',
@@ -189,4 +191,21 @@ return [
     'modal_gosend3' => '완료',
     'modal_gosend4' => '뒤로',
 
+    // CHECKOUT
+    'market' => '지점 선택',
+    'alamat' => '배송지 주소 선택',
+    'alert_alamat' => '사용할 수 있는 주소가 없습니다. 먼저 주소를 추가하세요.',
+    'alert_alamat2' => '여기',
+    'pengiriman' => '배송 방법 선택',
+    'pelayanan_pengiriman' => '배송 서비스 선택',
+    'estimasi' => '견적',
+    'kupon' => '쿠폰 선택',
+    'ringkasan_belanja' => '쇼핑 요약',
+    'subtotal' => '하위 합계',
+    'diskon_promo' => '리베이트 (프로모션)',
+    'potongan_harga' => '리베이트 (쿠폰)',
+    'total_ongkir' => '배송비',
+    'grand_total' => '총 합계',
+    'pilih' => '선택',
+    'min_beli' => '최소 구매',
 ];

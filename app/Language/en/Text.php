@@ -92,6 +92,8 @@ return [
     'btn_checkout' => 'CHECKOUT',
     'notif_cart' => 'No! Your cart is empty',
     'btn_belanja' => 'Lets shop now!',
+    'btn_pilih' => 'Select All',
+    'btn_batal_pilih' => 'Cancel Seletion',
 
     // HISTORY
     'title_history' => 'Transaction History',
@@ -191,4 +193,22 @@ return [
     'modal_gosend2' => 'Make sure your order is arrived before you finish it.',
     'modal_gosend3' => 'Finish',
     'modal_gosend4' => 'Go Back',
+
+    // CHECKOUT
+    'market' => 'Select Branch',
+    'alamat' => 'Select Shipping Address',
+    'alert_alamat' => 'There is no address available. Please add an address first.',
+    'alert_alamat2' => 'Here',
+    'pengiriman' => 'Select Shipping Method',
+    'pelayanan_pengiriman' => 'Select Shipping Services',
+    'estimasi' => 'Estimation',
+    'kupon' => 'Select Coupon',
+    'ringkasan_belanja' => 'Summary',
+    'subtotal' => 'Sub Total',
+    'diskon_promo' => 'Discount (Promotion)',
+    'potongan_harga' => 'Discount (Coupon)',
+    'total_ongkir' => 'Shipping Cost',
+    'grand_total' => 'Grand Total',
+    'pilih' => 'Select',
+    'min_beli' => 'minimum purchase',
 ];

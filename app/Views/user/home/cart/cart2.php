@@ -34,7 +34,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col-12 d-flex gap-2">
                     <?php if ($produk) : ?>
                         <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon rounded-3 shadow-sm">
-                            <i class="bi bi-check-circle"></i> Pilih Semua
+                            <i class="bi bi-check-circle"></i> Select
                         </button>
                         <button type="button" class="btn btn-outline-danger" onclick="deleteProducts()"><i class="bi bi-trash"></i> Hapus</button>
                     <?php endif; ?>
@@ -287,20 +287,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         });
 
         $('#selectAll').click(function() {
-            if ($(this).text().trim() === 'Pilih Semua') {
+            if ($(this).text().trim() === 'Select') {
                 $('input[name="check[]"]').each(function() {
                     if (!$(this).is(':disabled')) {
                         $(this).prop('checked', true);
                         $(this).trigger('change');
                     }
                 });
-                $(this).text('Batal Pilih Semua');
+                $(this).text('Cancel Select');
             } else {
                 $('input[name="check[]"]').prop('checked', false);
                 produkSelected = {};
                 totalA(produkSelected);
                 checkInputs();
-                $(this).text('Pilih Semua');
+                $(this).text('Select');
             }
         });
     });

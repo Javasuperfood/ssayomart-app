@@ -55,7 +55,7 @@ class CartController extends BaseController
         return redirect()->to(base_url() . 'cart')->with('success', 'Berhasil Menghapus produk dalam cart.');
     }
 
-    public function ajaxDeleteCartProd()
+    publc function ajaxDeleteCartProd()
     {
         $cartProdModel = new CartProdukModel();
         $cartModel = new CartModel();
@@ -74,7 +74,7 @@ class CartController extends BaseController
         $this->session->set(['countCart' => $this->countCart()]);
         return $this->response->setJSON(['success' => true, 'message' => 'Product successfully deleted from the cart.']);
     }
-
+  
     public function ajaxDeleteProduk()
     {
         $cartProdModel = new CartProdukModel();
