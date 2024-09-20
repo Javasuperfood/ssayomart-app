@@ -91,6 +91,7 @@ return [
     'btn_belanja' => '지금 쇼핑하자!',
     'btn_pilih' => '모두 선택',
     'btn_batal_pilih' => '선택 취소',
+    'stock_kosong' => '매진',
 
     // HISTORY
     'title_history' => '거래 내역',

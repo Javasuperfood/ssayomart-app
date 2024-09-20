@@ -36,7 +36,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon">
                             <i class="bi bi-check-circle"></i> Select
                         </button>
-                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteProducts()"><i class="bi bi-trash"></i> Hapus</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteProducts()"><i class="bi bi-trash"></i> <?= lang('Text.btn_hapus') ?></button>
                     <?php endif; ?>
                 </div>
             </div>
@@ -86,7 +86,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="p-1 img-small gambar-kecil" alt="Product" style=" width: 65px; height: 65px; object-fit: contain;">
                                                 <?php if (!$p['stok'] > 0 && $p['is_active'] == 1) : ?>
                                                     <div class="sold-out-overlay item-item d-flex justify-content-center align-items-center position-absolute top-50 start-50 translate-middle" style="width:40px; height:40px; border-radius:50%;">
-                                                        <span class="sold-out-text ">Kosong</span>
+                                                        <span class="sold-out-text "><?= lang('Text.stock_kosong') ?></span>
                                                     </div>
                                                 <?php endif; ?>
                                             </a>

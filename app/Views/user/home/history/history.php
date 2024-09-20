@@ -109,7 +109,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             </div>
                                         </div>
                                         <div class="col-9 pt-1 deskripsi position-absolute top-50 start-50 translate-middle">
-                                            <p class="name mt-3" style="">
+                                            <p class="name mt-3">
                                                 <?= substr($t->nama, 0,); ?>
 
                                                 <!-- Fungsi Multi Language -->
@@ -214,9 +214,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php endif; ?>
         </div>
     </div>
-
-
-
 
     <!-- style slider -->
     <style>

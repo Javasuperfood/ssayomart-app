@@ -94,6 +94,7 @@ return [
     'btn_belanja' => 'Lets shop now!',
     'btn_pilih' => 'Select All',
     'btn_batal_pilih' => 'Cancel Seletion',
+    'stock_kosong' => 'Sold Out',
 
     // HISTORY
     'title_history' => 'Transaction History',

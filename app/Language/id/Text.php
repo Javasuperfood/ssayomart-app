@@ -91,6 +91,7 @@ return [
     'btn_belanja' => 'Belanja sekarang yuk!',
     'btn_pilih' => 'Pilih Semua',
     'btn_batal_pilih' => 'Batal Pilih',
+    'stock_kosong' => 'Habis',
 
     // HISTORY
     'title_history' => 'Riwayat Transaksi',
