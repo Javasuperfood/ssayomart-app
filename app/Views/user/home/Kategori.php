@@ -76,34 +76,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- Desktop View -->
     <div id="desktopContent" style="margin-top:15px;">
-        <section id="unggul">
-            <div class="container">
-                <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #d7eff8;">
-                    <div class="card-warning">
-                        <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.spesial') ?></span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="swiper mySwiper">
-                            <div class="swiper-wrapper d-flex justify-content-center align-items-center">
-                                <?php foreach ($promo as $p) : ?>
-                                    <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 ">
-                                        <div class="text-bg-light mb-3 bg-white">
-                                            <div class="card-body">
-                                                <a href="<?= base_url('promo/' . $p['slug']) ?>">
-                                                    <img src="<?= base_url() ?>assets/img/promo/<?= $p['img']; ?>" width="60px" alt="<?= $p['title']; ?>" class="card-img-top">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
         <section id="unggul">
             <div class="container py-3">
                 <div class="row mt-3">
@@ -159,16 +132,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 </div>
 
                 <!-- rekomendasi title -->
-                <div class="container py-3">
+                <!-- <div class="container py-3">
                     <div class="card border-0 text-center font-family-poppins" style="background-color: #fce0e4;">
                         <div class="card-danger">
                             <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.saran_masak') ?></h2>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- end rekomendasi title-->
                 <!-- card rekomendasi -->
-                <div class="container mt-3">
+                <!-- <div class="container mt-3">
                     <div class="row">
                         <div class="swiper mySwung">
                             <div class="mb-5 swiper-wrapper d-flex">
@@ -197,7 +170,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- end card rekomendasi-->
                 <div class="container py-1">
                     <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #ccebbc;">
