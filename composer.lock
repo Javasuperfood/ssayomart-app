@@ -215,12 +215,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/datamweb/shield-oauth.git",
-                "reference": "4d31367f366e400aa14419c34614487dad25ed73"
+                "reference": "c492ae8c5f42895b49e0a3669f6bc6a37b02fdac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/datamweb/shield-oauth/zipball/4d31367f366e400aa14419c34614487dad25ed73",
-                "reference": "4d31367f366e400aa14419c34614487dad25ed73",
+                "url": "https://api.github.com/repos/datamweb/shield-oauth/zipball/c492ae8c5f42895b49e0a3669f6bc6a37b02fdac",
+                "reference": "c492ae8c5f42895b49e0a3669f6bc6a37b02fdac",
                 "shasum": ""
             },
             "require": {
@@ -232,7 +232,7 @@
                 "codeigniter4/devkit": "^1.0",
                 "codeigniter4/framework": "^4.3.5",
                 "codeigniter4/shield": "^1.0",
-                "rector/rector": "1.2.5"
+                "rector/rector": "1.2.6"
             },
             "default-branch": true,
             "type": "library",
@@ -272,7 +272,7 @@
                 "issues": "https://github.com/datamweb/shield-oauth/issues",
                 "source": "https://github.com/datamweb/shield-oauth"
             },
-            "time": "2024-09-11T06:14:06+00:00"
+            "time": "2024-10-04T05:07:23+00:00"
         },
         {
             "name": "dompdf/dompdf",
@@ -855,21 +855,22 @@
         },
         {
             "name": "midtrans/midtrans-php",
-            "version": "2.5.2",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Midtrans/midtrans-php.git",
-                "reference": "a1ad0c824449ca8c68c4cf11b3417ad518311d2b"
+                "reference": "ebbe9127f925d9588bb4ab6b1d48bf27ce14a1ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Midtrans/midtrans-php/zipball/a1ad0c824449ca8c68c4cf11b3417ad518311d2b",
-                "reference": "a1ad0c824449ca8c68c4cf11b3417ad518311d2b",
+                "url": "https://api.github.com/repos/Midtrans/midtrans-php/zipball/ebbe9127f925d9588bb4ab6b1d48bf27ce14a1ad",
+                "reference": "ebbe9127f925d9588bb4ab6b1d48bf27ce14a1ad",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "ext-json": "*",
+                "ext-openssl": "*",
                 "php": ">=5.4"
             },
             "require-dev": {
@@ -904,9 +905,9 @@
             "homepage": "https://midtrans.com",
             "support": {
                 "issues": "https://github.com/Midtrans/midtrans-php/issues",
-                "source": "https://github.com/Midtrans/midtrans-php/tree/2.5.2"
+                "source": "https://github.com/Midtrans/midtrans-php/tree/v2.6.0"
             },
-            "time": "2021-08-23T08:52:05+00:00"
+            "time": "2024-09-24T12:46:40+00:00"
         },
         {
             "name": "onesignal/onesignal-php-api",
@@ -1440,16 +1441,16 @@
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.7.5",
+            "version": "6.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "951eabf0338ec2522bd0d5d9c79b08a3a3d36b36"
+                "reference": "4cf1ab192e87e6916d20f93077b2bdfa96a2f848"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/951eabf0338ec2522bd0d5d9c79b08a3a3d36b36",
-                "reference": "951eabf0338ec2522bd0d5d9c79b08a3a3d36b36",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/4cf1ab192e87e6916d20f93077b2bdfa96a2f848",
+                "reference": "4cf1ab192e87e6916d20f93077b2bdfa96a2f848",
                 "shasum": ""
             },
             "require": {
@@ -1500,7 +1501,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.7.5"
+                "source": "https://github.com/tecnickcom/TCPDF/tree/6.7.6"
             },
             "funding": [
                 {
@@ -1508,7 +1509,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-04-20T17:25:10+00:00"
+            "time": "2024-10-06T10:54:28+00:00"
         }
     ],
     "packages-dev": [
@@ -1759,16 +1760,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v5.2.0",
+            "version": "v5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb"
+                "reference": "8eea230464783aa9671db8eea6f8c6ac5285794b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
-                "reference": "23c79fbbfb725fb92af9bcf41065c8e9a0d49ddb",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8eea230464783aa9671db8eea6f8c6ac5285794b",
+                "reference": "8eea230464783aa9671db8eea6f8c6ac5285794b",
                 "shasum": ""
             },
             "require": {
@@ -1811,9 +1812,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.2.0"
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.3.1"
             },
-            "time": "2024-09-15T16:40:33+00:00"
+            "time": "2024-10-08T18:51:32+00:00"
         },
         {
             "name": "phar-io/manifest",

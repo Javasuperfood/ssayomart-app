@@ -25,7 +25,6 @@ class RestfullApiController extends BaseController
     }
     public function user($id)
     {
-
         $userModel = new UsersModel();
         $alamatUserModel = new AlamatUserModel();
         $marketModel = new TokoModel();

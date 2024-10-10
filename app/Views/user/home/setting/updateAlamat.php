@@ -2,9 +2,7 @@
 <?= $this->section('page-content') ?>
 
 <?php
-// Mendeteksi User-Agent
 $userAgent = $_SERVER['HTTP_USER_AGENT'];
-// Menentukan apakah pengguna menggunakan perangkat seluler (misalnya, smartphone atau tablet)
 $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Tablet') !== false);
 ?>
 
@@ -16,6 +14,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?= csrf_field(); ?>
                 <input type="hidden" name="id_user" value="<?= $au['id_user']; ?>">
                 <div class="container text-secondary" style="font-size: 12px;">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <input type="text" id="searchAddress" class="form-control" placeholder="Masukkan alamat untuk mencari" />
+                                <button type="button" id="searchBtn" class="btn btn-outline-danger rounded-3"><i class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <div class="col-12">
                             <div id="map" class="rounded-3"></div>
@@ -74,7 +80,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-12">
                             <div class="form-group mb-3">
                                 <label for="telp2" class="form-label"><?= lang('Text.no_telp_alamat2') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
-                                <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp" name="no_telp2" style="font-size: 14px;" value="<?= $au['telp2']; ?>" onkeypress="return isNumber(event);">
+                                <input class="form-control floatingInput <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="telp2" name="no_telp2" style="font-size: 14px;" value="<?= $au['telp2']; ?>" onkeypress="return isNumber(event);">
                                 <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
                             </div>
                         </div>
@@ -315,13 +321,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             margin-left: 320px;
             z-index: 1000;
             border-radius: 50% !important;
-            /* Mengatur elemen menjadi bentuk bulat */
             top: 1080px;
         }
 
         #getLocationBtn {
             border-radius: 50%;
-            /* Mengatur tombol menjadi bentuk bulat */
 
         }
     </style>
@@ -329,127 +333,203 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <!-- end Desktop -->
 
 <script>
+    function isNumber(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode < 48 || charCode > 57)
+            return false;
+        return true;
+    }
+
+    let csrfTokenName = '<?= csrf_token() ?>';
+    let csrfHash = '<?= csrf_hash() ?>';
+
+    function updateCsrfToken(data) {
+        if (data.csrf) {
+            csrfTokenName = data.csrf.token;
+            csrfHash = data.csrf.hash;
+
+            // Cari input hidden CSRF di form dan perbarui nilainya
+            const csrfInput = document.querySelector('input[name="' + csrfTokenName + '"]');
+            if (csrfInput) {
+                csrfInput.value = csrfHash;
+            } else {
+                // Jika input CSRF tidak ditemukan, tambahkan ke form
+                const form = document.querySelector('form');
+                const newCsrfInput = document.createElement('input');
+                newCsrfInput.type = 'hidden';
+                newCsrfInput.name = csrfTokenName;
+                newCsrfInput.value = csrfHash;
+                form.prepend(newCsrfInput);
+            }
+        }
+    }
+
+    // Event Listener untuk Tombol Cari Alamat
+    document.getElementById('searchBtn').addEventListener('click', function() {
+        var address = document.getElementById('searchAddress').value;
+        if (address.trim() === "") {
+            alert("Silakan masukkan alamat yang ingin dicari.");
+            return;
+        }
+        searchAddress(address);
+    });
+
+    // Fungsi untuk mencari alamat melalui AJAX
+    function searchAddress(address) {
+        fetch(`<?= base_url('setting/searchAddress') ?>`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRF-TOKEN': csrfHash
+                },
+                body: JSON.stringify({
+                    address: address
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    var lat = data.data.lat;
+                    var lon = data.data.lon;
+                    var displayName = data.data.display_name;
+                    updateMap(lat, lon, 18, 'search');
+
+                    // Perbarui CSRF token setelah berhasil mencari alamat
+                    updateCsrfToken(data);
+                } else {
+                    alert(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error searching address:', error);
+                alert('Terjadi kesalahan saat mencari alamat.');
+            });
+    }
+
+    // Fungsi untuk mendapatkan lokasi pengguna
     function getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
         } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-    var latOld = '';
-    var lonOld = '';
-    <?php if ($au['latitude'] && $au['longitude']) : ?>
-        var map = L.map('map', {
-            center: [<?= $au['latitude']; ?>, <?= $au['longitude']; ?>],
-            zoom: 13,
-            layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')],
-        });
-        latOld = '<?= $au['latitude']; ?>';
-        lonOld = '<?= $au['longitude']; ?>';
-        L.marker([latOld, lonOld]).addTo(map)
-            .bindPopup('<?= $au['alamat_3']; ?>').openPopup();
-    <?php else : ?>
-        var map = L.map('map', {
-            center: [-6.175247, 106.8270488],
-            zoom: 13,
-            layers: [L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')]
-        });
-
-    <?php endif; ?>
-
-    function getLatLongOnEvent() {
-        var alamat = $('#alamat_3').val();
-        if (alamat.length > 3) {
-            fetch(`https://nominatim.openstreetmap.org/search?q=${alamat}&format=jsonv2`)
-                .then(response => {
-                    return response.json();
-                })
-                .then(data => {
-                    $('#alamat_3_option').empty();
-                    data.forEach(e => {
-                        $('#alamat_3_option').append('<option value="' + e.display_name + '">' + e.display_name + '</option>');
-                    });
-                    $('#alamat_3').focus();
-                    updateMap(data[0].lat, data[0].lon, 15, 'event');
-                })
-                .catch(error => console.error('Error fetching address:', error));
+            alert("Geolocation is not supported by this browser.");
         }
     }
 
+    // Fungsi untuk menangani error geolocation
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation.");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+            case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("An unknown error occurred.");
+                break;
+        }
+    }
+
+    // Fungsi untuk menampilkan posisi pengguna
     function showPosition(position) {
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-        console.log('Latitude:', lat);
-        console.log('Longitude:', lon);
-
-        updateMap(lat, lon)
+        updateMap(lat, lon);
     }
 
     var popup = L.popup();
 
+    // Fungsi untuk menangani klik di peta
     function onMapClick(e) {
         var lat = e.latlng.lat.toFixed(7);
         var lon = e.latlng.lng.toFixed(7);
         updateMap(lat, lon);
     }
 
+    // Fungsi untuk mengupdate peta berdasarkan koordinat
     function updateMap(lat, lon, zoom = null, from = null) {
-        // Clear all previous markers
+        console.log('Updating map with lat:', lat, 'lon:', lon);
+
+        // Clear semua marker sebelumnya
         map.eachLayer(function(layer) {
             if (layer instanceof L.Marker) {
                 map.removeLayer(layer);
             }
         });
 
-        // Add a new marker with a popup showing the full address
+        // Tambahkan marker baru dengan popup "Loading address..."
         L.marker([lat, lon]).addTo(map)
             .bindPopup('Loading address...').openPopup();
 
-        // Perform reverse geocoding to get the full address
-        fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
+        // Reverse geocoding menggunakan LocationIQ
+        var apiKey = 'pk.bc006a911b504a62570595da46aaed0b'; // Ganti dengan API Key LocationIQ Anda
+        fetch(`https://us1.locationiq.com/v1/reverse.php?key=${apiKey}&lat=${lat}&lon=${lon}&format=json&accept-language=id`)
             .then(response => response.json())
             .then(data => {
                 var address = data.display_name;
                 var addressComponents = data.address;
-
-                // Ekstrak informasi provinsi, kabupaten/kota, dan kode pos
                 var province = addressComponents.state;
                 var idProvince = addressComponents.state;
                 var city = addressComponents.city || addressComponents.county;
                 var postalCode = addressComponents.postcode;
-                var detailAddress = addressComponents.road;
+                var detailAddress = addressComponents.road || addressComponents.neighbourhood || '';
 
-                // Mengisi otomatis kolom provinsi, kabupaten/kota, dan kode pos
-                $("#provinsi").val(province);
-                $("#id_province").val(idProvince);
+                document.getElementById('provinsi').value = province;;
+                document.getElementById('kabupaten').value = city;
+                document.getElementById('zip_code').value = postalCode;
+                document.getElementById('alamat_1').value = detailAddress;
 
-                $("#kabupaten").val(city);
-                $("#zip_code").val(postalCode);
-                $("#alamat_1").val(detailAddress);
-
-                // Update the popup with the full address
+                // Update popup dengan alamat lengkap
                 map.eachLayer(function(layer) {
                     if (layer instanceof L.Marker) {
-                        layer.getPopup().setContent('You are here: ' + address).openPopup();
-                        if (from == 'event') {
-
-                        } else {
-                            $("#alamat_3").val(address);
-                            $("#latitude").val(lat);
-                            $("#longitude").val(lon);
+                        layer.getPopup().setContent('You are in : ' + address).openPopup();
+                        if (from === 'search') {
+                            document.getElementById('alamat_3').value = address;
+                            document.getElementById('latitude').value = lat;
+                            document.getElementById('longitude').value = lon;
                         }
                     }
                 });
-            })
-            .catch(error => console.error('Error fetching address:', error));
-        if (zoom != null) {
-            map.setView([lat, lon], zoom);
-        } else {
-            map.setView([lat, lon], 18);
-        }
-    }
-    map.on('click', onMapClick);
 
+                // Set view peta ke lokasi baru
+                if (zoom != null) {
+                    map.setView([lat, lon], zoom);
+                } else {
+                    map.setView([lat, lon], 18);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching address:', error);
+                // Update popup dengan pesan error
+                map.eachLayer(function(layer) {
+                    if (layer instanceof L.Marker) {
+                        layer.getPopup().setContent('Tidak dapat mengambil alamat.').openPopup();
+                    }
+                });
+            });
+    }
+    var map;
+    <?php if ($au['latitude'] && $au['longitude']) : ?>
+        map = L.map('map', {
+            center: [<?= $au['latitude']; ?>, <?= $au['longitude']; ?>],
+            zoom: 13,
+            layers: [L.tileLayer('https://{s}-tiles.locationiq.com/v2/streets/r/{z}/{x}/{y}.png?key=pk.bc006a911b504a62570595da46aaed0b')],
+        });
+        L.marker([<?= $au['latitude']; ?>, <?= $au['longitude']; ?>]).addTo(map)
+            .bindPopup('<?= $au['alamat_3']; ?>').openPopup();
+    <?php else : ?>
+        map = L.map('map', {
+            center: [-6.175247, 106.8270488], // Default Jakarta
+            zoom: 13,
+            layers: [L.tileLayer('https://{s}-tiles.locationiq.com/v2/streets/r/{z}/{x}/{y}.png?key=pk.bc006a911b504a62570595da46aaed0b')]
+        });
+    <?php endif; ?>
+    document.getElementById('getLocationBtn').addEventListener('click', getLocation);
+    map.on('click', onMapClick);
     document.addEventListener('DOMContentLoaded', function() {
         <?php if (session()->has('alert')) : ?>
             var alertData = <?= json_encode(session('alert')) ?>;
@@ -460,7 +540,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             });
         <?php endif; ?>
     });
+
+    function playPreloaderEvent(event) {}
 </script>
+
 
 <?= $this->endSection(); ?>
 <?= $this->section('custom_head') ?>
