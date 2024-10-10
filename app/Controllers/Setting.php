@@ -9,7 +9,7 @@ use App\Models\AuthIdentitesModel;
 use App\Models\KategoriModel;
 use App\Models\TokoModel;
 use App\Models\DeleteRequestUsersModel;
-
+use App\Libraries\LocationiqService;
 
 class Setting extends BaseController
 {
@@ -248,7 +248,9 @@ class Setting extends BaseController
             'title'     => lang('Text.btn_tambah'),
             'provinsi' => [],
             'kategori' => $kategori->findAll(),
-            'preloader' => false
+            'preloader' => false,
+            'latitude' => '',
+            'longitude' => ''
         ];
         $provinsi = $this->rajaongkir('province');
         // dd($provinsi);
@@ -261,6 +263,28 @@ class Setting extends BaseController
     public function saveAlamat()
     {
         $alamatModel = new AlamatUserModel();
+        $fullAddress = $this->request->getVar('alamat_1') . ', ' .
+            $this->request->getVar('alamat_2') . ', ' .
+            $this->request->getVar('alamat_3') . ', ' .
+            $this->request->getVar('kabupaten') . ', ' .
+            $this->request->getVar('provinsi') . ', ' .
+            $this->request->getVar('zip_code');
+
+        $locationiq = new \App\Libraries\LocationiqService();
+        $geoData = $locationiq->geocode($fullAddress);
+
+        if (isset($geoData[0]['lat']) && isset($geoData[0]['lon'])) {
+            $latitude = $geoData[0]['lat'];
+            $longitude = $geoData[0]['lon'];
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Geocoding gagal. Pastikan alamat yang dimasukkan valid.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting/create-alamat')->withInput();
+        }
 
         $data = [
             'id_user' => user_id(),
@@ -271,79 +295,59 @@ class Setting extends BaseController
             'alamat_3' => $this->request->getVar('alamat_3'),
             'province' => $this->request->getVar('provinsi'),
             'city' => $this->request->getVar('kabupaten'),
-            // 'id_province' => $this->request->getVar('id_provinsi'),
-            // 'province' => $this->request->getVar('provinsi'),
-            // 'id_city' => $this->request->getVar('id_kabupaten'),
-            // 'city' => $this->request->getVar('kabupaten'),
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2'),
-            'latitude' => $this->request->getVar('latitude'),
-            'longitude' => $this->request->getVar('longitude'),
+            'latitude' => $latitude,
+            'longitude' => $longitude
         ];
+
         // SWAL
         if ($data['telp2'] == null) {
             $ruleTelp2 = [];
         } else {
             $ruleTelp2 = [
-                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
+                'rules' => 'required|numeric|min_length[5]|max_length[15]',
                 'errors' => [
                     'required' => 'Nomor telepon harus diisi.',
                     'numeric' => 'Nomor telepon harus berupa angka.',
-                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'min_length' => 'Nomor telepon harus minimal 5 digit.',
                     'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
-                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ];
         }
-        //validation
+
+        // Validasi
         if (!$this->validateData($data, [
             'label' => [
                 'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
                 'errors' => [
                     'required' => 'Label harus diisi.',
                     'regex_match' => 'Label hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
-
+                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial.'
                 ]
             ],
             'penerima' => [
-                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]',
                 'errors' => [
                     'required' => 'Nama penerima harus diisi.',
                     'regex_match' => 'Penerima hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Penerima tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
-
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
+                'rules' => 'min_length[5]',
                 'errors' => [
-                    'required' => 'Alamat harus diisi.',
-                    'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
+                    // 'required' => 'Alamat harus diisi.',
+                    'min_length' => 'Alamat harus memiliki minimal 5 karakter.'
                 ]
             ],
             'alamat_3' => [
-                'rules' => 'required|min_length[3]',
+                'rules' => 'min_length[3]',
                 'errors' => [
-                    'required' => 'Alamat harus diisi.',
-                    'min_length' => 'Alamat harus memiliki minimal 3 karakter.',
+                    // 'required' => 'Alamat harus diisi.',
+                    'min_length' => 'Alamat harus memiliki minimal 3 karakter.'
                 ]
             ],
-
-            // 'id_province' => [
-            //     'rules' => 'required',
-            //     'errors' => [
-            //         'required' => 'Provinsi harus dipilih.'
-            //     ]
-            // ],
-            // 'id_city' => [
-            //     'rules' => 'required',
-            //     'errors' => [
-            //         'required' => 'Kabupaten harus dipilih.'
-            //     ]
-            // ],
             'zip_code' => [
                 'rules' => 'required|numeric|exact_length[5]',
                 'errors' => [
@@ -353,16 +357,14 @@ class Setting extends BaseController
                 ]
             ],
             'telp' => [
-                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
+                'rules' => 'required|numeric|min_length[5]|max_length[15]',
                 'errors' => [
                     'required' => 'Nomor telepon harus diisi.',
                     'numeric' => 'Nomor telepon harus berupa angka.',
-                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'min_length' => 'Nomor telepon harus minimal 5 digit.',
                     'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
-                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ],
-
             'telp2' => $ruleTelp2
         ])) {
             $alert = [
@@ -373,27 +375,158 @@ class Setting extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/create-alamat')->withInput();
         }
+
+        // Simpan data ke database
         if ($alamatModel->save($data)) {
             session()->setFlashdata('success', 'Alamat berhasil disimpan.');
-            $alert = [
-                'type' => 'success',
-                'title' => 'Berhasil',
-                'message' => 'Alamat berhasil disimpan.'
-            ];
-            session()->setFlashdata('alert', $alert);
-
             return redirect()->to('setting/alamat-list');
         } else {
-            $alert = [
+            session()->setFlashdata('alert', [
                 'type' => 'error',
                 'title' => 'Error',
-                'message' => 'Terdapat kesalahan pada pengisian formulir'
-            ];
-            session()->setFlashdata('alert', $alert);
-
+                'message' => 'Terdapat kesalahan pada pengisian formulir.'
+            ]);
             return redirect()->to('setting/create-alamat')->withInput();
         }
     }
+
+
+    // public function saveAlamat()
+    // {
+    //     $alamatModel = new AlamatUserModel();
+
+    //     $data = [
+    //         'id_user' => user_id(),
+    //         'label' => $this->request->getVar('label'),
+    //         'penerima' => $this->request->getVar('nama_penerima'),
+    //         'alamat_1' => $this->request->getVar('alamat_1'),
+    //         'alamat_2' => $this->request->getVar('alamat_2'),
+    //         'alamat_3' => $this->request->getVar('alamat_3'),
+    //         'province' => $this->request->getVar('provinsi'),
+    //         'city' => $this->request->getVar('kabupaten'),
+    //         // 'id_province' => $this->request->getVar('id_provinsi'),
+    //         // 'province' => $this->request->getVar('provinsi'),
+    //         // 'id_city' => $this->request->getVar('id_kabupaten'),
+    //         // 'city' => $this->request->getVar('kabupaten'),
+    //         'zip_code' => $this->request->getVar('zip_code'),
+    //         'telp' => $this->request->getVar('no_telp1'),
+    //         'telp2' => $this->request->getVar('no_telp2'),
+    //         'latitude' => $this->request->getVar('latitude'),
+    //         'longitude' => $this->request->getVar('longitude'),
+    //     ];
+    //     // SWAL
+    //     if ($data['telp2'] == null) {
+    //         $ruleTelp2 = [];
+    //     } else {
+    //         $ruleTelp2 = [
+    //             'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
+    //             'errors' => [
+    //                 'required' => 'Nomor telepon harus diisi.',
+    //                 'numeric' => 'Nomor telepon harus berupa angka.',
+    //                 'min_length' => 'Nomor telepon harus minimal 11 digit.',
+    //                 'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+    //                 'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
+    //             ]
+    //         ];
+    //     }
+    //     //validation
+    //     if (!$this->validateData($data, [
+    //         'label' => [
+    //             'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+    //             'errors' => [
+    //                 'required' => 'Label harus diisi.',
+    //                 'regex_match' => 'Label hanya boleh mengandung huruf, angka, atau spasi.',
+    //                 'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+
+    //             ]
+    //         ],
+    //         'penerima' => [
+    //             'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+    //             'errors' => [
+    //                 'required' => 'Nama penerima harus diisi.',
+    //                 'regex_match' => 'Penerima hanya boleh mengandung huruf, angka, atau spasi.',
+    //                 'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Penerima tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
+    //             ]
+    //         ],
+
+    //         'alamat_1' => [
+    //             'rules' => 'required|min_length[5]|',
+    //             'errors' => [
+    //                 'required' => 'Alamat harus diisi.',
+    //                 'min_length' => 'Alamat harus memiliki minimal 5 karakter.',
+    //                 'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
+    //             ]
+    //         ],
+    //         'alamat_3' => [
+    //             'rules' => 'required|min_length[3]',
+    //             'errors' => [
+    //                 'required' => 'Alamat harus diisi.',
+    //                 'min_length' => 'Alamat harus memiliki minimal 3 karakter.',
+    //             ]
+    //         ],
+
+    //         // 'id_province' => [
+    //         //     'rules' => 'required',
+    //         //     'errors' => [
+    //         //         'required' => 'Provinsi harus dipilih.'
+    //         //     ]
+    //         // ],
+    //         // 'id_city' => [
+    //         //     'rules' => 'required',
+    //         //     'errors' => [
+    //         //         'required' => 'Kabupaten harus dipilih.'
+    //         //     ]
+    //         // ],
+    //         'zip_code' => [
+    //             'rules' => 'required|numeric|exact_length[5]',
+    //             'errors' => [
+    //                 'required' => 'Kode Pos harus diisi.',
+    //                 'numeric' => 'Kode Pos harus berupa angka.',
+    //                 'exact_length' => 'Kode Pos harus terdiri dari 5 digit.'
+    //             ]
+    //         ],
+    //         'telp' => [
+    //             'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
+    //             'errors' => [
+    //                 'required' => 'Nomor telepon harus diisi.',
+    //                 'numeric' => 'Nomor telepon harus berupa angka.',
+    //                 'min_length' => 'Nomor telepon harus minimal 11 digit.',
+    //                 'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
+    //                 'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
+    //             ]
+    //         ],
+
+    //         'telp2' => $ruleTelp2
+    //     ])) {
+    //         $alert = [
+    //             'type' => 'error',
+    //             'title' => 'Error',
+    //             'message' => $this->validator->listErrors()
+    //         ];
+    //         session()->setFlashdata('alert', $alert);
+    //         return redirect()->to('setting/create-alamat')->withInput();
+    //     }
+    //     if ($alamatModel->save($data)) {
+    //         session()->setFlashdata('success', 'Alamat berhasil disimpan.');
+    //         $alert = [
+    //             'type' => 'success',
+    //             'title' => 'Berhasil',
+    //             'message' => 'Alamat berhasil disimpan.'
+    //         ];
+    //         session()->setFlashdata('alert', $alert);
+
+    //         return redirect()->to('setting/alamat-list');
+    //     } else {
+    //         $alert = [
+    //             'type' => 'error',
+    //             'title' => 'Error',
+    //             'message' => 'Terdapat kesalahan pada pengisian formulir'
+    //         ];
+    //         session()->setFlashdata('alert', $alert);
+
+    //         return redirect()->to('setting/create-alamat')->withInput();
+    //     }
+    // }
 
     public function updateAlamat($id): string
     {
@@ -420,6 +553,7 @@ class Setting extends BaseController
     {
         $alamatModel = new AlamatUserModel();
 
+        // Mengambil data dari form
         $data = [
             'id_alamat_users' => $id,
             'id_user' => $this->request->getVar('id_user'),
@@ -438,21 +572,23 @@ class Setting extends BaseController
             'latitude' => $this->request->getVar('latitude'),
             'longitude' => $this->request->getVar('longitude'),
         ];
+
+        // Validasi untuk telp2
         if ($data['telp2'] == null) {
             $ruleTelp2 = [];
         } else {
             $ruleTelp2 = [
-                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
+                'rules' => 'required|numeric|min_length[5]|max_length[15]',
                 'errors' => [
                     'required' => 'Nomor telepon harus diisi.',
                     'numeric' => 'Nomor telepon harus berupa angka.',
-                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'min_length' => 'Nomor telepon harus minimal 5 digit.',
                     'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
-                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ];
         }
-        //validation data
+
+        // Validasi data
         if (!$this->validateData($data, [
             'label' => [
                 'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
@@ -460,32 +596,27 @@ class Setting extends BaseController
                     'required' => 'Label harus diisi.',
                     'regex_match' => 'Label hanya boleh mengandung huruf, angka, atau spasi.',
                     'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
-
                 ]
             ],
             'penerima' => [
-                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Nama penerima harus diisi.',
                     'regex_match' => 'Penerima hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Penerima tidak boleh mengandung karakter spesial seperti ; , . : " \' < > { } [ ] ( ) _ - & $ * @ # ^ ! |'
                 ]
             ],
-
             'alamat_1' => [
-                'rules' => 'required|min_length[11]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
+                'rules' => 'required|min_length[11]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 11 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
                 ]
             ],
             'alamat_3' => [
-                'rules' => 'required|min_length[3]|regex_match[/^[A-Za-z0-9\s.,\/&#!@-]+$/]',
+                'rules' => 'required|min_length[3]',
                 'errors' => [
                     'required' => 'Alamat harus diisi.',
                     'min_length' => 'Alamat harus memiliki minimal 3 karakter.',
-                    'regex_match' => 'Alamat hanya boleh mengandung huruf, angka, spasi, titik, koma, garis miring, & (dan), # (pagar), @ (at), atau - (strip).'
                 ]
             ],
             // 'id_province' => [
@@ -509,13 +640,12 @@ class Setting extends BaseController
                 ]
             ],
             'telp' => [
-                'rules' => 'required|numeric|min_length[11]|max_length[15]|regex_match[/^[08]/]',
+                'rules' => 'required|numeric|min_length[5]|max_length[15]',
                 'errors' => [
                     'required' => 'Nomor telepon harus diisi.',
                     'numeric' => 'Nomor telepon harus berupa angka.',
-                    'min_length' => 'Nomor telepon harus minimal 11 digit.',
+                    'min_length' => 'Nomor telepon harus minimal 5 digit.',
                     'max_length' => 'Nomor telepon tidak boleh lebih dari 15 digit.',
-                    'regex_match' => 'Nomor telepon harus dimulai dengan 0 dan 8.'
                 ]
             ],
             'telp2' => $ruleTelp2
@@ -529,8 +659,24 @@ class Setting extends BaseController
             return redirect()->to('setting/update-alamat/' . $id)->withInput();
         }
 
-        // dd($data);
-        // SWAL
+        // Inisialisasi LocationiqService
+        $locationService = new LocationiqService();
+        $geoData = $locationService->geocode($data['alamat_1']);
+
+        if (!empty($geoData) && isset($geoData[0])) {
+            $data['latitude'] = $geoData[0]['lat'];
+            $data['longitude'] = $geoData[0]['lon'];
+        } else {
+            $alert = [
+                'type' => 'error',
+                'title' => 'Geocoding Error',
+                'message' => 'Tidak dapat menemukan koordinat untuk alamat yang diberikan.'
+            ];
+            session()->setFlashdata('alert', $alert);
+            return redirect()->to('setting/update-alamat/' . $id)->withInput();
+        }
+
+        // Menyimpan data ke database
         if ($alamatModel->save($data)) {
             session()->setFlashdata('success', 'Alamat berhasil disimpan.');
             $alert = [
@@ -549,7 +695,57 @@ class Setting extends BaseController
             ];
             session()->setFlashdata('alert', $alert);
 
-            return redirect()->to('setting/update-alamat')->withInput();
+            return redirect()->to('setting/update-alamat/' . $id)->withInput();
+        }
+    }
+
+    public function searchAddress()
+    {
+        if (!$this->request->isAJAX() || !$this->request->is('post')) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Permintaan tidak valid.'
+            ]);
+        }
+
+        $input = json_decode($this->request->getBody(), true);
+        $address = isset($input['address']) ? trim($input['address']) : '';
+
+        if (empty($address)) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Alamat tidak boleh kosong.'
+            ]);
+        }
+
+        $locationService = new LocationiqService();
+        $geoData = $locationService->geocode($address);
+
+        if (!empty($geoData) && isset($geoData[0])) {
+            $lat = $geoData[0]['lat'];
+            $lon = $geoData[0]['lon'];
+            $displayName = $geoData[0]['display_name'];
+
+            $newCsrfHash = csrf_hash();
+            $newCsrfToken = csrf_token();
+
+            return $this->response->setJSON([
+                'status' => 'success',
+                'data' => [
+                    'lat' => $lat,
+                    'lon' => $lon,
+                    'display_name' => $displayName
+                ],
+                'csrf' => [
+                    'token' => $newCsrfToken,
+                    'hash' => $newCsrfHash
+                ]
+            ]);
+        } else {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Tidak dapat menemukan koordinat untuk alamat yang diberikan.'
+            ]);
         }
     }
 

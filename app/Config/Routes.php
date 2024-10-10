@@ -104,6 +104,11 @@ $routes->group('/', ['filter' => 'group:user, admin, superadmin'], static functi
         $routes->get('create-alamat', 'Setting::createAlamat');
         $routes->get('update-alamat/(:any)', 'Setting::updateAlamat/$1');
 
+        //API MAPS
+        $routes->post('alamat/geocode', 'Setting::geocodeAddress');
+        $routes->post('alamat/reverse-geocode', 'Setting::reverseGeocode');
+        $routes->post('searchAddress', 'Setting::searchAddress');
+
         $routes->get('kebijakan-privasi', 'Setting::kebijakanPrivasi');
         $routes->get('sayo-care', 'Setting::sayoCare');
         $routes->get('cropper', 'Setting::cropper');
