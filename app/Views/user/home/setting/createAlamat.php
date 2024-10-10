@@ -199,106 +199,118 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- end mobile -->
     <!-- dekstop -->
-    <div id=" desktopContent" style="margin-top:100px;">
+    <div id=" desktopContent" style="margin-top:150px;">
         <div class="container">
-            <div class="card px-3 py-3 border-0 shadow">
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <p class="fw-bold"><?= lang('Text.title_alamat') ?></p>
-                    </blockquote>
-                    <figcaption class="blockquote-footer">
-                        <?= lang('Text.subtitle_alamat') ?>
-                    </figcaption>
-                </figure>
-                <!-- form -->
-                <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3 row g-3 mt-4 mx-3 my-3" onsubmit="return validasiTambahAlamat()">
-                    <?= csrf_field(); ?>
-                    <div class="form-group col-md-6">
-                        <label for="floatingInput"><?= lang('Text.label_alamat') ?><span style="color: red"> *</span></label>
-                        <input class="mt-2 form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="label" id="label_alamat" value="<?= old('label') ?>">
-                        <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card px-3 py-3 border-0 shadow-sm justify-alig">
+                        <h3>Kebijakan Privasi Alamat</h3>
+                        <p>Kami berkomitmen untuk melindungi privasi alamat pengiriman Anda. Informasi ini kami kumpulkan saat Anda melakukan pemesanan atau mendaftarkan akun di situs kami. Data yang kami kumpulkan mencakup nama, alamat lengkap, dan nomor telepon. Informasi ini digunakan semata-mata untuk memastikan pengiriman pesanan Anda secara akurat dan tepat waktu.</p>
+                        <p>Kami hanya membagikan data alamat pengiriman dengan pihak ketiga yang berkaitan dengan proses pengiriman, seperti jasa kurir, dan tidak akan membagikan informasi ini kepada pihak lain kecuali diwajibkan oleh hukum.</p>
+                        <p>Data alamat pengiriman Anda disimpan dengan aman dan hanya dapat diakses oleh staf yang berwenang. Anda berhak untuk mengakses, memperbarui, atau menghapus informasi ini kapan saja melalui pengaturan akun atau dengan menghubungi layanan pelanggan kami. Jika ada perubahan dalam kebijakan ini, kami akan memberitahukan melalui situs atau email. Untuk pertanyaan lebih lanjut, hubungi support@Ssayomart.com.</p>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="nama_penerima"><?= lang('Text.nama_penerima') ?><span style="color: red"> *</span></label>
-                        <input class="mt-2 form-control shadow-sm <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
-                        <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for=" no_telp1"><?= lang('Text.no_telp_alamat') ?><span style="color: red"> *</span></label>
-                        <input class="mt-2 form-control shadow-sm <?= validation_show_error('telp') ? 'is-invalid' : 'border-0'; ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
-                        <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="no_telp2"><?= lang('Text.no_telp_alamat') ?><span style="color: red"> <?= lang('Text.optional') ?></span></label>
-                        <input class="mt-2 form-control shadow-sm <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
-                        <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
-                    </div>
-                    <!-- dropdown -->
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="provinsi"><?= lang('Text.provinsi') ?><span style="color: red"> *</span></label>
-                            <select class="mt-2 form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="provinsi" name="id_provinsi">
-                                <option selected></option>
-                                <?php foreach ($provinsi as $p) : ?>
-                                    <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="invalid-feedback"><?= validation_show_error('id_province') ?></div>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="kabupaten"><?= lang('Text.kab_kota') ?><span style="color: red"> *</span></label>
-                            <select class="mt-2 form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kabupaten" name="id_kabupaten">
-                                <option selected></option>
-                            </select>
-                            <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
-                        </div>
-                    </div>
-                    <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi">
-                    <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten">
-                    <!-- end dropdown -->
-                    <div class="form-group col-md-6">
-                        <label for=" alamat_1"><?= lang('Text.detail_alamat') ?><span style="color: red"> *</span></label>
-                        <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for=" alamat_2"><?= lang('Text.patokan_alamat') ?><span style="color: red"> <?= lang('Text.optional') ?></span></label>
-                        <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="zip_code"><?= lang('Text.zipcode') ?><span style="color: red"> *</span></label>
-                        <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group mb-3 mt-2">
-                                <label for=" floatingInput"><?= lang('Text.detail_alamat_2') ?><span class="text-danger"> *</span></label>
-                                <div class="input-group">
-                                    <input type="text" list="alamat_3_option" class="mt-2 form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" aria-describedby="button_alamat_3">
-                                    <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
+                </div>
+                <div class="col-sm-8">
+                    <div class="card px-3 py-3 border-0 shadow">
+                        <figure class="text-center">
+                            <blockquote class="blockquote">
+                                <p class="fw-bold"><?= lang('Text.title_alamat') ?></p>
+                            </blockquote>
+                            <figcaption class="blockquote-footer">
+                                <?= lang('Text.subtitle_alamat') ?>
+                            </figcaption>
+                        </figure>
+                        <!-- form -->
+                        <form action="<?= base_url() ?>setting/create-alamat/save-alamat" method="post" class="pt-3 row g-3 mt-4 mx-3 my-3" onsubmit="return validasiTambahAlamat()">
+                            <?= csrf_field(); ?>
+                            <div class="form-group col-md-6">
+                                <label for="floatingInput"><?= lang('Text.label_alamat') ?><span style="color: red"> *</span></label>
+                                <input class="mt-2 form-control <?= (validation_show_error('label')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="label" id="label_alamat" value="<?= old('label') ?>">
+                                <div class="invalid-feedback"><?= validation_show_error('label') ?></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="nama_penerima"><?= lang('Text.nama_penerima') ?><span style="color: red"> *</span></label>
+                                <input class="mt-2 form-control shadow-sm <?= (validation_show_error('penerima')) ? 'is-invalid' : 'border-0'; ?>" name="nama_penerima" id="nama_penerima" value="<?= old('nama_penerima') ?>">
+                                <div class="invalid-feedback"><?= validation_show_error('penerima') ?></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=" no_telp1"><?= lang('Text.no_telp_alamat') ?><span style="color: red"> *</span></label>
+                                <input class="mt-2 form-control shadow-sm <?= validation_show_error('telp') ? 'is-invalid' : 'border-0'; ?>" name="no_telp1" id="no_telp1" value="<?= old('no_telp1') ?>" onkeypress="return isNumber(event);">
+                                <div class="invalid-feedback"><?= validation_show_error('telp') ?></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="no_telp2"><?= lang('Text.no_telp_alamat') ?><span style="color: red"> <?= lang('Text.optional') ?></span></label>
+                                <input class="mt-2 form-control shadow-sm <?= (validation_show_error('telp2')) ? 'is-invalid' : 'border-0'; ?>" name="no_telp2" value="<?= old('no_telp2') ?>" onkeypress="return isNumber(event);">
+                                <div class="invalid-feedback"><?= validation_show_error('telp2') ?></div>
+                            </div>
+                            <!-- dropdown -->
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="provinsi"><?= lang('Text.provinsi') ?><span style="color: red"> *</span></label>
+                                    <select class="mt-2 form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="provinsi" name="id_provinsi">
+                                        <option selected></option>
+                                        <?php foreach ($provinsi as $p) : ?>
+                                            <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="invalid-feedback"><?= validation_show_error('id_province') ?></div>
                                 </div>
-                                <input type="hidden" id="latitude" pattern="-?\d+(\.\d{1,6})?" name="latitude">
-                                <input type="hidden" id="longitude" pattern="-?\d+(\.\d{1,6})?" name="longitude">
-                                <datalist id="alamat_3_option">
-                                    <!-- this option -->
-                                </datalist>
                             </div>
-                            <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
-                        </div>
-                        <div class="col-12">
-                            <span style="font-size:14px" class="text-secondary"><?= lang('Text.alert_alamat') ?></span>
-                            <div id="map"></div>
-                            <div class="button-container">
-                                <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-crosshair"></i></button>
+
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="kabupaten"><?= lang('Text.kab_kota') ?><span style="color: red"> *</span></label>
+                                    <select class="mt-2 form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kabupaten" name="id_kabupaten">
+                                        <option selected></option>
+                                    </select>
+                                    <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
+                                </div>
                             </div>
-                        </div>
+                            <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi">
+                            <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten">
+                            <!-- end dropdown -->
+                            <div class="form-group col-md-6">
+                                <label for=" alamat_1"><?= lang('Text.detail_alamat') ?><span style="color: red"> *</span></label>
+                                <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" value="<?= old('alamat_1') ?>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for=" alamat_2"><?= lang('Text.patokan_alamat') ?><span style="color: red"> <?= lang('Text.optional') ?></span></label>
+                                <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('alamat_2')) ? 'is-invalid' : '' ?>" name="alamat_2" id="alamat_2" value="<?= old('alamat_2') ?>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="zip_code"><?= lang('Text.zipcode') ?><span style="color: red"> *</span></label>
+                                <input class="mt-2 form-control border-0 shadow-sm <?= (validation_show_error('zip_code')) ? 'is-invalid' : '' ?>" name="zip_code" id="zip_code" value="<?= old('zip_code') ?>" onkeypress="return isNumber(event);">
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group mb-3 mt-2">
+                                        <label for=" floatingInput"><?= lang('Text.detail_alamat_2') ?><span class="text-danger"> *</span></label>
+                                        <div class="input-group">
+                                            <input type="text" list="alamat_3_option" class="mt-2 form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" value="<?= old('alamat_3') ?>" aria-describedby="button_alamat_3">
+                                            <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
+                                        </div>
+                                        <input type="hidden" id="latitude" pattern="-?\d+(\.\d{1,6})?" name="latitude">
+                                        <input type="hidden" id="longitude" pattern="-?\d+(\.\d{1,6})?" name="longitude">
+                                        <datalist id="alamat_3_option">
+                                            <!-- this option -->
+                                        </datalist>
+                                    </div>
+                                    <div class="invalid-feedback"><?= validation_show_error('alamat_3') ?></div>
+                                </div>
+                                <div class="col-12">
+                                    <span style="font-size:14px" class="text-secondary"><?= lang('Text.alert_alamat') ?></span>
+                                    <div id="map"></div>
+                                    <div class="button-container">
+                                        <button type="button" id="getLocationBtn" onclick="getLocation()" class="btn btn-danger"><i class="bi bi-crosshair"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="btn btn-lg" style="background-color: #ec2614; color: #fff;"><?= lang('Text.btn_simpan') ?></button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
