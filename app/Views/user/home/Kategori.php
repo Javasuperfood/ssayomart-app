@@ -90,8 +90,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
 
                         <!-- Product Carousel -->
-                        <div class="mt-3 d-flex justify-content-center align-items-center swiper mySwing">
-                            <div class="swiper-wrapper d-flex mb-3">
+                        <div class="d-flex justify-content-center align-items-center swiper mySwing">
+                            <div class="swiper-wrapper p-3 d-flex">
                                 <?php foreach ($randomProducts as $p) : ?>
                                     <div class="swiper-slide col-md-4 mx-md-1 mb-md-1">
                                         <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
@@ -104,15 +104,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </div>
                                             </a>
 
-                                            <div class="fs-2 mt-2" style="padding: 0 10px;">
+                                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                                 <div class="d-flex text-center align-items-center justify-content-center" style="height: 65px;">
                                                     <p class="text-secondary fw-bold" style="font-size: 13px; margin: 0;">
                                                         <?= substr($p['nama'], 0, 40); ?>
                                                     </p>
                                                 </div>
-                                                <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
-                                                    <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
-                                                </p>
+                                                <!-- <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
+                                                    <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del> -->
+                                                <!-- </p> -->
                                                 <h1 class="mb-4 text-danger fw-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
                                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
@@ -123,16 +123,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
                                                 <!-- Button Container -->
                                                 <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
-                                                    <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)"
-                                                        onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)"
-                                                        onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
-                                                        <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>
+                                                    <div class="button" onclick="changeToCapsule(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)">
+                                                        <i class="icon bi bi-plus d-flex justify-content-center align-items-center"></i>
                                                     </div>
-                                                    <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)"
-                                                        onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
-                                                        <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>)">-</div>
-                                                        <input type="text" id="counter-<?= $p['id_produk']; ?>" class="input" value="1" disabled>
-                                                        <div class="icon" onClick="increaseValue(<?= $p['id_produk']; ?>)">+</div>
+
+                                                    <div class="button-capsule" style="display: none;">
+                                                        <i class="icon bi bi-dash" onclick="decreaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
+                                                        <input type="text" class="input border-0" value="1" id="counter-<?= $p['id_produk']; ?>">
+                                                        <i class="icon bi bi-plus" onclick="increaseValue(<?= $p['id_produk']; ?>, <?= $p['id_variasi_item']; ?>)"></i>
                                                     </div>
                                                 </div>
                                                 <!-- End Button Container -->
@@ -211,7 +209,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
         .button-capsule {
-            width: 60px;
+            width: 70px;
             /* Ukuran capsule yang lebih kecil */
             height: 30px;
             /* Ukuran capsule yang lebih kecil */
@@ -253,36 +251,119 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <!-- akhir styling button counter animasi -->
     <!-- script button counter animasi -->
     <script>
-        function changeToCapsule(productId) {
-            document.querySelector(`#button-container-${productId} .button`).style.display = 'none';
-            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'flex';
+        function changeToCapsule(c, v) {
+            $(`#button-container-${c} .button`).css('display', 'none');
+            $(`#button-container-${c} .button-capsule`).css('display', 'flex');
+            addToCartProductList(c, v, 1)
+            cartItemShow('plus'); // cart script
+            let im_produk = document.querySelectorAll('.im_produk_' + c + '_');
+            im_produk.forEach(function(e) {
+                e.classList.add('animate__animated', 'animate__tada');
+                e.addEventListener('animationend', () => {
+                    e.classList.remove('animate__animated', 'animate__tada');
+                });
+            });
+
+            let cartcart = document.querySelector('.a_cart_link_0');
+            cartcart.classList.add('animate__animated', 'animate__shakeY');
+            cartcart.addEventListener('animationend', () => {
+                cartcart.classList.remove('animate__animated', 'animate__shakeY');
+            });
         }
 
-        function decreaseValue(productId) {
-            var counter = document.getElementById(`counter-${productId}`);
-            if (parseInt(counter.value) > 0) {
-                counter.value = parseInt(counter.value) - 1;
+        function decreaseValue(c, v) {
+            var counter = document.querySelectorAll(`#counter-${c}`);;
+            let q = 1;
+            let ss = true
+            counter.forEach(function(e) {
+                if (parseInt(e.value) > 0) {
+                    e.value = (parseInt(e.value) - 1);
+                    if (parseInt(e.value) < 1) {
+                        e.value = 1;
+                        if (ss) {
+                            ss = changeToCircle(c);
+                        }
+                    }
+                }
+            });
+            if (ss) {
+                addToCartProductList(c, v, q)
             }
-            validateCounter(productId);
         }
 
-        function increaseValue(productId) {
-            var counter = document.getElementById(`counter-${productId}`);
-            counter.value = parseInt(counter.value) + 1;
-            validateCounter(productId);
+        function increaseValue(c, v) {
+            var counter = document.querySelectorAll(`#counter-${c}`);
+            let q = 1
+            counter.forEach(function(e) {
+                e.value = (parseInt(e.value) + 1);
+                q = e.value;
+            });
+            addToCartProductList(c, v, q)
+            let cartcart = document.querySelector('.a_cart_link_0');
+            cartcart.classList.add('animate__animated', 'animate__shakeY');
+            cartcart.addEventListener('animationend', () => {
+                cartcart.classList.remove('animate__animated', 'animate__shakeY');
+            });
         }
 
-        function changeToCircle(productId) {
-            document.querySelector(`#button-container-${productId} .button`).style.display = 'flex';
-            document.querySelector(`#button-container-${productId} .button-capsule`).style.display = 'none';
+        function changeToCircle(c) {
+            $(`#button-container-${c} .button`).css('display', 'flex');
+            $(`#button-container-${c} .button-capsule`).css('display', 'none');
+            cartDeleteProdukList(c)
         }
 
-        function validateCounter(productId) {
-            var counter = document.getElementById(`counter-${productId}`);
-            if (parseInt(counter.value) <= 1) {
-                counter.value = 1;
-                changeToCircle(productId);
-            }
+
+        function addToCartProductList(c, v, q) {
+            var produk = c;
+            var varian = v;
+            var qty = q;
+            // console.log(produk, varian, qty)
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('api/add-to-cart'); ?>",
+                dataType: "json",
+                data: {
+                    id_produk: produk,
+                    id_varian: varian,
+                    qty: qty
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // console.log(response.message)
+                        return true
+                    } else {
+                        // console.log(response.message)
+                        return false
+                    }
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                    <?php if (!auth()->loggedIn()) : ?>
+                        location.href = '<?= base_url(); ?>login'
+                    <?php endif ?>
+                    return false
+                }
+            });
+        }
+
+        function cartDeleteProdukList(produk) {
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('api/delete-cart-product'); ?>",
+                dataType: "json",
+                data: {
+                    produk: produk,
+                },
+                success: function(response) {
+                    cartItemShow('minus'); // cart script
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                    <?php if (!auth()->loggedIn()) : ?>
+                        location.href = '<?= base_url(); ?>login'
+                    <?php endif ?>
+                }
+            });
         }
     </script>
     <!-- akhir script button counter animasi -->
