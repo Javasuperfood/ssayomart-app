@@ -83,9 +83,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col">
                         <div class="card border-0 text-center font-family-poppins" style="background-color: #ccebbc;">
                             <div class="card-danger">
-                                <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.nama_produk') ?></h2>
+                                <span class="card-title text-dark fw-bold fs-2">
+                                    <?= lang('Text.nama_produk') ?>
+                                </span>
                             </div>
                         </div>
+
+                        <!-- Product Carousel -->
                         <div class="mt-3 d-flex justify-content-center align-items-center swiper mySwing">
                             <div class="swiper-wrapper d-flex mb-3">
                                 <?php foreach ($randomProducts as $p) : ?>
@@ -93,17 +97,22 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         <div class="card border-0 shadow-sm" style="width: auto; height: 100%;">
                                             <a href="<?= base_url() ?>produk/<?= $p['slug']; ?>" class="link-underline link-underline-opacity-0">
                                                 <div class="d-flex justify-content-center align-items-center">
-                                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>" class="card-img-top mt-3 text-center py-0 px-0 mx-0 my-0" alt="..." style="width: 200px; height: 200px; object-fit: contain; object-position: 20% 10%;">
+                                                    <img src="<?= base_url() ?>assets/img/produk/main/<?= $p['img']; ?>"
+                                                        class="card-img-top mt-3"
+                                                        alt="Product Image"
+                                                        style="width: 200px; height: 200px; object-fit: contain; object-position: 20% 10%;">
                                                 </div>
                                             </a>
-                                            <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
+
+                                            <div class="fs-2 mt-2" style="padding: 0 10px;">
                                                 <div class="d-flex text-center align-items-center justify-content-center" style="height: 65px;">
-                                                    <p class=" text-secondary fw-bold " style=" font-size: 13px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
+                                                    <p class="text-secondary fw-bold" style="font-size: 13px; margin: 0;">
+                                                        <?= substr($p['nama'], 0, 40); ?>
+                                                    </p>
                                                 </div>
                                                 <p class="text-secondary text-center" style="font-size: 12px; margin: 0;">
                                                     <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
                                                 </p>
-
                                                 <h1 class="mb-4 text-danger fw-bold mt-1 text-center" style="font-size: 18px; margin: 0;">
                                                     <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                         Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
@@ -111,80 +120,51 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                         <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
                                                     <?php endif ?>
                                                 </h1>
+
+                                                <!-- Button Container -->
                                                 <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
-                                                    <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
+                                                    <div class="button" onClick="changeToCapsule(<?= $p['id_produk']; ?>)"
+                                                        onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)"
+                                                        onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
                                                         <i class="bi bi-plus text-danger fw-bold" style="font-size: 16px;"></i>
                                                     </div>
-                                                    <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)" onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
+                                                    <div class="button-capsule" onMouseOver="changeToCapsule(<?= $p['id_produk']; ?>)"
+                                                        onMouseOut="changeToCircle(<?= $p['id_produk']; ?>)">
                                                         <div class="icon" onClick="decreaseValue(<?= $p['id_produk']; ?>)">-</div>
                                                         <input type="text" id="counter-<?= $p['id_produk']; ?>" class="input" value="1" disabled>
                                                         <div class="icon" onClick="increaseValue(<?= $p['id_produk']; ?>)">+</div>
                                                     </div>
                                                 </div>
-                                                <!-- akhir button animasi -->
+                                                <!-- End Button Container -->
                                             </div>
                                         </div>
                                     </div>
                                 <?php endforeach; ?>
                             </div>
                         </div>
+                        <!-- End Product Carousel -->
                     </div>
                 </div>
 
-                <!-- rekomendasi title -->
-                <!-- <div class="container py-3">
-                    <div class="card border-0 text-center font-family-poppins" style="background-color: #fce0e4;">
-                        <div class="card-danger">
-                            <span class="card-title text-dark fw-bold fs-2"><?= lang('Text.saran_masak') ?></h2>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- end rekomendasi title-->
-                <!-- card rekomendasi -->
-                <!-- <div class="container mt-3">
-                    <div class="row">
-                        <div class="swiper mySwung">
-                            <div class="mb-5 swiper-wrapper d-flex">
-                                <?php foreach ($blog_detail as $bd) : ?>
-                                    <div class="swiper-slide">
-                                        <div class="card shadow-sm border-0" style="border-radius: 15px;">
-                                            <div class="card-body p-4">
-                                                <div class="d-flex text-black">
-                                                    <div class="flex-shrink-0">
-                                                        <img src="<?= base_url() ?>assets/img/blog/<?= $bd['img_thumbnail']; ?>" alt="Thumbnail Artikel" class="img-fluid rounded-3" style="height: 180px; width: 180px;">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <p class="mb-2 pb-1 fw-bold fs-5 text-dark"><?= substr($bd['judul_blog'], 0, 40); ?>...</p>
-                                                        <div class="d-flex justify-content-start rounded-3 p-2 mb-0">
-                                                            <p class="text-secondary"><?= lang('Text.selengkapnya') ?></p>
-                                                        </div>
-                                                        <div class="d-flex pt-0">
-                                                            <a href="<?= base_url(); ?>blog/<?= $bd['id_blog']; ?>" class="btn btn-danger fw-medium flex-grow-1">View More <i class="bi bi-arrow-right-circle"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- end card rekomendasi-->
+                <!-- Category Section -->
                 <div class="container py-1">
                     <div class="card border-0 text-center text-bold mb-3 font-family-poppins d-flex justify-content-center align-items-center" style="background-color: #ccebbc;">
                         <div class="card-success">
-                            <span class="card-title text-dark fw-bold fs-2 text-capitalize"><?= lang('Text.kategori') ?></span>
+                            <span class="card-title text-dark fw-bold fs-2 text-capitalize">
+                                <?= lang('Text.kategori') ?>
+                            </span>
                         </div>
                     </div>
+
                     <div class="row text-center row-cols-3 py-3">
                         <?php foreach ($kategori as $k) : ?>
                             <div class="col-4 col-md-4 col-lg-2">
                                 <a href="<?= base_url('produk/kategori/' . $k['slug']) ?>">
                                     <div class="card text-bg-light mb-3 bg-white border-0 shadow-sm">
                                         <div class="card-body">
-                                            <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>" alt="" class="py-0 px-0 mx-0 my-0 card-img-top">
+                                            <img src="<?= base_url('assets/img/kategori/' . $k['img']) ?>"
+                                                alt="Category Image"
+                                                class="card-img-top">
                                         </div>
                                     </div>
                                 </a>
@@ -192,8 +172,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?php endforeach; ?>
                     </div>
                 </div>
+                <!-- End Category Section -->
             </div>
         </section>
+
         <!-- swipper card  tampilan web-->
     </div>
 

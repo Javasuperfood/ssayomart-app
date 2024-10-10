@@ -159,98 +159,105 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
     <!-- End View Mobile -->
 
+
     <!-- View Desktop -->
     <div id="desktopContent" style="margin-top:150px;">
         <div class="container pt-3 d-none d-md-block">
-            <?php if (empty($alamat_user_model)) : ?>
-                <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
-                <div class="alert alert-danger" role="alert">
-                    <span class="me-3">
-                        <i class="bi bi-house-add" style="font-size: 25px;"></i>
-                    </span>
-                    <?= lang('Text.alert_alamat') ?>
-                </div>
+            <div class="card">
+                <div class="card-body">
+                    <?php if (empty($alamat_user_model)) : ?>
+                        <!-- Tampilkan pesan jika pengguna tidak memiliki alamat -->
+                        <div class="alert alert-danger" role="alert">
+                            <span class="me-3">
+                                <i class="bi bi-house-add" style="font-size: 25px;"></i>
+                            </span>
+                            <?= lang('Text.alert_alamat') ?>
+                        </div>
 
-                <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
-            <?php else : ?>
-                <div class="col-12 d-flex justify-content-center">
-                    <nav aria-label="breadcrumb" class="rounded-3 p-2">
-                        <ol class="breadcrumb mb-0">
-                            <li class="breadcrumb-item">
-                                <h3 class="mb-0 fw-bold"><i class="fs-1 text-danger bi bi-house-door"></i> <?= lang('Text.title_alamat') ?></h3>
-                                <hr class="border-danger" style="border-width: 3px;">
-                            </li>
-                        </ol>
-                    </nav>
-                </div>
-                <?php foreach ($alamat_user_model as $au) : ?>
-                    <div class="row row-cols-1">
-                        <div class="col">
-                            <ul class="list-group list-group-flush">
-                                <div class="position-relative">
-                                    <div class="card border-0 shadow-sm mb-3">
-                                        <div class="card-header border-0 bg-white">
-                                            <span class="fw-bold fs-5"><?= $au['label']; ?></span>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="fw-bold"><?= $au['penerima']; ?> - <?= $au['telp']; ?></p>
-                                            <p class="text-secondary"><?= $au['province'] ?> - <?= $au['city'] ?></p>
-                                            <p class="text-secondary"><?= $au['alamat_1'] ?></p>
-                                        </div>
-                                        <div class="card-footer bg-white">
-                                            <div class="row row-cols-3">
-                                                <div class="col-1">
-                                                    <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0"><?= lang('Text.btn_ubah') ?></a>
+                        <!-- Tambahkan tombol "Tambah Alamat" di bawah pesan -->
+                    <?php else : ?>
+                        <div class="col-12 d-flex justify-content-center">
+                            <nav aria-label="breadcrumb" class="rounded-3 p-2">
+                                <ol class="breadcrumb mb-0">
+                                    <li class="breadcrumb-item">
+                                        <h3 class="mb-0 fw-bold"><i class="fs-1 text-danger bi bi-house-door"></i> <?= lang('Text.title_alamat') ?></h3>
+                                        <hr class="border-danger" style="border-width: 3px;">
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <?php foreach ($alamat_user_model as $au) : ?>
+                            <div class="row row-cols-1">
+                                <div class="col">
+                                    <ul class="list-group list-group-flush">
+                                        <div class="position-relative">
+                                            <div class="card border-0 shadow-sm mb-3">
+                                                <div class="card-header border-0 bg-white">
+                                                    <span class="fw-bold fs-5"><?= $au['label']; ?></span>
                                                 </div>
-                                                <div class="col-1">
-                                                    <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $au['id_alamat_users']; ?>" class="btn border-0 text-danger m-0"><?= lang('Text.btn_hapus') ?></button>
+                                                <div class="card-body">
+                                                    <p class="fw-bold"><?= $au['penerima']; ?> - <?= $au['telp']; ?></p>
+                                                    <p class="text-secondary"><?= $au['province'] ?> - <?= $au['city'] ?></p>
+                                                    <p class="text-secondary"><?= $au['alamat_1'] ?></p>
                                                 </div>
-                                                <div class="col-10 d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
-                                                    <div class="form-check form-switch">
-                                                        <input class="form-check-input fs-4" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
+                                                <div class="card-footer bg-white">
+                                                    <div class="row row-cols-3">
+                                                        <div class="col-1">
+                                                            <a href="<?= base_url() ?>setting/update-alamat/<?= $au['id_alamat_users']; ?>" class="btn border-0"><?= lang('Text.btn_ubah') ?></a>
+                                                        </div>
+                                                        <div class="col-1">
+                                                            <button type="button" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $au['id_alamat_users']; ?>" class="btn border-0 text-danger m-0"><?= lang('Text.btn_hapus') ?></button>
+                                                        </div>
+                                                        <div class="col-10 d-flex justify-content-end align-self-center" onclick="selectAddress(<?= $au['id_alamat_users'];; ?>)">
+                                                            <div class="form-check form-switch">
+                                                                <input class="form-check-input fs-4" type="radio" role="switch" id="address<?= $au['id_alamat_users']; ?>" name="alamat" value="<?= $au['id_alamat_users']; ?>" <?= ($user['address_selected'] == $au['id_alamat_users']) ? 'checked' : ''; ?>>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </ul>
                                 </div>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="modal fade p-4 py-md-5" tabindex="-1" role="dialog" id="modalDelete<?= $au['id_alamat_users']; ?>" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content rounded-3 shadow">
-                                <div class="modal-body p-4 text-center">
-                                    <h6 class="mb-0">Anda yakin untuk menghapus <?= $au['label']; ?> ?</h6>
-                                </div>
-                                <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
-                                    <div class="modal-footer flex-nowrap p-0">
-                                        <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger"><strong><?= lang('Text.btn_hapus') ?></strong></button>
-                                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 text-danger" data-bs-dismiss="modal">No thanks</button>
-                                    </div>
-                                </form>
                             </div>
+                            <div class="modal fade p-4 py-md-5" tabindex="-1" role="dialog" id="modalDelete<?= $au['id_alamat_users']; ?>" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content rounded-3 shadow">
+                                        <div class="modal-body p-4 text-center">
+                                            <h6 class="mb-0">Anda yakin untuk menghapus <?= $au['label']; ?> ?</h6>
+                                        </div>
+                                        <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
+                                            <div class="modal-footer flex-nowrap p-0">
+                                                <?= csrf_field(); ?>
+                                                <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger"><strong><?= lang('Text.btn_hapus') ?></strong></button>
+                                                <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 text-danger" data-bs-dismiss="modal">No thanks</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    <div class="row p-4 px-4">
+                        <div class="col-12 d-flex justify-content-center">
+                            <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg">
+                                <i class="bi bi-plus fw-bold"><?= lang('Text.btn_tambah') ?></i>
+                            </a>
+                            <form action="<?= base_url('setting/select-alamat'); ?>" method="post">
+                                <?= csrf_field(); ?>
+                                <input type="hidden" name="alamat" id="alamatField">
+                                <button type="submit" id="selectAddress" class="btn btn-danger btn-lg">
+                                    <i class="bi bi-check fw-bold"> Update Alamat terpilih</i>
+                                </button>
+                            </form>
                         </div>
                     </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-            <div class="row p-4 px-4">
-                <div class="col-12 d-flex justify-content-center">
-                    <a id="createAddress" href="<?= base_url() ?>setting/create-alamat" class="btn btn-danger btn-lg">
-                        <i class="bi bi-plus fw-bold"><?= lang('Text.btn_tambah') ?></i>
-                    </a>
-                    <form action="<?= base_url('setting/select-alamat'); ?>" method="post">
-                        <?= csrf_field(); ?>
-                        <input type="hidden" name="alamat" id="alamatField">
-                        <button type="submit" id="selectAddress" class="btn btn-danger btn-lg">
-                            <i class="bi bi-check fw-bold"> Update Alamat terpilih</i>
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+
 <?php endif; ?>
 <!-- end Desktop -->
 
