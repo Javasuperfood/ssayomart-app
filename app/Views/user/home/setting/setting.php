@@ -22,7 +22,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <h3 class="fw-bold fs-5">
                                     <?= lang('Text.welcome_setting') ?>
                                     <br>
-                                    <?= $user['fullname']; ?>
+                                    <?= $user['username']; ?>
                                 </h3>
                                 <div class="" style="flex: 0 0 0 !important;">
                                     <!-- bahasa -->
@@ -46,6 +46,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
             </div>
+
             <!-- <div class="row mb-2 mt-3">
                 <div class="col">
                     <div class="card text-bg-light mb-4 shadow border-0 rounded">
@@ -88,43 +89,62 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <div class="col">
                     <h3><?= lang('Text.bantuan') ?></h3>
                     <ul class="list-group list-group-flush">
-                        <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
+                        <!-- About Section -->
+                        <a href="<?= base_url('setting/sayo-care'); ?>" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
                             <i class="bi bi-question-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.tentang') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
-                        <a href="<?= base_url(); ?>/pusat-bantuan" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
-                            <i class="bi bi-universal-access-circle pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+
+                        <!-- Help Center Section -->
+                        <a href="<?= base_url('/pusat-bantuan'); ?>" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
+                            <i class="bi bi-universal-access-circle pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.pusat_bantuan') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
 
-                        <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
-                            <i class="bi bi-lock pe-2 text-secondary"></i> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
+                        <!-- Privacy Policy Section -->
+                        <a href="<?= base_url('setting/kebijakan-privasi'); ?>" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
+                            <i class="bi bi-lock pe-2 text-secondary"></i>
                             <span class="py-0 my-0 text-secondary"><?= lang('Text.kebijakan_privasi') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </a>
 
-                        <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3">
+                        <!-- Logout Section (Modal Trigger) -->
+                        <span data-bs-toggle="modal" data-bs-target="#modalLogout" class="list-group-item pb-3 fw-bold mb-2 shadow-sm rounded-3" role="button" tabindex="0">
                             <i class="bi bi-box-arrow-right pe-2 text-secondary"></i>
-                            <span class="py-0 my-0 text-secondary"><?= lang('Text.logout') ?> </span>
+                            <span class="py-0 my-0 text-secondary"><?= lang('Text.logout') ?></span>
                             <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
                         </span>
 
+                        <!-- Social Media Links -->
                         <div class="container mb-3">
                             <div class="row justify-content-center mt-4">
-                                <div class="text-center"> <!-- Tambahkan class text-center untuk membuatnya berada di tengah horizontal -->
+                                <div class="text-center">
                                     <p class="mb-3 fw-bold"><?= lang('Text.ikuti_kami') ?> :</p>
-                                    <div class="social-links d-flex justify-content-center ">
-                                        <a href="https://www.youtube.com/channel/UCiaJvoHqRRlxxHERP7q11Bw" target="__blank" class="youtube btn btn-outline-danger mx-2 social-icon"><i class="bi bi-youtube"></i></a>
-                                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" target="__blank" class="facebook btn btn-outline-danger mx-2 social-icon"><i class="bi bi-facebook"></i></a>
-                                        <a href="https://www.instagram.com/ssayomart.id/" target="__blank" class="instagram btn btn-outline-danger mx-2 social-icon"><i class="bi bi-instagram"></i></a>
-                                        <a href="https://www.tiktok.com/@ssayomart.id" target="__blank" class="tiktok btn btn-outline-danger mx-2 social-icon"><i class="bi bi-tiktok"></i></a>
+                                    <div class="social-links d-flex justify-content-center">
+                                        <!-- YouTube -->
+                                        <a href="https://www.youtube.com/channel/UCiaJvoHqRRlxxHERP7q11Bw" target="__blank" class="youtube btn btn-outline-danger mx-2 social-icon">
+                                            <i class="bi bi-youtube"></i>
+                                        </a>
+                                        <!-- Facebook -->
+                                        <a href="https://www.facebook.com/profile.php?id=61553754412116&locale=id_ID" target="__blank" class="facebook btn btn-outline-danger mx-2 social-icon">
+                                            <i class="bi bi-facebook"></i>
+                                        </a>
+                                        <!-- Instagram -->
+                                        <a href="https://www.instagram.com/ssayomart.id/" target="__blank" class="instagram btn btn-outline-danger mx-2 social-icon">
+                                            <i class="bi bi-instagram"></i>
+                                        </a>
+                                        <!-- TikTok -->
+                                        <a href="https://www.tiktok.com/@ssayomart.id" target="__blank" class="tiktok btn btn-outline-danger mx-2 social-icon">
+                                            <i class="bi bi-tiktok"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </ul>
+
                 </div>
             </div>
         </div>
