@@ -1,6 +1,6 @@
 <?= $this->extend('user/home/layout3') ?>
 <?= $this->section('page-content') ?>
-<?= $this->include('user/home/component/navbarTop2') ?>
+
 
 
 <?php
