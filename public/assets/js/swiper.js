@@ -169,175 +169,93 @@ var swiper = new Swiper(".mySweety", {
   },
 });
 
-// Slider kategori view Mobile
-$(document).ready(function() {
-  const urlLink = window.location.href;
-
-  // Function to sync hover status with selected category and slide to center
-  function syncHoverAndSlideToCenter() {
-      const selectedCategory = decodeURIComponent(urlLink.split("/").pop()); // Get the last part of the URL which is the category
-      $(".card-linkkat").each(function() {
-          if ($(this).attr("href").includes(selectedCategory)) {
-              $(".card-linkkat").closest(".card").removeClass("card-selectedkat").addClass("card-defaultkat"); // Remove active class from all categories
-              $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat"); // Add active class to selected category
-
-              // Slide to center
-              const slideIndex = $(this).closest(".ss").index();
-              const slideWidth = $(".ss").outerWidth();
-              const swiperWidth = $(".contsw").outerWidth();
-              const wrapperOffset = (swiperWidth - slideWidth) / 2;
-              const scrollTo = slideIndex * slideWidth - wrapperOffset;
-              $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
-
-              // Save selected category to local storage
-              localStorage.setItem('selectedCategory', selectedCategory);
-          }
-      });
-  }
-
-  // Initial sync on page load
-  syncHoverAndSlideToCenter();
-
-  // Sync hover with category and slide to center on URL change (if using AJAX or similar)
-  $(window).on('popstate', function() {
-      syncHoverAndSlideToCenter();
-  });
-
-  // Initialize Swiper
-  var swiper = new Swiper(".btn-sub", {
-      slidesPerView: 2,
-      effect: "slide",
-      speed: 600,
-      grabCursor: true,
-      touchRatio: 1, // Touch sensitivity
-      longSwipesRatio: 0.5, // Ratio to trigger swipe to next/previous slide
-      longSwipesMs: 400, // Minimum duration (in ms) to trigger swipe to next/previous slide
-      freeMode: true, // Enables free mode for a smoother drag experience
-      freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
-      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum      
-      breakpoints: {
-          1280: {
-              slidesPerView: 6,
-          },
-          768: {
-              slidesPerView: 4,
-          },
-          375: {
-              slidesPerView: 3,
-          },
-          280: {
-              slidesPerView: 2,
-          },
-      },
-      navigation: {
-          nextEl: ".button-next",
-          prevEl: ".button-prev",
-      },
-      grabCursor: true,
-      mousewheel: true,
-      keyboard: true,
-      pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-      },
-      // Adjust transition effect for smoother transition
-      effectOptions: {
-          slideShadows: true,
-          fadeEffect: {
-              crossFade: true
-          },
-          cubeEffect: {
-              shadow: true,
-              slideShadows: true,
-              shadowOffset: 20,
-              shadowScale: 0.94
-          },
-          flipEffect: {
-              slideShadows: true,
-              limitRotation: true
-          },
-          coverflowEffect: {
-              rotate: 30,
-              stretch: 10,
-              depth: 60,
-              modifier: 2,
-              slideShadows: true
-          },
-          cubeEffect: {
-              shadow: true,
-              slideShadows: true,
-              shadowOffset: 20,
-              shadowScale: 0.94
-          }
-      },
-      on: {
-          init: function () {
-              // Set slide index based on selected category
-              var selectedSlideIndex = localStorage.getItem('selectedSlideIndexkat');
-              if (selectedSlideIndex !== null) {
-                  this.slideTo(selectedSlideIndex);
-              }
-          },
-          slideChange: function () {
-              // Save selected slide index to local storage
-              var currentIndex = this.activeIndex;
-              localStorage.setItem('selectedSlideIndexkat', currentIndex);
-          },
-      }
-  });
-
-  // Sync hover with category when a card is clicked
-  $(".card-linkkat").click(function(e) {
-      e.preventDefault();
-      $(".ss .card").removeClass("card-selectedkat").addClass("card-defaultkat");
-      $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat");
-
-      // Save selected card link to local storage
-      localStorage.setItem('selectedCardLinkkat', $(this).attr("href"));
-
-      // Save selected category to local storage
-      const selectedCategory = decodeURIComponent($(this).attr("href").split("/").pop());
-      localStorage.setItem('selectedCategory', selectedCategory);
-
-      // Handle link redirection
-      window.location = $(this).attr("href");
-  });
-
-  // Retrieve selected category from local storage after page load
-  var selectedCategory = localStorage.getItem('selectedCategory');
-  if (selectedCategory !== null) {
-      $(".card-linkkat").each(function() {
-          if ($(this).attr("href").includes(selectedCategory)) {
-              $(".card-linkkat").closest(".card").removeClass("card-selectedkat").addClass("card-defaultkat"); // Remove active class from all categories
-              $(this).closest(".card").addClass("card-selectedkat").removeClass("card-defaultkat"); // Add active class to selected category
-
-              // Slide to center
-              const slideIndex = $(this).closest(".ss").index();
-              const slideWidth = $(".ss").outerWidth();
-              const swiperWidth = $(".contsw").outerWidth();
-              const wrapperOffset = (swiperWidth - slideWidth) / 2;
-              const scrollTo = slideIndex * slideWidth - wrapperOffset;
-              $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
-          }
-      });
-  }
-
-  // Add hover effect for category to slide to center
-  $(".card-linkkat").hover(function() {
-      const slideIndex = $(this).closest(".ss").index();
-      const slideWidth = $(".ss").outerWidth();
-      const swiperWidth = $(".contsw").outerWidth();
-      const wrapperOffset = (swiperWidth - slideWidth) / 2;
-      const scrollTo = slideIndex * slideWidth - wrapperOffset;
-      $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
-  }, function() {
-      // On hover out, maintain the current position
-      var selectedSlideIndex = localStorage.getItem('selectedSlideIndexkat');
-      var slideWidth = $(".ss").outerWidth();
-      var scrollTo = selectedSlideIndex * slideWidth;
-      $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
-  });
+// Initialize Swiper
+var swiper = new Swiper(".btn-sub", {
+  slidesPerView: 2,
+  effect: "slide",
+  speed: 600,
+  grabCursor: true,
+  freeMode: true,
+  freeModeMomentum: true,
+  touchRatio: 1,
+  longSwipesRatio: 0.5,
+  longSwipesMs: 400,
+  breakpoints: {
+    1280: { slidesPerView: 6 },
+    768: { slidesPerView: 4 },
+    375: { slidesPerView: 3 },
+    280: { slidesPerView: 2 },
+  },
+  navigation: {
+    nextEl: ".button-next",
+    prevEl: ".button-prev",
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  on: {
+    init: function () {
+      const selectedIndex = localStorage.getItem("selectedSlideIndexkat");
+      if (selectedIndex) this.slideTo(selectedIndex);
+    },
+    slideChange: function () {
+      localStorage.setItem("selectedSlideIndexkat", this.activeIndex);
+    },
+  },
 });
+
+// Handle card click and hover events
+$(".card-linkkat").click(function (e) {
+  e.preventDefault();
+  updateCardSelection($(this));
+  localStorage.setItem("selectedCardLinkkat", $(this).attr("href"));
+  localStorage.setItem(
+    "selectedCategory",
+    decodeURIComponent($(this).attr("href").split("/").pop())
+  );
+  window.location = $(this).attr("href");
+});
+
+function updateCardSelection($cardLink) {
+  $(".ss .card").removeClass("card-selectedkat").addClass("card-defaultkat");
+  $cardLink
+    .closest(".card")
+    .addClass("card-selectedkat")
+    .removeClass("card-defaultkat");
+}
+
+// On page load, restore selected category
+var selectedCategory = localStorage.getItem("selectedCategory");
+if (selectedCategory) {
+  $(".card-linkkat").each(function () {
+    if ($(this).attr("href").includes(selectedCategory)) {
+      updateCardSelection($(this));
+      centerSlide($(this).closest(".ss"));
+    }
+  });
+}
+
+// Center slide on hover
+$(".card-linkkat").hover(
+  function () {
+    centerSlide($(this).closest(".ss"));
+  },
+  function () {
+    const selectedIndex = localStorage.getItem("selectedSlideIndexkat");
+    centerSlide($(".ss").eq(selectedIndex));
+  }
+);
+
+function centerSlide($slide) {
+  const slideIndex = $slide.index();
+  const slideWidth = $slide.outerWidth();
+  const swiperWidth = $(".contsw").outerWidth();
+  const wrapperOffset = (swiperWidth - slideWidth) / 2;
+  const scrollTo = slideIndex * slideWidth - wrapperOffset;
+  $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
+}
+
 
 
 // Slider Hsitori view Mobile
