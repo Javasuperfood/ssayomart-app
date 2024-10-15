@@ -104,7 +104,6 @@ var swiper = new Swiper(".mySwung", {
 // Slider card produk detail (All Device) dan slider Homepage (Desktop)
 var swiper = new Swiper(".mySwing", {
   slidesPerView: 6,
-  centeredSlides: false,
   spaceBetween: 10,
   grabCursor: true,
   loop: true,
@@ -112,33 +111,22 @@ var swiper = new Swiper(".mySwing", {
     el: ".swiper-pagination",
     clickable: true,
   },
-
   breakpoints: {
-    // Tampilan iPad (lebar >= 768px)
-    1280: {
-      slidesPerView: 6, // 6 card per tampilan
-    },
-    // Tampilan iPad (lebar >= 768px)
-    768: {
-      slidesPerView: 6, // 4 card per tampilan
-    },
-    717: {
-      slidesPerView: 3, // 2 card per tampilan
-    },
-    450: {
-      slidesPerView: 3, // 3 card per tampilan
-    },
-    360: {
-      slidesPerView: 3, // 2 card per tampilan
-    },
-    320: {
-      slidesPerView: 2, // 2 card per tampilan
-    },
-    280: {
-      slidesPerView: 2, // 2 card per tampilan
-    },
+    1280: { slidesPerView: 6 }, // Desktop
+    768: { slidesPerView: 6 }, // iPad
+    717: { slidesPerView: 3 }, // Small tablets
+    450: { slidesPerView: 3 }, // Mobile landscape
+    360: { slidesPerView: 3 }, // Mobile portrait
+    320: { slidesPerView: 2 }, // Small mobile
+    280: { slidesPerView: 2 }, // Extra small mobile
   },
+  touchRatio: 1.2, // Menambah sensitivitas swipe
+  longSwipesRatio: 0.3, // Lebih cepat trigger swipe
+  freeMode: true, // Smoother drag experience
+  freeModeMomentum: true,
+  freeModeMomentumVelocityRatio: 0.6, // Swipe smooth tetapi tidak terlalu melambung
 });
+
 
 // Slider Blog  Homepage View Mobile
 var swiper = new Swiper(".mySweety", {
