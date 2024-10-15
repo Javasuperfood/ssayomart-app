@@ -96,8 +96,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             foreach ($transaksi as $t) : ?>
                 <?php if ($idTransaksi != $t->id_checkout) : ?>
                     <div class="row pt-1" onclick="toggleHistory(<?= $t->id_checkout; ?>)">
-                        <div class="col">
-                            <div class="card border-0 shadow-sm">
+                        <div class="col mb-2">
+                            <div class="card border border-success  border-opacity-10 shadow-sm">
                                 <div class="card-body card-fold">
                                     <div class="row" id="colsId<?= $t->id_checkout; ?>" data-bs-target="#history<?= $t->id_checkout; ?>" data-bs-toggle="collapse">
                                         <div class="col-3 d-flex justify-content-start align-items-center">
@@ -108,7 +108,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="col-9 pt-1 deskripsi position-absolute top-50 start-50 translate-middle">
+                                        <div class="col-7 deskripsi position-absolute top-50 start-50 translate-middle">
                                             <p class="name mt-3">
                                                 <?= substr($t->nama, 0,); ?>
 
