@@ -42,7 +42,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <ul class="list-group list-group-flush">
                                 <div class="position-relative">
                                     <div class="card border-0 mb-3">
-                                        <div class="card">
+                                        <div class="card border border-success p-2 border-opacity-10 shadow-sm">
                                             <div class="card-header border-0 bg-white mt-1">
                                                 <span class="fw-bold fs-5"><?= $au['label']; ?></span>
                                             </div>
@@ -77,7 +77,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <form action="<?= base_url() ?>setting/delete-alamat/<?= $au['id_alamat_users']; ?>" method="post">
                                     <div class="modal-footer flex-nowrap p-0">
                                         <?= csrf_field(); ?>
-                                        <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger"><strong><?= lang('Text.btn_hapus') ?></strong></button>
+                                        <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end text-danger border border-danger border-opacity-50"><strong><?= lang('Text.btn_hapus') ?></strong></button>
                                         <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 text-danger" data-bs-dismiss="modal">No thanks</button>
                                     </div>
                                 </form>
