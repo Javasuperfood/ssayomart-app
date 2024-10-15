@@ -259,93 +259,81 @@ function centerSlide($slide) {
 
 
 // Slider Hsitori view Mobile
-$(document).ready(function() {
+$(document).ready(function () {
   var swiper = new Swiper(".btn-his", {
-      slidesPerView: 2,
-      effect: "slide",
-      speed: 600,
-      spaceBetween: 10,
-      grabCursor: true,
-      touchRatio: 1, // Touch sensitivity
-      longSwipesRatio: 1, // Ratio to trigger swipe to next/previous slide
-      longSwipesMs: 400, // Minimum duration (in ms) to trigger swipe to next/previous slide
-      freeMode: true, // Enables free mode for a smoother drag experience
-      freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
-      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum
-      breakpoints: {
-          1280: { slidesPerView: 6 },
-          768: { slidesPerView: 4 },
-          375: { slidesPerView: 3 },
-          280: { slidesPerView: 2 },
-      },
-      navigation: {
-          nextEl: ".button-next",
-          prevEl: ".button-prev",
-      },
-      pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-      },
-
-      // Menyesuaikan efek transisi untuk perpindahan yang lebih halus
+    slidesPerView: 2,
+    effect: "slide",
+    speed: 600,
+    spaceBetween: 10,
+    grabCursor: true,
+    touchRatio: 1, // Sensitivitas sentuhan
+    longSwipesRatio: 0.5, // Mengurangi untuk swipe lebih cepat
+    longSwipesMs: 300, // Durasi minimum untuk memicu swipe ke slide berikutnya/sebelumnya
+    freeMode: true, // Mode bebas untuk pengalaman drag yang lebih halus
+    freeModeMomentum: true, // Menambahkan momentum untuk swipe yang lebih smooth
+    freeModeMomentumVelocityRatio: 0.8, // Mengurangi momentum untuk swipe yang lebih terkendali
+    breakpoints: {
+      1280: { slidesPerView: 6 },
+      768: { slidesPerView: 4 },
+      375: { slidesPerView: 3 },
+      280: { slidesPerView: 2 },
+    },
+    navigation: {
+      nextEl: ".button-next",
+      prevEl: ".button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
     effectOptions: {
       slideShadows: true,
       fadeEffect: {
-          crossFade: true
-      },
-      cubeEffect: {
-          shadow: true,
-          slideShadows: true,
-          shadowOffset: 20,
-          shadowScale: 0.94
-      },
-      flipEffect: {
-          slideShadows: true,
-          limitRotation: true
+        crossFade: true,
       },
       coverflowEffect: {
-          rotate: 30,
-          stretch: 10,
-          depth: 60,
-          modifier: 2,
-          slideShadows: true
+        rotate: 30,
+        stretch: 10,
+        depth: 60,
+        modifier: 2,
+        slideShadows: true,
       },
       cubeEffect: {
-          shadow: true,
-          slideShadows: true,
-          shadowOffset: 20,
-          shadowScale: 0.94
-      }
+        shadow: true,
+        slideShadows: true,
+        shadowOffset: 20,
+        shadowScale: 0.94,
       },
-      on: {
-          init: function () {
-              // Memindahkan slide yang dipilih ke tengah slider saat inisialisasi
-              var selectedSlideIndex = localStorage.getItem('selectedSlideIndex');
-              if (selectedSlideIndex !== null) {
-                  this.slideTo(selectedSlideIndex);
-              }
-          },
-          slideChange: function () {
-              // Menyimpan indeks slide yang dipilih ke dalam local storage
-              var currentIndex = this.activeIndex;
-              localStorage.setItem('selectedSlideIndex', currentIndex);
-          },
-      }
+    },
+    on: {
+      init: function () {
+        // Pindahkan slide yang dipilih ke tengah saat inisialisasi
+        var selectedSlideIndex = localStorage.getItem("selectedSlideIndex");
+        if (selectedSlideIndex !== null) {
+          this.slideTo(selectedSlideIndex);
+        }
+      },
+      slideChange: function () {
+        // Simpan indeks slide saat berubah
+        var currentIndex = this.activeIndex;
+        localStorage.setItem("selectedSlideIndex", currentIndex);
+      },
+    },
   });
 
-  $(".card-linkkat").click(function(e) {
-      e.preventDefault(); 
-      var categoryUrl = $(this).attr("href");
-      var slideIndex = $(this).closest(".ss").index();
-      
-      // Menggunakan metode slideTo dengan efek easing untuk perpindahan yang lebih mulus
-      swiper.slideTo(slideIndex, 1000, false);
+  $(".card-linkkat").click(function (e) {
+    e.preventDefault();
+    var categoryUrl = $(this).attr("href");
+    var slideIndex = $(this).closest(".ss").index();
 
-      // Simpan indeks slide yang dipilih di local storage
-      localStorage.setItem('selectedSlideIndex', slideIndex);
-      
-      // Handle link redirection
-      window.history.pushState(null, null, categoryUrl);
+    // Smooth transition saat pindah slide
+    swiper.slideTo(slideIndex, 1000, false);
+
+    // Simpan indeks slide yang dipilih
+    localStorage.setItem("selectedSlideIndex", slideIndex);
+
+    // Ubah URL tanpa reload halaman
+    window.history.pushState(null, null, categoryUrl);
   });
 });
 
