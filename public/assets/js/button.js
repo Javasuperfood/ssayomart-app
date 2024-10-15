@@ -1,96 +1,42 @@
 // Slider Button SubKategori
-$(document).ready(function() {
-  var selectedSlideIndex = localStorage.getItem('selectedSlideIndexkat');
-  if (selectedSlideIndex !== null) {
-      selectedSlideIndex = parseInt(selectedSlideIndex);
-  }
-
-  var swiper = new Swiper(".buttonSwiper", {
-      slidesPerView: 2,
-      spaceBetween: 10,
-      effect: "slide",
-      speed: 800,
-      grabCursor: true,
-      touchRatio: 1, // Touch sensitivity
-      longSwipesRatio: 0.5, // Ratio to trigger swipe to next/previous slide
-      longSwipesMs: 400, // Minimum duration (in ms) to trigger swipe to next/previous slide
-      freeMode: true, // Enables free mode for a smoother drag experience
-      freeModeMomentum: true, // Enables momentum and momentum bounce in free mode
-      freeModeMomentumVelocityRatio: 1, // Higher numbers increase momentum
-    //   touchAngle: 315,// Adjusting touch angle for smoother diagonal swipe // Change this value according to your preference
-      breakpoints: {
-          1280: {
-              slidesPerView: 6,
-          },
-          768: {
-              slidesPerView: 4,
-          },
-          375: {
-              slidesPerView: 2,
-          },
-          280: {
-              slidesPerView: 2,
-          },
+$(document).ready(function () {
+  // Initialize Swiper with smooth touch interactions
+  const swiper = new Swiper(".buttonSwiper", {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    speed: 600, // Reduced speed for a more natural swipe feel
+    grabCursor: true,
+    freeMode: true,
+    freeModeMomentum: true,
+    longSwipesMs: 300, // Reduced swipe duration for faster response
+    breakpoints: {
+      1280: { slidesPerView: 6 },
+      768: { slidesPerView: 4 },
+      375: { slidesPerView: 2 },
+      280: { slidesPerView: 2 },
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    on: {
+      init() {
+        const index = localStorage.getItem("selectedSlideIndexkat");
+        if (index) this.slideTo(parseInt(index));
       },
-      
-      pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
+      slideChange() {
+        localStorage.setItem("selectedSlideIndexkat", this.activeIndex);
       },
-
-    // Menyesuaikan efek transisi untuk perpindahan yang lebih halus
-    effectOptions: {
-    slideShadows: true,
-    fadeEffect: {
-        crossFade: true
     },
-    cubeEffect: {
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94
-    },
-    flipEffect: {
-        slideShadows: true,
-        limitRotation: true
-    },
-    coverflowEffect: {
-        rotate: 30,
-        stretch: 10,
-        depth: 60,
-        modifier: 2,
-        slideShadows: true
-    },
-    cubeEffect: {
-        shadow: true,
-        slideShadows: true,
-        shadowOffset: 20,
-        shadowScale: 0.94
-    }
-},
-
-      on: {
-          init: function () {
-              // Set slide index based on selected category
-              if (selectedSlideIndex !== null) {
-                  this.slideTo(selectedSlideIndex);
-              }
-          },
-          slideChange: function () {
-              // Save selected slide index to local storage
-              var currentIndex = this.activeIndex;
-              localStorage.setItem('selectedSlideIndexkat', currentIndex);
-          },
-      },
-        
   });
 
-  $(".card-linkkat").click(function(e) {
-      e.preventDefault();
-      var slideIndex = $(this).closest(".swiper-slide").index();
-      swiper.slideTo(slideIndex);
+  // Handle card click to slide to specific card
+  $(".card-linkkat").on("click", function (e) {
+    e.preventDefault();
+    swiper.slideTo($(this).closest(".swiper-slide").index());
   });
 });
+
 
 // tombol Scroll Up
 var scrollUpButton = document.getElementById("scrollUpButton");
