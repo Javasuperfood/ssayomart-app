@@ -157,92 +157,126 @@ var swiper = new Swiper(".mySweety", {
   },
 });
 
-// Initialize Swiper
-var swiper = new Swiper(".btn-sub", {
-  slidesPerView: 2,
-  effect: "slide",
-  speed: 600,
-  grabCursor: true,
-  freeMode: true,
-  freeModeMomentum: true,
-  touchRatio: 1,
-  longSwipesRatio: 0.5,
-  longSwipesMs: 400,
-  breakpoints: {
-    1280: { slidesPerView: 6 },
-    768: { slidesPerView: 4 },
-    375: { slidesPerView: 3 },
-    280: { slidesPerView: 2 },
-  },
-  navigation: {
-    nextEl: ".button-next",
-    prevEl: ".button-prev",
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-  on: {
-    init: function () {
-      const selectedIndex = localStorage.getItem("selectedSlideIndexkat");
-      if (selectedIndex) this.slideTo(selectedIndex);
-    },
-    slideChange: function () {
-      localStorage.setItem("selectedSlideIndexkat", this.activeIndex);
-    },
-  },
-});
+// Initialize Swiper Kategori 
+$(document).ready(function () {
+  const urlLink = window.location.href;
 
-// Handle card click and hover events
-$(".card-linkkat").click(function (e) {
-  e.preventDefault();
-  updateCardSelection($(this));
-  localStorage.setItem("selectedCardLinkkat", $(this).attr("href"));
-  localStorage.setItem(
-    "selectedCategory",
-    decodeURIComponent($(this).attr("href").split("/").pop())
-  );
-  window.location = $(this).attr("href");
-});
+  // Function to sync hover status with selected category and center the slide
+  function syncCategorySelection() {
+    const selectedCategory = decodeURIComponent(urlLink.split("/").pop());
+    const $selectedCard = $(`.card-linkkat[href*="${selectedCategory}"]`);
 
-function updateCardSelection($cardLink) {
-  $(".ss .card").removeClass("card-selectedkat").addClass("card-defaultkat");
-  $cardLink
-    .closest(".card")
-    .addClass("card-selectedkat")
-    .removeClass("card-defaultkat");
-}
-
-// On page load, restore selected category
-var selectedCategory = localStorage.getItem("selectedCategory");
-if (selectedCategory) {
-  $(".card-linkkat").each(function () {
-    if ($(this).attr("href").includes(selectedCategory)) {
-      updateCardSelection($(this));
-      centerSlide($(this).closest(".ss"));
+    if ($selectedCard.length) {
+      $(".card")
+        .removeClass("card-selectedkat card-defaultkat")
+        .addClass("card-defaultkat");
+      $selectedCard
+        .closest(".card")
+        .addClass("card-selectedkat")
+        .removeClass("card-defaultkat");
+      centerSlide($selectedCard.closest(".ss"));
+      localStorage.setItem("selectedCategory", selectedCategory);
     }
-  });
-}
-
-// Center slide on hover
-$(".card-linkkat").hover(
-  function () {
-    centerSlide($(this).closest(".ss"));
-  },
-  function () {
-    const selectedIndex = localStorage.getItem("selectedSlideIndexkat");
-    centerSlide($(".ss").eq(selectedIndex));
   }
-);
 
-function centerSlide($slide) {
-  const slideIndex = $slide.index();
-  const slideWidth = $slide.outerWidth();
-  const swiperWidth = $(".contsw").outerWidth();
-  const wrapperOffset = (swiperWidth - slideWidth) / 2;
-  const scrollTo = slideIndex * slideWidth - wrapperOffset;
-  $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
-}
+  // Function to center the selected slide
+  function centerSlide($slide) {
+    const slideIndex = $slide.index();
+    const slideWidth = $slide.outerWidth();
+    const swiperWidth = $(".contsw").outerWidth();
+    const scrollTo = slideIndex * slideWidth - (swiperWidth - slideWidth) / 2;
+    $(".contsw").css("transform", `translateX(-${scrollTo}px)`);
+  }
+
+  // Function to restore the selected category and center slide on page load
+  function restoreSelectedCategory() {
+    const selectedCategory = localStorage.getItem("selectedCategory");
+    if (selectedCategory) {
+      const $selectedCard = $(`.card-linkkat[href*="${selectedCategory}"]`);
+      if ($selectedCard.length) {
+        $selectedCard
+          .closest(".card")
+          .addClass("card-selectedkat")
+          .removeClass("card-defaultkat");
+        centerSlide($selectedCard.closest(".ss"));
+      }
+    }
+  }
+
+  // Initialize Swiper with smoother settings
+  const swiper = new Swiper(".btn-sub", {
+    slidesPerView: 2,
+    speed: 500,
+    freeMode: true,
+    freeModeMomentum: true,
+    longSwipesMs: 300,
+    breakpoints: {
+      1280: { slidesPerView: 6 },
+      768: { slidesPerView: 4 },
+      375: { slidesPerView: 3 },
+      280: { slidesPerView: 2 },
+    },
+    navigation: {
+      nextEl: ".button-next",
+      prevEl: ".button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    on: {
+      init() {
+        const selectedSlideIndex = localStorage.getItem(
+          "selectedSlideIndexkat"
+        );
+        if (selectedSlideIndex !== null) {
+          this.slideTo(selectedSlideIndex);
+        }
+      },
+      slideChange() {
+        localStorage.setItem("selectedSlideIndexkat", this.activeIndex);
+      },
+    },
+  });
+
+  // Handle card click event and update the selected category
+  $(".card-linkkat").click(function (e) {
+    e.preventDefault();
+    const $clickedCard = $(this).closest(".card");
+
+    $(".card").removeClass("card-selectedkat").addClass("card-defaultkat");
+    $clickedCard.addClass("card-selectedkat").removeClass("card-defaultkat");
+
+    const selectedCategory = decodeURIComponent(
+      $(this).attr("href").split("/").pop()
+    );
+    localStorage.setItem("selectedCategory", selectedCategory);
+    localStorage.setItem("selectedCardLinkkat", $(this).attr("href"));
+
+    // Redirect to the clicked category
+    window.location = $(this).attr("href");
+  });
+
+  // Handle hover effect to center the slide
+  $(".card-linkkat").hover(
+    function () {
+      centerSlide($(this).closest(".ss"));
+      $(this)
+        .closest(".card")
+        .addClass("card-hoverkat")
+        .removeClass("card-defaultkat");
+    },
+    function () {
+      restoreSelectedCategory();
+    }
+  );
+
+  // Initial setup on page load
+  syncCategorySelection();
+  restoreSelectedCategory();
+});
+
+
 
 
 
