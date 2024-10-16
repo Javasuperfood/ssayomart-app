@@ -120,6 +120,10 @@ var swiper = new Swiper(".mySwing", {
     320: { slidesPerView: 2 }, // Small mobile
     280: { slidesPerView: 2 }, // Extra small mobile
   },
+  navigation: {
+    nextEl: ".button-next",
+    prevEl: ".button-prev",
+  },
   touchRatio: 1.2, // Menambah sensitivitas swipe
   longSwipesRatio: 0.3, // Lebih cepat trigger swipe
   freeMode: true, // Smoother drag experience

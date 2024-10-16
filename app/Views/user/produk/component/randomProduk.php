@@ -11,7 +11,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <div class="row mt-3">
                 <div class="col">
                     <h2 class="fw-bold mb-4 text-merah"><?= lang('Text.produk_lainnya') ?></h2>
-                    <div class="d-flex justify-content-center align-items-center swiper mySwing">
+                    <div class="position-relative d-flex justify-content-center align-items-center swiper mySwing">
                         <div class="swiper-wrapper p-3 d-flex">
                             <?php foreach ($randomProducts as $p) : ?>
                                 <div class="swiper-slide col-md-4 mx-md-1 mb-md-1 mb-5">
@@ -23,12 +23,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </a>
                                         <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                             <div class="d-flex align-items-start justify-content-center" style="height: 65px;">
-                                                <p class=" text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
+                                                <p class="text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                                             </div>
-                                            <!-- <p class="text-secondary" style="font-size: 8px; margin: 0;">
-                                        <del>Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?></del>
-                                    </p> -->
-
                                             <h1 class="text-danger fw-bold mt-1 pb-3" style="font-size: 10px; margin: 0;">
                                                 <?php if ($p['harga_min'] == $p['harga_max']) : ?>
                                                     Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
@@ -55,9 +51,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 </div>
                             <?php endforeach; ?>
                         </div>
+
+                        <!-- Button navigasi -->
+                        <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left"></i></button>
+                        </div>
+                        <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -239,6 +246,15 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                 </div>
                             <?php endforeach; ?>
+                        </div>
+                        <!-- button next & prev -->
+                        <div class="my-3 position-absolute start-0 translate-middle-y button-prev rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button"><i class="bi bi-arrow-left"></i></button>
+                        </div>
+                        <div class="my-3 position-absolute end-0 translate-middle-y button-next rounded-circle d-flex align-items-center" style="z-index: 2; width: 20px; height: 20px;">
+                            <button class="shadow-sm btn btn-light btn-sm rounded-circle w-100 h-100 p-0 d-flex align-items-center justify-content-center" type="button">
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
