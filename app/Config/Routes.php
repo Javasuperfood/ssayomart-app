@@ -152,6 +152,12 @@ $routes->group('dashboard', ['filter' => 'group:admin,superadmin'], static funct
     $routes->get('filter-report/(:num)', 'SuperAdminDashboard::filterReport/$1');
     $routes->get('region-report', 'SuperAdminDashboard::regionReport');
 
+    $routes->get('notifications/unread-count', 'NotificationController::getUnreadCount');
+    $routes->get('notifications', 'NotificationController::getNotifications');
+    $routes->post('notifications/mark-as-read/(:num)', 'NotificationController::markAsRead/$1');
+    $routes->post('notifications/mark-all-as-read', 'NotificationController::markAllAsRead');
+
+
 
     $routes->get('panduan/panduan-aplikasi', 'Home::panduanAplikasi');
     $routes->group('order/', static function ($routes) {

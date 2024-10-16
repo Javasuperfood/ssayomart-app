@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\AlamatUserModel;
+use App\Models\AuthGroupUsersModel;
 use App\Models\CartModel;
 use App\Models\CartProdukModel;
 use App\Models\CheckoutModel;
@@ -16,6 +17,7 @@ use App\Models\PromoProduk;
 use App\Models\TokoModel;
 use App\Models\UsersModel;
 use App\Models\VariasiItemModel;
+use App\Models\NotificationModel;
 use Midtrans\Config as MidtransConfig;
 
 
@@ -162,11 +164,14 @@ class TransactionCoreUIController extends BaseController
         if (!$metode_pemabayaran) {
             return redirect()->back();
         }
+
+        // Inisialisasi Model
         $checkoutModel = new CheckoutModel();
         $checkoutProdukModel = new CheckoutProdukModel();
         $midtransConfig = new \Config\Midtrans();
         $alamatUserModel = new AlamatUserModel();
         $userModel = new UsersModel();
+        $authGroupModel = new AuthGroupUsersModel();
         $checkoutResponseModel = new CheckoutResponseModel();
         $promoProduk = new PromoProduk();
         $kuponModel = new KuponModel();
@@ -177,11 +182,8 @@ class TransactionCoreUIController extends BaseController
         // Set the Midtrans API credentials
         MidtransConfig::$serverKey = $midtransConfig->serverKey;
         MidtransConfig::$clientKey = $midtransConfig->clientKey;
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         MidtransConfig::$isProduction = $midtransConfig->isProduction;
-        // Set sanitization on (default)
         MidtransConfig::$isSanitized = $midtransConfig->isSanitized;
-        // Set 3DS transaction for credit card to true
         MidtransConfig::$is3ds = $midtransConfig->is3ds;
 
         $idProduk = $this->request->getVar('idProduk');
@@ -196,76 +198,81 @@ class TransactionCoreUIController extends BaseController
             }
         }
 
-        // start:  jika tidak ada promo atau kupon maka total hanya akan rumus dibawah 
+        // Kalkulasi Total
         $total_1 = 0;
         $totalDiscount = 0;
+        $cekProduk = []; // Inisialisasi array untuk menyimpan detail produk
+        $produk = []; // Inisialisasi array untuk menyimpan data produk
 
         if (!empty($idProduk)) {
             foreach ($idProduk as $key => $p) {
-                $produk[$key] = $variasiItemModel->select('jsf_variasi_item.*, jsf_produk.*')
+                $produkItem = $variasiItemModel->select('jsf_variasi_item.*, jsf_produk.*')
                     ->join('jsf_produk', 'jsf_produk.id_produk = jsf_variasi_item.id_produk', 'inner')
                     ->where('jsf_variasi_item.id_variasi_item', $varianProduk[$key])
                     ->where('jsf_produk.id_produk', $p)->first();
-                $produk[$key]['qty'] = $qtyProduk[$key];
-                // dd($produk);
-                $rowTotalProduk = $produk[$key]['qty'] * $produk[$key]['harga_item'];
+
+                if (!$produkItem) {
+                    // Handle jika produk tidak ditemukan
+                    return view('404', ['title' => '404']);
+                }
+
+                $produkItem['qty'] = $qtyProduk[$key];
+                $produk[] = $produkItem;
+
+                $rowTotalProduk = $produkItem['qty'] * $produkItem['harga_item'];
                 $cekProduk[] = [
                     'id' => $p,
-                    'price' => $produk[$key]['harga_item'],
-                    'quantity' => $produk[$key]['qty'],
-                    'name' => $produk[$key]['nama'] . '(' . $produk[$key]['value_item'] . ')',
+                    'price' => $produkItem['harga_item'],
+                    'quantity' => $produkItem['qty'],
+                    'name' => $produkItem['nama'] . '(' . $produkItem['value_item'] . ')',
                 ];
 
-                $rowTotalProduk = $produk[$key]['qty'] * $produk[$key]['harga_item'];
-
                 $total_1 += $rowTotalProduk;
-
-
-                // jika ada ada promo maka total akan rumus dibawah 
-                // $promoDetails = $promoProduk->getPromoDetailsByIdProduk($produk[$key]['id_produk']);
-                // if (count($promoDetails) > 0 && $produk[$key]['qty'] >= $promoDetails[0]['min']) {
-                //     $produk[$key]['promo'] = $promoDetails[0];
-                //     $produk[$key]['promo']['total'] = $rowTotal * $promoDetails[0]['discount'];
-                //     $totalDiscount += $produk[$key]['promo']['total'];
-                // }
             }
         }
 
+        // Promo Product without coupon
         if (!empty($idPromoProduk)) {
             foreach ($idPromoProduk as $key => $p) {
-                $produk[$key] = $promoProduk
+                $promoData = $promoProduk
                     ->select('jsf_promo_produk.*, jsf_promo.*, jsf_produk.*, jsf_variasi_item.*')
                     ->join('jsf_promo', 'jsf_promo.id_promo = jsf_promo_produk.id_promo', 'inner')
                     ->join('jsf_produk', 'jsf_promo_produk.id_produk = jsf_produk.id_produk', 'inner')
                     ->join('jsf_variasi_item', 'jsf_variasi_item.id_produk = jsf_promo_produk.id_produk', 'inner')
                     ->where('jsf_promo_produk.id', $p)
                     ->first();
-                $produk[$key]['qty'] = $qtyPromo[$key];
-                // dd($produk);
 
-                foreach ($produk as $key => $p) {
-                    $cekProduk[] = [
-                        'id' => $produk[$key]['id'],
-                        'price' => $produk[$key]['harga_item'],
-                        'quantity' => $produk[$key]['qty'] * $produk[$key]['required_quantity'],
-                        'name' => $produk[$key]['promo_deskripsi']
-                    ];
+                if (!$promoData) {
+                    // Handle jika promo tidak ditemukan
+                    return view('404', ['title' => '404']);
                 }
+
+                $promoData['qty'] = $qtyPromo[$key];
+                $produk[] = $promoData;
+
+                $cekProduk[] = [
+                    'id' => $promoData['id'],
+                    'price' => $promoData['harga_item'],
+                    'quantity' => $promoData['qty'] * $promoData['required_quantity'],
+                    'name' => $promoData['promo_deskripsi']
+                ];
+
+                $rowTotalPromo = $promoData['required_quantity'] * $promoData['harga_item'] * $promoData['qty'];
+                $total_1 += $rowTotalPromo;
+                $totalDiscount += $rowTotalPromo * ($promoData['discount'] ?? 0);
             }
-            $rowTotalPromo = $produk[$key]['required_quantity'] * $produk[$key]['harga_item'] * $produk[$key]['qty'];
-            $total_1 += $rowTotalPromo;
         }
 
-        if ((!empty($idPromoProduk))) {
+        // Tentukan rowTotal berdasarkan kondisi
+        if (!empty($idPromoProduk)) {
             $rowTotal = $rowTotalPromo;
-        } else if (!empty(($idProduk))) {
+        } elseif (!empty($idProduk)) {
             $rowTotal = $rowTotalProduk;
         } else {
             $rowTotal = $rowTotalPromo + $rowTotalProduk;
         }
 
         $total_2 = $rowTotal;
-        // dd($total_1, $total_2, $cekProduk, $rowTotal);
 
         $inv = 'INV-' . date('Ymd') . '-' . mt_rand(10, 99) . time();
 
@@ -288,7 +295,7 @@ class TransactionCoreUIController extends BaseController
 
         $kode = $this->request->getVar('kupon');
 
-        // Create param for Midtrans 
+        // Tambahkan diskon promo jika ada
         if ($totalDiscount > 0) {
             $cekProduk[] = [
                 'id' => 'diskonPromo',
@@ -300,36 +307,32 @@ class TransactionCoreUIController extends BaseController
 
         $total_2 = $total_1 - $totalDiscount;
 
-        // dd($total_1, $total_2, $totalDiscount, $cekProduk);
-
         $kupon = [
             'discount' => '',
             'kupon' => ''
         ];
-        // end Promo
 
-        // Start : Promo kupon 
+        // Promo kupon 
         if ($kode != '') {
             $cekKupon = $kuponModel->getKupon($kode);
             $idKupon = $kuponModel->getKuponId($kode);
-            $discount = floatval($cekKupon['discount']);
-            $getDiscount = $total_2 * $discount;
-            $total_2 = $total_2 - $getDiscount;
-            $kupon = [
-                'discount' => $cekKupon['discount'],
-                'kupon' => $cekKupon['kode']
-            ];
-            $cekProduk[] = [
-                'id' => 'diskonKupon',
-                'price' => -round($getDiscount),
-                'quantity' => 1,
-                'name' => 'Diskon Kupon',
-            ];
-            $discount = $cekKupon['discount'];
+            if ($cekKupon && $idKupon) {
+                $discount = floatval($cekKupon['discount']);
+                $getDiscount = $total_2 * $discount;
+                $total_2 = $total_2 - $getDiscount;
+                $kupon = [
+                    'discount' => $cekKupon['discount'],
+                    'kupon' => $cekKupon['kode']
+                ];
+                $cekProduk[] = [
+                    'id' => 'diskonKupon',
+                    'price' => -round($getDiscount),
+                    'quantity' => 1,
+                    'name' => 'Diskon Kupon',
+                ];
+            }
         }
-        // dd($total_1, $total_2, $totalDiscount, $getDiscount, $cekProduk);
 
-        // end promo kupon
         $total_2 = $service + $total_2;
         $cekProduk[] = [
             'id' => 'Service',
@@ -372,8 +375,7 @@ class TransactionCoreUIController extends BaseController
             ],
             'item_details' => $cekProduk,
         ];
-        // dd($total_1, $total_2, $totalDiscount, $getDiscount, $cekProduk, $params);
-        // dd($total_1, $total_2, $cekProduk, $params, $rowTotal);
+
         switch ($metode_pemabayaran) {
             case 'cc_snap':
                 $params['payment_type'] = "cc_snap";
@@ -441,19 +443,17 @@ class TransactionCoreUIController extends BaseController
                 break;
         }
 
-        // dd($params);
-        // return response()->setJSON($params);
         $response = [];
         $snapToken = null;
         if ($params['payment_type'] == 'bank_transfer' || $params['payment_type'] == 'echannel' || $params['payment_type'] == 'permata') {
-            $carger = \Midtrans\CoreApi::charge($params);
-            // return response()->setJSON($carger);
-            if ($carger->status_code != 201) {
+            $charger = \Midtrans\CoreApi::charge($params);
+            // return response()->setJSON($charger);
+            if ($charger->status_code != 201) {
                 return redirect()->back();
             }
             $response = [
                 'request' => $params,
-                'response' => $carger
+                'response' => $charger
             ];
         } else {
             $snapToken = \Midtrans\Snap::getSnapToken($params);
@@ -466,6 +466,7 @@ class TransactionCoreUIController extends BaseController
             // return response()->setJSON($snapToken);
         }
 
+        // Simpan order ke database
         $dbStore = [
             'id_user' => user_id(),
             'id_toko' => $this->request->getVar('market'),
@@ -488,26 +489,51 @@ class TransactionCoreUIController extends BaseController
             'snap_token' => $snapToken,
         ];
         // dd($dbStore);
-        $chechkoutId = $checkoutModel->insert($dbStore);
+        $checkoutId = $checkoutModel->insert($dbStore);
 
+        // Simpan respons checkout
         $checkoutResponseModel->insert([
-            'id_checkout' => $chechkoutId,
+            'id_checkout' => $checkoutId,
             'response' => json_encode($response),
         ]);
 
-        // dd($produk);
+        // Tambahkan notifikasi setelah order berhasil disimpan
+        $notificationModel = new NotificationModel();
+        $adminUserId = 1;
+
+        // Buat pesan notifikasi
+        $notificationMessage = "Ada order baru masuk : " . $inv;
+
+        $adminUsers = $authGroupModel->where('group', 'admin')->findAll();
+        foreach ($adminUsers as $admin) {
+            $notificationModel->insert([
+                'id_user'      => $admin['id'],
+                'id_checkout'  => $checkoutId,
+                'order_id'     => $inv,
+                'message'      => $notificationMessage,
+                'is_read'      => 0,
+                // 'created_at' => date('Y-m-d H:i:s'), // Tidak perlu jika menggunakan useTimestamps
+            ]);
+        }
+
+        // Simpan produk dan hapus dari cart
         $cartid = $cartModel->where('id_user', user_id())->first();
-        foreach ($produk as $key => $p) {
-            $checkoutProdukData = [
-                'id_checkout' => $chechkoutId,
-                'id_produk' => $p['id_produk'],
-                'id_variasi_item' => $p['id_variasi_item'],
-                'qty' => $p['qty'],
-                'harga' => $p['harga_item'],
-            ];
-            $checkoutProdukModel->insert($checkoutProdukData);
-            //delete from cart 
-            $cartProdukModel->where('id_cart', $cartid['id_cart'])->where('id_produk', $p['id_produk'])->where('id_variasi_item', $p['id_variasi_item'])->delete();
+        if ($cartid) {
+            foreach ($produk as $key => $p) {
+                $checkoutProdukData = [
+                    'id_checkout' => $checkoutId,
+                    'id_produk' => $p['id_produk'],
+                    'id_variasi_item' => $p['id_variasi_item'],
+                    'qty' => $p['qty'],
+                    'harga' => $p['harga_item'],
+                ];
+                $checkoutProdukModel->insert($checkoutProdukData);
+                // Delete dari cart 
+                $cartProdukModel->where('id_cart', $cartid['id_cart'])
+                    ->where('id_produk', $p['id_produk'])
+                    ->where('id_variasi_item', $p['id_variasi_item'])
+                    ->delete();
+            }
         }
 
         if (!empty($kode)) {
