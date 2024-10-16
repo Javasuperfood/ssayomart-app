@@ -36,72 +36,74 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <?php endforeach ?>
             </div>
             <?php if ($kupon_model == null) : ?>
-            <div class="row " >
-                <div class="col">
-                    <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
-                  <img src="assets/img/coupon.png" class="img-coupon coupon-opacity"  alt="...">
-                    <h5 class="coupon-opacity fs-kupon">Kupon Belum Tersedia</h5>
+                <div class="row ">
+                    <div class="col">
+                        <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
+                            <img src="assets/img/coupon.png" class="img-coupon coupon-opacity" alt="...">
+                            <h5 class="coupon-opacity fs-kupon">Kupon Belum Tersedia</h5>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php endif; ?>
         </div>
     </div>
-<style>
-     .coupon-opacity {
+    <style>
+        .coupon-opacity {
             opacity: 0.6;
         }
-       
-    /* Ekstra Kecil (xs) */
-@media only screen and (max-width: 575.98px) {
- 
-  .img-coupon {
-    width: 130px;
-  }
-}
 
-/* Kecil (sm) */
-@media only screen and (min-width: 576px) and (max-width: 767.98px) {
- .img-coupon {
-    width: 190px;
-  }
-}
+        /* Ekstra Kecil (xs) */
+        @media only screen and (max-width: 575.98px) {
 
-/* Menengah (md) */
-@media only screen and (min-width: 768px) and (max-width: 991.98px) {
-  .img-coupon {
-    width: 200px;
-  }
-  .fs-kupon {
-    font-size: 50px;
-  }
-}
+            .img-coupon {
+                width: 130px;
+            }
+        }
 
-/* Besar (lg) */
-@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-    .img-coupon {
-    width: 250px;
-  }
-  .fs-kupon {
-    font-size: 65px;
-  }
-}
+        /* Kecil (sm) */
+        @media only screen and (min-width: 576px) and (max-width: 767.98px) {
+            .img-coupon {
+                width: 190px;
+            }
+        }
 
-/* Sangat Besar (xl) */
-@media only screen and (min-width: 1200px) {
-  /* Aturan CSS untuk layar sangat besar di sini */
-    .img-coupon {
-    width: 290px;
-  }
-  .fs-kupon {
-    font-size: 75px;
-  }
-}
+        /* Menengah (md) */
+        @media only screen and (min-width: 768px) and (max-width: 991.98px) {
+            .img-coupon {
+                width: 200px;
+            }
 
-</style>
+            .fs-kupon {
+                font-size: 50px;
+            }
+        }
+
+        /* Besar (lg) */
+        @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
+            .img-coupon {
+                width: 250px;
+            }
+
+            .fs-kupon {
+                font-size: 65px;
+            }
+        }
+
+        /* Sangat Besar (xl) */
+        @media only screen and (min-width: 1200px) {
+
+            /* Aturan CSS untuk layar sangat besar di sini */
+            .img-coupon {
+                width: 290px;
+            }
+
+            .fs-kupon {
+                font-size: 75px;
+            }
+        }
+    </style>
 
     <style>
-       
         /* Untuk layar yang lebih kecil, seperti Samsung Galaxy Fold (lebar 280px) */
         @media (max-width: 280px) {
             .coupon {
@@ -125,6 +127,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
 
         @media (min-width: 717px) and (max-width: 717px) {
+            .coupon {
+                flex-direction: column;
+                /* Mengatur tampilan vertikal */
+            }
+
+            .tengah {
+                margin-left: 50px !important;
+                text-align: center;
+                justify-content: center !important;
+                /* Mengatur teks menjadi pusat */
+            }
+
+            .coupon .kiri {
+                text-align: center !important;
+                justify-content: center !important;
+                display: flex !important;
+                margin-bottom: 1rem;
+                /* Menambahkan jarak antara bagian kiri dengan bagian tengah */
+            }
+
+            .coupon .info {
+                margin-top: 1rem;
+                /* Menambahkan jarak di atas tombol "Show" */
+            }
+        }
+
+        @media (min-width: 690px) and (max-width: 690px) {
             .coupon {
                 flex-direction: column;
                 /* Mengatur tampilan vertikal */

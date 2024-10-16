@@ -368,6 +368,54 @@ $countProduk = count($produk);
         }
     }
 
+    @media screen and (min-width: 690px) and (max-width: 690px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 30%;
+        }
+
+        .card-produk {
+            width: 130px !important;
+            /* Mengisi lebar parent container */
+        }
+
+        .horizontal-counter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .horizontal-counter button,
+        .horizontal-counter input {
+            width: 40px;
+            /* Adjust as needed */
+            height: 20px;
+            /* Adjust as needed */
+            font-size: 13px;
+            /* Adjust as needed */
+        }
+
+        .custom-button {
+            display: flex;
+            justify-content: center;
+        }
+
+        #product-container {
+            width: 100%;
+            height: auto;
+            margin-left: 4.5%;
+
+        }
+
+        #product-unggulan-container {
+            width: 100%;
+            height: auto;
+            margin-left: 4.5%;
+
+        }
+    }
+
     /* samsung galfold dual mode screen 512 */
     @media screen and (min-width: 512px) and (max-width: 512px) {
 
@@ -414,6 +462,20 @@ $countProduk = count($produk);
 
         .card-produk {
             width: 110px !important;
+            /* Mengisi lebar parent container */
+        }
+    }
+
+    @media (max-width: 344px) {
+
+        .susunan-card {
+            flex: 0 0 100% !important;
+            max-width: 50%;
+            left: 20px;
+        }
+
+        .card-produk {
+            width: 144px !important;
             /* Mengisi lebar parent container */
         }
     }
