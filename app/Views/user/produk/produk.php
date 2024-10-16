@@ -467,14 +467,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button class="btn btn-white text-danger border-danger mt-4 fw-bold" data-bs-toggle="modal" data-bs-target="#modalVarianBuy"><?= lang('Text.btn_beli') ?></button>
                         <?php elseif ($varianItem == 1) : ?>
                             <?php if ($useStock) : ?>
-                                <button type="button" class="btn btn-secondary text-white mt-4" disabled>Stok Tidak Tersedia</button>
+                                <button type="button" class="btn btn-secondary text-white mt-4 px-4" disabled>Stok Tidak Tersedia</button>
                             <?php else : ?>
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
-                                <button class="btn btn-white text-danger border-danger mt-4 d-inline add-to-cart-btn position-relative me-2" produk="<?= $produk['id_produk']; ?>">
-                                    <i class="bi bi-cart-fill"></i>
+                                <button class="btn btn-cart btn-white px-5  border-danger mt-4 d-inline add-to-cart-btn position-relative me-2" produk="<?= $produk['id_produk']; ?>">
+                                    <i class="bi bi-cart-fill"></i> Add To Cart
                                 </button>
-                                <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger mt-4 fw-bold"><?= lang('Text.btn_beli') ?></a>
+
                             <?php endif ?>
                         <?php endif ?>
                     </div>
@@ -574,9 +574,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             transition: all 0.3s ease;
         }
 
-        .add-to-cart-btn:hover {
+        .btn-cart:hover {
             /* Gaya tombol saat di-hover */
-            color: white;
+            color: #fff;
             /* warna teks saat di-hover */
             background-color: #cf362b;
             /* warna latar belakang saat di-hover */
