@@ -26,7 +26,7 @@ background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%
                 <div class="d-md-flex d-flex d-sm-flex justify-content-center align-items-center text-center">
                     <?php if (auth()->loggedIn()) : ?>
                         <div class="col-6 d-flex justify-content-start align-items-start">
-                            <i class="bi bi-pin-map pt-2 text-white" style="font-size: 12px;"></i>&nbsp;
+                            <i class="bi bi-house pt-2 text-white" style="font-size: 12px;"></i>&nbsp;
                             <a href="<?= base_url(); ?>setting/alamat-list" class="text-white pt-2 link-underline link-underline-opacity-0 alamat-list" style="font-size: 12px;">
                                 <?php
                                 $alamat = $alamat ?? 'Pilih Alamat';
@@ -310,7 +310,7 @@ background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%
         }
 
         /* end card zoom slider */
-        zoom slider */
+        /* zoom slider */
 
         /* Mengubah warna ikon saat dihover */
         .headerc__label i:hover {
