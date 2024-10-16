@@ -168,96 +168,102 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="card border-0 shadow mb-4">
-                            <div class="card-body text-center" style="height: 325px;">
+                    <!-- Profile Section -->
+                    <div class="col-lg-4 d-flex">
+                        <div class="card border-0 shadow mb-4 flex-fill">
+                            <div class="card-body text-center mt-5">
                                 <img src="<?= base_url() ?>assets/img/pic/<?= $user['img'] ?>" alt="profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px;">
-                                <h3 class="fw-bold  fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
+                                <h3 class="fw-bold fs-5"><?= lang('Text.welcome_setting') ?><?= $user['username']; ?></h3>
                                 <div class="row row-cols-1">
                                     <div class="col">
-                                        <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= $alamat ?> <i class="bi bi-chevron-down"></i></a>
+                                        <a href="<?= base_url(); ?>setting/alamat-list" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0">
+                                            <?= $alamat ?> <i class="bi bi-chevron-down"></i>
+                                        </a>
                                     </div>
                                     <div class="col pt-3">
-                                        <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0"><?= $marketSelected; ?> <i class="bi bi-chevron-down"></i></a>
+                                        <a role="button" data-bs-toggle="modal" data-bs-target="#selectMarket" class="link-secondary fw-bold pt-2 link-underline link-underline-opacity-0">
+                                            <?= $marketSelected; ?> <i class="bi bi-chevron-down"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-8">
-                        <div class="card border-0 shadow mb-4">
+
+                    <!-- Settings and Actions Section -->
+                    <div class="col-lg-8 d-flex">
+                        <div class="card border-0 shadow mb-4 flex-fill">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <!-- <div class="alert alert-danger rounded border-0" role="alert">
-                                        <div class="row">
-                                            <div class="col-1"><i class="bi bi-heart-pulse-fill text-danger fs-2 position-absolute top-50 start-0 translate-middle-y px-4"></i></div>
-                                            <div class="col-9 text-secondary fs-6"><?= lang('Text.alert') ?></div>
+                                        <div class="mb-3 border-0 rounded">
+                                            <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img mx-5">
+                                                    </div>
+                                                    <div class="col-9 mt-5 text-center">
+                                                        <h45 class="card-title text-dark"><?= lang('Text.judul_kupon') ?></h45>
+                                                        <p class="card-text text-secondary"><?= lang('Text.isi_kupon') ?></p>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </div> -->
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- User Settings -->
+                                    <div class="col-md-6 d-flex">
+                                        <div class="card border-0 shadow mb-4 flex-fill">
+                                            <div class="card-body">
+                                                <h3><?= lang('Text.setting') ?></h3>
+                                                <ul class="list-group list-group-flush">
+                                                    <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item fw-bold">
+                                                        <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?>
+                                                        <i class="bi bi-chevron-right position-absolute top-50 end-0 translate-middle-y"></i>
+                                                    </a>
+                                                    <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item fw-bold">
+                                                        <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?>
+                                                        <i class="bi bi-chevron-right position-absolute top-50 end-0 translate-middle-y"></i>
+                                                    </a>
+                                                    <a href="<?= base_url(); ?>logout" class="list-group-item fw-bold">
+                                                        <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> <?= lang('Text.logout') ?>
+                                                        <i class="bi bi-chevron-right position-absolute top-50 end-0 translate-middle-y"></i>
+                                                    </a>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3 border-0 rounded">
-                                                <a href="<?= base_url() ?>kupon" class="link-offset-2 link-underline link-underline-opacity-0">
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <img src="<?= base_url(); ?>assets/img/coupon.png" alt="" class="card-img">
-                                                        </div>
-                                                        <div class="col-9 mt-5 text-center">
-                                                            <h5 class="card-title text-dark"><?= lang('Text.judul_kupon') ?></h5>
-                                                            <p class="card-text text-secondary"><?= lang('Text.isi_kupon') ?></p>
-                                                        </div>
-                                                    </div>
-                                                </a>
+                                    <!-- Help Section -->
+                                    <div class="col-md-6 d-flex">
+                                        <div class="card border-0 shadow mb-4 flex-fill">
+                                            <div class="card-body">
+                                                <h3><?= lang('Text.bantuan') ?></h3>
+                                                <ul class="list-group list-group-flush">
+                                                    <a href="<?= base_url(); ?>history" class="list-group-item fw-bold">
+                                                        <i class="bi bi-clock-history pe-2 text-secondary"></i> <?= lang('Text.riwayat') ?>
+                                                        <i class="bi bi-chevron-right position-absolute top-50 end-0 translate-middle-y"></i>
+                                                    </a>
+                                                    <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item fw-bold">
+                                                        <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?>
+                                                        <i class="bi bi-chevron-right position-absolute top-50 end-0 translate-middle-y"></i>
+                                                    </a>
+                                                    <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item fw-bold">
+                                                        <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?>
+                                                        <i class="bi bi-chevron-right position-absolute top-50 end-0 translate-middle-y"></i>
+                                                    </a>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class=" row">
-                            <div class="col-md-6">
-                                <div class="card border-0 shadow mb-4 mb-md-0">
-                                    <div class="card-body">
-                                        <h3><?= lang('Text.setting') ?>
-                                        </h3>
-                                        <ul class="list-group list-group-flush">
-                                            <a href="<?= base_url(); ?>setting/detail-user" class="list-group-item pb-3 fw-bold">
-                                                <i class="bi bi-person-circle pe-2 text-secondary"></i> <?= lang('Text.detail_akun') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                            </a>
-                                            <a href="<?= base_url(); ?>setting/alamat-list" class="list-group-item pb-3 fw-bold">
-                                                <i class="bi bi-cursor pe-2 text-secondary"></i> <?= lang('Text.alamat_tersimpan') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                            </a>
-                                            <a href="<?= base_url(); ?>logout" class="list-group-item pb-3 fw-bold">
-                                                <i class="bi bi-box-arrow-right pe-2 text-secondary"></i> <?= lang('Text.logout') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                            </a>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card border-0 shadow mb-4 mb-md-0">
-                                    <div class="card-body">
-                                        <h3><?= lang('Text.bantuan') ?></h3>
-                                        <ul class="list-group list-group-flush">
-                                            <a href="<?= base_url(); ?>history" class="list-group-item pb-3 fw-bold">
-                                                <i class="bi bi-clock-history pe-2 text-secondary"></i> <?= lang('Text.riwayat') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                            </a>
-                                            <a href="<?= base_url(); ?>setting/sayo-care" class="list-group-item pb-3 fw-bold">
-                                                <i class="bi bi-question-circle pe-2 text-secondary"></i> <?= lang('Text.tentang') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                            </a>
-                                            <a href="<?= base_url(); ?>setting/kebijakan-privasi" class="list-group-item pb-3 fw-bold">
-                                                <i class="bi bi-lock pe-2 text-secondary"></i> <?= lang('Text.kebijakan_privasi') ?> <i class="bi bi-chevron-right fw-bolder position-absolute top-50 end-0 translate-middle-y"></i>
-                                            </a>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     <?php endif; ?>
