@@ -107,7 +107,7 @@
 
   .button-sampah {
     font-size: 13px;
-    left: 8%; 
+    transform: translateX(-391%);
     margin-top: -36px; 
   }
 
@@ -172,7 +172,7 @@
 
   .button-sampah {
     font-size: 20px;
-    left: 25%;
+    transform: translateX(-391%);
     margin-top: -34px;
   }
 
@@ -360,7 +360,7 @@
 
   .button-sampah {
     font-size: 18px;
-    left: 8%; 
+    transform: translateX(-391%);
     margin-top: -36px; 
   }
 }
@@ -407,7 +407,7 @@
 
   .button-sampah {
     font-size: 24px;
-    left: 8%; 
+    transform: translateX(-391%);
     margin-top: -36px; 
   }
 }
@@ -452,8 +452,8 @@
 
   .button-sampah {
     font-size: 20px;
-    left: 8%; 
-    margin-top: -36px; 
+    transform: translateX(-391%);
+    margin-top: -34px; 
   }
 }
 
@@ -495,7 +495,7 @@
 
   .button-sampah {
     font-size: 24px;
-    left: 37%; 
+    transform: translateX(-391%);
     margin-top: -34px; 
   }
 }
