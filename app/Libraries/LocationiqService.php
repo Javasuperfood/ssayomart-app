@@ -2,7 +2,7 @@
 
 namespace App\Libraries;
 
-use Config\Locationiq;
+use Config\LocationIQ;
 use GuzzleHttp\Client;
 
 class LocationiqService
