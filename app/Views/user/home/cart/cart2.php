@@ -124,7 +124,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <?php endforeach; ?>
                     </div>
                 </form>
-                <div style="background-color: #ffff; z-index:100" class="fixed-bottom mb-5 row p-3 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
+                <div style="background-color: #ffff; z-index:100" class="fixed-bottom mb-5 row p-3 mx-1 px-4 <?= (!$produk) ? 'd-none' : ''; ?>">
                     <div class="col d-flex justify-content-center">
                         <button id="btnCheckout" class="btn btn-lg fw-bold" style="background-color: #ec2614; color: #fff; width: 60%; font-size: 13px"><?= lang('Text.btn_checkout') ?></button>
                     </div>

@@ -127,7 +127,7 @@
 }
 
 .text-pixel {
-  padding-left: 10%;
+  transform: translateX(11%);
 }
 
   .gambar-kecil {
@@ -143,7 +143,7 @@
   }
   .input-group.grup-masukan {
     justify-content: end;
-    right: 26% !important;
+    transform: translateX(11%);
   }
  
  .form-masuk {
@@ -172,7 +172,7 @@
 
   .button-sampah {
     font-size: 20px;
-    transform: translateX(-391%);
+    transform: translateX(-283%);
     margin-top: -34px;
   }
 
@@ -207,6 +207,47 @@
     border-radius: 50%;
     display: none;
   }
+}
+@media screen and (min-width: 690px) and (max-width: 690px) {
+
+  .button-sampah {
+    font-size: 18px;
+    transform: translateX(-779%);
+    margin-top: -36px; 
+  }
+
+  .btn-dash, .btn-plus {
+    /* width: 15px;
+          height: 15px; */
+    border-radius: 50%;
+    background-color: transparent; 
+    color: #dc3545; 
+    border: 1px solid #dc3545; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+  }
+      .input-group.grup-masukan {
+      justify-content: end;
+    }
+   
+   .form-masuk {
+      max-width: 40px;
+    }
+    .grup-masukan {
+      margin-top: 29px; /
+    
+    }
+    .form-check-input{
+    padding: 9px 9px;
+  }
+  
+    .btn-dash,
+    .btn-plus,
+    .form-masuk {
+      margin: 0;
+    }
 }
 
 /* Media query untuk layar Surface Duo dengan lebar layar 540px */
@@ -413,7 +454,7 @@
 }
 
 /* untuk samsung galaxy s8 */
-@media screen and (min-width: 360px) and (max-width: 740px) {
+@media screen and (min-width: 360px) and (max-width: 460px) {
     /* .gambar-kecil {
     margin-left: 65px !important;
   */
