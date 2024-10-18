@@ -36,24 +36,22 @@ class ShieldOAuthConfig extends OAuthConfig
             'client_id' => 'com.javasuperfood.ssayomartappready',
             'client_secret' => 'MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgS1qD8Va17RW9V/hWX03epgnywCNyLORLw6czCfmNIH2gCgYIKoZIzj0DAQehRANCAATGklWQ21dME3qG4biJGPrD3qV4PhScANaWlH4gGqhrfHWfOXWCIqfGVTU1h4i9T16AyBLroThTdwppze7ujvyU',
 
-            'allow_login' => true,
+            'allow_login' => false,
         ],
         'glogin' => [
             'client_id' => '135742094966-9h1b1s5uts52mm0tb7i9bnsba5bt163e.apps.googleusercontent.com',
             'client_secret' => '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',
-
             'allow_login' => true,
+            'allow_register' => true,
         ],
         'google' => [
             'client_id' => 'Get it from Google',
             'client_secret' => 'Get it from Google',
-
             'allow_login' => false,
         ],
         'github' => [
             'client_id'     => 'Get it from GitHub',
             'client_secret' => 'Get it from GitHub',
-
             'allow_login' => false,
         ],
 
