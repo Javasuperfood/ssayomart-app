@@ -62,7 +62,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php else : ?>
 
     <div id="desktopContent">
-
+        <div class="footer-search" id="navbarBottom" style="position: relative; bottom: 0; width: 100%;">
+            <?= $this->include('user/home/component/navbarBottom') ?>
+        </div>
     </div>
 <?php endif; ?>
 
