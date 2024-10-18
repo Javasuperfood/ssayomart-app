@@ -12,12 +12,14 @@ class AlterProduk_bahasa extends Migration
             'nama_en' => [
                 'type'           => 'varchar',
                 'constraint'     => 255,
-                'after'          => 'nama'
+                'after'          => 'nama',
+                'null'           => true,
             ],
             'nama_kr' => [
                 'type'           => 'varchar',
                 'constraint'     => 255,
-                'after'          => 'nama_en'
+                'after'          => 'nama_en',
+                'null'           => true,
             ],
         ];
         $this->forge->addColumn('jsf_produk', $fields);
