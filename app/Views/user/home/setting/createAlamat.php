@@ -17,9 +17,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="container text-secondary" style="font-size: 12px;">
                         <div class="row mb-3">
                             <div class="col-12">
-                                <div class="input-group ">
-                                    <input type="text" id="searchAddress" class="form-control border-0 shadow-sm rounded-0 rounded-start-5" placeholder="Cari Alamat" />
-                                    <button type="button" id="searchBtn" class="btn btn-white border-0 shadow-sm rounded-0 rounded-end-5">
+                                <div class="input-group rounded-5 shadow-sm">
+                                    <input type="text" id="searchAddress" class="form-control border-0   rounded-start-5" placeholder="Cari Alamat" />
+                                    <button type="button" id="searchBtn" class="btn btn-white border-0  rounded-end-5">
                                         <i class="bi bi-search text-danger"></i>
                                     </button>
                                 </div>
