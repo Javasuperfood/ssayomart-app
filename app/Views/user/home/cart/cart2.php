@@ -172,9 +172,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="col-lg-7">
                                         <h3 class="fw-bold mb-3 text-center"><i class="fs-1 bi bi-bag-heart text-danger"></i> <?= lang('Text.title_cart') ?></h3>
                                         <hr class="mb-3 border-danger" style="border-width: 3px;">
-                                        <div class="d-flex justify-content-between mb-3">
-                                            <button id="selectAllDesktop" class="btn btn-outline-danger">Select All</button>
 
+                                        <div class="row mt-3">
+                                            <div class="col-12 d-flex gap-2">
+                                                <?php if ($produk) : ?>
+                                                    <button id="selectAllDesktop" class="btn btn-outline-danger btn-sm btn-icon">
+                                                        <i class="bi bi-check-circle"></i> Select
+                                                    </button>
+                                                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteProducts()"><i class="bi bi-trash"></i> <?= lang('Text.btn_hapus') ?></button>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
 
                                         <?php foreach ($produk as $p) : ?>
@@ -312,17 +319,21 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             });
 
             $('#selectAllDesktop').click(function(e) {
-                e.preventDefault(); // Mencegah submit form
-                console.log('Tombol Select All di klik');
-                var allChecked = $('input[name="check[]"]').length === $('input[name="check[]"]:checked').length;
-                console.log('Semua checkbox tercentang:', allChecked);
-
-                if (allChecked) {
-                    $('input[name="check[]"]').prop('checked', false).trigger('change');
-                    $(this).text('Select All');
+                e.preventDefault();
+                if ($(this).text().trim() === 'Select') {
+                    $('input[name="check[]"]').each(function() {
+                        if (!$(this).is(':disabled')) {
+                            $(this).prop('checked', true);
+                            $(this).trigger('change');
+                        }
+                    });
+                    $(this).text('Cancel Select');
                 } else {
-                    $('input[name="check[]"]').prop('checked', true).trigger('change');
-                    $(this).text('Deselect All');
+                    $('input[name="check[]"]').prop('checked', false);
+                    produkSelected = {};
+                    totalA(produkSelected);
+                    checkInputs();
+                    $(this).text('Select');
                 }
             });
 
@@ -405,23 +416,26 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             if (checkbox.checked) {
                 produkSelected[checkbox.value] = harga;
                 $("#tablePoint").append(`
-    <tr id="tr${checkbox.value}">
-        <td>
-            <p>${produk}</p>
-        </td>
-        <td>
-            <p id="textQty${checkbox.value}">${qty}</p>
-        </td>
-        <td>
-            <p id="textHargaItem${checkbox.value}">${formatRupiah(harga)}</p>
-        </td>
-    </tr>
+                    <tr id="tr${checkbox.value}">
+                        <td>
+                            <p>${produk}</p>
+                        </td>
+                        <td>
+                            <p id="textQty${checkbox.value}">${qty}</p>
+                        </td>
+                        <td>
+                            <p id="textHargaItem${checkbox.value}">${formatRupiah(harga)}</p>
+                        </td>
+                    </tr>
     `)
             } else {
                 $("#tr" + checkbox.value).remove();
                 delete produkSelected[checkbox.value];
+
             }
             totalA(produkSelected);
+
+
         }
 
         function totalA(selectedProducts) {
