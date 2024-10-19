@@ -164,7 +164,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         <div class="container h-100" style="padding-top : 175px;">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col">
-                    <div class="card border-0 shadow-sm rounded-4">
+                    <div class="card border-0  rounded-4">
                         <div class="card-body p-4">
                             <form id="formCheckout" action="<?= base_url('checkout-cart'); ?>" method="GET">
                                 <?= csrf_field(); ?>
@@ -172,8 +172,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="col-lg-7">
                                         <h3 class="fw-bold mb-3 text-center"><i class="fs-1 bi bi-bag-heart text-danger"></i> <?= lang('Text.title_cart') ?></h3>
                                         <hr class="mb-3 border-danger" style="border-width: 3px;">
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <button id="selectAllDesktop" class="btn btn-outline-danger">Select All</button>
+
+                                        </div>
+
                                         <?php foreach ($produk as $p) : ?>
-                                            <div class="card border-0 shadow-sm rounded-3 mb-3">
+                                            <div class="card border border-secondary  border-opacity-10 rounded-3 mb-3">
                                                 <div class="card-body">
                                                     <div class="d-flex flex-row align-items-center justify-content-between">
                                                         <div class="form-check" style="font-size: 20px; margin: 0;">
@@ -225,7 +230,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     </div>
                                     <!-- right side div -->
                                     <div class="col-md-12 col-lg-4 col-11 mx-auto mt-lg-0 mt-md-5">
-                                        <div class="right-side p-3 border-0 shadow-sm rounded-3 bg-white">
+                                        <div class="right-side p-3 border border-secondary border-opacity-10 shadow-sm rounded-3 bg-white">
                                             <h5 class="fw-bold mb-5 text-center"><?= lang('Text.title_cart') ?></h5>
 
                                             <div class="d-flex justify-content-between">
@@ -305,6 +310,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     $(this).text('Select');
                 }
             });
+
+            $('#selectAllDesktop').click(function(e) {
+                e.preventDefault(); // Mencegah submit form
+                console.log('Tombol Select All di klik');
+                var allChecked = $('input[name="check[]"]').length === $('input[name="check[]"]:checked').length;
+                console.log('Semua checkbox tercentang:', allChecked);
+
+                if (allChecked) {
+                    $('input[name="check[]"]').prop('checked', false).trigger('change');
+                    $(this).text('Select All');
+                } else {
+                    $('input[name="check[]"]').prop('checked', true).trigger('change');
+                    $(this).text('Deselect All');
+                }
+            });
+
+
         });
 
         // Generate URL for checkout
