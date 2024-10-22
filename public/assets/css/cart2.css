@@ -3,47 +3,47 @@
 
 
 /* untuk desktop */
-  .item-kosong {
-    position: absolute;
-    top: 44px;
-    left: 69px;
-    width: 6%;
-    height: 32%;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 50%;
-  }
-
-  .ceklis-tombol:hover {
-    transition: transform 0.3s ease-in-out;
-    transform: scale(1.1);
+.item-kosong {
+  position: absolute;
+  top: 44px;
+  left: 69px;
+  width: 6%;
+  height: 32%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
 }
 
-  .tombol-hapus__dekstop:hover {
-    transition: transform 0.3s ease-in-out;
-    transform: scale(1.1);
+.ceklis-tombol:hover {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.1);
+}
+
+.tombol-hapus__dekstop:hover {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1.1);
 }
 
 .tombol-hapus__dekstop:hover i {
-    color: #ce2614 !important;
-    transition: transform 0.3s ease-in-out;
+  color: #ce2614 !important;
+  transition: transform 0.3s ease-in-out;
 }
 /* end deksstop */
 
 .item-item {
-  position: absolute;
-  top: 44px;
-  left: 62px;
-  width: 42%;
-  height: 32%;
-  background-color: rgba(0, 0, 0, 0.7); 
-  border-radius: 50%;
-  display: none;
+position: absolute;
+top: 44px;
+left: 62px;
+width: 42%;
+height: 32%;
+background-color: rgba(0, 0, 0, 0.7); 
+border-radius: 50%;
+display: none;
 }
 
 .sold-out-text {
-  color: white;
-  font-weight: bold;
-  font-size: 9px;
+color: white;
+font-weight: bold;
+font-size: 9px;
 }
 
 /* Media query for screens with a maximum width of 280px (Samsung Galaxy Fold) */
@@ -51,68 +51,69 @@
 @media screen  and (max-width: 280px) {
 /* stok habis overlay */
 .item-item {
-  position: absolute;
-  top: 50px;
-  left: 49px;
-  width: 57%;
-  height: 33%;
-  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-  border-radius: 50%;
-  display: none;
+position: absolute;
+top: 50px;
+left: 49px;
+width: 57%;
+height: 33%;
+background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+border-radius: 50%;
+display: none;
 }
 
 .text-pixel {
-  padding-left: 10%;
+padding-left: 10%;
 }
 
-  .gambar-kecil {
-    max-height: 90px !important;
-    /* Sesuaikan tinggi maksimum yang Anda inginkan */
-    max-width: 90px !important;
-    /* Biarkan lebar gambar menyesuaikan */
-    margin-top: -3px !important;
-    /* margin-left: 68px !important; */
-    
-    /* margin: 25px 0 25px auto !important; */
-    /* Geser gambar ke tengah kanan */
-  }
-  .input-group.grup-masukan {
-    justify-content: end;
-    right: 26% !important;
-  }
- 
- .form-masuk {
-    max-width: 30px;
-    
-  }
-  .grup-masukan {
-    margin-top: 29px; 
-    
+.gambar-kecil {
+  max-height: 90px !important;
+  /* Sesuaikan tinggi maksimum yang Anda inginkan */
+  max-width: 90px !important;
+  /* Biarkan lebar gambar menyesuaikan */
+  margin-top: -3px !important;
+  /* margin-left: 68px !important; */
+  
+  /* margin: 25px 0 25px auto !important; */
+  /* Geser gambar ke tengah kanan */
+}
+.input-group.grup-masukan {
+  justify-content: end;
+  right: 26% !important;
+}
 
-  }
+.form-masuk {
+  max-width: 30px;
+  
+}
+.grup-masukan {
+  margin-top: 29px; 
+  
+
+}
 
 .btn-dash, .btn-plus {
-  width: 25px; 
-  height: 25px; 
-  border-radius: 50%;
-  background-color: transparent; 
-  color: #dc3545; 
-  border: 1px solid #dc3545; 
-  cursor: pointer; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+width: 25px; 
+height: 25px; 
+border-radius: 50%;
+background-color: transparent; 
+color: #dc3545; 
+border: 1px solid #dc3545; 
+cursor: pointer; 
+display: flex; 
+align-items: center; 
+justify-content: center; 
 }
 
 
-  .button-sampah {
-    font-size: 13px;
-    transform: translateX(-391%);
-    margin-top: -36px; 
-  }
-
-  /* Add specific CSS styles for the delete button if needed */
+.button-sampah {
+  font-size: 13px;
+  transform: translateX(-391%);
+  margin-top: -36px; 
 }
+
+/* Add specific CSS styles for the delete button if needed */
+}
+
 @media screen  and (min-width: 344px) and (max-width: 344px) {
 /* stok habis overlay */
 .item-item {
@@ -178,18 +179,19 @@
 
   /* Add specific CSS styles for the delete button if needed */
 }
+
 /* Media query untuk layar galaxy-fold dengan lebar maksimum 653px dan tinggi maksimum 280px */
 @media screen and (max-width: 653px) and (max-height: 280px) {
- /* stok habis overlay */
+/* stok habis overlay */
 .item-item {
-  position: absolute;
-  top: 44px;
-  left: 77px;
-  width: 42%;
-  height: 45%;
-  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-  border-radius: 50%;
-  display: none;
+position: absolute;
+top: 44px;
+left: 77px;
+width: 42%;
+height: 45%;
+background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+border-radius: 50%;
+display: none;
 }
 
 }
@@ -197,118 +199,77 @@
 /* Media query untuk layar galaxy-fold dengan lebar maksimum 512px dan tinggi maksimum 717px */
 @media screen and (min-width: 512px) and (max-width: 512px) {
 
-  .item-item {
-    position: absolute;
-    top: 48px;
-    left: 80px;
-    width: 35%;
-    height: 36%;
-    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-    border-radius: 50%;
-    display: none;
-  }
+.item-item {
+  position: absolute;
+  top: 48px;
+  left: 80px;
+  width: 35%;
+  height: 36%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
 }
-@media screen and (min-width: 690px) and (max-width: 690px) {
-
-  .button-sampah {
-    font-size: 18px;
-    transform: translateX(-779%);
-    margin-top: -36px; 
-  }
-
-  .btn-dash, .btn-plus {
-    /* width: 15px;
-          height: 15px; */
-    border-radius: 50%;
-    background-color: transparent; 
-    color: #dc3545; 
-    border: 1px solid #dc3545; 
-    cursor: pointer; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-  }
-      .input-group.grup-masukan {
-      justify-content: end;
-    }
-   
-   .form-masuk {
-      max-width: 40px;
-    }
-    .grup-masukan {
-      margin-top: 29px; /
-    
-    }
-    .form-check-input{
-    padding: 9px 9px;
-  }
-  
-    .btn-dash,
-    .btn-plus,
-    .form-masuk {
-      margin: 0;
-    }
 }
 
 /* Media query untuk layar Surface Duo dengan lebar layar 540px */
 @media screen and (min-width: 540px) and (max-width: 540px) {
 /* stok habis overlay */
-  .item-item {
-    position: absolute;
-    top: 48px;
-    left: 83px;
-    width: 35%;
-    height: 36%;
-    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-    border-radius: 50%;
-    display: none;
-  }
+.item-item {
+  position: absolute;
+  top: 48px;
+  left: 83px;
+  width: 35%;
+  height: 36%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
 }
 
 /* Media query untuk layar galaxy-fold dengan lebar maksimum 717px dan tinggi maksimum 512px */
 @media screen and (max-width: 717px) and (max-height: 512px) {
- /* stok habis overlay */
+/* stok habis overlay */
 .sold-out-overlay {
-  position: absolute;
-  top: 44px;
-  left: 77px;
-  width: 42%;
-  height: 45%;
-  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-  border-radius: 50%;
-  display: none;
+position: absolute;
+top: 44px;
+left: 77px;
+width: 42%;
+height: 45%;
+background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+border-radius: 50%;
+display: none;
 }
 
 }
 
 /* media screen untuk samsung galaxy S8+ lebar layar 740 */
 @media screen and (min-width: 740px) and (max-width: 740px) {
- /* stok habis overlay */
+/* stok habis overlay */
 .sold-out-overlay {
-  position: absolute;
-  top: 44px;
-  left: 77px;
-  width: 42%;
-  height: 45%;
-  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-  border-radius: 50%;
-  display: none;
+position: absolute;
+top: 44px;
+left: 77px;
+width: 42%;
+height: 45%;
+background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+border-radius: 50%;
+display: none;
 }
 
 }
 
 /* media screen untuk samsung galaxy S20 Ultra lebar layar 915 */
 @media screen and (min-width: 915px) and (max-width: 915px) {
- /* stok habis overlay */
+/* stok habis overlay */
 .sold-out-overlay {
-  position: absolute;
-  top: 44px;
-  left: 105px;
-  width: 32%;
-  height: 45%;
-  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-  border-radius: 50%;
-  display: none;
+position: absolute;
+top: 44px;
+left: 105px;
+width: 32%;
+height: 45%;
+background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+border-radius: 50%;
+display: none;
 }
 
 
@@ -316,227 +277,227 @@
 
 /* media screen untuk ipad air lebar layar 820px */
 @media screen and (min-width: 820px) and (max-width: 820px) {
- /* stok habis overlay */
+/* stok habis overlay */
 .sold-out-overlay {
-  position: absolute;
-  top: 44px;
-  left: 108px;
-  width: 30%;
-  height: 45%;
-  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-  border-radius: 50%;
-  display: none;
+position: absolute;
+top: 44px;
+left: 108px;
+width: 30%;
+height: 45%;
+background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+border-radius: 50%;
+display: none;
 }
 
 }
 /* CSS untuk tombol Scroll Up */
 #buttonAtas {
-  display: none;
-  position: fixed;
-  bottom: 61px;
-  right: 20px;
-  width: 20px;
-  height: 40px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 200;
-  background-color: #ec2614;
+display: none;
+position: fixed;
+bottom: 61px;
+right: 20px;
+width: 20px;
+height: 40px;
+padding: 10px 20px;
+border: none;
+border-radius: 50%;
+cursor: pointer;
+z-index: 200;
+background-color: #ec2614;
 }
 
 /* button pilih objek radio */
 .form-check-input:focus {
-  border-color: #ec2614;
-  outline: 0;
-  box-shadow: 0 0 0 0;
+border-color: #ec2614;
+outline: 0;
+box-shadow: 0 0 0 0;
 }
 
 .form-check-input:checked {
-  background-color: #ec2614;
-  border-color: #ec2614;
+background-color: #ec2614;
+border-color: #ec2614;
 }
 
 
 .button-klik[type="radio"] {
-  border-radius: 50%;
+border-radius: 50%;
 }
 
 .form-check-input:active {
-  filter: brightness(90%);
+filter: brightness(90%);
 }
 
 .form-check-input[type="checkbox"]:indeterminate {
-  background-color: #ec2614;
-  border-color: #ec2614;
+background-color: #ec2614;
+border-color: #ec2614;
 }
 
 /* Untuk layar dengan lebar antara 1024px dan 1366px */
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
 
-  .input-group.grup-masukan {
-    justify-content: center;
-  }
-
-  .btn-dash,
-  .btn-plus,
-  .form-masuk {
-    margin: 0;
-  }
-
-  .form-masuk {
-    max-width: 40px;
-  }
-
-  .item-item {
-    position: absolute;
-    top: 44px;
-    left: 119px;
-    width: 21%;
-    height: 42%;
-    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-    border-radius: 50%;
-    display: none;
-  }
-
-  .button-sampah {
-    font-size: 18px;
-    transform: translateX(-391%);
-    margin-top: -36px; 
-  }
+.input-group.grup-masukan {
+  justify-content: center;
 }
 
+.btn-dash,
+.btn-plus,
+.form-masuk {
+  margin: 0;
+}
 
-@media screen and (min-width: 320px) and (max-width: 320px) {
+.form-masuk {
+  max-width: 40px;
+}
 
-
-  .btn-dash, .btn-plus {
-  /* width: 30px; 
-    height: 30px;  */
+.item-item {
+  position: absolute;
+  top: 44px;
+  left: 119px;
+  width: 21%;
+  height: 42%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
   border-radius: 50%;
-  background-color: transparent; 
-  color: #dc3545; 
-  border: 1px solid #dc3545; 
-  cursor: pointer; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
-}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                /* .gambar-kecil {
-    margin-left: 65px !important;
-  */
-    .input-group.grup-masukan {
-    justify-content: end;
-  }
- 
- .form-masuk {
-    max-width: 40px;
-  }
-  .grup-masukan {
-    margin-top: 29px; /
-  
-  }
-  .form-check-input{
-  padding: 10px 10px;
+  display: none;
 }
 
-  .btn-dash,
-  .btn-plus,
-  .form-masuk {
-    margin: 0;
-  }
-
-  .button-sampah {
-    font-size: 24px;
+.button-sampah {
+  font-size: 18px;
     transform: translateX(-391%);
-    margin-top: -36px; 
-  }
+    margin-top: -36px;  
+}
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 932px) {
+
+
+.btn-dash, .btn-plus {
+/* width: 30px; 
+  height: 30px;  */
+border-radius: 50%;
+background-color: transparent; 
+color: #dc3545; 
+border: 1px solid #dc3545; 
+cursor: pointer; 
+display: flex; 
+align-items: center; 
+justify-content: center; 
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* .gambar-kecil {
+  margin-left: 65px !important;
+*/
+  .input-group.grup-masukan {
+  justify-content: end;
+}
+
+.form-masuk {
+  max-width: 40px;
+}
+.grup-masukan {
+  margin-top: 29px; /
+
+}
+.form-check-input{
+padding: 10px 10px;
+}
+
+.btn-dash,
+.btn-plus,
+.form-masuk {
+  margin: 0;
+}
+
+.button-sampah {
+  font-size: 24px;
+  transform: translateX(-227%);
+  margin-top: -36px; 
+}
 }
 
 /* untuk samsung galaxy s8 */
-@media screen and (min-width: 360px) and (max-width: 460px) {
-    /* .gambar-kecil {
-    margin-left: 65px !important;
-  */
-  .btn-dash, .btn-plus {
-  /* width: 15px;
-        height: 15px; */
-  border-radius: 50%;
-  background-color: transparent; 
-  color: #dc3545; 
-  border: 1px solid #dc3545; 
-  cursor: pointer; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+@media screen and (min-width: 360px) and (max-width: 740px) {
+  /* .gambar-kecil {
+  margin-left: 65px !important;
+*/
+.btn-dash, .btn-plus {
+/* width: 15px;
+      height: 15px; */
+border-radius: 50%;
+background-color: transparent; 
+color: #dc3545; 
+border: 1px solid #dc3545; 
+cursor: pointer; 
+display: flex; 
+align-items: center; 
+justify-content: center; 
 }
-    .input-group.grup-masukan {
-    justify-content: end;
-  }
- 
- .form-masuk {
-    max-width: 40px;
-  }
-  .grup-masukan {
-    margin-top: 29px; /
-  
-  }
-  .form-check-input{
-  padding: 9px 9px;
+  .input-group.grup-masukan {
+  justify-content: end;
 }
 
-  .btn-dash,
-  .btn-plus,
-  .form-masuk {
-    margin: 0;
-  }
+.form-masuk {
+  max-width: 40px;
+}
+.grup-masukan {
+  margin-top: 29px; /
 
-  .button-sampah {
-    font-size: 20px;
-    transform: translateX(-391%);
-    margin-top: -34px; 
-  }
+}
+.form-check-input{
+padding: 9px 9px;
+}
+
+.btn-dash,
+.btn-plus,
+.form-masuk {
+  margin: 0;
+}
+
+.button-sampah {
+  font-size: 20px;
+  transform: translateX(-391%);
+  margin-top: -34px; 
+}
 }
 
 /* untuk ipad  */
 
 @media screen and (min-width: 768px) and (max-width: 768px) {
 
-  .item-item {
-    position: absolute;
-    top: 44px;
-    left: 119px;
-    width: 21%;
-    height: 32%;
-    background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
-    border-radius: 50%;
-    display: none;
-  }
-  
-    .input-group.grup-masukan {
-    justify-content: end;
-  }
- 
- .form-masuk {
-    max-width: 40px;
-  }
-  .grup-masukan {
-    margin-top: 29px; /
-  
-  }
-  .form-check-input{
-  padding: 10px 10px;
+.item-item {
+  position: absolute;
+  top: 44px;
+  left: 119px;
+  width: 21%;
+  height: 32%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
 }
 
-  .btn-dash,
-  .btn-plus,
-  .form-masuk {
-    margin: 0;
-  }
+  .input-group.grup-masukan {
+  justify-content: end;
+}
 
-  .button-sampah {
-    font-size: 24px;
-    transform: translateX(-391%);
-    margin-top: -34px; 
-  }
+.form-masuk {
+  max-width: 40px;
+}
+.grup-masukan {
+  margin-top: 29px; /
+
+}
+.form-check-input{
+padding: 10px 10px;
+}
+
+.btn-dash,
+.btn-plus,
+.form-masuk {
+  margin: 0;
+}
+
+.button-sampah {
+  font-size: 24px;
+  transform: translateX(-637%);
+  margin-top: -34px; 
+}
 }
