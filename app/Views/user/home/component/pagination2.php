@@ -14,10 +14,6 @@ $countProduk = count($produk);
     var page = 1; // Halaman awal
     var isLoading = false;
     var keyword = '';
-    const urlParams = new URLSearchParams(location.search);
-    if (urlParams.has('produk')) {
-        keyword = urlParams.get('produk');
-    }
     var productContainer = $("#product-container");
     var cardLoader = `<div class="col-4 col-md-2 col-lg-2 mb-3 susunan-card" id="cardLoader">
     <div class="">
