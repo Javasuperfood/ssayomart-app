@@ -44,7 +44,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <script>
-        var mySwiper = new Swiper('.mySwiper', {
+        var mySwiper = ('.mySwiper', {
             slidesPerView: 1,
             spaceBetween: 10,
             navigation: {
