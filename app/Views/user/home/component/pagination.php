@@ -10,7 +10,10 @@ $countProduk = count($produk);
     var page = 1; // Halaman awal
     var isLoading = false;
     var keyword = '';
-
+    const urlParams = new URLSearchParams(location.search);
+    if (urlParams.has('produk')) {
+        keyword = urlParams.get('produk');
+    }
     var productContainer = $("#product-container");
     var cardLoader = `<div class="col-6 col-md-4 col-lg-3 mb-2 mx-0" id="cardLoader">
                 <div class="card pagination-card border-0 shadow-sm text-center" style="width: auto; height: 100%; padding: 5px;">
