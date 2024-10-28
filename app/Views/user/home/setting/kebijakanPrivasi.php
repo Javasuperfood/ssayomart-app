@@ -19,7 +19,6 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="tab-3" data-toggle="tab" href="#tab-content-3" role="tab" aria-controls="tab-content-2" aria-selected="false">T&C</a>
                 </li>
-
             </ul>
             <!-- Tabs navs -->
 
@@ -128,32 +127,28 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     $(this).tab('show');
                 });
 
-                // Mengaktifkan efek slide
-                $('#myTabs a').on('shown.bs.tab', function(e) {
-                    var targetTab = $(e.target).attr('href');
-                    $('html, body').animate({
-                        scrollTop: $(targetTab).offset().top
-                    }, 3100); // Mengatur kecepatan animasi slide (dalam milidetik)
-                });
+
+
             });
         </script>
         <!-- end -->
 
         <style>
-/* samsung galaxy s8+ & huawei P30 PRO kebijakan privasi */
-         @media screen and (min-width: 360px) and (max-width: 360px) {
-.font-custom {
-    font-size: 0.8em;
+            /* samsung galaxy s8+ & huawei P30 PRO kebijakan privasi */
+            @media screen and (min-width: 360px) and (max-width: 360px) {
+                .font-custom {
+                    font-size: 0.8em;
 
-}
-}
-/* iphone se (2016) dan iphone 5 */
-         @media screen and (min-width: 320px) and (max-width: 320px) {
-.font-custom {
-    font-size: 0.8em;
+                }
+            }
 
-}
-}
+            /* iphone se (2016) dan iphone 5 */
+            @media screen and (min-width: 320px) and (max-width: 320px) {
+                .font-custom {
+                    font-size: 0.8em;
+
+                }
+            }
 
 
 
@@ -220,13 +215,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     </div>
 <?php else : ?>
     <!-- Desktop View -->
-   
+
     <!--start cdn buat bugs tabs di desktop view gak jalan -->
 
-<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- end cdn buat bugs tabs di desktop view gak jalan -->
 
     <div id="desktopContent" style="margin-top:150px;">
@@ -344,16 +339,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         </div>
 
         <style>
-                   /* style tabs untuk dimensi layar desktop width 417px - 1199px */
+            /* style tabs untuk dimensi layar desktop width 417px - 1199px */
             @media screen and (min-width: 417px) and (max-width: 1199px) {
-  
-    .tabs-margin {
-        margin-top: 170px;
 
-    }
-}
-  /*akhir style tabs untuk dimensi layar desktop */
-            
+                .tabs-margin {
+                    margin-top: 170px;
+
+                }
+            }
+
+            /*akhir style tabs untuk dimensi layar desktop */
+
             /* Gaya untuk tab aktif (hanya garis bawah merah) */
             .nav-link.active {
                 border: none;
@@ -367,9 +363,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             /* css remove efek hover buat tabs desktop view */
-              #myTabs .nav-link:hover {
-            color: black !important;
-           }
+            #myTabs .nav-link:hover {
+                color: black !important;
+            }
+
             /* css remove efek hover buat tabs desktop view */
 
             /* Gaya untuk tab non-aktif */
