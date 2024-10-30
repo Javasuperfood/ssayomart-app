@@ -204,9 +204,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             <?php endforeach; ?>
             <?php if (empty($transaksi)) : ?>
                 <div class="row pb-5 text-center">
-                    <div class="col">
+                    <div class="col-12">
                         <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
-                            <img src="assets/img/history/history.jpeg" class="img-history coupon-opacity" alt="...">
+                            <img src="assets/img/history/history.jpeg" class="img-fluid img-history coupon-opacity" alt="...">
                             <h5 class="coupon-opacity fs-kupon">Transaksi anda kosong</h5>
                         </div>
                     </div>
@@ -248,9 +248,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
         /* Besar (lg) */
         @media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-            .img-history {
-                width: 250px;
-            }
+
 
             .fs-kupon {
                 font-size: 65px;
@@ -287,6 +285,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         }
     </style>
     <!-- END STYLE SLIDER -->
+
+    <style>
+        /* Untuk layar dengan lebar maksimum 1366px */
+        @media (max-width: 1366px) {
+
+
+            .img-history {
+                width: 50%;
+                /* Ukuran gambar lebih kecil */
+            }
+
+            .fs-kupon {
+                font-size: 3rem;
+                /* Sesuaikan ukuran font */
+            }
+        }
+    </style>
 
     <!-- script slider -->
     <script>

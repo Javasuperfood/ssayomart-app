@@ -1,6 +1,6 @@
 // Slider Banner Awal Promosi Homepage All Device
-var swiper = new Swiper(".mySwiper", {
-  slidesPerView: 2, // Mengatur agar selalu ada 2 slide yang terlihat
+var swiper = new Swiper(".mySwiperBanner", {
+  slidesPerView: 1, // Mengatur agar selalu ada 2 slide yang terlihat
   centeredSlides: true,
   spaceBetween: 10,
   grabCursor: true,
@@ -16,8 +16,7 @@ var swiper = new Swiper(".mySwiper", {
   breakpoints: {
     // Tampilan iPad (lebar >= 768px)
     1280: {
-      slidesPerView: 2, // 3 card per tampilan
-
+      slidesPerView: 1, // 3 card per tampilan
     },
     // Tampilan iPad (lebar >= 768px)
     768: {
@@ -32,11 +31,10 @@ var swiper = new Swiper(".mySwiper", {
     },
   },
   navigation: {
-    nextEl: '.button-next',
-    prevEl: '.button-prev',
-},
-
-  });
+    nextEl: ".button-next",
+    prevEl: ".button-prev",
+  },
+});
 
   // Slider Banner ke 2 Promosi All Produk 
 var swiper = new Swiper(".myBanner", {
