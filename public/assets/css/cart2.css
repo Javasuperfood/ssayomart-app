@@ -366,6 +366,22 @@ border-color: #ec2614;
     margin-top: -36px;  
 }
 }
+@media screen and (min-width: 1366px) and (max-width: 1366px) {
+
+.btn-dash,
+.btn-plus,
+.form-masuk {
+  width: 30px !important;
+  height: 30px !important;
+}
+
+.button-sampah {
+  font-size: 24px;
+  transform: translateX(-950%);
+  margin-top: -36px; 
+}
+
+}
 
 
 @media screen and (min-width: 320px) and (max-width: 932px) {
@@ -462,6 +478,46 @@ padding: 9px 9px;
 /* untuk ipad  */
 
 @media screen and (min-width: 768px) and (max-width: 768px) {
+
+.item-item {
+  position: absolute;
+  top: 44px;
+  left: 119px;
+  width: 21%;
+  height: 32%;
+  background-color: rgba(0, 0, 0, 0.7); /* Ubah nilai alpha untuk kegelapan yang diinginkan */
+  border-radius: 50%;
+  display: none;
+}
+
+  .input-group.grup-masukan {
+  justify-content: end;
+}
+
+.form-masuk {
+  max-width: 40px;
+}
+.grup-masukan {
+  margin-top: 29px; /
+
+}
+.form-check-input{
+padding: 10px 10px;
+}
+
+.btn-dash,
+.btn-plus,
+.form-masuk {
+  margin: 0;
+}
+
+.button-sampah {
+  font-size: 24px;
+  transform: translateX(-637%);
+  margin-top: -34px; 
+}
+}
+@media screen and (min-width: 690px) and (max-width: 690px) {
 
 .item-item {
   position: absolute;
