@@ -9,7 +9,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 <?php if ($isMobile) : ?>
     <div id="mobileContent">
         <div class="container position-absolute top-0 start-50 translate-middle-x rounded-bottom-4" style="background: rgb(204,16,34);
-background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%); height:23%;">
+background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%); height:35%;">
             <style>
                 @media screen and (max-width: 280px) {
 
