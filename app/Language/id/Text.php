@@ -88,7 +88,7 @@ return [
     'total_cart' => 'Total Belanja',
     'btn_checkout' => 'BAYAR',
     'notif_cart' => 'Wah keranjang kamu kosong nih!',
-    'btn_belanja' => 'Belanja sekarang yuk!',
+    'btn_belanja' => 'Belanja sekarang!',
     'btn_pilih' => 'Pilih Semua',
     'btn_batal_pilih' => 'Batal Pilih',
     'stock_kosong' => 'Habis',
