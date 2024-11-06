@@ -207,7 +207,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="col-12">
                         <div class="d-flex justify-content-center flex-column align-items-center" style="height: 70vh;">
                             <img src="assets/img/history/history.jpeg" class="img-fluid img-history coupon-opacity" alt="...">
-                            <h5 class="coupon-opacity fs-kupon">Transaksi anda kosong</h5>
+                            <h5 class="coupon-opacity ">Transaksi anda kosong</h5>
                         </div>
                     </div>
                 </div>
@@ -231,7 +231,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         /* Kecil (sm) */
         @media only screen and (min-width: 576px) and (max-width: 767.98px) {
             .img-history {
-                width: 190px;
+                width: 50px;
             }
         }
 
@@ -242,7 +242,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .fs-kupon {
-                font-size: 50px;
+                font-size: 25px;
             }
         }
 
@@ -251,7 +251,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
 
 
             .fs-kupon {
-                font-size: 65px;
+                font-size: 25px;
+            }
+        }
+
+        /* Sangat Besar (xl) */
+        @media only screen and (max-width: 640px) {
+
+            /* Aturan CSS untuk layar sangat besar di sini */
+            .img-coupon {
+                width: 150px;
+            }
+
+            .fs-kupon {
+                font-size: 25px !important;
             }
         }
 
@@ -264,7 +277,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
             }
 
             .fs-kupon {
-                font-size: 75px;
+                font-size: 25px;
             }
         }
 
