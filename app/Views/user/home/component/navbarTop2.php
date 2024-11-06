@@ -53,14 +53,16 @@ background: linear-gradient(180deg, rgba(204,16,34,1) 20%, rgba(255,244,0,1) 81%
                 </div>
             </div>
             <!-- searchbar -->
-            <div class="row">
-                <div class="col-12 p-2 align-items-center justify-content-center">
-                    <form class="border-0 mt-3 mx-2" role="search" action="<?= base_url('search'); ?>" method="get">
-                        <div class="input-group mb-3">
-                            <button type="submit" class="input-group-text btn border-0 rounded-start-5 bg-white"><i class="bi bi-search"></i></button>
-                            <input type="text" name="produk" class="form-control bg-white rounded-end-5" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
-                        </div>
-                    </form>
+            <div class="container-fluid d-md-block ">
+                <div class="row">
+                    <div class="col-lg-12 mt-3">
+                        <form class="mt-1 mx-auto" role="search" action="<?= base_url('search'); ?>" method="get">
+                            <div class="input-group mb-3 w-100 ">
+                                <button type="submit" class="rounded-start-5 border-0 input-group-text btn text-secondary" style="background-color: white;"><i class="bi bi-search"></i></button>
+                                <input type="text" name="produk" class="form-control border-0 rounded-end-5" placeholder="<?= lang('Text.cari_produk') ?>" aria-label="search" aria-describedby="basic-addon1">
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
