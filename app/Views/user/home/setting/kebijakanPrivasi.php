@@ -29,7 +29,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="section">
                         <h4 class="text-center">Privacy policy <span class="text-danger">SsayoMart</span></h4>
                         <div class="card border-0 shadow-sm p-3 m-2 mt-3">
-                            <p><strong>Efektif sejak: 01/11/2023</strong></p>
+                            <p><strong>Efektif sejak: 01/11/2024</strong></p>
 
                             <p><strong>Data yang Kami Kumpulkan:</strong> Kami dapat mengumpulkan informasi pribadi seperti nama, alamat, alamat email, dan informasi kontak lainnya. Kami juga dapat mengumpulkan informasi non-pribadi seperti preferensi produk.</p>
 
@@ -48,7 +48,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="section mt-3">
                         <h4 class="text-center">Delivery policy <span class="text-danger">SsayoMart</span></h4>
                         <div class="card border-0 shadow-sm p-3 m-2 mt-3">
-                            <p><strong>Efektif sejak: 01/11/2023</strong></p>
+                            <p><strong>Efektif sejak: 01/11/2024</strong></p>
 
                             <p><strong>Komitmen Kami pada Pengiriman yang Aman:</strong> Keamanan pengiriman adalah prioritas kami. Kami berkomitmen untuk memastikan setiap produk atau pesanan Anda dikirim dengan aman dan dalam kondisi terbaik.</p>
 
@@ -72,7 +72,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     <div class="section">
                         <h4 class="text-center">Refund policy <span class="text-danger">SsayoMart</span></h4>
                         <div class="card border-0 shadow-sm p-3 m-2 mt-3">
-                            <p><strong>Efektif sejak: 01/11/2023</strong></p>
+                            <p><strong>Efektif sejak: 01/11/2024</strong></p>
 
                             <p><strong>Kami Menghormati Keinginan Anda:</strong> Kami memahami bahwa keadaan dapat berubah, dan kami selalu siap untuk membantu Anda. Kebijakan pengembalian kami dirancang untuk memberi Anda kepercayaan bahwa pembelian Anda dengan kami aman.</p>
 
