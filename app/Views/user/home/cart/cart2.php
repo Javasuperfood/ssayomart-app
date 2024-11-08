@@ -110,7 +110,33 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
                                             <button class="btn-sm btn btn-outline-danger btn-plus rounded-circle" style="width: 20px; height:22px;" type="button" onClick='increaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= isset($p['required_quantity']) ? $p['required_quantity'] : 'null'; ?>)'><i class="bi bi-plus"></i></button>
                                         </div>
-                                        <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="end-0 border-0 btn btn-sm button-sampah position-absolute mx-2"><i class="bi bi-trash text-danger"></i></button>
+                                        <button
+                                            type="button"
+                                            class="end-0 border-0 btn btn-sm button-sampah position-absolute mx-2"
+                                            onclick="confirmDelete(<?= $p['id_cart_produk']; ?>)">
+                                            <i class="bi bi-trash text-danger"></i>
+                                        </button>
+                                        <script>
+                                            function confirmDelete(id) {
+                                                Swal.fire({
+                                                    title: 'Yakin ingin menghapus produk ini?',
+                                                    text: "Produk ini akan dihapus dari keranjang.",
+                                                    icon: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#d33',
+                                                    cancelButtonColor: '#3085d6',
+                                                    confirmButtonText: 'Ya, hapus!',
+                                                    cancelButtonText: 'Batal'
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        // Submit form jika dikonfirmasi
+                                                        document.getElementById('formdelete' + id).submit();
+                                                    }
+                                                });
+                                            }
+                                        </script>
+
+                                        <!-- <button form="formdelete<?= $p['id_cart_produk']; ?>" type="submit" class="end-0 border-0 btn btn-sm button-sampah position-absolute mx-2"><i class="bi bi-trash text-danger"></i></button> -->
                                     </div>
                                     <div class="kanan">
                                         <div class="my-3">
