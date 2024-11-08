@@ -34,9 +34,56 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <i class="bi bi-cart-fill"></i>
                                 </button> -->
 
-                                <button class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">
-                                    <i class="bi bi-cart-fill"> Add to Cart</i>
+                                <button
+                                    class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn"
+                                    produk="<?= $produk['id_produk']; ?>"
+                                    id="cart-btn-<?= $produk['id_produk']; ?>">
+                                    <i class="bi bi-cart-fill"></i> Add to Cart
                                 </button>
+
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        const cartButton = document.querySelector('.add-to-cart-btn');
+                                        const productId = cartButton.getAttribute('produk');
+                                        const storageKey = `added-to-cart-${productId}`;
+
+                                        // Check if the product is already in the cart (from localStorage)
+                                        if (localStorage.getItem(storageKey) === 'true') {
+                                            updateButtonState(cartButton, true);
+                                        }
+
+                                        // Handle button click to add/remove from cart
+                                        cartButton.addEventListener('click', function() {
+                                            const isAdded = localStorage.getItem(storageKey) === 'true';
+
+                                            if (isAdded) {
+                                                // Remove from cart
+                                                localStorage.removeItem(storageKey);
+                                                updateButtonState(cartButton, false);
+                                            } else {
+                                                // Add to cart
+                                                localStorage.setItem(storageKey, 'true');
+                                                updateButtonState(cartButton, true);
+                                            }
+                                        });
+
+                                        // Function to update button state
+                                        function updateButtonState(button, added) {
+                                            if (added) {
+                                                button.classList.remove('text-danger', 'border-danger');
+                                                button.classList.add('text-success', 'border-success');
+                                                button.innerHTML = '<i class="bi bi-cart-check-fill"></i> Added';
+                                                button.disabled = true; // Disable the button
+                                            } else {
+                                                button.classList.remove('text-success', 'border-success');
+                                                button.classList.add('text-danger', 'border-danger');
+                                                button.innerHTML = '<i class="bi bi-cart-fill"></i> Add to Cart';
+                                                button.disabled = false; // Enable the button
+                                            }
+                                        }
+                                    });
+                                </script>
+
                             </div>
                         <?php endif ?>
                     <?php endif ?>
