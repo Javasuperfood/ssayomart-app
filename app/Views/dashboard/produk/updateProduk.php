@@ -42,8 +42,8 @@
             <!-- brand -->
             <div class="mb-4">
                 <label for="brand" class="form-label">Brand Produk<span class="text-danger"> *</span></label>
-                <input type="text" class="form-control border-0 shadow-sm " placeholder="Brand Produk Anda...">
-                <div class="invalid-feedback">></div>
+                <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('brand')) ? 'is-invalid' : 'border-1'; ?>" id="brand" name="brand" placeholder="Brand Produk Anda..." value="<?= (old('brand')) ? old('brand') : $p['brand'] ?>">
+                <div class="invalid-feedback"><?= validation_show_error('brand'); ?></div>
             </div>
             <div class="mb-4">
                 <label for="sku" class="form-label">Stock Keeping Unit (SKU)<span class="text-danger"> *</span></label>

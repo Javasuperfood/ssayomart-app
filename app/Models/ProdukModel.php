@@ -19,6 +19,7 @@ class ProdukModel extends Model
         'nama',
         'nama_en',
         'nama_kr',
+        'brand',
         'slug',
         'sku',
         // 'stok',
@@ -55,6 +56,12 @@ class ProdukModel extends Model
             'rules'  => 'required',
             'errors' => [
                 'required' => 'Nama produk dalam bahasa Korea wajib diisi.',
+            ],
+        ],
+        'brand' => [
+            'rules'  => 'required',
+            'errors' => [
+                'required' => 'Brand wajib diisi.',
             ],
         ],
         'sku'    => [
