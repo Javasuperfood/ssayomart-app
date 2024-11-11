@@ -67,6 +67,17 @@
             </div>
 
             <div class="mb-4">
+                <label for="brand" class="form-label">Brand Produk <span class="text-danger">*</span></label>
+                <input type="text"
+                    class="form-control shadow-sm <?= (validation_show_error('brand')) ? 'is-invalid' : 'border-1'; ?>"
+                    id="brand" name="brand" data-toggle="tooltip" data-placement="bottom"
+                    title="Harap isi bidang ini dengan brand produk" placeholder="Brand Produk Anda..."
+                    value="<?= old('brand') ?>">
+                <div class="invalid-feedback"><?= validation_show_error('brand'); ?></div>
+            </div>
+
+
+            <div class="mb-4">
                 <label for="sku" class="form-label">Barcode/SKU <span class="text-danger">*</span></label>
                 <input type="text"
                     class="form-control shadow-sm <?= (validation_show_error('sku')) ? 'is-invalid' : 'border-1'; ?>"
