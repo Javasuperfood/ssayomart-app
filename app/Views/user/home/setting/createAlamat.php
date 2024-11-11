@@ -34,14 +34,23 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <p class="text-danger" style="font-size: 11px;"><?= lang('Text.info_alamat') ?></p>
+                                    <p class="fw-bold text-danger">Perhatian harap di baca dengan seksama : <span class="text-danger">*</span></p>
+                                    <p class="alert alert-danger" role="alert" style="font-size: 11px;">
+                                        <?= lang('Text.info_alamat') ?>
+                                    </p>
+
                                     <label for=" floatingInput">
                                         <?= lang('Text.detail_alamat_2') ?><span class="text-danger fs-5"> *</span>
                                     </label>
-                                    <div class="input-group ">
-                                        <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" aria-describedby="button_alamat_3" readonly>
-                                        <!-- <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button> -->
+                                    <div class="input-group">
+                                        <textarea class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput"
+                                            name="alamat_3" id="alamat_3" style="font-size: 14px; height: 100px;" readonly></textarea>
                                     </div>
+
+                                    <!-- <div class="input-group ">
+                                        <input list="alamat_3_option" class="form-control <?= (validation_show_error('alamat_3')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput" name="alamat_3" id="alamat_3" style="font-size: 14px;" aria-describedby="button_alamat_3" readonly>
+                                        <button class="btn btn-danger" type="button" id="button_alamat_3" onclick="getLatLongOnEvent()">Search</button>
+                                    </div> -->
                                     <div class="invalid-feedback">
                                         <?= validation_show_error('alamat_3') ?>
                                     </div>
@@ -153,12 +162,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
-                                    <label for=" floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger fs-5"> *</span></label>
-                                    <input class="form-control <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>" name="alamat_1" id="alamat_1" style="font-size: 14px;" value="<?= old('alamat_1') ?>">
+                                    <label for="floatingInput"><?= lang('Text.detail_alamat') ?><span class="text-danger fs-5"> *</span></label>
+                                    <textarea class="form-control <?= (validation_show_error('alamat_1')) ? 'is-invalid' : 'border-0'; ?> shadow-sm floatingInput <?= (validation_show_error('alamat_1')) ? 'is-invalid' : '' ?>"
+                                        name="alamat_1" id="alamat_1" style="font-size: 14px; height: 100px;"><?= old('alamat_1') ?></textarea>
                                     <div class="invalid-feed"><?= validation_show_error('alamat_1') ?></div>
                                 </div>
                             </div>
                         </div>
+
 
                         <div class="row">
                             <div class="col-12">

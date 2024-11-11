@@ -81,7 +81,7 @@ return [
     'patokan_alamat' => '주소 표시',
     'zipcode' => '우편 번호',
     'optional' => '(선택 과목)',
-    'info_alamat' => '* 위치 지점이 표시된 지점과 일치하는지 확인하십시오. (GoSend를 통한 배송에 필요) 또는 지도 하단의 핀 주소 버튼을 누를 수도 있습니다.',
+    'info_alamat' => '* 스마트폰의 GPS가 활성화되어 있는지 확인하세요. (GoSend를 통한 배송에 필요) 또는 지도 하단의 주소 고정 버튼을 누르세요.',
 
     // KERANJANG
     'title_cart' => '쇼핑 카트',
