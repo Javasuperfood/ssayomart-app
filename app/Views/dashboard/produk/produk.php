@@ -14,7 +14,7 @@
                         <span class="text-secondary fs-5 position-absolute top-50 start-50 translate-middle">
                             Total Produk: <?= $totalProduk; ?>
                         </span>
-                    </div>   
+                    </div>
                     <div class="col-3 text-center">
                         <i class="bi bi-box-seam fs-1 text-secondary"></i>
                     </div>
@@ -42,14 +42,14 @@
                     <?php endforeach; ?>
                 </select>
                 <button class="btn btn-outline-danger" type="submit" id="search"><i class="bi bi-search"></i></button>
-            </div> 
+            </div>
         </form>
         <form action="<?= base_url('dashboard/produk'); ?>" method="get">
             <div class="input-group mb-4">
                 <input type="text" class="form-control" placeholder="Cari... (Nama Produk atau SKU)" aria-label="search" name="search" aria-describedby="search">
                 <button class="btn btn-outline-danger" type="submit" id="search"><i class="bi bi-search"></i></button>
             </div>
-        </form>  
+        </form>
     </div>
 </div>
 
@@ -78,6 +78,7 @@
                                 <th>Kategori Produk</th>
                                 <th>Sub Kategori</th>
                                 <th>Varian & Stok Produk</th>
+                                <th>Brand</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -131,6 +132,7 @@
                                             <?php endif ?>
                                         <?php endforeach ?>
                                     </td>
+                                    <td class="align-middle"><?= $km['brand'] ?? 'Brand Tidak Ditemukan'; ?></td> <!-- Kolom untuk menampilkan brand -->
                                     <td class="text-center align-middle">
                                         <div class="nav-item dropdown no-arrow">
                                             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
