@@ -39,6 +39,12 @@
                 <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('nama_en')) ? 'is-invalid' : 'border-1'; ?>" id="nama_en" name="nama_en" placeholder="Nama Produk Anda dalam bahasa Inggris..." value="<?= (old('nama_en')) ? old('nama_en') : $p['nama_en'] ?>">
                 <div class="invalid-feedback"><?= validation_show_error('nama_en'); ?></div>
             </div>
+            <!-- brand -->
+            <div class="mb-4">
+                <label for="brand" class="form-label">Brand Produk<span class="text-danger"> *</span></label>
+                <input type="text" class="form-control border-0 shadow-sm " placeholder="Brand Produk Anda...">
+                <div class="invalid-feedback">></div>
+            </div>
             <div class="mb-4">
                 <label for="sku" class="form-label">Stock Keeping Unit (SKU)<span class="text-danger"> *</span></label>
                 <input type="text" class="form-control border-0 shadow-sm <?= (validation_show_error('sku')) ? 'is-invalid' : 'border-1'; ?>" id="sku" name="sku" placeholder="SKU Produk Anda..." value="<?= (old('sku')) ? old('sku') : $p['sku'] ?>" onkeypress="return isNumber(event);">
