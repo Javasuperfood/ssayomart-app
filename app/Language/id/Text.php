@@ -81,7 +81,7 @@ return [
     'patokan_alamat' => 'Catatan Pengirim',
     'zipcode' => 'Kode Pos',
     'optional' => '(Opsional)',
-    'info_alamat' => '* Pastikan titik lokasi sesuai dengan titik yang ditunjukkan. (diperlukan untuk pengiriman melalui GoSend) atau bisa menekan tombol Pin Alamat di bagian bawah maps.',
+    'info_alamat' => '* Pastikan GPS pada smartphone anda aktif. (diperlukan untuk pengiriman melalui GoSend) atau bisa menekan tombol Pin Alamat di bagian bawah maps.',
 
     // KERANJANG 
     'title_cart' => 'Keranjang Belanja',

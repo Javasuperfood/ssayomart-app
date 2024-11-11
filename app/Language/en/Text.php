@@ -84,7 +84,7 @@ return [
     'patokan_alamat' => 'Notes',
     'zipcode' => 'Zip Code',
     'optional' => '(Optional)',
-    'info_alamat' => '* Make sure the location point matches the indicated point. (required for delivery via GoSend) or you can press the Pin Address button at the bottom of the maps',
+    'info_alamat' => '* Make sure the GPS on your smartphone is active. (required for delivery via GoSend) or you can press the Pin Address button at the bottom of the map.',
 
     // KERANJANG
     'title_cart' => 'Shopping Cart',
