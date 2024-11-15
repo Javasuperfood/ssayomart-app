@@ -25,7 +25,10 @@
                             </a>
                             <div class="fs-2 mt-2" style="padding: 0 10px 0 10px;">
                                 <div class="d-flex align-items-start panjang-card justify-content-center" style=" height: 90px;">
-                                    <p class="text-secondary fw-bold" style=" font-size: 9px; margin: 0;"><?= substr($p['nama'], 0, 50); ?></p>
+                                    <p class="text-secondary fw-bold" style="font-size: 9px; margin: 0;">
+                                        <?= strlen($p['nama']) > 43 ? substr($p['nama'], 0, 43) . '...' : $p['nama']; ?>
+                                    </p>
+
 
                                     <!-- Fungsi Multi Language -->
                                     <!-- <p class=" text-center text-secondary fw-bold  " style=" font-size: 9px; margin: 0;">
@@ -34,12 +37,23 @@
                                 </div>
 
                                 <h1 class="text-dark fs-bold mt-1 mb-1 fw-bold" style="font-size: 10px; margin: 0;">
-                                    <?php if ($p['harga_min'] == $p['harga_max']) : ?>
-                                        Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
-                                    <?php else : ?>
-                                        <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>
-                                    <?php endif ?>
+                                    <?php
+                                    // Menentukan teks harga
+                                    if ($p['harga_min'] == $p['harga_max']) {
+                                        $harga = 'Rp. ' . number_format($p['harga_min'], 0, ',', '.');
+                                    } else {
+                                        $harga = 'Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.');
+                                    }
+
+                                    // Cek panjang teks dan berikan substring jika lebih dari 43 karakter
+                                    if (strlen($harga) > 43) {
+                                        echo substr($harga, 0, 43) . '...';
+                                    } else {
+                                        echo $harga;
+                                    }
+                                    ?>
                                 </h1>
+
 
                                 <!-- button Animasi -->
                                 <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">

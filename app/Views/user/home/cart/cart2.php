@@ -100,11 +100,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="tengah py-2 ">
                                         <!-- Fungsi Multi Language -->
                                         <!-- <p class="fw-bold card-text text-secondary float-start nama-pesanan" style="font-size: 12px; margin: 0;"><?= substr($p[$kolomNama] . '(' . $p['value_item'] . ')', 0, 30); ?></p> -->
-                                        <?php if ($p['required_quantity']) : ?>
-                                            <p class="text-secondary text-pixel float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['title'] . '(' . $p['value_item'] . ')', 0,); ?></p>
-                                        <?php else : ?>
-                                            <p class="text-secondary text-pixel float-end mb-2" style="width:80%;font-size:11px; margin: 0;"><?= substr($p['nama'] . '(' . $p['value_item'] . ')', 0,); ?></p>
-                                        <?php endif; ?>
+                                        <?php
+                                        $text = $p['required_quantity'] ? $p['title'] . '(' . $p['value_item'] . ')' : $p['nama'] . '(' . $p['value_item'] . ')';
+                                        $displayText = strlen($text) > 43 ? substr($text, 0, 43) . '...' : $text;
+                                        ?>
+                                        <p class="text-secondary text-pixel float-end mb-2" style="width:80%; font-size:11px; margin: 0;">
+                                            <?= $displayText; ?>
+                                        </p>
+
                                         <div class="input-group grup-masukan button-group" style="margin-top:5px; right: 45%;">
                                             <button class="btn-sm btn btn-outline-danger btn-dash rounded-circle" style="width: 20px; height:22px;" type="button" onClick='decreaseCount(<?= $p['id_cart_produk']; ?>, event, this, <?= $p['harga_item']; ?>, <?= isset($p['required_quantity']) ? $p['required_quantity'] : 'null'; ?>)'><i class="bi bi-dash"></i></button>
                                             <input type="text" class="form-control form-masuk form-control-sm text-center bg-white border-0" disabled value="<?= $p['qty']; ?>" style="font-size: 12px; width: 10px; padding: 0;">
