@@ -110,14 +110,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                         </div>
                                         <div class="col-7 deskripsi position-absolute top-50 start-50 translate-middle">
                                             <p class="name mt-3">
-                                                <?= substr($t->nama, 0,); ?>
-
-                                                <!-- Fungsi Multi Language -->
-                                                <!-- <?= substr($t->$kolomNama, 0, 0); ?> -->
+                                                <?= strlen($t->nama) > 43 ? substr($t->nama, 0, 43) . '...' : $t->nama; ?>
                                             </p>
                                             <p class="harga fw-bold text-danger" style="font-size: 10px;">Rp.
                                                 <?= number_format($t->harga, 0, ',', '.'); ?>
                                             </p>
+
                                         </div>
                                     </div>
                                     <div class="row">
