@@ -30,11 +30,11 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input type="hidden" id="qty" name="qty" value="1">
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
                                 <!-- <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger fw-bold" style="width: 150px;"><?= lang('Text.btn_beli') ?></a> -->
-                                <!-- <button class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn position-relative" produk="<?= $produk['id_produk']; ?>">
-                                    <i class="bi bi-cart-fill"></i>
-                                </button> -->
+                                <button class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">
+                                    <i class="bi bi-cart-fill"> Add to Cart</i>
+                                </button>
 
-                                <button
+                                <!-- <button
                                     class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn"
                                     produk="<?= $produk['id_produk']; ?>"
                                     id="cart-btn-<?= $produk['id_produk']; ?>">
@@ -82,7 +82,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                             }
                                         }
                                     });
-                                </script>
+                                </script> -->
 
                             </div>
                         <?php endif ?>
