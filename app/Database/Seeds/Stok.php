@@ -24,7 +24,7 @@ class Stok extends Seeder
                 'id_produk'      => $produk['id_produk'],
                 'id_variasi_item' => $variasiItem->id_variasi_item,
                 'id_toko'        => $toko->id_toko,
-                'stok'           => 100
+                'stok'           => 1000
             ];
             $this->db->table('jsf_stock')->insert($data);
         }
