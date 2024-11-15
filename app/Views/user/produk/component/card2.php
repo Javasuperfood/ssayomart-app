@@ -7,8 +7,10 @@
         <?php
         if (!defined('IS_HOMEPAGE') || !IS_HOMEPAGE) {
         ?>
-            <p class="d-block my-2 text-center fw-bold rounded-top-2 p-1"><?= lang('Text.nama_produk') ?></p>
-            <hr class="border-darker mt-0 mb-3" style="border-color: #000;border-width:2px;">
+            <p class="d-block my-2 text-center fw-bold rounded-top-3 p-1 text-white" style="background-color: #f59d9d;">
+                <?= lang('Text.nama_produk') ?>
+            </p>
+            <hr class="rounded-5 border-darker mt-0 mb-3" style="border-color:#f50505;border-width:5px;">
         <?php
         }
         ?>
