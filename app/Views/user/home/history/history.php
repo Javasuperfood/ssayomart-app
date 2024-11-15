@@ -185,9 +185,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                     <img src="<?= base_url(); ?>assets/img/produk/main/<?= $c->img; ?>" alt="Foto Produk" class="card-img" style="object-fit: contain; object-position: 20% 10%;">
                                                 </div>
                                                 <div class=" col-5 position-absolute top-50 start-50 translate-middle">
-                                                    <h5 class="card-title " style="font-size: 12px;">
-                                                        <?= substr($c->$kolomNama, 0, 10); ?>
+                                                    <h5 class="card-title" style="font-size: 12px;">
+                                                        <?= strlen($c->$kolomNama) > 43 ? substr($c->$kolomNama, 0, 43) . '...' : $c->$kolomNama; ?>
                                                     </h5>
+
                                                     <p class="text-secondary fs-6" style="font-size: 11px;">Rp.
                                                         <?= number_format($c->harga, 0, ',', '.'); ?>
                                                     </p>

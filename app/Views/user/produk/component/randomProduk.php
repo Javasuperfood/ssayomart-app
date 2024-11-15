@@ -26,12 +26,17 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                                 <p class="text-secondary fw-bold " style=" font-size: 8px; margin: 0;"><?= substr($p['nama'], 0, 40); ?></p>
                                             </div>
                                             <h1 class="text-danger fw-bold mt-1 pb-3" style="font-size: 10px; margin: 0;">
-                                                <?php if ($p['harga_min'] == $p['harga_max']) : ?>
-                                                    Rp. <?= number_format($p['harga_min'], 0, ',', '.'); ?>
-                                                <?php else : ?>
-                                                    <?= substr('Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.'), 0, 13); ?>...
-                                                <?php endif ?>
+                                                <?php
+                                                // Define the price string
+                                                $harga = $p['harga_min'] == $p['harga_max']
+                                                    ? 'Rp. ' . number_format($p['harga_min'], 0, ',', '.')
+                                                    : 'Rp. ' . number_format($p['harga_min'], 0, ',', '.') . '-' . number_format($p['harga_max'], 0, ',', '.');
+
+                                                // Check the length of the string and apply substring if it exceeds 43 characters
+                                                echo strlen($harga) > 43 ? substr($harga, 0, 43) . '...' : $harga;
+                                                ?>
                                             </h1>
+
 
                                             <!-- button Animasi -->
                                             <div class="button-container" id="button-container-<?= $p['id_produk']; ?>">
