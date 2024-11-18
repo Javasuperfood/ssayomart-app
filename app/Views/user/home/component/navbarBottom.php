@@ -19,14 +19,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url(); ?>cart" class="nav-link link-light position-relative a_cart_link_0">
-
                                 <i class="bi bi-bag-heart-fill fw-bold fs-2 text-secondary"></i>
                                 <div id="cartItem_0" class="position-absolute top-0 start-100 mt-3 translate-middle">
                                     <span id="cartItem_1" class="position-absolute badge badge-initial rounded-pill text-danger fw-bold" style="font-size: 0.75rem; top: -10px; right: -10px;">
                                         <?= session()->get('countCart'); ?>
                                     </span>
                                 </div>
-
                             </a>
                         </li>
                         <li class="nav-item">
