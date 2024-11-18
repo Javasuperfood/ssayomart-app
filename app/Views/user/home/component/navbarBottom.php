@@ -10,8 +10,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     <div id="mobileContent">
         <div class="container">
             <div class="row">
-                <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4"
-                    style="height: 55px; background-color:#fff; box-shadow: 0px -1px 3px rgba(143, 140, 140, 0.2) !important;">
+                <nav class="navbar navbar-expand fixed-bottom shadow-sm navbar-bottom rounded-top-4" style="height: 55px; background-color:#fff; box-shadow: 0px -1px 3px rgba(143, 140, 140, 0.2) !important;">
                     <ul class="navbar-nav nav-justified w-100 d-flex justify-content-evenly align-items-center">
                         <li class="nav-item">
                             <a href="<?= base_url() ?>" class="nav-link link-light">
@@ -20,10 +19,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url(); ?>cart" class="nav-link link-light position-relative a_cart_link_0">
+
                                 <i class="bi bi-bag-heart-fill fw-bold fs-2 text-secondary"></i>
                                 <div id="cartItem_0" class="position-absolute top-0 start-100 mt-3 translate-middle">
-                                    <span id="cartItem_1" class="position-absolute badge badge-initial rounded-pill text-danger fw-bold"
-                                        style="font-size: 0.75rem; top: -10px; right: -10px;">
+                                    <span id="cartItem_1" class="position-absolute badge badge-initial rounded-pill text-danger fw-bold" style="font-size: 0.75rem; top: -10px; right: -10px;">
                                         <?= session()->get('countCart'); ?>
                                     </span>
                                 </div>
@@ -32,7 +31,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </li>
                         <li class="nav-item">
                             <a href="<?= base_url(); ?>history" class="nav-link link-light">
-                                <i class="bi bi-bookmark-heart-fill fw-bold fs-2 text-secondary"></i>
+                                <i class="bi bi-journal-text fw-bold fs-2 text-secondary"></i>
                             </a>
                         </li>
                         <li class="nav-item">
