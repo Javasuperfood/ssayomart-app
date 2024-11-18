@@ -198,6 +198,10 @@ class ProdukModel extends Model
             $getProduk->like('nama', $search);
         }
 
+        // Sort by number
+        $getProduk->orderBy('p.sort IS NULL', 'ASC', false);
+        $getProduk->orderBy('p.sort', 'ASC');
+
         $getProduk->orderBy("CAST(SUBSTRING(p.nama FROM 1 FOR 5) AS UNSIGNED)", 'ASC');
         $getProduk->orderBy('CASE WHEN s.stok >= 50 THEN 0 ELSE 1 END', 'ASC', false);
         $getProduk->limit($limit, $offset);

@@ -141,6 +141,7 @@ class AdminProduk extends BaseController
             'sku' => $this->request->getVar('sku'),
             'deskripsi' => $this->request->getVar('deskripsi'),
             'img' => $namaProduk,
+            'sort' => $this->request->getVar('sort'),
             'id_kategori' => $this->request->getVar('parent_kategori_id'),
             'id_sub_kategori' => $this->request->getVar('sub_kategori')
         ];
