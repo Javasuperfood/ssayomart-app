@@ -44,9 +44,11 @@
             <!-- Sort -->
             <div class="mb-4">
                 <label for="sort" class="form-label">Urutan Produk </label>
-                <input type="number" class="form-control shadow-sm <?= (validation_show_error('sort')) ? 'is-invalid' : 'border-1'; ?>" id="sort" name="sort" data-toggle="tooltip" data-placement="bottom" title="Harap isi urutan produk" placeholder="Masukan Urutan Produk..." value="<?= old('sort') ?>">
-                <div class="invalid-feedback"><?= validation_show_error('number'); ?></div>
+                <input type="number" class="form-control shadow-sm <?= (validation_show_error('sort')) ? 'is-invalid' : 'border-1'; ?>" id="sort" name="sort" data-toggle="tooltip" data-placement="bottom" title="Harap isi urutan produk" placeholder="Masukan Urutan Produk..." value="<?= old('sort') ? old('sort') : $p['sort'] ?>">
+                <div class="invalid-feedback"><?= validation_show_error('sort'); ?></div>
             </div>
+
+
             <!-- brand -->
             <div class="mb-4">
                 <label for="brand" class="form-label">Brand Produk<span class="text-danger"> *</span></label>
