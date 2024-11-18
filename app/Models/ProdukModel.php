@@ -25,6 +25,7 @@ class ProdukModel extends Model
         // 'stok',
         'deskripsi',
         'img',
+        'sort',
         'is_active',
         'id_sub_kategori',
         'short',
