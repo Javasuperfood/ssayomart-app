@@ -38,7 +38,10 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <button id="selectAll" class="btn btn-outline-danger btn-sm btn-icon">
                                 <i class="bi bi-check-circle"></i> Select
                             </button>
-                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteProducts()"><i class="bi bi-trash"></i> <?= lang('Text.btn_hapus') ?></button>
+                            <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteProducts()">
+                                <i class="bi bi-trash"></i> <?= lang('Text.btn_hapus') ?>
+                            </button>
+                            <!-- <button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteProducts()"><i class="bi bi-trash"></i> <?= lang('Text.btn_hapus') ?></button> -->
                         <?php endif; ?>
                     </div>
                 </div>
@@ -488,34 +491,98 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     showConfirmButton: false,
                     timer: 1500,
                     text: 'Produk harus dipilih terlebih dahulu.',
-                })
+                });
                 return;
             }
 
-            selectedProducts.each(function() {
-                var productId = $(this).val();
-                // console.log("Deleted product ID:", productId);
-                deletedProductIds.push(productId);
-                $("#tr" + productId).remove();
-                delete produkSelected[productId];
-            });
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: 'Produk yang dipilih akan dihapus!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Proses penghapusan jika dikonfirmasi
+                    selectedProducts.each(function() {
+                        var productId = $(this).val();
+                        deletedProductIds.push(productId);
+                        $("#tr" + productId).remove();
+                        delete produkSelected[productId];
+                    });
 
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url('api/delete-cart-products'); ?>',
-                data: {
-                    produk: deletedProductIds
-                },
-                success: function(response) {
-                    if (response.success) {
-                        selectedProducts.closest('.row-cols-2').remove();
-                        totalA(produkSelected);
-                    } else {
-                        console.error("Error deleting product:", response.message);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error("Error deleting product:", error);
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?= base_url('api/delete-cart-products'); ?>',
+                        data: {
+                            produk: deletedProductIds
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                selectedProducts.closest('.row-cols-2').remove();
+                                totalA(produkSelected);
+
+                                // Periksa apakah semua produk telah dihapus
+                                if (Object.keys(produkSelected).length === 0) {
+                                    location.reload(); // Langsung refresh halaman
+                                    return; // Hindari eksekusi kode berikutnya
+                                }
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: 'Produk berhasil dihapus.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            } else {
+                                console.error("Error deleting product:", response.message);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal',
+                                    text: 'Terjadi kesalahan saat menghapus produk.',
+                                });
+                            }
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                selectedProducts.closest('.row-cols-2').remove();
+                                totalA(produkSelected);
+
+                                // Periksa apakah semua produk telah dihapus
+                                if (Object.keys(produkSelected).length === 0) {
+                                    location.reload(); // Langsung refresh halaman
+                                    return; // Hindari eksekusi kode berikutnya
+                                }
+
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil',
+                                    text: 'Produk berhasil dihapus.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            } else {
+                                console.error("Error deleting product:", response.message);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal',
+                                    text: 'Terjadi kesalahan saat menghapus produk.',
+                                });
+                            }
+                        },
+
+
+                        error: function(xhr, status, error) {
+                            console.error("Error deleting product:", error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Gagal',
+                                text: 'Terjadi kesalahan saat menghapus produk.',
+                            });
+                        }
+                    });
                 }
             });
         }
