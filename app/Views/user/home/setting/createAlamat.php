@@ -493,20 +493,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
         fetch(`https://us1.locationiq.com/v1/reverse.php?key=${apiKey}&lat=${lat}&lon=${lon}&format=json&accept-language=id`)
             .then(response => response.json())
             .then(data => {
-                // console.log('Reverse geocoding data:', data);
+                console.log('Reverse geocoding data:', data);
                 var address = data.display_name;
                 var addressComponents = data.address;
                 var province = addressComponents.state || '';
                 var idProvince = addressComponents.state || '';
                 var city = addressComponents.city || addressComponents.county || '';
                 var postalCode = addressComponents.postcode || '';
-                var detailAddress = addressComponents.road || addressComponents.neighbourhood || addressComponents.suburb || addressComponents.city || '';
+                // var detailAddress = addressComponents.road || addressComponents.neighbourhood || addressComponents.suburb || addressComponents.city || '';
 
                 // Mengisi otomatis kolom provinsi, kabupaten/kota, dan kode pos
                 document.getElementById('provinsi').value = province;
                 document.getElementById('kabupaten').value = city;
                 document.getElementById('zip_code').value = postalCode;
-                document.getElementById('alamat_1').value = detailAddress;
+                // document.getElementById('alamat_1').value = detailAddress;
 
                 // Update the popup dengan alamat lengkap
                 map.eachLayer(function(layer) {

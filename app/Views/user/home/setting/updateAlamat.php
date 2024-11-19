@@ -482,12 +482,12 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 var idProvince = addressComponents.state;
                 var city = addressComponents.city || addressComponents.county;
                 var postalCode = addressComponents.postcode;
-                var detailAddress = addressComponents.road || addressComponents.neighbourhood || '';
+                // var detailAddress = addressComponents.road || addressComponents.neighbourhood || '';
 
                 document.getElementById('provinsi').value = province;;
                 document.getElementById('kabupaten').value = city;
                 document.getElementById('zip_code').value = postalCode;
-                document.getElementById('alamat_1').value = detailAddress;
+                // document.getElementById('alamat_1').value = detailAddress;
 
                 // Update popup dengan alamat lengkap
                 map.eachLayer(function(layer) {
