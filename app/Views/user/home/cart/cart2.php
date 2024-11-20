@@ -489,29 +489,29 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     icon: 'error',
                     title: 'Error',
                     showConfirmButton: false,
-                    timer: 1500,
                     text: 'Produk harus dipilih terlebih dahulu.',
                 });
                 return;
             }
 
             Swal.fire({
-                title: 'Apakah Anda yakin?',
-                text: 'Produk yang dipilih akan dihapus!',
+                title: 'Hapus semua produk',
+                text: 'Produk yang dipilih akan dihapus dan tidak dapat dikembalikan!',
                 icon: 'warning',
                 showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
                 confirmButtonText: 'Ya, Hapus!',
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Proses penghapusan jika dikonfirmasi
+                    // Kumpulkan ID produk yang dipilih
                     selectedProducts.each(function() {
                         var productId = $(this).val();
                         deletedProductIds.push(productId);
-                        $("#tr" + productId).remove();
-                        delete produkSelected[productId];
                     });
 
+                    // Kirim permintaan penghapusan ke server
                     $.ajax({
                         type: 'POST',
                         url: '<?= base_url('api/delete-cart-products'); ?>',
@@ -520,62 +520,36 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         },
                         success: function(response) {
                             if (response.success) {
-                                selectedProducts.closest('.row-cols-2').remove();
-                                totalA(produkSelected);
+                                // Update tampilan setelah berhasil dihapus
+                                selectedProducts.each(function() {
+                                    var productId = $(this).val();
+                                    $("#tr" + productId).remove();
+                                    delete produkSelected[productId];
+                                });
+
+                                totalA(produkSelected); // Perbarui total produk
 
                                 // Periksa apakah semua produk telah dihapus
                                 if (Object.keys(produkSelected).length === 0) {
-                                    location.reload(); // Langsung refresh halaman
-                                    return; // Hindari eksekusi kode berikutnya
+                                    location.reload(); // Refresh halaman jika perlu
+                                } else {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Berhasil',
+                                        text: 'Produk berhasil dihapus.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
                                 }
-
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Berhasil',
-                                    text: 'Produk berhasil dihapus.',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
                             } else {
-                                console.error("Error deleting product:", response.message);
                                 Swal.fire({
                                     icon: 'error',
                                     title: 'Gagal',
-                                    text: 'Terjadi kesalahan saat menghapus produk.',
+                                    text: response.message || 'Terjadi kesalahan saat menghapus produk.',
                                 });
                             }
                         },
-                        success: function(response) {
-                            if (response.success) {
-                                selectedProducts.closest('.row-cols-2').remove();
-                                totalA(produkSelected);
-
-                                // Periksa apakah semua produk telah dihapus
-                                if (Object.keys(produkSelected).length === 0) {
-                                    location.reload(); // Langsung refresh halaman
-                                    return; // Hindari eksekusi kode berikutnya
-                                }
-
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Berhasil',
-                                    text: 'Produk berhasil dihapus.',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                });
-                            } else {
-                                console.error("Error deleting product:", response.message);
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Gagal',
-                                    text: 'Terjadi kesalahan saat menghapus produk.',
-                                });
-                            }
-                        },
-
-
                         error: function(xhr, status, error) {
-                            console.error("Error deleting product:", error);
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Gagal',
@@ -586,6 +560,8 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 }
             });
         }
+
+
 
         function checkInputs() {
             var checked = $('input[name="check[]"]:checked').length;
