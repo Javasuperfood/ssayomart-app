@@ -460,6 +460,9 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
     function updateMap(lat, lon, zoom = null, from = null) {
         console.log('Updating map with lat:', lat, 'lon:', lon);
 
+        document.getElementById('latitude').value = lat;
+        document.getElementById('longitude').value = lon;
+
         // Clear semua marker sebelumnya
         map.eachLayer(function(layer) {
             if (layer instanceof L.Marker) {
@@ -482,12 +485,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 var idProvince = addressComponents.state;
                 var city = addressComponents.city || addressComponents.county;
                 var postalCode = addressComponents.postcode;
-                // var detailAddress = addressComponents.road || addressComponents.neighbourhood || '';
+                var detailAddress = data.display_name || addressComponents.road || addressComponents.neighbourhood || '';
 
                 document.getElementById('provinsi').value = province;;
                 document.getElementById('kabupaten').value = city;
                 document.getElementById('zip_code').value = postalCode;
-                // document.getElementById('alamat_1').value = detailAddress;
+                document.getElementById('alamat_1').value = detailAddress;
+                document.getElementById('alamat_3').value = data.display_name;
 
                 // Update popup dengan alamat lengkap
                 map.eachLayer(function(layer) {
