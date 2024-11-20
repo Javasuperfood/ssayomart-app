@@ -500,13 +500,13 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                 var idProvince = addressComponents.state || '';
                 var city = addressComponents.city || addressComponents.county || '';
                 var postalCode = addressComponents.postcode || '';
-                // var detailAddress = addressComponents.road || addressComponents.neighbourhood || addressComponents.suburb || addressComponents.city || '';
+                var detailAddress = data.display_name ||addressComponents.road || addressComponents.neighbourhood || addressComponents.suburb || addressComponents.city || '';
 
                 // Mengisi otomatis kolom provinsi, kabupaten/kota, dan kode pos
                 document.getElementById('provinsi').value = province;
                 document.getElementById('kabupaten').value = city;
                 document.getElementById('zip_code').value = postalCode;
-                // document.getElementById('alamat_1').value = detailAddress;
+                document.getElementById('alamat_1').value = detailAddress;
 
                 // Update the popup dengan alamat lengkap
                 map.eachLayer(function(layer) {

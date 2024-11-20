@@ -263,44 +263,40 @@ class Setting extends BaseController
     public function saveAlamat()
     {
         $alamatModel = new AlamatUserModel();
-        $fullAddress = $this->request->getVar('alamat_1') . ', ' .
-            $this->request->getVar('alamat_2') . ', ' .
-            $this->request->getVar('alamat_3') . ', ' .
-            $this->request->getVar('kabupaten') . ', ' .
-            $this->request->getVar('provinsi') . ', ' .
-            $this->request->getVar('zip_code');
+
+        $latitude = $this->request->getVar('latitude');
+        $longitude = $this->request->getVar('longitude');
 
         $locationiq = new \App\Libraries\LocationiqService();
-        $geoData = $locationiq->geocode($fullAddress);
+        $geoData = $locationiq->reverseGeocode($latitude, $longitude);
 
-        if (isset($geoData[0]['lat']) && isset($geoData[0]['lon'])) {
-            $latitude = $geoData[0]['lat'];
-            $longitude = $geoData[0]['lon'];
+        if ($geoData) {
+            $data = [
+                'id_user' => user_id(),
+                'label' => $this->request->getVar('label'),
+                'penerima' => $this->request->getVar('nama_penerima'),
+                'alamat_1' => $geoData['display_name'] ?? 'Address not found',
+                'alamat_2' => $this->request->getVar('alamat_2'),
+                'alamat_3' => $geoData['display_name'],
+                'province' => $geoData['province'] ?? 'Province not found',
+                'city' => $geoData['city'] ?? $this->request->getVar('kabupaten'),
+                'zip_code' => $geoData['postcode'] ?? $this->request->getVar('zip_code'),
+                'telp' => $this->request->getVar('no_telp1'),
+                'telp2' => $this->request->getVar('no_telp2'),
+                'latitude' => $latitude,
+                'longitude' => $longitude
+            ];
+            // dd($data);
         } else {
+            // Handle geocoding failure
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
-                'message' => 'Geocoding gagal. Pastikan alamat yang dimasukkan valid.'
+                'message' => 'Geocoding failed. Please make sure the coordinates are valid.'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/create-alamat')->withInput();
         }
-
-        $data = [
-            'id_user' => user_id(),
-            'label' => $this->request->getVar('label'),
-            'penerima' => $this->request->getVar('nama_penerima'),
-            'alamat_1' => $this->request->getVar('alamat_1'),
-            'alamat_2' => $this->request->getVar('alamat_2'),
-            'alamat_3' => $this->request->getVar('alamat_3'),
-            'province' => $this->request->getVar('provinsi'),
-            'city' => $this->request->getVar('kabupaten'),
-            'zip_code' => $this->request->getVar('zip_code'),
-            'telp' => $this->request->getVar('no_telp1'),
-            'telp2' => $this->request->getVar('no_telp2'),
-            'latitude' => $latitude,
-            'longitude' => $longitude
-        ];
 
         // SWAL
         if ($data['telp2'] == null) {
@@ -552,6 +548,16 @@ class Setting extends BaseController
     public function editAlamat($id)
     {
         $alamatModel = new AlamatUserModel();
+        $locationiq = new \App\Libraries\LocationiqService();
+
+        $inputLatitude = $this->request->getVar('latitude');
+        $inputLongitude = $this->request->getVar('longitude');
+
+        // log_message('debug', 'Input Coordinates: Lat ' . $inputLatitude . ', Lon ' . $inputLongitude);
+
+        $geoData = $locationiq->reverseGeocode($inputLatitude, $inputLongitude);
+
+        // log_message('debug', 'GeoData: ' . json_encode($geoData));
 
         // Mengambil data dari form
         $data = [
@@ -569,9 +575,10 @@ class Setting extends BaseController
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
             'telp2' => $this->request->getVar('no_telp2'),
-            'latitude' => $this->request->getVar('latitude'),
-            'longitude' => $this->request->getVar('longitude'),
+            'latitude' => $geoData['lat'],
+            'longitude' => $geoData['lon'],
         ];
+        // dd($data);
 
         // Validasi untuk telp2
         if ($data['telp2'] == null) {
@@ -654,23 +661,6 @@ class Setting extends BaseController
                 'type' => 'error',
                 'title' => 'Error',
                 'message' => $this->validator->listErrors()
-            ];
-            session()->setFlashdata('alert', $alert);
-            return redirect()->to('setting/update-alamat/' . $id)->withInput();
-        }
-
-        // Inisialisasi LocationiqService
-        $locationService = new LocationiqService();
-        $geoData = $locationService->geocode($data['alamat_1']);
-
-        if (!empty($geoData) && isset($geoData[0])) {
-            $data['latitude'] = $geoData[0]['lat'];
-            $data['longitude'] = $geoData[0]['lon'];
-        } else {
-            $alert = [
-                'type' => 'error',
-                'title' => 'Geocoding Error',
-                'message' => 'Tidak dapat menemukan koordinat untuk alamat yang diberikan.'
             ];
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/update-alamat/' . $id)->withInput();

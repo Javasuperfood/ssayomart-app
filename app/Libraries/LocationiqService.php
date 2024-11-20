@@ -39,16 +39,33 @@ class LocationiqService
     // Fungsi untuk Reverse Geocoding (Koordinat ke Alamat)
     public function reverseGeocode($lat, $lon)
     {
-        $response = $this->client->get('reverse.php', [
-            'query' => [
-                'key' => $this->apiKey,
+        try {
+            $response = $this->client->get('https://us1.locationiq.com/v1/reverse.php', [
+                'query' => [
+                    'key' => $this->apiKey,
+                    'lat' => $lat,
+                    'lon' => $lon,
+                    'format' => 'json',
+                    'accept-language' => 'id'
+                ],
+                'headers' => [
+                    'Accept' => 'application/json',
+                ],
+            ]);
+
+            $data = json_decode($response->getBody(), true);
+
+            return [
+                'display_name' => $data['display_name'] ?? null,
+                'province' => $data['address']['state'] ?? null,
+                'city' => $data['address']['city'] ?? null,
+                'postcode' => $data['address']['postcode'] ?? null,
                 'lat' => $lat,
                 'lon' => $lon,
-                'format' => 'json',
-                'accept-language' => 'id'
-            ]
-        ]);
-
-        return json_decode($response->getBody(), true);
+            ];
+        } catch (\Exception $e) {
+            echo "An error occurred: " . $e->getMessage();
+            return null;
+        }
     }
 }
