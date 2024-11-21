@@ -151,6 +151,8 @@ class ProdukController extends BaseController
             'description_meta' => $produk['deskripsi'],
             'kategori' => $kategoriModel->findAll(),
             'produk' => $produk,
+            // nambahin berat bro
+            'berat' => $produk['berat'],
             'varian' => $varianItem,
             'varianItem' => count($varianItem),
             'randomProducts' => $randomProducts,

@@ -29,7 +29,9 @@ class ProdukModel extends Model
         'is_active',
         'id_sub_kategori',
         'short',
-        'created_by'
+        'created_by',
+        // nambahin berat bro
+        'berat'
     ];
 
     // Dates
@@ -115,7 +117,8 @@ class ProdukModel extends Model
             return $this->where('deleted_at', null)->findAll();
         }
 
-        return $this->select('jsf_produk.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max')
+        // nambahin berat bro
+        return $this->select('jsf_produk.*, MIN(CAST(vi.harga_item AS DECIMAL)) AS harga_min, MAX(CAST(vi.harga_item AS DECIMAL)) AS harga_max, berat')
             ->join('jsf_variasi_item vi', 'jsf_produk.id_produk = vi.id_produk', 'left')
             ->groupBy('jsf_produk.id_produk, jsf_produk.nama')->where(['slug' => $slug1])->first();
     }

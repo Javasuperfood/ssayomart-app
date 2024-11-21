@@ -121,6 +121,7 @@ return [
     'btn_beli' => 'Buy Now',
     'badge_kategori' => 'Category',
     'badge_subkategori' => 'Sub Category',
+    'berat' => 'Weight',
     'stock' => 'Stock Available',
     'stock2' => 'Failed to get stock data from market.',
     'stock3' => 'Choose market location first.',
