@@ -118,6 +118,7 @@ return [
     'btn_beli' => 'Beli',
     'badge_kategori' => 'Kategori',
     'badge_subkategori' => 'Sub Kategori',
+    'berat' => 'Berat',
     'stock' => 'Stok Tersedia',
     'stock2' => 'Gagal mengambil data stok',
     'stock3' => 'Silakan login lalu pilih lokasi market',

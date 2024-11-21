@@ -118,6 +118,7 @@ return [
     'btn_beli' => '구입하다',
     'badge_kategori' => '범주',
     'badge_subkategori' => '하위 카테고리',
+    'berat' => '중량',
     'stock' => '재고 있음',
     'stock2' => '주식 데이터를 검색하지 못했습니다.',
     'stock3' => '로그인 후 시장 위치를 ​​선택하세요.',

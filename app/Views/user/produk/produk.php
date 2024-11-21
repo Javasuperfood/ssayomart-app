@@ -140,10 +140,16 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <p class="fw-bold py-0 my-0"><?= lang('Text.stock3') ?></p>
                             <?php endif ?>
                         </div>
-                        <div class="badge-container mb-0">
+                        <div class="badge-container mb-2">
                             <p class="text-secondary py-0 my-0"><?= lang('Text.sku_produk') ?> : </p>
                             <?php if (!empty($produk)) : ?>
                                 <span class="badge text-bg-success rounded-5 text-uppercase"><?= $produk['sku']; ?></span>
+                            <?php endif ?>
+                        </div>
+                        <div class="badge-container mb-0">
+                            <p class="text-secondary py-0 my-0"><?= lang('Text.berat') ?> : </p>
+                            <?php if (!empty($produk)) : ?>
+                                <span class="badge text-bg-info rounded-5 text-white"><?= $produk['berat']; ?> gr</span>
                             <?php endif ?>
                         </div>
                     </div>
