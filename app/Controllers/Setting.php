@@ -269,8 +269,9 @@ class Setting extends BaseController
 
         $locationiq = new \App\Libraries\LocationiqService();
         $geoData = $locationiq->reverseGeocode($latitude, $longitude);
+        // dd($geoData);
 
-        if ($geoData) {
+        if ($geoData && isset($geoData['display_name'])) {
             $data = [
                 'id_user' => user_id(),
                 'label' => $this->request->getVar('label'),
@@ -278,17 +279,17 @@ class Setting extends BaseController
                 'alamat_1' => $geoData['display_name'] ?? 'Address not found',
                 'alamat_2' => $this->request->getVar('alamat_2'),
                 'alamat_3' => $geoData['display_name'],
-                'province' => $geoData['province'] ?? 'Province not found',
-                'city' => $geoData['city'] ?? $this->request->getVar('kabupaten'),
+                'id_province' => $this->request->getVar('id_province'),
+                'province' => $this->request->getVar('provinsi'),
+                'id_city' => $this->request->getVar('id_city'),
+                'city' => $this->request->getVar('kabupaten'),
                 'zip_code' => $geoData['postcode'] ?? $this->request->getVar('zip_code'),
                 'telp' => $this->request->getVar('no_telp1'),
                 'telp2' => $this->request->getVar('no_telp2'),
                 'latitude' => $latitude,
                 'longitude' => $longitude
             ];
-            // dd($data);
         } else {
-            // Handle geocoding failure
             $alert = [
                 'type' => 'error',
                 'title' => 'Error',
@@ -297,6 +298,7 @@ class Setting extends BaseController
             session()->setFlashdata('alert', $alert);
             return redirect()->to('setting/create-alamat')->withInput();
         }
+        // dd($data);
 
         // SWAL
         if ($data['telp2'] == null) {
@@ -316,24 +318,21 @@ class Setting extends BaseController
         // Validasi
         if (!$this->validateData($data, [
             'label' => [
-                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]|regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Label harus diisi.',
-                    'regex_match' => 'Label hanya boleh mengandung huruf, angka, atau spasi.',
-                    'regex_match[^;,:"\'<>\{\}\[\]_\-\&\$\*\@#^!|]' => 'Label tidak boleh mengandung karakter spesial.'
                 ]
             ],
             'penerima' => [
-                'rules' => 'required|regex_match[/^[A-Za-z0-9\s]+$/]',
+                'rules' => 'required',
                 'errors' => [
                     'required' => 'Nama penerima harus diisi.',
-                    'regex_match' => 'Penerima hanya boleh mengandung huruf, angka, atau spasi.',
                 ]
             ],
             'alamat_1' => [
                 'rules' => 'min_length[5]',
                 'errors' => [
-                    // 'required' => 'Alamat harus diisi.',
+
                     'min_length' => 'Alamat harus memiliki minimal 5 karakter.'
                 ]
             ],
@@ -372,6 +371,8 @@ class Setting extends BaseController
             return redirect()->to('setting/create-alamat')->withInput();
         }
 
+        // log_message('debug', 'Saving address data: ' . json_encode($data));
+
         // Simpan data ke database
         if ($alamatModel->save($data)) {
             session()->setFlashdata('success', 'Alamat berhasil disimpan.');
@@ -385,7 +386,6 @@ class Setting extends BaseController
             return redirect()->to('setting/create-alamat')->withInput();
         }
     }
-
 
     // public function saveAlamat()
     // {

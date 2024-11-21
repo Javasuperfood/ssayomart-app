@@ -99,7 +99,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for=" floatingInput"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
@@ -117,14 +117,14 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                     <div class="invalid-feedback"><?= validation_show_error('kabupaten') ?></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- GET ALAMAT RAJAONGKIR DON'T DELETE! -->
-                        <!-- <div class="row">
+                        <div class="row">
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="provinsi"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
-                                    <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="provinsi" name="id_provinsi" style="font-size: 14px;">
+                                    <select class="form-select <?= (validation_show_error('id_province')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="provinsi" name="id_province" style="font-size: 14px;">
                                         <option selected></option>
                                         <?php foreach ($provinsi as $p) : ?>
                                             <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
@@ -138,7 +138,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             <div class="col-12">
                                 <div class="form-group mb-3">
                                     <label for="kabupaten"><?= lang('Text.kab_kota') ?><span class="text-danger fs-5"> *</span></label>
-                                    <select class="form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kabupaten" name="id_kabupaten" style="font-size: 14px;">
+                                    <select class="form-select <?= (validation_show_error('id_city')) ? 'is-invalid' : 'border-0'; ?> shadow-sm" id="kabupaten" name="id_city" style="font-size: 14px;">
                                         <option selected></option>
                                     </select>
                                     <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
@@ -146,7 +146,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                             </div>
                         </div>
                         <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi">
-                        <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten"> -->
+                        <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten">
                         <!-- END -->
 
                         <div class="row">
