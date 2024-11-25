@@ -31,58 +31,30 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <input checked class="form-check-input d-none" type="radio" value="<?= $varian[0]['id_variasi_item']; ?>" name="varian" id="radioVarian<?= $varian[0]['id_variasi_item']; ?>">
                                 <!-- <a id="buyButton_1" href="<?= base_url('checkout2?slug=' . $produk['slug'] . '&varian=' . $varian[0]['id_variasi_item'] . '&qty=' . ((isset($_GET['qty'])) ? $_GET['qty'] : 1)); ?>" class="btn btn-white text-danger border-danger fw-bold" style="width: 150px;"><?= lang('Text.btn_beli') ?></a> -->
                                 <button class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn" produk="<?= $produk['id_produk']; ?>">
-                                    <i class="bi bi-cart-fill"> Add to Cart</i>
-                                </button>
-
-                                <!-- <button
-                                    class="ms-2 btn btn-white text-danger border-danger d-inline add-to-cart-btn"
-                                    produk="<?= $produk['id_produk']; ?>"
-                                    id="cart-btn-<?= $produk['id_produk']; ?>">
                                     <i class="bi bi-cart-fill"></i> Add to Cart
                                 </button>
 
+                                <!-- Bootstrap Alert -->
+                                <div id="alertSuccess" class="alert alert-light d-none position-fixed start-50 w-100 translate-middle-x" role="alert" style="top: 70px;">
+                                    Produk berhasil ditambahkan ke keranjang!
+                                </div>
+
                                 <script>
-                                    document.addEventListener('DOMContentLoaded', function() {
-                                        const cartButton = document.querySelector('.add-to-cart-btn');
-                                        const productId = cartButton.getAttribute('produk');
-                                        const storageKey = `added-to-cart-${productId}`;
+                                    document.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+                                        // Menampilkan alert
+                                        const alert = document.getElementById('alertSuccess');
+                                        alert.classList.remove('d-none');
 
-                                        // Check if the product is already in the cart (from localStorage)
-                                        if (localStorage.getItem(storageKey) === 'true') {
-                                            updateButtonState(cartButton, true);
-                                        }
+                                        // Menyembunyikan alert setelah 3 detik
+                                        setTimeout(() => {
+                                            alert.classList.add('d-none');
+                                        }, 3000);
 
-                                        // Handle button click to add/remove from cart
-                                        cartButton.addEventListener('click', function() {
-                                            const isAdded = localStorage.getItem(storageKey) === 'true';
-
-                                            if (isAdded) {
-                                                // Remove from cart
-                                                localStorage.removeItem(storageKey);
-                                                updateButtonState(cartButton, false);
-                                            } else {
-                                                // Add to cart
-                                                localStorage.setItem(storageKey, 'true');
-                                                updateButtonState(cartButton, true);
-                                            }
-                                        });
-
-                                        // Function to update button state
-                                        function updateButtonState(button, added) {
-                                            if (added) {
-                                                button.classList.remove('text-danger', 'border-danger');
-                                                button.classList.add('text-success', 'border-success');
-                                                button.innerHTML = '<i class="bi bi-cart-check-fill"></i> Added';
-                                                button.disabled = true; // Disable the button
-                                            } else {
-                                                button.classList.remove('text-success', 'border-success');
-                                                button.classList.add('text-danger', 'border-danger');
-                                                button.innerHTML = '<i class="bi bi-cart-fill"></i> Add to Cart';
-                                                button.disabled = false; // Enable the button
-                                            }
-                                        }
+                                        // Di sini Anda bisa menambahkan logika untuk menambahkan produk ke keranjang
+                                        const produkId = this.getAttribute('produk');
+                                        console.log('Produk ID:', produkId);
                                     });
-                                </script> -->
+                                </script>
 
                             </div>
                         <?php endif ?>
