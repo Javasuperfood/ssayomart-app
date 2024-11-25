@@ -91,7 +91,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3">
                                 <label for="provinsi" class="form-label"><?= lang('Text.provinsi') ?><span class="text-danger"> <?= lang('Text.optional') ?></span></label>
@@ -109,17 +109,20 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                                 <div class="invalid-feedback"><?= validation_show_error('kabupaten') ?></div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- GET ALAMAT RAJAONGKIR DON'T DELETE! -->
-                    <!-- <div class="row">
+                    <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3">
                                 <label for="provinsi"><?= lang('Text.provinsi') ?><span class="text-danger fs-5"> *</span></label>
-                                <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="provinsi" name="id_provinsi" style="font-size: 14px;">
+                                <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="provinsi" name="id_province" style="font-size: 14px;">
                                     <option selected value="<?= $au['id_province']; ?>"><?= $au['province']; ?></option>
                                     <?php foreach ($provinsi as $p) : ?>
-                                        <option value="<?= $p->province_id; ?>"><?= $p->province; ?></option>
+                                        <!-- Cek apakah $p adalah array atau objek -->
+                                        <option value="<?= isset($p['province_id']) ? $p['province_id'] : $p->province_id; ?>">
+                                            <?= isset($p['province']) ? $p['province'] : $p->province; ?>
+                                        </option>
                                     <?php endforeach; ?>
                                 </select>
                                 <div class="invalid-feedback"><?= validation_show_error('id_province') ?></div>
@@ -131,7 +134,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                         <div class="col-12">
                             <div class="form-group mb-3">
                                 <label for="kabupaten"><?= lang('Text.kab_kota') ?><span class="text-danger fs-5"> *</span></label>
-                                <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="kabupaten" name="id_kabupaten" style="font-size: 14px;">
+                                <select class="form-select border-0 shadow-sm" aria-label="Default select example" id="kabupaten" name="id_city" style="font-size: 14px;">
                                     <option selected value="<?= $au['id_city']; ?>"><?= $au['city']; ?></option>
                                 </select>
                                 <div class="invalid-feedback"><?= validation_show_error('id_city') ?></div>
@@ -140,8 +143,7 @@ $isMobile = (strpos($userAgent, 'Mobile') !== false || strpos($userAgent, 'Table
                     </div>
 
                     <input type="hidden" class="form-control floatingInput" id="inputProvinsi" name="provinsi" value="<?= $au['province']; ?>">
-                    <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>"> -->
-
+                    <input type="hidden" class="form-control floatingInput" id="inputKabupaten" name="kabupaten" value="<?= $au['city']; ?>">
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group mb-3">

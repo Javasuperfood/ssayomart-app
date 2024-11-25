@@ -527,37 +527,82 @@ class Setting extends BaseController
     public function updateAlamat($id): string
     {
         session();
-        $provinsi = $this->rajaongkir('province');
-        $alamatModel = new AlamatUserModel();
         $kategori = new KategoriModel();
+        $alamatModel = new AlamatUserModel();
 
+        // Ambil data lama berdasarkan ID
         $au = $alamatModel->find($id);
+
+        if (!$au) {
+            session()->setFlashdata('alert', [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Data alamat tidak ditemukan.'
+            ]);
+            return redirect()->to('setting/alamat-list');
+        }
 
         $data = [
             'title' => 'Edit Alamat',
-            'provinsi' => json_decode($provinsi)->rajaongkir->results,
+            'provinsi'  => [],
             'au' => $au,
             'back'  => 'setting/alamat-list',
             'kategori' => $kategori->findAll(),
             'preloader' => false
         ];
-        // dd($data);
+
+        $provinsi = $this->rajaongkir('province');
+        $provinsiData = json_decode($provinsi, true); // Konversi ke array
+
+        // Periksa apakah API mengembalikan respons yang valid
+        if (isset($provinsiData['rajaongkir']['status']['code']) && $provinsiData['rajaongkir']['status']['code'] == 200) {
+            // Pastikan 'results' ada di dalam data yang diterima
+            if (isset($provinsiData['rajaongkir']['results']) && is_array($provinsiData['rajaongkir']['results'])) {
+                $data['provinsi'] = $provinsiData['rajaongkir']['results'];
+            } else {
+                // Tangani jika 'results' kosong atau tidak ada
+                session()->setFlashdata('alert', [
+                    'type' => 'error',
+                    'title' => 'Error',
+                    'message' => 'Data provinsi tidak ditemukan.'
+                ]);
+                return redirect()->to('setting/alamat-list');
+            }
+        } else {
+            // Tangani jika status code bukan 200
+            session()->setFlashdata('alert', [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Terjadi masalah saat mengambil data provinsi. Pastikan API berjalan dengan baik.'
+            ]);
+            return redirect()->to('setting/alamat-list');
+        }
+
+        // Jika semua data provinsi ditemukan, lanjutkan untuk menampilkan view
         return view('user/home/setting/updateAlamat', $data);
     }
+
 
     public function editAlamat($id)
     {
         $alamatModel = new AlamatUserModel();
+
+        $alamat = $alamatModel->find($id);
+
+        if (!$alamat) {
+            session()->setFlashdata('alert', [
+                'type' => 'error',
+                'title' => 'Error',
+                'message' => 'Data alamat tidak ditemukan.'
+            ]);
+            return redirect()->to('setting/alamat-list');
+        }
+
+        $latitude = $this->request->getVar('latitude');
+        $longitude = $this->request->getVar('longitude');
+
         $locationiq = new \App\Libraries\LocationiqService();
-
-        $inputLatitude = $this->request->getVar('latitude');
-        $inputLongitude = $this->request->getVar('longitude');
-
-        // log_message('debug', 'Input Coordinates: Lat ' . $inputLatitude . ', Lon ' . $inputLongitude);
-
-        $geoData = $locationiq->reverseGeocode($inputLatitude, $inputLongitude);
-
-        // log_message('debug', 'GeoData: ' . json_encode($geoData));
+        $geoData = $locationiq->reverseGeocode($latitude, $longitude);
 
         // Mengambil data dari form
         $data = [
@@ -568,9 +613,9 @@ class Setting extends BaseController
             'alamat_1' => $this->request->getVar('alamat_1'),
             'alamat_2' => $this->request->getVar('alamat_2'),
             'alamat_3' => $this->request->getVar('alamat_3'),
-            // 'id_province' => $this->request->getVar('id_provinsi'),
-            // 'id_city' => $this->request->getVar('id_kabupaten'),
+            'id_province' => $this->request->getVar('id_province'),
             'province' => $this->request->getVar('provinsi'),
+            'id_city' => $this->request->getVar('id_city'),
             'city' => $this->request->getVar('kabupaten'),
             'zip_code' => $this->request->getVar('zip_code'),
             'telp' => $this->request->getVar('no_telp1'),
@@ -818,6 +863,35 @@ class Setting extends BaseController
     }
 
     // FETCHING DATA API PROVINSI & KOTA
+    public function getProvinceCityIDs()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Permintaan tidak valid.']);
+        }
+
+        $input = json_decode($this->request->getBody(), true);
+        $province = $input['province'] ?? '';
+        $city = $input['city'] ?? '';
+
+        $provinces = $this->rajaongkir('province');
+        $cities = $this->rajaongkir('city');
+
+        $provinceData = array_filter(json_decode($provinces)->rajaongkir->results, function ($p) use ($province) {
+            return $p->province === $province;
+        });
+
+        $cityData = array_filter(json_decode($cities)->rajaongkir->results, function ($c) use ($city) {
+            return $c->city_name === $city;
+        });
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'id_province' => $provinceData ? array_values($provinceData)[0]->province_id : null,
+            'id_city' => $cityData ? array_values($cityData)[0]->city_id : null
+        ]);
+    }
+
+
     public function getCity()
     {
         if ($this->request->isAJAX()) {
