@@ -49,18 +49,6 @@ class ShieldOAuthConfig extends OAuthConfig
             'client_secret' => 'Get it from Google',
             'allow_login' => false,
         ],
-        'github' => [
-            'client_id'     => 'Get it from GitHub',
-            'client_secret' => 'Get it from GitHub',
-            'allow_login' => false,
-        ],
-
-        // 'yahoo' => [
-        //     'client_id'     => 'Get it from Yahoo',
-        //     'client_secret' => 'Get it from Yahoo',
-
-        //     'allow_login' => true,
-        // ],
     ];
 
     /**

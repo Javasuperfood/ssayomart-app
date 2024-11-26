@@ -217,7 +217,7 @@ class Auth extends ShieldAuth
         'field'              => 'user',
         'allowRemembering'   => true,
         'rememberCookieName' => 'remember',
-        'rememberLength'     => 30 * DAY,
+        'rememberLength'     => 365 * DAY, // Durasi "remember me" - 365 hari (1 Tahun)
     ];
 
     /**
@@ -459,11 +459,13 @@ class Auth extends ShieldAuth
     public function loginRedirect(): string
     {
         $session = session();
-        // $url     = $session->getTempdata('beforeLoginUrl') ?? setting('Auth.redirects')['login'];
-        $url = auth()->user()->inGroup('superadmin') ? '/dashboard/dashboard-super-admin' : (auth()->user()->inGroup('admin') ? '/dashboard' : (setting('Auth.redirects')['login'] ?? '/'));
+        $url = auth()->user()->inGroup('superadmin') ? '/dashboard/dashboard-super-admin'
+            : (auth()->user()->inGroup('admin') ? '/dashboard'
+                : (setting('Auth.redirects')['login'] ?? '/'));
 
         return $this->getUrl($url);
     }
+
 
     /**
      * Returns the URL that a user should be redirected
@@ -472,7 +474,6 @@ class Auth extends ShieldAuth
     public function logoutRedirect(): string
     {
         $url = setting('Auth.redirects')['logout'];
-
         return $this->getUrl($url);
     }
 
