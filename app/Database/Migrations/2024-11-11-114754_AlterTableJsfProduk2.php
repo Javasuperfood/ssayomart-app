@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AlterTableJsfProduk extends Migration
+class AlterTableJsfProduk2 extends Migration
 {
     public function up()
     {
