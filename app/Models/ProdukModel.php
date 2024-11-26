@@ -206,7 +206,7 @@ class ProdukModel extends Model
         $getProduk->orderBy('p.sort IS NULL', 'ASC', false);
         $getProduk->orderBy('p.sort', 'ASC');
 
-        $getProduk->orderBy('p.brand', 'javasuperfood', '>', 'kwangcheon', 'GS');
+        $getProduk->orderBy('p.brand', 'Javasuperfood', 'javasuperfood', '>', 'Kwancheon', 'GS');
 
         $getProduk->orderBy("CAST(SUBSTRING(p.nama FROM 1 FOR 5) AS UNSIGNED)", 'ASC');
         $getProduk->orderBy('CASE WHEN s.stok >= 50 THEN 0 ELSE 1 END', 'ASC', false);
